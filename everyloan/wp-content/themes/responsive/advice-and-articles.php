@@ -36,12 +36,20 @@ global $more; $more = 0;
 		<div class="select-category-label">Select a category:</div>
 		
 		<select>
-			<option>Select a Category</option>
-			<option>Category 1</option>
-			<option>Category 2</option>
-			<option>Category 3</option>
-		</select>
+			<option>All Categories</option>
+			<?php 
+				
+				$args = array('orderby' => 'name', 'hide_empty' => 1);
+				$terms = get_terms('advice_articles_tax', $args);
 
+				foreach($terms as $term)
+				{
+					echo '<option>' . $term->name . '</option>';
+				}
+	 		
+	 		?>
+
+		</select>
 	</div>
 	
 	<a href="#">
@@ -77,7 +85,7 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_
 				</a>
               </div>  
 			<?php endif; ?>
-            <div style="float:left; width:400px;">
+            <div style="float:left;">
             <?php get_template_part( 'post-meta' ); ?>
             
 			<?php //the_content(__('Read more &#8250;', 'responsive')); ?>
