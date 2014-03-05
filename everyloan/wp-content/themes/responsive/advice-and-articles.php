@@ -21,7 +21,7 @@ if ( !defined('ABSPATH')) exit;
 
 get_header(); 
 
-global $more; $more = 0; 
+//global $more; $more = 0; 
 ?>
 
 <div id="content-advice-and-articles" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
@@ -64,9 +64,10 @@ $args = array(
 	'post_type' => 'advice_articles'
 );
 
+/* need this for pagination to work with CPT's */
 $temp = $wp_query; 
-$wp_query = null; 
-$wp_query = new WP_Query(); 
+$wp_query = null;
+
 $wp_query = new WP_Query($args);
 
 if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
@@ -78,6 +79,8 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_
 					
 		<div class="post-entry">
         
+        <?php get_template_part( 'post-meta' ); ?>
+
       	<?php if ( has_post_thumbnail()) : ?>
             <div style="float:left;">
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
@@ -85,15 +88,10 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_
 				</a>
               </div>  
 			<?php endif; ?>
-            <div style="float:left;">
-            <?php get_template_part( 'post-meta' ); ?>
             
-			<?php //the_content(__('Read more &#8250;', 'responsive')); ?>
              <?php the_excerpt(); ?>
-             </div>
-             
-            <?php wp_link_pages(array('before' => '<div class="pagination">' . __('Pages:', 'responsive'), 'after' => '</div>')); ?>
-		</div><!-- end of .post-entry -->
+         
+         </div><!-- end of .post-entry -->
 			
 		<?php get_template_part( 'post-data' ); ?>
 				               
@@ -104,14 +102,26 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_
 		<?php 
 		endwhile;
 
-        //if (  $wp_query->max_num_pages < 1 ) : 
+         if (  $wp_query->max_num_pages > 1 ) : 
 			?>
 			<div class="navigation">
-				<?php previous_posts_link('&laquo; Newer') ?>
-    			<?php next_posts_link('Older &raquo;') ?>
+			<?php
+				//global $wp_query;
+
+				$big = 999999999; // need an unlikely integer
+
+				echo paginate_links( array(
+					'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+					'format' => '?paged=%#%',
+					'current' => max( 1, get_query_var('paged') ),
+					'total' => $wp_query->max_num_pages,
+					'next_text' => "<span class='triangle-next-cont'><div class='triangle-right triangle-next'></div></span>",
+					'prev_text' => "<span class='triangle-prev-cont'><div class='triangle-left triangle-prev'></div></span>"
+				) );
+			?>
 			</div><!-- end of .navigation -->
 			<?php 
-		//endif;
+		endif;
 
 	else : 
 

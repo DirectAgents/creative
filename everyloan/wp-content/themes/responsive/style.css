@@ -4181,7 +4181,7 @@ BDO[DIR="rtl"] {
 
 /* ---------- Pagination ----------*/
 
-#content-blog .navigation { float:right; }
+#wrapper .navigation { float:right; }
 
 /* make all links in nagivation blue */
 .navigation a 
@@ -4189,7 +4189,7 @@ BDO[DIR="rtl"] {
   color:#1e517f;
 }
 
-#content-blog .navigation .page-numbers
+#wrapper .navigation .page-numbers
 {
   float:left;
   padding:0 5px;
@@ -4198,30 +4198,30 @@ BDO[DIR="rtl"] {
   color:#1e517f;
 }
 
-#content-blog .navigation a,
-#content-blog .navigation span  
+#wrapper .navigation a,
+#wrapper .navigation span  
 { 
   line-height:18px;
   margin:0 10px;
   padding:0 !important; 
 }
 
-#content-blog .navigation a.page-numbers { border-bottom: 2px solid #ccc;  }
+#wrapper .navigation a.page-numbers { border-bottom: 2px solid #ccc;  }
 
 /* next and prev triangles */
-#content-blog .navigation a.next,
-#content .navigation .next,
-#content-blog .navigation a.prev 
+#wrapper .navigation a.next,
+#wrapper .navigation .next,
+#wrapper .navigation a.prev 
 { 
   position:static;
   border-bottom:none;
   margin:0; 
 }
 
-#content-blog .navigation .current { color:#999999; }
+#wrapper .navigation .current { color:#999999; }
 
-#content-blog .navigation .triangle-next-cont,
-#content-blog .navigation .triangle-prev-cont
+#wrapper .navigation .triangle-next-cont,
+#wrapper .navigation .triangle-prev-cont
 {
   background:#1e517f;
   width:20px;

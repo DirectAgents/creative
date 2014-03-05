@@ -2590,16 +2590,17 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   } 
 
 #content-advice-and-articles {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
-#content-advice-and-articles h1{
+#content-advice-and-articles h1 {
   font-family: 'heroregular'; 
   font-size: 30px;
   color:#1e517f;
   float:left; 
   //width:300px;
+  margin-top:0;
 }
 
 #content-advice-and-articles .post-title{
