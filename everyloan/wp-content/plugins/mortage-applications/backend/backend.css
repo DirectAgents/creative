@@ -1,0 +1,103 @@
+.wrap h2 {
+    padding-bottom:0;
+}
+.dp-payments li, .dp-settings li {
+    float: left;
+}
+#ajax-loader {
+    float: right;
+}
+
+.postbox h3.hndle {
+    padding: 7px 10px;
+    cursor: default;
+}
+.postbox .inside .note {
+    background-color: #FFFFE0;
+    border: 1px solid #E6DB55;
+    padding: 0 0.6em;
+    -moz-border-radius:3px;
+    -khtml-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+}
+.postbox .dr-steps li {
+    clear: both;
+    padding: 1em;
+    margin: 0 auto;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+}
+.postbox .dr-steps li:hover {
+    background-color: #eee;
+}
+.postbox .dr-steps li a.button {
+    float: right;
+}
+
+.postbox .dr-steps li span.dr_del {
+    text-decoration: none;
+    color: #666;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.form div.form-field {
+    margin:10px 0;
+    padding:0;
+}
+.form div.form-field label {
+    cursor:pointer;
+    font-size:13px;
+    font-family:Verdana;
+}
+.form input.input-text {
+    border:1px solid #DFDFDF;
+    background-color: white;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    width:500px;
+    padding:6px 4px;
+    font-size:13px;
+}
+.form textarea.input-textarea {
+    resize:none;
+    outline:none;
+}
+.form select {
+    cursor:pointer;
+}
+
+.output-msg {
+    padding:8px;
+    background:#E2E2E2;
+    font-weight:bold;
+    font-size:13px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.output-msg-success {
+    color:green;
+}
+.output-msg-error {
+    color:red;
+}
+
+.apps-paginations {
+    float:right;
+}
+.apps-paginations a {
+    border:1px solid #E3E3E3;
+    padding:3px 7px;
+    margin-right:2px;
+    text-decoration:none;
+    background: #EEE;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.apps-paginations a.current-page, .apps-paginations a.hover {
+    color:#d54e21;
+}

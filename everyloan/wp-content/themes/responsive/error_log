@@ -1,0 +1,1 @@
+[25-Sep-2013 10:55:39] PHP Fatal error:  Call to undefined function get_header() in /home/termlife/public_html/everyloan/wp-content/themes/responsive/api.php on line 22

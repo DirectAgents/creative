@@ -1,0 +1,1321 @@
+/* =Responsive (Mobile) Design
+-------------------------------------------------------------- */
+
+
+/***top menu mobile***/
+nav {
+	display: none;
+	height: 40px;
+	width: 330px;
+	background:none;
+	font-size: 11pt;
+	font-family: 'PT Sans', Arial, sans-serif;
+	font-weight: bold;
+	position: relative;
+	text-align: center;
+	border-bottom: 2px solid #283744;
+}
+nav ul {
+	padding: 0;
+	margin: 0 auto;
+	width: 600px;
+	height: 40px;
+	list-style-type:none !important;
+}
+nav li {
+	display: inline;
+	float: left;
+	text-align: center;
+	background: #455868;
+	list-style-type:none !important;
+}
+nav a {
+	color: #fff;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	text-decoration: none;
+	line-height: 40px;
+	
+}
+nav li a {
+	border-right: 1px solid #576979;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	list-style-type:none !important;
+}
+nav li:last-child a {
+	border-right: 0;
+}
+nav a:hover, nav a:active {
+	background:none;
+}
+nav a#pull {
+	display: block;
+	list-style-type:none !important;
+}
+
+
+@media only screen 
+and (min-width : 480px) 
+and (max-width: 980px)
+{
+
+
+.learn-box-home-desktop {display:none !important}
+.calculate-box-home-desktop {display:none !important}
+.borrow-box-home-desktop {display:none !important}
+
+
+
+.learn-box-home-mobile {display: block !important; width:100%; float:left; background:#fff; border:0px #eee solid; 
+padding-bottom:20px; }
+.learn-box-home-mobile ul {padding-left:0px; list-style-type:none;}
+.learn-box-home-mobile li a  {list-style-type:none;}
+
+.learn-title-top-mobile{
+	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+	float:left;
+	font-size: 23px;  
+	font-family: 'heroregular';
+	font-weight:bold;
+    color: #1e517f !important; 
+	letter-spacing:2px;
+	padding:20px 0 20px 10px;
+	width:97%;
+	}
+
+
+
+.calculate-box-home-mobile {display: block !important; width:100%; float:left; background:#fff; border:0px #eee solid; 
+padding:0px; margin-top:20px; padding-bottom:20px; }
+.calculate-box-home-mobile ul {padding-left:10px; list-style-type:none;}
+.calculate-box-home-mobile li a  {list-style-type:none;}
+
+
+.calculate-title-top-mobile{
+	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+	float:left;
+	font-size: 23px;  
+	font-family: 'heroregular';
+	font-weight:bold;
+    color: #1e517f !important; 
+	letter-spacing:2px;	
+	padding:20px 0 20px 10px;
+	width:97%;
+	}	
+
+
+
+.borrow-box-home-mobile {display: block !important; width:100%; padding-bottom:20px; float:left; background:#fff; border:0px #eee solid; 
+margin-top:20px; }
+.borrow-box-home-mobile ul {padding-left:10px; list-style-type:none;}
+.borrow-box-home-mobile li a  {list-style-type:none;}
+
+
+.borrow-title-top-mobile{
+	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+	float:left;
+	font-size: 23px;  
+	font-family: 'heroregular';
+	font-weight:bold;
+    color: #1e517f !important; 
+	letter-spacing:2px;
+	padding:20px 0 20px 10px;
+	width:97%;
+	}	
+	
+	
+
+.widget-wrapper-homepage {
+  float:left;
+  width:100%;
+  height:366px;
+ /*-webkit-border-radius: 4px;
+  -moz-border-radius: 4px;*/
+  background:#fff;
+  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home.png) no-repeat;*/
+  /*border: 1px solid #e5e5e5;
+  border-radius: 4px;*/
+  margin: 13px 0 0 0;
+ border:0px solid #000;
+  -webkit-border-radius: 4px; 
+  -moz-border-radius: 4px;
+ -moz-box-shadow: 0 0 15px #ccc;
+-webkit-box-shadow: 0 0 15px #ccc;
+box-shadow: 0 0 15px #ccc;
+}
+
+.widget-title-homepage {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 23px;
+  margin: 0;
+  padding: 20px 0 20px 20px;
+  text-align: left;
+}
+
+.widget-wrapper-homepage ul{
+	float:left;
+	max-width:100%;
+	margin-top:20px;
+	padding-left:10px;
+	}
+	
+.widget-wrapper-homepage li{
+	list-style-type:none;
+	margin-bottom:15px;
+	padding-left:10px;
+	}	
+	
+
+.styled-select select {
+   background: transparent;
+   width: 100%;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   }
+
+
+.styled-select {
+   width: 80%;
+   height: 34px;
+   overflow: hidden;
+   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   border: 1px solid #ccc;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   }	
+   
+  
+
+	
+.start-here-btn{float:left; width:228px; padding-left:30px; padding-bottom: 10px;}
+
+.read-news-mobile{list-style-type:none; margin-left:90px; margin-top:10px;}
+
+.left-column{float:left; width:300px;}
+.right-column{float:left; margin-left:40px;}	
+
+.view-all a, .view-all-calculators a, .view-more-resources a{float:left; width:100%; font-size:12px; font-weight:bold; padding-left:10px; padding-bottom:10px;}
+
+	
+}
+
+
+
+@media only screen 
+and (min-width : 480px) 
+and (max-width: 1223px)
+{
+
+.find-the-right-loan-mobile{display:none !important}
+
+.i-want-to-borrow-money-mobile{
+	display:none !important;
+	}	
+
+.widget-title-rates-homepage {
+  float:left;
+  width:96%;
+  display: block;
+  font-size: 20px; 
+  font-weight: 700;
+  font-family: 'heroregular';
+  margin: 0;
+  height:10px;
+  padding: 30px 0 23px 20px;
+  text-align: left;
+  color: #414344; 
+  /*background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif');
+  -webkit-border-top-right-radius: 4px; 
+  -webkit-border-top-left-radius: 4px; 
+  -moz-border-radius: 4px;*/
+}	
+	
+
+.widget-title-rates-homepage {
+  float:left;
+  width:96%;
+  display: block;
+  font-size: 20px; 
+  font-weight: 700;
+  font-family: 'heroregular';
+  margin: 0;
+  height:10px;
+  padding: 30px 0 23px 20px;
+  text-align: left;
+  color: #414344; 
+  /*background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif');
+  -webkit-border-top-right-radius: 4px; 
+  -webkit-border-top-left-radius: 4px; 
+  -moz-border-radius: 4px;*/
+}	
+
+.start-here-btn{float:left; width:228px; margin-left:40px; padding-bottom: 10px;}
+
+
+}
+
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+
+
+.widget-title-rates-homepage {
+  float:left;
+  width:96%;
+  display: block;
+  font-size: 20px; 
+  font-weight: 700;
+  font-family: 'heroregular';
+  margin: 0;
+  height:10px;
+  padding: 30px 0 23px 20px;
+  text-align: left;
+  color: #414344; 
+  /*background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif');
+  -webkit-border-top-right-radius: 4px; 
+  -webkit-border-top-left-radius: 4px; 
+  -moz-border-radius: 4px;*/
+}	
+
+
+.find-the-right-loan-mobile{display:none !important}
+
+.top-menu-desktop{display:block !important}
+.top-menu-mobile{display:none !important}
+
+.contact-info-desktop{display:block !important}
+.contact-info-mobile{display:none !important}
+
+
+
+.start-here-btn{float:left; width:228px; margin-left:40px; padding-bottom: 10px;}
+
+
+.how-everyloan-works{
+		float:left;
+		width:100%;
+		background:#fff;
+		text-align:left;
+		margin-top:10px;
+		}
+
+.how-everyloan-works p{
+		float:left;
+		width:100%;
+		text-align:left;
+		margin-top:10px;
+		}	
+
+
+.everyloan-title{
+	float:left;
+	font-size: 30px;  
+	font-family: 'heroregular';
+    color: #1e517f !important; 
+	letter-spacing:3px;
+	margin-bottom:10px;
+	}
+
+.how-everyloan-works-content{
+		
+	float:left !important;
+	background:#f1f1f1;
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+	padding: 10px 0 0 15px;
+	margin-left:9px;
+	margin-bottom:10px;
+	
+		
+		}
+
+
+/* Advice & Articles
+-------------------------------------------------------------- */
+
+.advice-and-article-title{
+	float:left;
+	}
+
+#content-advice-and-articles .select-category-label{
+	float:left;
+	display:inline;
+	color:#636363;
+	margin-top:20px;
+	margin-left:20px;
+	font-weight:bold;
+	}
+
+#content-advice-and-articles select{
+	float:left;
+	display:inline;
+	width:100px;
+	margin-left:10px;
+	margin-top:20px;
+	}	
+
+#content-advice-and-articles {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+#content-advice-and-articles h1{
+  font-family: 'heroregular';	
+  font-size: 30px;
+  color:#1e517f;
+  float:left; 
+  width:300px;
+}
+
+#content-advice-and-articles .post-title{
+	font-size: 31px;  
+	font-family: 'heroregular';
+    color: #1e517f !important; 
+	letter-spacing:3px;
+	line-height:35px;
+	}
+
+#content-advice-and-articles .wp-post-image{
+	float:left;
+	margin-top:20px;
+	}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+
+#logo{float:left; width:100%; margin-left:30px;}
+
+
+
+
+
+.contact-info-desktop{ 
+  float:left; 
+  width:75%;
+  display: block;
+  font-size: 14px; 
+  font-weight: 700;
+  font-family: 'heroregular';
+  margin-top: 5px;
+  margin-left: 170px;
+  padding-top:0px;
+  text-align:right;
+  color: #414344;
+  position:absolute;
+  z-index:1; 
+ 
+
+}
+.contact-info-desktop li{list-style-type:none; border:0px;}
+
+
+.top-menu-desktop{float:left; margin-left:40px; margin-bottom:20px;}
+
+#widgets{display:none;}
+
+
+}
+
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+
+#logo {
+  float: left;
+  margin-left:30px;
+}
+
+
+
+
+}
+
+
+
+
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+	nav li {
+		display: block;
+		float: none;
+		width: 100%;
+		text-align: center;
+		list-style-type:none !important;
+	}
+	nav li a {
+		border-bottom: 1px solid #576979;
+		list-style-type:none !important;
+	}
+	
+	
+	.top-menu-mobile{ float:left; display:block !important; list-style-type:none !important;}
+	.top-menu-mobile li{ float:left; width:100%; list-style-type:none !important;}
+
+	.contact-info-mobile{ 
+  float:left; 
+  width:100%;
+  margin-top: 2px;
+  margin-left: 85px;
+  position:absolute;
+  display:block !important;
+  z-index:1;
+}
+
+.contact-info-mobile li{list-style-type:none; border:0px;}
+
+
+	
+	
+
+
+.advice-and-article-title{
+	float:left;
+	}
+
+#content-advice-and-articles .select-category-label{
+	display:none;
+	}
+
+#content-advice-and-articles select{
+	margin:0 auto;
+	display:inline;
+	width:100%;
+	}	
+
+#content-advice-and-articles {
+  margin:0 auto; 
+  width:300px;
+  
+  
+}
+
+#content-advice-and-articles h1{
+  font-family: 'heroregular';	
+  font-size: 25px;
+  color:#1e517f;
+  margin:0 auto; 
+  width:300px;
+  text-align:center;
+  
+}
+
+#content-advice-and-articles .post-title{
+	font-size: 31px;  
+	font-family: 'heroregular';
+    color: #1e517f !important; 
+	letter-spacing:3px;
+	line-height:35px;
+	}
+
+#content-advice-and-articles .wp-post-image{
+	float:left;
+	margin-top:20px;
+	}	
+
+
+
+.widget-wrapper-homepage {
+  float:left;
+  width:30px;
+  height:366px;
+ /*-webkit-border-radius: 4px;
+  -moz-border-radius: 4px;*/
+  background:#000;
+  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home.png) no-repeat;*/
+  /*border: 1px solid #e5e5e5;
+  border-radius: 4px;*/
+  margin: 13px 0 0 0;
+ border:0px solid #000;
+  -webkit-border-radius: 4px; 
+  -moz-border-radius: 4px;
+ -moz-box-shadow: 0 0 15px #ccc;
+-webkit-box-shadow: 0 0 15px #ccc;
+box-shadow: 0 0 15px #ccc;
+}
+
+
+
+
+
+
+	
+
+	
+}
+
+
+
+
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) 
+and (max-width: 480px)
+{
+/* Styles */
+
+
+nav li {
+		display: block;
+		float: none;
+		width: 100%;
+		list-style-type:none !important;
+	}
+	nav li a {
+		border-bottom: 1px solid #576979;
+		list-style-type:none !important;
+	}
+
+
+.find-the-right-loan-mobile{display:block !important; width:459px; float:left; margin-left:0px;}
+
+
+    .top-menu-mobile{ float:left; width:100px; display:block !important; list-style-type:none !important;}
+	.top-menu-mobile li{ float:left; width:100%; list-style-type:none !important;}
+
+	.contact-info-mobile{ 
+  float:left; 
+  width:150px;
+  margin-top: 2px;
+  margin-left: 85px;
+  position:absolute;
+  display:block !important;
+  z-index:1;
+}
+
+.contact-info-mobile li{list-style-type:none; border:0px;}
+
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 980px) {
+
+	body {/*background:#333*/}
+
+	.grid, 
+	.grid-right {
+		float: none;
+	}
+
+	.copyright,
+	.scroll-top,
+	.powered {
+		float: left;
+	}
+
+	#featured-image .fluid-width-video-wrapper {
+		margin: 20px 0 0 0;
+	}
+
+	.front-page  #widgets {
+		margin-top: 40px;
+	}
+
+	.top-widget,
+	.front-page  .top-widget {
+		margin-top: 0 !important;
+	}
+
+	.hide-desktop {
+		display: block;
+	}
+
+	.show-desktop {
+		display: none;
+	}
+
+	.hide-980 {
+		display: none;
+	}
+
+	.show-980 {
+		display: block;
+	}
+
+
+}
+
+@media screen and (max-width: 650px) {
+
+	body {}
+
+	#logo {
+		float: none;
+		margin: 0;
+		text-align: center;
+	}
+
+	.grid, 
+	.grid-right {
+		float: none;
+	}
+
+	#featured-image .fluid-width-video-wrapper {
+		margin: 20px 0 0 0;
+	}
+	
+	.top-widget {
+		float: none;
+		margin: 0 auto 10px auto;
+		position: relative;
+		text-align: center;
+		width: auto;
+	}
+	
+	.top-widget .widget-title {
+		text-align: center;
+	}
+	
+	.js .sub-header-menu {
+		display: none;
+	}
+	
+	.js .main-nav {
+		position: relative;
+		background-color: #585858;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#585858), to(#3d3d3d));
+		background-image: -webkit-linear-gradient(top, #585858, #3d3d3d);
+		background-image: -moz-linear-gradient(top, #585858, #3d3d3d);
+		background-image: -ms-linear-gradient(top, #585858, #3d3d3d);
+		background-image: -o-linear-gradient(top, #585858, #3d3d3d);
+		background-image: linear-gradient(top, #585858, #3d3d3d);
+		clear: both;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#585858, endColorstr=#3d3d3d);
+		margin: 0 auto;
+	}
+	
+	.js .main-nav .menu {
+		display: none;
+		position: absolute;
+		width: 100%;
+		top: 30px;
+		z-index: 1000;
+	}
+	
+	.js .main-nav .menu ul {
+		margin-top: 1px;
+	}
+	
+	.js .main-nav .menu li {
+		float: none;
+		background-color: #fff;
+		border: none;
+	}
+	
+	.js .main-nav .menu li a {
+		color: #444;
+		font-size: 13px;
+		font-weight: normal;
+		height: 45px;
+		line-height: 45px;
+		padding: 0 15px;
+		border: none;
+		border-bottom: 1px solid #f5f5f5;
+		text-shadow: none;
+		text-align: left;
+		cursor: pointer;
+	}
+	
+	.js .main-nav .menu li.current_page_item,
+	.js .menu .current_page_item a,
+	.js .menu .current-menu-item a {
+		background-color: #f5f5f5;
+	}
+	
+	.js .main-nav .menu li li:hover {
+		background: none!important;
+	}
+	
+	.js .main-nav .menu li li a {
+		position: relative;
+		padding: 0 10px 0 30px;
+	}
+	
+	.js .main-nav .menu li li li a {
+		position: relative;
+		padding: 0 10px 0 40px;
+	}
+	
+	.js .main-nav .menu li a:hover,
+	.js .main-nav .menu li li a:hover {
+		background-image: none;
+		filter: none;
+		background-color: #f5f5f5!important;
+	}
+	
+	.js .main-nav .menu li li a::before {
+		content: '\2013';
+		position: absolute;
+		top: 0;
+		left: 20px;
+	}
+	
+	.js .main-nav .menu li li li a::before {
+		content: '\2013';
+		position: absolute;
+		top: 0;
+		left: 20px;
+	}
+	
+	.js .main-nav .menu li li li a::after {
+		content: '\2013';
+		position: absolute;
+		top: 0;
+		left: 30px;
+	}
+	
+	.js .main-nav .menu li ul {
+		position: static;
+		visibility: visible;
+		background-color: #fff;
+	}
+
+	.js .main-nav .menu ul {
+		min-width: 0;
+	}
+
+	.js .main-nav #responsive_current_menu_item {
+		display: block;
+		padding: 5px 40px 5px 10px;
+		color: #fff;
+		font-weight: 700;
+		cursor: pointer;
+	}
+	
+	.js .main-nav a#responsive_menu_button {
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 100%;
+		height: 30px;
+		width: 23px;
+		margin-left: -30px;
+		background: url('../images/select-icons.png') 0 5px no-repeat;
+		cursor: pointer;
+	}
+	
+	.js .main-nav a#responsive_menu_button.responsive-toggle-open {
+		background: url('../images/select-icons.png') 0 -46px no-repeat;
+	}
+		
+	
+	.top-menu, 
+	.footer-menu li {
+		float: none;
+		font-size: 11px;
+		text-align: center;
+	}
+	
+	.tinynav {
+		display: block;
+	}
+	
+	.sb-holder {
+		display: block;
+	}
+	
+	#author-meta {
+		padding: 20px;
+	}
+	
+	.hide-650 {
+		display: none;
+	}
+	
+	.show-650 {
+		display: block;
+	}
+
+	.hide-mobile {
+		display: none;
+	}
+
+	#footer {
+		text-align: center;
+	}
+
+	#footer .social-icons {
+		padding-bottom: 10px;
+		text-align: center;
+	}
+	
+	
+	 #find-the-right-loan{display:none !important}
+	
+	 #vacation{display:none !important}
+	 
+	 #personal-loan{display:none !important}
+	 
+	 #home-refinance{display:none !important}
+	 
+	 #student-loan{display:none !important}
+
+	.top-menu-desktop{display:none !important}
+	
+	.contact-info-desktop{display:none !important}
+	
+	
+	ul.apply {list-style-type:none; width:93%; padding:0; float:left}
+	.apply li {list-style-type:none; font-size:12px;}
+	
+	ul.fund {list-style-type:none; width:93%; padding:0; float:left}
+.fund li {list-style-type:none; font-size:12px;}
+
+ul.repay {list-style-type:none; width:93%; padding:0; float:left}
+.repay li {list-style-type:none; font-size:12px;}
+	
+	
+	
+	#widgets {
+  display:none !important;
+  
+}
+
+.everyloan-title{
+	font-size: 24px;  
+	font-family: 'heroregular';
+    color: #1e517f !important; 
+	letter-spacing:3px;
+	}
+	
+.i-want-to-borrow-money-mobile{
+	display:block !important;
+	}	
+	
+	
+.learn-box-home-desktop {display:none !important}
+
+
+.learn-box-home-mobile {display: block !important; width:100%; float:left; background:#fff; border:0px #eee solid; 
+padding-bottom:20px; }
+.learn-box-home-mobile ul {padding-left:0px; list-style-type:none;}
+.learn-box-home-mobile li a  {list-style-type:none;}
+
+
+.learn-title-top-mobile{
+	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+	float:left;
+	font-size: 23px;  
+	font-family: 'heroregular';
+	font-weight:bold;
+    color: #1e517f !important; 
+	letter-spacing:2px;
+	padding:20px 0 20px 10px;
+	width:97%;
+	}
+
+
+.calculate-box-home-desktop {display:none !important}
+
+
+.calculate-box-home-mobile {display: block !important; width:100%; float:left; background:#fff; border:0px #eee solid; 
+padding:0px; margin-top:0px; padding-bottom:20px; }
+.calculate-box-home-mobile ul {padding-left:10px; list-style-type:none;}
+.calculate-box-home-mobile li a  {list-style-type:none;}
+
+
+.calculate-title-top-mobile{
+	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+	float:left;
+	font-size: 23px;  
+	font-family: 'heroregular';
+	font-weight:bold;
+    color: #1e517f !important; 
+	letter-spacing:2px;	
+	padding:20px 0 20px 10px;
+	width:97%;
+	}	
+	
+	
+
+
+.borrow-box-home-desktop {display:none !important}
+
+
+.borrow-box-home-mobile {display: block !important; width:100%; padding-bottom:20px; float:left; background:#fff; border:0px #eee solid; 
+margin-top:0px; }
+.borrow-box-home-mobile ul {padding-left:10px; list-style-type:none;}
+.borrow-box-home-mobile li a  {list-style-type:none;}
+
+
+.borrow-title-top-mobile{
+	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+	float:left;
+	font-size: 23px;  
+	font-family: 'heroregular';
+	font-weight:bold;
+    color: #1e517f !important; 
+	letter-spacing:2px;
+	padding:20px 0 20px 10px;
+	width:97%;
+	}	
+	
+
+#wrapper {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  clear: both;
+  margin: 20px auto 20px auto;
+  padding: 0 0px 0px 0px;
+  position: relative;
+}	
+	
+	
+	
+	
+.widget-wrapper-homepage {
+  float:left;
+  width:100%;
+  height:366px;
+ /*-webkit-border-radius: 4px;
+  -moz-border-radius: 4px;*/
+  background:#fff;
+  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home.png) no-repeat;*/
+  /*border: 1px solid #e5e5e5;
+  border-radius: 4px;*/
+  margin: 13px 0 0 0;
+  border:0px solid #000;
+  -webkit-border-radius: 4px; 
+  -moz-border-radius: 4px;
+ -moz-box-shadow: 0 0 15px #ccc;
+-webkit-box-shadow: 0 0 15px #ccc;
+box-shadow: 0 0 15px #ccc;
+}
+
+.widget-title-homepage {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 23px;
+  margin: 0;
+  padding: 20px 0 20px 20px;
+  text-align: left;
+}
+
+.widget-wrapper-homepage ul{
+	float:left;
+	max-width:100%;
+	margin-top:20px;
+	padding-left:10px;
+	}
+	
+.widget-wrapper-homepage li{
+	list-style-type:none;
+	margin-bottom:15px;
+	padding-left:10px;
+	}	
+	
+
+.styled-select select {
+   background: transparent;
+   width: 100%;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   }
+
+
+.styled-select {
+   width: 80%;
+   height: 34px;
+   overflow: hidden;
+   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   border: 1px solid #ccc;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   }	
+
+.start-here-btn {margin:0 auto; width:228px; height:30px; padding-bottom: 10px;}	
+	
+	
+.find-the-right-loan-mobile{display:block !important; width:459px; text-align:center;  float:left;}
+
+
+#advice-and-article-title{
+	width:100%;
+	margin:0 auto;
+	}
+	
+	
+
+#how-everyloan-apply-fund-repay{
+	float:left;
+	width:80%;
+	background:#fff;
+	}	
+	
+	
+
+.everyloan-title{
+	font-size: 25px;  
+	font-family: 'heroregular';
+    color: #1e517f !important; 
+	letter-spacing:3px;
+	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/how-everyloan-works-title-bg.gif) repeat-x;
+	width:300px;
+	margin:0 auto;
+	}	
+	
+	
+	.why-everyloan{
+		margin:0 auto;
+		width:300px;
+		background:#fff;
+		}
+	
+	.why-everyloan .everyloan-title{display:none}	
+	
+	.how-everyloan-works{
+		float:left;
+		width:100%;
+		background:#fff;
+		text-align:center;
+		}
+	
+	.how-everyloan-works p{
+		text-align:left;
+		margin-top:20px;
+		}	
+	
+	
+	.how-everyloan-works-bg{
+	margin:0 auto !important;
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+	padding: 0px 0 0 0px;
+	width:220px;
+	background:#f3f3f3;
+	}
+	
+	.how-everyloan-works-content{
+		
+	float:left !important;
+	background:#fff;
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+	padding: 10px 0 0 15px;
+	width:270px;
+		
+		}
+		
+	#how-it-works-1-pic{
+		width:270px;
+		}		
+		
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 480px) {
+
+	body {}
+
+	#logo {
+		float: none;
+		text-align: center;
+	}
+
+	.grid, 
+	.grid-right {
+		float: none;
+	}
+	
+	#featured-image .fluid-width-video-wrapper {
+		margin: 20px 0 0 0;
+	}
+	
+	.featured-title {
+		font-size: 40px;
+		padding: 40px 20px 0 20px
+	}
+	
+	.featured-subtitle {
+		font-size: 24px;
+	}
+	
+	.navigation .next,
+	.navigation .previous {
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.menu ul, 
+	.menu li, 
+	.top-menu, 
+	.footer-menu li, 
+	.sub-header-menu li {
+		float: none;
+		text-align: center;
+		text-rendering: optimizeSpeed;
+	}
+	
+	.hide-480 {
+		display: none;
+	}
+	
+	.show-480 {
+		display: block;
+	}
+	
+	#footer {
+		text-align: center;
+	}
+
+	#footer .social-icons {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	
+	body {}
+	
+	#featured p {
+		font-size: 12px;
+		line-height: 1.5em;
+	}
+
+	.featured-title {
+		font-size: 35px;
+	}
+	
+	.featured-subtitle {
+		font-size: 15px;
+	}
+
+	.call-to-action a.button {
+		font-size: 14px;
+		padding: 7px 17px;
+	}
+
+	.hide-320 {
+		display: none;
+	}
+	
+	.show-320 {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 240px) {
+	
+	body {}
+	
+	#featured p {
+		font-size: 11px;
+		line-height: 1.5em;
+	}
+
+	.featured-title {
+		font-size: 20px;
+	}
+	
+	.featured-subtitle {
+		font-size: 11px;
+	}
+
+	.call-to-action a.button {
+		font-size: 12px;
+		padding: 5px 15px;
+	}
+	
+	.top-widget area,
+	.top-widget select,
+	.top-widget textarea,
+	.top-widget input[type="text"], 
+	.top-widget input[type="password"],
+	.top-widget input[type="email"] {
+		width: 75%;
+	}
+	
+	.widget-title,
+	.widget-title-home h3 {
+		font-size: 14px;
+		height: 13px;
+		line-height: 13px;
+		text-align: left;
+	}
+	
+	.hide-240 {
+		display: none;
+	}
+	
+	.show-240 {
+		display: block;
+	}
+}

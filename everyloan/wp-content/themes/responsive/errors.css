@@ -1,0 +1,72 @@
+.none {
+	display: block;
+	font: .7em "lucida sans", verdana, sans-serif;
+	position: relative;
+	color: #333;
+	margin-bottom:0px;
+	padding: 0.5em;
+	background-color: #fff;
+	border: 1px dotted #ccc;
+}
+
+.NOTOK {
+	display: block;
+	font: .7em "lucida sans", verdana, sans-serif;
+	position: relative;
+	color: #000;
+	margin: 5px 0 1em 2px;
+	padding: 0.5em;
+	background-color: #ffdfdf;
+	border: 1px dotted #de9292;
+}
+
+.OK {
+	display: block;
+	font: 0.7em "lucida sans", verdana, sans-serif;
+	position: relative;
+	color: #003300;
+	margin-bottom:0px;
+	padding: 0.5em;
+	border: 1px dotted #de9292;
+	background-color: #CCFFAA;
+}
+
+.errorMessage {
+	display: block;
+	font: 1.2em "lucida sans", verdana, sans-serif;
+	position: absolute;
+	color: #000;
+	margin-top:82px;
+	margin-left:9px;
+	margin-bottom:0px;
+	padding: 0.3em;
+	width:630px;
+	text-align:center;
+	background-color: #ffdfdf;
+	border: 1px dotted #de9292;
+	z-index:9999;
+}
+
+.focus { background-color: #fefbc8; }
+
+.error {
+	background: #FF9999;
+	
+}
+
+.warning {
+	background: url(../img/Xmarks.gif) no-repeat left 0px;
+	
+}
+
+.checkmark {
+	background: url(../img/Xmarks.gif) no-repeat left -40px;
+}
+
+.question {
+	background: none;
+}
+
+.highlight {
+	background: url(../img/Xmarks.gif) no-repeat left -60px;
+}

@@ -1,0 +1,144 @@
+.cl {
+    font-size: 0;
+    line-height: 0;
+    clear: both;
+    display: block;
+    height: 0;
+}
+
+div.mortgage-calculator {
+    display:block;
+    width:100%;
+    padding:5px;
+    margin:5px 0;
+}
+
+div.mortgage-calculator-inwidget {
+    font-size:15px;
+}
+
+div.mortgage-calculator h3.mortgage-calculator-title {
+    margin-bottom:8px;
+    display:block;
+    width:inherit;
+    font-size:90%;
+    font-weight:bold;
+    border-bottom:1px dashed #333;
+}
+
+div.mortgage-calculator span.mortgage-calculator-details {
+    margin-bottom:10px;
+    display:block;
+    width:inherit;
+    font-size:70%;
+}
+
+div.mortgage-calculator button.mortage-calculator-calculate-button {
+    display:block;
+    float:right;
+    padding:4px 7px;
+    margin-bottom:0;
+    cursor:pointer;
+}
+
+div.mortgage-calculator button.mortage-calculator-calculate-button:active {
+    position:relative;
+    top:1px;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container {
+    display:block;
+    width:inherit;
+    font-size:80%;
+}
+
+div.mortgage-calculator div.mortgage-calculator-output-container {
+    display:block;
+    width:inherit;
+    font-size:80%;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container span.mortgage-calculator-input-container-title,
+div.mortgage-calculator div.mortgage-calculator-output-container span.mortgage-calculator-output-container-title {
+    display:block;
+    width:inherit;
+    font-size:140%;
+    font-weight:bold;
+    border-bottom:1px solid #DDD;
+    padding:0 0 10px;
+    margin:20px 0 5px;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row,
+div.mortgage-calculator div.mortgage-calculator-output-container div.mortgage-calculator-output-container-row {
+    display:block;
+    border-bottom:1px solid #DDD;
+    padding:0 0 5px;
+    margin-bottom:5px;
+    clear:both;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row label,
+div.mortgage-calculator div.mortgage-calculator-output-container div.mortgage-calculator-output-container-row label {
+    font-size:120%;
+    width:50%;
+    display:block;
+    float:left;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row label {
+    cursor:pointer;
+    line-height:38px;
+}
+
+div.mortgage-calculator div.mortgage-calculator-output-container div.mortgage-calculator-output-container-row label {
+    line-height:20px;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row label.full-label {
+    width:100%;
+    float:none;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row .mortage-calculator-input {
+    float:right;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row select.mortage-calculator-input {
+    padding:5px 10px;
+    width:185px;
+    cursor:pointer;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row input.mortage-calculator-input {
+    text-align:right;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row .full-input {
+    width:100%;
+    float:none;
+}
+
+div.mortgage-calculator div.mortgage-calculator-input-container div.mortgage-calculator-input-container-row .mortage-calculator-input:focus {
+    background:#FFFFA0;
+    border:1px solid #cb3028;
+}
+
+div.mortgage-calculator div.mortgage-calculator-output-container div.mortgage-calculator-output-container-row span.mortage-calculator-outputdata {
+    display:block;
+    width:30%;
+    float:right;
+    text-align:right;
+    font-weight:bold;
+}
+
+div.mortgage-calculator div.mortgage-calculator-output-container td.row-table-index {
+    font-weight:bold;
+    text-align:center;
+}
+
+div.mortgage-calculator div.mortgage-calculator-output-container span.mortage-calculator-table-span {
+    text-align:center;
+    font-weight:bold;
+    display:block;
+}
