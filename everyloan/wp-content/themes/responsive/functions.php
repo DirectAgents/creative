@@ -16,4 +16,10 @@ require ( get_template_directory() . '/core/includes/tha-theme-hooks.php' );
 require ( get_template_directory() . '/core/includes/hooks.php' );
 require ( get_template_directory() . '/core/includes/version.php' );
 
+/* Use custom.js for generic site functionality */
+add_action( 'wp_enqueue_scripts', 'rs_custom_js' );
+function rs_custom_js() {
+	wp_enqueue_script( 'cutsomjs', get_stylesheet_directory_uri() . '/core/js/custom.js', array( 'jquery' ), false, false);
+}
+
 ?>

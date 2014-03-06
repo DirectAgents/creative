@@ -24,6 +24,31 @@ get_header();
 //global $more; $more = 0; 
 ?>
 
+<?php 
+	// Get the terms in the 'advice_articles_tax' taxonomy
+	$args = array('orderby' => 'name', 'hide_empty' => 1);
+	$terms = get_terms('advice_articles_tax', $args);
+	
+	// Store the taxonomy term we will use for quering the DB
+	$use_term = '';
+
+	$advice = $_GET['advice'];
+
+	// Check to see if the get var matches any 
+	// of the 'advice_articles_tax' taxonomy terms
+	foreach ($terms as $term)
+	{
+		//echo $term->slug;
+		if ($advice == $term->slug)
+		{	
+			$use_term = $term->slug;
+			break;
+		}
+		
+	}
+	
+?>
+
 <div id="content-advice-and-articles" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 	
 	<div class="how-everyloan-works-content grey-cont">
@@ -36,16 +61,13 @@ get_header();
 		
 			<div class="select-category-label">Select a category:</div>
 			
-			<select>
+			<select id="advice-select">
 				<option>All Categories</option>
 				<?php 
 					
-					$args = array('orderby' => 'name', 'hide_empty' => 1);
-					$terms = get_terms('advice_articles_tax', $args);
-
 					foreach($terms as $term)
 					{
-						echo '<option>' . $term->name . '</option>';
+						echo '<option value="'. $term->slug . '">' . $term->name . '</option>';
 					}
 		 		
 		 		?>
@@ -64,7 +86,8 @@ get_header();
 $args = array( 
 	'paged' => $paged, 
 	'posts_per_page' => 3, 
-	'post_type' => 'advice_articles'
+	'post_type' => 'advice_articles',
+	'advice_articles_tax' => $use_term
 );
 
 /* need this for pagination to work with CPT's */
