@@ -3535,12 +3535,12 @@ p.business-inner-text{color:#1e517f}
 
   /* ----- Advice and Articles page ------ */
   
-  #content-advice-and-articles{ width:100%; }
+  #content-advice-and-articles{ width:100% !important; }
   .select-category-label
   {
     margin-bottom:10px;
   }
-  
+
   .advice-choose-container
   {
     width:87%;
