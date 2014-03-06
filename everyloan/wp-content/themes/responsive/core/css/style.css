@@ -3328,16 +3328,6 @@ p.business-inner-text{color:#1e517f}
     margin-top:0;
   }
 
-  #content-advice-and-articles h1
-  {
-    font-family: 'heroregular' !important; 
-    font-size: 30px;
-    color:#1e517f;
-    float:left; 
-    //width:300px;
-    margin-top:0;
-  }
-
   /* ----- Advice and Articles page ------ */
   
   #content-advice-and-articles{ width:100%; }
