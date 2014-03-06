@@ -97,10 +97,24 @@ if ( !defined('ABSPATH')) exit;
 
 <script type='text/javascript'>//<![CDATA[ 
 
+$(window).ready(function() {
+	
+	   $('#credit-score').change( function() {
+      location.href = $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val();
+   });
+	
+	});
+
+</script>
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
 /*
 * How to detect browser width
 */
 $(window).ready(function() {
+	
     var wi = $(window).width();  
     $("p.testp").text('Initial screen width is currently: ' + wi + 'px.');
  
