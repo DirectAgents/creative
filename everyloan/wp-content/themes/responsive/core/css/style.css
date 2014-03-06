@@ -3336,7 +3336,29 @@ p.business-inner-text{color:#1e517f}
 
   /* ----- Advice and Articles page ------ */
   
-  #content-advice-and-articles{ width:100%; }
+  #content-advice-and-articles { width:100%; }
+  
+   #content-advice-and-articles .how-everyloan-works-content
+  {
+    padding-left:20px;
+  }
+
+  .advice-choose-container
+  {
+    margin-left:20px;
+    margin-bottom:20px;
+  }
+
+  .advice_articles
+  {
+    margin:0 20px 0px;
+  }
+  
+  .advice_articles .post-meta,
+  .advice_articles .post-data
+  {
+    margin:0;
+  }
 
   /* ----- END Advice and Articles page ------ */
 
@@ -3472,7 +3494,7 @@ p.business-inner-text{color:#1e517f}
   }
   /* ------- Navigation ------- */
   
-  #content-blog .navigation 
+  #wrapper .navigation 
   {
     display:block;
     width:200px;
@@ -3541,18 +3563,18 @@ p.business-inner-text{color:#1e517f}
   }
 
   /* ----- Advice and Articles page ------ */
-  
   #content-advice-and-articles { width:100%; }
+
   .advice_articles
   {
     margin:0 20px 0px;
   }
 
-   .advice_articles .post-meta,
-   .advice_articles .post-data
-   {
-    margin:0;
-   }
+ .advice_articles .post-meta,
+ .advice_articles .post-data
+ {
+  margin:0;
+ }
 
   .select-category-label
   {
