@@ -3315,7 +3315,7 @@ p.business-inner-text{color:#1e517f}
 }
 
 /* ---------- iPhone 5 landscape mode ---------- */
-@media only screen and (min-width:330px) and (max-width:568px) {
+@media only screen and (min-width:321px) and (max-width:568px) {
   body
   {
     overflow:hidden;
@@ -3474,22 +3474,23 @@ p.business-inner-text{color:#1e517f}
     margin:0px auto;
   }
 
-/* --------- social icons --------- */
-.social-icons
-{
-  float:left;
-  width:100%;
-  margin-top:10px;
-}
+  /* --------- social icons --------- */
+  .social-icons
+  {
+    float:left;
+    width:100%;
+    margin-top:10px;
+  }
 
-.social-icons > div,
-.social-icons > iframe,
-.social-icons > .fb-like
-{
-  float:left !important;
-  display:inline-block !important;
-  width:auto !important;
-  margin-right:10px !important;
+  .social-icons > div,
+  .social-icons > iframe,
+  .social-icons > .fb-like
+  {
+    float:left !important;
+    display:inline-block !important;
+    width:auto !important;
+    margin-right:10px !important;
+  }
 }
 
 @media only screen and (max-width:525px) {
@@ -3522,7 +3523,7 @@ p.business-inner-text{color:#1e517f}
 
 /* --------- BUG - need to put this here because it does not work on styles.css - Don' know why---------- */
 
-@media all and (max-width: 329px) {
+@media all and (max-width: 320px) {
   
   /* -------- fix finy spacing bugs in mobile view -------- */
   .widget-wrapper 
@@ -3535,7 +3536,8 @@ p.business-inner-text{color:#1e517f}
 
   /* ----- Advice and Articles page ------ */
   
-  #content-advice-and-articles{ width:100% !important; }
+  #content-advice-and-articles { width:100%; }
+
   .select-category-label
   {
     margin-bottom:10px;
