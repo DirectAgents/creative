@@ -4060,7 +4060,7 @@ BDO[DIR="rtl"] {
 
 #content-advice-and-articles h1
 {
-  font-family: 'heroregular'; 
+  font-family: 'heroregular' !important; 
   font-size: 30px;
   color:#1e517f;
   float:left; 
