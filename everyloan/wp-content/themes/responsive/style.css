@@ -1038,32 +1038,7 @@ form div {
 -------------------------------------------------------------- */
 
 
-#content-personal-loans {
-  width:100%;
-  margin: 20px 0 20px 40px;
-}
 
-.personal-loans-box-step-desktop {width:919px; height:476px; padding:0; float:left; border:0px #eee solid; 
-/*-moz-border-radius: 10px; 
-border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-refinance-my-home.gif) no-repeat;}
-.personal-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
-.personal-loans-box-step-desktop li a  {list-style-type:none;}
-
-
-.personal-loans-box-step1-desktop-title{
-	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/personal-loans-box-step1-desktop.png) no-repeat;
-	float:left;
-	font-size: 23px;  
-	font-family: 'heroregular';
-	font-weight:bold;
-    color: #1e517f !important; 
-	letter-spacing:2px;
-	margin-bottom:20px;
-	width:100%;
-	height:30px;
-	margin:35px 0 0 60px;
-	}
 
 
 .personal-loans-box-step-desktop-left-column{
