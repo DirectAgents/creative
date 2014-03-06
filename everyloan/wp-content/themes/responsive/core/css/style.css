@@ -3185,7 +3185,7 @@ p.business-inner-text{color:#1e517f}
   {
     float:left;
     margin-left:20px;
-    width:60%;
+    display:inline-block;
     margin-top:6px;
   }
 
@@ -3237,13 +3237,41 @@ p.business-inner-text{color:#1e517f}
 
 @media only screen and (min-width: 569px) and (max-width: 767px) {
 
+
   #content-blog,
   #content 
   { 
     width:100% !important;
     margin-top:0;
   }
+  /* ----- Advice and Articles page ------ */
+  
+  #content-advice-and-articles{ width:100%; }
+  
+  .advice-choose-container
+  {
+    float:left;
+    margin-left:20px;
+    display:inline-block;
+    margin-top:6px;
+  }
 
+  .select-category-label
+  {
+    float:left;
+    //display:inline-block;
+  }
+
+  #advice-select
+  {
+    float: left;
+    display: inline-block;
+    width: auto;
+    margin-left: 20px;
+  }
+
+  /* ----- END Advice and Articles page ------ */
+  
   /* pagination */
   #content-blog .navigation 
   { 
@@ -3307,6 +3335,12 @@ p.business-inner-text{color:#1e517f}
     width:100% !important;
     margin-top:0;
   }
+
+  /* ----- Advice and Articles page ------ */
+  
+  #content-advice-and-articles{ width:100%; }
+
+  /* ----- END Advice and Articles page ------ */
 
   #wrapper 
   {
