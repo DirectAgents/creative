@@ -26,35 +26,38 @@ get_header();
 
 <div id="content-advice-and-articles" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 	
-
-    <div class="advice-and-article-title">
-		<h1>Advice and Articles</h1>
-	</div>
-	
-	<div style="float: left;">
-	
-		<div class="select-category-label">Select a category:</div>
+	<div class="how-everyloan-works-content grey-cont">
+	    
+	    <div class="advice-and-article-title">
+			<h1>Advice and Articles</h1>
+		</div>
 		
-		<select>
-			<option>All Categories</option>
-			<?php 
-				
-				$args = array('orderby' => 'name', 'hide_empty' => 1);
-				$terms = get_terms('advice_articles_tax', $args);
+		<div style="float: left;">
+		
+			<div class="select-category-label">Select a category:</div>
+			
+			<select>
+				<option>All Categories</option>
+				<?php 
+					
+					$args = array('orderby' => 'name', 'hide_empty' => 1);
+					$terms = get_terms('advice_articles_tax', $args);
 
-				foreach($terms as $term)
-				{
-					echo '<option>' . $term->name . '</option>';
-				}
-	 		
-	 		?>
+					foreach($terms as $term)
+					{
+						echo '<option>' . $term->name . '</option>';
+					}
+		 		
+		 		?>
 
-		</select>
-	</div>
+			</select>
+		</div>
+
+	</div><!-- END how-everyloan-works-content -->
 	
-	<a href="#">
+	<!-- <a href="#">
 		<img class="alignnone size-full wp-image-315" alt="featured-advise-and-articles" src="http://termlifequotetoday.com/everyloan/wp-content/uploads/2013/09/featured-advise-and-articles.jpg" width="582" height="253" />
-	</a>
+	</a> -->
 
 <?php $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 

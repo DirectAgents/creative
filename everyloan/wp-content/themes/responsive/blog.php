@@ -29,14 +29,12 @@ global $more; $more = 0;
 	<?php get_template_part( 'loop-header' ); ?>
 	<?php 
 	
-	//global $wp_query, $paged;
+	
 	
 	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
 	$blog_query = new WP_Query( array( 'post_type' => 'post', 'paged' => $paged, 'posts_per_page' => 6 ) );
-	$temp_query = $wp_query;
-	$wp_query = null;
-	$wp_query = $blog_query;
+	
 
 	if ( $blog_query->have_posts() ) :
 
@@ -79,8 +77,7 @@ global $more; $more = 0;
 			?>
 			<div class="navigation">
 			<?php
-				//global $wp_query;
-
+				
 				$big = 999999999; // need an unlikely integer
 
 				echo paginate_links( array(
@@ -101,8 +98,9 @@ global $more; $more = 0;
 		get_template_part( 'loop-no-posts' ); 
 
 	endif; 
-	$wp_query = $temp_query;
+	
 	wp_reset_postdata();
+	
 	?>  
       
 </div><!-- end of #content-blog -->

@@ -2576,7 +2576,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   float:left;
   display:inline;
   color:#636363;
-  margin-top:20px;
+  margin-top:5px;
   margin-left:20px;
   font-weight:bold;
   }
@@ -2584,9 +2584,9 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 #content-advice-and-articles select{
   float:left;
   display:inline;
-  width:100px;
+  width:auto;
   margin-left:10px;
-  margin-top:20px;
+  margin-top:5px;
   } 
 
 #content-advice-and-articles {
@@ -2604,9 +2604,9 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 }
 
 #content-advice-and-articles .post-title{
-  font-size: 31px;  
+  font-size: 23px;  
   font-family: 'heroregular';
-    color: #1e517f !important; 
+  color: #1e517f !important; 
   letter-spacing:3px;
   line-height:35px;
   }

@@ -4065,6 +4065,8 @@ BDO[DIR="rtl"] {
   
   padding:0 33px 0 3px;
 }
+  
+  /* --------- Triangles --------- */
 
  .triangle-right 
  {
@@ -4083,21 +4085,22 @@ BDO[DIR="rtl"] {
     border-width: 7px 7px 7px 0;
     border-color: transparent #fff transparent transparent;
  }
+
+ #wrapper .grey-cont
+ {
+  width:100%;
+  margin-left:0;
+  margin-bottom:20px;
+ }
+
  /* --------- images ----------- */
- .fund img,
+.fund img,
 .apply img,
 .repay img,
 #content-blog .post-entry img
 {
   -webkit-box-shadow:0px 0px 5px #929292;box-shadow:0px 0px 4px #929292;
 }
-
- /* ------- Sidebar ------- */
- /*#widgets-how-it-works
-  {
-    height:auto;
-  }
-*/
 
 .p20
 {
@@ -4108,6 +4111,7 @@ BDO[DIR="rtl"] {
 {
   margin-bottom:20px !important;
 }
+
 /*------------------------------------------\
 |            News page [roman]              |
 \------------------------------------------*/
@@ -4123,7 +4127,8 @@ BDO[DIR="rtl"] {
   font-size:30px; 
   color:#1e517f !important; 
   margin:0; 
-  width:100%; 
+  width:100%;
+  letter-spacing:1px; 
 }
 
 .everyloan-title a:hover { color:#4c4c4c !important; }
@@ -4143,7 +4148,7 @@ BDO[DIR="rtl"] {
 
 .single-post .previous { position:static; }
 
-/* ---------- social media bar ---------- */
+/* ---------- Social media bar ---------- */
 
 .social-bar
 {
@@ -4206,7 +4211,7 @@ BDO[DIR="rtl"] {
   padding:0 !important; 
 }
 
-#wrapper .navigation a.page-numbers { border-bottom: 2px solid #ccc;  }
+#wrapper .navigation a.page-numbers { border-bottom: 2px solid #ccc; }
 
 /* next and prev triangles */
 #wrapper .navigation a.next,
