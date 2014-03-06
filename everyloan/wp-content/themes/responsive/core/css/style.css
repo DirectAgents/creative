@@ -200,7 +200,11 @@ article, header {
   position: relative;
   display:block;
   z-index:300;
+<<<<<<< HEAD
   color:#000;
+=======
+  roman is the best
+>>>>>>> FETCH_HEAD
 } 
 
 
