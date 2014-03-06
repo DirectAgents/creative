@@ -4059,6 +4059,16 @@ BDO[DIR="rtl"] {
   background:#f3f8fc; 
 }
 
+#content-advice-and-articles h1
+{
+  font-family: 'heroregular'; 
+  font-size: 30px;
+  color:#1e517f;
+  float:left; 
+  //width:300px;
+  margin-top:0;
+}
+
 #content .top-menu li a,
 #blog-content .top-menu li a  
 {

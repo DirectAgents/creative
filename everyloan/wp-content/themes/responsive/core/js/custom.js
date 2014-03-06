@@ -6,8 +6,6 @@ $(function() {
 		if ( !$('body').hasClass('page-id-244')) return;
 
 		$('#advice-select').change(function() {
-			//console.log(window.location.hostname);
-			//console.log(window.location.pathname);
 
 			// if url is paged, replace /page/$any_digit/ and ?advice=$any_char with the advice vars
 			if (window.location.pathname.match(/(\/page\/)(\d){1}\//))
