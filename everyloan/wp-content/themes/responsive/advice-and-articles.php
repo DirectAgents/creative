@@ -29,6 +29,8 @@ get_header();
 	$args = array('orderby' => 'name', 'hide_empty' => 1);
 	$terms = get_terms('advice_articles_tax', $args);
 	
+	// Use this to mark which option will be selected
+	$selected = '';
 	// Store the taxonomy term we will use for quering the DB
 	$use_term = '';
 
@@ -62,12 +64,15 @@ get_header();
 			<div class="select-category-label">Select a category:</div>
 			
 			<select id="advice-select">
-				<option>All Categories</option>
+				<option value='all-categories'>All Categories</option>
 				<?php 
 					
 					foreach($terms as $term)
-					{
-						echo '<option value="'. $term->slug . '">' . $term->name . '</option>';
+					{	
+						if ($use_term != '')
+							$selected = 'selected';
+
+						echo '<option ' . $selected . ' value="'. $term->slug . '">' . $term->name . '</option>';
 					}
 		 		
 		 		?>
