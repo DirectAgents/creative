@@ -200,6 +200,7 @@ article, header {
   position: relative;
   display:block;
   z-index:300;
+  color:#000;
 } 
 
 
