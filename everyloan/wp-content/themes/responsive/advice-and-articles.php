@@ -59,7 +59,7 @@ get_header();
 			<h1>Advice and Articles</h1>
 		</div>
 		
-		<div style="float: left;">
+		<div class='advice-choose-container' style="float: left;">
 		
 			<div class="select-category-label">Select a category:</div>
 			

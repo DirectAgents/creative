@@ -3177,11 +3177,34 @@ p.business-inner-text{color:#1e517f}
 
   #wrapper { padding: 0 20px 20px;}
   
-  #content-advice-and-articles
+  /* ----- Advice and Articles page ------ */
+  
+  #content-advice-and-articles{ width:100%; }
+  
+  .advice-choose-container
   {
-    width:100%;
+    float:left;
+    margin-left:20px;
+    width:60%;
+    margin-top:6px;
   }
 
+  .select-category-label
+  {
+    float:left;
+    //display:inline-block;
+  }
+
+  #advice-select
+  {
+    float: left;
+    display: inline-block;
+    width: auto;
+    margin-left: 20px;
+  }
+
+  /* ----- END Advice and Articles page ------ */
+  
   #content-blog,
   #content
   {
