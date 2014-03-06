@@ -3320,6 +3320,12 @@ p.business-inner-text{color:#1e517f}
   {
     overflow:hidden;
   }
+  /* -------- Mobile Menu -------- */
+  
+  .nav-collapse
+  {
+    width:auto;
+  }
 
   #content-blog,
   #content 
@@ -3537,6 +3543,16 @@ p.business-inner-text{color:#1e517f}
   /* ----- Advice and Articles page ------ */
   
   #content-advice-and-articles { width:100%; }
+  .advice_articles
+  {
+    margin:0 20px 0px;
+  }
+
+   .advice_articles .post-meta,
+   .advice_articles .post-data
+   {
+    margin:0;
+   }
 
   .select-category-label
   {
