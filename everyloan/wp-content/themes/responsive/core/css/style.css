@@ -3500,6 +3500,11 @@ p.business-inner-text{color:#1e517f}
   margin-right:10px !important;
 }
 
+@media only screen and (max-width:525px) {
+  
+  .left-column{ width:auto; }
+  .right-column{ margin-left:0; }
+}
 
 @media only screen and (max-width:450px) {
 
