@@ -4234,12 +4234,17 @@ p.business-inner-text{color:#1e517f}
   }
 
   .calculate-box-home-desktop,
-  .borrow-box-home-desktop,
   .learn-box-home-desktop
 
   {
     background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-box-home-mobile.png);
     height:475px;
+  }
+
+  .borrow-box-home-desktop
+  {
+    background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-borrow-box-home-mobile.png);
+    height:420px;
   }
   
   /* ------- Sidebar ------- */
