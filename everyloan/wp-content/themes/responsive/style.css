@@ -4138,7 +4138,8 @@ BDO[DIR="rtl"] {
 
 /* ---------- NEWS Single Post page ------------- */
 
-.single-post .previous { position:static; }
+.single-post .previous,
+.single .previous { position:static; }
 
 /* ---------- Social media bar ---------- */
 
