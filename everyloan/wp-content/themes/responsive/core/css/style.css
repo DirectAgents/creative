@@ -3751,6 +3751,31 @@ p.business-inner-text{color:#1e517f}
       width: auto;
       margin:20px auto 0;
     }
+
+    /*------------------------------------------\
+    |            Sodebar [roman]                |
+    \------------------------------------------*/
+
+    #widgets-how-it-works
+    {
+      margin-top:20px;
+    }
+
+    #wrapper 
+    {
+      padding:0 0px 20px;
+    }
+
+    #widgets-how-it-works .widget-wrapper
+    {
+      margin:20px 0 20px 23px;
+    }
+
+    #widgets-how-it-works .widget-wrapper .widget-wrapper
+    {
+      margin:30px 20px 0 0;
+    }
+
 }
 
 @media only screen and (min-width: 569px) and (max-width: 767px) {
@@ -3838,6 +3863,30 @@ p.business-inner-text{color:#1e517f}
     padding-left:20px;
     padding-right:20px;
   }
+
+  /*------------------------------------------\
+  |            Sodebar [roman]                |
+  \------------------------------------------*/
+
+    #widgets-how-it-works
+    {
+      margin-top:20px;
+    }
+
+    #wrapper 
+    {
+      padding:0 0px 20px;
+    }
+
+    #widgets-how-it-works .widget-wrapper
+    {
+      margin:20px 0 20px 34px;
+    }
+
+    #widgets-how-it-works .widget-wrapper .widget-wrapper
+    {
+      margin:30px 20px 0 0;
+    }
 }
 
 /* ---------- iPhone 5 landscape mode ---------- */

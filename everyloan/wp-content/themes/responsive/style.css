@@ -4207,7 +4207,7 @@ BDO[DIR="rtl"] {
   margin:0; 
 }
 
-#wrapper .navigation .current { color:#999999; }
+#wrapper .navigation .current { color:#999; }
 
 #wrapper .navigation .triangle-next-cont,
 #wrapper .navigation .triangle-prev-cont
