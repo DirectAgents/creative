@@ -4025,15 +4025,9 @@ BDO[DIR="rtl"] {
 .contact-info li{list-style-type:none;}
  
 /*------------------------------------------\
-|                 Generic                   |
+|         Advice and articles               |
 \------------------------------------------*/
- body 
-{ 
-  overflow:auto;
-  background:#f3f8fc; 
-}
-
-.advice-and-article-title h1
+ .advice-and-article-title h1
 {
   font-family: 'heroregular' !important; 
   font-size: 30px;
@@ -4041,6 +4035,20 @@ BDO[DIR="rtl"] {
   float:left; 
   //width:300px;
   margin-top:0;
+}
+
+#content-advice-and-articles .post-data
+{
+  clear:none;
+}
+
+/*------------------------------------------\
+|                 Generic                   |
+\------------------------------------------*/
+ body 
+{ 
+  overflow:auto;
+  background:#f3f8fc; 
 }
 
 #content .top-menu li a,
@@ -4166,7 +4174,6 @@ BDO[DIR="rtl"] {
       height: auto;
     }
 
-    .social-
 
 /* ---------- Pagination ----------*/
 
