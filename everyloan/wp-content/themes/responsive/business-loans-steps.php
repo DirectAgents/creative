@@ -69,7 +69,7 @@ Apply online for a loan of any kind!
 	
     
             <!-- #first_step -->
-            <div id="first_step">
+            <div id="first_step" <?php if($_GET['pass'] == 'y') { ?>style="display:none" <? } ?>>
                
 
 
@@ -120,7 +120,7 @@ Apply online for a loan of any kind!
 
 
             <!-- #second_step -->
-            <div id="second_step">
+            <div id="second_step" <?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
 
 <div class="previous"><a href="#" class="previous-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>

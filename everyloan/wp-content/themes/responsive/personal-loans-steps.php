@@ -70,7 +70,7 @@ Borrow up to $35,000* at lower rates. No need to compare rates we are always loc
 	
     
             <!-- #first_step -->
-            <div id="first_step">
+            <div id="first_step" <?php if($_GET['pass'] == 'y') { ?>style="display:none" <? } ?>>
                
 
  <div id="first_step_personal">
@@ -123,8 +123,9 @@ Borrow up to $35,000* at lower rates. No need to compare rates we are always loc
 
 </div>
 
+
             <!-- #second_step -->
-            <div id="second_step">
+            <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
 
 <div class="previous-personal"><a href="#" class="previous-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
@@ -160,6 +161,7 @@ Borrow up to $35,000* at lower rates. No need to compare rates we are always loc
                 
                 </div>
             </div>      
+
 
 
 
