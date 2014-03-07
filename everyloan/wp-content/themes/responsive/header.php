@@ -100,7 +100,7 @@ if ( !defined('ABSPATH')) exit;
 $(window).ready(function() {
 	
 	   $('#credit-score').change( function() {
-      location.href = $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val();
+      location.href = $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val()+'?pass=y';
    });
 	
 	});
