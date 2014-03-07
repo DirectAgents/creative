@@ -278,10 +278,12 @@ h2 {
 
 
 
-.learn-box-home-desktop {max-width:313px; height:442px; float:left; border:0px #eee solid; padding:0px; margin-left:0px;
-/*-moz-border-radius: 10px; 
-border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-box-home-mobile.png)}
+.learn-box-home-desktop {
+  max-width:313px; height:442px; float:left; border:0px #eee solid; padding:0px; margin-left:0px;
+  /*-moz-border-radius: 10px; 
+  border-radius: 10px;*/ 
+}
+
 .learn-box-home-desktop ul {padding-left:20px; list-style-type:none;}
 .learn-box-home-desktop li a  {list-style-type:none;}
 
@@ -4231,20 +4233,30 @@ p.business-inner-text{color:#1e517f}
     padding:0;
   }
 
-  .calculate-box-home-desktop
+  .calculate-box-home-desktop,
+  .borrow-box-home-desktop,
+  .learn-box-home-desktop
+
   {
     background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-box-home-mobile.png);
-    height:442px;
+    height:475px;
   }
   
   /* ------- Sidebar ------- */
   .learn-box-home-desktop ul,
   .news-stories-title-home-title,
   .calculators-title-home-title,
-  .calculate-box-home-desktop ul
+  .calculate-box-home-desktop ul,
+  .borrow-box-home-desktop ul
   {
     overflow:hidden;
     padding-left: 90px;
+  }
+
+  .view-all-calculators,
+  .view-all
+  {
+    padding-left: 75px;
   }
 }
 
