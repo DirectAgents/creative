@@ -128,6 +128,7 @@ $(function(){
 
     $('#submit_second').click(function(){
         //remove classes
+		alert("asdf");
         $('#second_step input').removeClass('error').removeClass('valid');
 
         var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
@@ -157,7 +158,7 @@ $(function(){
 				//$('#second_step').hide("slide", { direction: "left" }, 1000);
 				//$('#third_step').show("slide", { direction: "right" }, 1000); 
 				 
-				 $('#second_step').hide();
+				 $('#second_step_personal').hide();
 				 $('#third_step').show();   
 				
 				

@@ -1051,18 +1051,6 @@ form div {
 	font-size:12px;
 }
 
-.rates-personal-loans-steps{
-	float:left; 
-	color:#1e517f; 
-	font-weight:normal; 
-	font-family: 'heroregular'; 
-	font-size:20px; 
-	width:246px; 
-	height:18px;
-	margin:40px 0 0 65px;
-	background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/Rates-start-at-3-16-APR.png)no-repeat;
-	text-indent:-99999px;
-	}	
 
 
 .rates-personal-loans-steps1-form-desktop{
@@ -1456,35 +1444,7 @@ form div {
 	
     
 
-#progress_bar {
-    background: url('core/images/progress_bar.png') no-repeat;
-    width: 362px;
-    height: 24px;
-    float:left;
-    position: relative;
-}
 
-#progress {
-    background: url('core/images/progress.png') repeat-x;
-    width: 0px;
-    height: 23px;
-    
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-}
-#progress_text {
-    position: relative;
-    line-height: 21px;
-    text-align: center;
-    font-weight: bold;
-    color: black;
-    /*text-shadow: 1px 1px 2px #222;*/
-    width: 362px;
-    height: 24px;
-    top: -3px;
-    left: 0;
-}
 
 
 

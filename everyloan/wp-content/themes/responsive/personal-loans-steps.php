@@ -29,10 +29,10 @@ global $more; $more = 0;
 
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 <div class="personal-loans-box-step-desktop">
-<div class="personal-loans-box-step1-desktop-title">i want a personal loan</div>
+<div class="personal-loans-box-step1-desktop-title">I want a personal loan</div>
 
 <div class="progress-steps2">
-<div style="float:left">Process:</div>	
+<div style="float:left">Progress:&nbsp;&nbsp;</div>	
 
 <div id="progress_bar">
         <div id="progress"></div>
@@ -42,16 +42,17 @@ global $more; $more = 0;
 </div>
 
 <div class="personal-loans-box-step-desktop-left-column">
-<div class="rates-business-loans-steps">Rates start at 3.16% APR</div>
+<div class="rates-personal-loans-steps">Rates start at 6.73% APR</div>
 <div class="content-left">
 
-Borrow up to $35,000* at lower rates. No need to compare rates we are always locking in the best rates.
-<p><div class="title">Lower Rates</div></p>
-<p class="personal-inner-text">Low cost and complexity to lending allows us to pass the savings to you.</p>
-<p><div class="title">Quick, Easy, Online Process</div></p>
-<p class="personal-inner-text">Apply in minutes, get an instant rate quote.</p>
-<p><div class="title">Secure and Confidential</div></p>
-<p class="personal-inner-text">Your identity and personal information are protected and never shared with investors</p>
+Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and investors.
+<ul>
+<li><p class="personal-inner-text">Get cash in a lump sum</p></li>
+<li><p class="personal-inner-text">No collateral required</p></li>
+<li><p class="personal-inner-text">Use for unexpected expenses, home improvements or dream vacations!</p></li>
+<li><p class="personal-inner-text">Rates from 6.73% to 35.36% APR</p></li>
+</ul>
+
 </div>
 </div>
 
@@ -140,16 +141,22 @@ Borrow up to $35,000* at lower rates. No need to compare rates we are always loc
 
 
 
-<table cellpadding="0" cellspacing="0" border="1">
+<table cellpadding="0" cellspacing="0" border="0">
 
 <tr>
-<td><label>Zip Code</label></td>
+<td><label>How much would you like to borrow?</label></td>
 </tr>
 
 <tr>
 <td>                
                 
- <input type="text" name="username" id="username" value=""/>
+<select id="credit_score" name="credit_score">
+<option>Select a Value</option>
+<option>500-1000</option>
+<option>1000-5000</option>
+<option>50000-10000</option>
+<option>100000 ></option>
+</select>
 
   </td>
 </tr>  
