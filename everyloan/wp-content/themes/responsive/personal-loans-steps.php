@@ -119,7 +119,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                    
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit" type="submit" name="submit_first" id="submit_first" value="" />
+                <input class="submit_first" type="submit" name="submit_first" id="submit_first" value="" />
             </div>      
 
 </div>
@@ -150,12 +150,10 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <tr>
 <td>                
                 
-<select id="credit_score" name="credit_score">
-<option>Select a Value</option>
-<option>500-1000</option>
-<option>1000-5000</option>
-<option>50000-10000</option>
-<option>100000 ></option>
+<select id="loan_amount" name="loan_amount">
+<option value="$1 - $5,000">$1 - $5,000</option>
+<option value="$5,001 - $25,000">$5,001 - $25,000</option>
+<option value="$25,001 - $35,000">$25,001 - $35,000</option>
 </select>
 
   </td>
@@ -185,12 +183,12 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                
                 <div class="form">
                    
-                 <table cellpadding="0" cellspacing="0" border="1">
+   <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
 <td valign="top">&nbsp;</td>
-<td><label>Loan amount you are seeking for!</label></td>
+<td><div class="title-fourth">Purpose of Loan?</div></td>
 </tr>
 
     
@@ -199,14 +197,28 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <td>&nbsp;</td>
 <td>                
                 
-<select id="loan_amount" name="loan_amount">
-<option value="$1 - $5,000">$1 - $5,000</option>
-<option value="$5,001 - $25,000">$5,001 - $25,000</option>
-<option value="$25,001 - $35,000">$25,001 - $35,000</option>
+<select id="purpose_of_loan" name="purpose_of_loan">
+<option value="Debt consolidation">Debt consolidation</option>
+<option value="Home improvement">Home improvement</option>
+<option value="Business">Business</option>
+<option value="Auto">Auto</option>
+<option value="Baby & adoption loans">Baby & adoption loans</option>
+<option value="Boat">Boat</option>
+<option value="Cosmetic procedures">Cosmetic procedures</option>
+<option value="Engagement ring financing">Engagement ring financing</option>
+<option value="Green loans">Green loans</option>
+<option value="Household Expenses">Household Expenses</option>
+<option value="Large purchases">Large purchases</option>
+<option value="Medical/Dental">Medical/Dental</option>
+<option value="Motorcycle">Motorcycle</option>
+<option value="RV">RV</option>
+<option value="Taxes">Taxes</option>
+<option value="Vacation">Vacation</option>
+<option value="Wedding loans">Wedding loans</option>
 </select>
   </td>
 </tr>  
-</table>                
+</table>                 
                    
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->

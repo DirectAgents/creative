@@ -1134,18 +1134,12 @@ form div {
 
 
 
-#container-steps {
-    position:absolute;
-    height: 370px;
-    padding: 0px 0;
-	margin: 50px 0 0 60px;
-	
-}
+
     #container-steps #first_step { display: block; margin-left:35px; float:left; }
 	
-	#container-steps #second_step{ margin-left:75px; margin-top:45px; display: none; float:left; position:absolute; }
+	#container-steps #second_step{ display: none; float:left; position:absolute; }
 	
-	#container-steps #third_step{ margin-left:70px; margin-top:45px; display: none; float:left; position:absolute; }
+	#container-steps #third_step{ display: none; float:left; position:absolute; }
 
 	#container-steps #fourth_step { margin-left:0px; margin-top:40px; display:none; float:left; position:absolute; }
 	
@@ -1216,144 +1210,9 @@ form div {
         -moz-border-radius: 6px;
         -webkit-border-radius: 6px;
     }
-        #container-steps input.submit {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 20px;
-        }
+        
 		
 		
-		#container-steps input.submit_second {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-			top:12px;
-            left: 20px;
-        }
-		
-		
-		#container-steps input.submit_third {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 25px;
-        }
-		
-		
-		#container-steps input.submit_fourth {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-			top:0px;
-            left: 95px;
-        }
-		
-		#container-steps input.submit_fifth {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 65px;
-        }
-		
-		
-		#container-steps input.submit_sixth {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 65px;
-        }
-		
-		
-		#container-steps input.submit_seventh {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 65px;
-        }
-		
-		#container-steps input.submit_eight {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 65px;
-        }
-		
-		#container-steps input.submit_ninth {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 65px;
-        }
-		
-		#container-steps input.submit_tenth {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 20px;
-        }
-		
-		#container-steps input.submit_eleventh {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 20px;
-        }
-		
-		#container-steps input.submit_twelth {
-            background: url('core/images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 70px;
-        }
 		
 		
 		

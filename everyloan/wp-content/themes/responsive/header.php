@@ -103,7 +103,7 @@ $(window).ready(function() {
    
    $('#start-here-btn').click(function(){
 	   
-	   location.href = 'http://localhost/directagents/everyloan/github/creative/everyloan' + $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val()+'&pass=y';
+	   location.href = 'http://localhost/directagents/everyloan/creative/everyloan/' + $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val()+'&pass=y';
 	   
 	    });
 	
