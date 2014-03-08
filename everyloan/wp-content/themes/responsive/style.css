@@ -4005,10 +4005,17 @@ BDO[DIR="rtl"] {
 /*------------------------------------------\
 |                 Generic                   |
 \------------------------------------------*/
- body 
+body 
 { 
   overflow:auto;
-  background:#f3f8fc; 
+  background:#f3f8fc;
+
+
+}
+/* alt bg styles */
+body
+{
+  background:url('/wp-content/themes/responsive/core/images/landscape-bg.jpg') !important;
 }
 
 #content .top-menu li a,
