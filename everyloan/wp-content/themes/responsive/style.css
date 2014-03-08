@@ -4013,10 +4013,10 @@ body
 
 }
 /* alt bg styles */
-body
+/*body
 {
   background:url('/wp-content/themes/responsive/core/images/landscape-bg.jpg') !important;
-}
+}*/
 
 #content .top-menu li a,
 #blog-content .top-menu li a  
@@ -4106,7 +4106,7 @@ body
 /* ---------- NEWS Single Post page ------------- */
 
 .single-post .previous,
-.single .previous { position:static; }
+.single .previous { position:static !important; }
 
 /* ---------- Social media bar ---------- */
 
