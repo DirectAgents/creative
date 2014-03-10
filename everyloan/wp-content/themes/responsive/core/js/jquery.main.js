@@ -436,7 +436,7 @@ $(function(){
 	$('#submit_tenth').click(function(){
         //update progress bar
         $('#progress_text').html('100% Complete');
-        $('#progress').css('width','360px');
+        $('#progress').css('width','100%');
 
         //prepare the fourth step
         var fields = new Array(
