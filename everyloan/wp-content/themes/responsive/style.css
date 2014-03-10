@@ -3872,6 +3872,7 @@ body
 
 }
 /* ------------- Alternative Homepage styles ------------- */
+
 body.page-id-12512
 {
   background:url('core/images/bg-small2.jpg');
@@ -3884,7 +3885,7 @@ body.page-id-12512
 
 .page-id-12512 #footer
 {
-  background:#b3b3b3;
+  background:#fff;
 }
 
 .page-id-12512 #footer a
@@ -3896,6 +3897,21 @@ body.page-id-12512
 {
   color:#1e517f;
 }
+
+.page-id-12512 #footer-logo
+{
+  background: url('../../uploads/2013/09/cropped-everyloan-logo.png');
+}
+.page-id-12512 #footer-logo img
+{
+  visibility:hidden;
+}
+
+.page-id-12512 #footer .copyright
+{
+  color:#000;
+}
+
 
 /* ------------- END Alternative Homepage styles ------------- */
 
