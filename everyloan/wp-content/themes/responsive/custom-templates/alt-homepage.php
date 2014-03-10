@@ -19,7 +19,8 @@ if ( !defined('ABSPATH')) exit;
  * @since          available since Release 1.0
  */
 
-get_header(); ?>
+//get_header();
+include_once(get_stylesheet_directory() . '/alt-header.php'); ?>
 
 <!--
 <div style="float:right; width:50%; height:10px;">

@@ -3873,6 +3873,12 @@ body
 }
 /* ------------- Alternative Homepage styles ------------- */
 
+.page-template-custom-templatesalt-homepage-php #header
+{
+  background:#fff;
+  overflow:hidden;
+}
+
 body.page-template-custom-templatesalt-homepage-php
 {
   background:url('core/images/bg-small2.jpg');
@@ -3886,11 +3892,6 @@ body.page-template-custom-templatesalt-homepage-php
 .page-template-custom-templatesalt-homepage-php #footer
 {
   background:#fff;
-}
-
-.page-template-custom-templatesalt-homepage-php #footer a
-{
-  color:#1e517f;
 }
 
 .page-template-custom-templatesalt-homepage-php #footer a
