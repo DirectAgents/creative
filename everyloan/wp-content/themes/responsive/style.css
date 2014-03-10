@@ -3871,11 +3871,33 @@ body
 
 
 }
-/* alt bg styles */
-/*body
+/* ------------- Alternative Homepage styles ------------- */
+body.page-id-12512
 {
-  background:url('/wp-content/themes/responsive/core/images/landscape-bg.jpg') !important;
-}*/
+  background:url('core/images/bg-small2.jpg');
+}
+
+.page-id-12512 #wrapper
+{
+  background:url('core/images/transp70.png');
+}
+
+.page-id-12512 #footer
+{
+  background:#b3b3b3;
+}
+
+.page-id-12512 #footer a
+{
+  color:#1e517f;
+}
+
+.page-id-12512 #footer a
+{
+  color:#1e517f;
+}
+
+/* ------------- END Alternative Homepage styles ------------- */
 
 #content .top-menu li a,
 #blog-content .top-menu li a  
