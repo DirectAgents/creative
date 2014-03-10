@@ -183,42 +183,30 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                
                 <div class="form">
                    
-   <table cellpadding="0" cellspacing="0" border="1">
+ <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title-fourth">Purpose of Loan?</div></td>
+
+<td><label>Employment Status?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
+
 <td>                
                 
-<select id="purpose_of_loan" name="purpose_of_loan">
-<option value="Debt consolidation">Debt consolidation</option>
-<option value="Home improvement">Home improvement</option>
-<option value="Business">Business</option>
-<option value="Auto">Auto</option>
-<option value="Baby & adoption loans">Baby & adoption loans</option>
-<option value="Boat">Boat</option>
-<option value="Cosmetic procedures">Cosmetic procedures</option>
-<option value="Engagement ring financing">Engagement ring financing</option>
-<option value="Green loans">Green loans</option>
-<option value="Household Expenses">Household Expenses</option>
-<option value="Large purchases">Large purchases</option>
-<option value="Medical/Dental">Medical/Dental</option>
-<option value="Motorcycle">Motorcycle</option>
-<option value="RV">RV</option>
-<option value="Taxes">Taxes</option>
-<option value="Vacation">Vacation</option>
-<option value="Wedding loans">Wedding loans</option>
+<select id="EmploymentStatusId" name="EmploymentStatusId">
+<option value="Self Employed">Self Employed</option>
+<option value="Not Employed">Not Employed</option>
+<option value="Employed">Employed</option>
+<option value="Other">Other</option>
 </select>
   </td>
 </tr>  
-</table>                 
+</table>                
+               
                    
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
@@ -249,38 +237,24 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title-fourth">Purpose of Loan?</div></td>
+
+<td><label>Salary Frequency?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
+
 <td>                
                 
-<select id="purpose_of_loan" name="purpose_of_loan" style="width:400px;">
-<option value="Debt consolidation">Debt consolidation</option>
-<option value="Home improvement">Home improvement</option>
-<option value="Business">Business</option>
-<option value="Auto">Auto</option>
-<option value="Baby & adoption loans">Baby & adoption loans</option>
-<option value="Boat">Boat</option>
-<option value="Cosmetic procedures">Cosmetic procedures</option>
-<option value="Engagement ring financing">Engagement ring financing</option>
-<option value="Green loans">Green loans</option>
-<option value="Household Expenses">Household Expenses</option>
-<option value="Large purchases">Large purchases</option>
-<option value="Medical/Dental">Medical/Dental</option>
-<option value="Motorcycle">Motorcycle</option>
-<option value="RV">RV</option>
-<option value="Taxes">Taxes</option>
-<option value="Vacation">Vacation</option>
-<option value="Wedding loans">Wedding loans</option>
+<select id="SalaryFrequency" name="SalaryFrequency">
+<option value="Monthly">Monthly</option>
+<option value="Yearly">Yearly</option>
 </select>
   </td>
 </tr>  
 </table>                
+
                     
                     
                     
@@ -310,29 +284,29 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                
                
                
- <table cellpadding="0" cellspacing="0" border="1">
+      <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title">Employment Status?</div></td>
+
+<td><label>Residence Type?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
+
 <td>                
                 
-<select id="EmploymentStatusId" name="EmploymentStatusId" style="width:330px;">
-<option value="Self Employed">Self Employed</option>
-<option value="Not Employed">Not Employed</option>
-<option value="Employed">Employed</option>
-<option value="Other">Other</option>
+<select id="ResidenceType" name="ResidenceType">
+<option value="own">own</option>
+<option value="rent">rent</option>
+<option value="mortgage">mortgage</option>
+<option value="other">other</option>
 </select>
   </td>
 </tr>  
-</table>                
+</table>   
  
                
                     
@@ -363,27 +337,21 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                
                     
                     
-                    <table cellpadding="0" cellspacing="0" border="1">
+                 <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title-sixth">Salary Frequency?</div></td>
+
+<td><label>Current Salary?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
-<td>                
-                
-<select id="SalaryFrequency" name="SalaryFrequency" style="width:350px;">
-<option value="Monthly">Monthly</option>
-<option value="Yearly">Yearly</option>
-</select>
-  </td>
+
+<td><input type="text" name="CurrentSalary" id="CurrentSalary" value=""/></td>
 </tr>  
-</table>                
+</table>                    
                     
                     
                     
@@ -410,29 +378,21 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                
                     
                     
-                    <table cellpadding="0" cellspacing="0" border="1">
+                   <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title">Residence Type?</div></td>
+
+<td><label>Yearly Income?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
-<td>                
-                
-<select id="ResidenceType" name="ResidenceType" style="width:350px;">
-<option value="own">own</option>
-<option value="rent">rent</option>
-<option value="mortgage">mortgage</option>
-<option value="other">other</option>
-</select>
-  </td>
+
+<td><input type="text" name="YearlyIncome" id="YearlyIncome" value=""/></td>
 </tr>  
-</table>                
+</table>     
                     
                     
                     
@@ -459,34 +419,43 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                
                     
                     
-                    <table cellpadding="0" cellspacing="0" border="1">
+     
+
+
+<table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title">Current Salary?</div></td>
+<td><label>Firstname</label></td>
 </tr>
 
-    
 
 <tr>
-<td valign="top">&nbsp;</td>
+
+
 <td><input type="text" name="CurrentSalary" id="CurrentSalary" value=""/></td>
+
+</tr>   
+
+
+<tr>
+<td><label>Lastname</label></td>
+</tr>             
+
+<tr>
+               
+                
+<td><input type="text" name="CurrentSalary" id="CurrentSalary" value=""/></td>
+  
 </tr>  
-</table>     
+</table>                
 
 
 
-
-
-
-
-           
-                    
-                    
+     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_eight_personal" type="submit" name="submit_eight" id="submit_eight" value="" />             
+               <input class="submit_eight" type="submit" name="submit_eight" id="submit_eight" value="" />             
             </div>    
      
      </div>
@@ -505,117 +474,6 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div id="ninth_step_personal"> 
 
-
-                <div class="form">
-               
-                    
-                    
-                     <table cellpadding="0" cellspacing="0" border="1">
-
-
-<tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title">Yearly Income?</div></td>
-</tr>
-
-    
-
-<tr>
-<td valign="top">&nbsp;</td>
-<td><input type="text" name="YearlyIncome" id="YearlyIncome" value=""/></td>
-</tr>  
-</table>     
-                    
-                    
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_ninth_personal" type="submit" name="submit_ninth" id="submit_ninth" value="" />             
-            </div>  
-            
-  </div>          
-  
-  
- 
-            
-            
-            
-            
-  
-  
- 
-   <!-- #tenth_step -->
-            <div id="tenth_step">
-               
-
-<div class="previous-tenth-personal"><a href="#" class="previous-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
-<div class="next-tenth-personal"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                                   
-
-
-
-<div id="tenth_step_personal"> 
-
-                <div class="form">
-               
-                    
-                    
-                    <table cellpadding="0" cellspacing="0" border="1">
-
-
-
-
-    
-
-<tr>
-<td><label>First Name</label></td>
-</tr>
-
-<tr>
-<td>                
-                
-<input type="text" name="FirstName" id="FirstName" value=""/>
-  </td>
-</tr> 
-
-
-
-<tr>
-<td><label>Last Name</label></td>
-</tr>
-
-<tr>
-<td>                
-                
-<input type="text" name="LastName" id="LastName" value=""/>
-  </td>
-</tr> 
- 
-</table>                
-                    
-                    
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_tenth" type="submit" name="submit_tenth" id="submit_tenth" value="" />             
-            </div>                             
-            
-     </div>       
-
-
-
-
-
- <!-- #eleventh_step -->
-            <div id="eleventh_step">
-               
-
-
-<div class="previous-eleventh-personal"><a href="#" class="previous-eleventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
-<div class="next-eleventh-personal"><a href="#" class="next-eleventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                     
-
-
-
-<div id="eleventh_step_personal"> 
 
                 <div class="form">
                
@@ -653,26 +511,37 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_eleventh" type="submit" name="submit_eleventh" id="submit_eleventh" value="" />             
-            </div>                                         
+               <input class="submit_ninth" type="submit" name="submit_ninth" id="submit_ninth" value="" />             
+            </div>  
             
-      </div>      
+  </div>          
   
   
+ 
+            
+            
+            
+            
   
-  <!-- #twelth_step -->
-            <div id="twelth_step">
+  
+ 
+   <!-- #tenth_step -->
+            <div id="tenth_step">
+               
+
+<div class="previous-tenth-personal"><a href="#" class="previous-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<div class="next-tenth-personal"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                                   
 
 
-<div class="previous-twelth-personal"><a href="#" class="previous-twelth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-
-<div id="twelth_step_personal"> 
+<div id="tenth_step_personal"> 
 
                 <div class="form">
                
- 
- <table cellpadding="0" cellspacing="0" border="1">
+                    
+                    
+     <table cellpadding="0" cellspacing="0" border="1">
 
 
 
@@ -703,49 +572,53 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
   </td>
 </tr> 
  
-</table>                
- 
-
-
-                    
-                    
+</table>                             
                     
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_twelth_personal" type="submit" name="submit_twelth" id="submit_twelth" value="" />             
-            </div>                                                   
-                       
-  </div>
-  
-  
- 
- 
- 
-  <!-- #last_step -->
-            <div id="last_step">
+               <input class="submit_tenth" type="submit" name="submit_tenth" id="submit_tenth" value="" />             
+            </div>                             
+            
+     </div>       
+
+
+
+
+
+ <!-- #last_step -->
+            <div id="eleventh_step">
                
+
+
+<div class="previous-eleventh-personal"><a href="#" class="previous-eleventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+                 
+
+
+
+<div id="eleventh_step_personal"> 
+
                 <div class="form">
                
-       
-       <div class="content">
+                    
+                    
+                    <div class="content">
        <h1>Thank you!</h1>
        <p>Message here....</p>
        
        <div id="result"></div>
        </div>             
-               
                     
                     
                     
-                </div>     
-                
+                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+                       
             </div>                                         
             
+      </div>      
+  
+  
  
- 
-            
-            
             
         </form>
         

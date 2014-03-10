@@ -40,7 +40,7 @@ if ( !defined('ABSPATH')) exit;
 
 <!--<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Nilland-Black">-->
 
-<script type="text/javascript" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/cb.js"></script>
+<script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/cb.js"></script>
 
 
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -49,9 +49,9 @@ if ( !defined('ABSPATH')) exit;
     
     
     
-<link rel="stylesheet" href="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/css/responsive-nav.css">
-    <link rel="stylesheet" href="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/css/styles.css">
-    <script src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/responsive-nav.js"></script>
+<link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/responsive/core/css/responsive-nav.css">
+    <link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/responsive/core/css/styles.css">
+    <script src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/responsive-nav.js"></script>
 
     
 
@@ -103,7 +103,7 @@ $(window).ready(function() {
    
    $('#start-here-btn').click(function(){
 	   
-	   location.href = 'http://localhost/directagents/everyloan/creative/everyloan/' + $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val()+'&pass=y';
+	   location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val()+'&pass=y';
 	   
 	    });
 	
@@ -212,8 +212,8 @@ $(document).ready(function() {
 
 
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/jquery.inputfocus-0.9.min.js"></script>
-    <script type="text/javascript" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/jquery.main.js"></script>
+    <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/jquery.inputfocus-0.9.min.js"></script>
+    <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/jquery.main.js"></script>
 
 
 

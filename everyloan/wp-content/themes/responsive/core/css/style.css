@@ -3634,36 +3634,57 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
  
  #container-steps #third_step_personal { display: block; margin-left:110px; margin-top:40px; float:left; }
  
+ #container-steps #fourth_step_personal { display: block; margin-left:110px; margin-top:40px; float:left; }
+ 
+ #container-steps #fifth_step_personal { display: block; margin-left:110px; margin-top:40px; float:left; }
+ 
+ #container-steps #sixth_step_personal { display: block; margin-left:110px; margin-top:40px; float:left; }
+ 
+ #container-steps #seventh_step_personal { display: block; margin-left:110px; margin-top:40px; float:left; }
+ 
+ #container-steps #eight_step_personal { display: block; margin-left:110px; float:left; }
+ 
+ #container-steps #ninth_step_personal { display: block; margin-left:110px; float:left; }
+ 
+ #container-steps #tenth_step_personal { display: block; margin-left:110px; float:left; }
+ 
+ #container-steps #eleventh_step_personal { display: block; margin-left:110px; float:left; }
+ 
 
 .previous-personal{position:absolute; left:-333px; top:80px;}
 .next-personal{position:absolute; right:-178px; top:80px;}
  
 .previous-third-personal{position:absolute; left:-333px; top:80px;}
-.next-third-personal{position:absolute; right:-79px; top:80px;}
+.next-third-personal{position:absolute; right:-133px; top:80px;}
 
-.previous-fourth-personal{position:absolute; left:-333px; top:35px;}
-.next-fourth-personal{position:absolute; right:-108px; top:35px;}
+.previous-fourth-personal{position:absolute; left:-333px; top:80px;}
+.next-fourth-personal{position:absolute; right:-178px; top:80px;}
 
-.previous-fifth-personal{position:absolute; left:-362px; top:35px;}
-.next-fifth-personal{position:absolute; right:-128px; top:35px;}
+.previous-fifth-personal{position:absolute; left:-333px; top:80px;}
+.next-fifth-personal{position:absolute; right:-178px; top:80px;}
 
-.previous-sixth-personal{position:absolute; left:-362px; top:35px;}
-.next-sixth-personal{position:absolute; right:-128px; top:35px;}
+.previous-sixth-personal{position:absolute; left:-333px; top:80px;}
+.next-sixth-personal{position:absolute; right:-178px; top:80px;}
  
-.previous-seventh-personal{position:absolute; left:-362px; top:35px;}
-.next-seventh-personal{position:absolute; right:-128px; top:35px;}
+.previous-seventh-personal{position:absolute; left:-333px; top:80px;}
+.next-seventh-personal{position:absolute; right:-178px; top:80px;}
  
-.previous-eight-personal{position:absolute; left:-362px; top:22px;}
-.next-eight-personal{position:absolute; right:-28px; top:22px;}
+.previous-eight-personal{position:absolute; left:-333px; top:80px;}
+.next-eight-personal{position:absolute; right:-178px; top:80px;}
  
-.previous-ninth-personal{position:absolute; left:-363px; top:35px;}
-.next-ninth-personal{position:absolute; right:-79px; top:35px;}
+.previous-ninth-personal{position:absolute; left:-333px; top:80px;}
+.next-ninth-personal{position:absolute; right:-178px; top:80px;}
  
-.previous-tenth-personal{position:absolute; left:-414px; top:75px;}
-.next-tenth-personal{position:absolute; right:-183px; top:75px;}
+.previous-tenth-personal{position:absolute; left:-333px; top:80px;}
+.next-tenth-personal{position:absolute; right:-178px; top:80px;}
  
-.previous-eleventh-personal{position:absolute; left:-414px; top:75px;}
-.next-eleventh-personal{position:absolute; right:-183px; top:75px;}
+.previous-eleventh-personal{position:absolute; left:-333px; top:80px;}
+.next-eleventh-personal{display:none !important;}
+ 
+ 
+ #eleventh_step_personal .content {float:left; width:250px;}
+ 
+ 
  
  .previous-twelth-personal{position:absolute; left:-359px; top:70px;}
  
@@ -3675,7 +3696,9 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 #eight_step_personal, #ninth_step_personal, #twelth_step_personal{float:left; margin-left:80px;}
 
 
-#second_step_personal label, #third_step_personal label {float:left; width:255px;}
+#second_step_personal label, #third_step_personal label, #fourth_step_personal label, #fifth_step_personal label,
+#sixth_step_personal label, #seventh_step_personal label, #eight_step_personal label,
+#ninth_step_personal label, #tenth_step_personal label   {float:left; width:255px;}
 
 #container-steps #twelth_step { margin-left:25px; margin-top:5px; display: none; float:left; position:absolute; }
 
@@ -3719,43 +3742,89 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 			top:-10px;
             left: 0px;
         }		
-
-
-
-#container-steps input.submit_eight_personal {
-            background: url('../images/continue-steps-desktop.png') no-repeat;
-            border: none;
-            cursor: pointer;
-            width: 214px;
-            height: 62px;
-            position: relative;
-            bottom: 0px;
-            left: 25px;
-        }
 		
 
-#container-steps input.submit_ninth_personal {
-            background: url('../images/continue-steps-desktop.png') no-repeat;
+#container-steps input.submit_fourth {
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
-            width: 214px;
-            height: 62px;
+            width: 253px;
+            height: 67px;
             position: relative;
             bottom: 0px;
-            left: 25px;
-        }		
+			top:-10px;
+            left: 0px;
+        }	
 		
 
-#container-steps input.submit_twelth_personal {
+#container-steps input.submit_fifth {
+             background: url('../images/continue-steps-desktop.png') no-repeat;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
+        }			
+		
+
+#container-steps input.submit_sixth, #container-steps input.submit_seventh {
+             background: url('../images/continue-steps-desktop.png') no-repeat;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-5px;
+            left: 0px;
+        }								
+
+		
+
+#container-steps input.submit_eight {
             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
-            width: 214px;
-            height: 62px;
+            width: 253px;
+            height: 67px;
             position: relative;
             bottom: 0px;
-            left: 25px;
+			top:-10px;
+            left: 0px;
+        }	
+		
+		
+
+#container-steps input.submit_ninth {
+            background: url('../images/continue-steps-desktop.png') no-repeat;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
         }		
+		
+		
+#container-steps input.submit_tenth {
+            background: url('../images/continue-steps-desktop.png') no-repeat;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
+        }		
+				
+
+	
  
  
  #container-steps {

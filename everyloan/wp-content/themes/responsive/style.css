@@ -1141,23 +1141,23 @@ form div {
 	
 	#container-steps #third_step{ display: none; float:left; position:absolute; }
 
-	#container-steps #fourth_step { margin-left:0px; margin-top:40px; display:none; float:left; position:absolute; }
+	#container-steps #fourth_step {display:none; float:left; position:absolute; }
 	
-	#container-steps #fifth_step { margin-left:30px; margin-top:40px; display: none; float:left; position:absolute; }
+	#container-steps #fifth_step { display: none; float:left; position:absolute; }
 	
-	#container-steps #sixth_step { margin-left:30px; margin-top:40px; display: none; float:left; position:absolute; }
+	#container-steps #sixth_step { display: none; float:left; position:absolute; }
 	
-	#container-steps #seventh_step { margin-left:30px; margin-top:40px; display: none; float:left; position:absolute; }
+	#container-steps #seventh_step {  display: none; float:left; position:absolute; }
 	
-	#container-steps #eight_step { margin-left:30px; margin-top:53px; display: none; float:left; position:absolute; }
+	#container-steps #eight_step {  display: none; float:left; position:absolute; }
 	
-	#container-steps #ninth_step { margin-left:30px; margin-top:40px; display: none; float:left; position:absolute; }
+	#container-steps #ninth_step {  display: none; float:left; position:absolute; }
 	
-	#container-steps #tenth_step { margin-left:80px; margin-top:0px; display: none; float:left; position:absolute; }
+	#container-steps #tenth_step { display: none; float:left; position:absolute; }
 	
-	#container-steps #eleventh_step { margin-left:80px; margin-top:0px; display: none; float:left; position:absolute; }
+	#container-steps #eleventh_step { display: none; float:left; position:absolute; }
 	
-	#container-steps #twelth_step { margin-left:25px; margin-top:45px; display: none; float:left; position:absolute; }
+	#container-steps #twelth_step { display: none; float:left; position:absolute; }
 	
 	#container-steps #last_step { margin-left:25px; width:500px; margin-top:45px; display: none; float:left; position:absolute; }
 	

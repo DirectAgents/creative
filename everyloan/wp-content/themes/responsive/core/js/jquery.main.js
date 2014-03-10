@@ -128,7 +128,6 @@ $(function(){
 
     $('#submit_second').click(function(){
         //remove classes
-		alert("asdf");
         $('#second_step input').removeClass('error').removeClass('valid');
 
         var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
@@ -158,7 +157,7 @@ $(function(){
 				//$('#second_step').hide("slide", { direction: "left" }, 1000);
 				//$('#third_step').show("slide", { direction: "right" }, 1000); 
 				 
-				 $('#second_step_personal').hide();
+				 $('#second_step').hide();
 				 $('#third_step').show();   
 				
 				
@@ -436,8 +435,8 @@ $(function(){
 	
 	$('#submit_tenth').click(function(){
         //update progress bar
-        $('#progress_text').html('95% Complete');
-        $('#progress').css('width','250px');
+        $('#progress_text').html('100% Complete');
+        $('#progress').css('width','360px');
 
         //prepare the fourth step
         var fields = new Array(
@@ -474,8 +473,8 @@ $(function(){
 	
 	$('#submit_eleventh').click(function(){
         //update progress bar
-        $('#progress_text').html('97% Complete');
-        $('#progress').css('width','330px');
+        $('#progress_text').html('100% Complete');
+        $('#progress').css('width','360px');
 
         //prepare the fourth step
         var fields = new Array(
