@@ -3873,41 +3873,41 @@ body
 }
 /* ------------- Alternative Homepage styles ------------- */
 
-body.page-id-12512
+body.page-template-custom-templatesalt-homepage-php
 {
   background:url('core/images/bg-small2.jpg');
 }
 
-.page-id-12512 #wrapper
+.page-template-custom-templatesalt-homepage-php #wrapper
 {
   background:url('core/images/transp70.png');
 }
 
-.page-id-12512 #footer
+.page-template-custom-templatesalt-homepage-php #footer
 {
   background:#fff;
 }
 
-.page-id-12512 #footer a
+.page-template-custom-templatesalt-homepage-php #footer a
 {
   color:#1e517f;
 }
 
-.page-id-12512 #footer a
+.page-template-custom-templatesalt-homepage-php #footer a
 {
   color:#1e517f;
 }
 
-.page-id-12512 #footer-logo
+.page-template-custom-templatesalt-homepage-php #footer-logo
 {
   background: url('../../uploads/2013/09/cropped-everyloan-logo.png');
 }
-.page-id-12512 #footer-logo img
+.page-template-custom-templatesalt-homepage-php #footer-logo img
 {
   visibility:hidden;
 }
 
-.page-id-12512 #footer .copyright
+.page-template-custom-templatesalt-homepage-php #footer .copyright
 {
   color:#000;
 }
