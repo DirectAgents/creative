@@ -3874,6 +3874,15 @@ p
 {
   margin:0 0 10px;;
 }
+
+h2.secondary-title
+{
+  font-size:20px;
+  font-family:'heroregular';
+  color:#414344 !important;
+  //letter-spacing:3px;
+  margin-left:0;
+}
 /* ------------- Alternative Homepage styles ------------- */
 
 .page-template-custom-templatesalt-homepage-php #header
