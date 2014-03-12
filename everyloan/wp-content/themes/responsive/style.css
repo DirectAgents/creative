@@ -3877,11 +3877,10 @@ p
 
 h2.secondary-title
 {
-  font-size:20px;
+  font-size:18px;
   font-family:'heroregular';
   color:#414344 !important;
-  //letter-spacing:3px;
-  margin-left:0;
+  margin:6px 0;
 }
 /* ------------- Alternative Homepage styles ------------- */
 
