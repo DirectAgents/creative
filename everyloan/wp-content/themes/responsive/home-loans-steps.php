@@ -29,7 +29,7 @@ global $more; $more = 0;
 
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 <div class="personal-loans-box-step-desktop">
-<div class="personal-loans-box-step1-desktop-title">I want a personal loan</div>
+<div class="personal-loans-box-step1-desktop-title">I want a home loan</div>
 
 <div class="progress-steps2">
 <div style="float:left">Progress:&nbsp;&nbsp;</div>	
@@ -65,7 +65,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 
 
-        <form action="#" method="post">
+        <form action="https://www.leadpointdelivery.com/17483/direct.ilp" method="POST" class="" onSubmit="return validateForm(this)" name="loanform">
         
         <input type="hidden" id="IsPrimaryBorrower" name="IsPrimaryBorrower" value="Yes"/>
 	
@@ -200,7 +200,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <tr>
 <td>                
                 
-<input type="text" name="PostalCode" id="PostalCode" value=""/>
+<input type="text" name="PROP_ZIP" id="PROP_ZIP" value=""/>
   </td>
 </tr> 
  
@@ -906,7 +906,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <tr>
 <td>                
                 
-<input type="text" value=""/>
+<input type="text" name="FNAME" id="FNAME" value=""/>
   </td>
 </tr> 
 
@@ -919,7 +919,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <tr>
 <td>                
                 
-<input type="text" value=""/>
+<input type="text" name="LNAME" id="LNAME" value=""/>
   </td>
 </tr> 
  
@@ -972,7 +972,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <tr>
 <td>                
                 
-<input type="text" name="Street" id="Street" value=""/>
+<input type="text" name="EMAIL" id="EMAIL" value=""/>
   </td>
 </tr> 
 
@@ -985,7 +985,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <tr>
 <td>                
                 
-<input type="text" name="PostalCode" id="PostalCode" value=""/>
+<input type="text" name="PRI_PHON" id="PRI_PHON" value=""/>
   </td>
 </tr> 
  
@@ -1041,7 +1041,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <tr>
 <td>                
                 
-<input type="text" name="Street" id="Street" value=""/>
+<input type="text" name="ADDRESS" id="ADDRESS" value=""/>
   </td>
 </tr> 
 
@@ -1074,7 +1074,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
                 <div class="form">
                
-                    
+                    <div id="siteloader">This is the target</div>
                     
                     <div class="content">
        <h1>Thank you!</h1>

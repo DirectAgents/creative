@@ -502,7 +502,9 @@ $(function(){
 		
 		$('#eleventh_step').hide();
 	    $('#twelth_step').show();     
-		          
+		
+		$("#siteloader").html('<object data="http://localhost/directagents/everyloan/github/creative/everyloan/api/leadpoint.html">');
+		$('#siteloader').hide();          
     });
 	
 	
