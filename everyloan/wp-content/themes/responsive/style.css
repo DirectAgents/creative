@@ -3862,14 +3862,17 @@ BDO[DIR="rtl"] {
 }
 
 /*------------------------------------------\
-|                 Generic                   |
+|           Generic Styles                  |
 \------------------------------------------*/
 body 
 { 
   overflow:auto;
   background:#f3f8fc;
+}
 
-
+p
+{
+  margin:0 0 10px;;
 }
 /* ------------- Alternative Homepage styles ------------- */
 
