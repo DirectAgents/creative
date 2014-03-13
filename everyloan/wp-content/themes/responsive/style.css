@@ -3909,46 +3909,32 @@ ul.loan-list li
 
 /* ------------- Alternative Homepage styles ------------- */
 
-.page-template-custom-templatesalt-homepage-php #header
+.alt-home #header
 {
   background:#fff;
   overflow:hidden;
 }
 
-body.page-template-custom-templatesalt-homepage-php
-{
-  background:url('core/images/bg-small2.jpg');
-}
+body.alt-home { background:url('core/images/bg-small2.jpg') 0 88px; }
 
-.page-template-custom-templatesalt-homepage-php #wrapper
-{
-  background:url('core/images/transp70.png');
-}
+.alt-home #wrapper { background:url('core/images/transp70.png');}
 
-.page-template-custom-templatesalt-homepage-php #footer
-{
-  background:#fff;
-}
+.alt-home #footer { background:#fff; }
 
-.page-template-custom-templatesalt-homepage-php #footer a
-{
-  color:#1e517f;
-}
+.alt-home #footer a { color:#1e517f; }
 
-.page-template-custom-templatesalt-homepage-php #footer-logo
-{
-  background: url('../../uploads/2013/09/cropped-everyloan-logo.png');
-}
-.page-template-custom-templatesalt-homepage-php #footer-logo img
-{
-  visibility:hidden;
-}
+.alt-home #footer-logo { background: url('../../uploads/2013/09/cropped-everyloan-logo.png'); }
 
-.page-template-custom-templatesalt-homepage-php #footer .copyright
-{
-  color:#000;
-}
+.alt-home #footer-logo img { visibility:hidden; }
 
+.alt-home #footer .copyright { color:#000; }
+
+.alt-home .alt-container
+{
+  margin: 0 auto;
+  max-width: 1044px;
+  padding: 30px 0px 0 0;
+}
 
 /* ------------- END Alternative Homepage styles ------------- */
 

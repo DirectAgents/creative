@@ -20,7 +20,7 @@ if ( !defined('ABSPATH')) exit;
  */
 
 //get_header();
-include_once(get_stylesheet_directory() . '/alt-header.php'); ?>
+include_once(get_stylesheet_directory() . '/custom-templates/alt-header.php'); ?>
 
 <!--
 <div style="float:right; width:50%; height:10px;">

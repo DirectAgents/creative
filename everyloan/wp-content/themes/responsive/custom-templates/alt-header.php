@@ -25,9 +25,6 @@ if ( !defined('ABSPATH')) exit;
 <!--[if IE 9 ]>    <html class="no-js ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 
-
-
-
 <head>
     <meta name="robots" content="noindex">
     <meta charset="<?php bloginfo('charset'); ?>" />
@@ -42,83 +39,47 @@ if ( !defined('ABSPATH')) exit;
 
     <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/cb.js"></script>
 
-
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    
-    
     
     <link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/responsive/core/css/responsive-nav.css">
     <link rel="stylesheet" href="<?php echo site_url(); ?>/wp-content/themes/responsive/core/css/styles.css">
     <script src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/responsive-nav.js"></script>
 
-    
-
-    <script>
+   <script type='text/javascript'>//<![CDATA[ 
 
     $(function() {
 
-     var pull 		= $('#pull');
+        var pull = $('#pull');
+        menu = $('nav ul');
+        menuHeight = menu.height();
 
-     menu 		= $('nav ul');
+        $(pull).on('click', function(e) {
 
-     menuHeight	= menu.height();
+            e.preventDefault();
+            menu.slideToggle();
 
+        });
 
+        $(window).resize(function(){
 
-     $(pull).on('click', function(e) {
+            var w = $(window).width();
+            if (w > 320 && menu.is(':hidden')) {
+                menu.removeAttr('style');
+            }
+        });
+   
+        $('#start-here-btn').click(function(){
 
-        e.preventDefault();
+         location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val()+'&pass=y';
 
-        menu.slideToggle();
+        });
 
-    });
+    /*
+    * How to detect browser width
+    */
 
-
-
-     $(window).resize(function(){
-
-      var w = $(window).width();
-
-      if(w > 320 && menu.is(':hidden')) {
-
-         menu.removeAttr('style');
-
-     }
-
- });
-
- });
-
-    </script>
-
-
-
-<script type='text/javascript'>//<![CDATA[ 
-
-$(window).ready(function() {
-	
-
-
- $('#start-here-btn').click(function(){
-
-    location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val()+'&pass=y';
-
-});
-
-});
-
-</script>
-
-
-<script type='text/javascript'>//<![CDATA[ 
-
-/*
-* How to detect browser width
-*/
-$(window).ready(function() {
-	
     var wi = $(window).width();  
     $("p.testp").text('Initial screen width is currently: ' + wi + 'px.');
 
@@ -142,10 +103,6 @@ $(window).ready(function() {
         }
     });            
 });
-
-
-
-
 
 $(window).load(function(){
     hideAllDivs = function () {
@@ -188,11 +145,10 @@ $(window).load(function(){
     // Run the event handler once now to ensure everything is as it should be
     handleNewSelection.apply($("#i-want-to-borrow-money-select"));
     
-});
+    });
 });//]]>  
 
 </script>
-
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="library/js/jquery-1.9.1.min.js"><\/script>')</script>
@@ -200,16 +156,13 @@ $(window).load(function(){
 <script>
 $(document).ready(function() {
 
-	$('#menu-toggle').click(function () {
+    $('#menu-toggle').click(function () {
       $('#menu').toggleClass('open');
       e.preventDefault();
   });
-
+    
 });
 </script>
-
-
-
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/jquery.inputfocus-0.9.min.js"></script>
@@ -220,129 +173,119 @@ $(document).ready(function() {
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('alt-home'); ?>>
+    
+   <div id="header">
+        
+        <div class='alt-container'>
+        
+        <div class="contact-info-desktop">
 
-    <?php responsive_container(); // before container hook ?>
-    <div id="container" class="hfeed">
+            <?php if (!dynamic_sidebar('contact-info-desktop')) : ?><?php endif; //end of home-widget-2 ?>
 
-     <div id="container-inner" class="hfeed">
+        </div>    
 
-        <?php responsive_header(); // before header hook ?>
-        <div id="header">
+        <?php responsive_header_top(); // before header content hook ?>
 
+        <?php responsive_in_header(); // header hook ?>
 
-            <div class="contact-info-desktop">
-               <?php if (!dynamic_sidebar('contact-info-desktop')) : ?><?php endif; //end of home-widget-2 ?>
+        <?php if ( get_header_image() != '' ) : ?>
 
-           </div>    
+        <div id="header-mobile">          
 
-
-
-
-           <?php responsive_header_top(); // before header content hook ?>
-
-
-
-
-
-
-
-
-
-
-
-
-           <?php responsive_in_header(); // header hook ?>
-
-           <?php if ( get_header_image() != '' ) : ?>
-
-           <div id="header-mobile">          
             <div id="logo">
                 <a href="<?php echo home_url('/'); ?>"><img src="<?php header_image(); ?>" width="<?php if(function_exists('get_custom_header')) { echo get_custom_header() -> width;} else { echo HEADER_IMAGE_WIDTH;} ?>" height="<?php if(function_exists('get_custom_header')) { echo get_custom_header() -> height;} else { echo HEADER_IMAGE_HEIGHT;} ?>" alt="<?php bloginfo('name'); ?>" /></a>
             </div><!-- end of #logo -->
+
         </div>
         
-    <?php endif; // header image was removed ?>
-    
-    <div class="top-menu-desktop">
-        <?php if (has_nav_menu('top-menu', 'responsive')) { ?>
+        <?php endif; // header image was removed ?>
+
+        <div class="top-menu-desktop">
+         <?php if (has_nav_menu('top-menu', 'responsive')) { ?>
 
 
-        <?php wp_nav_menu(array(
-            'container'       => '',
-            'fallback_cb'	  =>  false,
-            'menu_class'      => 'top-menu',
-            'theme_location'  => 'top-menu')
-        ); 
-        ?>
-        <?php } ?>
-
-        
-        
-
-
-    </div>  
-
-
-
-
-
-    <?php if ( !get_header_image() ) : ?>
-
-    <div id="logo">
-        <span class="site-name"><a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a></span>
-        <span class="site-description"><?php bloginfo('description'); ?></span>
-    </div><!-- end of #logo -->  
-
-<?php endif; // header image was removed (again) ?>
-
-<div id="header-mobile">    
-
-    <div class="top-menu-mobile">
-
-        <nav class="nav-collapse">
-             <?php wp_nav_menu(array(
+            <?php wp_nav_menu(array(
                 'container'       => '',
-                'fallback_cb'	  =>  false,
+                'fallback_cb'     =>  false,
                 'menu_class'      => 'top-menu',
                 'theme_location'  => 'top-menu')
-             ); 
-             ?>
-        </nav> 
-    </div>   
+            ); 
+            ?>
+            <?php } ?>
 
- <div class="contact-info-mobile">
-   <?php if (!dynamic_sidebar('contact-info-mobile')) : ?><?php endif; //end of home-widget-2 ?>
-</div>   
+        
+        </div>  
+
+        <?php if ( !get_header_image() ) : ?>
+
+            <div id="logo">
+                <span class="site-name"><a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a></span>
+                <span class="site-description"><?php bloginfo('description'); ?></span>
+            </div><!-- end of #logo -->  
+
+        <?php endif; // header image was removed (again) ?>
+
+        <div id="header-mobile">    
+
+            <div class="top-menu-mobile">
 
 
-</div>  
+                <nav class="nav-collapse">
+                    <?php wp_nav_menu(array(
+                        'container'       => '',
+                        'fallback_cb'     =>  false,
+                        'menu_class'      => 'top-menu',
+                        'theme_location'  => 'top-menu')
+                     ); 
+                     ?>
+                </nav> 
+         
+            </div>   
 
-<?php get_sidebar('top'); ?>
+            <div class="contact-info-mobile">
+                <?php if (!dynamic_sidebar('contact-info-mobile')) : ?><?php endif; //end of home-widget-2 ?>
+            </div>   
 
-<?php /*wp_nav_menu(array(
-    'container'       => 'div',
-		'container_class'	=> 'main-nav',
-		'fallback_cb'	  =>  'responsive_fallback_menu',
-		'theme_location'  => 'header-menu')
-); */
-?>
 
-<?php /*if (has_nav_menu('sub-header-menu', 'responsive')) { ?>
-<?php wp_nav_menu(array(
-    'container'       => '',
-	'menu_class'      => 'sub-header-menu',
-	'theme_location'  => 'sub-header-menu')
-); */
-?>
-<?php //} ?>
+        </div>  
 
-<?php responsive_header_bottom(); // after header content hook ?>
+        <?php get_sidebar('top'); ?>
+        <?php /*wp_nav_menu(array(
+            'container'       => 'div',
+                'container_class'   => 'main-nav',
+                'fallback_cb'     =>  'responsive_fallback_menu',
+                'theme_location'  => 'header-menu')
+        ); */
+        ?>
 
-</div><!-- end of #header -->
-<?php responsive_header_end(); // after header container hook ?>
+        <?php /*if (has_nav_menu('sub-header-menu', 'responsive')) { ?>
+        <?php wp_nav_menu(array(
+            'container'       => '',
+            'menu_class'      => 'sub-header-menu',
+            'theme_location'  => 'sub-header-menu')
+        ); */
+        ?>
+        <?php //} ?>
 
-<?php responsive_wrapper(); // before wrapper container hook ?>
-<div id="wrapper" class="clearfix">
-  <?php responsive_wrapper_top(); // before wrapper content hook ?>
-  <?php responsive_in_wrapper(); // wrapper hook ?>
+        <?php responsive_header_bottom(); // after header content hook ?>
+
+         </div><!-- end of responsive container -->
+
+    </div><!-- end of #header --> 
+
+   
+
+<?php responsive_container(); // before container hook ?>
+<div id="container" class="hfeed">
+
+ <div id="container-inner" class="hfeed">
+
+    <?php responsive_header(); // before header hook ?>
+
+    <?php responsive_header_end(); // after header container hook ?>
+    
+    <?php responsive_wrapper(); // before wrapper container hook ?>
+    <div id="wrapper" class="clearfix">
+        <?php responsive_wrapper_top(); // before wrapper content hook ?>
+        <?php responsive_in_wrapper(); // wrapper hook ?>
