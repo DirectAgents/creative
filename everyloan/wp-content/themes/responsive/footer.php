@@ -116,23 +116,23 @@ $responsive_options = responsive_get_options();
          </div><!-- end of col-940 -->
          <?php get_sidebar('colophon'); ?>
         
-        <div id="footer-logo"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/footer-everyloan.png"/></div>        
-        <div class="grid col-300 copyright">
-           65 Enterprise # 485   |   Aliso Viejo, CA 92656   |   T: 1-800-383-7956<br />
-            Copyright
-			<?php esc_attr_e('&copy;', 'responsive'); ?> 
-            2013
-                <?php bloginfo('name'); ?> Financial Services.  All Rights Reserved. 
-                
-                
-                
-           
-        </div><!-- end of .copyright -->
+        <div class='alt-bottom-footer-container'>
+
+            <div id="footer-logo"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/footer-everyloan.png"/></div>        
+            
+            <div class="grid col-380 copyright">
+               65 Enterprise # 485 | Aliso Viejo, CA 92656 | T: 1-800-383-7956<br />
+                Copyright
+    			<?php esc_attr_e('&copy;', 'responsive'); ?> 
+                2013
+                    <?php bloginfo('name'); ?> Financial Services. All Rights Reserved. 
+            </div><!-- end of .copyright -->
         
-      
-    	 </div><!-- end #footer-inner -->
+        </div>
+
+    </div><!-- end #footer-inner -->
    	     
-    </div><!-- end #footer-wrapper -->
+</div><!-- end #footer-wrapper -->
     
 	<?php responsive_footer_bottom(); ?>
 </div><!-- end #footer -->

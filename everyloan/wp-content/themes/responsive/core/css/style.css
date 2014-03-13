@@ -4649,14 +4649,16 @@ p.business-inner-text{color:#1e517f}
   /*------------------------------------------\
   |       Homepage [roman]                    |
   \------------------------------------------*/
+  .home-main-image-cont { text-align:center;width:100%; }
+
   .home .post-entry tr td 
   { 
     text-align:center;
     width:100%
   }
 
-  #wrapper { padding: 0 20px 20px;}
-  
+  #wrapper { padding:0 20px 20px; width:90%; }
+
   /* ----- Advice and Articles page ------ */
   
   #content-advice-and-articles{ width:100%; }
@@ -4749,14 +4751,18 @@ p.business-inner-text{color:#1e517f}
     /*------------------------------------------\
     |        Loan pages [roman]                 |
     \------------------------------------------*/
-    .loan-module
-    {
-      margin:0 10px 20px;
-    }
+    .loan-module { margin:0 10px 20px; }
 }
 
 @media only screen and (min-width: 569px) and (max-width: 767px) {
 
+  /*------------------------------------------\
+  |            Home pages [roman]             |
+  \------------------------------------------*/
+
+  #wrapper { width:90%; }
+  .home-main-image-cont { text-align:center;width:100%; }
+  
   /*------------------------------------------\
   |        News pages [roman]                 |
   \------------------------------------------*/
@@ -4850,7 +4856,7 @@ p.business-inner-text{color:#1e517f}
   }
 
   /*------------------------------------------\
-  |            Sodebar [roman]                |
+  |            Sidebar [roman]                |
   \------------------------------------------*/
 
     #widgets-how-it-works
@@ -4881,6 +4887,17 @@ p.business-inner-text{color:#1e517f}
     overflow:hidden;
   }
   /* -------- Mobile Menu -------- */
+
+  
+    #wrapper 
+  {
+    width:90%;
+    padding:0;
+    border:none;
+    margin:20px auto;
+    overflow:hidden;
+
+  }
   
   .nav-collapse
   {
@@ -4930,15 +4947,6 @@ p.business-inner-text{color:#1e517f}
 
   /* ----- END Advice and Articles page ------ */
 
-  #wrapper 
-  {
-    width:100%;
-    padding:0;
-    border:none;
-    margin:20px auto;
-    overflow:hidden;
-
-  }
   /* ---------- How it works page ---------- */
 /*  #how-everyloan-apply-fund-repay,
   .how-everyloan-works-bg
