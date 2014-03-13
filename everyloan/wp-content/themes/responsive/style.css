@@ -1827,10 +1827,13 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
   margin-bottom: 20px;
 }
 
-#content-blog h1{
+#content-blog h1,
+#content .loan-title {
   font-family: 'heroregular'; 
   font-size: 30px;
   color:#1e517f;
+  margin-bottom:10px;
+  letter-spacing:3px;
 }
 
 
@@ -4005,9 +4008,13 @@ body.page-template-custom-templatesalt-homepage-php
 /*------------------------------------------\
 |            News page [roman]              |
 \------------------------------------------*/
+.post
+{
+  margin:0 10px 0;
+}
 
 #content,
-#content-blog { margin-top:30px; }
+#content-blog { margin-top:20px; }
 
 /* ----------  posts ---------- */
 
@@ -4016,7 +4023,7 @@ body.page-template-custom-templatesalt-homepage-php
 {
   font-size:30px; 
   color:#1e517f !important; 
-  margin:0; 
+ // margin:0; 
   width:100%;
   letter-spacing:1px; 
 }
@@ -4024,7 +4031,7 @@ body.page-template-custom-templatesalt-homepage-php
 .everyloan-title a:hover { color:#4c4c4c !important; }
 
 .read-more { 
-  padding:15px 0;
+  padding:5px 0 0;
   clear:none; 
 }
 
@@ -4125,3 +4132,8 @@ body.page-template-custom-templatesalt-homepage-php
 
 .triangle-next { margin:4px 6px 4px 7px; }
 .triangle-prev { margin:4px 7px 4px 6px; }
+
+/*------------------------------------------\
+|            Loan pages [roman]             |
+\------------------------------------------*/
+.loan-module { margin:0 10px 20px; }

@@ -22,4 +22,14 @@ function rs_custom_js() {
 	wp_enqueue_script( 'cutsomjs', get_stylesheet_directory_uri() . '/core/js/custom.js', array( 'jquery' ), false, false);
 }
 
+/* get rid of space after read more */
+
+function excerpt_ellipse($text) {
+ 
+   return str_replace('<p><!-- end of .read-more --></p>', '', $text);
+   //return $text . 'blahhh'; 
+}
+
+add_filter('the_excerpt', 'excerpt_ellipse');
+
 ?>

@@ -4644,11 +4644,8 @@ p.business-inner-text{color:#1e517f}
 
 }
 
-/*------------------------------------------\
-|       News page responsive [roman]        |
-\------------------------------------------*/
-
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  
   /*------------------------------------------\
   |       Homepage [roman]                    |
   \------------------------------------------*/
@@ -4718,7 +4715,7 @@ p.business-inner-text{color:#1e517f}
     }
 
     /*------------------------------------------\
-    |            Sodebar [roman]                |
+    |            Sidebar [roman]                |
     \------------------------------------------*/
 
     #widgets-how-it-works
@@ -4740,17 +4737,37 @@ p.business-inner-text{color:#1e517f}
     {
       margin:30px 20px 0 0;
     }
+    
+    /*------------------------------------------\
+    |        News pages [roman]                 |
+    \------------------------------------------*/
+    .post,
+    .loan-module  /* from loan page */
+    {
+      margin:0 30px;
+    }
 
+    /*------------------------------------------\
+    |        Loan pages [roman]                 |
+    \------------------------------------------*/
 }
 
 @media only screen and (min-width: 569px) and (max-width: 767px) {
 
+  /*------------------------------------------\
+  |        News pages [roman]                 |
+  \------------------------------------------*/
+  .post,
+  .loan-module /* from loan page */
+  {
+   margin:0 30px;
+  }
 
   #content-blog,
   #content 
   { 
     width:100% !important;
-    margin-top:0;
+    //margin-top:0;
   }
   /* ----- Advice and Articles page ------ */
   
@@ -4865,6 +4882,14 @@ p.business-inner-text{color:#1e517f}
   .nav-collapse
   {
     width:auto;
+  }
+
+  /*------------------------------------------\
+  |        Loan pages [roman]                 |
+  \------------------------------------------*/
+  .loan-module
+  {
+    margin:0 20px 30px 20px;
   }
 
   #content-blog,
@@ -5093,6 +5118,14 @@ p.business-inner-text{color:#1e517f}
 
 @media all and (max-width: 320px) {
   
+  /*------------------------------------------\
+  |        Loan pages [roman]                 |
+  \------------------------------------------*/
+  .loan-module
+  {
+    margin:0 20px 30px 20px;
+  }
+
   /* -------- fix finy spacing bugs in mobile view -------- */
   .widget-wrapper 
   {

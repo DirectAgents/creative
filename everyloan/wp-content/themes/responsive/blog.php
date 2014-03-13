@@ -45,7 +45,8 @@ global $more; $more = 0;
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>       
 				<?php responsive_entry_top(); ?>
 					
-					<?php get_template_part( 'post-meta' ); ?>
+					
+					<h1 class="entry-title post-title everyloan-title"><?php the_title( ); ?></h1>
 					
 					<div class="post-entry">
 						<?php if ( has_post_thumbnail()) : ?>
