@@ -1385,7 +1385,7 @@ p.personal-inner-text{color:#1e517f; font-weight:bold;}
   border: 1px solid #e5e5e5;
   border-radius: 4px;
   clear: both;
-  margin: 20px auto 20px -20px;
+  //margin: 20px auto 20px -20px;
   padding: 0 0px 20px 20px;
   position: relative;
 }
@@ -4814,7 +4814,7 @@ p.business-inner-text{color:#1e517f}
   \------------------------------------------*/
 
   #wrapper { width:90%; }
-  .home-main-image-cont { text-align:center;width:100%; }
+  .home-main-image-cont { text-align:center;width:100%;margin:20px auto; }
   
   /*------------------------------------------\
   |        News pages [roman]                 |
