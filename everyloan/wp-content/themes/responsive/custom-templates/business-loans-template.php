@@ -82,6 +82,8 @@ global $more; $more = 0;
 
 		</div>
 
+		
+
 		<?php //do_action ( 'rs_display_social_bar', get_the_date(), get_permalink() ); ?>
 
 	</div><!-- end of #post-<?php the_ID(); ?> -->       

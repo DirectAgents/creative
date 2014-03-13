@@ -83,12 +83,16 @@ global $more; $more = 0;
 
 		<div class='loan-module'>
 			
-			<h3 class='small-title'>
+			<h2 class='secondary-title'>
 				Why Every Loan?
-			</h3>
+			</h2>
 			
 			<p>
 				Every Loan has everything you need to apply for a home loan. Use our online mortgage calculator to determine your needed loan amount, then apply online! Your application will be automatically matched with suitable lenders who will compete for your business. Compare mortgage offers from multiple lenders, just by filling out one simple, online form! Find the right loan every time. EveryLoan.com!!
+			</p>
+
+			<p>
+				Find the right loan every time. EveryLoan.com!!
 			</p>
 		
 		</div>
