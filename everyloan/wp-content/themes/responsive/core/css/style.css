@@ -2417,6 +2417,10 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
 .contact-info-desktop{display:none;}
 
 
+
+  #last_step_business { margin-left:70px; width:500px; margin-top:95px; display: none; float:left; position:absolute; }
+
+
 /*******Business Loan Step by Step*********/
 
 
@@ -3562,6 +3566,10 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   float:left;
   margin:0px 0 0 0px; 
   } 
+  
+  
+  #last_step_business { margin-left:120px; width:500px; margin-top:45px; display: none; float:left; position:absolute; }
+  
 
 /*******Business Loan Step by Step*********/
 
