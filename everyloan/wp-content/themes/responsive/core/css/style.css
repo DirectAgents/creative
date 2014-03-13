@@ -4741,8 +4741,7 @@ p.business-inner-text{color:#1e517f}
     /*------------------------------------------\
     |        News pages [roman]                 |
     \------------------------------------------*/
-    .post,
-    .loan-module  /* from loan page */
+    .post
     {
       margin:0 30px;
     }
@@ -4750,6 +4749,10 @@ p.business-inner-text{color:#1e517f}
     /*------------------------------------------\
     |        Loan pages [roman]                 |
     \------------------------------------------*/
+    .loan-module
+    {
+      margin:0 10px 20px;
+    }
 }
 
 @media only screen and (min-width: 569px) and (max-width: 767px) {
@@ -4896,7 +4899,7 @@ p.business-inner-text{color:#1e517f}
   #content 
   { 
     width:100% !important;
-    margin-top:0;
+    margin-top:30px;
   }
 
   /* ----- Advice and Articles page ------ */
@@ -4980,7 +4983,7 @@ p.business-inner-text{color:#1e517f}
   #content 
   { 
     width:100% !important;
-    margin-top:0;
+    margin-top:20px;
   }
 
   .post

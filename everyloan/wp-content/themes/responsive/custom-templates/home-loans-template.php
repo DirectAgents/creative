@@ -1,7 +1,7 @@
 <?php 
 
 /*
-	Template Name: Home Loans
+	Template Name: Home Loans Template
 */
 
 // Exit if accessed directly
@@ -18,7 +18,7 @@ global $more; $more = 0;
 		
 		<div class="loan-module">
 		
-			<h1 class="loan-title">Home Loans</h1>
+			<h1 class="loan-title"><?php the_title(); ?></h1>
 
 			<p>
 				Home loans from Every Loan can help you get into a new home or refinance an existing home. We work with private lenders all over the country to secure you the best terms and rates available for your home loan. Our large network of lenders means you have access to the wide variety of home loans and are certain to find one that meets your needs.At Every Loan, you'll receive quotes from lenders who are eager to finance your home mortgage right away. You can compare the offers you receive from the comfort of home, with no sales pressure. We can even provide home loan financing to those with bad credit or no credit.

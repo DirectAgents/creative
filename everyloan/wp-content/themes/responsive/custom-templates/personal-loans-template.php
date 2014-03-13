@@ -1,7 +1,7 @@
 <?php 
 
 /*
-	Template Name: Business Loans Template
+	Template Name: Personal Loans Template
 */
 
 // Exit if accessed directly
