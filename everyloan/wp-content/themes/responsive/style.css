@@ -3913,17 +3913,22 @@ ul.loan-list li
 {
   background:#fff;
   overflow:hidden;
+  -webkit-box-shadow:0 2px 8px 1px rgba(51, 51, 51, 0.4);box-shadow:0 2px 8px 1px rgba(51, 51, 51, 0.4);
 }
 
 body.alt-home { background:url('core/images/bg-small2.jpg') 0 88px; }
 
 .alt-home #wrapper { background:url('core/images/transp70.png');}
 
-.alt-home #footer { background:#fff; }
+.alt-home #footer 
+{ 
+  background:#fff;
+  -webkit-box-shadow:0 -2px 8px 1px rgba(51, 51, 51, 0.4);box-shadow:0 -2px 8px 1px rgba(51, 51, 51, 0.4); 
+}
 
 .alt-home #footer a { color:#1e517f; }
 
-.alt-home #footer-logo { background: url('../../uploads/2013/09/cropped-everyloan-logo.png'); }
+.alt-home #footer-logo { background: url('core/images/footer-everyloan-color.png') 0 0 no-repeat; }
 
 .alt-home #footer-logo img { visibility:hidden; }
 
