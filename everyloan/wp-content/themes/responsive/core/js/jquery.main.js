@@ -501,7 +501,8 @@ $(function(){
 		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
 		
 		$('#eleventh_step').hide();
-	    $('#twelth_step').show();     
+	    $('#twelth_step').show();   
+		$('#last_step_business').show();  
 		
 		$("#siteloader").html('<object data="http://localhost/directagents/everyloan/github/creative/everyloan/api/leadpoint.html">');
 		$('#siteloader').hide();          

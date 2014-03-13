@@ -34,12 +34,15 @@ if ( !defined('ABSPATH')) exit;
       </li>
       <li>
         <div class="styled-select">
-          <select>
-            <option>Select loan type</option>
-            <option>Home Loans</option>
-            <option>Personal Loans</option>
-            <option>Business Loans</option>
-          </select>
+        <select id="i-want-to-borrow-money-select">
+<option>Select loan type</option>
+         <option value="loans/business/">Home Purchase</option>
+<option value="loans/home/">Home Refinance</option>
+<option value="loans/business/">Small Business</option>
+<option value="loans/personal/">Debt Consolidation</option>
+<option value="loans/personal/">Home Improvement</option>
+<option value="loans/personal/">Vacation</option>
+</select>
         </div>
       </li>
       <li>
@@ -47,18 +50,18 @@ if ( !defined('ABSPATH')) exit;
       </li>
       <li>
         <div class="styled-select">
-          <select>
-            <option>Select credit quality</option>
-            <option>Excellent (720+)</option>
-            <option>Good (660-720)</option>
-            <option>Fair (600-660)</option>
-            <option>Some Problem (below 600)</option>
-          </select>
+          <select id="credit-score">
+<option>Select credit quality</option>
+<option>Excellent (720+)</option>
+<option>Good (660-720)</option>
+<option>Fair (600-660)</option>
+<option>Some Problem (below 600)</option>
+</select>
         </div>
       </li>
     </ul>
     <div style="background:#fff; padding-left:27px; padding-bottom:20px; border-bottom-right-radius:8px;
-  border-bottom-left-radius:8px;"> <a href="#"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif"/></a> </div>
+  border-bottom-left-radius:8px;"> <a href="#" id="start-here-btn"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif"/></a> </div>
   </div>
   <!-- end of .widget-wrapper -->
   

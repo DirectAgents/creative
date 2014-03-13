@@ -28,12 +28,12 @@ global $more; $more = 0;
 
 
 
-<div id="content-business-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
-<div class="business-loans-box-step-desktop">
+<div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
+<div class="personal-loans-box-step-desktop">
 <div class="business-loans-box-step1-desktop-title">Find the Right Loan for your Needs in Seconds!</div>
 
-<div class="progress-steps1">
-<div style="float:left">Process:</div>	
+<div class="progress-steps2">
+<div style="float:left">Progress:&nbsp;&nbsp;</div>	
 
 <div id="progress_bar">
         <div id="progress"></div>
@@ -42,17 +42,18 @@ global $more; $more = 0;
 
 </div>
 
-<div class="business-loans-box-step-desktop-left-column">
-<div class="rates-business-loans-steps">Rates start at 3.16% APR</div>
+<div class="personal-loans-box-step-desktop-left-column">
+<div class="rates-personal-loans-steps">Rates start at 6.73% APR</div>
 <div class="content-left">
 
-Apply online for a loan of any kind!
-<p><div class="title">Lower Rates</div></p>
-<p class="personal-inner-text">Low cost and complexity to lending allows us to pass the savings to you.</p>
-<p><div class="title">Quick, Easy, Online Process</div></p>
-<p class="personal-inner-text">Apply in minutes, get an instant rate quote.</p>
-<p><div class="title">Secure and Confidential</div></p>
-<p class="personal-inner-text">Your identity and personal information are protected and never shared with investors</p>
+Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and investors.
+<ul>
+<li><p class="personal-inner-text">Get cash in a lump sum</p></li>
+<li><p class="personal-inner-text">No collateral required</p></li>
+<li><p class="personal-inner-text">Use for unexpected expenses, home improvements or dream vacations!</p></li>
+<li><p class="personal-inner-text">Rates from 6.73% to 35.36% APR</p></li>
+</ul>
+
 </div>
 </div>
 
@@ -66,13 +67,17 @@ Apply online for a loan of any kind!
 
 
         <form action="#" method="post">
+        
+        <input type="hidden" id="IsPrimaryBorrower" name="IsPrimaryBorrower" value="Yes"/>
 	
     
             <!-- #first_step -->
             <div id="first_step" <?php if($_GET['pass'] == 'y') { ?>style="display:none" <? } ?>>
                
 
-
+ <div id="first_step_personal">
+ 
+ 
                 <div class="form">
                 
 <table cellpadding="0" cellspacing="0" border="1">
@@ -115,68 +120,35 @@ Apply online for a loan of any kind!
                     
                    
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit" type="submit" name="submit_first" id="submit_first" value="" />
+                <input class="submit_first" type="submit" name="submit_first" id="submit_first" value="" />
             </div>      
+
+</div>
 
 
             <!-- #second_step -->
-            <div id="second_step" <?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
+            <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
 
-<div class="previous"><a href="#" class="previous-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-personal"><a href="#" class="previous-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next"><a href="#" class="next-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>
+<!--<div class="next-personal"><a href="#" class="next-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
 
+
+ <div id="second_step_personal">
 
                 <div class="form">
 
 
-<table cellpadding="0" cellspacing="0" border="1">
+
+
+<table cellpadding="0" cellspacing="0" border="0">
 
 <tr>
-<td><label>Zip Code</label></td>
+<td><label>How much would you like to borrow?</label></td>
 </tr>
 
 <tr>
-<td>                
-                
- <input type="text" name="username" id="username" value=""/>
-
-  </td>
-</tr>  
-</table>      
-
-                                 
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_second" type="submit" name="submit_second" id="submit_second" value="" />
-            </div>      
-
-
-
-
-            <!-- #third_step -->
-            <div id="third_step">
-
-
-<div class="previous-third"><a href="#" class="previous-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
-<div class="next-third"><a href="#" class="next-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>
-
-               
-                <div class="form">
-                   
-                 <table cellpadding="0" cellspacing="0" border="1">
-
-
-<tr>
-<td valign="top">&nbsp;</td>
-<td><label>How much are you seeking in financing?</label></td>
-</tr>
-
-    
-
-<tr>
-<td>&nbsp;</td>
 <td>                
                 
 <select id="finance_amount" name="finance_amount">
@@ -190,45 +162,49 @@ Apply online for a loan of any kind!
 <option value="$250,001 - $500,000">$500,001 - $1M</option>
 <option value="Over $1M">Over $1M</option>
 </select>
+
   </td>
 </tr>  
-</table>                
-                   
-                    
+</table>      
+
+                                 
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_third" type="submit" name="submit_third" id="submit_third" value="" />
+                <input class="submit_second" type="submit" name="submit_second" id="submit_second" value="" />
                 
+                </div>
             </div>      
-            
-            
-            <!-- #fourth_step -->
-            <div id="fourth_step">
- 
-<div class="previous-fourth"><a href="#" class="previous-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-fourth"><a href="#" class="next-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>
+
+
+
+
+            <!-- #third_step -->
+            <div id="third_step">
+
+
+<div class="previous-third-personal"><a href="#" class="previous-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<!--<div class="next-third-personal"><a href="#" class="next-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+
+   <div id="third_step_personal"> 
                
-
                 <div class="form">
-               
- 
-                    
-                    
-                     <table cellpadding="0" cellspacing="0" border="1">
+                   
+ <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title-fourth">How long has your business been established?</div></td>
+
+<td><label>How long has your business been established?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
+
 <td>                
                 
-<select id="time_in_business" name="time_in_business" style="width:400px;">
+<select id="time_in_business" name="time_in_business">
 <option value="Not yet in business, still in planning stages">Not yet in business, still in planning stages</option>
 <option value="Looking to buy an existing business">Looking to buy an existing business</option>
 <option value="0 to 6 months">0 to 6 months</option>
@@ -241,45 +217,48 @@ Apply online for a loan of any kind!
   </td>
 </tr>  
 </table>                
-                    
-                    
+               
+                   
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_fourth" type="submit" name="submit_fourth" id="submit_fourth" value="" />            
-            </div>
+                <input class="submit_third" type="submit" name="submit_third" id="submit_third" value="" />
+                
+            </div>      
+    
+    </div>        
             
-            
-            
-   
-   
-    <!-- #fifth_step -->
-            <div id="fifth_step">
+            <!-- #fourth_step -->
+            <div id="fourth_step">
+ 
+<div class="previous-fourth-personal"><a href="#" class="previous-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<!--<div class="next-fourth-personal"><a href="#" class="next-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
                
 
-<div class="previous-fifth"><a href="#" class="previous-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-fifth"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>
+
+<div id="fourth_step_personal"> 
 
                 <div class="form">
                
-               
-               
-               
- <table cellpadding="0" cellspacing="0" border="1">
+ 
+                    
+                    
+                     <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title">What were your company's total revenues over the past 12 months?</div></td>
+
+<td><label>What were your company's total revenues over the past 12 months?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
+
 <td>                
                 
-<select id="annual_revenue" name="annual_revenue" style="width:330px;">
+<select id="annual_revenue" name="annual_revenue">
 <option value="$0, No Revenues">$0, No Revenues</option>
 <option value="Below $50,000">Below $50,000</option>
 <option value="$50,001 - $100,000">$50,001 - $100,000</option>
@@ -292,6 +271,63 @@ Apply online for a loan of any kind!
   </td>
 </tr>  
 </table>                
+
+                    
+                    
+                    
+                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+                <input class="submit_fourth" type="submit" name="submit_fourth" id="submit_fourth" value="" />            
+            </div>
+            
+       </div>     
+            
+   
+   
+    <!-- #fifth_step -->
+            <div id="fifth_step">
+               
+
+<div class="previous-fifth-personal"><a href="#" class="previous-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<!--<div class="next-fifth-personal"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+
+
+
+<div id="fifth_step_personal"> 
+
+
+                <div class="form">
+               
+               
+               
+               
+      <table cellpadding="0" cellspacing="0" border="1">
+
+
+<tr>
+
+<td><label>What is your monthly volume of credit card sales?</label></td>
+</tr>
+
+    
+
+<tr>
+
+<td>                
+           
+<select id="monthly_charges" name="monthly_charges">
+<option value="None, I don't accept credit cards">None, I don't accept credit cards</option>
+<option value="Not yet in business">Not yet in business</option>
+<option value="$1,000 - $2,500">$1,000 - $2,500</option>
+<option value="$2,500 - $5,000">$2,500 - $5,000</option>
+<option value="$5,001 - $10,000">$5,001 - $10,000</option>
+<option value="$10,001 - $25,000">$10,001 - $25,000</option>
+<option value="$25,001 - $100,000">$25,001 - $100,000</option>
+<option value="$100,001 +">$100,001 +</option>
+</select>
+  </td>
+</tr>  
+</table>   
  
                
                     
@@ -304,48 +340,52 @@ Apply online for a loan of any kind!
                 <input class="submit_fifth" type="submit" name="submit_fifth" id="submit_fifth" value="" />                      
             </div>         
             
-            
+   </div>         
             
             
            <!-- #sixth_step -->
             <div id="sixth_step">
 
 
-<div class="previous-sixth"><a href="#" class="previous-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-sixth-personal"><a href="#" class="previous-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-sixth"><a href="#" class="next-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>               
+<!--<div class="next-sixth-personal"><a href="#" class="next-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->              
+
+
+<div id="sixth_step_personal"> 
 
                 <div class="form">
                
                     
                     
-                    <table cellpadding="0" cellspacing="0" border="1">
+                 <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title-sixth">What is your monthly volume of credit card sales?</div></td>
+
+<td><label>What is your total monthly volume of accounts receivable orders?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
-<td>                
-                
-<select id="monthly_charges" name="monthly_charges" style="width:350px;">
-<option value="None, I don't accept credit cards">None, I don't accept credit cards</option>
-<option value="Not yet in business">Not yet in business</option>
-<option value="$1,000 - $2,500">$1,000 - $2,500</option>
-<option value="$2,500 - $5,000">$2,500 - $5,000</option>
-<option value="$5,001 - $10,000">$5,001 - $10,000</option>
-<option value="$10,001 - $25,000">$10,001 - $25,000</option>
-<option value="$25,001 - $100,000">$25,001 - $100,000</option>
-<option value="$100,001 +">$100,001 +</option>
+
+<td>
+
+<select id="accounts_receivable_amount" name="accounts_receivable_amount">
+<option value="Do not have accounts receivable">Do not have accounts receivable</option>
+<option value="$1 - $999">$1 - $999</option>
+<option value="$1,000 - $20,000">$1,000 - $20,000</option>
+<option value="$20,001 - $ $50,000">$20,001 - $ $50,000</option>
+<option value="$50,001 - $100,000">$50,001 - $100,000</option>
+<option value="$100,001 - $250,000">$100,001 - $250,000</option>
+<option value="$250,001">$250,001</option>
 </select>
-  </td>
+
+
+</td>
 </tr>  
-</table>                
+</table>                    
                     
                     
                     
@@ -353,36 +393,41 @@ Apply online for a loan of any kind!
                <input class="submit_sixth" type="submit" name="submit_sixth" id="submit_sixth" value="" />             
             </div>         
             
-            
+     </div>       
             
      
      
       <!-- #sevents_step -->
             <div id="seventh_step">
 
-<div class="previous-seventh"><a href="#" class="previous-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-seventh-personal"><a href="#" class="previous-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-seventh"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                              
+<!--<div class="next-seventh-personal"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                             
+
+
+
+<div id="seventh_step_personal"> 
 
                 <div class="form">
                
                     
                     
-                    <table cellpadding="0" cellspacing="0" border="1">
+                   <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title">What is your total monthly volume of accounts receivable orders?</div></td>
+
+<td><label>Will the financing be used to purchase equipment?</label></td>
 </tr>
 
     
 
 <tr>
-<td>&nbsp;</td>
-<td>                
-                
-<select id="accounts_receivable_amount" name="accounts_receivable_amount" style="width:350px;">
+
+<td>
+
+
+<select id="accounts_receivable_amount" name="accounts_receivable_amount">
 <option value="Do not have accounts receivable">Do not have accounts receivable</option>
 <option value="$1 - $999">$1 - $999</option>
 <option value="$1,000 - $20,000">$1,000 - $20,000</option>
@@ -391,16 +436,18 @@ Apply online for a loan of any kind!
 <option value="$100,001 - $250,000">$100,001 - $250,000</option>
 <option value="$250,001">$250,001</option>
 </select>
-  </td>
+
+
+</td>
 </tr>  
-</table>                
+</table>     
                     
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
                <input class="submit_seventh" type="submit" name="submit_seventh" id="submit_seventh" value="" />             
             </div>     
-            
+   </div>         
      
      
      
@@ -408,30 +455,35 @@ Apply online for a loan of any kind!
             <div id="eight_step">
  
 
-<div class="previous-eight"><a href="#" class="previous-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-eight-personal"><a href="#" class="previous-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-eight"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                              
+<!--<div class="next-eight-personal"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                            
                
+
+
+<div id="eight_step_business"> 
 
                 <div class="form">
                
                     
                     
-                    <table cellpadding="0" cellspacing="0" border="1">
+     
+
+
+<table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title">Will the financing be used to purchase equipment?</div></td>
+<td><label>Will the financing be used to purchase commercial real estate?</label></td>
 </tr>
 
-    
 
 <tr>
-<td>&nbsp;</td>
-<td>                
-                
-<select id="accounts_receivable_amount" name="accounts_receivable_amount" style="width:350px;">
+
+
+<td>
+
+<select id="accounts_receivable_amount" name="accounts_receivable_amount">
 <option value="Do not have accounts receivable">Do not have accounts receivable</option>
 <option value="$1 - $999">$1 - $999</option>
 <option value="$1,000 - $20,000">$1,000 - $20,000</option>
@@ -440,17 +492,27 @@ Apply online for a loan of any kind!
 <option value="$100,001 - $250,000">$100,001 - $250,000</option>
 <option value="$250,001">$250,001</option>
 </select>
-  </td>
-</tr>  
+
+
+</td>
+
+</tr>   
+
+
+            
+
+
 </table>                
-                    
-                    
+
+
+
+     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
                <input class="submit_eight" type="submit" name="submit_eight" id="submit_eight" value="" />             
             </div>    
      
-     
+     </div>
      
       
       
@@ -458,9 +520,14 @@ Apply online for a loan of any kind!
             <div id="ninth_step">
 
 
-<div class="previous-ninth"><a href="#" class="previous-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-ninth-personal"><a href="#" class="previous-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-ninth"><a href="#" class="next-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                                             
+<!--<div class="next-ninth-personal"><a href="#" class="next-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                           
+
+
+
+<div id="ninth_step_personal"> 
+
 
                 <div class="form">
                
@@ -468,66 +535,6 @@ Apply online for a loan of any kind!
                     
                     <table cellpadding="0" cellspacing="0" border="1">
 
-
-<tr>
-<td valign="top">&nbsp;</td>
-<td><div class="title">Will the financing be used to purchase commercial real estate?</div></td>
-</tr>
-
-    
-
-<tr>
-<td>&nbsp;</td>
-<td>                
-                
-<select id="accounts_receivable_amount" name="accounts_receivable_amount" style="width:350px;">
-<option value="Do not have accounts receivable">Do not have accounts receivable</option>
-<option value="$1 - $999">$1 - $999</option>
-<option value="$1,000 - $20,000">$1,000 - $20,000</option>
-<option value="$20,001 - $ $50,000">$20,001 - $ $50,000</option>
-<option value="$50,001 - $100,000">$50,001 - $100,000</option>
-<option value="$100,001 - $250,000">$100,001 - $250,000</option>
-<option value="$250,001">$250,001</option>
-</select>
-  </td>
-</tr>  
-</table>                
-                    
-                    
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_ninth" type="submit" name="submit_ninth" id="submit_ninth" value="" />             
-            </div>  
-            
-            
-  
-  
- 
-            
-            
-            
-            
-  
-  
- 
-   <!-- #tenth_step -->
-            <div id="tenth_step">
-               
-
-<div class="previous-tenth"><a href="#" class="previous-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
-<div class="next-tenth"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                                   
-
-                <div class="form">
-               
-                    
-                    
-                    <table cellpadding="0" cellspacing="0" border="1">
-
-
-
-
-    
 
 <tr>
 <td><label>Business Name</label></td>
@@ -543,7 +550,7 @@ Apply online for a loan of any kind!
 
 
 <tr>
-<td><label>You Full Name</label></td>
+<td><label>Your Full Name</label></td>
 </tr>
 
 <tr>
@@ -558,31 +565,42 @@ Apply online for a loan of any kind!
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_tenth" type="submit" name="submit_tenth" id="submit_tenth" value="" />             
-            </div>                             
+               <input class="submit_ninth" type="submit" name="submit_ninth" id="submit_ninth" value="" />             
+            </div>  
+            
+  </div>          
+  
+  
+ 
             
             
-
-
-
-
-
- <!-- #eleventh_step -->
-            <div id="eleventh_step">
+            
+            
+  
+  
+ 
+   <!-- #tenth_step -->
+            <div id="tenth_step">
                
 
+<div class="previous-tenth-personal"><a href="#" class="previous-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="previous-eleventh"><a href="#" class="previous-eleventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<!--<div class="next-tenth-personal"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                  
 
-<div class="next-eleventh"><a href="#" class="next-eleventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                     
 
+
+<div id="tenth_step_personal"> 
 
                 <div class="form">
                
                     
                     
-                    <table cellpadding="0" cellspacing="0" border="1">
+     <table cellpadding="0" cellspacing="0" border="1">
 
+
+
+
+    
 
 <tr>
 <td><label>Email Address</label></td>
@@ -591,7 +609,7 @@ Apply online for a loan of any kind!
 <tr>
 <td>                
                 
-<input type="text" value=""/>
+<input type="text" name="Street" id="Street" value=""/>
   </td>
 </tr> 
 
@@ -604,35 +622,41 @@ Apply online for a loan of any kind!
 <tr>
 <td>                
                 
-<input type="text" value=""/>
+<input type="text" name="PostalCode" id="PostalCode" value=""/>
   </td>
 </tr> 
  
-</table>                
+</table>                             
                     
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_eleventh" type="submit" name="submit_eleventh" id="submit_eleventh" value="" />             
-            </div>                                         
+               <input class="submit_tenth" type="submit" name="submit_tenth" id="submit_tenth" value="" />             
+            </div>                             
             
-            
-  
-  
-  
-  <!-- #twelth_step -->
-            <div id="twelth_step">
+     </div>       
 
 
-<div class="previous-twelth"><a href="#" class="previous-twelth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
+
+
+ <!-- #last_step -->
+            <div id="eleventh_step">
+               
+
+
+<div class="previous-eleventh-business"><a href="#" class="previous-eleventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+                 
+
+
+
+<div id="eleventh_step_business"> 
 
                 <div class="form">
                
- 
- 
- 
- <table cellpadding="0" cellspacing="0" border="1">
+                    
+                    
+                   <table cellpadding="0" cellspacing="0" border="1">
 
 <tr>
 <td><label>Industry</label></td>
@@ -1010,24 +1034,19 @@ Apply online for a loan of any kind!
   </td>
 </tr>  
 </table>      
-
-                    
-                    
                     
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_twelth" type="submit" name="submit_twelth" id="submit_twelth" value="" />             
-            </div>                                                   
-                       
+                       <input class="submit_eleventh_business" type="submit" name="submit_eleventh" id="submit_eleventh" value="" />     
+            </div>                                         
+            
+      </div>      
   
   
   
- 
- 
- 
-  <!-- #last_step -->
-            <div id="last_step">
+   <!-- #last_step -->
+            <div id="last_step_business">
                
                 <div class="form">
                
@@ -1044,12 +1063,9 @@ Apply online for a loan of any kind!
                     
                 </div>     
                 
-            </div>                                         
-            
+            </div>    
+  
  
- 
-            
-            
             
         </form>
         
@@ -1068,7 +1084,7 @@ Apply online for a loan of any kind!
 </div>
 
 <div class="terms-steps-desktop">
-Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentesque quisque. Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed, sit duis vestibulum ultricies, placerat morbi amet vel, nullam in in lorem vel. Quam euismod sem, semper ut potenti pellentesque quisque. 
+<strong>Disclaimer for Business Loans:</strong> Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentesque quisque. Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed, sit duis vestibulum ultricies, placerat morbi amet vel, nullam in in lorem vel. Quam euismod sem, semper ut potenti pellentesque quisque. 
 In eget sapien sed, sit duis vestibulum ultricies, placerat morbi amet vel, nullam in in lorem vel.
 </div>
 
@@ -1078,3 +1094,4 @@ In eget sapien sed, sit duis vestibulum ultricies, placerat morbi amet vel, null
 </div><!-- end of #content -->
 
 <?php get_footer(); ?>
+

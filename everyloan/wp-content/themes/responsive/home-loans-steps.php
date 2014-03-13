@@ -28,7 +28,7 @@ global $more; $more = 0;
 
 
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
-<div class="personal-loans-box-step-desktop">
+<div class="home-loans-box-step-desktop">
 <div class="personal-loans-box-step1-desktop-title">I want a home loan</div>
 
 <div class="progress-steps2">
@@ -45,13 +45,9 @@ global $more; $more = 0;
 <div class="rates-personal-loans-steps">Rates start at 6.73% APR</div>
 <div class="content-left">
 
-Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and investors.
-<ul>
-<li><p class="personal-inner-text">Get cash in a lump sum</p></li>
-<li><p class="personal-inner-text">No collateral required</p></li>
-<li><p class="personal-inner-text">Use for unexpected expenses, home improvements or dream vacations!</p></li>
-<li><p class="personal-inner-text">Rates from 6.73% to 35.36% APR</p></li>
-</ul>
+Everyloan has competitive rates and fees that can save you money. We close the majority of our loans in 30 days
+or less, and we are highly recommended!<br /><br />
+<img src="../../wp-content/themes/responsive/core/images/business-table.gif"/>
 
 </div>
 </div>
@@ -128,10 +124,11 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             <!-- #second_step -->
             <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
-
+<?php if($_GET['pass'] != 'y') { ?>
 <div class="previous-home"><a href="#" class="previous-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<? } ?>
 
-<div class="next-home"><a href="#" class="next-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>
+<!--<div class="next-home"><a href="#" class="next-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
 
 
  <div id="second_step_personal">
@@ -181,7 +178,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-third-home"><a href="#" class="previous-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-third-home"><a href="#" class="next-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>
+<!--<div class="next-third-home"><a href="#" class="next-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
 
    <div id="third_step_personal"> 
                
@@ -220,7 +217,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
  
 <div class="previous-fourth-home"><a href="#" class="previous-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-fourth-home"><a href="#" class="next-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>
+<!--<div class="next-fourth-home"><a href="#" class="next-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
                
 
 
@@ -375,7 +372,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-fifth-home"><a href="#" class="previous-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-fifth-home"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>
+<!--<div class="next-fifth-home"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
 
 
 
@@ -544,7 +541,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-sixth-home"><a href="#" class="previous-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-sixth-home"><a href="#" class="next-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>               
+<!--<div class="next-sixth-home"><a href="#" class="next-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->              
 
 
 <div id="sixth_step_personal"> 
@@ -585,7 +582,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                              
+<!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                          
 
 
 
@@ -822,7 +819,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-eight-home"><a href="#" class="previous-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                              
+<!--<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                             
                
 
 
@@ -885,7 +882,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-ninth-home"><a href="#" class="previous-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-ninth-home"><a href="#" class="next-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                                             
+<!--<div class="next-ninth-home"><a href="#" class="next-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                        
 
 
 
@@ -948,7 +945,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-tenth-home"><a href="#" class="previous-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-tenth-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                                   
+<!--<div class="next-tenth-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                  
 
 
 
@@ -1017,7 +1014,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-eleventh-home"><a href="#" class="previous-eleventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>                                   
+<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                   
 
 
 
@@ -1111,7 +1108,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 </div>
 
 <div class="terms-steps-desktop">
-Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentesque quisque. Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed, sit duis vestibulum ultricies, placerat morbi amet vel, nullam in in lorem vel. Quam euismod sem, semper ut potenti pellentesque quisque. 
+<strong>Disclaimer for Home Loans:</strong> Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentesque quisque. Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed, sit duis vestibulum ultricies, placerat morbi amet vel, nullam in in lorem vel. Quam euismod sem, semper ut potenti pellentesque quisque. 
 In eget sapien sed, sit duis vestibulum ultricies, placerat morbi amet vel, nullam in in lorem vel.
 </div>
 
