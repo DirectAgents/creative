@@ -29,7 +29,12 @@ global $more; $more = 0;
 
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 <div class="personal-loans-box-step-desktop">
-<div class="personal-loans-box-step1-desktop-title">I want a personal loan</div>
+
+
+<?php if($_GET['loan'] == 'debt-consolidation') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a debt consolidation loan</div>
+<? } ?>
+
 
 <div class="progress-steps2">
 <div style="float:left">Progress:&nbsp;&nbsp;</div>	

@@ -695,7 +695,14 @@ $('.previous-twelth-step').click(function(){
 });	 
 	
 
-				
+
+
+$('#MTG_TWO_YES').change(function() {
+    if ($("#MTG_TWO_YES").val() == "yes") {
+        //do something
+    }
+});		
+   			
 	
 
 });

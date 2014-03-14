@@ -101,9 +101,41 @@ $(window).ready(function() {
 	
 
 
- $('#start-here-btn').click(function(){
 
-    location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?credit='+$('#credit-score').val()+'&pass=y';
+
+ $('#start-here-btn').click(function(){
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/home-purchase/') {
+    location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-purchase&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/home-refinance/') {
+    location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-refinance&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/small-business/') {
+		
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=small-business&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/debt-consolidation/') {
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=debt-consolidation&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/home-improvement/') {
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-improvement&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/vacation/') {
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-improvement&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	
+	
+	
+	
 
 });
 

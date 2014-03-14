@@ -30,7 +30,10 @@ global $more; $more = 0;
 
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 <div class="personal-loans-box-step-desktop">
-<div class="business-loans-box-step1-desktop-title">Find the Right Loan for your Needs in Seconds!</div>
+
+<?php if($_GET['loan'] == 'small-business') { ?>
+<div class="business-loans-box-step1-desktop-title">I want a small business loan</div>
+<? } ?>
 
 <div class="progress-steps2">
 <div style="float:left">Progress:&nbsp;&nbsp;</div>	

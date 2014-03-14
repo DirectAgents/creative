@@ -642,7 +642,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 
 
 .business-loans-box-step1-desktop-title{
-  background:url(../images/find-the-right-loan-for-your-needs-in-seconds3.png) no-repeat;
+  
   float:left;
   font-size: 16px;  
   font-family: 'heroregular';
@@ -653,7 +653,8 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
   width:100%;
   height:30px;
   margin:25px 0 0 45px;
-  text-indent:-99999px;
+  /*background:url(../images/find-the-right-loan-for-your-needs-in-seconds3.png) no-repeat;
+  text-indent:-99999px;*/
   }
 
 
@@ -2304,7 +2305,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 
 #sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 
-.radio-label { float:left; width:15px; padding:6px 0 0 5px; } 
+.radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
 
 
   
@@ -2331,7 +2332,7 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
 
 
 .business-loans-box-step1-desktop-title{
-	/*background:url(../images/personal-loans-box-step1-desktop.png) no-repeat;*/
+	
 	float:left;
 	font-size: 14px;  
 	font-family: 'heroregular';
@@ -2342,6 +2343,8 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
 	width:300px;
 	height:30px;
 	margin:20px 0 15px 50px;
+	/*background:url(../images/personal-loans-box-step1-desktop.png) no-repeat;
+	text-indent:-9999px*/
 	}
 
 .business-house-car-diamond{display:none;}
@@ -3495,7 +3498,7 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 
 #sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 
-.radio-label { float:left; width:15px; padding:6px 0 0 5px; } 
+.radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
 
 
   
@@ -3516,7 +3519,7 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 
 
 .business-loans-box-step1-desktop-title{
-  background:url(../images/find-the-right-loan-for-your-needs-in-seconds.png) no-repeat;
+  
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -3527,7 +3530,8 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   width:100%;
   height:30px;
   margin:38px 0 0 60px;
-  text-indent:-99999px;
+  /*background:url(../images/find-the-right-loan-for-your-needs-in-seconds.png) no-repeat;
+  text-indent:-99999px;*/
   }
   
 
@@ -4483,7 +4487,7 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 
 #sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 
-.radio-label { float:left; width:15px; padding:6px 0 0 5px; } 
+.radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
 
 
 .previous-eleventh-home{display:block !important; position:absolute; left:-333px; top:80px;}
@@ -4510,7 +4514,7 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 
 
 .business-loans-box-step1-desktop-title{
-  background:url(../images/find-the-right-loan-for-your-needs-in-seconds.png) no-repeat;
+  
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -4521,7 +4525,8 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
   width:100%;
   height:30px;
   margin:38px 0 0 60px;
-  text-indent:-99999px;
+  /*background:url(../images/find-the-right-loan-for-your-needs-in-seconds.png) no-repeat;
+  text-indent:-99999px;*/
   }
 
 

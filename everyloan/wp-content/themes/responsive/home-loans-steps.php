@@ -29,7 +29,18 @@ global $more; $more = 0;
 
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 <div class="home-loans-box-step-desktop">
-<div class="personal-loans-box-step1-desktop-title">I want a home loan</div>
+
+<?php if($_GET['loan'] == 'home-purchase') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a home purchase loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'home-refinance') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a home refinance loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'home-improvement') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a home improvement loan</div>
+<? } ?>
 
 <div class="progress-steps2">
 <div style="float:left">Progress:&nbsp;&nbsp;</div>	
@@ -562,7 +573,7 @@ or less, and we are highly recommended!<br /><br />
 
 <tr>
 
-<td width="65" align="left"><input type="radio" name="MTG_TWO" value="yes" id="MTG_TWO_YES" ><span class="radio-label">Yes</span></td>
+<td width="65" align="left"><input type="radio" name="MTG_TWO" value="yes" id="MTG_TWO_YES"><span class="radio-label">Yes</span></td>
 <td width="135" colspan="2" align="left"><input type="radio" name="MTG_TWO" value="no" id="MTG_TWO_NO" checked="checked" />
   <span class="radio-label">No</span></td>
  </tr>  
