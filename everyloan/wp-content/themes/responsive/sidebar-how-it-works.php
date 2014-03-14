@@ -92,7 +92,7 @@ if ( !defined('ABSPATH')) exit;
     <div class="widget-wrapper-content">
       <ul>
         <li class="borrow">View an overview of all loans & find helpful resources to get started.</li>
-        <li class="view-loans-button-sidebar"><a href="#"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg"/></a></li>
+        <li class="view-loans-button-sidebar"><a href="loan-types"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg"/></a></li>
       </ul>
     </div>
   </div>

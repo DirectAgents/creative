@@ -16,13 +16,10 @@ global $more; $more = 0;
 
 	<div <?php post_class(); ?>>       
 		
-		<h1 class="entry-title post-title everyloan-title">
-			
-			<a href="<?php the_permalink(); ?>">
-				<?php the_title( ); ?>
-			</a>
-						
-		</h1>
+		<div class="loan-module">
+		
+			<h1 class="loan-title"><?php the_title(); ?></h1>
+		</div>
 
 		<div class='loan-module'>
 
@@ -85,7 +82,7 @@ global $more; $more = 0;
 
 		<div class='loan-module'>
 
-			<h2 class="secondary-title">Personal Loans</h2>
+			<h2 class="secondary-title">Student Loans</h2>
 
 			<ul class="loan-list">
 				
