@@ -46,7 +46,13 @@ global $more; $more = 0;
 				<?php responsive_entry_top(); ?>
 					
 					
-					<h1 class="entry-title post-title everyloan-title"><?php the_title( ); ?></h1>
+					<h1 class="entry-title post-title everyloan-title">
+						
+						<a href="<?php the_permalink(); ?>">
+							<?php the_title( ); ?>
+						</a>
+						
+					</h1>
 					
 					<div class="post-entry">
 						<?php if ( has_post_thumbnail()) : ?>
