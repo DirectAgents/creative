@@ -33,7 +33,8 @@ get_header(); ?>
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>       
 				<?php responsive_entry_top(); ?>
 
-                <?php get_template_part( 'post-meta-page' ); ?>
+                <?php //get_template_part( 'post-meta-page' ); ?>
+                <h1 class='everyloan-title'><?php the_title(); ?></h1>
                 
                 <div class="post-entry">
                     <?php the_content(__('Read more &#8250;', 'responsive')); ?>

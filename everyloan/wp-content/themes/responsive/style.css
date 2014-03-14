@@ -3891,8 +3891,7 @@ h2.secondary-title
 
 h3.small-title
 {
-  font-size:14px;
-  font-family:Arial, Helvetica;
+  font:bold 14px/20px Arial, Helvetica;
   color:#414344 !important;
   margin:8px 0;
 }
