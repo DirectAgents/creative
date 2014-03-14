@@ -180,11 +180,11 @@ get_header(); ?>
             												<div class="borrow-title-top">Borrow</div>
             												<div class="borrow-box-home-icon">View an overview of all loans and find helpful resources to get started.</div>
             												<div class="read-news"><a href="borrow"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" width="119" /></a></div>
-            												<div class="calculators-title-home-title">More Borrowers</div>
+            												<div class="calculators-title-home-title">Borrowing Resources</div>
             												<ul>
             													<li class="arrow"><a href="#">The Loan Process</a></li>
-            													<li class="arrow"><a href="#">Refinance</a></li>
-            													<li class="arrow"><a href="#">Home Purchase</a></li>
+            													<li class="arrow"><a href="advice-articles/?advice=refinance">Refinance</a></li>
+            													<li class="arrow"><a href="advice-articles/?advice=home-purchase">Home Purchase</a></li>
             													<li class="arrow"><a href="#">Home Equity</a></li>
             												</ul>
             												<div class="view-all-calculators"><a href="#">View More Resources</a></div>
