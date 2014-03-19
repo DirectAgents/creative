@@ -303,7 +303,7 @@ $(document).ready(function() {
         <?php wp_nav_menu(array(
             'container'       => '',
             'fallback_cb'	  =>  false,
-            'menu_class'      => 'top-menu',
+            'menu_class'      => 'menu',
             'theme_location'  => 'top-menu')
         ); 
         ?>
@@ -314,10 +314,6 @@ $(document).ready(function() {
 
 
     </div>  
-
-
-
-
 
     <?php if ( !get_header_image() ) : ?>
 
@@ -333,12 +329,14 @@ $(document).ready(function() {
     <div class="top-menu-mobile">
 
         <nav class="nav-collapse">
-             <?php wp_nav_menu(array(
-                'container'       => '',
-                'fallback_cb'	  =>  false,
-                'menu_class'      => 'top-menu',
-                'theme_location'  => 'top-menu')
-             ); 
+             <?php wp_nav_menu(
+                    array(
+                
+                        'container'       => '',
+                        'fallback_cb'	  =>  false,
+                        'menu_class'      => 'top-menu',
+                        'theme_location'  => 'top-menu'
+                )); 
              ?>
         </nav> 
     </div>   

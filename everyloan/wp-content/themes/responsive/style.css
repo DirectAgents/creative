@@ -2247,35 +2247,35 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 
 /* =Top Menu
 -------------------------------------------------------------- */
-.top-menu {
+.menu {
   float: right;
   margin: 0px 0 28px 0;
   padding: 0;
 }
 
-.top-menu li {
+.menu li {
   display: inline;
   list-style-type: none;
 }
 
-.top-menu li a {
-  border-left: 0px solid #cccccc;
+.menu li a {
+  //border-left: 0px solid #cccccc;
   color: #1e517f;
   font-size: 14px;
   padding: 0 33px 0 8px;
 }
 
-.top-menu > li:first-child > a {
+.menu > li:first-child > a {
   border-left: none;
 }
 
-.top-menu li a:hover {
+.menu li a:hover {
   color: #333333;
 }
 
 /* =Header Menu (Primary)
 -------------------------------------------------------------- */
-.menu {
+/*.menu {
   background-color: #585858;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#585858), to(#3d3d3d));
   background-image: -webkit-linear-gradient(top, #585858, #3d3d3d);
@@ -2286,7 +2286,7 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
   clear: both;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#585858, endColorstr=#3d3d3d);
   margin: 0 auto;
-}
+}*/
 
 .main-nav {
   clear: both;
@@ -2370,7 +2370,7 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
   width: auto;
 }
 
-.menu a {
+/*.menu a {
   border-left: 1px solid #585858;
   color: #ffffff;
   cursor: pointer;
@@ -2385,9 +2385,9 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
   text-decoration: none;
   text-shadow: 0 -1px 0 #000000;
   white-space: nowrap;
-}
+}*/
 
-.menu a:hover {
+/*.menu a:hover {
   background-color: #808080;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#808080), to(#363636));
   background-image: -webkit-linear-gradient(top, #808080, #363636);
@@ -2397,9 +2397,9 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
   background-image: linear-gradient(top, #808080, #363636);
   color: #ffffff;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#808080, endColorstr=#363636);
-}
+}*/
 
-ul.menu > li:hover {
+/*ul.menu > li:hover {
   background-color: #363636;
   color: #ffffff;
 }
@@ -2407,7 +2407,7 @@ ul.menu > li:hover {
 .menu .current_page_item a,
 .menu .current-menu-item a {
   background-color: #343434;
-}
+}*/
 
 .front-page .menu .current_page_item a {
   background: none;
@@ -3830,9 +3830,16 @@ BDO[DIR="rtl"] {
 
 }
 
-
-/*********** My style**************/
-
+/*------------------------------------------\
+|        Roman's table of contents          |
+|         - How it works                    |
+|         - Advice and articles             |
+|         - Generic styles                  |
+|         - Alternate Homepage              |
+|         - News page                       |
+|         - Pagination                      |
+|         - Loan pages                      |
+\------------------------------------------*/ 
 /*------------------------------------------\
 |            How it works [roman]           |
 \------------------------------------------*/
@@ -3877,7 +3884,7 @@ body
 
 p
 {
-  margin:0 0 10px;;
+  margin:0 0 10px;
 }
 
 h2.secondary-title
@@ -3978,8 +3985,8 @@ ul.loan-list li
 }
 /* ------------- END Alternative Homepage styles ------------- */
 
-#content .top-menu li a,
-#blog-content .top-menu li a  
+#content .menu li a,
+#blog-content .menu li a  
 {
   
   padding:0 33px 0 3px;
@@ -4032,7 +4039,7 @@ ul.loan-list li
 }
 
 /*------------------------------------------\
-|            News page [roman]              |
+|              News page                    |
 \------------------------------------------*/
 .post
 {
@@ -4106,8 +4113,9 @@ ul.loan-list li
       height: auto;
     }
 
-
-/* ---------- Pagination ----------*/
+/*------------------------------------------\
+|              Pagination                   | 
+\------------------------------------------*/
 
 #wrapper .navigation { float:right; }
 
@@ -4160,7 +4168,7 @@ ul.loan-list li
 .triangle-prev { margin:4px 7px 4px 6px; }
 
 /*------------------------------------------\
-|            Loan pages [roman]             |
+|                Loan pages                 |
 \------------------------------------------*/
 .loan-module { margin:0 10px 20px; }
 /* test */
