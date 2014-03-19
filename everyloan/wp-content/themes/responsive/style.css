@@ -3853,14 +3853,9 @@ BDO[DIR="rtl"] {
 |            Top Menu                       |
 \------------------------------------------*/
 
-/*.menu-item .sub-menu li {
-  display:inline-block;
-  margin-top:8px;
-  background:none;
+#header .nav-collapse.opened {
+  max-height:9999px !important;
 }
-.menu-item .sub-menu li a {
-  padding:20px;
-}*/
 
 /*------------------------------------------\
 |            How it works                   |
@@ -4066,7 +4061,6 @@ margin-bottom:20px;
 {
   font-size:30px; 
   color:#1e517f !important; 
- // margin:0; 
   width:100%;
   letter-spacing:1px; 
 }

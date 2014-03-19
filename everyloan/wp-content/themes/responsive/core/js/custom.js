@@ -19,7 +19,18 @@ $(function() {
 			}
 		});
 
+	})();
 
+	(function() {
+		
+		$('#menu-topmenu-1').find('a').click(function() {
+			
+			var sub_menu = $(this).next('.sub-menu');
+			console.log('link clicked');
+			if ( sub_menu.length != 0 )
+				sub_menu.slideToggle('fast');
+
+		});
 
 	})();
 

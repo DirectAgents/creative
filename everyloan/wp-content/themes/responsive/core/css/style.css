@@ -4477,7 +4477,6 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 .previous-home{position:absolute; left:-333px; top:80px;}
 .next-home{position:absolute; right:-166px; top:80px;}
 
-
 .previous-third-home{position:absolute; left:-333px; top:80px;}
 .next-third-home{position:absolute; right:-121px; top:80px;}
 
@@ -4813,10 +4812,7 @@ p.business-inner-text{color:#1e517f}
     /*------------------------------------------\
     |        News pages [roman]                 |
     \------------------------------------------*/
-    .post
-    {
-      margin:0 30px;
-    }
+    .post { margin:0 30px; }
 
     /*------------------------------------------\
     |        Loan pages [roman]                 |
@@ -4824,7 +4820,10 @@ p.business-inner-text{color:#1e517f}
     .loan-module { margin:0 10px 20px; }
 }
 
-@media only screen and (min-width: 569px) and (max-width: 767px) {
+@media only screen and (min-width: 568px) and (max-width: 768px) {
+
+  /* -------- Mobile Menu -------- */
+  ul.sub-menu { display:none; }
 
   /*------------------------------------------\
   |            Home pages [roman]             |
@@ -4836,18 +4835,13 @@ p.business-inner-text{color:#1e517f}
   /*------------------------------------------\
   |        News pages [roman]                 |
   \------------------------------------------*/
+
   .post,
-  .loan-module /* from loan page */
-  {
-   margin:0 30px;
-  }
+  .loan-module 
+    { margin:0 30px; } /* from loan page */
 
   #content-blog,
-  #content 
-  { 
-    width:100% !important;
-    //margin-top:0;
-  }
+  #content { width:100% !important; }
   /* ----- Advice and Articles page ------ */
   
   #content-advice-and-articles{ width:100%; }
@@ -4934,11 +4928,6 @@ p.business-inner-text{color:#1e517f}
       margin-top:20px;
     }
 
-    #wrapper 
-    {
-      //padding:0 0px 20px;
-    }
-
     #widgets-how-it-works .widget-wrapper
     {
       margin:20px 0 20px 34px;
@@ -4951,13 +4940,12 @@ p.business-inner-text{color:#1e517f}
 }
 
 /* ---------- iPhone 5 landscape mode ---------- */
-@media only screen and (min-width:321px) and (max-width:568px) {
-  body
-  {
-    overflow:hidden;
-  }
-  /* -------- Mobile Menu -------- */
+@media only screen and (min-width:320px) and (max-width:568px) {
+  
+  body { overflow:hidden; }
 
+  /* -------- Mobile Menu -------- */
+  ul.sub-menu { display:none; }
   
     #wrapper 
   {
@@ -4969,18 +4957,13 @@ p.business-inner-text{color:#1e517f}
 
   }
   
-  .nav-collapse
-  {
-    width:auto;
-  }
+  .nav-collapse { width:auto; }
 
   /*------------------------------------------\
   |        Loan pages [roman]                 |
   \------------------------------------------*/
-  .loan-module
-  {
-    margin:0 20px 30px 20px;
-  }
+  
+  .loan-module { margin:0 20px 30px 20px; }
 
   #content-blog,
   #content 
@@ -4993,10 +4976,7 @@ p.business-inner-text{color:#1e517f}
   
   #content-advice-and-articles { width:100%; }
   
-   #content-advice-and-articles .how-everyloan-works-content
-  {
-    padding-left:20px;
-  }
+   #content-advice-and-articles .how-everyloan-works-content { padding-left:20px; }
 
   .advice-choose-container
   {
@@ -5004,30 +4984,16 @@ p.business-inner-text{color:#1e517f}
     margin-bottom:20px;
   }
 
-  .advice_articles
-  {
-    margin:0 20px 0px;
-  }
+  .advice_articles { margin:0 20px 0px; }
   
   .advice_articles .post-meta,
-  .advice_articles .post-data
-  {
-    margin:0;
-  }
+  .advice_articles .post-data { margin:0; }
 
   /* ----- END Advice and Articles page ------ */
 
   /* ---------- How it works page ---------- */
-/*  #how-everyloan-apply-fund-repay,
-  .how-everyloan-works-bg
-  {
-    overflow:hidden;
-  }*/
   
-  .how-everyloan-works-bg
-  {
-    float:none;
-  }
+  .how-everyloan-works-bg { float:none; }
 
   #how-everyloan-apply-fund-repay
   {
@@ -5036,10 +5002,7 @@ p.business-inner-text{color:#1e517f}
     margin:0 auto;
   }
 
-  .apply
-  {
-    margin-left:15px;
-  }
+  .apply { margin-left:15px; }
 
   .how-everyloan-works-content
   {
@@ -5049,12 +5012,8 @@ p.business-inner-text{color:#1e517f}
 
   }
 
-  .hiw-cont
-  {
-    padding:20px !important;
-  }
+  .hiw-cont { padding:20px !important; }
  
-
   /* ------- News posts ------- */
   
   #content-blog,
@@ -5071,26 +5030,19 @@ p.business-inner-text{color:#1e517f}
     width:93%;
   }
 
- #content-blog .everyloan-title
-  {
-    margin-top:0;
-  }
+ #content-blog .everyloan-title { margin-top:0; }
 
   /* ---------- sidebar ---------- */
-  .img-cont 
-  {
-    text-align:center;
-  }
+  .img-cont { text-align:center; }
+
   .img-cont img,
   #find-the-right-loan
   {
     float:none;
   }
 
-  .home-sidebar-cont
-  {
-    padding:0;
-  }
+  .home-sidebar-cont { padding:0; }
+
   #widgets-how-it-works
   {
     padding: 30px 0px 0 18px;
@@ -5104,10 +5056,7 @@ p.business-inner-text{color:#1e517f}
     margin:20px auto;
   }
 
-  .widget-title-rates-homepage
-  {
-    width:96%;
-  }
+  .widget-title-rates-homepage { width:96%; }
 
   .learn-title-top-mobile,
   .calculate-title-top-mobile
@@ -5116,22 +5065,13 @@ p.business-inner-text{color:#1e517f}
   }
 
   .learn-box-home-mobile,
-  .calculate-box-home-mobile
-  {
-    overflow:hidden;
-  }
-  /* need to fix the mobile menu */
-  #header-mobile .top-menu-mobile,
-  #header-mobile .contact-info-mobile
-  {
-     /*float:left;
-     width:150px;*/
-  }
+  .calculate-box-home-mobile 
+    { overflow:hidden; }
 
-  .styled-select
-  {
-    width:90%;
-  }
+  /* -------- Mobile Menu -------- */
+  
+
+  .styled-select { width:90%; }
   /* ------- Comments ------- */
   #respond
   {
@@ -5202,10 +5142,8 @@ p.business-inner-text{color:#1e517f}
   /*------------------------------------------\
   |        Loan pages [roman]                 |
   \------------------------------------------*/
-  .loan-module
-  {
-    margin:0 20px 30px 20px;
-  }
+
+  .loan-module { margin:0 20px 30px 20px; }
 
   /* -------- fix finy spacing bugs in mobile view -------- */
   .widget-wrapper 
@@ -5219,21 +5157,13 @@ p.business-inner-text{color:#1e517f}
   /* ----- Advice and Articles page ------ */
   #content-advice-and-articles { width:100%; }
 
-  .advice_articles
-  {
-    margin:0 20px 0px;
-  }
+  .advice_articles { margin:0 20px 0px; }
 
  .advice_articles .post-meta,
  .advice_articles .post-data
- {
-  margin:0;
- }
+    { margin:0; }
 
-  .select-category-label
-  {
-    margin-bottom:10px;
-  }
+  .select-category-label { margin-bottom:10px; }
 
   .advice-choose-container
   {
@@ -5265,6 +5195,10 @@ p.business-inner-text{color:#1e517f}
     margin-bottom:5px;
   }
 
+  /* -------- Mobile Menu --------- */
+  
+  ul.sub-menu { display:none; }
+
   /****** ------- FIX FOR IPHONE VIEWPORT ********/
   #i-want-to-borrow-money { width:84%; }
   
@@ -5278,13 +5212,11 @@ p.business-inner-text{color:#1e517f}
   {
     width:96%;
     padding:0;
-    float: none;
+    float:none;
     margin:0 auto;
   }
 
-  .styled-select select {
-    padding:5px;
-  }
+  .styled-select select { padding:5px; }
   
   /* -------- END fix finy spacing bugs in mobile view -------- */
 
@@ -5311,10 +5243,7 @@ p.business-inner-text{color:#1e517f}
       display:inline-block;
     }
 
-  .social-icons img
-  {
-    margin:5px 8px 0 0;
-  }
+  .social-icons img { margin:5px 8px 0 0; }
 
   .fb-like
   {
@@ -5335,10 +5264,7 @@ p.business-inner-text{color:#1e517f}
     padding:0 15px;
   }
 
-  .single .next
-  {
-    float:left;
-  }
+  .single .next { float:left; }
 
   /* ------- Comments ------- */
   #respond
@@ -5356,10 +5282,7 @@ p.business-inner-text{color:#1e517f}
     margin:0px auto 25px;
   }
 
-  .navigation a
-  {
-    padding:0;
-  }
+  .navigation a { padding:0; }
 
   .calculate-box-home-desktop,
   .learn-box-home-desktop
@@ -5388,9 +5311,7 @@ p.business-inner-text{color:#1e517f}
 
   .view-all-calculators,
   .view-all
-  {
-    padding-left: 75px;
-  }
+    { padding-left: 75px; }
 }
 
 /* ----------------- END News page responsive ---------------*/
