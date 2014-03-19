@@ -3841,9 +3841,21 @@ BDO[DIR="rtl"] {
 |         - News page                       |
 |         - Pagination                      |
 |         - Loan pages                      |
-\------------------------------------------*/ 
+\------------------------------------------*/
+
 /*------------------------------------------\
-|            How it works [roman]           |
+|            Top Menu                       |
+\------------------------------------------*/
+
+.menu-item .sub-menu li {
+  display:inline-block;
+}
+.menu-item .sub-menu li a {
+  padding:20px;
+}
+
+/*------------------------------------------\
+|            How it works                   |
 \------------------------------------------*/
 
 .fund li,
@@ -3905,16 +3917,24 @@ h3.small-title
   margin:8px 0;
 }
 
-ul.loan-list
-{
-  margin:0;
+/* --------- Triangles --------- */
 
+.triangle-right 
+{
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 7px 0 7px 7px;
+  border-color: transparent transparent transparent #fff;
 }
 
-ul.loan-list li
+.triangle-left 
 {
-  list-style-type:disc;
-  margin-bottom:5px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 7px 7px 7px 0;
+  border-color: transparent #fff transparent transparent;
 }
 
 /*------------------------------------------------------------------\
@@ -3993,33 +4013,13 @@ ul.loan-list li
   
   padding:0 33px 0 3px;
 }
-  
-  /* --------- Triangles --------- */
 
- .triangle-right 
- {
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 7px 0 7px 7px;
-    border-color: transparent transparent transparent #fff;
- }
-
- .triangle-left 
- {
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 7px 7px 7px 0;
-    border-color: transparent #fff transparent transparent;
- }
-
- #wrapper .grey-cont
- {
-  width:100%;
-  margin-left:0;
-  margin-bottom:20px;
- }
+#wrapper .grey-cont
+{
+width:100%;
+margin-left:0;
+margin-bottom:20px;
+}
 
  /* --------- images ----------- */
 .fund img,
@@ -4172,5 +4172,18 @@ ul.loan-list li
 /*------------------------------------------\
 |                Loan pages                 |
 \------------------------------------------*/
+
 .loan-module { margin:0 10px 20px; }
+
+ul.loan-list
+{
+  margin:0;
+
+}
+/* a list style used for loan pages */
+ul.loan-list li
+{
+  list-style-type:disc;
+  margin-bottom:5px;
+}
 /* test */
