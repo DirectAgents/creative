@@ -21,15 +21,38 @@ $(function() {
 
 	})();
 
+	// Mobile menu adjustments
 	(function() {
 		
+		// Add a sub-menu item that mimics the root anchor
+		// if the the link goes somewhere
+		$('#menu-topmenu-1 > li a').each(function() {
+
+			var $this = $(this),
+				$href = $this.attr('href'),
+				$next = $this.next();
+
+			// if the anchor isn't linked exit out early
+			if ($href == '#' || $href == '')
+				return false;
+
+			if ($next.hasClass('sub-menu'))
+			{	
+				$next.prepend('<li><a href="' + $href + '">' + $this.text() +'</a></li>');
+			}
+		});
+
+		// Implement a slide in-out for sub-menus
 		$('#menu-topmenu-1').find('a').click(function() {
 			
-			var sub_menu = $(this).next('.sub-menu');
-			console.log('link clicked');
-			if ( sub_menu.length != 0 )
-				sub_menu.slideToggle('fast');
+			var $next = $(this).next();
 
+			if ($next.hasClass('sub-menu'))
+			{
+				$next.slideToggle('fast');
+				return false;
+			}
+			
 		});
 
 	})();

@@ -3853,9 +3853,19 @@ BDO[DIR="rtl"] {
 |            Top Menu                       |
 \------------------------------------------*/
 
-#header .nav-collapse.opened {
-  max-height:9999px !important;
+#header .nav-collapse.opened { max-height:9999px !important; }
+#menu-topmenu li { min-height:30px; }
+
+#menu-topmenu-1 ul.sub-menu
+{
+   border-right:1px solid #ccc;
+  border-left:1px solid #ccc; 
 }
+
+#menu-topmenu .sub-menu { 
+  margin-top:0px; 
+}
+
 
 /*------------------------------------------\
 |            How it works                   |
@@ -3893,6 +3903,7 @@ BDO[DIR="rtl"] {
 /*------------------------------------------\
 |           Generic Styles                  |
 \------------------------------------------*/
+
 body 
 { 
   overflow:auto;

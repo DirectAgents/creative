@@ -90,9 +90,12 @@ body {
 }
 
 .nav-collapse ul ul a {
-  background: #ca3716;
+  background:#e6e6e6;
   padding-left: 2em;
+  border-bottom:1px solid #ccc;
 }
+
+.nav-collapse ul ul a:first-child { border-top:1px solid #ccc; }
 
 @media screen and (min-width: 40em) {
   .nav-collapse ul ul a {
