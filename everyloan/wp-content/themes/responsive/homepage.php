@@ -83,8 +83,10 @@ get_header(); ?>
 															
 															<ul>
 																<?php while ( $q->have_posts() ) : $q->the_post(); ?>
-                										
-                											<li class="arrow"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                										          
+                											     <li class="arrow">
+                                                                    <a href="<?php the_permalink(); ?>"><?php echo short_text(get_the_title(), 40); ?></a>
+                                                                 </li>
                 											
                 											<?php endwhile; ?>
                 											

@@ -32,4 +32,11 @@ function excerpt_ellipse($text) {
 
 add_filter('the_excerpt', 'excerpt_ellipse');
 
+/* Create a shorter title */
+function short_text ($title, $max)
+{
+	strlen($title) >= $max ? $dots = '...' : $dots = '';
+	return substr($title, 0, $max) . $dots;
+}
+
 ?>

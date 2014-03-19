@@ -36,10 +36,8 @@ $(function() {
 			if ($href == '#' || $href == '')
 				return false;
 
-			if ($next.hasClass('sub-menu'))
-			{	
+			if ($next.hasClass('sub-menu'))	
 				$next.prepend('<li><a href="' + $href + '">' + $this.text() +'</a></li>');
-			}
 		});
 
 		// Implement a slide in-out for sub-menus
