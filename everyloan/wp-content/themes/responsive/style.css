@@ -2431,23 +2431,29 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 .menu li li a {
   background: transparent !important;
   border: none;
-  color: #444444;
-  font-size: 12px;
+  color:#1e517f;
+  font-size: 14px;
   font-weight: 400;
   height: auto;
   height: 20px;
   line-height: 20px;
-  padding: 5px 10px;
+  padding: 8px 10px;
   text-shadow: none;
   white-space: nowrap;
+  display:inline-block;
+  width:100%;
+  margin:0;
 }
 
 .menu li li a:hover {
-  background: #f5f5f5 !important;
+ // background: #fff !important;
   background-image: none;
   border: none;
   color: #444444;
   filter: none;
+  display:inline-block;
+  width:100%;
+  margin:0;
 }
 
 .menu li li:hover {
@@ -3847,12 +3853,14 @@ BDO[DIR="rtl"] {
 |            Top Menu                       |
 \------------------------------------------*/
 
-.menu-item .sub-menu li {
+/*.menu-item .sub-menu li {
   display:inline-block;
+  margin-top:8px;
+  background:none;
 }
 .menu-item .sub-menu li a {
   padding:20px;
-}
+}*/
 
 /*------------------------------------------\
 |            How it works                   |
