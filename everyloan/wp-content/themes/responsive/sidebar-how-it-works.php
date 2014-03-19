@@ -68,7 +68,7 @@ if ( !defined('ABSPATH')) exit;
   <div class="widget-wrapper">
     <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Learn</div>
     <div class="widget-wrapper-content">
-      <ul>
+      <ul class='bulb-list'>
         <li class="lightbulb">Keep up with industry news and the latest rates.</li>
         <li class="read-news-button-sidebar"><a href="http://termlifequotetoday.com/everyloan/news/"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg"/></a></li>
       </ul>
@@ -79,7 +79,7 @@ if ( !defined('ABSPATH')) exit;
   <div class="widget-wrapper">
     <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Calculate</div>
     <div class="widget-wrapper-content">
-      <ul>
+      <ul class="calc-list">
         <li class="calculator">Run the numbers, compare & visualize your loan.</li>
         <li class="calculate-button-sidebar"><a href="#"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg"/></a></li>
       </ul>
