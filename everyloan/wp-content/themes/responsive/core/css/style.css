@@ -1577,7 +1577,15 @@ h2 {
 .read-news-mobile{float:left; list-style-type:none; margin-left:90px; margin-top:20px;}
 
 .left-column{float:left; width:100px; padding-top:15px;}
-.right-column{float:left; margin-left:190px; margin-top:25px; width:200px;}
+.right-column{float:left; margin-left:190px; margin-top:25px; width:300px;}
+
+li.arrow-mobile a {
+font-size:14px;	
+}
+
+li.arrow-mobile2 a {
+font-size:14px;	
+}
 
 .lightbulb-box-home-mobile{float:left; width:180px;}
 .calculator-box-home-mobile{float:left; width:180px;}
@@ -2437,6 +2445,7 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
   border: 1px solid #e5e5e5;
   border-radius: 4px;
   margin-bottom: 20px !important;
+  
 }
 
 
@@ -2475,7 +2484,7 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
   /*background-color: #fff;*/
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  margin: 0 0 0px;
+   margin: 0 0 20px -10px;
 }
 
 
@@ -2632,6 +2641,7 @@ padding-bottom:20px; }
   letter-spacing:2px;
   padding:20px 0 20px 10px;
   width:98.7%;
+  text-align:left;
   }
 
 
@@ -2652,6 +2662,7 @@ padding:0px; margin-top:20px; padding-bottom:20px; }
   letter-spacing:2px; 
   padding:20px 0 20px 10px;
   width:98.7%;
+  text-align:left;
   } 
 
 
@@ -2736,6 +2747,7 @@ margin-top:20px; }
 
 #i-want-to-borrow-money li{
   padding-bottom:10px;
+  
   }
 
 
@@ -3607,7 +3619,7 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   /*background-color: #fff;*/
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  margin: 0 0 20px;
+  margin: 0 0 20px -5px;
 }
 
 
@@ -3635,7 +3647,9 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 #i-want-to-borrow-money label{
   font-weight:normal;
   margin-top:0px;
-  height:5px;
+  height:20px;
+  
+  width:100%;
   }
 
 
@@ -4063,6 +4077,12 @@ h2{margin-left:20px;}
 .overview{display:block !important}
 
 .borrow-mobile{display:none !important;}
+
+
+li.arrow a {
+font-size:11px;	
+}
+
   
 /*******LANDINGPAGE*********/
 

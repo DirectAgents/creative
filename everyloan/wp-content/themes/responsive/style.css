@@ -1694,6 +1694,7 @@ li.arrow-mobile a {
   font-size:12px;
   padding-bottom:5px;
   color:#1e517f;
+  text-align:left;
   }
 
 li.arrow-mobile a:hover{color:#ee8025;} 
@@ -1710,6 +1711,7 @@ li.arrow-mobile2 a {
   padding-bottom:5px;
   margin-left:10px;
   color:#1e517f;
+  text-align:left;
   }
 
 li.arrow-mobile2 a:hover{color:#ee8025;}  
@@ -1719,7 +1721,7 @@ li.arrow-mobile2 a:hover{color:#ee8025;}
 
 .read-news-button-sidebar, .calculate-button-sidebar, .view-loans-button-sidebar{float:left; list-style-type:none; margin-left:70px; margin-top:0px; margin-bottom:10px;} 
 
-.view-all a, .view-all-calculators a, .view-more-resources a{float:left; width:100%; font-size:12px; font-weight:bold; padding-left:40px; padding-bottom:10px;}
+.view-all a, .view-all-calculators a, .view-more-resources a{float:left; text-align:left; width:100%; font-size:12px; font-weight:bold; padding-left:40px; padding-bottom:10px;}
 
 .styled-select-homepage select {
    background: transparent;
