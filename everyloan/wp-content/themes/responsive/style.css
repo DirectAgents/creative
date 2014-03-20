@@ -4212,6 +4212,7 @@ h3.small-title
 \------------------------------------------*/
 
 .loan-module { margin:0 10px 20px; }
+.loan-module .loan-title { text-indent:0 !important; }
 
 ul.loan-list { margin:0; }
 
