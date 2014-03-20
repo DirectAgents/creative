@@ -85,6 +85,7 @@ get_header(); ?>
 																<?php while ( $q->have_posts() ) : $q->the_post(); ?>
                 										          
                 											     <li class="arrow">
+                                                                    <?php //the_title(); ?>
                                                                     <a href="<?php the_permalink(); ?>"><?php echo short_text(get_the_title(), 40); ?></a>
                                                                  </li>
                 											

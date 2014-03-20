@@ -46,7 +46,7 @@ function new_excerpt_more( $more ) {
 function short_text ($text, $max)
 {
 	strlen($text) >= $max ? $dots = '...' : $dots = '';
-	return substr($title, 0, $max) . $dots;
+	return substr($text, 0, $max) . $dots;
 }
 
 /**
