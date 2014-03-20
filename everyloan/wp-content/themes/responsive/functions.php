@@ -60,6 +60,8 @@ function advice_breadcrumbs ($tax)
 	// Check if we're on a sub page. If not then return root Advice and Articles page
 	if (!isset($tax)) 
 		return '';	
+	
+	//$tax = '';
 
 	if (is_single())
 	{
@@ -75,6 +77,7 @@ function advice_breadcrumbs ($tax)
 			}
 		}
 	}	
+		
 		
 	$root_page = '<a href="' . site_url() . '/advice-articles">Advice and Articles</a>' . ' > ';
 

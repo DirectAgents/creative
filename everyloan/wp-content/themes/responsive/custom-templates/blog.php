@@ -31,7 +31,9 @@ global $more; $more = 0;
 	</h1>
 	
 	<?php get_template_part( 'loop-header' ); 
-
+	 
+	echo advice_breadcrumbs(get_the_title()); 
+	
 	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
 	$blog_query = new WP_Query( array( 'post_type' => 'post', 'paged' => $paged, 'posts_per_page' => 6 ) );
 	

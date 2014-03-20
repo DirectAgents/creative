@@ -1834,8 +1834,8 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 
 #content-blog h1,
 #content .loan-title {
-  font-family:'heroregular', Arial; 
-  font-size:26px;
+  font-family: 'heroregular', Arial; 
+  font-size: 30px;
   color:#1e517f;
   margin-bottom:10px;
   letter-spacing:3px;
@@ -3977,7 +3977,10 @@ h3.small-title
   overflow:hidden;
 }
 
-.advice-choose-container .select-category-label { margin-right:20px; }
+.advice-choose-container .select-category-label
+{
+  margin-right:20px;
+}
 
 .single-advice_articles h2.secondary-title { margin: 25px 0 8px; }
 
@@ -4067,13 +4070,7 @@ h3.small-title
 /*------------------------------------------\
 |              News page                    |
 \------------------------------------------*/
-.post,
-.advice-bc,
-.type-advice_articles,
-#content-advice-and-articles .grey-cont,
-#content-advice-and-articles .loan-title
-
-{ margin-left:10px; }
+.post { margin:0 10px 0; }
 
 #content,
 #content-blog { margin-top:20px; }
