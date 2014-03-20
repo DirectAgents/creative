@@ -155,6 +155,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <td>                
                 
 <select id="finance_amount" name="finance_amount">
+<option value="">Select one</option>
 <option value="$1 - $5,000">$1 - $5,000</option>
 <option value="$5,001 - $25,000">$5,001 - $25,000</option>
 <option value="$25,001 - $50,000">$25,001 - $50,000</option>
@@ -208,6 +209,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <td>                
                 
 <select id="time_in_business" name="time_in_business">
+<option value="">Select one</option>
 <option value="Not yet in business, still in planning stages">Not yet in business, still in planning stages</option>
 <option value="Looking to buy an existing business">Looking to buy an existing business</option>
 <option value="0 to 6 months">0 to 6 months</option>
@@ -262,6 +264,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <td>                
                 
 <select id="annual_revenue" name="annual_revenue">
+<option value="">Select one</option>
 <option value="$0, No Revenues">$0, No Revenues</option>
 <option value="Below $50,000">Below $50,000</option>
 <option value="$50,001 - $100,000">$50,001 - $100,000</option>
@@ -319,6 +322,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <td>                
            
 <select id="monthly_charges" name="monthly_charges">
+<option value="">Select one</option>
 <option value="None, I don't accept credit cards">None, I don't accept credit cards</option>
 <option value="Not yet in business">Not yet in business</option>
 <option value="$1,000 - $2,500">$1,000 - $2,500</option>
@@ -376,6 +380,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <td>
 
 <select id="accounts_receivable_amount" name="accounts_receivable_amount">
+<option value="">Select one</option>
 <option value="Do not have accounts receivable">Do not have accounts receivable</option>
 <option value="$1 - $999">$1 - $999</option>
 <option value="$1,000 - $20,000">$1,000 - $20,000</option>
