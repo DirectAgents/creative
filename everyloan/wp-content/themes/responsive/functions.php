@@ -16,27 +16,49 @@ require ( get_template_directory() . '/core/includes/tha-theme-hooks.php' );
 require ( get_template_directory() . '/core/includes/hooks.php' );
 require ( get_template_directory() . '/core/includes/version.php' );
 
-/* Use custom.js for generic site functionality */
+/** 
+ * Use custom.js for generic site functionality 
+ */
 add_action( 'wp_enqueue_scripts', 'rs_custom_js' );
 function rs_custom_js() {
 	wp_enqueue_script( 'cutsomjs', get_stylesheet_directory_uri() . '/core/js/custom.js', array( 'jquery' ), false, false);
 }
 
-/* get rid of space after read more */
-
+/**
+ * get rid of space after read more 
+ */
+add_filter('the_excerpt', 'excerpt_ellipse');
 function excerpt_ellipse($text) {
  
    return str_replace('<p><!-- end of .read-more --></p>', '', $text);
    //return $text . 'blahhh'; 
 }
 
-add_filter('the_excerpt', 'excerpt_ellipse');
-
-/* Create a shorter title */
+/**
+ * Create a shorter title 
+ */
 function short_text ($title, $max)
 {
 	strlen($title) >= $max ? $dots = '...' : $dots = '';
 	return substr($title, 0, $max) . $dots;
+}
+
+/**
+ * Create breadcrumbs for advice and articles 
+ */
+function advice_breadcrumbs ($tax)
+{
+	// Check if we're on a sub page. If not then return root Advice and Articles page
+	if (!isset($tax)) 
+		return '';	
+	
+	$root_page = '<a href="' . site_url() . '/advice-articles">Advice and Articles</a>' . ' > ';
+
+	//$current_page = site_url() . '/advice-articles/?advice=' . $tax;
+	$current_page =  ucwords(str_replace('-', ' ', $tax));
+
+	return $root_page . $current_page;
+	
 }
 
 ?>

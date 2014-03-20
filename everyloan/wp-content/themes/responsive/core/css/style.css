@@ -3810,26 +3810,25 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 /* Advice & Articles
 -------------------------------------------------------------- */
 
-.advice-and-article-title{
+/*.advice-and-article-title{
   float:left;
-  }
+  }*/
 
 #content-advice-and-articles .select-category-label{
   float:left;
   display:inline;
   color:#636363;
   margin-top:5px;
-  margin-left:20px;
   font-weight:bold;
   }
 
-#content-advice-and-articles select{
+/*#content-advice-and-articles select{
   float:left;
   display:inline;
   width:auto;
   margin-left:10px;
   margin-top:5px;
-  } 
+  } */
 
 #content-advice-and-articles {
   margin-top: 20px;
@@ -3840,7 +3839,7 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   font-family: 'heroregular'; 
   font-size: 30px;
   color:#1e517f;
-  float:left; 
+  //float:left; 
   //width:300px;
   margin-top:0;
 }
@@ -4735,9 +4734,8 @@ p.business-inner-text{color:#1e517f}
   .advice-choose-container
   {
     float:left;
-    margin-left:20px;
+    margin:6px 20px;
     display:inline-block;
-    margin-top:6px;
   }
 
   .select-category-label

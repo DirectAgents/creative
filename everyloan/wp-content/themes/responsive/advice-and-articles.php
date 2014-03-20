@@ -53,31 +53,37 @@ get_header();
 
 <div id="content-advice-and-articles" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 	
-	<div class="how-everyloan-works-content grey-cont">
+	<div class="advice-and-article-title">
+		<h1>Advice and Articles</h1>
+	</div>
+
+	<div class='advice-bc'>
+		<?php echo advice_breadcrumbs($_GET['advice']); ?>
+	</div>
+	
+	<div class="grey-cont">
 	    
-	    <div class="advice-and-article-title">
-			<h1>Advice and Articles</h1>
-		</div>
-		
-		<div class='advice-choose-container' style="float: left;">
+	    <div class='advice-choose-container'>
 		
 			<div class="select-category-label">Select a category:</div>
 			
-			<select id="advice-select">
-				<option value='all-categories'>All Categories</option>
-				<?php 
-					
-					foreach($terms as $term)
-					{	
-						if ($use_term != '')
-							$selected = 'selected';
+			<div class="styled-select">
+				
+				<select id="advice-select">
+					<option value='all-categories'>All Categories</option>
+					<?php 
+						
+						foreach($terms as $term)
+						{	
+							if ($use_term != '')
+								$selected = 'selected';
 
-						echo '<option ' . $selected . ' value="'. $term->slug . '">' . $term->name . '</option>';
-					}
-		 		
-		 		?>
+							echo '<option ' . $selected . ' value="'. $term->slug . '">' . $term->name . '</option>';
+						}
+			 		?>
+				</select>
 
-			</select>
+			</div>
 		</div>
 
 	</div><!-- END how-everyloan-works-content -->
