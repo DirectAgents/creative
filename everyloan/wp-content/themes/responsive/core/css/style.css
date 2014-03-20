@@ -978,6 +978,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
 
 
+
 #content-personal-loans {
   width:100%;
   margin: 20px 0 0px 0px;
@@ -1012,7 +1013,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
   font-size:20px; 
   width:246px; 
   height:18px;
-  margin:40px 0 0 65px;
+  margin:45px 0 0 65px;
   /*background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
   text-indent:-99999px;*/
   } 
@@ -1020,7 +1021,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
  #container-steps #first_step { display: block; margin-left:10px; float:left; }
  
- #container-steps #first_step_personal { display: block; margin-left:50px; margin-top:0px;  float:left; }
+ #container-steps #first_step_personal { display: block; margin-left:50px; margin-top:70px;  float:left; }
  
  #container-steps #second_step_personal { display: block; margin-left:50px; margin-top:20px; float:left; }
  
@@ -1299,7 +1300,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
 
 .personal-loans-box-step-desktop-left-column .content-left{
-  margin:70px 0 0 -20px;  
+  margin:190px 0 0 -20px;  
   font-size:11px;
   font-weight:normal;
   width:200px;
@@ -1385,10 +1386,11 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
   font-size:18px; 
   width:246px; 
   height:18px;
-  margin:-62px 0 0 25px;
+  margin:-53px 0 0 25px;
   /*background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
   text-indent:-99999px;*/
   } 
+
 
 
 
@@ -1396,7 +1398,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
  
  #container-steps #first_step_home { display: block; margin-left:20px; margin-top:50px; float:left; }
  
- #container-steps #second_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
+ #container-steps #second_step_personal { display: block; margin-left:50px; margin-top:50px; float:left; }
  
  #container-steps #third_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
  
@@ -1974,7 +1976,7 @@ h2{margin-left:20px;}
 .coming-soon{float:left; margin-top:30px; width:100%; margin-bottom:30px;}  
 
 
-input[type="text"]{max-width:70%;}
+input[type="text"]{max-width:100%;}
 
 
 .styled-select-landingpage select {
@@ -2168,6 +2170,9 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
  
 .previous-eleventh-personal{display:none !important;}
 .next-eleventh-personal{display:none !important;}
+
+
+ 
  
  
  #eleventh_step_personal .content {float:left; width:250px; margin-top:30px;}
@@ -2218,7 +2223,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: -10px;
         }
 		
 
@@ -2232,7 +2237,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: -10px;
         }		
 		
 
@@ -2246,7 +2251,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: -10px;
         }	
 		
 
@@ -2260,7 +2265,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: -10px;
         }			
 		
 
@@ -2274,7 +2279,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-5px;
-            left: -30px;
+            left: -10px;
         }								
 
 		
@@ -2289,7 +2294,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: -10px;
         }	
 		
 		
@@ -2450,14 +2455,16 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 .home-loans-box-step-desktop li a  {list-style-type:none;}
 
 
-#container-steps #eight_step_home  { display: block; margin-left:15px; margin-top:20px; float:left; }
+#container-steps #eight_step_home { display: block; margin-left:30px; margin-top:50px; float:left; }
 
-#container-steps #eleventh_step_home  { display: block; margin-left:15px; margin-top:20px; float:left; }
+#container-steps #eleventh_step_home  { display: block; margin-left:30px; margin-top:50px; float:left; }
+
 
 
 #second_step_home label, #third_step_home label, #fourth_step_home label, #fifth_step_home label,
 #sixth_step_home label, #seventh_step_personal label, #eight_step_home label,
 #ninth_step_home label, #tenth_step_home label   {float:left; width:255px;}
+
 
 
 
@@ -2494,6 +2501,9 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 
 .previous-eleventh-home{position:absolute; left:-38px; top:90px;}
 .next-eleventh-home{display:none !important;}
+
+.previous-twelth-home{position:absolute; left:-63px; top:85px;}
+.next-twelth-personal{display:none}
 
 
 #sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
@@ -3381,7 +3391,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
  
  
  #eleventh_step_personal .content {float:left; width:250px; margin-top:30px;}
- #twelth_step_personal .content {float:left; width:250px; margin-top:30px;}
+ #twelth_step_personal .content {float:left; width:250px; margin-top:30px; margin-left:30px;}
  
  
  
@@ -4024,8 +4034,8 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   font-family: 'heroregular'; 
   font-size:26px;
   color:#1e517f;
-  //float:left; 
-  //width:300px;
+  /*float:left; 
+  width:300px;*/
   margin-top:0;
 }
 

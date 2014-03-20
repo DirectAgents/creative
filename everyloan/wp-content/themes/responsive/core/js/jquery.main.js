@@ -512,6 +512,7 @@ $(function(){
 	
 	
 	$('#submit_tenth_home').click(function(){
+		
         //update progress bar
         $('#progress_text').html('95% Complete');
         $('#progress').css('width','200px');
@@ -773,6 +774,7 @@ $('.next-eleventh-step').click(function(){
 $('.previous-twelth-step').click(function(){
 	 $('#twelth_step').hide();
 	 $('#eleventh_step').show(); 
+	 $('#eleventh_step_home').show(); 
 });	 
 
 

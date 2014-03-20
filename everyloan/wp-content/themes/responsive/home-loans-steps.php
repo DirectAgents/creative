@@ -58,7 +58,7 @@ global $more; $more = 0;
 
 Everyloan has competitive rates and fees that can save you money. We close the majority of our loans in 30 days
 or less, and we are highly recommended!<br /><br />
-<img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/business-table.gif"/>
+<img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/business-table.gif" style="width:100%"/>
 
 </div>
 </div>
