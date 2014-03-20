@@ -5006,11 +5006,14 @@ p.business-inner-text{color:#1e517f}
     /*------------------------------------------\
     |        News pages [roman]                 |
     \------------------------------------------*/
+   
+    #content-blog h1 { text-indent:30px; }
     .post { margin:0 30px; }
 
     /*------------------------------------------\
     |        Loan pages [roman]                 |
     \------------------------------------------*/
+
     .loan-module { margin:0 10px 20px; }
 }
 
@@ -5030,9 +5033,10 @@ p.business-inner-text{color:#1e517f}
   |        News pages [roman]                 |
   \------------------------------------------*/
 
+  #content-blog h1 { text-indent:30px; }
+
   .post,
-  .loan-module 
-    { margin:0 30px; } /* from loan page */
+  .loan-module { margin:0 30px; } /* from loan page */
 
   #content-blog,
   #content { width:100% !important; }
@@ -5152,6 +5156,11 @@ p.business-inner-text{color:#1e517f}
   }
   
   .nav-collapse { width:auto; }
+  
+  /*------------------------------------------\
+  |        News pages [roman]                 |
+  \------------------------------------------*/
+  #content-blog h1 { text-indent:18px; }
 
   /*------------------------------------------\
   |        Loan pages [roman]                 |
@@ -5290,7 +5299,7 @@ p.business-inner-text{color:#1e517f}
     margin-top:10px;
   }
 
-  .social-icons > div,
+  /*.social-icons > div,
   .social-icons > iframe,
   .social-icons > .fb-like
   {
@@ -5298,6 +5307,17 @@ p.business-inner-text{color:#1e517f}
     display:inline-block !important;
     width:auto !important;
     margin-right:10px !important;
+  }*/
+  .social-icons img,
+  .social-icons a,
+  .social-icons .twitter-share-button,
+  .social-icons .fb-like 
+
+  {
+    float:left;
+    margin-right:8px;
+    width:48px;
+    height:auto;
   }
 }
 
@@ -5367,7 +5387,12 @@ p.business-inner-text{color:#1e517f}
 
   /* ----- END Advice and Articles page ------ */
 
-  /* ----- news page -----*/
+  /*------------------------------------------\
+  |        News pages [roman]                 |
+  \------------------------------------------*/
+  
+  #content-blog h1 { text-indent:10px; }
+  
   .post
   {
     margin:10px;

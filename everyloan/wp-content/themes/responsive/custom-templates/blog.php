@@ -25,17 +25,18 @@ global $more; $more = 0;
 ?>
 
 <div id="content-blog" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
-
-	<?php get_template_part( 'loop-header' ); ?>
-	<?php 
 	
+	<h1 class="loan-title">
+		<?php the_title(); ?>
+	</h1>
 	
+	<?php get_template_part( 'loop-header' ); 
+	 
+	echo advice_breadcrumbs(get_the_title()); 
 	
 	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
-
 	$blog_query = new WP_Query( array( 'post_type' => 'post', 'paged' => $paged, 'posts_per_page' => 6 ) );
 	
-
 	if ( $blog_query->have_posts() ) :
 
 			while ( $blog_query->have_posts() ) : $blog_query->the_post(); 
@@ -46,13 +47,13 @@ global $more; $more = 0;
 				<?php responsive_entry_top(); ?>
 					
 					
-					<h1 class="entry-title post-title everyloan-title">
+					<h2 class="secondary-title">
 						
 						<a href="<?php the_permalink(); ?>">
 							<?php the_title( ); ?>
 						</a>
 						
-					</h1>
+					</h2>
 					
 					<div class="post-entry">
 						
@@ -63,6 +64,7 @@ global $more; $more = 0;
 						<?php endif; ?>
                          
                          <?php the_excerpt(); ?>
+
 
 					</div><!-- end of .post-entry -->
 					 
