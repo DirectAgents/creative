@@ -46,17 +46,14 @@ get_header();
 			$use_term = $term->slug;
 			break;
 		}
-		
 	}
 	
 ?>
-<?php print_r($_GET['advice']); ?>
+
 <div id="content-advice-and-articles" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 	
-	<div class="advice-and-article-title">
-		<h1>Advice and Articles</h1>
-	</div>
-
+	<h1 class='loan-title'>Advice and Articles</h1>
+	
 	<div class='advice-bc'>
 		<?php echo advice_breadcrumbs($_GET['advice']); ?>
 	</div>
