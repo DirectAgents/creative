@@ -58,7 +58,7 @@ global $more; $more = 0;
 
 Everyloan has competitive rates and fees that can save you money. We close the majority of our loans in 30 days
 or less, and we are highly recommended!<br /><br />
-<img src="../../wp-content/themes/responsive/core/images/business-table.gif"/>
+<img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/business-table.gif"/>
 
 </div>
 </div>
@@ -126,7 +126,7 @@ or less, and we are highly recommended!<br /><br />
                     
                    
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_first" type="submit" name="submit_first" id="submit_first" value="" />
+                <input class="submit_first" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_first" id="submit_first" value="" />
             </div>      
 
 </div>
@@ -136,7 +136,7 @@ or less, and we are highly recommended!<br /><br />
             <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
 <?php if($_GET['pass'] != 'y') { ?>
-<div class="previous-home"><a href="#" class="previous-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-home"><a href="#" class="previous-second-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 <? } ?>
 
 <!--<div class="next-home"><a href="#" class="next-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
@@ -176,7 +176,7 @@ or less, and we are highly recommended!<br /><br />
 
                                  
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_second" type="submit" name="submit_second" id="submit_second" value="" />
+                <input class="submit_second" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_second" id="submit_second" value="" />
                 
                 </div>
             </div>      
@@ -189,7 +189,7 @@ or less, and we are highly recommended!<br /><br />
             <div id="third_step">
 
 
-<div class="previous-third-home"><a href="#" class="previous-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-third-home"><a href="#" class="previous-third-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-third-home"><a href="#" class="next-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
 
@@ -219,7 +219,7 @@ or less, and we are highly recommended!<br /><br />
                    
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_third" type="submit" name="submit_third" id="submit_third" value="" />
+                <input class="submit_third" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_third" id="submit_third" value="" />
                 
             </div>      
     
@@ -228,7 +228,7 @@ or less, and we are highly recommended!<br /><br />
             <!-- #fourth_step -->
             <div id="fourth_step">
  
-<div class="previous-fourth-home"><a href="#" class="previous-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-fourth-home"><a href="#" class="previous-fourth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-fourth-home"><a href="#" class="next-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
                
@@ -373,7 +373,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_fourth" type="submit" name="submit_fourth" id="submit_fourth" value="" />            
+                <input class="submit_fourth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_fourth" id="submit_fourth" value="" />            
             </div>
             
        </div>     
@@ -384,7 +384,7 @@ or less, and we are highly recommended!<br /><br />
             <div id="fifth_step">
                
 
-<div class="previous-fifth-home"><a href="#" class="previous-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-fifth-home"><a href="#" class="previous-fifth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-fifth-home"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
 
@@ -543,7 +543,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_fifth" type="submit" name="submit_fifth" id="submit_fifth" value="" />                      
+                <input class="submit_fifth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_fifth" id="submit_fifth" value="" />                      
             </div>         
             
    </div>         
@@ -584,7 +584,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_sixth" type="submit" name="submit_sixth" id="submit_sixth" value="" />             
+               <input class="submit_sixth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_sixth" id="submit_sixth" value="" />             
             </div>         
             
      </div>       
@@ -594,7 +594,7 @@ or less, and we are highly recommended!<br /><br />
       <!-- #sevents_step -->
             <div id="seventh_step">
 
-<div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                          
 
@@ -822,7 +822,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_seventh" type="submit" name="submit_seventh" id="submit_seventh" value="" />             
+               <input class="submit_seventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_seventh" id="submit_seventh" value="" />             
             </div>     
    </div>         
      
@@ -832,7 +832,7 @@ or less, and we are highly recommended!<br /><br />
             <div id="eight_step">
  
 
-<div class="previous-eight-home"><a href="#" class="previous-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-eight-home"><a href="#" class="previous-eight-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                             
                
@@ -886,7 +886,7 @@ or less, and we are highly recommended!<br /><br />
      
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_eight" type="submit" name="submit_eight" id="submit_eight" value="" />             
+               <input class="submit_eight" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_eight" id="submit_eight" value="" />             
             </div>    
      
      </div>
@@ -897,7 +897,7 @@ or less, and we are highly recommended!<br /><br />
             <div id="ninth_step">
 
 
-<div class="previous-ninth-home"><a href="#" class="previous-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-ninth-home"><a href="#" class="previous-ninth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-ninth-home"><a href="#" class="next-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                        
 
@@ -942,7 +942,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_ninth" type="submit" name="submit_ninth" id="submit_ninth" value="" />             
+               <input class="submit_ninth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_ninth" id="submit_ninth" value="" />             
             </div>  
             
   </div>          
@@ -960,7 +960,7 @@ or less, and we are highly recommended!<br /><br />
             <div id="tenth_step">
                
 
-<div class="previous-tenth-home"><a href="#" class="previous-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-tenth-home"><a href="#" class="previous-tenth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-tenth-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                  
 
@@ -1008,7 +1008,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_tenth" type="submit" name="submit_tenth" id="submit_tenth" value="" />             
+               <input class="submit_tenth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_tenth" id="submit_tenth_home" value="" />             
             </div>                             
             
      </div>    
@@ -1029,7 +1029,7 @@ or less, and we are highly recommended!<br /><br />
             <div id="eleventh_step">
                
 
-<div class="previous-eleventh-home"><a href="#" class="previous-eleventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-eleventh-home"><a href="#" class="previous-eleventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                   
 
@@ -1065,7 +1065,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_eleventh" type="submit" name="submit_eleventh" id="submit_eleventh" value="" />             
+               <input class="submit_eleventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_eleventh" id="submit_eleventh_home" value="" />             
             </div>                             
             
      </div>                
@@ -1079,7 +1079,7 @@ or less, and we are highly recommended!<br /><br />
                
 
 
-<div class="previous-twelth-personal"><a href="#" class="previous-twelth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-twelth-home"><a href="#" class="previous-twelth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
                  
 
 
@@ -1129,7 +1129,7 @@ or less, and we are highly recommended!<br /><br />
 In eget sapien sed, sit duis vestibulum ultricies, placerat morbi amet vel, nullam in in lorem vel.
 </div>
 
-<div class="bbb-secured-desktop"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/bbb-secured-desktop.gif"/></div>
+<div class="bbb-secured-desktop"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/bbb-secured-desktop.gif"/></div>
    
       
 </div><!-- end of #content -->
