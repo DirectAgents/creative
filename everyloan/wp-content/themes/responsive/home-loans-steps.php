@@ -160,9 +160,7 @@ or less, and we are highly recommended!<br /><br />
                 
 <select name="PROP_PURP" class="FormInput" id="PROP_PURP">
 
-                            <option value="" selected>Select One</option>
-                            
-                            <option value="primary">Primary Residence</option>
+                            <option value="primary" selected>Primary Residence</option>
 
                             <option value="secondary_vactn">Second or Vacation Home</option>
 
@@ -259,9 +257,8 @@ or less, and we are highly recommended!<br /><br />
 <select name="EST_VAL"  class="FormInput">
 
 				
-				<option value="" selected>Select One</option>
-                
-                <option value="">Estimated Home Value ?</option>
+
+                <option value="" selected>Estimated Home Value ?</option>
 
                 <option value="77500">75,000 - 80,000</option>
 
@@ -415,8 +412,8 @@ or less, and we are highly recommended!<br /><br />
 <select name="BAL_ONE" class="FormInput" id="select4">
 
 			
-				<option value="" selected>Select One</option>
-                <option value="">First Mortgage Balance ?</option>
+
+                <option value="" selected>First Mortgage Balance ?</option>
 
                 <option value="52500">50,000 - 55,000</option>
 
@@ -621,9 +618,8 @@ or less, and we are highly recommended!<br /><br />
 <td>
 
 <select name="ADD_CASH" class="FormInput" id="select4">
-				
-              <option value="" selected>Select One</option>  
-              <option value="">Additional Cash?</option>
+
+              <option value="" selected>Additional Cash?</option>
 
               <option value="0">0</option>
 
@@ -860,9 +856,7 @@ or less, and we are highly recommended!<br /><br />
 
 <td><select name="BKCY" class="FormInput" id="select2">
 
-				<option value="" selected>Select One</option>
-
-            	<option value="no">No/Not in Past 7 Years</option>
+            	<option value="no" selected>No/Not in Past 7 Years</option>
 
             	<option value="years5_7">5 &ndash; 7 Years Ago</option>
 
