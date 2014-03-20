@@ -55,19 +55,14 @@ global $more; $more = 0;
 					</h1>
 					
 					<div class="post-entry">
+						
 						<?php if ( has_post_thumbnail()) : ?>
 							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 						<?php the_post_thumbnail(); ?>
 							</a>
 						<?php endif; ?>
-						
-						<?php //the_content(__('Read more &#8250;', 'responsive')); ?>
                          
                          <?php the_excerpt(); ?>
-						 
-						<!--  <div class="read-more-cont">
-						 	<a href="<?php the_permalink(); ?>" class="read-more">Read More +</a>
-						 </div> -->
 
 					</div><!-- end of .post-entry -->
 					 

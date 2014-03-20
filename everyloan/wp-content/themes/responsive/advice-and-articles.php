@@ -110,7 +110,9 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_
 					
 		<div class="post-entry">
         
-        <?php the_title('<h2 clss="secondary-title">','</h2>'); //get_template_part( 'post-meta' ); ?>
+       <h2 class='secondary-title'>
+       		<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+       </h2>
 
       	<?php if ( has_post_thumbnail()) : ?>
             <div style="float:left;">
@@ -127,8 +129,11 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_
 		<?php get_template_part( 'post-data' ); ?>
 				               
 		<?php responsive_entry_bottom(); ?>      
-	</div><!-- end of #post-<?php the_ID(); ?> -->       
-			<?php responsive_entry_after(); ?>
+	</div><!-- end of #post-<?php the_ID(); ?> --> 
+
+	<?php do_action ( 'rs_display_social_bar', get_the_date(), get_permalink() ); ?>  
+
+	<?php responsive_entry_after(); ?>
 				
 		<?php 
 		endwhile;
