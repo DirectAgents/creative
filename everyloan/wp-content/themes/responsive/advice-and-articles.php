@@ -50,7 +50,7 @@ get_header();
 	}
 	
 ?>
-
+<?php print_r($_GET['advice']); ?>
 <div id="content-advice-and-articles" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 	
 	<div class="advice-and-article-title">
@@ -65,32 +65,26 @@ get_header();
 	    
 	    <div class='advice-choose-container'>
 		
-			<div class="select-category-label">Select a category:</div>
+			<label class="select-category-label" for="advice-select">Select a category:</label>
 			
 			<div class="styled-select">
 				
 				<select id="advice-select">
 					<option value='all-categories'>All Categories</option>
 					<?php 
-						
 						foreach($terms as $term)
 						{	
-							if ($use_term != '')
-								$selected = 'selected';
-
+							//if ($use_term != '')
+							$selected = ($term->slug == $_GET['advice']) ? 'selected' : '';
 							echo '<option ' . $selected . ' value="'. $term->slug . '">' . $term->name . '</option>';
-						}
-			 		?>
+						} 
+					?>
 				</select>
 
 			</div>
 		</div>
 
 	</div><!-- END how-everyloan-works-content -->
-	
-	<!-- <a href="#">
-		<img class="alignnone size-full wp-image-315" alt="featured-advise-and-articles" src="http://termlifequotetoday.com/everyloan/wp-content/uploads/2013/09/featured-advise-and-articles.jpg" width="582" height="253" />
-	</a> -->
 
 <?php $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
@@ -116,7 +110,7 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_
 					
 		<div class="post-entry">
         
-        <?php get_template_part( 'post-meta' ); ?>
+        <?php the_title('<h2 clss="secondary-title">','</h2>'); //get_template_part( 'post-meta' ); ?>
 
       	<?php if ( has_post_thumbnail()) : ?>
             <div style="float:left;">
