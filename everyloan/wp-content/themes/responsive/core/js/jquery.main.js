@@ -509,87 +509,6 @@ $(function(){
     });
 	
 	
-	
-	
-	$('#submit_tenth_home').click(function(){
-        //update progress bar
-        $('#progress_text').html('95% Complete');
-        $('#progress').css('width','200px');
-
-        //prepare the fourth step
-        var fields = new Array(
-            $('#type_of_loan').val(),
-			$('#username').val(),
-            $('#password').val(),
-            $('#email').val(),
-            $('#firstname').val() + ' ' + $('#lastname').val(),
-            $('#age').val(),
-            $('#gender').val(),
-            $('#country').val()                       
-        );
-        var tr = $('#fourth_step tr');
-        tr.each(function(){
-            //alert( fields[$(this).index()] )
-            $(this).children('td:nth-child(2)').html(fields[$(this).index()]);
-        });
-                
-        //slide steps
-        //$('#third_step').slideUp();
-        //$('#fourth_step').slideDown();  
-		
-		//$('#third_step').hide("slide", { direction: "left" }, 1000);
-		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
-		
-		$('#tenth_step').hide();
-	    $('#eleventh_step').show();   
-		$('#last_step_business').show();  
-		
-		$("#siteloader").html('<object data="http://localhost/directagents/everyloan/github/creative/everyloan/api/leadpoint.html">');
-		$('#siteloader').hide();          
-    });
-	
-	
-	
-	
-	
-	$('#submit_eleventh_home').click(function(){
-        //update progress bar
-        $('#progress_text').html('100% Complete');
-        $('#progress').css('width','250px');
-
-        //prepare the fourth step
-        var fields = new Array(
-            $('#type_of_loan').val(),
-			$('#username').val(),
-            $('#password').val(),
-            $('#email').val(),
-            $('#firstname').val() + ' ' + $('#lastname').val(),
-            $('#age').val(),
-            $('#gender').val(),
-            $('#country').val()                       
-        );
-        var tr = $('#fourth_step tr');
-        tr.each(function(){
-            //alert( fields[$(this).index()] )
-            $(this).children('td:nth-child(2)').html(fields[$(this).index()]);
-        });
-                
-        //slide steps
-        //$('#third_step').slideUp();
-        //$('#fourth_step').slideDown();  
-		
-		//$('#third_step').hide("slide", { direction: "left" }, 1000);
-		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
-		
-		$('#eleventh_step_home').hide();
-	    $('#twelth_step').show();   
-		$('#last_step_business').show();  
-		
-		$("#siteloader").html('<object data="http://localhost/directagents/everyloan/github/creative/everyloan/api/leadpoint.html">');
-		$('#siteloader').hide();          
-    });
-	
-	
 
 	
 	$('#submit_twelth').click(function(){
@@ -774,8 +693,7 @@ $('.previous-twelth-step').click(function(){
 	 $('#twelth_step').hide();
 	 $('#eleventh_step').show(); 
 });	 
-
-
+	
 
 
 

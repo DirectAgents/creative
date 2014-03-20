@@ -987,7 +987,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 .personal-loans-box-step1-desktop-title{
 	/*background:url(../images/personal-loans-box-step1-desktop.png) no-repeat;*/
 	float:left;
-	font-size: 14px;  
+	font-size: 16px;  
 	font-family: 'heroregular';
 	font-weight:bold;
     color: #1e517f !important; 
@@ -995,7 +995,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 	margin-bottom:20px;
 	width:100%;
 	height:30px;
-	margin:30px 0 0 20px;
+	margin:30px 0 0 40px;
 	}
 
 
@@ -1117,8 +1117,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
 
 #container-steps input.submit_first {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1133,8 +1132,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
 
 #container-steps input.submit_second {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1147,8 +1145,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 		
 
 #container-steps input.submit_third {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1161,8 +1158,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 		
 
 #container-steps input.submit_fourth {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1175,8 +1171,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 		
 
 #container-steps input.submit_fifth {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1189,8 +1184,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 		
 
 #container-steps input.submit_sixth, #container-steps input.submit_seventh {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1204,8 +1198,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 		
 
 #container-steps input.submit_eight {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1219,8 +1212,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 		
 
 #container-steps input.submit_ninth {
-           /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+           background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1233,8 +1225,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 		
 		
 #container-steps input.submit_tenth {
-           /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+           background: url('../images/continue-steps-desktop-mobile.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1299,7 +1290,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
 
 .personal-loans-box-step-desktop-left-column .content-left{
-  margin:70px 0 0 -20px;  
+  margin:210px 0 0 0px;  
   font-size:11px;
   font-weight:normal;
   width:200px;
@@ -1322,7 +1313,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
  float:left;
  margin-top:15px;
  margin-left:0px;
- width:250px;
+ width:270px;
  padding:0px;
 }
 
@@ -1332,7 +1323,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
   font-size:12px;
   font-weight:normal;
   margin-bottom:5px;
-  width:200px;
+  width:270px;
   background:url(../images/green-checkmark.png) no-repeat;
   padding-left:23px;
 }
@@ -1345,172 +1336,6 @@ p.personal-inner-text{color:#1e517f; font-weight:bold;}
 /*******Personal Loan Step by Step*********/
 
 
-
-
-
-
-/*******Home Loan Step by Step*********/
-
-
-.home-loans-box-step-desktop {width:302px; height:669px; padding:0; margin:0 auto;  border:0px #eee solid; 
-/*-moz-border-radius: 10px; 
-border-radius: 10px;*/ 
-background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
-.home-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
-.home-loans-box-step-desktop li a  {list-style-type:none;}
-
-
-
-.personal-loans-box-step1-desktop-title{
-	/*background:url(../images/personal-loans-box-step1-desktop.png) no-repeat;*/
-	float:left;
-	font-size: 12px;  
-	font-family: 'heroregular';
-	font-weight:bold;
-    color: #1e517f !important; 
-	letter-spacing:2px;
-	margin-bottom:20px;
-	width:100%;
-	height:30px;
-	margin:30px 0 0 38px;
-	}
-
-
-
-.rates-personal-loans-steps{
-  float:left; 
-  color:#fff; 
-  font-weight:normal; 
-  font-family: 'heroregular'; 
-  font-size:18px; 
-  width:246px; 
-  height:18px;
-  margin:-62px 0 0 25px;
-  /*background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
-  text-indent:-99999px;*/
-  } 
-
-
-
- #container-steps #first_step { display: block; margin-left:0px; margin-top:-20px; float:left; }
- 
- #container-steps #first_step_home { display: block; margin-left:20px; margin-top:50px; float:left; }
- 
- #container-steps #second_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
- 
- #container-steps #third_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
- 
- #container-steps #fourth_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
- 
- #container-steps #fifth_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
- 
- #container-steps #sixth_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
- 
- #container-steps #seventh_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
- 
- #container-steps #eight_step_personal { display: block; margin-left:30px; margin-top:20px; float:left; }
- 
- #container-steps #ninth_step_personal { display: block; margin-left:30px; margin-top:20px; float:left; }
- 
- #container-steps #tenth_step_personal { display: block; margin-left:30px; margin-top:20px; float:left; }
-
-
-
-
-
-
-
-
-#second_step_home label, #third_step_home label, #fourth_step_home label, #fifth_step_home label,
-#sixth_step_home label, #seventh_step_personal label, #eight_step_home label,
-#ninth_step_home label, #tenth_step_home label   {float:left; width:255px;}
-
-
-
-.previous-home{position:absolute; left:-38px; top:90px;}
-.next-home{position:absolute; right:-50px; top:90px;}
-
-.previous-third-home{position:absolute; left:-38px; top:90px;}
-.next-third-home{position:absolute; right:-5px; top:90px;}
-
-
-.previous-fourth-home{position:absolute; left:-38px; top:90px;}
-.next-fourth-home{position:absolute; right:-50px; top:90px;}
-
-.previous-fifth-home{position:absolute; left:-38px; top:90px;}
-.next-fifth-home{position:absolute; right:-50px; top:90px;}
-
-.previous-sixth-home{position:absolute; left:-38px; top:90px;}
-.next-sixth-home{position:absolute; right:-50px; top:90px;}
-
-.previous-seventh-home{position:absolute; left:-38px; top:90px;}
-.next-seventh-home{position:absolute; right:-50px; top:90px;}
-
-.previous-eight-home{position:absolute; left:-38px; top:90px;}
-.next-eight-home{position:absolute; right:-50px; top:90px;}
-
-.previous-ninth-home{position:absolute; left:-38px; top:90px;}
-.next-ninth-home{position:absolute; right:-50px; top:90px;}
-
-.previous-tenth-home{position:absolute; left:-38px; top:90px;}
-.next-tenth-home{position:absolute; right:-50px; top:90px;}
-
-.previous-tenth-home{position:absolute; left:-38px; top:90px;}
-.next-tenth-home{position:absolute; right:-50px; top:90px;}
-
-.previous-eleventh-home{position:absolute; left:-38px; top:90px;}
-.next-eleventh-home{display:none !important;}
-
-
-#sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
-
-.radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
-
-
-
-
-.home-loans-box-step-desktop-left-column .content-left{
-  margin:400px 0 0 45px;  
-  font-size:11px;
-  font-weight:normal;
-  width:200px;
-  text-align:left;
-  position:absolute;
-}
-
-
-
-
-.home-loans-box-step-desktop-left-column .content-left .title{
-  padding:5px 0 0 0px;  
-  font-size:16px;
-  font-weight:normal;
-  font-style:italic;
-}
-
-
-.home-loans-box-step-desktop-left-column .content-left ul{
- float:left;
- margin-top:15px;
- margin-left:0px;
- width:250px;
- padding:0px;
-}
-
-
-
-.home-loans-box-step-desktop-left-column .content-left li{
-  font-size:12px;
-  font-weight:normal;
-  margin-bottom:5px;
-  width:200px;
-  background:url(../images/green-checkmark.png) no-repeat;
-  padding-left:23px;
-}
-
-
-  
-/*******Home Loan Step by Step*********/
 
 
 	
@@ -1974,7 +1799,7 @@ h2{margin-left:20px;}
 .coming-soon{float:left; margin-top:30px; width:100%; margin-bottom:30px;}  
 
 
-input[type="text"]{max-width:70%;}
+input[type="text"]{min-width:85%;}
 
 
 .styled-select-landingpage select {
@@ -2081,7 +1906,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 .personal-loans-box-step1-desktop-title{
 	/*background:url(../images/personal-loans-box-step1-desktop.png) no-repeat;*/
 	float:left;
-	font-size: 14px;  
+	font-size: 23px;  
 	font-family: 'heroregular';
 	font-weight:bold;
     color: #1e517f !important; 
@@ -2193,8 +2018,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 
 
 #container-steps input.submit_first {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2209,8 +2033,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 
 
 #container-steps input.submit_second {
-			/*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2218,13 +2041,12 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: 0px;
         }
 		
 
 #container-steps input.submit_third {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2232,13 +2054,12 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: 0px;
         }		
 		
 
 #container-steps input.submit_fourth {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2246,13 +2067,12 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: 0px;
         }	
 		
 
 #container-steps input.submit_fifth {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2260,13 +2080,12 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: 0px;
         }			
 		
 
 #container-steps input.submit_sixth, #container-steps input.submit_seventh {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2274,14 +2093,13 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-5px;
-            left: -30px;
+            left: 0px;
         }								
 
 		
 
 #container-steps input.submit_eight {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2289,14 +2107,13 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: -30px;
+            left: 0px;
         }	
 		
 		
 
 #container-steps input.submit_ninth {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2309,8 +2126,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 		
 		
 #container-steps input.submit_tenth {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -2323,8 +2139,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 		
 
 #container-steps input.submit_eleventh {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none; 
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3403,8 +3218,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 
 
 #container-steps input.submit_first {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3419,8 +3233,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 
 
 #container-steps input.submit_second {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3433,8 +3246,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 		
 
 #container-steps input.submit_third {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3447,8 +3259,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 		
 
 #container-steps input.submit_fourth {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3461,8 +3272,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 		
 
 #container-steps input.submit_fifth {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3475,8 +3285,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 		
 
 #container-steps input.submit_sixth, #container-steps input.submit_seventh {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3490,8 +3299,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 		
 
 #container-steps input.submit_eight {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3505,8 +3313,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 		
 
 #container-steps input.submit_ninth {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3519,8 +3326,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 		
 		
 #container-steps input.submit_tenth {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3534,8 +3340,7 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
 
 
 #container-steps input.submit_eleventh {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -3696,12 +3501,11 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 .previous-tenth-home{position:absolute; left:-277px; top:100px;}
 .next-tenth-home{position:absolute; right:-128px; top:100px;}
 
+.previous-tenth-home{position:absolute; left:-277px; top:100px;}
+.next-tenth-home{position:absolute; right:-128px; top:100px;}
+
 .previous-eleventh-home{position:absolute; left:-277px; top:100px;}
 .next-eleventh-home{display:none !important;}
-
-.previous-twelth-home{position:absolute; left:-302px; top:95px;}
-.next-eleventh-home{display:none !important;}
-
 
 
 #sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
@@ -4401,8 +4205,7 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 
 
 #container-steps input.submit_first {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -4417,9 +4220,8 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 
 
 #container-steps input.submit_second {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-            background:none;
-			border: none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
+            border: none;
             cursor: pointer;
             width: 253px;
             height: 67px;
@@ -4431,22 +4233,20 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 		
 
 #container-steps input.submit_third {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
             height: 67px;
             position: relative;
             bottom: 0px;
-			top:-5px;
+			top:-10px;
             left: 0px;
         }		
 		
 
 #container-steps input.submit_fourth {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -4459,8 +4259,7 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 		
 
 #container-steps input.submit_fifth {
-             /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -4473,8 +4272,7 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 		
 
 #container-steps input.submit_sixth, #container-steps input.submit_seventh {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+             background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -4488,8 +4286,7 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 		
 
 #container-steps input.submit_eight {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -4503,8 +4300,7 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 		
 
 #container-steps input.submit_ninth {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -4517,8 +4313,7 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 		
 		
 #container-steps input.submit_tenth {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -4531,8 +4326,7 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 		
 
 #container-steps input.submit_eleventh {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
@@ -4698,7 +4492,7 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 
 
 
-#sixth_step_personal input[type="radio"] { width:15px; background:none; border:none; padding:0px 0 0 0; } 
+#sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 
 .radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
 
@@ -4798,8 +4592,7 @@ p.business-inner-text{color:#1e517f}
 
 
 #container-steps input.submit_eleventh_business {
-            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
-			background:none;
+            background: url('../images/continue-steps-desktop.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 253px;
