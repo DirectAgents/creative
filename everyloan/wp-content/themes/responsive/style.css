@@ -1834,8 +1834,13 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 
 #content-blog h1,
 #content .loan-title {
+<<<<<<< HEAD
   font-family:'heroregular', Arial; 
   font-size:26px;
+=======
+  font-family: 'heroregular', Arial; 
+  font-size: 30px;
+>>>>>>> parent of 30fd45b... Revert "Created breadcrumbs for advice and articles"
   color:#1e517f;
   margin-bottom:10px;
   letter-spacing:3px;
@@ -3977,7 +3982,14 @@ h3.small-title
   overflow:hidden;
 }
 
+<<<<<<< HEAD
 .advice-choose-container .select-category-label { margin-right:20px; }
+=======
+.advice-choose-container .select-category-label
+{
+  margin-right:20px;
+}
+>>>>>>> parent of 30fd45b... Revert "Created breadcrumbs for advice and articles"
 
 .single-advice_articles h2.secondary-title { margin: 25px 0 8px; }
 

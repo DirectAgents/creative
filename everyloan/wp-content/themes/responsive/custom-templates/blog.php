@@ -25,6 +25,7 @@ global $more; $more = 0;
 ?>
 
 <div id="content-blog" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
+<<<<<<< HEAD
 	
 	<h1 class="loan-title">
 		<?php the_title(); ?>
@@ -32,6 +33,17 @@ global $more; $more = 0;
 	
 	<?php get_template_part( 'loop-header' ); 
 
+=======
+	
+	<h1 class="loan-title">
+		<?php the_title(); ?>
+	</h1>
+	
+	<?php get_template_part( 'loop-header' ); 
+	 
+	echo advice_breadcrumbs(get_the_title()); 
+	
+>>>>>>> parent of 30fd45b... Revert "Created breadcrumbs for advice and articles"
 	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
 	$blog_query = new WP_Query( array( 'post_type' => 'post', 'paged' => $paged, 'posts_per_page' => 6 ) );
 	
