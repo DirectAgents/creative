@@ -21,6 +21,14 @@ if ( !defined('ABSPATH')) exit;
 get_header(); ?>
 
 <div id="content" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
+    
+    <div class="advice-and-article-title">
+		<h1>Advice and Articles</h1>
+	</div>
+    
+    <div class='advice-bc'>
+		<?php echo advice_breadcrumbs(get_the_title()); ?>
+	</div>
 
 	<?php get_template_part( 'loop-header' ); ?>
         
@@ -32,7 +40,9 @@ get_header(); ?>
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>       
 				<?php responsive_entry_top(); ?>
 
-                <?php get_template_part( 'post-meta' ); ?>
+                <h2 class='secondary-title'>
+       				<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+       			</h2>
 
                 <div class="post-entry">
 
