@@ -1834,12 +1834,11 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 
 #content-blog h1,
 #content .loan-title {
-  font-family: 'heroregular', Arial; 
+  font-family: 'heroregular'; 
   font-size: 30px;
   color:#1e517f;
   margin-bottom:10px;
   letter-spacing:3px;
-  text-indent: 10px;
 }
 
 
@@ -3889,9 +3888,6 @@ h2.secondary-title
   letter-spacing:1px
 }
 
-h2.secondary-title a { color:#1e517f !important; }
-h2.secondary-title a:hover { color:#333 !important; }
-
 h3.small-title
 {
   font:bold 14px/20px Arial, Helvetica;
@@ -3981,9 +3977,6 @@ h3.small-title
 {
   margin-right:20px;
 }
-
-.single-advice_articles h2.secondary-title { margin: 25px 0 8px; }
-
 /*------------------------------------------------------------------\
 |                         Alternate Homepage                        |
 \------------------------------------------------------------------*/

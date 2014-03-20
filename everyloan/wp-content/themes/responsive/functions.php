@@ -29,24 +29,23 @@ function rs_custom_js() {
  */
 add_filter('the_excerpt', 'excerpt_ellipse');
 function excerpt_ellipse($text) {
-	 return str_replace('<p><!-- end of .read-more --></p>', '', $text);
-}
-
-/**
- * change the read more link to include a +
- */
-add_filter( 'excerpt_more', 'new_excerpt_more' );
-function new_excerpt_more( $more ) {
-	return '<div class="read-more"><a href="'. get_permalink( get_the_ID() ) . '">Read More +</a></div>';
+ 
+   return str_replace('<p><!-- end of .read-more --></p>', '', $text);
+   //return $text . 'blahhh'; 
 }
 
 /**
  * Create a shorter title 
  */
-function short_text ($text, $max)
+function short_text ($title, $max)
 {
+<<<<<<< HEAD
 	strlen($text) >= $max ? $dots = '...' : $dots = '';
 	return substr($text, 0, $max) . $dots;
+=======
+	strlen($title) >= $max ? $dots = '...' : $dots = '';
+	return substr($title, 0, $max) . $dots;
+>>>>>>> parent of 19d56fa... Created breadcrumbs for advice and articles
 }
 
 /**
@@ -54,37 +53,16 @@ function short_text ($text, $max)
  */
 function advice_breadcrumbs ($tax)
 {
-	global $post;
-	$tax_page = '';
-
 	// Check if we're on a sub page. If not then return root Advice and Articles page
 	if (!isset($tax)) 
 		return '';	
 	
-	//$tax = '';
-
-	if (is_single())
-	{
-		$terms = get_the_terms($post->ID, 'advice_articles_tax');
-		
-		// If the advice and articles post has terms
-		if (!isset($terms->errors))
-		{
-			foreach($terms as $term)
-			{
-				$tax_page = '<a href="' . site_url() . '/advice-articles/?advice='. $term->slug . '">' . $term->name . '</a> > ';
-				break;
-			}
-		}
-	}	
-		
-		
 	$root_page = '<a href="' . site_url() . '/advice-articles">Advice and Articles</a>' . ' > ';
 
 	//$current_page = site_url() . '/advice-articles/?advice=' . $tax;
 	$current_page =  ucwords(str_replace('-', ' ', $tax));
 
-	return $root_page . $tax_page . $current_page;
+	return $root_page . $current_page;
 	
 }
 
