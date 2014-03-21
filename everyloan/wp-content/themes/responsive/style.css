@@ -1136,7 +1136,7 @@ form div {
 
 
 
-    #container-steps #first_step { display: block; margin-left:35px; float:left; }
+  #container-steps #first_step { display: block; margin-left:35px; float:left; }
   
   #container-steps #second_step{ display: none; float:left; position:absolute; }
   
@@ -1160,8 +1160,15 @@ form div {
   
   #container-steps #twelth_step { display: none; float:left; position:absolute; }
   
+  #container-steps #thirteen_step { display: none; float:left; position:absolute; }
+  
+  #container-steps #fourteen_step { display: none; float:left; position:absolute; }
+  
   #container-steps #last_step { margin-left:25px; width:500px; margin-top:45px; display: none; float:left; position:absolute; }
 
+
+  #second-mortgage-blanance_step {display: none; float:left; position:absolute; }
+  #second-mortgage-interest_rate_step {display: none; float:left; position:absolute; }
   
   
 

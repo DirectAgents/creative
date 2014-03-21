@@ -8,15 +8,15 @@ if ( !defined('ABSPATH')) exit;
 /**
  * Blog Template
  *
-   Template Name: Home Loans Steps
+   Template Name: Home Loans Steps Home Purchase
  *
- * @file           home-loans-steps.php
+ * @file           home-loans-steps-home-purchase.php
  * @package        Responsive 
  * @author         Emil Uzelac 
  * @copyright      2003 - 2013 ThemeID
  * @license        license.txt
  * @version        Release: 1.1.0
- * @filesource     wp-content/themes/responsive/home-loans-steps.php
+ * @filesource     wp-content/themes/responsive/home-loans-steps-home-purchase.php
  * @link           http://codex.wordpress.org/Templates
  * @since          available since Release 1.0
  */
