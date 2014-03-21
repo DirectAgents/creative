@@ -832,14 +832,10 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 #how-it-works-1-pic, #how-it-works-2-pic, #how-it-works-3-pic{float:left; width:250px;}
 
 .widget-wrapper-rates {
-  float:left;
-  width:100%;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  /*background-color: #fff;*/
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
-  margin: 0 0 20px 0;
+  width:94%;
+  border:1px solid #e5e5e5;
+  -webkit-border-radius:8px;border-radius:8px;
+  margin:0 auto 20px;
 }
 
 
@@ -858,8 +854,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
   
   #i-want-to-borrow-money {
   float:left;
-  width:100%;
-  padding:0 0 0 25px;
+  padding:0 0 0 21px;
   
   }
   
@@ -4104,9 +4099,9 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   padding-bottom:1px;
   float:left;
   width:282px;
-  border: 1px solid #e5e5e5;
-  border-bottom-right-radius:8px;
-    border-bottom-left-radius:8px;
+  //border: 1px solid #e5e5e5;
+  //border-bottom-right-radius:8px;
+  //border-bottom-left-radius:8px;
   }
   
 .widget-wrapper-content-lp{

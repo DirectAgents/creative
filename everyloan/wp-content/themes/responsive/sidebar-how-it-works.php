@@ -65,7 +65,7 @@ if ( !defined('ABSPATH')) exit;
   </div>
   <!-- end of .widget-wrapper -->
   
-  <div class="widget-wrapper learn-widget">
+  <div class="widget-wrapper sidebar-module">
     <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Learn</div>
     <div class="widget-wrapper-content">
 
@@ -78,7 +78,7 @@ if ( !defined('ABSPATH')) exit;
   </div>
   <!-- end of .widget-wrapper -->
   
-  <div class="widget-wrapper">
+  <div class="widget-wrapper sidebar-module">
     <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Calculate</div>
     <div class="widget-wrapper-content">
 
@@ -91,7 +91,7 @@ if ( !defined('ABSPATH')) exit;
   </div>
   <!-- end of .widget-wrapper -->
   
-  <div class="widget-wrapper">
+  <div class="widget-wrapper sidebar-module">
     <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Borrow</div>
     <div class="widget-wrapper-content">
 

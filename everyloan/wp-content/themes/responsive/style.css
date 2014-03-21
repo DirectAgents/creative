@@ -3925,9 +3925,17 @@ h3.small-title
 \------------------------------------------*/
 .sidebar-pic-cont { padding-left:15px; }
 
-.learn-widget.widget-wrapper
+.widget-title-rates { padding:12px; }
+
+.widget-title2,
+.widget-title-rates
 {
-  -webkit-border-radius:4px;border-radius:4px;
+  border-bottom:1px solid #e5e5e5;
+}
+
+.sidebar-module.widget-wrapper
+{
+  -webkit-border-radius:8px;border-radius:8px;
   overflow:hidden;
   border:1px solid #e5e5e5;
 
