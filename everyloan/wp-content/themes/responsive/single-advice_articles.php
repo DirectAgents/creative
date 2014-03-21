@@ -21,10 +21,9 @@ if ( !defined('ABSPATH')) exit;
 get_header(); ?>
 
 <div id="content" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
-
 	
-    <div class="advice-and-article-title">
-		<h1>Advice and Articles</h1>
+    <div class='loan-module'>
+		<h1 class="loan-title">Advice and Articles</h1>
 	</div>
     
     <div class='advice-bc'>
@@ -48,11 +47,9 @@ get_header(); ?>
                 <div class="post-entry">
 
                     <?php
-
-                    	the_post_thumbnail(); 
+						the_post_thumbnail(); 
                     	the_content(__('Read more &#8250;', 'responsive')); 
-                   
-                    ?>
+                   ?>
                     
                     
                     <?php if ( get_the_author_meta('description') != '' ) : ?>
@@ -73,7 +70,8 @@ get_header(); ?>
 				
 				<?php do_action ('rs_display_social_bar', get_the_date()); ?>             
 				
-				<?php responsive_entry_bottom(); ?>      
+				<?php responsive_entry_bottom(); ?>  
+
 			</div><!-- end of #post-<?php the_ID(); ?> -->       
 			<?php responsive_entry_after(); ?>            
             

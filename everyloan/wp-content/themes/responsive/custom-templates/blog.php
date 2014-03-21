@@ -27,10 +27,12 @@ global $more; $more = 0;
 <div id="content-blog" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 
 	<?php get_template_part( 'loop-header' ); ?>
-
-	<h1 class="loan-title">
-		<?php the_title(); ?>
-	</h1>
+	
+	<div class='loan-module'>
+		<h1 class="loan-title">
+			<?php the_title(); ?>
+		</h1>
+	</div>
 	
 	<?php $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 	$blog_query = new WP_Query( array( 'post_type' => 'post', 'paged' => $paged, 'posts_per_page' => 6 ) );

@@ -450,6 +450,7 @@ a:active {
   color: #444444;
   outline: 0;
   text-decoration: none;
+  color:#333;
 }
 
 ::selection {
@@ -3936,6 +3937,7 @@ h3.small-title
   border-color: transparent #fff transparent transparent;
 }
 
+a:hover { color:#333 !important; }
 /*------------------------------------------\
 |               Sidebar                     |
 \------------------------------------------*/
@@ -4101,26 +4103,25 @@ h3.small-title
 /*------------------------------------------\
 |              News page                    |
 \------------------------------------------*/
-/*.post,
-.advice-bc,
-.type-advice_articles,
-#content-advice-and-articles .grey-cont,
-#content-advice-and-articles .loan-title
-
-{ margin-left:10px; }*/
 
 #content,
 #content-blog { margin-top:20px; }
 
 /* ----------  posts ---------- */
 
-.everyloan-title,
+/*.everyloan-title,
 .everyloan-title a
 {
   font-size:30px; 
   color:#1e517f !important; 
   width:100%;
   letter-spacing:1px; 
+}*/
+
+#content-blog .loan-module,
+.page-template-custom-templatesborrow-template-php .loan-module
+{
+   margin-bottom:20px;
 }
 
 .everyloan-title a:hover { color:#4c4c4c !important; }
