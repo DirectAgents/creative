@@ -5128,27 +5128,17 @@ p.business-inner-text{color:#1e517f}
   }
 
   /*------------------------------------------\
-  |            Sidebar [roman]                |
+  |              Sidebar                      |
   \------------------------------------------*/
 
-    #widgets-how-it-works
-    {
-      margin-top:20px;
-    }
+  #widgets-how-it-works { margin-top:20px; }
+  #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 34px; }
+  #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
 
-    #widgets-how-it-works .widget-wrapper
-    {
-      margin:20px 0 20px 34px;
-    }
-
-    #widgets-how-it-works .widget-wrapper .widget-wrapper
-    {
-      margin:30px 20px 0 0;
-    }
 }
 
 /* ---------- iPhone 5 landscape mode ---------- */
-@media only screen and (min-width:320px) and (max-width:568px) {
+@media only screen and (min-width:321px) and (max-width:568px) {
   
   body { overflow:hidden; }
 
@@ -5272,14 +5262,10 @@ p.business-inner-text{color:#1e517f}
   .widget-title-rates-homepage { width:96%; }
 
   .learn-title-top-mobile,
-  .calculate-title-top-mobile
-  {
-    background: url('../images/widget-title-rates-homepage.gif');
-  }
+  .calculate-title-top-mobile { background: url('../images/widget-title-rates-homepage.gif'); }
 
   .learn-box-home-mobile,
-  .calculate-box-home-mobile 
-    { overflow:hidden; }
+  .calculate-box-home-mobile { overflow:hidden; }
 
   /* -------- Mobile Menu -------- */
   

@@ -65,7 +65,7 @@ if ( !defined('ABSPATH')) exit;
   </div>
   <!-- end of .widget-wrapper -->
   
-  <div class="widget-wrapper">
+  <div class="widget-wrapper learn-widget">
     <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Learn</div>
     <div class="widget-wrapper-content">
 
@@ -73,7 +73,7 @@ if ( !defined('ABSPATH')) exit;
         <li class="lightbulb">Keep up with industry news and the latest rates.</li>
         <li class="read-news-button-sidebar"><a href="http://termlifequotetoday.com/everyloan/news/"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg"/></a></li>
       </ul>
-      
+
     </div>
   </div>
   <!-- end of .widget-wrapper -->

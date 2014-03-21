@@ -60,11 +60,9 @@ function advice_breadcrumbs ($tax)
 	// Check if we're on a sub page. If not then return root Advice and Articles page
 	if (!isset($tax)) 
 		return '';	
-<<<<<<< HEAD
-=======
+
 	
 	//$tax = '';
->>>>>>> parent of 30fd45b... Revert "Created breadcrumbs for advice and articles"
 
 	if (is_single())
 	{
@@ -81,10 +79,6 @@ function advice_breadcrumbs ($tax)
 		}
 	}	
 		
-<<<<<<< HEAD
-=======
-		
->>>>>>> parent of 30fd45b... Revert "Created breadcrumbs for advice and articles"
 	$root_page = '<a href="' . site_url() . '/advice-articles">Advice and Articles</a>' . ' > ';
 
 	//$current_page = site_url() . '/advice-articles/?advice=' . $tax;
