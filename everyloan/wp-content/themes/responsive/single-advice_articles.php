@@ -21,8 +21,7 @@ if ( !defined('ABSPATH')) exit;
 get_header(); ?>
 
 <div id="content" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
-   
-    <h1 class='loan-title'>Advice and Articles</h1>
+
 	
     <div class="advice-and-article-title">
 		<h1>Advice and Articles</h1>
