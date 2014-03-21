@@ -125,7 +125,7 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_
          
          </div><!-- end of .post-entry -->
 			
-		<?php get_template_part( 'post-data' ); ?>
+		<?php //get_template_part( 'post-data' ); ?>
 				               
 		<?php responsive_entry_bottom(); ?>      
 	</div><!-- end of #post-<?php the_ID(); ?> --> 
