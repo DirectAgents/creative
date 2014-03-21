@@ -2674,7 +2674,7 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
   /*background-color: #fff;*/
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-   margin: 0 0 20px -10px;
+  //margin: 0 0 20px -10px;
 }
 
 
@@ -2716,7 +2716,7 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
   margin: 0;
   padding: 10px 0 10px 20px;
   text-align: left;
-  width:93%;
+  width:100%;
 }
 
 
@@ -2960,7 +2960,6 @@ margin-top:20px; }
    width: 100%;
    padding: 5px;
    font-size: 16px;
-   line-height: 1;
    border: 0;
    border-radius: 0;
    height: 34px;
@@ -4926,7 +4925,7 @@ p.business-inner-text{color:#1e517f}
     width:100%
   }
 
-  #wrapper { padding:0 20px 20px; width:90%; }
+  #wrapper { padding:0 20px 20px; width:90%;overflow:hidden; }
 
   /* ----- Advice and Articles page ------ */
   
@@ -4939,32 +4938,24 @@ p.business-inner-text{color:#1e517f}
     display:inline-block;
   }
 
-  .select-category-label
-  {
-    float:left;
-    //display:inline-block;
-  }
+  .select-category-label { float:left; }
 
   #advice-select
   {
     float: left;
     display: inline-block;
-    width: auto;
-    margin-left: 20px;
   }
 
   /* ----- END Advice and Articles page ------ */
   
-  #content-blog,
-  #content
-  {
-    width:100%;
-  }
+  #content,
+  #content-blog, { width:100%; }
 
     /* fix sidebar to be centered */
     #widgets-how-it-works
     {
       padding:0;
+      width:106%;
     }
 
     .widget-wrapper
@@ -4990,7 +4981,7 @@ p.business-inner-text{color:#1e517f}
 
     #widgets-how-it-works
     {
-      margin-top:20px;
+      margin:20px 0 0 -20px !important;
     }
 
     #wrapper 
@@ -5000,7 +4991,7 @@ p.business-inner-text{color:#1e517f}
 
     #widgets-how-it-works .widget-wrapper
     {
-      margin:20px 0 20px 23px;
+      margin:20px 0 20px 22px;
     }
 
     #widgets-how-it-works .widget-wrapper .widget-wrapper
@@ -5127,12 +5118,13 @@ p.business-inner-text{color:#1e517f}
   \------------------------------------------*/
 
   #widgets-how-it-works { margin-top:20px; }
-  #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 34px; }
+  #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 16px; }
   #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
 
 }
 
 /* ---------- iPhone 5 landscape mode ---------- */
+
 @media only screen and (min-width:321px) and (max-width:568px) {
   
   body { overflow:hidden; }
@@ -5144,10 +5136,13 @@ p.business-inner-text{color:#1e517f}
   {
     width:90%;
     padding:0;
-    border:none;
+   //border:none;
     margin:20px auto;
     overflow:hidden;
+  }
 
+  .sidebar-module {
+    width:95%;
   }
   
   .nav-collapse { width:auto; }
@@ -5243,7 +5238,7 @@ p.business-inner-text{color:#1e517f}
 
   #widgets-how-it-works
   {
-    padding: 30px 0px 0 18px;
+    padding: 30px 0 0px;
   }
 
   .widget-wrapper-homepage-mobile,
