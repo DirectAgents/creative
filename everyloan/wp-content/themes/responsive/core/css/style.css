@@ -5137,24 +5137,21 @@ p.business-inner-text{color:#1e517f}
 /* ---------- iPhone 5 landscape mode ---------- */
 
 @media only screen and (min-width:321px) and (max-width:568px) {
-  
+  #content-advice-and-articles { width:100% !important; }
   body { overflow:hidden; }
 
   /* -------- Mobile Menu -------- */
   ul.sub-menu { display:none; }
   
-    #wrapper 
+  #wrapper 
   {
     width:90%;
     padding:0;
-   //border:none;
     margin:20px auto;
     overflow:hidden;
   }
 
-  .sidebar-module {
-    width:95%;
-  }
+  .sidebar-module { width:95%; }
   
   .nav-collapse { width:auto; }
   
@@ -5166,19 +5163,13 @@ p.business-inner-text{color:#1e517f}
   /*------------------------------------------\
   |        Loan pages [roman]                 |
   \------------------------------------------*/
-  
-  .loan-module { margin:0 20px 30px 20px; }
+ 
 
-  #content-blog,
-  #content 
-  { 
-    width:100% !important;
-    margin-top:30px;
-  }
+  .loan-module { margin:0 20px 30px 20px; }
 
   /* ----- Advice and Articles page ------ */
   
-  #content-advice-and-articles { width:100%; }
+  
   #content-advice-and-articles .how-everyloan-works-content { padding-left:20px; }
   .advice-choose-container { margin-bottom:20px; }
   .advice_articles { margin:0 20px 0px; }
@@ -5229,7 +5220,9 @@ p.business-inner-text{color:#1e517f}
  #content-blog .everyloan-title { margin-top:0; }
 
   /* ---------- sidebar ---------- */
-
+  #content.col-620 { width:100% !important; }
+  
+  
   .img-cont { text-align:center; }
 
   .img-cont img,
@@ -5282,15 +5275,6 @@ p.business-inner-text{color:#1e517f}
     margin-top:10px;
   }
 
-  /*.social-icons > div,
-  .social-icons > iframe,
-  .social-icons > .fb-like
-  {
-    float:left !important;
-    display:inline-block !important;
-    width:auto !important;
-    margin-right:10px !important;
-  }*/
   .social-icons img,
   .social-icons a,
   .social-icons .twitter-share-button,
@@ -5336,6 +5320,8 @@ p.business-inner-text{color:#1e517f}
 
 @media all and (max-width: 320px) {
   
+  #content.col-620 { width:100%; }
+
   /*------------------------------------------\
   |        Loan pages [roman]                 |
   \------------------------------------------*/

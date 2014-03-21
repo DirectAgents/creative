@@ -3887,6 +3887,12 @@ p { margin:0 0 10px; }
   overflow:hidden;
 }
 
+.inner-grey-cont
+{
+  display:inline-block;
+  margin-top:20px;
+}
+
 /* ----- Titles ------ */
 
 h2.secondary-title
@@ -3977,9 +3983,10 @@ h3.small-title
   line-height:16px;
 }
 
-.contact-info {float:right; text-align:right; width:100%; height:10px; padding-top:0px;}
-.contact-info li{list-style-type:none;}
- 
+.contact-info { float:right;text-align:right;width:100%;height:10px;padding-top:0px; }
+.contact-info li { list-style-type:none; }
+.how-everyloan-works-bg { display:inline-block; }
+
 /*------------------------------------------\
 |         Advice and articles               |
 \------------------------------------------*/
@@ -4049,8 +4056,7 @@ h3.small-title
 .alt-home #footer-wrapper,
 .alt-home #footer-wrapper .col-940,
 .alt-home #footer-wrapper .col-550,
-.alt-home #footer-wrapper #menu-footmenu
-  { text-align:center; }
+.alt-home #footer-wrapper #menu-footmenu { text-align:center; }
 
 .alt-home #footer-wrapper .col-550
 {
@@ -4174,10 +4180,7 @@ h3.small-title
 #wrapper .navigation { float:right; }
 
 /* make all links in nagivation blue */
-.navigation a 
-{
-  color:#1e517f;
-}
+.navigation a { color:#1e517f; }
 
 #wrapper .navigation .page-numbers
 {
@@ -4225,7 +4228,6 @@ h3.small-title
 |                Loan pages                 |
 \------------------------------------------*/
 
-.loan-module { margin:0 10px 20px; }
 .loan-module .loan-title { text-indent:0 !important; }
 
 ul.loan-list { margin:0; }
@@ -4237,3 +4239,7 @@ ul.loan-list li
   margin-bottom:5px;
 }
 /* test */
+
+/*@media only screen and (min-width:321px) and (max-width:568px) {
+  #content-advice-and-articles { width:100% !important; }
+}*/

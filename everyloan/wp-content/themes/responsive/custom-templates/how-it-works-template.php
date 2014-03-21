@@ -28,48 +28,51 @@ global $more; $more = 0;
 			</p>
 		</div>
 	
-		<div id="how-everyloan-apply-fund-repay" style="overflow:hidden;">
-			<div class="how-everyloan-works-bg">
-				<div class="how-everyloan-works-content">
-					<ul class="apply">
-						<li>
-							<img id="how-it-works-1-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/apply.png" />
-						</li>
-						
-						<li>
-							<div class="apply-title">Apply</div>
-						</li>
-							
-						<li>
-							Answer a few questions about your loan needs using our online loan application.
-						</li>
-					</ul>
+		<div class="grey-cont" style='text-align:center'>
 
-					<ul class="fund">
-						<li>
-							<img id="how-it-works-2-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/offers.png" />
-						</li>
-
-						<li>
-							<div class="fund-title">Get Offers</div>
-						</li>
+			<div class='inner-grey-cont'>
+			
+				<ul class="apply">
+					<li>
+						<img id="how-it-works-1-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/apply.png" />
+					</li>
+					
+					<li>
+						<div class="apply-title">Apply</div>
+					</li>
 						
-						<li>A system of lenders and investors is queried to match you with real loan</li>
+					<li>
+						Answer a few questions about your loan needs using our online loan application.
+					</li>
+				</ul>
 
-					</ul>
-						
-					<ul class="repay">
-						<li><img id="how-it-works-3-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/funding.png" /></li>
-						<li>
-							<div class="repay-title">Get Funding</div>
-						</li>
-						
-						<li>Receive multiple offers, select the one that works best for you and get funded.</li>
-					</ul>
+				<ul class="fund">
+					<li>
+						<img id="how-it-works-2-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/offers.png" />
+					</li>
 
-				</div>
+					<li>
+						<div class="fund-title">Get Offers</div>
+					</li>
+					
+					<li>A system of lenders and investors is queried to match you with real loan</li>
+
+				</ul>
+					
+				<ul class="repay">
+					<li><img id="how-it-works-3-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/funding.png" /></li>
+					<li>
+						<div class="repay-title">Get Funding</div>
+					</li>
+					
+					<li>Receive multiple offers, select the one that works best for you and get funded.</li>
+				</ul>
+
 			</div>
+
 		</div>
+		
+	
 		<p></p>
 		<div class="loan-module">
 			<h2 class='secondary-title'>Why Everyloan?</h2>
