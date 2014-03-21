@@ -477,7 +477,6 @@ h2 {
   border:0px solid #cccccc;
   background: transparent url(../images/get-my-rate-btn.jpg) no-repeat top left;
   cursor: pointer;
-  cursor: hand;
   z-index:1;
 }
 
@@ -1558,7 +1557,6 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
   border: 1px solid #e5e5e5;
   border-radius: 4px;
   clear: both;
-  //margin: 20px auto 20px -20px;
   padding: 0 0px 20px 20px;
   position: relative;
 }
@@ -1895,7 +1893,6 @@ font-size:14px;
   border:0px solid #cccccc;
   background: transparent url(../images/get-my-rate-btn.jpg) no-repeat top left;
   cursor: pointer;
-  cursor: hand;
   z-index:1;
 }
 
@@ -2672,7 +2669,6 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
   /*background-color: #fff;*/
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  //margin: 0 0 20px -10px;
 }
 
 
@@ -3112,7 +3108,6 @@ h2{margin-left:20px;}
   border:0px solid #cccccc;
   background: transparent url(../images/get-my-rate-btn.jpg) no-repeat top left;
   cursor: pointer;
-  cursor: hand;
   z-index:1;
 }
 
@@ -3588,7 +3583,6 @@ background:url(../images/i-want-a-personal-loan2.gif) no-repeat;}
     width: 250px;
     height: 24px;
     top: -3px;
-    left: ;
 }
 
  
@@ -3972,9 +3966,8 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 .how-everyloan-works p{
     float:left;
     width:100%;
-    text-align:left;
-   // margin-top:10px;
-    } 
+    text-align:left;   
+} 
 
 
 .everyloan-title{ 
@@ -3983,7 +3976,6 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   font-family: 'heroregular';
   color: #1e517f !important; 
   letter-spacing:3px;
-  //margin-bottom:10px;
   }
 
 .how-everyloan-works-content{
@@ -4094,9 +4086,6 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   padding-bottom:1px;
   float:left;
   width:282px;
-  //border: 1px solid #e5e5e5;
-  //border-bottom-right-radius:8px;
-  //border-bottom-left-radius:8px;
   }
   
 .widget-wrapper-content-lp{
@@ -4191,7 +4180,6 @@ h2{margin-left:20px;}
   border:0px solid #cccccc;
   background: transparent url(../images/get-my-rate-btn.jpg) no-repeat top left;
   cursor: pointer;
-  cursor: hand;
   z-index:1;
 }
 
@@ -4946,7 +4934,7 @@ p.business-inner-text{color:#1e517f}
   /* ----- END Advice and Articles page ------ */
   
   #content,
-  #content-blog, { width:100%; }
+  #content-blog { width:100%; }
 
   
   .advice-choose-container .select-category-label { margin-left:10px !important; }
@@ -5091,7 +5079,6 @@ p.business-inner-text{color:#1e517f}
     border-radius:4px;
     clear:both;
     margin:20px auto;
-    //padding:0 10px;
     position:relative;
   }
 
@@ -5137,7 +5124,9 @@ p.business-inner-text{color:#1e517f}
 /* ---------- iPhone 5 landscape mode ---------- */
 
 @media only screen and (min-width:321px) and (max-width:568px) {
-  #content-advice-and-articles { width:100% !important; }
+
+  #content-advice-and-articles.col-620 { width:100% !important; }
+  
   body { overflow:hidden; }
 
   /* -------- Mobile Menu -------- */
@@ -5279,13 +5268,13 @@ p.business-inner-text{color:#1e517f}
   .social-icons a,
   .social-icons .twitter-share-button,
   .social-icons .fb-like 
-
   {
     float:left;
     margin-right:8px;
     width:48px;
     height:auto;
   }
+
 }
 
 @media only screen and (max-width:525px) {
@@ -5474,7 +5463,6 @@ p.business-inner-text{color:#1e517f}
 
   .calculate-box-home-desktop,
   .learn-box-home-desktop
-
   {
     background:url(../images/widget-box-home-mobile.png);
     height:475px;

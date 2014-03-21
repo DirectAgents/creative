@@ -82,7 +82,7 @@ global $more; $more = 0;
 				</p>
 
 				<p>
-					EAt EveryLoan we match you with the right loan for your needs. We work with private, carefully screened lenders and banking institutions all over the country that want to loan you money. The EveryLoan process is quick, convenient and 100% confidential. You never have to worry about your data being sold or shared outside of EveryLoan.
+					At EveryLoan we match you with the right loan for your needs. We work with private, carefully screened lenders and banking institutions all over the country that want to loan you money. The EveryLoan process is quick, convenient and 100% confidential. You never have to worry about your data being sold or shared outside of EveryLoan.
 				</p>
 				
 				<p>
