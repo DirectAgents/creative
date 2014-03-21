@@ -3990,13 +3990,13 @@ h3.small-title
 
 .advice-choose-container
 {
-  margin:10px 15px;
+  margin:10px 0;
   overflow:hidden;
   width:100%;
 }
 
-.advice-choose-container .select-category-label { margin-right:15%; }
-.advice-choose-container .styled-select { margin-left:20px;width:60%; }
+.advice-choose-container .select-category-label { margin:5px 0 0 10px; }
+.advice-choose-container .styled-select { margin-right:10px;float:right;width:60%; }
 .advice-choose-container .styled-select select { width:100%; }
 .single-advice_articles h2.secondary-title { margin: 25px 0 8px; }
 

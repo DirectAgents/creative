@@ -3804,7 +3804,7 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   padding:30px 20px 0 20px;
   background:#efefef;
   width:100%;
-  height:1050px;
+  height:auto;
   
 }
 
@@ -4011,7 +4011,7 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   float:left;
   display:inline;
   color:#414344;
-  margin-top:5px;
+  margin:5px 0 0 10px;
   font-weight:bold;
   }
 
@@ -4922,16 +4922,16 @@ p.business-inner-text{color:#1e517f}
     width:100%
   }
 
-  #wrapper { padding:0 20px 20px; width:90%;overflow:hidden; }
+  #wrapper { padding:0 20px 0; width:90%;overflow:hidden; }
 
   /* ----- Advice and Articles page ------ */
   
-  #content-advice-and-articles{ width:100%; }
+  #content-advice-and-articles{ width:auto; }
   
   .advice-choose-container
   {
-    float:left;
-    margin:6px 20px;
+    float:right;
+    margin:10px 0;
     display:inline-block;
   }
 
@@ -4948,68 +4948,71 @@ p.business-inner-text{color:#1e517f}
   #content,
   #content-blog, { width:100%; }
 
-    /* fix sidebar to be centered */
-    #widgets-how-it-works
-    {
-      padding:0;
-      width:106%;
-    }
+  
+  .advice-choose-container .select-category-label { margin-left:10px !important; }
+  .advice-choose-container .styled-select { margin-right:10px;float:right;width:60%; }
+  .advice-choose-container .styled-select select#advice-select { margin-left:0;width:100% !important; }
 
-    .advice-choose-container .select-category-label { margin-right:35% !important; }
-    .advice-choose-container .styled-select { width:40% !important; }
-    .advice-choose-container .styled-select select#advice-select { margin-left:0;width:100% !important; }
+  .widget-wrapper { margin:30px 20px 0 20px; }
 
-    .widget-wrapper { margin:30px 20px 0 20px; }
+  /*------------------------------------------\
+  |            How it works [roman]           |
+  \------------------------------------------*/
 
-    /*------------------------------------------\
-    |            How it works [roman]           |
-    \------------------------------------------*/
+  .how-everyloan-works-content
+  {
+    display: table;
+    float: none !important;
+    width: auto;
+    margin:20px auto 0;
+  }
 
-    .how-everyloan-works-content
-    {
-      display: table;
-      float: none !important;
-      width: auto;
-      margin:20px auto 0;
-    }
+  /*------------------------------------------\
+  |            Sidebar                        |
+  \------------------------------------------*/
+  
+  #content.col-620 { width:100%; }
 
-    /*------------------------------------------\
-    |            Sidebar                        |
-    \------------------------------------------*/
+  /* fix sidebar to be centered */
+  #widgets-how-it-works
+  {
+    padding:0;
+    width:106%;
+  }
 
-    #widgets-how-it-works { margin:20px 0 0 -20px !important; }
-    #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 22px; }
-    #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
-    .sidebar-module { width:94%; }
+  #widgets-how-it-works { margin:20px 0 0 -20px !important; }
+  #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 22px; }
+  #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
+  .sidebar-module { width:94%; }
 
-    .read-news-button-sidebar, 
-    .calculate-button-sidebar, 
-    .view-loans-button-sidebar { margin-top:10px;float:right; }
-    
-    /*------------------------------------------\
-    |        News pages [roman]                 |
-    \------------------------------------------*/
-   
-    #content-blog h1 { text-indent:30px; }
-    .post { margin:0 30px; }
+  .read-news-button-sidebar, 
+  .calculate-button-sidebar, 
+  .view-loans-button-sidebar { margin-top:10px;float:right; }
+  
+  /*------------------------------------------\
+  |        News pages [roman]                 |
+  \------------------------------------------*/
+ 
+  #content-blog h1 { text-indent:30px; }
+  .post { margin:0 30px; }
 
-    .social-icons img,
-    .social-icons a,
-    .social-icons .twitter-share-button,
-    .social-icons .fb-like,
-    .social-icons > div
+  .social-icons img,
+  .social-icons a,
+  .social-icons .twitter-share-button,
+  .social-icons .fb-like,
+  .social-icons > div
 
-    {
-      float:right !important;
-      margin-right:8px;
-      width:50px !important;
-      height:auto;
-    }
-    /*------------------------------------------\
-    |        Loan pages [roman]                 |
-    \------------------------------------------*/
+  {
+    float:right !important;
+    margin-right:8px;
+    width:50px !important;
+    height:auto;
+  }
+  /*------------------------------------------\
+  |        Loan pages [roman]                 |
+  \------------------------------------------*/
 
-    .loan-module { margin:0 10px 20px; }
+  .loan-module { margin:0 10px 20px; }
 }
 
 @media only screen and (min-width: 568px) and (max-width: 768px) {
@@ -5055,25 +5058,18 @@ p.business-inner-text{color:#1e517f}
   
   .advice-choose-container
   {
-    float:left;
-    margin-left:20px;
+    float:right;
+    margin:10px 0;
     display:inline-block;
-    margin-top:6px;
   }
 
   .select-category-label
   {
     float:left;
-    //display:inline-block;
+    margin-left:10px;
   }
 
-  #advice-select
-  {
-    float: left;
-    display: inline-block;
-    width: auto;
-    margin-left: 20px;
-  }
+  #advice-select { width:100%; }
 
   /* ----- END Advice and Articles page ------ */
   
@@ -5136,9 +5132,7 @@ p.business-inner-text{color:#1e517f}
 
   .read-news-button-sidebar, 
   .calculate-button-sidebar, 
-  .view-loans-button-sidebar { margin-top:10px;float:right; } 
-
-}
+  .view-loans-button-sidebar { margin-top:10px;float:right; }
 
 /* ---------- iPhone 5 landscape mode ---------- */
 
@@ -5185,15 +5179,8 @@ p.business-inner-text{color:#1e517f}
   /* ----- Advice and Articles page ------ */
   
   #content-advice-and-articles { width:100%; }
-  
-   #content-advice-and-articles .how-everyloan-works-content { padding-left:20px; }
-
-  .advice-choose-container
-  {
-    margin-left:20px;
-    margin-bottom:20px;
-  }
-
+  #content-advice-and-articles .how-everyloan-works-content { padding-left:20px; }
+  .advice-choose-container { margin-bottom:20px; }
   .advice_articles { margin:0 20px 0px; }
   
   .advice_articles .post-meta,
@@ -5219,7 +5206,6 @@ p.business-inner-text{color:#1e517f}
     padding-top:20px;
     margin-left:0;
     padding-left:0;
-
   }
 
   .hiw-cont { padding:20px !important; }
@@ -5524,10 +5510,9 @@ p.business-inner-text{color:#1e517f}
     overflow:hidden;
     padding-left: 90px;
   }
-
-  .view-all-calculators,
-  .view-all
-    { padding-left: 75px; }
+  
+  .view-all,
+  .view-all-calculators { padding-left: 75px; }
 }
 
 /* ----------------- END News page responsive ---------------*/

@@ -61,9 +61,6 @@ function advice_breadcrumbs ($tax)
 	if (!isset($tax)) 
 		return '';	
 
-	
-	//$tax = '';
-
 	if (is_single())
 	{
 		$terms = get_the_terms($post->ID, 'advice_articles_tax');
