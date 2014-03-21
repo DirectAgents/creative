@@ -52,7 +52,9 @@ get_header();
 
 <div id="content-advice-and-articles" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 	
-	<h1 class='loan-title'>Advice and Articles</h1>
+	<div class='loan-module'>
+		<h1 class='loan-title'>Advice and Articles</h1>
+	</div>
 	
 	<div class='advice-bc'>
 		<?php echo advice_breadcrumbs($_GET['advice']); ?>

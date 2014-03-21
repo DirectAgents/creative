@@ -3052,7 +3052,7 @@ margin-top:20px; }
   padding-top:10px;
   padding-bottom:1px;
   float:left;
-  width:95%;
+  width:100%;
   border: 0px solid #e5e5e5;
   border-bottom-right-radius:8px;
     border-bottom-left-radius:8px;
@@ -3863,7 +3863,7 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   margin: 0;
   padding: 10px 0 10px 20px;
   text-align: left;
-  width:93%;
+  width:100%;
 }
 
 
@@ -3885,8 +3885,6 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 #content-how-it-works {
   float:left;
   width:94%;
-  //border-top:1px solid #eee;  
-  //margin-top: 70px;
   margin-bottom: 0px;
 }
   
@@ -3895,13 +3893,11 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 {
   float:left;
   width:100%;
-  margin-bottom:20px;
-  margin-top:20px;
-  font-size: 30px;  
-  font-family: 'heroregular';
-  color: #1e517f !important; 
+  margin:20px 0 20px;
+  font:bold 26px 'heroregular'; 
+  color:#1e517f !important; 
   letter-spacing:3px;
-  }
+}
 
 
 
@@ -4301,7 +4297,7 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
 	font-size: 23px;  
 	font-family: 'heroregular';
 	font-weight:bold;
-    color: #1e517f !important; 
+  color: #1e517f !important; 
 	letter-spacing:2px;
 	margin-bottom:20px;
 	width:100%;
@@ -4979,25 +4975,11 @@ p.business-inner-text{color:#1e517f}
     |            Sidebar [roman]                |
     \------------------------------------------*/
 
-    #widgets-how-it-works
-    {
-      margin:20px 0 0 -20px !important;
-    }
-
-    #wrapper 
-    {
-      //padding:0 0px 20px;
-    }
-
-    #widgets-how-it-works .widget-wrapper
-    {
-      margin:20px 0 20px 22px;
-    }
-
-    #widgets-how-it-works .widget-wrapper .widget-wrapper
-    {
-      margin:30px 20px 0 0;
-    }
+    #widgets-how-it-works { margin:20px 0 0 -20px !important; }
+    #wrapper { //padding:0 0px 20px; }
+    #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 22px; }
+    #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
+    .sidebar-module { width:95%; }
     
     /*------------------------------------------\
     |        News pages [roman]                 |

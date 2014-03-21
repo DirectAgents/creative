@@ -773,7 +773,7 @@ form div {
   border-radius: 4px;
   clear: both;
   margin: 20px auto 20px auto;
-  padding: 0 0px 20px 20px;
+  padding: 0 0px 20px 32px;
   position: relative;
 }
 
@@ -1833,14 +1833,15 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 }
 
 #content-blog h1,
-#content .loan-title {
+#content .loan-title,
+#content-advice-and-articles .loan-title {
 
   font-family:'heroregular', Arial; 
   font-size:26px;
   color:#1e517f;
   margin-bottom:10px;
   letter-spacing:3px;
-  text-indent: 10px;
+  //text-indent: 10px;
 }
 
 
@@ -4088,13 +4089,13 @@ h3.small-title
 /*------------------------------------------\
 |              News page                    |
 \------------------------------------------*/
-.post,
+/*.post,
 .advice-bc,
 .type-advice_articles,
 #content-advice-and-articles .grey-cont,
 #content-advice-and-articles .loan-title
 
-{ margin-left:10px; }
+{ margin-left:10px; }*/
 
 #content,
 #content-blog { margin-top:20px; }
