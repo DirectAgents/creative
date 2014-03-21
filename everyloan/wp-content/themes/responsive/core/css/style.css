@@ -3813,13 +3813,13 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 
 .widget-wrapper-rates {
   float:left;
-  width:95%;
+  width:94%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   /*background-color: #fff;*/
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  margin: 0 0 20px -5px;
+  margin: 0 0 20px 0;
 }
 
 
@@ -4979,7 +4979,7 @@ p.business-inner-text{color:#1e517f}
     #wrapper { //padding:0 0px 20px; }
     #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 22px; }
     #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
-    .sidebar-module { width:95%; }
+    .sidebar-module { width:94%; }
     
     /*------------------------------------------\
     |        News pages [roman]                 |
@@ -4988,6 +4988,18 @@ p.business-inner-text{color:#1e517f}
     #content-blog h1 { text-indent:30px; }
     .post { margin:0 30px; }
 
+    .social-icons img,
+    .social-icons a,
+    .social-icons .twitter-share-button,
+    .social-icons .fb-like,
+    .social-icons > div
+
+    {
+      float:right !important;
+      margin-right:8px;
+      width:50px !important;
+      height:auto;
+    }
     /*------------------------------------------\
     |        Loan pages [roman]                 |
     \------------------------------------------*/
@@ -5018,6 +5030,20 @@ p.business-inner-text{color:#1e517f}
 
   #content-blog,
   #content { width:100% !important; }
+
+  .social-icons img,
+  .social-icons a,
+  .social-icons .twitter-share-button,
+  .social-icons .fb-like,
+  .social-icons > div
+
+  {
+    float:right !important;
+    margin-right:8px;
+    width:50px !important;
+    height:auto;
+  }
+  
   /* ----- Advice and Articles page ------ */
   
   #content-advice-and-articles{ width:100%; }
