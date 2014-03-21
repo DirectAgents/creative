@@ -142,12 +142,25 @@ or less, and we are highly recommended!<br /><br />
 <!--<div class="next-home"><a href="#" class="next-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
 
 
- <div id="second_step_personal">
+ <div id="second_step_home">
 
                 <div class="form">
 
 
 
+<table cellpadding="0" cellspacing="0" border="1">
+
+
+
+
+
+<tr>
+<td><label>Property ZIP code</label></td>
+</tr>
+
+<tr>
+<td>                
+                
 
 <select name="PROP_ST" class="FormInput">
 
@@ -259,6 +272,17 @@ or less, and we are highly recommended!<br /><br />
 
 
 
+  </td>
+</tr> 
+ 
+</table>     
+
+
+
+
+
+
+
 
 
                                  
@@ -288,25 +312,30 @@ or less, and we are highly recommended!<br /><br />
    
    
 
-<table cellpadding="0" cellspacing="0" border="1">
-
-
-
-
+ <table cellpadding="0" cellspacing="0" border="0">
 
 <tr>
-<td><label>ZipCode</label></td>
+<td><label>Property use</label></td>
 </tr>
 
 <tr>
 <td>                
                 
-<input type="text" name="PROP_ZIP" id="PROP_ZIP" value=""/>
-  </td>
-</tr> 
- 
-</table>          
+<select name="PROP_PURP" class="FormInput" id="PROP_PURP">
 
+                            <option value="" selected>Select One</option>
+                            
+                            <option value="primary">Primary Residence</option>
+
+                            <option value="secondary_vactn">Second or Vacation Home</option>
+
+                            <option value="investment">Investment Property</option>
+
+                        </select>
+
+  </td>
+</tr>  
+</table>      
    
       
       
@@ -338,63 +367,7 @@ or less, and we are highly recommended!<br /><br />
                
  
  
-  <table cellpadding="0" cellspacing="0" border="0">
-
-<tr>
-<td><label>Property use</label></td>
-</tr>
-
-<tr>
-<td>                
-                
-<select name="PROP_PURP" class="FormInput" id="PROP_PURP">
-
-                            <option value="" selected>Select One</option>
-                            
-                            <option value="primary">Primary Residence</option>
-
-                            <option value="secondary_vactn">Second or Vacation Home</option>
-
-                            <option value="investment">Investment Property</option>
-
-                        </select>
-
-  </td>
-</tr>  
-</table>      
-                    
-                    
-                     
-
-                    
-                    
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_fourth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_fourth" id="submit_fourth" value="" />            
-            </div>
-            
-       </div>     
-            
-   
-   
-    <!-- #fifth_step -->
-            <div id="fifth_step">
-               
-
-<div class="previous-fifth-home"><a href="#" class="previous-fifth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
-<!--<div class="next-fifth-home"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
-
-
-
-<div id="fifth_step_personal"> 
-
-
-                <div class="form">
-               
-               
-
-<table cellpadding="0" cellspacing="0" border="1">
+ <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
@@ -520,43 +493,40 @@ or less, and we are highly recommended!<br /><br />
   </td>
 </tr>  
 </table>                  
-  
-  
-               
-               
-     
-               
                     
                     
-                    
+                     
+
                     
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_fifth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_fifth" id="submit_fifth" value="" />                      
-            </div>         
+                <input class="submit_fourth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_fourth" id="submit_fourth" value="" />            
+            </div>
             
-   </div>         
+       </div>     
             
-            
-           <!-- #sixth_step -->
-            <div id="sixth_step">
+   
+   
+    <!-- #fifth_step -->
+            <div id="fifth_step">
+               
+
+<div class="previous-fifth-home"><a href="#" class="previous-fifth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<!--<div class="next-fifth-home"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
 
 
-<div class="previous-sixth-home"><a href="#" class="previous-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-sixth-home"><a href="#" class="next-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->              
+<div id="fifth_step_personal"> 
 
-
-<div id="sixth_step_personal"> 
 
                 <div class="form">
                
-  
-  
+               
 
 
- <table cellpadding="0" cellspacing="0" border="1">
+  <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
@@ -692,6 +662,58 @@ or less, and we are highly recommended!<br /><br />
   </td>
 </tr>  
 </table>   
+  
+               
+               
+     
+               
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+                <input class="submit_fifth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_fifth" id="submit_fifth" value="" />                      
+            </div>         
+            
+   </div>         
+            
+            
+           <!-- #sixth_step -->
+            <div id="sixth_step">
+
+
+<div class="previous-sixth-home"><a href="#" class="previous-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<!--<div class="next-sixth-home"><a href="#" class="next-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->              
+
+
+<div id="sixth_step_personal"> 
+
+                <div class="form">
+               
+  
+  
+
+<table cellpadding="0" cellspacing="0" border="1">
+
+
+<tr>
+
+<td colspan="3"><label>Do you have a second mortgage?</label></td>
+</tr>
+
+    
+
+<tr>
+
+<td width="65" align="left"><input type="radio" name="MTG_TWO" value="yes" id="MTG_TWO_YES"><span class="radio-label">Yes</span></td>
+<td width="135" colspan="2" align="left"><input type="radio" name="MTG_TWO" value="no" id="MTG_TWO_NO" checked="checked" />
+  <span class="radio-label">No</span></td>
+ </tr>  
+</table>      
+ 
  
 
 
@@ -711,74 +733,18 @@ or less, and we are highly recommended!<br /><br />
      
      
       <!-- #sevents_step -->
-            <div id="seventh_step">
+            <div id="second-mortgage-balance_step">
 
-<div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
-<!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                          
-
-
-
-<div id="seventh_step_personal"> 
-
-                <div class="form">
-               
-
-
-
-<table cellpadding="0" cellspacing="0" border="1">
-
-
-<tr>
-
-<td colspan="3"><label>Do you have a second mortgage?</label></td>
-</tr>
-
-    
-
-<tr>
-
-<td width="65" align="left"><input type="radio" name="MTG_TWO" value="yes" id="MTG_TWO_YES"><span class="radio-label">Yes</span></td>
-<td width="135" colspan="2" align="left"><input type="radio" name="MTG_TWO" value="no" id="MTG_TWO_NO" checked="checked" />
-  <span class="radio-label">No</span></td>
- </tr>  
-</table>      
-
-
-                    
-                    
-                 
-                    
-                    
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_seventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_seventh" id="submit_seventh" value="" />             
-            </div>     
-   </div>         
-     
-     
-     
-     
-     
-     
-     
- 
- 
-       <!-- #second-mortgage-blanance_step -->
-            <div id="second-mortgage-blanance_step">
-
-<div class="previous-second-mortgage-blanance-home"><a href="#" class="previous-second-mortgage-blanance-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-second-mortgage-balance"><a href="#" class="previous-second-mortgage-balance"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                          
 
 
 
-<div id="second-mortgage-blanance_step_personal"> 
+<div id="second-mortgage-balance_home"> 
 
                 <div class="form">
                
-
-
 
 <table cellpadding="0" cellspacing="0" border="1">
 
@@ -893,6 +859,8 @@ or less, and we are highly recommended!<br /><br />
 </table>      
 
 
+
+
                     
                     
                  
@@ -900,28 +868,28 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_seventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_seventh" id="submit_seventh" value="" />             
+               <input class="submit_second-mortgage-balance" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_second-mortgage-balance" id="submit_second-mortgage-balance" value="" />             
             </div>     
    </div>         
-   
-   
+     
+     
+     
+     
+     
+     
+     
+ 
+ 
+       <!-- #second-mortgage-blanance_step -->
+            <div id="second-mortgage-interest_step">
 
-
-
-
-
-
-
-<!-- #second-mortgage-interest_rate_step -->
-            <div id="second-mortgage-interest_rate_step">
-
-<div class="previous-second-mortgage-blanance-home"><a href="#" class="previous-second-mortgage-blanance-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-second-mortgage-interest-home"><a href="#" class="previous-second-mortgage-interest-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                          
 
 
 
-<div id="second-mortgage-interest_rate_step_personal"> 
+<div id="second-mortgage-interest_step_personal"> 
 
                 <div class="form">
                
@@ -1023,6 +991,7 @@ or less, and we are highly recommended!<br /><br />
 </table>      
 
 
+
                     
                     
                  
@@ -1032,35 +1001,33 @@ or less, and we are highly recommended!<br /><br />
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
                <input class="submit_seventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_seventh" id="submit_seventh" value="" />             
             </div>     
-   </div>            
-         
-     
- 
-     
-     
-     
-     
-     
-       <!-- #eight_step -->
-            <div id="eight_step">
- 
-
-<div class="previous-eight-home"><a href="#" class="previous-eight-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
-<!--<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                             
-               
+   </div>         
+   
+   
 
 
-<div id="eight_step_home"> 
+
+
+
+
+
+<!-- #second-mortgage-interest_rate_step -->
+            <div id="seventh_step">
+
+<div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                          
+
+
+
+<div id="seventh_step_personal"> 
 
                 <div class="form">
                
-                    
-                    
 
 
 
-  <table cellpadding="0" cellspacing="0" border="1">
+ <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
@@ -1272,6 +1239,80 @@ or less, and we are highly recommended!<br /><br />
 </td>
 </tr>  
 </table>          
+
+
+
+
+                    
+                    
+                 
+                    
+                    
+                    
+                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+               <input class="submit_seventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_seventh" id="submit_seventh" value="" />             
+            </div>     
+   </div>            
+         
+     
+ 
+     
+     
+     
+     
+     
+       <!-- #eight_step -->
+            <div id="eight_step">
+ 
+
+<div class="previous-eight-home"><a href="#" class="previous-eight_step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<!--<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                             
+               
+
+
+<div id="eight_step_home"> 
+
+                <div class="form">
+               
+                    
+                    
+<table cellpadding="0" cellspacing="0" border="1">
+
+
+<tr>
+<td><label>Have you ever declared bankruptcy?</label></td>
+</tr>
+
+
+<tr>
+
+
+<td><select name="BKCY" class="FormInput" id="select2">
+
+				<option value="" selected>Select One</option>
+
+            	<option value="no">No/Not in Past 7 Years</option>
+
+            	<option value="years5_7">5 &ndash; 7 Years Ago</option>
+
+            	<option value="years2_5">2 &ndash; 5 Years Ago</option>
+
+            	<option value="years1_2">1 &ndash; 2 Years Ago</option>
+
+            	<option value="less_1yr">Less Than 12 Months Ago</option>
+
+            </select></td>
+
+</tr>   
+
+
+       
+ 
+</table>                
+
+
+ 
      
      
 
@@ -1308,40 +1349,36 @@ or less, and we are highly recommended!<br /><br />
 
 
 
-
 <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td><label>Have you ever declared bankruptcy?</label></td>
+<td><label>First Name</label></td>
 </tr>
+
+<tr>
+<td>                
+                
+<input type="text" name="FNAME" id="FNAME" value=""/>
+  </td>
+</tr> 
+
 
 
 <tr>
+<td><label>Lastname</label></td>
+</tr>
 
-
-<td><select name="BKCY" class="FormInput" id="select2">
-
-				<option value="" selected>Select One</option>
-
-            	<option value="no">No/Not in Past 7 Years</option>
-
-            	<option value="years5_7">5 &ndash; 7 Years Ago</option>
-
-            	<option value="years2_5">2 &ndash; 5 Years Ago</option>
-
-            	<option value="years1_2">1 &ndash; 2 Years Ago</option>
-
-            	<option value="less_1yr">Less Than 12 Months Ago</option>
-
-            </select></td>
-
-</tr>   
-
-
-       
+<tr>
+<td>                
+                
+<input type="text" name="LNAME" id="LNAME" value=""/>
+  </td>
+</tr> 
  
 </table>                
+
+
 
 
                     
@@ -1381,37 +1418,36 @@ or less, and we are highly recommended!<br /><br />
                
 
 
-
-
-
 <table cellpadding="0" cellspacing="0" border="1">
 
 
 <tr>
-<td><label>First Name</label></td>
+<td><label>Street Address</label></td>
 </tr>
 
 <tr>
 <td>                
                 
-<input type="text" name="FNAME" id="FNAME" value=""/>
+<input type="text" name="ADDRESS" id="ADDRESS" value=""/>
   </td>
 </tr> 
 
 
 
 <tr>
-<td><label>Lastname</label></td>
+<td><label>City</label></td>
 </tr>
 
 <tr>
 <td>                
                 
-<input type="text" name="LNAME" id="LNAME" value=""/>
+<input type="text" name="CITY" id="CITY" value=""/>
   </td>
 </tr> 
  
 </table>                
+
+
 
 
                     
@@ -1444,71 +1480,6 @@ or less, and we are highly recommended!<br /><br />
 
 
 <div id="eleventh_step_personal"> 
-
-                <div class="form">
-               
-
-
-
-
-
-<table cellpadding="0" cellspacing="0" border="1">
-
-
-<tr>
-<td><label>Street Address</label></td>
-</tr>
-
-<tr>
-<td>                
-                
-<input type="text" name="ADDRESS" id="ADDRESS" value=""/>
-  </td>
-</tr> 
-
-
-
-<tr>
-<td><label>City</label></td>
-</tr>
-
-<tr>
-<td>                
-                
-<input type="text" name="CITY" id="CITY" value=""/>
-  </td>
-</tr> 
- 
-</table>                
-
-
-                    
-                    
-                                  
-                    
-                    
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_tenth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_tenth" id="submit_tenth_home" value="" />             
-            </div>                             
-            
-     </div>         
-     
-     
-     
-
-
-<!-- #twelth_step -->
-            <div id="twelth_step">
-               
-
-<div class="previous-twelth-home"><a href="#" class="previous-twelth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
-<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                   
-
-
-
-<div id="twelth_step_home"> 
 
                 <div class="form">
                
@@ -1660,9 +1631,11 @@ or less, and we are highly recommended!<br /><br />
 </table>
 
 
+
+
                     
                     
-          
+                                  
                     
                     
                     
@@ -1670,21 +1643,17 @@ or less, and we are highly recommended!<br /><br />
                <input class="submit_eleventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_eleventh" id="submit_eleventh_home" value="" />             
             </div>                             
             
-     </div>                     
+     </div>         
      
      
      
- 
- 
- 
 
 
-
-  <!-- #thirteen_step -->
-            <div id="thirteen_step">
+<!-- #twelth_step -->
+            <div id="twelth_step">
                
 
-<div class="previous-thirteen-home"><a href="#" class="previous-thirteen-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-twelth-home"><a href="#" class="previous-thirteen-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                   
 
@@ -1731,6 +1700,7 @@ or less, and we are highly recommended!<br /><br />
 </table>
 
 
+
                     
                     
           
@@ -1738,7 +1708,52 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_eleventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_eleventh" id="submit_eleventh_home" value="" />             
+               <input class="submit_thirteen" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_thirteen" id="submit_thirteen_home" value="" />             
+            </div>                             
+            
+     </div>                     
+     
+     
+     
+ 
+ 
+ 
+
+
+
+   <!-- #last_step -->
+            <div id="thirteen_step">
+               
+
+<div class="previous-thirteen-home"><a href="#" class="previous-thirteen-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                   
+
+
+
+<div id="thirteen_step_home"> 
+
+                <div class="form">
+               
+
+
+
+ <div id="siteloader">This is the target</div>
+                    
+                    <div class="content">
+       <h1>Thank you!</h1>
+       <p>Message here....</p>
+       
+       <div id="result"></div>
+       </div>              
+
+                    
+                    
+          
+                    
+                    
+                    
+                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
             </div>                             
             
      </div>                
@@ -1753,37 +1768,8 @@ or less, and we are highly recommended!<br /><br />
  
  
  
-  <!-- #last_step -->
-            <div id="fourteen_step">
-               
 
-
-<div class="previous-fourteen-home"><a href="#" class="previous-fourteen-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-                 
-
-
-
-<div id="fourteen_step_personal"> 
-
-                <div class="form">
-
-
-   <div id="siteloader">This is the target</div>
-                    
-                    <div class="content">
-       <h1>Thank you!</h1>
-       <p>Message here....</p>
-       
-       <div id="result"></div>
-       </div>              
-                    
-                    
-                    
-                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                       
-            </div>                                         
-            
-      </div>           
+           
   
   
   

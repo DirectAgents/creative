@@ -1164,6 +1164,8 @@ form div {
   
   #container-steps #fourteen_step { display: none; float:left; position:absolute; }
   
+  #container-steps #fifteen_step { display: none; float:left; position:absolute; }
+  
   #container-steps #last_step { margin-left:25px; width:500px; margin-top:45px; display: none; float:left; position:absolute; }
 
 

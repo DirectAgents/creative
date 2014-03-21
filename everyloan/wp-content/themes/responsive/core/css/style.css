@@ -4644,6 +4644,9 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 
 
 
+#container-steps #second_step_home { display: block; margin-left:120px; margin-top:40px; float:left; }
+
+
 #container-steps #eight_step_home { display: block; margin-left:120px; margin-top:40px; float:left; }
 
 #container-steps #eleventh_step_home { display: block; margin-left:120px; margin-top:40px; float:left; }
