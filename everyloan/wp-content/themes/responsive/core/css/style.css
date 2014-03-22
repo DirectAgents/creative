@@ -5003,9 +5003,11 @@ p.business-inner-text{color:#1e517f}
   .loan-module { margin:0 10px 20px; }
 }
 
+/* ---------------------------------------- Ipad manu views --------------------------------- */
+
 @media only screen and (min-width: 872px) and (max-width: 1024px) {
 
-  /* -------- Ipad manu views --------- */
+  
   #header 
   {
     overflow:hidden;
@@ -5064,6 +5066,8 @@ p.business-inner-text{color:#1e517f}
   
   #menu-topmenu li a { padding:0 10px 0 10px; }
 }
+
+/* ---------------------------------------- END Ipad manu views --------------------------------- */
 
 @media only screen and (min-width: 568px) and (max-width: 768px) {
 
