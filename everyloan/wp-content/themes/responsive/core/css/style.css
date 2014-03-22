@@ -4897,30 +4897,6 @@ p.business-inner-text{color:#1e517f}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  
-  /*------------------------------------------\
-  |       Menu                                |
-  \------------------------------------------*/
-  #header { overflow:hidden; }
-
-  .contact-info-desktop
-  {
-    display:inline-block;
-    height:auto;
-    width:auto;
-    margin-bottom: 5px;
-
-  }
-
-  .top-menu-desktop
-  {
-    display:inline-block;
-    float:right;
-    width:auto;
-    margin:0 28px 5px 0;
-  }
-
-  #menu-topmenu li a { padding:0 0 0 15px; }
 
   /*------------------------------------------\
   |       Homepage                            |
@@ -5025,6 +5001,68 @@ p.business-inner-text{color:#1e517f}
   \------------------------------------------*/
 
   .loan-module { margin:0 10px 20px; }
+}
+
+@media only screen and (min-width: 872px) and (max-width: 1024px) {
+
+  /* -------- Ipad manu views --------- */
+  #header 
+  {
+    overflow:hidden;
+    height:55px;
+  }
+
+  #logo { margin-left:3%; }
+
+  .contact-info-desktop
+  {
+    display:inline-block;
+    height:auto;
+    width:auto;
+    margin-bottom: 5px;
+
+  }
+
+  .top-menu-desktop
+  {
+    display:inline-block;
+    float:right;
+    width:auto;
+    margin:0 28px 5px 0;
+  }
+
+  #menu-topmenu li a { padding:0 0 0 15px; }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 871px) {
+  
+  #header 
+  {
+    overflow:hidden;
+    height:82px;
+  }
+
+  #logo { margin-left:3%; }
+
+  .contact-info-desktop
+  {
+    height:21px;
+    width:auto;
+    margin-top:10px;
+  } 
+
+  .top-menu-desktop
+  {
+    width:100%;
+    margin:0 auto;
+  }
+
+  #menu-topmenu { 
+    float:right;
+    margin-right:20px; 
+  }
+  
+  #menu-topmenu li a { padding:0 10px 0 10px; }
 }
 
 @media only screen and (min-width: 568px) and (max-width: 768px) {
