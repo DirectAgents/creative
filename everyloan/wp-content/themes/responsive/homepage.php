@@ -44,180 +44,243 @@ get_header(); ?>
                 
                 <div class="post-entry">
 
-                	<table border="0" cellspacing="0" cellpadding="0">
-                		<tbody>
-                			<tr>
-                				<td style="padding: 10px; float: left;"><img id="find-the-right-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan.png" /><img id="personal-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/personal-loan.png" width="100%" /><img id="home-refinance" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/home-refinance.png" width="100%" /><img id="student-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/student-loan.png" width="100%" /><img id="vacation" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/vacation.png" width="100%" />
+                	<table border="0" cellspacing="0" cellpadding="0" class="sidebar-table">
+                		<tbody class="sidebar-table">
+                			
+                            <tr class="sidebar-table">
+                				
+                                <td style="padding: 10px; float: left;">
+                                    
+                                    <img id="find-the-right-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan.png" />
 
-                					<img class="find-the-right-loan-mobile" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan-mobile.png" /></td>
+                                    <img id="personal-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/personal-loan.png" width="100%" />
+
+                                    <img id="home-refinance" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/home-refinance.png" width="100%" />
+
+                                    <img id="student-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/student-loan.png" width="100%" />
+
+                                    <img id="vacation" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/vacation.png" width="100%" />
+
+                					<img class="find-the-right-loan-mobile" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan-mobile.png" />
+                                </td>
                 					
-                					<td style="padding: 10px; float: left;">
-                						<div class="widget-wrapper-homepage-desktop">
-                							<div class="widget-title-rates-homepage">I want to borrow money</div>
-                							<ul id="i-want-to-borrow-money">
-                								<li><label>Why do you want to borrow money?</label></li>
-                								<li>
-                									<div class="styled-select"><select id="i-want-to-borrow-money-select"><option>Select loan type</option><option value="loans/home-purchase/">Home Purchase Loan</option><option value="loans/home-refinance/">Home Refinance Loan</option><option value="loans/small-business/">Small Business Loan</option><option value="loans/debt-consolidation/">Debt Consolidation Loan</option><option value="loans/home-improvement/">Home Improvement Loan</option><option value="loans/vacation/">Vacation Loan</option></select></div></li>
-                									<li><label>What is your credit quality like?</label></li>
-                									<li>
-                										<div class="styled-select"><select id="credit-score"><option>Select credit quality</option><option>Excellent (720+)</option><option>Good (660-720)</option><option>Fair (600-660)</option><option>Some Problem (below 600)</option></select></div></li>
-                									</ul>
-                									<div class="start-here-btn"><a id="start-here-btn" href="#"><img alt="Start Here" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" /></a></div>
-                								</div>
-                								<!-- end of .widget-wrapper --></td>
-                							</tr>
+            					<td style="padding: 10px; float: left;">
+            						
+                                    <div class="widget-wrapper-homepage-desktop">
+            							
+                                        <div class="widget-title-rates-homepage">I want to borrow money</div>
+            							
+                                        <ul id="i-want-to-borrow-money">
+            							
+                                            <li>
+                                                <label>Why do you want to borrow money?</label>
+                                            </li>
+            								
+                                            <li>
+            									<div class="styled-select">
+                                                    <select id="i-want-to-borrow-money-select">
+                                                        <option>Select loan type</option>
+                                                        <option value="loans/home-purchase/">Home Purchase Loan</option>
+                                                        <option value="loans/home-refinance/">Home Refinance Loan</option>
+                                                        <option value="loans/small-business/">Small Business Loan</option>
+                                                        <option value="loans/debt-consolidation/">Debt Consolidation Loan</option>
+                                                        <option value="loans/home-improvement/">Home Improvement Loan</option>
+                                                        <option value="loans/vacation/">Vacation Loan</option>
+                                                    </select>
+                                                </div>
+                                            </li>
 
-                							<tr>
-                								<td style="padding: 0px;" colspan="3">
+            								<li>
+                                                <label>What is your credit quality like?</label>
+                                            </li>
+        									
+                                            <li>
+        										<div class="styled-select">
+                                                    <select id="credit-score">
+                                                        <option>Select credit quality</option>
+                                                        <option>Excellent (720+)</option>
+                                                        <option>Good (660-720)</option>
+                                                        <option>Fair (600-660)</option>
+                                                        <option>Some Problem (below 600)</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+            							</ul>
+            							
+                                        <div class="start-here-btn">
+                                            <a id="start-here-btn" href="#">
+                                                <img alt="Start Here" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" />
+                                            </a>
+                                        </div>
 
-                									<div class="learn-box-home-desktop">
+            						</div><!-- end of .widget-wrapper -->
+            					
+                                </td>
+            				</tr>
 
-                										<div class="learn-title-top">Learn</div>
-                										<div class="lightbulb-box-home">Keep up with industry news, latest rates and much more.</div>
-                										<div class="read-news"><a href="news"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg" width="119" /></a></div>
-                										<div class="news-stories-title-home-title">News Stories</div>
-                										
-                										<?php $q = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 4 ) );
-														
-														if ( $q->have_posts() ) : ?>
-															
-															<ul>
-																<?php while ( $q->have_posts() ) : $q->the_post(); ?>
-                										          
-                											     <li class="arrow">
-                                                                    <?php //the_title(); ?>
-                                                                    <a href="<?php the_permalink(); ?>"><?php echo short_text(get_the_title(), 40); ?></a>
-                                                                 </li>
-                											
-                											<?php endwhile; ?>
-                											
-                											</ul>
+							<tr class="sidebar-table">
+							     
+                                 <td class="sidebar-table" style="padding: 0px;" colspan="3">
 
-                										<?php 
-                											else: echo "No posts found";
-                											
-                											endif;
-                											wp_reset_postdata();
-                										?>
+									<div class="learn-box-home-desktop">
 
-                										<div class="view-all"><a href="news">View All News</a></div>
-                									</div>
-                									<div class="widget-wrapper-homepage-mobile">
+										<div class="learn-title-top">Learn</div>
+										<div class="lightbulb-box-home">Keep up with industry news, latest rates and much more.</div>
+										<div class="read-news"><a href="news"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg" width="119" /></a></div>
+										<div class="news-stories-title-home-title">News Stories</div>
+										
+										<?php $q = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 4 ) );
+										
+										if ( $q->have_posts() ) : ?>
+											
+											<ul>
+												<?php while ( $q->have_posts() ) : $q->the_post(); ?>
+										          
+											     <li class="arrow">
+                                                    <?php //the_title(); ?>
+                                                    <a href="<?php the_permalink(); ?>"><?php echo short_text(get_the_title(), 40); ?></a>
+                                                 </li>
+											
+											<?php endwhile; ?>
+											
+											</ul>
 
-                										<div class="widget-title-rates-homepage">I want to borrow money</div>
-                										
-                										<ul id="i-want-to-borrow-money">
-                											<li><label>Why do you want to borrow money?</label></li>
-                											<li>
-                												<div class="styled-select"><select id="i-want-to-borrow-money-select"><option>Select loan type</option><option value="Home Loan">Home Loan</option><option value="Business Loan">Business Loan</option><option value="Personal Loan">Personal Loan</option></select></div>
-                											</li>
-            												
-            												<li><label>What is your credit quality like?</label></li>
+										<?php 
+											else: echo "No posts found";
+											
+											endif;
+											wp_reset_postdata();
+										?>
 
-            												<li>
-            													<div class="styled-select"><select><option>Select credit quality</option><option>Excellent (720+)</option><option>Good (600-720)</option><option>Fair (600-660)</option><option>Some Problem (below 600)</option></select></div>
-            												</li>
-                										</ul>
-                										
-                											<div class="start-here-btn">
-                												<a href="#">
-                													<img alt="Start Here" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" />
-                												</a>
-                											</div>
-                										</div>
+										<div class="view-all">
+                                            <a href="news">View All News</a>
+                                        </div>
 
-            											<div class="learn-box-home-mobile">
-            												
-            												<div class="learn-title-top-mobile">Learn</div>
+									</div>
 
-            												<div class="left-column">
-            													<div class="lightbulb-box-home-mobile">Keep up with industry news, latest rates and much more.</div>
-            													<div class="read-news-mobile"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg" /></a></div>
-            												</div>
+									<div class="widget-wrapper-homepage-mobile">
 
-            												<div class="right-column">
-            													<ul>
-            														<li class="arrow-mobile2"><a href="#">Mortgage Rates Going Lower in 2013?</a></li>
-            														<li class="arrow-mobile2"><a href="#">President to Fix Housing Market 2013</a></li>
-            														<li class="arrow-mobile2"><a href="#">Home Owner Tax Credits and Deductions</a></li>
-            														<li class="arrow-mobile2"><a href="#">Lowest Mortgage Rates Feb 2013</a></li>
-            													</ul>
-            													<div class="view-all"><a href="#">View All News</a></div>
-            												</div>
+										<div class="widget-title-rates-homepage">I want to borrow money</div>
+										
+										<ul id="i-want-to-borrow-money">
+											<li><label>Why do you want to borrow money?</label></li>
+											<li>
+												<div class="styled-select"><select id="i-want-to-borrow-money-select"><option>Select loan type</option><option value="Home Loan">Home Loan</option><option value="Business Loan">Business Loan</option><option value="Personal Loan">Personal Loan</option></select></div>
+											</li>
+											
+											<li><label>What is your credit quality like?</label></li>
 
-                										</div>
+											<li>
+												<div class="styled-select"><select><option>Select credit quality</option><option>Excellent (720+)</option><option>Good (600-720)</option><option>Fair (600-660)</option><option>Some Problem (below 600)</option></select></div>
+											</li>
+										</ul>
+										
+											<div class="start-here-btn">
+												<a href="#">
+													<img alt="Start Here" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" />
+												</a>
+											</div>
+										</div>
 
-            											<div class="calculate-box-home-desktop">
-            												<div class="calculate-title-top">Calculate</div>
-            												<div class="calculator-box-home">Run the numbers, compare &amp; visualize your loan.</div>
-            												<div class="read-news"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg" width="119" /></a></div>
-            												<div class="calculators-title-home-title">More Calculators</div>
-            												<ul>
-            													<li class="arrow"><a href="#">Monthly Payment Calculator</a></li>
-            													<li class="arrow"><a href="#">Mortgage Refinancing Calculator</a></li>
-            													<li class="arrow"><a href="#">Mortgage Term Comparison Calculator</a></li>
-            													<li class="arrow"><a href="#">Interest Only Loan Payment Calculator</a></li>
-            												</ul>
-            												<div class="view-all-calculators"><a href="#">View All Calculators</a></div>
-            											</div>
+										<div class="learn-box-home-mobile">
+											
+											<div class="learn-title-top-mobile">Learn</div>
 
-            											<div class="calculate-box-home-mobile">
-            												<div class="calculate-title-top-mobile">Calculate</div>
-            												<div class="left-column">
-            													<div class="calculator-box-home-mobile">Run the numbers, compare &amp; visualize your loan.</div>
-            													<div class="read-news-mobile"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg" /></a></div>
-            												</div>
-            												<div class="right-column">
-            													<ul>
-            														<li class="arrow-mobile"><a href="#">Monthly Payment Calculator</a></li>
-            														<li class="arrow-mobile"><a href="#">Mortgage Refinancing Calculator</a></li>
-            														<li class="arrow-mobile"><a href="#">Mortgage Term Comparison Calculator</a></li>
-            														<li class="arrow-mobile"><a href="#">Interest Only Loan Payment Calculator</a></li>
-            													</ul>
-            													<div class="view-all"><a href="#">View All News</a></div>
-            												</div>
-            											</div>
+											<div class="left-column">
+												<div class="lightbulb-box-home-mobile">Keep up with industry news, latest rates and much more.</div>
+												<div class="read-news-mobile"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg" /></a></div>
+											</div>
 
-            											<div class="borrow-box-home-desktop">
+											<div class="right-column">
+												<ul>
+													<li class="arrow-mobile2"><a href="#">Mortgage Rates Going Lower in 2013?</a></li>
+													<li class="arrow-mobile2"><a href="#">President to Fix Housing Market 2013</a></li>
+													<li class="arrow-mobile2"><a href="#">Home Owner Tax Credits and Deductions</a></li>
+													<li class="arrow-mobile2"><a href="#">Lowest Mortgage Rates Feb 2013</a></li>
+												</ul>
+												<div class="view-all"><a href="#">View All News</a></div>
+											</div>
 
-            												<div class="borrow-title-top">Borrow</div>
-            												<div class="borrow-box-home-icon">View an overview of all loans and find helpful resources to get started.</div>
-            												<div class="read-news"><a href="loan-types"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" width="119" /></a></div>
-            												<div class="calculators-title-home-title">Borrowing Resources</div>
-            												<ul>
-            													<li class="arrow"><a href="#">The Loan Process</a></li>
-            													<li class="arrow"><a href="advice-articles/?advice=refinance">Refinance</a></li>
-            													<li class="arrow"><a href="advice-articles/?advice=home-purchase">Home Purchase</a></li>
-            													<li class="arrow"><a href="#">Home Equity</a></li>
-            												</ul>
-            												<div class="view-all-calculators"><a href="advice-articles">View More Resources</a></div>
+										</div>
 
-            											</div>
+										<div class="calculate-box-home-desktop">
+											<div class="calculate-title-top">Calculate</div>
+											<div class="calculator-box-home">Run the numbers, compare &amp; visualize your loan.</div>
+											<div class="read-news"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg" width="119" /></a></div>
+											<div class="calculators-title-home-title">More Calculators</div>
+											
+                                            <ul>
+												<li class="arrow"><a href="#">Monthly Payment Calculator</a></li>
+												<li class="arrow"><a href="#">Mortgage Refinancing Calculator</a></li>
+												<li class="arrow"><a href="#">Mortgage Term Comparison Calculator</a></li>
+												<li class="arrow"><a href="#">Interest Only Loan Payment Calculator</a></li>
+											</ul>
+											<div class="view-all-calculators"><a href="#">View All Calculators</a></div>
+										</div>
 
-            											<div class="calculate-box-home-mobile">
-            												
-            												<div class="calculate-title-top-mobile">Borrow</div>
-            												<div class="left-column">
-            													<div class="borrow-box-home-icon-mobile">View an overview of all loans and find helpful resources to get started.</div>
-            													<div class="read-news-mobile"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" /></a></div>
-            											</div>
+										<div class="calculate-box-home-mobile">
+											<div class="calculate-title-top-mobile">Calculate</div>
+											<div class="left-column">
+												<div class="calculator-box-home-mobile">Run the numbers, compare &amp; visualize your loan.</div>
+												<div class="read-news-mobile"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg" /></a></div>
+											</div>
+											<div class="right-column">
+												<ul>
+													<li class="arrow-mobile"><a href="#">Monthly Payment Calculator</a></li>
+													<li class="arrow-mobile"><a href="#">Mortgage Refinancing Calculator</a></li>
+													<li class="arrow-mobile"><a href="#">Mortgage Term Comparison Calculator</a></li>
+													<li class="arrow-mobile"><a href="#">Interest Only Loan Payment Calculator</a></li>
+												</ul>
+												<div class="view-all"><a href="#">View All News</a></div>
+											</div>
+										</div>
 
-        												<div class="right-column">
-        													<ul>
-        														<li class="arrow-mobile"><a href="#">The Loan Process</a></li>
-        														<li class="arrow-mobile"><a href="#">Refinance</a></li>
-        														<li class="arrow-mobile"><a href="#">Home Purchase</a></li>
-        														<li class="arrow-mobile"><a href="#">Home Equity</a></li>
-        													</ul>
-        													<div class="view-all"><a href="#">View More Resources</a></div>
-        												</div>
-                									</div>
-                								</td>
-                							</tr>
-                						</tbody>
-                					</table>
+										<div class="borrow-box-home-desktop">
+
+											<div class="borrow-title-top">Borrow</div>
+											<div class="borrow-box-home-icon">View an overview of all loans and find helpful resources to get started.</div>
+											<div class="read-news"><a href="loan-types"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" width="119" /></a></div>
+											<div class="calculators-title-home-title">Borrowing Resources</div>
+											
+                                            <ul>
+												<li class="arrow"><a href="#">The Loan Process</a></li>
+												<li class="arrow"><a href="advice-articles/?advice=refinance">Refinance</a></li>
+												<li class="arrow"><a href="advice-articles/?advice=home-purchase">Home Purchase</a></li>
+												<li class="arrow"><a href="#">Home Equity</a></li>
+											</ul>
+											
+                                            <div class="view-all-calculators"><a href="advice-articles">View More Resources</a></div>
+
+										</div>
+
+										<div class="calculate-box-home-mobile">
+											
+											<div class="calculate-title-top-mobile">Borrow</div>
+											<div class="left-column">
+												<div class="borrow-box-home-icon-mobile">View an overview of all loans and find helpful resources to get started.</div>
+												<div class="read-news-mobile"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" /></a></div>
+										</div>
+
+										<div class="right-column">
+											
+                                            <ul>
+												<li class="arrow-mobile"><a href="#">The Loan Process</a></li>
+												<li class="arrow-mobile"><a href="#">Refinance</a></li>
+												<li class="arrow-mobile"><a href="#">Home Purchase</a></li>
+												<li class="arrow-mobile"><a href="#">Home Equity</a></li>
+											</ul>
+
+											<div class="view-all"><a href="#">View More Resources</a></div>
+										
+                                        </div>
+									</div>
+								</td>
+							</tr>
+                		</tbody>
+                	</table>
 
                     <?php wp_link_pages(array('before' => '<div class="pagination">' . __('Pages:', 'responsive'), 'after' => '</div>')); ?>
+
                 </div><!-- end of .post-entry -->
             
 				<?php get_template_part( 'post-data' ); ?>
