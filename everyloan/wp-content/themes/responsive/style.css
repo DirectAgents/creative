@@ -3937,6 +3937,7 @@ h3.small-title
   border-color: transparent #fff transparent transparent;
 }
 
+a { color:#1e517f; }
 a:hover { color:#333 !important; }
 
 /*------------------------------------------\
@@ -4110,15 +4111,6 @@ a:hover { color:#333 !important; }
 
 /* ----------  posts ---------- */
 
-/*.everyloan-title,
-.everyloan-title a
-{
-  font-size:30px; 
-  color:#1e517f !important; 
-  width:100%;
-  letter-spacing:1px; 
-}*/
-
 #content .loan-module,
 #content-blog .loan-module,
 .page-template-custom-templatesborrow-template-php .loan-module
@@ -4250,10 +4242,12 @@ a:hover { color:#333 !important; }
 
 .loan-module .loan-title { text-indent:0 !important; }
 
-ul.loan-list { margin:0; }
+ul.loan-list,
+.rs_faq ul { margin:0; }
 
 /* a list style used for loan pages */
-ul.loan-list li
+ul.loan-list li,
+.rs_faq ul li
 {
   list-style-type:disc;
   margin-bottom:5px;
