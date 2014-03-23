@@ -184,7 +184,7 @@ get_header(); ?>
 
 										<div class="learn-box-home-mobile">
 											
-											<div class="learn-title-top-mobile">Learn</div>
+											<div class="learn-title-top-mobile box-home-mobile">Learn</div>
 
 											<div class="left-column">
 												<div class="lightbulb-box-home-mobile">Keep up with industry news, latest rates and much more.</div>
@@ -218,7 +218,7 @@ get_header(); ?>
 											<div class="view-all-calculators"><a href="#">View All Calculators</a></div>
 										</div>
 
-										<div class="calculate-box-home-mobile">
+										<div class="calculate-box-home-mobile box-home-mobile">
 											<div class="calculate-title-top-mobile">Calculate</div>
 											<div class="left-column">
 												<div class="calculator-box-home-mobile">Run the numbers, compare &amp; visualize your loan.</div>
@@ -253,7 +253,7 @@ get_header(); ?>
 
 										</div>
 
-										<div class="calculate-box-home-mobile">
+										<div class="calculate-box-home-mobile box-home-mobile">
 											
 											<div class="calculate-title-top-mobile">Borrow</div>
 											<div class="left-column">
