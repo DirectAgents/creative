@@ -2598,7 +2598,8 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
   -webkit-border-radius: 4px;border-radius: 4px;
   /*background-color: #fff;*/
   border: 1px solid #e5e5e5;
-  display:inline-block;
+  display:block;
+  margin:0 auto;
   
 }
 
@@ -5059,7 +5060,7 @@ p.business-inner-text{color:#1e517f}
   }
 
   #widgets-how-it-works .widget-wrapper { margin:20px auto;width:95%;float:none; }
-  #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:20px 0; }
+  #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:20px auto; }
 
   .read-news-button-sidebar, 
   .calculate-button-sidebar, 
@@ -5083,7 +5084,7 @@ p.business-inner-text{color:#1e517f}
     overflow:hidden;
   }
 
-  .sidebar-module { width:95%; }
+  #widgets-how-it-works .sidebar-module { width:95%;margin:20px auto !important;float:none; }
   
   .nav-collapse { width:auto; }
   
@@ -5160,7 +5161,7 @@ p.business-inner-text{color:#1e517f}
   #find-the-right-loan { float:none; }
   
   .home-sidebar-cont { padding:0; }
-  #widgets-how-it-works { padding: 30px 0 60px; }
+  #widgets-how-it-works { padding: 30px 0 60px;margin-left:0 !important;width:100%; }
 
   .widget-wrapper-homepage-mobile,
   .home-sidebar-cont > div,
@@ -5186,7 +5187,7 @@ p.business-inner-text{color:#1e517f}
     overflow:hidden;
   }
 
-  .sidebar-widgets { margin:0 0 20px 15px; }
+  .sidebar-widgets { margin:0 auto 15px; }
   .right-column ul li { margin-right:40px; }
 
   /* -------- Mobile Menu -------- */
