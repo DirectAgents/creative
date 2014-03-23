@@ -18,19 +18,25 @@ class RSSocial
 	/*
 	 * rs_display_social_bar ()
 	 * Display the date of the post and social media icons
+	 * and display the post categories
 	 */
 	public function social_bar ($date, $link=null)
-	{
+	{	
+		global $post;
 		$gplus = $this->rs_get_icon('gplus', $link);
 		$fb = $this->rs_get_icon('fb', $link);
 		$twitter = $this->rs_get_icon('twitter', $link);
-		
-		global $post;
+		$tax = get_post_type() == 'advice_articles' ? 'advice_articles_tax' : 'category'; // Check if its advice and articles or a post
+		$terms = wp_get_post_terms($post->ID, $tax, array("fields" => "all"));
+		$term_links = '';
 
-		$terms = wp_get_post_terms($post->ID, 'category');
-		$term_link = get_term_link( $terms[0]->slug, 'category' );
+		foreach ($terms as $key=>$val)
+		{	
+			$link = get_term_link( $val->slug, $tax );
+			$term_links .= '<a href="'. $link . '">' . $val->name . '</a> ';
+		}
 		
-		$post_date = "<div class='post-date'><strong>Posted: </strong>" . $date . "</div><div class='post-cats'>Category: <a href='" . $term_link ."''>". $terms[0]->name . "</a></div>";
+		$post_date = "<div class='post-date'><strong>Posted: </strong>" . $date . "</div><div class='post-cats'>Category: " . $term_links . "</div>";
 		//$post_cats = "<div class='post-cats'>Posted in Mortgage and Information</div>";
 		$social_icons = "<div class='social-icons'>" . $gplus . $fb . $twitter . "</div>";
 		
