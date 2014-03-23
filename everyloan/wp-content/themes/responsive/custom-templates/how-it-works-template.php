@@ -28,7 +28,7 @@ global $more; $more = 0;
 			</p>
 		</div>
 	
-		<div class="grey-cont" style='text-align:center'>
+		<div class="grey-cont loan-module" style='text-align:center;width:auto;'>
 
 			<div class='inner-grey-cont'>
 				<?php //print_r(); ?>

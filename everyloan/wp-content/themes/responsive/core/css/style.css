@@ -4945,6 +4945,26 @@ p.business-inner-text{color:#1e517f}
 
 @media only screen and (min-width: 568px) and (max-width: 768px) {
 
+  /* -------- How it works page -------- */
+  
+  ul.apply,
+  ul.fund,
+  ul.repay
+  {
+    
+    width:27%;
+    height:auto;
+  }
+
+  #how-it-works-1-pic,
+  #how-it-works-2-pic,
+  #how-it-works-3-pic
+  {
+    
+    width:100%;
+    height:auto;
+  }
+
   /* -------- Mobile Menu -------- */
  
   /*------------------------------------------\
@@ -5264,6 +5284,40 @@ p.business-inner-text{color:#1e517f}
   
   #content.col-620 { width:100%; }
 
+   /* ---------- How it works page ---------- */
+   .inner-grey-cont
+   {
+    width:100%;
+    margin-top:0;
+   }
+
+   ul.apply,
+   ul.fund,
+   ul.repay
+   {
+    margin:20px auto;
+    width:100%;
+   }
+
+   ul.apply li,
+   ul.fund li,
+   ul.repay li
+   {
+    float:left;
+    width:100%;
+    clear:left;
+    text-align:center;
+   }
+
+
+   #how-it-works-1-pic,
+   #how-it-works-2-pic,
+   #how-it-works-3-pic
+   {
+ 
+    width:90% !important;
+    float:none !important;
+  }
   /*------------------------------------------\
   |        Loan pages [roman]                 |
   \------------------------------------------*/
