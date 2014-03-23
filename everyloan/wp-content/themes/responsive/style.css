@@ -57,7 +57,7 @@ CSS Rules: Sorted alphabetically for better organization.
 
 
 @font-face {
-    font-family: 'heroregular';
+    font-family:'heroregular', Arial, Helvetica, sans-serif;
     src: url('core/fonts/hero-webfont.eot');
     src: url('core/fonts/hero-webfont.eot?#iefix') format('embedded-opentype'),
          url('core/fonts/hero-webfont.woff') format('woff'),
@@ -987,7 +987,7 @@ form div {
 
 .post-title{
   font-size: 31px;  
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
     color: #1e517f !important; 
   letter-spacing:3px;
   line-height:35px;
@@ -1321,7 +1321,7 @@ form div {
 
 
 #content-personal-loans h1 {
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   font-weight:bold; 
   color:#1e517f;
 }
@@ -1567,7 +1567,7 @@ ul.lp-credit-score li{list-style-type:none; font-size:12px; line-height:14px;}
   /*background:url(core/images/home-box-title-bg.jpg) repeat-x;*/
   float:left;
   font-size: 23px;  
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   font-weight:bold;
     color: #1e517f !important; 
   letter-spacing:2px;
@@ -1580,7 +1580,7 @@ ul.lp-credit-score li{list-style-type:none; font-size:12px; line-height:14px;}
 .calculate-title-top{
   /*background:url(core/images/home-box-title-bg.jpg) repeat-x;*/
     font-size: 23px;  
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   font-weight:bold;
     color: #1e517f !important; 
   letter-spacing:2px;
@@ -1592,7 +1592,7 @@ ul.lp-credit-score li{list-style-type:none; font-size:12px; line-height:14px;}
 .borrow-title-top{
   /*background:url(core/images/home-box-title-bg.jpg) repeat-x;*/
     font-size: 23px;  
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   font-weight:bold;
     color: #1e517f !important; 
   letter-spacing:2px;
@@ -1660,7 +1660,7 @@ padding:10px 0 0 80px; margin-left:15px; list-style-type:none; width:260px; heig
   float:left; 
   color:#1e517f; 
   font-weight:normal; 
-  font-family: 'heroregular'; 
+  font-family:'heroregular', Arial, Helvetica, sans-serif; 
   font-size:20px; 
   width:100%; 
   margin-top:10px; 
@@ -1673,7 +1673,7 @@ padding:10px 0 0 80px; margin-left:15px; list-style-type:none; width:260px; heig
   float:left; 
   color:#1e517f; 
   font-weight:normal; 
-  font-family: 'heroregular'; 
+  font-family:'heroregular', Arial, Helvetica, sans-serif; 
   font-size:20px; 
   width:100%; 
   margin-top:10px; 
@@ -1776,7 +1776,7 @@ li.arrow-mobile2 a:hover{color:#ee8025;}
   display: block;
   font-size: 24px;
   font-weight: 700;
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   line-height: 23px;
   margin: 0;
   padding: 13px 0 20px 25px;
@@ -1798,7 +1798,7 @@ li.arrow-mobile2 a:hover{color:#ee8025;}
 .rates-start{margin-top:-20px; margin-left:-10px; position:absolute;}
 
 
-.apply-title, .fund-title, .repay-title{float:left; color:#1e517f; font-weight:normal; font-family: 'heroregular'; font-size:20px; width:100%; margin-top:10px; margin-bottom:10px;}
+.apply-title, .fund-title, .repay-title{float:left; color:#1e517f; font-weight:normal; font-family:'heroregular', Arial, Helvetica, sans-serif; font-size:20px; width:100%; margin-top:10px; margin-bottom:10px;}
 
 
 
@@ -1846,7 +1846,7 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 #content .loan-title,
 #content-advice-and-articles .loan-title {
 
-  font-family:'heroregular', Arial; 
+  font-family:'heroregular', Arial, Helvetica, sans-serif; 
   font-size:26px;
   color:#1e517f;
   margin-bottom:10px;
@@ -1894,7 +1894,7 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 .box-woman-laptop{float:left; padding:0px 0 0 0px; margin-top:30px;}
 
 .box-woman-laptop .title  {
-  font-family: 'heroregular'; 
+  font-family:'heroregular', Arial, Helvetica, sans-serif; 
   font-size: 21px; /* = 30px */
   margin-bottom: .857em;
   margin:10px 0 0 20px;
@@ -2226,7 +2226,7 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 
 .widget-title,
 .widget-title-home h3 {
-  font-family: 'heroregular'; 
+  font-family:'heroregular', Arial, Helvetica, sans-serif; 
   display: block;
   font-size: 24px;
   font-weight: 700;
@@ -3902,7 +3902,7 @@ p { margin:0 0 10px; }
 h2.secondary-title
 {
   font-size:20px;
-  font-family:'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   color:#1e517f !important;
   margin:8px 0;
   letter-spacing:1px
@@ -4009,7 +4009,7 @@ a:hover { color:#333 !important; }
 
 #content-advice-and-articles .post-data { clear:none; }
 
-.advice-choose-container
+.advice-choose-contfainer
 {
   margin:10px 0;
   overflow:hidden;
