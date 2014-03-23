@@ -2593,11 +2593,12 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
 #how-it-works-1-pic, #how-it-works-2-pic, #how-it-works-3-pic{float:left; width:160px;}
 
 .widget-wrapper-rates {
-  float:left;
+  float:none;
   width:95%;
   -webkit-border-radius: 4px;border-radius: 4px;
   /*background-color: #fff;*/
   border: 1px solid #e5e5e5;
+  display:inline-block;
   
 }
 
@@ -3706,12 +3707,12 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 #how-it-works-1-pic, #how-it-works-2-pic, #how-it-works-3-pic{float:left; width:160px;}
 
 .widget-wrapper-rates {
-  float:left;
+  float:none;
   width:94%;
   -webkit-border-radius: 4px; border-radius: 4px;
   /*background-color: #fff;*/
   border: 1px solid #e5e5e5;
-  margin: 0 0 20px 0;
+  margin:0 auto 20px;
 }
 
 
@@ -4843,8 +4844,8 @@ p.business-inner-text{color:#1e517f}
   }
 
   #widgets-how-it-works { margin:20px 0 0 -20px !important; }
-  #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 22px; }
-  #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
+  #widgets-how-it-works .widget-wrapper { margin:20px auto 22px; }
+  #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px auto 0;float:none; }
   .sidebar-module { width:94%; }
 
   .read-news-button-sidebar, 
@@ -5054,11 +5055,11 @@ p.business-inner-text{color:#1e517f}
   #widgets-how-it-works { 
     margin-top:20px;
     margin-left: -20px !important;
-    width: 104%; 
+    width: 106%; 
   }
 
-  #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 16px;width:95%; }
-  #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
+  #widgets-how-it-works .widget-wrapper { margin:20px auto;width:95%;float:none; }
+  #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:20px 0; }
 
   .read-news-button-sidebar, 
   .calculate-button-sidebar, 
@@ -5159,7 +5160,7 @@ p.business-inner-text{color:#1e517f}
   #find-the-right-loan { float:none; }
   
   .home-sidebar-cont { padding:0; }
-  #widgets-how-it-works { padding: 30px 0 0px; }
+  #widgets-how-it-works { padding: 30px 0 60px; }
 
   .widget-wrapper-homepage-mobile,
   .home-sidebar-cont > div,
