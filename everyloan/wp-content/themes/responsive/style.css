@@ -3897,12 +3897,13 @@ p { margin:0 0 10px; }
 
 /* ----- Titles ------ */
 
+h2,
 h2.secondary-title
 {
   font-size:20px;
   font-family:'heroregular', Arial, Helvetica, sans-serif;
   color:#1e517f !important;
-  margin:8px 0;
+  margin:8px 0 !important;
   letter-spacing:1px
 }
 
@@ -4004,16 +4005,14 @@ a:hover { color:#333 !important; }
   margin-top:0;
   margin-bottom:5px;
 }
+
 .table
 {
   border: 1px solid #e5e5e5;
   -webkit-border-radius: 9px;border-radius: 9px;
 }
 
-.table tr
-{
-   border: 1px solid #e5e5e5;
-}
+.table tr { border: 1px solid #e5e5e5; }
 #content-advice-and-articles .post-data { clear:none; }
 
 .advice-choose-container
