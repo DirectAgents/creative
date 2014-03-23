@@ -25,14 +25,14 @@ if ( !defined('ABSPATH')) exit;
 <?php if (!dynamic_sidebar('how-it-works-sidebar')) : ?>
 <div class="widget-wrapper"> 
   
-  <!--<div class="rates-start"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/rates-start.png"/></div>-->
+  <!--<div class="rates-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/rates-start.png"/></div>-->
 
 
 
     
     <div class="widget-wrapper-content-lp">
       
-      <img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/low-rates-from-678.jpg" width="272" height="86"/>
+      <img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/low-rates-from-678.jpg" width="272" height="86"/>
     <ul class="lp-credit-score">
         <li>APR Rates from 6.78% to 27.99% APR. Best APR is available to borrowers with excellent credit.</li>
       </ul>
@@ -82,12 +82,12 @@ if ( !defined('ABSPATH')) exit;
       <ul class="lp-credit-score">
         <li>Checking your rate will not affect your credit score.</li>
       </ul>
-      <img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/excellent-credit-score.jpg" style="margin-left:3px; margin-bottom:5px; margin-top:-13px;"/>
+      <img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/excellent-credit-score.jpg" style="margin-left:3px; margin-bottom:5px; margin-top:-13px;"/>
     </div>
   </div>
   <!-- end of .widget-wrapper -->
   
- <p><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/questions.gif"/></p>
+ <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/questions.gif"/></p>
  
  <div style="float:left; margin-left:55px; color:#555555;">
  Call us:<br />9AM - 5PM PST<br /><br />

@@ -237,7 +237,7 @@ article, header {
   height:366px;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home.png) no-repeat;
+  background:url(../images/i-want-to-borrow-money-home.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   margin: 0px 0 0 -10px;
@@ -281,7 +281,7 @@ h2 {
 .learn-box-home-desktop {max-width:313px; height:370px; float:left; border:0px #eee solid; padding:0px; margin-left:0px;
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-box-home.png)}
+background:url(../images/widget-box-home.png)}
 .learn-box-home-desktop ul {padding-left:20px; list-style-type:none;}
 .learn-box-home-desktop li a  {list-style-type:none;}
 
@@ -416,7 +416,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:96%;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -436,7 +436,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:96%;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -473,7 +473,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   height: 56px;
   margin:10px 0 10px 10px;
   border:0px solid #cccccc;
-  background: transparent url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/get-my-rate-btn.jpg) no-repeat top left;
+  background: transparent url(../images/get-my-rate-btn.jpg) no-repeat top left;
   cursor: pointer;
   cursor: hand;
   z-index:1;
@@ -550,7 +550,7 @@ h2{margin-left:20px;}
    width: 85%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(../images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -582,7 +582,7 @@ h2{margin-left:20px;}
    width: 28%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(../images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -620,14 +620,14 @@ input[type="text"]{min-width:88%;}
 .business-loans-box-step-desktop {float:left; overflow:hidden; width:919px; height:476px; padding:0; float:left; border:0px #eee solid; 
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-refinance-my-home4.gif) no-repeat;}
+background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 .business-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
 .business-loans-box-step-desktop li a  {list-style-type:none;}  
 
 
 
 .business-loans-box-step1-desktop-title{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan-for-your-needs-in-seconds3.png) no-repeat;
+  background:url(../images/find-the-right-loan-for-your-needs-in-seconds3.png) no-repeat;
   float:left;
   font-size: 16px;  
   font-family: 'heroregular';
@@ -657,7 +657,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:100%; 
   height:18px;
   margin:30px 0 0 20px;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/Rates-start-at-3-16-APR.png)no-repeat;
+  background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
   text-indent:-99999px;
   }   
 
@@ -713,7 +713,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 
 
 #container-steps input.submit {
-            background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/continue-steps-desktop2.png') no-repeat;
+            background: url('../images/continue-steps-desktop2.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -739,7 +739,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 
 
 #progress_bar {
-    background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/progress_bar.png') no-repeat;
+    background: url('../images/progress_bar.png') no-repeat;
     width: 100px;
     height: 24px;
     float:left;
@@ -747,7 +747,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 }
 
 #progress {
-    background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/progress.png') repeat-x;
+    background: url('../images/progress.png') repeat-x;
     width: 0px;
     height: 23px;
     
@@ -994,7 +994,7 @@ padding-bottom:20px; margin-left:10px; }
 .learn-box-home-mobile li a  {list-style-type:none;}
 
 .learn-title-top-mobile{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+  background:url(../images/learn-title-top-mobile.gif) repeat-x;
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -1014,7 +1014,7 @@ padding:0px; margin-top:20px; padding-bottom:20px; margin-left:10px; }
 
 
 .calculate-title-top-mobile{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+  background:url(../images/learn-title-top-mobile.gif) repeat-x;
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -1034,7 +1034,7 @@ margin-top:20px; margin-left:10px; }
 
 
 .borrow-title-top-mobile{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+  background:url(../images/learn-title-top-mobile.gif) repeat-x;
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -1070,7 +1070,7 @@ margin-top:20px; margin-left:10px; }
   height:366px;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -1095,7 +1095,7 @@ margin-top:20px; margin-left:10px; }
   margin-bottom:20px;
   text-align: left;
   color: #414344; 
-  background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-rates-homepage.gif');
+  background: url('../images/widget-title-rates-homepage.gif');
   /*-webkit-border-top-right-radius: 4px; 
   -webkit-border-top-left-radius: 4px; 
   -moz-border-radius: 4px;*/
@@ -1145,7 +1145,7 @@ margin-top:20px; margin-left:10px; }
    width: 80%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(../images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -1302,7 +1302,7 @@ h2 {
   height: 56px;
   margin:10px 0 0 85px;
   border:0px solid #cccccc;
-  background: transparent url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/get-my-rate-btn.jpg) no-repeat top left;
+  background: transparent url(../images/get-my-rate-btn.jpg) no-repeat top left;
   cursor: pointer;
   cursor: hand;
   z-index:1;
@@ -1316,7 +1316,7 @@ h2 {
   width:96%;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -1336,7 +1336,7 @@ h2 {
   width:96%;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -1402,7 +1402,7 @@ input[type="text"]{min-width:85%;}
    width: 85%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(../images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -1434,7 +1434,7 @@ input[type="text"]{min-width:85%;}
    width: 10%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(../images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -1467,7 +1467,7 @@ input[type="text"]{min-width:85%;}
 .personal-loans-box-step-desktop {width:919px; height:476px; padding:0; float:left; border:0px #eee solid; 
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-refinance-my-home3.gif) no-repeat;}
+background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
 .personal-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
 .personal-loans-box-step-desktop li a  {list-style-type:none;}  
 
@@ -1482,14 +1482,14 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 .business-loans-box-step-desktop {float:left; overflow:hidden; width:919px; height:476px; padding:0; float:left; border:0px #eee solid; 
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-refinance-my-home3.gif) no-repeat;}
+background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
 .business-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
 .business-loans-box-step-desktop li a  {list-style-type:none;}  
 
 
 
 .business-loans-box-step1-desktop-title{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan-for-your-needs-in-seconds2.png) no-repeat;
+  background:url(../images/find-the-right-loan-for-your-needs-in-seconds2.png) no-repeat;
   float:left;
   font-size: 16px;  
   font-family: 'heroregular';
@@ -1519,7 +1519,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:100%; 
   height:18px;
   margin:30px 0 0 20px;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/Rates-start-at-3-16-APR.png)no-repeat;
+  background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
   text-indent:-99999px;
   }   
 
@@ -1553,7 +1553,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 
 
 #container-steps input.submit {
-            background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/continue-steps-desktop2.png') no-repeat;
+            background: url('../images/continue-steps-desktop2.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -1780,7 +1780,7 @@ padding-bottom:20px; }
 .learn-box-home-mobile li a  {list-style-type:none;}
 
 .learn-title-top-mobile{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+  background:url(../images/learn-title-top-mobile.gif) repeat-x;
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -1800,7 +1800,7 @@ padding:0px; margin-top:20px; padding-bottom:20px; }
 
 
 .calculate-title-top-mobile{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+  background:url(../images/learn-title-top-mobile.gif) repeat-x;
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -1820,7 +1820,7 @@ margin-top:20px; }
 
 
 .borrow-title-top-mobile{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/learn-title-top-mobile.gif) repeat-x;
+  background:url(../images/learn-title-top-mobile.gif) repeat-x;
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -1847,7 +1847,7 @@ margin-top:20px; }
   height:340px;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -1872,7 +1872,7 @@ margin-top:20px; }
   margin-bottom:20px;
   text-align: left;
   color: #414344; 
-  background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-rates-homepage.gif');
+  background: url('../images/widget-title-rates-homepage.gif');
   /*-webkit-border-top-right-radius: 4px; 
   -webkit-border-top-left-radius: 4px; 
   -moz-border-radius: 4px;*/
@@ -1929,7 +1929,7 @@ margin-top:20px; }
    width: 90%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(../images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -2066,7 +2066,7 @@ h2{margin-left:20px;}
   height: 56px;
   margin:10px 0 0 0px;
   border:0px solid #cccccc;
-  background: transparent url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/get-my-rate-btn.jpg) no-repeat top left;
+  background: transparent url(../images/get-my-rate-btn.jpg) no-repeat top left;
   cursor: pointer;
   cursor: hand;
   z-index:1;
@@ -2082,7 +2082,7 @@ h2{margin-left:20px;}
   width:96%;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -2103,7 +2103,7 @@ h2{margin-left:20px;}
   width:96%;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -2167,7 +2167,7 @@ input[type="text"]{min-width:85%;}
    width: 85%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(../images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -2198,7 +2198,7 @@ input[type="text"]{min-width:85%;}
    width: 10%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(../images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -2236,7 +2236,7 @@ input[type="text"]{min-width:85%;}
 .personal-loans-box-step-desktop {width:919px; height:476px; padding:0; float:left; border:0px #eee solid; 
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-refinance-my-home2.gif) no-repeat;}
+background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 .personal-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
 .personal-loans-box-step-desktop li a  {list-style-type:none;}  
 
@@ -2250,7 +2250,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:246px; 
   height:18px;
   margin:43px 0 0 45px;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/Rates-start-at-3-16-APR.png)no-repeat;
+  background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
   text-indent:-99999px;
   } 
   
@@ -2260,7 +2260,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 
 
 #container-steps input.submit {
-            background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/continue-steps-desktop2.png') no-repeat;
+            background: url('../images/continue-steps-desktop2.png') no-repeat;
             border: none;
             cursor: pointer;
             width: 180px;
@@ -2285,14 +2285,14 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 .business-loans-box-step-desktop {float:left; overflow:hidden; width:919px; height:476px; padding:0; float:left; border:0px #eee solid; 
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-refinance-my-home2.gif) no-repeat;}
+background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 .business-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
 .business-loans-box-step-desktop li a  {list-style-type:none;}  
 
 
 
 .business-loans-box-step1-desktop-title{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan-for-your-needs-in-seconds.png) no-repeat;
+  background:url(../images/find-the-right-loan-for-your-needs-in-seconds.png) no-repeat;
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -2316,7 +2316,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:246px; 
   height:18px;
   margin:40px 0 0 45px;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/Rates-start-at-3-16-APR.png)no-repeat;
+  background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
   text-indent:-99999px;
   }   
 
@@ -2499,7 +2499,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   padding: 30px 0 23px 20px;
   text-align: left;
   color: #414344; 
-  /*background: url('http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif');
+  /*background: url('../images/widget-title-how-it-works-sidebar.gif');
   -webkit-border-top-right-radius: 4px; 
   -webkit-border-top-left-radius: 4px; 
   -moz-border-radius: 4px;*/
@@ -2714,7 +2714,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:100%;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -2734,7 +2734,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:100%;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
+  /*background:url(../images/i-want-to-borrow-money-home-MEDIUM.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   background:#fff;
@@ -2760,7 +2760,7 @@ h2{margin-left:20px;}
   height: 56px;
   margin:10px 0 0 120px;
   border:0px solid #cccccc;
-  background: transparent url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/get-my-rate-btn.jpg) no-repeat top left;
+  background: transparent url(../images/get-my-rate-btn.jpg) no-repeat top left;
   cursor: pointer;
   cursor: hand;
   z-index:1;
@@ -2844,7 +2844,7 @@ h2{margin-left:20px;}
 .personal-loans-box-step-desktop {width:919px; height:476px; padding:0; float:left; border:0px #eee solid; 
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-refinance-my-home.gif) no-repeat;}
+background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 .personal-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
 .personal-loans-box-step-desktop li a  {list-style-type:none;}  
 
@@ -2860,7 +2860,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:246px; 
   height:18px;
   margin:40px 0 0 65px;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/Rates-start-at-3-16-APR.png)no-repeat;
+  background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
   text-indent:-99999px;
   } 
 
@@ -2891,13 +2891,13 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 .business-loans-box-step-desktop {float:left; overflow:hidden; width:919px; height:476px; padding:0; float:left; border:0px #eee solid; 
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-refinance-my-home.gif) no-repeat;}
+background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 .business-loans-box-step-desktop ul {padding-left:20px; list-style-type:none;}
 .business-loans-box-step-desktop li a  {list-style-type:none;}  
 
 
 .business-loans-box-step1-desktop-title{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan-for-your-needs-in-seconds.png) no-repeat;
+  background:url(../images/find-the-right-loan-for-your-needs-in-seconds.png) no-repeat;
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -2921,7 +2921,7 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
   width:246px; 
   height:18px;
   margin:35px 0 0 65px;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/Rates-start-at-3-16-APR.png)no-repeat;
+  background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
   text-indent:-99999px;
   } 
 

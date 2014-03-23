@@ -31,10 +31,12 @@ global $more; $more = 0;
 		<div class="grey-cont" style='text-align:center'>
 
 			<div class='inner-grey-cont'>
-			
+				<?php //print_r(); ?>
 				<ul class="apply">
 					<li>
-						<img id="how-it-works-1-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/apply.png" />
+						<!-- <img id="how-it-works-1-pic" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/apply.png" /> -->
+						<img id="how-it-works-1-pic" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/apply.png" />
+
 					</li>
 					
 					<li>
@@ -48,7 +50,7 @@ global $more; $more = 0;
 
 				<ul class="fund">
 					<li>
-						<img id="how-it-works-2-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/offers.png" />
+						<img id="how-it-works-2-pic" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/offers.png" />
 					</li>
 
 					<li>
@@ -60,7 +62,7 @@ global $more; $more = 0;
 				</ul>
 					
 				<ul class="repay">
-					<li><img id="how-it-works-3-pic" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/funding.png" /></li>
+					<li><img id="how-it-works-3-pic" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/funding.png" /></li>
 					<li>
 						<div class="repay-title">Get Funding</div>
 					</li>

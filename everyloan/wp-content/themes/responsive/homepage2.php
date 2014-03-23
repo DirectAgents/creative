@@ -60,15 +60,15 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <table border="0" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="padding: 10px; float: left;"><img id="find-the-right-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan.png" /><img id="personal-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/personal-loan.png" width="100%" />
+<td style="padding: 10px; float: left;"><img id="find-the-right-loan" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/find-the-right-loan.png" /><img id="personal-loan" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/personal-loan.png" width="100%" />
 
-<img id="home-refinance" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/home-refinance.png" width="100%" />
+<img id="home-refinance" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/home-refinance.png" width="100%" />
 
-<img id="student-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/student-loan.png" width="100%" />
+<img id="student-loan" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/student-loan.png" width="100%" />
 
-<img id="vacation" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/vacation.png" width="100%" />
+<img id="vacation" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/vacation.png" width="100%" />
 
-<img class="find-the-right-loan-mobile" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan-mobile.png" /></td>
+<img class="find-the-right-loan-mobile" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/find-the-right-loan-mobile.png" /></td>
 <td style="padding: 10px; float: left;">
 <div class="widget-wrapper-homepage-desktop">
 
@@ -86,9 +86,9 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 </ul>
 <div class="start-here-btn">
 
-<input type="image" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" name="submit2" />
+<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif" name="submit2" />
 
-<!--<a href="#"><img alt="Start Here" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" /></a>-->
+<!--<a href="#"><img alt="Start Here" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif" /></a>-->
 
 
 </div>
@@ -104,7 +104,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="learn-box-home-desktop">
 <div class="learn-title-top">Learn</div>
 <div class="lightbulb-box-home">Keep up with industry news, latest rates and much more.</div>
-<div class="read-news"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg" width="119" /></a></div>
+<div class="read-news"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" width="119" /></a></div>
 <div class="news-stories-title-home-title">News Stories</div>
 <ul>
 	<li class="arrow"><a href="#">Mortgage Rates Going Lower in 2013?</a></li>
@@ -127,7 +127,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="start-here-btn">
 
 
-<!--<a href="#"><img alt="Start Here" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" /></a>-->
+<!--<a href="#"><img alt="Start Here" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif" /></a>-->
 
 
 </div>
@@ -136,7 +136,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="learn-title-top-mobile">Learn</div>
 <div class="left-column">
 <div class="lightbulb-box-home-mobile">Keep up with industry news, latest rates and much more.</div>
-<div class="read-news-mobile"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg" /></a></div>
+<div class="read-news-mobile"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" /></a></div>
 </div>
 <div class="right-column">
 <ul>
@@ -151,7 +151,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="calculate-box-home-desktop">
 <div class="calculate-title-top">Calculate</div>
 <div class="calculator-box-home">Run the numbers, compare &amp; visualize your loan.</div>
-<div class="read-news"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg" width="119" /></a></div>
+<div class="read-news"><a href="#"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/calculate.jpg" width="119" /></a></div>
 <div class="calculators-title-home-title">More Calculators</div>
 <ul>
 	<li class="arrow"><a href="#">Monthly Payment Calculator</a></li>
@@ -165,7 +165,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="calculate-title-top-mobile">Calculate</div>
 <div class="left-column">
 <div class="calculator-box-home-mobile">Run the numbers, compare &amp; visualize your loan.</div>
-<div class="read-news-mobile"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg" /></a></div>
+<div class="read-news-mobile"><a href="#"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/calculate.jpg" /></a></div>
 </div>
 <div class="right-column">
 <ul>
@@ -180,7 +180,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="borrow-box-home-desktop">
 <div class="borrow-title-top">Borrow</div>
 <div class="borrow-box-home-icon">View an overview of all loans and find helpful resources to get started.</div>
-<div class="read-news"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" width="119" /></a></div>
+<div class="read-news"><a href="#"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/view-loans.jpg" width="119" /></a></div>
 <div class="calculators-title-home-title">More Borrowers</div>
 <ul>
 	<li class="arrow"><a href="#">The Loan Process</a></li>
@@ -194,7 +194,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="calculate-title-top-mobile">Borrow</div>
 <div class="left-column">
 <div class="borrow-box-home-icon-mobile">View an overview of all loans and find helpful resources to get started.</div>
-<div class="read-news-mobile"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" /></a></div>
+<div class="read-news-mobile"><a href="#"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/view-loans.jpg" /></a></div>
 </div>
 <div class="right-column">
 <ul>

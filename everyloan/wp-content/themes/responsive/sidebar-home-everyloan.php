@@ -26,10 +26,10 @@ if ( !defined('ABSPATH')) exit;
             <div class="widget-wrapper">
             
               
-              <div class="rates-start"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/rates-start.png"/></div>
+              <div class="rates-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/rates-start.png"/></div>
                <div class="widget-wrapper-rates">
             
-                <div class="widget-title-rates" style="color:#1e517f; font-size:18px; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;">
+                <div class="widget-title-rates" style="color:#1e517f; font-size:18px; background:url(<?php echo get_stylesheet_directory_uri(); ?>/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;">
                 I want to borrow money</div>
 					<ul>
 						<li>
@@ -44,7 +44,7 @@ if ( !defined('ABSPATH')) exit;
                         </li>
 					</ul>
                     <div style="background:#fff; padding-left:40px; padding-bottom:20px;">
-                    <img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif"/>
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif"/>
                     </div>
 
             </div><!-- end of .widget-wrapper -->

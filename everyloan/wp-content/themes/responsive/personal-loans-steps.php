@@ -136,7 +136,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-personal"><a href="#" class="previous-second-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-personal"><a href="#" class="next-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+<!--<div class="next-personal"><a href="#" class="next-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
 
  <div id="second_step_personal">
@@ -182,7 +182,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-third-personal"><a href="#" class="previous-third-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-third-personal"><a href="#" class="next-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+<!--<div class="next-third-personal"><a href="#" class="next-third-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
    <div id="third_step_personal"> 
                
@@ -226,7 +226,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
  
 <div class="previous-fourth-personal"><a href="#" class="previous-fourth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-fourth-personal"><a href="#" class="next-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+<!--<div class="next-fourth-personal"><a href="#" class="next-fourth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
                
 
 
@@ -277,7 +277,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-fifth-personal"><a href="#" class="previous-fifth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-fifth-personal"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+<!--<div class="next-fifth-personal"><a href="#" class="next-fifth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
 
 
@@ -333,7 +333,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-sixth-personal"><a href="#" class="previous-sixth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-sixth-personal"><a href="#" class="next-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->              
+<!--<div class="next-sixth-personal"><a href="#" class="next-sixth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->              
 
 
 <div id="sixth_step_personal"> 
@@ -373,7 +373,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-seventh-personal"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-seventh-personal"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                             
+<!--<div class="next-seventh-personal"><a href="#" class="next-seventh-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                             
 
 
 
@@ -414,7 +414,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-eight-personal"><a href="#" class="previous-eight-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-eight-personal"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                            
+<!--<div class="next-eight-personal"><a href="#" class="next-eight-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                            
                
 
 
@@ -473,7 +473,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-ninth-personal"><a href="#" class="previous-ninth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-ninth-personal"><a href="#" class="next-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                           
+<!--<div class="next-ninth-personal"><a href="#" class="next-ninth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                           
 
 
 
@@ -536,7 +536,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-tenth-personal"><a href="#" class="previous-tenth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-tenth-personal"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                  
+<!--<div class="next-tenth-personal"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                  
 
 
 

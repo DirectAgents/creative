@@ -51,17 +51,17 @@ get_header(); ?>
                 				
                                 <td style="padding: 10px; float: left;">
                                     
-                                    <img id="find-the-right-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan.png" />
+                                    <img id="find-the-right-loan" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/find-the-right-loan.png" />
 
-                                    <img id="personal-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/personal-loan.png" width="100%" />
+                                    <img id="personal-loan" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/personal-loan.png" width="100%" />
 
-                                    <img id="home-refinance" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/home-refinance.png" width="100%" />
+                                    <img id="home-refinance" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/home-refinance.png" width="100%" />
 
-                                    <img id="student-loan" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/student-loan.png" width="100%" />
+                                    <img id="student-loan" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/student-loan.png" width="100%" />
 
-                                    <img id="vacation" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/vacation.png" width="100%" />
+                                    <img id="vacation" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/vacation.png" width="100%" />
 
-                					<img class="find-the-right-loan-mobile" alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/find-the-right-loan-mobile.png" />
+                					<img class="find-the-right-loan-mobile" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/find-the-right-loan-mobile.png" />
                                 </td>
                 					
             					<td style="padding: 10px; float: left;">
@@ -109,7 +109,7 @@ get_header(); ?>
             							
                                         <div class="start-here-btn">
                                             <a id="start-here-btn" href="#">
-                                                <img alt="Start Here" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" />
+                                                <img alt="Start Here" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif" />
                                             </a>
                                         </div>
 
@@ -126,7 +126,7 @@ get_header(); ?>
 
 										<div class="learn-title-top">Learn</div>
 										<div class="lightbulb-box-home">Keep up with industry news, latest rates and much more.</div>
-										<div class="read-news"><a href="news"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg" width="119" /></a></div>
+										<div class="read-news"><a href="news"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" width="119" /></a></div>
 										<div class="news-stories-title-home-title">News Stories</div>
 										
 										<?php $q = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => 4 ) );
@@ -177,7 +177,7 @@ get_header(); ?>
 										
 											<div class="start-here-btn">
 												<a href="#">
-													<img alt="Start Here" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif" />
+													<img alt="Start Here" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif" />
 												</a>
 											</div>
 										</div>
@@ -188,7 +188,7 @@ get_header(); ?>
 
 											<div class="left-column">
 												<div class="lightbulb-box-home-mobile">Keep up with industry news, latest rates and much more.</div>
-												<div class="read-news-mobile"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg" /></a></div>
+												<div class="read-news-mobile"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" /></a></div>
 											</div>
 
 											<div class="right-column">
@@ -206,7 +206,7 @@ get_header(); ?>
 										<div class="calculate-box-home-desktop">
 											<div class="calculate-title-top">Calculate</div>
 											<div class="calculator-box-home">Run the numbers, compare &amp; visualize your loan.</div>
-											<div class="read-news"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg" width="119" /></a></div>
+											<div class="read-news"><a href="#"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/calculate.jpg" width="119" /></a></div>
 											<div class="calculators-title-home-title">More Calculators</div>
 											
                                             <ul>
@@ -222,7 +222,7 @@ get_header(); ?>
 											<div class="calculate-title-top-mobile">Calculate</div>
 											<div class="left-column">
 												<div class="calculator-box-home-mobile">Run the numbers, compare &amp; visualize your loan.</div>
-												<div class="read-news-mobile"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg" /></a></div>
+												<div class="read-news-mobile"><a href="#"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/calculate.jpg" /></a></div>
 											</div>
 											<div class="right-column">
 												<ul>
@@ -239,7 +239,7 @@ get_header(); ?>
 
 											<div class="borrow-title-top">Borrow</div>
 											<div class="borrow-box-home-icon">View an overview of all loans and find helpful resources to get started.</div>
-											<div class="read-news"><a href="loan-types"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" width="119" /></a></div>
+											<div class="read-news"><a href="loan-types"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/view-loans.jpg" width="119" /></a></div>
 											<div class="calculators-title-home-title">Borrowing Resources</div>
 											
                                             <ul>
@@ -258,7 +258,7 @@ get_header(); ?>
 											<div class="calculate-title-top-mobile">Borrow</div>
 											<div class="left-column">
 												<div class="borrow-box-home-icon-mobile">View an overview of all loans and find helpful resources to get started.</div>
-												<div class="read-news-mobile"><a href="#"><img alt="" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg" /></a></div>
+												<div class="read-news-mobile"><a href="#"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/view-loans.jpg" /></a></div>
 										</div>
 
 										<div class="right-column">

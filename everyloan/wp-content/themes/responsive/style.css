@@ -174,7 +174,7 @@ html {
 body {
   -moz-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/bg.gif);
+  background:url(core/images/bg.gif);
   color: #555555;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -861,7 +861,7 @@ form div {
 
 
 .call-us-desktop{
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/phone-plus-alt.png) no-repeat;
+  background:url(core/images/phone-plus-alt.png) no-repeat;
   font-weight:bold;
   color:#000;
   display:inline;
@@ -871,7 +871,7 @@ form div {
   
 
 .call-us-mobile{
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/phone-plus.jpg) no-repeat;*/
+  /*background:url(core/images/phone-plus.jpg) no-repeat;*/
   font-weight:bold;
   color:#000;
   display:inline;
@@ -917,7 +917,7 @@ form div {
   height:366px;
  /*-webkit-border-radius: 4px;
   -moz-border-radius: 4px;*/
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/i-want-to-borrow-money-home.png) no-repeat;
+  background:url(core/images/i-want-to-borrow-money-home.png) no-repeat;
   /*border: 1px solid #e5e5e5;
   border-radius: 4px;*/
   margin: 13px 0 0 0;
@@ -976,7 +976,7 @@ form div {
    width: 240px;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(core/images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -1373,7 +1373,7 @@ form div {
   width:103%;
   padding-left:10px;
   margin-left:-13px;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-bg.gif) repeat-x;
+  background:url(core/images/start-here-bg.gif) repeat-x;
   font:bold 1.2em/1 Arial, Helvetica, sans-serif;
   border-bottom:1px #e9e9e9 solid;
 }
@@ -1389,7 +1389,7 @@ form div {
   width:98.3%;
   padding-left:10px;
   margin-left:0px;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-bg.gif) repeat-x;
+  background:url(core/images/start-here-bg.gif) repeat-x;
   font:bold 1.2em/1 Arial, Helvetica, sans-serif;
   border-bottom:1px #e9e9e9 solid;
 }
@@ -1449,7 +1449,7 @@ input[type="email"] {
    width: 60%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(core/images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -1481,7 +1481,7 @@ input[type="email"] {
    width: 18%;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(core/images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -1506,7 +1506,7 @@ ul.personal-loans-col1{padding:0px;}
 
 ul.personal-loans-col1 li {
   list-style-type:none;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/green-check.gif) no-repeat;
+  background:url(core/images/green-check.gif) no-repeat;
   padding-left:30px;
   padding-top:5px;
   height:27px;
@@ -1521,7 +1521,7 @@ ul.personal-loans-col2{padding:0px;}
 
 ul.personal-loans-col2 li {
   list-style-type:none;
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/green-check.gif) no-repeat;
+  background:url(core/images/green-check.gif) no-repeat;
   padding-left:30px;
   padding-top:5px;
   height:27px;
@@ -1564,7 +1564,7 @@ ul.lp-credit-score li{list-style-type:none; font-size:12px; line-height:14px;}
   
 
 .learn-title-top{
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/home-box-title-bg.jpg) repeat-x;*/
+  /*background:url(core/images/home-box-title-bg.jpg) repeat-x;*/
   float:left;
   font-size: 23px;  
   font-family: 'heroregular';
@@ -1578,7 +1578,7 @@ ul.lp-credit-score li{list-style-type:none; font-size:12px; line-height:14px;}
 
 
 .calculate-title-top{
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/home-box-title-bg.jpg) repeat-x;*/
+  /*background:url(core/images/home-box-title-bg.jpg) repeat-x;*/
     font-size: 23px;  
   font-family: 'heroregular';
   font-weight:bold;
@@ -1590,7 +1590,7 @@ ul.lp-credit-score li{list-style-type:none; font-size:12px; line-height:14px;}
   }
   
 .borrow-title-top{
-  /*background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/home-box-title-bg.jpg) repeat-x;*/
+  /*background:url(core/images/home-box-title-bg.jpg) repeat-x;*/
     font-size: 23px;  
   font-family: 'heroregular';
   font-weight:bold;
@@ -1610,14 +1610,14 @@ ul.lp-credit-score li{list-style-type:none; font-size:12px; line-height:14px;}
 .learn-box-home-desktop {max-width:313px; height:370px; float:left; border:0px #eee solid; padding:0px; margin-left:15px;
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-box-home.png)}
+background:url(core/images/widget-box-home.png)}
 .learn-box-home-desktop ul {padding-left:30px; list-style-type:none;}
 .learn-box-home-desktop li a  {list-style-type:none;}
 
 .calculate-box-home-desktop{max-width:313px; margin-left:22px; height:370px; padding:0; float:left; border:0px #eee solid; padding:0px;
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-box-home.png)}
+background:url(core/images/widget-box-home.png)}
 .calculate-box-home-desktop ul {padding-left:30px; list-style-type:none;}
 .calculate-box-home-desktop li a  {list-style-type:none;}
 
@@ -1625,34 +1625,34 @@ background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/respons
 .borrow-box-home-desktop { max-width:313px; margin-left:20px; height:370px; padding:0; float:left; border:0px #eee solid; padding:0px;
 /*-moz-border-radius: 10px; 
 border-radius: 10px;*/ 
-background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-box-home.png)}
+background:url(core/images/widget-box-home.png)}
 .borrow-box-home-desktop ul {padding-left:30px; list-style-type:none;}
 .borrow-box-home-desktop li a  {list-style-type:none;}
 
 
 
-.lightbulb-box-home{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/lightbulb.jpg) no-repeat; 
+.lightbulb-box-home{float:left; background:url(core/images/lightbulb.jpg) no-repeat; 
 padding:10px 0 0 80px; margin-left:20px; list-style-type:none; width:140px; height:68px; color:#000;}
 
 
-.calculator-box-home{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculator.jpg) no-repeat; 
+.calculator-box-home{float:left; background:url(core/images/calculator.jpg) no-repeat; 
 padding:10px 0 0 80px; margin-left:20px; list-style-type:none; width:140px; height:68px; color:#000;}
 
 
-.borrow-box-home-icon{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/borrow.jpg) no-repeat; 
+.borrow-box-home-icon{float:left; background:url(core/images/borrow.jpg) no-repeat; 
 padding:10px 0 0 80px; margin-left:20px; list-style-type:none; width:160px; height:68px; color:#000;}
 
 
 
-.lightbulb-box-home-mobile{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/lightbulb.jpg) no-repeat; 
+.lightbulb-box-home-mobile{float:left; background:url(core/images/lightbulb.jpg) no-repeat; 
 padding:10px 0 0 80px; margin-left:15px; list-style-type:none; width:240px; height:58px; color:#000;text-align:left;}
 
 
-.calculator-box-home-mobile{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculator.jpg) no-repeat; 
+.calculator-box-home-mobile{float:left; background:url(core/images/calculator.jpg) no-repeat; 
 padding:10px 0 0 80px; margin-left:15px; list-style-type:none; width:240px; height:58px; color:#000;text-align:left;}
 
 
-.borrow-box-home-icon-mobile{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/borrow.jpg) no-repeat; 
+.borrow-box-home-icon-mobile{float:left; background:url(core/images/borrow.jpg) no-repeat; 
 padding:10px 0 0 80px; margin-left:15px; list-style-type:none; width:260px; height:58px; color:#000;text-align:left;margin-bottom:20px;}
 
 
@@ -1684,7 +1684,7 @@ padding:10px 0 0 80px; margin-left:15px; list-style-type:none; width:260px; heig
 
 li.arrow a {
   float:left; 
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/blue-arrow.gif) no-repeat; 
+  background:url(core/images/blue-arrow.gif) no-repeat; 
   padding:0px 0 0 10px;  
   width:100%; 
   list-style-type:none !important; 
@@ -1698,7 +1698,7 @@ li.arrow a:hover{color:#ee8025;}
 
 li.arrow-mobile a {
   float:left; 
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/blue-arrow.gif) no-repeat; 
+  background:url(core/images/blue-arrow.gif) no-repeat; 
   padding:0px 0 0 10px;  
   width:100%; 
   list-style-type:none !important; 
@@ -1714,7 +1714,7 @@ li.arrow-mobile a:hover{color:#ee8025;}
 
 li.arrow-mobile2 a {
   float:left; 
-  background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/blue-arrow.gif) no-repeat; 
+  background:url(core/images/blue-arrow.gif) no-repeat; 
   padding:0px 0 0 10px;  
   width:100%; 
   list-style-type:none !important; 
@@ -1753,7 +1753,7 @@ li.arrow-mobile2 a:hover{color:#ee8025;}
    width: 240px;
    height: 34px;
    overflow: hidden;
-   background: url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/arrow.png) no-repeat right #f0f0f0;
+   background: url(core/images/arrow.png) no-repeat right #f0f0f0;
    border: 1px solid #ccc;
    -moz-border-radius: 5px;
    border-radius: 5px;
@@ -1814,14 +1814,14 @@ ul.fund {list-style-type:none; width:173px; padding:0; float:left}
 ul.repay {list-style-type:none; width:167px; padding:0; float:left}
 .repay li {list-style-type:none; font-size:12px;}
 
-.lightbulb{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/lightbulb.jpg) no-repeat; 
+.lightbulb{float:left; background:url(core/images/lightbulb.jpg) no-repeat; 
 padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 
 
-.calculator{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculator.jpg) no-repeat; 
+.calculator{float:left; background:url(core/images/calculator.jpg) no-repeat; 
 padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 
-.borrow{float:left; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/borrow.jpg) no-repeat; 
+.borrow{float:left; background:url(core/images/borrow.jpg) no-repeat; 
 padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 
 
@@ -1907,7 +1907,7 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 .lp-top-content-confirm{float:left; width:340px; margin-left:240px; padding-top:0px;}
 .lp-top-content-denied{float:left; width:500px; margin-left:30px; margin-top:60px; padding-top:0px;}
 
-.you-may-qualify{float:left; padding:25px 0 0 40px; margin-top:30px; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/you-may-qualify.jpg) no-repeat; width:660px; height:281px;}
+.you-may-qualify{float:left; padding:25px 0 0 40px; margin-top:30px; background:url(core/images/you-may-qualify.jpg) no-repeat; width:660px; height:281px;}
 
 
 /* =Templates (Landing Page)

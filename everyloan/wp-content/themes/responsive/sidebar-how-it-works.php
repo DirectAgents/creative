@@ -25,9 +25,9 @@ if ( !defined('ABSPATH')) exit;
 <?php if (!dynamic_sidebar('how-it-works-sidebar')) : ?>
 <div class="widget-wrapper sidebar-widgets"> 
   
-  <!--<div class="rates-start"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/rates-start.png"/></div>-->
+  <!--<div class="rates-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/rates-start.png"/></div>-->
   <div class="widget-wrapper-rates">
-    <div class="widget-title-rates" style="color:#414344; font-size:18px; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> I want to borrow money</div>
+    <div class="widget-title-rates" style="color:#414344; font-size:18px; background:url(<?php echo get_stylesheet_directory_uri(); ?>/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> I want to borrow money</div>
     <ul id="i-want-to-borrow-money">
       <li>
         <label>Why do you want to borrow money?</label>
@@ -61,17 +61,17 @@ if ( !defined('ABSPATH')) exit;
       </li>
     </ul>
     <div style="background:#fff; padding-left:27px; padding-bottom:20px; border-bottom-right-radius:8px;
-  border-bottom-left-radius:8px;"> <a href="#" id="start-here-btn"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-btn.gif"/></a> </div>
+  border-bottom-left-radius:8px;"> <a href="#" id="start-here-btn"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif"/></a> </div>
   </div>
   <!-- end of .widget-wrapper -->
   
   <div class="widget-wrapper sidebar-module">
-    <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif);"> Learn</div>
+    <div class="widget-title2" style="color:#1e517f; background:url(<?php echo get_stylesheet_directory_uri(); ?>/core/images/widget-title-how-it-works-sidebar.gif);"> Learn</div>
     <div class="widget-wrapper-content">
 
       <ul class="sidebar-pic-cont">
         <li class="lightbulb">Keep up with industry news and the latest rates.</li>
-        <li class="read-news-button-sidebar"><a href="http://termlifequotetoday.com/everyloan/news/"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/read-news.jpg"/></a></li>
+        <li class="read-news-button-sidebar"><a href="http://termlifequotetoday.com/everyloan/news/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg"/></a></li>
       </ul>
 
     </div>
@@ -79,12 +79,12 @@ if ( !defined('ABSPATH')) exit;
   <!-- end of .widget-wrapper -->
   
   <div class="widget-wrapper sidebar-module">
-    <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Calculate</div>
+    <div class="widget-title2" style="color:#1e517f; background:url(<?php echo get_stylesheet_directory_uri(); ?>/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Calculate</div>
     <div class="widget-wrapper-content">
 
       <ul class="sidebar-pic-cont">
         <li class="calculator">Run the numbers, compare & visualize your loan.</li>
-        <li class="calculate-button-sidebar"><a href="#"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/calculate.jpg"/></a></li>
+        <li class="calculate-button-sidebar"><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/calculate.jpg"/></a></li>
       </ul>
 
     </div>
@@ -92,12 +92,12 @@ if ( !defined('ABSPATH')) exit;
   <!-- end of .widget-wrapper -->
   
   <div class="widget-wrapper sidebar-module">
-    <div class="widget-title2" style="color:#1e517f; background:url(http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Borrow</div>
+    <div class="widget-title2" style="color:#1e517f; background:url(<?php echo get_stylesheet_directory_uri(); ?>/core/images/widget-title-how-it-works-sidebar.gif); -webkit-border-top-right-radius: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius: 4px;"> Borrow</div>
     <div class="widget-wrapper-content">
 
       <ul class="sidebar-pic-cont">
         <li class="borrow">View an overview of all loans & find helpful resources to get started.</li>
-        <li class="view-loans-button-sidebar"><a href="loan-types"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/view-loans.jpg"/></a></li>
+        <li class="view-loans-button-sidebar"><a href="loan-types"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/view-loans.jpg"/></a></li>
       </ul>
 
     </div>

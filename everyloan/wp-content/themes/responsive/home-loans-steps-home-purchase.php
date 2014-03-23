@@ -139,7 +139,7 @@ or less, and we are highly recommended!<br /><br />
 <div class="previous-home"><a href="#" class="previous-second-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 <? } ?>
 
-<!--<div class="next-home"><a href="#" class="next-second-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+<!--<div class="next-home"><a href="#" class="next-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
 
  <div id="second_step_personal">
@@ -191,7 +191,7 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-third-home"><a href="#" class="previous-third-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-third-home"><a href="#" class="next-third-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+<!--<div class="next-third-home"><a href="#" class="next-third-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
    <div id="third_step_personal"> 
                
@@ -230,7 +230,7 @@ or less, and we are highly recommended!<br /><br />
  
 <div class="previous-fourth-home"><a href="#" class="previous-fourth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-fourth-home"><a href="#" class="next-fourth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+<!--<div class="next-fourth-home"><a href="#" class="next-fourth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
                
 
 
@@ -386,7 +386,7 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-fifth-home"><a href="#" class="previous-fifth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-fifth-home"><a href="#" class="next-fifth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->
+<!--<div class="next-fifth-home"><a href="#" class="next-fifth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
 
 
@@ -553,9 +553,9 @@ or less, and we are highly recommended!<br /><br />
             <div id="sixth_step">
 
 
-<div class="previous-sixth-home"><a href="#" class="previous-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-sixth-home"><a href="#" class="previous-sixth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-sixth-home"><a href="#" class="next-sixth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->              
+<!--<div class="next-sixth-home"><a href="#" class="next-sixth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->              
 
 
 <div id="sixth_step_personal"> 
@@ -596,7 +596,7 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                          
+<!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                          
 
 
 
@@ -834,7 +834,7 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-eight-home"><a href="#" class="previous-eight-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                             
+<!--<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                             
                
 
 
@@ -899,7 +899,7 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-ninth-home"><a href="#" class="previous-ninth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-ninth-home"><a href="#" class="next-ninth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                        
+<!--<div class="next-ninth-home"><a href="#" class="next-ninth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                        
 
 
 
@@ -962,7 +962,7 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-tenth-home"><a href="#" class="previous-tenth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-tenth-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                  
+<!--<div class="next-tenth-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                  
 
 
 
@@ -1031,7 +1031,7 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-eleventh-home"><a href="#" class="previous-eleventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                   
+<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                   
 
 
 

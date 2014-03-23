@@ -118,7 +118,7 @@ $responsive_options = responsive_get_options();
         
         <div class='alt-bottom-footer-container'>
 
-            <div id="footer-logo"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/footer-everyloan.png"/></div>        
+            <div id="footer-logo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/footer-everyloan.png"/></div>        
             
             <div class="grid col-380 copyright">
                65 Enterprise # 485 | Aliso Viejo, CA 92656 | T: 1-800-383-7956<br />
