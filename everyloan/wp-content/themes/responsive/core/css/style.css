@@ -1701,10 +1701,10 @@ h2 {
   
 .start-here-btn{float:left; width:228px; padding-left:22px; padding-bottom: 10px;}
 
-.read-news-mobile{float:left; list-style-type:none; margin-left:90px; margin-top:20px;}
+.read-news-mobile{float:left; list-style-type:none; margin-left:90px;}
 
 .left-column{float:left; width:100px; padding-top:15px;}
-.right-column{float:left; margin-left:190px; margin-top:25px; width:300px;}
+.right-column{float:left;clear:left;margin-left:80px; margin-top:15px; max-width:300px;}
 
 li.arrow-mobile a {
 font-size:14px;	
@@ -5225,7 +5225,6 @@ p.business-inner-text{color:#1e517f}
 @media only screen and (max-width:525px) {
 
   #homepage .left-column{ width:auto; }
-  #homepage .right-column{ margin-left:0; }
 }
 
 @media only screen and (max-width:450px) {
