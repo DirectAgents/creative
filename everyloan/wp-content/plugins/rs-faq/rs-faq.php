@@ -2,9 +2,10 @@
 /*
 	Plugin Name: RS FAQ
 	Author: Roman Sharf
+	Description: Adds the FAQ (rs_faq) custom post type
 */
 
-/* register the advice_articles custom post type */
+/* register the rs_faq custom post type */
 add_action( 'init', 'rs_faq_init' );
 function rs_faq_init() {
 	
@@ -18,7 +19,7 @@ function rs_faq_init() {
 	register_post_type( 'rs_faq', $args );
 }
 
-/* Register the advice_articles_tax for use with advice_articles CPT */
+/* Register the rs_faq_tax for use with rs_faq CPT */
 add_action( 'init', 'rs_faq_tax_init' );
 function rs_faq_tax_init() {
 	

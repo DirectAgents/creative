@@ -1,7 +1,8 @@
 <?php
 /*
-	Plugin Name: Advice and Articles
+	Plugin Name: RS Advice and Articles
 	Author: Roman Sharf
+	Description: Adds the Advice and Articles custom post type
 */
 
 /* register the advice_articles custom post type */
