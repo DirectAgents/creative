@@ -4004,7 +4004,16 @@ a:hover { color:#333 !important; }
   margin-top:0;
   margin-bottom:5px;
 }
+.table
+{
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 9px;border-radius: 9px;
+}
 
+.table tr
+{
+   border: 1px solid #e5e5e5;
+}
 #content-advice-and-articles .post-data { clear:none; }
 
 .advice-choose-container
@@ -4012,6 +4021,11 @@ a:hover { color:#333 !important; }
   margin:10px 0;
   overflow:hidden;
   width:100%;
+}
+
+.table-header
+{
+  background:#efefef;
 }
 
 .advice-choose-container .select-category-label { margin:5px 0 0 10px; }
@@ -4260,3 +4274,5 @@ ul.loan-list li,
 {
   height:auto;
 }
+
+
