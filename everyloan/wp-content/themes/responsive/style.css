@@ -3863,6 +3863,7 @@ BDO[DIR="rtl"] {
 |         - News page                       |
 |         - Pagination                      |
 |         - Loan pages                      |
+|         - FAQ                             |
 \------------------------------------------*/
 
 /*------------------------------------------\
@@ -4254,6 +4255,10 @@ ul.loan-list li,
 }
 /* test */
 
-/*@media only screen and (min-width:321px) and (max-width:568px) {
-  #content-advice-and-articles { width:100% !important; }
-}*/
+/*------------------------------------------\
+|                FAQ page                   |
+\------------------------------------------*/
+.faq-text 
+{
+  height:auto;
+}

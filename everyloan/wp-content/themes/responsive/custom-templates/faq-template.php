@@ -27,7 +27,7 @@ get_header();
 			<h3 class="small-title faq-title">
 				 <a href="#"><span>+</span><span style="display:none;">-</span> <?php the_title(); ?></a>
 			</h3>
-			<div style='display:none'>
+			<div style='display:none;' class='faq-text'>
 				<?php the_content(); ?>
 			</div>
 		
