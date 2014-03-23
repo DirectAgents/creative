@@ -4119,8 +4119,10 @@ a:hover { color:#333 !important; }
   letter-spacing:1px; 
 }*/
 
+#content .loan-module,
 #content-blog .loan-module,
 .page-template-custom-templatesborrow-template-php .loan-module
+
 {
    margin-bottom:20px;
 }

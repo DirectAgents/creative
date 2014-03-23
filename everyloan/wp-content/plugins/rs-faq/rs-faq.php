@@ -19,7 +19,7 @@ function rs_faq_init() {
 }
 
 /** 
- * Use faq-script.js for FAQ slide in- out functionality
+ * Use faq-script.js for FAQ slide in-out functionality. Only works on faq page
  */
 add_action( 'wp_enqueue_scripts', 'rs_faq_js' );
 function rs_faq_js() {
