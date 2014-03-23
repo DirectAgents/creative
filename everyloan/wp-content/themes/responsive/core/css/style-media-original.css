@@ -78,7 +78,7 @@ padding-bottom:20px; }
 	background:url(../images/learn-title-top-mobile.gif) repeat-x;
 	float:left;
 	font-size: 23px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
 	font-weight:bold;
     color: #1e517f !important; 
 	letter-spacing:2px;
@@ -98,7 +98,7 @@ padding:0px; margin-top:20px; padding-bottom:20px; }
 	background:url(../images/learn-title-top-mobile.gif) repeat-x;
 	float:left;
 	font-size: 23px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
 	font-weight:bold;
     color: #1e517f !important; 
 	letter-spacing:2px;	
@@ -118,7 +118,7 @@ margin-top:20px; }
 	background:url(../images/learn-title-top-mobile.gif) repeat-x;
 	float:left;
 	font-size: 23px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
 	font-weight:bold;
     color: #1e517f !important; 
 	letter-spacing:2px;
@@ -230,7 +230,7 @@ and (max-width: 1223px)
   display: block;
   font-size: 20px; 
   font-weight: 700;
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   margin: 0;
   height:10px;
   padding: 30px 0 23px 20px;
@@ -249,7 +249,7 @@ and (max-width: 1223px)
   display: block;
   font-size: 20px; 
   font-weight: 700;
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   margin: 0;
   height:10px;
   padding: 30px 0 23px 20px;
@@ -279,7 +279,7 @@ and (min-width : 1224px) {
   display: block;
   font-size: 20px; 
   font-weight: 700;
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   margin: 0;
   height:10px;
   padding: 30px 0 23px 20px;
@@ -324,7 +324,7 @@ and (min-width : 1224px) {
 .everyloan-title{
 	float:left;
 	font-size: 30px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
     color: #1e517f !important; 
 	letter-spacing:3px;
 	margin-bottom:10px;
@@ -376,7 +376,7 @@ and (min-width : 1224px) {
 }
 
 #content-advice-and-articles h1{
-  font-family: 'heroregular';	
+  font-family:'heroregular', Arial, Helvetica, sans-serif;	
   font-size: 30px;
   color:#1e517f;
   float:left; 
@@ -385,7 +385,7 @@ and (min-width : 1224px) {
 
 #content-advice-and-articles .post-title{
 	font-size: 31px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
     color: #1e517f !important; 
 	letter-spacing:3px;
 	line-height:35px;
@@ -433,7 +433,7 @@ and (orientation : portrait) {
   display: block;
   font-size: 14px; 
   font-weight: 700;
-  font-family: 'heroregular';
+  font-family:'heroregular', Arial, Helvetica, sans-serif;
   margin-top: 5px;
   margin-left: 170px;
   padding-top:0px;
@@ -533,7 +533,7 @@ and (orientation : landscape) {
 }
 
 #content-advice-and-articles h1{
-  font-family: 'heroregular';	
+  font-family:'heroregular', Arial, Helvetica, sans-serif;	
   font-size: 25px;
   color:#1e517f;
   margin:0 auto; 
@@ -544,7 +544,7 @@ and (orientation : landscape) {
 
 #content-advice-and-articles .post-title{
 	font-size: 31px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
     color: #1e517f !important; 
 	letter-spacing:3px;
 	line-height:35px;
@@ -923,7 +923,7 @@ ul.repay {list-style-type:none; width:93%; padding:0; float:left}
 
 .everyloan-title{
 	font-size: 24px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
     color: #1e517f !important; 
 	letter-spacing:3px;
 	}
@@ -946,7 +946,7 @@ padding-bottom:20px; }
 	background:url(../images/learn-title-top-mobile.gif) repeat-x;
 	float:left;
 	font-size: 23px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
 	font-weight:bold;
     color: #1e517f !important; 
 	letter-spacing:2px;
@@ -968,7 +968,7 @@ padding:0px; margin-top:0px; padding-bottom:20px; }
 	background:url(../images/learn-title-top-mobile.gif) repeat-x;
 	float:left;
 	font-size: 23px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
 	font-weight:bold;
     color: #1e517f !important; 
 	letter-spacing:2px;	
@@ -992,7 +992,7 @@ margin-top:0px; }
 	background:url(../images/learn-title-top-mobile.gif) repeat-x;
 	float:left;
 	font-size: 23px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
 	font-weight:bold;
     color: #1e517f !important; 
 	letter-spacing:2px;
@@ -1107,7 +1107,7 @@ box-shadow: 0 0 15px #ccc;
 
 .everyloan-title{
 	font-size: 25px;  
-	font-family: 'heroregular';
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
     color: #1e517f !important; 
 	letter-spacing:3px;
 	background:url(../images/how-everyloan-works-title-bg.gif) repeat-x;

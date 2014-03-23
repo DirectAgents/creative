@@ -57,7 +57,7 @@ CSS Rules: Sorted alphabetically for better organization.
 
 
 @font-face {
-    font-family:'heroregular', Arial, Helvetica, sans-serif;
+    font-family:'heroregular';
     src: url('core/fonts/hero-webfont.eot');
     src: url('core/fonts/hero-webfont.eot?#iefix') format('embedded-opentype'),
          url('core/fonts/hero-webfont.woff') format('woff'),
@@ -178,7 +178,7 @@ body {
   color: #555555;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.5em;
   text-rendering: optimizeLegibility;
 }
@@ -1851,7 +1851,6 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
   color:#1e517f;
   margin-bottom:10px;
   letter-spacing:3px;
-  //text-indent: 10px;
 }
 
 
@@ -2275,7 +2274,6 @@ padding:10px 0 0 70px; list-style-type:none; width:180px; height:68px;}
 }
 
 .menu li a {
-  //border-left: 0px solid #cccccc;
   color: #1e517f;
   font-size: 14px;
   padding: 0 33px 0 8px;
@@ -4009,7 +4007,7 @@ a:hover { color:#333 !important; }
 
 #content-advice-and-articles .post-data { clear:none; }
 
-.advice-choose-contfainer
+.advice-choose-container
 {
   margin:10px 0;
   overflow:hidden;
