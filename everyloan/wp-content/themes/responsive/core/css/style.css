@@ -2904,7 +2904,7 @@ margin-top:20px; }
 .read-news-mobile{float:left; list-style-type:none; margin-left:90px;margin-top:6px;}
 
 .left-column{float:left; width:300px; padding:15px;}
-.right-column{float:left; margin-left:80px; margin-top:25px;}
+.right-column{float:left; margin-left:20px; margin-top:25px;}
 
 
 .view-all a, .view-all-calculators a, .view-more-resources a{float:left; width:100%; font-size:12px; font-weight:bold; padding-left:10px; padding-bottom:10px;}
@@ -4877,14 +4877,14 @@ p.business-inner-text{color:#1e517f}
   .loan-module { margin:0 10px 20px; }
 }
 
-/* ---------------------------------------- Ipad manu views --------------------------------- */
+/* ---------------------------------------- Ipad menu views --------------------------------- */
 
 @media only screen and (min-width: 872px) and (max-width: 1024px) {
 
   
   #header 
   {
-    overflow:hidden;
+    //overflow:hidden;
     height:55px;
   }
 
