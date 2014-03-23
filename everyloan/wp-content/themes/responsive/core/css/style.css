@@ -1517,6 +1517,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
   clear: both;
   padding: 0 0px 20px 20px;
   position: relative;
+  overflow:hidden;
 }
 
 
@@ -1786,7 +1787,7 @@ font-size:14px;
   padding-top:10px;
   padding-bottom:1px;
   float:left;
-  width:96.3%;
+  width:100%;
   border: 0px solid #e5e5e5;
   border-bottom-right-radius:8px;
     border-bottom-left-radius:8px;
@@ -2887,7 +2888,7 @@ margin-top:20px; }
 
 
 .styled-select {
-   width: 90%;
+   width: 94%;
    height: 34px;
    overflow: hidden;
    background: url(../images/arrow.png) no-repeat right #f0f0f0;
@@ -5053,8 +5054,13 @@ p.business-inner-text{color:#1e517f}
   |              Sidebar                      |
   \------------------------------------------*/
 
-  #widgets-how-it-works { margin-top:20px; }
-  #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 16px; }
+  #widgets-how-it-works { 
+    margin-top:20px;
+    margin-left: -20px !important;
+    width: 104%; 
+  }
+
+  #widgets-how-it-works .widget-wrapper { margin:20px 0 20px 16px;width:95%; }
   #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px 20px 0 0; }
 
   .read-news-button-sidebar, 
@@ -5181,6 +5187,10 @@ p.business-inner-text{color:#1e517f}
     display:block;
     overflow:hidden;
   }
+
+  .sidebar-widgets { margin:0 0 20px 15px; }
+  .right-column ul li { margin-right:40px; }
+
   /* -------- Mobile Menu -------- */
   
 

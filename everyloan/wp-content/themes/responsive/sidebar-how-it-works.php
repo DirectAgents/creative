@@ -23,7 +23,7 @@ if ( !defined('ABSPATH')) exit;
 <div id="widgets-how-it-works" class="grid col-300 fit">
 <?php responsive_widgets(); // above widgets hook ?>
 <?php if (!dynamic_sidebar('how-it-works-sidebar')) : ?>
-<div class="widget-wrapper"> 
+<div class="widget-wrapper sidebar-widgets"> 
   
   <!--<div class="rates-start"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/rates-start.png"/></div>-->
   <div class="widget-wrapper-rates">
