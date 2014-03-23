@@ -19,7 +19,7 @@ get_header();
 		</h1>
 	</div>
 		
-	<?php $fquery = new WP_Query( array( 'post_type' => 'rs_faq', 'posts_per_page' => -1 ) );
+	<?php $fquery = new WP_Query( array( 'post_type' => 'rs_faq', 'posts_per_page' => -1, 'order' => 'ASC' ) );
 	if ( $fquery->have_posts() ) : while ( $fquery->have_posts() ) : $fquery->the_post(); ?>
 
 		<div id="post-<?php the_ID(); ?>" <?php post_class('loan-module'); ?>> 

@@ -32,12 +32,17 @@ $(function() {
 				$href = $this.attr('href'),
 				$next = $this.next();
 
-			// if the anchor isn't linked exit out early
-			if ($href == '#' || $href == '')
-				return false;
+			// Only go on if the link ha sa sub menu	
+			if (!$next.hasClass('sub-menu'))
+				return;	
 
-			if ($next.hasClass('sub-menu'))	
-				$next.prepend('<li><a href="' + $href + '">' + $this.text() +'</a></li>');
+			console.log($href);
+
+			// if the anchor isn't linked exit out early
+			if ($href == '#' || $href == '' || $href == undefined)
+				return;
+			
+			$next.prepend('<li><a href="' + $href + '">' + $this.text() +'</a></li>');
 		});
 
 		// Implement a slide in-out for sub-menus
