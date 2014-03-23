@@ -4153,16 +4153,30 @@ a:hover { color:#333 !important; }
   border-top:1px solid #e6e6e6;
   border-bottom:1px solid #e6e6e6;
   padding:10px 0;
-  margin:20px 0 20px;
+  margin:20px 0 30px;
 }
 
   .post-date
-  {
+  { 
+    float:left;
     display:inline-block;
     font-size:16px;
+
   }
 
-  .social-icons { float:right; }
+  .post-cats
+  { 
+    float:left;
+    display:inline-block;
+    font-size:14px;
+    clear:left;
+  }
+
+  .social-icons 
+  { 
+    float:right;
+    margin-top:-12px; 
+  }
     
     .social-icons img,
     .social-icons a,
@@ -4172,9 +4186,9 @@ a:hover { color:#333 !important; }
     {
       float:left;
       margin-right:8px;
-      //display:inline-block;
       width: 48px;
       height: auto;
+      
     }
 
 /*------------------------------------------\

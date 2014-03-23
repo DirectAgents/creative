@@ -5,10 +5,8 @@
 	Description: Social media bar used in conjunction with the responsive theme. Use the custom action 'rs_display_social_bar' to render the icons
 */
 
-
 class RSSocial
 {
-
 	public function __construct () 
 	{
 		
@@ -27,7 +25,13 @@ class RSSocial
 		$fb = $this->rs_get_icon('fb', $link);
 		$twitter = $this->rs_get_icon('twitter', $link);
 		
-		$post_date = "<div class='post-date'><b>Posted: </b>" . $date . "</div>";
+		global $post;
+
+		$terms = wp_get_post_terms($post->ID, 'category');
+		$term_link = get_term_link( $terms[0]->slug, 'category' );
+		
+		$post_date = "<div class='post-date'><strong>Posted: </strong>" . $date . "</div><div class='post-cats'>Category: <a href='" . $term_link ."''>". $terms[0]->name . "</a></div>";
+		//$post_cats = "<div class='post-cats'>Posted in Mortgage and Information</div>";
 		$social_icons = "<div class='social-icons'>" . $gplus . $fb . $twitter . "</div>";
 		
 		echo "<div class='social-bar'>". $post_date . $social_icons . "</div>";
@@ -48,8 +52,6 @@ class RSSocial
 				return '<div class="fb-like" data-href="' . $link . '" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>';
 			case 'twitter':
 				return '<a href="https://twitter.com/share" data-url="' . $link . '" class="twitter-share-button" data-count="none">Tweet</a>';
-
-				
 
 		endswitch;
 	}
