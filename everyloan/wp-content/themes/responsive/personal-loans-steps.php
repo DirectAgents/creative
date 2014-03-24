@@ -30,9 +30,42 @@ global $more; $more = 0;
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 <div class="personal-loans-box-step-desktop">
 
+<?php if($_GET['loan'] == 'home-improvement') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a home improvement loan</div>
+<? } ?>
+
+
+<?php if($_GET['loan'] == 'personal') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a personal loan</div>
+<? } ?>
+
 
 <?php if($_GET['loan'] == 'debt-consolidation') { ?>
 <div class="personal-loans-box-step1-desktop-title">I want a debt consolidation loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'cash-advance') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a cash advance loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'vacation') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a vacation loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'wedding') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a wedding loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'medical-dental') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a medical dental loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'household-expenses') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a household expenses loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'major-purchase') { ?>
+<div class="personal-loans-box-step1-desktop-title">I want a major purchase loan</div>
 <? } ?>
 
 
@@ -215,7 +248,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                    
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_third" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_third" id="submit_third" value="" />
+                <input class="submit_third" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_third" id="submit_third_personal" value="" />
                 
             </div>      
     

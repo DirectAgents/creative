@@ -97,10 +97,11 @@ if ( !defined('ABSPATH')) exit;
 
 <script type='text/javascript'>//<![CDATA[ 
 
+
 $(window).ready(function() {
 	
 
-
+ $("#MTG_TWO_YES input[type='radio']").click(function() { alert('hi'); });
 
 
  $('#start-here-btn').click(function(){
@@ -113,25 +114,75 @@ $(window).ready(function() {
     location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-refinance&credit='+$('#credit-score').val()+'&pass=y';
 	}
 	
-	if($('#i-want-to-borrow-money-select').val() == 'loans/small-business/') {
-		
-		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=small-business&credit='+$('#credit-score').val()+'&pass=y';
+	if($('#i-want-to-borrow-money-select').val() == 'loans/home-improvement/') {
+    location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-improvement&credit='+$('#credit-score').val()+'&pass=y';
 	}
 	
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/business/') {
+		
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=business&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/equipment-financing/') {
+		
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=equipment-financing&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/personal/') {
+		
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=personal&credit='+$('#credit-score').val()+'&pass=y';
+	}
 	
 	if($('#i-want-to-borrow-money-select').val() == 'loans/debt-consolidation/') {
 		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=debt-consolidation&credit='+$('#credit-score').val()+'&pass=y';
 	}
 	
-	
-	if($('#i-want-to-borrow-money-select').val() == 'loans/home-improvement/') {
-		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-improvement&credit='+$('#credit-score').val()+'&pass=y';
+	if($('#i-want-to-borrow-money-select').val() == 'loans/cash-advance/') {
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=cash-advance&credit='+$('#credit-score').val()+'&pass=y';
 	}
 	
 	if($('#i-want-to-borrow-money-select').val() == 'loans/vacation/') {
-		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-improvement&credit='+$('#credit-score').val()+'&pass=y';
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=vacation&credit='+$('#credit-score').val()+'&pass=y';
 	}
 	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/wedding/') {
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=wedding&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/medical-dental/') {
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=medical-dental&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/household-expenses/') {
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=household-expenses&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/major-purchase/') {
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=major-purchase&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/small-business/') {
+		
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=small-business&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/merchant-cash-advance/') {
+		
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=merchant-cash-advance&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	
+	if($('#i-want-to-borrow-money-select').val() == 'loans/accounts-receivable/') {
+		
+		location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=accounts-receivable&credit='+$('#credit-score').val()+'&pass=y';
+	}
+	
+	
+	
+	
+	
+
 	
 	
 	
@@ -248,11 +299,59 @@ $(document).ready(function() {
 <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/jquery.main.js"></script>
 
 
+<script type="text/javascript">
+
+/**
+      * key and value should not be escaped.  This function will encode them.
+      * expires is optional but should be in GMTString format if provided.
+      * If expires is not provided, the cookie will expire at the end of
+      * the session.
+      */
+     function setCookie(key, value, expires) {
+       if (typeof expires == "string") {
+         document.cookie = encodeURIComponent(key) + "=" +
+                           encodeURIComponent(value) + 
+                           ";expires=" + expires;
+       } else {
+         document.cookie = encodeURIComponent(key) + "=" +
+                           encodeURIComponent(value);
+       }
+     }
+
+     /**
+      * key should not be escaped.  This function will encode it.
+      */
+     function readCookie(key) {
+       var allCookies = document.cookie;
+       key = encodeURIComponent(key);
+       var pos = allCookies.indexOf(key + '=');
+       if (pos != -1) {
+         var start = pos + 1 + key.length;
+         var end = allCookies.indexOf(';', start);
+         if (end == -1)
+           end = allCookies.length;
+         return decodeURIComponent(allCookies.substring(start, end));
+       }
+     }
+
+     /**
+      * key should not be escaped.  This function will encode it.
+      */
+     function deleteCookie(key) {
+       var date = new Date();
+       date.setTime(new Date().getTime() - 100000);
+       setCookie(key, "", date.toUTCString());
+     }
+
+</script>
+
+
 
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
+
 
     <?php responsive_container(); // before container hook ?>
     <div id="container" class="hfeed">

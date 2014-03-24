@@ -35,14 +35,25 @@ if ( !defined('ABSPATH')) exit;
       <li>
         <div class="styled-select">
         <select id="i-want-to-borrow-money-select">
-<option>Select loan type</option>
-         <option value="loans/business/">Home Purchase</option>
-<option value="loans/home/">Home Refinance</option>
-<option value="loans/business/">Small Business</option>
-<option value="loans/personal/">Debt Consolidation</option>
-<option value="loans/personal/">Home Improvement</option>
-<option value="loans/personal/">Vacation</option>
-</select>
+                                                
+                                                <option>Select loan type</option>
+                                                        <option value="loans/home-purchase/">Home Purchase Loan</option>
+                                                        <option value="loans/home-refinance/">Home Refinance Loan</option>
+                                                        <option value="loans/home-improvement/">Home Improvement</option>
+                                                        <option value="loans/business/">Business Loan</option>
+                                                        <option value="loans/equipment-financing/">Equipment Financing</option>
+                                                        <option value="loans/personal/">Personal Loan</option>
+                                                        <option value="loans/debt-consolidation/">Debt Consolidation Loan</option>
+                                                        <option value="loans/cash-advance/">Cash Advance</option>
+                                                        <option value="loans/vacation/">Vacation Loan</option>
+                                                        <option value="loans/wedding/">Wedding Loan</option>
+                                                        <option value="loans/medical-dental/">Medical Dental</option>
+                                                        <option value="loans/household-expenses/">Household Expenses</option>
+                                                        <option value="loans/major-purchase/">Major Purchase</option>
+                                                        <option value="loans/small-business/">Small Business Loan</option>
+                                                        <option value="loans/merchant-cash-advance/">Merchant Cash Advance</option>
+                                                        <option value="loans/accounts-receivable/">Accounts Receivable</option>
+                                                      </select>  
         </div>
       </li>
       <li>
@@ -51,12 +62,12 @@ if ( !defined('ABSPATH')) exit;
       <li>
         <div class="styled-select">
           <select id="credit-score">
-<option>Select credit quality</option>
-<option>Excellent (720+)</option>
-<option>Good (660-720)</option>
-<option>Fair (600-660)</option>
-<option>Some Problem (below 600)</option>
-</select>
+                                                        <option>Select credit quality</option>
+                                                        <option>Excellent (720+)</option>
+                                                        <option>Good (660-720)</option>
+                                                        <option>Fair (600-660)</option>
+                                                        <option>Some Problem (below 600)</option>
+                                                    </select>
         </div>
       </li>
     </ul>

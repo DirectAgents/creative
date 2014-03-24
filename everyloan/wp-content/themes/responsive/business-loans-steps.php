@@ -31,8 +31,24 @@ global $more; $more = 0;
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 <div class="personal-loans-box-step-desktop">
 
+<?php if($_GET['loan'] == 'business') { ?>
+<div class="business-loans-box-step1-desktop-title">I want a business loan</div>
+<? } ?>
+
 <?php if($_GET['loan'] == 'small-business') { ?>
 <div class="business-loans-box-step1-desktop-title">I want a small business loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'equipment-financing') { ?>
+<div class="business-loans-box-step1-desktop-title">I want a equipment financing loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'merchant-cash-advance') { ?>
+<div class="business-loans-box-step1-desktop-title">I want a merchant cash advance loan</div>
+<? } ?>
+
+<?php if($_GET['loan'] == 'accounts-receivable') { ?>
+<div class="business-loans-box-step1-desktop-title">I want a accounts receivable loan</div>
 <? } ?>
 
 <div class="progress-steps2">
@@ -123,7 +139,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                    
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_first" type="submit" name="submit_first" id="submit_first" value="" />
+                <input class="submit_first" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_first" id="submit_first" value="" />
             </div>      
 
 </div>
@@ -133,12 +149,20 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 <div class="previous-personal"><a href="#" class="previous-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
+>>>>>>> FETCH_HEAD
+=======
+<div class="previous-personal"><a href="#" class="previous-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
+>>>>>>> FETCH_HEAD
 
 <!--<div class="next-personal"><a href="#" class="next-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
 
- <div id="second_step_personal">
+ <div id="second_step_business">
 
                 <div class="form">
 
@@ -173,7 +197,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
                                  
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_second" type="submit" name="submit_second" id="submit_second" value="" />
+                <input class="submit_second" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_second" id="submit_second" value="" />
                 
                 </div>
             </div>      
@@ -226,7 +250,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                    
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_third" type="submit" name="submit_third" id="submit_third" value="" />
+                <input class="submit_third" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_third" id="submit_third_business" value="" />
                 
             </div>      
     
@@ -282,7 +306,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_fourth" type="submit" name="submit_fourth" id="submit_fourth" value="" />            
+                <input class="submit_fourth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_fourth" id="submit_fourth" value="" />            
             </div>
             
        </div>     
@@ -344,7 +368,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_fifth" type="submit" name="submit_fifth" id="submit_fifth" value="" />                      
+                <input class="submit_fifth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_fifth" id="submit_fifth" value="" />                      
             </div>         
             
    </div>         
@@ -398,7 +422,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_sixth" type="submit" name="submit_sixth" id="submit_sixth" value="" />             
+               <input class="submit_sixth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_sixth" id="submit_sixth" value="" />             
             </div>         
             
      </div>       
@@ -414,7 +438,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 
 
-<div id="seventh_step_personal"> 
+<div id="seventh_step_business"> 
 
                 <div class="form">
                
@@ -453,7 +477,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_seventh" type="submit" name="submit_seventh" id="submit_seventh" value="" />             
+               <input class="submit_seventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_seventh" id="submit_seventh" value="" />             
             </div>     
    </div>         
      
@@ -517,7 +541,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
      
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_eight" type="submit" name="submit_eight" id="submit_eight" value="" />             
+               <input class="submit_eight" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_eight" id="submit_eight" value="" />             
             </div>    
      
      </div>
@@ -573,7 +597,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_ninth" type="submit" name="submit_ninth" id="submit_ninth" value="" />             
+               <input class="submit_ninth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_ninth" id="submit_ninth" value="" />             
             </div>  
             
   </div>          
@@ -639,7 +663,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_tenth" type="submit" name="submit_tenth" id="submit_tenth" value="" />             
+               <input class="submit_tenth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_tenth" id="submit_tenth" value="" />             
             </div>                             
             
      </div>       
@@ -653,7 +677,15 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<div class="previous-eleventh-business"><a href="#" class="previous-eleventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+=======
 <div class="previous-eleventh-business"><a href="#" class="previous-eleventh-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
+>>>>>>> FETCH_HEAD
+=======
+<div class="previous-eleventh-business"><a href="#" class="previous-eleventh-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
+>>>>>>> FETCH_HEAD
                  
 
 
@@ -673,7 +705,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 <tr>
 <td>  
 
-<select id="profile-industry" name="profile-industry" style="width:370px">
+<select id="profile-industry" name="profile-industry">
 
 
 <option value=""></option>              
@@ -1046,7 +1078,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                       <input class="submit_eleventh_business" type="submit" name="submit_eleventh" id="submit_eleventh" value="" />     
+                       <input class="submit_eleventh_business" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_eleventh" id="submit_eleventh_business" value="" />     
             </div>                                         
             
       </div>      
