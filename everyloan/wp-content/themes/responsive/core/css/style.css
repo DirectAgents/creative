@@ -5393,14 +5393,11 @@ p.business-inner-text{color:#1e517f}
 @media only screen and (min-width:321px) and (max-width:568px) {
   #content-advice-and-articles { width:100% !important;}
   body { overflow:hidden; }
-
-  /* -------- Mobile Menu -------- */
-  ul.sub-menu { display:none; }
   
   #wrapper 
   {
     width:90%;
-    padding:0 0 0 10px;
+    padding:0 15px 0;
     margin:20px auto;
     overflow:hidden;
   }
@@ -5419,14 +5416,14 @@ p.business-inner-text{color:#1e517f}
   \------------------------------------------*/
  
 
-  .loan-module { margin:0 20px 30px 20px; }
+  .loan-module { margin:0 0 20px; }
 
   /* ----- Advice and Articles page ------ */
   
   
   #content-advice-and-articles .how-everyloan-works-content { padding-left:20px; }
   .advice-choose-container { margin-bottom:20px; }
-  .advice_articles { margin:0 20px 0px; }
+  .advice_articles { margin:0; }
   
   .advice_articles .post-meta,
   .advice_articles .post-data { margin:0; }
