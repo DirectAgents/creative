@@ -1,7 +1,6 @@
 <?php
 
 
-
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 
@@ -30,24 +29,20 @@ global $more; $more = 0;
 <div id="content-personal-loans" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
 <div class="home-loans-box-step-desktop">
 
-<?php if($_GET['loan'] == 'home-purchase') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a home purchase loan</div>
-<? } ?>
+
 
 <?php if($_GET['loan'] == 'home-refinance') { ?>
 <div class="personal-loans-box-step1-desktop-title">I want a home refinance loan</div>
 <? } ?>
 
-<?php if($_GET['loan'] == 'home-improvement') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a home improvement loan</div>
-<? } ?>
+
 
 <div class="progress-steps2">
 <div style="float:left">Progress:&nbsp;&nbsp;</div>	
 
 <div id="progress_bar">
         <div id="progress"></div>
-        <div id="progress_text">0% Complete</div>
+        <div id="progress_text"></div>
 	</div>
 
 </div>
@@ -72,10 +67,12 @@ or less, and we are highly recommended!<br /><br />
 
 
 
-        <form action="https://www.leadpointdelivery.com/17483/direct.ilp" method="POST" class="" onSubmit="return validateForm(this)" name="loanform">
+        <form action="https://www.leadpointdelivery.com/17483/direct.ilp" method="POST" class="" onsubmit="return onSubmit()" name="loanform">
         
         <input type="hidden" id="IsPrimaryBorrower" name="IsPrimaryBorrower" value="Yes"/>
-	
+
+
+<?php if($_GET['step'] == "1") { ?>	
     
             <!-- #first_step -->
             <div id="first_step" <?php if($_GET['pass'] == 'y') { ?>style="display:none" <? } ?>>
@@ -131,15 +128,26 @@ or less, and we are highly recommended!<br /><br />
 
 </div>
 
+<?php  } ?>
+
+
+
+
+<?php //if($_GET['step'] == "2") { ?>
 
             <!-- #second_step -->
-            <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
+            <div id="second_step"<?php //if($_GET['pass'] == 'y') { ?>style="display:block" <? //} ?>>
                 
 <?php if($_GET['pass'] != 'y') { ?>
 <div class="previous-home"><a href="#" class="previous-second-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 <? } ?>
 
 <!--<div class="next-home"><a href="#" class="next-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> FETCH_HEAD
 
 
  <div id="second_step_home">
@@ -155,7 +163,7 @@ or less, and we are highly recommended!<br /><br />
 
 
 <tr>
-<td><label>Property ZIP code</label></td>
+<td><label>Property State</label></td>
 </tr>
 
 <tr>
@@ -164,7 +172,7 @@ or less, and we are highly recommended!<br /><br />
 
 <select name="PROP_ST" class="FormInput">
 
-                <option value="" selected>Property State ?</option>
+                <option value="" selected>Select one</option>
 
                 <option value="AL"> Alabama</option>
 
@@ -287,12 +295,15 @@ or less, and we are highly recommended!<br /><br />
 
                                  
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_second" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_second" id="submit_second" value="" />
+               <input class="submit_second" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_second" id="submit_second" value="" />
                 
                 </div>
             </div>      
 
+<?php //} ?>
 
+
+<?php //if($_GET['step'] == "3") { ?>
 
 
 
@@ -323,15 +334,20 @@ or less, and we are highly recommended!<br /><br />
                 
 <select name="PROP_PURP" class="FormInput" id="PROP_PURP">
 
-                            <option value="" selected>Select One</option>
+                            <option <?php if($_SESSION["PROP_PURP"] == '') {echo "selected";}?>  value="">Select One</option>
                             
-                            <option value="primary">Primary Residence</option>
+                            <option <?php if($_SESSION["PROP_PURP"] == 'Primary Residence') {echo "selected";}?> value="primary">Primary Residence</option>
 
-                            <option value="secondary_vactn">Second or Vacation Home</option>
+                            <option <?php if($_SESSION["PROP_PURP"] == 'Second or Vacation Home') {echo "selected";}?> value="secondary_vactn">Second or Vacation Home</option>
 
                             <option value="investment">Investment Property</option>
 
                         </select>
+                        
+  
+
+                        
+                        
 
   </td>
 </tr>  
@@ -345,11 +361,16 @@ or less, and we are highly recommended!<br /><br />
                    
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-                <input class="submit_third" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_third" id="submit_third" value="" />
+                <input class="submit_third" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_third" id="submit_third_home_refinance" value="" />
                 
             </div>      
     
     </div>        
+    
+<?php //} ?> 
+
+
+<?php //if($_GET['step'] == "4") { ?>   
             
             <!-- #fourth_step -->
             <div id="fourth_step">
@@ -386,8 +407,6 @@ or less, and we are highly recommended!<br /><br />
 				
 				<option value="" selected>Select One</option>
                 
-                <option value="">Estimated Home Value ?</option>
-
                 <option value="77500">75,000 - 80,000</option>
 
                 <option value="82500">80,001 - 85,000</option>
@@ -506,7 +525,11 @@ or less, and we are highly recommended!<br /><br />
             
        </div>     
             
-   
+
+<?php //} ?>    
+
+
+<?php //if($_GET['step'] == "5") { ?>  
    
     <!-- #fifth_step -->
             <div id="fifth_step">
@@ -544,7 +567,7 @@ or less, and we are highly recommended!<br /><br />
 
 			
 				<option value="" selected>Select One</option>
-                <option value="">First Mortgage Balance ?</option>
+           
 
                 <option value="52500">50,000 - 55,000</option>
 
@@ -678,10 +701,16 @@ or less, and we are highly recommended!<br /><br />
             </div>         
             
    </div>         
+   
+<?php //} ?>     
             
-            
+
+
+<?php //if($_GET['step'] == "6") { ?>  
+   
+
            <!-- #sixth_step -->
-            <div id="sixth_step">
+            <div id="sixth_step">            
 
 
 <div class="previous-sixth-home"><a href="#" class="previous-sixth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
@@ -689,7 +718,7 @@ or less, and we are highly recommended!<br /><br />
 <!--<div class="next-sixth-home"><a href="#" class="next-sixth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->              
 
 
-<div id="sixth_step_personal"> 
+<div id="sixth_step_home"> 
 
                 <div class="form">
                
@@ -725,15 +754,18 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_sixth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_sixth" id="submit_sixth" value="" />             
+               <input class="submit_sixth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_sixth" id="submit_sixth" value="" />    
+               
+               <input class="do-you-have-a-second-mortgage" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_sixth" id="do-you-have-a-second-mortgage" value="" />    
+                        
             </div>         
             
      </div>       
             
-     
+  <?php //} ?>     
      
       <!-- #sevents_step -->
-            <div id="second-mortgage-balance_step">
+            <div id="second-mortgage-balance-step">
 
 <div class="previous-second-mortgage-balance"><a href="#" class="previous-second-mortgage-balance"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
@@ -881,7 +913,7 @@ or less, and we are highly recommended!<br /><br />
  
  
        <!-- #second-mortgage-blanance_step -->
-            <div id="second-mortgage-interest_step">
+            <div id="second-mortgage-interest_rate_step">
 
 <div class="previous-second-mortgage-interest-home"><a href="#" class="previous-second-mortgage-interest-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
@@ -889,7 +921,7 @@ or less, and we are highly recommended!<br /><br />
 
 
 
-<div id="second-mortgage-interest_step_personal"> 
+<div id="second-mortgage-interest_rate_step_home"> 
 
                 <div class="form">
                
@@ -999,7 +1031,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_seventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_seventh" id="submit_seventh" value="" />             
+               <input class="submit_second-mortgage-interest_rate_step" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_second-mortgage-interest_rate_step" id="submit_second-mortgage-interest_rate_step" value="" />             
             </div>     
    </div>         
    
@@ -1007,7 +1039,7 @@ or less, and we are highly recommended!<br /><br />
 
 
 
-
+<?php //if($_GET['step'] == "7") { ?>  
 
 
 
@@ -1020,7 +1052,7 @@ or less, and we are highly recommended!<br /><br />
 
 
 
-<div id="seventh_step_personal"> 
+<div id="seventh_step_home"> 
 
                 <div class="form">
                
@@ -1044,7 +1076,7 @@ or less, and we are highly recommended!<br /><br />
 <select name="ADD_CASH" class="FormInput" id="select4">
 				
               <option value="" selected>Select One</option>  
-              <option value="">Additional Cash?</option>
+              
 
               <option value="0">0</option>
 
@@ -1255,17 +1287,17 @@ or less, and we are highly recommended!<br /><br />
    </div>            
          
      
- 
+ <?php //} ?>
      
      
      
-     
+<?php //if($_GET['step'] == "8") { ?>      
      
        <!-- #eight_step -->
             <div id="eight_step">
  
 
-<div class="previous-eight-home"><a href="#" class="previous-eight_step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-eight-home"><a href="#" class="previous-eight_step_home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                             
                
@@ -1329,7 +1361,15 @@ or less, and we are highly recommended!<br /><br />
      
      </div>
      
-      
+  <?php //} ?>     
+
+
+
+
+<?php //if($_GET['step'] == "9") { ?>      
+     
+   
+
       
   <!-- #ninth_step -->
             <div id="ninth_step">
@@ -1394,7 +1434,7 @@ or less, and we are highly recommended!<br /><br />
   </div>          
   
   
- 
+  <?php //} ?>  
             
             
             
@@ -1479,7 +1519,7 @@ or less, and we are highly recommended!<br /><br />
 
 
 
-<div id="eleventh_step_personal"> 
+<div id="eleventh_step_home"> 
 
                 <div class="form">
                
@@ -1653,13 +1693,13 @@ or less, and we are highly recommended!<br /><br />
             <div id="twelth_step">
                
 
-<div class="previous-twelth-home"><a href="#" class="previous-thirteen-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-twelth-home"><a href="#" class="previous-twelth-step-home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 <!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                   
 
 
 
-<div id="thirteen_step_home"> 
+<div id="twelth_step_home"> 
 
                 <div class="form">
                
@@ -1708,7 +1748,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_thirteen" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_thirteen" id="submit_thirteen_home" value="" />             
+               <input class="submit_twelth_home" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_twelth" id="submit_twelth_home" value="" />             
             </div>                             
             
      </div>                     
@@ -1722,11 +1762,15 @@ or less, and we are highly recommended!<br /><br />
 
 
    <!-- #last_step -->
-            <div id="thirteen_step">
+            <div id="last_step_home">
                
 
-<div class="previous-thirteen-home"><a href="#" class="previous-thirteen-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
+<<<<<<< HEAD
+<div class="previous-thirteen-home"><a href="#" class="previous-last_step_home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+=======
+>>>>>>> FETCH_HEAD
 <!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                   
 
 
@@ -1738,7 +1782,6 @@ or less, and we are highly recommended!<br /><br />
 
 
 
- <div id="siteloader">This is the target</div>
                     
                     <div class="content">
        <h1>Thank you!</h1>
@@ -1781,7 +1824,7 @@ or less, and we are highly recommended!<br /><br />
             
         </form>
         
-    
+   <SCRIPT language=JavaScript type="">loadSelections(document.forms[0]);</SCRIPT> 
         
 	</div>
 	

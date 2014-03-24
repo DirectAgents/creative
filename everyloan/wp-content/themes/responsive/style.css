@@ -1168,10 +1168,19 @@ form div {
   #container-steps #fifteen_step { display: none; float:left; position:absolute; }
   
   #container-steps #last_step { margin-left:25px; width:500px; margin-top:45px; display: none; float:left; position:absolute; }
-
-
-  #second-mortgage-blanance_step {display: none; float:left; position:absolute; }
-  #second-mortgage-interest_rate_step {display: none; float:left; position:absolute; }
+  
+  
+  #container-steps #eight_step_home {  display: none; float:left; position:absolute; }
+  #container-steps #twelth_step_home_steps { display: none; }
+  #container-steps #second-mortgage-balance-step {display: none; }
+  #container-steps #do-you-have-a-second-mortgage {display: none;}
+  #container-steps #second-mortgage-interest_rate_step {display: none; }
+  
+  #down_payment_step { display: none; }
+  
+  #container-steps #last_step_home {display: none; }
+  
+  #container-steps #submit_second-mortgage-balance-step {display: none;}
   
   
 
