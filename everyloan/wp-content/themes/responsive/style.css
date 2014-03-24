@@ -773,7 +773,7 @@ form div {
   border: 1px solid #e5e5e5;
   border-radius: 4px;
   clear: both;
-  margin: 20px auto 20px auto;
+  margin: 20px auto;
   padding: 0 0px 20px 32px;
   position: relative;
 }
@@ -3864,6 +3864,7 @@ BDO[DIR="rtl"] {
 /*------------------------------------------\
 |        Roman's table of contents          |
 |         - Generic styles                  |
+|         - Homepage                        |
 |         - Sidebar                         |
 |         - Top Menu                        |
 |         - How it works                    |
@@ -3968,9 +3969,17 @@ h3.small-title
 a { color:#1e517f; }
 a:hover { color:#333 !important; }
 
+
+/*------------------------------------------\
+|              Homepage                     |
+\------------------------------------------*/
+.home #wrapper{
+  padding:0 0 20px 16px;
+}
 /*------------------------------------------\
 |               Sidebar                     |
 \------------------------------------------*/
+
 .sidebar-pic-cont { padding-left:15px; }
 
 .widget-title-rates { padding:12px; }
