@@ -54,11 +54,13 @@ get_header();
 	
 	<div class='loan-module'>
 		<h1 class='loan-title'>Advice and Articles</h1>
+
+		<div class='advice-bc'>
+			<?php echo advice_breadcrumbs($_GET['advice']); ?>
+		</div>
 	</div>
 	
-	<div class='advice-bc'>
-		<?php echo advice_breadcrumbs($_GET['advice']); ?>
-	</div>
+	
 	
 	<div class="grey-cont">
 	    

@@ -49,7 +49,7 @@ get_header(); ?>
                 			
                             <tr class="sidebar-table">
                 				
-                                <td style="padding: 10px; float: left;">
+                                <td style="padding:10px;float:left;text-align:center;">
                                     
                                     <img id="find-the-right-loan" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/find-the-right-loan.png" />
 
@@ -64,7 +64,7 @@ get_header(); ?>
                 					<img class="find-the-right-loan-mobile" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/find-the-right-loan-mobile.png" />
                                 </td>
                 					
-            					<td style="padding: 10px; float: left;">
+            					<td style="padding:10px 10px 0; float: left;">
             						
                                     <div class="widget-wrapper-homepage-desktop">
             							
@@ -177,11 +177,15 @@ get_header(); ?>
 											<li><label>Why do you want to borrow money?</label></li>
 											<li>
 												<div class="styled-select">
+<<<<<<< HEAD
+                                                
+=======
+>>>>>>> FETCH_HEAD
                                                 
                                                 
-                                                <select id="i-want-to-borrow-money-select">
-                                                
-                                                <option>Select loan type</option>
+                                                    <select id="i-want-to-borrow-money-select">
+                                                    
+                                                        <option>Select loan type</option>
                                                         <option value="loans/home-purchase/">Home Purchase Loan</option>
                                                         <option value="loans/home-refinance/">Home Refinance Loan</option>
                                                         <option value="loans/home-improvement/">Home Improvement</option>
@@ -198,7 +202,8 @@ get_header(); ?>
                                                         <option value="loans/small-business/">Small Business Loan</option>
                                                         <option value="loans/merchant-cash-advance/">Merchant Cash Advance</option>
                                                         <option value="loans/accounts-receivable/">Accounts Receivable</option>
-                                                      </select>  
+
+                                                    </select>  
                                                 
                                                 
                                                 </div>
@@ -290,10 +295,10 @@ get_header(); ?>
 											<div class="calculators-title-home-title">Borrowing Resources</div>
 											
                                             <ul>
-												<li class="arrow"><a href="#">The Loan Process</a></li>
+												<li class="arrow"><a href="advice_articles/the-loan-process/">The Loan Process</a></li>
 												<li class="arrow"><a href="advice-articles/?advice=refinance">Refinance</a></li>
 												<li class="arrow"><a href="advice-articles/?advice=home-purchase">Home Purchase</a></li>
-												<li class="arrow"><a href="#">Home Equity</a></li>
+												<li class="arrow"><a href="how-it-works">How it Works</a></li>
 											</ul>
 											
                                             <div class="view-all-calculators"><a href="advice-articles">View More Resources</a></div>

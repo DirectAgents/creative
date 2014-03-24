@@ -36,13 +36,14 @@ $(function() {
 			if (!$next.hasClass('sub-menu'))
 				return;	
 
-			console.log($href);
+			$this.addClass('has-sub-menu');
 
 			// if the anchor isn't linked exit out early
 			if ($href == '#' || $href == '' || $href == undefined)
 				return;
 			
 			$next.prepend('<li><a href="' + $href + '">' + $this.text() +'</a></li>');
+			
 		});
 
 		// Implement a slide in-out for sub-menus
