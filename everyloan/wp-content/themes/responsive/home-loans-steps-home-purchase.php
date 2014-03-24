@@ -144,10 +144,6 @@ or less, and we are highly recommended!<br /><br />
 <? } ?>
 
 <!--<div class="next-home"><a href="#" class="next-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
-<<<<<<< HEAD
-
-=======
->>>>>>> FETCH_HEAD
 
 
 
@@ -1213,15 +1209,11 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-eleventh-home"><a href="#" class="previous-eleventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 <!--<div class="next-tenth-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                  
-=======
+
 <!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                   
->>>>>>> FETCH_HEAD
-=======
-<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                   
->>>>>>> FETCH_HEAD
+
 
 
 

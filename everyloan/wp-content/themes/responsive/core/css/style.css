@@ -3826,18 +3826,11 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 
 .business-loans-box-step1-desktop-title{
   
-<<<<<<< HEAD
  /*background:url(../images/personal-loans-box-step1-desktop.png) no-repeat;*/
 	float:left;
 	font-size: 23px;  
 	font-family: 'heroregular';
 	font-weight:bold;
-=======
-  float:left;
-  font-size: 23px;  
-  font-family:'heroregular', Arial, Helvetica, sans-serif;
-  font-weight:bold;
->>>>>>> FETCH_HEAD
     color: #1e517f !important; 
 	letter-spacing:2px;
 	margin-bottom:20px;

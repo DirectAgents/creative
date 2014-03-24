@@ -143,11 +143,7 @@ or less, and we are highly recommended!<br /><br />
 <? } ?>
 
 <!--<div class="next-home"><a href="#" class="next-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
-<<<<<<< HEAD
 
-
-=======
->>>>>>> FETCH_HEAD
 
 
  <div id="second_step_home">
@@ -1766,11 +1762,10 @@ or less, and we are highly recommended!<br /><br />
                
 
 
-<<<<<<< HEAD
+
 <div class="previous-thirteen-home"><a href="#" class="previous-last_step_home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-=======
->>>>>>> FETCH_HEAD
+
 <!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                   
 
 
