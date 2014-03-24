@@ -4009,6 +4009,17 @@ a:hover { color:#333 !important; }
 .contact-info li { list-style-type:none; }
 .how-everyloan-works-bg { display:inline-block; }
 
+.how-it-works-module
+{
+  text-align:center;
+  width:auto;
+}
+
+#widgets-how-it-works
+{
+  margin-bottom:0 !important;
+}
+
 /*------------------------------------------\
 |         Advice and articles               |
 \------------------------------------------*/
@@ -4286,9 +4297,6 @@ ul.loan-list li,
 /*------------------------------------------\
 |                FAQ page                   |
 \------------------------------------------*/
-.faq-text 
-{
-  height:auto;
-}
+.faq-text { height:auto; }
 
 
