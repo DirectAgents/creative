@@ -5093,7 +5093,7 @@ p.business-inner-text{color:#1e517f}
   }
 
   #wrapper { padding:0 20px 32px;; width:90%;overflow:hidden; }
-
+  .home #wrapper { padding: 0 0 20px 0px; }
   /* ----- Advice and Articles page ------ */
   
   #content-advice-and-articles{ width:auto; }
@@ -5216,8 +5216,6 @@ p.business-inner-text{color:#1e517f}
 
 @media only screen and (min-width: 768px) and (max-width: 871px) {
   
- //#header { height:82px; }
-
   #logo { margin-left:3%; }
 
   .contact-info-desktop
@@ -5276,7 +5274,7 @@ p.business-inner-text{color:#1e517f}
 
   #wrapper { width:90%; }
   .home-main-image-cont { text-align:center;width:100%;margin:20px auto; }
-  
+  .home #wrapper
   /*------------------------------------------\
   |        News pages                         |
   \------------------------------------------*/
@@ -5401,6 +5399,8 @@ p.business-inner-text{color:#1e517f}
     margin:20px auto;
     overflow:hidden;
   }
+
+  .home #wrapper { padding: 0 0 20px 0px; }
 
   #widgets-how-it-works .sidebar-module { width:95%;margin:20px auto !important;float:none; }
   

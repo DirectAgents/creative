@@ -49,7 +49,7 @@ get_header(); ?>
                 			
                             <tr class="sidebar-table">
                 				
-                                <td style="padding: 10px; float: left;">
+                                <td style="padding:10px;float:left;text-align:center;">
                                     
                                     <img id="find-the-right-loan" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/find-the-right-loan.png" />
 
@@ -64,7 +64,7 @@ get_header(); ?>
                 					<img class="find-the-right-loan-mobile" alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/find-the-right-loan-mobile.png" />
                                 </td>
                 					
-            					<td style="padding: 10px; float: left;">
+            					<td style="padding:10px 10px 0; float: left;">
             						
                                     <div class="widget-wrapper-homepage-desktop">
             							
@@ -294,7 +294,7 @@ get_header(); ?>
 												<li class="arrow"><a href="advice_articles/the-loan-process/">The Loan Process</a></li>
 												<li class="arrow"><a href="advice-articles/?advice=refinance">Refinance</a></li>
 												<li class="arrow"><a href="advice-articles/?advice=home-purchase">Home Purchase</a></li>
-												<li class="arrow"><a href="#">Home Equity</a></li>
+												<li class="arrow"><a href="how-it-works">How it Works</a></li>
 											</ul>
 											
                                             <div class="view-all-calculators"><a href="advice-articles">View More Resources</a></div>
