@@ -1525,7 +1525,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
   background-color: #ffffff;
   border: 1px solid #e5e5e5;
   clear: both;
-  padding:0 0px 20px 32px;
+  padding:0 20px 32px;
   position: relative;
   overflow:hidden;
 }
@@ -5092,7 +5092,7 @@ p.business-inner-text{color:#1e517f}
     width:100%
   }
 
-  #wrapper { padding:0 0 20px 32px;; width:90%;overflow:hidden; }
+  #wrapper { padding:0 20px 32px;; width:90%;overflow:hidden; }
 
   /* ----- Advice and Articles page ------ */
   
@@ -5147,10 +5147,10 @@ p.business-inner-text{color:#1e517f}
   #widgets-how-it-works
   {
     padding:0;
-    width:103%;
+    width:106%;
   }
 
-  #widgets-how-it-works { margin:20px 0 0 -12px !important; }
+  #widgets-how-it-works { margin:20px 0 0 -20px !important; }
   #widgets-how-it-works .widget-wrapper { margin:20px auto 22px; }
   #widgets-how-it-works .widget-wrapper .widget-wrapper { margin:30px auto 0;float:none; }
   .sidebar-module { width:94%; }
@@ -5377,7 +5377,7 @@ p.business-inner-text{color:#1e517f}
   #widgets-how-it-works { 
     margin-top:20px;
     margin-left: -20px !important;
-    width: 106%; 
+    width: 108%; 
   }
 
   #widgets-how-it-works .widget-wrapper { margin:20px auto;width:95%;float:none; }
