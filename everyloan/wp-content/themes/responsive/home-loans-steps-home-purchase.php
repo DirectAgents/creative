@@ -331,11 +331,11 @@ or less, and we are highly recommended!<br /><br />
                 
 <select name="PROP_PURP" class="FormInput" id="PROP_PURP">
 
-                            <option <?php if($_SESSION["PROP_PURP"] == '') {echo "selected";}?>  value="">Select One</option>
+                            <option  value="">Select One</option>
                             
-                            <option <?php if($_SESSION["PROP_PURP"] == 'Primary Residence') {echo "selected";}?> value="primary">Primary Residence</option>
+                            <option value="primary">Primary Residence</option>
 
-                            <option <?php if($_SESSION["PROP_PURP"] == 'Second or Vacation Home') {echo "selected";}?> value="secondary_vactn">Second or Vacation Home</option>
+                            <option  value="secondary_vactn">Second or Vacation Home</option>
 
                             <option value="investment">Investment Property</option>
 
