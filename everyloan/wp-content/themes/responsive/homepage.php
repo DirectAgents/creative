@@ -78,15 +78,26 @@ get_header(); ?>
             								
                                             <li>
             									<div class="styled-select">
-                                                    <select id="i-want-to-borrow-money-select">
-                                                        <option>Select loan type</option>
+                                                   <select id="i-want-to-borrow-money-select">
+                                                
+                                                <option>Select loan type</option>
                                                         <option value="loans/home-purchase/">Home Purchase Loan</option>
                                                         <option value="loans/home-refinance/">Home Refinance Loan</option>
-                                                        <option value="loans/small-business/">Small Business Loan</option>
+                                                        <option value="loans/home-improvement/">Home Improvement</option>
+                                                        <option value="loans/business/">Business Loan</option>
+                                                        <option value="loans/equipment-financing/">Equipment Financing</option>
+                                                        <option value="loans/personal/">Personal Loan</option>
                                                         <option value="loans/debt-consolidation/">Debt Consolidation Loan</option>
-                                                        <option value="loans/home-improvement/">Home Improvement Loan</option>
+                                                        <option value="loans/cash-advance/">Cash Advance</option>
                                                         <option value="loans/vacation/">Vacation Loan</option>
-                                                    </select>
+                                                        <option value="loans/wedding/">Wedding Loan</option>
+                                                        <option value="loans/medical-dental/">Medical Dental</option>
+                                                        <option value="loans/household-expenses/">Household Expenses</option>
+                                                        <option value="loans/major-purchase/">Major Purchase</option>
+                                                        <option value="loans/small-business/">Small Business Loan</option>
+                                                        <option value="loans/merchant-cash-advance/">Merchant Cash Advance</option>
+                                                        <option value="loans/accounts-receivable/">Accounts Receivable</option>
+                                                      </select>  
                                                 </div>
                                             </li>
 
@@ -165,13 +176,49 @@ get_header(); ?>
 										<ul id="i-want-to-borrow-money">
 											<li><label>Why do you want to borrow money?</label></li>
 											<li>
-												<div class="styled-select"><select id="i-want-to-borrow-money-select"><option>Select loan type</option><option value="Home Loan">Home Loan</option><option value="Business Loan">Business Loan</option><option value="Personal Loan">Personal Loan</option></select></div>
+												<div class="styled-select"><select id="i-want-to-borrow-money-select">
+                                                
+                                                
+                                                <select id="i-want-to-borrow-money-select">
+                                                
+                                                <option>Select loan type</option>
+                                                        <option value="loans/home-purchase/">Home Purchase Loan</option>
+                                                        <option value="loans/home-refinance/">Home Refinance Loan</option>
+                                                        <option value="loans/home-improvement/">Home Improvement</option>
+                                                        <option value="loans/business/">Business Loan</option>
+                                                        <option value="loans/equipment-financing/">Equipment Financing</option>
+                                                        <option value="loans/personal/">Personal Loan</option>
+                                                        <option value="loans/debt-consolidation/">Debt Consolidation Loan</option>
+                                                        <option value="loans/cash-advance/">Cash Advance</option>
+                                                        <option value="loans/vacation/">Vacation Loan</option>
+                                                        <option value="loans/wedding/">Wedding Loan</option>
+                                                        <option value="loans/medical-dental/">Medical Dental</option>
+                                                        <option value="loans/household-expenses/">Household Expenses</option>
+                                                        <option value="loans/major-purchase/">Major Purchase</option>
+                                                        <option value="loans/small-business/">Small Business Loan</option>
+                                                        <option value="loans/merchant-cash-advance/">Merchant Cash Advance</option>
+                                                        <option value="loans/accounts-receivable/">Accounts Receivable</option>
+                                                      </select>  
+                                                
+                                                
+                                                </div>
 											</li>
 											
 											<li><label>What is your credit quality like?</label></li>
 
 											<li>
-												<div class="styled-select"><select><option>Select credit quality</option><option>Excellent (720+)</option><option>Good (600-720)</option><option>Fair (600-660)</option><option>Some Problem (below 600)</option></select></div>
+												<div class="styled-select">
+                                                
+                                                 <select id="credit-score">
+                                                        <option>Select credit quality</option>
+                                                        <option>Excellent (720+)</option>
+                                                        <option>Good (660-720)</option>
+                                                        <option>Fair (600-660)</option>
+                                                        <option>Some Problem (below 600)</option>
+                                                    </select>
+                                                
+                                                
+                                                </div>
 											</li>
 										</ul>
 										
