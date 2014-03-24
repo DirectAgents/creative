@@ -1683,7 +1683,7 @@ margin-top:20px; margin-left:10px; }
    width: 100%;
    padding: 5px;
    font-size: 16px;
-   line-height: 1;
+   line-height: 17px;
    border: 0;
    height: 34px;
    -webkit-appearance: none;
@@ -5238,7 +5238,7 @@ p.business-inner-text{color:#1e517f}
     margin-right:20px; 
   }
   
-  #menu-topmenu li a { padding:0 10px 0 10px; }
+  #menu-topmenu > li a { padding:0 10px 0 10px; }
 }
 
 /* ---------------------------------------- END Ipad manu views --------------------------------- */
@@ -5415,7 +5415,6 @@ p.business-inner-text{color:#1e517f}
   |        Loan pages [roman]                 |
   \------------------------------------------*/
  
-
   .loan-module { margin:0 0 20px; }
 
   /* ----- Advice and Articles page ------ */
@@ -5427,6 +5426,16 @@ p.business-inner-text{color:#1e517f}
   
   .advice_articles .post-meta,
   .advice_articles .post-data { margin:0; }
+
+  /* grey box */
+  .advice-choose-container .select-category-label { margin-left: 20px; }
+
+  .advice-choose-container .styled-select
+  {
+    margin:10px auto;
+    float:none;
+    width:90%;
+  }
 
   /* ----- END Advice and Articles page ------ */
 

@@ -179,9 +179,9 @@ get_header(); ?>
 												<div class="styled-select"><select id="i-want-to-borrow-money-select">
                                                 
                                                 
-                                                <select id="i-want-to-borrow-money-select">
-                                                
-                                                <option>Select loan type</option>
+                                                    <select id="i-want-to-borrow-money-select">
+                                                    
+                                                        <option>Select loan type</option>
                                                         <option value="loans/home-purchase/">Home Purchase Loan</option>
                                                         <option value="loans/home-refinance/">Home Refinance Loan</option>
                                                         <option value="loans/home-improvement/">Home Improvement</option>
@@ -198,7 +198,8 @@ get_header(); ?>
                                                         <option value="loans/small-business/">Small Business Loan</option>
                                                         <option value="loans/merchant-cash-advance/">Merchant Cash Advance</option>
                                                         <option value="loans/accounts-receivable/">Accounts Receivable</option>
-                                                      </select>  
+
+                                                    </select>  
                                                 
                                                 
                                                 </div>
@@ -290,7 +291,7 @@ get_header(); ?>
 											<div class="calculators-title-home-title">Borrowing Resources</div>
 											
                                             <ul>
-												<li class="arrow"><a href="#">The Loan Process</a></li>
+												<li class="arrow"><a href="advice_articles/the-loan-process/">The Loan Process</a></li>
 												<li class="arrow"><a href="advice-articles/?advice=refinance">Refinance</a></li>
 												<li class="arrow"><a href="advice-articles/?advice=home-purchase">Home Purchase</a></li>
 												<li class="arrow"><a href="#">Home Equity</a></li>

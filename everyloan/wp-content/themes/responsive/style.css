@@ -3955,6 +3955,21 @@ h3.small-title
   border-color: transparent #fff transparent transparent;
 }
 
+.triangle-down,
+.has-sub-menu:after
+{
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 8px 10px 0 10px;
+  border-color: #a1a1a1 transparent transparent transparent;
+  content: "";
+  position:absolute;
+  top:75%;
+  left: 22%;
+  margin-left: 25%;
+}
+
 a { color:#1e517f; }
 a:hover { color:#333 !important; }
 
@@ -4018,6 +4033,11 @@ a:hover { color:#333 !important; }
 { 
   font-weight:bold;
   background:#fff;
+}
+
+.has-sub-menu
+{
+  position:relative;
 }
 
 /*------------------------------------------\
