@@ -3867,6 +3867,7 @@ BDO[DIR="rtl"] {
 |         - Homepage                        |
 |         - Sidebar                         |
 |         - Top Menu                        |
+|         - Mobile menu                     |
 |         - How it works                    |
 |         - Advice and articles             |
 |         - Alternate Homepage              |
@@ -3881,18 +3882,6 @@ BDO[DIR="rtl"] {
 \------------------------------------------*/
 
 /* ----- containers ----- */
-
-/* clearfix */
-.clearfix:before,
-.clearfix:after {
-  content: ".";    
-  display: block;    
-  height: 0;    
-  overflow: hidden; 
-}
-
-.clearfix:after {clear: both;}
-.clearfix {zoom: 1;} /* IE < 8 */
 
 body 
 { 
@@ -3973,9 +3962,10 @@ a:hover { color:#333 !important; }
 /*------------------------------------------\
 |              Homepage                     |
 \------------------------------------------*/
-.home #wrapper{
-  padding:0 0 20px 16px;
-}
+
+.home #wrapper,
+.alt-home #wrapper { padding:0 0 20px 16px; }
+
 /*------------------------------------------\
 |               Sidebar                     |
 \------------------------------------------*/
@@ -4004,14 +3994,30 @@ a:hover { color:#333 !important; }
 #header .nav-collapse.opened { max-height:9999px !important; }
 #menu-topmenu li { min-height:30px; }
 
+
+
+#menu-topmenu .sub-menu { 
+  margin-top:0px; 
+}
+/*------------------------------------------\
+|            Mobile  Menu                   |
+\------------------------------------------*/
+
 #menu-topmenu-1 ul.sub-menu
 {
   border-right:1px solid #ccc;
   border-left:1px solid #ccc; 
 }
 
-#menu-topmenu .sub-menu { 
-  margin-top:0px; 
+#menu-topmenu-1 li
+{
+  border-bottom:1px solid #ccc;
+}
+
+#menu-topmenu-1 .current-menu-item a
+{ 
+  font-weight:bold;
+  background:#fff;
 }
 
 /*------------------------------------------\
