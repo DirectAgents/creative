@@ -119,7 +119,7 @@ get_header(); ?>
             							</ul>
             							
                                         <div class="start-here-btn">
-                                            <a id="start-here-btn" href="#">
+                                           <a id="start-here-btn" href="#">
                                                 <img alt="Start Here" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif" />
                                             </a>
                                         </div>
@@ -176,7 +176,7 @@ get_header(); ?>
 										<ul id="i-want-to-borrow-money">
 											<li><label>Why do you want to borrow money?</label></li>
 											<li>
-												<div class="styled-select"><select id="i-want-to-borrow-money-select">
+												<div class="styled-select">
                                                 
                                                 
                                                 <select id="i-want-to-borrow-money-select">
@@ -223,7 +223,7 @@ get_header(); ?>
 										</ul>
 										
 											<div class="start-here-btn">
-												<a href="#">
+												<a id="start-here-btn" href="#">
 													<img alt="Start Here" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/start-here-btn.gif" />
 												</a>
 											</div>

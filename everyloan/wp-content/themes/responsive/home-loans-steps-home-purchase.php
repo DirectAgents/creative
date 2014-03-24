@@ -33,7 +33,7 @@ global $more; $more = 0;
 
 
 <?php if($_GET['loan'] == 'home-purchase') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a home purchase loan</div>
+<div class="personal-loans-box-step1-desktop-title">Home Purchase Loan</div>
 <? } ?>
 
 
@@ -49,7 +49,7 @@ global $more; $more = 0;
 </div>
 
 <div class="personal-loans-box-step-desktop-left-column">
-<div class="rates-personal-loans-steps">Rates start at 6.73% APR</div>
+<div class="rates-personal-loans-steps">Rates start at 3.99% APR</div>
 <div class="content-left">
 
 Everyloan has competitive rates and fees that can save you money. We close the majority of our loans in 30 days
@@ -73,7 +73,7 @@ or less, and we are highly recommended!<br /><br />
         <input type="hidden" id="IsPrimaryBorrower" name="IsPrimaryBorrower" value="Yes"/>
 
 
-<?php if($_GET['step'] == "1") { ?>	
+<?php //if($_GET['step'] == "1") { ?>	
     
             <!-- #first_step -->
             <div id="first_step" <?php if($_GET['pass'] == 'y') { ?>style="display:none" <? } ?>>
@@ -129,7 +129,7 @@ or less, and we are highly recommended!<br /><br />
 
 </div>
 
-<?php  } ?>
+<?php  //} ?>
 
 
 
@@ -137,13 +137,12 @@ or less, and we are highly recommended!<br /><br />
 <?php //if($_GET['step'] == "2") { ?>
 
             <!-- #second_step -->
-            <div id="second_step"<?php //if($_GET['pass'] == 'y') { ?>style="display:block" <? //} ?>>
+            <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
 <?php if($_GET['pass'] != 'y') { ?>
 <div class="previous-home"><a href="#" class="previous-second-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 <? } ?>
 
-<!--<div class="next-home"><a href="#" class="next-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
 
 
@@ -160,7 +159,7 @@ or less, and we are highly recommended!<br /><br />
 
 
 <tr>
-<td><label>Property ZIP code</label></td>
+<td><label>Property State</label></td>
 </tr>
 
 <tr>
@@ -169,7 +168,7 @@ or less, and we are highly recommended!<br /><br />
 
 <select name="PROP_ST" class="FormInput">
 
-                <option value="" selected>Property State ?</option>
+                <option value="" selected>Select one</option>
 
                 <option value="AL"> Alabama</option>
 
@@ -310,7 +309,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-third-home"><a href="#" class="previous-third-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-third-home"><a href="#" class="next-third-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
    <div id="third_step_personal"> 
                
@@ -374,7 +372,6 @@ or less, and we are highly recommended!<br /><br />
  
 <div class="previous-fourth-home"><a href="#" class="previous-fourth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-fourth-home"><a href="#" class="next-fourth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
                
 
 
@@ -534,7 +531,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-fifth-home"><a href="#" class="previous-fifth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-fifth-home"><a href="#" class="next-fifth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
 
 
@@ -608,7 +604,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-sixth-home"><a href="#" class="previous-sixth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-sixth-home"><a href="#" class="next-sixth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->              
 
 
 <div id="sixth_step_home"> 
@@ -631,7 +626,7 @@ or less, and we are highly recommended!<br /><br />
 <tr>
 
 <td width="65" align="left"><input type="radio" name="SPEC_HOME" value="yes" id="SPEC_YES"><span class="radio-label">Yes</span></td>
-<td width="135" colspan="2" align="left"><input type="radio" name="SPEC_HOME" value="no" id="SPEC_YES_NO" checked="checked" />
+<td width="135" colspan="2" align="left"><input type="radio" name="SPEC_HOME" value="no" id="SPEC_NO" checked="checked" />
   <span class="radio-label">No</span></td>
  </tr>  
 </table>      
@@ -649,7 +644,7 @@ or less, and we are highly recommended!<br /><br />
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
                <input class="submit_sixth" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_sixth" id="submit_sixth" value="" />    
                
-               <input class="do-you-have-a-second-mortgage" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_sixth" id="do-you-have-a-second-mortgage" value="" />    
+               <input class="real-estate-agent-step" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_sixth" id="real-estate-agent-step" value="" />    
                         
             </div>         
             
@@ -658,15 +653,14 @@ or less, and we are highly recommended!<br /><br />
   <?php //} ?>     
      
       <!-- #sevents_step -->
-            <div id="second-mortgage-balance-step">
+            <div id="real-estate-agent">
 
 <div class="previous-second-mortgage-balance"><a href="#" class="previous-second-mortgage-balance"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                          
 
 
 
-<div id="second-mortgage-balance_home"> 
+<div id="real-estate-agent_home"> 
 
                 <div class="form">
                
@@ -699,7 +693,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_second-mortgage-balance" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_second-mortgage-balance" id="submit_second-mortgage-balance" value="" />             
+               <input class="signed_contract" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="signed_contract" id="signed_contract" value="" />             
             </div>     
    </div>         
      
@@ -725,7 +719,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                          
 
 
 
@@ -741,7 +734,7 @@ or less, and we are highly recommended!<br /><br />
 
 <tr>
 
-<td><label>Do you have a real estate agent?</label></td>
+<td colspan="3"><label>Do you have a real estate agent?</label></td>
 </tr>
 
     
@@ -775,6 +768,78 @@ or less, and we are highly recommended!<br /><br />
  
  
  
+ <!-- #Agent Name -->
+            <div id="agent_info">
+
+<div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+
+
+
+<div id="agent_info_home"> 
+
+                <div class="form">
+               
+
+
+
+ <table cellpadding="0" cellspacing="0" border="1">
+
+
+<tr>
+
+<td colspan="3"><label>Agent name</label></td>
+</tr>
+
+    
+<tr>
+<td>                
+                
+<input type="text" name="AGENT_NAME" id="AGENT_NAME" value=""/>
+  </td>
+</tr> 
+
+
+<tr>
+
+<td colspan="3"><label>Agent phone</label></td>
+</tr>
+
+<tr>
+<td>                
+                
+<input type="text" name="AGENT_PHONE" id="AGENT_PHONE" value=""/>
+  </td>
+</tr> 
+
+
+<tr>
+
+<td colspan="3"><label>Agent company</label></td>
+</tr>
+
+<tr>
+<td>                
+                
+<input type="text" name="AGENT_COMPANY" id="AGENT_COMPANY" value=""/>
+  </td>
+</tr> 
+
+
+
+</table> 
+
+      
+                    
+                    
+                </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+               <input class="agent_info_btn" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="agent_info_btn" id="agent_info_btn" value="" />             
+            </div>     
+   </div>     
+   
+   
+   
+
+
  
  
  <!-- #second-mortgage-interest_rate_step -->
@@ -782,7 +847,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-seventh-home"><a href="#" class="next-seventh-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                          
 
 
 
@@ -979,7 +1043,7 @@ or less, and we are highly recommended!<br /><br />
                     
                     
                 </div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
-               <input class="submit_seventh" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="submit_seventh" id="submit_seventh" value="" />             
+               <input class="down_payment_btn" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="down_payment_btn" id="down_payment_btn" value="" />             
             </div>     
    </div>            
      
@@ -993,7 +1057,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-eight-home"><a href="#" class="previous-eight_step_home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-eight-home"><a href="#" class="next-eight-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                             
                
 
 
@@ -1071,7 +1134,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-ninth-home"><a href="#" class="previous-ninth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-ninth-home"><a href="#" class="next-ninth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                        
 
 
 
@@ -1142,7 +1204,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-tenth-home"><a href="#" class="previous-tenth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-tenth-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                  
 
 
 
@@ -1210,9 +1271,7 @@ or less, and we are highly recommended!<br /><br />
 <div class="previous-eleventh-home"><a href="#" class="previous-eleventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 
-<!--<div class="next-tenth-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                  
 
-<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                   
 
 
 
@@ -1241,7 +1300,7 @@ or less, and we are highly recommended!<br /><br />
 
 <select name="STATE" class="FormInput">
 
-                <option value="" selected>Contact State ?</option>
+                <option value="" selected>Select one</option>
 
                 <option value="AL"> Alabama</option>
 
@@ -1393,7 +1452,6 @@ or less, and we are highly recommended!<br /><br />
 
 <div class="previous-twelth-home"><a href="#" class="previous-twelth-step-home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                   
 
 
 
@@ -1464,9 +1522,8 @@ or less, and we are highly recommended!<br /><br />
                
 
 
-<div class="previous-thirteen-home"><a href="#" class="previous-last_step_home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-last_step_home"><a href="#" class="previous-last_step_home_btn"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/next-arrow.png"/></a></div>-->                                   
 
 
 

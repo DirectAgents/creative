@@ -527,6 +527,45 @@ $('#submit_third_personal').click(function(){
 	
 	
 	
+	
+	
+	
+	$('#signed_contract').click(function(){
+        //update progress bar
+        $('#progress_text').html('63% Complete');
+        $('#progress').css('width','63px');
+
+        //prepare the fourth step
+        var fields = new Array(
+            $('#type_of_loan').val(),
+			$('#username').val(),
+            $('#password').val(),
+            $('#email').val(),
+            $('#firstname').val() + ' ' + $('#lastname').val(),
+            $('#age').val(),
+            $('#gender').val(),
+            $('#country').val()                       
+        );
+        var tr = $('#fourth_step tr');
+        tr.each(function(){
+            //alert( fields[$(this).index()] )
+            $(this).children('td:nth-child(2)').html(fields[$(this).index()]);
+        });
+                
+        //slide steps
+        //$('#third_step').slideUp();
+        //$('#fourth_step').slideDown();  
+		
+		//$('#third_step').hide("slide", { direction: "left" }, 1000);
+		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
+		
+		$('#real-estate-agent').hide();
+	    $('#seventh_step').show();     
+		          
+    });
+	
+	
+	
 	$('#do-you-have-a-second-mortgage').click(function(){
         //update progress bar
         $('#progress_text').html('63% Complete');
@@ -558,6 +597,44 @@ $('#submit_third_personal').click(function(){
 		
 		$('#sixth_step').hide();
 		$('#second-mortgage-balance-step').show();
+		          
+    });
+	
+	
+	
+	
+	
+	$('#real-estate-agent-step').click(function(){
+        //update progress bar
+        $('#progress_text').html('63% Complete');
+        $('#progress').css('width','63px');
+
+        //prepare the fourth step
+        var fields = new Array(
+            $('#type_of_loan').val(),
+			$('#username').val(),
+            $('#password').val(),
+            $('#email').val(),
+            $('#firstname').val() + ' ' + $('#lastname').val(),
+            $('#age').val(),
+            $('#gender').val(),
+            $('#country').val()                       
+        );
+        var tr = $('#fourth_step tr');
+        tr.each(function(){
+            //alert( fields[$(this).index()] )
+            $(this).children('td:nth-child(2)').html(fields[$(this).index()]);
+        });
+                
+        //slide steps
+        //$('#third_step').slideUp();
+        //$('#fourth_step').slideDown();  
+		
+		//$('#third_step').hide("slide", { direction: "left" }, 1000);
+		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
+		
+		$('#sixth_step').hide();
+		$('#real-estate-agent').show();
 		          
     });
 	
@@ -678,6 +755,93 @@ $('#submit_third_personal').click(function(){
 		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
 		
 		$('#seventh_step').hide();
+	    $('#eight_step').show();   
+		$('#down_payment_step').show();   
+		  
+		
+		/*
+		var url = document.URL;
+		 var step = '8';
+		 a_href = url.replace(/(step=)[^\&]+/, '$1' + step);
+				 
+		window.location.href = a_href; 
+		*/          
+    });
+	
+	
+	
+	 $('#agent_info_btn').click(function(){
+        //update progress bar
+        $('#progress_text').html('73% Complete');
+        $('#progress').css('width','73px');
+
+        //prepare the fourth step
+        var fields = new Array(
+            $('#type_of_loan').val(),
+			$('#username').val(),
+            $('#password').val(),
+            $('#email').val(),
+            $('#firstname').val() + ' ' + $('#lastname').val(),
+            $('#age').val(),
+            $('#gender').val(),
+            $('#country').val()                       
+        );
+        var tr = $('#fourth_step tr');
+        tr.each(function(){
+            //alert( fields[$(this).index()] )
+            $(this).children('td:nth-child(2)').html(fields[$(this).index()]);
+        });
+                
+        //slide steps
+        //$('#third_step').slideUp();
+        //$('#fourth_step').slideDown();  
+		
+		//$('#third_step').hide("slide", { direction: "left" }, 1000);
+		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
+		
+		$('#agent_info').hide();
+	    $('#down_payment_step').show();     
+		
+		/*
+		var url = document.URL;
+		 var step = '8';
+		 a_href = url.replace(/(step=)[^\&]+/, '$1' + step);
+				 
+		window.location.href = a_href; 
+		*/          
+    });
+	
+	
+	 $('#down_payment_btn').click(function(){
+        //update progress bar
+        $('#progress_text').html('80% Complete');
+        $('#progress').css('width','80px');
+
+        //prepare the fourth step
+        var fields = new Array(
+            $('#type_of_loan').val(),
+			$('#username').val(),
+            $('#password').val(),
+            $('#email').val(),
+            $('#firstname').val() + ' ' + $('#lastname').val(),
+            $('#age').val(),
+            $('#gender').val(),
+            $('#country').val()                       
+        );
+        var tr = $('#fourth_step tr');
+        tr.each(function(){
+            //alert( fields[$(this).index()] )
+            $(this).children('td:nth-child(2)').html(fields[$(this).index()]);
+        });
+                
+        //slide steps
+        //$('#third_step').slideUp();
+        //$('#fourth_step').slideDown();  
+		
+		//$('#third_step').hide("slide", { direction: "left" }, 1000);
+		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
+		
+		$('#down_payment_step').hide();
 	    $('#eight_step').show();     
 		
 		/*
@@ -691,10 +855,17 @@ $('#submit_third_personal').click(function(){
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	 $('#submit_eight').click(function(){
         //update progress bar
         $('#progress_text').html('83% Complete');
-        $('#progress').css('width','83px');
+        $('#progress').css('width','95px');
 
         //prepare the fourth step
         var fields = new Array(
@@ -1005,6 +1176,13 @@ $('#submit_eleventh_business').click(function(){
 		$('#thirteen_step_home').show();  
 		
 		
+		$('.previous-twelth-home').hide(); 
+		$('.previous-eleventh-step').hide();  
+		
+		$('.previous-last_step_home_btn').show();  
+		
+		
+		
     });
 	
 	
@@ -1076,6 +1254,37 @@ $('#submit_eleventh_business').click(function(){
 		$('#submit_sixth').show();
 		$('#do-you-have-a-second-mortgage').hide();
 	});
+	
+	
+	$('#SPEC_YES').change(function(){
+		
+		$('#submit_sixth').hide();
+		$('#real-estate-agent-step').show();
+	});
+	
+	
+	$('#SPEC_NO').change(function(){
+		
+		$('#submit_sixth').show();
+		$('#real-estate-agent-step').hide();
+	});
+	
+	
+	$('#AGENT_YES').change(function(){
+		
+		$('#seventh_step').hide();
+		$('#agent_info').show();
+	});
+	
+	
+	$('#AGENT_NO').change(function(){
+		
+		$('#seventh_step').show();
+		$('#agent_info_home').hide();
+	});
+	
+	
+	
 
 
 
@@ -1259,9 +1468,17 @@ $('.previous-twelth-step-home').click(function(){
 
 
 
-$('.previous-last_step_home').click(function(){
+
+
+
+
+$('.previous-last_step_home_btn').click(function(){
 	 $('#last_step_home').hide();
 	 $('#twelth_step').show(); 
+	 
+	 $('.previous-twelth-home').show(); 
+	 $('.previous-eleventh-step').show();  
+	 
 	 $('#twelth_step_home').show(); 
 	 
 });	 

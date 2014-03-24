@@ -1377,7 +1377,8 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
  #container-steps #tenth_step_personal { display: block; margin-left:30px; margin-top:20px; float:left; }
 
 
-
+#container-steps #down_payment { display: block; margin-left:75px; margin-top:45px; float:left; }
+#container-steps #eight_step_home { display: block; margin-left:30px; margin-top:20px; float:left; }
 
 
 
@@ -1385,7 +1386,8 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
 #second_step_home label, #third_step_home label, #fourth_step_home label, #fifth_step_home label,
 #sixth_step_home label, #seventh_step_personal label, #eight_step_home label,
-#ninth_step_home label, #tenth_step_home label, #seventh_step_home label   {float:left; width:200px; font-size:12px;}
+#ninth_step_home label, #tenth_step_home label, #seventh_step_home label,
+#down_payment label   {float:left; width:200px; font-size:12px;}
 
 
  #sixth_step_home label {font-size:12px;}
@@ -1428,6 +1430,8 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 #sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 #sixth_step_home input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 
+
+#seventh_step_home input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 
 
 .radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
@@ -1473,6 +1477,22 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
   background:url(../images/green-checkmark.png) no-repeat;
   padding-left:23px;
 }
+
+
+
+#container-steps input.down_payment_btn {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 180px;
+            height: 48px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
+        }	
+
 
 
   
@@ -2412,9 +2432,9 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 
 #container-steps #eight_step_home { display: block; margin-left:10px; margin-top:50px; float:left; }
 
-#container-steps #eleventh_step_home  { display: block; margin-left:10px; margin-top:30px; float:left; }
+#container-steps #eleventh_step_home  { display: block; margin-left:10px; margin-top:20px; float:left; }
 
-#container-steps #twelth_step_home  { display: block; margin-left:-10px; margin-top:30px; float:left; }
+#container-steps #twelth_step_home  { display: block; margin-left:-15px; margin-top:20px; float:left; }
 
 
 
@@ -2454,7 +2474,20 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
             bottom: 0px;
 			top:-10px;
             left: -10px;
-        }		
+        }	
+		
+#container-steps input.submit_eleventh {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none; 
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: -10px;
+        }				
 
 
 .previous-home{position:absolute; left:-38px; top:90px;}
@@ -2494,6 +2527,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 .previous-twelth-home{position:absolute; left:-63px; top:85px;}
 .next-twelth-personal{display:none}
 
+.previous-last_step_home {position:absolute; left:-38px; top:90px;}
 
 
 
@@ -2501,6 +2535,9 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 
 
 #sixth_step_home input[type="radio"] { width:15px; padding:20px 0 0 0; } 
+
+#seventh_step_home input[type="radio"] { width:15px; padding:20px 0 0 0; } 
+
 
 
 .radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
@@ -3673,7 +3710,7 @@ p.personal-inner-text{color:#1e517f; font-weight:bold;}
 
 #container-steps #eleventh_step_home { display: block; margin-left:110px; margin-top:0px; float:left; }
 
-#container-steps #twelth_step_home { display: block; margin-left:90px; margin-top:0px; float:left; }
+#container-steps #twelth_step_home { display: block; margin-left:85px; margin-top:0px; float:left; }
 
 
 #container-steps #second-mortgage-balance_home { display: block; margin-left:110px; margin-top:35px; float:left; }
@@ -3681,13 +3718,27 @@ p.personal-inner-text{color:#1e517f; font-weight:bold;}
 #container-steps #second-mortgage-interest_rate_step_home { display: block; margin-left:120px; margin-top:30px; float:left; }
 
 
-#container-steps #thirteen_step_home { display: block; margin-left:110px; float:left; }
+#container-steps #real-estate-agent_home { display: block; margin-left:110px; margin-top:30px; float:left; }
+
+
+
+#container-steps #thirteen_step_home { display: block; margin-left:110px; margin-top:40px; float:left; }
+
+
+#container-steps #agent_info_home { display: block; margin-left:110px; margin-top:-15px; float:left; }
+
+#container-steps #down_payment { display: block; margin-left:120px; margin-top:30px; float:left; }
+
+
+
 
 
 #second_step_home label, #third_step_home label, #fourth_step_home label, #fifth_step_home label,
 #sixth_step_home label, #seventh_step_home label, #eight_step_home label,
-#ninth_step_home label, #tenth_step_home label, #second-mortgage-balance_home label, #second-mortgage-interest_rate_step_home label   {float:left; width:255px;}
+#ninth_step_home label, #tenth_step_home label, #second-mortgage-balance_home label, #second-mortgage-interest_rate_step_home label,
+#real-estate-agent_home label, #down_payment_step label {float:left; width:255px; }
 
+#agent_info_home label {float:left; width:255px; height:5px;}
 
 
 .previous-home{position:absolute; left:-277px; top:90px;}
@@ -3718,7 +3769,7 @@ p.personal-inner-text{color:#1e517f; font-weight:bold;}
 
 .previous-eleventh-home{position:absolute; left:-277px; top:90px;}
 
-.previous-twelth-home{position:absolute; left:-302px; top:83px;}
+.previous-twelth-home{position:absolute; left:-302px; top:85px;}
 
 .previous-thirteen-home{position:absolute; left:-278px; top:90px;}
 
@@ -3728,15 +3779,21 @@ p.personal-inner-text{color:#1e517f; font-weight:bold;}
 
 .previous-second-mortgage-interest-home {position:absolute; left:-277px; top:90px;}
 
+.previous-last_step_home {position:absolute; left:-277px; top:90px;}
+
+
 
 #sixth_step_home input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 
 .radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
 
 
+#real-estate-agent_home input[type="radio"] { width:15px; padding:20px 0 0 0; } 
+
+#seventh_step_home input[type="radio"] { width:15px; padding:20px 0 0 0; } 
 
 
-
+#agent_info input[type="text"] { padding:5px; height:25px; }
 
 
 #container-steps input.do-you-have-a-second-mortgage {
@@ -3794,8 +3851,62 @@ p.personal-inner-text{color:#1e517f; font-weight:bold;}
         }		
 
 
+#container-steps input.real-estate-agent-step {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:10px;
+            left: 0px;
+        }
 
 
+
+#container-steps input.signed_contract {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
+        }	
+
+
+
+#container-steps input.agent_info_btn {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-23px;
+            left: 0px;
+        }	
+
+
+#container-steps input.down_payment_btn {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-20px;
+            left: 0px;
+        }	
 
   
 /*******Home Loan Step by Step*********/
@@ -4757,8 +4868,17 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 #sixth_step_home input[type="radio"] { width:15px; background:none; border:none; padding:0px 0 0 0; } 
 
 
-#container-steps #seventh_step_home { display: block; margin-left:120px; margin-top:30px; float:left; }
+#container-steps #seventh_step_home { display: block; margin-left:120px; margin-top:40px; float:left; }
+
+#seventh_step_home input[type="radio"] { width:15px; background:none; border:none; padding:0px 0 0 0; } 
+
+
+
+
 #container-steps #eight_step_home { display: block; margin-left:120px; margin-top:40px; float:left;}
+
+
+
 
 #container-steps #second-mortgage-balance_home { display: block; margin-left:120px; margin-top:30px; float:left; }
 
@@ -4771,11 +4891,23 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 
 #container-steps #eleventh_step_home { display: block; margin-left:120px; margin-top:0px; float:left; }
 
-#container-steps #twelth_step_home { display: block; margin-left:98px; margin-top:0px; float:left; }
+#container-steps #twelth_step_home { display: block; margin-left:96px; margin-top:0px; float:left; }
 
-#container-steps #thirteen_step_home { display: block; margin-left:98px; margin-top:0px; float:left; }
+#container-steps #thirteen_step_home { display: block; margin-left:120px; margin-top:30px; float:left; }
+
+#container-steps #real-estate-agent_home { display: block; margin-left:120px; margin-top:0px; float:left; }
 
 
+#real-estate-agent_home input[type="radio"] { width:15px; background:none; border:none; padding:0px 0 0 0; }
+
+#container-steps #real-estate-agent_home { display: block; margin-left:120px; margin-top:30px; float:left; }
+
+#container-steps #agent_info_home { display: block; margin-left:120px; margin-top:-30px; float:left; }
+
+#container-steps #down_payment { display: block; margin-left:120px; margin-top:40px; float:left; }
+
+
+#agent_info input[type="text"] { padding:5px; height:30px; }
 
 
 #container-steps input.do-you-have-a-second-mortgage {
@@ -4790,6 +4922,56 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 			top:-10px;
             left: 0px;
         }			
+
+
+
+
+
+#container-steps input.real-estate-agent-step {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-5px;
+            left: 0px;
+        }
+
+
+#container-steps input.agent_info_btn {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-15px;
+            left: 0px;
+        }	
+		
+
+#container-steps input.down_payment_btn {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-20px;
+            left: 0px;
+        }	
+			
+		
+
+	
+
 
 
 #container-steps input.submit_second-mortgage-balance {
@@ -4833,13 +5015,29 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
         }		
 
 
+#container-steps input.signed_contract {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
+        }	
+
+
 
 
 
 #second_step_home label, #third_step_home label, #fourth_step_home label, #fifth_step_home label,
 #sixth_step_home label, #seventh_step_home label, #eight_step_home label,
-#ninth_step_home label, #tenth_step_home label, #second-mortgage-balance_home label, #second-mortgage-interest_rate_step_home label   {float:left; width:255px;}
+#ninth_step_home label, #tenth_step_home label, #second-mortgage-balance_home label, #second-mortgage-interest_rate_step_home label,   
+#real-estate-agent_home label, #down_payment_step label {float:left; width:255px; }
 
+#agent_info_home label {float:left; width:255px; height:10px;}
 
 .previous-home{position:absolute; left:-333px; top:80px;}
 .next-home{position:absolute; right:-166px; top:80px;}
@@ -4866,18 +5064,20 @@ background:url(../images/i-want-to-refinance-my-home.gif) no-repeat;}
 
 .previous-second-mortgage-interest-step{position:absolute; left:-333px; top:80px;}
 
-#sixth_step_personal input[type="radio"] { width:15px; background:none; border:none; padding:0px 0 0 0; } 
+input[type="radio"] { width:15px; background:none; border:none; padding:0px 0 0 0; } 
 
 .radio-label { float:left; width:15px; padding:6px 0 0 5px; color:#646464; } 
+
 
 
 .previous-eleventh-home{display:block !important; position:absolute; left:-333px; top:80px;}
 .next-eleventh-home{display:none !important;}  
 
-.previous-twelth-home{position:absolute; left:-359px; top:70px;}
+.previous-twelth-home{position:absolute;  left:-358px; top:75px;}
 
 .previous-thirteen-home{position:absolute; left:-333px; top:80px;}
 
+.previous-last_step_home {position:absolute; left:-333px; top:80px;}
 
   
 /*******Home Loan Step by Step*********/

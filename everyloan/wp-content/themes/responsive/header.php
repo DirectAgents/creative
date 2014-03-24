@@ -105,6 +105,7 @@ $(window).ready(function() {
 
 
  $('#start-here-btn').click(function(){
+	 
 	
 	if($('#i-want-to-borrow-money-select').val() == 'loans/home-purchase/') {
     location.href = '<?php echo site_url(); ?>/' + $('#i-want-to-borrow-money-select').val()+'?loan=home-purchase&credit='+$('#credit-score').val()+'&pass=y';

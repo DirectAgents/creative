@@ -32,7 +32,7 @@ global $more; $more = 0;
 
 
 <?php if($_GET['loan'] == 'home-refinance') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a home refinance loan</div>
+<div class="personal-loans-box-step1-desktop-title">Home Refinance Loan</div>
 <? } ?>
 
 
@@ -48,7 +48,7 @@ global $more; $more = 0;
 </div>
 
 <div class="personal-loans-box-step-desktop-left-column">
-<div class="rates-personal-loans-steps">Rates start at 6.73% APR</div>
+<div class="rates-personal-loans-steps">Rates start at 3.99% APR</div>
 <div class="content-left">
 
 Everyloan has competitive rates and fees that can save you money. We close the majority of our loans in 30 days
@@ -72,7 +72,7 @@ or less, and we are highly recommended!<br /><br />
         <input type="hidden" id="IsPrimaryBorrower" name="IsPrimaryBorrower" value="Yes"/>
 
 
-<?php if($_GET['step'] == "1") { ?>	
+<?php //if($_GET['step'] == "1") { ?>	
     
             <!-- #first_step -->
             <div id="first_step" <?php if($_GET['pass'] == 'y') { ?>style="display:none" <? } ?>>
@@ -128,7 +128,7 @@ or less, and we are highly recommended!<br /><br />
 
 </div>
 
-<?php  } ?>
+<?php  //} ?>
 
 
 
@@ -136,7 +136,7 @@ or less, and we are highly recommended!<br /><br />
 <?php //if($_GET['step'] == "2") { ?>
 
             <!-- #second_step -->
-            <div id="second_step"<?php //if($_GET['pass'] == 'y') { ?>style="display:block" <? //} ?>>
+            <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
 <?php if($_GET['pass'] != 'y') { ?>
 <div class="previous-home"><a href="#" class="previous-second-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
@@ -1763,7 +1763,7 @@ or less, and we are highly recommended!<br /><br />
 
 
 
-<div class="previous-thirteen-home"><a href="#" class="previous-last_step_home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-last_step_home"><a href="#" class="previous-last_step_home_btn"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 
 <!--<div class="next-eleventh-home"><a href="#" class="next-tenth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                   

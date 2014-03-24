@@ -32,23 +32,23 @@ global $more; $more = 0;
 <div class="personal-loans-box-step-desktop">
 
 <?php if($_GET['loan'] == 'business') { ?>
-<div class="business-loans-box-step1-desktop-title">I want a business loan</div>
+<div class="business-loans-box-step1-desktop-title">Business Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'small-business') { ?>
-<div class="business-loans-box-step1-desktop-title">I want a small business loan</div>
+<div class="business-loans-box-step1-desktop-title">Small Business Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'equipment-financing') { ?>
-<div class="business-loans-box-step1-desktop-title">I want a equipment financing loan</div>
+<div class="business-loans-box-step1-desktop-title">Equipment Financing Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'merchant-cash-advance') { ?>
-<div class="business-loans-box-step1-desktop-title">I want a merchant cash advance loan</div>
+<div class="business-loans-box-step1-desktop-title">Merchant Cash Advance Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'accounts-receivable') { ?>
-<div class="business-loans-box-step1-desktop-title">I want a accounts receivable loan</div>
+<div class="business-loans-box-step1-desktop-title">Accounts Receivable loan</div>
 <? } ?>
 
 <div class="progress-steps2">
