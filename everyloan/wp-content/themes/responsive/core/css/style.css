@@ -1525,7 +1525,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
   background-color: #ffffff;
   border: 1px solid #e5e5e5;
   clear: both;
-  padding:0 5px;
+  padding:0 0px 20px 32px;
   position: relative;
   overflow:hidden;
 }
@@ -4127,7 +4127,6 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   }
 
 #content-advice-and-articles {
-  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -5093,7 +5092,7 @@ p.business-inner-text{color:#1e517f}
     width:100%
   }
 
-  #wrapper { padding:0 5px 0; width:90%;overflow:hidden; }
+  #wrapper { padding:0 0 20px 32px;; width:90%;overflow:hidden; }
 
   /* ----- Advice and Articles page ------ */
   
@@ -5183,7 +5182,7 @@ p.business-inner-text{color:#1e517f}
   |        Loan pages [roman]                 |
   \------------------------------------------*/
 
-  .loan-module { margin:0 30px; }
+  .loan-module { //margin:0 30px; }
 }
 
 /* ---------------------------------------- Ipad menu views --------------------------------- */
@@ -5284,8 +5283,7 @@ p.business-inner-text{color:#1e517f}
 
   #content-blog h1 { text-indent:30px; }
 
-  .post,
-  .loan-module { margin:0 30px; } /* from loan page */
+  .post { //margin:0 30px; } /* from loan page */
 
   #content-blog,
   #content { width:100% !important; }
@@ -5393,7 +5391,7 @@ p.business-inner-text{color:#1e517f}
 /* ---------- iPhone 5 landscape mode ---------- */
 
 @media only screen and (min-width:321px) and (max-width:568px) {
-  #content-advice-and-articles { width:100% !important; }
+  #content-advice-and-articles { width:100% !important;}
   body { overflow:hidden; }
 
   /* -------- Mobile Menu -------- */

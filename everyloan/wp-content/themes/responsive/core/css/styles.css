@@ -97,9 +97,9 @@ body {
 
 .nav-collapse ul.sub-menu li:first-child { border-top:1px solid #b3b3b3; }
 
-@media screen and (min-width: 40em) {
-  .nav-collapse ul ul a {
-    //display: none;
+@media screen and (max-width: 768px) {
+  .nav-collapse ul ul {
+    display: none;
   }
 }
 
