@@ -893,7 +893,7 @@ ul.repay {list-style-type:none; width:267px; padding:0; float:left}
 .everyloan-title{
   float:left;
   width:100%;
-  margin-bottom:20px;
+  //margin-bottom:20px;
   margin-top:20px;
   font-size: 30px;  
   font-family:'heroregular', Arial, Helvetica, sans-serif;
@@ -5642,7 +5642,7 @@ p.business-inner-text{color:#1e517f}
   |        Loan pages                         |
   \------------------------------------------*/
 
-  .loan-module { margin:0 20px 30px 20px; }
+  .loan-module { margin:0 20px 10px; }
 
   /* -------- fix finy spacing bugs in mobile view -------- */
   .widget-wrapper 
@@ -5655,18 +5655,29 @@ p.business-inner-text{color:#1e517f}
 
   /* ----- Advice and Articles page ------ */
   #content-advice-and-articles { width:100%; }
-
+  
+  #content-advice-and-articles .grey-cont 
+  { 
+    width:90%;
+    margin:0 auto; 
+  }
+  
   .advice_articles { margin:0 20px 0px; }
 
- .advice_articles .post-meta,
- .advice_articles .post-data
-    { margin:0; }
+  .advice_articles .post-meta,
+  .advice_articles .post-data { margin:0; }
 
-  .select-category-label { margin-bottom:10px; }
+ .select-category-label { margin:5px 0 5px 16px !Important; }
 
+ #content-advice-and-articles .styled-select
+ {
+    width:90%;
+    float:none;
+    margin:0 auto;
+ } 
   .advice-choose-container
   {
-    width:87%;
+    width:100%;
     margin-bottom:20px;
   }
 
