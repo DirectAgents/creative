@@ -176,7 +176,7 @@ get_header(); ?>
 										<ul id="i-want-to-borrow-money">
 											<li><label>Why do you want to borrow money?</label></li>
 											<li>
-												<div class="styled-select"><select id="i-want-to-borrow-money-select">
+												<div class="styled-select">
                                                 
                                                 
                                                     <select id="i-want-to-borrow-money-select">
