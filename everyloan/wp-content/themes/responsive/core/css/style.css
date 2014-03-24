@@ -2842,12 +2842,14 @@ ul.repay {list-style-type:none; width:147px; padding:0; float:left}
 
 .learn-box-home-mobile {
   display: block !important; 
-  width:100%; 
-  float:left; 
+  width:95%; 
+  float:none; 
   background:#fff; 
   border:1px #eee solid; 
   padding-bottom:20px;
   -webkit-border-radius: 4px;border-radius: 4px;
+  margin:0 auto 20px;
+  overflow: hidden;
 
 }
 
@@ -2869,13 +2871,15 @@ ul.repay {list-style-type:none; width:147px; padding:0; float:left}
 
 .calculate-box-home-mobile {
   display: block !important; 
-  width:100%; float:left; 
+  width:95%; 
+  float:none; 
   background:#fff; 
   border:1px #eee solid; 
   padding:0px; 
-  margin-top:20px; 
+  margin:0 auto 20px; 
   padding-bottom:20px; 
-  -webkit-border-radius: 4px;border-radius: 4px;
+  -webkit-border-radius:4px;border-radius:4px;
+  overflow:hidden;
 }
 
 .calculate-box-home-mobile ul {padding-left:10px; list-style-type:none;}
@@ -2923,15 +2927,15 @@ margin-top:20px; }
 .widget-wrapper-homepage-desktop{display:none !important}
 
 .widget-wrapper-homepage-mobile {
-  float:left;
+  float:none;
   display: block !important; 
-  width:100%;
+  width:95%;
   height:340px;
   background:#fff;
   border: 1px solid #e5e5e5;
   -webkit-border-radius: 4px;border-radius: 4px;
   padding:0px;
-  margin:0 0 30px 0px;
+  margin:0 auto 30px;
 }
 
 
