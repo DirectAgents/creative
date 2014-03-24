@@ -842,7 +842,8 @@ $('#submit_third_personal').click(function(){
 		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
 		
 		$('#down_payment_step').hide();
-	    $('#eight_step').show();     
+	    $('#eight_step_home_step').show(); 
+		    
 		
 		/*
 		var url = document.URL;
@@ -892,7 +893,9 @@ $('#submit_third_personal').click(function(){
 		//$('#fourth_step').show("slide", { direction: "right" }, 1000);  
 		
 		$('#eight_step').hide();
-	    $('#ninth_step').show();     
+	    $('#ninth_step').show();  
+		
+		$('#eight_step_home_step').hide();   
 		
 		
 		/*

@@ -1052,7 +1052,7 @@ or less, and we are highly recommended!<br /><br />
 <?php //if($_GET['step'] == "8") { ?>      
      
        <!-- #eight_step -->
-            <div id="eight_step">
+            <div id="eight_step_home_step">
  
 
 <div class="previous-eight-home"><a href="#" class="previous-eight_step_home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>

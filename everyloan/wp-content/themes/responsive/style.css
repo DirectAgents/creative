@@ -1176,6 +1176,8 @@ form div {
   #container-steps #do-you-have-a-second-mortgage {display: none;}
   #container-steps #second-mortgage-interest_rate_step {display: none; }
   
+  #container-steps #eight_step_home_step {display: none; }
+  
   #container-steps #real-estate-agent { display: none;}
   
   #container-steps #real-estate-agent-step { display: none;}
