@@ -5595,8 +5595,10 @@ p.business-inner-text{color:#1e517f}
 /* --------- BUG - need to put this here because it does not work on styles.css - Don' know why---------- */
 
 @media all and (max-width: 320px) {
-  
+
   #content.col-620 { width:100%; }
+
+  .home #wrapper, .alt-home #wrapper { padding: 0 0 0 4px; }
 
    /* ---------- How it works page ---------- */
    .inner-grey-cont
@@ -5628,7 +5630,7 @@ p.business-inner-text{color:#1e517f}
    #how-it-works-2-pic,
    #how-it-works-3-pic
    {
- 
+
     width:90% !important;
     float:none !important;
   }
@@ -5792,6 +5794,15 @@ p.business-inner-text{color:#1e517f}
   }
   
   /* ------- Sidebar ------- */
+
+   /* homepage */
+  .calculators-title-home-title { width:65%; }
+  
+  .borrow-box-home-desktop ul,
+  .calculate-box-home-desktop ul,
+  .learn-box-home-desktop ul,
+   .calculate-box-home-desktop ul { margin:0 1.5em 5px 0 !important;width:56%; }
+
   .learn-box-home-desktop ul,
   .news-stories-title-home-title,
   .calculators-title-home-title,
@@ -5803,7 +5814,7 @@ p.business-inner-text{color:#1e517f}
   }
   
   .view-all,
-  .view-all-calculators { padding-left: 75px; }
+  .view-all-calculators { padding-left: 50px; }
 }
 
 /* ----------------- END News page responsive ---------------*/
