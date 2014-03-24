@@ -175,7 +175,7 @@ $(document).ready(function() {
 
 <body <?php body_class('alt-home'); ?>>
     
-   <div id="header">
+   <div id="header" class="clearfix">
         
         <div class='alt-container'>
         
@@ -202,19 +202,19 @@ $(document).ready(function() {
         <?php endif; // header image was removed ?>
 
         <div class="top-menu-desktop">
-         <?php if (has_nav_menu('top-menu', 'responsive')) { ?>
+            
+            <?php if (has_nav_menu('top-menu', 'responsive')) { ?>
+            
+                <?php 
+                    wp_nav_menu(array(
+                        'container'       => '',
+                        'fallback_cb'     =>  false,
+                        'menu_class'      => 'menu',
+                        'theme_location'  => 'top-menu')
+                    ); 
+         
+                } ?>
 
-
-            <?php wp_nav_menu(array(
-                'container'       => '',
-                'fallback_cb'     =>  false,
-                'menu_class'      => 'top-menu',
-                'theme_location'  => 'top-menu')
-            ); 
-            ?>
-            <?php } ?>
-
-        
         </div>  
 
         <?php if ( !get_header_image() ) : ?>

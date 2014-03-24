@@ -3881,6 +3881,18 @@ BDO[DIR="rtl"] {
 
 /* ----- containers ----- */
 
+/* clearfix */
+.clearfix:before,
+.clearfix:after {
+  content: ".";    
+  display: block;    
+  height: 0;    
+  overflow: hidden; 
+}
+
+.clearfix:after {clear: both;}
+.clearfix {zoom: 1;} /* IE < 8 */
+
 body 
 { 
   overflow:auto;
@@ -4068,9 +4080,9 @@ a:hover { color:#333 !important; }
 .alt-home #header
 {
   background:#fff;
-  overflow:hidden;
   -webkit-box-shadow:0 2px 8px 1px rgba(51, 51, 51, 0.4);box-shadow:0 2px 8px 1px rgba(51, 51, 51, 0.4);
 }
+
 
 /* ------ Content ------- */
 

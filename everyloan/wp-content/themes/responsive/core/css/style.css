@@ -5191,7 +5191,7 @@ p.business-inner-text{color:#1e517f}
 @media only screen and (min-width: 872px) and (max-width: 1024px) {
 
   
-  #header { height:55px; }
+  //#header { height:55px; }
 
   #logo { margin-left:3%; }
 
@@ -5217,10 +5217,7 @@ p.business-inner-text{color:#1e517f}
 
 @media only screen and (min-width: 768px) and (max-width: 871px) {
   
-  #header 
-  {
-    height:82px;
-  }
+ //#header { height:82px; }
 
   #logo { margin-left:3%; }
 
