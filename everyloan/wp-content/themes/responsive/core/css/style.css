@@ -6086,11 +6086,18 @@ p.business-inner-text{color:#1e517f}
 
 /* --------- BUG - need to put this here because it does not work on styles.css - Don' know why---------- */
 
-@media all and (max-width: 320px) {
+@media all and (max-width:320px) {
 
   #content.col-620 { width:100%; }
 
   .home #wrapper, .alt-home #wrapper { padding: 0 0 0 4px; }
+  
+  #wrapper
+  {
+    width:85%;
+    padding:0 15px 40px;
+    margin-bottom:20px;
+  }
 
    /* ---------- How it works page ---------- */
    .inner-grey-cont
@@ -6117,7 +6124,6 @@ p.business-inner-text{color:#1e517f}
     text-align:center;
    }
 
-
    #how-it-works-1-pic,
    #how-it-works-2-pic,
    #how-it-works-3-pic
@@ -6130,7 +6136,7 @@ p.business-inner-text{color:#1e517f}
   |        Loan pages                         |
   \------------------------------------------*/
 
-  .loan-module { margin:0 20px 10px; }
+  .loan-module { margin:0 0 10px; }
 
   /* -------- fix finy spacing bugs in mobile view -------- */
   .widget-wrapper 
@@ -6146,11 +6152,11 @@ p.business-inner-text{color:#1e517f}
   
   #content-advice-and-articles .grey-cont 
   { 
-    width:90%;
+    width:100%;
     margin:0 auto; 
   }
   
-  .advice_articles { margin:0 20px 0px; }
+  .advice_articles { margin:15px 0 0; }
 
   .advice_articles .post-meta,
   .advice_articles .post-data { margin:0; }
@@ -6229,6 +6235,10 @@ p.business-inner-text{color:#1e517f}
     height:auto;
   }
 
+  .social-bar
+  {
+    margin:10px 0 30px;
+  }
   .social-icons 
   { 
     float:left;
@@ -6297,7 +6307,11 @@ p.business-inner-text{color:#1e517f}
   }
   
   /* ------- Sidebar ------- */
-
+    #widgets-how-it-works
+    {
+      margin-left:-15px !important;
+      width:111%;
+    }
    /* homepage */
   .calculators-title-home-title { width:65%; }
   
