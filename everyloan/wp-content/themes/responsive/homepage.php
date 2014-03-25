@@ -177,10 +177,7 @@ get_header(); ?>
 											<li><label>Why do you want to borrow money?</label></li>
 											<li>
 												<div class="styled-select">
-<<<<<<< HEAD
-                                                
-=======
->>>>>>> FETCH_HEAD
+
                                                 
                                                 
                                                     <select id="i-want-to-borrow-money-select">
