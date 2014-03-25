@@ -4016,8 +4016,6 @@ a:hover { color:#333 !important; }
 #header .nav-collapse.opened { max-height:9999px !important; }
 #menu-topmenu li { min-height:30px; }
 
-
-
 #menu-topmenu .sub-menu { 
   margin-top:0px; 
 }
@@ -4031,10 +4029,7 @@ a:hover { color:#333 !important; }
   border-left:1px solid #ccc; 
 }
 
-#menu-topmenu-1 li
-{
-  border-bottom:1px solid #ccc;
-}
+#menu-topmenu-1 li { border-bottom:1px solid #ccc; }
 
 #menu-topmenu-1 .current-menu-item a
 { 
@@ -4042,10 +4037,7 @@ a:hover { color:#333 !important; }
   background:#fff;
 }
 
-.has-sub-menu
-{
-  position:relative;
-}
+.has-sub-menu { position:relative; }
 
 /*------------------------------------------\
 |            How it works                   |
@@ -4069,20 +4061,14 @@ a:hover { color:#333 !important; }
   width:auto;
 }
 
-#widgets-how-it-works
-{
-  margin-bottom:0 !important;
-}
+#widgets-how-it-works { margin-bottom:0 !important; }
 
 /*------------------------------------------\
 |         Advice and articles               |
 \------------------------------------------*/
 
 /* ----- breadcrumbs ----- */
-.advice-bc
-{
-  margin-bottom:20px;
-}
+.advice-bc { margin-bottom:20px; }
 #content-advice-and-articles { margin-top: 20px; }
 
 .advice-and-article-title h1
@@ -4110,10 +4096,7 @@ a:hover { color:#333 !important; }
   width:100%;
 }
 
-.table-header
-{
-  background:#efefef;
-}
+.table-header { background:#efefef; }
 
 .advice-choose-container .select-category-label { margin:5px 0 0 10px; }
 .advice-choose-container .styled-select { margin-right:10px;float:right;width:60%; }
@@ -4283,7 +4266,6 @@ a:hover { color:#333 !important; }
       margin-right:8px;
       width: 48px;
       height: auto;
-      
     }
 
 /*------------------------------------------\
@@ -4359,5 +4341,3 @@ ul.loan-list li,
 |                FAQ page                   |
 \------------------------------------------*/
 .faq-text { height:auto; }
-
-

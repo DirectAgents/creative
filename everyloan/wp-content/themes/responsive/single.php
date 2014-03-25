@@ -32,7 +32,12 @@ get_header(); ?>
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>       
 				<?php responsive_entry_top(); ?>
 
-                <?php get_template_part( 'post-meta' ); ?>
+                <?php //get_template_part( 'post-meta' ); ?>
+			    <div class='loan-module'>
+					<h1 class="loan-title">
+						<?php the_title(); ?>
+					</h1>
+				</div>
 
                 <div class="post-entry">
 
