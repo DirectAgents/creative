@@ -31,41 +31,41 @@ global $more; $more = 0;
 <div class="personal-loans-box-step-desktop">
 
 <?php if($_GET['loan'] == 'home-improvement') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a home improvement loan</div>
+<div class="personal-loans-box-step1-desktop-title">Home Improvement Loan</div>
 <? } ?>
 
 
 <?php if($_GET['loan'] == 'personal') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a personal loan</div>
+<div class="personal-loans-box-step1-desktop-title">Personal Loan</div>
 <? } ?>
 
 
 <?php if($_GET['loan'] == 'debt-consolidation') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a debt consolidation loan</div>
+<div class="personal-loans-box-step1-desktop-title">Debt Consolidation Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'cash-advance') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a cash advance loan</div>
+<div class="personal-loans-box-step1-desktop-title">Cash Advance Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'vacation') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a vacation loan</div>
+<div class="personal-loans-box-step1-desktop-title">Vacation Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'wedding') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a wedding loan</div>
+<div class="personal-loans-box-step1-desktop-title">Wedding Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'medical-dental') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a medical dental loan</div>
+<div class="personal-loans-box-step1-desktop-title">Medical Dental loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'household-expenses') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a household expenses loan</div>
+<div class="personal-loans-box-step1-desktop-title">Household Expenses Loan</div>
 <? } ?>
 
 <?php if($_GET['loan'] == 'major-purchase') { ?>
-<div class="personal-loans-box-step1-desktop-title">I want a major purchase loan</div>
+<div class="personal-loans-box-step1-desktop-title">Major Purchase Loan</div>
 <? } ?>
 
 

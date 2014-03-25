@@ -568,7 +568,7 @@ h2{margin-left:20px;}
    }  
 
 
-input[type="text"]{min-width:88%;}
+
 
 
 .box-woman-laptop .title  {
@@ -987,6 +987,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
  
  #container-steps #third_step_personal { display: block; margin-left:50px; margin-top:20px; float:left; }
  
+ 
  #container-steps #fourth_step_personal { display: block; margin-left:50px; margin-top:20px; float:left; }
  
  #container-steps #fifth_step_personal { display: block; margin-left:50px; margin-top:20px; float:left; }
@@ -1003,31 +1004,45 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
  
  
 
-.previous-personal{position:absolute; left:25px; top:-15px;}
+.previous-personal{position:absolute; left:25px; top:80px;}
 .next-personal{position:absolute; right:22px; top:-15px;}
  
-.previous-third-personal{position:absolute; left:25px; top:-15px;}
+.previous-third-personal{position:absolute; left:25px; top:80px;}
 .next-third-personal{position:absolute; right:66px; top:-15px;}
 
-.previous-fourth-personal{position:absolute; left:23px; top:-15px;}
+.previous-fourth-personal{position:absolute; left:25px; top:80px;}
+.previous-fourth-business{position:absolute; left:-35px; top:85px;}
+
 .next-fourth-personal{position:absolute; right:22px; top:-15px;}
 
-.previous-fifth-personal{position:absolute; left:23px; top:-15px;}
+.previous-fifth-personal{position:absolute; left:25px; top:80px;}
+.previous-fifth-business{position:absolute; left:-35px; top:85px;}
+
 .next-fifth-personal{position:absolute; right:22px; top:-15px;}
 
-.previous-sixth-personal{position:absolute; left:23px; top:-15px;}
+.previous-sixth-personal{position:absolute; left:25px; top:80px;}
+.previous-sixth-business{position:absolute; left:-35px; top:85px;}
+
 .next-sixth-personal{position:absolute; right:22px; top:-15px;}
  
-.previous-seventh-personal{position:absolute; left:23px; top:-15px;}
+.previous-seventh-personal{position:absolute; left:25px; top:80px;}
+.previous-seventh-business{position:absolute; left:0px; top:85px;}
+
 .next-seventh-personal{position:absolute; right:22px; top:-15px;}
  
-.previous-eight-personal{position:absolute; left:23px; top:-15px;}
+.previous-eight-personal{position:absolute; left:25px; top:80px;}
+.previous-eight-business{position:absolute; left:-35px; top:85px;}
+
 .next-eight-personal{position:absolute; right:12px; top:-15px;}
  
-.previous-ninth-personal{position:absolute; left:23px; top:-15px;}
+.previous-ninth-personal{position:absolute; left:25px; top:80px;}
+.previous-ninth-business{position:absolute; left:-33px; top:80px;}
+
 .next-ninth-personal{position:absolute; right:12px; top:-15px;}
  
-.previous-tenth-personal{position:absolute; left:23px; top:-15px;}
+.previous-tenth-personal{position:absolute; left:25px; top:80px;}
+.previous-tenth-business{position:absolute; left:-33px; top:80px;}
+
 .next-tenth-personal{position:absolute; right:12px; top:-15px;}
  
 .previous-eleventh-personal{display:none !important;}
@@ -1057,8 +1072,28 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
 
 
-#container-steps input, #container-steps select {
-        background: url('core/images/input.png') no-repeat;
+
+
+input[type="text"] {
+        background: url('../imadges/input.png') no-repeat;
+        color: #888;
+        border: 1px solid #ccc;
+        font-family: Cantarell, Verdana, sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+        width:100px;
+        height: 35px;
+        padding: 5px 0 0 10px;
+        float:left;
+        -webkit-border-radius: 6px;border-radius: 6px;
+       
+    }
+
+
+
+
+ #container-steps select {
+        background: url('../images/input.png') no-repeat;
         color: #888;
         border: 1px solid #ccc;
         font-family: Cantarell, Verdana, sans-serif;
@@ -1204,6 +1239,47 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
         }
 
 
+#container-steps input.submit_eleventh {
+           /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 180px;
+            height: 48px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
+        }
+		
+
+#container-steps input.submit_eleventh_business {
+           /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 180px;
+            height: 48px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
+        }		
+
+
+#container-steps input.submit_twelth_home {
+           /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none;
+            border: none;
+            cursor: pointer;
+            width: 180px;
+            height: 48px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: 0px;
+        }
+		
 
 
 
@@ -1255,7 +1331,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 
 
 .personal-loans-box-step-desktop-left-column .content-left{
-  margin:190px 0 0 -20px;  
+  margin:180px 0 0 -20px;  
   font-size:11px;
   font-weight:normal;
   width:200px;
@@ -1320,7 +1396,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 .personal-loans-box-step1-desktop-title{
 	/*background:url(../images/personal-loans-box-step1-desktop.png) no-repeat;*/
 	float:left;
-	font-size: 12px;  
+	font-size: 14px;  
 	font-family:'heroregular', Arial, Helvetica, sans-serif;
 	font-weight:bold;
     color: #1e517f !important; 
@@ -1328,7 +1404,7 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 	margin-bottom:20px;
 	width:100%;
 	height:30px;
-	margin:30px 0 0 38px;
+	margin:30px 0 0 60px;
 	}
 
 
@@ -1353,8 +1429,8 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
  
  #container-steps #first_step_home { display: block; margin-left:20px; margin-top:50px; float:left; }
  
- #container-steps #second_step_personal { display: block; margin-left:50px; margin-top:50px; float:left; }
- #container-steps #second_step_home { display: block; margin-left:50px; margin-top:40px; float:left; }
+ #container-steps #second_step_personal { display: block; margin-left:65px; margin-top:50px; float:left; }
+ #container-steps #second_step_home { display: block; margin-left:50px; margin-top:50px; float:left; }
 
  
  #container-steps #third_step_personal { display: block; margin-left:70px; margin-top:50px; float:left; }
@@ -1363,19 +1439,26 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
  
  #container-steps #fifth_step_personal { display: block; margin-left:70px; margin-top:50px; float:left; }
  
- #container-steps #sixth_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
+ #container-steps #sixth_step_personal { display: block; margin-left:70px; margin-top:50px; float:left; }
  #container-steps #sixth_step_home { display: block; margin-left:70px; margin-top:50px; float:left; }
  
- #container-steps #seventh_step_personal { display: block; margin-left:30px; margin-top:50px; float:left; }
+ #container-steps #seventh_step_personal { display: block; margin-left:70px; margin-top:50px; float:left; }
  
  #container-steps #seventh_step_home { display: block; margin-left:70px; margin-top:50px; float:left; }
  
- #container-steps #eight_step_personal { display: block; margin-left:30px; margin-top:20px; float:left; }
+ #container-steps #eight_step_personal { display: block; margin-left:70px; margin-top:50px; float:left; }
  
- #container-steps #ninth_step_personal { display: block; margin-left:70px; margin-top:20px; float:left; }
+ #container-steps #ninth_step_personal { display: block; margin-left:70px; margin-top:50px; float:left; }
  
- #container-steps #tenth_step_personal { display: block; margin-left:30px; margin-top:20px; float:left; }
+ #container-steps #tenth_step_personal { display: block; margin-left:70px; margin-top:50px; float:left; }
 
+ #container-steps #twelth_step_home { display: block; margin-left:45px; margin-top:45px; float:left; }
+
+ #container-steps #thirteen_step_home { display: block; margin-left:85px; margin-top:80px; float:left; }
+ 
+
+#container-steps #eleventh_step_personal { display: block; margin-left:70px; margin-top:50px; float:left; }
+#container-steps #eleventh_step_home { display: block; margin-left:70px; margin-top:50px; float:left; }
 
 
 
@@ -1416,17 +1499,21 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 .previous-eight-home{position:absolute; left:25px; top:90px;}
 .next-eight-home{position:absolute; right:-50px; top:90px;}
 
-.previous-ninth-home{position:absolute; left:-38px; top:90px;}
+.previous-ninth-home{position:absolute; left:25px; top:90px;}
 .next-ninth-home{position:absolute; right:-50px; top:90px;}
 
-.previous-tenth-home{position:absolute; left:-38px; top:90px;}
+.previous-tenth-home{position:absolute; left:25px; top:90px;}
 .next-tenth-home{position:absolute; right:-50px; top:90px;}
 
-.previous-tenth-home{position:absolute; left:-38px; top:90px;}
+.previous-tenth-home{position:absolute; left:25px; top:90px;}
 .next-tenth-home{position:absolute; right:-50px; top:90px;}
 
-.previous-eleventh-home{position:absolute; left:-38px; top:90px;}
+.previous-eleventh-home{position:absolute; left:25px; top:90px;}
 .next-eleventh-home{display:none !important;}
+
+.previous-twelth-home{position:absolute; left:0px; top:85px;}
+
+.previous-last_step_home {position:absolute; left:25px; top:90px;}
 
 
 #sixth_step_personal input[type="radio"] { width:15px; padding:20px 0 0 0; } 
@@ -1503,7 +1590,144 @@ background:url(../images/i-want-to-refinance-my-home5.gif) no-repeat;}
 /*******Home Loan Step by Step*********/
 
 
+
+
+/*******Business Loan Step by Step*********/
+
+
+
+
+#container-steps #second_step_business { display: block; margin-left:5px; margin-top:50px; float:left; }
+
+#container-steps #third_step_business { display: block; margin-left:0px; margin-top:50px; float:left; }
+
+#container-steps #seventh_step_business { display: block; margin-left:10px; margin-top:50px; float:left; }
+
+#container-steps #eight_step_business { display: block; margin-left:10px; margin-top:50px; float:left; }
+
+#container-steps #eleventh_step_business { display: block; margin-left:10px; margin-top:50px; float:left; }
+
+
+#fourt_step_business{float:left; margin-left:-60px;}
+
+
+#fourt_step_business label, #second_step_business label, #third_step_business label, #seventh_step_business label, #eight_step_business label, #fourth_step label   {float:left; width:150px; font-size:12px;}
+
+.previous-business{position:absolute; left:-35px; top:85px;}
+.previous-third-business{position:absolute; left:-35px; top:85px;}
+.previous-eleventh-business{position:absolute; left:-39px; top:85px;}
+.previous-seventh-business{position:absolute; left:-38px; top:90px;}
+
+
+#container-steps input.submit_eleventh_business {
+            /*background: url('../images/continue-steps-desktop.png') no-repeat;*/
+			background:none; 
+            border: none;
+            cursor: pointer;
+            width: 253px;
+            height: 67px;
+            position: relative;
+            bottom: 0px;
+			top:-10px;
+            left: -10px;
+        }	
+
+.business-loans-box-step1-desktop-title{
 	
+	float:left;
+	font-size: 14px;  
+	font-family:'heroregular', Arial, Helvetica, sans-serif;
+	font-weight:bold;
+    color: #1e517f !important; 
+	letter-spacing:2px;
+	margin-bottom:20px;
+	width:300px;
+	height:30px;
+	margin:30px 0 0px 50px;
+	/*background:url(../images/personal-loans-box-step1-desktop.png) no-repeat;
+	text-indent:-9999px*/
+	}
+
+.business-house-car-diamond{display:none;}
+
+
+ .progress-steps1{float:left; width:100%; height:10px; padding:15px 0 0 60px;}
+
+
+.rates-business-loans-steps{
+  float:left; 
+  color:#1e517f; 
+  font-weight:normal; 
+  font-family:'heroregular', Arial, Helvetica, sans-serif; 
+  font-size:20px; 
+  width:100%; 
+  height:18px;
+  margin:30px 0 0 20px;
+  /*background:url(../images/Rates-start-at-3-16-APR.png)no-repeat;
+  text-indent:-99999px;*/
+  }   
+
+.business-loans-box-step-desktop-left-column .content-left{
+  float:left;
+  width:100%;
+  padding:0px 0 0 0px;  
+  font-size:14px;
+  font-weight:bold;
+} 
+
+.apply-online{display:none}
+
+
+.rates-business-loans-steps1-form-desktop{
+  float:left;
+  width:100%;
+  margin:0px 0 0 0px; 
+  background:#333;
+  }
+  
+  
+#container-steps {
+    position:absolute;
+    height: 370px;
+    padding: 0px 0;
+  margin: 10px 0 0 60px;
+  
+} 
+
+
+
+#container-steps input.submit {
+            /*background: url('../images/continue-steps-desktop2.png') no-repeat;*/
+            border: none;
+            cursor: pointer;
+            width: 180px;
+            height: 52px;
+            position: relative;
+            bottom: 0px;
+            left: 30px;
+        }
+    
+
+.terms-steps-desktop{float:left; width:80%; margin-left:30px;}    
+
+
+#content-business-loans {
+  float:left;
+  margin: 20px 0 20px 0px;
+  width:100%
+}
+
+
+.contact-info-desktop{display:none;}
+
+
+#last_step_business { margin-left:30px; width:500px; margin-top:65px; display: none; float:left; position:absolute; }
+
+
+
+	
+
+/*******Business Loan Step by Step*********/	
 	
 }
 
@@ -2085,6 +2309,7 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
  #container-steps #second_step_personal { display: block; margin-left:10px; margin-top:50px; float:left; }
  
  #container-steps #third_step_personal { display: block; margin-left:10px; margin-top:50px; float:left; }
+ #container-steps #third_step_business { display: block; margin-left:10px; margin-top:50px; float:left; }
  
  #container-steps #fourth_step_personal { display: block; margin-left:10px; margin-top:50px; float:left; }
  
@@ -2111,27 +2336,43 @@ background:url(../images/i-want-to-refinance-my-home4.gif) no-repeat;}
 .next-personal{position:absolute; right:-50px; top:90px;}
  
 .previous-third-personal{position:absolute; left:-38px; top:90px;}
+.previous-third-business{position:absolute; left:-38px; top:90px;}
+
 .next-third-personal{position:absolute; right:-5px; top:90px;}
 
 .previous-fourth-personal{position:absolute; left:-38px; top:90px;}
+.previous-fourth-business{position:absolute; left:-38px; top:90px;}
+
 .next-fourth-personal{position:absolute; right:-50px; top:90px;}
 
 .previous-fifth-personal{position:absolute; left:-38px; top:90px;}
+.previous-fifth-business{position:absolute; left:-38px; top:90px;}
+
 .next-fifth-personal{position:absolute; right:-50px; top:90px;}
 
 .previous-sixth-personal{position:absolute; left:-38px; top:90px;}
+.previous-sixth-business{position:absolute; left:-38px; top:90px;}
+
 .next-sixth-personal{position:absolute; right:-50px; top:90px;}
  
 .previous-seventh-personal{position:absolute; left:-38px; top:90px;}
+.previous-seventh-business{position:absolute; left:-38px; top:90px;}
+
 .next-seventh-personal{position:absolute; right:-50px; top:90px;}
  
 .previous-eight-personal{position:absolute; left:-38px; top:90px;}
+.previous-eight-business{position:absolute; left:-38px; top:90px;}
+
 .next-eight-personal{position:absolute; right:-50px; top:90px;}
  
 .previous-ninth-personal{position:absolute; left:-38px; top:90px;}
+.previous-ninth-business{position:absolute; left:-38px; top:90px;}
+
 .next-ninth-personal{position:absolute; right:-50px; top:90px;}
  
 .previous-tenth-personal{position:absolute; left:-38px; top:90px;}
+.previous-tenth-business{position:absolute; left:-38px; top:90px;}
+
 .next-tenth-personal{position:absolute; right:-50px; top:90px;}
  
 .previous-eleventh-personal{display:none !important;}
@@ -2568,7 +2809,7 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
 .business-loans-box-step-desktop li a  {list-style-type:none;}  
 
 
-#container-steps #second_step_business { display: block; margin-left:0px; margin-top:50px; float:left; }
+#container-steps #second_step_business { display: block; margin-left:10px; margin-top:50px; float:left; }
 
 #container-steps #seventh_step_business { display: block; margin-left:10px; margin-top:50px; float:left; }
 
@@ -2582,7 +2823,7 @@ background:url(../images/i-want-to-refinance-my-home3.gif) no-repeat;}
 
 
 .previous-eleventh-business{position:absolute; left:-39px; top:85px;}
-
+.previous-seventh-business{position:absolute; left:-38px; top:90px;}
 
 
 #container-steps input.submit_eleventh_business {
@@ -3382,6 +3623,7 @@ input[type="text"]{min-width:85%;}
  #container-steps #second_step_personal { display: block; margin-left:110px; margin-top:40px; float:left; }
  
  #container-steps #third_step_personal { display: block; margin-left:110px; margin-top:40px; float:left; }
+ #container-steps #third_step_business { display: block; margin-left:110px; margin-top:40px; float:left; }
  
  #container-steps #fourth_step_personal { display: block; margin-left:110px; margin-top:40px; float:left; }
  
@@ -3401,30 +3643,48 @@ input[type="text"]{min-width:85%;}
  
 
 .previous-personal{position:absolute; left:-278px; top:90px;}
+.previous-business{position:absolute; left:-278px; top:90px;}
+
 .next-personal{position:absolute; right:-128px; top:90px;}
  
 .previous-third-personal{position:absolute; left:-278px; top:90px;}
+.previous-third-business{position:absolute; left:-278px; top:90px;}
+
 .next-third-personal{position:absolute; right:-83px; top:90px;}
 
 .previous-fourth-personal{position:absolute; left:-278px; top:90px;}
+.previous-fourth-business{position:absolute; left:-278px; top:90px;}
+
 .next-fourth-personal{position:absolute; right:-128px; top:90px;}
 
 .previous-fifth-personal{position:absolute; left:-278px; top:90px;}
+.previous-fifth-business{position:absolute; left:-278px; top:90px;}
+
 .next-fifth-personal{position:absolute; right:-128px; top:90px;}
 
 .previous-sixth-personal{position:absolute; left:-278px; top:90px;}
+.previous-sixth-business{position:absolute; left:-278px; top:90px;}
+
 .next-sixth-personal{position:absolute; right:-128px; top:90px;}
  
 .previous-seventh-personal{position:absolute; left:-278px; top:90px;}
+.previous-seventh-business{position:absolute; left:-278px; top:90px;}
+
 .next-seventh-personal{position:absolute; right:-128px; top:90px;}
  
 .previous-eight-personal{position:absolute; left:-278px; top:90px;}
+.previous-eight-business{position:absolute; left:-278px; top:90px;}
+
 .next-eight-personal{position:absolute; right:-128px; top:90px;}
  
 .previous-ninth-personal{position:absolute; left:-278px; top:90px;}
+.previous-ninth-business{position:absolute; left:-278px; top:90px;}
+
 .next-ninth-personal{position:absolute; right:-128px; top:90px;}
  
 .previous-tenth-personal{position:absolute; left:-278px; top:90px;}
+.previous-tenth-business{position:absolute; left:-278px; top:90px;}
+
 .next-tenth-personal{position:absolute; right:-128px; top:90px;}
  
 .previous-eleventh-personal{position:absolute; left:-278px; top:90px;}
@@ -3934,9 +4194,9 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
 #container-steps #second_step_business { display: block; margin-left:110px; margin-top:40px; float:left; }
 
 
- #container-steps #seventh_step_business { display: block; margin-left:210px; margin-top:40px; float:left; }
+ #container-steps #seventh_step_business { display: block; margin-left:110px; margin-top:40px; float:left; }
  #container-steps #eight_step_business { display: block; margin-left:110px; margin-top:40px; float:left; }
- #container-steps #eleventh_step_business { display: block; margin-left:50px; margin-top:40px; float:left; }
+ #container-steps #eleventh_step_business { display: block; margin-left:110px; margin-top:40px; float:left; }
  
 
 
@@ -3976,8 +4236,9 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   
   
   
-  .previous-eleventh-business{position:absolute; left:-275px; top:70px;}
+  .previous-eleventh-business{position:absolute; left:-278px; top:90px;}
   
+  .previous-seventh-business{position:absolute; left:-278px; top:90px;}
   
 
 .rates-business-loans-steps{
@@ -4537,6 +4798,9 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
  #container-steps #second_step_personal { display: block; margin-left:120px; margin-top:40px; float:left; }
  
  #container-steps #third_step_personal { display: block; margin-left:120px; margin-top:40px; float:left; }
+ #container-steps #third_step_business { display: block; margin-left:120px; margin-top:40px; float:left; }
+ 
+ 
  
  #container-steps #fourth_step_personal { display: block; margin-left:120px; margin-top:40px; float:left; }
  
@@ -4557,30 +4821,50 @@ background:url(../images/i-want-a-personal-loan.gif) no-repeat;}
  
 
 .previous-personal{position:absolute; left:-333px; top:80px;}
+
+.previous-business{position:absolute; left:-333px; top:80px;}
+
 .next-personal{position:absolute; right:-178px; top:80px;}
  
 .previous-third-personal{position:absolute; left:-333px; top:80px;}
+.previous-third-business{position:absolute; left:-333px; top:80px;}
+
+
 .next-third-personal{position:absolute; right:-133px; top:80px;}
 
 .previous-fourth-personal{position:absolute; left:-333px; top:80px;}
+.previous-fourth-business{position:absolute; left:-333px; top:80px;}
+
 .next-fourth-personal{position:absolute; right:-178px; top:80px;}
 
 .previous-fifth-personal{position:absolute; left:-333px; top:80px;}
+.previous-fifth-business{position:absolute; left:-333px; top:80px;}
+
 .next-fifth-personal{position:absolute; right:-178px; top:80px;}
 
 .previous-sixth-personal{position:absolute; left:-333px; top:80px;}
+.previous-sixth-business{position:absolute; left:-333px; top:80px;}
+
 .next-sixth-personal{position:absolute; right:-178px; top:80px;}
+ 
+.previous-seventh-business{position:absolute; left:-333px; top:80px;}
  
 .previous-seventh-personal{position:absolute; left:-333px; top:80px;}
 .next-seventh-personal{position:absolute; right:-178px; top:80px;}
  
 .previous-eight-personal{position:absolute; left:-333px; top:80px;}
+.previous-eight-business{position:absolute; left:-333px; top:80px;}
+
 .next-eight-personal{position:absolute; right:-178px; top:80px;}
  
 .previous-ninth-personal{position:absolute; left:-333px; top:80px;}
+.previous-ninth-business{position:absolute; left:-333px; top:80px;}
+
 .next-ninth-personal{position:absolute; right:-178px; top:80px;}
  
 .previous-tenth-personal{position:absolute; left:-333px; top:80px;}
+.previous-tenth-business{position:absolute; left:-333px; top:80px;}
+
 .next-tenth-personal{position:absolute; right:-178px; top:80px;}
  
 .previous-eleventh-personal{display:none !important;}
@@ -5173,9 +5457,9 @@ p.business-inner-text{color:#1e517f}
 
 #second_step_business label, #seventh_step_business label, #eight_step_business label, #eleventh_step_business label   {float:left; width:255px;}
 
-#container-steps #eleventh_step_business { display: block; margin-left:70px; margin-top:40px; float:left; }
+#container-steps #eleventh_step_business { display: block; margin-left:120px; margin-top:40px; float:left; }
 
-#last_step_business { margin-left:120px; width:500px; margin-top:45px; display: none; float:left; position:absolute; }
+#last_step_business { margin-left:150px; width:500px; margin-top:45px; display: none; float:left; position:absolute; }
 
 
 
@@ -5189,7 +5473,7 @@ p.business-inner-text{color:#1e517f}
             position: relative;
             bottom: 0px;
 			top:-10px;
-            left: 40px;
+            left: 0px;
         }		
 
 

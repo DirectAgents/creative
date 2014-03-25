@@ -1522,7 +1522,7 @@ or less, and we are highly recommended!<br /><br />
                
 
 
-<div class="previous-last_step_home"><a href="#" class="previous-last_step_home_btn"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<!--<div class="previous-last_step_home"><a href="#" class="previous-last_step_home_btn"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>-->
 
 
 
