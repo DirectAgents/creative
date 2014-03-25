@@ -1399,9 +1399,19 @@ $('.previous-sixth-step').click(function(){
 	
 $('.previous-seventh-step').click(function(){
 	 $('#seventh_step').hide();
+	 $('#down_payment_step').hide();
+	 $('#agent_info').hide();
+	 $('#sixth_step').show(); 
+});	 
+
+
+$('.previous-second-mortgage-balance').click(function(){
+	 $('#real-estate-agent').hide();
 	 $('#sixth_step').show(); 
 });	 
 	
+
+
 
 
 
@@ -1417,7 +1427,21 @@ $('.previous-eight-step').click(function(){
 
 $('.previous-eight_step_home').click(function(){
 	 $('#eight_step').hide();
-	 $('#seventh_step').show(); 
+	 $('#eleventh_step').hide();
+	 $('#eight_step_home_step').hide();
+	 $('#seventh_step').show();
+	 $('#down_payment_step').show(); 
+	 
+});	 
+
+
+$('.previous-eight_step_home_purchase').click(function(){
+	 $('#eight_step').hide();
+	 $('#eleventh_step').hide();
+	 $('#eight_step_home_step').hide();
+	 //$('#seventh_step').show();
+	 $('#down_payment_step').show(); 
+	 
 });	 
 
 
@@ -1426,6 +1450,8 @@ $('.previous-eight_step_home').click(function(){
 $('.previous-ninth-step').click(function(){
 	 $('#ninth_step').hide();
 	 $('#eight_step').show(); 
+	 $('#eight_step_home_step').show(); 
+	 
 });	 
 	
 

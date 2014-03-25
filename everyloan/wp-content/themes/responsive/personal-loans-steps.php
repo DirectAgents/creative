@@ -166,9 +166,9 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             <!-- #second_step -->
             <div id="second_step"<?php if($_GET['pass'] == 'y') { ?>style="display:block" <? } ?>>
                 
-
+<?php if($_GET['pass'] != 'y') { ?>
 <div class="previous-personal"><a href="#" class="previous-second-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
-
+<? } ?>
 <!--<div class="next-personal"><a href="#" class="next-second-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
 
@@ -210,6 +210,9 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 
             <!-- #third_step -->
+           
+    <div id="move-left">       
+           
             <div id="third_step">
 
 
@@ -254,7 +257,12 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
     
     </div>        
             
+ </div>
+ 
             <!-- #fourth_step -->
+
+<div id="move-left">       
+
             <div id="fourth_step">
  
 <div class="previous-fourth-personal"><a href="#" class="previous-fourth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
@@ -301,10 +309,12 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             </div>
             
        </div>     
-            
+ </div>           
    
    
     <!-- #fifth_step -->
+ 
+ <div id="move-left">        
             <div id="fifth_step">
                
 
@@ -359,8 +369,10 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             
    </div>         
             
-            
+ </div>           
            <!-- #sixth_step -->
+  
+ <div id="move-left">        
             <div id="sixth_step">
 
 
@@ -399,9 +411,11 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             
      </div>       
             
-     
+ </div>    
      
       <!-- #sevents_step -->
+
+<div id="move-left">       
             <div id="seventh_step">
 
 <div class="previous-seventh-personal"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
@@ -439,9 +453,11 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             </div>     
    </div>         
      
-     
+ </div>    
      
        <!-- #eight_step -->
+ 
+ <div id="move-left">       
             <div id="eight_step">
  
 
@@ -498,9 +514,11 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
      
      </div>
      
-      
+ </div>     
       
   <!-- #ninth_step -->
+  
+ <div id="move-left">        
             <div id="ninth_step">
 
 
@@ -555,7 +573,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
   </div>          
   
   
- 
+ </div>
             
             
             
@@ -564,6 +582,8 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
   
  
    <!-- #tenth_step -->
+ 
+ <div id="move-left">       
             <div id="tenth_step">
                
 
@@ -620,11 +640,13 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             
      </div>       
 
-
+</div>
 
 
 
  <!-- #last_step -->
+ 
+<div id="move-left">       
             <div id="eleventh_step">
                
 
@@ -654,7 +676,7 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
             </div>                                         
             
       </div>      
-  
+</div>  
   
  
             

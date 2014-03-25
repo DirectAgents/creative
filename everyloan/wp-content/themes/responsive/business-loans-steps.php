@@ -207,7 +207,6 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-third-business"><a href="#" class="previous-third-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-third-personal"><a href="#" class="next-third-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->
 
    <div id="third_step_business"> 
                
@@ -562,7 +561,6 @@ Borrow up to $35,000* at a low fixed rate from a network of trusted lenders and 
 
 <div class="previous-ninth-business"><a href="#" class="previous-ninth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/previous-arrow.png"/></a></div>
 
-<!--<div class="next-ninth-personal"><a href="#" class="next-ninth-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/next-arrow.png"/></a></div>-->                                           
 
 
 

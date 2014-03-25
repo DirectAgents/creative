@@ -51,11 +51,11 @@ global $more; $more = 0;
 <div class="personal-loans-box-step-desktop-left-column">
 <div class="rates-personal-loans-steps">Rates start at 3.99% APR</div>
 <div class="content-left">
-
+<div id="move-down">
 Everyloan has competitive rates and fees that can save you money. We close the majority of our loans in 30 days
 or less, and we are highly recommended!<br /><br />
 <img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/business-table.gif" style="width:100%"/>
-
+</div>
 </div>
 </div>
 
@@ -304,6 +304,9 @@ or less, and we are highly recommended!<br /><br />
 
 
             <!-- #third_step -->
+
+<div id="move-left">   
+
             <div id="third_step">
 
 
@@ -361,13 +364,15 @@ or less, and we are highly recommended!<br /><br />
             </div>      
     
     </div>        
-    
+</div>    
 <?php //} ?> 
 
 
 <?php //if($_GET['step'] == "4") { ?>   
             
             <!-- #fourth_step -->
+
+<div id="move-left">   
             <div id="fourth_step">
  
 <div class="previous-fourth-home"><a href="#" class="previous-fourth-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
@@ -518,7 +523,7 @@ or less, and we are highly recommended!<br /><br />
             </div>
             
        </div>     
-            
+</div>           
 
 <?php //} ?>    
 
@@ -526,6 +531,9 @@ or less, and we are highly recommended!<br /><br />
 <?php //if($_GET['step'] == "5") { ?>  
    
     <!-- #fifth_step -->
+ 
+ <div id="move-left">   
+ 
             <div id="fifth_step">
                
 
@@ -590,7 +598,7 @@ or less, and we are highly recommended!<br /><br />
             </div>         
             
    </div>         
-   
+ </div>  
 <?php //} ?>     
             
 
@@ -599,6 +607,9 @@ or less, and we are highly recommended!<br /><br />
    
 
            <!-- #sixth_step -->
+  
+  <div id="move-left">   
+  
             <div id="sixth_step">            
 
 
@@ -649,10 +660,13 @@ or less, and we are highly recommended!<br /><br />
             </div>         
             
      </div>       
-            
+ </div>           
   <?php //} ?>     
      
       <!-- #sevents_step -->
+
+<div id="move-left">   
+
             <div id="real-estate-agent">
 
 <div class="previous-second-mortgage-balance"><a href="#" class="previous-second-mortgage-balance"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
@@ -697,7 +711,7 @@ or less, and we are highly recommended!<br /><br />
             </div>     
    </div>         
      
-     
+ </div>    
      
      
      
@@ -715,6 +729,8 @@ or less, and we are highly recommended!<br /><br />
 
 
 <!-- #second-mortgage-interest_rate_step -->
+ 
+ <div id="move-left">   
             <div id="seventh_step">
 
 <div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
@@ -761,7 +777,7 @@ or less, and we are highly recommended!<br /><br />
             </div>     
    </div>            
          
-     
+  </div>   
  <?php //} ?>
  
  
@@ -769,6 +785,8 @@ or less, and we are highly recommended!<br /><br />
  
  
  <!-- #Agent Name -->
+ 
+ <div id="move-left">   
             <div id="agent_info">
 
 <div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
@@ -837,15 +855,17 @@ or less, and we are highly recommended!<br /><br />
    </div>     
    
    
-   
+   </div>
 
 
  
  
  <!-- #second-mortgage-interest_rate_step -->
+ 
+ <div id="move-left">   
             <div id="down_payment_step">
 
-<div class="previous-seventh-home"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-seventh-home-down-payment"><a href="#" class="previous-seventh-step"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
 
 
@@ -1046,16 +1066,18 @@ or less, and we are highly recommended!<br /><br />
                <input class="down_payment_btn" type="image" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/continue-steps-desktop.png" name="down_payment_btn" id="down_payment_btn" value="" />             
             </div>     
    </div>            
-     
+ </div>    
      
      
 <?php //if($_GET['step'] == "8") { ?>      
      
        <!-- #eight_step -->
+  
+  <div id="move-left">   
             <div id="eight_step_home_step">
  
 
-<div class="previous-eight-home"><a href="#" class="previous-eight_step_home"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
+<div class="previous-eight-home-bankruptcy"><a href="#" class="previous-eight_step_home_purchase"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/previous-arrow.png"/></a></div>
 
                
 
@@ -1117,7 +1139,8 @@ or less, and we are highly recommended!<br /><br />
             </div>    
      
      </div>
-     
+  
+  </div>   
   <?php //} ?>     
 
 
@@ -1129,6 +1152,8 @@ or less, and we are highly recommended!<br /><br />
 
       
   <!-- #ninth_step -->
+   
+   <div id="move-left">   
             <div id="ninth_step">
 
 
@@ -1188,7 +1213,7 @@ or less, and we are highly recommended!<br /><br />
             </div>  
             
   </div>          
-  
+ </div> 
   
   <?php //} ?>  
             
@@ -1199,6 +1224,8 @@ or less, and we are highly recommended!<br /><br />
   
  
    <!-- #tenth_step -->
+  
+  <div id="move-left">   
             <div id="tenth_step">
                
 
@@ -1257,7 +1284,7 @@ or less, and we are highly recommended!<br /><br />
             
      </div>    
      
-     
+</div>     
      
      
      
@@ -1265,6 +1292,8 @@ or less, and we are highly recommended!<br /><br />
 
 
 <!-- #eleventh_step -->
+  
+  <div id="move-left">   
             <div id="eleventh_step">
                
 
@@ -1442,11 +1471,13 @@ or less, and we are highly recommended!<br /><br />
             
      </div>         
      
-     
+ </div>   
      
 
 
 <!-- #twelth_step -->
+  
+  <div id="move-left">   
             <div id="twelth_step">
                
 
@@ -1509,7 +1540,7 @@ or less, and we are highly recommended!<br /><br />
             
      </div>                     
      
-     
+  </div>   
      
  
  
@@ -1518,7 +1549,9 @@ or less, and we are highly recommended!<br /><br />
 
 
    <!-- #last_step -->
-            <div id="last_step_home">
+ 
+ <div id="move-left">   
+           <div id="last_step_home">
                
 
 
@@ -1553,7 +1586,7 @@ or less, and we are highly recommended!<br /><br />
             
      </div>                
 
-
+</div>
 
 
 
