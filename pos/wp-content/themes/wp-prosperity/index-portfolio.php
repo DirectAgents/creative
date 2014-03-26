@@ -15,17 +15,17 @@
 	}
 ?>
 
-					<ul class="option-set cat-filter clearfix">
-						<li class="all"><a data-filter="*" href="#" class="selected"><?php _e("All", "themebeagle"); ?></a></li>
-						<?php
-							$categories = get_categories(array(
-								'include' => $catid
-							));
-							foreach ( $categories as $cat ) {
-								echo '<li><a data-filter=".'.$cat->slug.'" href="#">'.$cat->name.'</a></li>'."\n";
-							}
-						?>
-					</ul> <!-- .cat-filter -->
+		<ul class="option-set cat-filter clearfix">
+			<li class="all"><a data-filter="*" href="#" class="selected"><?php _e("All", "themebeagle"); ?></a></li>
+			<?php
+				$categories = get_categories(array(
+					'include' => $catid
+				));
+				foreach ( $categories as $cat ) {
+					echo '<li><a data-filter=".'.$cat->slug.'" href="#">'.$cat->name.'</a></li>'."\n";
+				}
+			?>
+		</ul> <!-- .cat-filter -->
 
 <?php
 	query_posts(array(

@@ -1,0 +1,46 @@
+/*
+ Theme Name:   WP-Prosperity Child
+ Theme URI:    http://www.wp-prosperity.com
+ Description:  Twenty Fourteen Child Theme
+ Author:       Roman Sharf
+ Author URI:   www.shinigami-design.com
+ Template:     wp-prosperity
+ Version:      1.0.0
+*/
+
+@import url("../wp-prosperity/style.css");
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+/*------------------------------------------\
+|            Header                         |
+\------------------------------------------*/
+.site-header { background:url('../../uploads/2014/03/bg_header1280.png') no-repeat; }
+
+.site-header .sub-menu
+{
+	border:1px solid #002c45;
+	border-top:none;
+}
+.site-header .sub-menu li a
+{
+	background:#003d62;
+	border-top:1px solid #002c45;
+}
+
+.site-header .sub-menu li a:hover { background:#012b44; }
+
+/*------------------------------------------\
+|            Footer                         |
+\------------------------------------------*/
+
+#footer-widgets
+{
+	background-image:
+		url('../../uploads/2014/03/bg_systems.png'),
+		url('../../uploads/2014/03/header-sprite.png');
+
+	background-size:50% auto, auto;
+	
+}

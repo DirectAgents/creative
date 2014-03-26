@@ -16,6 +16,8 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+//define('WP_CACHE', true); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', '/Applications/MAMP/htdocs/creative/pos/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
 define('DB_NAME', 'pos_db_local');
 
 /** MySQL database username */
@@ -79,6 +81,8 @@ define('WPLANG', '');
  * in their development environments.
  */
 define('WP_DEBUG', false);
+define("WP_HOME", "http://localhost:8888/pos");
+define("WP_SITEURL", "http://localhost:8888/pos");
 
 /* That's all, stop editing! Happy blogging. */
 
