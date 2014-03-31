@@ -4408,7 +4408,8 @@ background:url(../images/i-want-to-refinance-my-home2.gif) no-repeat;}
   height:20px;
   width:auto;
   margin-bottom:13px;
-  float:left;
+  text-align:left;
+  width:100%;
   }
 
 
@@ -6156,13 +6157,15 @@ p.business-inner-text{color:#1e517f}
 
   .home #wrapper, .alt-home #wrapper { padding: 0 0 0 4px; }
   
+  /*
   #wrapper
   {
     width:85%;
     padding:0 15px 0;
     margin-bottom:20px;
   }
-
+  */
+  
    /* ---------- How it works page ---------- */
    .inner-grey-cont
    {

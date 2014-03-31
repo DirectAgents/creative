@@ -442,7 +442,9 @@ $(document).ready(function() {
     </div>   
 
  <div class="contact-info-mobile">
+ <a href="tel:1-800-383-7956">
    <?php if (!dynamic_sidebar('contact-info-mobile')) : ?><?php endif; //end of home-widget-2 ?>
+   </a>
 </div>   
 
 
