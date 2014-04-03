@@ -105,7 +105,7 @@ function alo_em_pubblic_form ()
   document.getElementById('alo_em_widget_loading').style.display = "inline";
   document.getElementById('alo_easymail_widget_feedback').innerHTML = "";
   
-   var alo_em_sack = new sack("http://termlifequotetoday.com/everyloan/wp-admin/admin-ajax.php" );    
+   var alo_em_sack = new sack("/wp-admin/admin-ajax.php");    
 
   alo_em_sack.execute = 1;
   alo_em_sack.method = 'POST';
