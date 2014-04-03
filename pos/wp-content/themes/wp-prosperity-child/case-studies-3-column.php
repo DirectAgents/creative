@@ -5,7 +5,9 @@ Template Name: Portfolio - 3 Column
 
 get_header();
 the_post(); 
-$content = get_the_content();
+// update_option('siteurl', 'http://dev2.pos.com/wpnewsite' );
+// update_option('home', 'http://dev2.pos.com/wpnewsite' );
+ $content = get_the_content();
 global $catid;
 $catid = get_post_meta($post->ID, 'tb_cats', true); 
 global $postclass; 
