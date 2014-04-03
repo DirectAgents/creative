@@ -237,7 +237,7 @@ get_header(); ?>
 
 											<div class="left-column">
 												<div class="lightbulb-box-home-mobile">Keep up with industry news, latest rates and much more.</div>
-												<div class="read-news-mobile"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" /></a></div>
+												<div class="read-news-mobile"><a href="<?php echo site_url(); ?>/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" /></a></div>
 											</div>
 
 											<div class="right-column">

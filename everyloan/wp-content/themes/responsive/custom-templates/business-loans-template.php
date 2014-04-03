@@ -17,6 +17,7 @@ global $more; $more = 0;
 	<div <?php post_class(); ?>>       
 		
 		<?php the_content(); ?>
+		<a href='<?php echo site_url(); ?>/wp-content'>Hello</a>
 	
 	<?php //do_action ( 'rs_display_social_bar', get_the_date(), get_permalink() ); ?>
 

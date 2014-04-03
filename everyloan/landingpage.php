@@ -13,11 +13,11 @@
 <title>Landing Page &#124; Everyloan</title>
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="http://termlifequotetoday.com/everyloan/xmlrpc.php" />
+<link rel="pingback" href="<?php echo site_url(); ?>/xmlrpc.php" />
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Nilland-Black">
 
-<script type="text/javascript" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/cb.js"></script>
+<script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/cb.js"></script>
 
 
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -67,33 +67,33 @@
 <meta name='robots' content='noindex,nofollow' />
 
 <!-- This site is optimized with the Yoast WordPress SEO plugin v1.3.4.4 - http://yoast.com/wordpress/seo/ -->
-<link rel="canonical" href="http://termlifequotetoday.com/everyloan/landing-page/" />
+<link rel="canonical" href="<?php echo site_url(); ?>/landing-page/" />
 <meta property='og:locale' content='en_US'/>
 <meta property='og:title' content='Landing Page - Everyloan'/>
-<meta property='og:url' content='http://termlifequotetoday.com/everyloan/landing-page/'/>
+<meta property='og:url' content='<?php echo site_url(); ?>/landing-page/'/>
 <meta property='og:site_name' content='Everyloan'/>
 <meta property='og:type' content='article'/>
-<meta property='og:image' content='http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/computer.jpg'/>
-<meta property='og:image' content='http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-title.png'/>
-<meta property='og:image' content='http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/tell-us-about-yourself-title.png'/>
+<meta property='og:image' content='<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/computer.jpg'/>
+<meta property='og:image' content='<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/start-here-title.png'/>
+<meta property='og:image' content='<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/tell-us-about-yourself-title.png'/>
 <!-- / Yoast WordPress SEO plugin. -->
 
-<link rel="alternate" type="application/rss+xml" title="Everyloan &raquo; Feed" href="http://termlifequotetoday.com/everyloan/feed/" />
-<link rel="alternate" type="application/rss+xml" title="Everyloan &raquo; Comments Feed" href="http://termlifequotetoday.com/everyloan/comments/feed/" />
-<link rel="alternate" type="application/rss+xml" title="Everyloan &raquo; Landing Page Comments Feed" href="http://termlifequotetoday.com/everyloan/landing-page/feed/" />
-<link rel='stylesheet' id='mortgage_apps_css-css'  href='http://termlifequotetoday.com/everyloan/wp-content/plugins/mortage-applications/frontend/mortgage.application.style.css?ver=3.5.1' type='text/css' media='all' />
-<link rel='stylesheet' id='candy_social_styles-css'  href='http://termlifequotetoday.com/everyloan/wp-content/plugins/candy-social-widget/includes/css/candy_social_style.css?ver=3.5.1' type='text/css' media='all' />
-<link rel='stylesheet' id='contact-form-7-css'  href='http://termlifequotetoday.com/everyloan/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=3.3.3' type='text/css' media='all' />
-<link rel='stylesheet' id='responsive-style-css'  href='http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/style.css?ver=1.9.3.2' type='text/css' media='all' />
-<link rel='stylesheet' id='responsive-media-queries-css'  href='http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/css/style.css?ver=1.9.3.2' type='text/css' media='all' />
-<script type='text/javascript' src='http://termlifequotetoday.com/everyloan/wp-content/plugins/mortage-applications/frontend/mortgage.application.script.js?ver=3.5.1'></script>
-<script type='text/javascript' src='http://termlifequotetoday.com/everyloan/wp-includes/js/jquery/jquery.js?ver=1.8.3'></script>
-<script type='text/javascript' src='http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/responsive-modernizr.js?ver=2.6.1'></script>
-<script type='text/javascript' src='http://termlifequotetoday.com/everyloan/wp-includes/js/comment-reply.min.js?ver=3.5.1'></script>
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://termlifequotetoday.com/everyloan/xmlrpc.php?rsd" />
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://termlifequotetoday.com/everyloan/wp-includes/wlwmanifest.xml" /> 
+<link rel="alternate" type="application/rss+xml" title="Everyloan &raquo; Feed" href="<?php echo site_url(); ?>/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Everyloan &raquo; Comments Feed" href="<?php echo site_url(); ?>/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Everyloan &raquo; Landing Page Comments Feed" href="<?php echo site_url(); ?>/landing-page/feed/" />
+<link rel='stylesheet' id='mortgage_apps_css-css'  href='<?php echo site_url(); ?>/wp-content/plugins/mortage-applications/frontend/mortgage.application.style.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='candy_social_styles-css'  href='<?php echo site_url(); ?>/wp-content/plugins/candy-social-widget/includes/css/candy_social_style.css?ver=3.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='<?php echo site_url(); ?>/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=3.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-style-css'  href='<?php echo site_url(); ?>/wp-content/themes/responsive/style.css?ver=1.9.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-media-queries-css'  href='<?php echo site_url(); ?>/wp-content/themes/responsive/core/css/style.css?ver=1.9.3.2' type='text/css' media='all' />
+<script type='text/javascript' src='<?php echo site_url(); ?>/wp-content/plugins/mortage-applications/frontend/mortgage.application.script.js?ver=3.5.1'></script>
+<script type='text/javascript' src='<?php echo site_url(); ?>/wp-includes/js/jquery/jquery.js?ver=1.8.3'></script>
+<script type='text/javascript' src='<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/responsive-modernizr.js?ver=2.6.1'></script>
+<script type='text/javascript' src='<?php echo site_url(); ?>/wp-includes/js/comment-reply.min.js?ver=3.5.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="<?php echo site_url(); ?>/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="<?php echo site_url(); ?>/wp-includes/wlwmanifest.xml" /> 
 <meta name="generator" content="WordPress 3.5.1" />
-<script type='text/javascript' src='http://termlifequotetoday.com/everyloan/wp-includes/js/tw-sack.min.js?ver=1.6.1'></script>
+<script type='text/javascript' src='<?php echo site_url(); ?>/wp-includes/js/tw-sack.min.js?ver=1.6.1'></script>
 <script type="text/javascript">
 //<![CDATA[
 function alo_em_pubblic_form ()
@@ -105,7 +105,7 @@ function alo_em_pubblic_form ()
   document.getElementById('alo_em_widget_loading').style.display = "inline";
   document.getElementById('alo_easymail_widget_feedback').innerHTML = "";
   
-   var alo_em_sack = new sack("http://termlifequotetoday.com/everyloan/wp-admin/admin-ajax.php" );    
+   var alo_em_sack = new sack("<?php echo site_url(); ?>/wp-admin/admin-ajax.php" );    
 
   alo_em_sack.execute = 1;
   alo_em_sack.method = 'POST';
@@ -145,9 +145,9 @@ function alo_em_pubblic_form ()
 
 
 <!--JAVASCRIPT-->
-<script type="text/javascript" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/validate.js"></script>
-<script src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/customfade.js" type="text/javascript"></script>
-<script type="text/javascript" src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/validate.js"></script>
+<script src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/customfade.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/jquery.min.js"></script>
 
 
 <script type="text/javascript">
@@ -188,7 +188,7 @@ $('.tab-link2').click(function(e){
 
 
    <!-- <div class="contact-info-desktop-lp">
-    	       <img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/coming-soon.png"/>
+    	       <img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/coming-soon.png"/>
     </div>    
     -->
        
@@ -212,7 +212,7 @@ $('.tab-link2').click(function(e){
        
 	               
         <div id="logo">
-            <a href="http://termlifequotetoday.com/everyloan/"><img src="http://termlifequotetoday.com/everyloan/wp-content/uploads/2013/09/cropped-everyloan-logo.png" width="233" height="61" alt="Everyloan" /></a>
+            <a href="<?php echo site_url(); ?>/"><img src="<?php echo site_url(); ?>/wp-content/uploads/2013/09/cropped-everyloan-logo.png" width="233" height="61" alt="Everyloan" /></a>
         </div><!-- end of #logo -->
         
         
@@ -299,12 +299,12 @@ $('.tab-link2').click(function(e){
                 
           </div>      
                    
-<form class="validate" id="cForm" action="http://termlifequotetoday.com/everyloan/api.php" enctype="multipart/form-data" method="post">
+<form class="validate" id="cForm" action="<?php echo site_url(); ?>/api.php" enctype="multipart/form-data" method="post">
 <div class="personal-loan-form">
 
 <div class="cbb-rounded">
 <div class="start-here-rounded">
-<img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/start-here-title.png"/>
+<img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/start-here-title.png"/>
 </div>
 <div class="row">
 <div class="label-cbb">Loan Amount</div>
@@ -349,7 +349,7 @@ $('.tab-link2').click(function(e){
 </div>
 <div class="cbb-rounded2">
 <div class="start-here-rounded">
-<img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/tell-us-about-yourself-title.png"/>
+<img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/tell-us-about-yourself-title.png"/>
 </div>
 <div class="row">
 <div class="label-cbb">First Name</div>
@@ -583,7 +583,7 @@ You understand and agree that you are authorizing everyloan.com to send your inf
   <div class="borrow-mobile">         
                 
                  <div itemscope itemtype="http://schema.org/BlogPosting"><h2>Borrow up to $35,000 for just about anything</h2>
-<div class="computer"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/computer.png"/></div>
+<div class="computer"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/computer.png"/></div>
 <div class="lp-top-content">
 Just complete the form below to receive an instant rate quote. Personal loans can be used for paying off high interest credit cards, home improvements, financing a vacation or any expense you have. The way you use the money is completely up to you!
 </div>
@@ -597,14 +597,14 @@ Just complete the form below to receive an instant rate quote. Personal loans ca
 <div id="widgets-landingpage" class="grid col-300 fit">
 <div class="widget-wrapper-lp"> 
   
-  <!--<div class="rates-start"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/rates-start.png"/></div>-->
+  <!--<div class="rates-start"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/rates-start.png"/></div>-->
 
 
 
     
     <div class="widget-wrapper-content-lp">
       
-      <img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/low-rates-from-678.jpg" width="272" height="86"/>
+      <img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/low-rates-from-678.jpg" width="272" height="86"/>
     <ul class="lp-credit-score">
         <li>APR Rates from 6.78% to 29.99% APR. Best APR is available to borrowers with excellent credit.</li>
       </ul>
@@ -654,17 +654,17 @@ Just complete the form below to receive an instant rate quote. Personal loans ca
       <ul class="lp-credit-score">
         <li>Checking your rate will not affect your credit score.</li>
       </ul>
-      <img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/excellent-credit-score.jpg" style="margin-left:3px; margin-bottom:5px; margin-top:-13px;"/>
+      <img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/excellent-credit-score.jpg" style="margin-left:3px; margin-bottom:5px; margin-top:-13px;"/>
     </div>
   </div>
   <!-- end of .widget-wrapper -->
   <div class="coming-soon">
-  <p><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/coming-soon-lp.jpg" /></p>
+  <p><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/coming-soon-lp.jpg" /></p>
   </div>
   
   <p>&nbsp;</p>
   
- <p><div style="float:left; margin-left:13px;"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/questions.gif"/></div></p>
+ <p><div style="float:left; margin-left:13px;"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/questions.gif"/></div></p>
  
  <div style="float:left; margin-left:68px; color:#555555;">
  Call us:<br />9AM - 5PM PST<br /><br />
@@ -698,7 +698,7 @@ Just complete the form below to receive an instant rate quote. Personal loans ca
          
          </div><!-- end of col-940 -->
                      
-        <div id="footer-logo"><img src="http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/images/footer-everyloan.png"/></div>        
+        <div id="footer-logo"><img src="<?php echo site_url(); ?>/wp-content/themes/responsive/core/images/footer-everyloan.png"/></div>        
         <div class="grid col-300 copyright-lp">
            65 Enterprise # 485   |   Aliso Viejo, CA 92656   |   T: 1-800-383-7956<br />
             Copyright
@@ -719,14 +719,14 @@ Just complete the form below to receive an instant rate quote. Personal loans ca
 	</div><!-- end #footer -->
 
 
-<script type='text/javascript' src='http://termlifequotetoday.com/everyloan/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.25.0-2013.01.18'></script>
+<script type='text/javascript' src='<?php echo site_url(); ?>/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.25.0-2013.01.18'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
 var _wpcf7 = {"loaderUrl":"http:\/\/termlifequotetoday.com\/everyloan\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
 /* ]]> */
 </script>
-<script type='text/javascript' src='http://termlifequotetoday.com/everyloan/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=3.3.3'></script>
-<script type='text/javascript' src='http://termlifequotetoday.com/everyloan/wp-content/themes/responsive/core/js/responsive-scripts.js?ver=1.2.4'></script>
+<script type='text/javascript' src='<?php echo site_url(); ?>/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=3.3.3'></script>
+<script type='text/javascript' src='<?php echo site_url(); ?>/wp-content/themes/responsive/core/js/responsive-scripts.js?ver=1.2.4'></script>
 
 </body>
 </html>

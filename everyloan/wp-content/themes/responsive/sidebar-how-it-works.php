@@ -82,7 +82,7 @@ if ( !defined('ABSPATH')) exit;
 
       <ul class="sidebar-pic-cont">
         <li class="lightbulb">Keep up with industry news and the latest rates.</li>
-        <li class="read-news-button-sidebar"><a href="http://termlifequotetoday.com/everyloan/news/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg"/></a></li>
+        <li class="read-news-button-sidebar"><a href="<?php echo site_url(); ?>/news/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg"/></a></li>
       </ul>
 
     </div>

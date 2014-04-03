@@ -46,8 +46,8 @@ global $more; $more = 0;
 
 if (isset($_POST['submit2'])){
 	
-if($_POST['"i-want-to-borrow-money-select'] == 'Personal Loan') {header("location:http://termlifequotetoday.com/everyloan/loans/personal/");}	
-if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("location:http://termlifequotetoday.com/everyloan/loans/business/");}	
+if($_POST['"i-want-to-borrow-money-select'] == 'Personal Loan') {header("location:" . site_url() . "/loans/personal/");}	
+if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("location:" . site_url() . "/loans/business/");}	
 	echo "asdfasdf";
 	
 }
@@ -104,7 +104,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="learn-box-home-desktop">
 <div class="learn-title-top">Learn</div>
 <div class="lightbulb-box-home">Keep up with industry news, latest rates and much more.</div>
-<div class="read-news"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" width="119" /></a></div>
+<div class="read-news"><a href="<?php echo site_url(); ?>/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" width="119" /></a></div>
 <div class="news-stories-title-home-title">News Stories</div>
 <ul>
 	<li class="arrow"><a href="#">Mortgage Rates Going Lower in 2013?</a></li>
@@ -136,7 +136,7 @@ if($_POST['"i-want-to-borrow-money-select'] == 'Business Loan') {header("locatio
 <div class="learn-title-top-mobile">Learn</div>
 <div class="left-column">
 <div class="lightbulb-box-home-mobile">Keep up with industry news, latest rates and much more.</div>
-<div class="read-news-mobile"><a href="http://termlifequotetoday.com/everyloan/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" /></a></div>
+<div class="read-news-mobile"><a href="<?php echo site_url(); ?>/news/"><img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/core/images/read-news.jpg" /></a></div>
 </div>
 <div class="right-column">
 <ul>
