@@ -84,5 +84,7 @@ function advice_breadcrumbs ($tax)
 	return $root_page . $tax_page . $current_page;
 	
 }
+update_option('upload_path',WP_CONTENT_DIR.'/uploads');
+
 
 ?>
