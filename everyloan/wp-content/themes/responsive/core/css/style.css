@@ -925,6 +925,7 @@ ul.repay {list-style-type:none; width:267px; padding:0; float:left}
 /***iPhone***/
   
 
+
   
   
   
@@ -6154,17 +6155,19 @@ p.business-inner-text{color:#1e517f}
 @media all and (max-width:320px) {
 
   #content.col-620 { width:100%; }
+	
+  body{overflow-x:hidden}
 
-  .home #wrapper, .alt-home #wrapper { padding: 0 0 0 4px; }
+  .home #wrapper, .alt-home #wrapper { padding: 0 0 0 4px; width:auto;}
   
-  /*
+  
   #wrapper
   {
     width:85%;
     padding:0 15px 0;
     margin-bottom:20px;
   }
-  */
+  
   
    /* ---------- How it works page ---------- */
    .inner-grey-cont
