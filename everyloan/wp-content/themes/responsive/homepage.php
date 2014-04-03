@@ -44,7 +44,7 @@ get_header(); ?>
                 
                 <div class="post-entry">
 
-                	<table border="0" cellspacing="0" cellpadding="0" class="sidebar-table" style="100%">
+                	<table border="0" cellspacing="0" cellpadding="0" class="sidebar-table">
                 		<tbody class="sidebar-table">
                 			
                             <tr class="sidebar-table">
