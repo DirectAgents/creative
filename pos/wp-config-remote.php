@@ -18,13 +18,13 @@
 /** The name of the database for WordPress */
 //define('WP_CACHE', true); //Added by WP-Cache Manager
 //define( 'WPCACHEHOME', '/Applications/MAMP/htdocs/creative/pos/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
-define('DB_NAME', 'pos_db_local');
+define('DB_NAME', 'wpnewsite');
 
 /** MySQL database username */
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', 't^#$&-+Hgk*!db');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -81,8 +81,8 @@ define('WPLANG', '');
  * in their development environments.
  */
 define('WP_DEBUG', false);
-define("WP_HOME", "http://localhost:8888/pos");
-define("WP_SITEURL", "http://localhost:8888/pos");
+define("WP_HOME", "http://dev2.pos.com/wpnewsite");
+define("WP_SITEURL", "http://dev2.pos.com/wpnewsite");
 
 /* That's all, stop editing! Happy blogging. */
 

@@ -19,4 +19,11 @@ jQuery(function($) {
 	
 	})();
 
+	/* Temp Fix for logo URL */
+	(function() {
+		var logoURL = $('.site-branding a').attr('href');
+		var newStr = logoURL.replace('/dasite', '');
+		$('.site-branding a').attr('href', newStr);
+
+	})();
 });

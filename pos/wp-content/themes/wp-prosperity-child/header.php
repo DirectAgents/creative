@@ -12,6 +12,7 @@
 <head>
 
 <meta charset="<?php bloginfo( 'charset' ); ?>">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
 <?php if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) 
@@ -36,7 +37,6 @@
 </head>
 
 <body <?php body_class(); ?> itemscope="itemscope" itemtype="http://schema.org/WebPage">
-
 	<?php if ( tb_option('show_fixednav') && !is_page_template('page-landing.php') ) { get_template_part( 'nav-fixed' ); } ?>
 
 	<?php themebeagle_before_site_container(); // action hook ?>
@@ -52,7 +52,11 @@
 			<div class="wrap">
 
 				<div class="site-branding">
+
+					<a href="<?php echo esc_url(home_url( '/' )); ?>" title="<?php echo esc_attr(get_bloginfo('name','display')); ?>" rel="home">
+
 					<a href="<?php //echo esc_url(home_url( '/' )); ?>http://www.pos.com" title="<?php echo esc_attr(get_bloginfo('name','display')); ?>" rel="home">
+
 						<h1 class="site-title" itemprop="headline">
 							<?php 
 								if ( tb_option('header_logo') ) { ?>
@@ -127,6 +131,7 @@
 				<?php 
 					if ( function_exists('yoast_breadcrumb') && !is_front_page())
 						yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+
+					
 				 
 					themebeagle_site_content(); // action hook 
-				?>

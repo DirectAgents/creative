@@ -26,7 +26,7 @@
 		<?php get_template_part( 'footer-widgets' ); ?>
 
 		<!-- SITE FOOTER (.site-footer) -->
-		<footer class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+		<footer class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter" style='display:none;'>
 
 			<div class="wrap">
 
@@ -37,7 +37,7 @@
 					<?php } 
 				?>
 
-				<div class="site-info">
+				<div class="site-info" >
 					&copy;  <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. <a href="<?php echo esc_url('http://michaeldpollock.com/'); ?>" title="<?php esc_attr_e( 'Online Business Coach', 'themebeagle' ); ?>"><?php printf( __( 'WordPress Theme by %s', 'themebeagle' ), 'Michael Pollock' ); ?></a>
 				</div><!-- .site-info -->
 
@@ -50,6 +50,8 @@
 	<?php wp_footer(); ?>
 
 	<div id="backtotop"><span class="genericon genericon-collapse"></span></div>
+	
+	<?php do_action('rs_slide_contact_form'); ?>
 
 </body>
 

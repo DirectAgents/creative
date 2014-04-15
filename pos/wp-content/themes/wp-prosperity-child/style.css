@@ -16,7 +16,10 @@
 /*------------------------------------------\
 |            Header                         |
 \------------------------------------------*/
-.site-header { background:url('../../uploads/2014/03/bg_header1280.png') no-repeat; }
+.site-container .site-header 
+{ 
+	background:url('../../uploads/2014/03/bg_header1280.png') no-repeat;
+}
 
 .site-header .sub-menu
 {
@@ -31,6 +34,9 @@
 
 .site-header .sub-menu li a:hover { background:#012b44; }
 
+/* ---- breadcrumbs ----- */
+#breadcrumbs { margin-top:-30px; }
+
 /*------------------------------------------\
 |            Footer                         |
 \------------------------------------------*/
@@ -42,5 +48,131 @@
 		url('../../uploads/2014/03/header-sprite.png');
 
 	background-size:50% auto, auto;
+}
+
+.widget li { border-bottom:none; }
+
+/*------------------------------------------\
+|            Sidebar                        |
+\------------------------------------------*/
+
+/* search form fix */
+.search-form
+{
+	overflow:hidden;
+	width:100%;
+}
+
+.search-form .genericon-search  { top:0%; }
+
+input.search-field 
+{ 
+	width:70%;
+	padding:0;
+	text-indent:30px;
+}
+
+input.search-submit
+{
+	width:30%;
+	padding: 0;
+	text-align:center; 
+}
+
+/* Case studies */
+.tm_lcptu_post_title a { font:14px/.5em 'Source Sans Pro', Arial, Helvetica, sans-serif; }
+.tm-latest-updates li { padding:0;}
+
+.tm-latest-updates li { margin:0; }
+a.current-case-study { font-weight:bold; }
+
+/* ------------------ POS Sidebar Ad ------------- */
+.step-list
+{
+	border:1px solid #ccc;
+	overflow:hidden;
+	//max-width:260px;
+}
+
+.step-list .step1 { background:url('../../uploads/2014/04/step1-bg-alt.png') repeat-x; }
+.step-list .step3 { background:url('../../uploads/2014/04/step3-bg-alt.png') repeat-x; }
+
+#step-list .step
+{
+	//min-height:132px;
+	padding:35px 0 13px;
+	margin:0;
+	float: left;
+	width: 100%;
+	border-bottom:1px solid #ccc;
+}
+	.step-icon
+	{
+		width:74px;
+		height:74px;
+		float:left;
+		margin:0 0 0 5%;
+	}
+	.step1 .step-icon { background:url('../../uploads/2014/04/step1-icon.png'); }
+	.step2 .step-icon { background:url('../../uploads/2014/04/step2-icon.png'); }
+	.step3 .step-icon { background:url('../../uploads/2014/04/step3-icon.png'); }
+
+	.step-list .step-cont
+	{
+		width:41%;
+		margin:0 0 0 8%;
+		float:left;
+	}
+		.step-list h4
+		{
+			font-size:18px;
+			color:#336699;
+			margin:0;
+		}
+		.step p { line-height: 19px; }
+
+.step-list .bottom-module 
+{ 
+	text-align:center;
+	float:left;
+	width:100%; 
+}
+
+	.tagline-title
+	{
+		font-weight:normal;
+		font-size:14px;
+		margin:13px 10px;
+		display:inline-block;
+	}
+
+	.bottom-module .button.large
+	{
+		text-transform:capitalize;
+		width:88%;
+		font-size:16px;
+		margin:0 0 5px;
+		font-weight:normal;
+		text-align:center;
+		padding:0;
+	}
+
+/* ------------------ END POS Sidebar Ad ------------- */
+
+/*------------------------------------------\
+|            Generic                        |
+\------------------------------------------*/
+
+#footer-widgets { min-height:400px; }
+
+/*------------------------------------------\
+|            Responsive                     |
+\------------------------------------------*/
+
+@media only screen and (max-width:800px) {
 	
+	/* ---- Mobile menu ----- */
+	.site-container .site-header { border-bottom:1px solid #ccc !important; }
+	.nav-menu li { border-top:1px solid #ccc; }
+	.nav-menu li a { color:#000; }
 }

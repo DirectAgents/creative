@@ -6,6 +6,7 @@
 
 get_header(); ?>
 
+
 					<header class="archive-header">
 						<?php if (is_category()) { ?>			
 							<h1 class="archive-title"><?php _e("", "themebeagle"); ?><?php single_cat_title(); ?></h1>
