@@ -1,8 +1,12 @@
+
+# BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /dasite/
+RewriteBase /pos/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /dasite/index.php [L]
+RewriteRule . /pos/index.php [L]
 </IfModule>
+
+# END WordPress

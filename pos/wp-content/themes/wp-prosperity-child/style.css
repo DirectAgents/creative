@@ -14,6 +14,17 @@
 -------------------------------------------------------------- */
 
 /*------------------------------------------\
+| ----------- Table of Contents ----------  |
+|											|
+|	- Header     							|
+|	- Footer       							|
+|	- Sidebar 								|
+| 	- Landing Page                  	    |
+|	- Generic			     				|
+|	- Responsive         					|
+\------------------------------------------*/
+
+/*------------------------------------------\
 |            Header                         |
 \------------------------------------------*/
 .site-container .site-header 
@@ -91,7 +102,6 @@ a.current-case-study { font-weight:bold; }
 {
 	border:1px solid #ccc;
 	overflow:hidden;
-	//max-width:260px;
 }
 
 .step-list .step1 { background:url('../../uploads/2014/04/step1-bg-alt.png') repeat-x; }
@@ -99,7 +109,6 @@ a.current-case-study { font-weight:bold; }
 
 #step-list .step
 {
-	//min-height:132px;
 	padding:35px 0 13px;
 	margin:0;
 	float: left;
@@ -113,13 +122,14 @@ a.current-case-study { font-weight:bold; }
 		float:left;
 		margin:0 0 0 5%;
 	}
+
 	.step1 .step-icon { background:url('../../uploads/2014/04/step1-icon.png'); }
 	.step2 .step-icon { background:url('../../uploads/2014/04/step2-icon.png'); }
 	.step3 .step-icon { background:url('../../uploads/2014/04/step3-icon.png'); }
 
 	.step-list .step-cont
 	{
-		width:41%;
+		width:45%;
 		margin:0 0 0 8%;
 		float:left;
 	}
@@ -160,14 +170,402 @@ a.current-case-study { font-weight:bold; }
 /* ------------------ END POS Sidebar Ad ------------- */
 
 /*------------------------------------------\
+|            Landing Page                   |
+\------------------------------------------*/
+.lp-title
+{
+	color:#0973ba;
+	text-align:center;
+	font-size:40px;
+	font-weight:bold;
+}
+
+.lp-sub-title
+{
+	color:#191919;
+	text-align:center;
+}
+
+h3.lp-blue-title,
+h4.lp-blue-title { color:#0973ba; }
+
+h4.lp-blue-title { font-size:18px;margin:0 0 10px;}
+
+.dotted-title
+{
+	padding-bottom: 8px;
+	background: url('images/dotted-line.png') bottom left repeat-x;
+	margin-bottom: 20px;
+}
+
+/* ------- 3 step images ------ */
+
+
+#lp-logos-container 
+{ 
+	margin:45px 0 30px;
+	overflow:hidden;
+	float:left; 
+}
+
+.lp-logos { margin-top:35px; }
+
+.lp-logos  img
+{ 
+	float:left;
+	max-width:26%;
+	height:auto;
+}
+/*  ---------------------- Gravity Forms -------------------- */
+.lp-form-container
+{	
+	position:relative;
+	top:-111px;
+}
+
+#gf_page_steps_1 { margin:0; }
+#gf_step_1_2 { margin:0 0 -5px -3px !important; }
+
+/* ----- phseudo element that blocks the bottom edge (box-shadow) of tab */
+/*#lp-form-container .gf_step:after
+{
+	position:absolute;
+	content:" ";
+	width:100%;
+	height:10px;
+	background:#f1f1f1; 
+	bottom:0px;
+	left:0;
+}*/
+
+#lp-form-container .gf_step.gf_step_active:after { background:#fff; }
+
+/* ------ classes for tabs ------ */
+
+#lp-form-container .gf_step
+{
+	padding:10px 50px !important;
+	font-size:16px!important;
+	color:#808080 !important;
+	cursor:pointer;
+	background:#f1f1f1;
+	min-height:37px;
+	opacity:1;
+	z-index:0;
+	margin:0 0 -5px;
+	position:relative;
+	-webkit-box-shadow:0 -3px 5px 1px rgba(0,0,0,0.2);box-shadow:0 -3px 5px 1px rgba(0,0,0,0.2);
+	-webkit-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;
+}
+
+#lp-form-container .gf_step.gf_step_active 
+{
+	padding:8px 50px !important;
+	font-size:22px !important;
+	color:#000 !important;
+	cursor:pointer;
+	background:#fff;
+	z-index:1;
+}
+
+/* ---- Formating for form fields ---- */
+
+.inline-block { display:inline-block; }
+.inline-block .chzn-container { width:100% !important; }
+.field-half { width:47%; }
+.full-width-field { width:98%; }
+
+.gfield_label 
+{
+	font-size:15px;
+	color:#3e3e3e;
+}
+
+/* ----- make some selects' width small ----- */
+#field_1_26 select.small,
+#field_1_27 select.small,
+#field_1_4 #input_1_4  { width:30% !important; }
+
+.mr20 { margin-right:15px; }
+.pos-orange-title { color: #ff641b;margin:0 0 8px 0; }
+
+.chzn-drop,
+.chzn-search input,
+select.medium  { width:100% !important; }
+
+/* fix for 'other' text field (after the 'what is your biz type' question) */
+.gform_wrapper .top_label input.small, 
+.gform_wrapper .top_label select.small,
+.gform_wrapper .top_label input.medium { width: 100% !important; }
+/*#field_1_10 { overflow:hidden; }*/
+
+
+/* ------ END classes for tabs ------ */
+
+#lp-form-container .gform_body,
+#lp-form-container #gform_confirmation_wrapper_1
+{
+	-webkit-border-radius:0 5px 5px;border-radius:0 5px 5px;
+	-webkit-box-shadow:0 0 5px 1px rgba(0,0,0,0.2);box-shadow:0 0 5px 1px rgba(0,0,0,0.2);
+	padding:24px;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ffffff 0%, #ededed 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ffffff 0%,#ededed 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ffffff 0%,#ededed 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ffffff 0%,#ededed 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+	padding:24px 6% 4px;
+}
+
+#lp-form-container .gf_page_steps { border:none; }
+
+/* ----- radio buttons ------ */
+#lp-form-container ul.gfield_radio li { padding:0 0 0 1px !important; }
+#lp-form-container ul.gfield_radio li 
+{
+	display: inline-block;
+	margin:0 20px 8px 0;
+}
+
+/* ------ Gravity Forms buttons ------  */
+
+#lp-form-container .gform_page_footer 
+{ 
+	text-align:center;
+	border:none;
+	overflow:hidden;
+	margin:14px 0 20px; 
+}
+
+#gform_next_button_1_15,
+#gform_submit_button_1,
+#gform_previous_button_1
+{
+	background:#ff641b;
+	border:1px solid #ff491c;
+	font:normal 25px/1.5em Bitter, Arial, Helvetica, sans-serif;
+}
+
+#gform_previous_button_1
+{
+	background:#4c4c4c;
+	padding:5px 3%;
+	border:1px solid #383838;
+	margin:0 3% 0 0;
+	float:left; 
+}
+
+#gform_next_button_1_15 { padding:5px 20%; }
+#gform_submit_button_1  
+{ 
+	padding:5px 11%;
+	float:left;
+	margin-right:0; 
+}
+
+#gform_next_button_1_15:hover,
+#gform_previous_button_1:hover,
+#gform_submit_button_1:hover
+{
+	background:#000;
+	border:1px solid #000;
+}
+/* ------ END Gravity Forms buttons ------  */
+
+#lp-form-container .num-providers
+{
+	font-size:18px;
+	font-weight:normal;
+	margin:0 0 14px;
+}
+
+#lp-form-container .num-providers span { color:#4db5ff; }
+
+#gform_confirmation_wrapper_1
+{
+	position:relative;
+	top:40px;
+	height:747px;
+}
+#gform_ajax_spinner_1 { display:none; }
+
+.gfield_required { display:none; }
+/*  ---------------------- END Gravity Forms -------------------- */
+
+/*  ---------------------- LP middle area with logos -------------------- */
+
+.white-paper-container { margin:25px 0 0;}
+.white-paper-copy { margin:15px 0 0; }
+
+.white-paper-copy p 
+{ 
+	line-height: 1.4em;
+	font-size: 15px; 
+}
+
+/*  ---------------------- END LP middle area with logos -------------------- */
+
+/*  ---------------------- LP bottom modules -------------------- */
+.lp-bottom-container
+{
+	min-height:200px;
+	background:#f2f2f2;
+	overflow:hidden;
+	padding:0;
+	width:108.5%;
+	margin-left:-50px;
+	border-top:1px solid #ccc;
+	position: relative;
+	top:-80px;
+	margin-bottom:-130px;
+}
+
+.inner-lp-bottom-container { margin:50px; }
+#lp-bottom-container .nav-tabs > li 
+{ 
+	position:relative;
+	width:25%; 
+}
+
+#lp-bottom-container .nav-tabs > li a
+{
+	-webkit-border-radius:8px 8px 0 0;border-radius:8px 8px 0 0;
+	padding:12px 0;
+	-webkit-box-shadow:0 0px 5px 1px rgba(0,0,0,0.2);box-shadow:0 0px 5px 1px rgba(0,0,0,0.2);
+	background:#f1f1f1;
+	width:100%;
+}
+
+#lp-bottom-container .nav-tabs > li.active a 
+{ 
+	background:#fff;
+	font-weight:bold; 
+}
+
+#lp-bottom-container .tab-content
+{
+	-webkit-box-shadow:0 0px 5px 1px rgba(0,0,0,0.2);box-shadow:0 0px 5px 1px rgba(0,0,0,0.2);
+	-webkit-border-radius:0 0 8px 8px;border-radius:0 0 8px 8px;
+}
+
+#lp-bottom-container .nav-tabs > li:after
+{
+	position:absolute;
+	content:" ";
+	width:100%;
+	height:10px;
+	background:#f1f1f1; 
+	bottom:-3px;
+	left:0;
+}
+
+#lp-bottom-container .nav-tabs > li.active:after { background:#fff; }
+
+/* ----- testimonials ------- */
+
+.testimonial-cont p span
+{
+	color:#0973ba;
+	font-size:35px;
+	position:relative;
+	top:15px;
+	line-height:17px;
+}
+.testimonial-cont p { margin-bottom:10px; }
+.testimonial-cont p span.open { margin-right:5px; }
+.testimonial-cont p span.closed { margin-left:5px; }
+
+.testimonial-author { font:bold 16px/.5em 'Bitter', Arial, Helvetica, sans-serif; }
+
+.testimonial { margin:0 0 30px 0; }
+
+#footer-widgets.lp-footer-widgets { height:110px !important;min-height:110px !important; }
+
+/*---------------------------------------\
 |            Generic                        |
 \------------------------------------------*/
 
 #footer-widgets { min-height:400px; }
 
+input[type='text']
+{
+	background:#fff;
+	text-indent:5px !important;
+	border:1px solid #dddddd;
+	font-size:14px !important;
+}
+
+textarea
+{
+	
+	border:1px solid #dddddd;
+	height:60px !important;
+	font-size:14px !important;
+
+}
+
+
+select
+{
+	height:32px;
+	border:1px solid #ccc;
+	font-size:13px !important;
+	color:#333;
+}
+.page-template-custom-templatesrs-landing-page-php .nav-secondary { display: none; }
+
+.clear-left { clear:left; }
+
 /*------------------------------------------\
 |            Responsive                     |
 \------------------------------------------*/
+
+/* ----- LP bottom tabs */
+
+/* ----- gform buttons */
+@media only screen and (max-width:1280px){
+	#lp-bottom-container { //top:-40px; }
+}
+@media only screen and (max-width:1214px) {
+	
+	#gform_submit_button_1 { padding:5px 2%; }
+	#gform_previous_button_1 { padding:5px 1%; }
+}
+
+@media only screen and (min-width:768px) and (max-width:1150px) {
+	
+	#pos-steps .step h5 { font-size:70%; }
+
+	#pos-steps .step p 
+	{
+		font-size:80%;
+		line-height:1.4em;
+		margin:0%;
+	}
+}
+
+@media only screen and (max-width:1009px) {
+	
+	#gform_submit_button_1 
+	{
+		padding:5px 4%;
+		font-size:18px;
+	}
+
+	#gform_previous_button_1
+	{
+		padding:5px 3%;
+		font-size:18px;
+	}
+}
+
+@media only screen and (max-width:923px) {
+	
+	#lp-form-container .gf_step { padding:8px 30px !important; }
+	#lp-form-container .gf_step.gf_step_active { padding:6px 40px !important; }
+}
 
 @media only screen and (max-width:800px) {
 	
@@ -175,4 +573,156 @@ a.current-case-study { font-weight:bold; }
 	.site-container .site-header { border-bottom:1px solid #ccc !important; }
 	.nav-menu li { border-top:1px solid #ccc; }
 	.nav-menu li a { color:#000; }
+
+	.page-template-custom-templatesrs-landing-page-php .site-branding { margin:0 auto 70px; }
+
+	.lp-bottom-container { top:0;}
+
+	#pos-steps .step p { margin:0 13%; }
+	#lp-bottom-container { margin-bottom:-80px; }
+}
+
+@media only screen and (min-width:480px) and (max-width:768px) {
+	
+	#lp-logos-container { margin:40px 0; }
+
+	.lp-bottom-container { width:111.9%; }
+
+	#lp-logos-container .lp-logos img 
+	{
+		float: left;
+		width:50% !important;
+		max-width:80% !important;
+	}
+}
+
+@media only screen and (max-width:768px) {
+	
+	/* ---- Adjust the form ----- */
+	#lp-form-container { position:static; }
+	#pos-steps { margin:0 0 0px; }
+
+	#lp-logos-container h3.lp-blue-title,
+	.white-paper-copy h4,
+	.inner-lp-bottom-container h3  { text-align:center; }
+
+	#pos-steps .col-sm-4 
+	{
+		width:32.8%;
+		height:auto;
+		padding-left: 0;
+		padding-right: 0px;
+	}
+
+	#pos-steps .step
+	{
+		float:left;
+		height:auto;
+		padding-top:0;
+		min-height: 175px;
+	}
+	
+	#pos-steps .step p 
+	{ 
+		font-size:70%;
+		line-height:1.2em;
+		margin:0 2% 0 2%; 
+	}
+	
+	#pos-steps .inner-step { margin:70.5% 15% 0 5%; }
+
+	/* ---- LP Middle whitepaper module ---- */
+
+	.white-paper-container 
+	{ 
+		overflow:hidden;
+		margin:25px 0 30px;
+	}
+
+	.white-paper-img { float:left;text-align:center;width:100%; }
+
+	.white-paper-copy 
+	{ 
+		width:100%;
+		float:left;
+	}
+}
+
+@media only screen and (max-width:670px) {
+	
+	#pos-steps .col-sm-4 
+	{
+		width:32%;
+		height:auto;
+	}
+
+	#pos-steps .step { padding-top:22.8%; }
+
+	#pos-steps .step p 
+	{
+		font-size:70%;
+		line-height:1.3em;
+	}
+
+	.nav-tabs > li 
+	{
+		float: none;
+		display: inline;
+	}
+	
+}
+
+@media only screen and (max-width:533px) {
+	
+	#pos-steps { display:none; }
+	.lp-bottom-container { width: 117.9%; }
+	.inner-lp-bottom-container { margin:50px 16px 50px 50px; }
+	#lp-logos-container { display:none; } /* Make logos dispapear on mobile */
+	.lp-logos  img
+	{ 
+		float:none;
+		width:100% !important;
+		max-width:100% !important;
+		height:auto;
+		display:block;
+		margin:20px auto;
+	}
+
+	.white-paper-copy 
+	{ 
+		width:100%;
+		float:left;
+	}
+
+	.white-paper-img 
+	{ 
+		width: 100%;
+		text-align: center;
+	}
+
+	#lp-form-container .gf_step.gf_step_active { padding:6px 34px !important; }
+}
+
+@media only screen and (max-width:480px) {
+
+	#lp-bottom-container { width:119% !important;margin-bottom:-20px; }
+	.site-inner-wrap { padding:50px 0 0px; }
+}
+
+@media only screen and (max-width:320px) {
+	
+	#lp-form-container li.gfield,
+	#lp-form-container li.gfield select,
+	#lp-form-container li.gfield input,
+	#lp-form-container li.gfield #input_1_4
+	{
+		width:100% !important;
+		margin-right:0;
+	}
+
+	#gform_previous_button_1 { margin-bottom:10px;}
+	#lp-form-container .button { width:100%; }
+
+	#lp-bottom-container { width:122% !important; }
+	.site-inner-wrap { padding:50px 0 0px; }
 }

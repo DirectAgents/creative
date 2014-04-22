@@ -26,6 +26,12 @@
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
+
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+
+
+
+
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -129,7 +135,7 @@
 				<!-- CONTENT AREA (.site-content) -->
 				<main id="content" class="site-content" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
 				<?php 
-					if ( function_exists('yoast_breadcrumb') && !is_front_page())
+					if ( function_exists('yoast_breadcrumb') && !is_front_page() && is_page_template('rs-landing-page.php'))
 						yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 
 					
