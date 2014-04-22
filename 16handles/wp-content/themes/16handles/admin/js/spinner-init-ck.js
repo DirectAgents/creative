@@ -1,0 +1,1 @@
+jQuery().ready(function(e){var t=function(){e("input[type=number]").each(function(){var t=e(this);t.spinner({min:t.attr("min"),max:t.attr("max"),step:t.attr("step")})})};Modernizr.inputtypes.number||e(document).ready(t)});

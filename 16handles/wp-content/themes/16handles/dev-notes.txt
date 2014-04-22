@@ -1,0 +1,18 @@
+BajiBot
+
+Some issues with careers form:
+  - We need to use tables for the rows of the employment, schooling and references, can you modify the designs for the current implementation?
+  - Some form elements could not completely translate into WordPress so we have changed the ones that cannot fix, overall most of the items are the same.  If you would like to dicuss this we can do so and figure out a solution that meets the clients needs from an admin perspective as well as a usability standpoint.  It could take a day or more to get these elements to work properly and even if could present serious compatability issues everytime WordPress or core plugins are updated.
+  - Overall the page submissions happen here in a step by step process.  We can add these other steps but will still need to submit forms in a step by step process.
+  - Another option would be to implement this form as one page with headings shown?
+  
+MOXIE TODO
+- Optimize Form JS
+- Optimize Form for products / shop page. Implement paypal logic.
+- Resolve issue with Gift Cards not processing via PayPal button?
+- Complete all styles within the careers page (assign to Ranjan).
+- Change careers states to 2 letter abbreviation
+- Link issues
+
+
+

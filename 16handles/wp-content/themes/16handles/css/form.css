@@ -1,0 +1,29 @@
+.checkbox, .radio {
+    width: 34px;
+    height: 25px;
+    position: relative;
+    top: -3px;
+	padding: 0 5px 0 0;
+	background: url(../img/radio.png) no-repeat;
+	display: block;
+	clear: left;
+	float: left;
+}
+.radio {
+	background: url(../img/radio.png) no-repeat;
+}
+.campos .select {
+	position: absolute !important;
+	width: 100%; /* With the padding included, the width is 190 pixels: the actual width of the image. */
+	color: #363636;
+	font: 12px/21px arial,sans-serif;
+	background-image: url(../img/select.png) !important;
+    background-repeat: no-repeat !important;
+    background-position: right !important;
+    background-color: #FAFAFA !important;
+	overflow: hidden;
+    display: inline-block;
+    padding: 4px 15px;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+}
