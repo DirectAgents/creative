@@ -368,10 +368,9 @@ function applyLocationData(centerLocation, locations) {
 
 function renderIndexLocations(InputSortedLocations) {	
 	// Destroy and re-create
-	// Roman
-	// if ($('#locations_results').length > 0) {
-	// 	$('#locations_results').remove();
-	// }
+	if ($('#locations_results').length > 0) {
+		$('#locations_results').remove();
+	}
 	$('<div id="locations_results" class="accordion accordion_1" />').appendTo("#locations_results_container");
 	$('.accordion_head').show();
 
@@ -451,10 +450,9 @@ function renderIndexLocationsExtraShortByCake(InputSortedLocations, number_to_ou
 
 function renderSingleLocation(InputLocation) {
 	// Destroy and re-create
-	// Roman
-	// if ($('#locations_results').length > 0) {
-	// 	$('#locations_results').remove();
-	// }
+	if ($('#locations_results').length > 0) {
+		$('#locations_results').remove();
+	}
 	$('<div id="locations_results" class="accordion accordion_1" />').appendTo("#locations_results_container");
 	$('.accordion_head').show();
 
@@ -463,7 +461,7 @@ function renderSingleLocation(InputLocation) {
 		$('#locations_results').append(output);
 		$('#locations_results .cont').append(content);
 		resetInsideUI($('#locations_results .head'));
-		//renderAccordion();
+		renderAccordion();
 		resetUI(true);
 		renderMobileNumbers();
 		
@@ -761,9 +759,9 @@ function resetUI(flag) {
 	scrollbarInit();
 
 	if (flag == undefined) { flag = false; }
+	
 	// $('.accordion .head').unbind('click'); //trick to run accordion manually
-	// Roman
-	/*if (!flag) {
+	if (!flag) {
 		$('.accordion .head').click(function(event) {
 			// event.stopImmediatePropagation();
 			
@@ -781,7 +779,7 @@ function resetUI(flag) {
 
 		});
 
-	}*/
+	}
 	
 	if(!is_touch_device){
 		$('#datepicker_normal_1, #datepicker_normal_2, #datepicker_normal_3').datepicker({
@@ -1122,11 +1120,5 @@ function resetUI(flag) {
 	});
 	$('.msg').click(function(event) {
 		event.stopPropagation();
-	});
-
-	$('.accordion .head').click(function(e) {
-		//e.preventDefault();
-		$(this).find('.title_2 a').click();
-		return false;
 	});
 }

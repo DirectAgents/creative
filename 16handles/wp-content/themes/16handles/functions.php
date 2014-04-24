@@ -130,5 +130,31 @@ function populate_posts($form){
     return $form;
 }
 
+/*-----------------------------------------------------------------------------------*/
+/*  Helper functions for displaying features icons for locations page
+/*-----------------------------------------------------------------------------------*/
+
+function get_icon_num ($name) 
+{
+    switch ($name)
+    {
+        case 'catering':
+            return 1;
+        case 'party_room':
+            return 2;
+        case 'cakes':
+            return 3;
+        case 'delivery':
+            return 4;
+        default:
+            return 0;
+    }
+}
+
+function get_icon_class ($name)
+{   
+    $features = get_field('features');
+    return  in_array($name, $features) ? 'icon_' . get_icon_num($name) : 'icon_0';
+}
 
 ?>
