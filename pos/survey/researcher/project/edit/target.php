@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include ('../../../config2.php');
+include ('../../../config.php');
 
 //require( "phpmailer/class.phpmailer.php" );
 
@@ -49,7 +49,7 @@ if($_POST['potentialansweraccepted'] == ''){$potentialansweraccepted = 'NULL';}e
 
 
 
-$update_sql = "UPDATE tbl_researcher_project SET 
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_researcher_project SET 
   Name='".$projectname."',
   Stage='".$stage."',
   Category='".$category."',
@@ -68,34 +68,32 @@ $update_sql = "UPDATE tbl_researcher_project SET
   Job='".$job."',
   Date_Created = '".$date."'
 
-  WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_POST['projectid']."'";
+  WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_POST['projectid']."'");
 
   
 
-mysql_query($update_sql);
 
 
 
 
 
-$sql = "SELECT * FROM tbl_researcher_potentialanswers WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_POST['projectid']."'";
-$result=mysql_query($sql);
-$row=mysql_fetch_array($result);
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_potentialanswers WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_POST['projectid']."'");
+//$result=mysql_query($sql);
+//$row=mysqli_fetch_array($sql);
 
-if(mysql_num_rows($result)>0)
+if(mysqli_num_rows($sql)>0)
 {
 
     
 
-  $update_sql = "UPDATE tbl_researcher_potentialanswers SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_researcher_potentialanswers SET 
   ScreeningQuestion='".$screeningquestion."',
   PotentialAnswer1='".$potentialanswer1."',
   PotentialAnswer2='".$potentialanswer2."',
   PotentialAnswer3='".$potentialanswer3."',
   Accepted='".$potentialansweraccepted."',
   EnabledorDisabled='".$screening."'  
-  WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID='".$_POST['projectid']."'";
-  mysql_query($update_sql);
+  WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID='".$_POST['projectid']."'");
 
 }
 

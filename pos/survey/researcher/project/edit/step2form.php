@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include ('../../../config2.php');
+include ('../../../config.php');
 
 //require( "phpmailer/class.phpmailer.php" );
 
@@ -15,18 +15,17 @@ if($_POST)
 
 //$all_game_value = implode(",",$_POST['testing']);
 
-  $update_sql = "UPDATE tbl_researcher_project SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_researcher_project SET 
   Headline='".$_POST['headline']."',
   Summary='".$_POST['summary']."',
   Agenda_One='".$_POST['agenda_one']."'
 
-  WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_SESSION['projectid']."'";
+  WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_SESSION['projectid']."'");
 
 
 
   
 
-mysql_query($update_sql);
 
 
 

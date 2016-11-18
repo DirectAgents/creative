@@ -925,13 +925,13 @@ $(".choose-location-sunday").click(function() {
             };
  
 
-            //alert(state);
 
             //Ajax post data to server
             $.post('save-profile.php', post_data, function(response){  
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
+                    
                     output = '<div class="success">'+response.text+'</div>';
                     //reset values in all input fields
                     $("#profile-form input[required=true], #profile-form textarea[required=true]").val(''); 

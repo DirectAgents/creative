@@ -202,21 +202,27 @@ $.post('profile-photo.php', $("#contact-form").serialize(), function(data) {
 
 <div class="row">
   <div class="col-sm-6">
-        
-       
+
+
 
 <?php if(isset($_SESSION['access_token'])){ ?>
+        <img src="<?php echo $_SESSION['google_picture_link']; ?>" class="profile-photo">
+<?php } ?>
 
-          <img src="<?php echo $_SESSION['google_picture_link']; ?>" class="profile-photo">
+<?php if(isset($_SESSION['facebook_photo'])){ ?>
+       
+        <img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture?width=150&height=150" class="profile-photo">
 
-<?php }else{ ?>
-
- <a href="#" class="launch-photo" data-toggle="modal" data-target="#modal" data-key='{"param1":"<?php echo $row2['userID']; ?>","param2":"<?php $_GET['id']; ?>"}'>
+<?php } ?>
+       
+<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){ ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/<?PHP echo $rowimage['profile_image']; ?>" class="profile-photo">
 
-</a>
 <?php } ?>
+
+
+
 
         
 

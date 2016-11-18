@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include ('../../../config2.php');
+include ('../../../config.php');
 
 //require( "phpmailer/class.phpmailer.php" );
 
@@ -20,20 +20,19 @@ date_default_timezone_set('America/New_York');
 $date = date('Y-m-d');  
 
 
-  $update_sql = "UPDATE tbl_researcher_project SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_researcher_project SET 
   ProjectStatus = '".$_POST['projectstatus']."',
   Pay = '".$_POST['pay']."',
   Minutes = '".$_POST['minutes']."',
   Date_Created='".$date."', 
   Confirmed='Y'
 
-  WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_SESSION['projectid']."'";
+  WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_SESSION['projectid']."'");
 
 
 
   
 
-mysql_query($update_sql);
 
 
 

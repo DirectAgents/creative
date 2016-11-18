@@ -20,7 +20,7 @@ if($_POST['emailnotifications'] == ''){$emailnotifications = 'NULL';}else{$email
 
 //$all_game_value = implode(",",$_POST['testing']);
 
-  $update_sql = "UPDATE tbl_participant SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
   FirstName='".$_POST['firstname']."',
   LastName='".$_POST['lastname']."',
   userEmail='".$_POST['email']."',
@@ -30,14 +30,14 @@ if($_POST['emailnotifications'] == ''){$emailnotifications = 'NULL';}else{$email
   Bio='".$_POST['bio']."',
   EmailNotifications='".$emailnotifications."'
 
-  WHERE userID='".$_SESSION['participantSession']."'";
+  WHERE userID='".$_SESSION['participantSession']."'");
 
 
-   mysql_query($update_sql);
+   
 
 
 	
-	    $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Saved!</div>'));
+	  $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Saved!</div>'));
 		die($output);
 	
 

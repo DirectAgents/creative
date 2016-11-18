@@ -187,7 +187,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
     <div class="dashboardProcessMenu audienceDashboard audience">
 
   <div class="row">
-<a href="step1.php"> 
+<a href="step1.php?id=<?php echo $_SESSION['projectid']; ?>"> 
     <div class="col-md-4 processmenu-inactive">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
