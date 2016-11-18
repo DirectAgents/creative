@@ -30,9 +30,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$Project = mysql_query("SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."'
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."'
   AND ProjectID= '".$_SESSION['projectid']."'");
-$rowproject = mysql_fetch_array($Project);
+$rowproject = mysqli_fetch_array($Project);
 
 $stage=explode(',',$rowproject['Stage']);
 

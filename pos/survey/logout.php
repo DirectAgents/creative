@@ -47,14 +47,14 @@ if($researcher->is_logged_in()!="")
 
 
 
-if(isset($_SESSION['fb_access_token']) && isset($_SESSION['researcherSession'])){
-	unset($_SESSION['fb_access_token']);	
+if(isset($_SESSION['fb_access_token_researcher']) && isset($_SESSION['researcherSession'])){
+	unset($_SESSION['fb_access_token_researcher']);	
 	header("Location:researcher/login/");
 }
 
 
-if(isset($_SESSION['fb_access_token']) && isset($_SESSION['participantSession'])){
-	unset($_SESSION['fb_access_token']);	
+if(isset($_SESSION['fb_access_token_participant']) && isset($_SESSION['participantSession'])){
+	unset($_SESSION['fb_access_token_participant']);	
 	header("Location:participant/login/");
 }
 

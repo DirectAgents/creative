@@ -13,16 +13,38 @@ if(isset($_POST["interests"]) && strlen($_POST["interests"])>0)
     $userID = filter_var($_POST["userid"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
     
     // Insert sanitize string in record
-    if(mysql_query("INSERT INTO tbl_researcher_interests(userID, ProjectID, Interests) VALUES('".$userID."','".$projectID."','".$contentToSave."')"))
-    {
-        //Record is successfully inserted, respond to ajax request
-        $my_id = mysql_insert_id(); //Get ID of last inserted record from MySQL
+    if(mysqli_query($connecDB,"INSERT INTO tbl_researcher_interests(userID, ProjectID, Interests) VALUES('".$userID."','".$projectID."','".$contentToSave."')"))
+    {   
+
+        $Interest = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_interests WHERE userID='".$userID."' AND 
+            ProjectID = '".$projectID."' AND Interests = '".$contentToSave."'");
+        $row = mysqli_fetch_array($Interest);
+        $my_id = $row['id']; //Get ID of last inserted record from MySQL
         echo '<li id="item_'.$my_id.'">';
         echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
         echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
         echo '</a></div>';
         echo $contentToSave.'</li>';
-        mysql_close($connecDB);
+       
+
+        if(isset($_POST["recordToDelete"])){
+
+        $idToDelete = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
+
+        $Interest = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_interests WHERE id=".$idToDelete);
+
+
+        $row = mysqli_fetch_array($Interest);
+        //Record is successfully inserted, respond to ajax request
+        $my_id = $row['id']; //Get ID of last inserted record from MySQL
+        echo '<li id="item_'.$my_id.'">';
+        echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
+        echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
+        echo '</a></div>';
+        echo $contentToSave.'</li>';
+        }
+
+        mysqli_close($connecDB);
         
     }else{
         //output error
@@ -40,13 +62,13 @@ elseif(isset($_POST["recordToDelete"]) && strlen($_POST["recordToDelete"])>0 && 
     $idToDelete = filter_var($_POST["recordToDelete"],FILTER_SANITIZE_NUMBER_INT);
     
     //try deleting record using the record ID we received from POST
-    if(!mysql_query("DELETE FROM tbl_researcher_interests WHERE id=".$idToDelete))
+    if(!mysqli_query($connecDB,"DELETE FROM tbl_researcher_interests WHERE id=".$idToDelete))
     {
         //If mysql delete record was unsuccessful, output error
         header('HTTP/1.1 500 Could not delete record!');
         exit();
     }
-    mysql_close($connecDB);
+    mysqli_close($connecDB);
     
 }else{
 

@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 require_once '../../base_path.php';
 
 require_once '../../class.participant.php';

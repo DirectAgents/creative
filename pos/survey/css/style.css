@@ -9,6 +9,11 @@ h2{font-size:25px;}
     background-position: 0 -784px;
 }
 
+.icon_facebook {
+    background-position: 0 -768px;
+}
+
+
 .icon {
     vertical-align: middle;
     display: inline-block;
@@ -32,7 +37,35 @@ h2{font-size:25px;}
     border-color: #d6d6d6;
 }
 
-.btn {
+.btn_google {
+    
+    margin-left:5px;
+    margin-top:10px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid #333;
+    white-space: nowrap;
+    padding: 8px 20px;
+    font-size: 16px;
+    line-height: 1.375;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    text-decoration: none
+}
+
+.btn_facebook {
+    
+    margin-right:0px;
+    margin-top:10px;
     display: inline-block;
     margin-bottom: 0;
     font-weight: 400;

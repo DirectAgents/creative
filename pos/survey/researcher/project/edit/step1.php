@@ -1483,11 +1483,11 @@ echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">
 
 
 //MySQL query
-$Result = mysql_query("SELECT * FROM tbl_researcher_interests WHERE ProjectID = '".$_SESSION['projectid']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_interests WHERE ProjectID = '".$_SESSION['projectid']."' ");
 
 
 //get all records from add_delete_record table
-while($row2 = mysql_fetch_array($Result))
+while($row2 = mysqli_fetch_array($Result))
 {
 
 
@@ -1506,8 +1506,7 @@ echo $row2['Interests'].'</li>';
 }
 
 
-//close db connection
-mysql_close($connecDB);
+
 ?>
 </ul>
 

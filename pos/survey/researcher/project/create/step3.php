@@ -33,9 +33,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //echo $_SESSION['projectid'];
 
 
-$Project = mysql_query("SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."'
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."'
   AND ProjectID= '".$_SESSION['projectid']."'");
-$rowproject = mysql_fetch_array($Project);
+$rowproject = mysqli_fetch_array($Project);
 
 
 if($_SESSION['projectid'] != $rowproject['ProjectID']){
@@ -65,8 +65,8 @@ $minutes=explode(',',$rowproject['Minutes']);
 
 
 
-$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_researcher_potentialanswers WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
-$rowpotentialanswers = mysql_fetch_array($ProjectPotentialanswers);
+$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_potentialanswers WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
+$rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
 
 //echo $rowpotentialanswers['PotentialAnswer1'];
 
@@ -444,13 +444,13 @@ echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">
 
 
 //MySQL query
-$Result = mysql_query("SELECT * FROM tbl_researcher_interests WHERE ProjectID = '".$_SESSION['projectid']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_interests WHERE ProjectID = '".$_SESSION['projectid']."' ");
 
 
-if(mysql_num_rows($Result)>0)
+if(mysqli_num_rows($Result)>0)
 {
 //get all records from add_delete_record table
-while($row2 = mysql_fetch_array($Result))
+while($row2 = mysqli_fetch_array($Result))
 {
 
 
@@ -471,8 +471,7 @@ echo $row2['Interests'].'</li>';
 }
 
 
-//close db connection
-mysql_close($connecDB);
+
 ?>
 
 

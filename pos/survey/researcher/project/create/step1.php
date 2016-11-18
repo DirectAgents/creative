@@ -48,14 +48,14 @@ if(!empty($_GET["id"])){
 
 $_SESSION['projectid'] = $_GET["id"];
 
-$Project = mysql_query("SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."' AND
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."' AND
   ProjectID = '".$_GET['id']."'");
 
 
 }
 
 
-$rowproject = mysql_fetch_array($Project);
+$rowproject = mysqli_fetch_array($Project);
 
 
 
@@ -93,11 +93,11 @@ if(!empty($_GET['id'])){
 
 
 
-$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_researcher_potentialanswers WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID = '".$_GET['id']."'");
+$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_potentialanswers WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID = '".$_GET['id']."'");
 
 }
 
-$rowpotentialanswers = mysql_fetch_array($ProjectPotentialanswers);
+$rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
 
 $screening= $rowpotentialanswers['EnabledorDisabled'];
 
@@ -1546,11 +1546,11 @@ echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">
 
 
 //MySQL query
-$Result = mysql_query("SELECT * FROM tbl_researcher_interests WHERE ProjectID = '".$_GET['id']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_interests WHERE ProjectID = '".$_GET['id']."' ");
 
 
 //get all records from add_delete_record table
-while($row2 = mysql_fetch_array($Result))
+while($row2 = mysqli_fetch_array($Result))
 {
 
 
@@ -1569,8 +1569,7 @@ echo $row2['Interests'].'</li>';
 }
 
 
-//close db connection
-mysql_close($connecDB);
+
 ?>
 </ul>
 

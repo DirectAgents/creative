@@ -4,9 +4,6 @@ session_start();
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
 
-
-
-
 require_once '../../base_path.php';
 
 require_once '../../class.researcher.php';
@@ -67,6 +64,7 @@ $db_name = 'circl'; //Database Name
 //incase of logout request, just unset the session var
 if (isset($_GET['logout'])) {
   unset($_SESSION['access_token']);
+  unset($_SESSION['fb_access_token_researcher']);
   unset($_SESSION['researcherSession']);
 }
 
@@ -152,7 +150,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     {
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['researcherSession'] = $row['userID'];
-        header("Location: ../meetings/");
+        header("Location: ../index.php");
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -191,7 +189,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     }else{
 
         $_SESSION['researcherSession'] = $row['userID'];
-        header("Location: ../meetings/");
+        header("Location: ../index.php");
         exit();
 
     }
@@ -302,7 +300,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     <input type="email" name="txtemail" placeholder="Email Address" required/>
     <input type="password" name="txtupass" placeholder="Password" required/>
     <button type="submit" name="btn-login">LOGIN</button>
-    <p class="message">Not registered? <a href="../signup">Sign up</a></p>
+    <p class="message">Not registered? <a href="<?php echo BASE_PATH; ?>/researcher/signup">Sign up</a></p>
     <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>
    
   </form>
@@ -316,11 +314,9 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 if (isset($authUrl)){ 
   //show login url
   echo "<p>&nbsp;</p>";
-  echo '<div align="center">';
   echo '<h3>Or connect with</h3>';
   echo "<p>&nbsp;</p>";
-  echo '<a class="social-signin__btn btn btn_default-bis" href="' . $authUrl . '"> <span class="icon icon_google"></span> Google </a>';
-  echo '</div>';
+
   
 }
 
@@ -341,20 +337,47 @@ $helper = $fb->getRedirectLoginHelper();
 $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/researcher/login/login-callback.php', $permissions);
 
-if(!isset($_SESSION['fb_access_token'])){
-echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+if(!isset($_SESSION['fb_access_token_researcher'])){
+//echo '<a href="' . htmlspecialchars($loginUrl) . '">Sign up with Facebook!</a>';
+echo '<div style="float:left; width:100%;">';
+
+echo '<div style="margin:0 auto; width: 82%;">';
+
+echo '<a class="social-signin__btn btn_google btn_default-bis" href="' . $authUrl . '"> <span class="icon icon_google"></span> Google </a>';
+
+echo '<a class="social-signin__btn btn_facebook btn_default-bis" href="' . htmlspecialchars($loginUrl) . '"> <span class="icon icon_facebook"></span> Facebook </a>';
+
+echo '</div>';
+echo '</div>';
+
+echo "<p>&nbsp;</p>";
+
 }else{
-  echo '<a href="../../logout.php">Logout from Facebook!</a>';
+
+echo '<div style="float:left; width:100%;">';
+
+echo '<div style="margin:0 auto; width: 82%;">';
+
+echo '<a class="social-signin__btn btn_google btn_default-bis" href="' . $authUrl . '"> <span class="icon icon_google"></span> Google </a>';
+
+echo '<a class="social-signin__btn btn_facebook btn_default-bis"  href="../../logout.php"> <span class="icon icon_facebook"></span> Logout from Facebook! </a>';
+
+echo '</div>';
+echo '</div>';
+
+echo "<p>&nbsp;</p>";
+
+
 }
 
-//echo $_SESSION['fb_access_token'];
+//echo $_SESSION['fb_access_token_researcher'];
 
 
-if(isset($_SESSION['fb_access_token'])){
+if(isset($_SESSION['fb_access_token_researcher'])){
 
 try {
   // Returns a `Facebook\FacebookResponse` object
-  $response = $fb->get('/me?fields=id,first_name, last_name,email', $_SESSION['fb_access_token']);
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_researcher']);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
@@ -393,7 +416,7 @@ echo 'id: ' . $user['id'];
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['researcherSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
-        header("Location: ../meetings/");
+        header("Location: ../index.php");
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -401,14 +424,20 @@ echo 'id: ' . $user['id'];
 
     date_default_timezone_set('America/New_York');
     $date = date('Y-m-d'); 
+
+    $gender = ucfirst($user['gender']);
+
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_researcher (facebook_id, FirstName, LastName, userEmail, Date_Created, account_verified) 
-      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$date."','1')");
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_researcher (facebook_id, FirstName, LastName, userEmail, Gender, Date_Created, account_verified) 
+      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' , '".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
 
     mysqli_query($insert_sql);  
+    
+    header("Location: ../index.php");
+    exit();
 
  
 
@@ -422,7 +451,7 @@ echo 'id: ' . $user['id'];
 
         $_SESSION['researcherSession'] = $user['id'];
         $_SESSION['facebook_photo'] = $user['id'];
-        header("Location: ../meetings/");
+        header("Location: ../index.php");
         exit();
 
     }

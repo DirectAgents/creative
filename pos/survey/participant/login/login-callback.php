@@ -11,7 +11,7 @@ require_once '../../base_path.php';
 
 $fb = new Facebook\Facebook([
   'app_id' => '1797081013903216',
-  'app_secret' => '84559fb3dfac36088534da9fe3030dea',
+  'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
   'default_graph_version' => 'v2.2',
   ]);
 
@@ -75,12 +75,12 @@ if (! $accessToken->isLongLived()) {
   var_dump($accessToken->getValue());
 }
 
-$_SESSION['fb_access_token'] = (string) $accessToken;
+$_SESSION['fb_access_token_participant'] = (string) $accessToken;
 
 
 
 
-echo $_SESSION['fb_access_token'];
+echo $_SESSION['fb_access_token_participant'];
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
 header('Location: '.BASE_PATH.'/participant/signup/');
