@@ -406,7 +406,7 @@ if (isset($authUrl)){
 
 $fb = new Facebook\Facebook([
   'app_id' => '1797081013903216',
-  'app_secret' => '84559fb3dfac36088534da9fe3030dea',
+  'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
   'default_graph_version' => 'v2.2',
   ]);
 
