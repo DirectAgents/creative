@@ -1,0 +1,12 @@
+[30-Jul-2016 17:23:18 America/Chicago] PHP Fatal error:  Uncaught exception 'WePayRequestException' with message 'account_id parameter is required' in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php:307
+Stack trace:
+#0 /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php(333): WePay::make_request('checkout/create', Array, Array)
+#1 /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/checkout/index.php(19): WePay->request('checkout/create', Array)
+#2 {main}
+  thrown in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php on line 307
+[30-Jul-2016 17:32:36 America/Chicago] PHP Fatal error:  Uncaught exception 'WePayRequestException' with message 'checkout_id parameter is required' in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php:307
+Stack trace:
+#0 /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php(333): WePay::make_request('checkout/', Array, Array)
+#1 /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/checkout/index.php(19): WePay->request('checkout/', Array)
+#2 {main}
+  thrown in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php on line 307

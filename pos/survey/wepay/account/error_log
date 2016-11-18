@@ -1,0 +1,33 @@
+[29-Jul-2016 13:58:47 America/Chicago] PHP Warning:  require(../../../wepay.php): failed to open stream: No such file or directory in /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/account/index.php on line 3
+[29-Jul-2016 13:58:47 America/Chicago] PHP Warning:  require(../../../wepay.php): failed to open stream: No such file or directory in /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/account/index.php on line 3
+[29-Jul-2016 13:58:47 America/Chicago] PHP Fatal error:  require(): Failed opening required '../../../wepay.php' (include_path='.:/opt/php54/lib/php') in /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/account/index.php on line 3
+[29-Jul-2016 13:59:13 America/Chicago] PHP Fatal error:  Uncaught exception 'WePayRequestException' with message 'account_id parameter is unexpected' in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php:307
+Stack trace:
+#0 /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php(333): WePay::make_request('user/send_confi...', Array, Array)
+#1 /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/account/index.php(19): WePay->request('user/send_confi...', Array)
+#2 {main}
+  thrown in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php on line 307
+[29-Jul-2016 14:00:11 America/Chicago] PHP Fatal error:  Uncaught exception 'WePayPermissionException' with message 'this access_token has been revoked' in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php:310
+Stack trace:
+#0 /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php(333): WePay::make_request('account/', Array, Array)
+#1 /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/account/index.php(19): WePay->request('account/', Array)
+#2 {main}
+  thrown in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php on line 310
+[29-Jul-2016 14:02:01 America/Chicago] PHP Fatal error:  Uncaught exception 'WePayPermissionException' with message 'this access_token has been revoked' in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php:310
+Stack trace:
+#0 /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php(333): WePay::make_request('account/', Array, Array)
+#1 /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/account/index.php(19): WePay->request('account/', Array)
+#2 {main}
+  thrown in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php on line 310
+[29-Jul-2016 14:04:24 America/Chicago] PHP Fatal error:  Uncaught exception 'WePayPermissionException' with message 'account is not found' in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php:310
+Stack trace:
+#0 /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php(333): WePay::make_request('account/', Array, Array)
+#1 /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/account/index.php(19): WePay->request('account/', Array)
+#2 {main}
+  thrown in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php on line 310
+[30-Jul-2016 16:58:38 America/Chicago] PHP Fatal error:  Uncaught exception 'WePayPermissionException' with message 'the user associated with this access_token does not have permission to view this account' in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php:310
+Stack trace:
+#0 /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php(333): WePay::make_request('account/', Array, Array)
+#1 /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/account/index.php(19): WePay->request('account/', Array)
+#2 {main}
+  thrown in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php on line 310
