@@ -818,9 +818,9 @@ $.post('profile-photo.php', $("#contact-form").serialize(), function(data) {
           <span class="textarea">
             <label for="bio">
               Short Bio
-              <small><a href="/settings/profile/mini-resume" data-action="show-examples">Examples</a></small>
+              <!--<small><a href="/settings/profile/mini-resume" data-action="show-examples">Examples</a></small>-->
             </label>
-            <textarea name="bio" id="bio"></textarea>
+            <textarea name="bio" id="bio" placeholder="Tell a little about yourself. No life story haha. Just couple phrases about yourself."></textarea>
           </span>
         </fieldset>
          <div class="note">Optional — 50 characters</div> 

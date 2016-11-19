@@ -28,11 +28,10 @@ $row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$sql2="SELECT DISTINCT(checkout_find_date) FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = ''  ORDER BY order_by DESC ";
-$result2=mysql_query($sql2);
+$sql2=mysqli_query($connecDB,"SELECT DISTINCT(checkout_find_date) FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = ''  ORDER BY order_by DESC ");
 
   //if username exists
-if(mysql_num_rows($result2)>0)
+if(mysqli_num_rows($sql2)>0)
 {
 
 
@@ -55,14 +54,13 @@ if(mysql_num_rows($result2)>0)
 
 <?php
 
-$sql="SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = '' ORDER BY order_by DESC ";
-$result=mysql_query($sql);
+$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = '' ORDER BY order_by DESC ");
 //$row=mysql_fetch_array($result);
 
 $sum = 0;
 
 //get all records from add_delete_record table
-while($row = mysql_fetch_array($result))
+while($row = mysqli_fetch_array($sql))
 { 
 
 $sum+= $row['total'];
@@ -88,17 +86,16 @@ $sum+= $row['total'];
 
 <?php
 
-$sql="SELECT DISTINCT(checkout_find_date) FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = ''  ORDER BY order_by DESC ";
-$result=mysql_query($sql);
+$sql=mysqli_query($connecDB,"SELECT DISTINCT(checkout_find_date) FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = ''  ORDER BY order_by DESC ");
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysql_num_rows($result)>0)
+if(mysqli_num_rows($sql)>0)
 {
 
 
 //get all records from add_delete_record table
-while($row = mysql_fetch_array($result))
+while($row = mysqli_fetch_array($sql))
 { 
 
 
@@ -125,13 +122,11 @@ while($row = mysql_fetch_array($result))
 
 
 <?php 
-$sql="SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = '' ORDER BY id DESC ";
-$result2=mysql_query($sql);
-while($row2 = mysql_fetch_array($result2)){
+$sql2=mysqli_query($connecDB,"SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = '' ORDER BY id DESC ");
+while($row2 = mysqli_fetch_array($sql2)){
 
-$sql3="SELECT * FROM tbl_researcher WHERE userID = '".$row2['researcher_id']."'";
-$result3=mysql_query($sql3);
-$row3 = mysql_fetch_array($result3);
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_researcher WHERE userID = '".$row2['researcher_id']."'");
+$row3 = mysqli_fetch_array($sql3);
 
 
 
@@ -172,7 +167,7 @@ $row3 = mysql_fetch_array($result3);
 
 <?php }else{ ?>
 <div class="no-account-yet">
-<h3>No Refund Requests!</h3>
+<h3>No Pending NDA to sign!</h3>
 </div>
 <?php } ?>
 

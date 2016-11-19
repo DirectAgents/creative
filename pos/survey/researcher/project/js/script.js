@@ -1021,203 +1021,95 @@ var btn= $(this).find("input[type=submit]:focus").val();
 /**NDA**/
 
 
-$("#save-nda").click(function() {  
-//alert("111"); 
-var btn= $(this).find("input[type=submit]:focus").val();
-
-
-
-        //get input field values
-        var researcher_sig_name       = $('input[name=researcher_sig_name]').val();
-        var researcher_sig_title       = $('input[name=researcher_sig_title]').val();
-        var researcher_sig_company       = $('input[name=researcher_sig_company]').val();
-        var researcher_sig_date       = $('input[name=researcher_sig_date]').val();
         
-        
-
-        var dataURI = signaturePad.toDataURL("image/jpg")
-
-        //alert(minreq);
-    
-        //var testing       = $('input[name=meetupselection').val();
-        //var testing = $('.meetupselection:checked').serialize();
-        // $('input[name="meetupselection[]"]').serialize(); /* it can return true or false */
-
-
-/*
-for dropdowns
-    $("select[name=MYFIELDNAME]").val();
-
-for radio buttons
-$("select[name=MYFIELDNAME]:checked").val();
-
-
-for textareas
-$("textarea[name=MYFIELDNAME]").val();
-*/
-
-        //alert(testing);
-
-
-
-        var phone=/^(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})$/i;
-        var email=/^[A-Za-z0-9]+([_\.-][A-Za-z0-9]+)*@[A-Za-z0-9]+([_\.-][A-Za-z0-9]+)*\.([A-Za-z]){2,4}$/i;
-               
-       
-        
+$("#save-nda").click(function() { 
+    //alert("asdf");
+        var proceed = true;
         //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-         var proceed = true;
-        
+        //loop through each field and we simply change border color to red for invalid fields       
        
+        var canvas = document.getElementById("signature");
+        var signaturePad = new SignaturePad(canvas);
 
+        var dataURI = signaturePad.toDataURL("image/jpg");
 
-        
-       var n = $('input[name="minreq[]"]:checked').size();
-       //alert(n);
-
-          //if($('input[name="in-person"]:checked') != true){
-        if (n < 1) {
-        
-            output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please mark at least 1 as required under "I want to reach people by"!</div>';
-            $("#result").hide().html(output).slideDown();
-            //$('input[name=userFirstname]').css('border-color','red'); 
-            proceed = false;
-        }
-
-
-          if(projectname==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Project!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
+        var projectid  = $('input[name=projectid').val();
+        var disclosure_party  = $('input[name=disclosure_party').val();
+        var researcher_sig_name  = $('input[name=researcher_sig_name').val();
+        var researcher_sig_date  = $('input[name=researcher_sig_date').val();
 
         
+        if(researcher_sig_date == ''){ 
+             $("#researcher_sig_date").css('border-color','red'); //change border color to red 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a date! </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
 
 
-        var screening_checkedstatus = $('input[name="screening[]"]:checked').size();
+         if(researcher_sig_name == ''){ 
+             $("#researcher_sig_name").css('border-color','red'); //change border color to red 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter your Full Name! </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+        if(disclosure_party == ''){ 
+             $("#disclosure_party").css('border-color','red'); //change border color to red 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter your name as the Disclosure Party! </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
         
-
-         if(screeningquestion =="" && screening_checkedstatus == 1){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please add your screening question!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-         if(screeningquestion!="" && potentialanswer1 == "" && potentialanswer2 == "" && potentialanswer3 == ""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter at least one potential answer!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-
-        
-
-        var potentialansweraccepted_checkedstatus = $('input[name="potentialansweraccepted[]"]:checked').size();
-        
-
-       
-        
-        if(screeningquestion!="" && potentialansweraccepted == 'Potential Answer 1' && screening_checkedstatus == 1 && potentialanswer1 == ""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter one potential answer for Answer 1!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-        if(screeningquestion!="" && potentialansweraccepted == 'Potential Answer 2' && screening_checkedstatus == 1 && potentialanswer2 == ""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter one potential answer for Answer 2!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-         if(screeningquestion!="" && potentialansweraccepted == 'Potential Answer 3' && screening_checkedstatus == 1 && potentialanswer3 == ""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter one potential answer for Answer 3!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-        if(screeningquestion!="" && potentialansweraccepted_checkedstatus <1 ){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please mark at least one as the potential Answer! </div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-         if(potentialanswer1 != '' && potentialanswer2 == '' && potentialanswer3 == ''){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter at least 2 possible Answers! </div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-        if(potentialanswer2 != '' && potentialanswer1 == '' && potentialanswer3 == ''){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter at least 2 possible Answers! </div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-         if(potentialanswer3 != '' && potentialanswer2 == '' && potentialanswer3 == ''){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter at least 2 possible Answers! </div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
 
       
-
-
+           
         
-
-            //if($('input[name="in-person"]:checked') != true){
-        /*if (!$('input[name="meetupselection[]"]').is(":checked")) {
-            output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please select at least one option on how to reach your participants!</div>';
-            $("#result").hide().html(output).slideDown();
-            //$('input[name=userFirstname]').css('border-color','red'); 
-            proceed = false;
-        }*/
-        
-
-
-      
-         
-
-        //everything looks good! proceed...
-        if(proceed) 
+       
+        if(proceed) //everything looks good! proceed...
         {
+            //get input field values data to be sent to server
+            post_data = {
+                'projectid'     : $('input[name=projectid]').val(),
+                'disclosure_party'     : $('input[name=disclosure_party]').val(),
+                'researcher_sig_name'     : $('input[name=researcher_sig_name]').val(),
+                'researcher_sig_title'     : $('input[name=researcher_sig_title]').val(),
+                'researcher_sig_company'     : $('input[name=researcher_sig_company]').val(),
+                'researcher_sig_date'     : $('input[name=researcher_sig_date]').val(),
+                'signature'     : dataURI
+                
 
-          //$( ".processing" ).show();
-            //data to be sent to server
-            post_data = {'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'gender':gender, 'minheight':minheight, 
-            'maxheight':maxheight, 'status':status,'ethnicity':ethnicity,
-            'smoke':smoke,'drink':drink,'diet':diet,'religion':religion,'education':education,'job':job,
-            'interest':interest, 'screening':screening,'screeningquestion':screeningquestion, 'potentialanswer1':potentialanswer1 , 'potentialanswer2':potentialanswer2,'potentialanswer3':potentialanswer3,
-            'potentialansweraccepted':potentialansweraccepted};
-            
+            };
+ 
+            //alert(post_data['gender']);
+
             //Ajax post data to server
             $.post('save.php', post_data, function(response){  
-              
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-           
-         
-
-         
-            output = '<div class="success">'+response.text+'</div>';
-          
-          
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $("#result").hide().html(output).slideDown();
+                if(response.type == 'error'){ //load json data from server and output message     
+                    output = '<div class="error">'+response.text+'</div>';
+                }else{
+                    
+                    output = '<div class="success">'+response.text+'</div>';
+                    //reset values in all input fields
+                    $("#profile-form input[required=true], #profile-form textarea[required=true]").val(''); 
+                    $("#profile-form #contact_body").slideUp(); //hide form after success
+                }
+               $("#result").hide().html(output).slideDown();
             }, 'json');
-      
         }
     });
+    
+    //reset previously set border colors and hide all message on .keyup()
+    $("#profile-form input[required=true], #profile-form textarea[required=true]").keyup(function() { 
+        $(this).css('border-color',''); 
+        $("#result").slideUp();
+    });
+
+
+
+ 
+
 
 
 
