@@ -890,7 +890,7 @@ $(".choose-location-sunday").click(function() {
 
 
     $(".save-profile").click(function() { 
-       //alert("asdf");
+    //alert("asdf");
         var proceed = true;
         //simple validation at client's end
         //loop through each field and we simply change border color to red for invalid fields       
@@ -920,11 +920,22 @@ $(".choose-location-sunday").click(function() {
                 'city'     : $('input[name=city]').val(),
                 'state'     : $("select[name='state']").val(),
                 'bio'     : $("textarea[name='bio']").val(),
+                'age'     : $("select[name='age']").val(),
+                'gender'     : $("select[name='gender']").val(),
+                'height'     : $("select[name='height']").val(),
+                'status'     : $("select[name='status']").val(),
+                'ethnicity'     : $("select[name='ethnicity']").val(),
+                'smoke'     : $("select[name='smoke']").val(),
+                'drink'     : $("select[name='drink']").val(),
+                'diet'     : $("select[name='diet']").val(),
+                'religion'     : $("select[name='religion']").val(),
+                'education'     : $("select[name='education']").val(),
+                'job'     : $("select[name='job']").val(),
                 'emailnotifications'     : $('input[name="emailnotifications[]"]:checked').map(function () {return this.value;}).get().join(",")
 
             };
  
-
+            //alert(post_data['gender']);
 
             //Ajax post data to server
             $.post('save-profile.php', post_data, function(response){  

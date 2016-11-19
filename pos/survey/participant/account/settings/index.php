@@ -34,6 +34,20 @@ $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+
+$gender=explode(',',$row['Gender']);
+$height=explode(',',$row['Height']);
+$status=explode(',',$row['Status']);
+$ethnicity=explode(',',$row['Ethnicity']);
+$smoke=explode(',',$row['Smoke']);
+$drink=explode(',',$row['Drink']);
+$diet=explode(',',$row['Diet']);
+$religion=explode(',',$row['Religion']);
+$education=explode(',',$row['Education']);
+$job=explode(',',$row['Job']);
+
+
+
 $emailnotifications=explode(',',$row['EmailNotifications']);
 
 
@@ -728,64 +742,64 @@ $.post('profile-photo.php', $("#contact-form").serialize(), function(data) {
         <fieldset>
           <span class="input">
             <label for="location">City</label>
-            <input type="text" name="city" id="city" placeholder="New York" value="New York">
+            <input type="text" name="city" id="city" placeholder="New York" value="<?php echo $row['City']; ?>">
           </span>
           <span class="select gap-before">
             <label>State</label>
             <span class="select-wrapper">
               <select name="state" id="state" class="timezone">
                 <option value="" disabled="disabled">Select your state</option>
-                  <option value="AL">Alabama</option>
-  <option value="AK">Alaska</option>
-  <option value="AZ">Arizona</option>
-  <option value="AR">Arkansas</option>
-  <option value="CA">California</option>
-  <option value="CO">Colorado</option>
-  <option value="CT">Connecticut</option>
-  <option value="DE">Delaware</option>
-  <option value="DC">District Of Columbia</option>
-  <option value="FL">Florida</option>
-  <option value="GA">Georgia</option>
-  <option value="HI">Hawaii</option>
-  <option value="ID">Idaho</option>
-  <option value="IL">Illinois</option>
-  <option value="IN">Indiana</option>
-  <option value="IA">Iowa</option>
-  <option value="KS">Kansas</option>
-  <option value="KY">Kentucky</option>
-  <option value="LA">Louisiana</option>
-  <option value="ME">Maine</option>
-  <option value="MD">Maryland</option>
-  <option value="MA">Massachusetts</option>
-  <option value="MI">Michigan</option>
-  <option value="MN">Minnesota</option>
-  <option value="MS">Mississippi</option>
-  <option value="MO">Missouri</option>
-  <option value="MT">Montana</option>
-  <option value="NE">Nebraska</option>
-  <option value="NV">Nevada</option>
-  <option value="NH">New Hampshire</option>
-  <option value="NJ">New Jersey</option>
-  <option value="NM">New Mexico</option>
-  <option value="NY">New York</option>
-  <option value="NC">North Carolina</option>
-  <option value="ND">North Dakota</option>
-  <option value="OH">Ohio</option>
-  <option value="OK">Oklahoma</option>
-  <option value="OR">Oregon</option>
-  <option value="PA">Pennsylvania</option>
-  <option value="RI">Rhode Island</option>
-  <option value="SC">South Carolina</option>
-  <option value="SD">South Dakota</option>
-  <option value="TN">Tennessee</option>
-  <option value="TX">Texas</option>
-  <option value="UT">Utah</option>
-  <option value="VT">Vermont</option>
-  <option value="VA">Virginia</option>
-  <option value="WA">Washington</option>
-  <option value="WV">West Virginia</option>
-  <option value="WI">Wisconsin</option>
-  <option value="WY">Wyoming</option>
+                  <option value="AL" <?php if($row['City'] == 'AL'){echo "selected";}?>>Alabama</option>
+  <option value="AK" <?php if($row['City'] == 'AK'){echo "selected";}?>>Alaska</option>
+  <option value="AZ" <?php if($row['City'] == 'AZ'){echo "selected";}?>>Arizona</option>
+  <option value="AR" <?php if($row['City'] == 'AR'){echo "selected";}?>>Arkansas</option>
+  <option value="CA" <?php if($row['City'] == 'CA'){echo "selected";}?>>California</option>
+  <option value="CO" <?php if($row['City'] == 'CO'){echo "selected";}?>>Colorado</option>
+  <option value="CT" <?php if($row['City'] == 'CT'){echo "selected";}?>>Connecticut</option>
+  <option value="DE" <?php if($row['City'] == 'DE'){echo "selected";}?>>Delaware</option>
+  <option value="DC" <?php if($row['City'] == 'DC'){echo "selected";}?>>District Of Columbia</option>
+  <option value="FL" <?php if($row['City'] == 'FL'){echo "selected";}?>>Florida</option>
+  <option value="GA" <?php if($row['City'] == 'GA'){echo "selected";}?>>Georgia</option>
+  <option value="HI" <?php if($row['City'] == 'HI'){echo "selected";}?>>Hawaii</option>
+  <option value="ID" <?php if($row['City'] == 'ID'){echo "selected";}?>>Idaho</option>
+  <option value="IL" <?php if($row['City'] == 'IL'){echo "selected";}?>>Illinois</option>
+  <option value="IN" <?php if($row['City'] == 'IN'){echo "selected";}?>>Indiana</option>
+  <option value="IA" <?php if($row['City'] == 'IA'){echo "selected";}?>>Iowa</option>
+  <option value="KS" <?php if($row['City'] == 'KS'){echo "selected";}?>>Kansas</option>
+  <option value="KY" <?php if($row['City'] == 'KY'){echo "selected";}?>>Kentucky</option>
+  <option value="LA" <?php if($row['City'] == 'LA'){echo "selected";}?>>Louisiana</option>
+  <option value="ME" <?php if($row['City'] == 'ME'){echo "selected";}?>>Maine</option>
+  <option value="MD" <?php if($row['City'] == 'MD'){echo "selected";}?>>Maryland</option>
+  <option value="MA" <?php if($row['City'] == 'MA'){echo "selected";}?>>Massachusetts</option>
+  <option value="MI" <?php if($row['City'] == 'MI'){echo "selected";}?>>Michigan</option>
+  <option value="MN" <?php if($row['City'] == 'MN'){echo "selected";}?>>Minnesota</option>
+  <option value="MS" <?php if($row['City'] == 'MS'){echo "selected";}?>>Mississippi</option>
+  <option value="MO" <?php if($row['City'] == 'MO'){echo "selected";}?>>Missouri</option>
+  <option value="MT" <?php if($row['City'] == 'MT'){echo "selected";}?>>Montana</option>
+  <option value="NE" <?php if($row['City'] == 'NE'){echo "selected";}?>>Nebraska</option>
+  <option value="NV" <?php if($row['City'] == 'NV'){echo "selected";}?>>Nevada</option>
+  <option value="NH" <?php if($row['City'] == 'NH'){echo "selected";}?>>New Hampshire</option>
+  <option value="NJ" <?php if($row['City'] == 'NJ'){echo "selected";}?>>New Jersey</option>
+  <option value="NM" <?php if($row['City'] == 'NM'){echo "selected";}?>>New Mexico</option>
+  <option value="NY" <?php if($row['City'] == 'NY'){echo "selected";}?>>New York</option>
+  <option value="NC" <?php if($row['City'] == 'NC'){echo "selected";}?>>North Carolina</option>
+  <option value="ND" <?php if($row['City'] == 'ND'){echo "selected";}?>>North Dakota</option>
+  <option value="OH" <?php if($row['City'] == 'OH'){echo "selected";}?>>Ohio</option>
+  <option value="OK" <?php if($row['City'] == 'OK'){echo "selected";}?>>Oklahoma</option>
+  <option value="OR" <?php if($row['City'] == 'OR'){echo "selected";}?>>Oregon</option>
+  <option value="PA" <?php if($row['City'] == 'PA'){echo "selected";}?>>Pennsylvania</option>
+  <option value="RI" <?php if($row['City'] == 'RI'){echo "selected";}?>>Rhode Island</option>
+  <option value="SC" <?php if($row['City'] == 'SC'){echo "selected";}?>>South Carolina</option>
+  <option value="SD" <?php if($row['City'] == 'SD'){echo "selected";}?>>South Dakota</option>
+  <option value="TN" <?php if($row['City'] == 'TN'){echo "selected";}?>>Tennessee</option>
+  <option value="TX" <?php if($row['City'] == 'TX'){echo "selected";}?>>Texas</option>
+  <option value="UT" <?php if($row['City'] == 'UT'){echo "selected";}?>>Utah</option>
+  <option value="VT" <?php if($row['City'] == 'VT'){echo "selected";}?>>Vermont</option>
+  <option value="VA" <?php if($row['City'] == 'VA'){echo "selected";}?>>Virginia</option>
+  <option value="WA" <?php if($row['City'] == 'WA'){echo "selected";}?>>Washington</option>
+  <option value="WV" <?php if($row['City'] == 'WV'){echo "selected";}?>>West Virginia</option>
+  <option value="WI" <?php if($row['City'] == 'WI'){echo "selected";}?>>Wisconsin</option>
+  <option value="WY" <?php if($row['City'] == 'WY'){echo "selected";}?>>Wyoming</option>
                </select>
             </span>
           </span>
@@ -814,6 +828,268 @@ $.post('profile-photo.php', $("#contact-form").serialize(), function(data) {
 
       
  
+
+  <h2 class="no-mobile">
+          General Information
+        </h2>
+
+        <fieldset>
+         <span class="select gap-before">
+         <label>Age</label>
+         <span class="select-wrapper">
+              <select name="age" class="age">
+               <option value="" <?php if(in_array('',$height)){echo "selected";}?> disabled="disabled">Select your age</option>
+<option value="10" <?php if(in_array(10,$height)){echo "selected";}?>>10</option>
+<option value="11" <?php if(in_array(11,$height)){echo "selected";}?>>11</option>
+<option value="12" <?php if(in_array(12,$height)){echo "selected";}?>>12</option>
+<option value="13" <?php if(in_array(13,$height)){echo "selected";}?>>13</option>
+<option value="14" <?php if(in_array(14,$height)){echo "selected";}?>>14</option>
+<option value="15" <?php if(in_array(15,$height)){echo "selected";}?>>15</option>
+<option value="16" <?php if(in_array(16,$height)){echo "selected";}?>>16</option>
+<option value="17" <?php if(in_array(17,$height)){echo "selected";}?>>17</option>
+<option value="18" <?php if(in_array(18,$height)){echo "selected";}?>>18</option>
+<option value="19" <?php if(in_array(19,$height)){echo "selected";}?>>19</option>
+<option value="20" <?php if(in_array(20,$height)){echo "selected";}?>>20</option>
+<option value="21" <?php if(in_array(21,$height)){echo "selected";}?>>21</option>
+<option value="22" <?php if(in_array(22,$height)){echo "selected";}?>>22</option>
+<option value="23" <?php if(in_array(23,$height)){echo "selected";}?>>23</option>
+<option value="24" <?php if(in_array(24,$height)){echo "selected";}?>>24</option>
+<option value="25" <?php if(in_array(25,$height)){echo "selected";}?>>25</option>
+<option value="26" <?php if(in_array(26,$height)){echo "selected";}?>>26</option>
+<option value="27" <?php if(in_array(27,$height)){echo "selected";}?>>27</option>
+<option value="28" <?php if(in_array(28,$height)){echo "selected";}?>>28</option>
+<option value="29" <?php if(in_array(29,$height)){echo "selected";}?>>29</option>
+<option value="30" <?php if(in_array(30,$height)){echo "selected";}?>>30</option>
+<option value="31" <?php if(in_array(31,$height)){echo "selected";}?>>31</option>
+<option value="32" <?php if(in_array(32,$height)){echo "selected";}?>>32</option>
+<option value="33" <?php if(in_array(33,$height)){echo "selected";}?>>33</option>
+<option value="34" <?php if(in_array(34,$height)){echo "selected";}?>>34</option>
+<option value="35" <?php if(in_array(35,$height)){echo "selected";}?>>35</option>
+<option value="36" <?php if(in_array(36,$height)){echo "selected";}?>>36</option>
+<option value="37" <?php if(in_array(37,$height)){echo "selected";}?>>37</option>
+<option value="38" <?php if(in_array(38,$height)){echo "selected";}?>>38</option>
+<option value="39" <?php if(in_array(39,$height)){echo "selected";}?>>39</option>
+<option value="40" <?php if(in_array(40,$height)){echo "selected";}?>>40</option>
+<option value="41" <?php if(in_array(41,$height)){echo "selected";}?>>41</option>
+<option value="42" <?php if(in_array(42,$height)){echo "selected";}?>>42</option>
+<option value="43" <?php if(in_array(43,$height)){echo "selected";}?>>43</option>
+<option value="44" <?php if(in_array(44,$height)){echo "selected";}?>>44</option>
+<option value="45" <?php if(in_array(45,$height)){echo "selected";}?>>45</option>
+<option value="46" <?php if(in_array(46,$height)){echo "selected";}?>>46</option>
+<option value="47" <?php if(in_array(47,$height)){echo "selected";}?>>47</option>
+<option value="48" <?php if(in_array(48,$height)){echo "selected";}?>>48</option>
+<option value="49" <?php if(in_array(49,$height)){echo "selected";}?>>49</option>
+<option value="50" <?php if(in_array(50,$height)){echo "selected";}?>>50</option>
+<option value="51" <?php if(in_array(51,$height)){echo "selected";}?>>51</option>
+<option value="52" <?php if(in_array(52,$height)){echo "selected";}?>>52</option>
+<option value="53" <?php if(in_array(53,$height)){echo "selected";}?>>53</option>
+<option value="54" <?php if(in_array(54,$height)){echo "selected";}?>>54</option>
+<option value="55" <?php if(in_array(55,$height)){echo "selected";}?>>55</option>
+<option value="56" <?php if(in_array(56,$height)){echo "selected";}?>>56</option>
+<option value="57" <?php if(in_array(57,$height)){echo "selected";}?>>57</option>
+<option value="58" <?php if(in_array(58,$height)){echo "selected";}?>>58</option>
+<option value="59" <?php if(in_array(59,$height)){echo "selected";}?>>59</option>
+<option value="60" <?php if(in_array(60,$height)){echo "selected";}?>>60</option>
+
+
+               </select> 
+               </span>
+            </span>
+ </fieldset>
+         <fieldset>    
+           <span class="select gap-before">
+            <label>Gender</label>
+            <span class="select-wrapper">
+              <select name="gender" class="gender">
+                <option value="" disabled="disabled" <?php if(in_array('',$gender)){echo "selected";}?>>Select your gender</option>
+                <option value="Female" <?php if(in_array('Female',$gender)){echo "selected";}?>>Female</option>
+                <option value="Male" <?php if(in_array('Male',$gender)){echo "selected";}?>>Male</option>
+               </select> 
+            </span>
+          </span>
+        </fieldset>
+
+
+         <fieldset>
+          <span class="select gap-before">
+            <label>Height</label>
+            <span class="select-wrapper">
+              <select name="height" class="gender">
+               <option value="" <?php if(in_array('',$height)){echo "selected";}?> disabled="disabled">Select your height</option>
+<option value="50" <?php if(in_array(50,$height)){echo "selected";}?>>5'0"</option>
+<option value="51" <?php if(in_array(51,$height)){echo "selected";}?>>5'1"</option>
+<option value="52" <?php if(in_array(52,$height)){echo "selected";}?>>5'2"</option>
+<option value="53" <?php if(in_array(53,$height)){echo "selected";}?>>5'3"</option>
+<option value="54" <?php if(in_array(54,$height)){echo "selected";}?>>5'4"</option>
+<option value="55" <?php if(in_array(55,$height)){echo "selected";}?>>5'5"</option>
+<option value="56" <?php if(in_array(56,$height)){echo "selected";}?>>5'6"</option>
+<option value="57" <?php if(in_array(57,$height)){echo "selected";}?>>5'7"</option>
+<option value="58" <?php if(in_array(58,$height)){echo "selected";}?>>5'8"</option>
+<option value="59" <?php if(in_array(59,$height)){echo "selected";}?>>5'9"</option>
+<option value="510" <?php if(in_array(510,$height)){echo "selected";}?>>5'10"</option>
+<option value="511" <?php if(in_array(511,$height)){echo "selected";}?>>5'11"</option>
+<option value="60" <?php if(in_array(60,$height)){echo "selected";}?>>6'0"</option>
+<option value="61" <?php if(in_array(61,$height)){echo "selected";}?>>6'1"</option>
+<option value="62" <?php if(in_array(62,$height)){echo "selected";}?>>6'2"</option>
+<option value="63" <?php if(in_array(63,$height)){echo "selected";}?>>6'3"</option>
+<option value="64" <?php if(in_array(64,$height)){echo "selected";}?>>6'4"</option>
+               </select> 
+            </span>
+          </span>
+           <span class="select gap-before">
+            <label>Status</label>
+            <span class="select-wrapper">
+              <select name="status" class="gender">
+               <option value="" <?php if(in_array('',$status)){echo "selected";}?> disabled="disabled">Select your status</option>
+<option value="Single" <?php if(in_array('Single',$status)){echo "selected";}?>>Single</option>
+<option value="Married" <?php if(in_array('Married',$status)){echo "selected";}?>>Married</option>
+<option value="Divorced" <?php if(in_array('Divorced',$status)){echo "selected";}?>>Divorced</option>
+<option value="Widowed" <?php if(in_array('Widowed',$status)){echo "selected";}?>>Widowed</option>
+               </select> 
+            </span>
+          </span>
+        </fieldset>
+
+
+
+        <fieldset>
+          <span class="select gap-before">
+            <label>Ethnicity</label>
+            <span class="select-wrapper">
+              <select name="ethnicity" class="gender">
+               <option value="" <?php if(in_array('',$ethnicity)){echo "selected";}?>>Select your ethnicity</option>
+<option value="Asian" <?php if(in_array('Asian',$ethnicity)){echo "selected";}?>>Asian</option>
+<option value="Black" <?php if(in_array('Black',$ethnicity)){echo "selected";}?>>Black</option>
+<option value="Hispanic/Latin" <?php if(in_array('Hispanic/Latin',$ethnicity)){echo "selected";}?>>Hispanic/Latin</option>
+<option value="Indian" <?php if(in_array('Indian',$ethnicity)){echo "selected";}?>>Indian</option>
+<option value="Middle Eastern" <?php if(in_array('Middle Eastern',$ethnicity)){echo "selected";}?>>Middle Eastern</option>
+<option value="Native American" <?php if(in_array('Native American',$ethnicity)){echo "selected";}?>>Native American</option>
+<option value="Pacific Islander" <?php if(in_array('Pacific Islander',$ethnicity)){echo "selected";}?>>Pacific Islander</option>
+<option value="White" <?php if(in_array('White',$ethnicity)){echo "selected";}?>>White</option>
+<option value="Other" <?php if(in_array('Other',$ethnicity)){echo "selected";}?>>Other</option>
+
+               </select> 
+            </span>
+          </span>
+           <span class="select gap-before">
+            <label>Smoke</label>
+            <span class="select-wrapper">
+              <select name="smoke" class="gender">
+               <option value="" <?php if(in_array('',$smoke)){echo "selected";}?>>Do you smoke?</option>
+<option value="Yes" <?php if(in_array('Yes',$smoke)){echo "selected";}?>>Yes</option>
+<option value="No" <?php if(in_array('No',$smoke)){echo "selected";}?>>No</option>
+<option value="Sometimes" <?php if(in_array('Sometimes',$smoke)){echo "selected";}?>>Sometimes</option>
+<option value="When drinking" <?php if(in_array('When drinking',$smoke)){echo "selected";}?>>When drinking</option>
+<option value="Trying to quit" <?php if(in_array('Trying to quit',$smoke)){echo "selected";}?>>Trying to quit</option>
+
+               </select> 
+            </span>
+          </span>
+        </fieldset>
+
+
+
+
+        <fieldset>
+          <span class="select gap-before">
+            <label>Drink</label>
+            <span class="select-wrapper">
+              <select name="drink" class="gender">
+               <option value="" <?php if(in_array('',$drink)){echo "selected";}?>>Do you drink?</option>
+<option value="Very Often" <?php if(in_array('Very Often',$drink)){echo "selected";}?>>Very Often</option>
+<option value="Often" <?php if(in_array('Often',$drink)){echo "selected";}?>>Often</option>
+<option value="Socially" <?php if(in_array('Socially',$drink)){echo "selected";}?>>Socially</option>
+<option value="Rarely" <?php if(in_array('Rarely',$drink)){echo "selected";}?>>Rarely</option>
+<option value="Desperately" <?php if(in_array('Desperately',$drink)){echo "selected";}?>>Desperately</option>
+<option value="Not at all" <?php if(in_array('Not at all',$drink)){echo "selected";}?>>Not at all</option>
+
+
+               </select> 
+            </span>
+          </span>
+           <span class="select gap-before">
+            <label>Diet</label>
+            <span class="select-wrapper">
+              <select name="diet" class="gender">
+               <option value="" <?php if(in_array('',$diet)){echo "selected";}?>>What is your diet?</option>
+<option value="Vegetarian" <?php if(in_array('Vegetarian',$diet)){echo "selected";}?>>Vegetarian</option>
+<option value="Vegan" <?php if(in_array('Vegan',$diet)){echo "selected";}?>>Vegan</option>
+<option value="Kosher" <?php if(in_array('Kosher',$diet)){echo "selected";}?>>Kosher</option>
+<option value="Halal" <?php if(in_array('Halal',$diet)){echo "selected";}?>>Halal</option>
+<option value="No diet in particular" <?php if(in_array('No diet in particular',$diet)){echo "selected";}?>>No diet in particular</option>
+
+               </select> 
+            </span>
+          </span>
+        </fieldset>
+       
+
+       <fieldset>
+          <span class="select gap-before">
+            <label>Religion</label>
+            <span class="select-wrapper">
+              <select name="religion" class="gender">
+               <option value="" <?php if(in_array('',$religion)){echo "selected";}?>>What is your religion?</option>
+<option value="Agnostic" <?php if(in_array('Agnostic',$religion)){echo "selected";}?>>Agnostic</option>
+<option value="Atheist" <?php if(in_array('Atheist',$religion)){echo "selected";}?>>Atheist</option>
+<option value="Buddhist" <?php if(in_array('Buddhist',$religion)){echo "selected";}?>>Buddhist</option>
+<option value="Catholic" <?php if(in_array('Catholic',$religion)){echo "selected";}?>>Catholic</option>
+<option value="Christian" <?php if(in_array('Christian',$religion)){echo "selected";}?>>Christian</option>
+<option value="Hindu" <?php if(in_array('Hindu',$religion)){echo "selected";}?>>Hindu</option>
+<option value="Jewish" <?php if(in_array('Jewish',$religion)){echo "selected";}?>>Jewish</option>
+<option value="Muslim" <?php if(in_array('Muslim',$religion)){echo "selected";}?>>Muslim</option>
+<option value="Sikh" <?php if(in_array('Sikh',$religion)){echo "selected";}?>>Sikh</option>
+<option value="Other" <?php if(in_array('Other',$religion)){echo "selected";}?>>Other</option>
+
+               </select> 
+            </span>
+          </span>
+           <span class="select gap-before">
+            <label>Education</label>
+            <span class="select-wrapper">
+              <select name="education" class="gender">
+               <option value="" <?php if(in_array('',$education)){echo "selected";}?>>What is your education level?</option>
+<option value="High School" <?php if(in_array('High School',$education)){echo "selected";}?>>High School</option>
+<option value="2-year college" <?php if(in_array('2-year college',$education)){echo "selected";}?>>2-year college</option>
+<option value="Post grad" <?php if(in_array('Post grad',$education)){echo "selected";}?>>Post grad</option>
+
+               </select> 
+            </span>
+          </span>
+        </fieldset>
+
+
+
+         <fieldset>
+          <span class="select gap-before">
+            <label>Occupation</label>
+            <span class="select-wrapper">
+              <select name="job" class="gender">
+               <option value="" <?php if(in_array('',$job)){echo "selected";}?>>What is your occupation?</option>
+<option value="Student" <?php if(in_array('Student',$job)){echo "selected";}?>>Student</option>
+<option value="Art / Music / Writing" <?php if(in_array('Art / Music / Writing',$job)){echo "selected";}?>>Art / Music / Writing</option>
+<option value="Banking / Finance" <?php if(in_array('Banking / Finance',$job)){echo "selected";}?>>Banking / Finance</option>
+<option value="Administration" <?php if(in_array('Administration',$job)){echo "selected";}?>>Administration</option>
+<option value="Technology" <?php if(in_array('Technology',$job)){echo "selected";}?>>Technology</option>
+<option value="Construction" <?php if(in_array('Construction',$job)){echo "selected";}?>>Construction</option>
+<option value="Education" <?php if(in_array('Education',$job)){echo "selected";}?>>Education</option>
+<option value="Entertainment / Media" <?php if(in_array('Entertainment / Media',$job)){echo "selected";}?>>Entertainment / Media</option>
+<option value="Management" <?php if(in_array('Management',$job)){echo "selected";}?>>Management</option>
+<option value="Hospitality" <?php if(in_array('Hospitality',$job)){echo "selected";}?>>Hospitality</option>
+<option value="Law" <?php if(in_array('Law',$job)){echo "selected";}?>>Law</option>
+<option value="Medicine" <?php if(in_array('Medicine',$job)){echo "selected";}?>>Medicine</option>
+<option value="Military" <?php if(in_array('Military',$job)){echo "selected";}?>>Military</option>
+<option value="Sales / Marketing" <?php if(in_array('Sales / Marketing',$job)){echo "selected";}?>>Sales / Marketing</option>
+<option value="Science / Engineering" <?php if(in_array('Science / Engineering',$job)){echo "selected";}?>>Science / Engineering</option>
+<option value="Transportation" <?php if(in_array('Transportation',$job)){echo "selected";}?>>Transportation</option>
+<option value="Other" <?php if(in_array('Other',$job)){echo "selected";}?>>Other</option>
+
+               </select> 
+            </span>
+          </span>
+        
+        </fieldset>
+
       
 
  
