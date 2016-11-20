@@ -44,3 +44,6 @@
 
     <link rel="stylesheet" type="text/css" href="/css/result-light.css">
 
+
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+

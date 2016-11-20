@@ -25,7 +25,7 @@ if(!$researcher_home->is_logged_in())
   $researcher_home->redirect('../../../login');
 }
 
-
+if(!isset($_GET['id'])){header("Location:../../../../404.php");}
 
 
 
@@ -50,7 +50,71 @@ $rowsqlnda = mysqli_fetch_array($sqlnda);
 
 <?php include("../../../header.php"); ?>
 
-       
+ 
+
+<script>
+jQuery(document).ready(function($){
+    
+    var canvas = document.getElementById("signature");
+    var signaturePad = new SignaturePad(canvas);
+    
+    $('#clear-signature').on('click', function(){
+        signaturePad.clear();
+    });
+ 
+$("#save-nda").click(function(){
+
+        var proceed = true;
+        
+        var projectid  = $('input[name=projectid').val();
+        var disclosure_party  = $('input[name=disclosure_party').val();
+        var researcher_sig_name  = $('input[name=researcher_sig_name').val();
+        var researcher_sig_title  = $('input[name=researcher_sig_title').val();
+        var researcher_sig_company  = $('input[name=researcher_sig_company').val();
+        var researcher_sig_date  = $('input[name=researcher_sig_date').val();
+
+        var dataURI = signaturePad.toDataURL("image/jpg")
+
+         if(researcher_sig_date == ''){ 
+             $("#researcher_sig_date").css('border-color','red'); //change border color to red 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a date! </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+
+         if(researcher_sig_name == ''){ 
+             $("#researcher_sig_name").css('border-color','red'); //change border color to red 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter your Full Name! </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+        if(disclosure_party == ''){ 
+             $("#disclosure_party").css('border-color','red'); //change border color to red 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter your name as the Disclosure Party! </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+
+       if(proceed) //everything looks good! proceed...
+        {  
+        $.ajax({
+            method: "POST",
+            url: "signatures/process.php",
+            data: { signature: dataURI, projectid: projectid, disclosure_party: disclosure_party, researcher_sig_name: researcher_sig_name,
+            researcher_sig_title: researcher_sig_title, researcher_sig_company: researcher_sig_company, researcher_sig_date: researcher_sig_date  }
+        })
+        .success(function( response ) {
+            output = '<div class="success">Successfully Saved!</div>';
+            $("#result").hide().html(output).slideDown();
+        });
+        }
+  });  
+
+});
+</script>      
 
 
     </head>
@@ -226,34 +290,7 @@ The parties are only allowed to use the confidential information for the above p
   </div>
 
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
 
-<script>
-jQuery(document).ready(function($){
-    
-    var canvas = document.getElementById("signature");
-    var signaturePad = new SignaturePad(canvas);
-    
-    $('#clear-signature').on('click', function(){
-        signaturePad.clear();
-    });
-    
-    $('.post-button').on('click', function(){
-        var dataURI = signaturePad.toDataURL("image/jpg")
-        
-        $.ajax({
-            method: "POST",
-            url: "signatures/process.php",
-            data: { signature: dataURI }
-        })
-        .success(function( response ) {
-            $('body').append(response);
-        });
-        
-    });
-    
-});
-</script>
 
 
         <!--/.fluid-container-->

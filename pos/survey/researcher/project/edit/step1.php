@@ -1649,7 +1649,7 @@ echo $row2['Interests'].'</li>';
 
 
               <div id="back">
-              <a href="step2.php?<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
+              <a href="nda/?id=<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
 
             </div>
 
