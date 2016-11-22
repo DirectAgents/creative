@@ -50,6 +50,7 @@ if($_POST['potentialansweraccepted'] == ''){$potentialansweraccepted = 'NULL';}e
 
 
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_researcher_project SET 
+  NDA = '".$_POST['nda']."',
   Name='".$projectname."',
   Stage='".$stage."',
   Category='".$category."',

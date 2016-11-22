@@ -190,13 +190,13 @@ The parties are only allowed to use the confidential information for the above p
 
 <p>&nbsp</p>
 
-<div style="float:left; width:100%"><label>Signature*:</label></div>
-<canvas id="signature" name="signature" width="250" height="150" style="border: 1px solid #ddd;"></canvas>
+<div style="float:left; width:100%"><label>Draw your Signature*:</label></div>
+<canvas id="signature" name="signature" width="250" height="100" style="border: 1px solid #ddd;"></canvas>
 <br>
 <button id="clear-signature">Clear</button>
 
 
-<p><div class="col-lg-12" style="padding-left:0px">
+<p><div class="col-lg-12" style="padding-left:0px"><div class="col-sm-2" style="padding-left:0px"><label>Signature*:</label></div>
 <div class="col-lg-2"><img src="<?php echo BASE_PATH; ?>/researcher/project/edit/nda/signatures/<?php echo $rowsqlnda['researcher_signature']; ?>"/>
 </div></div></p>
 

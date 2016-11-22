@@ -69,7 +69,7 @@ $religion=explode(',',$rowproject['Religion']);
 $education=explode(',',$rowproject['Education']);
 $job=explode(',',$rowproject['Job']);
 
-
+$nda=explode(',',$rowproject['NDA']);
 
 
 
@@ -237,6 +237,51 @@ $(document).ready(function() {
     
   </div>
 </div>
+
+
+<div id="white-container">
+      <div id="dashboardSurveyTargetingContainerLogic">
+
+
+
+
+
+ <div class="survey-info">
+
+   <div class="reach-people">
+              <h2>Do you want to require to sign an NDA?</h2>
+          
+           <div class="input-inline first">
+            <div class="wrapper">
+             
+              <div class="in-person">
+               <input id="public" name="nda[]" type="checkbox" value="Yes" <?php if(in_array('Yes',$nda)){echo "checked";}?> />
+               <label for="public">Yes</label>
+             </div>
+            </div>
+          </div>
+
+          <div class="input-inline">
+            <div class="wrapper">
+              <!--<h3>Select survey language:</h3>-->
+             <div class="in-person">
+               <input id="private" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda)){echo "checked";}?> />
+               <label for="private">No, not necessary</label>
+             </div>
+            </div>
+          </div>
+
+            </div>
+
+         
+          <div class="clearer"></div>
+
+
+ </div>
+ </div>
+ </div>
+
+<p>&nbsp;</p>
 
 
     <div id="white-container">

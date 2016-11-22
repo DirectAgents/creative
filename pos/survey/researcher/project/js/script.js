@@ -531,6 +531,8 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
 
         //get input field values
+        var nda = $('input[name="nda[]"]:checked').map(function () {return this.value;}).get().join(",");
+
         var projectid       = $('input[name=projectid]').val();
         var projectname       = $('input[name=projectname]').val();
         var stage = $("select[name='stage']").val();
@@ -717,7 +719,7 @@ $("textarea[name=MYFIELDNAME]").val();
 
           //$( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'gender':gender, 'minheight':minheight, 
+            post_data = {'nda':nda,'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'gender':gender, 'minheight':minheight, 
             'maxheight':maxheight, 'status':status,'ethnicity':ethnicity,
             'smoke':smoke,'drink':drink,'diet':diet,'religion':religion,'education':education,'job':job,
             'interest':interest, 'screening':screening,'screeningquestion':screeningquestion, 'potentialanswer1':potentialanswer1 , 'potentialanswer2':potentialanswer2,'potentialanswer3':potentialanswer3,
