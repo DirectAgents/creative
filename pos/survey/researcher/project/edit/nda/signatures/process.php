@@ -6,6 +6,11 @@ require_once '../../../../../config.php';
 
 if($_POST){
 
+$date = new DateTime($_POST['researcher_sig_date']);
+$researcher_sig_date =  $date->format('Y-m-d');
+
+	
+
 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID='".$_POST['projectid']."'");
 
 if(mysqli_num_rows($sql)>0)
@@ -32,7 +37,7 @@ $signature = $random.'.png';
   researcher_sig_name = '".$_POST['researcher_sig_name']."',
   researcher_sig_title = '".$_POST['researcher_sig_title']."',
   researcher_sig_company = '".$_POST['researcher_sig_company']."',
-  researcher_sig_date = '".$_POST['researcher_sig_date']."',
+  researcher_sig_date = '".$researcher_sig_date."',
   researcherID='".$_SESSION['researcherSession']."'
 
  
@@ -46,7 +51,7 @@ $signature = $random.'.png';
   researcher_sig_name = '".$_POST['researcher_sig_name']."',
   researcher_sig_title = '".$_POST['researcher_sig_title']."',
   researcher_sig_company = '".$_POST['researcher_sig_company']."',
-  researcher_sig_date = '".$_POST['researcher_sig_date']."',
+  researcher_sig_date = '".$researcher_sig_date."',
   researcherID='".$_SESSION['researcherSession']."'
 
  
@@ -82,13 +87,18 @@ file_put_contents($random.'.png', $data);
 $signature = $random.'.png';
 
 
+
+
+
+
+
    $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda (`researcherID`, `ProjectID`,`researcher_signature` ,`researcher_sig_name`, `researcher_sig_title`, `researcher_sig_company`, `researcher_sig_date` ) VALUES ('".$_SESSION['researcherSession']."', '".$_POST['projectid']."',
-      '".$signature."','".$_POST['researcher_sig_name']."', '".$_POST['researcher_sig_title']."', '".$_POST['researcher_sig_company']."', '".$_POST['researcher_sig_date']."')");
+      '".$signature."','".$_POST['researcher_sig_name']."', '".$_POST['researcher_sig_title']."', '".$_POST['researcher_sig_company']."', '".$researcher_sig_date."')");
 
 }else{
 
    $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda (`researcherID`, `ProjectID`, `researcher_sig_name`, `researcher_sig_title`, `researcher_sig_company`, `researcher_sig_date` ) VALUES ('".$_SESSION['researcherSession']."', '".$_POST['projectid']."',
-      '".$_POST['researcher_sig_name']."', '".$_POST['researcher_sig_title']."', '".$_POST['researcher_sig_company']."', '".$_POST['researcher_sig_date']."')");
+      '".$_POST['researcher_sig_name']."', '".$_POST['researcher_sig_title']."', '".$_POST['researcher_sig_company']."', '".$researcher_sig_date."')");
 
 
 }

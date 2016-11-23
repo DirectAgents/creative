@@ -14,7 +14,7 @@
         <link href="<?php echo BASE_PATH; ?>/css/font-awesome.css" rel="stylesheet" media="screen">
 
 
-
+<link rel="stylesheet" href="<?php echo BASE_PATH; ?>/demo-files/demo.css">
 
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,700,300" rel="stylesheet" type="text/css">
 

@@ -376,14 +376,18 @@ echo '<img src="../projects/uploads/thumbnail.jpg" width="100">';
                     </div>
                     <div class="edit-delete">
                       <a href="<?php echo BASE_PATH; ?>/researcher/project/edit/step1.php?id=<?php echo $row2['ProjectID']; ?>">
-                        <i class="icon-edit"></i>Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
+                  <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
                    <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_open">
-                      <i class="icon-trash"></i>Delete</a>
+                      <i class="icon icon-bin"></i>Delete</a>
                     
                     </div>  
                    
                   </div>
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?></div>
+
+                  
+
+
+                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?> (  <a href="#" alt="<?php if($row2['ProjectStatus'] == 'Public'){ ?>This project is set to Public. <?php } ?><?php if($row2['ProjectStatus'] == 'Private'){ ?>This project is set to Private. <?php } ?>" class="tooltiptext"><i class="icon <?php if($row2['ProjectStatus'] == 'Public'){ ?>icon-unlocked<?php } ?> <?php if($row2['ProjectStatus'] == 'Private'){ ?>icon-lock <?php } ?>"></i></a>)</div>
                   <div class="survey-metadata">
                     <div class="item ">
                       <div class="label">Created:</div>
@@ -424,6 +428,15 @@ echo "</a>";
                   </div>
                   <div class="survey-actions">
                   
+                <!--
+                <div class="status_request">Status: 
+
+                  Project is <?php echo $row2['ProjectStatus']; ?>
+                
+                    
+
+                  </div>-->
+
                       
                   <div class="action" tabindex="0" aria-hidden="false">
                         

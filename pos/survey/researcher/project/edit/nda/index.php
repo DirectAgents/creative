@@ -50,19 +50,50 @@ $rowsqlnda = mysqli_fetch_array($sqlnda);
 
 <?php include("../../../header.php"); ?>
 
+
+ <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#researcher_sig_date" ).datepicker();
+  } );
+  </script>
+
+
+
  
 
 <script>
+
+
 jQuery(document).ready(function($){
     
+
+
+
+function isCanvasBlank(canvas) {
+    var blank = document.createElement('canvas');
+    blank.width = canvas.width;
+    blank.height = canvas.height;
+
+    return canvas.toDataURL() == blank.toDataURL();
+}
+
+
     var canvas = document.getElementById("signature");
     var signaturePad = new SignaturePad(canvas);
+    
+
+
     
     $('#clear-signature').on('click', function(){
         signaturePad.clear();
     });
  
 $("#save-nda").click(function(){
+
+
+
 
         var proceed = true;
         
@@ -73,7 +104,19 @@ $("#save-nda").click(function(){
         var researcher_sig_company  = $('input[name=researcher_sig_company').val();
         var researcher_sig_date  = $('input[name=researcher_sig_date').val();
 
-        var dataURI = signaturePad.toDataURL("image/jpg")
+        
+
+    var blank = isCanvasBlank(document.getElementById('signature'));
+     if (blank) {
+        var dataURI = '';
+    }else{
+
+      var dataURI = signaturePad.toDataURL("image/jpg")
+    }
+
+
+
+
 
          if(researcher_sig_date == ''){ 
              $("#researcher_sig_date").css('border-color','red'); //change border color to red 
@@ -215,7 +258,17 @@ The parties are only allowed to use the confidential information for the above p
 
 <br>
 <p><div class="col-lg-12" style="padding-left:0px"><div class="col-lg-2" style="padding-left:0px"><label>Date*:</label></div>
-<div class="col-lg-2"><input type="text" style="width:250px" name="researcher_sig_date" id="researcher_sig_date" placeholder="Today's Date" value="<?php echo $rowsqlnda['researcher_sig_date']; ?>" /></div></div></p>
+<div class="col-lg-2">
+
+ <?php
+$date = new DateTime($rowsqlnda['researcher_sig_date']);
+$thedate =  $date->format('m/d/Y');
+    ?>
+
+<input type="text" style="width:250px" name="researcher_sig_date" id="researcher_sig_date" placeholder="Today's Date" value="<?php echo $thedate; ?>" />
+
+
+</div></div></p>
 
 <p>&nbsp;</p>
 

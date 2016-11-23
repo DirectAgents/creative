@@ -271,6 +271,12 @@ $(document).ready(function() {
             </div>
           </div>
 
+           <div id="back">
+              <a href="nda/?id=<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
+
+            </div>
+
+
             </div>
 
          
@@ -1693,11 +1699,7 @@ echo $row2['Interests'].'</li>';
             </div>
 
 
-              <div id="back">
-              <a href="nda/?id=<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
-
-            </div>
-
+             
                     <div class="clearer"></div>
 
 
