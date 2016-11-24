@@ -1,7 +1,7 @@
 <?php //echo $_POST['signature']; 
 
 session_start();
-require_once '../../../../../config.php';
+require_once '../../../../config.php';
 
 
 if($_POST){
@@ -34,6 +34,7 @@ $signature = $random.'.png';
   
   ProjectID = '".$_POST['projectid']."',
   researcher_signature = '".$signature."',
+  researcher_name = '".$_POST['disclosure_party']."',
   researcher_sig_name = '".$_POST['researcher_sig_name']."',
   researcher_sig_title = '".$_POST['researcher_sig_title']."',
   researcher_sig_company = '".$_POST['researcher_sig_company']."',
@@ -48,6 +49,7 @@ $signature = $random.'.png';
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_nda SET 
   
   ProjectID = '".$_POST['projectid']."',
+  researcher_name = '".$_POST['disclosure_party']."',
   researcher_sig_name = '".$_POST['researcher_sig_name']."',
   researcher_sig_title = '".$_POST['researcher_sig_title']."',
   researcher_sig_company = '".$_POST['researcher_sig_company']."',
@@ -92,12 +94,12 @@ $signature = $random.'.png';
 
 
 
-   $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda (`researcherID`, `ProjectID`,`researcher_signature` ,`researcher_sig_name`, `researcher_sig_title`, `researcher_sig_company`, `researcher_sig_date` ) VALUES ('".$_SESSION['researcherSession']."', '".$_POST['projectid']."',
+   $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda (`researcherID`, `ProjectID`, `researcher_name` ,`researcher_signature` ,`researcher_sig_name`, `researcher_sig_title`, `researcher_sig_company`, `researcher_sig_date` ) VALUES ('".$_SESSION['researcherSession']."', '".$_POST['projectid']."','".$_POST['disclosure_party']."',
       '".$signature."','".$_POST['researcher_sig_name']."', '".$_POST['researcher_sig_title']."', '".$_POST['researcher_sig_company']."', '".$researcher_sig_date."')");
 
 }else{
 
-   $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda (`researcherID`, `ProjectID`, `researcher_sig_name`, `researcher_sig_title`, `researcher_sig_company`, `researcher_sig_date` ) VALUES ('".$_SESSION['researcherSession']."', '".$_POST['projectid']."',
+   $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda (`researcherID`, `ProjectID`, `researcher_name` ,`researcher_sig_name`, `researcher_sig_title`, `researcher_sig_company`, `researcher_sig_date` ) VALUES ('".$_SESSION['researcherSession']."', '".$_POST['projectid']."', '".$_POST['disclosure_party']."' ,
       '".$_POST['researcher_sig_name']."', '".$_POST['researcher_sig_title']."', '".$_POST['researcher_sig_company']."', '".$researcher_sig_date."')");
 
 

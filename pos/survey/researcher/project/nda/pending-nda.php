@@ -1,213 +1,53 @@
 <?php
+
 session_start();
-require_once '../../../../base_path.php';
-
-
-require_once '../../../../class.participant.php';
-require_once '../../../../class.researcher.php';
-require_once '../../../../config.php';
-require_once '../../../../config.inc.php';
-
-
+require_once '../../../base_path.php';
+require_once '../../../class.participant.php';
+require_once '../../../class.researcher.php';
+require_once '../../../config.php';
+require_once '../../../config.inc.php';
 $participant_home = new PARTICIPANT();
-
 if($participant_home->is_logged_in())
 {
   $participant_home->logout();
 }
-
-
-
 $researcher_home = new RESEARCHER();
-
 if(!$researcher_home->is_logged_in())
 {
   $researcher_home->redirect('../../../login');
 }
-
 if(!isset($_GET['id'])){header("Location:../../../../404.php");}
-
-
-
 $stmt = $researcher_home->runQuery("SELECT * FROM tbl_researcher WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['researcherSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
 $sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID = '".$_GET['id']."' ");
 $rowsqlnda = mysqli_fetch_array($sqlnda);
+
+
 
 
 ?>
 
 
 
-<!DOCTYPE html>
-<html lang="en" id="features" class="tablet mobile">
-    
-    <head>
-
-
-
-<?php include("../../../header.php"); ?>
-
 
  <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
+
     $( "#researcher_sig_date" ).datepicker();
   } );
   </script>
 
 
-
- 
-
-<script>
-
-
-jQuery(document).ready(function($){
-    
-
-
-
-function isCanvasBlank(canvas) {
-    var blank = document.createElement('canvas');
-    blank.width = canvas.width;
-    blank.height = canvas.height;
-
-    return canvas.toDataURL() == blank.toDataURL();
-}
-
-
-    var canvas = document.getElementById("signature");
-    var signaturePad = new SignaturePad(canvas);
-    
-
-
-    
-    $('#clear-signature').on('click', function(){
-        signaturePad.clear();
-    });
- 
-$("#save-nda").click(function(){
-
-
-
-
-        var proceed = true;
-        
-        var projectid  = $('input[name=projectid').val();
-        var disclosure_party  = $('input[name=disclosure_party').val();
-        var researcher_sig_name  = $('input[name=researcher_sig_name').val();
-        var researcher_sig_title  = $('input[name=researcher_sig_title').val();
-        var researcher_sig_company  = $('input[name=researcher_sig_company').val();
-        var researcher_sig_date  = $('input[name=researcher_sig_date').val();
-
-        
-
-    var blank = isCanvasBlank(document.getElementById('signature'));
-     if (blank) {
-        var dataURI = '';
-    }else{
-
-      var dataURI = signaturePad.toDataURL("image/jpg")
-    }
-
-
-
-
-
-         if(researcher_sig_date == ''){ 
-             $("#researcher_sig_date").css('border-color','red'); //change border color to red 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a date! </div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-
-         if(researcher_sig_name == ''){ 
-             $("#researcher_sig_name").css('border-color','red'); //change border color to red 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter your Full Name! </div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-        if(disclosure_party == ''){ 
-             $("#disclosure_party").css('border-color','red'); //change border color to red 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter your name as the Disclosure Party! </div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-
-       if(proceed) //everything looks good! proceed...
-        {  
-        $.ajax({
-            method: "POST",
-            url: "signatures/process.php",
-            data: { signature: dataURI, projectid: projectid, disclosure_party: disclosure_party, researcher_sig_name: researcher_sig_name,
-            researcher_sig_title: researcher_sig_title, researcher_sig_company: researcher_sig_company, researcher_sig_date: researcher_sig_date  }
-        })
-        .success(function( response ) {
-            output = '<div class="success">Successfully Saved!</div>';
-            $("#result").hide().html(output).slideDown();
-        });
-        }
-  });  
-
-});
-</script>      
-
-
-    </head>
-    
-    <body>
-
-<!--TopNav-->
-         <header id="main-header" class='transparent'>
-  <div class="inner-col">
-   
-
-
-<?php include("../../../../nav.php"); ?>
-
-   
-  </div>
-</header>
-
-
-<!--TopNav-->
-
-
-
- <div class="clearer"></div>
-
-
-<!-- Main -->
-
-   <div class="container">
-
-
-<div class="row-fluid">
-  <div class="span12">
-
-
- 
-      
-      <div id="dashboardSurveyTargetingContainerLogic">
-
-
-
-<div id="white-container">
- <div class="therow">
+<div class="therow">
     <div class="col-lg-12">
 
 
 <div ng-include="'agreements/edit/_' + view + '.html'" class=""><div id="edit" class="edit" ng-controller="EditController">
   <!-- ngInclude: 'edit.html' --><div ng-include="'edit.html'" class=""><!-- ngInclude: 'subnav.html' --><div class="subnav" ng-include="'subnav.html'" ng-controller="SubnavController"><!-- ngIf: displaySubnav -->
 </div>
-<h1>Non-Disclosure Agreement</h1>
+<h1>111Non-Disclosure Agreement</h1>
 <div class="edit-terms" contenteditable="true"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Disclosure Party" value="Franz Peter"></span> and <span contenteditable="false"><input type="text" name="recipient_party" placeholder="Recipient Party" disabled></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
 <textarea name="purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="Purpose of disclosure"></textarea>
 The parties are only allowed to use the confidential information for the above purpose.
@@ -284,15 +124,6 @@ $thedate =  $date->format('m/d/Y');
             </div>
 </div>
 
-<p>&nbsp;</p>
-
-<div class="col-lg-12" style="padding-left:0px">
-             <div id="result"></div>
-</div>
-
-  </div>
- </div> 
-</div>
 
 
 
@@ -300,66 +131,9 @@ $thedate =  $date->format('m/d/Y');
 
 
 
-
-
-
-
-
-<div class="clearer"></div>
-
-       
-        
-
-
-
-
-
-     
-
+      
           
-      </div>
-
-    
-
-                    <div class="clearer"></div>
-
-
-            
-
-
-          </div>
-
-      <div class="clearer"></div>
-
-
-  
-
-       </div>
-  <?php include("../../../../footer.php"); ?>
-  </div>
-
-    </div>
-
-    <div class="clearer"></div>
-
- 
-
-  </div>
 
 
 
 
-
-        <!--/.fluid-container-->
-        <script src="<?php echo BASE_PATH; ?>/bootstrap/js/bootstrap.min.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/assets/scripts.js"></script>
-
-
-
-
-
-
-        
-    </body>
-
-</html>
