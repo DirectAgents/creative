@@ -49,31 +49,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $Project = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."'");
 $rowproject = mysqli_fetch_array($Project);
 
-$meetupchoice=explode(',',$rowproject['Meetupchoice']);
-$age=explode(',',$rowproject['Age']);
-$gender=explode(',',$rowproject['Gender']);
-$minheight=explode(',',$rowproject['MinHeight']);
-$maxheight=explode(',',$rowproject['MaxHeight']);
-$city=explode(',',$rowproject['City']);
-$status=explode(',',$rowproject['Status']);
-$ethnicity=explode(',',$rowproject['Ethnicity']);
-$smoke=explode(',',$rowproject['Smoke']);
-$drink=explode(',',$rowproject['Drink']);
-$diet=explode(',',$rowproject['Diet']);
-$religion=explode(',',$rowproject['Religion']);
-$education=explode(',',$rowproject['Education']);
-$job=explode(',',$rowproject['Job']);
-
-
-
-
-
-$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_potentialanswers WHERE userID='".$_SESSION['researcherSession']."'");
-$rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
-
-$screening=explode(',',$rowpotentialanswers['ScreeningQuestion']);
-
-$potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 ?>
 
@@ -101,7 +76,7 @@ $(document).ready(function() {
   var track_click = 0; //track user click on "load more" button, righ now it is 0 click
   
   var total_pages = <?php echo $total_pages; ?>;
-  $('#results').load("fetch_pages.php?id="+<?php echo $_GET['id']; ?>, {'page':track_click}, function(data) {track_click++;}); //initial data to load
+  $('#results').load("fetch_pages.php", {'page':track_click}, function(data) {track_click++;}); //initial data to load
 
 
 

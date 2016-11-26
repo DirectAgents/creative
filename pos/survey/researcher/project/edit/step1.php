@@ -82,6 +82,11 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 
 
+$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE researcherID='".$_SESSION['researcherSession']."' AND
+  ProjectID = '".$_GET['id']."'");
+
+$rownda = mysqli_fetch_array($sqlnda);
+
 
 ?>
 
@@ -272,7 +277,16 @@ $(document).ready(function() {
           </div>
 
            <div id="back">
-              <a href="nda/?id=<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
+
+<?php if(isset($rownda['ProjectID'])){ ?>
+
+              <a href="<?php echo BASE_PATH; ?>/researcher/project/nda/?id=<?php echo $_SESSION['projectid']; ?>">Edit Non-Disclosure Agreement</a>
+
+<?php  }else{ ?>
+  
+ <a href="<?php echo BASE_PATH; ?>/researcher/project/nda/create/?id=<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
+
+<?php } ?>
 
             </div>
 

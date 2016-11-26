@@ -26,6 +26,10 @@ if(!$researcher_home->is_logged_in())
 }
 
 
+$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE researcherID='".$_SESSION['researcherSession']."'");
+
+$rownda = mysqli_fetch_array($sqlnda);
+
 
 ?>
 
@@ -247,38 +251,36 @@ function getParameterByName(name, url) {
 }
 
 
-var p = getParameterByName('p');
-
-if(p == 'past-meetings'){
-$('.past-meetings').click();
-$( "#past-meetings" ).load( "past-meetings.php" );
-}
 
 
 
-$( "#create-nda" ).load( "create-nda.php?id="+<?php echo $_GET['id']; ?> );
+
+$( "#drafted-nda" ).load( "drafted-nda/" );
 
    
-     $(".create-nda").click(function() {  
-     $( "#create-nda" ).noConflict();
+    
+
+    $(".drafted-nda").click(function() {  
+    
       //$( "#upcoming-meetings" ).load( "send-payment.php" );
-      $( "#create-nda" ).load( "create-nda.php?id="+<?php echo $_GET['id']; ?> );
+      $( "#drafted-nda" ).load( "drafted-nda/");
       
       
     });
 
 
+
     $(".signed-nda").click(function() {  
      
       //$( "#upcoming-meetings" ).load( "send-payment.php" );
-      $( "#signed-nda" ).load( "signed-nda.php?id="+<?php echo $_GET['id']; ?> );
+      $( "#signed-nda" ).load( "signed-nda/");
       
       
     });
 
     $(".pending-nda").click(function() {  
 
-      $( "#pending-nda" ).load( "pending-nda.php" );
+      $( "#pending-nda" ).load( "pending-nda/");
       
 
     });
@@ -305,13 +307,14 @@ $( "#create-nda" ).load( "create-nda.php?id="+<?php echo $_GET['id']; ?> );
 <div id="tabs">
 
  <ul>
-    <li><a href="#create-nda" class="create-nda">Create NDA</a></li>
-    <li>&nbsp;</li>
-    <li><a href="#signed-nda" class="signed-nda">Signed NDA</a></li>
+  
+    <li><a href="#drafted-nda" class="drafted-nda">Drafted NDA</a></li>
+
     <li>&nbsp;</li>
     <li><a href="#pending-nda" class="pending-nda">Pending NDA</a></li>
+    <li>&nbsp;</li>
+     <li><a href="#signed-nda" class="signed-nda">Signed NDA</a></li>
   </ul>  
-
 
 
 
@@ -320,8 +323,8 @@ $( "#create-nda" ).load( "create-nda.php?id="+<?php echo $_GET['id']; ?> );
 
 
 
-<div id="create-nda" class="tabContent" > </div>
 
+<div id="drafted-nda" class="tabContent" ></div>
 
 <div id="signed-nda" class="tabContent" > </div>
 
