@@ -18,8 +18,8 @@ if(!empty($_POST['ratingPoints'])){
         $update = $db->query($query);
     else:
         //Insert rating data into the database
-        $query = "INSERT INTO participant_rating (researcher_id, post_id,rating_number,total_points,created,modified) VALUES(
-    '".$_SESSION['researcherSession']."',".$postID.",'".$ratingNum."','".$ratingPoints."','".date("Y-m-d H:i:s")."','".date("Y-m-d H:i:s")."')";
+        $query = "INSERT INTO participant_rating (startup_id, post_id,rating_number,total_points,created,modified) VALUES(
+    '".$_SESSION['startupSession']."',".$postID.",'".$ratingNum."','".$ratingPoints."','".date("Y-m-d H:i:s")."','".date("Y-m-d H:i:s")."')";
         $insert = $db->query($query);
     endif;
     

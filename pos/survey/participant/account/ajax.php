@@ -52,7 +52,7 @@ if( isset( $_POST['image_upload'] ) && !empty( $_POST['images'] )){
 		thumbnail($src, $dist, 200);
 		
 
-$sql2 = "SELECT * FROM participant_profile_images WHERE userID='".$_SESSION['researcherSession']."'";
+$sql2 = "SELECT * FROM participant_profile_images WHERE userID='".$_SESSION['startupSession']."'";
 $result=mysql_query($sql2);
 $row=mysql_fetch_array($result);
 
@@ -63,7 +63,7 @@ if(mysql_num_rows($result)>0)
   original_image='".$name."',
   thumbnail_image='".$thumbnail."',
   ip_address='".$ip."'
-  WHERE userID='".$_SESSION['researcherSession']."'";
+  WHERE userID='".$_SESSION['startupSession']."'";
   mysql_query($update_sql);
 
 
@@ -71,7 +71,7 @@ if(mysql_num_rows($result)>0)
 	}else{
 
 
-		$sql="INSERT INTO participant_profile_images (`id`,`userID`,`original_image`, `thumbnail_image`, `ip_address`) VALUES (NULL, '".$_SESSION['researcherSession']."' ,'$name','$thumbnail', '$ip');";
+		$sql="INSERT INTO participant_profile_images (`id`,`userID`,`original_image`, `thumbnail_image`, `ip_address`) VALUES (NULL, '".$_SESSION['startupSession']."' ,'$name','$thumbnail', '$ip');";
 		mysql_query($sql);
 
 	}	

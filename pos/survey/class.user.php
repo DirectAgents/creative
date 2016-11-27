@@ -31,7 +31,7 @@ class USER
 		try
 		{							
 			$password = md5($upass);
-			$stmt = $this->conn->prepare("INSERT INTO tbl_researcher(FirstName,LastName,userEmail,userPass,tokenCode) 
+			$stmt = $this->conn->prepare("INSERT INTO tbl_startup(FirstName,LastName,userEmail,userPass,tokenCode) 
 			                                             VALUES(:first_name, :last_name, :user_mail, :user_pass, :active_code)");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
@@ -51,7 +51,7 @@ class USER
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT * FROM tbl_researcher WHERE userEmail=:email_id");
+			$stmt = $this->conn->prepare("SELECT * FROM tbl_startup WHERE userEmail=:email_id");
 			$stmt->execute(array(":email_id"=>$email));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			

@@ -1,21 +1,21 @@
 <?php
    session_start();
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 include_once("../../../config.php");
 
     // WePay PHP SDK - http://git.io/mY7iQQ
     require '../../wepay.php';
 
 
-$researcher_home = new RESEARCHER();
+$startup_home = new STARTUP();
 
-if(!$researcher_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $researcher_home->redirect('../../../login.php');
+  $startup_home->redirect('../../../login.php');
 }
 
-$stmt = $researcher_home->runQuery("SELECT * FROM tbl_researcher WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['researcherSession']));
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
@@ -43,17 +43,17 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     print_r($response);
 
 
-    $update_sql = "UPDATE tbl_researcher SET 
+    $update_sql = "UPDATE tbl_startup SET 
   cc_last_four='".$response -> last_four."',
   cc_name='".$response -> credit_card_name."'
 
-  WHERE userID='".$_SESSION['researcherSession']."'";
+  WHERE userID='".$_SESSION['startupSession']."'";
 
 
    mysql_query($update_sql);
 
 
-   header("Location:http://localhost/survey/researcher/payment/");
+   header("Location:http://localhost/survey/startup/payment/");
 
 
     

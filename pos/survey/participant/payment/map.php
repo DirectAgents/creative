@@ -1,5 +1,5 @@
 <?php
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 include_once("../../../config.php");
 include("../../../config.inc.php");
 ?>

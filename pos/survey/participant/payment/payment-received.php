@@ -61,7 +61,7 @@ if($row_participant['account_id'] != '') {
 
 if (isset($error)){
     echo htmlspecialchars($error);
-    //header("Location:http://localhost/survey/researcher/payment/?error=".htmlspecialchars($error)."#credit-card");
+    //header("Location:http://localhost/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
     }else{
 
 //print_r($checkout);
@@ -159,7 +159,7 @@ $sql="SELECT * FROM wepay WHERE account_id = '".$row_participant['account_id']."
 $result2=mysql_query($sql);
 while($row2 = mysql_fetch_array($result2)){
 
-$sql3="SELECT * FROM tbl_researcher WHERE userID = '".$row2['researcher_id']."'";
+$sql3="SELECT * FROM tbl_startup WHERE userID = '".$row2['startup_id']."'";
 $result3=mysql_query($sql3);
 $row3 = mysql_fetch_array($result3);
 

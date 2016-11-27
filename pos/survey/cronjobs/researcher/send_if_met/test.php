@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 include_once("../../../config.php");
 include("../../../config.inc.php");
 
@@ -16,23 +16,23 @@ $row = mysql_fetch_array($results);
 echo "Date: ";
 echo $row['Date_of_Meeting'];
 echo "<br>";
-echo "researcherID: ";
-echo $row['researcherID'];
+echo "startupID: ";
+echo $row['startupID'];
 echo $row['ProjectID'];
 
 
 $date = date_create($row[0]);
 
 
-$researcher = mysql_query("SELECT * FROM tbl_researcher WHERE userID = '".$row['researcherID']."'");
-$row2 = mysql_fetch_array($researcher);
+$startup = mysql_query("SELECT * FROM tbl_startup WHERE userID = '".$row['startupID']."'");
+$row2 = mysql_fetch_array($startup);
 
 $participant = mysql_query("SELECT * FROM tbl_participant WHERE userID = '".$row['userID']."'");
 $row3 = mysql_fetch_array($participant);
 
 
-$researcher_project = mysql_query("SELECT * FROM tbl_researcher_project WHERE ProjectID = '".$row['ProjectID']."'");
-$row4 = mysql_fetch_array($researcher_project);
+$startup_project = mysql_query("SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row['ProjectID']."'");
+$row4 = mysql_fetch_array($startup_project);
 
 
 echo $row2['userEmail'];

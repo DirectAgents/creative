@@ -1,29 +1,29 @@
 <?php
 session_start();
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 include_once("../../../config.php");
 
-$researcher_home = new RESEARCHER();
+$startup_home = new startup();
 
-if(!$researcher_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $researcher_home->redirect('login.php');
+  $startup_home->redirect('login.php');
 }
 
 
 
 
 
-$stmt = $researcher_home->runQuery("SELECT * FROM tbl_researcher WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['researcherSession']));
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-//echo $_SESSION['researcherSession'];
+//echo $_SESSION['startupSession'];
 //echo $_SESSION['projectid'];
 
 
-$Project = mysql_query("SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."'
+$Project = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."'
   AND ProjectID= '".$_SESSION['projectid']."'");
 $rowproject = mysql_fetch_array($Project);
 
@@ -48,7 +48,7 @@ $projectstatus=explode(',',$rowproject['ProjectStatus']);
 
 
 
-$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_researcher_potentialanswers WHERE userID='".$_SESSION['researcherSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
+$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
 $rowpotentialanswers = mysql_fetch_array($ProjectPotentialanswers);
 
 $screening=explode(',',$rowpotentialanswers['Screening']);
@@ -427,7 +427,7 @@ echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">
 
 
 //MySQL query
-$Result = mysql_query("SELECT * FROM tbl_researcher_interests WHERE ProjectID = '".$_SESSION['projectid']."' ");
+$Result = mysql_query("SELECT * FROM tbl_startup_interests WHERE ProjectID = '".$_SESSION['projectid']."' ");
 
 
 

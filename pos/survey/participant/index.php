@@ -12,14 +12,14 @@ require_once '../base_path.php';
 
 if(isset($_SESSION['p'])){
 
-$sql_project="SELECT * FROM tbl_researcher_project WHERE ProjectID = '".$_SESSION['p']."'";
+$sql_project="SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_SESSION['p']."'";
 $result_project=mysql_query($sql_project);
 
 
-$sql_project = mysql_query("SELECT * FROM tbl_researcher_project WHERE ProjectID = '".$_SESSION['p']."'");
+$sql_project = mysql_query("SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_SESSION['p']."'");
 $row_project = mysql_fetch_array($sql_project);
 
-header("Location:../projects/".$row_project['Category']."/?id=".$row_project['ProjectID']."");
+header("Location:../ideas/".$row_project['Category']."/?id=".$row_project['ProjectID']."");
 
 }
 
@@ -125,7 +125,7 @@ $(document).ready(function(){
 
 
 
-<link rel="stylesheet" href="<?php echo BASE_PATH; ?>/researcher/project/css/jquery-ui.css">
+<link rel="stylesheet" href="<?php echo BASE_PATH; ?>/startup/project/css/jquery-ui.css">
   <script>
   $(function() {
     $( "#tabs" ).tabs({
@@ -219,7 +219,7 @@ $(document).ready(function(){
 
 
 //MySQL query
-//$Result = mysql_query("SELECT * FROM tbl_researcher_project WHERE researcherID = '".$_SESSION['researcherSession']."' ORDER BY id DESC ");
+//$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
 
 
@@ -253,7 +253,7 @@ while($row2 = mysql_fetch_array($result))
 { 
 
 
-$sql3 = mysql_query("SELECT * FROM tbl_researcher_project WHERE ProjectID = '".$row2['ProjectID']."' ");
+$sql3 = mysql_query("SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row2['ProjectID']."' ");
 $row3 = mysql_fetch_array($sql3);
 
 
@@ -366,7 +366,7 @@ $(document).ready(function () {
 });
 </script>
 
-<a href="<?php echo BASE_PATH; ?>/projects/<?php echo $row3['Category']; ?>/?id=<?php echo $row3['ProjectID']; ?>">
+<a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row3['Category']; ?>/?id=<?php echo $row3['ProjectID']; ?>">
 
 <div class="surveys-list">
 
@@ -377,15 +377,15 @@ $(document).ready(function () {
 
 <?php 
 
-$ProjectImage = mysql_query("SELECT * FROM tbl_researcher_project WHERE ProjectID = '".$row2['ProjectID']."'");
+$ProjectImage = mysql_query("SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row2['ProjectID']."'");
 $rowprojectimage = mysql_fetch_array($ProjectImage);
 
 if($rowprojectimage['project_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/projects/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
 
 <?php }else{
-echo '<img src="../projects/uploads/thumbnail.jpg" width="100">'; 
+echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">'; 
 }
 
 
@@ -492,7 +492,7 @@ echo '<img src="../projects/uploads/thumbnail.jpg" width="100">';
 
 
 //MySQL query
-//$Result = mysql_query("SELECT * FROM tbl_researcher_project WHERE researcherID = '".$_SESSION['researcherSession']."' ORDER BY id DESC ");
+//$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
 
 
@@ -526,7 +526,7 @@ while($row4 = mysql_fetch_array($result))
 { 
 
 
-$sql5 = mysql_query("SELECT * FROM tbl_researcher_project WHERE ProjectID = '".$row4['ProjectID']."' ");
+$sql5 = mysql_query("SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row4['ProjectID']."' ");
 $row5 = mysql_fetch_array($sql5);
 
 
@@ -741,7 +741,7 @@ $(".accept"+<?php echo $row5['ProjectID']; ?>).click(function() {
 });
 </script>
 
-<a href="<?php echo BASE_PATH; ?>/projects/<?php echo $row5['Category']; ?>/?id=<?php echo $row5['ProjectID']; ?>">
+<a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row5['Category']; ?>/?id=<?php echo $row5['ProjectID']; ?>">
 
 <div class="surveys-list">
 
@@ -752,15 +752,15 @@ $(".accept"+<?php echo $row5['ProjectID']; ?>).click(function() {
 
 <?php 
 
-$ProjectImage = mysql_query("SELECT * FROM tbl_researcher_project WHERE ProjectID = '".$row5['ProjectID']."'");
+$ProjectImage = mysql_query("SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row5['ProjectID']."'");
 $rowprojectimage = mysql_fetch_array($ProjectImage);
 
 if($rowprojectimage['project_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/projects/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
 
 <?php }else{
-echo '<img src="../projects/uploads/thumbnail.jpg" width="100">'; 
+echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">'; 
 }
 
 
@@ -810,7 +810,7 @@ echo '<img src="../projects/uploads/thumbnail.jpg" width="100">';
                         <a href="#" role="button" class="slide-delete-<?php echo $row5['ProjectID']; ?>_open">
                       <i class="icon-trash"></i>Withdraw from Participation</a>
 
-                     <?php if($row4['Requested_By'] == 'Researcher'){ ?>
+                     <?php if($row4['Requested_By'] == 'startup'){ ?>
                      &nbsp; | &nbsp; 
                      <a href="#" role="button" class="slide-accept-<?php echo $row5['ProjectID']; ?>_open">
                       <i class="icon-trash"></i>Accept to Participate</a>

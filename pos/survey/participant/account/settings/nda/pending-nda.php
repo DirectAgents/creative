@@ -125,7 +125,7 @@ while($row = mysqli_fetch_array($sql))
 $sql2=mysqli_query($connecDB,"SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND refundrequest = 'yes' AND refunded = '' ORDER BY id DESC ");
 while($row2 = mysqli_fetch_array($sql2)){
 
-$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_researcher WHERE userID = '".$row2['researcher_id']."'");
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startup_id']."'");
 $row3 = mysqli_fetch_array($sql3);
 
 

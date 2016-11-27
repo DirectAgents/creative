@@ -4,16 +4,16 @@ require_once '../../base_path.php';
 
 
 require_once '../../class.participant.php';
-require_once '../../class.researcher.php';
+require_once '../../class.startup.php';
 require_once '../../config.php';
 require_once '../../config.inc.php';
 
 
-$researcher_home = new RESEARCHER();
+$startup_home = new STARTUP();
 
-if($researcher_home->is_logged_in())
+if($startup_home->is_logged_in())
 {
-  $researcher_home->logout();
+  $startup_home->logout();
 }
 
 
@@ -27,7 +27,7 @@ if(!$participant_home->is_logged_in())
 
 
 $get_total_rows = 0;
-$results = $mysqli->query("SELECT COUNT(*) FROM tbl_researcher_project");
+$results = $mysqli->query("SELECT COUNT(*) FROM tbl_startup_project");
 if($results){
 $get_total_rows = $results->fetch_row(); 
 }

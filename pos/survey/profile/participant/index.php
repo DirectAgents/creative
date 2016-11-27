@@ -11,15 +11,15 @@ require_once '../../base_path.php';
 include("../../config.php"); //include config file
 include("../../config.inc.php");
 require_once '../../class.participant.php';
-require_once '../../class.researcher.php';
+require_once '../../class.startup.php';
 
 $participant_home = new PARTICIPANT();
 /*
-$researcher_home = new RESEARCHER();
+$startup_home = new startup();
 
-if($researcher_home->is_logged_in())
+if($startup_home->is_logged_in())
 {
-  $researcher_home->logout();
+  $startup_home->logout();
 }
 
 
@@ -51,7 +51,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_project WHERE researcherID='".$_GET['id']."'");
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."'");
 $rowproject = mysqli_fetch_array($Project);
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
@@ -312,7 +312,7 @@ if(isset($_SESSION['access_token'])){
       <tr>
         <th>Feedback Participations</th>
  
-<?php if(isset($_SESSION['researcherSession'])){ ?>
+<?php if(isset($_SESSION['startupSession'])){ ?>
         <th>Rating</th>
      <?php  }  ?>   
       </tr>
@@ -339,7 +339,7 @@ echo $count;
 
 
         </td>
- <?php if(isset($_SESSION['researcherSession'])){ ?>     
+ <?php if(isset($_SESSION['startupSession'])){ ?>     
         <td>
           
  

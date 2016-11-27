@@ -6,7 +6,7 @@ include("../../../../config.inc.php");
 
 
 $get_total_rows = 0;
-$results = $mysqli->query("SELECT COUNT(*) FROM tbl_researcher_project");
+$results = $mysqli->query("SELECT COUNT(*) FROM tbl_startup_project");
 if($results){
 $get_total_rows = $results->fetch_row(); 
 }
@@ -490,7 +490,7 @@ $thedate =  $date->format('m/d/Y');
 
 
 <input type="hidden" id='base_path' value="<?php echo BASE_PATH; ?>">
-  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/researcher/project/js/jquery.form.min.js"></script>
+  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/startup/project/js/jquery.form.min.js"></script>
 
 
 

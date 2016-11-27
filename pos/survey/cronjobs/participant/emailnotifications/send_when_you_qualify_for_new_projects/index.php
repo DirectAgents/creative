@@ -122,12 +122,12 @@ require( "../../../../phpmailer/class.phpmailer.php" );
 
 
 
-$sql="SELECT * FROM tbl_researcher_project ORDER BY id";
+$sql="SELECT * FROM tbl_startup_project ORDER BY id";
 $results=mysql_query($sql);
 
 
 
-//$results = mysql_query("SELECT id,userID,FirstName, LastName, Gender FROM tbl_researcher_project 
+//$results = mysql_query("SELECT id,userID,FirstName, LastName, Gender FROM tbl_startup_project 
 //WHERE Gender RLIKE '".$Gender."' OR Age RLIKE '".$Age."' OR Location RLIKE '".$Location."' OR Height = '".$Height."' OR Meetupchoice RLIKE '".$Meetupchoice."' ORDER BY id DESC LIMIT $position, $item_per_page");
 
 

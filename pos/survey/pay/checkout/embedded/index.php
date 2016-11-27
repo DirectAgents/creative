@@ -11,19 +11,19 @@
  * https://stage.wepay.com/app
  */
 session_start();
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 include_once("../../../config.php");
 
 
-$researcher_home = new RESEARCHER();
+$startup_home = new STARTUP();
 
-if(!$researcher_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $researcher_home->redirect('../../../researcher/login.php');
+  $startup_home->redirect('../../../startup/login.php');
 }
 
-$stmt = $researcher_home->runQuery("SELECT * FROM tbl_researcher WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['researcherSession']));
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
@@ -84,8 +84,8 @@ if (date("F", $create_time) == "November") { $order_by = '11'; };
 if (date("F", $create_time) == "December") { $order_by = '12'; };
 
 
-    $insert_sql = "INSERT INTO wepay(researcher_id, order_by, account_id, checkout_id, checkout_find_amount, checkout_find_date) VALUES(
-    '".$_SESSION['researcherSession']."','".$order_by."','".$account_id."','".$response -> checkout_id."','".$response -> amount."','".date("F Y", $create_time)."')";
+    $insert_sql = "INSERT INTO wepay(startup_id, order_by, account_id, checkout_id, checkout_find_amount, checkout_find_date) VALUES(
+    '".$_SESSION['startupSession']."','".$order_by."','".$account_id."','".$response -> checkout_id."','".$response -> amount."','".date("F Y", $create_time)."')";
 mysql_query($insert_sql);    
 
 

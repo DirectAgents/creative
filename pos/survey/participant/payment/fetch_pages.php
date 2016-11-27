@@ -2,7 +2,7 @@
 
 session_start();
 include("../../config.php"); //include config file
-require_once '../../class.researcher.php';
+require_once '../../class.startup.php';
 
 ?>
 
@@ -18,7 +18,7 @@ require_once '../../class.researcher.php';
 
 
 
- <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/researcher/project/css/jquery-ui.css">
+ <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/startup/project/css/jquery-ui.css">
   <script>
 
 

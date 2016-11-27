@@ -38,11 +38,11 @@
 <!--JAVASCRIPT-->
 
 
-<script src="<?php echo BASE_PATH; ?>/researcher/project/js/script.js"></script>
+<script src="<?php echo BASE_PATH; ?>/startup/project/js/script.js"></script>
 
 
  <!-- jQuery Popup Overlay -->
-<script src="<?php echo BASE_PATH; ?>/researcher/project/js/jquery.popupoverlay.js"></script>
+<script src="<?php echo BASE_PATH; ?>/startup/project/js/jquery.popupoverlay.js"></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/result-light.css">

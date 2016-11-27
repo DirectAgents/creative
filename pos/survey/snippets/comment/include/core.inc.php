@@ -188,7 +188,7 @@ $c5t['cache_path']      = C5T_ROOT . $c5t['cache_directory'];
  */
 $c5t['mapping']['comment'] = array(
                                 'comment_id'                => 'id',
-                                'researcher_id'                => 'researcher_id',
+                                'startup_id'                => 'startup_id',
                                 'comment_identifier'        => 'identifier',
                                 'comment_author_name'       => 'name',
                                 'comment_author_email'      => 'email',
@@ -209,7 +209,7 @@ $c5t['mapping']['setting'] = array(
 // Table fields to be inserted or updated in database
 $c5t['db_fields']['comment'] = array(
                                 'comment_id',
-                                'researcher_id',
+                                'startup_id',
                                 'comment_identifier_id',
                                 'comment_identifier',
                                 'comment_identifier_hash',

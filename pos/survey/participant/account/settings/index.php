@@ -5,15 +5,15 @@ require_once '../../../base_path.php';
 
 
 require_once '../../../class.participant.php';
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 include_once("../../../config.php");
 
 
-$researcher_home = new RESEARCHER();
+$startup_home = new STARTUP();
 
-if($researcher_home->is_logged_in())
+if($startup_home->is_logged_in())
 {
-  $researcher_home->logout();
+  $startup_home->logout();
 }
 
 
@@ -141,7 +141,7 @@ $(document).ready(function() {
 
 
  <!-- jQuery Popup Overlay -->
-<script src="<?php echo BASE_PATH; ?>/researcher/project/js/jquery.popupoverlay.js"></script>
+<script src="<?php echo BASE_PATH; ?>/startup/project/js/jquery.popupoverlay.js"></script>
    
 
 <script type="text/javascript">
@@ -1103,9 +1103,9 @@ $.post('profile-photo.php', $("#contact-form").serialize(), function(data) {
         
 <h2 class="no-mobile">Receive email notifications when:</h2>
          
-        <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="New researcher requests you participate" <?php if(in_array('New researcher requests you participate',$emailnotifications)){echo "checked";}?>/>
-  <label for="New-participant-requests-to-participate">New researcher requests you participate</label>
-  <a href="#" alt="If a researcher sents you a request to participate in a survey, you will get notified per email" class="tooltiptext">(?)</a><br>
+        <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="New startup requests you participate" <?php if(in_array('New startup requests you participate',$emailnotifications)){echo "checked";}?>/>
+  <label for="New-participant-requests-to-participate">New startup requests you participate</label>
+  <a href="#" alt="If a startup sents you a request to participate in a survey, you will get notified per email" class="tooltiptext">(?)</a><br>
 
    <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="When you qualify for new projects" <?php if(in_array('When you qualify for new projects',$emailnotifications)){echo "checked";}?>/>
   <label for="New-participant-requests-to-participate">When you qualify for new projects</label>
@@ -1202,7 +1202,7 @@ $(document).ready(function () {
 
 
 <input type="hidden" id='base_path' value="<?php echo BASE_PATH; ?>">
-  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/researcher/project/js/jquery.form.min.js"></script>
+  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/startup/project/js/jquery.form.min.js"></script>
 
 
 

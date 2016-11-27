@@ -6,7 +6,7 @@ require_once '../../../base_path.php';
 
 include("../../../config.php"); //include config file
 include("../../../config.inc.php");
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 require_once '../../../class.participant.php';
 
 
@@ -15,11 +15,11 @@ require_once '../../../class.participant.php';
 date_default_timezone_set('America/New_York');
 
 
-$researcher_home = new RESEARCHER();
+$startup_home = new STARTUP();
 
-if($researcher_home->is_logged_in())
+if($startup_home->is_logged_in())
 {
-  $researcher_home->logout();
+  $startup_home->logout();
 }
 
 
@@ -84,7 +84,7 @@ $rowparticipant=mysql_fetch_array($resultparticipant);
 
 if (isset($error)){
     
-    //header("Location:http://localhost/survey/researcher/payment/?error=".htmlspecialchars($error)."#credit-card");
+    //header("Location:http://localhost/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
 
  echo '<div class="response">';
    //print_r ($response);

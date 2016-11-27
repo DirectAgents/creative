@@ -3,14 +3,14 @@ session_start();
 require_once '../../../class.participant.php';
 include_once("../../../config.php");
 
-$researcher_home = new PARTICIPANT();
+$startup_home = new PARTICIPANT();
 
-if(!$researcher_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $researcher_home->redirect('login.php');
+  $startup_home->redirect('login.php');
 }
 
-$stmt = $researcher_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 

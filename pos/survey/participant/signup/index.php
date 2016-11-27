@@ -340,7 +340,7 @@ if($_POST['passwordpass'] == 'good'){
 </div>
 
 <div class="loginas">
-  <h3>Are you a <span class="role">Researcher</span>? <a href="<?php echo BASE_PATH; ?>/researcher/signup/">Click here</a></h3>
+  <h3>Are you a <span class="role">startup</span>? <a href="<?php echo BASE_PATH; ?>/startup/signup/">Click here</a></h3>
 </div>
 
 <!--  <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>-->

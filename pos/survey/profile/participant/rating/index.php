@@ -3,17 +3,17 @@ session_start();
 
 require_once '../../../base_path.php';
 
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 include_once("../../../config.php");
 include("../../../config.inc.php");
 
 
 
-$researcher_home = new RESEARCHER();
+$startup_home = new STARTUP();
 
-if(!$researcher_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $researcher_home->redirect('../../../404.php');
+  $startup_home->redirect('../../../404.php');
   exit();
 }
 
@@ -35,16 +35,16 @@ $row = mysql_fetch_array($stmt);
 
 
 
-$comment="SELECT * FROM c5t_comment WHERE researcher_id='".$_SESSION['researcherSession']."' AND comment_identifier_id = '".$_GET['id']."'";
+$comment="SELECT * FROM c5t_comment WHERE startup_id='".$_SESSION['startupSession']."' AND comment_identifier_id = '".$_GET['id']."'";
 $row_comment=mysql_query($comment);
 
 
-$rating="SELECT * FROM participant_rating WHERE researcher_id='".$_SESSION['researcherSession']."' AND post_id = '".$_GET['id']."'";
+$rating="SELECT * FROM participant_rating WHERE startup_id='".$_SESSION['startupSession']."' AND post_id = '".$_GET['id']."'";
 $row_rating=mysql_query($rating);
 
 
 
-$Project = mysql_query("SELECT * FROM tbl_researcher_project WHERE researcherID='".$_GET['id']."'");
+$Project = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."'");
 $rowproject = mysql_fetch_array($Project);
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
@@ -314,7 +314,7 @@ if($row['google_picture_link'] != '') {
       <tr>
         <th>Feedback Participations</th>
  
-<?php if(isset($_SESSION['researcherSession'])){ ?>
+<?php if(isset($_SESSION['startupSession'])){ ?>
         <th>Ratings</th>
      <?php  }  ?>   
       </tr>
@@ -322,7 +322,7 @@ if($row['google_picture_link'] != '') {
     <tbody>
       <tr>
         <td>2</td>
- <?php if(isset($_SESSION['researcherSession'])){ ?>     
+ <?php if(isset($_SESSION['startupSession'])){ ?>     
         <td>
           
     <div class="overall-rating">

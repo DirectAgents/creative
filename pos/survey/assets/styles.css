@@ -424,7 +424,7 @@ label{font-weight:normal !important;}
 
 
 
-/* RESEARCHER
+/* startup
 ------------------------- */
 
 .main-page-container {
@@ -624,7 +624,7 @@ label{font-weight:normal !important;}
     width:100%;
 }
 
-#myAccountContainer.researcher .invite-options .bottom-options .inline-box .wrapper input, .survey-info .input-inline input, .myAccountInfo input {
+#myAccountContainer.startup .invite-options .bottom-options .inline-box .wrapper input, .survey-info .input-inline input, .myAccountInfo input {
     width: 232px;
     padding: 6px 10px;
     color: #373e4a;

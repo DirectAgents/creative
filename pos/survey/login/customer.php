@@ -89,7 +89,7 @@ if(isset($_POST['btn-login']))
 </div>
 
 <div class="loginas">
-  <h3>Are you a <span class="role">Researcher</span>? <a href="researcher.php">Click here</a></h3>
+  <h3>Are you a <span class="role">startup</span>? <a href="startup.php">Click here</a></h3>
 </div>
   
   <form class="login-form">

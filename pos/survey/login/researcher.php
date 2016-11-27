@@ -1,11 +1,11 @@
 <?php
 session_start();
-require_once '../class.researcher.php';
-$user_login = new RESEARCHER();
+require_once '../class.startup.php';
+$user_login = new startup();
 
 if($user_login->is_logged_in()!="")
 {
-  $user_login->redirect('../researcher/home.php');
+  $user_login->redirect('../startup/home.php');
 }
 
 if(isset($_POST['btn-login']))
@@ -15,7 +15,7 @@ if(isset($_POST['btn-login']))
   
   if($user_login->login($email,$upass))
   {
-    $user_login->redirect('../researcher/index.php');
+    $user_login->redirect('../startup/index.php');
   }
 }
 ?>
@@ -85,7 +85,7 @@ if(isset($_POST['btn-login']))
 <div class="form">
   
 <div class="info">
-  <h1>LOGIN AS A RESEARCHER</h1>
+  <h1>LOGIN AS A startup</h1>
 </div>
 
 <div class="loginas">
@@ -96,7 +96,7 @@ if(isset($_POST['btn-login']))
     <input type="email" name="txtemail" placeholder="Email Address" required/>
     <input type="password" name="txtupass" placeholder="Password" required/>
     <button type="submit" name="btn-login">LOGIN</button>
-    <p class="message">Not registered? <a href="../signup/researcher.php">Sign up</a></p>
+    <p class="message">Not registered? <a href="../signup/startup.php">Sign up</a></p>
     <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>
    
   </form>

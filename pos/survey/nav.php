@@ -1,6 +1,6 @@
 <?php
 
-if(empty($_SESSION['participantSession']) && empty($_SESSION['researcherSession'])){
+if(empty($_SESSION['participantSession']) && empty($_SESSION['startupSession'])){
 
 
 
@@ -83,7 +83,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
       </ul>
       <ul class="external-logged-in">
 
-        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/project/browse/">BROWSE PROJECTS</a></li>
+        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/idea/browse/">BROWSE IDEAS</a></li>
 
 
 <?php if(isset($_SESSION['access_token'])){ ?>
@@ -131,11 +131,11 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
 <?php
 
-if(!empty($_SESSION['researcherSession'])){
+if(!empty($_SESSION['startupSession'])){
 
 
 
-$stmt = mysqli_query($connecDB,"SELECT * FROM tbl_researcher WHERE userID='".$_SESSION['researcherSession']."'");
+$stmt = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$_SESSION['startupSession']."'");
 $rownav = mysqli_fetch_array($stmt);
 
 
@@ -155,9 +155,9 @@ $_SESSION['profileimage'] = $rownav['profile_image'];
       </ul>
       <ul class="external-logged-in">
       
-         <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/researcher/project/create/step1.php?id=<?php echo rand(100, 100000);?>">LIST YOUR PROJECT</a></li>
+         <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000);?>">LIST YOUR IDEA</a></li>
 
-        <li class="my-projects"><a href="<?php echo BASE_PATH; ?>/researcher">My Projects</a></li>
+        <li class="my-projects"><a href="<?php echo BASE_PATH; ?>/startup">My Projects</a></li>
 
        
 
@@ -181,10 +181,10 @@ $_SESSION['profileimage'] = $rownav['profile_image'];
         <li class="more">
             <span>My account</span>
             <ul>
-              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/profile/researcher/?id=<?php echo $_SESSION['researcherSession'];?>">Profile</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/researcher/account/settings/">Settings</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/researcher/payment/">Payment</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/researcher/meetings/">My Meetings</a></li>
+              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $_SESSION['startupSession'];?>">Profile</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/account/settings/">Settings</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/payment/">Payment</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/meetings/">My Meetings</a></li>
               <li class='separator'></li>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 

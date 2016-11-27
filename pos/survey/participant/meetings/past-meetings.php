@@ -6,15 +6,15 @@ require_once '../../base_path.php';
 
 include("../../config.php"); //include config file
 require_once '../../class.participant.php';
-require_once '../../class.researcher.php';
+require_once '../../class.startup.php';
 
 
 
-$researcher_home = new RESEARCHER();
+$startup_home = new STARTUP();
 
-if($researcher_home->is_logged_in())
+if($startup_home->is_logged_in())
 {
-  $researcher_home->logout();
+  $startup_home->logout();
 }
 
 
@@ -46,7 +46,7 @@ if(!$participant_home->is_logged_in())
 
 
 //MySQL query
-//$Result = mysql_query("SELECT * FROM tbl_researcher_project WHERE researcherID = '".$_SESSION['researcherSession']."' ORDER BY id DESC ");
+//$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
 $sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' AND Status = 'Meeting Set' AND Accepted_to_Participate = 'Accepted' ORDER BY id DESC ");
 //$result=mysql_query($sql);
@@ -64,7 +64,7 @@ while($row2 = mysqli_fetch_array($sql))
 
 
 
-$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_researcher_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
+$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
 $row4 = mysqli_fetch_array($sql4);
 
 
@@ -322,7 +322,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_researcher WHERE userID='".$row2['researcherID']."'");
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
 $rowprojectimage = mysql_fetch_array($ProjectImage);
 
 if($rowprojectimage['google_picture_link'] != '') {
@@ -351,7 +351,7 @@ if($rowprojectimage['profile_image'] != '') { ?>
 
 <?php
 
-$sql3="SELECT * FROM tbl_researcher WHERE userID = '".$row2['researcherID']."'";
+$sql3="SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'";
 $result3=mysql_query($sql3);
 
 $row3 = mysql_fetch_array($result3);
@@ -379,7 +379,7 @@ $row3 = mysql_fetch_array($result3);
 
 
 
-if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $researcher_home->is_logged_in()){ ?>
+if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $startup_home->is_logged_in()){ ?>
 
 
 
@@ -428,7 +428,7 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $researcher_
                       
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/projects/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Project</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Project</a>
 
 
                       </div>
@@ -437,7 +437,7 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $researcher_
 
                       <div class="action" ng-click="triggerPreview(survey)" ng-show="survey.surveyLength > 0" role="button" tabindex="0" aria-hidden="false">
                         
-                       <a href="<?php echo BASE_PATH; ?>/profile/researcher/?id=<?php echo $row2['researcherID']; ?>"> View Profile </a>
+                       <a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>"> View Profile </a>
 
                       </div>
                     

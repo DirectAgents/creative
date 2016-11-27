@@ -1,11 +1,11 @@
 <?php
 session_start();
-require_once '../class.researcher.php';
-$user_login = new RESEARCHER();
+require_once '../class.startup.php';
+$user_login = new startup();
 
 if($user_login->is_logged_in()!="")
 {
-  $user_login->redirect('../researcher/');
+  $user_login->redirect('../startup/');
 }
 
 if(isset($_POST['btn-login']))
@@ -84,7 +84,7 @@ if(isset($_POST['btn-login']))
 <div class="form">
   
 <div class="info">
-  <h1>LOGIN AS A RESEARCHER</h1>
+  <h1>LOGIN AS A startup</h1>
 </div>
 
 <div class="loginas">

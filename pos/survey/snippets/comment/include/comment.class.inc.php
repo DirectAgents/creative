@@ -146,7 +146,7 @@ class c5t_comment
 
         $data['comment_id']             = $comment_id;
         $data['comment_identifier_id']  = $_GET['id'];
-        $data['researcher_id']  = $_SESSION['researcherSession'];
+        $data['startup_id']  = $_SESSION['startupSession'];
         $data['comment_timestamp']     = c5t_time::current_timestamp();
 
         require_once 'identifier.class.inc.php';

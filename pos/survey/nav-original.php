@@ -1,6 +1,6 @@
 <?php
 
-if(empty($_SESSION['participantSession']) && empty($_SESSION['researcherSession'])){
+if(empty($_SESSION['participantSession']) && empty($_SESSION['startupSession'])){
 
 
 
@@ -144,11 +144,11 @@ $_SESSION['profileimage'] = $rownav['profile_image'];
 
 <?php
 
-if(!empty($_SESSION['researcherSession'])){
+if(!empty($_SESSION['startupSession'])){
 
 
 
-$stmt = mysql_query("SELECT * FROM tbl_researcher WHERE userID='".$_SESSION['researcherSession']."'");
+$stmt = mysql_query("SELECT * FROM tbl_startup WHERE userID='".$_SESSION['startupSession']."'");
 $rownav = mysql_fetch_array($stmt);
 
 
@@ -193,13 +193,13 @@ $_SESSION['profileimage'] = $rownav['profile_image'];
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo BASE_PATH; ?>/researcher">My Projects</a></li>
+        <li><a href="<?php echo BASE_PATH; ?>/startup">My Projects</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo BASE_PATH; ?>/images/profile/<?php echo $_SESSION['profileimage']; ?>" class="img-circle-profile-nav"> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/researcher/account/profile/">Account</a></li>
-            <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/researcher/account/settings/">Settings</a></li>
-            <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/researcher/payment/">Make a Payment</a></li>
+            <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/account/profile/">Account</a></li>
+            <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/account/settings/">Settings</a></li>
+            <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/payment/">Make a Payment</a></li>
             <li role="separator" class="divider"></li>
             <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
           </ul>

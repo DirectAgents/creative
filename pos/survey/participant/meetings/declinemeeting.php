@@ -6,7 +6,7 @@ require 'PHPMailerAutoload.php';
 
 $ip = $_SERVER['REMOTE_ADDR'];
 
-//echo $_SESSION['researcherSession'];
+//echo $_SESSION['startupSession'];
 
 
 if($_POST)

@@ -6,7 +6,7 @@ require 'PHPMailerAutoload.php';
 
 $ip = $_SERVER['REMOTE_ADDR'];
 
-//echo $_SESSION['researcherSession'];
+//echo $_SESSION['startupSession'];
 
 
 if($_POST)
@@ -46,7 +46,7 @@ $row2 = mysql_fetch_array($result_participant);
 
 
 
-$sql4 = mysql_query("SELECT * FROM tbl_researcher  WHERE userID = '".$row['researcherID']."' ");
+$sql4 = mysql_query("SELECT * FROM tbl_startup  WHERE userID = '".$row['startupID']."' ");
 $row4 = mysql_fetch_array($sql4);
 
 

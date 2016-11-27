@@ -4,16 +4,16 @@ require_once '../../../base_path.php';
 
 include("../../../config.php"); //include config file
 include("../../..//config.inc.php");
-require_once '../../../class.researcher.php';
+require_once '../../../class.startup.php';
 require_once '../../../class.participant.php';
 
 
 
-$researcher_home = new RESEARCHER();
+$startup_home = new STARTUP();
 
-if($researcher_home->is_logged_in())
+if($startup_home->is_logged_in())
 {
-  $researcher_home->logout();
+  $startup_home->logout();
 }
 
 

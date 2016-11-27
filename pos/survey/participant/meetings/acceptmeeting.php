@@ -9,7 +9,7 @@ require 'PHPMailerAutoload.php';
 
 $ip = $_SERVER['REMOTE_ADDR'];
 
-//echo $_SESSION['researcherSession'];
+//echo $_SESSION['startupSession'];
 
 
 if($_POST)
@@ -29,7 +29,7 @@ $row = mysql_fetch_array($result_participant);
 
 
   $update_sql = "UPDATE tbl_project_request SET 
-  Status = 'Waiting for Researcher to accept',
+  Status = 'Waiting for startup to accept',
   Final_Time = '".$_POST['final_time']."'
 
   WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'";
@@ -38,7 +38,7 @@ $row = mysql_fetch_array($result_participant);
 
 
 
-$sql4 = mysql_query("SELECT * FROM tbl_researcher  WHERE userID = '".$row['researcherID']."' ");
+$sql4 = mysql_query("SELECT * FROM tbl_startup  WHERE userID = '".$row['startupID']."' ");
 $row4 = mysql_fetch_array($sql4);
 
 
@@ -302,7 +302,7 @@ $mail->Body     = '
                                             <td align="center" style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding">Can\'t make it?</td>
                                         </tr>
                                         <tr>
-                                            <td align="center" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">Login into your account to view details. <a href="http://labfy.com/survey/researcher/login.php">My Account</a>.</td>
+                                            <td align="center" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">Login into your account to view details. <a href="http://labfy.com/survey/startup/login.php">My Account</a>.</td>
                                         </tr>
                                     </tbody></table>
 

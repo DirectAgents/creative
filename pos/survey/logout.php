@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'class.participant.php';
-require_once 'class.researcher.php';
+require_once 'class.startup.php';
 
 
 
@@ -28,28 +28,28 @@ if($user->is_logged_in()!="")
 }
 
 
-if(isset($_SESSION['researcherSession'])){
+if(isset($_SESSION['startupSession'])){
 
-$researcher = new RESEARCHER();
+$startup = new startup();
 
-if(!$researcher->is_logged_in())
+if(!$startup->is_logged_in())
 {
-	$researcher->redirect('researcher/login.php');
+	$startup->redirect('startup/login.php');
 }
 
-if($researcher->is_logged_in()!="")
+if($startup->is_logged_in()!="")
 {
-	$researcher->logout();	
-	$researcher->redirect('researcher/login.php');
+	$startup->logout();	
+	$startup->redirect('startup/login.php');
 }
 
 }
 
 
 
-if(isset($_SESSION['fb_access_token_researcher']) && isset($_SESSION['researcherSession'])){
-	unset($_SESSION['fb_access_token_researcher']);	
-	header("Location:researcher/login/");
+if(isset($_SESSION['fb_access_token_startup']) && isset($_SESSION['startupSession'])){
+	unset($_SESSION['fb_access_token_startup']);	
+	header("Location:startup/login/");
 }
 
 

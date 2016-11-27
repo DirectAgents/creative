@@ -21,11 +21,11 @@ date_default_timezone_set('America/New_York');
 $date = date('Y-m-d');  
 
 
-  $update_sql = "UPDATE tbl_researcher_project SET 
+  $update_sql = "UPDATE tbl_startup_project SET 
   ProjectStatus = '".$_POST['projectstatus']."',
   Date_Updated='".$date."'
 
-  WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID= '".$_SESSION['projectid']."'";
+  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'";
 
 
 
@@ -36,8 +36,8 @@ $date = date('Y-m-d');
 
 
 
-$sql = mysql_query("SELECT * FROM tbl_researcher_project WHERE ProjectID = '".$_SESSION['projectid']."' 
-	AND researcherID='".$_SESSION['researcherSession']."'");
+$sql = mysql_query("SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_SESSION['projectid']."' 
+	AND startupID='".$_SESSION['startupSession']."'");
 $row = mysql_fetch_array($sql);
 
 
@@ -180,7 +180,7 @@ if($_POST['imagestatus'] = '1' && $_POST['imagestatus'] != '0' && $_POST['images
 
 
 
-$sql2 = "SELECT * FROM tbl_researcher_project WHERE researcherID='".$_SESSION['researcherSession']."' 
+$sql2 = "SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' 
 AND ProjectID = '".$_SESSION['projectid']."'";
 $result=mysql_query($sql2);
 $row=mysql_fetch_array($result);
@@ -189,15 +189,15 @@ if(mysql_num_rows($result)>0)
 {
 
 
-$update_sql = "UPDATE tbl_researcher_project SET project_image='".$_POST['fileToUpload']."'
-  WHERE researcherID='".$_SESSION['researcherSession']."' AND ProjectID = '".$_SESSION['projectid']."' ";
+$update_sql = "UPDATE tbl_startup_project SET project_image='".$_POST['fileToUpload']."'
+  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."' ";
   mysql_query($update_sql);
 
 
 	
 }else{
 
-$sqlinsert="INSERT INTO tbl_researcher_project (researcherID, ProjectID, project_image) VALUES ('".$_SESSION['researcherSession']."', '".$_SESSION['projectid']."' ,'".$_POST['fileToUpload']."')";
+$sqlinsert="INSERT INTO tbl_startup_project (startupID, ProjectID, project_image) VALUES ('".$_SESSION['startupSession']."', '".$_SESSION['projectid']."' ,'".$_POST['fileToUpload']."')";
 		mysql_query($sqlinsert);
 
 

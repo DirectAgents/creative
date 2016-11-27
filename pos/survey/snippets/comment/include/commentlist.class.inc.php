@@ -23,7 +23,7 @@ class c5t_comment_list extends c5t_list
      * Database fields to be selected
      */
     var $fields = array('comment_id',
-                        'researcher_id',
+                        'startup_id',
                         'comment_author_name',
                         'comment_author_email',
                         'comment_author_homepage',
