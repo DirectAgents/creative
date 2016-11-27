@@ -198,7 +198,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
         <i class="fa fa-info fa-stack-1x"></i>
       </span>
     </div>
-      <div class="dashboardProcessMenuText"><span class="number">2</span> PROJECT SUMMARY (<a href="step2.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>) </div></div>
+      <div class="dashboardProcessMenuText"><span class="number">2</span> IDEA SUMMARY (<a href="step2.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>) </div></div>
 
   
     <div class="col-sm-4">
@@ -209,7 +209,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
       </span>
     </div>
 
-      <div class="dashboardProcessMenuText"> <div class="processmenu-active"><span class="number">3</span> PROJECT SETTINGS</div></div></div>
+      <div class="dashboardProcessMenuText"> <div class="processmenu-active"><span class="number">3</span> IDEA SETTINGS</div></div></div>
   </div>
 
 
@@ -230,12 +230,12 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
   <div class="survey-info">
 
            <div class="reach-people">
-              <h2>Project Setting</h2>
+              <h2>Idea Setting</h2>
             <div class="separator"></div>
             <div class="wrapper">
             <div class="screening-description">
-                  If you like to share your project with the public then choose <strong>Public</strong>. <br>Choose <strong>Private</strong>
-                  if you like to keep your project as private. When set to Private only you can see the project.
+                  If you like to share your idea with the public then choose <strong>Public</strong>. <br>Choose <strong>Private</strong>
+                  if you like to keep your idea as private. When set to Private only you can see the idea.
                 </div>
 </div>
             </div>

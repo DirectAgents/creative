@@ -207,7 +207,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
         <i class="fa fa-info fa-stack-1x"></i>
       </span>
     </div>
-      <div class="dashboardProcessMenuText"><span class="number">2</span> CREATE PROJECT SUMMARY </div></div>
+      <div class="dashboardProcessMenuText"><span class="number">2</span> CREATE IDEA SUMMARY </div></div>
 </a>
 <a href="step3.php">    
     <div class="col-sm-4">
@@ -594,7 +594,7 @@ echo $row2['Interests'].'</li>';
  <div class="survey-info">
 
            <div class="reach-people">
-              <h2>Project Summary</h2>
+              <h2>Idea Summary</h2>
               <div class="edit"><a href="step2.php?<?php echo $_SESSION['projectid']; ?>">Edit</a></div>
             <div class="separator"></div>
             </div>
@@ -697,12 +697,12 @@ echo $row2['Interests'].'</li>';
   <div class="survey-info">
 
            <div class="reach-people">
-              <h2>Project Setting</h2>
+              <h2>Idea Setting</h2>
             <div class="separator"></div>
          <div style="float:left; width:100%">
             <div class="screening-description">
-                  If you like to share your project with the public then choose <strong>Public</strong>. <br>Choose <strong>Private</strong>
-                  if you like to keep your project as private. When set to Private only you can see the project.
+                  If you like to share your idea with the public then choose <strong>Public</strong>. <br>Choose <strong>Private</strong>
+                  if you like to keep your idea as private. When set to Private only you can see the idea.
                 </div>
 </div>
             </div>

@@ -227,7 +227,7 @@ $(document).ready(function() {
         <i class="fa fa-info fa-stack-1x"></i>
       </span>
     </div>
-      <div class="dashboardProcessMenuText"><span class="number">2</span> PROJECT SUMMARY (<a href="step2.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>) </div></div>
+      <div class="dashboardProcessMenuText"><span class="number">2</span> IDEA SUMMARY (<a href="step2.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>) </div></div>
     <div class="col-sm-4 processmenu-inactive">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
@@ -236,7 +236,7 @@ $(document).ready(function() {
       </span>
     </div>
    
-      <div class="dashboardProcessMenuText"><span class="number">3</span> PROJECT SETTINGS (<a href="step3.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>)</div></div>
+      <div class="dashboardProcessMenuText"><span class="number">3</span> IDEA SETTINGS (<a href="step3.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>)</div></div>
   </div>
 
     
@@ -315,12 +315,10 @@ $(document).ready(function() {
  <div class="survey-info">
 
            <div class="reach-people">
-              <h2>Project Name:</h2>
+              <h2>What is the idea about?</h2>
             <div class="separator"></div>
 
-             <div class="screening-description">
-                  It can be your startup name or the name of your idea
-                </div>
+        
 
             </div>
 

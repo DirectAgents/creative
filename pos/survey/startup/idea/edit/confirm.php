@@ -43,18 +43,18 @@ if($_POST['fileToUpload'] != ''){
 $photo = $_SESSION['projectid'].'_'.$_POST['fileToUpload'];
 
 
-$sql2 = "SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' 
-AND ProjectID = '".$_SESSION['projectid']."'";
-$result=mysql_query($sql2);
-$row=mysql_fetch_array($result);
+$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' 
+AND ProjectID = '".$_SESSION['projectid']."'");
 
-if(mysql_num_rows($result)>0)
+
+
+if(mysqli_num_rows($sql2)>0)
 {
 
 
-$update_sql = "UPDATE tbl_startup_project SET project_image='".$photo."'
-  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."' ";
-  mysql_query($update_sql);
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET project_image='".$photo."'
+  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
+
 
 
   

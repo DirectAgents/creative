@@ -17,7 +17,6 @@ if($_POST)
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET 
   Details='".$_POST['details']."',
-  Summary='".$_POST['summary']."',
   Agenda_One='".$_POST['agenda_one']."'
 
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");

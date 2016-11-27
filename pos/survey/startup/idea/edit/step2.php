@@ -111,7 +111,7 @@ if($rowproject < 1){
     </div>
 </a>    
       <div class="dashboardProcessMenuText">
-      <div class="processmenu-active"><span class="number">2</span> PROJECT SUMMARY </div></div></div>
+      <div class="processmenu-active"><span class="number">2</span> IDEA SUMMARY </div></div></div>
     <div class="col-sm-4 processmenu-inactive">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
@@ -120,7 +120,7 @@ if($rowproject < 1){
       </span>
     </div>
 
-      <div class="dashboardProcessMenuText"><span class="number">3</span> PROJECT SETTINGS (<a href="step3.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>)</div></div></a>
+      <div class="dashboardProcessMenuText"><span class="number">3</span> IDEA SETTINGS (<a href="step3.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>)</div></div></a>
   </div>
 
     
@@ -170,13 +170,10 @@ if($rowproject < 1){
                   Briefly describe what you plan to do or offer to your target audience. This will give participants an overall picture of your project.
                 </div>
 
-  <input type="text" name="details" id="details" placeholder="Add your Idea's details here" value="<?php echo $rowproject['Details'];?>">
 
 
-                <h3>Summary</h3>
-                
+  <textarea name="details" id="details" placeholder="Add your idea's detail here"><?php echo $rowproject['Details'];?></textarea>
 
-  <textarea rows="5" tabindex="0" placeholder="Add your project summary here" name="summary" id="summary"><?php echo $rowproject['Summary'];?></textarea>
 
 
 
