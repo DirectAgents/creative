@@ -390,23 +390,22 @@ echo '
   <div class="col-lg-2">';
 echo '<a href="profile/?id='.$row2['userID'].'">';
 
-if($row3['google_picture_link'] != '') {
-
-echo '<img src="'.$row3['google_picture_link'].'" class="img-circle">';
-
- }else{ 
 
 
-  if($row3['profile_image'] != ''){
-  
-  echo '<img src="'.BASE_PATH.'/images/profile/'.$row3['profile_image'].'" class="img-circle"/>';
 
-}else{
+if(isset($_SESSION['access_token'])){
+        echo '<img src="'.$_SESSION['google_picture_link'].'" class="img-circle-profile"/>';
+ }
 
- echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle"/>';
+if(isset($_SESSION['facebook_photo'])){ 
+        echo '<img src="https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture?width=100&height=100" class="img-circle-profile"/>';
 }
+       
+if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
 
-}
+        echo '<img src="'.BASE_PATH.'/images/profile/'.$_SESSION['profileimage'].'" class="img-circle-profile"/>';
+} 
+
 
 echo '</a>';
 
