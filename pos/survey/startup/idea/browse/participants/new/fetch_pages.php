@@ -224,8 +224,8 @@ $position = ($page_number * $item_per_page);
 
 
 
-$sql = mysql_query("SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."' AND startupID='".$_SESSION['startupSession']."'");
-$row = mysql_fetch_array($sql);
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."' AND startupID='".$_SESSION['startupSession']."'");
+$row = mysqli_fetch_array($sql);
 
 
 
@@ -334,13 +334,13 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]
 
 //Limit our results within a specified range. 
 
-$results = mysql_query("SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_project_request WHERE ProjectID = '".$_GET['id']."') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob ORDER BY userID DESC LIMIT $position, $item_per_page");
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_project_request WHERE ProjectID = '".$_GET['id']."') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob ORDER BY userID DESC LIMIT $position, $item_per_page");
 
 
 //$results = mysql_query("SELECT id,userID, Gender FROM tbl_participant_project 
 //WHERE Gender RLIKE '".$Gender."' OR Age RLIKE '".$Age."' ORDER BY id DESC LIMIT $position, $item_per_page");
 
-if(mysql_num_rows($results)<1)
+if(mysqli_num_rows($results)<1)
 {
 echo "<div class='no-participants'>";
 echo "<h3>";
@@ -362,7 +362,7 @@ echo "</div>";
 //output results from database
 echo '<ul class="page_result">';
 //while($results->fetch()){ //fetch values
-while($row2 = mysql_fetch_array($results))
+while($row2 = mysqli_fetch_array($results))
 { 
 
 //echo $row2['userID'];
@@ -372,8 +372,8 @@ while($row2 = mysql_fetch_array($results))
 //echo $row['userID'];
 
 
-$sql3 = mysql_query("SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."' ");
-$row3 = mysql_fetch_array($sql3);
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."' ");
+$row3 = mysqli_fetch_array($sql3);
 
 
 

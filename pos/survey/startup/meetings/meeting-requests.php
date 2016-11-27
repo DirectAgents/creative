@@ -754,11 +754,7 @@ $row3 = mysqli_fetch_array($sql3);
 echo '<div class="row">
     <div class="col-md-12">
 <div class="empty-projects">No Meeting Requests<br><br></div>
-  <div class="create-one-here-box">
-      <div class="create-one">
-        <button class="slide_open create-one-btn">Browse here for new Participants</button>
-       </div> 
-  </div>
+ 
 </div>
 
 </div>

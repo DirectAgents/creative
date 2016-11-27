@@ -269,9 +269,9 @@ $(document).ready(function () {
 
 
                   <div class="survey-header">
-                    <div class="account-project-name">
+                    <!--<div class="account-project-name">
                       Project Name
-                    </div>
+                    </div>-->
                     <div class="edit-delete">
                       <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/edit/?id=<?php echo $row2['ProjectID']; ?>">
                   <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;

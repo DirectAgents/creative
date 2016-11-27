@@ -48,8 +48,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$Project = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
-$rowproject = mysql_fetch_array($Project);
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+$rowproject = mysqli_fetch_array($Project);
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
 $age=explode(',',$rowproject['Age']);
@@ -70,8 +70,8 @@ $job=explode(',',$rowproject['Job']);
 
 
 
-$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
-$rowpotentialanswers = mysql_fetch_array($ProjectPotentialanswers);
+$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+$rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
 
 $screening=explode(',',$rowpotentialanswers['ScreeningQuestion']);
 
