@@ -344,7 +344,7 @@ if(mysqli_num_rows($results)<1)
 {
 echo "<div class='no-participants'>";
 echo "<h3>";
-echo "No potential Participants available!";
+echo "No more potential Participants available!";
 echo "</h3>";
 echo "</div>";
 
