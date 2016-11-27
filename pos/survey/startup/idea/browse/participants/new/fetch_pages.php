@@ -388,7 +388,7 @@ echo '
 <div class="row-fluid">
 <div class="therow">
   <div class="col-lg-2">';
-echo '<a href="profile/?id='.$row2['userID'].'">';
+echo '<a href="'.BASE_PATH.'/profile/participant/?id='.$row2['userID'].'&p='.$_GET['id'].'">';
 
 
 
@@ -411,7 +411,7 @@ echo '</a>';
 
   echo '</div>
   <div class="col-lg-6">
-  <a href="profile/?id='.$row2['userID'].'&p='.$_GET['id'].'" class="notextdecoration">
+  <a href="'.BASE_PATH.'/profile/participant/?id='.$row2['userID'].'&p='.$_GET['id'].'" class="notextdecoration">
    <p><h4>'.$row2['FirstName'].'</h4>'.$row2['Age'].' - '.$row2['City'].', '.$row2['State'].' </p>
    </a>
    <p>'.$row2['Bio'].'</p>
