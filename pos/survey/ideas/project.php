@@ -546,30 +546,24 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
 
 
     <div class="col-lg-12">
-      <h3><?php echo $rowproject['Name']; ?></h3>
-      <h3>What is this idea about?</h3>
-      <span class="details"><?php echo $rowproject['Details']; ?></span>
+      
+      <h3>What is the idea?</h3>
+      <p><?php echo $rowproject['Name']; ?></p>
+     
       </div>
 
 
       
 
-
-
-
-
-
-
-
-
   </div>
 
 
 
- <?php if($rowproject['Summary'] != ''){?> 
+ <?php if($rowproject['Details'] != ''){?> 
   <div class="therow">
     <div class="col-lg-12">
-      <p><?php echo $rowproject['Summary']; ?></p>
+    <h3>Details</h3>
+      <p><?php echo $rowproject['Details']; ?></p>
     </div>
   </div>
   <?php } ?>

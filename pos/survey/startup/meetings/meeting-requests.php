@@ -22,7 +22,7 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../login.php');
+  $startup_home->redirect('../../login');
 }
 
 
@@ -111,11 +111,11 @@ Select a time to meet:
 
 $sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['From_Time']."%'");
 //$resultfrom=mysql_query($sqlfrom);
-$rowfrom = mysql_fetch_array($sqlfrom);
+$rowfrom = mysqli_fetch_array($sqlfrom);
 
 $sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['To_Time']."%'");
 //$resultto=mysql_query($sqlto);
-$rowto = mysql_fetch_array($sqlto);
+$rowto = mysqli_fetch_array($sqlto);
 
 
 //echo $rowfrom['id'];
@@ -616,7 +616,7 @@ $row3 = mysqli_fetch_array($sql3);
                     <div class="edit-delete">
                       
             
-      <?php if($row2['Status'] == 'Waiting for Participant to accept') { ?>
+      <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
       
                  <div class="cancel-request-<?php echo $row2['ProjectID']; ?>">        
                  <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting</strong></a></a>
@@ -625,18 +625,9 @@ $row3 = mysqli_fetch_array($sql3);
 
          <?php } ?>           
 
-<?php if($row2['Status'] == 'Waiting for startup to accept') { ?>
-
-             
-                  <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Accept</strong></a> | <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Decline</strong></a>
-                 </div>
-
-           <?php } ?>      
 
 
-
-           <?php if($row2['Status'] == 'Waiting for startup to Accept or Decline') { ?>
+           <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
 
              
                   <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        

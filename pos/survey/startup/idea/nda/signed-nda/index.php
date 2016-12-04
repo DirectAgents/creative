@@ -67,7 +67,7 @@ $(document).ready(function(){
         var proceed = true;
 
           if(projectname==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:95.5%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Project!</div>';
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:95.5%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Idea!</div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }
@@ -269,13 +269,11 @@ $(document).ready(function () {
 
 
                   <div class="survey-header">
-                    <div class="account-project-name">
-                      Project Name
-                    </div>
+                   
                     <div class="edit-delete">
-                      <a href="<?php echo BASE_PATH; ?>/startup/project/nda/?id=<?php echo $row2['ProjectID']; ?>">
+                      <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?id=<?php echo $row2['ProjectID']; ?>">
                   <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
-                  <a href="<?php echo BASE_PATH; ?>/startup/project/nda/nda-pdf.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
+                  <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/nda-pdf.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
                       <i class="icon icon-download3"></i> Download as PDF</a>&nbsp;&nbsp;&nbsp;| &nbsp;
                    <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_open">
                       <i class="icon icon-bin"></i>Delete</a>

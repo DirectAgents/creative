@@ -15,23 +15,21 @@ if($_POST)
 
 
 // Delete data in mysql from row that has this id 
-$sql = "DELETE FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."'";
-$result=mysql_query($sql);
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."'");
 
 
 
-$results = mysql_query("SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."'");
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."'");
 
 
-while($row = mysql_fetch_array($results))
+while($row = mysqli_fetch_array($results))
 { 
 
-  $update_sql = "UPDATE tbl_project_request SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
   Status = 'Cancelled_by_startup'
 
-  WHERE userID='".$row['userID']."' AND ProjectID= '".$_POST['projectid']."'";
+  WHERE userID='".$row['userID']."' AND ProjectID= '".$_POST['projectid']."'");
 
-  mysql_query($update_sql);
 
 
 
@@ -41,9 +39,8 @@ while($row = mysql_fetch_array($results))
     //header("Location: index.php?s=success"); 
 
 
-$sql_participant = "SELECT * FROM tbl_participant WHERE userID='".$row['userID']."'";
-$result_participant=mysql_query($sql_participant);
-$row2 = mysql_fetch_array($result_participant);
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row['userID']."'");
+$row2 = mysqli_fetch_array($sql_participant);
 
 
 

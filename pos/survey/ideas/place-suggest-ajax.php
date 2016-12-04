@@ -16,9 +16,8 @@ $row4 = mysqli_fetch_array($sql4);
 if($_POST){
 
 $sql = mysqli_query($connecDB, "SELECT * FROM tbl_project_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_POST['projectid']."'");
-$row=mysqli_fetch_array($sql);
 
-if(mysql_num_rows($result)<1)
+if(mysqli_num_rows($sql)<1)
 {
 
 $the_date = date('Y-m-d'); 
@@ -26,9 +25,8 @@ date_default_timezone_set('America/New_York');
 $the_time = date('h:i:s A');
 
 
-$insert_sql = "INSERT INTO tbl_project_request(userID, startupID, ProjectID, Date_of_Meeting, From_Time, To_Time, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
-VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."','".$_POST['date']."', '".$_POST['fromtime']."', '".$_POST['totime']."', '".$_POST['location']."' , 'Pending', 'Waiting for startup to Accept or Decline', 'Participant' ,'".$the_date."','".$the_time."')";
-mysql_query($insert_sql);    
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_project_request(userID, startupID, ProjectID, Date_of_Meeting, From_Time, To_Time, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
+VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."','".$_POST['date']."', '".$_POST['fromtime']."', '".$_POST['totime']."', '".$_POST['location']."' , 'Pending', 'Waiting for startup to Accept or Decline', 'Participant' ,'".$the_date."','".$the_time."')");
 
 $output = json_encode(array('type'=>'message', 'text' => '<div class="success2">Request sent!</div>'));
 die($output);

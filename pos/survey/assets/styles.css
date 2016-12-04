@@ -3789,7 +3789,7 @@ margin-left:0px;
 
 
 
-.slide-cancel{
+.slide-cancel, .slide-decline{
   display:none;
   width:46%;
   margin-top:30px;

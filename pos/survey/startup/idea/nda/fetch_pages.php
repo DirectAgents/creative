@@ -251,6 +251,22 @@ function getParameterByName(name, url) {
 }
 
 
+var p = getParameterByName('p');
+
+if(p == 'drafted-nda'){
+$('.drafted-nda').click();
+$( "#drafted-nda" ).load( "drafted-nda/" );
+}
+
+if(p == 'signed-nda'){
+$('.signed-nda').click();
+$( "#signed-nda" ).load( "signed-nda/" );
+}
+
+if(p == 'pending-nda'){
+$('.pending-nda').click();
+$( "#pending-nda" ).load( "pending-nda/" );
+}
 
 
 

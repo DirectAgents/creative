@@ -157,7 +157,7 @@ $_SESSION['profileimage'] = $rownav['profile_image'];
       
          <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000);?>">LIST YOUR IDEA</a></li>
 
-        <li class="my-projects"><a href="<?php echo BASE_PATH; ?>/startup">My Projects</a></li>
+        <li class="my-projects"><a href="<?php echo BASE_PATH; ?>/startup">My Ideas</a></li>
 
        
 

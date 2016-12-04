@@ -82,7 +82,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 
 
-$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID='".$_SESSION['startupSession']."' AND
+$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND
   ProjectID = '".$_GET['id']."'");
 
 $rownda = mysqli_fetch_array($sqlnda);
@@ -270,7 +270,7 @@ $(document).ready(function() {
             <div class="wrapper">
               <!--<h3>Select survey language:</h3>-->
              <div class="in-person">
-               <input id="private" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda)){echo "checked";}?> />
+               <input id="private" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda)){echo "checked";}?> <?php if(!in_array('Yes',$nda)){echo "checked";}?> />
                <label for="private">No, not necessary</label>
              </div>
             </div>
@@ -280,7 +280,7 @@ $(document).ready(function() {
 
 <?php if(isset($rownda['ProjectID'])){ ?>
 
-              <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?id=<?php echo $_SESSION['projectid']; ?>">Edit Non-Disclosure Agreement</a>
+              <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/edit/?id=<?php echo $_SESSION['projectid']; ?>">Edit Non-Disclosure Agreement</a>
 
 <?php  }else{ ?>
   
@@ -315,7 +315,7 @@ $(document).ready(function() {
  <div class="survey-info">
 
            <div class="reach-people">
-              <h2>What is the idea about?</h2>
+              <h2>What is the idea?</h2>
             <div class="separator"></div>
 
         

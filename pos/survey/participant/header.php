@@ -39,11 +39,12 @@
 
 
  <!-- jQuery Popup Overlay -->
-<script src="<?php echo BASE_PATH; ?>/participant/project/js/jquery.popupoverlay.js"></script>
+<script src="<?php echo BASE_PATH; ?>/participant/idea/js/jquery.popupoverlay.js"></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/result-light.css">
 
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
 
 
 <script type="text/javascript" src="<?php echo BASE_PATH; ?>/participant/js/rating.js"></script>

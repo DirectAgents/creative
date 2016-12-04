@@ -38,9 +38,6 @@ if(!$participant_home->is_logged_in())
 
 
 
-
-
-
 <?php
 //include db configuration file
 
@@ -66,8 +63,8 @@ while($row2 = mysqli_fetch_array($sql))
 
 
 
-$sql4 = mysql_query("SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
-$row4 = mysql_fetch_array($sql4);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
+$row4 = mysqli_fetch_array($sql4);
 
 
 date_default_timezone_set('America/New_York');
@@ -111,13 +108,11 @@ Select a time to meet:
 
 
 
-$sqlfrom="SELECT * FROM time WHERE TheTime LIKE '%".$row2['From_Time']."%'";
-$resultfrom=mysql_query($sqlfrom);
-$rowfrom = mysql_fetch_array($resultfrom);
+$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['From_Time']."%'");
+$rowfrom = mysqli_fetch_array($sqlfrom);
 
-$sqlto="SELECT * FROM time WHERE TheTime LIKE '%".$row2['To_Time']."%'";
-$resultto=mysql_query($sqlto);
-$rowto = mysql_fetch_array($resultto);
+$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['To_Time']."%'");
+$rowto = mysqli_fetch_array($sqlto);
 
 
 //echo $rowfrom['id'];
@@ -132,10 +127,9 @@ $rowto = mysql_fetch_array($resultto);
 
 
 
-$sqltime="SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id";
-$resulttime=mysql_query($sqltime);
+$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
 
-while($rowtime = mysql_fetch_array($resulttime))
+while($rowtime = mysqli_fetch_array($sqltime))
 { ?>
 
 <option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
@@ -559,8 +553,8 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 <?php 
 
-$ProjectImage = mysql_query("SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
-$rowprojectimage = mysql_fetch_array($ProjectImage);
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
+$rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 if($rowprojectimage['google_picture_link'] != '') {
 
@@ -588,10 +582,9 @@ if($rowprojectimage['profile_image'] != '') { ?>
 
 <?php
 
-$sql3="SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'";
-$result3=mysql_query($sql3);
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'");
 
-$row3 = mysql_fetch_array($result3);
+$row3 = mysqli_fetch_array($sql3);
 
 ?>
 
@@ -609,7 +602,7 @@ $row3 = mysql_fetch_array($result3);
                     <div class="edit-delete">
                       
             
-      <?php if($row2['Status'] == 'Waiting for Participant to accept') { ?>
+      <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
       
                 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
                  <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Accept</strong></a> | <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Decline</strong></a>
@@ -617,7 +610,7 @@ $row3 = mysql_fetch_array($result3);
 
          <?php } ?>           
 
-<?php if($row2['Status'] == 'Waiting for startup to accept') { ?>
+<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
 
                  <div class="cancel-request-<?php echo $row2['ProjectID']; ?>">        
                  <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting</strong></a></a>
@@ -665,16 +658,19 @@ $row3 = mysql_fetch_array($result3);
                   <?php if($row2['Status'] == 'Waiting to Accept or Decline'){echo 'Waiting to Accept or Decline';} ?>
                   <?php if($row2['Status'] == 'Waiting for startup to Accept or Decline'){echo 'Waiting for startup to accept';} ?>
                   <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline'){echo 'Waiting for you to accept or decline';} ?>
-                    
+
+                          
 
 
                   </div>
+
+
 
                   <div class="survey-actions">
                    
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Project</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Idea</a>
 
 
                       </div>
@@ -686,9 +682,18 @@ $row3 = mysql_fetch_array($result3);
                        <a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>"> View Profile </a>
 
                       </div>
-                    
+                   
+
 
                     </div>
+
+                     <div class="col-md-12">
+                   <?php if($row4['NDA'] == 'Yes') { ?>
+
+                  <br>Important Note.: Startup requires you to sign an NDA before you both meet. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/sign/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to sign.
+                    <? } ?>           
+</div>
+
                   </div>
                
 

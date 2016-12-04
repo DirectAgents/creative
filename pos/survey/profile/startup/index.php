@@ -698,7 +698,7 @@ echo '<img src="../../projects/uploads/thumbnail.jpg" width="70">';
                    
                    <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?></div>
 
-                   <?php echo $row2['Headline']; ?>
+                   <?php echo $row2['Details']; ?>
                    
                   </div>
                  
