@@ -143,7 +143,7 @@ $("#save-nda").click(function(){
         {  
         $.ajax({
             method: "POST",
-            url: "../../../../nda/signatures/participant/sign.php",
+            url: "../../../../nda/pdf/signatures/sign-participant.php",
             data: { signature: dataURI, projectid: projectid, recipient_party: recipient_party, participant_sig_name: participant_sig_name,
             participant_sig_title: participant_sig_title, participant_sig_company: participant_sig_company, participant_sig_date: participant_sig_date,
             startupID : startupID, disclosure_party: disclosure_party, nda_purpose: nda_purpose, startup_signature: startup_signature, startup_sig_name: startup_sig_name,

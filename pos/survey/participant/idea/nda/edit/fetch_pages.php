@@ -140,7 +140,7 @@ $("#save-nda").click(function(){
         {  
         $.ajax({
             method: "POST",
-            url: "../../../../nda/signatures/participant/edit.php",
+            url: "../pdf/signatures/edit-participant.php",
             data: { signature: dataURI, projectid: projectid, recipient_party: recipient_party, participant_sig_name: participant_sig_name,
             participant_sig_title: participant_sig_title, participant_sig_company: participant_sig_company, participant_sig_date: participant_sig_date,
             startupID : startupID, disclosure_party: disclosure_party, nda_purpose: nda_purpose, startup_signature: startup_signature, startup_sig_name: startup_sig_name,
@@ -326,7 +326,7 @@ $thedate =  $date->format('m/d/Y');
 
 <div class="col-lg-12" style="padding-left:0px;">
 <div class="col-lg-4" style="padding-left:0px; text-align:right"><label>Signature:</label></div>
-<div class="col-lg-4"><img src="<?php echo BASE_PATH; ?>/nda/signatures/participant/<?php echo $rowsqlnda['participant_signature']; ?> "/>
+<div class="col-lg-4"><img src="<?php echo BASE_PATH; ?>/nda/pdf/signatures/<?php echo $rowsqlnda['participant_signature']; ?> "/>
 </div>
 </div>
 

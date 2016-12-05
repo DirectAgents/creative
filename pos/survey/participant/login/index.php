@@ -285,7 +285,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 </div>
 
 <div class="loginas">
-  <h3>Are you a <span class="role">startup</span>? <a href="<?php echo BASE_PATH; ?>/startup/login/">Click here</a></h3>
+  <h3>Are you a <span class="role">Startup</span>? <a href="<?php echo BASE_PATH; ?>/startup/login/">Click here</a></h3>
 </div>
   
   <form class="login-form">
