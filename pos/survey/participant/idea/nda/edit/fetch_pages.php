@@ -35,7 +35,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
 $rowsqlnda = mysqli_fetch_array($nda);
 
-echo $_GET['id'];
+//echo $_GET['id'];
 
 ?>
 
@@ -140,7 +140,7 @@ $("#save-nda").click(function(){
         {  
         $.ajax({
             method: "POST",
-            url: "../signatures/edit.php",
+            url: "../../../../nda/signatures/participant/edit.php",
             data: { signature: dataURI, projectid: projectid, recipient_party: recipient_party, participant_sig_name: participant_sig_name,
             participant_sig_title: participant_sig_title, participant_sig_company: participant_sig_company, participant_sig_date: participant_sig_date,
             startupID : startupID, disclosure_party: disclosure_party, nda_purpose: nda_purpose, startup_signature: startup_signature, startup_sig_name: startup_sig_name,
@@ -149,7 +149,7 @@ $("#save-nda").click(function(){
         .success(function( response ) {
            
           //window.location.href = "../index.php?p=signed-nda";
-            output = '<div class="success">Successfully Saved!</div>';
+            output = '<div class="success">Successfully Updated!</div>';
             $("#result").hide().html(output).slideDown();
         });
         }
@@ -192,8 +192,9 @@ $("#save-nda").click(function(){
 <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=pending-nda">Pending NDA</a> </div>
 
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><?php echo $rowsqlnda['startup_name']; ?></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
-<?php echo $rowsqlnda['nda_purpose']; ?><br><br>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
+
+<strong><?php echo $rowsqlnda['nda_purpose']; ?></strong><br><br>
 
 The parties are only allowed to use the confidential information for the above purpose.
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>
@@ -210,7 +211,7 @@ The parties are only allowed to use the confidential information for the above p
 <p>This agreement is between the two parties named above. Neither party may delegate, transfer or assign this agreement to a third party without the written consent of the other.</p>
 <p>Failure to enforce any provision within this agreement does not waive that provision.</p>
 <p>This is the parties' entire agreement on this matter, superseding all previous negotiations or agreements. It can only be changed by mutual written consent.</p>
-<p>The laws of the state of <span contenteditable="false">NY</span> govern this agreement and any disputes arising from it will be handled exclusively in courts in that state. The prevailing party in any dispute will be entitled to recover reasonable costs and attorneys' fees.</p>
+<p>The laws of the state of <span contenteditable="false"><strong>NY</strong></span> govern this agreement and any disputes arising from it will be handled exclusively in courts in that state. The prevailing party in any dispute will be entitled to recover reasonable costs and attorneys' fees.</p>
 <p>Signing a copy of this agreement, physical or electronic, will have the same effect as signing an original.</p></div>
 </div>
 </div>
@@ -323,6 +324,11 @@ $thedate =  $date->format('m/d/Y');
 <p>&nbsp;</p>
 
 
+<div class="col-lg-12" style="padding-left:0px;">
+<div class="col-lg-4" style="padding-left:0px; text-align:right"><label>Signature:</label></div>
+<div class="col-lg-4"><img src="<?php echo BASE_PATH; ?>/nda/signatures/participant/<?php echo $rowsqlnda['participant_signature']; ?> "/>
+</div>
+</div>
 
 
 
@@ -410,7 +416,7 @@ $thedate =  $date->format('m/d/Y');
 
 <input type="hidden" style="width:250px" name="projectid" id="projectid" value="<?php echo $_GET['id']; ?>"  />
 
-<div class="col-lg-12" style="padding-left:0px">
+<div class="col-lg-12" style="padding-left:0px; text-align:center">
  <div id="save-nda">
             
         <input type="submit" value="I have read the NDA Agreement and Agree with the Terms and Conditions"/>

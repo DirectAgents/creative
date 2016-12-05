@@ -143,7 +143,7 @@ $("#save-nda").click(function(){
         {  
         $.ajax({
             method: "POST",
-            url: "../signatures/sign.php",
+            url: "../../../../nda/signatures/participant/sign.php",
             data: { signature: dataURI, projectid: projectid, recipient_party: recipient_party, participant_sig_name: participant_sig_name,
             participant_sig_title: participant_sig_title, participant_sig_company: participant_sig_company, participant_sig_date: participant_sig_date,
             startupID : startupID, disclosure_party: disclosure_party, nda_purpose: nda_purpose, startup_signature: startup_signature, startup_sig_name: startup_sig_name,
@@ -195,7 +195,7 @@ $("#save-nda").click(function(){
 <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=pending-nda">Pending NDA</a> </div>
 
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><?php echo $rowsqlnda['startup_name']; ?></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
 <?php echo $rowsqlnda['nda_purpose']; ?><br><br>
 
 The parties are only allowed to use the confidential information for the above purpose.
@@ -413,7 +413,7 @@ $thedate =  $date->format('m/d/Y');
 
 <input type="hidden" style="width:250px" name="projectid" id="projectid" value="<?php echo $_GET['id']; ?>"  />
 
-<div class="col-lg-12" style="padding-left:0px">
+<div class="col-lg-12" style="padding-left:0px; text-align:center">
  <div id="save-nda">
             
         <input type="submit" value="I have read the NDA Agreement and Agree with the Terms and Conditions"/>

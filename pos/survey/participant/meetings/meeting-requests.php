@@ -690,7 +690,7 @@ $row3 = mysqli_fetch_array($sql3);
                      <div class="col-md-12">
                    <?php if($row4['NDA'] == 'Yes') { ?>
 
-                  <br>Important Note.: Startup requires you to sign an NDA before you both meet. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/sign/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to sign.
+                  <br>Important Note.: <?php echo $row3['FirstName']; ?> requires you to sign an NDA before you both meet. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/sign/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to sign.
                     <? } ?>           
 </div>
 

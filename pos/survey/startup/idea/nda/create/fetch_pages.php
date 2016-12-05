@@ -130,7 +130,7 @@ $("#save-nda").click(function(){
         {  
         $.ajax({
             method: "POST",
-            url: "../signatures/create.php",
+            url: "../../../../nda/signatures/startup/create.php",
             data: { signature: dataURI, projectid: projectid, nda_purpose: nda_purpose, disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
             startup_sig_title: startup_sig_title, startup_sig_company: startup_sig_company, startup_sig_date: startup_sig_date  }
         })
