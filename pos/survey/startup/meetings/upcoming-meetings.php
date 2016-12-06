@@ -53,11 +53,11 @@ $sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID =
   //if username exists
 if(mysqli_num_rows($sql)>0)
 {
-  //echo "asdf";
+  
 
 
 //get all records from add_delete_record table
-while($row2 = mysql_fetch_array($sql))
+while($row2 = mysqli_fetch_array($sql))
 { 
 
 

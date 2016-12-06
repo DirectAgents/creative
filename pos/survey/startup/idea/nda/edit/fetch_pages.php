@@ -22,7 +22,7 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../login.php');
+  $startup_home->redirect('../../login');
 }
 
 
@@ -31,7 +31,7 @@ $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
+$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 $rowsqlnda = mysqli_fetch_array($nda);
 
 
@@ -82,6 +82,7 @@ $("#save-nda").click(function(){
         var proceed = true;
         
         var projectid  = $('input[name=projectid').val();
+        var state  = $('input[name=state').val();
         var nda_purpose = $("textarea[name='nda_purpose']").val();
         var disclosure_party  = $('input[name=disclosure_party').val();
         var the_signature  = $('input[name=the_signature').val();
@@ -128,8 +129,8 @@ $("#save-nda").click(function(){
         {  
         $.ajax({
             method: "POST",
-            url: "../signatures/edit.php",
-            data: { signature: dataURI, projectid: projectid, nda_purpose: nda_purpose, disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
+            url: "../../../../nda/pdf/signatures/edit-startup.php",
+            data: { signature: dataURI, projectid: projectid, state: state , nda_purpose: nda_purpose, disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
             startup_sig_title: startup_sig_title, startup_sig_company: startup_sig_company, startup_sig_date: startup_sig_date  }
         })
         .success(function( response ) {
@@ -176,7 +177,7 @@ $("#save-nda").click(function(){
 <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=drafted-nda">Drafted NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=pending-nda">Pending NDA</a> </div>
 
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name" value="<?php echo $rowsqlnda['startup_name']; ?>"></span> and <span contenteditable="false"><input type="text" name="recipient_party" placeholder="Recipient Party" disabled></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name" value="<?php echo $rowsqlnda['startup_name']; ?>"></span> and <strong>"Recipient Party"</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
 <textarea name="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="Purpose of disclosure"><?php echo $rowsqlnda['nda_purpose']; ?></textarea>
 The parties are only allowed to use the confidential information for the above purpose.
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>
@@ -193,7 +194,7 @@ The parties are only allowed to use the confidential information for the above p
 <p>This agreement is between the two parties named above. Neither party may delegate, transfer or assign this agreement to a third party without the written consent of the other.</p>
 <p>Failure to enforce any provision within this agreement does not waive that provision.</p>
 <p>This is the parties' entire agreement on this matter, superseding all previous negotiations or agreements. It can only be changed by mutual written consent.</p>
-<p>The laws of the state of <span contenteditable="false"><input type="text" name="state" data-question="Where are you based? (e.g., Virginia, Delaware)" data-help="This response will determine which jurisdiction's law governs the contract." value=""></span> govern this agreement and any disputes arising from it will be handled exclusively in courts in that state. The prevailing party in any dispute will be entitled to recover reasonable costs and attorneys' fees.</p>
+<p>The laws of the state of <span contenteditable="false"><input type="text" name="state" id="state" placeholder="e.g NY" value="<?php echo $rowsqlnda['State']; ?>"></span>govern this agreement and any disputes arising from it will be handled exclusively in courts in that state. The prevailing party in any dispute will be entitled to recover reasonable costs and attorneys' fees.</p>
 <p>Signing a copy of this agreement, physical or electronic, will have the same effect as signing an original.</p></div>
 </div>
 </div>
@@ -219,7 +220,7 @@ The parties are only allowed to use the confidential information for the above p
 
 <div class="col-lg-12" style="padding-left:0px;">
 <div class="col-lg-2" style="padding-left:0px"><label>Signature:</label></div>
-<div class="col-lg-2"><img src="<?php echo BASE_PATH; ?>/startup/idea/nda/signatures/<?php echo $rowsqlnda['startup_signature']; ?> "/>
+<div class="col-lg-2"><img src="<?php echo BASE_PATH; ?>/nda/pdf/signatures/<?php echo $rowsqlnda['startup_signature']; ?> "/>
 </div>
 </div>
 

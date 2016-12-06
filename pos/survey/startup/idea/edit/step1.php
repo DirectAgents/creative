@@ -276,19 +276,25 @@ $(document).ready(function() {
             </div>
           </div>
 
-           <div id="back">
+          
 
 <?php if(isset($rownda['ProjectID'])){ ?>
 
+ <div id="back">
+  
               <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/edit/?id=<?php echo $_SESSION['projectid']; ?>">Edit Non-Disclosure Agreement</a>
 
-<?php  }else{ ?>
-  
- <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/create/?id=<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
+               </div>
 
+              <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=drafted-nda">Drafted NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=pending-nda">Pending NDA</a> </div>
+
+<?php  }else{ ?>
+   <div id="back">
+ <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/create/?id=<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
+ </div>
 <?php } ?>
 
-            </div>
+           
 
 
             </div>

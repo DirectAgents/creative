@@ -26,40 +26,34 @@
 
 
 session_start();
-require_once '../../../../base_path.php';
-require_once '../../../../class.participant.php';
-require_once '../../../../class.startup.php';
-require_once '../../../../config.php';
-require_once '../../../../config.inc.php';
-
-$startup_home = new STARTUP();
-
-if($startup_home->is_logged_in())
-{
-  $startup_home->logout();
-}
-
-
+require_once '../../../base_path.php';
+require_once '../../../class.participant.php';
+require_once '../../../class.startup.php';
+require_once '../../../config.php';
+require_once '../../../config.inc.php';
 
 $participant_home = new PARTICIPANT();
-
-if(!$participant_home->is_logged_in())
+if($participant_home->is_logged_in())
 {
-  $participant_home->redirect('../../../login');
+  $participant_home->logout();
 }
-
+$startup_home = new STARTUP();
+if(!$startup_home->is_logged_in())
+{
+  $startup_home->redirect('../../login');
+}
 
 
 
 if(!isset($_GET['id'])){header("Location:../../../../404.php");}
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
+$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 $rowsqlnda = mysqli_fetch_array($sqlnda);
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."' ");
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 $rowproject = mysqli_fetch_array($Project);
 
 

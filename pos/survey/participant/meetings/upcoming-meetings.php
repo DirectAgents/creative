@@ -62,8 +62,8 @@ while($row2 = mysqli_fetch_array($sql))
 { 
 
 
-$sql4 = mysql_query("SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
-$row4 = mysql_fetch_array($sql4);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
+$row4 = mysqli_fetch_array($sql4);
 
 
 
@@ -243,8 +243,8 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 <?php 
 
-$ProjectImage = mysql_query("SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
-$rowprojectimage = mysql_fetch_array($ProjectImage);
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
+$rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 
 if($rowprojectimage['google_picture_link'] != '') {
@@ -273,10 +273,9 @@ if($rowprojectimage['profile_image'] != '') { ?>
 
 <?php
 
-$sql3="SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'";
-$result3=mysql_query($sql3);
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'");
 
-$row3 = mysql_fetch_array($result3);
+$row3 = mysqli_fetch_array($sql3);
 
 ?>
 

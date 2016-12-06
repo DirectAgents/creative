@@ -4,6 +4,30 @@ session_start();
 require_once '../../../config.php';
 
 
+require_once '../../../base_path.php';
+
+require_once '../../../class.startup.php';
+require_once '../../../participant.php';
+
+
+
+$startup_home = new STARTUP();
+
+if($startup_home->is_logged_in())
+{
+  $startup_home->logout();
+}
+
+
+
+$participant_home = new PARTICIPANT();
+
+if(!$participant_home->is_logged_in())
+{
+  $participant_home->redirect('../../../participant/login');
+}
+
+
 if($_POST){
 
 $date = new DateTime($_POST['participant_sig_date']);
@@ -64,10 +88,10 @@ imagepng($bg, $signature, 0);
 
 
 
-   $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda_signed (`status`,`startupID`, `ProjectID`, `startup_name` , `nda_purpose`,`startup_signature` ,`startup_sig_name`, `startup_sig_title`, `startup_sig_company`, `startup_sig_date`, `userID`,`participant_name`, `participant_signature`, `participant_sig_name`, `participant_sig_title`, `participant_sig_company`, `participant_sig_date` ) VALUES ('signed','".$_POST['startupID']."', '".$_POST['projectid']."','".$_POST['disclosure_party']."', '".$_POST['nda_purpose']."' ,'".$_POST['startup_signature']."','".$_POST['startup_sig_name']."', '".$_POST['startup_sig_title']."', '".$_POST['startup_sig_company']."', '".$_POST['startup_sig_date']."', '".$_SESSION['participantSession']."', '".$_POST['recipient_party']."', '".$signature."', '".$_POST['participant_sig_name']."', '".$_POST['participant_sig_title']."', '".$_POST['participant_sig_company']."', '".$participant_sig_date."' )");
+   $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda_signed (`status`,`startupID`, `ProjectID`, `State` , `startup_name` , `nda_purpose`,`startup_signature` ,`startup_sig_name`, `startup_sig_title`, `startup_sig_company`, `startup_sig_date`, `userID`,`participant_name`, `participant_signature`, `participant_sig_name`, `participant_sig_title`, `participant_sig_company`, `participant_sig_date` ) VALUES ('signed','".$_POST['startupID']."', '".$_POST['projectid']."', '".$_POST['state']."' ,'".$_POST['disclosure_party']."', '".$_POST['nda_purpose']."' ,'".$_POST['startup_signature']."','".$_POST['startup_sig_name']."', '".$_POST['startup_sig_title']."', '".$_POST['startup_sig_company']."', '".$_POST['startup_sig_date']."', '".$_SESSION['participantSession']."', '".$_POST['recipient_party']."', '".$signature."', '".$_POST['participant_sig_name']."', '".$_POST['participant_sig_title']."', '".$_POST['participant_sig_company']."', '".$participant_sig_date."' )");
 
 
-//$sql=mysqli_query($connecDB,"DELETE FROM tbl_nda_pending WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_POST['projectid']."'");
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_nda_pending WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_POST['projectid']."'");
 
 
 

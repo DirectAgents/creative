@@ -4,6 +4,32 @@ session_start();
 require_once '../../../config.php';
 
 
+require_once '../../../base_path.php';
+
+require_once '../../../class.startup.php';
+require_once '../../../class.participant.php';
+
+
+
+$startup_home = new STARTUP();
+
+if($startup_home->is_logged_in())
+{
+  $startup_home->logout();
+}
+
+
+
+$participant_home = new PARTICIPANT();
+
+if(!$participant_home->is_logged_in())
+{
+  $participant_home->redirect('../../../participant/login');
+}
+
+
+
+
 if($_POST){
 
 $date = new DateTime($_POST['participant_sig_date']);

@@ -283,7 +283,7 @@ $(document).ready(function () {
                     <div class="edit-delete">
                       <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/edit/?id=<?php echo $row2['ProjectID']; ?>">
                   <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
-                  <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/pdf/nda-pdf.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
+                  <a href="<?php echo BASE_PATH; ?>/nda/pdf/nda-pdf-participant.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
                       <i class="icon icon-download3"></i> Download as PDF</a>
                  
                     

@@ -26,7 +26,23 @@ $the_time = date('h:i:s A');
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_project_request(userID, startupID, ProjectID, Date_of_Meeting, From_Time, To_Time, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
-VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."','".$_POST['date']."', '".$_POST['fromtime']."', '".$_POST['totime']."', '".$_POST['location']."' , 'Pending', 'Waiting for startup to Accept or Decline', 'Participant' ,'".$the_date."','".$the_time."')");
+VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."','".$_POST['date']."', '".$_POST['fromtime']."', '".$_POST['totime']."', '".$_POST['location']."' , 'Pending', 'Waiting for Startup to Accept or Decline', 'Participant' ,'".$the_date."','".$the_time."')");
+
+//Check if NDA is required
+
+$sqlproject = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$_POST['projectid']."' ");
+$rowproject = mysqli_fetch_array($sqlproject);
+
+if($rowproject['NDA'] == 'Yes')
+{
+
+$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft  WHERE ProjectID = '".$_POST['projectid']."'");
+$rownda = mysqli_fetch_array($sqlnda);
+
+ $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda_pending (`status`, `userID`,`startupID`, `ProjectID`, `startup_name` , `nda_purpose`,`startup_signature` ,`startup_sig_name`, `startup_sig_title`, `startup_sig_company`, `startup_sig_date` ) VALUES ('pending', '".$_SESSION['participantSession']."' ,'".$rownda['startupID']."', '".$_POST['projectid']."','".$rownda['startup_name']."', '".$rownda['nda_purpose']."','".$rownda['startup_signature']."','".$rownda['startup_sig_name']."', '".$rownda['startup_sig_title']."', '".$rownda['startup_sig_company']."', '".$rownda['startup_sig_date']."')");
+
+}
+
 
 $output = json_encode(array('type'=>'message', 'text' => '<div class="success2">Request sent!</div>'));
 die($output);

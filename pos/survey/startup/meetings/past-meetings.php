@@ -107,8 +107,8 @@ if ( $dtB < $dtA ) {
   <div id="result-delete-<?php echo $row2['ProjectID']; ?>">Successfully Confirmed!</div>
   </div>
 <h4>Please confirm that you both met!</h4>
-<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
@@ -378,10 +378,10 @@ $row3 = mysqli_fetch_array($sql3);
 $sql5=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE startup_id = '".$_SESSION['startupSession']."' AND comment_identifier_id = '".$row2['userID']."'");
 //$result5=mysql_query($sql5);
 
-if(mysql_num_rows($sql5)<1)
+if(mysqli_num_rows($sql5)<1)
 {
 
-$row5 = mysql_fetch_array($sql5);
+$row5 = mysqli_fetch_array($sql5);
 
 
 

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include ('../../config2.php');
+include ('../../config.php');
 require( "../../phpmailer/class.phpmailer.php" );
 
 require 'PHPMailerAutoload.php';
@@ -20,32 +20,30 @@ if($_POST)
 date_default_timezone_set('America/New_York');
 
 
-$sql_participant = "SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'";
-$result_participant=mysql_query($sql_participant);
-$row = mysql_fetch_array($result_participant);
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+$row = mysqli_fetch_array($sql_participant);
 
 
-if($row['Status'] = 'Waiting for startup to accept'){
+if($row['Status'] = 'Waiting for Startup to Accept or Decline'){
 
 
-  $update_sql = "UPDATE tbl_project_request SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
   Accepted_to_Participate = 'Accepted',
   Final_Time = '".$_POST['final_time']."',
   Status = 'Meeting Set'
   
 
-  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'";
-
-  mysql_query($update_sql);
+  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
 
 
 
-$sql4 = mysql_query("SELECT * FROM tbl_startup  WHERE userID = '".$row['startupID']."' ");
-$row4 = mysql_fetch_array($sql4);
+
+$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup  WHERE userID = '".$row['startupID']."' ");
+$row4 = mysqli_fetch_array($sql4);
 
 
-$sql5 = mysql_query("SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
-$row5 = mysql_fetch_array($sql5);
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
+$row5 = mysqli_fetch_array($sql5);
 
 
 
@@ -422,9 +420,8 @@ if (!$mail->send()) {
     //header("Location: index.php"); 
 
 
-$sql_participant = "SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'";
-$result_participant=mysql_query($sql_participant);
-$row2 = mysql_fetch_array($result_participant);
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
+$row2 = mysql_fetch_array($sql_participant);
 
 
  $output = json_encode(array('type'=>'message', 'text' => $_POST['projectid']));

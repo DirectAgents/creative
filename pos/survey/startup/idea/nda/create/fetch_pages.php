@@ -80,6 +80,7 @@ $("#save-nda").click(function(){
         var proceed = true;
         
         var projectid  = $('input[name=projectid').val();
+        var state  = $('input[name=state').val();
         var nda_purpose = $("textarea[name='nda_purpose']").val();
         var disclosure_party  = $('input[name=disclosure_party').val();
         var the_signature  = $('input[name=the_signature').val();
@@ -90,6 +91,7 @@ $("#save-nda").click(function(){
         var startup_sig_date  = $('input[name=startup_sig_date').val();
         
    
+
 
          if(startup_sig_date == ''){ 
              $("#startup_sig_date").css('border-color','red'); //change border color to red 
@@ -120,6 +122,22 @@ $("#save-nda").click(function(){
     }
 
 
+       if(state == ''){ 
+             $("#state").css('border-color','red'); //change border color to red 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a state!<br> This response will determine which jurisdiction\'s law governs the contract. </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+
+         if(nda_purpose == ''){ 
+             $("#disclosure_party").css('border-color','red'); //change border color to red 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a purpose for your NDA agreement </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+
         if(disclosure_party == ''){ 
              $("#disclosure_party").css('border-color','red'); //change border color to red 
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter your name as the Disclosure Party! </div>';
@@ -130,8 +148,8 @@ $("#save-nda").click(function(){
         {  
         $.ajax({
             method: "POST",
-            url: "../../../../nda/signatures/startup/create.php",
-            data: { signature: dataURI, projectid: projectid, nda_purpose: nda_purpose, disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
+            url: "../../../../nda/pdf/signatures/create-startup.php",
+            data: { signature: dataURI, projectid: projectid, state: state, nda_purpose: nda_purpose, disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
             startup_sig_title: startup_sig_title, startup_sig_company: startup_sig_company, startup_sig_date: startup_sig_date  }
         })
         .success(function( response ) {
@@ -175,8 +193,8 @@ $("#save-nda").click(function(){
   <!-- ngInclude: 'edit.html' --><div ng-include="'edit.html'" class=""><!-- ngInclude: 'subnav.html' --><div class="subnav" ng-include="'subnav.html'" ng-controller="SubnavController"><!-- ngIf: displaySubnav -->
 </div>
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name"></span> and <span contenteditable="false"><input type="text" name="recipient_party" placeholder="Recipient Party" disabled></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
-<textarea name="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="Purpose of disclosure"></textarea>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name"></span> and <span contenteditable="false"><strong>"Recipient Party"</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
+<textarea name="nda_purpose" id="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="What is the reason that confidential information is being shared?"></textarea>
 The parties are only allowed to use the confidential information for the above purpose.
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>
 <ul class="no-bullets">
@@ -192,7 +210,7 @@ The parties are only allowed to use the confidential information for the above p
 <p>This agreement is between the two parties named above. Neither party may delegate, transfer or assign this agreement to a third party without the written consent of the other.</p>
 <p>Failure to enforce any provision within this agreement does not waive that provision.</p>
 <p>This is the parties' entire agreement on this matter, superseding all previous negotiations or agreements. It can only be changed by mutual written consent.</p>
-<p>The laws of the state of <span contenteditable="false"><input type="text" name="state" data-question="Where are you based? (e.g., Virginia, Delaware)" data-help="This response will determine which jurisdiction's law governs the contract." value=""></span> govern this agreement and any disputes arising from it will be handled exclusively in courts in that state. The prevailing party in any dispute will be entitled to recover reasonable costs and attorneys' fees.</p>
+<p>The laws of the state of <span contenteditable="false"><input type="text" name="state" id="state" placeholder="e.g NY"></span> govern this agreement and any disputes arising from it will be handled exclusively in courts in that state. The prevailing party in any dispute will be entitled to recover reasonable costs and attorneys' fees.</p>
 <p>Signing a copy of this agreement, physical or electronic, will have the same effect as signing an original.</p></div>
 </div>
 </div>

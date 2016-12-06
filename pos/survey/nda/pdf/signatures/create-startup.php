@@ -3,6 +3,28 @@
 session_start();
 require_once '../../../config.php';
 
+require_once '../../../class.startup.php';
+require_once '../../../class.participant.php';
+
+
+$participant_home = new PARTICIPANT();
+
+if($participant_home->is_logged_in())
+{
+  $participant_home->logout();
+}
+
+
+
+$startup_home = new STARTUP();
+
+if(!$startup_home->is_logged_in())
+{
+  $startup_home->redirect('../../../startup/login');
+}
+
+
+
 
 if($_POST){
 
@@ -14,7 +36,7 @@ $startup_sig_date =  $date->format('Y-m-d');
 
 
 
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID='".$_POST['projectid']."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID='".$_POST['projectid']."'");
 
 if(mysqli_num_rows($sql) == 0) {
 
@@ -65,7 +87,7 @@ imagepng($bg, $signature, 0);
 
 
 
-   $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda (`status`,`startupID`, `ProjectID`, `startup_name` , `nda_purpose`,`startup_signature` ,`startup_sig_name`, `startup_sig_title`, `startup_sig_company`, `startup_sig_date` ) VALUES ('draft','".$_SESSION['startupSession']."', '".$_POST['projectid']."','".$_POST['disclosure_party']."', '".$_POST['nda_purpose']."',
+   $sql=mysqli_query($connecDB,"INSERT INTO tbl_nda_draft (`status`,`startupID`, `ProjectID`, `State`, `startup_name` , `nda_purpose`,`startup_signature` ,`startup_sig_name`, `startup_sig_title`, `startup_sig_company`, `startup_sig_date` ) VALUES ('draft','".$_SESSION['startupSession']."', '".$_POST['projectid']."', '".$_POST['state']."' ,'".$_POST['disclosure_party']."', '".$_POST['nda_purpose']."',
       '".$signature."','".$_POST['startup_sig_name']."', '".$_POST['startup_sig_title']."', '".$_POST['startup_sig_company']."', '".$startup_sig_date."')");
 
 }

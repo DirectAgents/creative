@@ -99,7 +99,7 @@ $date = date('Y-m-d h:m A');
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 
-<?php if($row2['Status'] != 'Waiting for startup to accept') { ?>
+<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
 
 Select a time to meet:
 
@@ -653,21 +653,21 @@ $row3 = mysqli_fetch_array($sql3);
                       <div class="label">Time:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                      
-                      <?php if($row2['Status'] == 'Waiting for startup to accept') { ?>
+                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
 
                        
                       <?php echo $row2['Final_Time']; ?>
 
                       <?php } ?>
                         
-            <?php if($row2['Status'] == 'Waiting for Participant to accept') { ?>
+            <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
                        Between <?php echo $row2['From_Time']; ?> & 
                       <?php echo $row2['To_Time']; ?>
 
                     <?php } ?>   
 
 
-                     <?php if($row2['Status'] == 'Waiting for startup to Accept or Decline') { ?>
+                     <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
                        Between <?php echo $row2['From_Time']; ?> & 
                       <?php echo $row2['To_Time']; ?>
 
@@ -695,9 +695,8 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="status_request">Status: 
 
-                  <?php if($row2['Status'] == 'Waiting for startup to Accept or Decline'){echo 'Waiting for you to Accept or Decline';} ?>
-                  <?php if($row2['Status'] == 'Waiting for startup to accept'){echo 'Waiting for startup to accept';} ?>
-                  <?php if($row2['Status'] == 'Waiting for Participant to accept'){echo 'Waiting for you to accept or decline';} ?>
+                  <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline'){echo 'Waiting for you to Accept or Decline';} ?>
+                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline'){echo 'Waiting for Participant to accept or decline';} ?>
 
 
                   </div>

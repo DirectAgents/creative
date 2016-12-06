@@ -19,19 +19,18 @@ if(!$startup_home->is_logged_in())
 
 
 
-$stmt = $startup_home->runQuery("SELECT * FROM tbl_nda WHERE startupID=:uid");
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_nda_pending WHERE startupID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
 
-$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID='".$_SESSION['startupSession']."' AND participant_signature != '' ");
+$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending WHERE startupID='".$_SESSION['startupSession']."' AND participant_signature != '' ");
 $rownda = mysqli_fetch_array($nda);
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
-$rowproject = mysqli_fetch_array($Project);
+
 
 
 
@@ -130,7 +129,7 @@ $(document).ready(function(){
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID = '".$_SESSION['startupSession']."' AND participant_signature != '' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending WHERE startupID = '".$_SESSION['startupSession']."' AND participant_signature != '' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -148,6 +147,11 @@ while($row2 = mysqli_fetch_array($sql))
 date_default_timezone_set('America/New_York');
 
 $date = date_create($row2['participant_sig_date']);
+
+
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$row2['id']."' ");
+$rowproject = mysqli_fetch_array($Project);
+
 
   ?>
 
@@ -340,7 +344,7 @@ $(document).ready(function () {
 
 <div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No NDAs' signed yet</div>
+<div class="empty-projects">No pending NDAs' to be signed</div>
   <div class="create-one-here-box">
       <div class="create-one">
  <p>&nbsp;</p>

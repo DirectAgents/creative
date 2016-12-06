@@ -213,7 +213,7 @@ The parties are only allowed to use the confidential information for the above p
 <p>This agreement is between the two parties named above. Neither party may delegate, transfer or assign this agreement to a third party without the written consent of the other.</p>
 <p>Failure to enforce any provision within this agreement does not waive that provision.</p>
 <p>This is the parties' entire agreement on this matter, superseding all previous negotiations or agreements. It can only be changed by mutual written consent.</p>
-<p>The laws of the state of <span contenteditable="false">NY</span> govern this agreement and any disputes arising from it will be handled exclusively in courts in that state. The prevailing party in any dispute will be entitled to recover reasonable costs and attorneys' fees.</p>
+<p>The laws of the state of <span contenteditable="false"><strong>NY</strong></span> govern this agreement and any disputes arising from it will be handled exclusively in courts in that state. The prevailing party in any dispute will be entitled to recover reasonable costs and attorneys' fees.</p>
 <p>Signing a copy of this agreement, physical or electronic, will have the same effect as signing an original.</p></div>
 </div>
 </div>
@@ -244,7 +244,7 @@ The parties are only allowed to use the confidential information for the above p
 
 <div class="col-lg-12" style="padding-left:0px;">
 <div class="col-lg-4" style="padding-left:0px; text-align:right"><label>Signature:</label></div>
-<div class="col-lg-4"><img src="<?php echo BASE_PATH; ?>/startup/idea/nda/signatures/<?php echo $rowsqlnda['startup_signature']; ?> "/>
+<div class="col-lg-4"><img src="<?php echo BASE_PATH; ?>/nda/pdf/signatures/<?php echo $rowsqlnda['startup_signature']; ?> "/>
 </div>
 </div>
 

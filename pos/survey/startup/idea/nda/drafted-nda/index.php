@@ -19,19 +19,18 @@ if(!$startup_home->is_logged_in())
 
 
 
-$stmt = $startup_home->runQuery("SELECT * FROM tbl_nda WHERE startupID=:uid");
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_nda_draft WHERE startupID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
 
-$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID='".$_SESSION['startupSession']."' AND status = 'draft' ");
+$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND status = 'draft' ");
 $rownda = mysqli_fetch_array($nda);
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' ");
-$rowproject = mysqli_fetch_array($Project);
+
 
 
 
@@ -130,7 +129,7 @@ $(document).ready(function(){
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID = '".$_SESSION['startupSession']."' AND status = 'draft' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID = '".$_SESSION['startupSession']."' AND status = 'draft' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -148,6 +147,11 @@ while($row2 = mysqli_fetch_array($sql))
 date_default_timezone_set('America/New_York');
 
 $date = date_create($row2['participant_sig_date']);
+
+
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$row2['ProjectID']."' ");
+$rowproject = mysqli_fetch_array($Project);
+
 
   ?>
 
@@ -275,7 +279,7 @@ $(document).ready(function () {
                     <div class="edit-delete">
                       <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/edit/?id=<?php echo $row2['ProjectID']; ?>">
                   <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
-                  <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/pdf/?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
+                  <a href="<?php echo BASE_PATH; ?>/nda/pdf/nda-draft-pdf-startup.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
                       <i class="icon icon-download3"></i> Download as PDF</a>&nbsp;&nbsp;&nbsp;| &nbsp;
                    <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_open">
                       <i class="icon icon-bin"></i>Delete</a>
@@ -291,18 +295,28 @@ $(document).ready(function () {
                   <div class="survey-metadata">
                     <div class="item ">
                       <div class="label">Created:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $rownda['startup_sig_date']; ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php 
+
+$date = new DateTime($rownda['startup_sig_date']);
+$thedate =  $date->format('m/d/Y');
+
+                      echo $thedate; 
+
+
+                       ?></div>
                     </div>
                     <div class="item date">
-                      <div class="label">Status:</div>
+                      <div class="label">Updated:</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                       <?php if($rownda['participant_signature'] == ''){ ?>
-                          Waiting
-                          <?php } ?>
+                 <?php
+$date = new DateTime($rownda['Updated']);
+$thedate =  $date->format('m/d/Y');
 
+                      echo $thedate; 
 
-                          Participant signed NDA on <?php echo $rownda['participant_sig_date']; ?>
+                 ?>
+
 
                         </span>
                       </div>

@@ -26,7 +26,7 @@ if(!$startup_home->is_logged_in())
 }
 
 
-$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda WHERE startupID='".$_SESSION['startupSession']."'");
+$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."'");
 
 $rownda = mysqli_fetch_array($sqlnda);
 

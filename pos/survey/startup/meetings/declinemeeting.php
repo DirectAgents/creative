@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include ('../../config2.php');
+include ('../../config.php');
 require( "../../phpmailer/class.phpmailer.php" );
 
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -17,20 +17,18 @@ if($_POST)
 date_default_timezone_set('America/New_York');
 
 
-$sql_participant = "SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'";
-$result_participant=mysql_query($sql_participant);
-$row = mysql_fetch_array($result_participant);
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+$row = mysqlifetch_array($sql_participant);
 
 
 
 
 
-  $update_sql = "UPDATE tbl_project_request SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
   Status = 'Cancelled_by_startup'
 
-  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'";
+  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
 
-  mysql_query($update_sql);
 
 
 
@@ -40,9 +38,8 @@ $row = mysql_fetch_array($result_participant);
     //header("Location: index.php?s=success"); 
 
 
-$sql_participant = "SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'";
-$result_participant=mysql_query($sql_participant);
-$row2 = mysql_fetch_array($result_participant);
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
+$row2 = mysqli_fetch_array($sql_participant);
 
 
 

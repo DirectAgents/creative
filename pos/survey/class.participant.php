@@ -2,6 +2,8 @@
 
 require_once 'dbconfig.php';
 
+date_default_timezone_set('America/New_York');
+
 
 class PARTICIPANT
 {	

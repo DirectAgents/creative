@@ -9,11 +9,11 @@ include("../../../config.inc.php");
 
 
 
-$startup_home = new STARTUP();
+$researcher_home = new STARTUP();
 
-if(!$startup_home->is_logged_in())
+if(!$researcher_home->is_logged_in())
 {
-  $startup_home->redirect('../../../404.php');
+  $researcher_home->redirect('../../../404.php');
   exit();
 }
 
@@ -30,22 +30,20 @@ $ratingRow = $result->fetch_assoc();
 
 
 
-$stmt = mysql_query("SELECT * FROM tbl_participant WHERE userID='".$_GET['id']."'");
-$row = mysql_fetch_array($stmt);
+$stmt = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['id']."'");
+$row = mysqli_fetch_array($stmt);
 
 
 
-$comment="SELECT * FROM c5t_comment WHERE startup_id='".$_SESSION['startupSession']."' AND comment_identifier_id = '".$_GET['id']."'";
-$row_comment=mysql_query($comment);
+$comment=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE startup_id='".$_SESSION['startupSession']."' AND comment_identifier_id = '".$_GET['id']."'");
 
 
-$rating="SELECT * FROM participant_rating WHERE startup_id='".$_SESSION['startupSession']."' AND post_id = '".$_GET['id']."'";
-$row_rating=mysql_query($rating);
+$rating=mysqli_query($connecDB,"SELECT * FROM participant_rating WHERE startup_id='".$_SESSION['startupSession']."' AND post_id = '".$_GET['id']."'");
 
 
 
-$Project = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."'");
-$rowproject = mysql_fetch_array($Project);
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."'");
+$rowproject = mysqli_fetch_array($Project);
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
 $age=explode(',',$rowproject['Age']);
@@ -356,14 +354,14 @@ Based on <span id="totalrat"><?php echo $ratingRow['rating_number']; ?></span>  
   <div class="therow">
     <div class="col-lg-12">
 
-<?php if(mysql_num_rows($row_rating)<1) { ?>
+<?php if(mysqli_num_rows($rating)<1) { ?>
   <h2>Rate <?php echo $row['FirstName']; ?></h2>
   <input name="rating" value="0" id="rating_star" type="hidden" postID="<?php echo $_GET['id']; ?>" />
   <p>&nbsp;</p>
 <?php } ?>  
 
 
-<?php if(mysql_num_rows($row_comment)>0) { ?>
+<?php if(mysqli_num_rows($comment)>0) { ?>
 <script type="text/javascript">
 $(document).ready(function () {
   $('.c5t_comment_form_background').hide();

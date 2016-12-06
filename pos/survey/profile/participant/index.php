@@ -31,7 +31,7 @@ if(!$participant_home->is_logged_in())
   $participant_home->redirect('../participant/login.php');
 }*/
 
-
+include_once '../../dbConfig_rating.php';
 
 
 $query = "SELECT rating_number, FORMAT((total_points / rating_number),1) as average_rating FROM participant_rating WHERE post_id = '".$_GET['id']."' AND status = 1";
