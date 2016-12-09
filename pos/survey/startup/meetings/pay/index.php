@@ -45,7 +45,7 @@ $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_project_request  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' ");
+$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_project_request  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' AND userID = '".$_GET['p']."' ");
 $row2 = mysqli_fetch_array($sql2);
 
 
@@ -98,7 +98,8 @@ $(document).ready(function(){
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
-                    output = '<div class="success">'+response.text+'</div>';
+                    output = response.text;
+
                     //reset values in all input fields
                     $("#profile-form select[required=true]").val(''); 
                     $("#profile-form #contact_body").slideUp(); //hide form after success
@@ -109,6 +110,10 @@ $(document).ready(function(){
     });
  });
 </script> 
+
+
+
+
 
 
 
@@ -273,8 +278,31 @@ $thedate =  $date->format('m/d/Y');
 $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' ");
 $row4 = mysqli_fetch_array($sql4);
 
+
+$fee = ($row4['Pay'] + 1) * (2.9 / 100) + 0.30;
+
+$payamount = $row4['Pay'] + 1  + $fee ;
+
+
+function numberFormatPrecision($number, $precision = 2, $separator = '.')
+{
+    $numberParts = explode($separator, $number);
+    $response = $numberParts[0];
+    if(count($numberParts)>1){
+        $response .= $separator;
+        $response .= substr($numberParts[1], 0, $precision);
+    }
+    return $response;
+}
+
+
+$payamount_final = numberFormatPrecision($payamount, 2, '.');
+
+
 ?>
          <h4>You met for <?php echo $row4['Minutes']; ?> minutes and you owe <?php echo $row3['FirstName']; ?> $<?php echo $row4['Pay']; ?> </h4>
+
+         <h4>Note.: Your credit card will be charged $<?php echo $payamount_final; ?> (Why this extra charge?)</h4>
 
 
        
@@ -291,7 +319,7 @@ $row4 = mysqli_fetch_array($sql4);
 
 
         <div id="save">
-              <input type="submit" class="save" value="Pay"/>
+              <input type="submit" class="save" value="Click here to Pay"/>
 
             </div>
 

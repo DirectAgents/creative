@@ -286,7 +286,11 @@ if(isset($_SESSION['facebook_photo'])){
        
 if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
 
+  if($_SESSION['profileimage'] != ''){
         echo '<img src="'.BASE_PATH.'/images/profile/'.$_SESSION['profileimage'].'" class="img-circle-profile"/>';
+      }else{
+        echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
+      }
 } 
 
       ?>
@@ -295,7 +299,7 @@ if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
     </div>
     <div class="col-lg-4">
      <h3><?php echo $row['FirstName']; ?>&nbsp;<?php echo $row['LastName']; ?></h3>
-      <?php echo $row['Age']; ?>, <?php echo $row['City']; ?>, <?php echo $row['State']; ?>
+      <?php if($row['Age']!=''){echo $row['Age'] .',';} ?><?php if($row['City']!=''){ echo $row['City'].',';} ?> <?php if($row['State']!=''){ echo $row['State'];} ?>
       </div>
 
  <div class="col-lg-5">

@@ -255,7 +255,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
       ?>
             <div class='alert alert-error'>
         <button class='close' data-dismiss='alert'>&times;</button>
-        <strong>Sorry!</strong> This Account is not Activated Go to your Inbox and Activate it. 
+       <strong>Sorry!</strong> <br><br>This Account is not Activated Go to your Inbox and Activate it. 
       </div>
             <?php
     }
@@ -267,7 +267,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
       ?>
             <div class='alert alert-success'>
         <button class='close' data-dismiss='alert'>&times;</button>
-        <strong>Wrong Details!</strong> 
+        <strong>Wrong username or password. Try again!</strong> 
       </div>
             <?php
     }

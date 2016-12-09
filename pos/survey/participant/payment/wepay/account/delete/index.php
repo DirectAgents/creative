@@ -67,16 +67,15 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     //header("Location:".$response -> uri."");
 
-$update_sql = "UPDATE tbl_participant SET 
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
   account_id='',
   owner_user_id='',
   access_token='',
   code = '',
   bank_account=''
 
-  WHERE userID='".$_SESSION['participantSession']."'";
+  WHERE userID='".$_SESSION['participantSession']."'");
 
-mysql_query($update_sql);
 
 
 //header("Location:../../../");

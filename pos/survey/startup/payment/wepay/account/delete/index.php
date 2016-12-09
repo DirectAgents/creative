@@ -55,15 +55,22 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     //header("Location:".$response -> uri."");
 
-$update_sql = "UPDATE tbl_startup SET 
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
   account_id='',
   owner_user_id='',
   access_token='',
-  code = ''
+  code = '',
+  billing_address_one='',
+  billing_city='',
+  billing_state='',
+  billing_country='',
+  credit_card_id='',
+  cc_last_four='',
+  cc_name=''
+  
 
-  WHERE userID='".$_SESSION['startupSession']."'";
+  WHERE userID='".$_SESSION['startupSession']."'");
 
-mysql_query($update_sql);
 
 
 //header("Location:../../../");

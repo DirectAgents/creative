@@ -366,35 +366,42 @@ $row3 = mysqli_fetch_array($sql3);
 </div>
 
 
+
 <?php 
 
+}else{
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No Upcoming Meetings</div>
+ 
+</div>
+
+</div>
+</div>';
+
+}
+
+
+
+}
 
 }else{ ?>
 
 <div class="row">
     <div class="col-md-12">
 <div class="empty-projects">No Upcoming Meetings</div>
-  <div class="create-one-here-box">
-      <br><br>
-      <a href="<?php echo BASE_PATH; ?>/startup/project/browse/">
-        <button class="create-one-btn">Browse here</button></a>
-       </div> 
-  </div>
+  
 </div>
 
 </div>
-<p>&nbsp;</p>
 </div>
+
 
 
 <?php }
 
-
-exit();
-
-}
-
-}?>
+?>
 
 
 

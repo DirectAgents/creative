@@ -36,8 +36,8 @@ if(!$startup_home->is_logged_in())
 
 
 
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
+$stmt = $participant_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
@@ -54,7 +54,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // create an account for a user
     $response = $wepay->request('account/create/', array(
-        'name'          => 'Pauly Rossler Account Name',
+        'name'          => 'Account of '. $row['FirstName'].' '.$row['LastName'],
         'description'   => 'A description for your account.'
     ));
 

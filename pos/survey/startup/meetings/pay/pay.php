@@ -33,7 +33,7 @@ $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$stmtparticipant=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['participantid']."' ");
+$stmtparticipant=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['participantid']."' ");
 $rowparticipant=mysqli_fetch_array($stmtparticipant);
 
 
@@ -43,15 +43,31 @@ $rowparticipant=mysqli_fetch_array($stmtparticipant);
 //exit();
 
 
-$stmtproject=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['projectid']."' ");
+if($_POST){
+
+
+$stmtpayment=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."' ");
+$rowpayment=mysqli_fetch_array($stmtpayment);
+
+if($rowpayment['Payment'] != 'Yes'){
+
+
+
+$stmtproject=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."' ");
 $rowproject=mysqli_fetch_array($stmtproject);
 
 
 
-$payamount = $rowproject['Pay'] * 2.9 / 100 + 0.30;
 
 
-$payamount_final = $rowproject['Pay'] + 1 ;
+//$fee = ($row4['Pay'] + 1) * (2.9 / 100) + 0.30;
+
+
+$payout = $rowproject['Pay'] + 1 ;
+
+
+
+
 
 
 
@@ -89,7 +105,7 @@ $wepay = new WePay($access_token);
 try {
     $checkout = $wepay->request('/checkout/create', array(
             'account_id' => $account_id, // ID of the account that you want the money to go to
-            'amount' => $payamount_final, // dollar amount you want to charge the user
+            'amount' => $payout, // dollar amount you want to charge the user
             'short_description' => "Payment to ".$rowparticipant['FirstName']." ", // a short description of what the payment is for
             'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
             'currency'          => 'USD',
@@ -124,9 +140,9 @@ if (isset($error)){
 
    // display the response
    
-echo '<div id="receipt">';
-   print_r ($checkout);
-   echo "</div>";
+//echo '<div id="receipt">';
+   //print_r ($checkout);
+   //echo "</div>";
 
 
 
@@ -153,7 +169,7 @@ if($month == 'December') {$order_by = '12';}
 
 
 //continue here
-   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_GET['projectid']."','".$_SESSION['startupSession']."','".$_GET['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> gross."',
+   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> gross."',
    '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
 
 
@@ -163,12 +179,20 @@ if($month == 'December') {$order_by = '12';}
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
   Payment='Yes'
 
-  WHERE ProjectID='".$_GET['projectid']."' AND userID='".$_GET['participantid']."'");
+  WHERE ProjectID='".$_POST['projectid']."' AND userID='".$_POST['participantid']."'");
 
 
+$output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Sent Payment!</div>'));
+    die($output);
+
+  }else{
+
+    $output = json_encode(array('type'=>'message', 'text' => '<div class="errorXYZ">Payment already sent</div>'));
+    die($output);
+  }
 
 
-
+}
 
 
 

@@ -429,7 +429,12 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row5['start
 
                   <div class="status_request">Status: 
 <?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
-Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>">here</a> <?php } ?> 
+Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
+<?php } ?> 
+
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes'){ ?>
+Payment sent.
+<?php } ?> 
 
 
    <?php if($row2['Met'] == '' && $row2['Met'] != 'No didn\'t show up'){ ?>         
@@ -479,11 +484,7 @@ Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>">here</a
 echo '<div class="row">
     <div class="col-md-12">
 <div class="empty-projects">No Past Meetings</div>
-  <div class="create-one-here-box">
-      <div class="create-one">
-        <button class="slide_open create-one-btn">Browse here</button>
-       </div> 
-  </div>
+ 
 </div>
 
 </div>
@@ -499,12 +500,8 @@ echo '<div class="row">
 
 <div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Projects</div>
-  <div class="create-one-here-box">
-      <div class="create-one">
-        <button class="slide_open create-one-btn">Create one here</button>
-       </div> 
-  </div>
+<div class="empty-projects">No Past Meetings</div>
+  
 </div>
 
 </div>
