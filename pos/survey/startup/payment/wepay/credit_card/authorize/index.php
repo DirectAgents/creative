@@ -59,17 +59,16 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     print_r($response);
 
 
-    $update_sql = "UPDATE tbl_startup SET 
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
   cc_last_four='".$response -> last_four."',
   cc_name='".$response -> credit_card_name."'
 
-  WHERE userID='".$_SESSION['startupSession']."'";
+  WHERE userID='".$_SESSION['startupSession']."'");
 
 
-   mysql_query($update_sql);
 
 
-   header("Location:http://localhost/survey/startup/payment/");
+   header("Location:http://localhost/creative/pos/survey/startup/payment/");
 
 
     

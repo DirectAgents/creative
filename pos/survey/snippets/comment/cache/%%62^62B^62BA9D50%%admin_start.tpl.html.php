@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.13, created on 2016-08-17 23:32:00
+<?php /* Smarty version 2.6.13, created on 2016-12-08 21:45:36
          compiled from admin/admin_start.tpl.html */ ?>
 <img src="../template/admin/image/icon/homepage_large.png" width="32" height="32" align="left" style="margin-right:20px;" /> 
 <h3><?php echo $this->_tpl_vars['txt_comment_script']; ?>

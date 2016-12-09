@@ -47,12 +47,11 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if(isset($_GET['verified']) == '1'){
 
-  $update_sql = "UPDATE tbl_participant SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
   account_verified='1'
 
-  WHERE userID='".$_SESSION['participantSession']."'";
+  WHERE userID='".$_SESSION['participantSession']."'");
 
-  mysql_query($update_sql);
 
 }
 

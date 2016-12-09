@@ -33,7 +33,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // create an account for a user
     $response = $wepay->request('account/create/', array(
-        'name'          => 'Pauly Rossler Account Name',
+        'name'          => 'Account of '. $row['FirstName'].' '.$row['LastName'],
         'description'   => 'A description for your account.'
     ));
 
@@ -42,26 +42,24 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if($row['account_id'] == ''){
 
-  $update_sql = "UPDATE tbl_participant SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
   account_id='".$response -> account_id."',
   owner_user_id='".$response -> owner_user_id."',
   access_token = '".$_GET['access_token']."'
 
-  WHERE userID='".$_SESSION['participantSession']."'";
+  WHERE userID='".$_SESSION['participantSession']."'");
 
 
-   mysql_query($update_sql);
 
 
 }else{
 
-  $update_sql = "UPDATE tbl_participant SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
   owner_user_id='".$response -> owner_user_id."',
   access_token = '".$_GET['access_token']."'
 
-  WHERE userID='".$_SESSION['participantSession']."'";
+  WHERE userID='".$_SESSION['participantSession']."'");
 
-  mysql_query($update_sql);
 
 
 }
@@ -70,7 +68,7 @@ if($row['account_id'] == ''){
 
 
 
-   header("Location:http://localhost/survey/participant/payment/");
+   header("Location:http://localhost/creative/pos/survey/participant/payment/");
 
 
 

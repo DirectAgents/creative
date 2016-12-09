@@ -10,7 +10,7 @@ require_once ('libraries/Google/autoload.php');
 //You can get it from : https://console.developers.google.com/
 $client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
 $client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
-$redirect_uri = 'http://localhost/survey/snippets/google-login-api/';
+$redirect_uri = 'http://localhost/creative/pos/survey/snippets/google-login-api/';
 
 //database
 $db_username = "root"; //Database Username

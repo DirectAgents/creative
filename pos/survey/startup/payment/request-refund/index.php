@@ -164,9 +164,8 @@ $("#result").hide().html(refundreason_missing).slideDown();
 
 <?php
 
-$sql="SELECT * FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' AND id = '".$_GET['id']."' ORDER BY order_by DESC ";
-$result=mysql_query($sql);
-$row=mysql_fetch_array($result);
+$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' AND id = '".$_GET['id']."' ORDER BY order_by DESC ");
+$row=mysqli_fetch_array($sql);
 
 
 
@@ -199,7 +198,7 @@ $row=mysql_fetch_array($result);
 
 
                 <div class="screening-description">
-                 Please explain briefly what your request reason is.
+                 Please explain briefly what your reason for a refund is.
                 </div>
                
                 

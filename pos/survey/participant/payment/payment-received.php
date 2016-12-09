@@ -10,7 +10,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../login.php');
+  $participant_home->redirect('../login');
 }
 
 $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
@@ -61,7 +61,8 @@ if($row_participant['account_id'] != '') {
 
 if (isset($error)){
     echo htmlspecialchars($error);
-    //header("Location:http://localhost/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
+    exit();
+    //header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
     }else{
 
 //print_r($checkout);
@@ -155,13 +156,12 @@ while($row = mysqli_fetch_array($sql))
 
 
 <?php 
-$sql="SELECT * FROM wepay WHERE account_id = '".$row_participant['account_id']."' AND checkout_find_date = '".$row['checkout_find_date']."' AND refunded = '' ORDER BY id DESC ";
-$result2=mysql_query($sql);
-while($row2 = mysql_fetch_array($result2)){
+$sql2=mysqli_query($connecDB,"SELECT * FROM wepay WHERE account_id = '".$row_participant['account_id']."' AND checkout_find_date = '".$row['checkout_find_date']."' AND refunded = '' ORDER BY id DESC ");
 
-$sql3="SELECT * FROM tbl_startup WHERE userID = '".$row2['startup_id']."'";
-$result3=mysql_query($sql3);
-$row3 = mysql_fetch_array($result3);
+while($row2 = mysqli_fetch_array($sql2)){
+
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startup_id']."'");
+$row3 = mysqli_fetch_array($sql3);
 
 
 
@@ -231,7 +231,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
-    "redirect_uri":"http://localhost/survey/participant/payment?verified=1",
+    "redirect_uri":"http://localhost/creative/pos/survey/participant/payment?verified=1",
     "top":100, // control the positioning of the popup with the top and left params
     "left":100,
     "state":"robot", // this is an optional parameter that lets you persist some state value through the flow
@@ -240,7 +240,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
         //alert(data.code);
     if (data.code.length !== 0) {
       // send the data to the server
-      window.location.href = "http://localhost/survey/participant/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=http://localhost/survey/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
+      window.location.href = "http://localhost/creative/pos/survey/participant/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=http://localhost/creative/pos/survey/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
 
     } else {
       // an error has occurred and will be in data.error

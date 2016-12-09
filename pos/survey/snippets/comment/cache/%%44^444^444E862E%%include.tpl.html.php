@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.13, created on 2016-08-17 23:36:44
+<?php /* Smarty version 2.6.13, created on 2016-12-08 21:46:22
          compiled from admin/include.tpl.html */ ?>
     <img src="../template/admin/image/icon/include_large.png" width="32" height="32" align="left" style="margin-right:20px;" />
     <h3><?php echo $this->_tpl_vars['txt_include']; ?>

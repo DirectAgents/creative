@@ -10,7 +10,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
-    "redirect_uri":"http://localhost/survey/participant/payment",
+    "redirect_uri":"http://localhost/creative/pos/survey/participant/payment",
     "top":100, // control the positioning of the popup with the top and left params
     "left":100,
     "state":"robot", // this is an optional parameter that lets you persist some state value through the flow
@@ -19,7 +19,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
         //alert(data.code);
 		if (data.code.length !== 0) {
 			// send the data to the server
-			window.location.href = "http://localhost/survey/participant/account/wepay/oauth2/token/?client_id=131244&code="+data.code+"&redirect_uri=http://localhost/survey/participant/account/wepay/&client_secret=5a612c797c&code="+data.code;
+			window.location.href = "http://localhost/creative/pos/survey/participant/account/wepay/oauth2/token/?client_id=131244&code="+data.code+"&redirect_uri=http://localhost/creative/pos/survey/participant/account/wepay/&client_secret=5a612c797c&code="+data.code;
 
 		} else {
 			// an error has occurred and will be in data.error

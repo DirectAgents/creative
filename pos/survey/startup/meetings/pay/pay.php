@@ -12,10 +12,10 @@
  * https://stage.wepay.com/app
  */
 session_start();
-require_once '../../../../../class.startup.php';
-include_once("../../../../../config.php");
+require_once '../../../class.startup.php';
+include_once("../../../config.php");
 
-require '../../../../../wepay.php';
+require '../../../wepay.php';
 
 
 date_default_timezone_set('America/New_York');
@@ -25,17 +25,16 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../../../../login');
+  $startup_home->redirect('../../../startup/login');
 }
 
-$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID='".$_GET['startupid']."'");
-$stmt->execute(array(":uid"=>$_GET['startupid']));
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID='".$_SESSION['startupSession']."'");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$stmtparticipant="SELECT * FROM tbl_participant WHERE userID='".$_GET['participantid']."' ";
-$resultparticipant=mysql_query($stmtparticipant);
-$rowparticipant=mysql_fetch_array($resultparticipant);
+$stmtparticipant=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['participantid']."' ");
+$rowparticipant=mysqli_fetch_array($stmtparticipant);
 
 
 
@@ -44,9 +43,8 @@ $rowparticipant=mysql_fetch_array($resultparticipant);
 //exit();
 
 
-$stmtproject="SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['startupid']."' AND ProjectID = '".$_GET['projectid']."' ";
-$resultproject=mysql_query($stmtproject);
-$rowproject=mysql_fetch_array($resultproject);
+$stmtproject=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['projectid']."' ");
+$rowproject=mysqli_fetch_array($stmtproject);
 
 
 
@@ -54,6 +52,8 @@ $payamount = $rowproject['Pay'] * 2.9 / 100 + 0.30;
 
 
 $payamount_final = $rowproject['Pay'] + 1 ;
+
+
 
 /* 
 $arr = explode('.', $payamount);
@@ -153,21 +153,19 @@ if($month == 'December') {$order_by = '12';}
 
 
 //continue here
-   $insert_sql = "INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_GET['projectid']."','".$_GET['startupid']."','".$_GET['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> gross."',
-   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')";
-mysql_query($insert_sql);   
+   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_GET['projectid']."','".$_SESSION['startupSession']."','".$_GET['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> gross."',
+   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
 
 
 }
 
 
-$update_sql = "UPDATE tbl_project_request SET 
-  Payment=''
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
+  Payment='Yes'
 
-  WHERE ProjectID='".$_GET['projectid']."' AND userID='".$_GET['participantid']."'";
+  WHERE ProjectID='".$_GET['projectid']."' AND userID='".$_GET['participantid']."'");
 
 
-  mysql_query($update_sql);
 
 
 

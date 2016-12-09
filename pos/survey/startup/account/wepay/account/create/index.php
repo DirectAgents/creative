@@ -63,26 +63,24 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if($row['account_id'] == ''){
 
-  $update_sql = "UPDATE tbl_startup SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
   account_id='".$response -> account_id."',
   owner_user_id='".$response -> owner_user_id."',
   access_token = '".$_GET['access_token']."'
 
-  WHERE userID='".$_SESSION['startupSession']."'";
+  WHERE userID='".$_SESSION['startupSession']."'");
 
 
-   mysql_query($update_sql);
 
 
 }else{
 
-  $update_sql = "UPDATE tbl_startup SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
   owner_user_id='".$response -> owner_user_id."',
   access_token = '".$_GET['access_token']."'
 
-  WHERE userID='".$_SESSION['startupSession']."'";
+  WHERE userID='".$_SESSION['startupSession']."'");
 
-  mysql_query($update_sql);
 
 
 }
@@ -91,7 +89,7 @@ if($row['account_id'] == ''){
 
 
 
-   header("Location:http://localhost/survey/startup/payment/");
+   header("Location:http://localhost/creative/pos/survey/startup/payment/");
 
 
 

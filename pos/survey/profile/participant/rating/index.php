@@ -13,7 +13,7 @@ $researcher_home = new STARTUP();
 
 if(!$researcher_home->is_logged_in())
 {
-  $researcher_home->redirect('../../../404.php');
+  $researcher_home->redirect('../../../startup/login');
   exit();
 }
 
@@ -274,28 +274,20 @@ $(document).ready(function () {
   <div class="therow">
     <div class="col-lg-2">
       
-      <?php
-
-
-if($row['google_picture_link'] != '') {
-
- echo '<img src="'.$row['google_picture_link'].'"" class="img-circle-profile"/>';
-
-
-}else{ 
-
-
-
-  if($row['profile_image'] != ''){
+     <?php
   
-  echo '<img src="'.BASE_PATH.'/images/profile/'.$row['profile_image'].'" class="img-circle-profile"/>';
+if(isset($_SESSION['access_token'])){
+        echo '<img src="'.$_SESSION['google_picture_link'].'" class="img-circle-profile"/>';
+ }
 
-}else{
-
- echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
+if(isset($_SESSION['facebook_photo'])){ 
+        echo '<img src="https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture?width=100&height=100" class="img-circle-profile"/>';
 }
+       
+if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
 
-}
+        echo '<img src="'.BASE_PATH.'/images/profile/'.$_SESSION['profileimage'].'" class="img-circle-profile"/>';
+} 
 
       ?>
 
@@ -319,7 +311,25 @@ if($row['google_picture_link'] != '') {
     </thead>
     <tbody>
       <tr>
-        <td>2</td>
+        <td>
+          
+<?php
+
+
+$result_count = mysqli_query($connecDB,"SELECT userID, COUNT(DISTINCT userID) AS count FROM tbl_project_request WHERE Met = 'Yes' GROUP BY id");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
+if($count > 0 ){
+echo $count;
+}else{
+  echo "0";
+}
+?>
+
+
+
+        </td>
  <?php if(isset($_SESSION['startupSession'])){ ?>     
         <td>
           

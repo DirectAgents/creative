@@ -58,7 +58,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('oauth2/token', array(
     'client_id'    => $wepay_client_id,
     'client_secret'    => $wepay_client_secret,
-    'redirect_uri'    => "http://localhost/survey/startup/payment?verified=1",
+    'redirect_uri'    => "http://localhost/creative/pos/survey/startup/payment?verified=1",
     'code'    => $_GET['code'],
 ));
 
@@ -75,15 +75,14 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     //echo $access_token;
 
 
- $update_sql = "UPDATE tbl_startup SET 
+ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
  code='".$_GET['code']."'
 
-  WHERE userID='".$_SESSION['startupSession']."'";
+  WHERE userID='".$_SESSION['startupSession']."'");
 
 
-   mysql_query($update_sql);
 
 
-header("Location: http://localhost/survey/startup/account/wepay/account/create/?user_id=".$user_id."&access_token=".$access_token_user."")
+header("Location: http://localhost/creative/pos/survey/startup/account/wepay/account/create/?user_id=".$user_id."&access_token=".$access_token_user."")
 
 ?>

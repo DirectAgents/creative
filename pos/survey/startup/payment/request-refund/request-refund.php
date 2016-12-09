@@ -27,8 +27,8 @@ $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$wepay = mysql_query("SELECT * FROM wepay WHERE id = '".$_GET['id']."'");
-$rowwepay = mysql_fetch_array($wepay);
+$wepay = mysqli_query($connecDB,"SELECT * FROM wepay WHERE id = '".$_GET['id']."'");
+$rowwepay = mysqli_fetch_array($wepay);
 
 
 /*
@@ -39,14 +39,13 @@ $rowparticipant=mysql_fetch_array($resultparticipant);
 
 
 
-$update_sql = "UPDATE wepay SET 
+$update_sql = mysqli_query($connecDB,"UPDATE wepay SET 
   refundrequest='yes',
   refundreason= '".$_GET['refundreason']."'
 
-  WHERE id='".$_GET['id']."'";
+  WHERE id='".$_GET['id']."'");
 
 
-  mysql_query($update_sql);
 
 
 

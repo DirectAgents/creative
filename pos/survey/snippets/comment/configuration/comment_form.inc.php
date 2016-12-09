@@ -4,13 +4,13 @@ session_start();
 require_once '../../../class.startup.php';
 include_once("../../../config.php");
 
-if(!$startup_home->is_logged_in())
+if(!$researcher_home->is_logged_in())
 {
-  $startup_home->redirect('../../../startup/login.php');
+  $researcher_home->redirect('../../../startup/login');
 }
 
 
-$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt = $researcher_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 

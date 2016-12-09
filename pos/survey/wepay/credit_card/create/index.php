@@ -72,7 +72,7 @@ if($_GET){
    mysql_query($update_sql);
 
 
-   header("Location:http://localhost/survey/wepay/credit_card/authorize/?credit_card_id=".$response -> credit_card_id);
+   header("Location:http://localhost/creative/pos/survey/wepay/credit_card/authorize/?credit_card_id=".$response -> credit_card_id);
 
 }
     

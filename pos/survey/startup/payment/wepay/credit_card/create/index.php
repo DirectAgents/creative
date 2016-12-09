@@ -83,7 +83,7 @@ if($_GET){
 
     if (isset($error)){
     //echo htmlspecialchars($error);
-    header("Location:http://localhost/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
+    header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
     }else{
     // display the response
     print_r($response);
@@ -92,7 +92,7 @@ if($_GET){
 
 
 
- $update_sql = "UPDATE tbl_startup SET 
+ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
   billing_address_one='".$_GET["billing_address1"]."',
   billing_address_two='".$_GET["billing_address2"]."',
   billing_city='".$_GET["billing_city"]."',
@@ -101,12 +101,11 @@ if($_GET){
   billing_zip='".$_GET["billing_zip"]."',
   credit_card_id='".$response -> credit_card_id."'
 
-  WHERE userID='".$_SESSION['startupSession']."'";
+  WHERE userID='".$_SESSION['startupSession']."'");
 
 
-   mysql_query($update_sql);
 
-   header("Location:http://localhost/survey/startup/payment/wepay/credit_card/authorize/?credit_card_id=".$response -> credit_card_id);
+   header("Location:http://localhost/creative/pos/survey/startup/payment/wepay/credit_card/authorize/?credit_card_id=".$response -> credit_card_id);
 
   }
 

@@ -5,7 +5,7 @@
  * 
  */
  
-define('BASE_PATH','http://localhost/survey/snippets/image-upload/');
+define('BASE_PATH','http://localhost/creative/pos/survey/snippets/image-upload/');
 define('DB_HOST', 'localhost');
 define('DB_NAME','circl');
 define('DB_USER','root');

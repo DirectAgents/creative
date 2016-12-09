@@ -44,7 +44,7 @@ if(isset($_POST['btn-signup']))
 						Welcome to Coding Cage!<br/>
 						To complete your registration  please , just click following link<br/>
 						<br /><br />
-						<a href='http://localhost/survey/account/signup/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
+						<a href='http://localhost/creative/pos/survey/account/signup/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
 						<br /><br />
 						Thanks,";
 						

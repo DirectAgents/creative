@@ -52,7 +52,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
    mysql_query($update_sql);
 
 
-   //header("Location:http://localhost/survey/participant/payment/");
+   //header("Location:http://localhost/creative/pos/survey/participant/payment/");
 
 
 

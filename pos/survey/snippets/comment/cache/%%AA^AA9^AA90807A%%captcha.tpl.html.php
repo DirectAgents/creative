@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.13, created on 2016-08-24 18:18:37
+<?php /* Smarty version 2.6.13, created on 2016-12-08 14:59:27
          compiled from captcha.tpl.html */ ?>
 
             <?php echo $this->_tpl_vars['txt_captcha_description']; ?>

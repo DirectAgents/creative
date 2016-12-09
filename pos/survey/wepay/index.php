@@ -21,7 +21,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-//header("Location: http://localhost/survey/wepay/oauth2/token/?client_id=131244&redirect_uri=http://localhost/survey/wepay/oauth2/token/&client_secret=5a612c797c&code=".$_GET['code']."");
+//header("Location: http://localhost/creative/pos/survey/wepay/oauth2/token/?client_id=131244&redirect_uri=http://localhost/creative/pos/survey/wepay/oauth2/token/&client_secret=5a612c797c&code=".$_GET['code']."");
 
 ?>
 

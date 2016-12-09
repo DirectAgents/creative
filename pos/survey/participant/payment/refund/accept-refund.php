@@ -84,7 +84,7 @@ $rowparticipant=mysql_fetch_array($resultparticipant);
 
 if (isset($error)){
     
-    //header("Location:http://localhost/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
+    //header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
 
  echo '<div class="response">';
    //print_r ($response);

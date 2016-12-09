@@ -33,7 +33,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('oauth2/token', array(
     'client_id'    => 131244,
     'client_secret'    => "5a612c797c",
-    'redirect_uri'    => "http://localhost/survey/participant/payment",
+    'redirect_uri'    => "http://localhost/creative/pos/survey/participant/payment",
     'code'    => $_GET['code'],
 ));
 
@@ -59,6 +59,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
    mysql_query($update_sql);
 
 
-header("Location: http://localhost/survey/wepay/account/create/?user_id=".$user_id."&access_token=".$access_token_user."")
+header("Location: http://localhost/creative/pos/survey/wepay/account/create/?user_id=".$user_id."&access_token=".$access_token_user."")
 
 ?>

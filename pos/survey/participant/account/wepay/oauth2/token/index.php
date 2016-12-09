@@ -11,7 +11,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../../../../login.php');
+  $participant_home->redirect('../../../../login');
 }
 
 $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
@@ -33,7 +33,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('oauth2/token', array(
     'client_id'    => $wepay_client_id,
     'client_secret'    => $wepay_client_secret,
-    'redirect_uri'    => "http://localhost/survey/participant/payment?verified=1",
+    'redirect_uri'    => "http://localhost/creative/pos/survey/participant/payment?verified=1",
     'code'    => $_GET['code'],
 ));
 
@@ -50,15 +50,14 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     //echo $access_token;
 
 
- $update_sql = "UPDATE tbl_participant SET 
+ $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
  code='".$_GET['code']."'
 
-  WHERE userID='".$_SESSION['participantSession']."'";
+  WHERE userID='".$_SESSION['participantSession']."'");
 
 
-   mysql_query($update_sql);
 
 
-header("Location: http://localhost/survey/participant/account/wepay/account/create/?user_id=".$user_id."&access_token=".$access_token_user."")
+header("Location: http://localhost/creative/pos/survey/participant/account/wepay/account/create/?user_id=".$user_id."&access_token=".$access_token_user."")
 
 ?>

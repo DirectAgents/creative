@@ -1,6 +1,6 @@
 <?php
 
-define('BASE_PATH','http://localhost/survey');
+define('BASE_PATH','http://localhost/creative/pos/survey');
 
 
 ?>

@@ -285,7 +285,7 @@ if($_POST['passwordpass'] == 'good'){
             Welcome to Coding Cage!<br/>
             To complete your registration  please , just click following link<br/>
             <br /><br />
-            <a href='http://localhost/survey/startup/account/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
+            <a href='http://localhost/creative/pos/survey/startup/account/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
             <br /><br />
             Thanks,";
             

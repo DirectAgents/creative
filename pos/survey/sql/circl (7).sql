@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `c5t_identifier` (
 --
 
 INSERT INTO `c5t_identifier` (`id`, `identifier_id`, `identifier_value`, `identifier_hash`, `identifier_name`, `identifier_url`, `identifier_status`, `identifier_allow_comment`, `identifier_moderate_comment`, `identifier_rating_value`, `identifier_rating_number`) VALUES
-(36, 6, '/survey/profile/participant/rating/?id=6', 'dc0c35a687534261b654d1933f645111', NULL, 'http://localhost/survey/profile/participant/rating/?id=6', 0, 'Y', 'N', 0, 0);
+(36, 6, '/survey/profile/participant/rating/?id=6', 'dc0c35a687534261b654d1933f645111', NULL, 'http://localhost/creative/pos/survey/profile/participant/rating/?id=6', 0, 'Y', 'N', 0, 0);
 
 -- --------------------------------------------------------
 

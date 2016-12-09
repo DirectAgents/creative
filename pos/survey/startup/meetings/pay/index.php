@@ -45,13 +45,13 @@ $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$sql2 = mysql_query("SELECT * FROM tbl_project_request  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' ");
-$row2 = mysql_fetch_array($sql2);
+$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_project_request  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' ");
+$row2 = mysqli_fetch_array($sql2);
 
 
 
-$sql3 = mysql_query("SELECT * FROM tbl_participant  WHERE userID = '".$row2['userID']."' ");
-$row3 = mysql_fetch_array($sql3);
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant  WHERE userID = '".$row2['userID']."' ");
+$row3 = mysqli_fetch_array($sql3);
 
 
 ?>
@@ -80,44 +80,21 @@ $(document).ready(function(){
         var proceed = true;
         //simple validation at client's end
         //loop through each field and we simply change border color to red for invalid fields   
-        var from_value = $('#from_time').val()
-        var to_value = $('#to_time').val()
-        var pac_input_value = $('#pac-input').val()
-
-        if(!from_value) {
-
-                $("#from_time").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        };
-
-        if(!to_value) {
-
-                $("#to_time").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        };
-
-        if(!pac_input_value) {
-
-                $("#pac-input").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        };
-        
+     
        
         if(proceed) //everything looks good! proceed...
         {
             //get input field values data to be sent to server
             post_data = {
-                'date'     : $('input[name=date').val(),
-                'from_time'     : $("select[name='from_time']").val(),
-                'to_time'     : $("select[name='to_time']").val(),
-                'location'     : $('input[name=location').val()
+                'projectid'     : $('input[name=projectid').val(),
+                'participantid'     : $('input[name=participantid').val()
             };
  
 
             //alert(date);
 
             //Ajax post data to server
-            $.post('save.php', post_data, function(response){  
+            $.post('pay.php', post_data, function(response){  
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
@@ -232,7 +209,7 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
     
            
-              <input type="hidden" name="userid" id="userid" value="<?php echo $row2['userID']; ?>">
+              <input type="hidden" name="participantid" id="participantid" value="<?php echo $row2['userID']; ?>">
               <input type="hidden" name="projectid" id="projectid" value="<?php echo $_GET['id']; ?>">
           
 
@@ -293,8 +270,8 @@ $thedate =  $date->format('m/d/Y');
 
 
 <?php
-$sql4 = mysql_query("SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' ");
-$row4 = mysql_fetch_array($sql4);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' ");
+$row4 = mysqli_fetch_array($sql4);
 
 ?>
          <h4>You met for <?php echo $row4['Minutes']; ?> minutes and you owe <?php echo $row3['FirstName']; ?> $<?php echo $row4['Pay']; ?> </h4>
@@ -420,7 +397,9 @@ $row4 = mysql_fetch_array($sql4);
                     <div class="clearer"></div>
 
 
-            
+              </div>
+  <?php include("../../../footer.php"); ?>
+  </div>
 
 
           </div>
@@ -436,9 +415,7 @@ $row4 = mysql_fetch_array($sql4);
 
     <div class="clearer"></div>
 
-  </div>
-  <?php include("../../../footer.php"); ?>
-  </div>
+
 
   </div>
 

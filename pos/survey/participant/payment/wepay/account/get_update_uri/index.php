@@ -48,7 +48,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
     'account_id' =>    $row['account_id'],
-    'redirect_uri'  => 'http://localhost/survey/participant/payment/',
+    'redirect_uri'  => 'http://localhost/creative/pos/survey/participant/payment/',
     'mode'    => 'iframe'
 
     

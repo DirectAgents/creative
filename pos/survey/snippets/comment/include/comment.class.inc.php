@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 /**
  * GentleSource Comment Script
  *

@@ -209,7 +209,7 @@ initialize();
   </script>
 
 <script type='text/javascript'>//<![CDATA[
-//$.noConflict();
+$.noConflict();
 jQuery( document ).ready(function( $ ) {
 
 $( "#credit-card" ).load( "creditcard.php" );
@@ -236,7 +236,6 @@ $( "#payments-sent" ).load( "payments-sent.php" );
     });
 
 
-$.noConflict();
  
 
 

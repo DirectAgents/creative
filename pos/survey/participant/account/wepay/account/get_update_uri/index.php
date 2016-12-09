@@ -36,7 +36,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     // create the withdrawal
     $response = $wepay->request('account/get_update_uri', array(
         'account_id'    => $account_id,
-        'redirect_uri'  => 'http://localhost/survey/participant/payment?finished=yes',
+        'redirect_uri'  => 'http://localhost/creative/pos/survey/participant/payment?finished=yes',
         'mode'          => 'iframe'
     ));
 
@@ -50,7 +50,7 @@ header("Location: https://stage.wepay.com/api/account_update/".$row['account_id'
 
 }else{
 
-header("Location: http://localhost/survey/participant/payment");
+header("Location: http://localhost/creative/pos/survey/participant/payment");
 
 }
 

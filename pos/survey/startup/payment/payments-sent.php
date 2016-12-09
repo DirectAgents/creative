@@ -67,14 +67,13 @@ if($row['checkout_id'] != '') {
 
 <?php
 
-$sql="SELECT * FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' AND refunded = '' ORDER BY order_by DESC ";
-$result=mysql_query($sql);
+$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' AND refunded = '' ORDER BY order_by DESC ");
 //$row=mysql_fetch_array($result);
 
 $sum = 0;
 
 //get all records from add_delete_record table
-while($row = mysql_fetch_array($result))
+while($row = mysqli_fetch_array($sql))
 { 
 
 $sum+= $row['checkout_find_amount'];
@@ -100,17 +99,16 @@ $sum+= $row['checkout_find_amount'];
 
 <?php
 
-$sql="SELECT DISTINCT(checkout_find_date) FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' ORDER BY order_by DESC ";
-$result=mysql_query($sql);
+$sql2=mysqli_query($connecDB,"SELECT DISTINCT(checkout_find_date) FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' ORDER BY order_by DESC ");
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysql_num_rows($result)>0)
+if(mysqli_num_rows($sql2)>0)
 {
 
 
 //get all records from add_delete_record table
-while($row = mysql_fetch_array($result))
+while($row = mysqli_fetch_array($sql2))
 { 
 
 
@@ -137,13 +135,11 @@ while($row = mysql_fetch_array($result))
 
 
 <?php 
-$sql="SELECT * FROM wepay WHERE checkout_find_date = '".$row['checkout_find_date']."' ORDER BY id DESC ";
-$result2=mysql_query($sql);
-while($row2 = mysql_fetch_array($result2)){
+$sql3=mysqli_query($connecDB,"SELECT * FROM wepay WHERE checkout_find_date = '".$row['checkout_find_date']."' ORDER BY id DESC ");
+while($row2 = mysqli_fetch_array($sql3)){
 
-$sql3="SELECT * FROM tbl_participant WHERE userID = '".$row2['participant_id']."'";
-$result3=mysql_query($sql3);
-$row3 = mysql_fetch_array($result3);
+$sql4=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['participant_id']."'");
+$row3 = mysqli_fetch_array($sql4);
 
 
 
@@ -201,6 +197,54 @@ You haven't sent any payments yet!
 <?php if($rowstartup['credit_card_id'] == '') { ?>
 <p>Looks like you haven't set up a credit card to your account yet! Click on Credit Card to add a new card.</p>
  <?php } ?>
+
+
+
+<?php if($rowstartup['account_id'] == '') {  ?>
+
+<div class="wepay_btn_box">  
+  <div class="wepay_btn">
+
+<a id="start_oauth2">Click here to create an Account to receive payments</a>
+ 
+<script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+WePay.set_endpoint("stage"); // stage or production
+
+WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
+    "client_id":"164910",
+     "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
+    //"user_name":"test user",
+    //"user_email":"test@example.com",
+    "redirect_uri":"http://localhost/creative/pos/survey/startup/payment?verified=1",
+    "top":100, // control the positioning of the popup with the top and left params
+    "left":100,
+    "state":"robot", // this is an optional parameter that lets you persist some state value through the flow
+    "callback":function(data) {
+    /** This callback gets fired after the user clicks "grant access" in the popup and the popup closes. The data object will include the code which you can pass to your server to make the /oauth2/token call **/
+        //alert(data.code);
+    if (data.code.length !== 0) {
+      // send the data to the server
+      window.location.href = "http://localhost/creative/pos/survey/startup/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=http://localhost/creative/pos/survey/startup/account/wepay/&client_secret=9983463efa&code="+data.code;
+
+    } else {
+      // an error has occurred and will be in data.error
+    }
+  }
+});
+
+</script>
+
+</div>
+
+</div>
+
+<?php } ?>
+
+
+
+ 
 
   <?php } ?>
 
