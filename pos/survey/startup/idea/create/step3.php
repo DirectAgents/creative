@@ -809,8 +809,8 @@ echo $row2['Interests'].'</li>';
                  <div class="styled-select">
 <select name="pay" id="pay">
 
-<option value="1.00" <?php if(in_array('1.00',$pay)){echo "selected";}?>>$1.00</option>
-<option value="2.00" <?php if(in_array('2.00',$pay)){echo "selected";}?>>$2.00</option>
+<!--<option value="1.00" <?php if(in_array('1.00',$pay)){echo "selected";}?>>$1.00</option>
+<option value="2.00" <?php if(in_array('2.00',$pay)){echo "selected";}?>>$2.00</option>-->
 <option value="3.00" <?php if(in_array('3.00',$pay)){echo "selected";}?>>$3.00</option>
 <option value="4.00" <?php if(in_array('4.00',$pay)){echo "selected";}?>>$4.00</option>
 <option value="5.00" <?php if(in_array('5.00',$pay)){echo "selected";}?>>$5.00</option>

@@ -65,7 +65,7 @@ if (isset($error)){
     //header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
     }else{
 
-//print_r($checkout);
+print_r($checkout);
 
   ////////Total Amount////////
 
@@ -74,10 +74,15 @@ $sum = 0;
 
  foreach ($checkout as $responsefinal) {
         $gross     = $responsefinal->gross - $responsefinal->refund->amount_refunded; 
-        $sum+= $gross;
+        $fee = $responsefinal->fee->processing_fee;
+        $sum+= $gross - $fee;
+
+        
+
 
         //$refund     = $responsefinal->refund->amount_refunded;
         //$refund_amount_sum+= $refund;
+
     }
 
 
@@ -172,7 +177,7 @@ $row3 = mysqli_fetch_array($sql3);
 
       <tr>
         <td style="text-align:left"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></td>
-        <td style="text-align:right">$<?php echo $gross; ?></td>
+        <td style="text-align:right">$<?php echo $gross; //echo $row2['id']; ?></td>
        
       </tr>
     

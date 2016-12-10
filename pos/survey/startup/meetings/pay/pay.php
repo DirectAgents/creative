@@ -63,11 +63,31 @@ $rowproject=mysqli_fetch_array($stmtproject);
 //$fee = ($row4['Pay'] + 1) * (2.9 / 100) + 0.30;
 
 
-$payout = $rowproject['Pay'] + 1 ;
+///PAYMENT TO PARTICIPANT///
+
+$fee = ($rowproject['Pay']) * (2.9 / 100) + 0.30;
+
+$payamount = $rowproject['Pay'] + $fee;
 
 
+function numberFormatPrecision($number, $precision = 2, $separator = '.')
+{
+    $numberParts = explode($separator, $number);
+    $response = $numberParts[0];
+    if(count($numberParts)>1){
+        $response .= $separator;
+        $response .= substr($numberParts[1], 0, $precision);
+    }
+    return $response;
+}
 
 
+$payamount_to_participant = numberFormatPrecision($payamount, 2, '.');
+
+
+///PAYMENT TO ME///
+
+$payment_to_me = $rowproject['Pay'] * 0.15;
 
 
 
@@ -105,7 +125,7 @@ $wepay = new WePay($access_token);
 try {
     $checkout = $wepay->request('/checkout/create', array(
             'account_id' => $account_id, // ID of the account that you want the money to go to
-            'amount' => $payout, // dollar amount you want to charge the user
+            'amount' => $payamount_to_participant, // dollar amount you want to charge the user
             'short_description' => "Payment to ".$rowparticipant['FirstName']." ", // a short description of what the payment is for
             'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
             'currency'          => 'USD',
@@ -130,6 +150,13 @@ try {
 } catch (WePayException $e) { // if the API call returns an error, get the error message for display later
     $error = $e->getMessage();
 }
+
+
+
+
+
+
+
 
 
 if (isset($error)){

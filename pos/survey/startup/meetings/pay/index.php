@@ -279,9 +279,16 @@ $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE Project
 $row4 = mysqli_fetch_array($sql4);
 
 
-$fee = ($row4['Pay'] + 1) * (2.9 / 100) + 0.30;
+$fee = ($row4['Pay']) * (2.9 / 100) + 0.30;
 
-$payamount = $row4['Pay'] + 1  + $fee ;
+$fitfteenpercent = $row4['Pay'] * 0.15;
+
+//echo $fee;
+//echo "<br>"
+
+$payamount = $row4['Pay'] + $fee + $fitfteenpercent;
+
+//echo $payamount;
 
 
 function numberFormatPrecision($number, $precision = 2, $separator = '.')
@@ -302,9 +309,20 @@ $payamount_final = numberFormatPrecision($payamount, 2, '.');
 ?>
          <h4>You met for <?php echo $row4['Minutes']; ?> minutes and you owe <?php echo $row3['FirstName']; ?> $<?php echo $row4['Pay']; ?> </h4>
 
-         <h4>Note.: Your credit card will be charged $<?php echo $payamount_final; ?> (Why this extra charge?)</h4>
+         <h4>Note.: Your credit card will be charged $<?php echo $payamount_final; ?></h4>
+<br>
+         Charges explained:<br><br>
 
+         
 
+           <div class="col-lg-3">Payment for <?php echo $row3['FirstName']; ?>:</div>
+           <div class="col-lg-9">$<?php echo $row4['Pay']; ?></div>
+
+            <div class="col-lg-3">Fee + Processing:</div>
+           <div class="col-lg-9">$<?php echo $fee; ?> + 15%</div>
+
+           <div class="col-lg-3">Total:</div>
+           <div class="col-lg-9">$<?php echo $payamount_final; ?></div>
        
 
       </div>
