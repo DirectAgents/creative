@@ -281,12 +281,48 @@ $row4 = mysqli_fetch_array($sql4);
 
 $fee = ($row4['Pay']) * (2.9 / 100) + 0.30;
 
-$fitfteenpercent = $row4['Pay'] * 0.15;
+
 
 //echo $fee;
 //echo "<br>"
 
-$payamount = $row4['Pay'] + $fee + $fitfteenpercent;
+///If Payout is less than $7 than charge $1.32 for service fee////
+
+if($row4['Pay'] <= '7'){
+
+$payamount = $row4['Pay'] + $fee + 1.32;
+
+$processing_fee = '$1.32';
+
+}
+
+///If Payout is more than $7 than charge 15% for service fee////
+
+if($row4['Pay'] >= '7'){
+
+$participant_payout = $row4['Pay'] + $fee;
+
+
+
+
+$fitfteenpercent = $row4['Pay'] * 0.15;
+
+$fee_of_fifteenpercent = ($fitfteenpercent) * (2.9 / 100) + 0.30;
+
+$my_payout = $fitfteenpercent + $fee_of_fifteenpercent;
+
+
+
+$payamount = $participant_payout + $my_payout;
+
+//echo $fee;
+
+$service_fee = $my_payout;
+
+}
+
+
+
 
 //echo $payamount;
 
@@ -305,6 +341,10 @@ function numberFormatPrecision($number, $precision = 2, $separator = '.')
 
 $payamount_final = numberFormatPrecision($payamount, 2, '.');
 
+$processing_fee_final = numberFormatPrecision($fee, 2, '.');
+
+$service_fee_final = numberFormatPrecision($service_fee, 2, '.');
+
 
 ?>
          <h4>You met for <?php echo $row4['Minutes']; ?> minutes and you owe <?php echo $row3['FirstName']; ?> $<?php echo $row4['Pay']; ?> </h4>
@@ -318,11 +358,14 @@ $payamount_final = numberFormatPrecision($payamount, 2, '.');
            <div class="col-lg-3">Payment for <?php echo $row3['FirstName']; ?>:</div>
            <div class="col-lg-9">$<?php echo $row4['Pay']; ?></div>
 
-            <div class="col-lg-3">Fee + Processing:</div>
-           <div class="col-lg-9">$<?php echo $fee; ?> + 15%</div>
+            <div class="col-lg-3">Processing Fee :</div>
+           <div class="col-lg-9">$<?php echo $processing_fee_final; ?></div>
 
-           <div class="col-lg-3">Total:</div>
-           <div class="col-lg-9">$<?php echo $payamount_final; ?></div>
+             <div class="col-lg-3">Service Fee:</div>
+           <div class="col-lg-9">$<?php echo $service_fee_final; ?></div>
+
+           <div class="col-lg-3"><br>Total:</div>
+           <div class="col-lg-9"><br>$<?php echo $payamount_final; ?></div>
        
 
       </div>

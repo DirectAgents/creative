@@ -165,6 +165,8 @@ $sql2=mysqli_query($connecDB,"SELECT * FROM wepay WHERE account_id = '".$row_par
 
 while($row2 = mysqli_fetch_array($sql2)){
 
+  echo $row2['id'];
+
 $sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startup_id']."'");
 $row3 = mysqli_fetch_array($sql3);
 
@@ -177,7 +179,7 @@ $row3 = mysqli_fetch_array($sql3);
 
       <tr>
         <td style="text-align:left"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></td>
-        <td style="text-align:right">$<?php echo $gross; //echo $row2['id']; ?></td>
+        <td style="text-align:right">$<?php echo $row2['checkout_find_amount']; //echo $row2['id']; ?></td>
        
       </tr>
     

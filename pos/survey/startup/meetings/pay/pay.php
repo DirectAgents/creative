@@ -60,14 +60,14 @@ $rowproject=mysqli_fetch_array($stmtproject);
 
 
 
-//$fee = ($row4['Pay'] + 1) * (2.9 / 100) + 0.30;
+//$fee = ($rowproject['Pay'] + 1) * (2.9 / 100) + 0.30;
 
 
 ///PAYMENT TO PARTICIPANT///
 
 $fee = ($rowproject['Pay']) * (2.9 / 100) + 0.30;
 
-$payamount = $rowproject['Pay'] + $fee;
+$payamount = $rowproject['Pay'];
 
 
 function numberFormatPrecision($number, $precision = 2, $separator = '.')
@@ -85,10 +85,25 @@ function numberFormatPrecision($number, $precision = 2, $separator = '.')
 $payamount_to_participant = numberFormatPrecision($payamount, 2, '.');
 
 
-///PAYMENT TO ME///
+///////////////////////////////////////////PAYMENT TO PARTICIPANT///////////////////////////////////////////
+
+
+///If Payout is less than $7 than charge $1.32 for service fee////
+
+if($rowproject['Pay'] <= '7'){
+
+$payment_to_me = 1;
+
+}
+
+
+///If Payout is more than $7 than charge 15% for service fee////
+
+if($rowproject['Pay'] >= '7'){
 
 $payment_to_me = $rowproject['Pay'] * 0.15;
 
+}
 
 
 /* 
@@ -110,6 +125,7 @@ $payamount_final = $payamount1.'.'.$payamount3;
     $client_id = $wepay_client_id;
     $client_secret = $wepay_client_secret;
     $access_token = $rowparticipant['access_token']; // Access Token of the account that you want the money to go to
+    $access_token_me = 'STAGE_3157a9551b8c9c076f9a3631d1af99785eeafaa1674ff9cebbe0ca8887846d69';
 
 /** 
  * Initialize the WePay SDK object 
@@ -117,6 +133,7 @@ $payamount_final = $payamount1.'.'.$payamount3;
 
 Wepay::useStaging($client_id, $client_secret);
 $wepay = new WePay($access_token);
+$wepay_me = new WePay($access_token_me);
 
 /**
  * Make the API request to get the checkout_uri
@@ -150,6 +167,14 @@ try {
 } catch (WePayException $e) { // if the API call returns an error, get the error message for display later
     $error = $e->getMessage();
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -196,21 +221,65 @@ if($month == 'December') {$order_by = '12';}
 
 
 //continue here
-   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> gross."',
+   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
    '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
 
 
+
+
+try {
+    $checkout = $wepay_me->request('/checkout/create', array(
+            'account_id' => 1812989742, // ID of the account that you want the money to go to
+            'amount' => $payment_to_me, // dollar amount you want to charge the user
+            'short_description' => "Payment to Circl ", // a short description of what the payment is for
+            'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
+            'currency'          => 'USD',
+            //'payment_method' => ['type' => 'credit_card', 'id' => $row["credit_card_id"] 
+
+
+ 
+
+'payment_method' => [ 
+'type' => 'credit_card', 
+'credit_card'=> [ 
+'id'=> $row["credit_card_id"]
+]
+]
+    
+
+
+
+           
+        )
+    );
+} catch (WePayException $e) { // if the API call returns an error, get the error message for display later
+    $error = $e->getMessage();
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Payment='Yes'
+  Payment=''
 
   WHERE ProjectID='".$_POST['projectid']."' AND userID='".$_POST['participantid']."'");
 
 
-$output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Sent Payment!</div>'));
+    $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Sent Payment!</div>'));
     die($output);
+
+
+}
+
 
   }else{
 
