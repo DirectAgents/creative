@@ -167,7 +167,7 @@ $row=mysqli_fetch_array($sql);
 
 ?>
 
-          <h2><?php echo "$"; echo $row['total']; ?></h2>
+          <h2><?php echo "$"; echo $row['checkout_find_amount']; ?></h2>
         
         
       </div>

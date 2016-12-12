@@ -64,7 +64,7 @@ $sum = 0;
 while($row = mysqli_fetch_array($sql))
 { 
 
-$sum+= $row['total'];
+$sum+= $row['checkout_find_amount'];
 
 }
 
@@ -138,7 +138,7 @@ $row3 = mysqli_fetch_array($sql4);
 
       <tr>
         <td style="text-align:left"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></td>
-        <td style="text-align:right">$<?php echo $row2['total']; ?></td>
+        <td style="text-align:right">$<?php echo $row2['checkout_find_amount']; ?></td>
         <td style="text-align:right"><a href="refund/?id=<?php echo $row2['id']; ?>">View Details</a></td>
        
       </tr>

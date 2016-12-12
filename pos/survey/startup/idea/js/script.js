@@ -977,7 +977,6 @@ var btn= $(this).find("input[type=submit]:focus").val();
         //we simply change border color to red if empty field using .css()
         var proceed = true;
       
-         
 
         //everything looks good! proceed...
         if(proceed) 
