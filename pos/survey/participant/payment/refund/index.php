@@ -157,9 +157,9 @@ $.ajax({
 
 <?php
 
-$sql="SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND id = '".$_GET['id']."' ORDER BY order_by DESC ";
-$result=mysql_query($sql);
-$row=mysql_fetch_array($result);
+$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND id = '".$_GET['id']."' ORDER BY order_by DESC ");
+
+$row=mysqli_fetch_array($sql);
 
 
 

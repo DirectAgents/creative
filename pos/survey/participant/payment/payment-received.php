@@ -69,13 +69,24 @@ print_r($checkout);
 
   ////////Total Amount////////
 
+$presum = 0;
 $sum = 0;
 //$refund_amount_sum = 0;
 
  foreach ($checkout as $responsefinal) {
-        $gross     = $responsefinal->gross - $responsefinal->refund->amount_refunded; 
+        $gross     = $responsefinal->gross; 
+        $net     = $responsefinal->gross - $responsefinal->fee->processing_fee; 
         $fee = $responsefinal->fee->processing_fee;
-        $sum+= $gross - $fee;
+        
+        //$presum+= $gross - $responsefinal->refund->amount_refunded;
+
+        if($responsefinal->refund->amount_refunded != ''){
+        $sum+= $gross - $responsefinal->refund->amount_refunded;
+        }
+
+        if($responsefinal->refund->amount_refunded == ''){
+        $sum+= $net;
+        }
 
         
 

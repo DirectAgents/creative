@@ -323,7 +323,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 <?php 
 
 $ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
-$rowprojectimage = mysql_fetch_array($ProjectImage);
+$rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 if($rowprojectimage['google_picture_link'] != '') {
 
@@ -351,10 +351,9 @@ if($rowprojectimage['profile_image'] != '') { ?>
 
 <?php
 
-$sql3="SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'";
-$result3=mysql_query($sql3);
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'");
 
-$row3 = mysql_fetch_array($result3);
+$row3 = mysqli_fetch_array($sql3);
 
 
 
