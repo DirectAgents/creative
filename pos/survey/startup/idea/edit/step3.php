@@ -235,7 +235,8 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
             <div class="wrapper">
             <div class="screening-description">
                   If you like to share your idea with the public then choose <strong>Public</strong>. <br>Choose <strong>Private</strong>
-                  if you like to keep your idea as private. When set to Private only you can see the idea.
+                  if you like to keep your idea as private. When set to Private only you can see the idea. If set to private you can still
+                  share your idea with people you select to share.
                 </div>
 </div>
             </div>
@@ -329,8 +330,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
             <div class="separator"></div>
             <div class="wrapper">
             <div class="screening-description">
-                  If you like to share your project with the public then choose <strong>Public</strong>. <br>Choose <strong>Private</strong>
-                  if you like to keep your project as private. When set to Private only you can see the project.
+                 This is the amount you are willing to pay for the person you will be meeting with.
                 </div>
 </div>
             </div>

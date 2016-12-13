@@ -24,9 +24,8 @@ $date = date('Y-m-d');
   ProjectStatus = '".$_POST['projectstatus']."',
   Pay = '".$_POST['pay']."',
   Minutes = '".$_POST['minutes']."',
-  Date_Created='".$date."', 
-  Confirmed='Y'
-
+  Date_Created='".$date."'
+  
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");
 
 
@@ -71,7 +70,7 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET project_ima
 
 
   
-    $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Saved!</div>'));
+    $output = json_encode(array('type'=>'message', 'text' => '<div class="success">'.$_POST['minutes'].'</div>'));
  die($output);  
   
     //header("Location: index.php?s=success"); 
