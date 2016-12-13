@@ -387,40 +387,58 @@ echo '
 
 <div class="row-fluid">
 <div class="therow">
-  <div class="col-lg-2">';
-echo '<a href="'.BASE_PATH.'/profile/participant/?id='.$row2['userID'].'&p='.$_GET['id'].'">';
+  <div class="col-lg-4">';
+
+echo '
+<table class="table-no-border">
+   <tbody>
+<tr><td>
+
+<a href="'.BASE_PATH.'/profile/participant/?id='.$row2['userID'].'&p='.$_GET['id'].'">';
 
 
 
 
 if(isset($_SESSION['access_token'])){
-        echo '<img src="'.$_SESSION['google_picture_link'].'" class="img-circle-profile"/>';
+        echo '<img src="'.$_SESSION['google_picture_link'].'" class="thumbnail-profile-browse"/>';
  }
 
 if(isset($_SESSION['facebook_photo'])){ 
-        echo '<img src="https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture?width=100&height=100" class="img-circle-profile"/>';
+        echo '<img src="https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture?width=100&height=100" class="thumbnail-profile-browse"/>';
 }
        
 if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
 
-        echo '<img src="'.BASE_PATH.'/images/profile/'.$_SESSION['profileimage'].'" class="img-circle-profile"/>';
-} 
+if($_SESSION['profileimage'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$_SESSION['profileimage'].'" class="thumbnail-profile-browse"/>';
+}else{
+        echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="thumbnail-profile-browse"/>';
+ }
+
+}
+
+echo '</td> </tr>';
+   
+   echo '  
+  <tr><td>
+   <a href="'.BASE_PATH.'/profile/participant/?id='.$row2['userID'].'&p='.$_GET['id'].'" class="notextdecoration"><h4>'.$row2['FirstName'].'</h4></a>'.$row2['Age'].' - '.$row2['City'].', '.$row2['State'].'
+   </td></tr>
+
+    </tbody>
+  </table>
+
+
+
+   ';
 
 
 echo '</a>';
 
-  echo '</div>
-  <div class="col-lg-6">
-  <a href="'.BASE_PATH.'/profile/participant/?id='.$row2['userID'].'&p='.$_GET['id'].'" class="notextdecoration">
-   <p><h4>'.$row2['FirstName'].'</h4>'.$row2['Age'].' - '.$row2['City'].', '.$row2['State'].' </p>
-   </a>
-   <p>'.$row2['Bio'].'</p>
-   </div>
-   <!--<div class="span4"><a href="profile/?id='.$row2['userID'].'&p='.$_GET['id'].'" class="btn-request">View Profile</a> </div>-->';
- 
+  echo '</div>';
+
   ?>
 
-<div class="col-lg-4"><a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>&p=<?php echo $_GET['id']; ?>" class="btn-request"> View Profile</a> </div>
+
 
 
   <form action="" id="contact-form" class="form-horizontal" method="post">

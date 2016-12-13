@@ -98,7 +98,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
       
 <?php if($_SESSION['profileimage'] != ''){ ?>
-        <li><img src="<?php echo BASE_PATH; ?>/images/profile/<?php echo $_SESSION['profileimage'];?>" class="nav-profile-photo"/></li>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $_SESSION['profileimage'];?>" class="nav-profile-photo"/></li>
 <?php }else{ ?>
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
 <?php } ?>
@@ -182,7 +182,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 <?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){ ?>
 
 <?php if($_SESSION['profileimage'] != ''){ ?>
-        <li><img src="<?php echo BASE_PATH; ?>/images/profile/<?php echo $_SESSION['profileimage'];?>" class="nav-profile-photo"/></li>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $_SESSION['profileimage'];?>" class="nav-profile-photo"/></li>
 <?php }else{ ?>
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
 <?php } ?>

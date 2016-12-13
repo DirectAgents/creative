@@ -3936,8 +3936,22 @@ margin-left:0px;
 
 /**Browse Participants**/
 
+
+.table-no-border tr {
+    border: none !important;
+  }
+
+
+.thumbnail-profile-browse {
+    /* border-radius: 50%; */
+    width: 150px;
+    border: 1px solid #eee;
+    padding: 5px;
+}
+
+
  table {
-    border: 1px solid #ccc;
+    border: 0px solid #ccc;
     width: 100%;
     margin:0;
     padding:0;
@@ -4575,8 +4589,10 @@ span.message img {
 
 .preview{
  background-repeat: no-repeat;
- /*idth: 200px;
- height: 200px;*/
+ background-position: 50%;
+ border-radius: 50%;
+ width: 150px;
+ height: 150px;
  border:solid 1px #dedede;
  padding:10px;
 }

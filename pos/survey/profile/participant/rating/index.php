@@ -287,7 +287,7 @@ if(isset($_SESSION['facebook_photo'])){
 if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
 
   if($_SESSION['profileimage'] != ''){
-        echo '<img src="'.BASE_PATH.'/images/profile/'.$_SESSION['profileimage'].'" class="img-circle-profile"/>';
+        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$_SESSION['profileimage'].'" class="img-circle-profile"/>';
       }else{
         echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
       }

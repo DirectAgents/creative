@@ -1,8 +1,9 @@
 <?php
 require_once '../../../config.php';
+require_once '../../../base_path.php';
 session_start();
 $session_id='1'; //$session id
-$path = "../../../images/profile/";
+$path = "../../../images/profile/startup/";
 
 	$valid_formats = array("jpg", "png", "gif", "bmp");
 	if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
@@ -24,25 +25,25 @@ $path = "../../../images/profile/";
 
 
 
-$sql2 = "SELECT * FROM tbl_startup WHERE userID='".$_SESSION['startupSession']."'";
-$result=mysql_query($sql2);
-$row=mysql_fetch_array($result);
+$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$_SESSION['startupSession']."'");
+$row=mysqli_fetch_array($sql2);
 
-if(mysql_num_rows($result)>0)
+if(mysqli_num_rows($sql2)>0)
 {
   
  
-  $update_sql = "UPDATE tbl_startup SET profile_image='$actual_image_name'
-  WHERE userID='".$_SESSION['startupSession']."'";
-  mysql_query($update_sql);
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET profile_image='$actual_image_name', google_picture_link=''
+  WHERE userID='".$_SESSION['startupSession']."'");
   
   echo "<img src='../../../images/profile/".$actual_image_name."'  class='preview'>";
  
 	}else{
 
 		
-		$sql="INSERT INTO tbl_startup (`id`,`userID`,`profile_image`) VALUES (NULL, '".$_SESSION['startupSession']."' ,'$actual_image_name');";
-		mysql_query($sql);
+		$sql=mysqli_query($connecDB,"INSERT INTO tbl_startup (`id`,`userID`,`profile_image`, `google_picture_link`)VALUES (NULL, '".$_SESSION['startupSession']."' ,'".$actual_image_name."', '')");
+
+
+
      	
 
 		echo "<img src='../../../images/profile/".$actual_image_name."'  class='preview'>";

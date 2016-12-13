@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+require_once 'config.php';
 session_start();
 $session_id='1'; //$session id
 $path = "uploads/";
@@ -21,9 +21,35 @@ $path = "uploads/";
 							$tmp = $_FILES['photoimg']['tmp_name'];
 							if(move_uploaded_file($tmp, $path.$actual_image_name))
 								{
-								mysqli_query($db,"UPDATE participant_profile_images SET thumbnail_image='$actual_image_name' WHERE userID='2'");
+
+
+
+$sql2 = mysqli_query($connecDB,"SELECT * FROM participant_profile_images WHERE userID='2'");
+$row=mysqli_fetch_array($sql2);
+
+if(mysqli_num_rows($sql2)>0)
+{
+  
+
+
+  $update_sql = mysqli_query($connecDB,"UPDATE participant_profile_images SET thumbnail_image='$actual_image_name' WHERE userID='2'");
+  
+ echo "<img src='uploads/".$actual_image_name."'  class='preview'>";
+ 
+	}else{
+
+		
+		$sql=mysqli_query($connecDB,"INSERT INTO tbl_participant (`id`,`userID`,`profile_image`)
+			VALUES (NULL, '2' ,'".$actual_image_name."')");
+
+
+
+     	
+
+		echo "<img src='uploads/".$actual_image_name."'  class='preview'>";
+
+	}			
 									
-									echo "<img src='uploads/".$actual_image_name."'  class='preview'>";
 								}
 							else
 								echo "failed";

@@ -1,5 +1,6 @@
 <?php
 require_once '../../../config.php';
+require_once '../../../base_path.php';
 session_start();
 $session_id='1'; //$session id
 
@@ -14,7 +15,7 @@ $rowimage = mysqli_fetch_array($profileimage);
     
     <head>
 
-  <title><?php echo $row['userEmail']; ?></title>
+  <title>Circl</title>
         <!-- Bootstrap -->
         <link href="<?php echo BASE_PATH; ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="<?php echo BASE_PATH; ?>/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -51,6 +52,7 @@ $rowimage = mysqli_fetch_array($profileimage);
                  $("#preview").html('');
           $("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
       $("#imageform").ajaxForm({
+            
             target: '#preview'
     }).submit();
       });
@@ -68,7 +70,7 @@ $(".btn-save-photo").click(function() {
 
 
         //}); 
-$.noConflict(); 
+//$.noConflict(); 
  });  
 </script>
 
@@ -92,15 +94,30 @@ $.noConflict();
       <div class="modal-body">
         <p>
           
-          
 
 <div id='preview'>
-    <a href="#" class="launch-map" data-toggle="modal" data-target="#modal" data-key='{"param1":"<?php echo $row2['userID']; ?>","param2":"<?php $_GET['id']; ?>"}'>
-          <img src="../../../images/profile/<?PHP echo $rowimage['profile_image']; ?>" class="preview">
-        </a>
+   
+<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){ ?>
+
+<?php if($_SESSION['profileimage'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/'.$_SESSION['profileimage'].'" class="preview"/>';
+}else{
+
+
+        echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="preview"/>';
+   
+  
+ } ?>
+
+<?php } ?>
+
+
 </div>
 
-<form id="imageform" method="post" enctype="multipart/form-data" action='preview.php'>
+
+
+
+<form id="imageform" method="post" enctype="multipart/form-data" action='ajaximage.php'>
 <div class="choose-a-file">
 <input type="file" name="photoimg" id="photoimg" />
 </div>

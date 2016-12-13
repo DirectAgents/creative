@@ -32,7 +32,7 @@ $startup_home = new startup();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../../login.php');
+  $startup_home->redirect('../../login');
 }
 
 
@@ -159,25 +159,24 @@ $(document).ready(function() {
   </script>
 
 
- <!-- jQuery Popup Overlay -->
-<script src="<?php echo BASE_PATH; ?>/startup/project/js/jquery.popupoverlay.js"></script>
-   
+   <script type="text/javascript" src="<?php echo BASE_PATH; ?>/participant/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/participant/js/jquery.form.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function() {
-$(".launch-photo").click(function() {  
-//alert("aads"); 
+<script type="text/javascript" >
 
+var jq = $.noConflict();
+jq(document).ready(function(){
+    
+            jq('#photoimg').live('change', function()      { 
+                 jq("#preview").html('');
+          jq("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+      jq("#imageform").ajaxForm({
+            target: '#preview'
+    }).submit();
+    
+      });
 
-$.post('profile-photo.php', $("#contact-form").serialize(), function(data) {
-    //$("#contact-form").hide();
-    //alert("aads"); 
-    $('#result-photo').html(data);
-   });
-
-
-    });
-   });
+        }); 
 
 </script>
 
@@ -235,6 +234,8 @@ $.post('profile-photo.php', $("#contact-form").serialize(), function(data) {
 
 
         
+<div id='preview'>
+
 <?php if(isset($_SESSION['access_token'])){ ?>
         <img src="<?php echo $_SESSION['google_picture_link']; ?>" class="profile-photo">
 <?php } ?>
@@ -247,9 +248,21 @@ $.post('profile-photo.php', $("#contact-form").serialize(), function(data) {
        
 <?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){ ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/<?PHP echo $rowimage['profile_image']; ?>" class="profile-photo">
+<?php if($_SESSION['profileimage'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/startup/'.$_SESSION['profileimage'].'" class="profile-photo"/>';
+}else{
+        echo '
+  
+   <img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="profile-photo"/>';
+ } ?>
 
 <?php } ?>
+
+</div>
+
+<form id="imageform" method="post" enctype="multipart/form-data" action='ajaximage.php'>
+Update your image <input type="file" name="photoimg" id="photoimg" />
+</form>
 
       
 
