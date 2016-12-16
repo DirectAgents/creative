@@ -35,7 +35,7 @@ if(mysqli_num_rows($sql2)>0)
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET profile_image='$actual_image_name', google_picture_link=''
   WHERE userID='".$_SESSION['startupSession']."'");
   
-  echo "<img src='../../../images/profile/".$actual_image_name."'  class='preview'>";
+  echo "<img src='../../../images/profile/startup/".$actual_image_name."'  class='preview'>";
  
 	}else{
 
@@ -46,7 +46,7 @@ if(mysqli_num_rows($sql2)>0)
 
      	
 
-		echo "<img src='../../../images/profile/".$actual_image_name."'  class='preview'>";
+		echo "<img src='../../../images/profile/startup/".$actual_image_name."'  class='preview'>";
 
 	}			
 									

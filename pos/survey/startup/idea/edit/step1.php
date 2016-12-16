@@ -433,27 +433,24 @@ $(document).ready(function() {
 <select name="category" id="category">
 
 
-<option value="arts" <?php if($rowproject['Category'] == 'arts'){echo "selected";}?>>Arts</option>
-<option value="beliefs" <?php if($rowproject['Category'] == 'beliefs'){echo "selected";}?>>Beliefs</option>
-<option value="career-and-business" <?php if($rowproject['Category'] == 'career-and-business'){echo "selected";}?>>Career & Business</option>
-<option value="dance" <?php if($rowproject['Category'] == 'dance'){echo "selected";}?>>Dance</option>
-<option value="family" <?php if($rowproject['Category'] == 'family'){echo "selected";}?>>Family</option>
-<option value="fashion-and-beauty" <?php if($rowproject['Category'] == 'fashion-and-beauty'){echo "selected";}?>>Fashion & Beauty</option>
-<option value="film" <?php if($rowproject['Category'] == 'film'){echo "selected";}?>>Film</option>
-<option value="food-and-drink" <?php if($rowproject['Category'] == 'food-and-drink'){echo "selected";}?>>Food & Drink</option>
-<option value="health-and-wellness" <?php if($rowproject['Category'] == 'health-and-wellness'){echo "selected";}?>>Health & Wellness</option>
-<option value="language-and-culture" <?php if($rowproject['Category'] == 'language-and-culture'){echo "selected";}?>>Language & Culture</option>
-<option value="learning" <?php if($rowproject['Category'] == 'learning'){echo "selected";}?>>Learning</option>
-<option value="music" <?php if($rowproject['Category'] == 'music'){echo "selected";}?>>Music</option>
-<option value="outdoors-adventure" <?php if($rowproject['Category'] == 'outdoors-adventure'){echo "selected";}?>>Outdoors & Adventure</option>
-<option value="pets" <?php if($rowproject['Category'] == 'pets'){echo "selected";}?>>Pets</option>
-<option value="photography" <?php if($rowproject['Category'] == 'photography'){echo "selected";}?>>Photography</option>
-<option value="sci-fi-games" <?php if($rowproject['Category'] == 'sci-fi-games'){echo "selected";}?>>Sci-Fi & Games</option>
+
+
+<option value="arts-and-entertainment" <?php if($rowproject['Category'] == 'arts-and-entertainment'){echo "selected";}?>>Arts & Entertainment</option>
+<option value="business-and-career" <?php if($rowproject['Category'] == 'business-and-career'){echo "selected";}?>>Business and Career</option>
+<option value="communities-and-lifestyles" <?php if($rowproject['Category'] == 'communities-and-lifestyles'){echo "selected";}?>>Communities & Lifestyles</option>
+<option value="cultures-and-languages" <?php if($rowproject['Category'] == 'cultures-and-languages'){echo "selected";}?>>Cultures & Languages</option>
+<option value="health-and-support" <?php if($rowproject['Category'] == 'health-and-support'){echo "selected";}?>>Health & Support</option>
+<option value="hobbies" <?php if($rowproject['Category'] == 'hobbies'){echo "selected";}?>>Hobbies</option>
+<option value="internet-and-technology" <?php if($rowproject['Category'] == 'internet-and-technology'){echo "selected";}?>>Internet & Technology</option>
+<option value="parenting-and-family" <?php if($rowproject['Category'] == 'parenting-and-family'){echo "selected";}?>>Parenting & Family</option>
+<option value="pets-and-animals" <?php if($rowproject['Category'] == 'pets-and-animals'){echo "selected";}?>>Pets & Animals</option>
+<option value="politics-and-activism" <?php if($rowproject['Category'] == 'politics-and-activism'){echo "selected";}?>>Politics & Activism</option>
+<option value="religion-and-beliefs" <?php if($rowproject['Category'] == 'religion-and-beliefs'){echo "selected";}?>>Religion & Beliefs</option>
+<option value="science" <?php if($rowproject['Category'] == 'science'){echo "selected";}?>>Science</option>
 <option value="social" <?php if($rowproject['Category'] == 'social'){echo "selected";}?>>Social</option>
-<option value="sports-and-fitness" <?php if($rowproject['Category'] == 'sports-and-fitness'){echo "selected";}?>>Sports & Fitness</option>
-<option value="tech" <?php if($rowproject['Category'] == 'tech'){echo "selected";}?>>Tech</option>
-<option value="writing" <?php if($rowproject['Category'] == 'writing'){echo "selected";}?>>Writing</option>
-<option value="other"<?php if($rowproject['Category'] == 'other'){echo "selected";}?>>Other</option>
+<option value="sports-and-recreation" <?php if($rowproject['Category'] == 'sports-and-recreation'){echo "selected";}?>>Sports & Recreation</option>
+<option value="education" <?php if($rowproject['Category'] == 'education'){echo "selected";}?>>Education</option>
+<option value="other" <?php if($rowproject['Category'] == 'other'){echo "selected";}?>>Other</option>
 
 
 

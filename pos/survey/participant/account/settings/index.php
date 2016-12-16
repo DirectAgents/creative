@@ -846,6 +846,76 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
           General Information
         </h2>
 
+
+
+<!--Interests Starts--> 
+
+<div class="interests">
+              <h3>Are Interested In:</h3>
+             
+<div class="screening-description">
+                  Please enter the interest your potential customer should have before you interview them about your idea.
+                </div>
+
+
+<div class="form-group">
+              <div class="in-person">
+               <input class="form-control"  name="interests" id="interests" type="text" placeholder="Enter here the interest (e.g Social Media)"/>
+              </div>
+               
+             </div>
+
+
+                   
+<div class="content_wrapper">
+
+
+
+
+
+<ul id="responds">
+<?php
+//include db configuration file
+
+if(!empty($_GET['id'])){
+
+echo '<input type="hidden" name="projectid" id="projectid" value="'.$_GET['id'].'">';
+echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">';
+
+
+//MySQL query
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE ProjectID = '".$_GET['id']."' ");
+
+
+//get all records from add_delete_record table
+while($row2 = mysqli_fetch_array($Result))
+{
+
+
+
+
+
+echo '<li id="item_'.$row2['id'].'">';
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row2['id'].'">';
+echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
+echo '</a></div>';
+//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
+echo $row2['Interests'].'</li>';
+
+}
+
+}
+
+
+
+?>
+</ul>
+
+</div>
+
+</div>
+
+
         <fieldset>
          <span class="select gap-before">
          <label>Age</label>

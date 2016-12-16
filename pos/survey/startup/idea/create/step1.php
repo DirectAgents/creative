@@ -395,26 +395,21 @@ $(document).ready(function() {
          <div class="styled-select">
 <select name="category" id="category">
 
-<option value="arts" <?php if(in_array('arts',$category)){echo "selected";}?>>Arts</option>
-<option value="beliefs" <?php if(in_array('beliefs',$category)){echo "selected";}?>>Beliefs</option>
-<option value="career-and-business" <?php if(in_array('career-and-business',$category)){echo "selected";}?>>Career & Business</option>
-<option value="dance" <?php if(in_array('dance',$category)){echo "selected";}?>>Dance</option>
-<option value="family" <?php if(in_array('family',$category)){echo "selected";}?>>Family</option>
-<option value="fashion-and-beauty" <?php if(in_array('fashion-and-beauty',$category)){echo "selected";}?>>Fashion & Beauty</option>
-<option value="film" <?php if(in_array('film',$category)){echo "selected";}?>>Film</option>
-<option value="food-and-drink" <?php if(in_array('food-and-drink',$category)){echo "selected";}?>>Food & Drink</option>
-<option value="health-and-wellness" <?php if(in_array('health-and-wellness',$category)){echo "selected";}?>>Health & Wellness</option>
-<option value="language-and-culture" <?php if(in_array('language-and-culture',$category)){echo "selected";}?>>Language & Culture</option>
-<option value="learning" <?php if(in_array('learning',$category)){echo "selected";}?>>Learning</option>
-<option value="music" <?php if(in_array('music',$category)){echo "selected";}?>>Music</option>
-<option value="outdoors-adventure" <?php if(in_array('outdoors-adventure',$category)){echo "selected";}?>>Outdoors & Adventure</option>
-<option value="pets" <?php if(in_array('pets',$category)){echo "selected";}?>>Pets</option>
-<option value="photography" <?php if(in_array('photography',$category)){echo "selected";}?>>Photography</option>
-<option value="sci-fi-games" <?php if(in_array('sci-fi-games',$category)){echo "selected";}?>>Sci-Fi & Games</option>
+<option value="arts-and-entertainment" <?php if(in_array('arts-and-entertainment',$category)){echo "selected";}?>>Arts & Entertainment</option>
+<option value="business-and-career" <?php if(in_array('business-and-career',$category)){echo "selected";}?>>Business and Career</option>
+<option value="communities-and-lifestyles" <?php if(in_array('communities-and-lifestyles',$category)){echo "selected";}?>>Communities & Lifestyles</option>
+<option value="cultures-and-languages" <?php if(in_array('cultures-and-languages',$category)){echo "selected";}?>>Cultures & Languages</option>
+<option value="health-and-support" <?php if(in_array('health-and-support',$category)){echo "selected";}?>>Health & Support</option>
+<option value="hobbies" <?php if(in_array('hobbies',$category)){echo "selected";}?>>Hobbies</option>
+<option value="internet-and-technology" <?php if(in_array('internet-and-technology',$category)){echo "selected";}?>>Internet & Technology</option>
+<option value="parenting-and-family" <?php if(in_array('parenting-and-family',$category)){echo "selected";}?>>Parenting & Family</option>
+<option value="pets-and-animals" <?php if(in_array('pets-and-animals',$category)){echo "selected";}?>>Pets & Animals</option>
+<option value="politics-and-activism" <?php if(in_array('politics-and-activism',$category)){echo "selected";}?>>Politics & Activism</option>
+<option value="religion-and-beliefs" <?php if(in_array('religion-and-beliefs',$category)){echo "selected";}?>>Religion & Beliefs</option>
+<option value="science" <?php if(in_array('science',$category)){echo "selected";}?>>Science</option>
 <option value="social" <?php if(in_array('social',$category)){echo "selected";}?>>Social</option>
-<option value="sports-and-fitness" <?php if(in_array('sports-and-fitness',$category)){echo "selected";}?>>Sports & Fitness</option>
-<option value="tech" <?php if(in_array('tech',$category)){echo "selected";}?>>Tech</option>
-<option value="writing" <?php if(in_array('writing',$category)){echo "selected";}?>>Writing</option>
+<option value="sports-and-recreation" <?php if(in_array('sports-and-recreation',$category)){echo "selected";}?>>Sports & Recreation</option>
+<option value="education" <?php if(in_array('education',$category)){echo "selected";}?>>Education</option>
 <option value="other" <?php if(in_array('other',$category)){echo "selected";}?>>Other</option>
 
 
@@ -1516,7 +1511,7 @@ $(document).ready(function() {
               <h3>Are Interested In:</h3>
              
 <div class="screening-description">
-                  Please enter the interest your potential customer should have before you interview them about your project.
+                  Please enter the interest your potential customer should have before you interview them about your idea.
                 </div>
 
 

@@ -4,7 +4,7 @@ $user = new STARTUP();
 
 if(empty($_GET['id']) && empty($_GET['code']))
 {
-	$user->redirect('../../startup/login.php');
+	$user->redirect('../login');
 }
 
 if(isset($_GET['id']) && isset($_GET['code']))
@@ -15,14 +15,14 @@ if(isset($_GET['id']) && isset($_GET['code']))
 	$statusY = "Y";
 	$statusN = "N";
 	
-	$stmt = $user->runQuery("SELECT userID,userStatus FROM tbl_users WHERE userID=:uID AND tokenCode=:code LIMIT 1");
+	$stmt = $user->runQuery("SELECT userID,userStatus FROM tbl_startup WHERE userID=:uID AND tokenCode=:code LIMIT 1");
 	$stmt->execute(array(":uID"=>$id,":code"=>$code));
 	$row=$stmt->fetch(PDO::FETCH_ASSOC);
 	if($stmt->rowCount() > 0)
 	{
 		if($row['userStatus']==$statusN)
 		{
-			$stmt = $user->runQuery("UPDATE tbl_users SET userStatus=:status WHERE userID=:uID");
+			$stmt = $user->runQuery("UPDATE tbl_startup SET userStatus=:status WHERE userID=:uID");
 			$stmt->bindparam(":status",$statusY);
 			$stmt->bindparam(":uID",$id);
 			$stmt->execute();	
@@ -64,7 +64,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Flat Login Form</title>
+    <title>Circl</title>
     
     
     <link rel="stylesheet" href="css/reset.css">
