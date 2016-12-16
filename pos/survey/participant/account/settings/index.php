@@ -83,10 +83,10 @@ $(document).ready(function() {
         //alert("Please enter a job position!");
         return false;
       }
-      var myData = 'interests='+ $("#interests").val()+'&projectid='+ $("#projectid").val()+'&userid='+ $("#userid").val(); 
+      var myData = 'interests='+ $("#interests").val()+'&userid='+ $("#userid").val(); 
       jQuery.ajax({
       type: "POST", 
-      url: "languages.php", 
+      url: "interests.php", 
       dataType:"text", 
       data:myData,
       success:function(response){
@@ -104,13 +104,64 @@ $(document).ready(function() {
      var clickedID = this.id.split('-'); 
      //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
      var DbNumberID = clickedID[1]; 
-     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
+     var myData = 'recordToDelete='+ DbNumberID; 
      
      //alert(DbNumberID);
 
       jQuery.ajax({
       type: "POST", 
       url: "interests.php", 
+      dataType:"text", 
+      data:myData, 
+      success:function(response){
+        
+        $('#item_'+DbNumberID).fadeOut("slow");
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        
+        alert(thrownError);
+      }
+      });
+  });
+
+
+
+
+   $("#languages").blur(function (e) {
+       e.preventDefault();
+     if($("#languages").val()==='')
+      {
+        //alert("Please enter a job position!");
+        return false;
+      }
+      var myData = 'languages='+ $("#languages").val()+'&userid='+ $("#userid").val(); 
+      jQuery.ajax({
+      type: "POST", 
+      url: "languages.php", 
+      dataType:"text", 
+      data:myData,
+      success:function(response){
+        $("#responds-languages").append(response);
+        $("#languages").val('');
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        alert(thrownError);
+      }
+      });
+  });
+
+  $("body").on("click", "#responds-languages .del_button", function(e) {
+     e.preventDefault();
+     var clickedID = this.id.split('-'); 
+     //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
+     var DbNumberID = clickedID[1]; 
+     var myData = 'recordToDelete='+ DbNumberID; 
+     
+     //alert(DbNumberID);
+
+      jQuery.ajax({
+      type: "POST", 
+      url: "languages.php", 
       dataType:"text", 
       data:myData, 
       success:function(response){
@@ -134,9 +185,16 @@ $(document).ready(function() {
 <script>
   $(function() {
     $( "#interests" ).autocomplete({
-      source: 'search.php'
+      source: 'search-interest.php'
     });
   });
+
+   $(function() {
+    $( "#languages" ).autocomplete({
+      source: 'search-languages.php'
+    });
+  });
+
   </script>
 
 
@@ -850,41 +908,37 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
 <!--Interests Starts--> 
 
-<div class="interests">
-              <h3>Are Interested In:</h3>
-             
-<div class="screening-description">
-                  Please enter the interest your potential customer should have before you interview them about your idea.
+<fieldset>
+              <h3>Your interests</h3>
+             <br>
+<div class="note">
+                  Add interests so we can recommend the best ideas for you.
                 </div>
 
 
-<div class="form-group">
-              <div class="in-person">
-               <input class="form-control"  name="interests" id="interests" type="text" placeholder="Enter here the interest (e.g Social Media)"/>
-              </div>
-               
-             </div>
 
-
-                   
-<div class="content_wrapper">
+          <span class="input">
+            <label for="firstname">Interest</label>
+            <input type="text" name="interests" id="interests" placeholder="Enter here the interest (e.g Social Media)">
+          </span>
+        
+      
 
 
 
-
+       
 
 <ul id="responds">
 <?php
 //include db configuration file
 
-if(!empty($_GET['id'])){
+if(!empty($_SESSION['participantSession'])){
 
-echo '<input type="hidden" name="projectid" id="projectid" value="'.$_GET['id'].'">';
-echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">';
+//echo '<input type="hidden" name="userid" id="userid" value="'.$_SESSION['participantSession'].'">';
 
 
 //MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE ProjectID = '".$_GET['id']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID = '".$_SESSION['participantSession']."' ");
 
 
 //get all records from add_delete_record table
@@ -897,7 +951,7 @@ while($row2 = mysqli_fetch_array($Result))
 
 echo '<li id="item_'.$row2['id'].'">';
 echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row2['id'].'">';
-echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
+echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
 echo '</a></div>';
 //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
 echo $row2['Interests'].'</li>';
@@ -911,9 +965,70 @@ echo $row2['Interests'].'</li>';
 ?>
 </ul>
 
-</div>
+  </fieldset>
 
-</div>
+
+
+
+<fieldset>
+              <h3>Languages</h3>
+             <br>
+<div class="note">
+                  Add your languages you speak
+                </div>
+
+
+
+          <span class="input">
+            <label for="firstname">Languages</label>
+            <input type="text" name="languages" id="languages" placeholder="Enter here your spoken languages">
+          </span>
+        
+      
+
+
+
+       
+
+<ul id="responds-languages">
+<?php
+//include db configuration file
+
+if(!empty($_SESSION['participantSession'])){
+
+//echo '<input type="hidden" name="userid" id="userid" value="'.$_SESSION['participantSession'].'">';
+
+
+//MySQL query
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID = '".$_SESSION['participantSession']."' ");
+
+
+//get all records from add_delete_record table
+while($row2 = mysqli_fetch_array($Result))
+{
+
+
+
+
+
+echo '<li id="item_'.$row2['id'].'">';
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row2['id'].'">';
+echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
+echo '</a></div>';
+//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
+echo $row2['Languages'].'</li>';
+
+}
+
+}
+
+
+
+?>
+</ul>
+
+  </fieldset>
+
 
 
         <fieldset>
