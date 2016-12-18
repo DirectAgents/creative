@@ -69,6 +69,7 @@ $religion=explode(',',$rowproject['Religion']);
 $education=explode(',',$rowproject['Education']);
 $job=explode(',',$rowproject['Job']);
 
+
 $nda=explode(',',$rowproject['NDA']);
 
 
@@ -112,6 +113,7 @@ $(document).ready(function() {
         return false;
       }
       var myData = 'interests='+ $("#interests").val()+'&projectid='+ $("#projectid").val()+'&userid='+ $("#userid").val(); 
+      //alert(myData);
       jQuery.ajax({
       type: "POST", 
       url: "interests.php", 
@@ -142,7 +144,8 @@ $(document).ready(function() {
       dataType:"text", 
       data:myData, 
       success:function(response){
-        
+        $("#responds").append(response);
+        $('#interestselection_'+DbNumberID).prop('checked', false); // Unchecks it
         $('#item_'+DbNumberID).fadeOut("slow");
       },
       error:function (xhr, ajaxOptions, thrownError){
@@ -162,7 +165,7 @@ $(document).ready(function() {
 <script>
   $(function() {
     $( "#interests" ).autocomplete({
-      source: 'search.php'
+      source: 'search-interest.php'
     });
   });
   </script>
@@ -1547,23 +1550,44 @@ echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">
 
 
 //MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup_interests WHERE ProjectID = '".$_SESSION['projectid']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_SESSION['projectid']."'");
 
 
 //get all records from add_delete_record table
-while($row2 = mysqli_fetch_array($Result))
-{
+$row2 = mysqli_fetch_array($Result);
 
 
 
 
+$ctop = $row2['Industry_Interest']; 
+$ctop = explode(',',$ctop); 
 
-echo '<li id="item_'.$row2['id'].'">';
-echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row2['id'].'">';
+
+if($row2['Industry_Interest'] != 'NULL' ){
+
+foreach($ctop as $interest)  
+{ 
+    //Uncomment the last commented line if single quotes are showing up  
+    //otherwise delete these 3 commented lines 
+    
+
+//MySQL query
+$sqlinterest = mysqli_query($connecDB,"SELECT * FROM interests WHERE interest = '".$interest."' ");
+$row3 = mysqli_fetch_array($sqlinterest);
+
+
+echo '<li id="item_'.$row3['id'].'">';
+if(in_array($interest,$ctop)){
+echo '<input id="interestselection_'.$row3['id'].'" name="interestselection[]" type="checkbox"  value="'.$interest.'" style="display:none" checked/>';
+}
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row3['id'].'">';
 echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
 echo '</a></div>';
 //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-echo $row2['Interests'].'</li>';
+echo $interest . '</li>';
+} 
+
+
 
 }
 

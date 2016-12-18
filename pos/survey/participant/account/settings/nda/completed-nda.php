@@ -168,7 +168,7 @@ $row3 = mysqli_fetch_array($sql3);
 
 <?php }else{ ?>
 <div class="no-account-yet">
-<h3>No Refund Requests!</h3>
+<h3>No Completed NDA's!</h3>
 </div>
 <?php } ?>
 

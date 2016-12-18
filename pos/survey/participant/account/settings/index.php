@@ -919,7 +919,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
           <span class="input">
             <label for="firstname">Interest</label>
-            <input type="text" name="interests" id="interests" placeholder="Enter here the interest (e.g Social Media)">
+            <input type="text" name="interests" id="interests" placeholder="Enter here your interests (e.g Social Media)">
           </span>
         
       
@@ -981,7 +981,7 @@ echo $row2['Interests'].'</li>';
 
           <span class="input">
             <label for="firstname">Languages</label>
-            <input type="text" name="languages" id="languages" placeholder="Enter here your spoken languages">
+            <input type="text" name="languages" id="languages" placeholder="Enter here the languages you speak">
           </span>
         
       

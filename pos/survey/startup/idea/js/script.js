@@ -711,7 +711,6 @@ $("textarea[name=MYFIELDNAME]").val();
 
 
       
-         
 
         //everything looks good! proceed...
         if(proceed) 
