@@ -155,6 +155,57 @@ $(document).ready(function() {
       });
   });
 
+
+$("#languages").blur(function (e) {
+       e.preventDefault();
+     if($("#languages").val()==='')
+      {
+        //alert("Please enter a job position!");
+        return false;
+      }
+      var myData = 'languages='+ $("#languages").val()+'&projectid='+ $("#projectid").val()+'&userid='+ $("#userid").val(); 
+      //alert(myData);
+      jQuery.ajax({
+      type: "POST", 
+      url: "languages.php", 
+      dataType:"text", 
+      data:myData,
+      success:function(response){
+        $("#responds-languages").append(response);
+        $("#languages").val('');
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        alert(thrownError);
+      }
+      });
+  });
+
+  $("body").on("click", "#responds-languages .del_button", function(e) {
+     e.preventDefault();
+     var clickedID = this.id.split('-'); 
+     //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
+     var DbNumberID = clickedID[1]; 
+     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
+     
+     //alert(DbNumberID);
+
+      jQuery.ajax({
+      type: "POST", 
+      url: "languages.php", 
+      dataType:"text", 
+      data:myData, 
+      success:function(response){
+        $("#responds-languages").append(response);
+        $('#languageselection_'+DbNumberID).prop('checked', false); // Unchecks it
+        $('#item_'+DbNumberID).fadeOut("slow");
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        
+        alert(thrownError);
+      }
+      });
+  });
+
 });
 </script>
 
@@ -170,6 +221,13 @@ $(document).ready(function() {
   });
   </script>
 
+ <script>
+  $(function() {
+    $( "#languages" ).autocomplete({
+      source: 'search-language.php'
+    });
+  });
+  </script>
 
 
 
@@ -1602,25 +1660,113 @@ echo $interest . '</li>';
 
 </div>
 
+<div class="clearer"></div>
+
+<!--Interests Ends--> 
+
+<p>&nbsp;</p>
+
+<!--Languages Starts--> 
+
+<div class="interests">
+              <h3>Langugages:</h3>
+             
+<div class="screening-description">
+                  Add here the type of languages your potential customer should have
+                </div>
+
+
+<div class="form-group">
+              <div class="in-person">
+               <input class="form-control"  name="languages" id="languages" type="text" placeholder="Enter here the language (e.g German)"/>
+              </div>
+               
+             </div>
+
+
+                   
+<div class="content_wrapper">
+
+
+
+
+
+<ul id="responds-languages">
+<?php
+//include db configuration file
+
+if(!empty($_GET['id'])){
+
+echo '<input type="hidden" name="projectid" id="projectid" value="'.$_GET['id'].'">';
+echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">';
+
+
+//MySQL query
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."'");
+
+
+//get all records from add_delete_record table
+$row2 = mysqli_fetch_array($Result);
+
+
+
+
+$ctop_language = $row2['Languages']; 
+$ctop_language = explode(',',$ctop_language); 
+
+if($row2['Languages'] != '' ){
+
+foreach($ctop_language as $language)  
+{ 
+    //Uncomment the last commented line if single quotes are showing up  
+    //otherwise delete these 3 commented lines 
+    
+
+//MySQL query
+$sqllanguage = mysqli_query($connecDB,"SELECT * FROM languages WHERE language = '".$language."' ");
+$row4 = mysqli_fetch_array($sqllanguage);
+
+
+echo '<li id="item_'.$row4['id'].'">';
+if(in_array($language,$ctop_language)){
+echo '<input id="languageselection_'.$row4['id'].'" name="languageselection[]" type="checkbox"  value="'.$language.'" style="display:none" checked/>';
+}
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row4['id'].'">';
+echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
+echo '</a></div>';
+//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
+echo $language . '</li>';
+} 
+
+
+
+}
+
+}
+
+
+
+?>
+</ul>
+
+</div>
+
+</div>
+
 
  
 <div class="clearer"></div>
 
                 </div>
                
-<!--Interests Ends--> 
+<!--Languages Ends--> 
 
 
-              
-              
-              <div class="clearer"></div>
+
+  <div class="clearer"></div>
             </div>
 
           </div>
-
-
-
-
           
 
 

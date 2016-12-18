@@ -317,6 +317,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var education = $('input[name="educationselection[]"]:checked').map(function () {return this.value;}).get().join(",");
         var job = $('input[name="jobselection[]"]:checked').map(function () {return this.value;}).get().join(",");
         var interest = $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
+        var language = $('input[name="languageselection[]"]:checked').map(function () {return this.value;}).get().join(",");
         //var potentialanswers = $('input[name="potentialanswers[]"]').map(function () {return this.value;}).get().join(",");
         
         var screening = $('input[name="screening[]"]:checked').map(function () {return this.value;}).get().join(",");
@@ -327,7 +328,6 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var potentialanswer3       = $('input[name=potentialanswertext3]').val();
         var potentialansweraccepted = $('input[name="potentialansweraccepted[]"]:checked').map(function () {return this.value;}).get().join(",");
 
-        //alert(screening);
         
     
         //var testing       = $('input[name=meetupselection').val();
@@ -481,7 +481,7 @@ $("textarea[name=MYFIELDNAME]").val();
 
           //$( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'gender':gender, 'minheight':minheight, 
+            post_data = {'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
             'maxheight':maxheight, 'status':status,'ethnicity':ethnicity,
             'smoke':smoke,'drink':drink,'diet':diet,'religion':religion,'education':education,'job':job,
             'interest':interest,'screening':screening,'screeningquestion':screeningquestion, 'potentialanswer1':potentialanswer1 , 'potentialanswer2':potentialanswer2,'potentialanswer3':potentialanswer3,
@@ -553,6 +553,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var education = $('input[name="educationselection[]"]:checked').map(function () {return this.value;}).get().join(",");
         var job = $('input[name="jobselection[]"]:checked').map(function () {return this.value;}).get().join(",");
         var interest = $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
+        var language = $('input[name="languageselection[]"]:checked').map(function () {return this.value;}).get().join(",");
         //var potentialanswers = $('input[name="potentialanswers[]"]').map(function () {return this.value;}).get().join(",");
         
         var screening = $('input[name="screening[]"]:checked').map(function () {return this.value;}).get().join(",");
@@ -718,7 +719,7 @@ $("textarea[name=MYFIELDNAME]").val();
 
           //$( ".processing" ).show();
             //data to be sent to server
-            post_data = {'nda':nda,'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'gender':gender, 'minheight':minheight, 
+            post_data = {'nda':nda,'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
             'maxheight':maxheight, 'status':status,'ethnicity':ethnicity,
             'smoke':smoke,'drink':drink,'diet':diet,'religion':religion,'education':education,'job':job,
             'interest':interest, 'screening':screening,'screeningquestion':screeningquestion, 'potentialanswer1':potentialanswer1 , 'potentialanswer2':potentialanswer2,'potentialanswer3':potentialanswer3,

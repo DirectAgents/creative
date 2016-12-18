@@ -44,7 +44,11 @@ if($_POST['religion'] == ''){$religion = 'NULL';}else{$religion = $_POST['religi
 if($_POST['education'] == ''){$education = 'NULL';}else{$education = $_POST['education'];}
 if($_POST['job'] == ''){$job = 'NULL';}else{$job = $_POST['job'];}
 
-if($_POST['screening'] == ''){$screening = 'NULL';}else{$screening = $_POST['screening'];}
+if($_POST['screening'] == ''){$screening = 'Disabled';}else{$screening = $_POST['screening'];}
+
+if($_POST['interest'] == ''){$interests = '';}else{$interests = $_POST['interest'];}
+if($_POST['language'] == ''){$languages = '';}else{$languages = $_POST['language'];}
+
 
 if($_POST['potentialanswer1'] == ''){$potentialanswer1 = '';}else{$potentialanswer1 = $_POST['potentialanswer1'];}
 if($_POST['potentialanswer2'] == ''){$potentialanswer2 = '';}else{$potentialanswer2 = $_POST['potentialanswer2'];}
@@ -79,6 +83,8 @@ if(mysqli_num_rows($sql)>0)
   Religion='".$religion."',
   Education='".$education."',
   Job='".$job."',
+  Industry_Interest = '".$interests."',
+  Languages = '".$languages."',
   Date_Created = '".$date."'
 
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");
@@ -94,10 +100,10 @@ if(mysqli_num_rows($sql)>0)
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID, startupID, Name, Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
-Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
+Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Industry_Interest, Languages, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
   '".$projectname."', '".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
   '".$status."','".$ethnicity."','".$smoke."','".$drink."','".$diet."',
-  '".$religion."','".$education."','".$job."','".$date."')");
+  '".$religion."','".$education."','".$job."', '".$interests."' , '".$languages."' ,'".$date."')");
 
 
 

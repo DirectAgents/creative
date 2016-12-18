@@ -97,7 +97,7 @@ $stage=explode(',',$rowproject['Stage']);
       </span>
     </div>
 
-      <div class="dashboardProcessMenuText"><span class="number">1</span> DEFINE TARGET AUDIENCE </div></div>
+      <div class="dashboardProcessMenuText"><span class="number">1</span> TARGET AUDIENCE </div></div>
     <div class="col-md-4">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
@@ -107,7 +107,7 @@ $stage=explode(',',$rowproject['Stage']);
     </div>
 </a>    
       <div class="dashboardProcessMenuText">
-      <div class="processmenu-active"><span class="number">2</span> CREATE PROJECT SUMMARY </div></div></div>
+      <div class="processmenu-active"><span class="number">2</span> IDEA SUMMARY </div></div></div>
     <div class="col-sm-4 processmenu-inactive">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
@@ -159,10 +159,10 @@ $stage=explode(',',$rowproject['Stage']);
 
 <p>&nbsp;</p>
 
- <h3>Project/Idea Details</h3>
+ <h3>Idea Details</h3>
                 
                  <div class="screening-description">
-                  Briefly describe what you plan to do or offer to your target audience. This will give participants an overall picture of your project.
+                  Briefly describe what you plan to do or offer to your target audience. This will give participants an overall picture of your idea.
                 </div>
 
 
@@ -178,7 +178,7 @@ $stage=explode(',',$rowproject['Stage']);
 <h3>What's your agenda during your feedback session?</h3>
                 
                  <div class="screening-description">
-                 Please explain shortly what will be discussed during the meeting
+                 Please explain shortly what will be discussed during the meeting to discuss your idea
                 </div>
 <textarea name="agenda_one" id="agenda_one" placeholder="Get feedback about my idea"><?php echo $rowproject['Agenda_One'];?></textarea>
  

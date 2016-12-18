@@ -196,7 +196,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
       </span>
     </div>
 
-      <div class="dashboardProcessMenuText"><span class="number">1</span> DEFINE TARGET AUDIENCE </div></div>
+      <div class="dashboardProcessMenuText"><span class="number">1</span> TARGET AUDIENCE </div></div>
 </a>
 
 <a href="step2.php"> 
@@ -207,7 +207,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
         <i class="fa fa-info fa-stack-1x"></i>
       </span>
     </div>
-      <div class="dashboardProcessMenuText"><span class="number">2</span> CREATE IDEA SUMMARY </div></div>
+      <div class="dashboardProcessMenuText"><span class="number">2</span> IDEA SUMMARY </div></div>
 </a>
 <a href="step3.php">    
     <div class="col-sm-4">
@@ -287,7 +287,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 
    <div class="reach-people">
-              <h2>Audience Summary</h2>
+              <h2>Target Audience Summary</h2>
               <div class="edit"><a href="step1.php?id=<?php echo $_SESSION['projectid']; ?>">Edit</a></div>
             <div class="separator"></div>
             </div>
@@ -317,6 +317,26 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
               <h3>Height</h3>
               <div class="over-the-phone">
                <label for="in-person"><?php if($rowproject['MinHeight'] != 'NULL'){echo $rowproject['MinHeight']; echo " - "; echo $rowproject['MaxHeight']; }else{ echo "not selected";};  ?></label>
+              </div>
+            </div>
+          </div>
+
+
+           <div class="input-inline">
+            <div class="wrapper">
+              <h3>Smoke</h3>
+              <div class="google-hangout">
+               <label for="google-hangout"><?php if($rowproject['Smoke'] != 'NULL'){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Smoke']); }else{ echo "not selected";};  ?></label>
+             </div>
+            </div>
+          </div>
+
+
+          <div class="input-inline">
+            <div class="wrapper">
+              <h3>Drink</h3>
+              <div class="over-the-phone">
+               <label for="over-the-phone"><?php if($rowproject['Drink'] != 'NULL'){ echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Drink']); }else{ echo "not selected";};  ?></label>
               </div>
             </div>
           </div>
@@ -355,23 +375,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 
 <div class="rowaudiencesummary">
-          <div class="input-inline first">
-            <div class="wrapper">
-              <h3>Smoke</h3>
-              <div class="google-hangout">
-               <label for="google-hangout"><?php if($rowproject['Smoke'] != 'NULL'){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Smoke']); }else{ echo "not selected";};  ?></label>
-             </div>
-            </div>
-          </div>
-
-          <div class="input-inline">
-            <div class="wrapper">
-              <h3>Drink</h3>
-              <div class="over-the-phone">
-               <label for="over-the-phone"><?php if($rowproject['Drink'] != 'NULL'){ echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Drink']); }else{ echo "not selected";};  ?></label>
-              </div>
-            </div>
-          </div>
+        
 
           <div class="input-inline">
             <div class="wrapper">
@@ -381,11 +385,8 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
              </div>
             </div>
           </div>
-</div>
 
-
-<div class="rowaudiencesummary">
-          <div class="input-inline first">
+           <div class="input-inline first">
             <div class="wrapper">
               <h3>Religion</h3>
               <div class="google-hangout">
@@ -403,7 +404,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
             </div>
           </div>
 
-          <div class="input-inline first">
+            <div class="input-inline first">
             <div class="wrapper">
               <h3>Job</h3>
               <div class="in-person">
@@ -411,7 +412,25 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
              </div>
             </div>
           </div>
+
+            <div class="input-inline first">
+            <div class="wrapper">
+              <h3>Interested in</h3>
+              <div class="in-person">
+               <label for="in-person">
+                 
+
+<?php if($rowproject['Industry_Interest'] != ''){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Industry_Interest']); }else{ echo "not selected";};  ?>
+
+
+
+               </label>
+             </div>
+            </div>
+          </div>
+
 </div>
+
 
 
 
@@ -431,48 +450,12 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 <div class="rowaudiencesummary">
           <div class="input-inline first">
             <div class="wrapper">
-              <h3>Interested in</h3>
+              <h3>Languages</h3>
               <div class="in-person">
                <label for="in-person">
                  
 
-<?php
-//include db configuration file
-
-echo '<input type="hidden" name="projectid" id="projectid" value="'.$rowproject["id"].'">';
-echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">';
-
-
-//MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup_interests WHERE ProjectID = '".$_SESSION['projectid']."' ");
-
-
-if(mysqli_num_rows($Result)>0)
-{
-//get all records from add_delete_record table
-while($row2 = mysqli_fetch_array($Result))
-{
-
-
-
-
-
-echo '<li id="item_'.$row2['id'].'">';
-echo '<div class="del_wrapper">';
-//echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
-echo '</div>';
-//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-echo $row2['Interests'].'</li>';
-
-}
-
-}else{
-  echo "Not specified";
-}
-
-
-
-?>
+<?php if($rowproject['Languages'] != ''){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Languages']); }else{ echo "not selected";};  ?>
 
 
 
@@ -530,7 +513,7 @@ echo $row2['Interests'].'</li>';
               <div class="in-person">
                <label for="in-person">
 
-<?php if($rowpotentialanswers['PotentialAnswer1'] != 'NULL'){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer1']); }else{ echo "not specified";}  ?>
+<?php if($rowpotentialanswers['PotentialAnswer1'] != ''){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer1']); }else{ echo "not specified";}  ?>
 
 
               </label>
@@ -548,7 +531,7 @@ echo $row2['Interests'].'</li>';
               <div class="in-person">
                <label for="in-person">
 
-<?php if($rowpotentialanswers['PotentialAnswer2'] != 'NULL'){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer2']); }else{ echo "not specified";}  ?>
+<?php if($rowpotentialanswers['PotentialAnswer2'] != ''){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer2']); }else{ echo "not specified";}  ?>
 
 
                </label>
@@ -567,7 +550,7 @@ echo $row2['Interests'].'</li>';
               <div class="in-person">
                <label for="in-person">
 
-<?php if($rowpotentialanswers['PotentialAnswer3'] != 'NULL'){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer3']); }else{ echo "not specified";}  ?>
+<?php if($rowpotentialanswers['PotentialAnswer3'] != ''){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer3']); }else{ echo "not specified";}  ?>
 
 
               </label>

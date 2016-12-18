@@ -40,9 +40,11 @@ if($_POST['religion'] == ''){$religion = 'NULL';}else{$religion = $_POST['religi
 if($_POST['education'] == ''){$education = 'NULL';}else{$education = $_POST['education'];}
 if($_POST['job'] == ''){$job = 'NULL';}else{$job = $_POST['job'];}
 
-if($_POST['screening'] == ''){$screening = 'NULL';}else{$screening = $_POST['screening'];}
+if($_POST['screening'] == ''){$screening = 'Disabled';}else{$screening = $_POST['screening'];}
 
 if($_POST['interest'] == ''){$interests = 'NULL';}else{$interests = $_POST['interest'];}
+if($_POST['language'] == ''){$languages = 'NULL';}else{$languages = $_POST['language'];}
+
 
 if($_POST['potentialanswer1'] == ''){$potentialanswer1 = 'NULL';}else{$potentialanswer1 = $_POST['potentialanswer1'];}
 if($_POST['potentialanswer2'] == ''){$potentialanswer2 = 'NULL';}else{$potentialanswer2 = $_POST['potentialanswer2'];}
@@ -70,6 +72,7 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET
   Education='".$education."',
   Job='".$job."',
   Industry_Interest = '".$interests."',
+  Languages = '".$languages."',
   Date_Created = '".$date."'
 
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_POST['projectid']."'");
