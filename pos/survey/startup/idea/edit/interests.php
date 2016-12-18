@@ -26,6 +26,8 @@ if(isset($_POST["interests"]) && strlen($_POST["interests"])>0)
         $my_interest = $row['interest']; //Get ID of last inserted record from MySQL
         
 
+        if($row['interest'] == $contentToSave){
+
         echo '<li id="item_'.$my_id.'">';
         echo '<input id="interestselection_'.$my_id.'" name="interestselection[]" type="checkbox"  value="'.$my_interest .'" style="display:none" checked/>';
         echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
@@ -33,6 +35,7 @@ if(isset($_POST["interests"]) && strlen($_POST["interests"])>0)
         echo '</a></div>';
         echo $my_interest.'</li>';
        
+       }
 
        
 }
