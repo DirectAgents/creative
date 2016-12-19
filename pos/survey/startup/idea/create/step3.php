@@ -107,9 +107,10 @@ jq(document).ready(function(){
       jq("#imageform").ajaxForm({
             target: '#preview'
     }).submit();
-    
-      });
 
+    //location.reload();
+      });
+     
         }); 
 
 </script>
@@ -139,7 +140,6 @@ jq(document).ready(function(){
 
 
 
-<form id="uploadimage" method="post" enctype="multipart/form-data">
 
 <div class="container">
 
@@ -863,7 +863,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
                <div class="wrapper">
         <input type="submit" value="Submit Project"/>
         <input type="hidden" name="submitok" value="Yes"/>
-
+ </div>  
             
 
             <div id="back">
@@ -872,7 +872,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
             </div>
               </div>
               </div>
-    </div>  
+   
 </div> 
 </div> 
 
@@ -916,7 +916,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
 
 
-</form>
+
 
 
         

@@ -1,8 +1,9 @@
 <?php
 require_once '../../../config.php';
+require_once '../../../base_path.php';
 session_start();
 $session_id='1'; //$session id
-$path = "uploads/";
+$path = "../../../ideas/uploads/";
 
 	$valid_formats = array("jpg", "png", "gif", "bmp");
 	if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
@@ -24,30 +25,19 @@ $path = "uploads/";
 
 
 
-$sql2 = "SELECT * FROM startup_project_images WHERE userID='".$_SESSION['startupSession']."'";
-$result=mysql_query($sql2);
-$row=mysql_fetch_array($result);
+$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$_SESSION['startupSession']."'");
+$row=mysqli_fetch_array($sql2);
 
-if(mysql_num_rows($result)>0)
+if(mysqli_num_rows($sql2)>0)
 {
   
  
-  $update_sql = "UPDATE startup_project_images SET thumbnail_image='$actual_image_name'
-  WHERE userID='".$_SESSION['startupSession']."'";
-  mysql_query($update_sql);
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET project_image='$actual_image_name'
+  WHERE startupID='".$_SESSION['startupSession']."'");
   
-  echo "<img src='uploads/".$actual_image_name."'  class='preview'>";
+  echo "<img src='../../../ideas/uploads/".$actual_image_name."'  class='preview'>";
  
-	}else{
-
-		
-		$sql="INSERT INTO startup_project_images (`id`,`userID`,`thumbnail_image`) VALUES (NULL, '".$_SESSION['startupSession']."' ,'$actual_image_name');";
-		mysql_query($sql);
-     	
-
-		echo "<img src='uploads/".$actual_image_name."'  class='preview'>";
-
-	}			
+	}
 									
 								}
 							else

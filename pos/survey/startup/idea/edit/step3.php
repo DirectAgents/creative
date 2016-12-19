@@ -86,58 +86,25 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 
 
-<script>
+  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/participant/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/participant/js/jquery.form.js"></script>
 
- $(document).ready(function (e) {
-    $("#uploadimage").on('submit',(function(e) {
-      //alert("sdfa");
-    e.preventDefault();
-    var fileValue = $('#fileToUpload').val();
-    if(fileValue !='')
-    {
-        $.ajax({
-            url: "submitFile.php", 
-            type: "POST",             
-            data: new FormData(this), 
-            contentType: false,                  
-            processData:false,        
-            success: function(data)   
-            {
-                
-            var $response=$(data);
+<script type="text/javascript" >
 
-          //Query the jQuery object for the values
-          var oneval = $response.filter('#toolarge').text();
-          var resultimage = $response.filter('#resultimage').text();
-          
+var jq = $.noConflict();
+jq(document).ready(function(){
+    
+            jq('#photoimg').live('change', function()      { 
+                 jq("#preview").html('');
+          jq("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+      jq("#imageform").ajaxForm({
+            target: '#preview'
+    }).submit();
 
-          $("#message").html(oneval);
-
-                //$('#ShowImage').show(data);
-                //$('#file').val('');
-                $('#imagestatus').val(resultimage);
-
-                //$('#ShowImage').attr("src",'uploads/'+$('input[type=file]')[0].files[0].name);
-
-                 $(function() {
-              $('#submitproject').click();
-                  });
-              $('#imagestatus').val('');
-            }
-        });
-    }
-    else
-    {
-        //alert("Please Choose file!");
-        $(function() {
-    $('#submitproject').click();
+    //location.reload();
       });
-
-        return false;
-    }
-    }));
-
-    });
+     
+        }); 
 
 </script>
 
@@ -166,7 +133,6 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 
 
-<form id="uploadimage" method="post" enctype="multipart/form-data">
 
 <div class="container">
 
@@ -297,11 +263,9 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 </div>
 
-   <div id="message"></div><br/>    
-   <input type="hidden" name="imagestatus" id="imagestatus"/>
-   <img src="" id="ShowImage" style="display:none;"><br/><br/>
-   <label>File:</label>
-   <input type="file" name="fileToUpload" id="fileToUpload" accept=".jpeg,.png,.jpeg,.gif" /><br/><br/>
+   <form id="imageform" method="post" enctype="multipart/form-data" action='ajaximage.php'>
+Update your image <input type="file" name="photoimg" id="photoimg" />
+</form>
   
 
 
@@ -500,7 +464,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 
 
-</form>
+
 
 
         

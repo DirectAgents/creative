@@ -36,41 +36,10 @@ $date = date('Y-m-d');
 
 
 
-if($_POST['fileToUpload'] != ''){
-
-
-$photo = $_SESSION['projectid'].'_'.$_POST['fileToUpload'];
-
-
-$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' 
-AND ProjectID = '".$_SESSION['projectid']."'");
-
-
-
-if(mysqli_num_rows($sql2)>0)
-{
-
-
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET project_image='".$photo."'
-  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
-
 
 
   
-}
-
-
-} 
-  
-
-
-
-
-
-
-
-  
-    $output = json_encode(array('type'=>'message', 'text' => '<div class="success">'.$_POST['minutes'].'</div>'));
+    $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Saved!</div>'));
  die($output);  
   
     //header("Location: index.php?s=success"); 

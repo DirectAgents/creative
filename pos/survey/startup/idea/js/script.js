@@ -880,8 +880,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
 
  $("#submitproject").click(function() {  
-//alert("aads"); 
-var btn= $(this).find("input[type=submit]:focus").val();
+
 
  
 
@@ -892,11 +891,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var pay = $("select[name='pay']").val();
         var minutes = $("select[name='minutes']").val();
 
-         if($('input[type=file').val() != ''){
-        var fileToUpload = $('input[type=file]')[0].files[0].name;
-        var imagestatus  = $('input[name=imagestatus').val(); 
-        //alert(imagestatus);
-        }
+        
        
        
         
@@ -913,11 +908,8 @@ var btn= $(this).find("input[type=submit]:focus").val();
           $( ".processing" ).show();
             //data to be sent to server
 
-            if($('input[type=file').val() != ''){
-            post_data = {'submitok':submitok,'projectstatus':projectstatus,'pay':pay,'minutes':minutes,'fileToUpload':fileToUpload,'imagestatus':imagestatus};
-            }else{
-            post_data = {'submitok':submitok,'projectstatus':projectstatus,'pay':pay,'minutes':minutes,'fileToUpload':'','imagestatus':''};
-            }
+           //alert("aad11111"); 
+           post_data = {'projectstatus':projectstatus,'pay':pay,'minutes':minutes};
          
             //Ajax post data to server
             $.post('confirm.php', post_data, function(response){  
