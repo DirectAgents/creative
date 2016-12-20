@@ -446,14 +446,6 @@ $('#location_option3').hide();
 <!--TopNav-->
 
 
-  
-        
-
-
-
-
-
-
 
 
  <div class="clearer"></div>
@@ -532,7 +524,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
     
 <div class="col-lg-5"><h3>Payout</h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></div>
 
-<?php if(!$participant_home->is_logged_in())
+<?php if(!$participant_home->is_logged_in() && $_SESSION['startupSession'] == '')
 { ?>
 
 <div class="col-lg-4">
@@ -562,7 +554,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
  <?php if($rowproject['Details'] != ''){?> 
   <div class="therow">
     <div class="col-lg-12">
-    <h3>Details</h3>
+    <h3>What makes this idea special?</h3>
       <p><?php echo $rowproject['Details']; ?></p>
     </div>
   </div>

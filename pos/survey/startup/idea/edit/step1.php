@@ -104,6 +104,8 @@ $rownda = mysqli_fetch_array($sqlnda);
 <script type="text/javascript">
 $(document).ready(function() {
 
+var interestcount = 0
+var languagecount = 0
 
   $("#interests").blur(function (e) {
        e.preventDefault();
@@ -122,6 +124,11 @@ $(document).ready(function() {
       success:function(response){
         $("#responds").append(response);
         $("#interests").val('');
+       $('#interestimportant').prop('checked', true); // checks it
+        interestcount++
+        if(interestcount >= 1){
+          $('#interestimportant').prop('checked', true); // checks it
+        }
       },
       error:function (xhr, ajaxOptions, thrownError){
         alert(thrownError);
@@ -147,6 +154,10 @@ $(document).ready(function() {
         $("#responds").append(response);
         $('#interestselection_'+DbNumberID).prop('checked', false); // Unchecks it
         $('#item_'+DbNumberID).fadeOut("slow");
+         interestcount--
+        if(interestcount == 0){
+          $('#interestimportant').prop('checked', false); // checks it
+        }
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -173,6 +184,10 @@ $("#languages").blur(function (e) {
       success:function(response){
         $("#responds-languages").append(response);
         $("#languages").val('');
+        languagecount++
+        if(languagecount >= 1){
+          $('#languageimportant').prop('checked', true); // checks it
+        }
       },
       error:function (xhr, ajaxOptions, thrownError){
         alert(thrownError);
@@ -198,6 +213,10 @@ $("#languages").blur(function (e) {
         $("#responds-languages").append(response);
         $('#languageselection_'+DbNumberID).prop('checked', false); // Unchecks it
         $('#item_'+DbNumberID).fadeOut("slow");
+        languagecount--
+        if(languagecount == 0){
+          $('#languageimportant').prop('checked', false); // checks it
+        }
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -1589,6 +1608,8 @@ $("#languages").blur(function (e) {
                
              </div>
 
+<input id="interestimportant" name="minreq[]" type="checkbox" style="display:none" value="Interest"/>
+
 
                    
 <div class="content_wrapper">
@@ -1617,11 +1638,11 @@ $row2 = mysqli_fetch_array($Result);
 
 
 
-$ctop = $row2['Industry_Interest']; 
+$ctop = $row2['Interest']; 
 $ctop = explode(',',$ctop); 
 
 
-if($row2['Industry_Interest'] != 'NULL' ){
+if($row2['Interest'] != 'NULL' ){
 
 foreach($ctop as $interest)  
 { 
@@ -1683,6 +1704,7 @@ echo $interest . '</li>';
                
              </div>
 
+<input id="languageimportant" name="minreq[]" type="checkbox" style="display:none" value="Languages"/>
 
                    
 <div class="content_wrapper">
