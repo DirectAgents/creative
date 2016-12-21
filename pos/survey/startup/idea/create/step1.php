@@ -89,6 +89,7 @@ $job=explode(',',$rowproject['Job']);
 
 
 
+
 if(!empty($_GET['id'])){
 
 
@@ -121,8 +122,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 <script type="text/javascript">
 $(document).ready(function() {
 
-var interestcount = 0
-var languagecount = 0
+
 
   $("#interests").blur(function (e) {
        e.preventDefault();
@@ -141,12 +141,8 @@ var languagecount = 0
       success:function(response){
         $("#responds").append(response);
         $("#interests").val('');
-        $('#interestimportant').prop('checked', true); // checks it
-        interestcount++
-        if(interestcount >= 1){
-          $('#interestimportant').prop('checked', true); // checks it
-        }
-        //alert(count);
+        //$('#interestimportant').prop('checked', true); // checks it
+       
       },
       error:function (xhr, ajaxOptions, thrownError){
         alert(thrownError);
@@ -163,6 +159,7 @@ var languagecount = 0
      
      //alert(DbNumberID);
 
+
       jQuery.ajax({
       type: "POST", 
       url: "interests.php", 
@@ -173,12 +170,10 @@ var languagecount = 0
         $('#interestselection_'+DbNumberID).prop('checked', false); // Unchecks it
         
         $('#item_'+DbNumberID).fadeOut("slow");
-        alert(response);
-        interestcount--
-        if(interestcount <= 0){
-          $('#interestimportant').prop('checked', false); // checks it
-        }
-        //alert(interestcount);
+
+        
+        //alert(response);
+      
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -206,11 +201,8 @@ var languagecount = 0
       success:function(response){
         $("#responds-languages").append(response);
         $("#languages").val('');
-        $('#languageimportant').prop('checked', true); // checks it
-        languagecount++
-        if(languagecount >= 1){
-          $('#languageimportant').prop('checked', true); // checks it
-        }
+        //$('#languageimportant').prop('checked', true); // checks it
+        
       },
       error:function (xhr, ajaxOptions, thrownError){
         alert(thrownError);
@@ -236,11 +228,7 @@ var languagecount = 0
         $("#responds-languages").append(response);
         $('#languageselection_'+DbNumberID).prop('checked', false); // Unchecks it
         $('#item_'+DbNumberID).fadeOut("slow");
-         languagecount--
-        if(languagecount == 0){
-          $('#languageimportant').prop('checked', false); // checks it
-        }
-        alert(languagecount);
+        
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -1611,7 +1599,9 @@ var languagecount = 0
                
              </div>
 
-<input id="interestimportant" name="minreq[]" type="checkbox" style="display:block" value="Interest"/>
+
+  <input id="interestimportant" name="minreq[]" type="checkbox" value="Interest" <?php if(in_array('Interest',$minreq)){echo "checked";}?>/>
+   <label for="Interest">Make Interest as required</label>
 
                    
 <div class="content_wrapper">
@@ -1643,7 +1633,11 @@ $row2 = mysqli_fetch_array($Result);
 $ctop = $row2['Interest']; 
 $ctop = explode(',',$ctop); 
 
+
+
 if($row2['Interest'] != '' ){
+
+
 
 foreach($ctop as $interest)  
 { 
@@ -1665,6 +1659,7 @@ echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
 echo '</a></div>';
 //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
 echo $interest . '</li>';
+
 } 
 
 
@@ -1707,8 +1702,9 @@ echo $interest . '</li>';
                
              </div>
 
-<input id="languageimportant" name="minreq[]" type="checkbox" style="display:none" value="Languages"/>
 
+  <input id="languageimportant" name="minreq[]" type="checkbox" value="Languages" <?php if(in_array('Languages',$minreq)){echo "checked";}?>/>
+   <label for="Languages">Make Languages as required</label>
 
                    
 <div class="content_wrapper">

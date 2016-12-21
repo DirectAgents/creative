@@ -329,7 +329,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var potentialansweraccepted = $('input[name="potentialansweraccepted[]"]:checked').map(function () {return this.value;}).get().join(",");
 
         
-    
+        //alert(minreq);
         //var testing       = $('input[name=meetupselection').val();
         //var testing = $('.meetupselection:checked').serialize();
         // $('input[name="meetupselection[]"]').serialize(); /* it can return true or false */
@@ -411,8 +411,28 @@ $("textarea[name=MYFIELDNAME]").val();
         
 
         var potentialansweraccepted_checkedstatus = $('input[name="potentialansweraccepted[]"]:checked').size();
-        
 
+        var languages_checkedstatus = $('input[id="languageimportant"]:checked').size();
+        var interest_checkedstatus = $('input[id="interestimportant"]:checked').size();
+
+        
+        if(interest_checkedstatus == 1 ){ 
+            
+            if(interest == ''){
+                  output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter an Interest!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+            }
+        }
+
+        if(languages_checkedstatus == 1 ){ 
+            
+            if(language == ''){
+                  output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a language!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+            }
+        }
        
         
         if(screeningquestion!="" && potentialansweraccepted == 'Potential Answer 1' && screening_checkedstatus == 1 && potentialanswer1 == ""){ 
