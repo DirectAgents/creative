@@ -244,7 +244,7 @@ $date = date_create($row2['Date_Created']);
   <div class="result-delete">
   <div id="result-delete">Successfully Deleted!</div>
   </div>
-<h4>Are you sure you want to delete this project?</h4>
+<h4>Are you sure you want to delete this idea?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
@@ -311,7 +311,7 @@ $(document).ready(function () {
             post_data = {'projectid':projectid};
             
             //Ajax post data to server
-            $.post('idea/projectdelete.php', post_data, function(response){  
+            $.post('idea/ideadelete.php', post_data, function(response){  
             
 
 

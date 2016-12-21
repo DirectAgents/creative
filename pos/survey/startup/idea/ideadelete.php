@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include ('../../config2.php');
+include ('../../config.php');
 require( "../../phpmailer/class.phpmailer.php" );
 
 $ip = $_SERVER['REMOTE_ADDR'];
