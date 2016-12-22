@@ -48,7 +48,7 @@ $projectstatus=explode(',',$rowproject['ProjectStatus']);
 
 
 
-$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
+$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
 $rowpotentialanswers = mysql_fetch_array($ProjectPotentialanswers);
 
 $screening=explode(',',$rowpotentialanswers['Screening']);

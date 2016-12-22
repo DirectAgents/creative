@@ -114,7 +114,7 @@ Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interest, Languages
 
 
 
-$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");
+$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");
 
 
 
@@ -123,7 +123,7 @@ if(mysqli_num_rows($sql2)>0)
 
     
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_potentialanswers SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_screeningquestion SET 
   ScreeningQuestion='".$screeningquestion."',
   PotentialAnswer1='".$potentialanswer1."',
   PotentialAnswer2='".$potentialanswer2."',
@@ -139,7 +139,7 @@ if(mysqli_num_rows($sql2)>0)
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_potentialanswers(userID, ProjectID, ScreeningQuestion, PotentialAnswer1, PotentialAnswer2,
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_screeningquestion(userID, ProjectID, ScreeningQuestion, PotentialAnswer1, PotentialAnswer2,
 PotentialAnswer3, EnabledorDisabled) VALUES('".$_SESSION['startupSession']."','".$_SESSION['projectid']."','".$screeningquestion."','".$potentialanswer1."',
 '".$potentialanswer2."', '".$potentialanswer3."', '".$screening."')");
   

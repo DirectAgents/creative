@@ -84,7 +84,7 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET
 
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID= '".$_POST['projectid']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID= '".$_POST['projectid']."'");
 //$result=mysql_query($sql);
 //$row=mysqli_fetch_array($sql);
 
@@ -93,7 +93,7 @@ if(mysqli_num_rows($sql)>0)
 
     
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_potentialanswers SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_screeningquestion SET 
   ScreeningQuestion='".$screeningquestion."',
   PotentialAnswer1='".$potentialanswer1."',
   PotentialAnswer2='".$potentialanswer2."',

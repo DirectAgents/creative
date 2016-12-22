@@ -566,7 +566,7 @@ echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
 
 if($rowprojectimage['profile_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
 <?php }else{ ?>
 
@@ -597,7 +597,7 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="survey-header">
                     <div class="account-project-name">
-                      Person Name
+                      You will meet
                     </div>
                     <div class="edit-delete">
                       
@@ -656,8 +656,8 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="status_request">Status: 
 
                   <?php if($row2['Status'] == 'Waiting to Accept or Decline'){echo 'Waiting to Accept or Decline';} ?>
-                  <?php if($row2['Status'] == 'Waiting for startup to Accept or Decline'){echo 'Waiting for startup to accept';} ?>
-                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline'){echo 'Waiting for you to accept or decline';} ?>
+                  <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline'){echo 'Waiting for Startup to Accept';} ?>
+                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline'){echo 'Waiting for you to Accept or Decline';} ?>
 
                           
 

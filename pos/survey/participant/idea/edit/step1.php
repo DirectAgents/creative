@@ -49,7 +49,7 @@ $screening=explode(',',$rowproject['Screening']);
 
 
 
-$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '41'");
+$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '41'");
 $rowpotentialanswers = mysql_fetch_array($ProjectPotentialanswers);
 
 $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);

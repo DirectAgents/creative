@@ -70,7 +70,7 @@ $job=explode(',',$rowproject['Job']);
 
 
 
-$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '41'");
+$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '41'");
 $rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
 
 $screening=explode(',',$rowpotentialanswers['Screening']);

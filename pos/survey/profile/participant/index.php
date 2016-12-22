@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-include_once '../../dbConfig_rating.php';
 //Fetch rating deatails from database
 
 
@@ -37,6 +36,11 @@ include_once '../../dbConfig_rating.php';
 $query = "SELECT rating_number, FORMAT((total_points / rating_number),1) as average_rating FROM participant_rating WHERE post_id = '".$_GET['id']."' AND status = 1";
 $result = $db->query($query);
 $ratingRow = $result->fetch_assoc();
+
+
+
+
+$rating_and_comment=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID=='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['p']."' AND Rated_Participant = '' AND Comment_Participant = '' ");
 
 
 
@@ -349,10 +353,25 @@ echo $count;
           
  
     <div class="overall-rating">
-    <a href="rating/?id=<?php echo $_GET['id']; ?>"><span id="avgrat">
+
+
+<?php if (!$rating_and_comment) { ?>
+
+
+  <a href="n/?id=<?php echo $_GET['id']; ?>&p=<?php echo $_GET['p']; ?>"><span id="avgrat">
+    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?></span></a>
+
+
+<?php }else{  ?>
+
+
+    <a href="y/?id=<?php echo $_GET['id']; ?>&p=<?php echo $_GET['p']; ?>"><span id="avgrat">
     <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?></span></a>
 
 <?php if ($ratingRow['average_rating'] == ''){echo "No rating";} ?>
+
+
+<?php  }  ?>  
 
     </div>
 

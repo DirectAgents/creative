@@ -1,0 +1,69 @@
+    
+    {call_module trigger="frontend_content_footer" data="$page_data"}
+
+
+
+
+
+
+
+
+
+
+    <!-- Comment List Start -->
+    <a name="c5t_comment"></a>
+   <div class="thetitle">{$txt_comment_headline} ({$result_number})</div>
+    
+    <div class="c5t_comment_list">        
+        {foreach from=$comment_list item=item}
+            <div class="c5t_comment_item_background">
+            <div class="c5t_comment_item">
+                <div class="c5t_comment_item_title">{$item.comment_title}</div>
+                <div class="c5t_comment_item_text">{$item.frontend_text}</div>
+                <div class="c5t_comment_item_details">#{$item.comment_number} - {if $item.comment_author_homepage != '' and $item.comment_author_homepage != 'http://'}<a href="{$item.comment_author_homepage}">{$item.comment_author_name}</a>{else}{$item.comment_author_name}{/if} - {$item.comment_date} - {$item.comment_time}</div>
+            </div>
+            </div>
+        {/foreach}
+    </div>
+    <!-- Comment List End -->
+    
+    
+    
+    
+    
+    
+    <!-- Pagination Form Start -->
+    {if $comment_list and $display_pagination}
+        <div class="c5t_frontend_pagination">
+          {if $browse_previous == 2}
+            <form {$startpage.attributes}>{$startpage.hidden}{$startpage.start.html}</form>
+            <form {$previouspage.attributes}>{$previouspage.hidden}{$previouspage.previous.html}</form>
+          {else}
+            <span>{$txt_start}</span>
+            <span>{$txt_previous_page}</span>
+          {/if}
+          
+          {if $browse_next == 2}
+            <form {$nextpage.attributes}>{$nextpage.hidden}{$nextpage.next.html}</form>
+            <form {$endpage.attributes}>{$endpage.hidden}{$endpage.end.html}</form>
+          {else}
+            <span>{$txt_next_page}</span>
+            <span>{$txt_end}</span>
+          {/if}
+        </div>
+    {/if}
+    <!-- Pagination Form End -->
+    
+    
+    
+    
+    
+
+
+ 
+    
+    
+    
+    
+    
+    

@@ -210,7 +210,7 @@ var oneval = $response.filter('.page_result').text();
 <div class="no-participating-projects">
 <div class="row">
     <div class="col-md-12">
-<div class="empty-projects">Sorry you don't qualify for any projects yet</div>
+<div class="empty-projects">Sorry you don't qualify for any meetings yet</div>
 <p>&nbsp;</p>
 <p class="center">You will be qualified based on the requirements set by the startup.</p>
   <div class="create-one-here-box">

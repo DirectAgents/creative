@@ -94,7 +94,7 @@ if(!empty($_GET['id'])){
 
 
 
-$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
 
 }
 

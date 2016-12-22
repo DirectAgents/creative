@@ -14,6 +14,9 @@ $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE Proje
 $rowproject = mysqli_fetch_array($Project);
 
 
+$Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."' AND EnabledorDisabled = 'Enabled'");
+$rowscreening = mysqli_fetch_array($Screening);
+
 
 
 $startup_home = new STARTUP();
@@ -358,6 +361,10 @@ $('#location_option3').hide();
         var date = datevalue.innerHTML;
         var fromtime = fromtimevalue.innerHTML;
         var totime = totimevalue.innerHTML;
+
+        var potentialanswergiven = $('input[name="potentialanswergiven[]"]:checked').map(function () {return this.value;}).get().join(",");
+
+
         if(option == 'Option1'){var location  = $('input[name=location_option1').val();}
         if(option == 'Option2'){var location  = $('input[name=location_option2').val();}
         if(option == 'Option3'){var location  = $('input[name=location_option3').val();}
@@ -381,14 +388,24 @@ $('#location_option3').hide();
             proceed = false;
         } 
 
+
+        var potentialanswergiven_checkedstatus = $('input[name="potentialanswergiven[]"]:checked').size();
+
+        if(potentialanswergiven_checkedstatus <1 ){ 
+           output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please select one Answer! </div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
         //everything looks good! proceed...
         if(proceed) 
         {
 
 
          
+
             //data to be sent to server
-  post_data = {'projectid':projectid,'startupid':startupid,'fromtime':fromtime,'totime':totime,'date':date,'location':location};
+  post_data = {'projectid':projectid,'startupid':startupid,'fromtime':fromtime,'totime':totime,'date':date,'location':location, 'potentialanswergiven':potentialanswergiven};
             
             //Ajax post data to server
             $.post('../place-suggest-ajax.php', post_data, function(response){  
@@ -634,9 +651,9 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 </div>
 
-<?php if($row['From_Time_Option1'] == '' || $row['From_Time_Option2'] == '' || $row['From_Time_Option3'] == '' ){ ?>
+<?php if($row['From_Time_Option1'] == '' ){ ?>
  <div class="col-sm-12">
-<h4>Looks like you haven't set up your available time and dates that represents your availability for a meetup yet. <br><br>Please click <a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/">here</a> to set up your dates of availability.</h4>
+<h4>Looks like you haven't set up your available time and dates that lets your partner know about your availabilty for a meetup. <br><br>Let's change that. Click <a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/">here</a> to set up your dates of availability.</h4>
  </div>
  <?php } ?>
 
@@ -700,6 +717,67 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 
 </div>
+
+
+<p>&nbsp;</p>
+
+
+<?php if(mysqli_num_rows($Screening)==1) { ?>
+
+ <div class="col-sm-12">
+
+<h3>Please answer the following question:</h4>
+
+<h4><?php echo $rowscreening['ScreeningQuestion']; ?></h3>
+
+<br>
+
+ </div>
+
+  <div class="col-sm-12">
+  <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+
+<?php if($rowscreening['PotentialAnswer1'] != '') { ?>
+  <div class="col-sm-12" style="padding-bottom:20px;">
+<div class="col-sm-radio">
+ <input id="potentialanswer1" name="potentialanswergiven[]" type="radio" style="display:block" value="<?php echo $rowscreening['PotentialAnswer1']; ?>"/> 
+</div>
+<div class="col-sm-2">
+ <label for="potentialanswer1"><?php echo $rowscreening['PotentialAnswer1']; ?></label>
+ </div>
+ </div>
+<br>
+<?php } ?>
+
+
+<?php if($rowscreening['PotentialAnswer2'] != '') { ?>
+<div class="col-sm-12" style="padding-bottom:20px;">
+ <div class="col-sm-radio">
+ <input id="potentialanswer2" name="potentialanswergiven[]" type="radio" style="display:block" value="<?php echo $rowscreening['PotentialAnswer2']; ?>"/> 
+</div>
+<div class="col-sm-2">
+ <label for="potentialanswer2"><?php echo $rowscreening['PotentialAnswer2']; ?></label>
+ </div>
+ </div>
+<br>
+<?php } ?>
+
+
+<?php if($rowscreening['PotentialAnswer3'] != '') { ?>
+<div class="col-sm-12" style="padding-bottom:20px;">
+  <div class="col-sm-radio">
+ <input id="potentialanswer3" name="potentialanswergiven[]" type="radio" style="display:block" value="<?php echo $rowscreening['PotentialAnswer3']; ?>"/> 
+</div>
+<div class="col-sm-2">
+ <label for="potentialanswer3"><?php echo $rowscreening['PotentialAnswer1']; ?></label>
+ </div>
+</div>
+<?php } ?>
+
+  </div>
+  </div>
+
+ <?php } ?>
 
 
 

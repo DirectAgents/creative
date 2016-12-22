@@ -70,7 +70,7 @@ $job=explode(',',$rowproject['Job']);
 
 
 
-$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
 $rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
 
 $screening=explode(',',$rowpotentialanswers['ScreeningQuestion']);
@@ -211,7 +211,7 @@ $(document).ready(function() {
 
 
 <div align="center">
-<button class="load_more" id="load_more_button">load More</button>
+<button class="load_more" id="load_more_button">View More</button>
 <div class="animation_image" style="display:none;"><img src="ajax-loader.gif"> Loading...</div>
 </div>
 

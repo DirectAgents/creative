@@ -257,7 +257,7 @@ echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
 
 if($rowprojectimage['profile_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
 <?php }else{ ?>
 
@@ -399,8 +399,8 @@ echo '<div class="row">
 <div class="empty-projects">No Upcoming Meetings</div>
   <div class="create-one-here-box">
       <br><br>
-      <a href="<?php echo BASE_PATH; ?>/participant/project/browse/">
-        <button class="create-one-btn">Browse here</button></a>
+      <a href="'.BASE_PATH.'/participant/idea/browse/">
+        <button class="create-one-btn">Browse here for new ideas</button></a>
          <p>&nbsp;</p>
        </div> 
   </div>

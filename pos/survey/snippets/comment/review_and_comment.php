@@ -30,6 +30,7 @@ if (!defined('C5T_ROOT')) {
 }
 
 
+
 $c5t_detail_template        = 'review_and_comment.tpl.html';
 
 define('C5T_LOGIN_LEVEL', 0);

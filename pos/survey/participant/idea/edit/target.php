@@ -42,7 +42,7 @@ mysql_query($update_sql);
 
 
 
-$sql = "SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'";
+$sql = "SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'";
 $result=mysql_query($sql);
 $row=mysql_fetch_array($result);
 
@@ -51,7 +51,7 @@ if(mysql_num_rows($result)>0)
 
     
 
-  $update_sql = "UPDATE tbl_startup_potentialanswers SET 
+  $update_sql = "UPDATE tbl_startup_screeningquestion SET 
   PotentialAnswer1='".$_POST['potentialanswer1']."',
   PotentialAnswer2='".$_POST['potentialanswer2']."',
   PotentialAnswer3='".$_POST['potentialanswer3']."',
@@ -65,7 +65,7 @@ if(mysql_num_rows($result)>0)
 
 
 
-$insert_sql = "INSERT INTO tbl_startup_potentialanswers(userID, ProjectID, PotentialAnswer1, PotentialAnswer2,
+$insert_sql = "INSERT INTO tbl_startup_screeningquestion(userID, ProjectID, PotentialAnswer1, PotentialAnswer2,
 PotentialAnswer3) VALUES('".$_SESSION['startupSession']."','".$_SESSION['projectid']."','".$_POST['potentialanswer1']."',
 '".$_POST['potentialanswer2']."', '".$_POST['potentialanswer3']."')";
 mysql_query($insert_sql);    

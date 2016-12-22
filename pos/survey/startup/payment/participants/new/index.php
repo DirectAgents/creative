@@ -52,7 +52,7 @@ $job=explode(',',$rowproject['Job']);
 
 
 
-$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
 $rowpotentialanswers = mysql_fetch_array($ProjectPotentialanswers);
 
 $screening=explode(',',$rowpotentialanswers['Screening']);

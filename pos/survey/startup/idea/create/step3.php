@@ -65,7 +65,7 @@ $minutes=explode(',',$rowproject['Minutes']);
 
 
 
-$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
+$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_SESSION['projectid']."'");
 $rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
 
 //echo $rowpotentialanswers['PotentialAnswer1'];
