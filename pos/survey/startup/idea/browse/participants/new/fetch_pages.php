@@ -244,7 +244,7 @@ $Diet = str_replace(",","|",$row['Diet']);
 $Religion = str_replace(",","|",$row['Religion']);
 $Education = str_replace(",","|",$row['Education']);
 $Job = str_replace(",","|",$row['Job']);
-$Interest = str_replace(",","|",$row['Industry_Interest']);
+$Interest = str_replace(",","|",$row['Interest']);
 
 
 //if($Meetupchoice != 'NULL'){$themeetupchoice = "AND Meetupchoice RLIKE '[[:<:]]".$Meetupchoice."[[:>:]]'";}else{$themeetupchoice = '';}
@@ -332,8 +332,8 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]
 }
 
 
-if (strpos($Min_Req, 'Industry_Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND Industry_Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
 }else{
   $interest = '';
 }
@@ -369,6 +369,11 @@ echo "</div>";
 
 //output results from database
 echo '<ul class="page_result">';
+
+
+echo '<div class="col-lg-12" style="margin-bottom:50px; margin-top:30px;">';
+
+
 //while($results->fetch()){ //fetch values
 while($row2 = mysqli_fetch_array($results))
 { 
@@ -393,9 +398,7 @@ echo '
 
 
 
-<div class="row-fluid">
-<div class="therow">
-  <div class="col-lg-4">';
+  <div class="col-lg-3" style="background:#eee; margin-right:20px; padding:10px 0 10px 0;">';
 
 echo '
 <table class="table-no-border">
@@ -407,18 +410,18 @@ echo '
 
 
 
-if(isset($_SESSION['access_token'])){
-        echo '<img src="'.$_SESSION['google_picture_link'].'" class="thumbnail-profile-browse"/>';
+if($row3['google_picture_link'] != ''){
+        echo '<img src="'.$row3['google_picture_link'].'" class="thumbnail-profile-browse"/>';
  }
 
-if(isset($_SESSION['facebook_photo'])){ 
-        echo '<img src="https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture?width=100&height=100" class="thumbnail-profile-browse"/>';
+if($row3['facebook_id'] != '0'){ 
+        echo '<img src="https://graph.facebook.com/'.$row3['facebook_id'].'/picture?width=150&height=150" class="thumbnail-profile-browse"/>';
 }
        
-if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
+if($row3['google_picture_link'] == '' && $row3['facebook_id'] == '0'){
 
-if($_SESSION['profileimage'] != ''){ 
-        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$_SESSION['profileimage'].'" class="thumbnail-profile-browse"/>';
+if($row3['profile_image'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$row3['profileimage'].'" class="thumbnail-profile-browse"/>';
 }else{
         echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="thumbnail-profile-browse"/>';
  }
@@ -462,8 +465,6 @@ echo '</a>';
 
 
 
-</div>
-</div>
 
 
 
@@ -477,6 +478,8 @@ echo '</a>';
 }
 
 ?>
+
+</div>
 
 <input type="hidden" name="firstname" id="firstname" value="'.$row2['FirstName'].'"/>
 <input type="hidden" name="userid'.$row2['userID'].'" id="userid" value="'.$row2['userID'].'"/>

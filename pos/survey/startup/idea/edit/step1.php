@@ -1803,7 +1803,7 @@ echo $language . '</li>';
                 <h3>Screening question</h3>
                 
 
-  <textarea rows="3" tabindex="0" placeholder="Add your screening question here" name="screeningquestion" id="screeningquestion" disabled><?php if($rowpotentialanswers['ScreeningQuestion'] != 'NULL'){echo $rowpotentialanswers['ScreeningQuestion'];}?></textarea>
+  <textarea rows="3" tabindex="0" placeholder="Add your screening question here" name="screeningquestion" id="screeningquestion"><?php if($rowpotentialanswers['ScreeningQuestion'] != 'NULL'){echo $rowpotentialanswers['ScreeningQuestion'];}?></textarea>
                
               </div>
 

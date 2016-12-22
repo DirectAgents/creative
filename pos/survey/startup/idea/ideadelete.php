@@ -17,6 +17,9 @@ if($_POST)
 // Delete data in mysql from row that has this id 
 $sql=mysqli_query($connecDB,"DELETE FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."'");
 
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_startup_potentialanswers WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."'");
+
+
 
 
 $results = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."'");

@@ -386,7 +386,7 @@ jq(document).ready(function(){
                <label for="in-person">
                  
 
-<?php if($rowproject['Industry_Interest'] != ''){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Industry_Interest']); }else{ echo "not selected";};  ?>
+<?php if($rowproject['Interest'] != ''){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Interest']); }else{ echo "not selected";};  ?>
 
 
 
@@ -863,13 +863,14 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
                <div class="wrapper">
         <input type="submit" value="Submit Project"/>
         <input type="hidden" name="submitok" value="Yes"/>
- </div>  
+ 
             
 
             <div id="back">
               <a href="step2.php?<?php echo $_SESSION['projectid']; ?>">< Back</a>
 
             </div>
+</div>  
               </div>
               </div>
    

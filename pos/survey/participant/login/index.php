@@ -138,8 +138,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $result = $mysqli->query("SELECT COUNT(google_id) as usercount FROM tbl_participant WHERE google_id=$user->id");
   $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
-  $sql = mysql_query("SELECT * FROM tbl_participant WHERE userEmail = '".$user->email."'");
-  $row = mysql_fetch_array($sql);
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userEmail = '".$user->email."'");
+  $row = mysqli_fetch_array($sql);
 
 
 
@@ -152,6 +152,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['participantSession'] = $row['userID'];
         header("Location: ../meetings/");
+        //echo $_SESSION['participantSession'];
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -163,6 +164,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     //echo $mysqli->error;
 
    $statement = $mysqli->prepare("UPDATE tbl_participant SET 
+    facebook_id = '',
     google_id = '".$user->id."',
     FirstName = '".$user->givenName."',
     LastName = '".$user->familyName."',
@@ -427,7 +429,7 @@ echo 'id: ' . $user['id'];
     //$statement->execute();
     //echo $mysqli->error;
 
-    mysqli_query($insert_sql);  
+    //mysqli_query($insert_sql);  
 
     header("Location: ../meetings/");
     exit();
@@ -442,6 +444,20 @@ echo 'id: ' . $user['id'];
 
         $_SESSION['participantSession'] = $user['id'];
         $_SESSION['facebook_photo'] = $user['id'];
+
+
+    $statement = $mysqli->prepare("UPDATE tbl_participant SET 
+    facebook_id = '".$user['id']."',
+    google_id = '',
+    google_picture_link = '',
+    account_verified = '1'  
+    
+    WHERE userEmail='".$user->email."'");
+   
+   $statement->execute();
+
+
+
         header("Location: ../meetings/");
         exit();
 

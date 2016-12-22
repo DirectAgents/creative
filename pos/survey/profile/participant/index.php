@@ -275,29 +275,33 @@ initialize();
 <div class="container">
   <div class="therow">
     <div class="col-lg-2">
-      
-      <?php
+
+
+  <?php
   
-if(isset($_SESSION['access_token'])){
-        echo '<img src="'.$_SESSION['google_picture_link'].'" class="img-circle-profile"/>';
+if($row['google_picture_link'] != ''){
+        echo '<img src="'.$row['google_picture_link'].'" class="img-circle-profile"/>';
  }
 
-if(isset($_SESSION['facebook_photo'])){ 
-        echo '<img src="https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture?width=100&height=100" class="img-circle-profile"/>';
+if($row['facebook_id'] != '0'){ 
+        echo '<img src="https://graph.facebook.com/'.$row['facebook_id'].'/picture?width=100&height=100" class="img-circle-profile"/>';
 }
        
-if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
+if($row['google_picture_link'] == '' && $row['facebook_id'] == '0'){
 
-        if($_SESSION['profileimage'] != ''){ 
-        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$_SESSION['profileimage'].'" class="img-circle-profile"/>';
+if($row['profileimage'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$row['profileimage'].'" class="img-circle-profile"/>';
 }else{
         echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
  }
 
-
-} 
+}
 
       ?>
+
+
+
+
 
 
     </div>
@@ -345,7 +349,11 @@ echo $count;
           
  
     <div class="overall-rating">
-    <a href="rating/?id=<?php echo $_GET['id']; ?>"><span id="avgrat"><?php echo $ratingRow['average_rating']; ?></span></a>
+    <a href="rating/?id=<?php echo $_GET['id']; ?>"><span id="avgrat">
+    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?></span></a>
+
+<?php if ($ratingRow['average_rating'] == ''){echo "No rating";} ?>
+
     </div>
 
 
@@ -410,20 +418,28 @@ echo $count;
   </div>-->
 
   <div class="therow">
-    <div class="col-lg-4"><h4>Status:</h4> <?php if($row['Status'] != 'NULL'){echo $row['Status'];}else{echo "No Status Preference";} ?></div>
-    <div class="col-lg-4"><h4>Ethnicity:</h4> <?php if($row['Ethnicity'] != 'NULL'){echo $row['Ethnicity'];}else{echo "No Ethnic Preference";} ?></div>
-    <div class="col-lg-4"><h4>Smoke:</h4> <?php if($row['Smoke'] != 'NULL'){echo $row['Smoke'];}else{echo "No Smoking Preference";} ?></div>
+    <div class="col-lg-4"><h4>Status:</h4> <?php if($row['Status'] != ''){echo $row['Status'];}else{echo "No Status Preference";} ?></div>
+    <div class="col-lg-4"><h4>Ethnicity:</h4> <?php if($row['Ethnicity'] != ''){echo $row['Ethnicity'];}else{echo "No Ethnic Preference";} ?></div>
+    <div class="col-lg-4"><h4>Smoke:</h4> <?php if($row['Smoke'] != ''){echo $row['Smoke'];}else{echo "No Smoking Preference";} ?></div>
   </div>
 
    <div class="therow">
-    <div class="col-lg-4"><h4>Drink:</h4> <?php if($row['Drink'] != 'NULL'){echo $row['Drink'];}else{echo "No Drinking Preference";} ?></div>
-    <div class="col-lg-4"><h4>Diet:</h4> <?php if($row['Diet'] != 'NULL'){echo $row['Diet'];}else{echo "No Diet Preference";} ?></div>
-    <div class="col-lg-4"><h4>Religion:</h4> <?php if($row['Religion'] != 'NULL'){echo $row['Religion'];}else{echo "No Religion Preference";} ?></div>
+    <div class="col-lg-4"><h4>Drink:</h4> <?php if($row['Drink'] != ''){echo $row['Drink'];}else{echo "No Drinking Preference";} ?></div>
+    <div class="col-lg-4"><h4>Diet:</h4> <?php if($row['Diet'] != ''){echo $row['Diet'];}else{echo "No Diet Preference";} ?></div>
+    <div class="col-lg-4"><h4>Religion:</h4> <?php if($row['Religion'] != ''){echo $row['Religion'];}else{echo "No Religion Preference";} ?></div>
   </div>
 
    <div class="therow">
-    <div class="col-lg-4"><h4>Education:</h4> <?php if($row['Education'] != 'NULL'){echo $row['Education'];}else{echo "No Education Preference";} ?></div>
-    <div class="col-lg-4"><h4>Occupation:</h4><?php if($row['Job'] != 'NULL'){echo $row['Job'];}else{echo "No Job Preference";} ?></div>
+    <div class="col-lg-4"><h4>Education:</h4> <?php if($row['Education'] != ''){echo $row['Education'];}else{echo "No Education Preference";} ?></div>
+    <div class="col-lg-4"><h4>Occupation:</h4><?php if($row['Job'] != ''){echo $row['Job'];}else{echo "No Job Preference";} ?></div>
+    <div class="col-lg-4"><h4>Interests:</h4><?php if($row['Interest'] != ''){echo $row['Interest'];}else{echo "No Interests Provided";} ?></div>
+
+  </div>
+
+
+  <div class="therow">
+    <div class="col-lg-4"><h4>Languages:</h4> <?php if($row['Languages'] != ''){echo $row['Languages'];}else{echo "No Languages Provided";} ?></div>
+
   </div>
 
 

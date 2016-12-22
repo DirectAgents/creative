@@ -274,24 +274,25 @@ $(document).ready(function () {
   <div class="therow">
     <div class="col-lg-2">
       
-     <?php
+    <?php
   
-if(isset($_SESSION['access_token'])){
-        echo '<img src="'.$_SESSION['google_picture_link'].'" class="img-circle-profile"/>';
+if($row['google_picture_link'] != ''){
+        echo '<img src="'.$row['google_picture_link'].'" class="img-circle-profile"/>';
  }
 
-if(isset($_SESSION['facebook_photo'])){ 
-        echo '<img src="https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture?width=100&height=100" class="img-circle-profile"/>';
+if(isset($row['facebook_id'])){ 
+        echo '<img src="https://graph.facebook.com/'.$row['facebook_id'].'/picture?width=100&height=100" class="img-circle-profile"/>';
 }
        
-if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){
+if($row['google_picture_link'] == '' && $row['facebook_id'] == ''){
 
-  if($_SESSION['profileimage'] != ''){
-        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$_SESSION['profileimage'].'" class="img-circle-profile"/>';
-      }else{
+if($row['profileimage'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$row['profileimage'].'" class="img-circle-profile"/>';
+}else{
         echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
-      }
-} 
+ }
+
+}
 
       ?>
 

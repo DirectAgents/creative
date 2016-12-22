@@ -24,7 +24,9 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../login/');
+  //echo "adsfasdf";
+  echo $_SESSION['participantSession'];
+  //$participant_home->redirect('../login/');
 }
 
 
