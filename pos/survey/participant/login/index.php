@@ -164,6 +164,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     //echo $mysqli->error;
 
    $statement = $mysqli->prepare("UPDATE tbl_participant SET 
+    profile_image = '',
     facebook_id = '',
     google_id = '".$user->id."',
     FirstName = '".$user->givenName."',
@@ -409,6 +410,15 @@ echo 'id: ' . $user['id'];
   if($user_count_facebook) //if user already exist change greeting text to "Welcome Back"
     {
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
+    profile_image = '',
+    google_picture_link = '',
+    account_verified = '1'  
+    
+    WHERE userEmail='".$user['email']."'");
+
+
         $_SESSION['participantSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
         header("Location: ../meetings/");

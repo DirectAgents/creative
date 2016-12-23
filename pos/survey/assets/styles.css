@@ -7,6 +7,7 @@
   overflow-x:hidden;
 }
 
+#c5t_language_selector{display:none;}
 
 .col-sm-radio{float:left; width:1.33333333%;}
 
@@ -4279,7 +4280,7 @@ a:hover.btn-back{text-decoration: none; color:#fff; background:#868484;}
 
 .no-account-yet{text-align:center;}
 
-.overall-rating{font-size: 14px;margin-top: 5px;color: #8e8d8d;}
+.overall-rating{font-size: 14px;margin-top: 0px; color: #8e8d8d;}
 
 
 .codexworld_rating_widget{

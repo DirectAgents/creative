@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.13, created on 2016-12-22 12:49:06
+<?php /* Smarty version 2.6.13, created on 2016-12-23 15:41:50
          compiled from default/review_and_comment.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'call_module', 'default/review_and_comment.tpl.html', 2, false),)), $this); ?>

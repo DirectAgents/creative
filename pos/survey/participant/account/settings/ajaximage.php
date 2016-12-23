@@ -32,7 +32,7 @@ if(mysqli_num_rows($sql2)>0)
 {
   
  
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET profile_image='$actual_image_name', google_picture_link=''
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET profile_image='$actual_image_name', google_picture_link='', facebook_id=''
   WHERE userID='".$_SESSION['participantSession']."'");
   
   echo "<img src='../../../images/profile/participant/".$actual_image_name."'  class='preview'>";

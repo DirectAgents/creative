@@ -31,7 +31,7 @@ if (!defined('C5T_ROOT')) {
 
 
 
-$c5t_detail_template        = 'view_comment_only.tpl.html';
+$c5t_detail_template        = 'review_and_comment.tpl.html';
 
 define('C5T_LOGIN_LEVEL', 0);
 
@@ -126,7 +126,7 @@ $c5t_form->setDefaults($c5t_comment->remembered_user());
 
 // Validate form
 $c5t_message = array();
-if ($c5t['display_comment_form'] == 'Y') {
+if ($c5t['display_comment_form'] == 'N') {
     $c5t_show_form = 'yes';
     if (c5t_gpc_vars('save')) {
         if ($c5t_form->validate()) {

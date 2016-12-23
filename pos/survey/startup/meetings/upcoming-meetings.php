@@ -241,23 +241,32 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 $ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
+
+if($rowprojectimage['facebook_id'] != '0') {
+
+echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/picture?width=100&height=100" width="100">';
+
+
+ } 
+
+
 if($rowprojectimage['google_picture_link'] != '') {
 
 echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
 
 
- }else{ 
+ } 
 
 
 if($rowprojectimage['profile_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
 <?php }else{ ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
 
-<?php } } ?>
+<?php }  ?>
 
 
 </div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.13, created on 2016-12-22 14:22:43
+<?php /* Smarty version 2.6.13, created on 2016-12-23 15:40:54
          compiled from default/view_comment_only.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'call_module', 'default/view_comment_only.tpl.html', 2, false),)), $this); ?>
@@ -7,6 +7,90 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'call_module
 
 
 
+
+ <!-- Comment Form Start -->
+        <a name="c5t_form"></a>
+        
+        <div class="c5t_comment_form_background">
+        <form <?php echo $this->_tpl_vars['form']['attributes']; ?>
+>
+        
+          <table class="c5t_comment_form_table">
+
+            <tr>
+              <td colspan="2" class="c5t_error_message">
+                <?php $_from = $this->_tpl_vars['message']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['item']):
+?>
+                  <div class="c5t_error_message_item"><?php echo $this->_tpl_vars['item']; ?>
+</div>
+                <?php endforeach; endif; unset($_from); ?>              
+              </td>
+            </tr>
+
+            <?php if ($this->_tpl_vars['show_form'] == 'yes'): ?>
+           
+            <tr>
+              <td class="c5t_comment_form_field">
+                <?php echo $this->_tpl_vars['form']['name']['html']; ?>
+
+              </td>
+            </tr>
+
+            
+
+            <tr>
+              <td class="c5t_comment_form_label">
+             Write a short review describing how the experience was during the meeting
+              </td>
+            </tr>
+
+              <tr>
+              <td class="c5t_comment_form_submit">&nbsp;</td>
+            </tr>
+            
+            <tr>
+              <td>
+                <?php echo c5t_module::call_module_output(array('trigger' => 'frontend_textarea','field' => $this->_tpl_vars['comment_field_name']), $this);?>
+                
+              </td>
+            </tr>
+            
+            <tr>
+              <td class="c5t_comment_form_field">
+                <?php echo $this->_tpl_vars['form'][$this->_tpl_vars['comment_field_name']]['html']; ?>
+                
+              </td>
+            </tr>
+            
+            <tr>
+              <td class="c5t_comment_form_field">
+                <?php echo c5t_module::call_module_output(array('trigger' => 'frontend_comment_form'), $this);?>
+
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="c5t_comment_form_label"></td>
+            </tr>
+             <tr>
+              <td class="c5t_comment_form_submit">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="c5t_comment_form_submit"><?php echo $this->_tpl_vars['form']['save']['html'];  echo $this->_tpl_vars['form']['hidden']; ?>
+</td>
+            </tr>
+              <tr>
+              <td class="c5t_comment_form_submit">&nbsp;</td>
+            </tr>
+
+            <?php endif; ?>
+          </table>
+            
+        </form>
+        </div>
+    <!-- Comment Form End -->
 
 
 

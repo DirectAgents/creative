@@ -21,6 +21,8 @@
   **
   *****************************************************/
 
+include_once("../../../config.php");
+include("../../../config.inc.php");
 
 
 
@@ -124,9 +126,26 @@ require 'comment_form.inc.php';
 $c5t_form->setDefaults($c5t_comment->remembered_user());
 
 
+
+$rating_and_comment=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE startup_id='".$_SESSION['startupSession']."' AND comment_identifier_id='".$_GET['id']."'");
+
+
+
+if(mysqli_num_rows($rating_and_comment) == 0){
+
+$showform = 'Y';
+
+}else{
+
+$showform = 'N';   
+}
+
+
+
+
 // Validate form
 $c5t_message = array();
-if ($c5t['display_comment_form'] == 'Y') {
+if ($c5t['display_comment_form'] == $showform) {
     $c5t_show_form = 'yes';
     if (c5t_gpc_vars('save')) {
         if ($c5t_form->validate()) {
@@ -168,6 +187,10 @@ if ($c5t['display_comment_form'] != 'Y' and $c5t['display_turn_off_messages'] ==
 
 // Get comment data
 $c5t_comment_data = array();
+
+
+
+
 
 
 

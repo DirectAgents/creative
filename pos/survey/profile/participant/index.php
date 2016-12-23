@@ -40,7 +40,6 @@ $ratingRow = $result->fetch_assoc();
 
 
 
-$rating_and_comment=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID=='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['p']."' AND Rated_Participant = '' AND Comment_Participant = '' ");
 
 
 
@@ -293,8 +292,8 @@ if($row['facebook_id'] != '0'){
        
 if($row['google_picture_link'] == '' && $row['facebook_id'] == '0'){
 
-if($row['profileimage'] != ''){ 
-        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$row['profileimage'].'" class="img-circle-profile"/>';
+if($row['profile_image'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$row['profile_image'].'" class="img-circle-profile"/>';
 }else{
         echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
  }
@@ -319,11 +318,12 @@ if($row['profileimage'] != ''){
       <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Feedback Participations</th>
+        <th>Meetings Participated</th>
  
 <?php if(isset($_SESSION['startupSession'])){ ?>
         <th>Rating</th>
      <?php  }  ?>   
+     <th>Comments</th>
       </tr>
     </thead>
     <tbody>
@@ -358,17 +358,16 @@ echo $count;
 <?php if (!$rating_and_comment) { ?>
 
 
-  <a href="n/?id=<?php echo $_GET['id']; ?>&p=<?php echo $_GET['p']; ?>"><span id="avgrat">
-    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?></span></a>
+  <a href="rating/?id=<?php echo $_GET['id']; ?>&p=<?php echo $_GET['p']; ?>">
+    No rating</a>
 
 
 <?php }else{  ?>
 
 
-    <a href="y/?id=<?php echo $_GET['id']; ?>&p=<?php echo $_GET['p']; ?>"><span id="avgrat">
-    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?></span></a>
+    <a href="y/?id=<?php echo $_GET['id']; ?>&p=<?php echo $_GET['p']; ?>">
+    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?></a>
 
-<?php if ($ratingRow['average_rating'] == ''){echo "No rating";} ?>
 
 
 <?php  }  ?>  
@@ -378,6 +377,29 @@ echo $count;
 
         </td>
         <?php  }  ?>  
+
+        <td>
+
+<?php
+
+
+$result_count = mysqli_query($connecDB,"SELECT comment_identifier_id, COUNT(comment_identifier_id) AS count FROM c5t_comment WHERE comment_identifier_id = '".$_GET['id']."'");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
+if($count > 0 ){
+echo '<a href="y/?id='.$_GET['id'].'&p='.$_GET['p'].'">';
+echo $count;
+echo '</a>';
+
+}else{
+  echo "0";
+}
+?>
+
+
+        </td>
+
       </tr>
     </tbody>
   </table>

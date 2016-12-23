@@ -565,8 +565,16 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
+
+
+if($rowprojectimage['facebook_id'] != '0') {
+
+echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/picture?width=100&height=100" width="100">';
+
+
+ } 
 
 
 if($rowprojectimage['google_picture_link'] != '') {
@@ -574,18 +582,18 @@ if($rowprojectimage['google_picture_link'] != '') {
 echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
 
 
- }else{ 
+ } 
 
 
 if($rowprojectimage['profile_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
 <?php }else{ ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
 
-<?php } } ?>
+<?php }  ?>
 
 
 </div>
@@ -595,7 +603,7 @@ if($rowprojectimage['profile_image'] != '') { ?>
 
 <?php
 
-$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'");
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."'");
 //$result3=mysql_query($sql3);
 
 $row3 = mysqli_fetch_array($sql3);
@@ -705,7 +713,7 @@ $row3 = mysqli_fetch_array($sql3);
                    
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Project</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Idea</a>
 
 
                       </div>
@@ -714,7 +722,7 @@ $row3 = mysqli_fetch_array($sql3);
 
                       <div class="action" ng-click="triggerPreview(survey)" ng-show="survey.surveyLength > 0" role="button" tabindex="0" aria-hidden="false">
                         
-                       <a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>"> View Profile </a>
+                       <a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>"> View Profile </a>
 
                       </div>
                     

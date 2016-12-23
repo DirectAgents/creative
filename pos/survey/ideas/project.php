@@ -740,7 +740,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 <?php if($rowscreening['PotentialAnswer1'] != '') { ?>
   <div class="col-sm-12" style="padding-bottom:20px;">
 <div class="col-sm-radio">
- <input id="potentialanswer1" name="potentialanswergiven[]" type="radio" style="display:block" value="<?php echo $rowscreening['PotentialAnswer1']; ?>"/> 
+ <input id="potentialanswer1" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 1"/> 
 </div>
 <div class="col-sm-2">
  <label for="potentialanswer1"><?php echo $rowscreening['PotentialAnswer1']; ?></label>
@@ -753,7 +753,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 <?php if($rowscreening['PotentialAnswer2'] != '') { ?>
 <div class="col-sm-12" style="padding-bottom:20px;">
  <div class="col-sm-radio">
- <input id="potentialanswer2" name="potentialanswergiven[]" type="radio" style="display:block" value="<?php echo $rowscreening['PotentialAnswer2']; ?>"/> 
+ <input id="potentialanswer2" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 2"/> 
 </div>
 <div class="col-sm-2">
  <label for="potentialanswer2"><?php echo $rowscreening['PotentialAnswer2']; ?></label>
@@ -766,7 +766,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 <?php if($rowscreening['PotentialAnswer3'] != '') { ?>
 <div class="col-sm-12" style="padding-bottom:20px;">
   <div class="col-sm-radio">
- <input id="potentialanswer3" name="potentialanswergiven[]" type="radio" style="display:block" value="<?php echo $rowscreening['PotentialAnswer3']; ?>"/> 
+ <input id="potentialanswer3" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 3"/> 
 </div>
 <div class="col-sm-2">
  <label for="potentialanswer3"><?php echo $rowscreening['PotentialAnswer1']; ?></label>
