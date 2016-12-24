@@ -41,6 +41,7 @@ $ratingRow = $result->fetch_assoc();
 
 
 
+$rating_and_comment=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE startup_id='".$_SESSION['startupSession']."' AND comment_identifier_id='".$_GET['id']."'");
 
 
 
@@ -358,15 +359,14 @@ echo $count;
 <?php if (!$rating_and_comment) { ?>
 
 
-  <a href="rating/?id=<?php echo $_GET['id']; ?>&p=<?php echo $_GET['p']; ?>">
-    No rating</a>
+    No rating
 
 
 <?php }else{  ?>
 
 
-    <a href="y/?id=<?php echo $_GET['id']; ?>&p=<?php echo $_GET['p']; ?>">
-    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?></a>
+   
+    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?>
 
 
 
@@ -388,7 +388,7 @@ $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
 if($count > 0 ){
-echo '<a href="y/?id='.$_GET['id'].'&p='.$_GET['p'].'">';
+echo '<a href="rating/?id='.$_GET['id'].'&p='.$_GET['p'].'">';
 echo $count;
 echo '</a>';
 

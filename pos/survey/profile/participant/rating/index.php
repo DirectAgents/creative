@@ -189,7 +189,7 @@ if($row['profile_image'] != ''){
       <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Feedback Participations</th>
+        <th>Meetings Participated</th>
  
 <?php if(isset($_SESSION['startupSession'])){ ?>
         <th>Ratings</th>

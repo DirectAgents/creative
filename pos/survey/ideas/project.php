@@ -29,6 +29,26 @@ if($startup_home->is_logged_in())
 $startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
 $rowstartup = mysqli_fetch_array($startup);
 
+
+
+$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['p']."'");
+$rowparticipant= mysqli_fetch_array($participant);
+
+
+
+$Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."' AND userID='".$_SESSION['startupSession']."' ");
+$screeningquestion = mysqli_fetch_array($Screening);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowparticipantproject=mysqli_fetch_array($sql);
+
+
+
+
+
+
 if(mysqli_num_rows($startup)<0)
 {
   //$startup_home->logout();
@@ -176,10 +196,23 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND p.Job RLIKE '[[:<:]]".$Job."[[:>
 }
 
 
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+}else{
+  $interest = '';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+}else{
+  $languages = '';
+}
+
+
 
 
 $sql3 = mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_SESSION['participantSession']."'
-AND r.ProjectID ='".$_GET['id']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob");
+AND r.ProjectID ='".$_GET['id']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages");
 
 
 
@@ -516,7 +549,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
 
 
 
-  <div class="therow">
+  
 
 
 
@@ -538,8 +571,20 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
 
 
     </div>
+
+    <?php if($rowstartup['startupID'] == $_SESSION['startupSession'] ){ ?>
     
+<div class="col-lg-6"><h3>Payout</h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of <?php echo $rowparticipant['FirstName']; ?>'s time</span></div>
+
+
+<?php }else{ ?>
+
+
 <div class="col-lg-5"><h3>Payout</h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></div>
+
+
+<?php } ?>
+
 
 <?php if(!$participant_home->is_logged_in() && $_SESSION['startupSession'] == '')
 { ?>
@@ -564,29 +609,55 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
 
       
 
-  </div>
 
 
 
  <?php if($rowproject['Details'] != ''){?> 
-  <div class="therow">
+
     <div class="col-lg-12">
     <h3>What makes this idea special?</h3>
       <p><?php echo $rowproject['Details']; ?></p>
     </div>
-  </div>
+  
   <?php } ?>
 
 
 
-   <?php if($rowproject['Agenda_One'] != ''){?> 
-  <div class="therow">
+  <?php if($rowproject['Agenda_One'] != ''){?> 
+  
     <div class="col-lg-12">
-      <h3>What will be discussed</h3>
+      <h3>What will be discussed during the meeting?</h3>
       <p><?php echo $rowproject['Agenda_One']; ?></p>
     </div>
-  </div>
+  
   <?php } ?>
+
+
+
+ <?php if($screeningquestion['EnabledorDisabled'] == 'Enabled'){?> 
+  
+    <div class="col-lg-12">
+      <h3>You asked the following Screening Question</h3>
+      <p><?php echo $screeningquestion['ScreeningQuestion']; ?></p>
+      <p><h4>You accepted this Answer:</h4></p>
+      <p>
+      <?php if($screeningquestion['Accepted'] == 'Potential Answer 1'){echo $screeningquestion['PotentialAnswer1'];} ?>
+      <?php if($screeningquestion['Accepted'] == 'Potential Answer 2'){echo $screeningquestion['PotentialAnswer2'];} ?>
+      <?php if($screeningquestion['Accepted'] == 'Potential Answer 3'){echo $screeningquestion['PotentialAnswer3'];} ?>
+      </p>
+<p><h4><?php echo $rowparticipant['FirstName']; ?>'s Answer was:</h4></p>
+      <p>
+<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 1') {echo $screeningquestion['PotentialAnswer1'];} ?>
+<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 2') {echo $screeningquestion['PotentialAnswer2'];} ?>
+<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 3') {echo $screeningquestion['PotentialAnswer3'];} ?>
+
+      </p>
+    </div>
+ 
+  <?php } ?>
+
+
+
 
 
 
