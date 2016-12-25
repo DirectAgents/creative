@@ -79,6 +79,35 @@ date_default_timezone_set('America/New_York');
 
 $date = date('Y-m-d h:m A');
 
+
+
+$dtA = new DateTime($date);
+$dtB = new DateTime($row2['Date_of_Meeting'].' '.$row2['Final_Time']);
+
+
+
+if ( $dtA > $dtB  ) {
+
+
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No Meeting Requests<br><br></div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
+        Browse here for new Ideas</a>
+       </div> 
+  </div>
+</div>
+
+</div>
+</div>';
+
+
+
+}else{
+
 //echo $row2['id'];
 
 
@@ -94,7 +123,7 @@ $date = date('Y-m-d h:m A');
   <div class="result-accept">
     <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Successfully Accepted!</div>
   </div>
-<h4>Are you sure you want to accept the meeting request?</h4>
+<h4>You are about to accept the meeting request?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
@@ -178,8 +207,8 @@ while($rowtime = mysqli_fetch_array($sqltime))
   <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Declined!</div>
   </div>
 <h4>Are you sure you want to decline the meeting request?</h4>
-<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-decline">
@@ -713,7 +742,7 @@ $row3 = mysqli_fetch_array($sql3);
                    
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"> View Idea</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"> View Details</a>
 
 
                       </div>
@@ -740,37 +769,14 @@ $row3 = mysqli_fetch_array($sql3);
 
 <?php 
 
-
+}
 
 
 
 }
 
-}else{ 
-
-
-echo '<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">No Meeting Requests<br><br></div>
- 
-</div>
-
-</div>
-</div>';
-
-
-
-
-
+}
   ?>
-
-
-
-
-<?php }
-
-
-?>
 
 
 

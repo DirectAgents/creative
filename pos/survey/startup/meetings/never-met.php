@@ -9,21 +9,20 @@ require_once '../../class.participant.php';
 
 
 
+$participant_home = new PARTICIPANT();
 
-$startup_home = new STARTUP();
-
-if($startup_home->is_logged_in())
+if($participant_home->is_logged_in())
 {
-  $startup_home->logout();
+  $participant_home->logout();
 }
 
 
 
-$participant_home = new PARTICIPANT();
+$startup_home = new STARTUP();
 
-if(!$participant_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $participant_home->redirect('../login.php');
+  $startup_home->redirect('../../login');
 }
 
 
@@ -48,7 +47,7 @@ if(!$participant_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' AND Accepted_to_Participate = 'Pending' AND Status != 'Canceled_by_Startup'  ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Accepted_to_Participate = 'Pending' AND Status != 'Canceled_by_Participant'  ORDER BY id DESC ");
 //$result=mysql_query($sql);
 
 //$row=mysql_fetch_array($result);
@@ -103,9 +102,8 @@ if ( $dtA > $dtB  ) {
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
-
 
 
 if($rowprojectimage['facebook_id'] != '0') {
@@ -126,7 +124,7 @@ echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
 
 if($rowprojectimage['profile_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
 <?php }else{ ?>
 
@@ -142,7 +140,7 @@ if($rowprojectimage['profile_image'] != '') { ?>
 
 <?php
 
-$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'");
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."'");
 //$result3=mysql_query($sql3);
 
 $row3 = mysqli_fetch_array($sql3);
@@ -231,7 +229,7 @@ $row3 = mysqli_fetch_array($sql3);
 
                       <div class="action" ng-click="triggerPreview(survey)" ng-show="survey.surveyLength > 0" role="button" tabindex="0" aria-hidden="false">
                         
-                       <a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>"> View Profile </a>
+                       <a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>"> View Profile </a>
 
                       </div>
                     

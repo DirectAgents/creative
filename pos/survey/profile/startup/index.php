@@ -282,14 +282,14 @@ if($row['google_picture_link'] != ''){
         echo '<img src="'.$row['google_picture_link'].'" class="img-circle-profile"/>';
  }
 
-if(isset($row['facebook_id'])){ 
+if($row['facebook_id'] != '0'){  
         echo '<img src="https://graph.facebook.com/'.$row['facebook_id'].'/picture?width=100&height=100" class="img-circle-profile"/>';
 }
        
-if($row['google_picture_link'] == '' && $row['facebook_id'] == ''){
+if($row['google_picture_link'] == '' && $row['facebook_id'] == '0'){
 
-if($row['profileimage'] != ''){ 
-        echo '<img src="'.BASE_PATH.'/images/profile/startup/'.$row['profileimage'].'" class="img-circle-profile"/>';
+if($row['profile_image'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/startup/'.$row['profile_image'].'" class="img-circle-profile"/>';
 }else{
         echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
  }
@@ -398,6 +398,8 @@ $Diet = str_replace(",","|",$rowparticipant['Diet']);
 $Religion = str_replace(",","|",$rowparticipant['Religion']);
 $Education = str_replace(",","|",$rowparticipant['Education']);
 $Job = str_replace(",","|",$rowparticipant['Job']);
+$Interest = str_replace(",","|",$rowparticipant['Interest']);
+$Languages = str_replace(",","|",$rowparticipant['Languages']);
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
@@ -507,12 +509,25 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND r.Job RLIKE '[[:<:]]".$Job."[[:>
 }
 
 
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND r.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+}else{
+  $interest = '';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+}else{
+  $languages = '';
+}
+
+
 
 //echo $rowproject['City'];
 
 
 $sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_SESSION['participantSession']."'
- $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob AND
+ $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages AND
  ProjectID = '".$row3['ProjectID']."'");
 
 
@@ -667,7 +682,7 @@ $(document).ready(function () {
 
 
 
-<a href="<?php echo BASE_PATH; ?>/projects/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
+<a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
 
 
 
@@ -683,10 +698,12 @@ $(document).ready(function () {
 $ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."' AND ProjectID = '".$row2['ProjectID']."'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
+
+
 if($rowprojectimage['project_image'] != '') {
-echo '<img src="../../projects/uploads/'.$rowprojectimage['project_image'].'" width="70">'; 
+echo '<img src="'.BASE_PATH.'/ideas/uploads/'.$rowprojectimage['project_image'].'" width="70">'; 
 }else{
-echo '<img src="../../projects/uploads/thumbnail.jpg" width="70">'; 
+echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">'; 
 }
 
 

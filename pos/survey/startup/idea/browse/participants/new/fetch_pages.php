@@ -245,6 +245,7 @@ $Religion = str_replace(",","|",$row['Religion']);
 $Education = str_replace(",","|",$row['Education']);
 $Job = str_replace(",","|",$row['Job']);
 $Interest = str_replace(",","|",$row['Interest']);
+$Languages = str_replace(",","|",$row['Languages']);
 
 
 //if($Meetupchoice != 'NULL'){$themeetupchoice = "AND Meetupchoice RLIKE '[[:<:]]".$Meetupchoice."[[:>:]]'";}else{$themeetupchoice = '';}

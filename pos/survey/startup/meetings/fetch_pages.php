@@ -283,6 +283,13 @@ $( "#meeting-requests" ).load( "meeting-requests.php" );
 
     });
 
+     $(".never-met").click(function() {  
+
+      $( "#never-met" ).load( "never-met.php" );
+      
+
+    });
+
 
 });//]]> 
 
@@ -310,6 +317,8 @@ $( "#meeting-requests" ).load( "meeting-requests.php" );
     <li><a href="#upcoming-meetings" class="upcoming-meetings">Upcoming Meetings</a></li>
     <li>&nbsp;</li>
     <li><a href="#past-meetings" class="past-meetings">Past Meetings</a></li>
+    <li>&nbsp;</li>
+    <li><a href="#never-met" class="never-met">Archived Meetings</a></li>
   </ul>  
 
 
@@ -327,6 +336,9 @@ $( "#meeting-requests" ).load( "meeting-requests.php" );
 
 
 <div id="past-meetings" class="tabContent" ></div>
+
+<div id="never-met" class="tabContent" ></div>
+
 
 
 

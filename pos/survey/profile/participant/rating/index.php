@@ -266,18 +266,7 @@ $(document).ready(function () {
 </script>
 <?php } ?>  
 
-<?php
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID=='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['p']."'");
-
-
-if(mysqli_num_rows($sql) == 1) {
-
-echo $_SESSION['startupSession'];
-
-}
-
-?>
 
     
       <?php echo $c5t_output; ?>

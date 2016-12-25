@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-require_once '../../base_path.php';
+require_once '../../../base_path.php';
 
-require_once '../../class.participant.php';
-require_once '../../class.startup.php';
-include_once("../../config.php");
-include("../../config.inc.php");
+require_once '../../../class.participant.php';
+require_once '../../../class.startup.php';
+include_once("../../../config.php");
+include("../../../config.inc.php");
 
 
 
@@ -52,7 +52,7 @@ $rowparticipantproject=mysqli_fetch_array($sql);
 if(mysqli_num_rows($startup)<0)
 {
   //$startup_home->logout();
-  header("Location:../../startup/");
+  header("Location:../../../startup/");
  }
 
 }
@@ -270,7 +270,7 @@ $job=explode(',',$rowproject['Job']);
 
 
 
-<?php include("../../header.php"); ?>
+<?php include("../../../header.php"); ?>
 
 
 
@@ -486,7 +486,7 @@ $('#location_option3').hide();
    
 
 
-<?php include("../../nav.php"); ?>
+<?php include("../../../nav.php"); ?>
 
    
   </div>
@@ -1212,7 +1212,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 
       <!--Footer-->
-<?php include("../../footer.php"); ?>
+<?php include("../../../footer.php"); ?>
 <!--Footer-->
 
       

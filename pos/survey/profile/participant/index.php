@@ -388,7 +388,7 @@ $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
 if($count > 0 ){
-echo '<a href="rating/?id='.$_GET['id'].'&p='.$_GET['p'].'">';
+echo '<a href="rating/?id='.$_GET['id'].'">';
 echo $count;
 echo '</a>';
 
