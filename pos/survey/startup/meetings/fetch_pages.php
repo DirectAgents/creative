@@ -72,7 +72,7 @@ $(".map-canvas-tuesday").hide();
 $(".map-canvas-monday").show();
 }); 
 
-$(".past-meetings").click(function(){
+$(".recent-meetings").click(function(){
 $(".map-canvas-monday").hide();
 $(".map-canvas-tuesday").show();
 }); 
@@ -249,9 +249,9 @@ function getParameterByName(name, url) {
 
 var p = getParameterByName('p');
 
-if(p == 'past-meetings'){
-$('.past-meetings').click();
-$( "#past-meetings" ).load( "past-meetings.php" );
+if(p == 'recent-meetings'){
+$('.recent-meetings').click();
+$( "#recent-meetings" ).load( "recent-meetings.php" );
 }
 
 
@@ -276,16 +276,16 @@ $( "#meeting-requests" ).load( "meeting-requests.php" );
       
     });
 
-    $(".past-meetings").click(function() {  
+    $(".recent-meetings").click(function() {  
 
-      $( "#past-meetings" ).load( "past-meetings.php" );
+      $( "#recent-meetings" ).load( "recent-meetings.php" );
       
 
     });
 
-     $(".never-met").click(function() {  
+     $(".archived-meetings").click(function() {  
 
-      $( "#never-met" ).load( "never-met.php" );
+      $( "#archived-meetings" ).load( "archived-meetings.php" );
       
 
     });
@@ -312,13 +312,78 @@ $( "#meeting-requests" ).load( "meeting-requests.php" );
 <div id="tabs">
 
  <ul>
-    <li><a href="#meeting-requests" class="meeting-requests">Meeting Requests</a></li>
+    <li><a href="#meeting-requests" class="meeting-requests">Meeting Requests</a>
+
+  <?php
+
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_project_request WHERE Viewed_by_Participant = 'No' AND Meeting_Status = 'Meeting Requests' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
+if($count > 0 ){
+echo ' <div class="viewed-bubble">';
+echo $count;
+echo '</div>';
+}
+?>
+
+    </li>
     <li>&nbsp;</li>
-    <li><a href="#upcoming-meetings" class="upcoming-meetings">Upcoming Meetings</a></li>
+    <li><a href="#upcoming-meetings" class="upcoming-meetings">Upcoming Meetings</a>
+
+ <?php
+
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_project_request WHERE Viewed_by_Participant = 'No' AND Meeting_Status = 'Upcoming Meetings' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
+if($count > 0 ){
+echo ' <div class="viewed-bubble">';
+echo $count;
+echo '</div>';
+}
+?>
+
+
+    </li>
     <li>&nbsp;</li>
-    <li><a href="#past-meetings" class="past-meetings">Past Meetings</a></li>
+    <li><a href="#recent-meetings" class="recent-meetings">Recent Meetings</a>
+
+ <?php
+
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_project_request WHERE Viewed_by_Participant = 'No' AND Meeting_Status = 'Recent Meetings' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
+if($count > 0 ){
+echo ' <div class="viewed-bubble">';
+echo $count;
+echo '</div>';
+}
+?>
+
+
+
+    </li>
     <li>&nbsp;</li>
-    <li><a href="#never-met" class="never-met">Archived Meetings</a></li>
+    <li><a href="#archived-meetings" class="archived-meetings">Archived Meetings</a>
+
+
+ <?php
+
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_project_request WHERE Viewed_by_Participant = 'No' AND Meeting_Status = 'Archived Meetings' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
+if($count > 0 ){
+echo ' <div class="viewed-bubble">';
+echo $count;
+echo '</div>';
+}
+?>
+
+
+    </li>
   </ul>  
 
 
@@ -335,9 +400,9 @@ $( "#meeting-requests" ).load( "meeting-requests.php" );
 <div id="upcoming-meetings" class="tabContent" > </div>
 
 
-<div id="past-meetings" class="tabContent" ></div>
+<div id="recent-meetings" class="tabContent" ></div>
 
-<div id="never-met" class="tabContent" ></div>
+<div id="archived-meetings" class="tabContent" ></div>
 
 
 

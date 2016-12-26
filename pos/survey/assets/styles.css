@@ -7,6 +7,38 @@
   overflow-x:hidden;
 }
 
+.viewed-bubble{
+ position:absolute;
+
+ right:0;
+
+
+ margin-top:-17px;
+ margin-right:-10px;
+
+ display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8634d;
+  color: #fff;
+  min-width: 2em;
+  border-radius: 50%;
+  vertical-align: middle;
+  padding:3px;
+
+  }
+
+
+.viewed-bubble:before {
+  content:'';
+  float: left;
+  width: auto;
+  padding-bottom: 100%;
+}
+
+
+
+
 #c5t_language_selector{display:none;}
 
 .col-sm-radio{float:left; width:1.33333333%;}

@@ -10,6 +10,10 @@ include("../../../config.inc.php");
 
 
 
+
+
+
+
 $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID='".$_GET['id']."'");
 $rowproject = mysqli_fetch_array($Project);
 
@@ -186,6 +190,10 @@ if(mysqli_num_rows($sql3) == false)
 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowrequest=mysqli_fetch_array($sql);
+
+
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Viewed_by_Participant='Yes'
+  WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
 
 
 }

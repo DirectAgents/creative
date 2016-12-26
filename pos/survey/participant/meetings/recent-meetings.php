@@ -1,33 +1,31 @@
 <?php
 
 session_start();
+
 require_once '../../base_path.php';
 
 include("../../config.php"); //include config file
-require_once '../../class.startup.php';
 require_once '../../class.participant.php';
-
-
-
-$participant_home = new PARTICIPANT();
-
-if($participant_home->is_logged_in())
-{
-  $participant_home->logout();
-}
+require_once '../../class.startup.php';
 
 
 
 $startup_home = new STARTUP();
 
-if(!$startup_home->is_logged_in())
+if($startup_home->is_logged_in())
 {
-  $startup_home->redirect('../login.php');
+  $startup_home->logout();
 }
 
-$stmt = $startup_home->runQuery("SELECT * FROM wepay WHERE startup_id=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+$participant_home = new PARTICIPANT();
+
+if(!$participant_home->is_logged_in())
+{
+  $participant_home->redirect('../login.php');
+}
+
 
 
 
@@ -50,7 +48,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Status = 'Meeting Set' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' AND Status = 'Meeting Set' AND Met = 'Yes' AND Accepted_to_Participate = 'Accepted' AND Meeting_Status = 'Recent Meetings' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -65,8 +63,11 @@ while($row2 = mysqli_fetch_array($sql))
 { 
 
 
+
 $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
 $row4 = mysqli_fetch_array($sql4);
+
+
 
 
 date_default_timezone_set('America/New_York');
@@ -75,6 +76,7 @@ date_default_timezone_set('America/New_York');
 $date2 = date_create($row2['Date_of_Meeting']);
 
 $random = rand(5, 20000);
+
 
 
 
@@ -104,7 +106,7 @@ if ( $dtB < $dtA ) {
 
 <div id="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-delete">
   <div class="result-delete">
-  <div id="result-delete-<?php echo $row2['ProjectID']; ?>">Successfully Confirmed!</div>
+  <div id="result-delete-<?php echo $row2['ProjectID']; ?>">Thanks for confirming!</div>
   </div>
 <h4>Please confirm that you both met!</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
@@ -320,35 +322,26 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
-
-
-if($rowprojectimage['facebook_id'] != '0') {
-
-echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/picture?width=100&height=100" width="100">';
-
-
- } 
-
 
 if($rowprojectimage['google_picture_link'] != '') {
 
 echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
 
 
- } 
+ }else{ 
 
 
 if($rowprojectimage['profile_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
 <?php }else{ ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
 
-<?php }  ?>
+<?php } } ?>
 
 
 </div>
@@ -358,8 +351,7 @@ if($rowprojectimage['profile_image'] != '') { ?>
 
 <?php
 
-$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."'");
-//$result3=mysql_query($sql3);
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'");
 
 $row3 = mysqli_fetch_array($sql3);
 
@@ -383,25 +375,19 @@ $row3 = mysqli_fetch_array($sql3);
                     <div class="edit-delete">
 
 <?php 
-$sql5=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE startup_id = '".$_SESSION['startupSession']."' AND comment_identifier_id = '".$row2['userID']."'");
-//$result5=mysql_query($sql5);
-
-if(mysqli_num_rows($sql5)<1)
-{
-
-$row5 = mysqli_fetch_array($sql5);
 
 
 
-if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row5['startup_id'] != $_SESSION['startupSession']){ ?>
+if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $startup_home->is_logged_in()){ ?>
 
 
 
    <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><strong>Rate and Review your meeting</strong></a>
-                 <?php } ?>
+                
+
+  <?php } ?>
 
 
-<?php } ?>
 
                       
              
@@ -418,8 +404,12 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row5['start
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
                   <div class="survey-metadata">
                     <div class="item ">
-                      <div class="label">When:</div>
+                      <div class="label">Date of meeting:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
+                    </div>
+                     <div class="item">
+                      <div class="label">Time:</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row2['Final_Time']; ?> </div>
                     </div>
                     <div class="item date">
                       <div class="label">Location:</div>
@@ -432,35 +422,12 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row5['start
                  
                     <div class="clearer"></div>
                   </div>
-
-                   <div class="theline"></div>
-
-                  <div class="status_request">Status: 
-<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
-Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
-<?php } ?> 
-
-<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes'){ ?>
-Payment sent.
-<?php } ?> 
-
-
-   <?php if($row2['Met'] == '' && $row2['Met'] != 'No didn\'t show up'){ ?>         
-                 <i class="icon-trash"></i>Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm you met  
-
-                 <?php } ?>               
-
-
-                  </div>
-
-
-
                   <div class="survey-actions">
                   
                       
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Project</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Details</a>
 
 
                       </div>
@@ -469,7 +436,7 @@ Payment sent.
 
                       <div class="action" ng-click="triggerPreview(survey)" ng-show="survey.surveyLength > 0" role="button" tabindex="0" aria-hidden="false">
                         
-                       <a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>"> View Profile </a>
+                       <a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>"> View Profile </a>
 
                       </div>
                     
@@ -487,52 +454,49 @@ Payment sent.
 
 <?php 
 
+
+  }else{
+  echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No Recent Meetings</div>
+  <div class="create-one-here-box">
+      
+      <br><br>
+      <a href="<?php echo BASE_PATH; ?>/participant/project/browse/">
+        <button class="create-one-btn">Browse here</button></a>
+        <p>&nbsp;</p>
+      
+  </div>
+</div>
+
+</div>
+</div>
+';
+ }
+}
 }else{
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Past Meetings<br><br></div>
+<div class="empty-projects">No Recent Meetings</div>
   <div class="create-one-here-box">
-      <div class="create-one">
-     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
-        List a new idea</a>
-       </div> 
+      
+      <br><br>
+     <a href="'.BASE_PATH.'/participant/idea/browse/">
+        <button class="create-one-btn">Browse here for new ideas</button></a>
+        <p>&nbsp;</p>
+      
   </div>
 </div>
 
 </div>
-</div>';
+</div>
+';
 
 }
-
-
-
-}
-
-}else{ 
-
-
-
-
-echo '<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">No Past Meetings<br><br></div>
-  <div class="create-one-here-box">
-      <div class="create-one">
-     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
-        List a new idea</a>
-       </div> 
-  </div>
-</div>
-
-</div>
-</div>';
-
-
-
- }
 
 ?>
+
 
 
 

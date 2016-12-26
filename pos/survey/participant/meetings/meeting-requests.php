@@ -31,7 +31,6 @@ if(!$participant_home->is_logged_in())
 
 
 
-
 ?>
 
 
@@ -61,6 +60,11 @@ if(mysqli_num_rows($sql)>0)
 while($row2 = mysqli_fetch_array($sql))
 { 
 
+
+/*
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Viewed_by_Participant='Yes'
+WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."' AND Meeting_Status = 'Meeting Request' ");
+*/
 
 
 $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
@@ -670,7 +674,7 @@ $row3 = mysqli_fetch_array($sql3);
                    
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Idea</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Idea</a>
 
 
                       </div>
