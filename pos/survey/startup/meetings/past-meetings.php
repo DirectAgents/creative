@@ -491,8 +491,13 @@ Payment sent.
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Past Meetings</div>
- 
+<div class="empty-projects">No Past Meetings<br><br></div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
+        List a new idea</a>
+       </div> 
+  </div>
 </div>
 
 </div>
@@ -504,20 +509,28 @@ echo '<div class="row">
 
 }
 
-}else{ ?>
+}else{ 
 
-<div class="row">
+
+
+
+echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Past Meetings</div>
-  
+<div class="empty-projects">No Past Meetings<br><br></div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
+        List a new idea</a>
+       </div> 
+  </div>
 </div>
 
 </div>
-</div>
+</div>';
 
 
 
-<?php }
+ }
 
 ?>
 

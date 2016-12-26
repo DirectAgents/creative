@@ -14,56 +14,10 @@ $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE Proje
 $rowproject = mysqli_fetch_array($Project);
 
 
-$Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."' AND EnabledorDisabled = 'Enabled'");
-$rowscreening = mysqli_fetch_array($Screening);
-
-
-
-$startup_home = new STARTUP();
-
-if($startup_home->is_logged_in())
-{
-//exit();
-//echo $_SESSION['startupSession'];
-
-$startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
-$rowstartup = mysqli_fetch_array($startup);
-
-
-
-$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['p']."'");
-$rowparticipant= mysqli_fetch_array($participant);
-
-
-
-$Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."' AND userID='".$_SESSION['startupSession']."' ");
-$screeningquestion = mysqli_fetch_array($Screening);
-
-
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
-//$result=mysql_query($sql);
-$rowparticipantproject=mysqli_fetch_array($sql);
-
-
-
-
-
-
-if(mysqli_num_rows($startup)<0)
-{
-  //$startup_home->logout();
-  header("Location:../../../startup/");
- }
-
-}
 
 
 
 $participant_home = new PARTICIPANT();
-
-
-
-
 
 
 if($participant_home->is_logged_in())
@@ -89,6 +43,8 @@ $Diet = str_replace(",","|",$rowproject['Diet']);
 $Religion = str_replace(",","|",$rowproject['Religion']);
 $Education = str_replace(",","|",$rowproject['Education']);
 $Job = str_replace(",","|",$rowproject['Job']);
+$Interest = str_replace(",","|",$rowproject['Interest']);
+$Languages = str_replace(",","|",$rowproject['Languages']);
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
@@ -197,13 +153,13 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND p.Job RLIKE '[[:<:]]".$Job."[[:>
 
 
 if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND p.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
 }else{
   $interest = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
-if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND p.Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
 }else{
   $languages = '';
 }
@@ -572,18 +528,12 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
 
     </div>
 
-    <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
-    
-<div class="col-lg-6"><h3>Payout</h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of <?php echo $rowparticipant['FirstName']; ?>'s time</span></div>
-
-
-<?php }else{ ?>
+  
 
 
 <div class="col-lg-5"><h3>Payout</h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></div>
 
 
-<?php } ?>
 
 
 <?php if(!$participant_home->is_logged_in() && $_SESSION['startupSession'] == '')
@@ -634,358 +584,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
 
 
 
- <?php if($screeningquestion['EnabledorDisabled'] == 'Enabled'){?> 
-  
-    <div class="col-lg-12">
-      <h3>You asked the following Screening Question</h3>
-      <p><?php echo $screeningquestion['ScreeningQuestion']; ?></p>
-      <p><h4>You accepted this Answer:</h4></p>
-      <p>
-      <?php if($screeningquestion['Accepted'] == 'Potential Answer 1'){echo $screeningquestion['PotentialAnswer1'];} ?>
-      <?php if($screeningquestion['Accepted'] == 'Potential Answer 2'){echo $screeningquestion['PotentialAnswer2'];} ?>
-      <?php if($screeningquestion['Accepted'] == 'Potential Answer 3'){echo $screeningquestion['PotentialAnswer3'];} ?>
-      </p>
-<p><h4><?php echo $rowparticipant['FirstName']; ?>'s Answer was:</h4></p>
-      <p>
-<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 1') {echo $screeningquestion['PotentialAnswer1'];} ?>
-<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 2') {echo $screeningquestion['PotentialAnswer2'];} ?>
-<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 3') {echo $screeningquestion['PotentialAnswer3'];} ?>
 
-      </p>
-
-      
-<p>&nbsp;</p>
-
-<p><h4>You set the following as a requirement:</h4></p>
-
-      <p>
-      <?php 
-
-
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."' AND startupID='".$_SESSION['startupSession']."'");
-$row = mysqli_fetch_array($sql);
-
-
-
-$Min_Req = str_replace(",","|",$row['MinReq']);
-
-$Meetupchoice = str_replace(",","|",$row['Meetupchoice']);
-$Age = str_replace(",","|",$row['Age']);
-$Gender = str_replace(",","|",$row['Gender']);
-$Height = $row['MinHeight'];
-$City = str_replace(",","|",$row['City']);
-$Status = str_replace(",","|",$row['Status']); 
-$Ethnicity = str_replace(",","|",$row['Ethnicity']);
-$Smoke = str_replace(",","|",$row['Smoke']);
-$Drink = str_replace(",","|",$row['Drink']);
-$Diet = str_replace(",","|",$row['Diet']);
-$Religion = str_replace(",","|",$row['Religion']);
-$Education = str_replace(",","|",$row['Education']);
-$Job = str_replace(",","|",$row['Job']);
-$Interest = str_replace(",","|",$row['Interest']);
-$Languages = str_replace(",","|",$row['Languages']);
-
-
-
-
-
-
-
-
-
-if (strpos($Min_Req, 'Age') !== false) {
-echo 'Age: '.$row['Age'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Gender') !== false) {
-echo 'Gender: '.$row['Gender'];
-echo '<br>';
-}
-
-if (strpos($Min_Req, 'Height') !== false) {
-echo 'Height: '.$row['Height'];
-echo '<br>';
-}
-
-if (strpos($Min_Req, 'City') !== false) {
-echo 'City: '.$row['City'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Status') !== false) {
-echo 'Status: '.$row['Status'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Ethnicity') !== false) {
-echo 'Ethnicity: '.$row['Ethnicity'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Smoke') !== false) {
-echo 'Smoke: '.$row['Smoke'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Drink') !== false) {
-echo 'Drink: '.$row['Drink'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Diet') !== false) {
-echo 'Diet: '.$row['Diet'];
-echo '<br>';
-}
-
-if (strpos($Min_Req, 'Religion') !== false) {
-echo 'Religion: '.$row['Religion'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Education') !== false) {
-echo 'Education: '.$row['Education'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Job') !== false) {
-echo 'Job: '.$row['Job'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Interest') !== false) {
-echo 'Interests: '.$row['Interest'];
-echo '<br>';
-}
-
-if (strpos($Min_Req, 'Languages') !== false) {
-echo 'Languages: '.$row['Language'];
-echo '<br>';
-}
-
-
-
-
-
-
-      ?>
-      </p>
-
-
-      <p><h4>Based on your requirement <?php echo $rowparticipant['FirstName']; ?> met the following:</h4></p>
-
-      <p>
-      <?php 
-
-
-
-
-if (strpos($Min_Req, 'Age') !== false) {
-
-if($Age != 'NULL' && $Age != ''){$theage = "AND Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
-}else{
-  $theage = '';
-}
-
-
-if (strpos($Min_Req, 'Gender') !== false) {
-if($Gender != 'NULL' && $Gender != ''){$thegender = "AND Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
-}else{
-  $thegender = '';
-}
-
-if (strpos($Min_Req, 'Height') !== false) {
-if($Height != 'NULL' && $Height != ''){$theheight = "AND Height RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
-}else{
-  $theheight = '';
-}
-
-if (strpos($Min_Req, 'City') !== false) {
-if($City != 'NULL' && $City != ''){$thecity = "AND City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
-}else{
-  $thecity = '';
-}
-
-
-if (strpos($Min_Req, 'Status') !== false) {
-if($Status != 'NULL' && $Status != ''){$thestatus = "AND Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
-}else{
-  $thestatus = '';
-}
-
-
-if (strpos($Min_Req, 'Ethnicity') !== false) {
-if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
-}else{
-  $theethnicity = '';
-}
-
-
-if (strpos($Min_Req, 'Smoke') !== false) {
-if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
-}else{
-  $thesmoke = '';
-}
-
-
-if (strpos($Min_Req, 'Drink') !== false) {
-if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
-}else{
-  $thedrink = '';
-}
-
-
-if (strpos($Min_Req, 'Diet') !== false) {
-if($Diet != 'NULL' && $Diet != ''){$thediet = "AND Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
-}else{
-  $thediet = '';
-}
-
-if (strpos($Min_Req, 'Religion') !== false) {
-if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
-}else{
-  $thereligion = '';
-}
-
-
-if (strpos($Min_Req, 'Education') !== false) {
-if($Education != 'NULL' && $Education != ''){$theeducation = "AND Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
-}else{
-  $theeducation = '';
-}
-
-
-if (strpos($Min_Req, 'Job') !== false) {
-if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
-}else{
-  $thejob = '';
-}
-
-
-if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
-}else{
-  $interest = '';
-}
-
-if (strpos($Min_Req, 'Languages') !== false) {
-if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
-}else{
-  $languages = '';
-}
-
-
-
-
-
-$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_GET['p']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC");
-//$results = mysql_query("SELECT id,userID, Gender FROM tbl_participant_project 
-//WHERE Gender RLIKE '".$Gender."' OR Age RLIKE '".$Age."' ORDER BY id DESC LIMIT $position, $item_per_page");
-
-$rowparticipant = mysqli_fetch_array($results);
-
-if(mysqli_num_rows($results) == 1)
-{
-
-
-
-if (strpos($Min_Req, 'Age') !== false) {
-echo 'Age: '.$rowparticipant['Age'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Gender') !== false) {
-echo 'Gender: '.$rowparticipant['Gender'];
-echo '<br>';
-}
-
-if (strpos($Min_Req, 'Height') !== false) {
-echo 'Height: '.$rowparticipant['Height'];
-echo '<br>';
-}
-
-if (strpos($Min_Req, 'City') !== false) {
-echo 'City: '.$rowparticipant['City'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Status') !== false) {
-echo 'Status: '.$rowparticipant['Status'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Ethnicity') !== false) {
-echo 'Ethnicity: '.$rowparticipant['Ethnicity'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Smoke') !== false) {
-echo 'Smoke: '.$rowparticipant['Smoke'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Drink') !== false) {
-echo 'Drink: '.$rowparticipant['Drink'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Diet') !== false) {
-echo 'Diet: '.$rowparticipant['Diet'];
-echo '<br>';
-}
-
-if (strpos($Min_Req, 'Religion') !== false) {
-echo 'Religion: '.$rowparticipant['Religion'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Education') !== false) {
-echo 'Education: '.$rowparticipant['Education'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Job') !== false) {
-echo 'Job: '.$rowparticipant['Job'];
-echo '<br>';
-}
-
-
-if (strpos($Min_Req, 'Interest') !== false) {
-echo 'Interests: '.$rowparticipant['Interest'];
-echo '<br>';
-}
-
-if (strpos($Min_Req, 'Languages') !== false) {
-echo 'Languages: '.$rowparticipant['Language'];
-echo '<br>';
-}
-
-
-}
-
-      ?>
-      </p>
-
-    </div>
- 
-  <?php } ?>
 
 
 

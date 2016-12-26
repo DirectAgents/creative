@@ -47,7 +47,7 @@ if(!$startup_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Accepted_to_Participate = 'Pending' AND Status != 'Canceled_by_Participant'  ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 
 //$row=mysql_fetch_array($result);
@@ -256,8 +256,8 @@ $row3 = mysqli_fetch_array($sql3);
   <div class="create-one-here-box">
       
       <br><br>
-      <a href="'.BASE_PATH.'/participant/idea/browse/">
-        <button class="create-one-btn">Browse here for new ideas</button></a>
+      <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'">
+        <button class="create-one-btn">List a new idea</button></a>
         <p>&nbsp;</p>
       
   </div>

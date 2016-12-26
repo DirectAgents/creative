@@ -98,8 +98,8 @@ if ( $dtB > $dtA ) {
   <div id="result-delete-<?php echo $row2['ProjectID']; ?>">Successfully Canceled!</div>
   </div>
 <h4>Are you sure you want to cancel the meeting?</h4>
-<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
@@ -350,7 +350,7 @@ $row3 = mysqli_fetch_array($sql3);
                       
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Project</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Details</a>
 
 
                       </div>
@@ -380,14 +380,27 @@ $row3 = mysqli_fetch_array($sql3);
 
 }else{
 
-echo '<div class="row">
+
+
+ echo '<div class="row">
     <div class="col-md-12">
 <div class="empty-projects">No Upcoming Meetings</div>
- 
+  <div class="create-one-here-box">
+      
+      <br><br>
+      <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'">
+        <button class="create-one-btn">Browse here for new ideas</button></a>
+        <p>&nbsp;</p>
+      
+  </div>
 </div>
 
 </div>
-</div>';
+</div>
+';
+
+
+
 
 }
 
@@ -399,8 +412,15 @@ echo '<div class="row">
 
 <div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Upcoming Meetings</div>
-  
+<div class="empty-projects">No Past Meetings</div>
+  <div class="create-one-here-box">
+      
+      <br><br>
+      <a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000); ?>">
+        <button class="create-one-btn">List a new idea</button></a>
+        <p>&nbsp;</p>
+      
+  </div>
 </div>
 
 </div>

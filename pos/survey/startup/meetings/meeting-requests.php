@@ -96,7 +96,7 @@ echo '<div class="row">
   <div class="create-one-here-box">
       <div class="create-one">
      <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
-        Browse here for new Ideas</a>
+        List a new idea</a>
        </div> 
   </div>
 </div>
@@ -742,7 +742,7 @@ $row3 = mysqli_fetch_array($sql3);
                    
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"> View Details</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"> View Details</a>
 
 
                       </div>
@@ -775,12 +775,31 @@ $row3 = mysqli_fetch_array($sql3);
 
 }
 
+}else{
+
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No Meeting Requests<br><br></div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
+        List a new idea</a>
+       </div> 
+  </div>
+</div>
+
+</div>
+</div>';
+
+
+
 }
+
+
+
+
   ?>
-
-
-
-
 
 
 

@@ -1,10 +1,14 @@
 <?php
 session_start();
 
+
+require_once '../../base_path.php';
+
+
 if(!empty($test)){
-include_once("../../config.php");
+include_once("../../../config.php");
 }else{
-include_once("../config.php");
+include_once("../../config.php");
 }
 
 
@@ -15,7 +19,7 @@ if($_SESSION['startupSession'] != ''){
 if(!empty($test)){
 require_once '../../class.startup.php';
 }else{
-require_once '../class.startup.php';
+require_once '../../class.startup.php';
 }
 
 
@@ -34,13 +38,13 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if(!empty($_GET["cat"])){
 
-$Project = mysql_query("SELECT * FROM tbl_startup_project WHERE Category='".$_GET['cat']."'");
-$rowproject = mysql_fetch_array($Project);
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE Category='".$_GET['cat']."'");
+$rowproject = mysqli_fetch_array($Project);
 
 }else{
 
-$Project = mysql_query("SELECT * FROM tbl_startup_project");
-$rowproject = mysql_fetch_array($Project);
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project");
+$rowproject = mysqli_fetch_array($Project);
 }
 
 
@@ -49,7 +53,6 @@ $age=explode(',',$rowproject['Age']);
 $gender=explode(',',$rowproject['Gender']);
 $minheight=explode(',',$rowproject['MinHeight']);
 $maxheight=explode(',',$rowproject['MaxHeight']);
-$location=explode(',',$rowproject['Location']);
 $status=explode(',',$rowproject['Status']);
 $ethnicity=explode(',',$rowproject['Ethnicity']);
 $smoke=explode(',',$rowproject['Smoke']);
@@ -185,9 +188,9 @@ $(document).ready(function(){
 if($_SESSION['startupSession'] != ''){
 
   if(!empty($test)){
-        include("../../startup/nav.php"); 
+        include("../../nav.php"); 
     }else{
-      include("../startup/nav.php"); 
+      include("../../nav.php"); 
     }
   }
 
@@ -237,13 +240,11 @@ if($_SESSION['startupSession'] != ''){
 
 if(!empty($_GET["cat"])){
 
-$sql="SELECT * FROM tbl_startup_project WHERE Category = '".$_GET['cat']."' ORDER BY id DESC ";
-$result=mysql_query($sql);
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE Category = '".$_GET['cat']."' ORDER BY id DESC");
 
 }else{
 
-$sql="SELECT * FROM tbl_startup_project ORDER BY id DESC ";
-$result=mysql_query($sql);
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project ORDER BY id DESC ");
 }
 
 
@@ -251,13 +252,13 @@ $result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysql_num_rows($result)>0)
+if(mysqli_num_rows($sql)>0)
 {
   //echo "asdf";
 
 
 //get all records from add_delete_record table
-while($row2 = mysql_fetch_array($result))
+while($row2 = mysqli_fetch_array($sql))
 { 
 
 
@@ -402,7 +403,7 @@ echo '<img src="uploads/thumbnail.jpg" width="100">';
                   <div class="survey-header">
                   
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?></div>
-                  <?php echo $row2['Headline']; ?>
+                  <?php echo $row2['Details']; ?>
                    
                   </div>
                  

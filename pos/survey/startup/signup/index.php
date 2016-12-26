@@ -195,7 +195,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Flat Login Form</title>
+    <title>Circl</title>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">
@@ -340,7 +340,7 @@ if($_POST['passwordpass'] == 'good'){
 <div class="form">
 
 <div class="info">
-  <h1>SIGNUP AS A startup</h1>
+  <h1>SIGNUP AS A STARTUP</h1>
 </div>
 
 <div class="loginas">
@@ -380,7 +380,7 @@ if($_POST['passwordpass'] == 'good'){
     <h4>Password must meet the following requirements:</h4>
     <ul>
       <li id="letter" class="invalid">At least <strong>one letter</strong></li>
-      <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
+      <!--<li id="capital" class="invalid">At least <strong>one capital letter</strong></li>-->
       <li id="number" class="invalid">At least <strong>one number</strong></li>
       <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
     </ul>

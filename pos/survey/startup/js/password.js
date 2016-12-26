@@ -21,11 +21,11 @@ $(document).ready(function() {
 		}
 		
 		//validate uppercase letter
-		if ( pswd.match(/[A-Z]/) ) {
+		/*if ( pswd.match(/[A-Z]/) ) {
 			$('#capital').removeClass('invalid').addClass('valid');
 		} else {
 			$('#capital').removeClass('valid').addClass('invalid');
-		}
+		}*/
 		
 		//validate number
 		if ( pswd.match(/\d/) ) {
@@ -34,7 +34,9 @@ $(document).ready(function() {
 			$('#number').removeClass('valid').addClass('invalid');
 		}
 
-		if ( pswd.length > 8 && pswd.match(/[A-z]/) && pswd.match(/[A-Z]/) && pswd.match(/\d/) ) {
+		//if ( pswd.length > 8 && pswd.match(/[A-z]/) && pswd.match(/[A-Z]/) && pswd.match(/\d/) ) {
+		if ( pswd.length > 8 && pswd.match(/[A-z]/) && pswd.match(/\d/) ) {
+
 			//alert("asdfasdf");
 
 			$("#passwordpass").val('good');
