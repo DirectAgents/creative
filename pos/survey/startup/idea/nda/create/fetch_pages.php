@@ -22,7 +22,7 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../login.php');
+  $startup_home->redirect('../../login');
 }
 
 
@@ -77,20 +77,20 @@ function isCanvasBlank(canvas) {
     });
  
 $("#save-nda").click(function(){
+
         var proceed = true;
         
-        var projectid  = $('input[name=projectid').val();
-        var state  = $('input[name=state').val();
+        var projectid  = $('input[name=projectid]').val();
+        var state  = $('input[name=state]').val();
         var nda_purpose = $("textarea[name='nda_purpose']").val();
-        var disclosure_party  = $('input[name=disclosure_party').val();
-        var the_signature  = $('input[name=the_signature').val();
-        var startup_name  = $('input[name=startup_name').val();
-        var startup_sig_name  = $('input[name=startup_sig_name').val();
-        var startup_sig_title  = $('input[name=startup_sig_title').val();
-        var startup_sig_company  = $('input[name=startup_sig_company').val();
-        var startup_sig_date  = $('input[name=startup_sig_date').val();
+        var disclosure_party       = $('input[name=disclosure_party]').val();
+        var the_signature  = $('input[name=the_signature]').val();
+        var startup_name  = $('input[name=startup_name]').val();
+        var startup_sig_name  = $('input[name=startup_sig_name]').val();
+        var startup_sig_title  = $('input[name=startup_sig_title]').val();
+        var startup_sig_company  = $('input[name=startup_sig_company]').val();
+        var startup_sig_date  = $('input[name=startup_sig_date]').val();
         
-   
 
 
          if(startup_sig_date == ''){ 
@@ -124,14 +124,14 @@ $("#save-nda").click(function(){
 
        if(state == ''){ 
              $("#state").css('border-color','red'); //change border color to red 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a state!<br> This response will determine which jurisdiction\'s law governs the contract. </div>';
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a state!<br> The state will determine which jurisdiction\'s law governs the contract. </div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }
 
 
          if(nda_purpose == ''){ 
-             $("#disclosure_party").css('border-color','red'); //change border color to red 
+             $("#nda_purpose").css('border-color','red'); //change border color to red 
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a purpose for your NDA agreement </div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;

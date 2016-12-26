@@ -996,17 +996,12 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
         //get input field values
 
-        var submitok  = $('input[name=submitok').val();
+       
         var projectstatus = $('input[name="projectstatus[]"]:checked').map(function () {return this.value;}).get().join(",");
         var pay = $("select[name='pay']").val();
         var minutes = $("select[name='minutes']").val();
 
-        if($('input[type=file').val() != ''){
-        var fileToUpload = $('input[type=file]')[0].files[0].name;
-        var imagestatus  = $('input[name=imagestatus]').val(); 
-        //alert(imagestatus);
-        }
-        
+      
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -1019,11 +1014,10 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
           $( ".processing" ).show();
             //data to be sent to server
-            if($('input[type=file').val() != ''){
-            post_data = {'submitok':submitok,'projectstatus':projectstatus,'pay':pay,'minutes':minutes,'fileToUpload':fileToUpload,'imagestatus':imagestatus};
-            }else{
-            post_data = {'submitok':submitok,'projectstatus':projectstatus,'pay':pay,'minutes':minutes,'fileToUpload':'','imagestatus':''};
-            }
+         
+       
+            post_data = {'projectstatus':projectstatus,'pay':pay,'minutes':minutes};
+          
             //Ajax post data to server
             $.post('confirm.php', post_data, function(response){  
              
@@ -1395,8 +1389,8 @@ $(".choose-location-sunday").click(function() {
                 'lastname'     : $('input[name=lastname]').val(),
                 'email'     : $('input[name=email]').val(),
                 'phone_number'     : $('input[name=phone_number]').val(),
-                'location'     : $('input[name=location]').val(),
-                //'timezone'     : $("select[name='timezone']").val(),
+                'city'     : $('input[name=city]').val(),
+                'state'     : $("select[name='state']").val(),
                 'bio'     : $("textarea[name='bio']").val(),
                 'linkedin'     : $('input[name=linkedin]').val(),
                 'twitter'     :  $('input[name=twitter]').val(),
@@ -1406,7 +1400,7 @@ $(".choose-location-sunday").click(function() {
             };
  
 
-            //alert(emailnotifications);
+            //alert(post_data['phone_number']);
 
             //Ajax post data to server
             $.post('save-profile.php', post_data, function(response){  

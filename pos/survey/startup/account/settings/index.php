@@ -743,33 +743,72 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
 
 
-        <div class="note">This is <strong>never shared</strong> and only used to send you notifications.</div>
+        <div class="note">This is <strong>never shared</strong> and only used to share with the person you meet.</div>
 
         <fieldset>
           <span class="input">
-            <label for="location">Your Location</label>
-            <input type="text" name="location" id="location" placeholder="San Francisco, CA" value="New York, New York">
+            <label for="location">City</label>
+            <input type="text" name="city" id="city" placeholder="New York" value="<?php echo $row['City']; ?>">
           </span>
-         <!-- <span class="select gap-before">
-            <label>Your Timezone</label>
+          <span class="select gap-before">
+            <label>State</label>
             <span class="select-wrapper">
-              <select name="timezone" class="timezone">
-                <option value="" disabled="disabled">Select a timezone</option>
-                <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                <option value="Alaska">(GMT-08:00) Alaska</option>
-                <option value="Pacific Time (US &amp; Canada)">(GMT-07:00) Pacific Time (US &amp; Canada)</option>
-                <option value="Arizona">(GMT-07:00) Arizona</option>
-                <option value="Mountain Time (US &amp; Canada)">(GMT-06:00) Mountain Time (US &amp; Canada)</option>
-                <option value="Central Time (US &amp; Canada)">(GMT-05:00) Central Time (US &amp; Canada)</option>
-                <option value="Eastern Time (US &amp; Canada)" selected="selected">(GMT-04:00) Eastern Time (US &amp; Canada)</option>
-                <option value="Indiana (East)">(GMT-04:00) Indiana (East)</option>
-                <option value="Atlantic Time (Canada)">(GMT-03:00) Atlantic Time (Canada)</option>
-                <option value="break" disabled="disabled">--------</option><option value="American Samoa">(GMT-11:00) American Samoa</option>
-                <option value="International Date Line West">(GMT-11:00) International Date Line West</option>
-                <option value="Midway Island">(GMT-11:00) Midway Island</option>
-                <option value="Tijuana">(GMT-07:00) Tijuana</option><option value="Chihuahua">(GMT-06:00) Chihuahua</option><option value="Mazatlan">(GMT-06:00) Mazatlan</option><option value="Central America">(GMT-06:00) Central America</option><option value="Guadalajara">(GMT-05:00) Guadalajara</option><option value="Mexico City">(GMT-05:00) Mexico City</option><option value="Monterrey">(GMT-05:00) Monterrey</option><option value="Saskatchewan">(GMT-06:00) Saskatchewan</option><option value="Bogota">(GMT-05:00) Bogota</option><option value="Lima">(GMT-05:00) Lima</option><option value="Quito">(GMT-05:00) Quito</option><option value="Caracas">(GMT-04:30) Caracas</option><option value="Georgetown">(GMT-04:00) Georgetown</option><option value="La Paz">(GMT-04:00) La Paz</option><option value="Newfoundland">(GMT-02:30) Newfoundland</option><option value="Brasilia">(GMT-03:00) Brasilia</option><option value="Buenos Aires">(GMT-03:00) Buenos Aires</option><option value="Greenland">(GMT-02:00) Greenland</option><option value="Santiago">(GMT-03:00) Santiago</option><option value="Mid-Atlantic">(GMT-02:00) Mid-Atlantic</option><option value="Azores">(GMT+00:00) Azores</option><option value="Cape Verde Is.">(GMT-01:00) Cape Verde Is.</option><option value="Casablanca">(GMT+01:00) Casablanca</option><option value="Dublin">(GMT+01:00) Dublin</option><option value="Edinburgh">(GMT+01:00) Edinburgh</option><option value="Lisbon">(GMT+01:00) Lisbon</option><option value="London">(GMT+01:00) London</option><option value="Monrovia">(GMT+00:00) Monrovia</option><option value="UTC">(GMT+00:00) UTC</option><option value="Amsterdam">(GMT+02:00) Amsterdam</option><option value="Belgrade">(GMT+02:00) Belgrade</option><option value="Berlin">(GMT+02:00) Berlin</option><option value="Bern">(GMT+02:00) Bern</option><option value="Bratislava">(GMT+02:00) Bratislava</option><option value="Brussels">(GMT+02:00) Brussels</option><option value="Budapest">(GMT+02:00) Budapest</option><option value="Copenhagen">(GMT+02:00) Copenhagen</option><option value="Ljubljana">(GMT+02:00) Ljubljana</option><option value="Madrid">(GMT+02:00) Madrid</option><option value="Paris">(GMT+02:00) Paris</option><option value="Prague">(GMT+02:00) Prague</option><option value="Rome">(GMT+02:00) Rome</option><option value="Sarajevo">(GMT+02:00) Sarajevo</option><option value="Skopje">(GMT+02:00) Skopje</option><option value="Stockholm">(GMT+02:00) Stockholm</option><option value="Vienna">(GMT+02:00) Vienna</option><option value="Warsaw">(GMT+02:00) Warsaw</option><option value="West Central Africa">(GMT+01:00) West Central Africa</option><option value="Zagreb">(GMT+02:00) Zagreb</option><option value="Athens">(GMT+03:00) Athens</option><option value="Bucharest">(GMT+03:00) Bucharest</option><option value="Cairo">(GMT+02:00) Cairo</option><option value="Harare">(GMT+02:00) Harare</option><option value="Helsinki">(GMT+03:00) Helsinki</option><option value="Istanbul">(GMT+03:00) Istanbul</option><option value="Jerusalem">(GMT+03:00) Jerusalem</option><option value="Kyiv">(GMT+03:00) Kyiv</option><option value="Pretoria">(GMT+02:00) Pretoria</option><option value="Riga">(GMT+03:00) Riga</option><option value="Sofia">(GMT+03:00) Sofia</option><option value="Tallinn">(GMT+03:00) Tallinn</option><option value="Vilnius">(GMT+03:00) Vilnius</option><option value="Baghdad">(GMT+03:00) Baghdad</option><option value="Kuwait">(GMT+03:00) Kuwait</option><option value="Minsk">(GMT+03:00) Minsk</option><option value="Moscow">(GMT+03:00) Moscow</option><option value="Nairobi">(GMT+03:00) Nairobi</option><option value="Riyadh">(GMT+03:00) Riyadh</option><option value="St. Petersburg">(GMT+03:00) St. Petersburg</option><option value="Volgograd">(GMT+03:00) Volgograd</option><option value="Tehran">(GMT+04:30) Tehran</option><option value="Abu Dhabi">(GMT+04:00) Abu Dhabi</option><option value="Baku">(GMT+05:00) Baku</option><option value="Muscat">(GMT+04:00) Muscat</option><option value="Tbilisi">(GMT+04:00) Tbilisi</option><option value="Yerevan">(GMT+04:00) Yerevan</option><option value="Kabul">(GMT+04:30) Kabul</option><option value="Ekaterinburg">(GMT+05:00) Ekaterinburg</option><option value="Islamabad">(GMT+05:00) Islamabad</option><option value="Karachi">(GMT+05:00) Karachi</option><option value="Tashkent">(GMT+05:00) Tashkent</option><option value="Chennai">(GMT+05:30) Chennai</option><option value="Kolkata">(GMT+05:30) Kolkata</option><option value="Mumbai">(GMT+05:30) Mumbai</option><option value="New Delhi">(GMT+05:30) New Delhi</option><option value="Sri Jayawardenepura">(GMT+05:30) Sri Jayawardenepura</option><option value="Kathmandu">(GMT+05:45) Kathmandu</option><option value="Almaty">(GMT+06:00) Almaty</option><option value="Astana">(GMT+06:00) Astana</option><option value="Dhaka">(GMT+06:00) Dhaka</option><option value="Novosibirsk">(GMT+06:00) Novosibirsk</option><option value="Urumqi">(GMT+06:00) Urumqi</option><option value="Rangoon">(GMT+06:30) Rangoon</option><option value="Bangkok">(GMT+07:00) Bangkok</option><option value="Hanoi">(GMT+07:00) Hanoi</option><option value="Jakarta">(GMT+07:00) Jakarta</option><option value="Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option><option value="Beijing">(GMT+08:00) Beijing</option><option value="Chongqing">(GMT+08:00) Chongqing</option><option value="Hong Kong">(GMT+08:00) Hong Kong</option><option value="Irkutsk">(GMT+08:00) Irkutsk</option><option value="Kuala Lumpur">(GMT+08:00) Kuala Lumpur</option><option value="Perth">(GMT+08:00) Perth</option><option value="Singapore">(GMT+08:00) Singapore</option><option value="Taipei">(GMT+08:00) Taipei</option><option value="Ulaan Bataar">(GMT+09:00) Ulaan Bataar</option><option value="Osaka">(GMT+09:00) Osaka</option><option value="Sapporo">(GMT+09:00) Sapporo</option><option value="Seoul">(GMT+09:00) Seoul</option><option value="Tokyo">(GMT+09:00) Tokyo</option><option value="Yakutsk">(GMT+09:00) Yakutsk</option><option value="Adelaide">(GMT+09:30) Adelaide</option><option value="Darwin">(GMT+09:30) Darwin</option><option value="Brisbane">(GMT+10:00) Brisbane</option><option value="Canberra">(GMT+10:00) Canberra</option><option value="Guam">(GMT+10:00) Guam</option><option value="Hobart">(GMT+10:00) Hobart</option><option value="Magadan">(GMT+10:00) Magadan</option><option value="Melbourne">(GMT+10:00) Melbourne</option><option value="Port Moresby">(GMT+10:00) Port Moresby</option><option value="Solomon Is.">(GMT+10:00) Solomon Is.</option><option value="Sydney">(GMT+10:00) Sydney</option><option value="Vladivostok">(GMT+10:00) Vladivostok</option><option value="New Caledonia">(GMT+11:00) New Caledonia</option><option value="Auckland">(GMT+12:00) Auckland</option><option value="Fiji">(GMT+12:00) Fiji</option><option value="Kamchatka">(GMT+12:00) Kamchatka</option><option value="Marshall Is.">(GMT+12:00) Marshall Is.</option><option value="Wellington">(GMT+12:00) Wellington</option><option value="Nuku" alofa'="">(GMT+13:00) Nuku'alofa</option><option value="Samoa">(GMT+13:00) Samoa</option><option value="Tokelau Is.">(GMT+13:00) Tokelau Is.</option></select>
+              <select name="state" id="state" class="timezone">
+                <option value="" disabled="disabled">Select your state</option>
+                  <option value="AL" <?php if($row['City'] == 'AL'){echo "selected";}?>>Alabama</option>
+  <option value="AK" <?php if($row['City'] == 'AK'){echo "selected";}?>>Alaska</option>
+  <option value="AZ" <?php if($row['City'] == 'AZ'){echo "selected";}?>>Arizona</option>
+  <option value="AR" <?php if($row['City'] == 'AR'){echo "selected";}?>>Arkansas</option>
+  <option value="CA" <?php if($row['City'] == 'CA'){echo "selected";}?>>California</option>
+  <option value="CO" <?php if($row['City'] == 'CO'){echo "selected";}?>>Colorado</option>
+  <option value="CT" <?php if($row['City'] == 'CT'){echo "selected";}?>>Connecticut</option>
+  <option value="DE" <?php if($row['City'] == 'DE'){echo "selected";}?>>Delaware</option>
+  <option value="DC" <?php if($row['City'] == 'DC'){echo "selected";}?>>District Of Columbia</option>
+  <option value="FL" <?php if($row['City'] == 'FL'){echo "selected";}?>>Florida</option>
+  <option value="GA" <?php if($row['City'] == 'GA'){echo "selected";}?>>Georgia</option>
+  <option value="HI" <?php if($row['City'] == 'HI'){echo "selected";}?>>Hawaii</option>
+  <option value="ID" <?php if($row['City'] == 'ID'){echo "selected";}?>>Idaho</option>
+  <option value="IL" <?php if($row['City'] == 'IL'){echo "selected";}?>>Illinois</option>
+  <option value="IN" <?php if($row['City'] == 'IN'){echo "selected";}?>>Indiana</option>
+  <option value="IA" <?php if($row['City'] == 'IA'){echo "selected";}?>>Iowa</option>
+  <option value="KS" <?php if($row['City'] == 'KS'){echo "selected";}?>>Kansas</option>
+  <option value="KY" <?php if($row['City'] == 'KY'){echo "selected";}?>>Kentucky</option>
+  <option value="LA" <?php if($row['City'] == 'LA'){echo "selected";}?>>Louisiana</option>
+  <option value="ME" <?php if($row['City'] == 'ME'){echo "selected";}?>>Maine</option>
+  <option value="MD" <?php if($row['City'] == 'MD'){echo "selected";}?>>Maryland</option>
+  <option value="MA" <?php if($row['City'] == 'MA'){echo "selected";}?>>Massachusetts</option>
+  <option value="MI" <?php if($row['City'] == 'MI'){echo "selected";}?>>Michigan</option>
+  <option value="MN" <?php if($row['City'] == 'MN'){echo "selected";}?>>Minnesota</option>
+  <option value="MS" <?php if($row['City'] == 'MS'){echo "selected";}?>>Mississippi</option>
+  <option value="MO" <?php if($row['City'] == 'MO'){echo "selected";}?>>Missouri</option>
+  <option value="MT" <?php if($row['City'] == 'MT'){echo "selected";}?>>Montana</option>
+  <option value="NE" <?php if($row['City'] == 'NE'){echo "selected";}?>>Nebraska</option>
+  <option value="NV" <?php if($row['City'] == 'NV'){echo "selected";}?>>Nevada</option>
+  <option value="NH" <?php if($row['City'] == 'NH'){echo "selected";}?>>New Hampshire</option>
+  <option value="NJ" <?php if($row['City'] == 'NJ'){echo "selected";}?>>New Jersey</option>
+  <option value="NM" <?php if($row['City'] == 'NM'){echo "selected";}?>>New Mexico</option>
+  <option value="NY" <?php if($row['City'] == 'NY'){echo "selected";}?>>New York</option>
+  <option value="NC" <?php if($row['City'] == 'NC'){echo "selected";}?>>North Carolina</option>
+  <option value="ND" <?php if($row['City'] == 'ND'){echo "selected";}?>>North Dakota</option>
+  <option value="OH" <?php if($row['City'] == 'OH'){echo "selected";}?>>Ohio</option>
+  <option value="OK" <?php if($row['City'] == 'OK'){echo "selected";}?>>Oklahoma</option>
+  <option value="OR" <?php if($row['City'] == 'OR'){echo "selected";}?>>Oregon</option>
+  <option value="PA" <?php if($row['City'] == 'PA'){echo "selected";}?>>Pennsylvania</option>
+  <option value="RI" <?php if($row['City'] == 'RI'){echo "selected";}?>>Rhode Island</option>
+  <option value="SC" <?php if($row['City'] == 'SC'){echo "selected";}?>>South Carolina</option>
+  <option value="SD" <?php if($row['City'] == 'SD'){echo "selected";}?>>South Dakota</option>
+  <option value="TN" <?php if($row['City'] == 'TN'){echo "selected";}?>>Tennessee</option>
+  <option value="TX" <?php if($row['City'] == 'TX'){echo "selected";}?>>Texas</option>
+  <option value="UT" <?php if($row['City'] == 'UT'){echo "selected";}?>>Utah</option>
+  <option value="VT" <?php if($row['City'] == 'VT'){echo "selected";}?>>Vermont</option>
+  <option value="VA" <?php if($row['City'] == 'VA'){echo "selected";}?>>Virginia</option>
+  <option value="WA" <?php if($row['City'] == 'WA'){echo "selected";}?>>Washington</option>
+  <option value="WV" <?php if($row['City'] == 'WV'){echo "selected";}?>>West Virginia</option>
+  <option value="WI" <?php if($row['City'] == 'WI'){echo "selected";}?>>Wisconsin</option>
+  <option value="WY" <?php if($row['City'] == 'WY'){echo "selected";}?>>Wyoming</option>
+               </select>
             </span>
-          </span>-->
+          </span>
         </fieldset>
 
          <!--   <fieldset>
@@ -781,13 +820,14 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
         <div class="note">Optional — 50 characters</div>-->
 
     
+    
         <fieldset>
           <span class="textarea">
             <label for="bio">
               Short Bio
-              <small><a href="/settings/profile/mini-resume" data-action="show-examples">Examples</a></small>
+              <!--<small><a href="/settings/profile/mini-resume" data-action="show-examples">Examples</a></small>-->
             </label>
-            <textarea name="bio" id="bio"></textarea>
+            <textarea name="bio" id="bio" placeholder="Tell a little about yourself. No life story haha. Just couple phrases about yourself."><?php echo $row['Bio'];?></textarea>
           </span>
         </fieldset>
          <div class="note">Optional — 50 characters</div> 

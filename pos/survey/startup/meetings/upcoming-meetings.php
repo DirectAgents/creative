@@ -51,9 +51,29 @@ $sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID =
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysqli_num_rows($sql)>0)
+if(mysqli_num_rows($sql) == 0)
 {
   
+
+
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No Upcoming Meetings<br><br></div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
+        List a new idea</a>
+       </div> 
+  </div>
+</div>
+
+</div>
+</div>';
+
+
+}else{
+
 
 
 //get all records from add_delete_record table
@@ -378,57 +398,15 @@ $row3 = mysqli_fetch_array($sql3);
 
 <?php 
 
-}else{
-
-
-
- echo '<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">No Upcoming Meetings</div>
-  <div class="create-one-here-box">
-      
-      <br><br>
-      <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'">
-        <button class="create-one-btn">Browse here for new ideas</button></a>
-        <p>&nbsp;</p>
-      
-  </div>
-</div>
-
-</div>
-</div>
-';
-
-
 
 
 }
 
-
+}
 
 }
 
-}else{ ?>
 
-<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">No Past Meetings</div>
-  <div class="create-one-here-box">
-      
-      <br><br>
-      <a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000); ?>">
-        <button class="create-one-btn">List a new idea</button></a>
-        <p>&nbsp;</p>
-      
-  </div>
-</div>
-
-</div>
-</div>
-
-
-
-<?php }
 
 ?>
 

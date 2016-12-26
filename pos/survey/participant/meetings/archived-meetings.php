@@ -48,15 +48,35 @@ if(!$participant_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' AND Meeting_Status = 'Archived Meetings' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysqli_num_rows($sql)>0)
+if(mysqli_num_rows($sql) == 0)
 {
   //echo "asdf";
+
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">Meetings that never happened</div>
+  <div class="create-one-here-box">
+      
+      <br><br>
+      <a href="'.BASE_PATH.'/participant/idea/browse/">
+        <button class="create-one-btn">Browse here for new ideas</button></a>
+        <p>&nbsp;</p>
+      
+  </div>
+</div>
+
+</div>
+</div>
+';
+
+}else{
 
 
 //get all records from add_delete_record table
@@ -249,25 +269,7 @@ $row3 = mysqli_fetch_array($sql3);
 <?php 
 
 
-
-}else{
-
- echo '<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">Meetings that never happened</div>
-  <div class="create-one-here-box">
-      
-      <br><br>
-      <a href="'.BASE_PATH.'/participant/idea/browse/">
-        <button class="create-one-btn">Browse here for new ideas</button></a>
-        <p>&nbsp;</p>
-      
-  </div>
-</div>
-
-</div>
-</div>
-';
+}
 
 }
 
@@ -275,7 +277,7 @@ $row3 = mysqli_fetch_array($sql3);
 }
 
 
-}
+
 
 
 

@@ -49,7 +49,7 @@ $position = ($page_number * $item_per_page);
 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project ORDER BY id DESC LIMIT $position, $item_per_page");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectStatus = 'Public' ORDER BY id DESC LIMIT $position, $item_per_page");
 //$results=mysql_query($sql);
 
 

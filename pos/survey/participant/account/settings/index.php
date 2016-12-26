@@ -808,7 +808,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
 
 
-        <div class="note">Your number will <strong>only</strong> be shared with people you meet through this site.</div>
+        <div class="note">This is <strong>never shared</strong> and only used to share with the person you meet.</div>
 
         <fieldset>
           <span class="input">
@@ -891,7 +891,9 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
               Short Bio
               <!--<small><a href="/settings/profile/mini-resume" data-action="show-examples">Examples</a></small>-->
             </label>
-            <textarea name="bio" id="bio" placeholder="Tell a little about yourself. No life story haha. Just couple phrases about yourself."></textarea>
+            <textarea name="bio" id="bio" placeholder="Tell a little about yourself. No life story haha. Just couple phrases about yourself.">
+              <?php echo $row['Bio'];?>
+            </textarea>
           </span>
         </fieldset>
          <div class="note">Optional — 50 characters</div> 

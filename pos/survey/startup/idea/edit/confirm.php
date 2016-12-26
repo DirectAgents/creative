@@ -30,13 +30,6 @@ $date = date('Y-m-d');
 
 
 
-  
-
-
-
-
-
-
 
   
     $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Saved!</div>'));
@@ -45,12 +38,6 @@ $date = date('Y-m-d');
     //header("Location: index.php?s=success"); 
 
 
-
-
-  
-  
-  
-  
   
 }
 ?>
