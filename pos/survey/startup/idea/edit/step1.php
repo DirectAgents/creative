@@ -353,7 +353,7 @@ $("#languages").blur(function (e) {
 
                </div>
 
-              <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=drafted-nda">Drafted NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=pending-nda">Pending NDA</a> </div>
+              <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=drafted-nda">Drafted NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=pending-nda">Pending NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=signed-nda">Signed NDA</a>  </div>
 
 <?php  }else{ ?>
    <div id="back">

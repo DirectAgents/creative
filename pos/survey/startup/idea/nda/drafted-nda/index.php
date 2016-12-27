@@ -39,77 +39,7 @@ $rownda = mysqli_fetch_array($nda);
 
 
 
-<script>
 
-/**Create Project**/
-
-$(document).ready(function(){
-
- $(".go").click(function() {  
-//alert("aads"); 
-
- //get input field values
-        
-        var projectname = $('input[name=projectname').val();
-       
-       
-        
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
-
-          if(projectname==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:95.5%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Project!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-      
-      
-         
-
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-
-
-          $( ".processing" ).show();
-            //data to be sent to server
-            post_data = {'projectname':projectname};
-            
-            //Ajax post data to server
-            $.post('projectcreate.php', post_data, function(response){  
-              
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-            //alert(text);
-                
-            window.location.href = "create/step1.php?id="+response.text;
-            //output = '<div class="success">'+response.text+'</div>';
-
-          
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $("#result").hide().html(output).slideDown();
-            }, 'json');
-      
-        }
-
-});
-
-
- 
-
-});
-
-</script>
 
 
 
@@ -174,19 +104,19 @@ $random = rand(5, 20000);
 
 <div id="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-delete">
   <div class="result-delete">
-  <div id="result-delete">Successfully Deleted!</div>
+  <div id="result-delete">111Successfully Deleted!</div>
   </div>
 <h4>Are you sure you want to delete this NDA?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
     <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_close cancel">Cancel</button>
-    <button class="delete<?php echo $row2['ProjectID']; ?> btn-delete">Yes</button>
+    <button class="delete<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?> btn-delete">Yes</button>
 </div>
 
 <div class="popupoverlay-btn">
   <div class="close-delete">
-    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Close</button>
+    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_close cancel">Close</button>
 </div>
 </div>
 
@@ -204,12 +134,7 @@ $random = rand(5, 20000);
 <script>
 
 
-
-$(".slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_open").click(function() {  
-//alert("open"+<?php echo $row2['ProjectID']; ?>);
-$("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_wrapper").show();
-$("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").show();
-});
+$(document).ready(function(){
 
 
     $('#slide-delete-'+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>).popup({
@@ -219,26 +144,21 @@ $("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+
     });
 
 
-$(".slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_close").click(function() {  
-//alert("close"+<?php echo $row2['ProjectID']; ?>);
-$("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_wrapper").hide();
-$("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
-});
-
 
 
 
     
 
-   $(".slide-delete-"+<?php echo $row2['ProjectID']; ?>).click(function() {  
+   $(".delete"+<?php echo $row2['ProjectID']; ?>+_<?php echo $random; ?>).click(function() {  
 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
        
        
-        
+       
+
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
         var proceed = true;
@@ -251,17 +171,16 @@ $("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+
         //everything looks good! proceed...
         if(proceed) 
         {
-            $(".result-delete").show();
-            $("#result-delete").hide().slideDown();
-            $(".cancel-delete").hide();
-            $(".close-delete").show();
 
-          $( ".processing" ).show();
+            
+
+         
             //data to be sent to server
             post_data = {'projectid':projectid};
-            
+           
             //Ajax post data to server
             $.post('nda_delete.php', post_data, function(response){  
+            
             
 
 
@@ -276,6 +195,9 @@ $("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+
             output = '<div class="success">'+response.text+'</div>';
 
           
+         
+          
+
           //reset values in all input fields
           $('#contact_form input').val(''); 
           $('#contact_form textarea').val(''); 
@@ -283,11 +205,14 @@ $("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+
         
        
         
+            $("#result-delete").hide().html(output).slideDown();
             }, 'json');
       
         }
 
 });
+
+});   
   
 
 </script>

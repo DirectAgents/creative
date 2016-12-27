@@ -86,12 +86,12 @@ function getParameterByName(name, url) {
 var p = getParameterByName('p');
 
 if(p == 'drafted-nda'){
-$('.drafted-nda').click();
+$('.drafted-nda').click();   
 $( "#drafted-nda" ).load( "drafted-nda/" );
 }
 
 if(p == 'signed-nda'){
-$('.signed-nda').click();
+$('.signed-nda').click();  
 $( "#signed-nda" ).load( "signed-nda/" );
 }
 
@@ -102,7 +102,7 @@ $( "#pending-nda" ).load( "pending-nda/" );
 
 
 
-
+if(p != 'drafted-nda'){
 $( "#drafted-nda" ).load( "drafted-nda/" );
 
    
@@ -116,8 +116,10 @@ $( "#drafted-nda" ).load( "drafted-nda/" );
       
     });
 
+}
 
 
+if(p != 'signed-nda'){
     $(".signed-nda").click(function() {  
      
       //$( "#upcoming-meetings" ).load( "send-payment.php" );
@@ -126,6 +128,9 @@ $( "#drafted-nda" ).load( "drafted-nda/" );
       
     });
 
+}
+
+if(p != 'pending-nda'){
     $(".pending-nda").click(function() {  
 
       $( "#pending-nda" ).load( "pending-nda/");
@@ -133,6 +138,7 @@ $( "#drafted-nda" ).load( "drafted-nda/" );
 
     });
 
+}
 
 });//]]> 
 

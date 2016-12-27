@@ -280,7 +280,6 @@ $(".load_more_pending").click(function (e) { //user clicks on button
 
         <!--/.fluid-container-->
         <script src="<?php echo BASE_PATH; ?>/bootstrap/js/bootstrap.min.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/assets/scripts.js"></script>
 
 
 
