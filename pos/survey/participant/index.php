@@ -243,9 +243,25 @@ $result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysql_num_rows($result)>0)
+if(mysql_num_rows($result) == 0)
 {
   //echo "asdf";
+
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">You don\'t have any pending projects</div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+        <a href="project/browse/"><button class="slide_open create-one-btn">Start Browsing Projects</button></a>
+        <p>&nbsp;</p>
+       </div> 
+  </div>
+</div>
+
+</div>';
+
+}else{
 
 
 //get all records from add_delete_record table
@@ -837,28 +853,10 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
 
 }
 
-}else{ ?>
+}
 
-<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">You don't have any pending projects</div>
-  <div class="create-one-here-box">
-      <div class="create-one">
-        <a href="project/browse/"><button class="slide_open create-one-btn">Start Browsing Projects</button></a>
-        <p>&nbsp;</p>
-       </div> 
-  </div>
-</div>
+}
 
-</div>
-
-
-
-
-<?php }
-
-//close db connection
-mysql_close($connecDB);
 ?>
 
 

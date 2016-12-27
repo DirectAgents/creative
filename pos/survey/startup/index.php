@@ -221,9 +221,27 @@ $sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID =
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysqli_num_rows($sql)>0)
+if(mysqli_num_rows($sql) == 0)
 {
   //echo "asdf";
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">You haven\'t posted any ideas yet.</div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+ <p>&nbsp;</p>
+        <a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000);?>" class="create-one-btn">Create one here</a>
+
+       </div> 
+       <p>&nbsp;</p>
+  </div>
+</div>
+
+</div>
+</div>';
+
+}else{
 
 
 //get all records from add_delete_record table
@@ -466,26 +484,9 @@ echo "</a>";
 
 }
 
-}else{ ?>
-
-<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">You haven't posted any ideas yet.</div>
-  <div class="create-one-here-box">
-      <div class="create-one">
- <p>&nbsp;</p>
-        <a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000);?>" class="create-one-btn">Create one here</a>
-
-       </div> 
-       <p>&nbsp;</p>
-  </div>
-</div>
-
-</div>
-</div>
+}
 
 
-<?php }
 
 ?>
 

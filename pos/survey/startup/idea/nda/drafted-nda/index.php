@@ -31,13 +31,6 @@ $rownda = mysqli_fetch_array($nda);
 
 
 
-
-
-
-
-
-
-
 ?>
 
 
@@ -134,10 +127,28 @@ $sql=mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID = '".$_
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysqli_num_rows($sql)>0)
+if(mysqli_num_rows($sql) == 0)
 {
   //echo "asdf";
 
+echo '
+<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No NDAs\' drafted yet</div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+ <p>&nbsp;</p>
+       
+
+       </div> 
+       <p>&nbsp;</p>
+  </div>
+</div>
+
+</div>
+</div>';
+
+}else{
 
 //get all records from add_delete_record table
 while($row2 = mysqli_fetch_array($sql))
@@ -153,20 +164,23 @@ $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE start
 $rowproject = mysqli_fetch_array($Project);
 
 
+$random = rand(5, 20000);
+
+
   ?>
 
 
 <!-- Delete a Project -->
 
-<div id="slide-delete-<?php echo $row2['ProjectID']; ?>" class="well slide-delete">
+<div id="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-delete">
   <div class="result-delete">
   <div id="result-delete">Successfully Deleted!</div>
   </div>
-<h4>Are you sure you want to delete this project?</h4>
+<h4>Are you sure you want to delete this NDA?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
-    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Cancel</button>
+    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_close cancel">Cancel</button>
     <button class="delete<?php echo $row2['ProjectID']; ?> btn-delete">Yes</button>
 </div>
 
@@ -188,18 +202,36 @@ $rowproject = mysqli_fetch_array($Project);
 
 
 <script>
-$(document).ready(function () {
 
-    $('#slide-delete-'+<?php echo $row2['ProjectID']; ?>).popup({
+
+
+$(".slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_open").click(function() {  
+//alert("open"+<?php echo $row2['ProjectID']; ?>);
+$("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_wrapper").show();
+$("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").show();
+});
+
+
+    $('#slide-delete-'+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>).popup({
         focusdelay: 400,
         outline: true,
         vertical: 'top'
     });
 
 
+$(".slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_close").click(function() {  
+//alert("close"+<?php echo $row2['ProjectID']; ?>);
+$("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_wrapper").hide();
+$("#slide-delete-"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
+});
 
-    $(".delete"+<?php echo $row2['ProjectID']; ?>).click(function() {  
-//alert("aads"); 
+
+
+
+    
+
+   $(".slide-delete-"+<?php echo $row2['ProjectID']; ?>).click(function() {  
+
 
  //get input field values
         
@@ -229,7 +261,7 @@ $(document).ready(function () {
             post_data = {'projectid':projectid};
             
             //Ajax post data to server
-            $.post('idea/projectdelete.php', post_data, function(response){  
+            $.post('nda_delete.php', post_data, function(response){  
             
 
 
@@ -257,7 +289,7 @@ $(document).ready(function () {
 
 });
   
-});
+
 </script>
 
 
@@ -281,7 +313,7 @@ $(document).ready(function () {
                   <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
                   <a href="<?php echo BASE_PATH; ?>/nda/pdf/nda-draft-pdf-startup.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
                       <i class="icon icon-download3"></i> Download as PDF</a>&nbsp;&nbsp;&nbsp;| &nbsp;
-                   <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_open">
+                   <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open">
                       <i class="icon icon-bin"></i>Delete</a>
                     
                     </div>  
@@ -310,10 +342,16 @@ $thedate =  $date->format('m/d/Y');
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
                  <?php
+if($rownda['Updated'] != '0000-00-00'){
+
 $date = new DateTime($rownda['Updated']);
 $thedate =  $date->format('m/d/Y');
 
-                      echo $thedate; 
+                echo $thedate; 
+
+}else{
+  echo 'Not updated yet';
+}
 
                  ?>
 
@@ -356,26 +394,9 @@ $thedate =  $date->format('m/d/Y');
 
 }
 
-}else{ ?>
-
-<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">No NDAs' drafted yet</div>
-  <div class="create-one-here-box">
-      <div class="create-one">
- <p>&nbsp;</p>
-       
-
-       </div> 
-       <p>&nbsp;</p>
-  </div>
-</div>
-
-</div>
-</div>
+}
 
 
-<?php }
 
 ?>
 
@@ -386,7 +407,6 @@ $thedate =  $date->format('m/d/Y');
             
 
 
-          </div>
 
 
 
