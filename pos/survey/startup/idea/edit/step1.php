@@ -327,8 +327,8 @@ $("#languages").blur(function (e) {
             <div class="wrapper">
              
               <div class="in-person">
-               <input id="public" name="nda[]" type="checkbox" value="Yes" <?php if(in_array('Yes',$nda)){echo "checked";}?> />
-               <label for="public">Yes</label>
+               <input id="yesnda" name="nda[]" type="checkbox" value="Yes" <?php if(in_array('Yes',$nda)){echo "checked";}?> />
+               <label for="yesnda">Yes</label>
              </div>
             </div>
           </div>
@@ -337,8 +337,8 @@ $("#languages").blur(function (e) {
             <div class="wrapper">
               <!--<h3>Select survey language:</h3>-->
              <div class="in-person">
-               <input id="private" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda)){echo "checked";}?> <?php if(!in_array('Yes',$nda)){echo "checked";}?> />
-               <label for="private">No, not necessary</label>
+               <input id="nonda" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda)){echo "checked";}?> />
+               <label for="nonda">No, not necessary</label>
              </div>
             </div>
           </div>

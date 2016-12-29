@@ -102,21 +102,21 @@ $random = rand(5, 20000);
 
 <!-- Delete a Project -->
 
-<div id="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-delete">
+<div id="slide-delete-<?php echo $row2['ProjectID']; ?>" class="well slide-delete">
   <div class="result-delete">
-  <div id="result-delete">111Successfully Deleted!</div>
+  <div id="result-delete">Successfully Deleted!</div>
   </div>
-<h4>Are you sure you want to delete this NDA?</h4>
+<h4>Are you sure you want to delete this idea?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
-    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_close cancel">Cancel</button>
-    <button class="delete<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?> btn-delete">Yes</button>
+    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Cancel</button>
+    <button class="delete<?php echo $row2['ProjectID']; ?> btn-delete">Yes</button>
 </div>
 
 <div class="popupoverlay-btn">
   <div class="close-delete">
-    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_close cancel">Close</button>
+    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Close</button>
 </div>
 </div>
 
@@ -137,7 +137,7 @@ $random = rand(5, 20000);
 $(document).ready(function(){
 
 
-    $('#slide-delete-'+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>).popup({
+    $('#slide-delete-'+<?php echo $row2['ProjectID']; ?>).popup({
         focusdelay: 400,
         outline: true,
         vertical: 'top'
@@ -149,37 +149,43 @@ $(document).ready(function(){
 
     
 
-   $(".delete"+<?php echo $row2['ProjectID']; ?>+_<?php echo $random; ?>).click(function() {  
+   $(".delete"+<?php echo $row2['ProjectID']; ?>).click(function() {  
 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
+
+       //alert(projectid);
        
-       
-       
+               //var category = $("select[name='category']").val();
+
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
         var proceed = true;
 
         
-      
+           
       
          
-
+        
         //everything looks good! proceed...
         if(proceed) 
         {
 
             
-
+            $(".result-delete").show();
+            $("#result-delete").hide().slideDown();
+            $(".cancel-delete").hide();
+            $(".close-delete").show();
          
+            $( ".processing" ).show();
             //data to be sent to server
             post_data = {'projectid':projectid};
            
             //Ajax post data to server
-            $.post('nda_delete.php', post_data, function(response){  
+            $.post('drafted-nda/nda_delete.php', post_data, function(response){  
             
             
 
@@ -205,8 +211,7 @@ $(document).ready(function(){
         
        
         
-            $("#result-delete").hide().html(output).slideDown();
-            }, 'json');
+             }, 'json');
       
         }
 
@@ -238,7 +243,7 @@ $(document).ready(function(){
                   <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
                   <a href="<?php echo BASE_PATH; ?>/nda/pdf/nda-draft-pdf-startup.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
                       <i class="icon icon-download3"></i> Download as PDF</a>&nbsp;&nbsp;&nbsp;| &nbsp;
-                   <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open">
+                  <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_open">
                       <i class="icon icon-bin"></i>Delete</a>
                     
                     </div>  

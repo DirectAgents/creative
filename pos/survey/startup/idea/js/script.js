@@ -285,6 +285,26 @@ $('#public').not(this).prop('checked', false);
 
 
 
+$('#yesnda').on('change', function() {
+    var val = this.checked ? this.value : '';
+    if ($('#yesnda').is(":checked"))
+{
+$('#nonda').not(this).prop('checked', false);  
+}
+   
+});
+
+$('#nonda').on('change', function() {
+    var val = this.checked ? this.value : '';
+    if ($('#yesnda').is(":checked"))
+{
+$('#yesnda').not(this).prop('checked', false);  
+}
+   
+});
+
+
+
 
 
 /**Target Audience Step 1**/
