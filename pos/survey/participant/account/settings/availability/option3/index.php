@@ -157,6 +157,16 @@ $(document).ready(function(){
         var to_value = $('#to_time').val()
         var pac_input_value = $('#pac-input').val()
 
+
+        var days = $('input[name="dayselection[]"]:checked').map(function () {return this.value;}).get().join(",");
+
+        if(days == '' ){ 
+            
+            $("#days").css('border-color','red');  //change border color to red  
+            proceed = false;
+          
+        }
+
         if(!from_value) {
 
                 $("#from_time").css('border-color','red');  //change border color to red   
