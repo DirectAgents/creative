@@ -82,7 +82,7 @@ $("#save-nda").click(function(){
         
         var projectid  = $('input[name=projectid]').val();
         var state  = $('input[name=state]').val();
-        var nda_purpose = $("textarea[name='nda_purpose']").val();
+        //var nda_purpose = $("textarea[name='nda_purpose']").val();
         var disclosure_party       = $('input[name=disclosure_party]').val();
         var the_signature  = $('input[name=the_signature]').val();
         var startup_name  = $('input[name=startup_name]').val();
@@ -129,13 +129,13 @@ $("#save-nda").click(function(){
             proceed = false;
         }
 
-
+        /*
          if(nda_purpose == ''){ 
              $("#nda_purpose").css('border-color','red'); //change border color to red 
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a purpose for your NDA agreement </div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
-        }
+        }*/
 
 
         if(disclosure_party == ''){ 
@@ -149,7 +149,7 @@ $("#save-nda").click(function(){
         $.ajax({
             method: "POST",
             url: "../../../../nda/pdf/signatures/create-startup.php",
-            data: { signature: dataURI, projectid: projectid, state: state, nda_purpose: nda_purpose, disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
+            data: { signature: dataURI, projectid: projectid, state: state, disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
             startup_sig_title: startup_sig_title, startup_sig_company: startup_sig_company, startup_sig_date: startup_sig_date  }
         })
         .success(function( response ) {
@@ -193,8 +193,8 @@ $("#save-nda").click(function(){
   <!-- ngInclude: 'edit.html' --><div ng-include="'edit.html'" class=""><!-- ngInclude: 'subnav.html' --><div class="subnav" ng-include="'subnav.html'" ng-controller="SubnavController"><!-- ngIf: displaySubnav -->
 </div>
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name"></span> and <span contenteditable="false"><strong>"Recipient Party"</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
-<textarea name="nda_purpose" id="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="What is the reason that confidential information is being shared?"></textarea>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name"></span> and <span contenteditable="false"><strong>"Recipient Party"</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the purpose of evaluating and validating the idea or product of the disclosure party.</p>
+<!--<textarea name="nda_purpose" id="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="What is the reason that confidential information is being shared?"></textarea>-->
 The parties are only allowed to use the confidential information for the above purpose.
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>
 <ul class="no-bullets">

@@ -6,8 +6,6 @@ require_once '../../../../class.startup.php';
 require_once '../../../../config.php';
 require_once '../../../../config.inc.php';
 
-
-
 $participant_home = new PARTICIPANT();
 if($participant_home->is_logged_in())
 {
@@ -21,18 +19,18 @@ if(!$startup_home->is_logged_in())
 
 
 
-
-$stmt = $startup_home->runQuery("SELECT * FROM tbl_nda_draft WHERE startupID=:uid");
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_nda_signed WHERE startupID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
 
-$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND status = 'draft' ");
+$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed WHERE startupID='".$_SESSION['startupSession']."' AND participant_signature != '' ");
 $rownda = mysqli_fetch_array($nda);
 
- 
+
+
 
 
 
@@ -42,164 +40,6 @@ $rownda = mysqli_fetch_array($nda);
 ?>
 
 
-
-<!DOCTYPE html>
-<html lang="en" id="features" class="tablet mobile">
-    
-    <head>
-
-
-
-<?php include("../../../header.php"); ?>
-
-
-
- 
-
-
-
-<script type='text/javascript'>//<![CDATA[
-
-jQuery( document ).ready(function( $ ) {
-
-$( "#tabs-3" ).load( "index.php" );
-
-    $(".drafted-nda").click(function() {  
-
-      
-      window.location.replace( "../drafted-nda/" );
-       
-    });
-
-   $(".pending-nda").click(function() {  
-
-
-      
-       window.location.replace( "../pending-nda/" );
-
-     });
-
-    $(".signed-nda").click(function() {  
-
-       
-       window.location.replace( "" );
-
-    });
-
-     
-
-
-});//]]> 
-
-
-
-
-
-</script>
-
-
-  <script>
-
-
-
-  $(function() {
-    $( "#tabs" ).tabs({
-      beforeLoad: function( event, ui ) {
-        ui.jqXHR.fail(function() {
-          ui.panel.html(
-            "Couldn't load this tab. We'll try to fix this as soon as possible. ");
-        });
-      }
-    });
-  });
-
-  </script>
-
-
-
-
-
-
-
-        
-    </head>
-    
-    <body>
-
-<!--TopNav-->
-         <header id="main-header" class='transparent'>
-  <div class="inner-col">
-   
-
-
-<?php include("../../../../nav.php"); ?>
-
-   
-  </div>
-</header>
-
-
-<!--TopNav-->
-
-
-
- <div class="clearer"></div>
-
-
-<!-- Main -->
-
-   <div class="container">
-
-
-<div class="row-fluid">
-  <div class="span12">
-
-
- 
-      
-      <div id="dashboardSurveyTargetingContainerLogic">
-
-
-  
-
-
-<div id="tabs">
-
-
-<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
-
-
-
-
-   <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="false" aria-expanded="false"><a href="#tabs-1" class="drafted-nda ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Draft NDA</a></li>
-   
-   <li class="ui-state-default ui-corner-top" role="tab" tabindex="0" aria-controls="tabs-2" aria-labelledby="ui-id-2" aria-selected="true" aria-expanded="true"><a href="#tabs-2" class="pending-nda ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Pending NDA</a></li>
-   
-   <li class="ui-state-default ui-corner-top ui-tabs-active" role="tab" tabindex="-1" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="#tabs-3" class="signed-nda ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Signed NDA</a></li>
-
-  </ul>
-
-
-
-
-
-
-
-
-<div id="white-container">
-
-
-
-
-<!-- Main -->
-
-
-
-
-
-
-    <div id="white-container-account">
-      
 
 
 
@@ -550,102 +390,12 @@ $thedate =  $date->format('m/d/Y');
 
 
 
-    
-
-                    <div class="clearer"></div>
 
 
-            
-
-
-          </div>
-
-      <div class="clearer"></div>
-
-
-  
 
       
-
-    </div>
-
-    <div class="clearer"></div>
-
-
-
-
-
-
-
-</div>
-
-
-
-  
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="clearer"></div>
-
-       
-        
-
-
-
-
-
-     
-
           
-    
-
-    
-
-                    <div class="clearer"></div>
-
-
-            
-
-
-          </div>
-
-      <div class="clearer"></div>
-
-
-  
-
-      <?php include("../../../../footer.php"); ?>
-
-    </div>
-
-    <div class="clearer"></div>
-
-  </div>
-  
-  </div>
-
-  </div>
-
-        <!--/.fluid-container-->
-        <script src="<?php echo BASE_PATH; ?>/bootstrap/js/bootstrap.min.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/assets/scripts.js"></script>
 
 
 
 
-
-
-
-
-        
-    </body>
-
-</html>

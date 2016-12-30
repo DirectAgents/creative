@@ -6,8 +6,6 @@ require_once '../../../../class.startup.php';
 require_once '../../../../config.php';
 require_once '../../../../config.inc.php';
 
-
-
 $participant_home = new PARTICIPANT();
 if($participant_home->is_logged_in())
 {
@@ -21,18 +19,19 @@ if(!$startup_home->is_logged_in())
 
 
 
-
-$stmt = $startup_home->runQuery("SELECT * FROM tbl_nda_draft WHERE startupID=:uid");
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_nda_pending WHERE startupID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
 
-$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND status = 'draft' ");
+$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending WHERE startupID='".$_SESSION['startupSession']."' AND participant_signature != '' ");
 $rownda = mysqli_fetch_array($nda);
 
- 
+
+
+
 
 
 
@@ -42,164 +41,6 @@ $rownda = mysqli_fetch_array($nda);
 ?>
 
 
-
-<!DOCTYPE html>
-<html lang="en" id="features" class="tablet mobile">
-    
-    <head>
-
-
-
-<?php include("../../../header.php"); ?>
-
-
-
- 
-
-
-
-<script type='text/javascript'>//<![CDATA[
-
-jQuery( document ).ready(function( $ ) {
-
-$( "#tabs-3" ).load( "index.php" );
-
-    $(".drafted-nda").click(function() {  
-
-      
-      window.location.replace( "../drafted-nda/" );
-       
-    });
-
-   $(".pending-nda").click(function() {  
-
-
-      
-       window.location.replace( "../pending-nda/" );
-
-     });
-
-    $(".signed-nda").click(function() {  
-
-       
-       window.location.replace( "" );
-
-    });
-
-     
-
-
-});//]]> 
-
-
-
-
-
-</script>
-
-
-  <script>
-
-
-
-  $(function() {
-    $( "#tabs" ).tabs({
-      beforeLoad: function( event, ui ) {
-        ui.jqXHR.fail(function() {
-          ui.panel.html(
-            "Couldn't load this tab. We'll try to fix this as soon as possible. ");
-        });
-      }
-    });
-  });
-
-  </script>
-
-
-
-
-
-
-
-        
-    </head>
-    
-    <body>
-
-<!--TopNav-->
-         <header id="main-header" class='transparent'>
-  <div class="inner-col">
-   
-
-
-<?php include("../../../../nav.php"); ?>
-
-   
-  </div>
-</header>
-
-
-<!--TopNav-->
-
-
-
- <div class="clearer"></div>
-
-
-<!-- Main -->
-
-   <div class="container">
-
-
-<div class="row-fluid">
-  <div class="span12">
-
-
- 
-      
-      <div id="dashboardSurveyTargetingContainerLogic">
-
-
-  
-
-
-<div id="tabs">
-
-
-<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
-
-
-
-
-   <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="false" aria-expanded="false"><a href="#tabs-1" class="drafted-nda ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Draft NDA</a></li>
-   
-   <li class="ui-state-default ui-corner-top" role="tab" tabindex="0" aria-controls="tabs-2" aria-labelledby="ui-id-2" aria-selected="true" aria-expanded="true"><a href="#tabs-2" class="pending-nda ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Pending NDA</a></li>
-   
-   <li class="ui-state-default ui-corner-top ui-tabs-active" role="tab" tabindex="-1" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="#tabs-3" class="signed-nda ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Signed NDA</a></li>
-
-  </ul>
-
-
-
-
-
-
-
-
-<div id="white-container">
-
-
-
-
-<!-- Main -->
-
-
-
-
-
-
-    <div id="white-container-account">
-      
 
 
 
@@ -225,7 +66,7 @@ $(document).ready(function(){
         var proceed = true;
 
           if(projectname==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:95.5%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Idea!</div>';
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:95.5%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Project!</div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }
@@ -288,7 +129,7 @@ $(document).ready(function(){
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed WHERE startupID = '".$_SESSION['startupSession']."' AND participant_signature != '' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending WHERE startupID = '".$_SESSION['startupSession']."' AND participant_signature != '' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -308,8 +149,7 @@ date_default_timezone_set('America/New_York');
 $date = date_create($row2['participant_sig_date']);
 
 
-
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$row2['ProjectID']."' ");
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$row2['id']."' ");
 $rowproject = mysqli_fetch_array($Project);
 
 
@@ -433,12 +273,16 @@ $(document).ready(function () {
 
 
                   <div class="survey-header">
-                   
+                    <div class="account-project-name">
+                      Project Name
+                    </div>
                     <div class="edit-delete">
-                   
-                  <a href="<?php echo BASE_PATH; ?>/nda/pdf/nda-pdf-startup.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
-                      <i class="icon icon-download3"></i> Download as PDF</a>
-                 
+                      <a href="<?php echo BASE_PATH; ?>/startup/project/nda/?id=<?php echo $row2['ProjectID']; ?>">
+                  <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
+                  <a href="<?php echo BASE_PATH; ?>/startup/project/nda/nda-pdf.php?id=<?php echo $row2['ProjectID']; ?>" role="button" target="_blank">
+                      <i class="icon icon-download3"></i> Download as PDF</a>&nbsp;&nbsp;&nbsp;| &nbsp;
+                   <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_open">
+                      <i class="icon icon-bin"></i>Delete</a>
                     
                     </div>  
                    
@@ -451,31 +295,13 @@ $(document).ready(function () {
                   <div class="survey-metadata">
                     <div class="item ">
                       <div class="label">Created:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
-
-                      <?php 
-$date = new DateTime($rownda['startup_sig_date']);
-$thedate =  $date->format('m/d/Y');
-
-                      echo $thedate; ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $rownda['startup_sig_date']; ?></div>
                     </div>
                     <div class="item date">
                       <div class="label">Status:</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-
-<?php
-$Participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
-$rowparticipant = mysqli_fetch_array($Participant);
-
-$date = new DateTime($rownda['participant_sig_date']);
-$thedate =  $date->format('m/d/Y');
-
-?>
-
-
-
-                          <?php echo $rowparticipant['FirstName']; ?> signed NDA on <?php echo $thedate; ?>
+                          Participant signed NDA on <?php echo $rownda['participant_sig_date']; ?>
                         </span>
                       </div>
                     </div>
@@ -518,7 +344,7 @@ $thedate =  $date->format('m/d/Y');
 
 <div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No NDAs' signed yet</div>
+<div class="empty-projects">No pending NDAs' to be signed</div>
   <div class="create-one-here-box">
       <div class="create-one">
  <p>&nbsp;</p>
@@ -550,102 +376,12 @@ $thedate =  $date->format('m/d/Y');
 
 
 
-    
-
-                    <div class="clearer"></div>
 
 
-            
-
-
-          </div>
-
-      <div class="clearer"></div>
-
-
-  
 
       
-
-    </div>
-
-    <div class="clearer"></div>
-
-
-
-
-
-
-
-</div>
-
-
-
-  
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<div class="clearer"></div>
-
-       
-        
-
-
-
-
-
-     
-
           
-    
-
-    
-
-                    <div class="clearer"></div>
-
-
-            
-
-
-          </div>
-
-      <div class="clearer"></div>
-
-
-  
-
-      <?php include("../../../../footer.php"); ?>
-
-    </div>
-
-    <div class="clearer"></div>
-
-  </div>
-  
-  </div>
-
-  </div>
-
-        <!--/.fluid-container-->
-        <script src="<?php echo BASE_PATH; ?>/bootstrap/js/bootstrap.min.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/assets/scripts.js"></script>
 
 
 
 
-
-
-
-
-        
-    </body>
-
-</html>

@@ -86,7 +86,6 @@ imagepng($bg, $signature, 0);
   
   ProjectID = '".$_POST['projectid']."',
   State = '".$_POST['state']."',
-  nda_purpose = '".$_POST['nda_purpose']."',
   startup_signature = '".$signature."',
   startup_name = '".$_POST['disclosure_party']."',
   startup_sig_name = '".$_POST['startup_sig_name']."',
@@ -105,7 +104,6 @@ imagepng($bg, $signature, 0);
   
   ProjectID = '".$_POST['projectid']."',
   State = '".$_POST['state']."',
-  nda_purpose = '".$_POST['nda_purpose']."',
   startup_name = '".$_POST['disclosure_party']."',
   startup_sig_name = '".$_POST['startup_sig_name']."',
   startup_sig_title = '".$_POST['startup_sig_title']."',

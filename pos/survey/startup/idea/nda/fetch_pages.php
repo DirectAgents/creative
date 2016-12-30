@@ -103,7 +103,7 @@ $( "#pending-nda" ).load( "pending-nda/" );
 
 
 if(p != 'drafted-nda'){
-$( "#drafted-nda" ).load( "drafted-nda/" );
+//$( "#drafted-nda" ).load( "drafted-nda/" );
 
    
     

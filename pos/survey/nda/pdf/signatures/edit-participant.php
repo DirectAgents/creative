@@ -88,7 +88,6 @@ imagepng($bg, $signature, 0);
  $update_sql = mysqli_query($connecDB,"UPDATE tbl_nda_signed SET 
   
   ProjectID = '".$_POST['projectid']."',
-  nda_purpose = '".$_POST['nda_purpose']."',
   participant_signature = '".$signature."',
   participant_name = '".$_POST['recipient_party']."',
   participant_sig_name = '".$_POST['participant_sig_name']."',
@@ -105,7 +104,6 @@ imagepng($bg, $signature, 0);
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_nda_signed SET 
   
   ProjectID = '".$_POST['projectid']."',
-  nda_purpose = '".$_POST['nda_purpose']."',
   participant_name = '".$_POST['recipient_party']."',
   participant_sig_name = '".$_POST['participant_sig_name']."',
   participant_sig_title = '".$_POST['participant_sig_title']."',
