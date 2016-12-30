@@ -162,6 +162,8 @@ $(document).ready(function(){
         var to_value = $('#to_time').val()
         var pac_input_value = $('#pac-input').val()
 
+
+        
         if(!from_value) {
 
                 $("#from_time").css('border-color','red');  //change border color to red   
@@ -174,25 +176,20 @@ $(document).ready(function(){
                 proceed = false; //set do not proceed flag            
         };
 
-        if(!pac_input_value) {
-
-                $("#pac-input").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        };
-        
+       
        
         if(proceed) //everything looks good! proceed...
         {
             //get input field values data to be sent to server
             post_data = {
-                'date'     : $('input[name=date').val(),
+                'day'     : $('input[name="dayselection[]"]:checked').map(function () {return this.value;}).get().join(","),
                 'from_time'     : $("select[name='from_time']").val(),
                 'to_time'     : $("select[name='to_time']").val(),
-                'location'     : $('input[name=location').val()
+                'location'     : pac_input_value
             };
  
 
-            //alert(post_data['from_time']);
+            
 
             //Ajax post data to server
             $.post('save.php', post_data, function(response){  
@@ -398,18 +395,9 @@ a.verify-badge img#verify-image-payment{display:none !important;}
             <label for="firstname">Days of the week</label>
            
      
-   
-
-
-
-
-               <input class="form-control"  name="days" id="days" type="text" placeholder="Enter here the days you are available to meet"/>
+               <input class="form-control" name="days" id="days" type="text" placeholder="Enter here the days you are available to meet"/>
 
           
-
- 
-               
-           
           </span>
 
           </span>
