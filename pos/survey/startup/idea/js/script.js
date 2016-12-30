@@ -1078,19 +1078,6 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
 
 
-//<![CDATA[
-window.onload=function(){
-$('#tabs')
-    .tabs()
-    .addClass('ui-tabs-vertical ui-helper-clearfix');
-
-}//]]> 
-
-
-
-
-
-
 /**Request to Participate**/
 
 

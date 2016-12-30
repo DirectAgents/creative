@@ -23,7 +23,6 @@
 <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/shared-site2.css" />
 
 
-<script src="<?php echo BASE_PATH; ?>/startup/idea/js/script.js"></script>
 
 
 
@@ -35,6 +34,7 @@
 
 <!--JAVASCRIPT-->
 
+<script src="<?php echo BASE_PATH; ?>/startup/idea/js/script.js"></script>
 
 
 

@@ -293,9 +293,28 @@ $sql=mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed WHERE startupID = '".$
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysqli_num_rows($sql)>0)
+if(mysqli_num_rows($sql)== 0)
 {
   //echo "asdf";
+
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No NDAs\' signed yet</div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+ <p>&nbsp;</p>
+       
+
+       </div> 
+       <p>&nbsp;</p>
+  </div>
+</div>
+
+</div>
+</div>';
+
+}else{
 
 
 //get all records from add_delete_record table
@@ -514,26 +533,9 @@ $thedate =  $date->format('m/d/Y');
 
 }
 
-}else{ ?>
-
-<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">No NDAs' signed yet</div>
-  <div class="create-one-here-box">
-      <div class="create-one">
- <p>&nbsp;</p>
-       
-
-       </div> 
-       <p>&nbsp;</p>
-  </div>
-</div>
-
-</div>
-</div>
+}
 
 
-<?php }
 
 ?>
 
@@ -544,7 +546,6 @@ $thedate =  $date->format('m/d/Y');
             
 
 
-          </div>
 
 
 
@@ -593,36 +594,13 @@ $thedate =  $date->format('m/d/Y');
 
 
 
-<div class="clearer"></div>
-
-       
-        
-
-
-
-
-
-     
-
-          
-    
-
-    
-
-                    <div class="clearer"></div>
-
-
-            
-
-
-          </div>
-
-      <div class="clearer"></div>
 
 
   
 
       <?php include("../../../../footer.php"); ?>
+
+       </div>
 
     </div>
 

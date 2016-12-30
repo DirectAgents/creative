@@ -428,7 +428,7 @@ if($row3['facebook_id'] != '0'){
 if($row3['google_picture_link'] == '' && $row3['facebook_id'] == '0'){
 
 if($row3['profile_image'] != ''){ 
-        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$row3['profileimage'].'" class="thumbnail-profile-browse"/>';
+        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$row3['profile_image'].'" class="thumbnail-profile-browse"/>';
 }else{
         echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="thumbnail-profile-browse"/>';
  }

@@ -337,7 +337,7 @@ $("#languages").blur(function (e) {
             <div class="wrapper">
               <!--<h3>Select survey language:</h3>-->
              <div class="in-person">
-               <input id="nonda" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda)){echo "checked";}?> />
+               <input id="nonda" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda) || in_array('',$nda)){echo "checked";}?> />
                <label for="nonda">No, not necessary</label>
              </div>
             </div>
@@ -353,7 +353,7 @@ $("#languages").blur(function (e) {
 
                </div>
 
-              <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=drafted-nda">Drafted NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=pending-nda">Pending NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=signed-nda">Signed NDA</a>  </div>
+              <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/idea/nda/drafted-nda">Drafted NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/pending-nda">Pending NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/signed-nda">Signed NDA</a>  </div>
 
 <?php  }else{ ?>
    <div id="back">

@@ -99,8 +99,6 @@ $( "#tabs-1" ).load( "index.php" );
 
   <script>
 
-
-
   $(function() {
     $( "#tabs" ).tabs({
       beforeLoad: function( event, ui ) {
@@ -346,7 +344,7 @@ $(document).ready(function(){
             post_data = {'projectid':projectid};
            
             //Ajax post data to server
-            $.post('drafted-nda/nda_delete.php', post_data, function(response){  
+            $.post('nda_delete.php', post_data, function(response){  
             
             
 
@@ -526,14 +524,6 @@ $thedate =  $date->format('m/d/Y');
 
 
 
-  
-
-
-
-
-
-
-
 
 
 
@@ -544,60 +534,21 @@ $thedate =  $date->format('m/d/Y');
 
 
 
-
-
-
-
-<a href="#" style="display:none" id="requestbutton" class="initialism slide_open btn btn-success"></a>
-
-
-
-
-
-<!--
-<div align="center">
-<button class="load_more" id="load_more_button">load More</button>
-<button class="load_more_pending" id="load_more_button">load More </button>
-<div class="animation_image" style="display:none;"><img src="ajax-loader.gif"> Loading...</div>
-</div>-->
-
-
-
-
-
-
-
-
-<div class="clearer"></div>
-
-       
-        
-
-
-
-
-
-     
-
-          
-    
-
-    
-
-                    <div class="clearer"></div>
 
 
             
 
 
-          </div>
+         
 
-      <div class="clearer"></div>
+
 
 
   
 
       <?php include("../../../../footer.php"); ?>
+
+       </div>
 
     </div>
 

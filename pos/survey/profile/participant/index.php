@@ -366,7 +366,7 @@ echo $count;
 
 
    
-    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];} ?>
+    <?php if ($ratingRow['average_rating'] != ''){echo $ratingRow['average_rating'];}else{echo "Not Rated";} ?>
 
 
 
@@ -389,7 +389,7 @@ $count = $row_count['count'];
 
 if($count > 0 ){
 echo '<a href="rating/?id='.$_GET['id'].'">';
-echo $count;
+echo "$count";
 echo '</a>';
 
 }else{
@@ -409,6 +409,490 @@ echo '</a>';
 
   </div>
 
+
+
+<div class="therowtitle">
+
+<div class="col-lg-12">
+     
+      
+
+<?php
+
+echo '<div class="thetitle">'.$row['FirstName'].' qualify\'s for these ideas:</div>';
+
+
+$sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' ORDER BY id DESC");
+//$resultsstartup=mysql_query($sqlstartup);
+
+while($row3 = mysqli_fetch_array($sqlstartup)){
+
+$Min_Req = str_replace(",","|",$row3['MinReq']);
+
+//echo $Min_Req;
+//echo $row3['id'];
+//echo "<br>";
+
+
+
+
+
+
+$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['id']."'");
+$rowparticipant = mysqli_fetch_array($participant);
+
+
+
+//echo $City;
+
+
+
+$Meetupchoice = str_replace(",","|",$rowparticipant['Meetupchoice']);
+$Age = str_replace(",","|",$rowparticipant['Age']);
+$Gender = str_replace(",","|",$rowparticipant['Gender']);
+$Height = str_replace(",","|",$rowparticipant['Height']);
+$City = str_replace(",","|",$rowparticipant['City']);
+$Status = str_replace(",","|",$rowparticipant['Status']); 
+$Ethnicity = str_replace(",","|",$rowparticipant['Ethnicity']);
+$Smoke = str_replace(",","|",$rowparticipant['Smoke']);
+$Drink = str_replace(",","|",$rowparticipant['Drink']);
+$Diet = str_replace(",","|",$rowparticipant['Diet']);
+$Religion = str_replace(",","|",$rowparticipant['Religion']);
+$Education = str_replace(",","|",$rowparticipant['Education']);
+$Job = str_replace(",","|",$rowparticipant['Job']);
+$Interest = str_replace(",","|",$rowparticipant['Interest']);
+$Languages = str_replace(",","|",$rowparticipant['Languages']);
+
+
+$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['id']."'");
+//$results2=mysql_query($sql2);
+$row2 = mysqli_fetch_array($sql2);
+
+
+
+if(($row2['Height'] >= $rowproject['MinHeight']) && ($row2['Height'] <= $rowproject['MaxHeight'])) {
+
+$Height_Final = $row2['Height'];
+
+}else{
+
+$Height_Final = $row2['Height'] + 1;  
+
+}
+
+
+//echo $Min_Req;
+//if (strpos($Min_Req, 'Age') !== false) {echo "yes";}
+
+
+//echo $Gender;
+
+
+if (strpos($Min_Req, 'Age') !== false) {
+
+if($Age != 'NULL' && $Age != ''){$theage = "AND r.Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
+}else{
+  $theage = '';
+}
+
+
+if (strpos($Min_Req, 'Gender') !== false) {
+if($Gender != 'NULL' && $Gender != ''){$thegender = "AND r.Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
+}else{
+  $thegender = '';
+}
+
+if (strpos($Min_Req, 'Height') !== false) {
+if($Height != 'NULL' && $Height != ''){$theheight = "AND r.MinHeight RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
+}else{
+  $theheight = '';
+}
+
+if (strpos($Min_Req, 'City') !== false) {
+  //echo $City;
+if($City != 'NULL' && $City != ''){$thecity = "AND r.City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
+}else{
+  $thecity = '';
+}
+
+
+if (strpos($Min_Req, 'Status') !== false) {
+if($Status != 'NULL' && $Status != ''){$thestatus = "AND r.Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
+}else{
+  $thestatus = '';
+}
+
+
+if (strpos($Min_Req, 'Ethnicity') !== false) {
+if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND r.Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
+}else{
+  $theethnicity = '';
+}
+
+
+if (strpos($Min_Req, 'Smoke') !== false) {
+if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND r.Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
+}else{
+  $thesmoke = '';
+}
+
+
+if (strpos($Min_Req, 'Drink') !== false) {
+if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND r.Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
+}else{
+  $thedrink = '';
+}
+
+
+if (strpos($Min_Req, 'Diet') !== false) {
+if($Diet != 'NULL' && $Diet != ''){$thediet = "AND r.Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
+}else{
+  $thediet = '';
+}
+
+if (strpos($Min_Req, 'Religion') !== false) {
+if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND r.Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
+}else{
+  $thereligion = '';
+}
+
+
+if (strpos($Min_Req, 'Education') !== false) {
+if($Education != 'NULL' && $Education != ''){$theeducation = "AND r.Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
+}else{
+  $theeducation = '';
+}
+
+
+if (strpos($Min_Req, 'Job') !== false) {
+if($Job != 'NULL' && $Job != ''){$thejob = "AND r.Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
+}else{
+  $thejob = '';
+}
+
+
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND r.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+}else{
+  $interest = '';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+}else{
+  $languages = '';
+}
+
+
+
+//echo $rowproject['City'];
+
+
+$sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_GET['id']."'
+ $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages AND
+ ProjectID = '".$row3['ProjectID']."'");
+
+
+
+
+
+//}
+
+
+
+
+
+
+
+
+
+//$result=mysqli_query($sql);
+//$row=mysql_fetch_array($result);
+
+
+
+  //if projects exists
+if(mysqli_num_rows($sql)>0)
+{
+
+
+
+
+
+//get all records from add_delete_record table
+while($row2 = mysqli_fetch_array($sql))
+{ 
+
+
+$posts = 0;
+$posts++;
+
+
+
+
+
+//echo $row2['id'];
+
+
+$date = date_create($row2['Date_Created']);
+
+  ?>
+
+
+<!-- Delete a Project -->
+
+<div id="slide-delete-<?php echo $row2['ProjectID']; ?>" class="well slide-delete">
+  <div class="result-delete">
+  <div id="result-delete-<?php echo $row2['ProjectID']; ?>">Successfully Deleted!</div>
+  </div>
+<h4>Are you sure you want to delete this project?</h4>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<div class="popupoverlay-btn">
+  <div class="cancel-delete">
+    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Cancel</button>
+    <button class="delete<?php echo $row2['ProjectID']; ?> btn-delete">Yes</button>
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-delete">
+    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- End Delete a Project -->
+
+
+
+
+
+
+
+<script>
+$(document).ready(function () {
+
+    $('#slide-delete-'+<?php echo $row2['ProjectID']; ?>).popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+
+
+    $(".delete"+<?php echo $row2['ProjectID']; ?>).click(function() {  
+//alert("aads"); 
+
+ //get input field values
+        
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
+       
+       
+        
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        var proceed = true;
+
+        
+      
+      
+         
+
+        //everything looks good! proceed...
+        if(proceed) 
+        {
+
+
+          $( ".processing" ).show();
+            //data to be sent to server
+            post_data = {'projectid':projectid};
+            
+            //Ajax post data to server
+            $.post('project/projectdelete.php', post_data, function(response){  
+              
+
+                //load json data from server and output message     
+        if(response.type == 'error')
+        {
+          output = '<div class="errorXYZ">'+response.text+'</div>';
+        }else{
+          
+            //alert(text);
+                
+            output = '<div class="success">'+response.text+'</div>';
+
+          
+          //reset values in all input fields
+          $('#contact_form input').val(''); 
+          $('#contact_form textarea').val(''); 
+        }
+        
+        $(".cancel-delete").hide();
+        $(".result-delete").show();
+        $(".close-delete").show();
+        $("#result-delete-"+response.text).hide().slideDown();
+            }, 'json');
+      
+        }
+
+});
+  
+});
+</script>
+
+
+
+
+<a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+
+
+
+<div class="survey-info-container">
+
+<div class="row">
+
+
+    <div class="col-md-2">
+
+<?php 
+
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$row2['ProjectID']."'");
+$rowprojectimage = mysqli_fetch_array($ProjectImage);
+
+
+
+if($rowprojectimage['project_image'] != '') {
+echo '<img src="'.BASE_PATH.'/ideas/uploads/'.$rowprojectimage['project_image'].'" width="70">'; 
+}else{
+echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">'; 
+}
+
+
+?>
+
+
+
+</div>
+
+
+    <div class="col-md-10">
+
+
+                  <div class="survey-header">
+                   
+                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?></div>
+
+                   <?php echo $row2['Details']; ?>
+                   
+                  </div>
+                 
+                  <div class="survey-metadata">
+                    <div class="item ">
+                      <div class="label">Payout:</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">$<?php echo $row2['Pay']; ?></div>
+                    </div>
+                    <div class="item date">
+                      <div class="label">For:</div>
+                      <div class="value">
+                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
+                          <?php echo $row2['Minutes']; ?> minutes of your time
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="item date">
+                      <div class="label">Idea is set to:</div>
+                      <div class="value">
+                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
+                          <?php echo $row2['ProjectStatus']; ?> 
+                        </span>
+                      </div>
+                    </div>
+                   
+                    <div class="clearer"></div>
+                  </div>
+                
+                  </div>
+               
+
+
+  
+    
+   </div>
+</div>
+
+
+
+<?php 
+
+
+//echo $row2['id'];
+
+
+
+
+
+}
+
+echo '</a>';
+
+  //if projects exists
+
+
+} 
+
+
+?>
+
+
+
+
+<?php 
+
+
+
+
+
+
+
+
+}
+
+
+if(empty($posts)){
+
+echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No Projects</div>
+  <div class="create-one-here-box">
+      <div class="create-one">
+        <button class="slide_open create-one-btn">Create one here</button>
+       </div> 
+  </div>
+</div>
+
+</div>
+</div>';
+
+}
+
+
+
+
+
+
+?>
+
+
+
+
+     
+
+          
+      </div>
+
+</div>
 
 
 
@@ -494,10 +978,6 @@ echo '</a>';
 
 
 
-     
-
-          
-      </div>
 
     
 
