@@ -74,13 +74,79 @@ if(isset($_GET['verified']) == '1'){
 <?php include("../../../../header.php"); ?>
 
 
+<script type="text/javascript">
+$(document).ready(function() {
 
-  <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+  $("#days").blur(function (e) {
+       e.preventDefault();
+     if($("#days").val()==='')
+      {
+        //alert("Please enter a job position!");
+        return false;
+      }
+      var myData = 'days='+ $("#days").val()+'&userid='+ $("#userid").val(); 
+      //alert(myData);
+      jQuery.ajax({
+      type: "POST", 
+      url: "days.php", 
+      dataType:"text", 
+      data:myData,
+      success:function(response){
+        $("#responds").append(response);
+        $("#days").val('');
+       
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        alert(thrownError);
+      }
+      });
+  });
+
+  $("body").on("click", "#responds .del_button", function(e) {
+     e.preventDefault();
+     var clickedID = this.id.split('-'); 
+    
+     var DbNumberID = clickedID[1]; 
+     var myData = 'recordToDelete='+ DbNumberID; 
+     
+     //alert(DbNumberID);
+
+
+      jQuery.ajax({
+      type: "POST", 
+      url: "days.php", 
+      dataType:"text", 
+      data:myData, 
+      success:function(response){
+        $("#responds").append(response);
+        $('#dayselection_'+DbNumberID).prop('checked', false); // Unchecks it
+        
+        $('#item_'+DbNumberID).fadeOut("slow");
+
+        
+        //alert(response);
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        
+        alert(thrownError);
+      }
+      });
+  });
+
+});  
+</script>
+
+
+
   <script>
-  $( function() {
-    $( "#date" ).datepicker();
-  } );
+  $(function() {
+    $( "#days" ).autocomplete({
+      source: 'search-day.php'
+    });
+  });
   </script>
 
 
@@ -309,18 +375,7 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
     
 
-      
-
-       <form action="" id="contact-form" class="form-horizontal" method="post">
-
     
-           
-              <input type="hidden" name="userid" id="userid" value="<?php echo $row2['userID']; ?>">
-              <input type="hidden" name="projectid" id="projectid" value="<?php echo $_GET['id']; ?>">
-          
-
-          </form>
-
    
 
 
@@ -340,14 +395,17 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
         <fieldset>
           <span class="input">
-            <label for="firstname">Date</label>
+            <label for="firstname">Days of the week</label>
            
-    <?php
-$date = new DateTime($row['Date_Availability_Option1']);
-$thedate =  $date->format('m/d/Y');
-    ?>
-             
-      <input type="text" name="date" id="date" placeholder="e.g 09/25/2016" value="<?php echo $thedate; ?>" class="validate">
+     
+   
+
+
+
+
+               <input class="form-control"  name="days" id="days" type="text" placeholder="Enter here the days you are available to meet"/>
+
+          
 
  
                
@@ -356,6 +414,93 @@ $thedate =  $date->format('m/d/Y');
 
           </span>
         </fieldset>
+
+
+
+
+<fieldset>
+          <span class="input">
+           
+           
+     
+   
+
+
+<ul id="responds">
+<?php
+//include db configuration file
+
+
+
+echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">';
+
+
+//MySQL query
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_SESSION['participantSession']."'");
+
+
+//get all records from add_delete_record table
+$row2 = mysqli_fetch_array($Result);
+
+
+
+
+$ctop = $row2['Days_Availability_Option1']; 
+$ctop = explode(',',$ctop); 
+
+
+
+if($row2['Days_Availability_Option1'] != '' ){
+
+
+
+foreach($ctop as $day)  
+{ 
+    //Uncomment the last commented line if single quotes are showing up  
+    //otherwise delete these 3 commented lines 
+    
+
+//MySQL query
+$sqlday = mysqli_query($connecDB,"SELECT * FROM days WHERE day = '".$day."' ");
+$row3 = mysqli_fetch_array($sqlday);
+
+
+echo '<li id="item_'.$row3['id'].'">';
+if(in_array($day,$ctop)){
+echo '<input id="dayselection_'.$row3['id'].'" name="dayselection[]" type="checkbox"  value="'.$day.'" style="display:none" checked/>';
+}
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row3['id'].'">';
+echo '<img src="../../../../../images/icon_del.gif" border="0" class="icon_del" />';
+echo '</a></div>';
+//echo '<input name="dayselection[]" type="checkbox"  value="'.$day.'"/>';
+echo $day . '</li>';
+
+} 
+
+
+
+}
+
+
+
+
+
+?>
+</ul>
+          
+
+ 
+               
+           
+          </span>
+
+          </span>
+        </fieldset>
+
+
+
+
+
 
 
         <fieldset>
