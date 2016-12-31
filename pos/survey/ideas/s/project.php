@@ -98,7 +98,7 @@ $(document).ready(function() {
         var participantid  = $('input[name=participantid').val();
         
 
-        var date_availability_option  = $('input[name=date_availability_option_one').val();
+        var days_availability_option  = $('input[name=days_availability_option_one').val();
         var from_time_option  = $('input[name=from_time_option_one').val();
         var to_time_option  = $('input[name=to_time_option_one').val();
         var location_option  = $('input[name=location_option_one').val();
@@ -112,7 +112,7 @@ $(document).ready(function() {
         {
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'date_availability_option':date_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
+  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
             
             //Ajax post data to server
             $.post('../request-to-meet.php', post_data, function(response){  
@@ -155,7 +155,7 @@ $(".btn-request-option-two").click(function() {
         var participantid  = $('input[name=participantid').val();
         
 
-        var date_availability_option  = $('input[name=date_availability_option_two').val();
+        var days_availability_option  = $('input[name=days_availability_option_two').val();
         var from_time_option  = $('input[name=from_time_option_two').val();
         var to_time_option  = $('input[name=to_time_option_two').val();
         var location_option  = $('input[name=location_option_two').val();
@@ -169,7 +169,7 @@ $(".btn-request-option-two").click(function() {
         {
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'date_availability_option':date_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
+  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
             
             //Ajax post data to server
             $.post('../request-to-meet.php', post_data, function(response){  
@@ -211,7 +211,7 @@ $(".btn-request-option-three").click(function() {
         var participantid  = $('input[name=participantid').val();
         
 
-        var date_availability_option  = $('input[name=date_availability_option_three').val();
+        var days_availability_option  = $('input[name=days_availability_option_three').val();
         var from_time_option  = $('input[name=from_time_option_three').val();
         var to_time_option  = $('input[name=to_time_option_three').val();
         var location_option  = $('input[name=location_option_three').val();
@@ -225,7 +225,7 @@ $(".btn-request-option-three").click(function() {
         {
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'date_availability_option':date_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
+  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
             
             //Ajax post data to server
             $.post('../request-to-meet.php', post_data, function(response){  
@@ -359,7 +359,7 @@ $(".btn-request-option-three").click(function() {
  <p>&nbsp;</p>
 
 <h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea</h3>
- 
+ <p>Choose the date you want to request to meet</p>
 
  <div class="col-lg-11" style="padding:0px;">
 <div id="result"></div>
@@ -373,17 +373,77 @@ $(".btn-request-option-three").click(function() {
 <input type="hidden" value="<?php echo $_GET['id']; ?>" name="projectid" id="projectid"/>
 <input type="hidden" value="<?php echo $_GET['p']; ?>" name="participantid" id="participantid"/>
 
-<?php if($rowparticipant['Date_Availability_Option1'] != ''){ ?>
+<?php if($rowparticipant['Days_Availability_Option1'] != ''){ ?>
 
 
-<input type="hidden" value="<?php echo $rowparticipant['Date_Availability_Option1']; ?>" name="date_availability_option_one" id="date_availability_option_one"/>
+<input type="hidden" value="<?php echo $rowparticipant['Days_Availability_Option1']; ?>" name="days_availability_option_one" id="dasy_availability_option_one"/>
 <input type="hidden" value="<?php echo $rowparticipant['From_Time_Option1']; ?>" name="from_time_option_one" id="from_time_option_one"/>
 <input type="hidden" value="<?php echo $rowparticipant['To_Time_Option1']; ?>" name="to_time_option_one" id="to_time_option_one"/>
 <input type="hidden" value="<?php echo $rowparticipant['Location_Option1']; ?>" name="location_option_one" id="location_option_one"/>
 
-<div class="col-lg-11" style="background:#eee; padding:10px;">
-  <div class="col-lg-2"><?php echo $rowparticipant['Date_Availability_Option1']; ?></div>
-  <div class="col-lg-3"><?php echo $rowparticipant['From_Time_Option1']; ?> to <?php echo $rowparticipant['To_Time_Option1']; ?></div>
+<div class="col-lg-11" style="background:#eee; padding:10px; margin-bottom:20px;">
+  <div class="col-lg-2">
+
+
+
+
+<select id="days_availability_option_one" name="days_availability_option_one">
+<?php
+
+$days = explode(',', $rowparticipant['Days_Availability_Option1']);
+foreach ($days as &$day) { ?>
+     <option value="<?php echo strtolower($day); ?>"><?php echo $day; ?></option>
+
+<?php } ?>
+
+</select>
+
+
+
+ </div>
+  <div class="col-lg-3">
+
+
+
+<?php 
+
+
+$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['From_Time_Option1']."%'");
+//$resultfrom=mysql_query($sqlfrom);
+$rowfrom = mysqli_fetch_array($sqlfrom);
+
+$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['To_Time_Option1']."%'");
+//$resultto=mysql_query($sqlto);
+$rowto = mysqli_fetch_array($sqlto);
+
+?>
+
+    
+<select id="final_time_Option1" name="final_time_Option1">
+<?php
+
+
+
+$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
+//$resulttime=mysql_query($sqltime);
+
+while($rowtime = mysqli_fetch_array($sqltime))
+{ ?>
+
+<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
+
+
+<?php } ?>
+
+</select>
+
+
+
+
+
+
+
+  </div>
   <div class="col-lg-3"><?php echo $rowparticipant['Location_Option1']; ?></div>
    <div class="col-lg-4">
   <a href="#" role="button" class="btn-request-option-one">
@@ -394,20 +454,76 @@ $(".btn-request-option-three").click(function() {
 <?php } ?>
 
 
-<p>&nbsp;</p>
 
 
-<?php if($rowparticipant['Date_Availability_Option2'] != ''){ ?>
 
-<input type="hidden" value="<?php echo $rowparticipant['Date_Availability_Option2']; ?>" name="date_availability_option_two" id="date_availability_option_two"/>
+
+
+<?php if($rowparticipant['Days_Availability_Option2'] != ''){ ?>
+
+<input type="hidden" value="<?php echo $rowparticipant['Days_Availability_Option2']; ?>" name="days_availability_option_two" id="days_availability_option_two"/>
 <input type="hidden" value="<?php echo $rowparticipant['From_Time_Option2']; ?>" name="from_time_option_two" id="from_time_option_two"/>
 <input type="hidden" value="<?php echo $rowparticipant['To_Time_Option2']; ?>" name="to_time_option_two" id="to_time_option_two"/>
 <input type="hidden" value="<?php echo $rowparticipant['Location_Option2']; ?>" name="location_option_two" id="location_option_two"/>
 
 
-<div class="col-lg-11" style="background:#eee; padding:10px;">
-  <div class="col-lg-2"><?php echo $rowparticipant['Date_Availability_Option2']; ?></div>
-  <div class="col-lg-3"><?php echo $rowparticipant['From_Time_Option2']; ?> to <?php echo $rowparticipant['To_Time_Option2']; ?></div>
+<div class="col-lg-11" style="background:#eee; padding:10px; margin-bottom:20px;">
+  <div class="col-lg-2">
+    
+
+<select id="days_availability_option_two" name="days_availability_option_two">
+<?php
+
+$days = explode(',', $rowparticipant['Days_Availability_Option2']);
+foreach ($days as &$day) { ?>
+     <option value="<?php echo strtolower($day); ?>"><?php echo $day; ?></option>
+
+<?php } ?>
+
+</select>
+
+
+  </div>
+  <div class="col-lg-3">
+    
+
+
+
+<?php 
+
+
+$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['From_Time_Option2']."%'");
+//$resultfrom=mysql_query($sqlfrom);
+$rowfrom = mysqli_fetch_array($sqlfrom);
+
+$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['To_Time_Option2']."%'");
+//$resultto=mysql_query($sqlto);
+$rowto = mysqli_fetch_array($sqlto);
+
+?>
+
+    
+<select id="final_time_Option2" name="final_time_Option2">
+<?php
+
+
+
+$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
+//$resulttime=mysql_query($sqltime);
+
+while($rowtime = mysqli_fetch_array($sqltime))
+{ ?>
+
+<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
+
+
+<?php } ?>
+
+</select>
+
+
+
+  </div>
   <div class="col-lg-3"><?php echo $rowparticipant['Location_Option2']; ?></div>
    <div class="col-lg-4">
   <a href="#" role="button" class="btn-request-option-two">
@@ -420,17 +536,71 @@ $(".btn-request-option-three").click(function() {
 
 <p>&nbsp;</p>
 
-<?php if($rowparticipant['Date_Availability_Option3'] != ''){ ?>
+<?php if($rowparticipant['Days_Availability_Option3'] != ''){ ?>
 
-<input type="hidden" value="<?php echo $rowparticipant['Date_Availability_Option3']; ?>" name="date_availability_option_three" id="date_availability_option_three"/>
+<input type="hidden" value="<?php echo $rowparticipant['Days_Availability_Option3']; ?>" name="days_availability_option_three" id="days_availability_option_three"/>
 <input type="hidden" value="<?php echo $rowparticipant['From_Time_Option3']; ?>" name="from_time_option_three" id="from_time_option_three"/>
 <input type="hidden" value="<?php echo $rowparticipant['To_Time_Option3']; ?>" name="to_time_option_three" id="to_time_option_three"/>
 <input type="hidden" value="<?php echo $rowparticipant['Location_Option3']; ?>" name="location_option_three" id="location_option_three"/>
 
 
 <div class="col-lg-11" style="background:#eee; padding:10px;">
-  <div class="col-lg-2"><?php echo $rowparticipant['Date_Availability_Option3']; ?></div>
-  <div class="col-lg-3"><?php echo $rowparticipant['From_Time_Option3']; ?> to <?php echo $rowparticipant['To_Time_Option3']; ?></div>
+  <div class="col-lg-2">
+    
+
+<select id="days_availability_option_three" name="days_availability_option_three">
+<?php
+
+$days = explode(',', $rowparticipant['Days_Availability_Option3']);
+foreach ($days as &$day) { ?>
+     <option value="<?php echo strtolower($day); ?>"><?php echo $day; ?></option>
+
+<?php } ?>
+
+</select>
+
+
+  </div>
+  <div class="col-lg-3">
+
+
+
+
+<?php 
+
+
+$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['From_Time_Option3']."%'");
+//$resultfrom=mysql_query($sqlfrom);
+$rowfrom = mysqli_fetch_array($sqlfrom);
+
+$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['To_Time_Option3']."%'");
+//$resultto=mysql_query($sqlto);
+$rowto = mysqli_fetch_array($sqlto);
+
+?>
+
+    
+<select id="final_time_Option3" name="final_time_Option3">
+<?php
+
+
+
+$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
+//$resulttime=mysql_query($sqltime);
+
+while($rowtime = mysqli_fetch_array($sqltime))
+{ ?>
+
+<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
+
+
+<?php } ?>
+
+</select>
+
+
+
+  </div>
   <div class="col-lg-3"><?php echo $rowparticipant['Location_Option3']; ?></div>
    <div class="col-lg-4">
  <a href="#" role="button" class="btn-request-option-three">
