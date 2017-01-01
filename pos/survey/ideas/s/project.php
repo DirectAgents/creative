@@ -49,6 +49,134 @@ $rowparticipantproject=mysqli_fetch_array($sql);
 
 
 
+
+$Min_Req = str_replace(",","|",$rowproject['MinReq']);
+
+$Meetupchoice = str_replace(",","|",$rowproject['Meetupchoice']);
+$Age = str_replace(",","|",$rowproject['Age']);
+$Gender = str_replace(",","|",$rowproject['Gender']);
+$Height = $rowproject['MinHeight'];
+$City = str_replace(",","|",$rowproject['City']);
+$Status = str_replace(",","|",$rowproject['Status']); 
+$Ethnicity = str_replace(",","|",$rowproject['Ethnicity']);
+$Smoke = str_replace(",","|",$rowproject['Smoke']);
+$Drink = str_replace(",","|",$rowproject['Drink']);
+$Diet = str_replace(",","|",$rowproject['Diet']);
+$Religion = str_replace(",","|",$rowproject['Religion']);
+$Education = str_replace(",","|",$rowproject['Education']);
+$Job = str_replace(",","|",$rowproject['Job']);
+$Interest = str_replace(",","|",$rowproject['Interest']);
+$Languages = str_replace(",","|",$rowproject['Languages']);
+
+
+
+
+
+if (strpos($Min_Req, 'Age') !== false) {
+
+if($Age != 'NULL' && $Age != ''){$theage = "AND Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
+}else{
+  $theage = '';
+}
+
+
+if (strpos($Min_Req, 'Gender') !== false) {
+if($Gender != 'NULL' && $Gender != ''){$thegender = "AND Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
+}else{
+  $thegender = '';
+}
+
+if (strpos($Min_Req, 'Height') !== false) {
+if($Height != 'NULL' && $Height != ''){$theheight = "AND Height RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
+}else{
+  $theheight = '';
+}
+
+if (strpos($Min_Req, 'City') !== false) {
+if($City != 'NULL' && $City != ''){$thecity = "AND City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
+}else{
+  $thecity = '';
+}
+
+
+if (strpos($Min_Req, 'Status') !== false) {
+if($Status != 'NULL' && $Status != ''){$thestatus = "AND Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
+}else{
+  $thestatus = '';
+}
+
+
+if (strpos($Min_Req, 'Ethnicity') !== false) {
+if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
+}else{
+  $theethnicity = '';
+}
+
+
+if (strpos($Min_Req, 'Smoke') !== false) {
+if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
+}else{
+  $thesmoke = '';
+}
+
+
+if (strpos($Min_Req, 'Drink') !== false) {
+if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
+}else{
+  $thedrink = '';
+}
+
+
+if (strpos($Min_Req, 'Diet') !== false) {
+if($Diet != 'NULL' && $Diet != ''){$thediet = "AND Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
+}else{
+  $thediet = '';
+}
+
+if (strpos($Min_Req, 'Religion') !== false) {
+if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
+}else{
+  $thereligion = '';
+}
+
+
+if (strpos($Min_Req, 'Education') !== false) {
+if($Education != 'NULL' && $Education != ''){$theeducation = "AND Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
+}else{
+  $theeducation = '';
+}
+
+
+if (strpos($Min_Req, 'Job') !== false) {
+if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
+}else{
+  $thejob = '';
+}
+
+
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+}else{
+  $interest = '';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+}else{
+  $languages = '';
+}
+
+
+
+
+
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_GET['p']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC");
+
+
+
+
+
+
 if(mysqli_num_rows($startup)<0)
 {
   //$startup_home->logout();
@@ -98,10 +226,11 @@ $(document).ready(function() {
         var participantid  = $('input[name=participantid').val();
         
 
-        var days_availability_option  = $('input[name=days_availability_option_one').val();
-        var from_time_option  = $('input[name=from_time_option_one').val();
-        var to_time_option  = $('input[name=to_time_option_one').val();
+        var days_availability_option = $("select[name='days_availability_option_one']").val();
+        var final_time_option = $("select[name='final_time_option_one']").val();
         var location_option  = $('input[name=location_option_one').val();
+
+        //alert(days_availability_option);
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -112,7 +241,7 @@ $(document).ready(function() {
         {
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
+  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'final_time_option':final_time_option, 'location_option':location_option};
             
             //Ajax post data to server
             $.post('../request-to-meet.php', post_data, function(response){  
@@ -155,9 +284,8 @@ $(".btn-request-option-two").click(function() {
         var participantid  = $('input[name=participantid').val();
         
 
-        var days_availability_option  = $('input[name=days_availability_option_two').val();
-        var from_time_option  = $('input[name=from_time_option_two').val();
-        var to_time_option  = $('input[name=to_time_option_two').val();
+        var days_availability_option = $("select[name='days_availability_option_two']").val();
+        var final_time_option = $("select[name='final_time_option_two']").val();
         var location_option  = $('input[name=location_option_two').val();
 
         //simple validation at client's end
@@ -169,7 +297,7 @@ $(".btn-request-option-two").click(function() {
         {
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
+  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'final_time_option':final_time_option, 'location_option':location_option};
             
             //Ajax post data to server
             $.post('../request-to-meet.php', post_data, function(response){  
@@ -211,9 +339,8 @@ $(".btn-request-option-three").click(function() {
         var participantid  = $('input[name=participantid').val();
         
 
-        var days_availability_option  = $('input[name=days_availability_option_three').val();
-        var from_time_option  = $('input[name=from_time_option_three').val();
-        var to_time_option  = $('input[name=to_time_option_three').val();
+        var days_availability_option = $("select[name='days_availability_option_three']").val();
+        var final_time_option = $("select[name='final_time_option_three']").val();
         var location_option  = $('input[name=location_option_three').val();
 
         //simple validation at client's end
@@ -225,7 +352,7 @@ $(".btn-request-option-three").click(function() {
         {
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'from_time_option':from_time_option, 'to_time_option':to_time_option, 'location_option':location_option};
+  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'final_time_option':final_time_option, 'location_option':location_option};
             
             //Ajax post data to server
             $.post('../request-to-meet.php', post_data, function(response){  
@@ -355,10 +482,41 @@ $(".btn-request-option-three").click(function() {
 
 
 
- <div class="col-lg-12" style="padding:0px;">
+ <div class="col-lg-12">
  <p>&nbsp;</p>
 
-<h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea</h3>
+
+
+
+<?php if(mysqli_num_rows($results) == 0) { ?>
+
+
+<center><h3><?php echo $rowparticipant['FirstName']; ?> does not qualify for this idea to provide feedback</h3></center>
+
+
+<?php }else{ ?>
+
+
+
+<?php if(mysqli_num_rows($sql) == 1) { ?>
+
+
+
+<div class="col-lg-11" style="padding:0px;">
+ <div class="success2">
+You have sent <?php echo $rowparticipant['FirstName']; ?> a request to meet on a <?php echo $rowparticipantproject['Day']; ?> 
+at <?php echo $rowparticipantproject['Final_Time']; ?>. <br>If <?php echo $rowparticipant['FirstName']; ?> wants to meet, <?php echo $rowparticipant['FirstName']; ?> will suggest you date to meet.
+
+</div>
+</div>
+
+<?php } ?>
+
+<?php if(mysqli_num_rows($sql) == 0) { ?>
+
+<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>
+
+
  <p>Choose the date you want to request to meet</p>
 
  <div class="col-lg-11" style="padding:0px;">
@@ -368,7 +526,6 @@ $(".btn-request-option-three").click(function() {
 
 
 
-<p>&nbsp;</p>
 
 <input type="hidden" value="<?php echo $_GET['id']; ?>" name="projectid" id="projectid"/>
 <input type="hidden" value="<?php echo $_GET['p']; ?>" name="participantid" id="participantid"/>
@@ -376,9 +533,7 @@ $(".btn-request-option-three").click(function() {
 <?php if($rowparticipant['Days_Availability_Option1'] != ''){ ?>
 
 
-<input type="hidden" value="<?php echo $rowparticipant['Days_Availability_Option1']; ?>" name="days_availability_option_one" id="dasy_availability_option_one"/>
-<input type="hidden" value="<?php echo $rowparticipant['From_Time_Option1']; ?>" name="from_time_option_one" id="from_time_option_one"/>
-<input type="hidden" value="<?php echo $rowparticipant['To_Time_Option1']; ?>" name="to_time_option_one" id="to_time_option_one"/>
+
 <input type="hidden" value="<?php echo $rowparticipant['Location_Option1']; ?>" name="location_option_one" id="location_option_one"/>
 
 <div class="col-lg-11" style="background:#eee; padding:10px; margin-bottom:20px;">
@@ -392,7 +547,7 @@ $(".btn-request-option-three").click(function() {
 
 $days = explode(',', $rowparticipant['Days_Availability_Option1']);
 foreach ($days as &$day) { ?>
-     <option value="<?php echo strtolower($day); ?>"><?php echo $day; ?></option>
+     <option value="<?php echo $day; ?>"><?php echo $day; ?></option>
 
 <?php } ?>
 
@@ -419,7 +574,7 @@ $rowto = mysqli_fetch_array($sqlto);
 ?>
 
     
-<select id="final_time_Option1" name="final_time_Option1">
+<select id="final_time_option_one" name="final_time_option_one">
 <?php
 
 
@@ -461,9 +616,7 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 <?php if($rowparticipant['Days_Availability_Option2'] != ''){ ?>
 
-<input type="hidden" value="<?php echo $rowparticipant['Days_Availability_Option2']; ?>" name="days_availability_option_two" id="days_availability_option_two"/>
-<input type="hidden" value="<?php echo $rowparticipant['From_Time_Option2']; ?>" name="from_time_option_two" id="from_time_option_two"/>
-<input type="hidden" value="<?php echo $rowparticipant['To_Time_Option2']; ?>" name="to_time_option_two" id="to_time_option_two"/>
+
 <input type="hidden" value="<?php echo $rowparticipant['Location_Option2']; ?>" name="location_option_two" id="location_option_two"/>
 
 
@@ -476,7 +629,7 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 $days = explode(',', $rowparticipant['Days_Availability_Option2']);
 foreach ($days as &$day) { ?>
-     <option value="<?php echo strtolower($day); ?>"><?php echo $day; ?></option>
+     <option value="<?php echo $day; ?>"><?php echo $day; ?></option>
 
 <?php } ?>
 
@@ -503,7 +656,7 @@ $rowto = mysqli_fetch_array($sqlto);
 ?>
 
     
-<select id="final_time_Option2" name="final_time_Option2">
+<select id="final_time_option_two" name="final_time_option_two">
 <?php
 
 
@@ -538,9 +691,7 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 <?php if($rowparticipant['Days_Availability_Option3'] != ''){ ?>
 
-<input type="hidden" value="<?php echo $rowparticipant['Days_Availability_Option3']; ?>" name="days_availability_option_three" id="days_availability_option_three"/>
-<input type="hidden" value="<?php echo $rowparticipant['From_Time_Option3']; ?>" name="from_time_option_three" id="from_time_option_three"/>
-<input type="hidden" value="<?php echo $rowparticipant['To_Time_Option3']; ?>" name="to_time_option_three" id="to_time_option_three"/>
+
 <input type="hidden" value="<?php echo $rowparticipant['Location_Option3']; ?>" name="location_option_three" id="location_option_three"/>
 
 
@@ -553,7 +704,7 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 $days = explode(',', $rowparticipant['Days_Availability_Option3']);
 foreach ($days as &$day) { ?>
-     <option value="<?php echo strtolower($day); ?>"><?php echo $day; ?></option>
+     <option value="<?php echo $day; ?>"><?php echo $day; ?></option>
 
 <?php } ?>
 
@@ -580,7 +731,7 @@ $rowto = mysqli_fetch_array($sqlto);
 ?>
 
     
-<select id="final_time_Option3" name="final_time_Option3">
+<select id="final_time_option_three" name="final_time_option_three">
 <?php
 
 
@@ -611,9 +762,17 @@ while($rowtime = mysqli_fetch_array($sqltime))
 <?php } ?>
 
 
+<?php } ?>
 
+
+
+<?php } ?>
 
 </div>
+
+
+
+
 
 
 
@@ -680,113 +839,85 @@ while($rowtime = mysqli_fetch_array($sqltime))
       <?php 
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."' AND startupID='".$_SESSION['startupSession']."'");
-$row = mysqli_fetch_array($sql);
-
-
-
-$Min_Req = str_replace(",","|",$row['MinReq']);
-
-$Meetupchoice = str_replace(",","|",$row['Meetupchoice']);
-$Age = str_replace(",","|",$row['Age']);
-$Gender = str_replace(",","|",$row['Gender']);
-$Height = $row['MinHeight'];
-$City = str_replace(",","|",$row['City']);
-$Status = str_replace(",","|",$row['Status']); 
-$Ethnicity = str_replace(",","|",$row['Ethnicity']);
-$Smoke = str_replace(",","|",$row['Smoke']);
-$Drink = str_replace(",","|",$row['Drink']);
-$Diet = str_replace(",","|",$row['Diet']);
-$Religion = str_replace(",","|",$row['Religion']);
-$Education = str_replace(",","|",$row['Education']);
-$Job = str_replace(",","|",$row['Job']);
-$Interest = str_replace(",","|",$row['Interest']);
-$Languages = str_replace(",","|",$row['Languages']);
-
-
-
-
-
-
 
 
 
 if (strpos($Min_Req, 'Age') !== false) {
-echo 'Age: '.$row['Age'];
+echo 'Age: '.$rowproject['Age'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Gender') !== false) {
-echo 'Gender: '.$row['Gender'];
+echo 'Gender: '.$rowproject['Gender'];
 echo '<br>';
 }
 
 if (strpos($Min_Req, 'Height') !== false) {
-echo 'Height: '.$row['Height'];
+echo 'Height: '.$rowproject['Height'];
 echo '<br>';
 }
 
 if (strpos($Min_Req, 'City') !== false) {
-echo 'City: '.$row['City'];
+echo 'City: '.$rowproject['City'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Status') !== false) {
-echo 'Status: '.$row['Status'];
+echo 'Status: '.$rowproject['Status'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Ethnicity') !== false) {
-echo 'Ethnicity: '.$row['Ethnicity'];
+echo 'Ethnicity: '.$rowproject['Ethnicity'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Smoke') !== false) {
-echo 'Smoke: '.$row['Smoke'];
+echo 'Smoke: '.$rowproject['Smoke'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Drink') !== false) {
-echo 'Drink: '.$row['Drink'];
+echo 'Drink: '.$rowproject['Drink'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Diet') !== false) {
-echo 'Diet: '.$row['Diet'];
+echo 'Diet: '.$rowproject['Diet'];
 echo '<br>';
 }
 
 if (strpos($Min_Req, 'Religion') !== false) {
-echo 'Religion: '.$row['Religion'];
+echo 'Religion: '.$rowproject['Religion'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Education') !== false) {
-echo 'Education: '.$row['Education'];
+echo 'Education: '.$rowproject['Education'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Job') !== false) {
-echo 'Job: '.$row['Job'];
+echo 'Job: '.$rowproject['Job'];
 echo '<br>';
 }
 
 
 if (strpos($Min_Req, 'Interest') !== false) {
-echo 'Interests: '.$row['Interest'];
+echo 'Interests: '.$rowproject['Interest'];
 echo '<br>';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
-echo 'Languages: '.$row['Language'];
+echo 'Languages: '.$rowproject['Language'];
 echo '<br>';
 }
 
@@ -799,7 +930,6 @@ echo '<br>';
       </p>
 
 
-      <p><h4>Based on your requirement <?php echo $rowparticipant['FirstName']; ?> met the following:</h4></p>
 
       <p>
       <?php 
@@ -807,112 +937,15 @@ echo '<br>';
 
 
 
-if (strpos($Min_Req, 'Age') !== false) {
 
-if($Age != 'NULL' && $Age != ''){$theage = "AND Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
-}else{
-  $theage = '';
-}
-
-
-if (strpos($Min_Req, 'Gender') !== false) {
-if($Gender != 'NULL' && $Gender != ''){$thegender = "AND Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
-}else{
-  $thegender = '';
-}
-
-if (strpos($Min_Req, 'Height') !== false) {
-if($Height != 'NULL' && $Height != ''){$theheight = "AND Height RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
-}else{
-  $theheight = '';
-}
-
-if (strpos($Min_Req, 'City') !== false) {
-if($City != 'NULL' && $City != ''){$thecity = "AND City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
-}else{
-  $thecity = '';
-}
-
-
-if (strpos($Min_Req, 'Status') !== false) {
-if($Status != 'NULL' && $Status != ''){$thestatus = "AND Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
-}else{
-  $thestatus = '';
-}
-
-
-if (strpos($Min_Req, 'Ethnicity') !== false) {
-if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
-}else{
-  $theethnicity = '';
-}
-
-
-if (strpos($Min_Req, 'Smoke') !== false) {
-if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
-}else{
-  $thesmoke = '';
-}
-
-
-if (strpos($Min_Req, 'Drink') !== false) {
-if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
-}else{
-  $thedrink = '';
-}
-
-
-if (strpos($Min_Req, 'Diet') !== false) {
-if($Diet != 'NULL' && $Diet != ''){$thediet = "AND Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
-}else{
-  $thediet = '';
-}
-
-if (strpos($Min_Req, 'Religion') !== false) {
-if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
-}else{
-  $thereligion = '';
-}
-
-
-if (strpos($Min_Req, 'Education') !== false) {
-if($Education != 'NULL' && $Education != ''){$theeducation = "AND Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
-}else{
-  $theeducation = '';
-}
-
-
-if (strpos($Min_Req, 'Job') !== false) {
-if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
-}else{
-  $thejob = '';
-}
-
-
-if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
-}else{
-  $interest = '';
-}
-
-if (strpos($Min_Req, 'Languages') !== false) {
-if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
-}else{
-  $languages = '';
-}
-
-
-
-
-
-$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_GET['p']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC");
-//$results = mysql_query("SELECT id,userID, Gender FROM tbl_participant_project 
-//WHERE Gender RLIKE '".$Gender."' OR Age RLIKE '".$Age."' ORDER BY id DESC LIMIT $position, $item_per_page");
 
 $rowparticipant = mysqli_fetch_array($results);
 
 if(mysqli_num_rows($results) == 1)
 {
+
+
+echo'<p><h4>Based on your requirement '.$rowparticipant['FirstName'].' met the following:</h4></p>';
 
 
 
