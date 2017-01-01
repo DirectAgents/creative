@@ -648,14 +648,59 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
                   <div class="survey-metadata">
                     <div class="item">
-                      <div class="label">Date of meeting:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
+                     
+
+                    <?php if($row2['Date_of_Meeting'] == '0000-00-00') { ?>
+
+                     <div class="label">Day:</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+
+                      <?php echo $row2['Day']; ?> (Suggest a date)
+
+                         </div>
                     </div>
+                    
+                    <?php }else{ ?>    
+
+                     <div class="label">Date of meeting:</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+
+                      <?php echo date_format($date2, 'm/d/Y'); ?>
+
+                      </div>
+                    </div> 
+                    
+                    <?php } ?>    
+
+
+
+                   
 
                     <div class="item">
                       <div class="label">Time:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">Between <?php echo $row2['From_Time']; ?> & 
-                      <?php echo $row2['To_Time']; ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+                      
+                      <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
+
+                      <?php echo $row2['Final_Time']; ?>
+
+                      <?php } ?>
+
+                      
+                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
+
+                      Between <?php echo $row2['From_Time']; ?> & 
+                      
+                      <?php echo $row2['To_Time']; ?>
+
+                      <?php } ?>
+
+
+                      
+                        
+
+                      </div>
+                    
                     </div>
 
 

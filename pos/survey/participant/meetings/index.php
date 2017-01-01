@@ -30,7 +30,7 @@ if(!$participant_home->is_logged_in())
 }
 
 
-echo $_SESSION['participantSession'];
+//echo $_SESSION['participantSession'];
 
 
 $get_total_rows = 0;
