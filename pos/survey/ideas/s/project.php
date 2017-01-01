@@ -40,6 +40,12 @@ $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion
 $screeningquestion = mysqli_fetch_array($Screening);
 
 
+$sqlparticipantanswer = mysqli_query($connecDB,"SELECT * FROM tbl_participant_potentialanswer WHERE userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowparticipantanswer=mysqli_fetch_array($sqlparticipantanswer);
+
+
+
 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowparticipantproject=mysqli_fetch_array($sql);
@@ -505,7 +511,7 @@ $(".btn-request-option-three").click(function() {
 <div class="col-lg-11" style="padding:0px;">
  <div class="success2">
 You have sent <?php echo $rowparticipant['FirstName']; ?> a request to meet on a <?php echo $rowparticipantproject['Day']; ?> 
-at <?php echo $rowparticipantproject['Final_Time']; ?>. <br>If <?php echo $rowparticipant['FirstName']; ?> wants to meet, <?php echo $rowparticipant['FirstName']; ?> will suggest you date to meet.
+at <?php echo $rowparticipantproject['Final_Time']; ?>. <br>If <?php echo $rowparticipant['FirstName']; ?> wants to meet, <?php echo $rowparticipant['FirstName']; ?> will suggest you a date to meet.
 
 </div>
 </div>
@@ -556,7 +562,7 @@ foreach ($days as &$day) { ?>
 
 
  </div>
-  <div class="col-lg-3">
+  <div class="col-lg-2">
 
 
 
@@ -599,7 +605,11 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 
   </div>
-  <div class="col-lg-3"><?php echo $rowparticipant['Location_Option1']; ?></div>
+  <div class="col-lg-4"><?php echo $rowparticipant['Location_Option1']; ?><br>
+
+     <a href="http://maps.google.com/?q=<?php echo $rowparticipant['Location_Option1']; ?>" target="_blank">View Map</a>
+
+     </div>
    <div class="col-lg-4">
   <a href="#" role="button" class="btn-request-option-one">
   <button type="button" class="btn-request">
@@ -637,7 +647,7 @@ foreach ($days as &$day) { ?>
 
 
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-2">
     
 
 
@@ -677,7 +687,9 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 
   </div>
-  <div class="col-lg-3"><?php echo $rowparticipant['Location_Option2']; ?></div>
+  <div class="col-lg-4"><?php echo $rowparticipant['Location_Option2']; ?><br>
+       <a href="http://maps.google.com/?q=<?php echo $rowparticipant['Location_Option2']; ?>" target="_blank">View Map</a>
+</div>
    <div class="col-lg-4">
   <a href="#" role="button" class="btn-request-option-two">
   <button type="button" class="btn-request">
@@ -712,7 +724,7 @@ foreach ($days as &$day) { ?>
 
 
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-2">
 
 
 
@@ -752,7 +764,9 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 
   </div>
-  <div class="col-lg-3"><?php echo $rowparticipant['Location_Option3']; ?></div>
+  <div class="col-lg-4"><?php echo $rowparticipant['Location_Option3']; ?><br>
+       <a href="http://maps.google.com/?q=<?php echo $rowparticipant['Location_Option3']; ?>" target="_blank">View Map</a>
+</div>
    <div class="col-lg-4">
  <a href="#" role="button" class="btn-request-option-three">
   <button type="button" class="btn-request">
@@ -824,9 +838,9 @@ while($rowtime = mysqli_fetch_array($sqltime))
       </p>
 <p><h4><?php echo $rowparticipant['FirstName']; ?>'s Answer was:</h4></p>
       <p>
-<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 1') {echo $screeningquestion['PotentialAnswer1'];} ?>
-<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 2') {echo $screeningquestion['PotentialAnswer2'];} ?>
-<?php if($rowparticipantproject['Potential_Answer_Given'] == 'Potential Answer 3') {echo $screeningquestion['PotentialAnswer3'];} ?>
+<?php if($rowparticipantanswer ['PotentialAnswerGiven'] == 'Potential Answer 1') {echo $screeningquestion['PotentialAnswer1'];} ?>
+<?php if($rowparticipantanswer['PotentialAnswerGiven'] == 'Potential Answer 2') {echo $screeningquestion['PotentialAnswer2'];} ?>
+<?php if($rowparticipantanswer['PotentialAnswerGiven'] == 'Potential Answer 3') {echo $screeningquestion['PotentialAnswer3'];} ?>
 
       </p>
 

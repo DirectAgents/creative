@@ -47,7 +47,7 @@ if(!$startup_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Accepted_to_Participate = 'Pending' AND Status != 'Canceled_by_Participant'  ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Accepted_to_Participate = 'Pending' AND Date_of_Meeting = '0000-00-00' AND Status != 'Canceled_by_Participant'  ORDER BY id DESC ");
 //$result=mysql_query($sql);
 
 //$row=mysql_fetch_array($result);
@@ -99,32 +99,6 @@ $date = date('Y-m-d h:m A');
 
 
 
-$dtA = new DateTime($date);
-$dtB = new DateTime($row2['Date_of_Meeting'].' '.$row2['Final_Time']);
-
-
-
-if ( $dtA > $dtB  ) {
-
-
-
-echo '<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">No Meeting Requests<br><br></div>
-  <div class="create-one-here-box">
-      <div class="create-one">
-     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
-        List a new idea</a>
-       </div> 
-  </div>
-</div>
-
-</div>
-</div>';
-
-
-
-}else{
 
 //echo $row2['id'];
 
@@ -674,7 +648,7 @@ $row3 = mysqli_fetch_array($sql3);
       <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
       
                  <div class="cancel-request-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting</strong></a></a>
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting Request</strong></a></a>
                  </div>
 
 
@@ -701,7 +675,18 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="survey-metadata">
                     <div class="item">
                       <div class="label">Date:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+                      
+                       <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
+                       Date not specified yet
+                       <?php } ?>
+
+                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>  
+                      <?php echo date_format($date2, 'm/d/Y'); ?>
+                       <?php } ?>
+                        
+
+                      </div>
                     </div>
 
                     <div class="item">
@@ -716,8 +701,8 @@ $row3 = mysqli_fetch_array($sql3);
                       <?php } ?>
                         
             <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
-                       Between <?php echo $row2['From_Time']; ?> & 
-                      <?php echo $row2['To_Time']; ?>
+                      
+                      <?php echo $row2['Final_Time']; ?>
 
                     <?php } ?>   
 
@@ -794,8 +779,6 @@ $row3 = mysqli_fetch_array($sql3);
 }
 
 
-
-}
 
 
 
