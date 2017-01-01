@@ -2842,6 +2842,45 @@ textarea {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+
+.accept-btn{
+  text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 0px;
+    font-family: Lato;
+    font-size: 16px;
+    border:none !important;
+    box-shadow: 0px !important;
+    cursor: pointer;
+    background: orange;
+    color: #fff;
+   
+    text-align:center;
+     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.decline-btn{
+  text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 0px;
+    font-family: Lato;
+    font-size: 16px;
+    border:none !important;
+    box-shadow: 0px !important;
+    cursor: pointer;
+    background: grey;
+    color: #fff !important;
+    
+   
+    text-align:center;
+     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
 .create-one-btn:hover{
  
      background: #449d44;
