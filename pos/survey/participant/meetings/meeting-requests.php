@@ -117,48 +117,58 @@ $date = date('Y-m-d h:m A');
   <div class="result-accept">
     <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Successfully Accepted!</div>
   </div>
+
+<div class="result-no-date">
+<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
+    <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Please choose a date!</div>
+    </div>
+  </div>
+
 <h4>Are you sure you want to accept the meeting request?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
-Select a time to meet:
 
-<?php 
+<?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['Final_Time'] == '') { ?>
 
-//echo $row2['To_Time'];
-
-
-
-$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['From_Time']."%'");
-$rowfrom = mysqli_fetch_array($sqlfrom);
-
-$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['To_Time']."%'");
-$rowto = mysqli_fetch_array($sqlto);
+<input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Waiting for Startup to Accept or Decline"/>
+<input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Pending"/>
 
 
-//echo $rowfrom['id'];
-//echo "<br>";
-//echo $rowto['id'];
-
-
-?>
-
-<select id="final_time" name="final_time">
-<?php
-
-
-
-$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
-
-while($rowtime = mysqli_fetch_array($sqltime))
-{ ?>
-
-<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
 
 
 <?php } ?>
 
-</select>
+
+
+<?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?>
+
+
+<input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Waiting for Participant to Accept or Decline"/>
+<input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Accepted"/>
+
+
+
+Select the date to meet:
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+  $( "#meeting_date" ).datepicker({
+    beforeShowDay: function(date) {
+        var day = date.getDay();
+        return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];
+    }
+  });
+
+  </script>
+
+
+ <div id="meeting_date"></div>
+
+<?php } ?>
+
+
 
 <div class="popupoverlay-btn">
   <div class="cancel-accept">
@@ -270,15 +280,63 @@ $(".slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_wrapper").hide();
 $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
 });
+    
+    var date = '';
+    $(document).on("change", "#meeting_date", function () {
+         date = $(this).val();
+          $(".result-no-date").hide(); 
+        
+    })
 
-
-
+    
+    $(".result-no-date").hide(); 
 
     $(".accept"+<?php echo $row2['ProjectID']; ?>).click(function() {  
-      //alert("delete"+<?php echo $row2['ProjectID']; ?>); 
+      //alert("delete"+<?php echo $row2['ProjectID']; ?>);
+
+        var proceed = true;
+
+          var input = date;
+          
+          if(input == '' ){
+           
+            
+             $(".result-no-date").show(); 
+            proceed = false;
+            }
+       
+   
+      
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        var status = $('input[name=status'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var accepted_to_participate = $('input[name=accepted_to_participate'+<?php echo $row2['ProjectID']; ?>+']').val();
+
+        //alert(finaltime);
+
+      
 
      
-     
+      
+
+
+      //$("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
+      
+
+ //get input field values
+        
+       
+        
+        
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        
+
+        //everything looks good! proceed...
+        if(proceed) 
+        {
+
+
       $(".result-accept").show();
       $(".cancel-accept").hide();
       $(".close-accept").show();
@@ -287,30 +345,9 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
       $("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
 
 
-      //$("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
-      
-
- //get input field values
-        
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
-        var final_time = $("select[name='final_time']").val();
-       
-
-        
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
-
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-
-
-
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'userid':userid,'final_time':final_time};
+            post_data = {'projectid':projectid,'userid':userid,'status':status,'accepted_to_participate':accepted_to_participate,'date':date};
             
             //Ajax post data to server
             $.post('acceptmeeting.php', post_data, function(response){  

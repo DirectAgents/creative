@@ -15,6 +15,11 @@ require_once '../../class.startup.php';
 
 
 
+
+
+
+
+
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <script type="text/javascript">
@@ -35,6 +40,9 @@ $.post('map.php', $("#contact-form").serialize(), function(data) {
 
 
 </script>
+
+
+
 
 
 
@@ -208,6 +216,11 @@ initialize();
 
   </script>
 
+
+
+ 
+
+
 <script type='text/javascript'>//<![CDATA[
 //$.noConflict();
 jQuery( document ).ready(function( $ ) {
@@ -252,9 +265,16 @@ $( "#meeting-requests" ).load( "meeting-requests.php" );
 
 
 
-
-
 </script>
+
+
+
+
+
+  
+
+
+
 
  </head>
     

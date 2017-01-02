@@ -24,12 +24,15 @@ $sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHE
 $row = mysqli_fetch_array($sql_participant);
 
 
+$date = new DateTime($_POST['date']);
+$meeting_date =  $date->format('Y-m-d');
 
 
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Status = 'Waiting for Startup to Accept or Decline',
-  Final_Time = '".$_POST['final_time']."'
+  Date_of_Meeting = '".$meeting_date."',
+  Status = '".$_POST['status']."',
+  Accepted_To_Participate = '".$_POST['accepted_to_participate']."'
 
   WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
 
