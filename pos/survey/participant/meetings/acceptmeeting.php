@@ -32,7 +32,8 @@ $meeting_date =  $date->format('Y-m-d');
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
   Date_of_Meeting = '".$meeting_date."',
   Status = '".$_POST['status']."',
-  Accepted_To_Participate = '".$_POST['accepted_to_participate']."'
+  Accepted_To_Participate = '".$_POST['accepted_to_participate']."',
+  Meeting_Status = 'Upcoming Meetings'
 
   WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
 

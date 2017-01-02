@@ -144,7 +144,7 @@ $date = date('Y-m-d h:m A');
 <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?>
 
 
-<input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Waiting for Participant to Accept or Decline"/>
+<input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Meeting Set"/>
 <input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Accepted"/>
 
 
