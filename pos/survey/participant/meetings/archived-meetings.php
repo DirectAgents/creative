@@ -108,9 +108,6 @@ $dtB = new DateTime($row2['Date_of_Meeting']);
 
 
 
-
-if ( $dtA > $dtB  ) {
-
 ?>
 
 
@@ -271,14 +268,8 @@ $row3 = mysqli_fetch_array($sql3);
 
 }
 
-}
-
 
 }
-
-
-
-
 
 
   ?>

@@ -34,7 +34,7 @@ $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-
+$age=explode(',',$row['Age']);
 $gender=explode(',',$row['Gender']);
 $height=explode(',',$row['Height']);
 $status=explode(',',$row['Status']);
@@ -319,7 +319,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
   <button type="button" class="btn-request">
   Update your availability</button></a>
 
-
+<p>&nbsp;</p>
   <a href="<?php echo BASE_PATH; ?>/participant/account/settings/nda/" role="button" class="111slide_open">
   <button type="button" class="btn-request">
   Non-disclosure Agreements</button></a>
@@ -1036,58 +1036,58 @@ echo $row2['Languages'].'</li>';
          <label>Age</label>
          <span class="select-wrapper">
               <select name="age" class="age">
-               <option value="" <?php if(in_array('',$height)){echo "selected";}?> disabled="disabled">Select your age</option>
-<option value="10" <?php if(in_array(10,$height)){echo "selected";}?>>10</option>
-<option value="11" <?php if(in_array(11,$height)){echo "selected";}?>>11</option>
-<option value="12" <?php if(in_array(12,$height)){echo "selected";}?>>12</option>
-<option value="13" <?php if(in_array(13,$height)){echo "selected";}?>>13</option>
-<option value="14" <?php if(in_array(14,$height)){echo "selected";}?>>14</option>
-<option value="15" <?php if(in_array(15,$height)){echo "selected";}?>>15</option>
-<option value="16" <?php if(in_array(16,$height)){echo "selected";}?>>16</option>
-<option value="17" <?php if(in_array(17,$height)){echo "selected";}?>>17</option>
-<option value="18" <?php if(in_array(18,$height)){echo "selected";}?>>18</option>
-<option value="19" <?php if(in_array(19,$height)){echo "selected";}?>>19</option>
-<option value="20" <?php if(in_array(20,$height)){echo "selected";}?>>20</option>
-<option value="21" <?php if(in_array(21,$height)){echo "selected";}?>>21</option>
-<option value="22" <?php if(in_array(22,$height)){echo "selected";}?>>22</option>
-<option value="23" <?php if(in_array(23,$height)){echo "selected";}?>>23</option>
-<option value="24" <?php if(in_array(24,$height)){echo "selected";}?>>24</option>
-<option value="25" <?php if(in_array(25,$height)){echo "selected";}?>>25</option>
-<option value="26" <?php if(in_array(26,$height)){echo "selected";}?>>26</option>
-<option value="27" <?php if(in_array(27,$height)){echo "selected";}?>>27</option>
-<option value="28" <?php if(in_array(28,$height)){echo "selected";}?>>28</option>
-<option value="29" <?php if(in_array(29,$height)){echo "selected";}?>>29</option>
-<option value="30" <?php if(in_array(30,$height)){echo "selected";}?>>30</option>
-<option value="31" <?php if(in_array(31,$height)){echo "selected";}?>>31</option>
-<option value="32" <?php if(in_array(32,$height)){echo "selected";}?>>32</option>
-<option value="33" <?php if(in_array(33,$height)){echo "selected";}?>>33</option>
-<option value="34" <?php if(in_array(34,$height)){echo "selected";}?>>34</option>
-<option value="35" <?php if(in_array(35,$height)){echo "selected";}?>>35</option>
-<option value="36" <?php if(in_array(36,$height)){echo "selected";}?>>36</option>
-<option value="37" <?php if(in_array(37,$height)){echo "selected";}?>>37</option>
-<option value="38" <?php if(in_array(38,$height)){echo "selected";}?>>38</option>
-<option value="39" <?php if(in_array(39,$height)){echo "selected";}?>>39</option>
-<option value="40" <?php if(in_array(40,$height)){echo "selected";}?>>40</option>
-<option value="41" <?php if(in_array(41,$height)){echo "selected";}?>>41</option>
-<option value="42" <?php if(in_array(42,$height)){echo "selected";}?>>42</option>
-<option value="43" <?php if(in_array(43,$height)){echo "selected";}?>>43</option>
-<option value="44" <?php if(in_array(44,$height)){echo "selected";}?>>44</option>
-<option value="45" <?php if(in_array(45,$height)){echo "selected";}?>>45</option>
-<option value="46" <?php if(in_array(46,$height)){echo "selected";}?>>46</option>
-<option value="47" <?php if(in_array(47,$height)){echo "selected";}?>>47</option>
-<option value="48" <?php if(in_array(48,$height)){echo "selected";}?>>48</option>
-<option value="49" <?php if(in_array(49,$height)){echo "selected";}?>>49</option>
-<option value="50" <?php if(in_array(50,$height)){echo "selected";}?>>50</option>
-<option value="51" <?php if(in_array(51,$height)){echo "selected";}?>>51</option>
-<option value="52" <?php if(in_array(52,$height)){echo "selected";}?>>52</option>
-<option value="53" <?php if(in_array(53,$height)){echo "selected";}?>>53</option>
-<option value="54" <?php if(in_array(54,$height)){echo "selected";}?>>54</option>
-<option value="55" <?php if(in_array(55,$height)){echo "selected";}?>>55</option>
-<option value="56" <?php if(in_array(56,$height)){echo "selected";}?>>56</option>
-<option value="57" <?php if(in_array(57,$height)){echo "selected";}?>>57</option>
-<option value="58" <?php if(in_array(58,$height)){echo "selected";}?>>58</option>
-<option value="59" <?php if(in_array(59,$height)){echo "selected";}?>>59</option>
-<option value="60" <?php if(in_array(60,$height)){echo "selected";}?>>60</option>
+               <option value="" <?php if(in_array('',$age)){echo "selected";}?> disabled="disabled">Select your age</option>
+<option value="10" <?php if(in_array(10,$age)){echo "selected";}?>>10</option>
+<option value="11" <?php if(in_array(11,$age)){echo "selected";}?>>11</option>
+<option value="12" <?php if(in_array(12,$age)){echo "selected";}?>>12</option>
+<option value="13" <?php if(in_array(13,$age)){echo "selected";}?>>13</option>
+<option value="14" <?php if(in_array(14,$age)){echo "selected";}?>>14</option>
+<option value="15" <?php if(in_array(15,$age)){echo "selected";}?>>15</option>
+<option value="16" <?php if(in_array(16,$age)){echo "selected";}?>>16</option>
+<option value="17" <?php if(in_array(17,$age)){echo "selected";}?>>17</option>
+<option value="18" <?php if(in_array(18,$age)){echo "selected";}?>>18</option>
+<option value="19" <?php if(in_array(19,$age)){echo "selected";}?>>19</option>
+<option value="20" <?php if(in_array(20,$age)){echo "selected";}?>>20</option>
+<option value="21" <?php if(in_array(21,$age)){echo "selected";}?>>21</option>
+<option value="22" <?php if(in_array(22,$age)){echo "selected";}?>>22</option>
+<option value="23" <?php if(in_array(23,$age)){echo "selected";}?>>23</option>
+<option value="24" <?php if(in_array(24,$age)){echo "selected";}?>>24</option>
+<option value="25" <?php if(in_array(25,$age)){echo "selected";}?>>25</option>
+<option value="26" <?php if(in_array(26,$age)){echo "selected";}?>>26</option>
+<option value="27" <?php if(in_array(27,$age)){echo "selected";}?>>27</option>
+<option value="28" <?php if(in_array(28,$age)){echo "selected";}?>>28</option>
+<option value="29" <?php if(in_array(29,$age)){echo "selected";}?>>29</option>
+<option value="30" <?php if(in_array(30,$age)){echo "selected";}?>>30</option>
+<option value="31" <?php if(in_array(31,$age)){echo "selected";}?>>31</option>
+<option value="32" <?php if(in_array(32,$age)){echo "selected";}?>>32</option>
+<option value="33" <?php if(in_array(33,$age)){echo "selected";}?>>33</option>
+<option value="34" <?php if(in_array(34,$age)){echo "selected";}?>>34</option>
+<option value="35" <?php if(in_array(35,$age)){echo "selected";}?>>35</option>
+<option value="36" <?php if(in_array(36,$age)){echo "selected";}?>>36</option>
+<option value="37" <?php if(in_array(37,$age)){echo "selected";}?>>37</option>
+<option value="38" <?php if(in_array(38,$age)){echo "selected";}?>>38</option>
+<option value="39" <?php if(in_array(39,$age)){echo "selected";}?>>39</option>
+<option value="40" <?php if(in_array(40,$age)){echo "selected";}?>>40</option>
+<option value="41" <?php if(in_array(41,$age)){echo "selected";}?>>41</option>
+<option value="42" <?php if(in_array(42,$age)){echo "selected";}?>>42</option>
+<option value="43" <?php if(in_array(43,$age)){echo "selected";}?>>43</option>
+<option value="44" <?php if(in_array(44,$age)){echo "selected";}?>>44</option>
+<option value="45" <?php if(in_array(45,$age)){echo "selected";}?>>45</option>
+<option value="46" <?php if(in_array(46,$age)){echo "selected";}?>>46</option>
+<option value="47" <?php if(in_array(47,$age)){echo "selected";}?>>47</option>
+<option value="48" <?php if(in_array(48,$age)){echo "selected";}?>>48</option>
+<option value="49" <?php if(in_array(49,$age)){echo "selected";}?>>49</option>
+<option value="50" <?php if(in_array(50,$age)){echo "selected";}?>>50</option>
+<option value="51" <?php if(in_array(51,$age)){echo "selected";}?>>51</option>
+<option value="52" <?php if(in_array(52,$age)){echo "selected";}?>>52</option>
+<option value="53" <?php if(in_array(53,$age)){echo "selected";}?>>53</option>
+<option value="54" <?php if(in_array(54,$age)){echo "selected";}?>>54</option>
+<option value="55" <?php if(in_array(55,$age)){echo "selected";}?>>55</option>
+<option value="56" <?php if(in_array(56,$age)){echo "selected";}?>>56</option>
+<option value="57" <?php if(in_array(57,$age)){echo "selected";}?>>57</option>
+<option value="58" <?php if(in_array(58,$age)){echo "selected";}?>>58</option>
+<option value="59" <?php if(in_array(59,$age)){echo "selected";}?>>59</option>
+<option value="60" <?php if(in_array(60,$age)){echo "selected";}?>>60</option>
 
 
                </select> 

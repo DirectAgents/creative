@@ -124,7 +124,16 @@ $date = date('Y-m-d h:m A');
     </div>
   </div>
 
-<h4>Are you sure you want to accept the meeting request?</h4>
+
+<div class="result-no-potentialanswer">
+<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
+    <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Please provide an answer!</div>
+    </div>
+  </div>
+
+
+<h4>Accept Meeting Request</h4>
+<p>&nbsp;</p>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
@@ -147,6 +156,9 @@ $date = date('Y-m-d h:m A');
 <input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Meeting Set"/>
 <input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Accepted"/>
 
+Location: <?php echo $row2['Location']; ?><br><br>
+
+Time: <?php echo $row2['Final_Time']; ?><br><br>
 
 
 Select the date to meet:
@@ -157,7 +169,37 @@ Select the date to meet:
   $( "#meeting_date" ).datepicker({
     beforeShowDay: function(date) {
         var day = date.getDay();
+        var day_of_meeting="<?php echo $row2['Day']; ?>";
+        
+        if(day_of_meeting == 'Monday'){
         return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];
+        }
+
+        if(day_of_meeting == 'Tuesday'){
+        return [(day != 3 && day != 4 && day != 5 && day != 6 && day != 0 && day != 1), ''];
+        }
+
+        if(day_of_meeting == 'Wednesday'){
+        return [(day != 4 && day != 5 && day != 6 && day != 0 && day != 1 && day != 2), ''];
+        }
+
+        if(day_of_meeting == 'Thursday'){
+        return [(day != 5 && day != 6 && day != 0 && day != 1 && day != 2 && day != 3), ''];
+        }
+
+        if(day_of_meeting == 'Friday'){
+        return [(day != 6 && day != 0 && day != 1 && day != 2 && day != 3 && day != 4), ''];
+        }
+
+        if(day_of_meeting == 'Saturday'){
+        return [(day != 0 && day != 1 && day != 2 && day != 3 && day != 4 && day != 5), ''];
+        }
+
+        if(day_of_meeting == 'Sunday'){
+        return [(day != 1 && day != 2 && day != 3 && day != 4 && day != 5 && day != 6), ''];
+        }
+
+        
     }
   });
 
@@ -165,6 +207,45 @@ Select the date to meet:
 
 
  <div id="meeting_date"></div>
+
+
+<?php 
+
+$sqlscreening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion  WHERE ProjectID = '".$row2['ProjectID']."' ");
+$rowscreening = mysqli_fetch_array($sqlscreening);
+
+if($rowscreening['EnabledorDisabled'] == 'Enabled'){
+  echo '<br>';
+  echo 'Please answer the following question:';
+  echo '<br>';
+  echo '<br>';
+  echo $rowscreening['ScreeningQuestion'];
+  echo '<br>';
+  if($rowscreening['PotentialAnswer1'] != '' && $rowscreening['PotentialAnswer1'] != 'NULL' ){
+  echo '<input type="radio" style="display:block; float:left" name="PotentialAnswer[]" id="PotentialAnswer1" value="Potential Answer 1" />';
+  echo '<label>'.$rowscreening['PotentialAnswer1'].'</label>';
+  echo '<br>';
+  }
+  if($rowscreening['PotentialAnswer2'] != '' && $rowscreening['PotentialAnswer2'] != 'NULL'){
+  echo '<input type="radio" style="display:block; float:left" name="PotentialAnswer[]" id="PotentialAnswer2" value="Potential Answer 2" />';
+  echo '<label>'.$rowscreening['PotentialAnswer2'].'</label>';
+  echo '<br>';
+  }
+  if($rowscreening['PotentialAnswer3'] != '' && $rowscreening['PotentialAnswer3'] != 'NULL'){
+  echo '<input type="radio" style="display:block; float:left" name="PotentialAnswer[]" id="PotentialAnswer3" value="Potential Answer 3" />';
+  echo '<label>'.$rowscreening['PotentialAnswer3'].'</label>';
+  }
+}
+
+if($rowscreening['EnabledorDisabled'] == 'Disabled'){
+
+  echo '<input type="radio" style="display:block; float:left" name="PotentialAnswer[]" id="PotentialAnswer3" value="Not Required" />';
+
+}
+
+
+?>
+
 
 <?php } ?>
 
@@ -289,22 +370,21 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
     })
 
     
-    $(".result-no-date").hide(); 
+    $(".result-no-date").hide();
+    $(".result-no-potentialanswer").hide();  
 
     $(".accept"+<?php echo $row2['ProjectID']; ?>).click(function() {  
       //alert("delete"+<?php echo $row2['ProjectID']; ?>);
 
-        var proceed = true;
+          var proceed = true;
 
           var input = date;
           
           if(input == '' ){
-           
-            
-             $(".result-no-date").show(); 
+            $(".result-no-date").show(); 
             proceed = false;
             }
-       
+          
    
       
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
@@ -315,14 +395,21 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         //alert(finaltime);
 
       
+        var potentialanswer = $('input[name="PotentialAnswer[]"]:checked').size();
+        var potentialanswergiven = $('input[name="PotentialAnswer[]"]:checked').val();
+       //alert(n);
+        if (potentialanswer < 1) {
+          //alert("asdfads");
 
-     
+          $(".result-no-potentialanswer").show(); 
+          proceed = false;
+        }
       
 
 
       //$("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
       
-
+        //alert(potentialanswergiven);
  //get input field values
         
        
@@ -341,13 +428,14 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
       $(".cancel-accept").hide();
       $(".close-accept").show();
 
+      $(".result-no-potentialanswer").hide();
 
       $("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'userid':userid,'status':status,'accepted_to_participate':accepted_to_participate,'date':date};
+            post_data = {'projectid':projectid,'userid':userid,'status':status,'accepted_to_participate':accepted_to_participate,'date':date,'potentialanswergiven':potentialanswergiven};
             
             //Ajax post data to server
             $.post('acceptmeeting.php', post_data, function(response){  

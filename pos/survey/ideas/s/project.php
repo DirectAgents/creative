@@ -507,6 +507,7 @@ $(".btn-request-option-three").click(function() {
 <?php if(mysqli_num_rows($sql) == 1) { ?>
 
 
+<?php if($rowparticipantproject['Meeting_Status'] == 'Meeting Requests'){ ?>
 
 <div class="col-lg-11" style="padding:0px;">
  <div class="success2">
@@ -515,6 +516,26 @@ at <?php echo $rowparticipantproject['Final_Time']; ?>. <br>If <?php echo $rowpa
 
 </div>
 </div>
+
+<?php } ?>
+
+
+
+<?php if($rowparticipantproject['Meeting_Status'] == 'Upcoming Meetings'){ ?>
+
+<div class="col-lg-11" style="padding:0px;">
+ <div class="success2">
+You will meet <?php echo $rowparticipant['FirstName']; ?> on <?php echo $rowparticipantproject['Date_of_Meeting']; ?> 
+at <?php echo $rowparticipantproject['Final_Time']; ?><br>
+
+</div>
+</div>
+
+<?php } ?>
+
+
+
+
 
 <?php } ?>
 
@@ -828,14 +849,20 @@ while($rowtime = mysqli_fetch_array($sqltime))
  <?php if($screeningquestion['EnabledorDisabled'] == 'Enabled'){?> 
   
     <div class="col-lg-12">
+    <p>&nbsp;</p>
       <h3>You asked the following Screening Question</h3>
       <p><?php echo $screeningquestion['ScreeningQuestion']; ?></p>
-      <p><h4>You accepted this Answer:</h4></p>
+      <p><h4>You accept the following Answer:</h4></p>
       <p>
       <?php if($screeningquestion['Accepted'] == 'Potential Answer 1'){echo $screeningquestion['PotentialAnswer1'];} ?>
       <?php if($screeningquestion['Accepted'] == 'Potential Answer 2'){echo $screeningquestion['PotentialAnswer2'];} ?>
       <?php if($screeningquestion['Accepted'] == 'Potential Answer 3'){echo $screeningquestion['PotentialAnswer3'];} ?>
       </p>
+
+
+<?php if($rowparticipantanswer['PotentialAnswerGiven'] != '') { ?>
+
+
 <p><h4><?php echo $rowparticipant['FirstName']; ?>'s Answer was:</h4></p>
       <p>
 <?php if($rowparticipantanswer ['PotentialAnswerGiven'] == 'Potential Answer 1') {echo $screeningquestion['PotentialAnswer1'];} ?>
@@ -843,6 +870,22 @@ while($rowtime = mysqli_fetch_array($sqltime))
 <?php if($rowparticipantanswer['PotentialAnswerGiven'] == 'Potential Answer 3') {echo $screeningquestion['PotentialAnswer3'];} ?>
 
       </p>
+
+<?php } ?>    
+
+
+
+<?php if($rowparticipantanswer['PotentialAnswerGiven'] == '') { ?>
+
+
+<p><h4><?php echo $rowparticipant['FirstName']; ?> will respond to your screening question once a meeting request is established</h4></p>
+      <p>
+
+
+      </p>
+
+<?php } ?>    
+
 
       
 <p>&nbsp;</p>

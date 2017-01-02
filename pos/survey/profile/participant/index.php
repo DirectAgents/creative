@@ -910,11 +910,6 @@ echo '<div class="row">
   <?php } ?>
 
 
- <?php if($row['Bio'] != 'NULL' && $row['Bio'] != ''){ ?>
- <div class="therow">
-    <div class="col-lg-12"><h4>Interested in</h4><?php if($row['Industry_Interest'] != 'NULL'){echo $row['Industry_Interest'];}else{echo "No Bio";} ?></div>
-  </div>
-  <?php } ?> 
 
 <!--
   <div class="therow">

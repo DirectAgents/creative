@@ -113,7 +113,7 @@ $dtB = new DateTime($row2['Date_of_Meeting'].' '.$row2['Final_Time']);
 
 
 
-if ( $dtB < $dtA ) {
+if ( $dtB > $dtA ) {
 
 
 
@@ -473,6 +473,27 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $startup_hom
 
 
 <?php 
+
+}else{
+
+
+  echo '<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">No Recent Meetings</div>
+  <div class="create-one-here-box">
+      
+      <br><br>
+     <a href="'.BASE_PATH.'/participant/idea/browse/">
+        <button class="create-one-btn">Browse here for new ideas</button></a>
+        <p>&nbsp;</p>
+      
+  </div>
+</div>
+
+</div>
+</div>
+';
+
 
 }
 

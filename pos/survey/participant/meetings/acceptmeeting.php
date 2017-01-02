@@ -39,6 +39,14 @@ $meeting_date =  $date->format('Y-m-d');
 
 
 
+if($_POST['potentialanswergiven'] != 'Not Required'){
+
+  $insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_participant_potentialanswer(userID, ProjectID, PotentialAnswerGiven) 
+  VALUES('".$_SESSION['participantSession']."','".$_POST['projectid']."', '".$_POST['potentialanswergiven']."')");
+
+}
+
+
 
 $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup  WHERE userID = '".$row['startupID']."' ");
 $row4 = mysqli_fetch_array($sql4);

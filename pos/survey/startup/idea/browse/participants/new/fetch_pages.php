@@ -352,6 +352,15 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '
 $results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_project_request WHERE ProjectID = '".$_GET['id']."') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC LIMIT $position, $item_per_page");
 
 
+
+
+//Check if Screening Question is required for this idea
+
+
+
+
+
+
 //$results = mysql_query("SELECT id,userID, Gender FROM tbl_participant_project 
 //WHERE Gender RLIKE '".$Gender."' OR Age RLIKE '".$Age."' ORDER BY id DESC LIMIT $position, $item_per_page");
 
@@ -374,6 +383,10 @@ $(".load_more").hide();
 
 echo "</div>";
 
+
+
+
+
 //output results from database
 echo '<ul class="page_result">';
 
@@ -394,6 +407,11 @@ while($row2 = mysqli_fetch_array($results))
 
 $sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."' ");
 $row3 = mysqli_fetch_array($sql3);
+
+
+
+
+
 
 
 
