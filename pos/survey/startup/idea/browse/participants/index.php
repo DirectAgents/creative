@@ -23,14 +23,14 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../../../login.php');
+  $startup_home->redirect('../../../login');
 }
 
 
 
 
 $get_total_rows = 0;
-$results = $mysqli->query("SELECT COUNT(*) FROM tbl_startup_project");
+$results = $mysqli->query("SELECT COUNT(*) FROM tbl_project_request");
 if($results){
 $get_total_rows = $results->fetch_row(); 
 }
@@ -48,34 +48,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$Project = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
-$rowproject = mysql_fetch_array($Project);
-
-$meetupchoice=explode(',',$rowproject['Meetupchoice']);
-$age=explode(',',$rowproject['Age']);
-$gender=explode(',',$rowproject['Gender']);
-$minheight=explode(',',$rowproject['MinHeight']);
-$maxheight=explode(',',$rowproject['MaxHeight']);
-$location=explode(',',$rowproject['Location']);
-$status=explode(',',$rowproject['Status']);
-$ethnicity=explode(',',$rowproject['Ethnicity']);
-$smoke=explode(',',$rowproject['Smoke']);
-$drink=explode(',',$rowproject['Drink']);
-$diet=explode(',',$rowproject['Diet']);
-$religion=explode(',',$rowproject['Religion']);
-$education=explode(',',$rowproject['Education']);
-$job=explode(',',$rowproject['Job']);
 
 
 
-
-
-$ProjectPotentialanswers = mysql_query("SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
-$rowpotentialanswers = mysql_fetch_array($ProjectPotentialanswers);
-
-$screening=explode(',',$rowpotentialanswers['Screening']);
-
-$potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 ?>
 
@@ -83,8 +58,7 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 <html lang="en" id="features" class="tablet mobile">
     
     <head>
-
-<?php include("../../../headdder.php"); ?>
+       <?php include("../../../../header.php"); ?>
 
 
 
@@ -111,6 +85,7 @@ $(document).ready(function() {
 
     if(track_click <= total_pages) //make sure user clicks are still less than total pages
     {
+     
       //post page number and load returned data into result element
       $.post('fetch_pages.php?id='+<?php echo $_GET['id']; ?>,{'page': track_click}, function(data) {
       
@@ -159,7 +134,16 @@ $(document).ready(function() {
     <body>
 
 <!--TopNav-->
-        <?php include("../../../nav.php"); ?>
+         <header id="main-header" class='transparent'>
+  <div class="inner-col">
+   
+
+<?php include("../../../../nav.php"); ?>
+
+   
+  </div>
+</header>
+
 
 <!--TopNav-->
 
@@ -186,14 +170,7 @@ $(document).ready(function() {
   <div class="span12">
 
 
-    <div id="create-project-box">
-      <div id="create-project">
-              <!--<button class="initialism slide_open btn-success">Create a new project</button>-->
-
-              <a href="step1.php" class="btn-success">Create a new project</a>
-
-            </div>
-        </div>
+    
         <div id="target"></div>    
 <div id="white-container">
       <div id="dashboardSurveyTargetingContainerLogic">
@@ -209,7 +186,7 @@ $(document).ready(function() {
 
 
 <div align="center">
-<button class="load_more" id="load_more_button">load More</button>
+<button class="load_more" id="load_more_button">View More</button>
 <div class="animation_image" style="display:none;"><img src="ajax-loader.gif"> Loading...</div>
 </div>
 

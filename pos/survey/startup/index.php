@@ -431,7 +431,7 @@ $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
 if($count > 0 ){
-echo "<a href=".BASE_PATH."/startup/idea/browse/?id=".$row2['ProjectID'].">";
+echo "<a href=".BASE_PATH."/startup/idea/browse/participants/?id=".$row2['ProjectID'].">";
 echo $count;
 echo "</a>";
 }else{
