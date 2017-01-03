@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 27, 2016 at 07:34 AM
+-- Generation Time: Jan 03, 2017 at 04:26 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -99,6 +99,30 @@ INSERT INTO `c5t_setting` (`id`, `setting_name`, `setting_value`) VALUES
 (14, 'module_captcha_image_height', '60'),
 (15, 'module_captcha_alternative', 'Y'),
 (16, 'module_captcha_garbage_collector_active', 'Y');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `days`
+--
+
+CREATE TABLE IF NOT EXISTS `days` (
+  `id` int(11) NOT NULL,
+  `day` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `days`
+--
+
+INSERT INTO `days` (`id`, `day`) VALUES
+(1, 'Monday'),
+(2, 'Tuesday'),
+(3, 'Wednesday'),
+(4, 'Thursday'),
+(5, 'Friday'),
+(6, 'Saturday'),
+(7, 'Sunday');
 
 -- --------------------------------------------------------
 
@@ -458,7 +482,7 @@ CREATE TABLE IF NOT EXISTS `tbl_nda_draft` (
 --
 
 INSERT INTO `tbl_nda_draft` (`id`, `status`, `userID`, `startupID`, `participant_name`, `startup_name`, `nda_purpose`, `ProjectID`, `State`, `startup_signature`, `startup_sig_name`, `startup_sig_company`, `startup_sig_title`, `startup_sig_date`, `participant_signature`, `participant_sig_name`, `participant_sig_company`, `participant_sig_title`, `participant_sig_date`, `Updated`) VALUES
-(1, 'draft', '', '47', '', 'Franz Peter', 'this is the reason', '60597', 'NY', '437964.png', 'Franz Peter', '', '', '2016-12-13', '', '', '', '', '0000-00-00', '0000-00-00');
+(1, 'draft', '', '47', '', 'Franz Peter11', '', '60597', 'NY', '231675.png', 'Franz Peter222', 'n/a', 'Mr.', '2016-12-31', '', '', '', '', '0000-00-00', '2016-12-29');
 
 -- --------------------------------------------------------
 
@@ -560,15 +584,15 @@ CREATE TABLE IF NOT EXISTS `tbl_participant` (
   `Country` varchar(255) NOT NULL,
   `Timezone` varchar(255) NOT NULL,
   `Bio` longtext NOT NULL,
-  `Date_Availability_Option1` date DEFAULT NULL,
+  `Days_Availability_Option1` varchar(255) DEFAULT NULL,
   `From_Time_Option1` varchar(255) NOT NULL,
   `To_Time_Option1` varchar(255) NOT NULL,
   `Location_Option1` varchar(255) NOT NULL,
-  `Date_Availability_Option2` date DEFAULT NULL,
+  `Days_Availability_Option2` varchar(255) DEFAULT NULL,
   `From_Time_Option2` varchar(22) NOT NULL,
   `To_Time_Option2` varchar(255) NOT NULL,
   `Location_Option2` varchar(255) NOT NULL,
-  `Date_Availability_Option3` date DEFAULT NULL,
+  `Days_Availability_Option3` varchar(255) DEFAULT NULL,
   `From_Time_Option3` varchar(255) NOT NULL,
   `To_Time_Option3` varchar(255) NOT NULL,
   `Location_Option3` varchar(255) NOT NULL,
@@ -609,11 +633,11 @@ CREATE TABLE IF NOT EXISTS `tbl_participant` (
 -- Dumping data for table `tbl_participant`
 --
 
-INSERT INTO `tbl_participant` (`userID`, `facebook_id`, `google_id`, `google_picture_link`, `FirstName`, `LastName`, `userEmail`, `userPass`, `EmailNotifications`, `Meetupchoice`, `CountryCode`, `Phone`, `Age`, `Gender`, `Height`, `Status`, `Ethnicity`, `Smoke`, `Drink`, `Diet`, `Religion`, `Education`, `Job`, `Interest`, `Languages`, `Street`, `City`, `State`, `Zip`, `Country`, `Timezone`, `Bio`, `Date_Availability_Option1`, `From_Time_Option1`, `To_Time_Option1`, `Location_Option1`, `Date_Availability_Option2`, `From_Time_Option2`, `To_Time_Option2`, `Location_Option2`, `Date_Availability_Option3`, `From_Time_Option3`, `To_Time_Option3`, `Location_Option3`, `Monday_From`, `Monday_To`, `Tuesday_From`, `Tuesday_To`, `Wednesday_From`, `Wednesday_To`, `Thursday_From`, `Thursday_To`, `Friday_From`, `Friday_To`, `Saturday_From`, `Saturday_To`, `Sunday_From`, `Sunday_To`, `Monday_Location`, `Tuesday_Location`, `Wednesday_Location`, `Thursday_Location`, `Friday_Location`, `Saturday_Location`, `Sunday_Location`, `userStatus`, `tokenCode`, `profile_image`, `account_id`, `owner_user_id`, `access_token`, `code`, `bank_account`, `Date_Created`, `account_verified`) VALUES
+INSERT INTO `tbl_participant` (`userID`, `facebook_id`, `google_id`, `google_picture_link`, `FirstName`, `LastName`, `userEmail`, `userPass`, `EmailNotifications`, `Meetupchoice`, `CountryCode`, `Phone`, `Age`, `Gender`, `Height`, `Status`, `Ethnicity`, `Smoke`, `Drink`, `Diet`, `Religion`, `Education`, `Job`, `Interest`, `Languages`, `Street`, `City`, `State`, `Zip`, `Country`, `Timezone`, `Bio`, `Days_Availability_Option1`, `From_Time_Option1`, `To_Time_Option1`, `Location_Option1`, `Days_Availability_Option2`, `From_Time_Option2`, `To_Time_Option2`, `Location_Option2`, `Days_Availability_Option3`, `From_Time_Option3`, `To_Time_Option3`, `Location_Option3`, `Monday_From`, `Monday_To`, `Tuesday_From`, `Tuesday_To`, `Wednesday_From`, `Wednesday_To`, `Thursday_From`, `Thursday_To`, `Friday_From`, `Friday_To`, `Saturday_From`, `Saturday_To`, `Sunday_From`, `Sunday_To`, `Monday_Location`, `Tuesday_Location`, `Wednesday_Location`, `Thursday_Location`, `Friday_Location`, `Saturday_Location`, `Sunday_Location`, `userStatus`, `tokenCode`, `profile_image`, `account_id`, `owner_user_id`, `access_token`, `code`, `bank_account`, `Date_Created`, `account_verified`) VALUES
 (28, '10157632974310062', '0', '', 'Alper', 'Dilmen', 'ald183s@gmail.com', '', 'NULL', '', '', '61114444', '20', 'Female', '53', 'Married', 'Black', 'Sometimes', 'Very Often', 'Kosher', 'Atheist', 'High School', 'Banking / Finance', 'Dancing', '', '', 'New York', 'AL', '', '', '', '', '2016-11-27', '04:00pm', '10:00pm', 'Amsterdam Avenue, New York, NY, United States', '2016-11-27', '03:00pm', '10:00pm', '312 U.S. 1, Orange, CT, United States', '2016-11-27', '09:00pm', '12:00am', 'Amsterdam Avenue, New York, NY, United States', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'N', '', '', '613513821', '189754692', 'STAGE_af0287ec6ba197eb317a59bd62d51628cc9e47e8ac08fc7f6749a9007f36dc1b', '3e196f284d389d7160cc423b1872d2938185f468e1643c843a', '', '2016-11-18', '1'),
 (30, '0', '0', '', 'Lola', 'Bora', 'wepaystage2@hotmail.com', 'b8150db267de096dd2573e6d91882778', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', '1a88a05615fc3a2647d33746e69deb02', '', '1320903211', '189754692', 'STAGE_9b005dbacb9b7f86bf66f976c44e8cebde30be47b8d3c66a7ee0a1b6f257e8fe', '67bb20271c17f113866b706a6b166fa26fc84e13d1354228e7', '', '2016-12-09', ''),
 (31, '0', '116585564878133212506', 'https://lh5.googleusercontent.com/-gEtROnijSjk/AAAAAAAAAAI/AAAAAAAAAAs/9GAC4wQDn0U/photo.jpg', 'Franz', 'Peter', 'wepaystage@gmail.com', 'b8150db267de096dd2573e6d91882778', '', '', '', '', '20', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', '9bc6fd67e357180da31c4f70205e8289', '', '1812989742', '167070014', 'STAGE_3157a9551b8c9c076f9a3631d1af99785eeafaa1674ff9cebbe0ca8887846d69', '13af4b196b1ab193735c8c74a190140c80df84eabdc4d5e774', '', '2016-12-10', '1'),
-(32, '0', '0', '', 'Mike', 'Jackson', 'wepay.participant.stage4@gmail.com', 'b8150db267de096dd2573e6d91882778', 'NULL', '', '', '', '19', '', '', '', '', '', '', '', '', '', '', 'Dancing', '', '', '', 'AL', '', '', '', '', '2016-12-22', '04:00pm', '07:00pm', 'Starbucks, Astoria, Queens, NY, United States', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', 'b51fc221a72763e12d703b396ed963c6', 'thumb_148190933007-snow-mountain-sunset.jpg', '829457049', '27005031', 'STAGE_5dbb95faae50a159844a43d0c8a29ab25aa8ac429194999aad03799195ac536d', '111ea5148ca4c007ac0fea6e44117f4695af51a95a004c2afd', '', '2016-12-11', '');
+(32, '0', '0', '', 'Mike', 'Jackson', 'wepay.participant.stage4@gmail.com', 'b8150db267de096dd2573e6d91882778', 'NULL', '', '', '', '18', '', '', '', '', '', '', '', '', '', '', 'Dancing', '', '', 'New York', 'AL', '', '', '', 'I am like this', 'Monday,Tuesday,Wednesday', '04:00pm', '10:00pm', 'Avenue of the Americas, New York, NY, United States', 'Saturday,Sunday', '09:00am', '03:00pm', 'SoHo, New York, NY, United States', 'Wednesday,Thursday', '08:00am', '10:00am', 'Secaucus, NJ, United States', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', 'b51fc221a72763e12d703b396ed963c6', 'thumb_148190933007-snow-mountain-sunset.jpg', '829457049', '27005031', 'STAGE_5dbb95faae50a159844a43d0c8a29ab25aa8ac429194999aad03799195ac536d', '111ea5148ca4c007ac0fea6e44117f4695af51a95a004c2afd', '', '2016-12-11', '');
 
 -- --------------------------------------------------------
 
@@ -664,6 +688,26 @@ INSERT INTO `tbl_participant_languages` (`id`, `userID`, `Languages`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_participant_potentialanswer`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_participant_potentialanswer` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `ProjectID` int(11) NOT NULL,
+  `PotentialAnswerGiven` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_participant_potentialanswer`
+--
+
+INSERT INTO `tbl_participant_potentialanswer` (`id`, `userID`, `ProjectID`, `PotentialAnswerGiven`) VALUES
+(4, 32, 60597, 'Potential Answer 1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_project_request`
 --
 
@@ -693,7 +737,14 @@ CREATE TABLE IF NOT EXISTS `tbl_project_request` (
   `Potential_Answer_Given` varchar(255) NOT NULL,
   `Date_Posted` date NOT NULL,
   `Time_Posted` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_project_request`
+--
+
+INSERT INTO `tbl_project_request` (`id`, `userID`, `startupID`, `ProjectID`, `Meetupchoice`, `Meeting_Status`, `Viewed_by_Startup`, `Viewed_by_Participant`, `Date_of_Meeting`, `Day`, `From_Time`, `To_Time`, `Final_Time`, `Location`, `Accepted_to_Participate`, `Not_Qualified_Anymore`, `Status`, `Requested_By`, `Met`, `Payment`, `Rated_Participant`, `Comment_Participant`, `Potential_Answer_Given`, `Date_Posted`, `Time_Posted`) VALUES
+(26, 32, 47, 60597, '', 'Upcoming Meetings', 'No', 'No', '2017-01-15', 'Sunday', '', '', '09:00am', 'SoHo, New York, NY, United States', 'Accepted', '', 'Meeting Set', 'Startup', '', '', '', '', '', '2017-01-02', '02:09:59 PM');
 
 -- --------------------------------------------------------
 
@@ -837,7 +888,7 @@ CREATE TABLE IF NOT EXISTS `tbl_startup_project` (
 --
 
 INSERT INTO `tbl_startup_project` (`id`, `ProjectID`, `Stage`, `Category`, `startupID`, `Name`, `Pay`, `Minutes`, `MinReq`, `Meetupchoice`, `Age`, `Gender`, `MinHeight`, `MaxHeight`, `Street`, `City`, `State`, `Zip`, `Country`, `Status`, `Ethnicity`, `Smoke`, `Drink`, `Diet`, `Religion`, `Education`, `Job`, `Interest`, `Languages`, `Details`, `Agenda_One`, `Agenda_Two`, `Agenda_Three`, `project_image`, `ProjectStatus`, `FinishedProcess`, `NDA`, `Date_Created`, `Date_Updated`) VALUES
-(1, 60597, 'About to launch', 'social', 47, 'Idea 1', '23.00', '55', 'Age,Interest', '', '18,19,20,21,22,23,24', 'NULL', 'NULL', 'NULL', '', '', '', '', '', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'Bilingual Spanish/English', 'French', 'This is this idea etc....', 'Get feedback about my idea....', '', '', 'thumb_148279053207-snow-mountain-sunset.jpg', 'Private', 'Y', '', '2016-12-26', '0000-00-00');
+(1, 60597, 'About to launch', 'social', 47, 'Idea 1', '23.00', '55', 'Age,Interest', '', '18,19,20,21,22,23,24', 'NULL', 'NULL', 'NULL', '', '', '', '', '', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'Dancing', 'French', 'This is this idea etc....', 'Get feedback about my idea....', '', '', 'thumb_148279053207-snow-mountain-sunset.jpg', 'Private', 'Y', 'Yes', '2016-12-30', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -875,7 +926,7 @@ CREATE TABLE IF NOT EXISTS `tbl_startup_screeningquestion` (
 --
 
 INSERT INTO `tbl_startup_screeningquestion` (`id`, `userID`, `ProjectID`, `ScreeningQuestion`, `PotentialAnswer1`, `PotentialAnswer2`, `PotentialAnswer3`, `Accepted`, `EnabledorDisabled`) VALUES
-(1, 47, 60597, 'Can you do this?', 'Yes', 'No', '', 'Potential Answer 1', 'Enabled');
+(1, 47, 60597, 'Can you do this?', 'Yes', 'No', 'NULL', 'Potential Answer 1', 'Enabled');
 
 -- --------------------------------------------------------
 
@@ -1042,6 +1093,12 @@ ALTER TABLE `c5t_setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `days`
+--
+ALTER TABLE `days`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `google_users`
 --
 ALTER TABLE `google_users`
@@ -1115,6 +1172,12 @@ ALTER TABLE `tbl_participant_languages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_participant_potentialanswer`
+--
+ALTER TABLE `tbl_participant_potentialanswer`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_project_request`
 --
 ALTER TABLE `tbl_project_request`
@@ -1176,6 +1239,11 @@ ALTER TABLE `wepay`
 --
 
 --
+-- AUTO_INCREMENT for table `days`
+--
+ALTER TABLE `days`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
@@ -1231,10 +1299,15 @@ ALTER TABLE `tbl_participant_interests`
 ALTER TABLE `tbl_participant_languages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
+-- AUTO_INCREMENT for table `tbl_participant_potentialanswer`
+--
+ALTER TABLE `tbl_participant_potentialanswer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `tbl_project_request`
 --
 ALTER TABLE `tbl_project_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `tbl_startup`
 --
