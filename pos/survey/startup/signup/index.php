@@ -219,6 +219,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 <script src="<?php echo BASE_PATH; ?>/startup/js/password.js"></script>
 
+<style href>a {text-decoration: none} </style>
+
 
   </head>
 
@@ -382,17 +384,12 @@ $content = new SendGrid\Content("text/html", '
                                     <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                            <tbody><tr>
-                                                 <td align="left" style="padding: 30px 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Click HERE to Activate 
-                                                
-                                                </td>
-                                            </tr>
+                                            <tbody>
                                               <tr>
                                                 <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
                                                 
-                                                 <a href="http://localhost/creative/pos/survey/startup/account/verify.php?id=$id&code=$code">
-                                                <div style="padding: 20px; max-width:240px; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration:none" class="padding">Confirm Email Address</div>
+                                                 <a href="http://localhost/creative/pos/survey/startup/account/verify.php?id='.$id.'&code='.$code.'">
+                                                <div style="padding: 20px; max-width:240px; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">Confirm Email Address</div>
                                                 </a>
                                                 
                                                 </td>
