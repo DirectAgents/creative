@@ -42,7 +42,7 @@ if ( $dtA > $dtB ) {
 
  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
  	Meeting_Status='Recent Meetings', 
- 	Startup_Email_Recent_Meeting_Reminder_Sent = 'Yes'
+ 	Participant_Email_Recent_Meeting_Reminder_Sent = 'Yes'
   WHERE id = '".$row2['id']."' ");
 
 

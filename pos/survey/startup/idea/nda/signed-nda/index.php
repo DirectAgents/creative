@@ -474,7 +474,7 @@ $(document).ready(function () {
 
                       <?php 
 $date = new DateTime($rownda['startup_sig_date']);
-$thedate =  $date->format('m/d/Y');
+$thedate =  $date->format('M d, Y');
 
                       echo $thedate; ?></div>
                     </div>
@@ -488,7 +488,7 @@ $Participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userI
 $rowparticipant = mysqli_fetch_array($Participant);
 
 $date = new DateTime($rownda['participant_sig_date']);
-$thedate =  $date->format('m/d/Y');
+$thedate =  $date->format('M d, Y');
 
 ?>
 

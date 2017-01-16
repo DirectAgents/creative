@@ -419,7 +419,7 @@ $(document).ready(function(){
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php 
 
 $date = new DateTime($rownda['startup_sig_date']);
-$thedate =  $date->format('m/d/Y');
+$thedate =  $date->format('M d, Y');
 
                       echo $thedate; 
 
@@ -434,7 +434,7 @@ $thedate =  $date->format('m/d/Y');
 if($rownda['Updated'] != '0000-00-00'){
 
 $date = new DateTime($rownda['Updated']);
-$thedate =  $date->format('m/d/Y');
+$thedate =  $date->format('M d, Y');
 
                 echo $thedate; 
 

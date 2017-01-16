@@ -79,20 +79,20 @@ function isCanvasBlank(canvas) {
     });
  
 $("#save-nda").click(function(){
+  //alert("asdfasfd");
         var proceed = true;
         
-        var projectid  = $('input[name=projectid').val();
-        var state  = $('input[name=state').val();
-        var nda_purpose = $("textarea[name='nda_purpose']").val();
-        var disclosure_party  = $('input[name=disclosure_party').val();
-        var the_signature  = $('input[name=the_signature').val();
-        var startup_name  = $('input[name=startup_name').val();
-        var startup_sig_name  = $('input[name=startup_sig_name').val();
-        var startup_sig_title  = $('input[name=startup_sig_title').val();
-        var startup_sig_company  = $('input[name=startup_sig_company').val();
-        var startup_sig_date  = $('input[name=startup_sig_date').val();
+        var projectid  = $('input[name=projectid]').val();
+        var state  = $('input[name=state]').val();
+        //var nda_purpose = $("textarea[name='nda_purpose']").val();
+        var disclosure_party  = $('input[name=disclosure_party]').val();
+        var the_signature  = $('input[name=the_signature]').val();
+        var startup_name  = $('input[name=startup_name]').val();
+        var startup_sig_name  = $('input[name=startup_sig_name]').val();
+        var startup_sig_title  = $('input[name=startup_sig_title]').val();
+        var startup_sig_company  = $('input[name=startup_sig_company]').val();
+        var startup_sig_date  = $('input[name=startup_sig_date]').val();
         
-   
 
          if(startup_sig_date == ''){ 
              $("#startup_sig_date").css('border-color','red'); //change border color to red 
@@ -130,7 +130,7 @@ $("#save-nda").click(function(){
         $.ajax({
             method: "POST",
             url: "../../../../nda/pdf/signatures/edit-startup.php",
-            data: { signature: dataURI, projectid: projectid, state: state , nda_purpose: nda_purpose, disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
+            data: { signature: dataURI, projectid: projectid, state: state , disclosure_party: disclosure_party, startup_sig_name: startup_sig_name,
             startup_sig_title: startup_sig_title, startup_sig_company: startup_sig_company, startup_sig_date: startup_sig_date  }
         })
         .success(function( response ) {

@@ -60,7 +60,7 @@ if(mysqli_num_rows($sql) == 0)
 
  echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">Meetings that never happened</div>
+<div class="empty-projects">Archived Meetings</div>
   <div class="create-one-here-box">
       
       <br><br>

@@ -6,7 +6,7 @@ include("../../../config.php"); //include config file
 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE Status = 'Meeting Set' AND Meeting_Status = 'Upcoming Meetings' AND Met ='Yes' AND Accepted_to_Participate = 'Accepted' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE Status = 'Meeting Set' AND Meeting_Status = 'Upcoming Meetings' AND Accepted_to_Participate = 'Accepted' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -40,9 +40,7 @@ if ( $dtA > $dtB ) {
 
 
 
- $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
- 	Meeting_Status='Recent Meetings', 
- 	Startup_Email_Recent_Meeting_Reminder_Sent = 'Yes'
+ $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Meeting_Status='Archived Meetings'
   WHERE id = '".$row2['id']."' ");
 
 
