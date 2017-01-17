@@ -19,6 +19,13 @@ $sql=mysqli_query($connecDB,"DELETE FROM tbl_startup_project WHERE startupID='".
 
 $sql=mysqli_query($connecDB,"DELETE FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."'");
 
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."'");
+
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_nda_pending WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."'");
+
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_nda_signed WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."'");
+
+
 
 
 

@@ -651,7 +651,8 @@ jq(document).ready(function(){
          <div style="float:left; width:100%">
             <div class="screening-description">
                   If you like to share your idea with the public then choose <strong>Public</strong>. <br>Choose <strong>Private</strong>
-                  if you like to keep your idea as private. When set to Private only you can see the idea.
+                  if you like to keep your idea as private. When set to Private only you can see the idea. <br>In Private mode you can still share
+                  your idea with people you choose.
                 </div>
 </div>
             </div>

@@ -162,7 +162,7 @@ $stage=explode(',',$rowproject['Stage']);
  <h3>Idea Details</h3>
                 
                  <div class="screening-description">
-                  Briefly describe what you plan to do or offer to your futre customers. This will give participants an overall picture of your idea
+                  Briefly describe what you plan to do or offer to your future customers. This will give participants an overall picture of your idea
                 </div>
 
 

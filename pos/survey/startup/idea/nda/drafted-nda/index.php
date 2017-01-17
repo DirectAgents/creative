@@ -418,7 +418,7 @@ $(document).ready(function(){
                       <div class="label">Created:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php 
 
-$date = new DateTime($rownda['startup_sig_date']);
+$date = new DateTime($row2['startup_sig_date']);
 $thedate =  $date->format('M d, Y');
 
                       echo $thedate; 
@@ -427,13 +427,16 @@ $thedate =  $date->format('M d, Y');
                        ?></div>
                     </div>
                     <div class="item date">
-                      <div class="label">Updated:</div>
+                      <div class="label">NDA for idea:</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
                  <?php
-if($rownda['Updated'] != '0000-00-00'){
 
-$date = new DateTime($rownda['Updated']);
+echo $rowproject['Name'];
+/*
+if($row2['Updated'] != '0000-00-00'){
+
+$date = new DateTime($row2['Updated']);
 $thedate =  $date->format('M d, Y');
 
                 echo $thedate; 
@@ -441,6 +444,7 @@ $thedate =  $date->format('M d, Y');
 }else{
   echo 'Not updated yet';
 }
+*/
 
                  ?>
 

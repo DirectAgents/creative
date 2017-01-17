@@ -349,7 +349,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var potentialansweraccepted = $('input[name="potentialansweraccepted[]"]:checked').map(function () {return this.value;}).get().join(",");
 
         
-        //alert(minreq);
+       
         //var testing       = $('input[name=meetupselection').val();
         //var testing = $('.meetupselection:checked').serialize();
         // $('input[name="meetupselection[]"]').serialize(); /* it can return true or false */
@@ -835,7 +835,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
         //var agenda_two  = $('input[name=agenda_two').val();
         //var agenda_three  = $('input[name=agenda_three').val();
        
-       
+       //alert(details);
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -889,8 +889,8 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
         //get input field values
         
-        var summary = $("textarea[name='summary']").val();
-        var details  = $('input[name=details]').val();
+        //var summary = $("textarea[name='summary']").val();
+        var details  = $("textarea[name='details']").val();
         var agenda_one  = $("textarea[name='agenda_one']").val();
         //var agenda_two  = $('input[name=agenda_two').val();
         //var agenda_three  = $('input[name=agenda_three').val();
@@ -909,7 +909,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'details':details,'summary':summary,'agenda_one':agenda_one};
+            post_data = {'details':details,'agenda_one':agenda_one};
             
             //Ajax post data to server
             $.post('step2form.php', post_data, function(response){  

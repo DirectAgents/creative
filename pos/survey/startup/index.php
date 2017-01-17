@@ -231,7 +231,7 @@ echo '<div class="row">
   <div class="create-one-here-box">
       <div class="create-one">
  <p>&nbsp;</p>
-        <a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000);?>" class="create-one-btn">Create one here</a>
+        <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="create-one-btn">Create one here</a>
 
        </div> 
        <p>&nbsp;</p>
@@ -303,7 +303,7 @@ $(document).ready(function () {
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
        
        
         
@@ -409,7 +409,7 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
                   <div class="survey-metadata">
                     <div class="item ">
                       <div class="label">Created:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date, 'm/d/Y'); ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date, 'M d, Y'); ?></div>
                     </div>
                     <div class="item date">
                       <div class="label">Category:</div>

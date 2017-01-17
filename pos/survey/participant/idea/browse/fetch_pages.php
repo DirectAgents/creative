@@ -221,16 +221,16 @@ echo '
 
   if($row['project_image'] != ''){
   
-  echo '<img src="'.BASE_PATH.'/ideas/uploads/'.$row['project_image'].'" class="img-circle"/>';
+  echo '<img src="'.BASE_PATH.'/ideas/uploads/'.$row['project_image'].'" class="img-circle-profile"/>';
 
 }else{
 
- echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" class="img-circle"/>';
+ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" class="img-circle-profile"/>';
 }
   echo '</div>
   <div class="col-lg-7"><p><h4>'.$row['Name'].'</h4></p><p>'.$row['Details'].'</p>
   <p>Payout: $'.$row['Pay'].' for '.$row['Minutes'].' minutes </p></div>
-   <div class="col-lg-3"><a href="../../../ideas/'.$row['Category'].'/?id='.$row['ProjectID'].'"><button type="button" class="btn-request">View Idea</button></a> </div>
+   <div class="col-lg-3"><a href="../../../ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'"><button type="button" class="btn-request">View Idea</button></a> </div>
 </div>
 </div>
 

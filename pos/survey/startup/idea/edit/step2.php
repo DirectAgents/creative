@@ -146,7 +146,7 @@ if($rowproject < 1){
           <div class="filter">
              
                <label for="screening"><span ng-click="enableScreening()" role="button" tabindex="0">
-                <h2>Project Summary</h2></span></label>
+                <h2>Idea Summary</h2></span></label>
              </div>
 
 
@@ -164,10 +164,10 @@ if($rowproject < 1){
 
 <p>&nbsp;</p>
 
- <h3>Project/Idea Details</h3>
+ <h3>Idea Details</h3>
                 
                  <div class="screening-description">
-                  Briefly describe what you plan to do or offer to your target audience. This will give participants an overall picture of your project.
+                  Briefly describe what you plan to do or offer to your future customers. This will give participants an overall picture of your idea
                 </div>
 
 

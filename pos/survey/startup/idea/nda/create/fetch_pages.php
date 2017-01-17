@@ -268,7 +268,7 @@ The parties are only allowed to use the confidential information for the above p
 
 
 
-<input type="text" style="width:250px" name="startup_sig_date" id="startup_sig_date" placeholder="Today's Date" />
+<input type="text" style="width:250px" name="startup_sig_date" id="startup_sig_date" placeholder="Date" />
 
 </div>
 </div>

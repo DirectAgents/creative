@@ -140,8 +140,8 @@ if(mysqli_num_rows($sql2)>0)
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_screeningquestion(userID, ProjectID, ScreeningQuestion, PotentialAnswer1, PotentialAnswer2,
-PotentialAnswer3, EnabledorDisabled) VALUES('".$_SESSION['startupSession']."','".$_SESSION['projectid']."','".$screeningquestion."','".$potentialanswer1."',
-'".$potentialanswer2."', '".$potentialanswer3."', '".$screening."')");
+PotentialAnswer3, Accepted, EnabledorDisabled) VALUES('".$_SESSION['startupSession']."','".$_SESSION['projectid']."','".$screeningquestion."','".$potentialanswer1."',
+'".$potentialanswer2."', '".$potentialanswer3."', '".$potentialansweraccepted."' ,'".$screening."')");
   
 
  
