@@ -21,6 +21,12 @@ $rowscreening = mysqli_fetch_array($Screening);
 
 $startup_home = new STARTUP();
 
+if(!$startup_home->is_logged_in())
+{
+ header("Location:../../../startup/");
+}
+
+
 if($startup_home->is_logged_in())
 {
 //exit();

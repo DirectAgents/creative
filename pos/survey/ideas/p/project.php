@@ -19,9 +19,18 @@ $rowproject = mysqli_fetch_array($Project);
 
 
 
+$Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screening WHERE ProjectID='".$_GET['id']."'");
+$rowscreening = mysqli_fetch_array($Screening);
+
 
 
 $participant_home = new PARTICIPANT();
+
+if(!$participant_home->is_logged_in())
+{
+ header("Location:../../../participant/");
+}
+
 
 
 if($participant_home->is_logged_in())
@@ -178,9 +187,9 @@ AND r.ProjectID ='".$_GET['id']."' $theage $thegender $theheight $thecity $thest
 
 if(mysqli_num_rows($sql3) == false)
 {
-
-  echo "You can't view this page";
-  //header("Location:../../participant/");
+  //echo $_SESSION['participantSession'];
+  //echo "You can't view this page";
+  header("Location:../../../participant/");
 
 }
 
@@ -257,9 +266,7 @@ $('#location_option3').hide();
  $("#option").change(function() { 
 
 
-
  var option = $("select[name='option']").val();
-
 
 
 
@@ -310,7 +317,7 @@ $('#location_option3').hide();
               $('#wheretomeet').show();
               $('#notimeset').text(''); 
               $('#based').show();
-              $('#date').text(data[0].date);   
+              $('#days').text(data[0].days);   
               $('#at').show();
               $('#from').text(data[0].from); 
             }
@@ -344,7 +351,7 @@ $('#location_option3').hide();
 
 
 
-        datevalue = document.getElementById("date");
+        daysvalue = document.getElementById("days");
         fromtimevalue = document.getElementById("from");
         totimevalue = document.getElementById("to");
 
@@ -352,19 +359,21 @@ $('#location_option3').hide();
         
         var option = $("select[name='option']").val();
 
-        var projectid  = $('input[name=projectid').val();
-        var startupid  = $('input[name=startupid').val();
+        var screeningquestion_required  = $('input[name=screeningquestion_required]').val();
+
+        var projectid  = $('input[name=projectid]').val();
+        var startupid  = $('input[name=startupid]').val();
         //var day = $("select[name='day']").val();
-        var date = datevalue.innerHTML;
+        var days = daysvalue.innerHTML;
         var fromtime = fromtimevalue.innerHTML;
         var totime = totimevalue.innerHTML;
 
         var potentialanswergiven = $('input[name="potentialanswergiven[]"]:checked').map(function () {return this.value;}).get().join(",");
 
 
-        if(option == 'Option1'){var location  = $('input[name=location_option1').val();}
-        if(option == 'Option2'){var location  = $('input[name=location_option2').val();}
-        if(option == 'Option3'){var location  = $('input[name=location_option3').val();}
+        if(option == 'Option1'){var location  = $('input[name=location_option1]').val();}
+        if(option == 'Option2'){var location  = $('input[name=location_option2]').val();}
+        if(option == 'Option3'){var location  = $('input[name=location_option3]').val();}
         
        
         
@@ -386,12 +395,17 @@ $('#location_option3').hide();
         } 
 
 
+
+        if(screeningquestion_required == 'Yes'){
+
         var potentialanswergiven_checkedstatus = $('input[name="potentialanswergiven[]"]:checked').size();
 
         if(potentialanswergiven_checkedstatus <1 ){ 
            output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please select one Answer! </div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
+        }
+
         }
 
         //everything looks good! proceed...
@@ -402,7 +416,7 @@ $('#location_option3').hide();
          
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'startupid':startupid,'fromtime':fromtime,'totime':totime,'date':date,'location':location, 'potentialanswergiven':potentialanswergiven};
+  post_data = {'projectid':projectid,'startupid':startupid,'fromtime':fromtime,'totime':totime,'days':days,'location':location, 'potentialanswergiven':potentialanswergiven};
             
             //Ajax post data to server
             $.post('../place-suggest-ajax.php', post_data, function(response){  
@@ -619,7 +633,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 
 
-<div class="therow">
+
  <div class="col-lg-12">    
 <h3>Set up a meeting</h3>
 </div>
@@ -675,7 +689,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 <h4 id="notimeset"></h4>
 
 <h4 id="based">Based on your availability you can meet on&nbsp;</h4> 
-<h4 id="date"></h4>
+<h4 id="days"></h4>
 <h4 id="at">&nbsp;at&nbsp;</h4>
 <div id="from"></div>
 
@@ -732,6 +746,10 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 
 <?php if(mysqli_num_rows($Screening)==1) { ?>
+
+
+ <input id="screeningquestion_required" name="screeningquestion_required" type="text" style="display:block" value="Yes"/> 
+
 
  <div class="col-sm-12">
 
@@ -801,7 +819,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
  </div>
  </div>
 
-</div>
+
 
 
 

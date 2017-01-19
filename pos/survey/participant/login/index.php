@@ -284,7 +284,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <div class="form">
   
 <div class="info">
-  <h1>LOGIN AS A PARTICIPANT</h1>
+  <h1>Sign in to your account</h1>
 </div>
 
 <div class="loginas">
@@ -300,7 +300,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
    
   </form>
 
-  
+  <div style="margin-top:30px; background:#f5f5f5">
   
 <?php
 
@@ -484,7 +484,7 @@ echo 'id: ' . $user['id'];
 ?>
 
 
-
+</div>
 
 
 </div>

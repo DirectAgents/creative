@@ -41,7 +41,7 @@ $ratingRow = $result->fetch_assoc();
 
 
 
-$rating_and_comment=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE startup_id='".$_SESSION['startupSession']."' AND comment_identifier_id='".$_GET['id']."'");
+$rating_and_comment=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE comment_identifier_id='".$_GET['id']."'");
 
 
 
@@ -422,7 +422,7 @@ echo '</a>';
 echo '<div class="thetitle">'.$row['FirstName'].' qualify\'s for these ideas:</div>';
 
 
-$sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' ORDER BY id DESC");
+$sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project ORDER BY id DESC");
 //$resultsstartup=mysql_query($sqlstartup);
 
 while($row3 = mysqli_fetch_array($sqlstartup)){
@@ -744,7 +744,7 @@ $(document).ready(function () {
 
 
 
-<a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
 
 
 
@@ -757,7 +757,7 @@ $(document).ready(function () {
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$row2['ProjectID']."'");
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row2['ProjectID']."'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 
@@ -796,7 +796,7 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
                       <div class="label">For:</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php echo $row2['Minutes']; ?> minutes of your time
+                          <?php echo $row2['Minutes']; ?> minutes
                         </span>
                       </div>
                     </div>
