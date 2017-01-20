@@ -47,7 +47,7 @@ if(!$startup_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Accepted_to_Participate = 'Pending' AND Date_of_Meeting = '0000-00-00' AND Status != 'Canceled_by_Participant'  ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Accepted_to_Participate = 'Pending' AND Date_of_Meeting = '0000-00-00' AND Status != 'Canceled_by_Participant' AND Status != 'Declined_by_Participant'  ORDER BY id DESC ");
 //$result=mysql_query($sql);
 
 //$row=mysql_fetch_array($result);
@@ -115,12 +115,22 @@ $date = date('Y-m-d h:m A');
   <div class="result-accept">
     <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Successfully Accepted!</div>
   </div>
+
+
+<div class="result-no-date">
+<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
+    <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Please choose a date!</div>
+    </div>
+  </div>
+
+
 <h4>You are about to accept the meeting request?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 
-<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
+
+<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] != '0000-00-00') { ?> 
 
 Select a time to meet:
 
@@ -166,6 +176,133 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 
 <?php } ?>
+
+
+
+
+
+
+<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?> 
+
+
+<input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Meeting Set"/>
+<input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Accepted"/>
+
+
+Select a time to meet:
+
+<?php 
+
+//echo $row2['To_Time'];
+
+
+
+$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['From_Time']."%'");
+//$resultfrom=mysql_query($sqlfrom);
+$rowfrom = mysqli_fetch_array($sqlfrom);
+
+$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['To_Time']."%'");
+//$resultto=mysql_query($sqlto);
+$rowto = mysqli_fetch_array($sqlto);
+
+
+//echo $rowfrom['id'];
+//echo "<br>";
+//echo $rowto['id'];
+
+
+?>
+
+<select id="final_time" name="final_time">
+<?php
+
+
+
+$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
+//$resulttime=mysql_query($sqltime);
+
+while($rowtime = mysqli_fetch_array($sqltime))
+{ ?>
+
+<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
+
+
+<?php } ?>
+
+</select>
+
+
+
+
+
+
+
+
+
+Location: <?php echo $row2['Location']; ?><br><br>
+
+Time: <?php echo $row2['Final_Time']; ?><br><br>
+
+
+Select the date to meet:
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+  $( "#meeting_date" ).datepicker({
+    beforeShowDay: function(date) {
+        var day = date.getDay();
+        var day_of_meeting="<?php echo $row2['Day']; ?>";
+        
+        if(day_of_meeting == 'Monday'){
+        return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];
+        }
+
+        if(day_of_meeting == 'Tuesday'){
+        return [(day != 3 && day != 4 && day != 5 && day != 6 && day != 0 && day != 1), ''];
+        }
+
+        if(day_of_meeting == 'Wednesday'){
+        return [(day != 4 && day != 5 && day != 6 && day != 0 && day != 1 && day != 2), ''];
+        }
+
+        if(day_of_meeting == 'Thursday'){
+        return [(day != 5 && day != 6 && day != 0 && day != 1 && day != 2 && day != 3), ''];
+        }
+
+        if(day_of_meeting == 'Friday'){
+        return [(day != 6 && day != 0 && day != 1 && day != 2 && day != 3 && day != 4), ''];
+        }
+
+        if(day_of_meeting == 'Saturday'){
+        return [(day != 0 && day != 1 && day != 2 && day != 3 && day != 4 && day != 5), ''];
+        }
+
+        if(day_of_meeting == 'Sunday'){
+        return [(day != 1 && day != 2 && day != 3 && day != 4 && day != 5 && day != 6), ''];
+        }
+
+        
+    }
+  });
+
+  </script>
+
+
+ <div id="meeting_date"></div>
+
+
+
+<?php } ?>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -598,7 +735,7 @@ echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/p
  } 
 
 
-if($rowprojectimage['google_picture_link'] != '') {
+if($rowprojectimage['google_picture_link'] != '' && $rowprojectimage['profile_image'] == '') {
 
 echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
 
@@ -606,11 +743,14 @@ echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
  } 
 
 
-if($rowprojectimage['profile_image'] != '') { ?>
+if($rowprojectimage['profile_image'] != '' && $rowprojectimage['google_picture_link'] == '' && $rowprojectimage['facebook_id'] != '0') { ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
-<?php }else{ ?>
+<?php } ?>
+
+<?php if($rowprojectimage['profile_image'] == '' && $rowprojectimage['google_picture_link'] == '' && $rowprojectimage['facebook_id'] != '0') { ?>
+ ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
 
@@ -660,7 +800,7 @@ $row3 = mysqli_fetch_array($sql3);
 
              
                   <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn"><strong>Accept</strong></a> | <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Decline</strong></a>
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn"><strong>Accept</strong></a>&nbsp;&nbsp;<a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Decline</strong></a>
                  </div>
 
            <?php } ?>      
@@ -681,8 +821,12 @@ $row3 = mysqli_fetch_array($sql3);
                        Date not specified yet
                        <?php } ?>
 
-                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>  
+                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] != '0000-00-00') { ?>  
                       <?php echo date_format($date2, 'm/d/Y'); ?>
+                       <?php } ?>
+
+                       <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?>  
+                      Date not specified yet
                        <?php } ?>
                         
 

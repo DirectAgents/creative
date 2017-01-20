@@ -142,7 +142,7 @@ $stage=explode(',',$rowproject['Stage']);
           <div class="filter">
              
                <label for="screening"><span ng-click="enableScreening()" role="button" tabindex="0">
-                <h2>Project Summary</h2></span></label>
+                <h2>Idea Summary</h2></span></label>
              </div>
 
 

@@ -676,7 +676,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 <?php if($row['From_Time_Option1'] == '' ){ ?>
  <div class="col-sm-12">
-<h4>Looks like you haven't set up your available time and dates that lets your partner know about your availabilty for a meetup. <br><br>Let's change that. Click <a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/">here</a> to set up your dates of availability.</h4>
+<h4>Looks like you haven't set up your available time and dates that lets the person you will meet know about your availabilty for a meetup. <br><br>Let's change that. Click <a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/">here</a> to set up your dates of availability.</h4>
  </div>
  <?php } ?>
 
@@ -690,7 +690,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 <h4 id="based">Based on your availability you can meet on&nbsp;</h4> 
 <h4 id="days"></h4>
-<h4 id="at">&nbsp;at&nbsp;</h4>
+<h4 id="at">&nbsp;between&nbsp;</h4>
 <div id="from"></div>
 
 <h4 id="thetimeset-to">&nbsp;and&nbsp;</h4> 

@@ -46,7 +46,7 @@ if(!$participant_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' AND Accepted_to_Participate = 'Pending' AND Status != 'Canceled_by_Participant'  ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' AND Accepted_to_Participate = 'Pending' AND Status != 'Canceled_by_Participant' AND Status != 'Declined_by_Participant' ORDER BY id DESC ");
 //$result=mysqli_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -275,11 +275,11 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 
 <div id="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-decline">
   <div class="result-decline">
-  <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Declined!</div>
+  <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Cancelled!</div>
   </div>
-<h4>Are you sure you want to decline the meeting request?</h4>
-<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<h4>Are you sure you want to cancel the meeting request?</h4>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-decline">
@@ -395,8 +395,8 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         //alert(finaltime);
 
       
-        var potentialanswer = $('input[name="PotentialAnswer[]"]:checked').size();
-        var potentialanswergiven = $('input[name="PotentialAnswer[]"]:checked').val();
+        var potentialanswer = $('input[name="PotentialAnswer[]"]:checked]').size();
+        var potentialanswergiven = $('input[name="PotentialAnswer[]"]:checked]').val();
        //alert(n);
         if (potentialanswer < 1) {
           //alert("asdfads");
@@ -520,8 +520,8 @@ $("#slide-decline-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random;
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
        
        
         
@@ -626,10 +626,12 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
        
-       
+
+        
+
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -760,8 +762,8 @@ $row3 = mysqli_fetch_array($sql3);
 
 <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
 
-                 <div class="cancel-request-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting</strong></a></a>
+                 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting Request</strong></a></a>
                  </div>
 
            <?php } ?>      

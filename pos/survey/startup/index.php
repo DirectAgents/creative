@@ -34,7 +34,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."'");
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND FinishedProcess = 'Y' ");
 $rowproject = mysqli_fetch_array($Project);
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
@@ -216,7 +216,7 @@ $(document).ready(function(){
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' AND FinishedProcess = 'Y' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 

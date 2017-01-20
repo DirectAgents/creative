@@ -213,7 +213,7 @@ $content = new SendGrid\Content("text/html", '
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$_POST['days'].'</td>
                                                         </tr>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">From '.$_POST['fromtime'].' @ '.$_POST['totime'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Between '.$_POST['fromtime'].' @ '.$_POST['totime'].'</td>
                                                         </tr>
                                                        
                                                       

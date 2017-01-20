@@ -158,12 +158,10 @@ $(document).ready(function(){
         //loop through each field and we simply change border color to red for invalid fields   
         var from_value = $('#from_time').val()
         var to_value = $('#to_time').val()
-        var pac_input_value = $('#pac-input').val()
+        var location = $('#pac-input').val()
 
 
         var days = $('input[name="dayselection[]"]:checked').map(function () {return this.value;}).get().join(",");
-
-        
 
         if(days == '' ){ 
             
@@ -181,6 +179,13 @@ $(document).ready(function(){
 
         if(!to_value) {
 
+                $("#pac-input").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        };
+
+
+        if(!location) {
+
                 $("#to_time").css('border-color','red');  //change border color to red   
                 proceed = false; //set do not proceed flag            
         };
@@ -194,7 +199,7 @@ $(document).ready(function(){
                 'day'     : $('input[name="dayselection[]"]:checked').map(function () {return this.value;}).get().join(","),
                 'from_time'     : $("select[name='from_time']").val(),
                 'to_time'     : $("select[name='to_time']").val(),
-                'location'     : pac_input_value
+                'location'     : location
             };
  
 

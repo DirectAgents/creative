@@ -4,7 +4,7 @@ session_start();
 $session_id='1'; //$session id
 $path = "uploads/";
 
-	$valid_formats = array("jpg", "png", "gif", "bmp");
+	$valid_formats = array("jpg", "jpeg" , "png", "gif", "bmp");
 	if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
 		{
 			$name = $_FILES['photoimg']['name'];
