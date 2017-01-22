@@ -312,24 +312,35 @@ $( "#meeting_date" ).datepicker({
         var day = date.getDay();
         //var day_of_meeting="<?php echo $row2['Day']; ?>";
         //var day = $( "#day option:selected" ).text();
-         
-
         
-
         if(day_of_meeting == 'Monday'){
-       
-        return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];
-    
-        
+        return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];    
         }
-
 
         if(day_of_meeting == 'Tuesday'){
-         
         return [(day != 3 && day != 4 && day != 5 && day != 6 && day != 0 && day != 1), ''];
-      
-         
         }
+
+        if(day_of_meeting == 'Wednesday'){
+        return [(day != 4 && day != 5 && day != 6 && day != 0 && day != 1 && day != 2), ''];
+        }
+
+        if(day_of_meeting == 'Thursday'){
+        return [(day != 5 && day != 6 && day != 0 && day != 1 && day != 2 && day != 3), ''];
+        }
+
+        if(day_of_meeting == 'Friday'){
+        return [(day != 6 && day != 0 && day != 1 && day != 2 && day != 3 && day != 4), ''];
+        }
+
+        if(day_of_meeting == 'Saturday'){
+        return [(day != 0 && day != 1 && day != 2 && day != 3 && day != 4 && day != 5), ''];
+        }
+
+        if(day_of_meeting == 'Sunday'){
+        return [(day != 1 && day != 2 && day != 3 && day != 4 && day != 5 && day != 6), ''];
+        }
+        
 
       if(day_of_meeting == 'Select a day'){
         $('#select-the-day').hide();
