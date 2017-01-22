@@ -124,13 +124,21 @@ $date = date('Y-m-d h:m A');
   </div>
 
 
-<h4>You are about to accept the meeting request?</h4>
-<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+
+
+
+
+
 
 
 
 <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] != '0000-00-00') { ?> 
+
+
+<h4>You are about to accept the meeting request</h4>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+
 
 Select a time to meet:
 
@@ -185,8 +193,49 @@ while($rowtime = mysqli_fetch_array($sqltime))
 <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?> 
 
 
+
+<h4>Meeting Setup</h4>
+
+
+<input type="hidden" name="the_date" id="the_date" value=""/>
+
+
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+
+
 <input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Meeting Set"/>
 <input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Accepted"/>
+
+
+
+
+Select a day to meet:
+
+
+
+<select id="day" name="day">
+
+<option value="Select a day">Select a day</option>
+
+<?php
+
+$days = explode(',', $row2['Day']);
+
+
+foreach($days as $day){
+
+?>
+
+<option value="<?php echo $day; ?>"><?php echo $day; ?></option>
+
+
+<?php } ?>
+
+</select>
+
+
+<br><br>
 
 
 Select a time to meet:
@@ -233,63 +282,93 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 
 
-
-
-
-
+<br><br>
 
 
 Location: <?php echo $row2['Location']; ?><br><br>
 
-Time: <?php echo $row2['Final_Time']; ?><br><br>
 
 
-Select the date to meet:
+
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
+$(document).ready(function() {
 
-  $( "#meeting_date" ).datepicker({
+  
+  $("#day").change(function() { 
+  var day_of_meeting = $( "#day option:selected" ).text();
+  //alert(day_of_meeting);
+
+
+$('#select-the-day').html('Select the date to meet:');
+
+$( "#meeting_date" ).datepicker("destroy");
+
+$( "#meeting_date" ).datepicker({
+
     beforeShowDay: function(date) {
+
         var day = date.getDay();
-        var day_of_meeting="<?php echo $row2['Day']; ?>";
+        //var day_of_meeting="<?php echo $row2['Day']; ?>";
+        //var day = $( "#day option:selected" ).text();
+         
+
         
+
         if(day_of_meeting == 'Monday'){
+       
         return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];
+    
+        
         }
+
 
         if(day_of_meeting == 'Tuesday'){
+         
         return [(day != 3 && day != 4 && day != 5 && day != 6 && day != 0 && day != 1), ''];
+      
+         
         }
 
-        if(day_of_meeting == 'Wednesday'){
-        return [(day != 4 && day != 5 && day != 6 && day != 0 && day != 1 && day != 2), ''];
-        }
+      if(day_of_meeting == 'Select a day'){
+        $('#select-the-day').hide();
+      }
 
-        if(day_of_meeting == 'Thursday'){
-        return [(day != 5 && day != 6 && day != 0 && day != 1 && day != 2 && day != 3), ''];
-        }
-
-        if(day_of_meeting == 'Friday'){
-        return [(day != 6 && day != 0 && day != 1 && day != 2 && day != 3 && day != 4), ''];
-        }
-
-        if(day_of_meeting == 'Saturday'){
-        return [(day != 0 && day != 1 && day != 2 && day != 3 && day != 4 && day != 5), ''];
-        }
-
-        if(day_of_meeting == 'Sunday'){
-        return [(day != 1 && day != 2 && day != 3 && day != 4 && day != 5 && day != 6), ''];
-        }
-
+$( "#meeting_date" ).datepicker("refresh");
         
+
+
     }
+
+    
+
+
   });
+
+
+
+
+$(document).on("change", "#meeting_date", function () {
+         date = $(this).val();
+        //alert(date);
+        $("#the_date").val(date);
+        
+    })
+
+
+
+
+   });
+
+ 
+   });
+
 
   </script>
 
-
- <div id="meeting_date"></div>
+<div id="select-the-day"></div>
+<div id="meeting_date"></div>
 
 
 
@@ -420,17 +499,27 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
 });
 
+ 
 
+    
+    $(".result-no-date").hide();
 
 
     $(".accept"+<?php echo $row2['ProjectID']; ?>).click(function() {  
       //alert("delete"+<?php echo $row2['ProjectID']; ?>); 
 
+      var proceed = true;
+
+
+      //var input = date;
+        var the_date = $('input[name=the_date]').val();
+        if(the_date == '' ){
+            $(".result-no-date").show(); 
+            proceed = false;
+            }
      
      
-      $(".result-accept").show();
-      $(".cancel-accept").hide();
-      $(".close-accept").show();
+     
 
 
       $("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
@@ -449,11 +538,16 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
-        var proceed = true;
+        
 
         //everything looks good! proceed...
         if(proceed) 
         {
+
+      $(".result-no-date").hide(); 
+      $(".result-accept").show();
+      $(".cancel-accept").hide();
+      $(".close-accept").show();
 
 
 
