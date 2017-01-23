@@ -314,10 +314,10 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
   </div>
 
    <div class="col-sm-5">
-        
+        <!--
         <a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/option1/" role="button" class="111slide_open">
   <button type="button" class="btn-request">
-  Update your availability</button></a>
+  Update your availability</button></a>-->
 
 <p>&nbsp;</p>
   <a href="<?php echo BASE_PATH; ?>/participant/account/settings/nda/" role="button" class="111slide_open">
