@@ -29,8 +29,33 @@ date_default_timezone_set('America/New_York');
 $the_time = date('h:i:s A');
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_project_request(userID, startupID, ProjectID, Meeting_Status, Day, From_Time, To_Time, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
-VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."', 'Meeting Request' ,'".$_POST['days']."', '".$_POST['fromtime']."', '".$_POST['totime']."', '".$_POST['location']."' , 'Pending', 'Waiting for Startup to Accept or Decline', 'Participant' , '".$the_date."','".$the_time."')");
+$date_option_one = new DateTime($_POST['date_option_one']);
+$date_option_two = new DateTime($_POST['date_option_two']);
+$date_option_three = new DateTime($_POST['date_option_three']);
+
+if(!empty($_POST['date_option_one'])){
+$date_option_one =  $date_option_one->format('Y-m-d');
+}else{
+$date_option_one = '0000-00-00';    
+}
+
+if(!empty($_POST['date_option_two'])){
+$date_option_two =  $date_option_two->format('Y-m-d');
+}else{
+$date_option_two = '0000-00-00';    
+}
+
+
+if(!empty($_POST['date_option_three'])){
+$date_option_three =  $date_option_three->format('Y-m-d');
+}else{
+$date_option_three = '0000-00-00';    
+}
+
+
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_project_request(userID, startupID, ProjectID, Meeting_Status, Date_Option_One,Date_Option_Two,Date_Option_Three, Time_Suggested, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
+VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."', 'Meeting Request' , '".$date_option_one."','".$date_option_two."','".$date_option_three."', '".$_POST['time_suggested']."', '".$_POST['location']."' , 'Pending', 'Waiting for Startup to Accept or Decline', 'Participant' , '".$the_date."','".$the_time."')");
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant_potentialanswer(userID, ProjectID, PotentialAnswerGiven) 
@@ -155,10 +180,10 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['FirstName'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['FirstName'].'</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$row5['Phone'].'</td>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 18px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$row5['Phone'].'</td>
                                                         </tr>
 
                                                         
@@ -210,10 +235,22 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$_POST['days'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Meeting Date Options:</td>
                                                         </tr>
+                                                         <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_one.'</td>
+                                                        </tr>
+
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Between '.$_POST['fromtime'].' @ '.$_POST['totime'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_two.'</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_three.'</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Time: '.$_POST['time_suggested'].'</td>
                                                         </tr>
                                                        
                                                       
@@ -265,9 +302,14 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$_POST['location'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$_POST['location'].'</td>
                                                         </tr>
                                                         <tr>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
+                                                             &nbsp;</td>
+                                                        </tr>
+
+                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
                                                              &nbsp;</td>
                                                         </tr>

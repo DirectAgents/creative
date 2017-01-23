@@ -781,10 +781,14 @@ $row3 = mysqli_fetch_array($sql3);
 
                     <?php if($row2['Date_of_Meeting'] == '0000-00-00') { ?>
 
-                     <div class="label">Day:</div>
+                     <div class="label">Suggested Date(s):</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
 
-                      <?php echo $row2['Day']; ?> (Suggest a date)
+                      <?php if($row2['Date_Option_One'] != '0000-00-00'){ echo $row2['Date_Option_One']; echo "<br>"; } ?>
+                      <?php if($row2['Date_Option_Two'] != '0000-00-00'){ echo $row2['Date_Option_Two']; echo "<br>"; } ?>
+                      <?php if($row2['Date_Option_Three'] != '0000-00-00'){ echo $row2['Date_Option_Three']; echo "<br>"; } ?>
+
+                      <?php if($row2['Date_Option_One'] == '0000-00-00' && $row2['Date_Option_Two'] == '0000-00-00' && $row2['Date_Option_Three'] == '0000-00-00'){ echo "No Dates Suggested"; } ?>
 
                          </div>
                     </div>

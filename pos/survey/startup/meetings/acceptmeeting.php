@@ -2,9 +2,8 @@
 
 session_start();
 include ('../../config.php');
-require( "../../phpmailer/class.phpmailer.php" );
 
-require 'PHPMailerAutoload.php';
+
 
 
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -29,7 +28,8 @@ if($row['Status'] = 'Waiting for Startup to Accept or Decline'){
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
   Accepted_to_Participate = 'Accepted',
-  Final_Time = '".$_POST['final_time']."',
+  Date_of_Meeting = '".$_POST['date']."',
+  Final_Time = '".$_POST['finaltime']."',
   Status = 'Meeting Set'
   
 
@@ -366,43 +366,13 @@ $mail = new SendGrid\Mail($from, $subject, $to, $content);
 $apiKey = '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';
 $sg = new \SendGrid($apiKey);
 $response = $sg->client->mail()->send()->post($mail);
-echo $response->statusCode();
-echo $response->headers();
-echo $response->body();
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 	   
 	
     //header("Location: index.php"); 
@@ -418,7 +388,7 @@ $row2 = mysql_fetch_array($sql_participant);
 
 }	
 	
-
+}
 	
 
 ?>

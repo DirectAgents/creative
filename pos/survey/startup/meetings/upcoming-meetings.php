@@ -270,7 +270,7 @@ echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/p
  } 
 
 
-if($rowprojectimage['google_picture_link'] != '') {
+if($rowprojectimage['google_picture_link'] != '' && $rowprojectimage['profile_image'] == '') {
 
 echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
 
@@ -278,11 +278,14 @@ echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
  } 
 
 
-if($rowprojectimage['profile_image'] != '') { ?>
+if($rowprojectimage['profile_image'] != '' && $rowprojectimage['google_picture_link'] == '' && $rowprojectimage['facebook_id'] != '0') { ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
-<?php }else{ ?>
+<?php } ?>
+
+<?php if($rowprojectimage['profile_image'] == '' && $rowprojectimage['google_picture_link'] == '' && $rowprojectimage['facebook_id'] != '0') { ?>
+ ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
 
@@ -330,7 +333,7 @@ $row3 = mysqli_fetch_array($sql3);
                <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
                   <div class="survey-metadata">
                     <div class="item">
-                      <div class="label">Date:</div>
+                      <div class="label">Date of Meeting:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
                     </div>
 

@@ -278,19 +278,19 @@ jq(document).ready(function(){
 
 <div id='preview'>
 
-<?php if(isset($_SESSION['access_token'])){ ?>
-        <img src="<?php echo $_SESSION['google_picture_link']; ?>" class="profile-photo">
+<?php if($row['google_picture_link'] != ''){ ?>
+        <img src="<?php echo $_SESSION['google_picture_link']; ?>" class="profile-photo"/>
 <?php } ?>
 
-<?php if(isset($_SESSION['facebook_photo'])){ ?>
+<?php if($row['facebook_id'] != '0'){  ?>
        
         <img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture?width=150&height=150" class="profile-photo">
 
 <?php } ?>
        
-<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){ ?>
+<?php if($row['google_picture_link'] == '' && $row['facebook_id'] == '0'){ ?>
 
-<?php if($_SESSION['profileimage'] != ''){ 
+<?php if($row['profile_image'] != ''){
         echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$_SESSION['profileimage'].'" class="profile-photo"/>';
 }else{
         echo '

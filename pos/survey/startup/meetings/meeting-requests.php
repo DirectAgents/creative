@@ -87,7 +87,9 @@ $row4 = mysqli_fetch_array($sql4);
 
 
 
-$date2 = date_create($row2['Date_of_Meeting']);
+$date_option_one = date_create($row2['Date_Option_One']);
+$date_option_two = date_create($row2['Date_Option_Two']);
+$date_option_three = date_create($row2['Date_Option_Three']);
 
 $random = rand(5, 20000);
 
@@ -194,7 +196,8 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 
 
-<h4>Meeting Setup</h4>
+<h4>Set up a Meeting</h4>
+<p>&nbsp;</p>
 
 
 <input type="hidden" name="the_date" id="the_date" value=""/>
@@ -208,29 +211,22 @@ while($rowtime = mysqli_fetch_array($sqltime))
 <input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Accepted"/>
 
 
+<input type="hidden" name="the_time<?php echo $row2['ProjectID']; ?>" id="the_time" value="<?php echo $row2['Time_Suggested']; ?>"/>
 
 
 Select a day to meet:
 
 
 
-<select id="day" name="day">
+<select id="date" name="date<?php echo $row2['ProjectID']; ?>">
 
-<option value="Select a day">Select a day</option>
-
-<?php
-
-$days = explode(',', $row2['Day']);
+<option value="">Select a date</option>
 
 
-foreach($days as $day){
+<option value="<?php echo $row2['Date_Option_One']; ?>"><?php echo date_format($date_option_one, 'm/d/Y'); ?></option>
+<option value="<?php echo $row2['Date_Option_Two']; ?>"><?php echo date_format($date_option_two, 'm/d/Y'); ?></option>
+<option value="<?php echo $row2['Date_Option_Three']; ?>"><?php echo date_format($date_option_three, 'm/d/Y'); ?></option>
 
-?>
-
-<option value="<?php echo $day; ?>"><?php echo $day; ?></option>
-
-
-<?php } ?>
 
 </select>
 
@@ -238,47 +234,8 @@ foreach($days as $day){
 <br><br>
 
 
-Select a time to meet:
+Time: <?php echo $row2['Time_Suggested']; ?>
 
-<?php 
-
-//echo $row2['To_Time'];
-
-
-
-$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['From_Time']."%'");
-//$resultfrom=mysql_query($sqlfrom);
-$rowfrom = mysqli_fetch_array($sqlfrom);
-
-$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['To_Time']."%'");
-//$resultto=mysql_query($sqlto);
-$rowto = mysqli_fetch_array($sqlto);
-
-
-//echo $rowfrom['id'];
-//echo "<br>";
-//echo $rowto['id'];
-
-
-?>
-
-<select id="final_time" name="final_time">
-<?php
-
-
-
-$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
-//$resulttime=mysql_query($sqltime);
-
-while($rowtime = mysqli_fetch_array($sqltime))
-{ ?>
-
-<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
-
-
-<?php } ?>
-
-</select>
 
 
 
@@ -523,16 +480,10 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 
       //var input = date;
-        var the_date = $('input[name=the_date]').val();
-        if(the_date == '' ){
-            $(".result-no-date").show(); 
-            proceed = false;
-            }
-     
-     
-     
+        //var the_date = $('input[name=the_date]').val();
 
-
+        
+     
       $("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
 
 
@@ -541,11 +492,28 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
-        var final_time = $("select[name='final_time']").val();
-       
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        var date = $('select[name=date'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var finaltime = $('input[name=the_time'+<?php echo $row2['ProjectID']; ?>+']').val();
 
+
+        //alert(finaltime);
+        
+        
+        /*if(the_date == '' ){
+            $(".result-no-date").show(); 
+            proceed = false;
+            }
+        */    
+
+        if(date == '' ){
+            $(".result-no-date").show(); 
+            proceed = false;
+        }
+
+       
+        //alert(date);
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -556,7 +524,7 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         {
 
       $(".result-no-date").hide(); 
-      $(".result-accept").show();
+      $(".result-accept").show().slideDown();
       $(".cancel-accept").hide();
       $(".close-accept").show();
 
@@ -564,7 +532,7 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'userid':userid,'final_time':final_time};
+            post_data = {'projectid':projectid,'userid':userid,'finaltime':finaltime,'date':date};
             
             //Ajax post data to server
             $.post('acceptmeeting.php', post_data, function(response){  
@@ -919,20 +887,20 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
                   <div class="survey-metadata">
                     <div class="item">
-                      <div class="label">Date:</div>
+                      <div class="label">Meeting Date Options:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                       
                        <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
                        Date not specified yet
                        <?php } ?>
 
-                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] != '0000-00-00') { ?>  
-                      <?php echo date_format($date2, 'm/d/Y'); ?>
+                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?>  
+                      <?php echo date_format($date_option_one, 'm/d/Y'); ?><br>
+                      <?php echo date_format($date_option_two, 'm/d/Y'); ?><br>
+                      <?php echo date_format($date_option_three, 'm/d/Y'); ?>
                        <?php } ?>
 
-                       <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?>  
-                      Date not specified yet
-                       <?php } ?>
+                      
                         
 
                       </div>
@@ -942,12 +910,7 @@ $row3 = mysqli_fetch_array($sql3);
                       <div class="label">Time:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                      
-                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
-
-                       
-                      <?php echo $row2['Final_Time']; ?>
-
-                      <?php } ?>
+                     
                         
             <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
                       
@@ -957,10 +920,10 @@ $row3 = mysqli_fetch_array($sql3);
 
 
                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
-                       Between <?php echo $row2['From_Time']; ?> & 
-                      <?php echo $row2['To_Time']; ?>
 
-                    <?php } ?>   
+                      <?php echo $row2['Time_Suggested']; ?>
+
+                      <?php } ?>
 
 
                       </div>

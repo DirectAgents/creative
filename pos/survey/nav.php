@@ -86,18 +86,18 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/idea/browse/">BROWSE IDEAS</a></li>
 
 
-<?php if(isset($_SESSION['access_token'])){ ?>
+<?php if($row['google_picture_link'] != ''){ ?>
         <li><img src="<?php echo $_SESSION['google_picture_link']; ?>" class="nav-profile-photo"/></li>
 <?php } ?>
 
-<?php if(isset($_SESSION['facebook_photo'])){ ?>
+<?php if($row['facebook_id'] != '0'){  ?>
         <li><img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture" class="nav-profile-photo"/></li>
 <?php } ?>
        
-<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){ ?>
+<?php if($row['google_picture_link'] == '' && $row['facebook_id'] == '0'){ ?>
 
       
-<?php if($_SESSION['profileimage'] != ''){ ?>
+<?php if($row['profile_image'] != ''){  ?>
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $_SESSION['profileimage'];?>" class="nav-profile-photo"/></li>
 <?php }else{ ?>
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
