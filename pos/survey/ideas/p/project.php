@@ -19,7 +19,7 @@ $rowproject = mysqli_fetch_array($Project);
 
 
 
-$Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screening WHERE ProjectID='".$_GET['id']."'");
+$Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."'");
 $rowscreening = mysqli_fetch_array($Screening);
 
 
@@ -1052,7 +1052,7 @@ while($rowtime = mysqli_fetch_array($sqltime))
 <?php if(mysqli_num_rows($Screening)==1) { ?>
 
 
- <input id="screeningquestion_required" name="screeningquestion_required" type="text" style="display:block" value="Yes"/> 
+ <input type="hidden" id="screeningquestion_required" name="screeningquestion_required" style="display:block" value="Yes"/> 
 
 
  <div class="col-sm-12">

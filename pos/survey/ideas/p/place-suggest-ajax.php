@@ -249,6 +249,10 @@ $content = new SendGrid\Content("text/html", '
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_three.'</td>
                                                         </tr>
 
+                                                         <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;</td>
+                                                        </tr>
+
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Time: '.$_POST['time_suggested'].'</td>
                                                         </tr>

@@ -38,10 +38,8 @@ $row = mysqli_fetch_array($sql_participant);
     //header("Location: index.php?s=success"); 
 
 
-$sql_participant = "SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'";
-$result_participant=mysql_query($sql_participant);
-$row2 = mysql_fetch_array($result_participant);
-
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
+$row2 = mysqli_fetch_array($sql_participant);
 
 $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup  WHERE userID = '".$row['startupID']."' ");
 $row4 = mysqli_fetch_array($sql4);
@@ -192,11 +190,11 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row['Day'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row['Date_of_Meeting'].'</td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row['From_Time'].' to '.$row['To_Time'].'</td>
+                                                             '.$row['Final_Time'].'</td>
                                                         </tr>
                                                       
 
