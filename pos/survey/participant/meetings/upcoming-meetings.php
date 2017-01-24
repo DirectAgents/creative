@@ -33,11 +33,6 @@ if(!$participant_home->is_logged_in())
 
 
 
-
-
-
-
-
 <?php
 //include db configuration file
 
@@ -189,9 +184,10 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
        
+
        
         
         //simple validation at client's end

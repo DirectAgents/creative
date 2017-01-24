@@ -47,7 +47,7 @@ if(!$startup_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Accepted_to_Participate = 'Pending' AND Date_of_Meeting = '0000-00-00' AND Status != 'Canceled_by_Participant' AND Status != 'Declined_by_Participant'  ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 
 //$row=mysql_fetch_array($result);
@@ -134,7 +134,7 @@ $date = date('Y-m-d h:m A');
 
 
 
-<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] != '0000-00-00') { ?> 
+<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?> 
 
 
 <h4>You are about to accept the meeting request</h4>
@@ -192,7 +192,7 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 
 
-<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?> 
+<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?> 
 
 
 
@@ -234,7 +234,7 @@ Select a day to meet:
 <br><br>
 
 
-Time: <?php echo $row2['Time_Suggested']; ?>
+11Time: <?php echo $row2['Time_Suggested']; ?>
 
 
 
@@ -890,15 +890,13 @@ $row3 = mysqli_fetch_array($sql3);
                       <div class="label">Meeting Date Options:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                       
-                       <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
-                       Date not specified yet
-                       <?php } ?>
+                       
 
-                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?>  
+
                       <?php echo date_format($date_option_one, 'm/d/Y'); ?><br>
                       <?php echo date_format($date_option_two, 'm/d/Y'); ?><br>
                       <?php echo date_format($date_option_three, 'm/d/Y'); ?>
-                       <?php } ?>
+                      
 
                       
                         
@@ -911,19 +909,12 @@ $row3 = mysqli_fetch_array($sql3);
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                      
                      
-                        
-            <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
-                      
-                      <?php echo $row2['Final_Time']; ?>
+            
+                     <?php echo $row2['Time_Option_One']; ?><br>
+                      <?php echo $row2['Time_Option_Two']; ?><br>
+                      <?php echo $row2['Time_Option_Three']; ?> 
 
-                    <?php } ?>   
-
-
-                     <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
-
-                      <?php echo $row2['Time_Suggested']; ?>
-
-                      <?php } ?>
+                    
 
 
                       </div>

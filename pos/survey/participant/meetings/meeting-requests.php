@@ -46,7 +46,7 @@ if(!$participant_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' AND Accepted_to_Participate = 'Pending' AND Status != 'Canceled_by_Participant' AND Status != 'Declined_by_Participant' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE userID = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
 //$result=mysqli_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -88,12 +88,15 @@ $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE Project
 $row4 = mysqli_fetch_array($sql4);
 
 
+$date_option_one = date_create($row2['Date_Option_One']);
+$date_option_two = date_create($row2['Date_Option_Two']);
+$date_option_three = date_create($row2['Date_Option_Three']);
+
 date_default_timezone_set('America/New_York');
 
 
 
 
-$date2 = date_create($row2['Date_of_Meeting']);
 
 $random = rand(5, 20000);
 
@@ -779,31 +782,17 @@ $row3 = mysqli_fetch_array($sql3);
                     <div class="item">
                      
 
-                    <?php if($row2['Date_of_Meeting'] == '0000-00-00') { ?>
-
-                     <div class="label">Suggested Date(s):</div>
+                  
+                     <div class="label">Meeting Date Options:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
 
-                      <?php if($row2['Date_Option_One'] != '0000-00-00'){ echo $row2['Date_Option_One']; echo "<br>"; } ?>
-                      <?php if($row2['Date_Option_Two'] != '0000-00-00'){ echo $row2['Date_Option_Two']; echo "<br>"; } ?>
-                      <?php if($row2['Date_Option_Three'] != '0000-00-00'){ echo $row2['Date_Option_Three']; echo "<br>"; } ?>
-
-                      <?php if($row2['Date_Option_One'] == '0000-00-00' && $row2['Date_Option_Two'] == '0000-00-00' && $row2['Date_Option_Three'] == '0000-00-00'){ echo "No Dates Suggested"; } ?>
-
-                         </div>
-                    </div>
-                    
-                    <?php }else{ ?>    
-
-                     <div class="label">Date of meeting:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
-
-                      <?php echo date_format($date2, 'm/d/Y'); ?>
+                      <?php echo date_format($date_option_one, 'm/d/Y'); ?><br>
+                      <?php echo date_format($date_option_two, 'm/d/Y'); ?><br>
+                      <?php echo date_format($date_option_three, 'm/d/Y'); ?>
 
                       </div>
                     </div> 
                     
-                    <?php } ?>    
 
 
 
@@ -813,20 +802,15 @@ $row3 = mysqli_fetch_array($sql3);
                       <div class="label">Time:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                       
-                      <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
-
-                      <?php echo $row2['Final_Time']; ?>
-
-                      <?php } ?>
-
+                     
                       
-                      <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
 
-                      Between <?php echo $row2['From_Time']; ?> & 
+                      <?php echo $row2['Time_Option_One']; ?><br>
+                      <?php echo $row2['Time_Option_Two']; ?><br>
+                      <?php echo $row2['Time_Option_Three']; ?> 
                       
-                      <?php echo $row2['To_Time']; ?>
+                      
 
-                      <?php } ?>
 
 
                       

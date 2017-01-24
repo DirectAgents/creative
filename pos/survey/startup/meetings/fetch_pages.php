@@ -316,7 +316,7 @@ $( "#meeting-requests" ).load( "meeting-requests.php" );
 
   <?php
 
-$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_project_request WHERE Viewed_by_Participant = 'No' AND Meeting_Status = 'Meeting Requests' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_meeting_request WHERE Viewed_by_Participant = 'No' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -333,7 +333,7 @@ echo '</div>';
 
  <?php
 
-$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_project_request WHERE Viewed_by_Participant = 'No' AND Meeting_Status = 'Upcoming Meetings' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_meeting_upcoming WHERE Viewed_by_Participant = 'No'  AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -351,7 +351,7 @@ echo '</div>';
 
  <?php
 
-$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_project_request WHERE Viewed_by_Participant = 'No' AND Meeting_Status = 'Recent Meetings' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_meeting_recent WHERE Viewed_by_Participant = 'No' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -371,7 +371,7 @@ echo '</div>';
 
  <?php
 
-$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_project_request WHERE Viewed_by_Participant = 'No' AND Meeting_Status = 'Archived Meetings' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_meeting_archived WHERE Viewed_by_Participant = 'No' AND startupID = '".$_SESSION['startupSession']."' GROUP BY id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
