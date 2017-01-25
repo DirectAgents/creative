@@ -196,12 +196,12 @@ if(mysqli_num_rows($sql3) == false)
 
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowrequest=mysqli_fetch_array($sql);
 
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Viewed_by_Participant='Yes'
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Participant='Yes'
   WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
 
 
@@ -414,6 +414,10 @@ $('#location_option3').hide();
         var date_option_two  = $('input[name=date_option_two]').val();
         var date_option_three  = $('input[name=date_option_three]').val();
 
+        var time_suggested_one = $("select[name='time_suggested_one']").val();
+        var time_suggested_two = $("select[name='time_suggested_two']").val();
+        var time_suggested_three = $("select[name='time_suggested_three']").val();
+
         //alert(date_option_one);
 
 
@@ -423,7 +427,6 @@ $('#location_option3').hide();
         //var fromtime = fromtimevalue.innerHTML;
         //var totime = totimevalue.innerHTML;
 
-        var time_suggested = $("select[name='time_suggested']").val();
         var location = $('#pac-input').val();
 
         //alert(location);
@@ -455,11 +458,7 @@ $('#location_option3').hide();
         } */
 
 
-        if(!time_suggested) {
-
-                $("#time_suggested").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        };
+       
 
         if(!date_option_one) {
 
@@ -470,12 +469,31 @@ $('#location_option3').hide();
                 proceed = true; //set do not proceed flag       
         };
 
+        if(!time_suggested_one) {
+
+                $("#time_suggested_one").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_one").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+
         if(!date_option_two) {
 
                 $("#date_option_two").css('border-color','red');  //change border color to red   
                 proceed = false; //set do not proceed flag            
          }else{
                 $("#date_option_two").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+         if(!time_suggested_two) {
+
+                $("#time_suggested_two").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_two").css('border-color','green');  //change border color to red 
                 proceed = true; //set do not proceed flag       
         };
 
@@ -486,6 +504,15 @@ $('#location_option3').hide();
                 proceed = false; //set do not proceed flag            
          }else{
                 $("#date_option_three").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+         if(!time_suggested_three) {
+
+                $("#time_suggested_three").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_three").css('border-color','green');  //change border color to red 
                 proceed = true; //set do not proceed flag       
         };
 
@@ -508,7 +535,10 @@ $('#location_option3').hide();
            output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please select one Answer! </div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
-        }
+        }else{
+                $("#result").hide();
+                //proceed = true; //set do not proceed flag       
+        };
 
         }
 
@@ -516,11 +546,12 @@ $('#location_option3').hide();
         if(proceed) 
         {
 
+        
 
-         
+         //alert("123");
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'startupid':startupid,'time_suggested':time_suggested,'date_option_one':date_option_one, 'date_option_two':date_option_two, 'date_option_three':date_option_three,'location':location, 'potentialanswergiven':potentialanswergiven};
+  post_data = {'projectid':projectid,'startupid':startupid,'time_suggested_one':time_suggested_one, 'time_suggested_two':time_suggested_two,'time_suggested_three':time_suggested_three,'date_option_one':date_option_one, 'date_option_two':date_option_two, 'date_option_three':date_option_three,'location':location, 'potentialanswergiven':potentialanswergiven};
             
             //Ajax post data to server
             $.post('../place-suggest-ajax.php', post_data, function(response){  
@@ -852,96 +883,6 @@ foreach($days as $day){
 
 -->
 
-<div class="col-lg-12">
-
-<div class="row-day">
-<div class="the-day">
-<h4>Select a time:</h4> 
-
-<div class="select-row">
-
-<select name="time_suggested" id="time_suggested">
-  <option value="" <?php if($row['From_Time_Option1'] == ''){echo 'selected';}?> disabled="disabled">From</option>
-  <option value="06:00am">06:00 AM</option>
-  <option value="07:00am">07:00 AM</option>
-  <option value="08:00am">08:00 AM</option>
-  <option value="09:00am">09:00 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="01:00pm">01:00 PM</option>
-  <option value="02:00pm">02:00 PM</option>
-  <option value="03:00pm">03:00 PM</option>
-  <option value="04:00pm">04:00 PM</option>
-  <option value="05:00pm">05:00 PM</option>
-  <option value="06:00pm">06:00 PM</option>
-  <option value="07:00pm">07:00 PM</option>
-  <option value="08:00pm">08:00 PM</option>
-  <option value="09:00pm">09:00 PM</option>
-  <option value="10:00pm" >10:00 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="12:00am">12:00 AM</option>
-               </select>
-
-
-
-
-
-<!--
-<?php 
-
-//echo $row2['To_Time'];
-
-
-
-$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row['From_Time_Option1']."%'");
-//$resultfrom=mysql_query($sqlfrom);
-$rowfrom = mysqli_fetch_array($sqlfrom);
-
-$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row['To_Time_Option1']."%'");
-//$resultto=mysql_query($sqlto);
-$rowto = mysqli_fetch_array($sqlto);
-
-
-//echo $rowfrom['id'];
-//echo "<br>";
-//echo $rowto['id'];
-
-
-?>
-
-<select id="from_time_option1" name="days_availability_option1">
-<?php
-
-
-
-$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
-//$resulttime=mysql_query($sqltime);
-
-while($rowtime = mysqli_fetch_array($sqltime))
-{ ?>
-
-<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
-
-
-<?php } ?>
-
-</select>
-
--->
-
-
-
-
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 
 
 
@@ -958,6 +899,31 @@ while($rowtime = mysqli_fetch_array($sqltime))
 <div style="float:left; margin-left:3px;">
 <input type="text" name="date_option_one" id="date_option_one" placeholder="Pick a date" class="validate">
 </div>
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_one" id="time_suggested_one">
+  <option value="" selected disabled="disabled">Select a time</option>
+  <option value="06:00am">06:00 AM</option>
+  <option value="07:00am">07:00 AM</option>
+  <option value="08:00am">08:00 AM</option>
+  <option value="09:00am">09:00 AM</option>
+  <option value="10:00am">10:00 AM</option>
+  <option value="11:00am">11:00 AM</option>
+  <option value="12:00pm">12:00 PM</option>
+  <option value="01:00pm">01:00 PM</option>
+  <option value="02:00pm">02:00 PM</option>
+  <option value="03:00pm">03:00 PM</option>
+  <option value="04:00pm">04:00 PM</option>
+  <option value="05:00pm">05:00 PM</option>
+  <option value="06:00pm">06:00 PM</option>
+  <option value="07:00pm">07:00 PM</option>
+  <option value="08:00pm">08:00 PM</option>
+  <option value="09:00pm">09:00 PM</option>
+  <option value="10:00pm">10:00 PM</option>
+  <option value="11:00pm">11:00 PM</option>
+  <option value="12:00am">12:00 AM</option>
+               </select>
+
+    </div>
 </div>
 
 </div>
@@ -974,7 +940,36 @@ while($rowtime = mysqli_fetch_array($sqltime))
 <h4>Meeting Date Option #2:</h4> 
 
 <div class="select-row">
+<div style="float:left; margin-left:0px;">
 <input type="text" name="date_option_two" id="date_option_two" placeholder="Pick a date" class="validate">
+</div>
+
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_two" id="time_suggested_two">
+  <option value="" selected disabled="disabled">Select a time</option>
+  <option value="06:00am">06:00 AM</option>
+  <option value="07:00am">07:00 AM</option>
+  <option value="08:00am">08:00 AM</option>
+  <option value="09:00am">09:00 AM</option>
+  <option value="10:00am">10:00 AM</option>
+  <option value="11:00am">11:00 AM</option>
+  <option value="12:00pm">12:00 PM</option>
+  <option value="01:00pm">01:00 PM</option>
+  <option value="02:00pm">02:00 PM</option>
+  <option value="03:00pm">03:00 PM</option>
+  <option value="04:00pm">04:00 PM</option>
+  <option value="05:00pm">05:00 PM</option>
+  <option value="06:00pm">06:00 PM</option>
+  <option value="07:00pm">07:00 PM</option>
+  <option value="08:00pm">08:00 PM</option>
+  <option value="09:00pm">09:00 PM</option>
+  <option value="10:00pm">10:00 PM</option>
+  <option value="11:00pm">11:00 PM</option>
+  <option value="12:00am">12:00 AM</option>
+               </select>
+
+    </div>
+
 </div>
 
 </div>
@@ -991,7 +986,37 @@ while($rowtime = mysqli_fetch_array($sqltime))
 <h4>Meeting Date Option #3:</h4> 
 
 <div class="select-row">
+<div style="float:left; margin-left:0px;">
 <input type="text" name="date_option_three" id="date_option_three" placeholder="Pick a date" class="validate">
+</div>
+
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_three" id="time_suggested_three">
+  <option value="" selected disabled="disabled">Select a time</option>
+  <option value="06:00am">06:00 AM</option>
+  <option value="07:00am">07:00 AM</option>
+  <option value="08:00am">08:00 AM</option>
+  <option value="09:00am">09:00 AM</option>
+  <option value="10:00am">10:00 AM</option>
+  <option value="11:00am">11:00 AM</option>
+  <option value="12:00pm">12:00 PM</option>
+  <option value="01:00pm">01:00 PM</option>
+  <option value="02:00pm">02:00 PM</option>
+  <option value="03:00pm">03:00 PM</option>
+  <option value="04:00pm">04:00 PM</option>
+  <option value="05:00pm">05:00 PM</option>
+  <option value="06:00pm">06:00 PM</option>
+  <option value="07:00pm">07:00 PM</option>
+  <option value="08:00pm">08:00 PM</option>
+  <option value="09:00pm">09:00 PM</option>
+  <option value="10:00pm">10:00 PM</option>
+  <option value="11:00pm">11:00 PM</option>
+  <option value="12:00am">12:00 AM</option>
+               </select>
+
+    </div>
+
+
 </div>
 
 </div>

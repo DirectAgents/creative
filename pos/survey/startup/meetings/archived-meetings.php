@@ -122,31 +122,34 @@ if ( $dtA > $dtB  ) {
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
-$rowprojectimage = mysqli_fetch_array($ProjectImage);
+$ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
+$rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
-if($rowprojectimage['facebook_id'] != '0') {
+if($rowprofileimage['facebook_id'] != '0') {
 
-echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/picture?width=100&height=100" width="100">';
-
-
- } 
-
-
-if($rowprojectimage['google_picture_link'] != '') {
-
-echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
+echo '<img src="https://graph.facebook.com/'.$rowprofileimage['facebook_id'].'/picture?width=100&height=100" width="100">';
 
 
  } 
 
 
-if($rowprojectimage['profile_image'] != '') { ?>
+if($rowprofileimage['google_picture_link'] != '' && $rowprofileimage['profile_image'] == '') {
+
+echo '<img src="'.$rowprofileimage['google_picture_link'].'" width="100">';
+
+
+ } 
+
+
+if($rowprofileimage['profile_image'] != '' && $rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] != '0') { ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
 
-<?php }else{ ?>
+<?php } ?>
+
+<?php if($rowprofileimage['profile_image'] == '' && $rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] != '0') { ?>
+ ?>
 
 <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
 
@@ -230,7 +233,10 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="theline"></div>
 
-                  <div class="status_request">Status: Meeting never happened
+                  <div class="status_request">Status: 
+
+                <?php if($row2['Status'] == 'Cancelled_by_Startup'){echo 'Meeting Cancelled By Startup';} ?>
+
 
 
 

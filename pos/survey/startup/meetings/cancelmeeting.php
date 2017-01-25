@@ -14,23 +14,18 @@ if($_POST)
 
 
 
+$the_date = date('Y-m-d'); 
 date_default_timezone_set('America/New_York');
+$the_time = date('h:i:s A');
 
 
-$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
 $row = mysqli_fetch_array($sql_participant);
 
 
 
-
-
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Status = 'Cancelled_by_startup'
-
-  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
-
-
-
+$insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Status, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
+  '".$row['ProjectID']."', 'No', 'No', '".$row['Date_of_Meeting']."', '".$row['Final_Time']."','".$row['Location']."','Cancelled_by_Startup','".$the_date."','".$the_time."')");
 
 	
 	   
@@ -53,7 +48,7 @@ require '../../sendgrid-php/vendor/autoload.php';
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Example User", "ald183s@gmail.com");
 $subject = "Meeting Cancelled";
-$to = new SendGrid\Email("Example User", $row2['userEmail']);
+$to = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -359,15 +354,16 @@ $mail = new SendGrid\Mail($from, $subject, $to, $content);
 $apiKey = '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';
 $sg = new \SendGrid($apiKey);
 $response = $sg->client->mail()->send()->post($mail);
-echo $response->statusCode();
-echo $response->headers();
-echo $response->body();
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
 
 
 
 
 
 
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_upcoming WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
 
    
 

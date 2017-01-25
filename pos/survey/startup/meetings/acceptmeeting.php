@@ -16,25 +16,26 @@ if($_POST)
 
 
 
+$the_date = date('Y-m-d'); 
 date_default_timezone_set('America/New_York');
+$the_time = date('h:i:s A');
 
 
-$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
 $row = mysqli_fetch_array($sql_participant);
 
 
 if($row['Status'] = 'Waiting for Startup to Accept or Decline'){
 
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Accepted_to_Participate = 'Accepted',
-  Date_of_Meeting = '".$_POST['date']."',
-  Final_Time = '".$_POST['finaltime']."',
-  Status = 'Meeting Set'
-  
 
-  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
+if($_POST['selected_meeting'] == 'option_one'){ $date_of_meeting  = $row['Date_Option_One']; $time = $row['Time_Option_One']; }
+if($_POST['selected_meeting'] == 'option_two'){ $date_of_meeting  = $row['Date_Option_Two']; $time = $row['Time_Option_Two']; }
+if($_POST['selected_meeting'] == 'option_three'){ $date_of_meeting  = $row['Date_Option_Three']; $time = $row['Time_Option_Three']; }
 
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_upcoming(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Accepted, Time_Accepted) VALUES('".$row['userID']."','".$row['startupID']."',
+  '".$row['ProjectID']."', 'No', 'No', '".$date_of_meeting."', '".$time."','".$row['Location']."','".$the_date."','".$the_time."')");
 
 
 
@@ -54,9 +55,9 @@ $row5 = mysqli_fetch_array($sql5);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Example User", "ald183s@gmail.com");
+$from = new SendGrid\Email($row4['FirstName'], $row4['userEmail']);
 $subject = "Meeting Confirmed";
-$to = new SendGrid\Email("Example User", $row5['userEmail']);
+$to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -197,11 +198,11 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row['Date_of_Meeting'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_of_meeting.'</td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row['Final_Time'].'</td>
+                                                             '.$time.'</td>
                                                         </tr>
                                                       
 
@@ -378,8 +379,8 @@ $response = $sg->client->mail()->send()->post($mail);
     //header("Location: index.php"); 
 
 
-$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
-$row2 = mysql_fetch_array($sql_participant);
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+
 
 
  $output = json_encode(array('type'=>'message', 'text' => $_POST['projectid']));

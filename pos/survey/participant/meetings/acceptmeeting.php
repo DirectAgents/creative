@@ -2,9 +2,8 @@
 
 session_start();
 include ('../../config.php');
-require( "../../phpmailer/class.phpmailer.php" );
 
-require 'PHPMailerAutoload.php';
+
 
 
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -17,25 +16,25 @@ if($_POST)
 
 
 
-date_default_timezone_set('America/New_York');
 
 
-$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
 $row = mysqli_fetch_array($sql_participant);
 
 
-$date = new DateTime($_POST['date']);
-$meeting_date =  $date->format('Y-m-d');
+$the_date = date('Y-m-d'); 
+date_default_timezone_set('America/New_York');
+$the_time = date('h:i:s A');
 
 
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Date_of_Meeting = '".$meeting_date."',
-  Status = '".$_POST['status']."',
-  Accepted_To_Participate = '".$_POST['accepted_to_participate']."',
-  Meeting_Status = 'Upcoming Meetings'
+if($_POST['selected_meeting'] == 'option_one'){ $date_of_meeting  = $row['Date_Option_One']; $time = $row['Time_Option_One']; }
+if($_POST['selected_meeting'] == 'option_two'){ $date_of_meeting  = $row['Date_Option_Two']; $time = $row['Time_Option_Two']; }
+if($_POST['selected_meeting'] == 'option_three'){ $date_of_meeting  = $row['Date_Option_Three']; $time = $row['Time_Option_Three']; }
 
-  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
+
+  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_upcoming(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Accepted, Time_Accepted) VALUES('".$row['userID']."','".$row['startupID']."',
+  '".$row['ProjectID']."', 'No', 'No', '".$date_of_meeting."', '".$time."','".$row['Location']."','".$the_date."','".$the_time."')");
 
 
 
@@ -65,9 +64,9 @@ $row4 = mysqli_fetch_array($sql4);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Example User", "ald183s@gmail.com");
+$from = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
 $subject = "Meeting Confirmed";
-$to = new SendGrid\Email("Example User", $row4['userEmail']);
+$to = new SendGrid\Email($row5['FirstName'], $row4['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -389,8 +388,8 @@ echo $response->body();
     //header("Location: index.php"); 
 
 
-$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
-$row2 = mysqli_fetch_array($sql_participant);
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+
 
 
  $output = json_encode(array('type'=>'message', 'text' => $_POST['projectid']));

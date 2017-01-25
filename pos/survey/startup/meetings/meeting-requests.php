@@ -134,58 +134,7 @@ $date = date('Y-m-d h:m A');
 
 
 
-<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?> 
 
-
-<h4>You are about to accept the meeting request</h4>
-<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
-
-
-Select a time to meet:
-
-<?php 
-
-//echo $row2['To_Time'];
-
-
-
-$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['From_Time']."%'");
-//$resultfrom=mysql_query($sqlfrom);
-$rowfrom = mysqli_fetch_array($sqlfrom);
-
-$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$row2['To_Time']."%'");
-//$resultto=mysql_query($sqlto);
-$rowto = mysqli_fetch_array($sqlto);
-
-
-//echo $rowfrom['id'];
-//echo "<br>";
-//echo $rowto['id'];
-
-
-?>
-
-<select id="final_time" name="final_time">
-<?php
-
-
-
-$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
-//$resulttime=mysql_query($sqltime);
-
-while($rowtime = mysqli_fetch_array($sqltime))
-{ ?>
-
-<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
-
-
-<?php } ?>
-
-</select>
-
-
-<?php } ?>
 
 
 
@@ -213,33 +162,39 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 <input type="hidden" name="the_time<?php echo $row2['ProjectID']; ?>" id="the_time" value="<?php echo $row2['Time_Suggested']; ?>"/>
 
-
 Select a day to meet:
 
-
-
-<select id="date" name="date<?php echo $row2['ProjectID']; ?>">
-
-<option value="">Select a date</option>
-
-
-<option value="<?php echo $row2['Date_Option_One']; ?>"><?php echo date_format($date_option_one, 'm/d/Y'); ?></option>
-<option value="<?php echo $row2['Date_Option_Two']; ?>"><?php echo date_format($date_option_two, 'm/d/Y'); ?></option>
-<option value="<?php echo $row2['Date_Option_Three']; ?>"><?php echo date_format($date_option_three, 'm/d/Y'); ?></option>
-
-
-</select>
-
-
 <br><br>
 
+ <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><?php echo date_format($date_option_one, 'm/d/Y'); ?></td>
+        <td><?php echo $row2['Time_Option_One']; ?></td>
+        <td><input name="selected_meeting[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
+      </tr>
+      <tr>
+        <td><?php echo date_format($date_option_two, 'm/d/Y'); ?></td>
+        <td><?php echo $row2['Time_Option_Two']; ?></td>
+        <td><input type="radio"  name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_two"/></td>
+      </tr>
+      <tr>
+        <td><?php echo date_format($date_option_three, 'm/d/Y'); ?></td>
+        <td><?php echo $row2['Time_Option_Three']; ?></td>
+        <td><input type="radio" name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_three"/></td>
+      </tr>
+    </tbody>
+  </table>
 
-11Time: <?php echo $row2['Time_Suggested']; ?>
 
-
-
-
-<br><br>
+<br>
 
 
 Location: <?php echo $row2['Location']; ?><br><br>
@@ -494,23 +449,31 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
         var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
-        var date = $('select[name=date'+<?php echo $row2['ProjectID']; ?>+']').val();
-        var finaltime = $('input[name=the_time'+<?php echo $row2['ProjectID']; ?>+']').val();
+        //var date = $('select[name=date'+<?php echo $row2['ProjectID']; ?>+']').val();
+        //var finaltime = $('input[name=the_time'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var selected_meeting = $('input[name="selected_meeting[]"]:checked').map(function () {return this.value;}).get().join(",");
 
 
-        //alert(finaltime);
+        var selected_meeting_checkedstatus = $('input[name="selected_meeting[]"]:checked').size();
+
+        //alert(userid);
         
-        
+        if(selected_meeting_checkedstatus <1 ){ 
+          $(".result-no-date").show();
+          proceed = false;
+        }
+
+
         /*if(the_date == '' ){
             $(".result-no-date").show(); 
             proceed = false;
             }
         */    
-
+        /*
         if(date == '' ){
             $(".result-no-date").show(); 
             proceed = false;
-        }
+        }*/
 
        
         //alert(date);
@@ -532,7 +495,7 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'userid':userid,'finaltime':finaltime,'date':date};
+            post_data = {'projectid':projectid,'userid':userid,'selected_meeting':selected_meeting};
             
             //Ajax post data to server
             $.post('acceptmeeting.php', post_data, function(response){  

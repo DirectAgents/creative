@@ -19,7 +19,7 @@ $row4 = mysqli_fetch_array($sql4);
 
 
 
-$sql = mysqli_query($connecDB, "SELECT * FROM tbl_project_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_POST['projectid']."'");
+$sql = mysqli_query($connecDB, "SELECT * FROM tbl_meeting_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_POST['projectid']."'");
 
 if(mysqli_num_rows($sql)<1)
 {
@@ -54,8 +54,8 @@ $date_option_three = '0000-00-00';
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_project_request(userID, startupID, ProjectID, Meeting_Status, Date_Option_One,Date_Option_Two,Date_Option_Three, Time_Suggested, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
-VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."', 'Meeting Request' , '".$date_option_one."','".$date_option_two."','".$date_option_three."', '".$_POST['time_suggested']."', '".$_POST['location']."' , 'Pending', 'Waiting for Startup to Accept or Decline', 'Participant' , '".$the_date."','".$the_time."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_request(userID, startupID, ProjectID, Meeting_Status, Date_Option_One,Date_Option_Two,Date_Option_Three, Time_Option_One,Time_Option_Two,Time_Option_Three, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
+VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."', 'Meeting Request' , '".$date_option_one."','".$date_option_two."','".$date_option_three."', '".$_POST['time_suggested_one']."','".$_POST['time_suggested_two']."','".$_POST['time_suggested_three']."', '".$_POST['location']."' , 'Pending', 'Waiting for Startup to Accept or Decline', 'Participant' , '".$the_date."','".$the_time."')");
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant_potentialanswer(userID, ProjectID, PotentialAnswerGiven) 
@@ -80,6 +80,9 @@ $rownda = mysqli_fetch_array($sqlnda);
 }
 
 
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
+$row2 = mysqli_fetch_array($sql_participant);
+
 
 $sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$_POST['startupid']."'");
 $row5 = mysqli_fetch_array($sql5);
@@ -92,9 +95,9 @@ $row5 = mysqli_fetch_array($sql5);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Example User", "ald183s@gmail.com");
+$from = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
 $subject = "Meeting Request";
-$to = new SendGrid\Email("Example User", $row5['userEmail']);
+$to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 

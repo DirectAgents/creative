@@ -195,7 +195,7 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]
 
 
 
-$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_project_request WHERE ProjectID = '".$row['ProjectID']."') AND userID='".$_SESSION['participantSession']."' $theage $thegender $theheight
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$row['ProjectID']."') AND userID='".$_SESSION['participantSession']."' $theage $thegender $theheight
 	$thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob
   ");
 
