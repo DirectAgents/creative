@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 24, 2017 at 04:30 AM
+-- Generation Time: Jan 26, 2017 at 03:13 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -464,19 +464,9 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_archived` (
   `Viewed_by_Startup` varchar(255) NOT NULL DEFAULT 'No',
   `Viewed_by_Participant` varchar(255) NOT NULL DEFAULT 'No',
   `Date_of_Meeting` date NOT NULL,
-  `Date_Option_One` date NOT NULL,
-  `Date_Option_Two` date NOT NULL,
-  `Date_Option_Three` date NOT NULL,
-  `Day` varchar(255) NOT NULL,
-  `From_Time` varchar(255) NOT NULL,
-  `To_Time` varchar(255) NOT NULL,
-  `Time_Suggested` varchar(255) NOT NULL,
   `Final_Time` varchar(255) NOT NULL,
   `Location` varchar(255) NOT NULL,
-  `Accepted_to_Participate` varchar(255) NOT NULL,
-  `Not_Qualified_Anymore` varchar(255) NOT NULL,
   `Status` varchar(255) NOT NULL,
-  `Requested_By` varchar(255) NOT NULL,
   `Met` varchar(255) NOT NULL,
   `Payment` varchar(255) NOT NULL,
   `Rated_Participant` varchar(255) NOT NULL,
@@ -550,9 +540,6 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_request` (
   `Date_Option_One` date NOT NULL,
   `Date_Option_Two` date NOT NULL,
   `Date_Option_Three` date NOT NULL,
-  `Day` varchar(255) NOT NULL,
-  `From_Time` varchar(255) NOT NULL,
-  `To_Time` varchar(255) NOT NULL,
   `Time_Option_One` varchar(255) NOT NULL,
   `Time_Option_Two` varchar(255) NOT NULL,
   `Time_Option_Three` varchar(255) NOT NULL,
@@ -572,14 +559,7 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_request` (
   `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
   `Date_Posted` date NOT NULL,
   `Time_Posted` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_meeting_request`
---
-
-INSERT INTO `tbl_meeting_request` (`id`, `userID`, `startupID`, `ProjectID`, `Meetupchoice`, `Meeting_Status`, `Viewed_by_Startup`, `Viewed_by_Participant`, `Date_Option_One`, `Date_Option_Two`, `Date_Option_Three`, `Day`, `From_Time`, `To_Time`, `Time_Option_One`, `Time_Option_Two`, `Time_Option_Three`, `Location`, `Accepted_to_Participate`, `Not_Qualified_Anymore`, `Status`, `Requested_By`, `Met`, `Payment`, `Rated_Participant`, `Comment_Participant`, `Potential_Answer_Given`, `Participant_Email_Upcoming_Meeting_Reminder_Sent`, `Participant_Email_Recent_Meeting_Reminder_Sent`, `Startup_Email_Upcoming_Meeting_Reminder_Sent`, `Startup_Email_Recent_Meeting_Reminder_Sent`, `Date_Posted`, `Time_Posted`) VALUES
-(79, 31, 47, 68070, '', 'Upcoming Meetings', 'No', 'No', '2017-01-25', '2017-01-28', '2017-01-30', '', '', '', '10:00pm', '10:00pm', '', 'Elizabeth, NJ, United States', '', '', 'Waiting for Startup to Accept or Decline', 'Participant', '', '', '', '', '', '', '', '', '', '2017-01-23', '04:33:07 PM');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -597,19 +577,9 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_upcoming` (
   `Viewed_by_Startup` varchar(255) NOT NULL DEFAULT 'No',
   `Viewed_by_Participant` varchar(255) NOT NULL DEFAULT 'No',
   `Date_of_Meeting` date NOT NULL,
-  `Date_Option_One` date NOT NULL,
-  `Date_Option_Two` date NOT NULL,
-  `Date_Option_Three` date NOT NULL,
   `Day` varchar(255) NOT NULL,
-  `From_Time` varchar(255) NOT NULL,
-  `To_Time` varchar(255) NOT NULL,
-  `Time_Suggested` varchar(255) NOT NULL,
   `Final_Time` varchar(255) NOT NULL,
   `Location` varchar(255) NOT NULL,
-  `Accepted_to_Participate` varchar(255) NOT NULL,
-  `Not_Qualified_Anymore` varchar(255) NOT NULL,
-  `Status` varchar(255) NOT NULL,
-  `Requested_By` varchar(255) NOT NULL,
   `Met` varchar(255) NOT NULL,
   `Payment` varchar(255) NOT NULL,
   `Rated_Participant` varchar(255) NOT NULL,
@@ -619,9 +589,16 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_upcoming` (
   `Participant_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
   `Startup_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
   `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
-  `Date_Posted` date NOT NULL,
-  `Time_Posted` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Date_Accepted` date NOT NULL,
+  `Time_Accepted` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_meeting_upcoming`
+--
+
+INSERT INTO `tbl_meeting_upcoming` (`id`, `userID`, `startupID`, `ProjectID`, `Meetupchoice`, `Meeting_Status`, `Viewed_by_Startup`, `Viewed_by_Participant`, `Date_of_Meeting`, `Day`, `Final_Time`, `Location`, `Met`, `Payment`, `Rated_Participant`, `Comment_Participant`, `Potential_Answer_Given`, `Participant_Email_Upcoming_Meeting_Reminder_Sent`, `Participant_Email_Recent_Meeting_Reminder_Sent`, `Startup_Email_Upcoming_Meeting_Reminder_Sent`, `Startup_Email_Recent_Meeting_Reminder_Sent`, `Date_Accepted`, `Time_Accepted`) VALUES
+(1, 31, 47, 68070, '', '', 'No', 'Yes', '2017-01-28', '', '08:00pm', '35 Merrick Road, Amityville, NY, United States', '', '', '', '', '', '', '', '', '', '2017-01-26', '09:21:22 PM');
 
 -- --------------------------------------------------------
 
@@ -835,14 +812,26 @@ CREATE TABLE IF NOT EXISTS `tbl_participant_potentialanswer` (
   `userID` int(11) NOT NULL,
   `ProjectID` int(11) NOT NULL,
   `PotentialAnswerGiven` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_participant_potentialanswer`
 --
 
 INSERT INTO `tbl_participant_potentialanswer` (`id`, `userID`, `ProjectID`, `PotentialAnswerGiven`) VALUES
-(60, 31, 68070, 'Potential Answer 2');
+(60, 31, 68070, 'Potential Answer 2'),
+(61, 31, 68070, 'Potential Answer 1'),
+(62, 31, 68070, 'Potential Answer 1'),
+(63, 31, 68070, 'Potential Answer 1'),
+(64, 31, 68070, 'Potential Answer 1'),
+(65, 31, 68070, 'Potential Answer 1'),
+(66, 31, 68070, 'Potential Answer 1'),
+(67, 31, 68070, 'Potential Answer 1'),
+(68, 31, 68070, 'Potential Answer 1'),
+(69, 31, 68070, 'Potential Answer 1'),
+(70, 31, 68070, 'Potential Answer 1'),
+(71, 31, 68070, 'Potential Answer 1'),
+(72, 31, 68070, 'Potential Answer 1');
 
 -- --------------------------------------------------------
 
@@ -1400,12 +1389,12 @@ ALTER TABLE `tbl_meeting_recent`
 -- AUTO_INCREMENT for table `tbl_meeting_request`
 --
 ALTER TABLE `tbl_meeting_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_meeting_upcoming`
 --
 ALTER TABLE `tbl_meeting_upcoming`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_nda_draft`
 --
@@ -1440,7 +1429,7 @@ ALTER TABLE `tbl_participant_languages`
 -- AUTO_INCREMENT for table `tbl_participant_potentialanswer`
 --
 ALTER TABLE `tbl_participant_potentialanswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `tbl_startup`
 --
