@@ -196,12 +196,12 @@ if(mysqli_num_rows($sql3) == false)
 
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowrequest=mysqli_fetch_array($sql);
 
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Participant='Yes'
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Participant='Yes'
   WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
 
 
@@ -639,7 +639,7 @@ $('#location_option3').hide();
 if($participant_home->is_logged_in())
 {
 
-if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requested_By'] == 'Participant' && $rowrequest['Accepted_to_Participate'] == 'Pending' && $rowrequest['ProjectID'] == $_GET['id'] ){
+if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['ProjectID'] == $_GET['id'] ){
 
 //echo $rowrequest['ProjectID'];
 
@@ -760,7 +760,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Requ
 
 if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'] == '' && $rowrequest['ProjectID'] != $_GET['id'] ){
 
-//echo $rowrequest['ProjectID'];
+
 
  ?>
 
@@ -771,7 +771,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 
  <div class="col-lg-12">    
-<h3>Set up a meeting</h3>
+<h3>111Set up a meeting</h3>
 </div>
 
 <input type="hidden" value="<?php echo $_GET['id']; ?>" name="projectid" id="projectid"/>

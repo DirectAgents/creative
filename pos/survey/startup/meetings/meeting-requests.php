@@ -128,19 +128,6 @@ $date = date('Y-m-d h:m A');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?> 
 
 
@@ -200,7 +187,7 @@ Select a day to meet:
 Location: <?php echo $row2['Location']; ?><br><br>
 
 
-
+<!--
 
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -292,7 +279,7 @@ $(document).on("change", "#meeting_date", function () {
 
 <div id="select-the-day"></div>
 <div id="meeting_date"></div>
-
+-->
 
 
 <?php } ?>

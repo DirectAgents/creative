@@ -344,7 +344,7 @@ echo '</div>';
 
 
  <?php
-
+/*
 $result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_meeting_archived WHERE Viewed_by_Participant = 'No' AND userID = '".$_SESSION['participantSession']."' GROUP BY id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
@@ -353,7 +353,7 @@ if($count > 0 ){
 echo ' <div class="viewed-bubble">';
 echo $count;
 echo '</div>';
-}
+}*/
 ?>
 
 

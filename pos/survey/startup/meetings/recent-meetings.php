@@ -50,7 +50,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE startupID = '".$_SESSION['startupSession']."' AND Status = 'Meeting Set' AND Met = 'Yes' AND Accepted_to_Participate = 'Accepted' AND Meeting_Status = 'Recent Meetings' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 

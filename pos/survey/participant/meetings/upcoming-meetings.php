@@ -42,7 +42,7 @@ if(!$participant_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE userID = '".$_SESSION['participantSession']."' AND Status = 'Meeting Set' AND Accepted_to_Participate = 'Accepted' AND Meeting_Status = 'Upcoming Meetings'  ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE userID = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -345,7 +345,7 @@ $row3 = mysqli_fetch_array($sql3);
                   </div>
 
                   <div class="theline"></div>
-
+<!--
                   <div class="status_request">Status: 
 
                   <?php if($row2['Status'] == 'Waiting to Accept or Decline'){echo 'Waiting to Accept or Decline';} ?>
@@ -355,7 +355,10 @@ $row3 = mysqli_fetch_array($sql3);
                     
 
 
-                  </div>                  <div class="survey-actions">
+                  </div>                  
+-->
+
+                  <div class="survey-actions">
                   
                       
                   <div class="action" tabindex="0" aria-hidden="false">
