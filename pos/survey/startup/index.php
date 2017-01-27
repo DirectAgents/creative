@@ -426,7 +426,7 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
 <?php
 
 
-$result_count = mysqli_query($connecDB,"SELECT ProjectID,userID, COUNT(DISTINCT userID) AS count FROM tbl_meeting_request WHERE ProjectID = '".$row2['ProjectID']."' AND Not_Qualified_Anymore = '' GROUP BY ProjectID");
+$result_count = mysqli_query($connecDB,"SELECT ProjectID,userID, COUNT(DISTINCT userID) AS count FROM tbl_meeting_upcoming WHERE ProjectID = '".$row2['ProjectID']."'  GROUP BY ProjectID");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 

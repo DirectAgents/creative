@@ -121,6 +121,7 @@ $date = date('Y-m-d h:m A');
     <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Successfully Accepted!</div>
   </div>
 
+
 <div class="result-no-date">
 <div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
     <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Please choose a date!</div>
@@ -128,54 +129,101 @@ $date = date('Y-m-d h:m A');
   </div>
 
 
-<div class="result-no-potentialanswer">
+  <div class="result-no-potentialanswer">
 <div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
-    <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Please provide an answer!</div>
+    <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Please choose an answer!</div>
     </div>
   </div>
 
 
-<h4>Accept Meeting Request</h4>
+
+
+<?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?> 
+
+
+
+<h4>Set up a Meeting</h4>
 <p>&nbsp;</p>
+
+
+<input type="hidden" name="the_date" id="the_date" value=""/>
+
+
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
-
-
-<?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['Final_Time'] == '') { ?>
-
-<input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Waiting for Startup to Accept or Decline"/>
-<input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Pending"/>
-
-
-
-
-<?php } ?>
-
-
-
-<?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['Date_of_Meeting'] == '0000-00-00') { ?>
 
 
 <input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Meeting Set"/>
 <input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Accepted"/>
 
+
+<input type="hidden" name="the_time<?php echo $row2['ProjectID']; ?>" id="the_time" value="<?php echo $row2['Time_Suggested']; ?>"/>
+
+Select a day to meet:
+
+<br><br>
+
+ <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><?php echo date_format($date_option_one, 'm/d/Y'); ?></td>
+        <td><?php echo $row2['Time_Option_One']; ?></td>
+        <td><input name="selected_meeting[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
+      </tr>
+      <tr>
+        <td><?php echo date_format($date_option_two, 'm/d/Y'); ?></td>
+        <td><?php echo $row2['Time_Option_Two']; ?></td>
+        <td><input type="radio"  name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_two"/></td>
+      </tr>
+      <tr>
+        <td><?php echo date_format($date_option_three, 'm/d/Y'); ?></td>
+        <td><?php echo $row2['Time_Option_Three']; ?></td>
+        <td><input type="radio" name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_three"/></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<br>
+
+
 Location: <?php echo $row2['Location']; ?><br><br>
 
-Time: <?php echo $row2['Final_Time']; ?><br><br>
 
+<!--
 
-Select the date to meet:
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
+$(document).ready(function() {
 
-  $( "#meeting_date" ).datepicker({
+  
+  $("#day").change(function() { 
+  var day_of_meeting = $( "#day option:selected" ).text();
+  //alert(day_of_meeting);
+
+
+$('#select-the-day').html('Select the date to meet:');
+
+$( "#meeting_date" ).datepicker("destroy");
+
+$( "#meeting_date" ).datepicker({
+
     beforeShowDay: function(date) {
+
         var day = date.getDay();
-        var day_of_meeting="<?php echo $row2['Day']; ?>";
+        //var day_of_meeting="<?php echo $row2['Day']; ?>";
+        //var day = $( "#day option:selected" ).text();
         
         if(day_of_meeting == 'Monday'){
-        return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];
+        return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];    
         }
 
         if(day_of_meeting == 'Tuesday'){
@@ -201,15 +249,50 @@ Select the date to meet:
         if(day_of_meeting == 'Sunday'){
         return [(day != 1 && day != 2 && day != 3 && day != 4 && day != 5 && day != 6), ''];
         }
-
         
+
+      if(day_of_meeting == 'Select a day'){
+        $('#select-the-day').hide();
+      }
+
+$( "#meeting_date" ).datepicker("refresh");
+        
+
+
     }
+
+    
+
+
   });
+
+
+
+
+$(document).on("change", "#meeting_date", function () {
+         date = $(this).val();
+        //alert(date);
+        $("#the_date").val(date);
+        
+    })
+
+
+
+
+   });
+
+ 
+   });
+
 
   </script>
 
+<div id="select-the-day"></div>
+<div id="meeting_date"></div>
+-->
 
- <div id="meeting_date"></div>
+
+
 
 
 <?php 
@@ -218,6 +301,10 @@ $sqlscreening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquest
 $rowscreening = mysqli_fetch_array($sqlscreening);
 
 if($rowscreening['EnabledorDisabled'] == 'Enabled'){
+
+  echo '<input type="hidden" name="screeningquestionrequired'.$row2['ProjectID'].'" id="screeningquestionrequired'.$row2['ProjectID'].'" value="Required" />';
+
+
   echo '<br>';
   echo 'Please answer the following question:';
   echo '<br>';
@@ -250,7 +337,7 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 ?>
 
 
-<?php } ?>
+
 
 
 
@@ -271,7 +358,7 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 
 <!-- End Accept -->
 
-
+<?php } ?>
 
 
 <!-- Start Decline -->
@@ -365,12 +452,7 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
 });
     
-    var date = '';
-    $(document).on("change", "#meeting_date", function () {
-         date = $(this).val();
-          $(".result-no-date").hide(); 
-        
-    })
+
 
     
     $(".result-no-date").hide();
@@ -379,14 +461,22 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
     $(".accept"+<?php echo $row2['ProjectID']; ?>).click(function() {  
       //alert("delete"+<?php echo $row2['ProjectID']; ?>);
 
-          var proceed = true;
+        var proceed = true;
 
-          var input = date;
-          
-          if(input == '' ){
-            $(".result-no-date").show(); 
-            proceed = false;
-            }
+        var selected_meeting = $('input[name="selected_meeting[]"]:checked').map(function () {return this.value;}).get().join(",");
+
+
+        var selected_meeting_checkedstatus = $('input[name="selected_meeting[]"]:checked').size();
+
+        //alert(userid);
+        
+        if(selected_meeting_checkedstatus <1 ){ 
+          $(".result-no-date").show();
+          proceed = false;
+         }else{
+          $(".result-no-date").hide();
+                //proceed = true; //set do not proceed flag       
+        };
           
    
       
@@ -397,16 +487,32 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
         //alert(finaltime);
 
+        var screeningquestionrequired = $('input[name=screeningquestionrequired'+<?php echo $row2['ProjectID']; ?>+']').val();
       
-        var potentialanswer = $('input[name="PotentialAnswer[]"]:checked]').size();
-        var potentialanswergiven = $('input[name="PotentialAnswer[]"]:checked]').val();
-       //alert(n);
-        if (potentialanswer < 1) {
+        
+
+
+       
+
+       //alert(screeningquestionrequired);
+      
+
+      if (screeningquestionrequired == 'Required'){
+
+        var potentialanswergiven = $('input[name="PotentialAnswer[]"]:checked').map(function () {return this.value;}).get().join(",");
+        var potentialanswergiven_checkedstatus = $('input[name="PotentialAnswer[]"]:checked').size();
+
+        if (potentialanswergiven_checkedstatus < 1) {
           //alert("asdfads");
 
           $(".result-no-potentialanswer").show(); 
           proceed = false;
-        }
+         }else{
+          $(".result-no-potentialanswer").hide();
+                //proceed = true; //set do not proceed flag       
+        };
+
+      }
       
 
 
@@ -438,7 +544,8 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'userid':userid,'status':status,'accepted_to_participate':accepted_to_participate,'date':date,'potentialanswergiven':potentialanswergiven};
+
+            post_data = {'projectid':projectid,'userid':userid,'selected_meeting':selected_meeting,'potentialanswergiven':potentialanswergiven};
             
             //Ajax post data to server
             $.post('acceptmeeting.php', post_data, function(response){  

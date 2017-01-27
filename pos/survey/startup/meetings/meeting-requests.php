@@ -448,7 +448,10 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         if(selected_meeting_checkedstatus <1 ){ 
           $(".result-no-date").show();
           proceed = false;
-        }
+        }else{
+          $(".result-no-date").hide();
+                //proceed = true; //set do not proceed flag       
+        };
 
 
         /*if(the_date == '' ){

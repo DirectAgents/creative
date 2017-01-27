@@ -22,7 +22,7 @@ $position = ($page_number * $item_per_page);
 
 
 
-$results = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_GET['id']."' AND startupID='".$_SESSION['startupSession']."' AND Meeting_Status = 'Upcoming Meetings' AND Status = 'Meeting Set'  ORDER BY userID DESC LIMIT $position, $item_per_page ");
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE ProjectID = '".$_GET['id']."' AND startupID='".$_SESSION['startupSession']."' ORDER BY userID DESC LIMIT $position, $item_per_page ");
 
 
 

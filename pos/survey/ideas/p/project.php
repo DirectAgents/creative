@@ -902,25 +902,25 @@ foreach($days as $day){
 <div style="float:left; margin-left:15px;">
 <select name="time_suggested_one" id="time_suggested_one">
   <option value="" selected disabled="disabled">Select a time</option>
-  <option value="06:00am">06:00 AM</option>
-  <option value="07:00am">07:00 AM</option>
-  <option value="08:00am">08:00 AM</option>
-  <option value="09:00am">09:00 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="01:00pm">01:00 PM</option>
-  <option value="02:00pm">02:00 PM</option>
-  <option value="03:00pm">03:00 PM</option>
-  <option value="04:00pm">04:00 PM</option>
-  <option value="05:00pm">05:00 PM</option>
-  <option value="06:00pm">06:00 PM</option>
-  <option value="07:00pm">07:00 PM</option>
-  <option value="08:00pm">08:00 PM</option>
-  <option value="09:00pm">09:00 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="12:00am">12:00 AM</option>
+  <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
                </select>
 
     </div>
@@ -947,25 +947,25 @@ foreach($days as $day){
 <div style="float:left; margin-left:15px;">
 <select name="time_suggested_two" id="time_suggested_two">
   <option value="" selected disabled="disabled">Select a time</option>
-  <option value="06:00am">06:00 AM</option>
-  <option value="07:00am">07:00 AM</option>
-  <option value="08:00am">08:00 AM</option>
-  <option value="09:00am">09:00 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="01:00pm">01:00 PM</option>
-  <option value="02:00pm">02:00 PM</option>
-  <option value="03:00pm">03:00 PM</option>
-  <option value="04:00pm">04:00 PM</option>
-  <option value="05:00pm">05:00 PM</option>
-  <option value="06:00pm">06:00 PM</option>
-  <option value="07:00pm">07:00 PM</option>
-  <option value="08:00pm">08:00 PM</option>
-  <option value="09:00pm">09:00 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="12:00am">12:00 AM</option>
+ <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
                </select>
 
     </div>
@@ -993,25 +993,25 @@ foreach($days as $day){
 <div style="float:left; margin-left:15px;">
 <select name="time_suggested_three" id="time_suggested_three">
   <option value="" selected disabled="disabled">Select a time</option>
-  <option value="06:00am">06:00 AM</option>
-  <option value="07:00am">07:00 AM</option>
-  <option value="08:00am">08:00 AM</option>
-  <option value="09:00am">09:00 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="01:00pm">01:00 PM</option>
-  <option value="02:00pm">02:00 PM</option>
-  <option value="03:00pm">03:00 PM</option>
-  <option value="04:00pm">04:00 PM</option>
-  <option value="05:00pm">05:00 PM</option>
-  <option value="06:00pm">06:00 PM</option>
-  <option value="07:00pm">07:00 PM</option>
-  <option value="08:00pm">08:00 PM</option>
-  <option value="09:00pm">09:00 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="12:00am">12:00 AM</option>
+ <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
                </select>
 
     </div>

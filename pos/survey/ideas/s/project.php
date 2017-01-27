@@ -52,11 +52,14 @@ $rowparticipantanswer=mysqli_fetch_array($sqlparticipantanswer);
 
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
-$rowparticipantproject=mysqli_fetch_array($sql);
+$rowmeetingrequest=mysqli_fetch_array($sql);
 
 
+$sqlupcoming = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowmeetingupcoming=mysqli_fetch_array($sqlupcoming);
 
 
 
@@ -223,37 +226,142 @@ if($participant_home->is_logged_in())
 
 
 
+ <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+   
+
+    $( "#date_option_one" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      buttonText: "Select date"
+    });
+
+    $( "#date_option_two" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      buttonText: "Select date"
+    });
+
+    $( "#date_option_three" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      buttonText: "Select date"
+    });
+
+  } );
+  </script>
+
+
+
 
 <script>
 
 $(document).ready(function() {
 
 
- $(".btn-request-option-one").click(function() {  
+ $(".btn-request").click(function() {  
   
 //alert("aads"); 
 
 
-        var projectid  = $('input[name=projectid').val();
+        var screeningquestion_required  = $('input[name=screeningquestion_required]').val();
+
+        var projectid  = $('input[name=projectid]').val();
         var participantid  = $('input[name=participantid').val();
         
+        var date_option_one  = $('input[name=date_option_one]').val();
+        var date_option_two  = $('input[name=date_option_two]').val();
+        var date_option_three  = $('input[name=date_option_three]').val();
 
-        var days_availability_option = $("select[name='days_availability_option_one']").val();
-        var final_time_option = $("select[name='final_time_option_one']").val();
-        var location_option  = $('input[name=location_option_one').val();
+        var time_suggested_one = $("select[name='time_suggested_one']").val();
+        var time_suggested_two = $("select[name='time_suggested_two']").val();
+        var time_suggested_three = $("select[name='time_suggested_three']").val();
+
+        var location = $('#pac-input').val();
 
         //alert(days_availability_option);
 
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
         var proceed = true;
+
+
+        if(!date_option_one) {
+
+                $("#date_option_one").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#date_option_one").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+        if(!time_suggested_one) {
+
+                $("#time_suggested_one").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_one").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+
+        if(!date_option_two) {
+
+                $("#date_option_two").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+         }else{
+                $("#date_option_two").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+         if(!time_suggested_two) {
+
+                $("#time_suggested_two").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_two").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+
+        if(!date_option_three) {
+
+                $("#date_option_three").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+         }else{
+                $("#date_option_three").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+         if(!time_suggested_three) {
+
+                $("#time_suggested_three").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_three").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+        if(!location) {
+
+                $("#pac-input").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#pac-input").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
         
         //everything looks good! proceed...
         if(proceed) 
         {
 
             //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'final_time_option':final_time_option, 'location_option':location_option};
+   post_data = {'projectid':projectid,'participantid':participantid,'time_suggested_one':time_suggested_one, 'time_suggested_two':time_suggested_two,'time_suggested_three':time_suggested_three,'date_option_one':date_option_one, 'date_option_two':date_option_two, 'date_option_three':date_option_three,'location':location};
             
             //Ajax post data to server
             $.post('../request-to-meet.php', post_data, function(response){  
@@ -286,113 +394,6 @@ $(document).ready(function() {
 
 
 
-
-$(".btn-request-option-two").click(function() {  
-  
-//alert("aads"); 
-
-
-        var projectid  = $('input[name=projectid').val();
-        var participantid  = $('input[name=participantid').val();
-        
-
-        var days_availability_option = $("select[name='days_availability_option_two']").val();
-        var final_time_option = $("select[name='final_time_option_two']").val();
-        var location_option  = $('input[name=location_option_two').val();
-
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
-        
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-
-            //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'final_time_option':final_time_option, 'location_option':location_option};
-            
-            //Ajax post data to server
-            $.post('../request-to-meet.php', post_data, function(response){  
-              
-              //alert (projectid);
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-         
-          output = response.text;
-
-
-        
-          
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $("#result").hide().html(output).slideDown();
-            }, 'json');
-      
-        }
-    });
-
-
-
-
-$(".btn-request-option-three").click(function() {  
-  
-//alert("aads"); 
-
-
-        var projectid  = $('input[name=projectid').val();
-        var participantid  = $('input[name=participantid').val();
-        
-
-        var days_availability_option = $("select[name='days_availability_option_three']").val();
-        var final_time_option = $("select[name='final_time_option_three']").val();
-        var location_option  = $('input[name=location_option_three').val();
-
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
-        
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-
-            //data to be sent to server
-  post_data = {'projectid':projectid,'participantid':participantid,'days_availability_option':days_availability_option, 'final_time_option':final_time_option, 'location_option':location_option};
-            
-            //Ajax post data to server
-            $.post('../request-to-meet.php', post_data, function(response){  
-              
-              //alert (projectid);
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-         
-          output = response.text;
-
-
-        
-          
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $("#result").hide().html(output).slideDown();
-            }, 'json');
-      
-        }
-    });
 
 
 
@@ -513,26 +514,27 @@ $(".btn-request-option-three").click(function() {
 <?php if(mysqli_num_rows($sql) == 1) { ?>
 
 
-<?php if($rowparticipantproject['Meeting_Status'] == 'Meeting Requests'){ ?>
+<?php if($rowmeetingrequest['Requested_By'] == 'Startup'){ ?>
 
 <div class="col-lg-11" style="padding:0px;">
  <div class="success2">
-You have sent <?php echo $rowparticipant['FirstName']; ?> a request to meet on a <?php echo $rowparticipantproject['Day']; ?> 
-at <?php echo $rowparticipantproject['Final_Time']; ?>. <br>If <?php echo $rowparticipant['FirstName']; ?> wants to meet, <?php echo $rowparticipant['FirstName']; ?> will suggest you a date to meet.
+You have sent <?php echo $rowparticipant['FirstName']; ?> a request to meet.
 
 </div>
 </div>
 
 <?php } ?>
 
+<?php } ?>
 
 
-<?php if($rowparticipantproject['Meeting_Status'] == 'Upcoming Meetings'){ ?>
+
+<?php if(mysqli_num_rows($sqlupcoming) == 1) { ?>
 
 <div class="col-lg-11" style="padding:0px;">
  <div class="success2">
-You will meet <?php echo $rowparticipant['FirstName']; ?> on <?php echo $rowparticipantproject['Date_of_Meeting']; ?> 
-at <?php echo $rowparticipantproject['Final_Time']; ?><br>
+You will meet <?php echo $rowparticipant['FirstName']; ?> on <?php echo $rowmeetingupcoming['Date_of_Meeting']; ?> 
+at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 </div>
 </div>
@@ -543,273 +545,7 @@ at <?php echo $rowparticipantproject['Final_Time']; ?><br>
 
 
 
-<?php } ?>
 
-<?php if(mysqli_num_rows($sql) == 0) { ?>
-
-<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>
-
-
- <p>Choose the date you want to request to meet</p>
-
- <div class="col-lg-11" style="padding:0px;">
-<div id="result"></div>
-</div>  
-
-
-
-
-
-<input type="hidden" value="<?php echo $_GET['id']; ?>" name="projectid" id="projectid"/>
-<input type="hidden" value="<?php echo $_GET['p']; ?>" name="participantid" id="participantid"/>
-
-<?php if($rowparticipant['Days_Availability_Option1'] != ''){ ?>
-
-
-
-<input type="hidden" value="<?php echo $rowparticipant['Location_Option1']; ?>" name="location_option_one" id="location_option_one"/>
-
-<div class="col-lg-11" style="background:#eee; padding:10px; margin-bottom:20px;">
-  <div class="col-lg-2">
-
-
-
-
-<select id="days_availability_option_one" name="days_availability_option_one">
-<?php
-
-$days = explode(',', $rowparticipant['Days_Availability_Option1']);
-foreach ($days as &$day) { ?>
-     <option value="<?php echo $day; ?>"><?php echo $day; ?></option>
-
-<?php } ?>
-
-</select>
-
-
-
- </div>
-  <div class="col-lg-2">
-
-
-
-<?php 
-
-
-$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['From_Time_Option1']."%'");
-//$resultfrom=mysql_query($sqlfrom);
-$rowfrom = mysqli_fetch_array($sqlfrom);
-
-$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['To_Time_Option1']."%'");
-//$resultto=mysql_query($sqlto);
-$rowto = mysqli_fetch_array($sqlto);
-
-?>
-
-    
-<select id="final_time_option_one" name="final_time_option_one">
-<?php
-
-
-
-$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
-//$resulttime=mysql_query($sqltime);
-
-while($rowtime = mysqli_fetch_array($sqltime))
-{ ?>
-
-<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
-
-
-<?php } ?>
-
-</select>
-
-
-
-
-
-
-
-  </div>
-  <div class="col-lg-4"><?php echo $rowparticipant['Location_Option1']; ?><br>
-
-     <a href="http://maps.google.com/?q=<?php echo $rowparticipant['Location_Option1']; ?>" target="_blank">View Map</a>
-
-     </div>
-   <div class="col-lg-4">
-  <a href="#" role="button" class="btn-request-option-one">
-  <button type="button" class="btn-request">
-  Choose this time to meet</button></a></div>
-
-</div>
-<?php } ?>
-
-
-
-
-
-
-
-<?php if($rowparticipant['Days_Availability_Option2'] != ''){ ?>
-
-
-<input type="hidden" value="<?php echo $rowparticipant['Location_Option2']; ?>" name="location_option_two" id="location_option_two"/>
-
-
-<div class="col-lg-11" style="background:#eee; padding:10px; margin-bottom:20px;">
-  <div class="col-lg-2">
-    
-
-<select id="days_availability_option_two" name="days_availability_option_two">
-<?php
-
-$days = explode(',', $rowparticipant['Days_Availability_Option2']);
-foreach ($days as &$day) { ?>
-     <option value="<?php echo $day; ?>"><?php echo $day; ?></option>
-
-<?php } ?>
-
-</select>
-
-
-  </div>
-  <div class="col-lg-2">
-    
-
-
-
-<?php 
-
-
-$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['From_Time_Option2']."%'");
-//$resultfrom=mysql_query($sqlfrom);
-$rowfrom = mysqli_fetch_array($sqlfrom);
-
-$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['To_Time_Option2']."%'");
-//$resultto=mysql_query($sqlto);
-$rowto = mysqli_fetch_array($sqlto);
-
-?>
-
-    
-<select id="final_time_option_two" name="final_time_option_two">
-<?php
-
-
-
-$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
-//$resulttime=mysql_query($sqltime);
-
-while($rowtime = mysqli_fetch_array($sqltime))
-{ ?>
-
-<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
-
-
-<?php } ?>
-
-</select>
-
-
-
-  </div>
-  <div class="col-lg-4"><?php echo $rowparticipant['Location_Option2']; ?><br>
-       <a href="http://maps.google.com/?q=<?php echo $rowparticipant['Location_Option2']; ?>" target="_blank">View Map</a>
-</div>
-   <div class="col-lg-4">
-  <a href="#" role="button" class="btn-request-option-two">
-  <button type="button" class="btn-request">
-  Choose this time to meet</button></a></div>
-
-</div>
-<?php } ?>
-
-
-<p>&nbsp;</p>
-
-<?php if($rowparticipant['Days_Availability_Option3'] != ''){ ?>
-
-
-<input type="hidden" value="<?php echo $rowparticipant['Location_Option3']; ?>" name="location_option_three" id="location_option_three"/>
-
-
-<div class="col-lg-11" style="background:#eee; padding:10px;">
-  <div class="col-lg-2">
-    
-
-<select id="days_availability_option_three" name="days_availability_option_three">
-<?php
-
-$days = explode(',', $rowparticipant['Days_Availability_Option3']);
-foreach ($days as &$day) { ?>
-     <option value="<?php echo $day; ?>"><?php echo $day; ?></option>
-
-<?php } ?>
-
-</select>
-
-
-  </div>
-  <div class="col-lg-2">
-
-
-
-
-<?php 
-
-
-$sqlfrom=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['From_Time_Option3']."%'");
-//$resultfrom=mysql_query($sqlfrom);
-$rowfrom = mysqli_fetch_array($sqlfrom);
-
-$sqlto=mysqli_query($connecDB,"SELECT * FROM time WHERE TheTime LIKE '%".$rowparticipant['To_Time_Option3']."%'");
-//$resultto=mysql_query($sqlto);
-$rowto = mysqli_fetch_array($sqlto);
-
-?>
-
-    
-<select id="final_time_option_three" name="final_time_option_three">
-<?php
-
-
-
-$sqltime=mysqli_query($connecDB,"SELECT * FROM time where id BETWEEN '".$rowfrom['id']."' and '".$rowto['id']."' group by id");
-//$resulttime=mysql_query($sqltime);
-
-while($rowtime = mysqli_fetch_array($sqltime))
-{ ?>
-
-<option value="<?php echo $rowtime['TheTime']; ?>"><?php echo $rowtime['TheTime']; ?></option>
-
-
-<?php } ?>
-
-</select>
-
-
-
-  </div>
-  <div class="col-lg-4"><?php echo $rowparticipant['Location_Option3']; ?><br>
-       <a href="http://maps.google.com/?q=<?php echo $rowparticipant['Location_Option3']; ?>" target="_blank">View Map</a>
-</div>
-   <div class="col-lg-4">
- <a href="#" role="button" class="btn-request-option-three">
-  <button type="button" class="btn-request">
-  Choose this time to meet</button></a></div>
-
-</div>
-<?php } ?>
-
-
-<?php } ?>
-
-
-
-<?php } ?>
-
-</div>
 
 
 
@@ -818,7 +554,7 @@ while($rowtime = mysqli_fetch_array($sqltime))
 
 
     <div class="col-lg-12">
-      <p>&nbsp;</p>
+      
       <h3>What is the idea?</h3>
       <p><?php echo $rowproject['Name']; ?></p>
      
@@ -1104,12 +840,235 @@ echo '<br>';
 
 
 
- </div>
+
+
+
+<p>&nbsp;</p>
+
+
+
+  <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0) { ?>
+
+
+<input id="participantid" name="participantid" type="hidden" value="<?php echo $_GET['p']; ?>">
+<input id="projectid" name="projectid" type="hidden" value="<?php echo $_GET['id']; ?>">
+
+
+<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>
+
+
+ <p>Choose the date you want to request to meet</p>
+
+
+
+
+<div id="select-dates">
+
+ <div class="col-lg-12">
+
+<div class="row-day">
+<div class="the-day">
+<h4>Meeting Date Option #1:</h4> 
+
+<div class="select-row">
+<div style="float:left; margin-left:3px;">
+<input type="text" name="date_option_one" id="date_option_one" placeholder="Pick a date" class="validate">
+</div>
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_one" id="time_suggested_one">
+  <option value="" selected disabled="disabled">Select a time</option>
+  <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
+               </select>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+ <div class="col-lg-12">
+
+<div class="row-day">
+<div class="the-day">
+<h4>Meeting Date Option #2:</h4> 
+
+<div class="select-row">
+<div style="float:left; margin-left:0px;">
+<input type="text" name="date_option_two" id="date_option_two" placeholder="Pick a date" class="validate">
+</div>
+
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_two" id="time_suggested_two">
+  <option value="" selected disabled="disabled">Select a time</option>
+  <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
+               </select>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+ <div class="col-lg-12">
+
+<div class="row-day">
+<div class="the-day">
+<h4>Meeting Date Option #3:</h4> 
+
+<div class="select-row">
+<div style="float:left; margin-left:0px;">
+<input type="text" name="date_option_three" id="date_option_three" placeholder="Pick a date" class="validate">
+</div>
+
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_three" id="time_suggested_three">
+  <option value="" selected disabled="disabled">Select a time</option>
+  <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
+               </select>
+
+    </div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 
 
+
+<div id="wheretomeet">
+<div class="therow">
+    <div class="col-lg-12" style="padding-left:0px">
+      <h4>Location to meet:</h4>
+      <h5>(We suggest to enter a name and location of a venue to meet)</h5>
+
+
+
+
+      
+  
+<div id="location_option1">   
+    <input id="pac-input" name="location" class="controls" type="text" placeholder="e.g Starbucks, Astor Place, New York, NY, United States">
+  
+    <div id="map"></div>
+
+</div>
+
+<!--
+<div id="location_option2">   
+<input type="hidden" name="location_option2" id="location_option2" value="<?php echo $row['Location_Option2'];?>" />
+<iframe width="100%" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php echo $row['Location_Option2'];?>&key=AIzaSyDWVAsb7TmD-8_yRqe7jBIMrAcGFwHg06M"></iframe> 
+
+</div>
+
+<div id="location_option3">   
+<input type="hidden" name="location_option3" id="location_option3" value="<?php echo $row['Location_Option3'];?>" />  
+<iframe width="100%" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php echo $row['Location_Option3'];?>&key=AIzaSyDWVAsb7TmD-8_yRqe7jBIMrAcGFwHg06M"></iframe> 
+
+</div>
+-->
+
+
+
+</div>
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+    <input type="submit" class="btn-request" value="Request to Meet"/>
+    <p>&nbsp;</p>
+    <div id="result"></div>
+
+
+
+
+<?php } ?>
+
+
+<?php } ?>
+
+
+
+
+ </div>
+
+</div>
+
+
+</div>
     
 
 

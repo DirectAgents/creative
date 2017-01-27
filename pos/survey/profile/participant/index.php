@@ -3,6 +3,7 @@ session_start();
 
 //Fetch rating deatails from database
 
+//echo $_SESSION['startupSession'];
 
 
 require_once '../../base_path.php';
@@ -13,6 +14,10 @@ require_once '../../class.participant.php';
 require_once '../../class.startup.php';
 
 $participant_home = new PARTICIPANT();
+$startup_home = new STARTUP();
+
+
+
 /*
 $startup_home = new startup();
 
@@ -334,7 +339,7 @@ if($row['profile_image'] != ''){
 <?php
 
 
-$result_count = mysqli_query($connecDB,"SELECT Status,userID, COUNT(userID) AS count FROM tbl_project_request WHERE Status = 'Meeting Set' AND userID = '".$_GET['id']."'");
+$result_count = mysqli_query($connecDB,"SELECT Status,userID, COUNT(userID) AS count FROM tbl_meeting_archived WHERE Status = 'Met' AND userID = '".$_GET['id']."'");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -742,10 +747,18 @@ $(document).ready(function () {
 </script>
 
 
-
+<?php if($participant_home->is_logged_in()){ ?>
 
 <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
 
+<?php } ?>
+
+
+<?php if($startup_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+
+<?php } ?>
 
 
 <div class="survey-info-container">
