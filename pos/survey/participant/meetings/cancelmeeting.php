@@ -14,20 +14,20 @@ if($_POST)
 
 
 
+$the_date = date('Y-m-d'); 
 date_default_timezone_set('America/New_York');
+$the_time = date('h:i:s A');
 
 
-$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
 $row = mysqli_fetch_array($sql_participant);
 
 
 
 
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Status = 'Canceled_by_Participant'
-
-  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Status, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
+  '".$row['ProjectID']."', 'No', 'No', '".$row['Date_of_Meeting']."', '".$row['Final_Time']."','".$row['Location']."','Cancelled_by_Participant','".$the_date."','".$the_time."')");
 
 
 
@@ -54,7 +54,7 @@ $row4 = mysqli_fetch_array($sql4);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Example User", "ald183s@gmail.com");
+$from = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
 $subject = "Meeting Cancelled";
 $to = new SendGrid\Email($row4['FirstName'], $row4['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -369,6 +369,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
    
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_upcoming WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
 
 
 
