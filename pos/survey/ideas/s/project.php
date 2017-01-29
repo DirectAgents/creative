@@ -455,51 +455,8 @@ $(document).ready(function() {
 
 
 
+<div class="col-lg-12">
 
-
-
-
-  
-
-
-
- <div class="col-lg-3">
-      
-      <?php
-  if($rowproject['project_image'] != ''){ ?>
-  
-  <img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowproject['project_image']; ?>" class="img-circle-profile"/>
-
-<?php
-
-}else{
-
- echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" class="img-circle-profile"/>';
-}
-  
-      ?>
-
-
-    </div>
-
-    <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
-    
-<div class="col-lg-6"><h3>Payout</h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of <?php echo $rowparticipant['FirstName']; ?>'s time</span></div>
-
-
-<?php }else{ ?>
-
-
-<div class="col-lg-5"><h3>Payout</h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></div>
-
-
-<?php } ?>
-
-
-
-
- <div class="col-lg-12">
- <p>&nbsp;</p>
 
 
 
@@ -536,13 +493,62 @@ You have sent <?php echo $rowparticipant['FirstName']; ?> a request to meet.
 
 <div class="col-lg-11" style="padding:0px;">
  <div class="success2">
-You will meet <?php echo $rowparticipant['FirstName']; ?> on <?php echo $rowmeetingupcoming['Date_of_Meeting']; ?> 
+You will meet <?php echo $rowparticipant['FirstName']; ?> on  <?php echo date('F j, Y',strtotime($rowmeetingupcoming['Date_of_Meeting'])); ?> 
 at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 </div>
+<p>&nbsp;</p>
 </div>
 
+
+
 <?php } ?>
+
+
+  
+
+
+
+ <div class="col-lg-3">
+      
+      <?php
+  if($rowproject['project_image'] != ''){ ?>
+  
+  <img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowproject['project_image']; ?>" class="img-circle-profile"/>
+
+<?php
+
+}else{
+
+ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" class="img-circle-profile"/>';
+}
+  
+      ?>
+
+
+    </div>
+
+    <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
+    
+<div class="col-lg-7"><h3>Payout</h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of <?php echo $rowparticipant['FirstName']; ?>'s time to meet with you</span></div>
+
+
+<?php }else{ ?>
+
+
+<div class="col-lg-5"><h3>Payout</h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></div>
+
+
+<?php } ?>
+
+
+
+
+ 
+
+
+
+
 
 
 

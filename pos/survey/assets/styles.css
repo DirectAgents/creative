@@ -70,7 +70,7 @@ a:hover{text-decoration: none !important}
 .education input[type="checkbox"], .job input[type="checkbox"],.in-person input[type="checkbox"] {display:none;}
 
 .details{font-size:18px;}
-.details-box{font-size:18px; background:#1f8eed; color:#fff; padding:5px;}
+.details-box{font-size:18px;  color:#1f8eed; padding:0px;}
 
 .step6 input[type="checkbox"], input[type="radio"]{display:none;}
 
