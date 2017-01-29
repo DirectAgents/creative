@@ -849,7 +849,7 @@ echo '<br>';
 
 
 
-
+ <div class="col-lg-12">
 
 
 <p>&nbsp;</p>
@@ -1011,7 +1011,7 @@ echo '<br>';
 
 </div>
 
-
+</div>
 
 
 <div id="wheretomeet">

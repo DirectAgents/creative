@@ -106,7 +106,7 @@ include("../../../config.php"); //include config file
 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE Participant_Email_Recent_Meeting_Reminder_Sent = '' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE Participant_Email_Recent_Meeting_Reminder_Sent = '' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -151,7 +151,7 @@ require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Circl", "ald183s@gmail.com");
-$subject = "Upcoming Meeting";
+$subject = "Recent Meeting";
 $to = new SendGrid\Email($rowparticipant['FirstName'], $rowparticipant['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -467,12 +467,12 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->body();
 
 
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET 
+
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET 
   
 Participant_Email_Recent_Meeting_Reminder_Sent = 'Yes'
 
 WHERE userID='".$rowparticipant['userID']."'");
-
 
 
 

@@ -53,7 +53,7 @@ require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Circl", "ald183s@gmail.com");
-$subject = "Upcoming Meeting";
+$subject = "Recent Meeting";
 $to = new SendGrid\Email($rowstartup['FirstName'], $rowstartup['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -270,6 +270,13 @@ $content = new SendGrid\Content("text/html", '
                                     <![endif]-->
                                 </td>
                             </tr>
+
+   <tr>
+                               
+                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/survey/startup/meetings/" style="font-weight: normal; color: #ffffff;">Pay</a></td>
+                </tr>
+
+
                         </tbody></table>
 
 
@@ -369,11 +376,24 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->body();
 
 
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET 
-  
-Startup_Email_Recent_Meeting_Reminder_Sent = 'Yes'
 
-WHERE startupID='".$rowstartup['userID']."'");
+
+
+
+
+$the_date = date('Y-m-d'); 
+date_default_timezone_set('America/New_York');
+$the_time = date('h:i:s A');
+
+
+
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_recent(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Startup_Email_Recent_Meeting_Reminder_Sent ,Date_Posted, Time_Posted) VALUES('".$rowparticipant['userID']."','".$rowstartup['userID']."',
+  '".$row2['ProjectID']."', 'No', 'No', '".$row2['Date_of_Meeting']."', '".$row2['Final_Time']."','".$row2['Location']."', 'Yes', '".$the_date."','".$the_time."')");
+
+
+
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_upcoming WHERE ProjectID = '".$row2['ProjectID']."' AND startupID = '".$rowstartup['userID']."'");
 
 
 
