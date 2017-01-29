@@ -109,7 +109,7 @@ $dtB = new DateTime($row2['Date_of_Meeting'].' '.$row2['Final_Time']);
 
 
 
-if ( $dtB < $dtA ) {
+if ( $dtA > $dtB ) {
 
 
 
