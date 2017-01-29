@@ -3,6 +3,7 @@
 session_start();
 include ('../../config.php');
 
+
 $ip = $_SERVER['REMOTE_ADDR'];
 
 //echo $_SESSION['startupSession'];
@@ -13,23 +14,18 @@ if($_POST)
 
 
 
+$the_date = date('Y-m-d'); 
 date_default_timezone_set('America/New_York');
+$the_time = date('h:i:s A');
 
 
-$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
-$row = mysqlifetch_array($sql_participant);
-
-
-
-
-
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Status = 'Cancelled_by_startup'
-
-  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+$row = mysqli_fetch_array($sql_participant);
 
 
 
+$insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Status, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
+  '".$row['ProjectID']."', 'No', 'No', '".$row['Date_of_Meeting']."', '".$row['Final_Time']."','".$row['Location']."','Declined_by_Participant','".$the_date."','".$the_time."')");
 
 	
 	   
@@ -40,13 +36,8 @@ $row = mysqlifetch_array($sql_participant);
 $sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
 $row2 = mysqli_fetch_array($sql_participant);
 
-
-
-
-
 $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup  WHERE userID = '".$row['startupID']."' ");
 $row4 = mysqli_fetch_array($sql4);
-
 
 
 // using SendGrid's PHP Library
@@ -55,9 +46,9 @@ $row4 = mysqli_fetch_array($sql4);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Example User", "ald183s@gmail.com");
-$subject = "Meeting Declined";
-$to = new SendGrid\Email("Example User", $row2['userEmail']);
+$from = new SendGrid\Email($row4['FirstName'], $row4['userEmail']);
+$subject = "Meeting Request Declined";
+$to = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -102,7 +93,7 @@ $content = new SendGrid\Content("text/html", '
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#fff; padding:20px; border:1px solid #f0f0f0; max-width: 600px;" class="responsive-table">
                 <!-- TITLE -->
                 <tr>
-                    <td align="center" style="padding: 0 0 10px 0; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Meeting Cancelled</td>
+                    <td align="center" style="padding: 0 0 10px 0; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Meeting Request Declined</td>
                 </tr>
                 <tr>
                   <td align="center" height="100%" valign="top" width="100%" colspan="2">
@@ -194,11 +185,11 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row['Day'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">No Date was set</td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row['From_Time'].' to '.$row['To_Time'].'</td>
+                                                             &nbsp;</td>
                                                         </tr>
                                                       
 
@@ -363,16 +354,16 @@ $mail = new SendGrid\Mail($from, $subject, $to, $content);
 $apiKey = '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';
 $sg = new \SendGrid($apiKey);
 $response = $sg->client->mail()->send()->post($mail);
-echo $response->statusCode();
-echo $response->headers();
-echo $response->body();
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
 
 
 
 
 
 
-
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
 
    
 

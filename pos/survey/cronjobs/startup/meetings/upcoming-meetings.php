@@ -106,7 +106,8 @@ include("../../../config.php"); //include config file
 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE Status = 'Meeting Set' AND Met = '' AND Meeting_Status = 'Upcoming Meetings' AND Accepted_to_Participate = 'Accepted' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE Startup_Email_Upcoming_Meeting_Reminder_Sent = '' ORDER BY id DESC ");
+
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -150,9 +151,9 @@ if ( $dtB > $dtA ) {
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Example User", "ald183s@gmail.com");
+$from = new SendGrid\Email("Circl", "ald183s@gmail.com");
 $subject = "Upcoming Meeting";
-$to = new SendGrid\Email("Example User", $rowstartup['userEmail']);
+$to = new SendGrid\Email($rowstartup['FirstName'], $rowstartup['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -291,11 +292,11 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row2['Day'].' @ '.$row2['Final_Time'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($row2['Date_of_Meeting'])).'</td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.date('F j, Y',strtotime($row2['Date_of_Meeting'])).'</td>
+                                                             '.$row2['Final_Time'].'</td>
                                                         </tr>
                                                       
 
@@ -460,13 +461,17 @@ $mail = new SendGrid\Mail($from, $subject, $to, $content);
 $apiKey = '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';
 $sg = new \SendGrid($apiKey);
 $response = $sg->client->mail()->send()->post($mail);
-echo $response->statusCode();
-echo $response->headers();
-echo $response->body();
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
 
 
 
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET 
+  
+  Startup_Email_Upcoming_Meeting_Reminder_Sent = 'Yes'
 
+  WHERE startupID='".$rowstartup['userID']."'");
 
 
 

@@ -210,7 +210,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
             post_data = {'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
-            $.post('cancelmeeting.php', post_data, function(response){  
+            $.post('cancel-meeting.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -258,38 +258,30 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
-$rowprojectimage = mysqli_fetch_array($ProjectImage);
+
+$ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
+$rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
-if($rowprojectimage['facebook_id'] != '0') {
-
-echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/picture?width=100&height=100" width="100">';
-
-
- } 
-
-
-if($rowprojectimage['google_picture_link'] != '' && $rowprojectimage['profile_image'] == '') {
-
-echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
-
-
- } 
-
-
-if($rowprojectimage['profile_image'] != '' && $rowprojectimage['google_picture_link'] == '' && $rowprojectimage['facebook_id'] != '0') { ?>
-
-<img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
-
+ if($rowprofileimage['google_picture_link'] != ''){ ?>
+        <li><img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="nav-profile-photo"/></li>
 <?php } ?>
 
-<?php if($rowprojectimage['profile_image'] == '' && $rowprojectimage['google_picture_link'] == '' && $rowprojectimage['facebook_id'] != '0') { ?>
- ?>
+<?php if($rowprofileimage['facebook_id'] != '0'){  ?>
+        <li><img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="nav-profile-photo"/></li>
+<?php } ?>
+       
+<?php if($rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] == '0'){ ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
+      
+<?php if($rowprofileimage['profile_image'] != ''){  ?>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
+<?php }else{ ?>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
+<?php } ?>
 
-<?php }  ?>
+      
+<?php } ?>
 
 
 </div>
@@ -334,7 +326,8 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="survey-metadata">
                     <div class="item">
                       <div class="label">Date of Meeting:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+                      <?php echo date('F j, Y',strtotime($row2['Date_of_Meeting'])); ?></div>
                     </div>
 
                     <div class="item">

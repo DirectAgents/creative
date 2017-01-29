@@ -193,7 +193,20 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="survey-metadata">
                     <div class="item">
                       <div class="label">Date:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+                        
+                        <?php if($row2['Date_of_Meeting'] == '0000-00-00'){ 
+
+                        echo "No date set";
+                      }else{
+
+                        echo date('F j, Y',strtotime($row2['Date_of_Meeting']));
+                      }
+                      
+                      ?>
+
+
+                      </div>
                     </div>
 
                     <div class="item">
@@ -203,7 +216,15 @@ $row3 = mysqli_fetch_array($sql3);
                    
 
                        
-                      <?php echo $row2['Final_Time']; ?>
+                      <?php if($row2['Date_of_Meeting'] == '0000-00-00'){ 
+
+                        echo "No time set";
+                      }else{
+
+                        echo $row2['Final_Time'];
+                      }
+                      
+                      ?>
 
                    
                         
@@ -229,7 +250,15 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="theline"></div>
 
-                  <div class="status_request">Status: Meeting never happened
+                  <div class="status_request">Status: 
+
+
+
+                <?php if($row2['Status'] == 'Canceled_by_Startup'){echo 'Meeting Canceled By Startup';} ?>
+                <?php if($row2['Status'] == 'Declined_by_Startup'){echo 'Meeting Request Declined By Startup';} ?>
+                
+                <?php if($row2['Status'] == 'Canceled_by_Participant'){echo 'Meeting Canceled By Participant';} ?>
+                <?php if($row2['Status'] == 'Declined_by_Participant'){echo 'Meeting Request Declined By Participant';} ?>
 
 
 

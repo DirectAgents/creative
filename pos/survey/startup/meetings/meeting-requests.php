@@ -163,17 +163,17 @@ Select a day to meet:
     </thead>
     <tbody>
       <tr>
-        <td><?php echo date_format($date_option_one, 'm/d/Y'); ?></td>
+        <td><?php echo date('F j, Y',strtotime($row2['Date_Option_One'])); ?></td>
         <td><?php echo $row2['Time_Option_One']; ?></td>
         <td><input name="selected_meeting[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
       </tr>
       <tr>
-        <td><?php echo date_format($date_option_two, 'm/d/Y'); ?></td>
+        <td><?php echo date('F j, Y',strtotime($row2['Date_Option_Two'])); ?></td>
         <td><?php echo $row2['Time_Option_Two']; ?></td>
         <td><input type="radio"  name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_two"/></td>
       </tr>
       <tr>
-        <td><?php echo date_format($date_option_three, 'm/d/Y'); ?></td>
+        <td><?php echo date('F j, Y',strtotime($row2['Date_Option_Three'])); ?></td>
         <td><?php echo $row2['Time_Option_Three']; ?></td>
         <td><input type="radio" name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_three"/></td>
       </tr>
@@ -351,11 +351,11 @@ $(document).on("change", "#meeting_date", function () {
 
 <div id="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-cancel">
   <div class="result-cancel">
-  <div id="result-cancel-<?php echo $row2['ProjectID']; ?>">Successfully Canceled!</div>
+  <div id="result-cancel-<?php echo $row2['ProjectID']; ?>">Successfully Cancelled!</div>
   </div>
 <h4>Are you sure you want to cancel the meeting request?</h4>
-<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-cancel">
@@ -590,7 +590,7 @@ $("#slide-decline-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random;
             post_data = {'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
-            $.post('declinemeeting.php', post_data, function(response){  
+            $.post('decline-meeting-request.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -696,7 +696,7 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
             post_data = {'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
-            $.post('cancelmeeting.php', post_data, function(response){  
+            $.post('cancel-meeting-request.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -749,38 +749,34 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
-$rowprojectimage = mysqli_fetch_array($ProjectImage);
+
+$ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
+$rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
-if($rowprojectimage['facebook_id'] != '0') {
-
-echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/picture?width=100&height=100" width="100">';
-
-
- } 
-
-
-if($rowprojectimage['google_picture_link'] != '' && $rowprojectimage['profile_image'] == '') {
-
-echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
-
-
- } 
-
-
-if($rowprojectimage['profile_image'] != '' && $rowprojectimage['google_picture_link'] == '' && $rowprojectimage['facebook_id'] != '0') { ?>
-
-<img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
-
+ if($rowprofileimage['google_picture_link'] != ''){ ?>
+        <li><img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="thumbnail-profile"/></li>
 <?php } ?>
 
-<?php if($rowprojectimage['profile_image'] == '' && $rowprojectimage['google_picture_link'] == '' && $rowprojectimage['facebook_id'] != '0') { ?>
- ?>
+<?php if($rowprofileimage['facebook_id'] != '0'){  ?>
+        <li><img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="thumbnail-profile"/></li>
+<?php } ?>
+       
+<?php if($rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] == '0'){ ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
+      
+<?php if($rowprofileimage['profile_image'] != ''){  ?>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
+<?php }else{ ?>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="thumbnail-profile"/></li>
+<?php } ?>
 
-<?php }  ?>
+      
+<?php } ?>
+
+
+
+
 
 
 </div>
@@ -846,9 +842,9 @@ $row3 = mysqli_fetch_array($sql3);
                        
 
 
-                      <?php echo date_format($date_option_one, 'm/d/Y'); ?><br>
-                      <?php echo date_format($date_option_two, 'm/d/Y'); ?><br>
-                      <?php echo date_format($date_option_three, 'm/d/Y'); ?>
+                      <?php echo date('F j, Y',strtotime($row2['Date_Option_One']));?><br>
+                      <?php echo date('F j, Y',strtotime($row2['Date_Option_Two']));?><br>
+                      <?php echo date('F j, Y',strtotime($row2['Date_Option_Three']));?>
                       
 
                       

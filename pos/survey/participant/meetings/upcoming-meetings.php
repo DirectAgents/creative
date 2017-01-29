@@ -37,7 +37,7 @@ if(!$participant_home->is_logged_in())
 //include db configuration file
 
 
-//echo $_SESSION['startupSession']
+//echo $_SESSION['participantSession'];
 
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
@@ -210,7 +210,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
             post_data = {'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
-            $.post('cancelmeeting.php', post_data, function(response){  
+            $.post('cancel-meeting.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -322,7 +322,11 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="survey-metadata">
                     <div class="item">
                       <div class="label">Date of meeting:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+                      
+                      <?php echo date('F j, Y',strtotime($row2['Date_of_Meeting']));?>
+                    
+                     </div>
                     </div>
 
                     <div class="item">

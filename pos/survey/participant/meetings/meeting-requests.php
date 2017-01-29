@@ -173,17 +173,17 @@ Select a day to meet:
     </thead>
     <tbody>
       <tr>
-        <td><?php echo date_format($date_option_one, 'm/d/Y'); ?></td>
+        <td><?php echo date('F j, Y',strtotime($row2['Date_Option_One'])); ?></td>
         <td><?php echo $row2['Time_Option_One']; ?></td>
         <td><input name="selected_meeting[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
       </tr>
       <tr>
-        <td><?php echo date_format($date_option_two, 'm/d/Y'); ?></td>
+        <td><?php echo date('F j, Y',strtotime($row2['Date_Option_Two'])); ?></td>
         <td><?php echo $row2['Time_Option_Two']; ?></td>
         <td><input type="radio"  name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_two"/></td>
       </tr>
       <tr>
-        <td><?php echo date_format($date_option_three, 'm/d/Y'); ?></td>
+        <td><?php echo date('F j, Y',strtotime($row2['Date_Option_Three'])); ?></td>
         <td><?php echo $row2['Time_Option_Three']; ?></td>
         <td><input type="radio" name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_three"/></td>
       </tr>
@@ -365,9 +365,9 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 
 <div id="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-decline">
   <div class="result-decline">
-  <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Cancelled!</div>
+  <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Declined!</div>
   </div>
-<h4>Are you sure you want to cancel the meeting request?</h4>
+<h4>Are you sure you want to decline the meeting request?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
@@ -650,7 +650,7 @@ $("#slide-decline-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random;
             post_data = {'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
-            $.post('declinemeeting.php', post_data, function(response){  
+            $.post('decline-meeting-request.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -758,7 +758,7 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
             post_data = {'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
-            $.post('cancelmeeting.php', post_data, function(response){  
+            $.post('cancel-meeting-request.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -809,28 +809,36 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 <div class="row">
     <div class="col-md-2">
 
+
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
-$rowprojectimage = mysqli_fetch_array($ProjectImage);
 
-if($rowprojectimage['google_picture_link'] != '') {
-
-echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
+$ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
+$rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
- }else{ 
+ if($rowprofileimage['google_picture_link'] != ''){ ?>
+        <li><img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="thumbnail-profile"/></li>
+<?php } ?>
 
+<?php if($rowprofileimage['facebook_id'] != '0'){  ?>
+        <li><img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="thumbnail-profile"/></li>
+<?php } ?>
+       
+<?php if($rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] == '0'){ ?>
 
-if($rowprojectimage['profile_image'] != '') { ?>
-
-<img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
-
+      
+<?php if($rowprofileimage['profile_image'] != ''){  ?>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
 <?php }else{ ?>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="thumbnail-profile"/></li>
+<?php } ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
+      
+<?php } ?>
 
-<?php } } ?>
+
+
 
 
 </div>
@@ -873,7 +881,7 @@ $row3 = mysqli_fetch_array($sql3);
 <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
 
                  <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting Request</strong></a></a>
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting Request</strong></a></a>
                  </div>
 
            <?php } ?>      
@@ -893,9 +901,15 @@ $row3 = mysqli_fetch_array($sql3);
                      <div class="label">Meeting Date Options:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
 
+
+                      <?php echo date('F j, Y',strtotime($row2['Date_Option_One']));?><br>
+                      <?php echo date('F j, Y',strtotime($row2['Date_Option_Two']));?><br>
+                      <?php echo date('F j, Y',strtotime($row2['Date_Option_Three']));?>
+
+                      <!--
                       <?php echo date_format($date_option_one, 'm/d/Y'); ?><br>
                       <?php echo date_format($date_option_two, 'm/d/Y'); ?><br>
-                      <?php echo date_format($date_option_three, 'm/d/Y'); ?>
+                      <?php echo date_format($date_option_three, 'm/d/Y'); ?>-->
 
                       </div>
                     </div> 

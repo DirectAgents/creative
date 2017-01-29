@@ -47,7 +47,7 @@ if(!$startup_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID = '".$_SESSION['startupSession']."' AND Date_of_Meeting != '0000-00-00' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 
 //$row=mysql_fetch_array($result);
@@ -108,7 +108,7 @@ $dtB = new DateTime($row2['Date_of_Meeting']);
 
 
 
-if ( $dtA > $dtB  ) {
+
 
 ?>
 
@@ -122,38 +122,30 @@ if ( $dtA > $dtB  ) {
 
 <?php 
 
+
 $ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
 $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
-if($rowprofileimage['facebook_id'] != '0') {
-
-echo '<img src="https://graph.facebook.com/'.$rowprofileimage['facebook_id'].'/picture?width=100&height=100" width="100">';
-
-
- } 
-
-
-if($rowprofileimage['google_picture_link'] != '' && $rowprofileimage['profile_image'] == '') {
-
-echo '<img src="'.$rowprofileimage['google_picture_link'].'" width="100">';
-
-
- } 
-
-
-if($rowprofileimage['profile_image'] != '' && $rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] != '0') { ?>
-
-<img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
-
+ if($rowprofileimage['google_picture_link'] != ''){ ?>
+        <li><img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="nav-profile-photo"/></li>
 <?php } ?>
 
-<?php if($rowprofileimage['profile_image'] == '' && $rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] != '0') { ?>
- ?>
+<?php if($rowprofileimage['facebook_id'] != '0'){  ?>
+        <li><img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="nav-profile-photo"/></li>
+<?php } ?>
+       
+<?php if($rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] == '0'){ ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
+      
+<?php if($rowprofileimage['profile_image'] != ''){  ?>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
+<?php }else{ ?>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
+<?php } ?>
 
-<?php }  ?>
+      
+<?php } ?>
 
 
 </div>
@@ -197,7 +189,21 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="survey-metadata">
                     <div class="item">
                       <div class="label">Date:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+
+
+                      <?php if($row2['Date_of_Meeting'] == '0000-00-00'){ 
+
+                        echo "No date set";
+                      }else{
+
+                        echo date('F j, Y',strtotime($row2['Date_of_Meeting']));
+                      }
+                      
+                      ?>
+
+                      </div>
+                    
                     </div>
 
                     <div class="item">
@@ -205,15 +211,17 @@ $row3 = mysqli_fetch_array($sql3);
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                      
                    
+                    <?php if($row2['Date_of_Meeting'] == '0000-00-00'){ 
 
+                        echo "No time set";
+                      }else{
+
+                        echo $row2['Final_Time'];
+                      }
+                      
+                      ?>
                        
-                      <?php echo $row2['Final_Time']; ?>
-
-                   
-                        
-    
-
-
+                     
                       </div>
                     </div>
 
@@ -235,7 +243,11 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="status_request">Status: 
 
-                <?php if($row2['Status'] == 'Cancelled_by_Startup'){echo 'Meeting Cancelled By Startup';} ?>
+                <?php if($row2['Status'] == 'Canceled_by_Startup'){echo 'Meeting Canceled By Startup';} ?>
+                <?php if($row2['Status'] == 'Declined_by_Startup'){echo 'Meeting Request Declined By Startup';} ?>
+                
+                <?php if($row2['Status'] == 'Canceled_by_Participant'){echo 'Meeting Canceled By Participant';} ?>
+                <?php if($row2['Status'] == 'Declined_by_Participant'){echo 'Meeting Request Declined By Participant';} ?>
 
 
 
@@ -280,7 +292,7 @@ $row3 = mysqli_fetch_array($sql3);
 }
 
 
-}
+
 
 
 

@@ -436,8 +436,10 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row5['start
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
                   <div class="survey-metadata">
                     <div class="item ">
-                      <div class="label">When:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date2, 'm/d/Y'); ?></div>
+                      <div class="label">Date of meeting:</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+                        <?php echo date('F j, Y',strtotime($row2['Date_of_Meeting']));?>
+                      </div>
                     </div>
                     <div class="item date">
                       <div class="label">Location:</div>

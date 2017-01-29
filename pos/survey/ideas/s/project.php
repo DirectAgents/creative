@@ -236,6 +236,7 @@ if($participant_home->is_logged_in())
       showOn: "button",
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
+      minDate: 1,
       buttonText: "Select date"
     });
 
@@ -243,6 +244,7 @@ if($participant_home->is_logged_in())
       showOn: "button",
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
+      minDate: 1,
       buttonText: "Select date"
     });
 
@@ -250,6 +252,7 @@ if($participant_home->is_logged_in())
       showOn: "button",
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
+      minDate: 1,
       buttonText: "Select date"
     });
 

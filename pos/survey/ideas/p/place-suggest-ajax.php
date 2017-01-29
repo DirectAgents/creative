@@ -230,7 +230,7 @@ $content = new SendGrid\Content("text/html", '
                                     <![endif]-->
                                     <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
 
-                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tbody><tr>
 
                                                 <td style="padding: 40px 0 0 0;" class="no-padding">
@@ -238,28 +238,24 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Meeting Date Options:</td>
-                                                        </tr>
-                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_one.'</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_two.'</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_three.'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Meeting Date Options</td>
                                                         </tr>
 
                                                          <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;</td>
                                                         </tr>
 
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Time: '.$_POST['time_suggested'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_one)).' @ '.$_POST['time_suggested_one'].'</td>
+
                                                         </tr>
-                                                       
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_two)).' @ '.$_POST['time_suggested_two'].'</td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_three)).' @ '.$_POST['time_suggested_three'].'</td>
+                                                        </tr>
                                                       
 
                                                     </tbody></table>
