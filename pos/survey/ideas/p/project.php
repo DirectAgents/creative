@@ -771,7 +771,7 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 
 
  <div class="col-lg-12">    
-<h3>111Set up a meeting</h3>
+<h3>Set up a meeting</h3>
 </div>
 
 <input type="hidden" value="<?php echo $_GET['id']; ?>" name="projectid" id="projectid"/>
