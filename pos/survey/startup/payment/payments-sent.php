@@ -135,7 +135,7 @@ while($row = mysqli_fetch_array($sql2))
   </tbody>
   </table>
 
-<p>&nbsp;</p>
+
 
 
   <table class="table table-striped" id="transactions">
