@@ -46,7 +46,7 @@ $rowparticipant=mysqli_fetch_array($stmtparticipant);
 if($_POST){
 
 
-$stmtpayment=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."' ");
+$stmtpayment=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."' ");
 $rowpayment=mysqli_fetch_array($stmtpayment);
 
 if($rowpayment['Payment'] != 'Yes'){
@@ -221,7 +221,7 @@ if($month == 'December') {$order_by = '12';}
 
 
 //continue here
-   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
+   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, service_fee, fees, total) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."', '".$payment_to_me."',
    '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
 
 
@@ -229,7 +229,7 @@ if($month == 'December') {$order_by = '12';}
 
 try {
     $checkout = $wepay_me->request('/checkout/create', array(
-            'account_id' => 1812989742, // ID of the account that you want the money to go to
+            'account_id' => 1812989742, // ID of my account
             'amount' => $payment_to_me, // dollar amount you want to charge the user
             'short_description' => "Payment to Circl ", // a short description of what the payment is for
             'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
@@ -268,14 +268,28 @@ try {
 
 
 
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Payment=''
+$the_date = date('Y-m-d'); 
+date_default_timezone_set('America/New_York');
+$the_time = date('h:i:s A');
 
-  WHERE ProjectID='".$_POST['projectid']."' AND userID='".$_POST['participantid']."'");
+
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Payment, Met, Date_Posted, Time_Posted) VALUES('".$rowpayment['userID']."','".$rowpayment['startupID']."',
+  '".$rowpayment['ProjectID']."', 'No', 'No', '".$rowpayment['Date_of_Meeting']."', '".$rowpayment['Final_Time']."','".$rowpayment['Location']."','Yes','".$rowpayment['Met']."','".$the_date."','".$the_time."')");
+
+
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_recent WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."'");
+
+
 
 
     $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Sent Payment!</div>'));
     die($output);
+
+
+
+
+
 
 
 }

@@ -26,7 +26,7 @@ if(!$startup_home->is_logged_in())
 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE startupID='".$_SESSION['startupSession']."' AND Payment = ''");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID='".$_SESSION['startupSession']."' AND Payment = '' ");
 //$result=mysql_query($sql);
 
 

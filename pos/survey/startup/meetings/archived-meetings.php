@@ -128,11 +128,11 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
  if($rowprofileimage['google_picture_link'] != ''){ ?>
-        <li><img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="nav-profile-photo"/></li>
+        <img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="thumbnail-profile"/>
 <?php } ?>
 
 <?php if($rowprofileimage['facebook_id'] != '0'){  ?>
-        <li><img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="nav-profile-photo"/></li>
+        <img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="thumbnail-profile"/>
 <?php } ?>
        
 <?php if($rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] == '0'){ ?>
@@ -141,7 +141,7 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 <?php if($rowprofileimage['profile_image'] != ''){  ?>
         <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
 <?php }else{ ?>
-        <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="thumbnail-profile"/>
 <?php } ?>
 
       
@@ -188,7 +188,7 @@ $row3 = mysqli_fetch_array($sql3);
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
                   <div class="survey-metadata">
                     <div class="item">
-                      <div class="label">Date:</div>
+                      <div class="label">Date of Meeting:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
 
 
@@ -248,6 +248,14 @@ $row3 = mysqli_fetch_array($sql3);
                 
                 <?php if($row2['Status'] == 'Canceled_by_Participant'){echo 'Meeting Canceled By Participant';} ?>
                 <?php if($row2['Status'] == 'Declined_by_Participant'){echo 'Meeting Request Declined By Participant';} ?>
+
+                <?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
+Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
+<?php } ?> 
+
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes'){ ?>
+Payment sent. View <a href="<?php echo BASE_PATH; ?>/startup/payment/">Payment History</a>
+<?php } ?> 
 
 
 

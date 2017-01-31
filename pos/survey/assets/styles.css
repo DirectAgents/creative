@@ -59,7 +59,7 @@ a:hover{text-decoration: none !important}
 .file-upload{float:left; width:100%;}
 
 #transactions tr td:nth-child(1){
-    width:70%;
+    width:0%;
 }
 
 .error_api_call{text-align:center; background:red; padding:10px; color:#fff;}

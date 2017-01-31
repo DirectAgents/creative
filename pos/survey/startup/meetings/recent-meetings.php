@@ -338,35 +338,30 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
-$rowprojectimage = mysqli_fetch_array($ProjectImage);
+
+$ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
+$rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
-if($rowprojectimage['facebook_id'] != '0') {
+ if($rowprofileimage['google_picture_link'] != ''){ ?>
+        <img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="thumbnail-profile"/>
+<?php } ?>
 
-echo '<img src="https://graph.facebook.com/'.$rowprojectimage['facebook_id'].'/picture?width=100&height=100" width="100">';
+<?php if($rowprofileimage['facebook_id'] != '0'){  ?>
+        <img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="thumbnail-profile"/>
+<?php } ?>
+       
+<?php if($rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] == '0'){ ?>
 
-
- } 
-
-
-if($rowprojectimage['google_picture_link'] != '') {
-
-echo '<img src="'.$rowprojectimage['google_picture_link'].'" width="100">';
-
-
- } 
-
-
-if($rowprojectimage['profile_image'] != '') { ?>
-
-<img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprojectimage['profile_image']; ?>" width="100">
-
+      
+<?php if($rowprofileimage['profile_image'] != ''){  ?>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
 <?php }else{ ?>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="thumbnail-profile"/>
+<?php } ?>
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" width="100">
-
-<?php }  ?>
+      
+<?php } ?>
 
 
 </div>
@@ -436,9 +431,29 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row5['start
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
                   <div class="survey-metadata">
                     <div class="item ">
+                    
                       <div class="label">Date of meeting:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                         <?php echo date('F j, Y',strtotime($row2['Date_of_Meeting']));?>
+                      </div>
+                    </div>
+
+                     <div class="item">
+                      <div class="label">Time:</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+                     
+                   
+                    <?php if($row2['Date_of_Meeting'] == '0000-00-00'){ 
+
+                        echo "No time set";
+                      }else{
+
+                        echo $row2['Final_Time'];
+                      }
+                      
+                      ?>
+                       
+                     
                       </div>
                     </div>
                     <div class="item date">

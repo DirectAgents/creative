@@ -76,7 +76,7 @@ $sum = 0;
 while($row = mysqli_fetch_array($sql))
 { 
 
-$sum+= $row['checkout_find_amount'];
+$sum+= $row['checkout_find_amount'] + $row['fees'] + $row['service_fee'];
 
 }
 
@@ -124,11 +124,30 @@ while($row = mysqli_fetch_array($sql2))
 
 
 
+<table>
+    <tbody>
+      <tr>
+        <td style="text-align:center;"><?php echo $row['checkout_find_date']; ?></td>
+      
+      </tr>
+
+
+  </tbody>
+  </table>
+
+<p>&nbsp;</p>
+
+
   <table class="table table-striped" id="transactions">
     <tbody>
-      <tr class="info">
-        <td colspan="3" style="text-align:left"><?php echo $row['checkout_find_date']; ?></td>
+      <tr>
+        <td style="text-align:left;">&nbsp;</td>
+        <td style="text-align:left;">Participant Received</td>
+        <td style="text-align:left;">Processing Fees</td>
+         <td style="text-align:left;">Service Fee</td>
+          <td style="text-align:left;">Total Pay</td>
         
+        <td style="text-align:left;">&nbsp;</td>
       </tr>
 
 
@@ -141,17 +160,17 @@ while($row2 = mysqli_fetch_array($sql3)){
 $sql4=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['participant_id']."'");
 $row3 = mysqli_fetch_array($sql4);
 
-
-
-
-
 ?>
 
 
       <tr>
         <td style="text-align:left"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></td>
-        <td style="text-align:right">$<?php echo $row2['total']; ?></td>
-        <td style="text-align:right">
+        <td style="text-align:left">$<?php echo $row2['checkout_find_amount']; ?></td>
+        <td style="text-align:left">$<?php echo $row2['fees']; ?></td>
+         <td style="text-align:left">$<?php echo $row2['service_fee']; ?></td>
+          <td style="text-align:left">$<?php echo $row2['checkout_find_amount'] + $row2['fees'] + $row2['service_fee'] ; ?></td>
+        
+        <td style="text-align:left">
 
 <?php if($row2['refundrequest'] != 'yes' && $row2['refunded'] != 'yes') { ?>
         <a href="request-refund?id=<?php echo $row2['id']; ?>">Request Refund</a>

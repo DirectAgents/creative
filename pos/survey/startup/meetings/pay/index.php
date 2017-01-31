@@ -45,7 +45,7 @@ $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_project_request  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' AND userID = '".$_GET['p']."' ");
+$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' AND userID = '".$_GET['p']."' ");
 $row2 = mysqli_fetch_array($sql2);
 
 
@@ -75,7 +75,7 @@ $row3 = mysqli_fetch_array($sql3);
 
 <script>
 $(document).ready(function(){
- $(".save").click(function() { 
+ $(".pay").click(function() { 
        //alert("asdf");
         var proceed = true;
         //simple validation at client's end
@@ -91,7 +91,7 @@ $(document).ready(function(){
             };
  
 
-            //alert(date);
+            //alert(post_data['participantid']);
 
             //Ajax post data to server
             $.post('pay.php', post_data, function(response){  
@@ -241,12 +241,9 @@ a.verify-badge img#verify-image-payment{display:none !important;}
           <span class="input">
             <label for="firstname">Date of meeting</label>
            
-    <?php
-$date = new DateTime($row2['Date_of_Meeting']);
-$thedate =  $date->format('m/d/Y');
-    ?>
+  
              
-      <input type="text" name="date" id="date" value="<?php echo $thedate; ?> @ <?php echo $row2['Final_Time'];  ?>" disabled>
+      <input type="text" name="date" id="date" value="<?php echo date('F j, Y',strtotime($row2['Date_of_Meeting'])); ?> @ <?php echo $row2['Final_Time'];  ?>" disabled>
 
  
                
@@ -343,7 +340,13 @@ $payamount_final = numberFormatPrecision($payamount, 2, '.');
 
 $processing_fee_final = numberFormatPrecision($fee, 2, '.');
 
+if($row4['Pay'] >= '7'){
 $service_fee_final = numberFormatPrecision($service_fee, 2, '.');
+}
+
+if($row4['Pay'] <= '7'){
+$service_fee_final = '1.32';
+}
 
 
 ?>
@@ -380,7 +383,7 @@ $service_fee_final = numberFormatPrecision($service_fee, 2, '.');
 
 
         <div id="save">
-              <input type="submit" class="save" value="Click here to Pay"/>
+              <input type="submit" class="pay" value="Click here to Pay"/>
 
             </div>
 
