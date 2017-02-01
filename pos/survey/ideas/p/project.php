@@ -196,9 +196,15 @@ if(mysqli_num_rows($sql3) == false)
 
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowrequest=mysqli_fetch_array($sql);
+
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowupcoming=mysqli_fetch_array($sql);
 
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Participant='Yes'
@@ -546,7 +552,7 @@ $('#location_option3').hide();
         };
 
         if(date_option_one && date_option_two && date_option_three && time_suggested_one && time_suggested_two && time_suggested_three && location && potentialanswergiven_checkedstatus == 1 ) {
-         output = '<div class="success2">Request sent!</div>';
+         output = '<div class="success2">Request to meet sent!</div>';
                 $("#result_success").hide().html(output).slideDown();
                 proceed = true; //set do not proceed flag      
         }
@@ -672,11 +678,40 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 </div>
 
 
-<?php } 
+<?php } } ?>
+
+
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+if($rowupcoming['userID'] == $_SESSION['participantSession'] && $rowupcoming['ProjectID'] == $_GET['id'] ){
+
+//echo $rowrequest['ProjectID'];
+
+ ?>
+
+
+<div class="col-lg-11">
+
+<div class="request-sent">  
+  You both will be meeting
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
+<?php } } ?>
 
 
 
 
+<?php 
+
+if($participant_home->is_logged_in())
+{
 
 if($row['account_id'] == '' && $row['Cash_Only'] == '') { ?>
 
@@ -795,7 +830,9 @@ if($row['account_id'] == '' && $row['Cash_Only'] == '') { ?>
 
 
 
-if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'] == '' && $rowrequest['ProjectID'] != $_GET['id'] ){
+
+if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['ProjectID'] != $_GET['id'] &&
+$rowupcoming['ProjectID'] != $_GET['id'] && $rowupcoming['userID'] != $_SESSION['participantSession'] ){
 
 
 

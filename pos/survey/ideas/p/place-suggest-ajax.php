@@ -430,13 +430,13 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
-$output = json_encode(array('type'=>'message', 'text' => '<div class="success2">Request sent!</div>'));
+$output = json_encode(array('type'=>'message', 'text' => '<div class="success2">Request to meet sent!</div>'));
 die($output);
 
 
 }else{
 
-$output = json_encode(array('type'=>'message', 'text' => '<div class="errorXYZ">Request already sent!</div>'));
+$output = json_encode(array('type'=>'message', 'text' => '<div class="errorXYZ">Request to meet already sent!</div>'));
 die($output);
 
 }
