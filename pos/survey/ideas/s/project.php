@@ -272,7 +272,7 @@ $(document).ready(function() {
 //alert("aads"); 
 
 
-        var screeningquestion_required  = $('input[name=screeningquestion_required]').val();
+        //var screeningquestion_required  = $('input[name=screeningquestion_required]').val();
 
         var projectid  = $('input[name=projectid]').val();
         var participantid  = $('input[name=participantid').val();

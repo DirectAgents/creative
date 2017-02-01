@@ -47,6 +47,7 @@ $education=explode(',',$row['Education']);
 $job=explode(',',$row['Job']);
 
 
+$cash_only=explode(',',$row['Cash_Only']);
 
 $emailnotifications=explode(',',$row['EmailNotifications']);
 
@@ -352,7 +353,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
         
     <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
         
-        
+         <p>&nbsp;</p>
 
         <h2 class="no-mobile">
           Basic information
@@ -898,7 +899,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
 
       
- 
+ <p>&nbsp;</p>
 
   <h2 class="no-mobile">
           General Information
@@ -909,8 +910,8 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 <!--Interests Starts--> 
 
 <fieldset>
-              <h3>Your interests</h3>
-             <br>
+             <!-- <h3>Your interests</h3> -->
+            
 <div class="note">
                   Add interests so we can recommend the best ideas for you.
                 </div>
@@ -971,8 +972,8 @@ echo $row2['Interests'].'</li>';
 
 
 <fieldset>
-              <h3>Languages</h3>
-             <br>
+              <!--<h3>Languages</h3>-->
+             
 <div class="note">
                   Add your languages you speak
                 </div>
@@ -1293,7 +1294,14 @@ echo $row2['Languages'].'</li>';
  
         
 
-       
+        
+<h2 class="no-mobile">Receive payments in:</h2>
+         
+        <input id="cash_only" name="cash_only[]" type="checkbox"  value="Yes" <?php if(in_array('Yes',$cash_only)){echo "checked";}?>/>
+  <label for="cash_only">Cash</label>
+  <a href="#" alt="You will receive your payment in cash after your meeting" class="tooltiptext">(?)</a><br>
+
+   
 
 
   

@@ -38,8 +38,22 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?> 
 
 
+<?php 
 
-<?php if($row['account_id'] != '') { ?>  
+
+if($row['Cash_Only'] == 'Yes'){
+
+echo "<h3>You set up to receive payments in cash.</h3>";
+
+}else{
+
+
+?>  
+
+
+
+
+<?php if($row['account_id'] != '' && $row['Cash_Only'] != 'Yes' ) { ?>  
 
 
 
@@ -203,4 +217,4 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
 
 </div>
 
-<?php  }  ?> 
+<?php  } }  ?> 

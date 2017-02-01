@@ -229,9 +229,9 @@ if($month == 'December') {$order_by = '12';}
 
 try {
     $checkout = $wepay_me->request('/checkout/create', array(
-            'account_id' => 1812989742, // ID of my account
+            'account_id' => $wepay_account_id, // ID of my account
             'amount' => $payment_to_me, // dollar amount you want to charge the user
-            'short_description' => "Payment to Circl ", // a short description of what the payment is for
+            'short_description' => "Payment from Cirl to me", // a short description of what the payment is for
             'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
             'currency'          => 'USD',
             //'payment_method' => ['type' => 'credit_card', 'id' => $row["credit_card_id"] 

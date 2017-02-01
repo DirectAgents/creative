@@ -403,7 +403,7 @@ $('#location_option3').hide();
         var option = $("select[name='option']").val();
 
 
-        
+        var projectid  = $('input[name=creditcard]').val();
 
         var screeningquestion_required  = $('input[name=screeningquestion_required]').val();
 
@@ -526,21 +526,37 @@ $('#location_option3').hide();
         };
 
 
+        
+
 
         if(screeningquestion_required == 'Yes'){
 
         var potentialanswergiven_checkedstatus = $('input[name="potentialanswergiven[]"]:checked').size();
 
+       
+
         if(potentialanswergiven_checkedstatus <1 ){ 
            output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please select one Answer! </div>';
-            $("#result").hide().html(output).slideDown();
+            $("#result_error").hide().html(output).slideDown();
             proceed = false;
         }else{
-                $("#result").hide();
+                $("#result_error").hide();
+
                 //proceed = true; //set do not proceed flag       
         };
 
+        if(date_option_one && date_option_two && date_option_three && time_suggested_one && time_suggested_two && time_suggested_three && location && potentialanswergiven_checkedstatus == 1 ) {
+         output = '<div class="success2">Request sent!</div>';
+                $("#result_success").hide().html(output).slideDown();
+                proceed = true; //set do not proceed flag      
         }
+
+        }
+
+
+       
+
+
 
         //everything looks good! proceed...
         if(proceed) 
@@ -575,7 +591,7 @@ $('#location_option3').hide();
           $('#contact_form textarea').val(''); 
         }
         
-        $("#result").hide().html(output).slideDown();
+        $("#result_success").hide().html(output).slideDown();
             }, 'json');
       
         }
@@ -654,6 +670,27 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 <p>&nbsp;</p>
 
 </div>
+
+
+<?php } 
+
+
+
+
+
+if($row['account_id'] == '' && $row['Cash_Only'] == '') { ?>
+
+
+<div class="col-lg-11">
+
+<div class="no-bankaccount-set">  
+  Please add a bank account so you can receive payments. <a href="<?php echo BASE_PATH; ?>/participant/payment/">Set up Bank Account</a>
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
 
 
 <?php } } ?>
@@ -782,13 +819,13 @@ if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['Met'
 <div class="change-availablity"><a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/">Change your availability days and times</a></div>
 </div>-->
 
-
+<!--
 <?php if($row['From_Time_Option1'] == '' ){ ?>
  <div class="col-sm-12">
 <h4>Looks like you haven't set up your available time and dates that lets the person you will meet know about your availabilty for a meetup. <br><br>Let's change that. Click <a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/">here</a> to set up your dates of availability.</h4>
  </div>
  <?php } ?>
-
+-->
 <!--
  <div class="col-lg-12">
 
@@ -1137,9 +1174,44 @@ foreach($days as $day){
 
 
 
+
+
+<?php if($row['Cash_Only'] == '' && $row['account_id'] == '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
+
+<?php } ?>
+
+
+<?php if($row['Cash_Only'] == 'Yes' && $row['account_id'] == '') { ?>
+
     <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
+
+
+<?php if($row['Cash_Only'] == '' && $row['account_id'] != '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
+
+<?php if($row['Cash_Only'] == 'Yes' && $row['account_id'] != '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
+
+
+
+
+   
     <p>&nbsp;</p>
-    <div id="result"></div>
+    <div id="result_success"></div>
+    <div id="result_error"></div>
 
       
     

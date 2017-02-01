@@ -10,18 +10,11 @@ include("../../config.php"); //include config file
 if($_POST){
 
 
-$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_participant  WHERE userID = '".$_SESSION['participantSession']."' ");
-$row4 = mysqli_fetch_array($sql4);
-
-
-
-
-
 
 
 $sql = mysqli_query($connecDB, "SELECT * FROM tbl_meeting_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_POST['projectid']."'");
 
-if(mysqli_num_rows($sql)<1)
+if(mysqli_num_rows($sql)== 0)
 {
 
 $the_date = date('Y-m-d'); 
@@ -437,27 +430,9 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
-
-
-
-
-
-
 $output = json_encode(array('type'=>'message', 'text' => '<div class="success2">Request sent!</div>'));
 die($output);
 
-
-
-
-
-
-
-
-
-
-
-
- 
 
 }else{
 

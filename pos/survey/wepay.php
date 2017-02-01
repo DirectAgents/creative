@@ -29,6 +29,15 @@ $wepay_access_token = "STAGE_63d7bf841b108c6be1fdf8e74e47bcaac6ca3d897572738f14e
 
 
 
+/**Live**/
+/*
+$wepay_account_id = 1753340467;
+$wepay_client_id = 40518;
+$wepay_client_secret = "6022cd5758";
+$wepay_access_token = "PRODUCTION_f74024ee4b9ca62c2b8a6a9dec6d2c6074920f588a2610613664bd58c95d4842";
+*/
+
+
 
 class WePay
 {

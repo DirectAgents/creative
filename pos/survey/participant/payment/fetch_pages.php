@@ -41,8 +41,30 @@ require_once '../../class.startup.php';
   </script>
 
 <script type='text/javascript'>//<![CDATA[
-$.noConflict();
+//$.noConflict();
 jQuery( document ).ready(function( $ ) {
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+
+var p = getParameterByName('p');
+
+
+
+if(p == 'bankaccount'){
+$('.bankaccount').click();
+$( "#bankaccount" ).load( "bankaccount.php" );
+}
+
 
 $( "#payment-received" ).load( "payment-received.php" );
 

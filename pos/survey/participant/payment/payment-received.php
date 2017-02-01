@@ -17,7 +17,14 @@ $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=
 $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($row_participant['account_id'] != '') {  
+if($row_participant['Cash_Only'] == 'Yes'){
+
+echo "<h3>You set up to receive payments in cash.</h3>";
+
+}else{
+
+
+if($row_participant['account_id'] != '' &&  $row_participant['Cash_Only'] != 'Yes') {  
 
 
 ?>
@@ -238,8 +245,20 @@ $row3 = mysqli_fetch_array($sql3);
 <div class="wepay_btn_box">  
   <div class="wepay_btn">
 
+<p>There are 2 ways to receive payments:</p>
+<h3>Bank Account</h3>
+<h4>Note.: You must be at least 18 years old and must have a tax ID (EIN or SSN)</h4>
+
+
 <a id="start_oauth2">Click here to create an Account to receive payments</a>
- 
+<p>&nbsp;</p>
+<h4>or</h4>
+<p>&nbsp;</p>
+<h4>Accept payments in <u>cash</u> if you don't qualify above </h4>
+<h4>Note.: If you accept payments in cash we can't track your pay history</h4>
+<p>&nbsp;</p>
+<p><a href="#" class="wepay-widget-button">I want to accept payments in cash</a></p>
+
 <script type="text/javascript">
 
 WePay.set_endpoint("stage"); // stage or production
@@ -273,7 +292,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
 </div>
 
 
-  <?php } ?>
+  <?php } } ?>
 
 
 
