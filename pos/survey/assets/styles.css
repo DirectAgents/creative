@@ -2838,7 +2838,7 @@ textarea {
     box-shadow: 0px !important;
     cursor: pointer;
     background: #449d44;
-    color: #fff;
+    color: #fff !important;
     margin:0 auto;
     width:300px;
     text-align:center;
