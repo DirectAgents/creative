@@ -1313,8 +1313,8 @@ echo $row2['Languages'].'</li>';
   <label for="New-participant-requests-to-participate">New startup requests you participate</label>
   <a href="#" alt="If a startup sents you a request to participate in a survey, you will get notified per email" class="tooltiptext">(?)</a><br>
 
-   <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="When you qualify for new projects" <?php if(in_array('When you qualify for new projects',$emailnotifications)){echo "checked";}?>/>
-  <label for="New-participant-requests-to-participate">When you qualify for new projects</label>
+   <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="When you qualify to participate to provide feedback on an idea" <?php if(in_array('When you qualify to participate to provide feedback on an idea',$emailnotifications)){echo "checked";}?>/>
+  <label for="New-participant-requests-to-participate">When you qualify to participate to provide feedback on an idea</label>
   <a href="#" alt="Each survey has certain requirements, those requirements can be based on age, gender or education. If you qualify in new projects, we will notify you per email" class="tooltiptext">(?)</a><br>
 
        

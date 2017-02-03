@@ -142,7 +142,7 @@ $Languages = str_replace(",","|",$row['Languages']);
 
 
 
-$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE EmailNotifications='When you qualify for new projects' ");
+$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE EmailNotifications='When you qualify to participate to provide feedback on an idea' ");
 $row2 = mysqli_fetch_array($sql2);
 
 
