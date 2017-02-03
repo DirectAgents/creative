@@ -18,6 +18,14 @@ $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion
 $rowscreening = mysqli_fetch_array($Screening);
 
 
+$participant_home = new PARTICIPANT();
+
+
+if($participant_home->is_logged_in())
+{
+  header("Location:../../../participant/");
+ }
+
 
 $startup_home = new STARTUP();
 
@@ -201,13 +209,7 @@ if(mysqli_num_rows($startup)<0)
 }
 
 
-$participant_home = new PARTICIPANT();
 
-
-if($participant_home->is_logged_in())
-{
-  header("Location:../../../participant/");
- }
 
 
 

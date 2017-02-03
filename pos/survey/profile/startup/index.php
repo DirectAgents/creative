@@ -308,17 +308,26 @@ if($row['profile_image'] != ''){
       </div>
 
        <div class="col-lg-4">
-    
+
+
+
+
 <div class="thetitle">Social</div>
-      <a href="<?php echo $row['Linkedin']; ?>">
+<?php if($row['Linkedin'] != '') { ?>
+      <a href="<?php echo $row['Linkedin']; ?>" target="_blank">
      <img src="<?php echo BASE_PATH; ?>/images/icons/linkedin.png" width="25"/>
      </a>
-      <a href="<?php echo $row['Twitter']; ?>">
+<?php } ?>     
+<?php if($row['Twitter'] != '') { ?>
+      <a href="<?php echo $row['Twitter']; ?>" target="_blank">
      <img src="<?php echo BASE_PATH; ?>/images/icons/twitter.png" width="25"/>
      </a>
-      <a href="<?php echo $row['Facebook']; ?>">
+<?php } ?>  
+<?php if($row['Facebook'] != '') { ?>
+      <a href="<?php echo $row['Facebook']; ?>" target="_blank">
      <img src="<?php echo BASE_PATH; ?>/images/icons/facebook.png" width="25"/>
      </a>
+<?php } ?>  
 
 
       </div>
@@ -680,9 +689,18 @@ $(document).ready(function () {
 </script>
 
 
+<?php if($participant_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+
+<?php } ?>
 
 
-<a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
+<?php if($startup_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/s/pr/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
+
+<?php } ?>
 
 
 
@@ -870,9 +888,20 @@ $date = date_create($row2['Date_Created']);
   ?>
 
 
+<?php if($participant_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+
+<?php } ?>
 
 
-<a href="<?php echo BASE_PATH; ?>/projects/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
+
+<?php if($startup_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/s/pr/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
+
+<?php } ?>
+
 
 
 
@@ -885,13 +914,15 @@ $date = date_create($row2['Date_Created']);
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."' AND ProjectID = '".$row2['ProjectID']."'");
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row2['ProjectID']."'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
+
+
 if($rowprojectimage['project_image'] != '') {
-echo '<img src="../../projects/uploads/'.$rowprojectimage['project_image'].'" width="70">'; 
+echo '<img src="'.BASE_PATH.'/ideas/uploads/'.$rowprojectimage['project_image'].'" width="70">'; 
 }else{
-echo '<img src="../../projects/uploads/thumbnail.jpg" width="70">'; 
+echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">'; 
 }
 
 
@@ -909,7 +940,7 @@ echo '<img src="../../projects/uploads/thumbnail.jpg" width="70">';
                    
                    <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?></div>
 
-                   <?php echo $row2['Headline']; ?>
+                   <?php echo $row2['Details']; ?>
                    
                   </div>
                  
@@ -933,7 +964,7 @@ echo '<img src="../../projects/uploads/thumbnail.jpg" width="70">';
 <?php
 
 
-$result_count = mysqli_query($connecDB,"SELECT ProjectID,userID, COUNT(DISTINCT userID) AS count FROM tbl_project_request WHERE ProjectID = '".$row2['ProjectID']."' AND Not_Qualified_Anymore = '' GROUP BY ProjectID");
+$result_count = mysqli_query($connecDB,"SELECT ProjectID,userID, COUNT(DISTINCT userID) AS count FROM tbl_meeting_upcoming WHERE ProjectID = '".$row2['ProjectID']."'  GROUP BY ProjectID");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 

@@ -1,17 +1,3 @@
-<?php
-
-include("../../../../config.php"); //include config file
-require_once '../../../../class.participant.php';
-
-
-require( "../../../../phpmailer/class.phpmailer.php" );
-
-
-
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +33,7 @@ require( "../../../../phpmailer/class.phpmailer.php" );
         /* ALLOWS FOR FLUID TABLES */
         .wrapper {
           width: 100% !important;
-        	max-width: 100% !important;
+            max-width: 100% !important;
         }
 
         /* ADJUSTS LAYOUT OF LOGO IMAGE */
@@ -109,22 +95,14 @@ require( "../../../../phpmailer/class.phpmailer.php" );
 </style>
 </head>
 
-
-
-
+<body>
 
 
 <?php
 
+include("../../../../config.php"); //include config file
 
-
-
-
-
-
-$sql="SELECT * FROM tbl_startup_project ORDER BY id";
-$results=mysql_query($sql);
-
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project ORDER BY id DESC ");
 
 
 //$results = mysql_query("SELECT id,userID,FirstName, LastName, Gender FROM tbl_startup_project 
@@ -137,11 +115,11 @@ $results=mysql_query($sql);
 echo '<div class="page_result">';
 
 
-if(mysql_num_rows($results)>0)
+if(mysqli_num_rows($sql)>0)
 {
 
 //while($results->fetch()){ //fetch values
-while($row = mysql_fetch_array($results))
+while($row = mysqli_fetch_array($sql))
 { 
 
 
@@ -159,11 +137,13 @@ $Diet = str_replace(",","|",$row['Diet']);
 $Religion = str_replace(",","|",$row['Religion']);
 $Education = str_replace(",","|",$row['Education']);
 $Job = str_replace(",","|",$row['Job']);
+$Interest = str_replace(",","|",$row['Interest']);
+$Languages = str_replace(",","|",$row['Languages']);
 
 
-$sql2="SELECT * FROM tbl_participant WHERE EmailNotifications='When you qualify for new projects'";
-$results2=mysql_query($sql2);
-$row2 = mysql_fetch_array($results2);
+
+$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE EmailNotifications='When you qualify for new projects' ");
+$row2 = mysqli_fetch_array($sql2);
 
 
 
@@ -181,94 +161,157 @@ $Height_Final = $row2['Height'] + 1;
 //echo $Height_Final;
 
 
-if($Age != 'NULL' && $Age != ''){$theage = "AND Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
-if($Gender != 'NULL' && $Gender != ''){$thegender = "AND Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
-if($Height != 'NULL' && $Height != ''){$theheight = "AND Height RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
-if($City != 'NULL' && $City != ''){$thecity = "AND City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
-if($Status != 'NULL' && $Status != ''){$thestatus = "AND Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
-if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
-if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
-if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
-if($Diet != 'NULL' && $Diet != ''){$thediet = "AND Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
-if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
-if($Education != 'NULL' && $Education != ''){$theeducation = "AND Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
-if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
+$Min_Req = str_replace(",","|",$row['MinReq']);
+
+
+if (strpos($Min_Req, 'Age') !== false) {
+
+if($Age != 'NULL' && $Age != ''){$theage = "AND r.Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
+}else{
+  $theage = '';
+}
+
+
+if (strpos($Min_Req, 'Gender') !== false) {
+if($Gender != 'NULL' && $Gender != ''){$thegender = "AND r.Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
+}else{
+  $thegender = '';
+}
+
+if (strpos($Min_Req, 'Height') !== false) {
+if($Height != 'NULL' && $Height != ''){$theheight = "AND r.MinHeight RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
+}else{
+  $theheight = '';
+}
+
+if (strpos($Min_Req, 'City') !== false) {
+  //echo $City;
+if($City != 'NULL' && $City != ''){$thecity = "AND r.City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
+}else{
+  $thecity = '';
+}
+
+
+if (strpos($Min_Req, 'Status') !== false) {
+if($Status != 'NULL' && $Status != ''){$thestatus = "AND r.Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
+}else{
+  $thestatus = '';
+}
+
+
+if (strpos($Min_Req, 'Ethnicity') !== false) {
+if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND r.Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
+}else{
+  $theethnicity = '';
+}
+
+
+if (strpos($Min_Req, 'Smoke') !== false) {
+if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND r.Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
+}else{
+  $thesmoke = '';
+}
+
+
+if (strpos($Min_Req, 'Drink') !== false) {
+if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND r.Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
+}else{
+  $thedrink = '';
+}
+
+
+if (strpos($Min_Req, 'Diet') !== false) {
+if($Diet != 'NULL' && $Diet != ''){$thediet = "AND r.Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
+}else{
+  $thediet = '';
+}
+
+if (strpos($Min_Req, 'Religion') !== false) {
+if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND r.Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
+}else{
+  $thereligion = '';
+}
+
+
+if (strpos($Min_Req, 'Education') !== false) {
+if($Education != 'NULL' && $Education != ''){$theeducation = "AND r.Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
+}else{
+  $theeducation = '';
+}
+
+
+if (strpos($Min_Req, 'Job') !== false) {
+if($Job != 'NULL' && $Job != ''){$thejob = "AND r.Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
+}else{
+  $thejob = '';
+}
+
+
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND r.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+}else{
+  $interest = '';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+}else{
+  $languages = '';
+}
 
 
 
+//echo $rowproject['City'];
+
+
+$sql3=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$row2['userID']."'
+ $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages AND
+ ProjectID = '".$row['ProjectID']."' LIMIT 1");
 
 
 
-$sql3 = mysql_query("SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_project_request WHERE ProjectID = '".$row['ProjectID']."') AND userID='".$row2['userID']."' AND Meetupchoice RLIKE '[[:<:]]".$Meetupchoice."[[:>:]]' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion 
-$theeducation $thejob
-  ");
-
-
-
-if(mysql_num_rows($sql3)>0)
+if(mysqli_num_rows($sql3)>0)
 {
 
 
-    while ($row3 = mysql_fetch_array($sql3)) {
+    
 
 
-  //echo 'dtA = dtB';
-
-$mail = new PHPMailer();  
- 
-//$mail->IsSMTP();  // telling the class to use SMTP
-$mail->IsHTML(true);
-//$mail->Mailer = "smtp";
-//$mail->Host = "ssl://smtp.gmail.com";
-//$mail->Port = 465;
+  //$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Meeting_Status='Upcoming Meetings'
+  //WHERE id = '".$row2['id']."' ");
 
 
 
-
-$mail->SMTPSecure = 'tls'; 
-$mail->Host = 'tls://smtp.gmail.com';
-$mail->Port = 587; //You have to define the Port
-$mail->SMTPDebug  = 3;
-
-
-
-
-
-//$mail->SMTPAuth = true; // turn on SMTP authentication
-$mail->Username = "markcontract123@gmail.com"; // SMTP username
-$mail->Password = "markdesigner123"; // SMTP password
- 
-$mail->From     = "ald183s@gmail.com";
-$mail->AddAddress($row2['userEmail']);  
- 
-$mail->Subject  = "How was the meeting?";
-$mail->Body     = 
-
-
-
-
-
-'
-
-
+// using SendGrid's PHP Library
+// https://github.com/sendgrid/sendgrid-php
+// If you are using Composer (recommended)
+require '../../../sendgrid-php/vendor/autoload.php';
+// If you are not using Composer
+// require("path/to/sendgrid-php/sendgrid-php.php");
+$from = new SendGrid\Email("Circl", "ald183s@gmail.com");
+$subject = "Meeting you qualify";
+$to = new SendGrid\Email($row2['FirstName'], "ald183s@gmail.com");
+$content = new SendGrid\Content("text/html", '
 
 
 <body style="margin: 0 !important; padding: 0 !important;">
 
+
+
 <!-- HEADER -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tr>
-        <td bgcolor="#333333" align="center">
+        <td bgcolor="#fdfdfd" align="center">
             <!--[if (gte mso 9)|(IE)]>
-            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <table align="left" border="0" cellspacing="0" cellpadding="0" width="600">
             <tr>
-            <td align="center" valign="top" width="500">
+            <td align="left" valign="top" width="600">
             <![endif]-->
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="wrapper">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
                 <tr>
-                    <td align="center" valign="top" style="padding: 15px 0;" class="logo">
+                    <td align="left" valign="top" style="padding:20px;" class="logo">
                         <a href="http://litmus.com" target="_blank">
-                            <img alt="Logo" src="http://www.labfy.com/survey/images/logo-1.jpg" width="60" height="60" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                            <img alt="Logo" src="http://labfy.com/circl/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -283,35 +326,32 @@ $mail->Body     =
     
    
     <tr>
-        <td bgcolor="#E6E9ED" align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+        <td bgcolor="#fdfdfd" align="center" style="padding: 10px 15px 30px 15px;" class="section-padding">
             <!--[if (gte mso 9)|(IE)]>
-            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
             <tr>
-            <td align="center" valign="top" width="500">
+            <td align="center" valign="top" width="600">
             <![endif]-->
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 20px; max-width: 500px;" class="responsive-table">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#fff; padding:20px; border:1px solid #f0f0f0; max-width: 600px;" class="responsive-table">
                 <!-- TITLE -->
                 <tr>
-                    <td align="center" style="padding: 0 0 10px 0; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Upcoming Meeting</td>
+                    <td align="center" style="padding: 0 0 10px 0; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Meeting you qualify</td>
                 </tr>
                 <tr>
-                    <td align="center" height="100%" valign="top" width="100%" colspan="2">
+                  <td align="center" height="100%" valign="top" width="100%" colspan="2">
                         <!--[if (gte mso 9)|(IE)]>
-                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                         <tr>
-                        <td align="center" valign="top" width="500">
+                        <td align="center" valign="top" width="600">
                         <![endif]-->
-                       
+                        
+                     
 
-
-
-
-
-                       <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
                             <tr>
                                 <td align="center" valign="top" style="font-size:0;">
                                     <!--[if (gte mso 9)|(IE)]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                                     <tr>
                                     <td align="left" valign="top" width="115">
                                     <![endif]-->
@@ -319,7 +359,7 @@ $mail->Body     =
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/survey/images/calendar.png" alt="alt text here" width="105" height="105" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 105px; height: 105px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/person.jpg" alt="who" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height: 74px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -337,18 +377,13 @@ $mail->Body     =
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">When</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row['Name'].'</td>
                                                         </tr>
-                                                       
-
-
                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$row['Name'].'</td>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$row['Details'].'</td>
                                                         </tr>
 
-                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">sdfasd</td>
-                                                        </tr>
+                                                        
 
                                                     </table>
                                                 </td>
@@ -367,11 +402,11 @@ $mail->Body     =
 
 
 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
                             <tbody><tr>
                                 <td align="center" valign="top" style="font-size:0;">
                                     <!--[if (gte mso 9)|(IE)]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                                     <tr>
                                     <td align="left" valign="top" width="115">
                                     <![endif]-->
@@ -379,7 +414,7 @@ $mail->Body     =
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/survey/images/calendar.png" alt="alt text here" width="105" height="105" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 105px; height: 105px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/calendar.jpg" alt="when" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -397,11 +432,70 @@ $mail->Body     =
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Where</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                                $'.$row['Pay'].' for '.$row['Minutes'].' minutes
+                                                                </td>
+                                                        </tr>
+                                                      
+                                                      
+
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        
+                        
+                        
+                        
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tbody><tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
+                                            <tbody><tr>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/location.jpg" alt="where" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td align="left" valign="top" width="385">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody><tr>
+
+                                                <td style="padding: 40px 0 0 0;" class="no-padding">
+                                                    <!-- ARTICLE -->
+                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding"></td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row2['LastName'].'</td>
+                                                             &nbsp;</td>
+                                                        </tr>
+
+                                                         <tr>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
+                                                             &nbsp;</td>
                                                         </tr>
                                                       
 
@@ -417,6 +511,15 @@ $mail->Body     =
                                     <![endif]-->
                                 </td>
                             </tr>
+
+
+                              <tr>
+                               
+                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/survey/startup/meetings/" style="font-weight: normal; color: #ffffff;">View Details</a></td>
+                </tr>
+
+
+
                         </tbody></table>
 
 
@@ -434,68 +537,10 @@ $mail->Body     =
 
 
 
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500;">
-                            <tbody><tr>
-                                <td align="center" valign="top" style="font-size:0;">
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
-                                    <tr>
-                                    <td align="left" valign="top" width="115">
-                                    <![endif]-->
-                                    <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
-
-                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
-                                            <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/survey/images/calendar.png" alt="alt text here" width="105" height="105" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 105px; height: 105px;"></a></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    </td>
-                                    <td align="left" valign="top" width="385">
-                                    <![endif]-->
-                                    <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
-
-                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                            <tbody><tr>
-
-                                                <td style="padding: 40px 0 0 0;" class="no-padding">
-                                                    <!-- ARTICLE -->
-                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Who</td>
-                                                        </tr>
-                                                        <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row2['FirstName'].'</td>
-                                                        </tr>
-                                                      
-
-                                                    </tbody></table>
-                                                </td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    </td>
-                                    </tr>
-                                    </table>
-                                    <![endif]-->
-                                </td>
-                            </tr>
-                        </tbody></table>
 
 
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tbody><tr>
-                                            <td align="center" style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding">Can\'t make it?</td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">If you can\'t make it to meet on that day, please click <a href="#">here</a>.</td>
-                                        </tr>
-                                    </tbody></table>
+
 
 
 
@@ -509,20 +554,41 @@ $mail->Body     =
     <tr>
         <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
             <!--[if (gte mso 9)|(IE)]>
-            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
             <tr>
-            <td align="center" valign="top" width="500">
+            <td align="center" valign="top" width="600">
             <![endif]-->
             <!-- UNSUBSCRIBE COPY -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
+
+          
+
+
+               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        <img alt="Logo" src="http://labfy.com/circl/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                           </td>
+                     </tr>
+
+                   
+            </table>
+
+
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
                         1234 Main Street, Anywhere, MA 01234, USA
-                        <br>
-                        <a href="http://litmus.com" target="_blank" style="color: #666666; text-decoration: none;">Unsubscribe</a>
+                           </td>
+                     </tr>
+
+                      <tr>
+                      <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
+                        <a href="http://litmus.com" target="_blank" style="color: #666666; text-decoration: none;">Blog</a> | <a href="http://litmus.com" target="_blank" style="color: #666666; text-decoration: none;">Blog2</a> </td>
+                       
                         
-                        
-                    </td>
+ 
+                   
                 </tr>
             </table>
 
@@ -536,52 +602,33 @@ $mail->Body     =
         </td>
     </tr>
 </table>
+
+
 </body>
 </html>
 
 
 
-';
+	');
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+$apiKey = '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';
+$sg = new \SendGrid($apiKey);
+$response = $sg->client->mail()->send()->post($mail);
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
 
 
+echo "sent";
 
+} 
 
-}
-
-
-
-}
-
-
-}
-
-
-
-
-
+} 
 
 }
-
-
-
-
-$mail->WordWrap = 250;  
- 
-if(!$mail->Send()) {
-echo 'Message was not sent.';
-echo 'Mailer error: ' . $mail->ErrorInfo;
-} else {
-echo 'Message has been sent.';
-}
-
-
-
-
- 
-
 
 
 ?>
 
-
-
+</body>
+</html>
