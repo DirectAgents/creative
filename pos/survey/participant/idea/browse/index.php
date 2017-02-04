@@ -219,7 +219,7 @@ date_default_timezone_set('America/New_York');
 <div class="no-participating-projects">
 <div class="row">
     <div class="col-md-12">
-<div class="empty-projects">Welcome! Looks like your profile info is almost empty</div>
+<div class="empty-projects">Looks like your profile has not enough information. Let's change that.</div>
 <p>&nbsp;</p>
 <p class="center">To be able to qualify to participate to provide feedback on an idea. Please edit your profile.</p>
   <div class="create-one-here-box">

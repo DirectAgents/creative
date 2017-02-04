@@ -366,9 +366,35 @@ if($_POST['passwordpass'] == 'good'){
     <input type="text" name="txtlastname" id="txtlastname" class="txtlastname" placeholder="Last Name *" required/>
     </div>
    </div>
+
+   <div class="name-field col-md-6">
+      <div class="form-group">
+    <input type="text" name="txtcity" id="txtcity" class="txtcity" placeholder="City *" required/>
+    </div>
+  </div>
     
+    <div class="name-field col-md-6">
+      <div class="form-group">
+      <select>
+      <option>asdfasdf</option>
+      </select>
+    </div>
+   </div>
+
+
+
+    <div class="name-field col-md-6">
+      <div class="form-group">
     <input type="email" name="txtemail" id="txtemail" placeholder="Email Address *" required/>
-    <input type="password" name="txtpass" id="txtpass" placeholder="Password *" required/><span id="result"></span>
+    </div>
+  </div>
+    
+    <div class="name-field col-md-6">
+      <div class="form-group">
+   <input type="password" name="txtpass" id="txtpass" placeholder="Password *" required/><span id="result"></span>
+   </div>
+    </div>
+  
     <button type="submit" name="btn-signup" id="btn-signup">SIGN UP</button>
     <p class="message">Already registered? <a href="../login">Log in</a></p>
 </form>
