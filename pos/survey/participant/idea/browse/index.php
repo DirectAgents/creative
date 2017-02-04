@@ -205,6 +205,37 @@ var oneval = $response.filter('.page_result').text();
   
 <div id="results"></div>
 
+<?php
+
+$the_date = date('Y-m-d'); 
+date_default_timezone_set('America/New_York'); 
+
+?>
+
+<?php if ($row['Date_Created'] == $the_date) { ?>
+
+<div id="results-no-results">
+  
+<div class="no-participating-projects">
+<div class="row">
+    <div class="col-md-12">
+<div class="empty-projects">Welcome! Looks like you are new here</div>
+<p>&nbsp;</p>
+<p class="center">To be able to qualify to participate to provide feedback on an idea. Please edit your profile.</p>
+  <div class="create-one-here-box">
+      <div class="get-notified">
+       <a href="<?php echo BASE_PATH; ?>/participant/account/settings/">
+        <div class="slide_open get-notified-btn">Edit Profile</div>
+        </a>
+        <p>&nbsp;</p>
+       </div> 
+  </div>
+</div>
+</div>
+</div>
+
+<?php }else{ ?>
+
 <div id="results-no-results">
   
 <div class="no-participating-projects">
@@ -224,7 +255,7 @@ var oneval = $response.filter('.page_result').text();
 </div>
 </div>
 </div>
-
+<?php } ?>
 
 </div>
 

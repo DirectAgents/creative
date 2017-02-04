@@ -38,8 +38,8 @@ class PARTICIPANT
 		    date_default_timezone_set('America/New_York'); 
 
 			$password = md5($upass);
-			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,userEmail,userPass,tokenCode, Date_Created) 
-			                                             VALUES(:first_name, :last_name, :user_mail, :user_pass, :active_code, '".$the_date."')");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
+			                                             VALUES(:first_name, :last_name, :user_mail, :user_pass, :active_code,'New startup requests you participate,When you qualify to participate to provide feedback on an idea','".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
 			$stmt->bindparam(":user_mail",$email);
