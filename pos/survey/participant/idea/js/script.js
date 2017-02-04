@@ -127,9 +127,6 @@ $("textarea[name=MYFIELDNAME]").val();
         }
     });
 
-    
-  
-
 
 
 

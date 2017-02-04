@@ -1434,6 +1434,57 @@ $(".choose-location-sunday").click(function() {
 
 
 
+/**Account Delete**/
+
+
+ $(".delete-account").click(function() {  
+
+        var userid = $('input[name=userid]').val();
+
+        var proceed = true;
+
+        //alert(userid);
+
+     //everything looks good! proceed...
+        if(proceed) 
+        {
+
+     
+     post_data = {'userid':userid};
+            
+            //Ajax post data to server
+            $.post('delete-account.php', post_data, function(response){  
+              
+
+                //load json data from server and output message     
+        if(response.type == 'error')
+        {
+          output = '<div class="errorXYZ">'+response.text+'</div>';
+        }else{
+          
+         
+          output = '<div class="success">'+response.text+'</div>';
+         
+
+        var delay = 5000; //Your delay in milliseconds
+        setTimeout(function(){ window.location = '../../../logout.php'; }, delay);
+          
+          //reset values in all input fields
+          $('#contact_form input').val(''); 
+          $('#contact_form textarea').val(''); 
+        }
+        $(".result-decline").hide().html(output).slideDown();
+            }, 'json');
+        }
+    });
+    
+    //reset previously set border colors and hide all message on .keyup()
+    $("#profile-form input[required=true], #profile-form textarea[required=true]").keyup(function() { 
+        $(this).css('border-color',''); 
+        $("#result").slideUp();
+    });
+
+
 
 /**Image Upload**/
 

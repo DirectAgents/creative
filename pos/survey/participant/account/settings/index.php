@@ -332,16 +332,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
       
 
-       <form action="" id="contact-form" class="form-horizontal" method="post">
-
-    
-           
-              <input type="hidden" name="userid" id="userid" value="<?php echo $row2['userID']; ?>">
-              <input type="hidden" name="projectid" id="projectid" value="<?php echo $_GET['id']; ?>">
-          
-
-          </form>
-
+     
    
 
     <div id="result-photo"></div>
@@ -1317,6 +1308,41 @@ echo $row2['Languages'].'</li>';
   <label for="New-participant-requests-to-participate">When you qualify to participate to provide feedback on an idea</label>
   <a href="#" alt="Each survey has certain requirements, those requirements can be based on age, gender or education. If you qualify in new projects, we will notify you per email" class="tooltiptext">(?)</a><br>
 
+
+
+  <h2 class="no-mobile">Delete account:</h2>
+         
+<a href="#" id="requestbutton" class="my_popup_open">Delete my Account</a>
+
+
+
+  <!-- Start Decline -->
+
+<div id="my_popup" class="well slide-decline">
+  <div class="result-decline">
+  <div id="result-decline">Account Successfully Deleted!</div>
+  </div>
+<h4>Are you sure you want to delete your account?</h4>
+<h5>Note.: this cannot be undone</h5>
+<input type="hidden" name="userid" id="userid" value="<?php echo $row['userID']; ?>"/>
+
+<div class="popupoverlay-btn">
+  <div class="cancel-decline">
+    <button class="my_popup_close cancel">Cancel</button>
+    <button class="delete-account btn-delete">Yes</button>
+</div>
+
+
+
+</div>
+</div>
+
+<!-- End Decline -->
+
+
+
+   
+<br><br><br>
        
 
 
@@ -1394,21 +1420,23 @@ echo $row2['Languages'].'</li>';
 
 
 
-<script>
-$(document).ready(function () {
 
-    $('#slide').popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
 
-});
-</script>
+
 
 
 <input type="hidden" id='base_path' value="<?php echo BASE_PATH; ?>">
 
+
+
+  <script>
+    $(document).ready(function() {
+
+      // Initialize the plugin
+      $('#my_popup').popup();
+
+    });
+  </script>
 
 
         

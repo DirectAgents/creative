@@ -2877,8 +2877,23 @@ textarea {
     cursor: pointer;
     background: grey;
     color: #fff !important;
-    
-   
+    text-align:center;
+     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.delete-account-btn{
+  text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 0px;
+    font-family: Lato;
+    font-size: 16px;
+    border:none !important;
+    box-shadow: 0px !important;
+    cursor: pointer;
+    background: red;
+    color: #fff !important;
     text-align:center;
      -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

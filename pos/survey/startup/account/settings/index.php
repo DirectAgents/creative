@@ -266,16 +266,6 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
       
 
-       <form action="" id="contact-form" class="form-horizontal" method="post">
-
-    
-           
-              <input type="hidden" name="userid" id="userid" value="<?php echo $row2['userID']; ?>">
-              <input type="hidden" name="projectid" id="projectid" value="<?php echo $_GET['id']; ?>">
-          
-
-          </form>
-
    
 
     <div id="result-photo"></div>
@@ -867,6 +857,38 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
         <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="New participant requests to participate" <?php if(in_array('New participant requests to participate',$emailnotifications)){echo "checked";}?>/>
   <label for="New-participant-requests-to-participate">New participant requests to participate</label><br>
 
+
+
+  <h2 class="no-mobile">Delete account:</h2>
+         
+<a href="#" id="requestbutton" class="my_popup_open">Delete my Account</a>
+
+
+
+  <!-- Start Delete -->
+
+<div id="my_popup" class="well slide-decline">
+  <div class="result-decline">
+  <div id="result-decline">Account Successfully Deleted!</div>
+  </div>
+<h4>Are you sure you want to delete your account?</h4>
+<h5>Note.: this cannot be undone</h5>
+<input type="hidden" name="userid" id="userid" value="<?php echo $row['userID']; ?>"/>
+
+<div class="popupoverlay-btn">
+  <div class="cancel-decline">
+    <button class="my_popup_close cancel">Cancel</button>
+    <button class="delete-account btn-delete">Yes</button>
+</div>
+
+
+
+</div>
+</div>
+
+<!-- End Delete -->
+
+<br><br>
        
 
 
@@ -941,23 +963,20 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
 
 
-<script>
-$(document).ready(function () {
-
-    $('#slide').popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
-
-});
-</script>
-
 
 <input type="hidden" id='base_path' value="<?php echo BASE_PATH; ?>">
   <script type="text/javascript" src="<?php echo BASE_PATH; ?>/startup/project/js/jquery.form.min.js"></script>
 
 
+
+  <script>
+    $(document).ready(function() {
+
+      // Initialize the plugin
+      $('#my_popup').popup();
+
+    });
+  </script>
 
         
     </body>

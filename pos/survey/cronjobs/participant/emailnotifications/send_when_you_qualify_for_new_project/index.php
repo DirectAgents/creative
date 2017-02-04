@@ -142,7 +142,7 @@ $Languages = str_replace(",","|",$row['Languages']);
 
 
 
-$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE EmailNotifications='When you qualify to participate to provide feedback on an idea' ");
+$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE EmailNotifications LIKE '%When you qualify to participate to provide feedback on an idea%' ");
 $row2 = mysqli_fetch_array($sql2);
 
 
@@ -359,7 +359,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/person.jpg" alt="who" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height: 74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/lightbulb.jpg" alt="idea" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height: 74px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -414,7 +414,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/calendar.jpg" alt="when" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/money.jpg" alt="money" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -433,7 +433,7 @@ $content = new SendGrid\Content("text/html", '
                                                         <tbody>
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                                $'.$row['Pay'].' for '.$row['Minutes'].' minutes
+                                                                $'.$row['Pay'].' for '.$row['Minutes'].' minutes of meeting
                                                                 </td>
                                                         </tr>
                                                       
@@ -464,46 +464,12 @@ $content = new SendGrid\Content("text/html", '
                                     <tr>
                                     <td align="left" valign="top" width="115">
                                     <![endif]-->
-                                    <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
-
-                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
-                                            <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/location.jpg" alt="where" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
+                                  
                                     <!--[if (gte mso 9)|(IE)]>
                                     </td>
                                     <td align="left" valign="top" width="385">
                                     <![endif]-->
-                                    <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
-
-                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                            <tbody><tr>
-
-                                                <td style="padding: 40px 0 0 0;" class="no-padding">
-                                                    <!-- ARTICLE -->
-                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding"></td>
-                                                        </tr>
-                                                        <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             &nbsp;</td>
-                                                        </tr>
-
-                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             &nbsp;</td>
-                                                        </tr>
-                                                      
-
-                                                    </tbody></table>
-                                                </td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
+                                   
                                     <!--[if (gte mso 9)|(IE)]>
                                     </td>
                                     </tr>
@@ -512,10 +478,15 @@ $content = new SendGrid\Content("text/html", '
                                 </td>
                             </tr>
 
+                             <tr>
+                               
+                    <td align="center" style="padding: 20px; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"></td>
+                </tr>
+
 
                               <tr>
                                
-                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/survey/startup/meetings/" style="font-weight: normal; color: #ffffff;">View Details</a></td>
+                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/survey/ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'" style="font-weight: normal; color: #ffffff;">View Details</a></td>
                 </tr>
 
 
