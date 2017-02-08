@@ -47,13 +47,13 @@ if($startup->is_logged_in()!="")
 
 
 
-if(isset($_SESSION['fb_access_token_startup']) && isset($_SESSION['startupSession'])){
+if(isset($_SESSION['fb_access_token_startup']) || isset($_SESSION['startupSession'])){
 	unset($_SESSION['fb_access_token_startup']);	
 	header("Location:startup/login/");
 }
 
 
-if(isset($_SESSION['fb_access_token_participant']) && isset($_SESSION['participantSession'])){
+if(isset($_SESSION['fb_access_token_participant']) || isset($_SESSION['participantSession'])){
 	unset($_SESSION['fb_access_token_participant']);	
 	header("Location:participant/login/");
 }

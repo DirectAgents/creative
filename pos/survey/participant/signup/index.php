@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+ob_start();
+
+
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
 require_once '../../base_path.php';
@@ -138,12 +141,12 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     $date = date('Y-m-d'); 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant (google_id, FirstName, LastName, userEmail, google_picture_link, EmailNotifications, Date_Created, account_verified) 
-      VALUES ('".$user->id."',  '".$user->givenName."', '".$user->familyName."', '".$user->email."', '".$user->picture."' , 'New startup requests you participate,When you qualify to participate to provide feedback on an idea','".$date."','1')");
+      VALUES ('".$user->id."',  '".$user->givenName."', '".$user->familyName."', '".$user->email."', '".$user->picture."' , 'New startup requests you participate when you qualify to participate to provide feedback on an idea','".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
 
-    mysqli_query($insert_sql);  
+    //mysqli_query($insert_sql);  
 
     $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
     profile_image = '',
@@ -277,26 +280,229 @@ if($_POST['passwordpass'] == 'good'){
       $key = base64_encode($id);
       $id = $key;
       
-      $message = "          
-            Hello $firstname,
-            <br /><br />
-            Welcome to Coding Cage!<br/>
-            To complete your registration  please , just click following link<br/>
-            <br /><br />
-            <a href='http://localhost/creative/pos/survey/participant/account/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
-            <br /><br />
-            Thanks,";
-            
-      $subject = "Please verify your e-mail for Circl";
-            
-      $reg_user->send_mail($email,$message,$subject); 
-      $msg = "
-          <div class='alert alert-success'>
-            <button class='close' data-dismiss='alert'>&times;</button>
-            <strong>Success!</strong>  We've sent an email to $email.<br><br>
-                    Please click on the confirmation link in the email to create your account. 
-            </div>
-          ";
+     // using SendGrid's PHP Library
+// https://github.com/sendgrid/sendgrid-php
+// If you are using Composer (recommended)
+require '../../sendgrid-php/vendor/autoload.php';
+// If you are not using Composer
+// require("path/to/sendgrid-php/sendgrid-php.php");
+$from = new SendGrid\Email("Circl Team", "no-reply@circl.com");
+$subject = "Welcome To SendGrid! Confirm Your Email";
+$to = new SendGrid\Email($firstname, $email);
+$content = new SendGrid\Content("text/html", '
+         
+<body style="margin: 0 !important; padding: 0 !important;">
+
+
+<!-- HEADER -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td bgcolor="#fdfdfd" align="center">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="left" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="left" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
+                <tr>
+                    <td align="left" valign="top" style="padding:20px;" class="logo">
+                        <a href="http://litmus.com" target="_blank">
+                            <img alt="Logo" src="http://labfy.com/circl/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    
+   
+    <tr>
+        <td bgcolor="#fdfdfd" align="center" style="padding: 10px 15px 30px 15px;" class="section-padding">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#fff; padding:20px; border:1px solid #f0f0f0; max-width: 600px;" class="responsive-table">
+                <!-- TITLE -->
+               
+                <tr>
+                  <td align="center" height="100%" valign="top" width="100%" colspan="2">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                        <tr>
+                        <td align="center" valign="top" width="600">
+                        <![endif]-->
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                You\'re on your way!
+                                                </td>
+                                            </tr>
+                                            
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                Let\'s confirm your email address.
+                                                
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                   
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tbody><tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                              <tr>
+                                                <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
+                                                
+                                                 <a href="http://localhost/creative/pos/survey/startup/account/verify.php?id='.$id.'&code='.$code.'">
+                                                <div style="padding: 20px; max-width:240px; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">Confirm Email Address</div>
+                                                </a>
+                                                
+                                                </td>
+                                              </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        
+                        
+                        
+                        
+                     
+
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+              
+               
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <!-- UNSUBSCRIBE COPY -->
+
+          
+
+
+               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        <img alt="Logo" src="http://labfy.com/circl/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                           </td>
+                     </tr>
+
+                   
+            </table>
+
+
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        1234 Main Street, Anywhere, MA 01234, USA
+                           </td>
+                     </tr>
+
+                      <tr>
+                      <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
+                        <a href="http://litmus.com" target="_blank" style="color: #666666; text-decoration: none;">Blog</a> | <a href="http://litmus.com" target="_blank" style="color: #666666; text-decoration: none;">Blog2</a> </td>
+                       
+                        
+ 
+                   
+                </tr>
+            </table>
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+
+
+            ');
+
+
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+$apiKey = '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';
+$sg = new \SendGrid($apiKey);
+$response = $sg->client->mail()->send()->post($mail);
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
+
+
     }
     else
     {
@@ -375,9 +581,59 @@ if($_POST['passwordpass'] == 'good'){
     
     <div class="name-field col-md-6">
       <div class="form-group">
-      <select>
-      <option>asdfasdf</option>
-      </select>
+     <select name="txtstate" id="txtstate">
+  <option value="AL">Alabama</option>
+  <option value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+  <option value="AR">Arkansas</option>
+  <option value="CA">California</option>
+  <option value="CO">Colorado</option>
+  <option value="CT">Connecticut</option>
+  <option value="DE">Delaware</option>
+  <option value="DC">District Of Columbia</option>
+  <option value="FL">Florida</option>
+  <option value="GA">Georgia</option>
+  <option value="HI">Hawaii</option>
+  <option value="ID">Idaho</option>
+  <option value="IL">Illinois</option>
+  <option value="IN">Indiana</option>
+  <option value="IA">Iowa</option>
+  <option value="KS">Kansas</option>
+  <option value="KY">Kentucky</option>
+  <option value="LA">Louisiana</option>
+  <option value="ME">Maine</option>
+  <option value="MD">Maryland</option>
+  <option value="MA">Massachusetts</option>
+  <option value="MI">Michigan</option>
+  <option value="MN">Minnesota</option>
+  <option value="MS">Mississippi</option>
+  <option value="MO">Missouri</option>
+  <option value="MT">Montana</option>
+  <option value="NE">Nebraska</option>
+  <option value="NV">Nevada</option>
+  <option value="NH">New Hampshire</option>
+  <option value="NJ">New Jersey</option>
+  <option value="NM">New Mexico</option>
+  <option value="NY">New York</option>
+  <option value="NC">North Carolina</option>
+  <option value="ND">North Dakota</option>
+  <option value="OH">Ohio</option>
+  <option value="OK">Oklahoma</option>
+  <option value="OR">Oregon</option>
+  <option value="PA">Pennsylvania</option>
+  <option value="RI">Rhode Island</option>
+  <option value="SC">South Carolina</option>
+  <option value="SD">South Dakota</option>
+  <option value="TN">Tennessee</option>
+  <option value="TX">Texas</option>
+  <option value="UT">Utah</option>
+  <option value="VT">Vermont</option>
+  <option value="VA">Virginia</option>
+  <option value="WA">Washington</option>
+  <option value="WV">West Virginia</option>
+  <option value="WI">Wisconsin</option>
+  <option value="WY">Wyoming</option>
+</select>       
     </div>
    </div>
 
@@ -411,20 +667,7 @@ if($_POST['passwordpass'] == 'good'){
   </div>
 
 
-  <?php
 
-//Display user info or display login url as per the info we have.
-//echo '<div style="margin:20px">';
-if (isset($authUrl)){ 
-  //show login url
-  echo "<p>&nbsp;</p>";
-  echo '<h3>Or connect with</h3>';
-  echo "<p>&nbsp;</p>";
-
-  
-}
-
-?>
 
 
 
@@ -503,7 +746,7 @@ echo 'id: ' . $user['id'];
 //check if user exist in database using COUNT
 
 
-  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_participant WHERE facebook_id='".$user['id']."' ");
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_participant WHERE userEmail='".$user['email']."' ");
   $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
 
   $sql = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userEmail = '".$user['email']."'");
@@ -519,6 +762,7 @@ echo 'id: ' . $user['id'];
     {
 
     $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
+    facebook_id = '".$user['id']."', 
     profile_image = '',
     google_picture_link = '',
     account_verified = '1'  
@@ -530,6 +774,7 @@ echo 'id: ' . $user['id'];
         $_SESSION['participantSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
         header("Location: ../meetings/");
+        //echo $user['id'];
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -542,12 +787,12 @@ echo 'id: ' . $user['id'];
 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant (facebook_id, FirstName, LastName, userEmail, Gender, EmailNotifications, Date_Created, account_verified) 
-      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' ,'New startup requests you participate,When you qualify to participate to provide feedback on an idea','".$date."','1')");
+      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' ,'New startup requests you participate when you qualify to participate to provide feedback on an idea','".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
 
-    mysqli_query($insert_sql);  
+    //mysqli_query($insert_sql);  
 
     header("Location: ../meetings/");
     exit();

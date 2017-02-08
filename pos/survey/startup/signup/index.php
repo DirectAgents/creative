@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+ob_start();
 
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
@@ -705,6 +706,15 @@ echo 'id: ' . $user['id'];
   //echo $user->email;
   if($user_count_facebook) //if user already exist change greeting text to "Welcome Back"
     {
+
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
+    facebook_id = '".$user['id']."', 
+    profile_image = '',
+    google_picture_link = '',
+    account_verified = '1'  
+
+    WHERE userEmail='".$user['email']."'");
+
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['startupSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
@@ -726,7 +736,7 @@ echo 'id: ' . $user['id'];
     //$statement->execute();
     //echo $mysqli->error;
 
-    mysqli_query($insert_sql);  
+    //mysqli_query($insert_sql);  
 
     $_SESSION['startupSession'] = $row['userID'];
     header("Location: ../index.php");

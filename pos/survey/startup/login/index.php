@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+ob_start();
+
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
 
@@ -401,7 +403,7 @@ echo 'id: ' . $user['id'];
 //check if user exist in database using COUNT
 
 
-  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_startup WHERE facebook_id='".$user['id']."' ");
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_startup WHERE userEmail='".$user['email']."' ");
   $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
 
   $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userEmail = '".$user['email']."'");
@@ -417,6 +419,7 @@ echo 'id: ' . $user['id'];
     {   
 
     $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
+    facebook_id = '".$user['id']."',   
     profile_image = '',
     google_picture_link = '',
     account_verified = '1'  
@@ -427,6 +430,7 @@ echo 'id: ' . $user['id'];
         $_SESSION['startupSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
         header("Location: ../index.php");
+        //echo $_SESSION['startupSession'];
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -444,8 +448,9 @@ echo 'id: ' . $user['id'];
     //$statement->execute();
     //echo $mysqli->error;
 
-    mysqli_query($insert_sql);  
-    
+    //mysqli_query($insert_sql);  
+    $_SESSION['startupSession'] = $row['userID'];
+    $_SESSION['facebook_photo'] = $user['id'];
     header("Location: ../index.php");
     exit();
 
