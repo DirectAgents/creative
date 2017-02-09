@@ -91,17 +91,16 @@ $.post('payments-pending-popup.php?projectid='+projectid+'&participantid='+parti
 
 <?php
 
-$sql="SELECT * FROM tbl_project_request WHERE startupID = '".$_SESSION['startupSession']."' AND Payment = '' ORDER BY id DESC ";
-$result=mysql_query($sql);
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID = '".$_SESSION['startupSession']."' AND Payment = '' ORDER BY id DESC ");
 //$row=mysql_fetch_array($result);
 
   //if username exists
-if(mysql_num_rows($result)>0)
+if(mysqli_num_rows($sql)>0)
 {
 
 
 //get all records from add_delete_record table
-while($row = mysql_fetch_array($result))
+while($row = mysqli_fetch_array($sql))
 { 
 
 
@@ -121,7 +120,7 @@ while($row = mysql_fetch_array($result))
     <tbody>
       <tr class="info">
         <td colspan="1" style="text-align:left">Project#: <?php echo $row['ProjectID']; ?></td>
-        <td colspan="1" style="text-align:right"> <a href="#" class="launch-photo" data-toggle="modal" data-target="#modal" data-key='{"projectid":"<?php echo $row['ProjectID']; ?>","participantid":"<?php echo $row['userID']; ?>","startupid":"<?php echo $row['startupID']; ?>"}'>Pay Amount</a></td>
+        <td colspan="1" style="text-align:right"> <a href="<?php echo BASE_PATH; ?>/startup/meetings/pay/?id=<?php echo $row['ProjectID']; ?>&p=<?php echo $row['userID']; ?>" class="launch-photo">Pay Amount</a></td>
         
       </tr>
 
@@ -129,16 +128,14 @@ while($row = mysql_fetch_array($result))
 
 
 <?php 
+//echo $row['userID'];
 
+$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row['userID']."'");
 
-$sql="SELECT * FROM tbl_participant WHERE userID = '".$row['userID']."'";
-$result2=mysql_query($sql);
-while($row2 = mysql_fetch_array($result2)){
+while($row2 = mysqli_fetch_array($sql2)){
 
-
-$sql3="SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row['ProjectID']."'";
-$result3=mysql_query($sql3);
-$row3 = mysql_fetch_array($result3);
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row['ProjectID']."'");
+$row3 = mysqli_fetch_array($sql3);
 
 
 
