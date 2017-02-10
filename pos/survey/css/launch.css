@@ -1830,14 +1830,14 @@ body>nav .signup {
 	line-height: 12px;
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
-	line-height: 60px;
-	height: 60px;
+	line-height: 40px;
+	height: 40px;
 	padding: 0 20px;
 	border: 0;
 	color: #fff;
 	border-color: currentColor;
 	background-color: #6772e5;
-	margin: 10px 40px 10px 20px;
+	margin: 20px 40px 10px 20px;
 	display: block
 }
 
@@ -1860,14 +1860,14 @@ body>nav .login{
 	line-height: 12px;
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
-	line-height: 60px;
-	height: 60px;
+	line-height: 40px;
+	height: 40px;
 	padding: 0 20px;
 	border: 0;
 	color: #fff;
 	border-color: currentColor;
 	background-color: #5db6e8;
-	margin: 10px 40px 10px 20px;
+	margin: 20px 20px 10px 20px;
 	display: block
 }
 
@@ -3224,6 +3224,15 @@ body section.testimonials .pips .active {
 	border: solid 1px #1abc96;
 	background: #1abc96
 }
+body section.privacy-policy {
+	padding: 80px 30px;
+	float:left;
+	background: #fff;
+	text-align: left;
+	position: relative
+}
+
+
 body section.pricing {
 	padding: 80px 30px;
 	position: relative;
