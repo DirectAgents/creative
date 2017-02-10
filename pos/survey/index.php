@@ -758,92 +758,16 @@
       </div>
     </div>
   </section>
-  <section class="testimonials">
-    <div class="quote-mark" ng-click="vm.right()"></div>
-    <h2 class="title">What others are saying</h2>
   
-    <div class="quote-container">
-  
-    <div class="chevron chevron-left" ng-click="vm.left()">
-      <svg><polyline class="line" stroke-linecap="round" points="18.5,0.5 5.5,12 18.5,23.5 "/></svg>
-    </div>
-  
-    <div class="quote" ng-if="vm.currentQuote === 0">
-      <blockquote>
-        The <span class="keyword blue">disruptively simple way</span> to help serious founders prepare for growth, funding, and a successful exit. Gust Launch makes it easy to start and run a high-growth business by integrating world-class services with the click of a button.
-      </blockquote>
-  
-      <cite itemscope itemtype="http://schema.org/Person">
-        <span class="name" itemprop="name">Howard L. Morgan</span>
-        <a class="company" itemprop="company" href="http://firstround.com/person/howard-morgan/#mystory" target="_blank">First Round Capital</a>
-      </cite>
-    </div>
-  
-    <div class="quote" ng-if="vm.currentQuote === 1">
-      <blockquote>
-        Gust is simplifying and taking the friction out of early stage investing, all of which is good for emerging companies and our economy as a whole. The <span class="keyword purple">forms are top notch</span> and are a perfect fit for start-ups and our growing entrepreneurial ecosystem.
-      </blockquote>
-  
-      <cite itemscope itemtype="http://schema.org/Person">
-      <span class="name" itemprop="name">Daniel DeWolf, NYU School of Law</span>
-      <a class="company" itemprop="company" href="http://its.law.nyu.edu/facultyprofiles/index.cfm?fuseaction=profile.overview&personid=20661" target="_blank">Venture Capital: Forms and Analysis</a>
-      </cite>
-    </div>
-  
-    <div class="quote" ng-if="vm.currentQuote === 2">
-      <blockquote>
-        I never thought filing for incorporation could actually be a pleasant experience, but incorporating Biddlist with Gust Launch actually was. It was <span class="keyword green">clean, simple, intuitive</span>&mdash;and most importantly, quick. I work with startups every day, and I recommend Gust Launch to everyone who hasn’t already incorporated.
-      </blockquote>
-  
-      <cite itemscope itemtype="http://schema.org/Person">
-        <span class="name" itemprop="name">Chris Gorges</span>
-        <a class="company" itemprop="company" href="http://www.biddlist.com/" target="_blank">Biddlist Inc.</a>
-      </cite>
-    </div>
-  
-    <div class="quote" ng-if="vm.currentQuote === 3">
-      <blockquote>
-        Gust Launch is an <span class="keyword yellow">amazing platform</span> that helps founders understand their business.
-      </blockquote>
-  
-      <cite itemscope itemtype="http://schema.org/Person">
-        <span class="name" itemprop="name">March Chadwick</span>
-        <a class="company" itemprop="company" href="http://www.zoner.city/" target="_blank">ZonerApp</a>
-      </cite>
-    </div>
-  
-    <div class="chevron chevron-right" ng-click="vm.right()">
-      <svg><polyline class="line" stroke-linecap="round" points="5.5,0.5 18.5,12 5.5,23.5 "/></svg>
-    </div>
-  
-    <div class="pips">
-      <div class="pip"
-        ng-click="vm.currentQuote = 0"
-        ng-class="{'active': vm.currentQuote === 0}">
-      </div>
-      <div class="pip"
-        ng-click="vm.currentQuote = 1"
-        ng-class="{'active': vm.currentQuote === 1}">
-      </div>
-      <div class="pip"
-        ng-click="vm.currentQuote = 2"
-        ng-class="{'active': vm.currentQuote === 2}">
-      </div>
-      <div class="pip"
-        ng-click="vm.currentQuote = 3"
-        ng-class="{'active': vm.currentQuote === 3}">
-      </div>
-    </div>
-  
-    </div>
-  </section>
   <section class="features"
       ng-click="vm.toggle()"
       ng-class="{active: vm.cards}">
   
       <h2 class="title">Features</h2>
-  
+
       <div class="wrapper">
+
+
           <div class="feature"
               ng-click="vm.toggle(1); $event.stopPropagation();"
               ng-class="{
@@ -1052,18 +976,7 @@
       </div>
   </section>
 
-  <section class="partners">
-    <h3 class="subtitle">Our Trusted Partners</h2>
-    <h2 class="title">Feel secure knowing you're in expert hands</h2>
   
-    <div class="partners">
-        <img src="img/eisneramper@2x.png" alt="Eisner Amper">
-        <img src="img/simplexity@2x.png" alt="Simplexity">
-        <img src="img/mcb@2x.png" alt="Metropolitan Capital">
-        <img src="img/rocketlawyer@2x.png" alt="Rocket Lawyer">
-        <img src="img/xero@2x.png" alt="Xero">
-    </div>
-  </section>
   <section class="pricing">
       <div class="price">
   
@@ -1176,7 +1089,7 @@
     </div>
   
     <div class="copyright">
-      © 2016 Gust. All rights reserved  |  <a target="_blank" href="https://gust.com/tos">Terms of Service</a>  |  <a target="_blank" href="https://gust.com/privacy-policy">Privacy</a>
+      © 2016 Gust. All rights reserved  |  <a target="_blank" href="terms.php">Terms of Service</a>  |  <a target="_blank" href="privacy-policy.php">Privacy</a>
     </div>
   
   </footer>

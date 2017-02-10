@@ -2382,6 +2382,26 @@ body section.value .crop-circle {
 	overflow: hidden;
 	border-radius: 50%
 }
+
+body section.features .feature-title {
+	width: 50%;
+	margin: 20px auto;
+	padding: 20px 40px;
+	-ms-transform: scale(1);
+	transform: scale(1);
+	transition: 250ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	box-shadow: 0 0 30px rgba(0,0,0,0.2);
+	cursor: pointer;
+	float: left;
+	background: #fff;
+	z-index: 3000;
+	border-radius: 3px;
+	overflow: hidden;
+	text-align: left;
+	transition: all 250ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 600ms cubic-bezier(0.62, 0.28, 0.23, 0.99), top 600ms cubic-bezier(0.62, 0.28, 0.23, 0.99), left 600ms cubic-bezier(0.62, 0.28, 0.23, 0.99), height 600ms cubic-bezier(0.62, 0.28, 0.23, 0.99), max-height 600ms cubic-bezier(0.62, 0.28, 0.23, 0.99), width 600ms cubic-bezier(0.62, 0.28, 0.23, 0.99), max-width 600ms cubic-bezier(0.62, 0.28, 0.23, 0.99)
+}
+
+
 body section.features .feature {
 	width: 100%;
 	margin: 20px auto;
@@ -2414,7 +2434,7 @@ body section.features .feature {
 	left: 50%
 }
 body section.features .feature:nth-child(odd) {
-	left: 40px
+	left: 40px;
 }
 body section.features .feature:nth-child(n+3) {
 	top: 160px
@@ -3231,8 +3251,6 @@ body section.privacy-policy {
 	text-align: left;
 	position: relative
 }
-
-
 body section.pricing {
 	padding: 80px 30px;
 	position: relative;
@@ -3246,6 +3264,9 @@ body section.pricing:after {
 	content: '';
 	clear: both
 }
+
+.for-startups h3{float:left;}
+
 body section.pricing>.title {
 	margin: 0 auto 40px;
 	text-align: center;
