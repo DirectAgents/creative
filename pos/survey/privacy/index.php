@@ -1,3 +1,5 @@
+<?php require_once '../base_path.php'; ?>
+
 <script src="https://use.typekit.net/oos2wfr.js"></script>
 <script>try{Typekit.load({ async: false });}catch(e){}</script>
 <html itemscope itemtype="http://schema.org/Product">
@@ -416,7 +418,7 @@ We partner with a third party to either display advertising on our website or to
    
   
     <div class="copyright">
-      © 2016 Gust. All rights reserved  |  <a target="_blank" href="https://gust.com/tos">Terms of Service</a>  |  <a target="_blank" href="https://gust.com/privacy-policy">Privacy</a>
+      © 2016 Gust. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy">Privacy</a>
     </div>
   
   </footer>
