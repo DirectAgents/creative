@@ -562,7 +562,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
   
-<form class="form-signin" method="post">
+<form class="form-signup" method="post">
 
   <input type="hidden" name="passwordpass" id="passwordpass"/>
 

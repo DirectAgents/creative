@@ -14,7 +14,7 @@ h2{font-size:25px;}
 }
 
 
-.icon {
+.icon {sss
     vertical-align: middle;
     display: inline-block;
     width: 16px;
@@ -162,6 +162,22 @@ h2{font-size:25px;}
   color:#323844;
 }
 
+
+.form .form-signup #txtpass {
+  outline: 0;
+  background: #fff;
+  width: 100%;
+  border: 0;
+  float:left;
+  margin: 0 0px 15px 0px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+  color:#323844;
+}
+
+
 .form select {
   outline: 0;
   background: #fff;
@@ -179,7 +195,7 @@ h2{font-size:25px;}
 
 .form button {
   outline: 0;
-  background: #e44044;
+  background: #5db6e8;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -188,10 +204,13 @@ h2{font-size:25px;}
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   color: #FFFFFF;
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 1.5px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+
 }
 .form .message {
   margin: 15px 0 0;
@@ -433,7 +452,7 @@ button {
   border-top-color:#3e80b1;
   border-bottom-color:#1e549d;
   color:#fff;
-  text-shadow:0 1px 0 #1e3c5e;
+  /*text-shadow:0 1px 0 #1e3c5e;*/
   font-size:.875em;
   padding:8px 15px;
   width:150px;
