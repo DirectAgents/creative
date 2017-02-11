@@ -1999,14 +1999,13 @@ body>nav.shrink .logo>.swoosh, body>nav.shrink .logo>.launch, body>nav.shrink .l
 }
 }
 body>header.hero {
-	/*position: relative;*/
+	position: relative;
 	width: 100%;
 	background: #fff;
 	padding: 80px 60px;
 	text-align: center;
 	height: auto;
 	background: #f5f7f9;
-	margin-top:-546px;
 }
 @media only screen and (min-width: 1025px) {
 body>header.hero {
@@ -2018,7 +2017,6 @@ body>header.hero {
 @media only screen and (min-width: 768px) and (orientation: landscape) {
 body>header.hero {
 	padding: 120px 60px 100px;
-	margin-top: -546px;
 }
 }
 @media only screen and (min-width: 1025px) {

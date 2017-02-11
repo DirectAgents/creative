@@ -66,10 +66,7 @@
 
 </head>
 
-<body
-  ng-app="app"
-  ng-class="{loaded: vm.loaded, IE11: vm.IE11}"
-  ng-controller="appController as vm">
+<body>
   <div id="tour_center_target"></div>
 <div class='div--full-height'>
    <div id='header'>

@@ -9560,10 +9560,17 @@ section.slide {
 	padding: 0 !important
 }
 .div--full-height {
-	/*position: relative;*/
-	height: auto !important;
-	min-height: 100%;
-	padding-bottom: 375px
+	position: absolute;
+    height: auto !important;
+    /* min-height: 100%; */
+    /* padding-bottom: 300px; */
+    /* top: 300px; */
+    /* float: left; */
+    width: 100%;
+    /* height: 50px !important; */
+    /* background: #333; */
+    /* margin-top: 300px; */
+    z-index: 10;
 }
 .div--full-viewport {
 	height: 100vh
@@ -10626,13 +10633,13 @@ section {
 }
 #tour_center_target {
 	position: fixed;
-	left: 50%;
-	top: 50%;
-	height: 1px;
-	width: 1px;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	z-index: 99999
+    left: 50%;
+    top: 50%;
+    height: 1px;
+    width: 1px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 99999;
 }
 div.hopscotch-bubble .hopscotch-bubble-container {
 	padding: 24px;
