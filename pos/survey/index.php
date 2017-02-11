@@ -51,10 +51,7 @@
     <meta property="article:section"
         content="Technology">
 
-    <script src="https://cdn.optimizely.com/js/2761650875.js"></script>
-    <script src="https://code.angularjs.org/1.5.7/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
-
+  
     
 
 <link href="css/launch.css" rel="stylesheet">
@@ -62,6 +59,20 @@
 <link rel="stylesheet" media="all" href="assets/application-d939c3182b808a58e625b4260b6955c9.css" />
 <script src="js/application-4b458517a28f0f3fb52cdb61d93011a6.js"></script>
 
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+$(document).ready(function() {
+  $('a[rel="relativeanchor"]').click(function(){
+      $('html, body').animate({
+          scrollTop: $( $.attr(this, 'href') ).offset().top
+      }, 500);
+      return false;
+  }); 
+});
+});//]]> 
+
+</script>
 
 
 </head>
@@ -72,19 +83,9 @@
    <div id='header'>
 <nav id='main_nav' role='main-navigation'>
 <div class='container-fluid nav-contents'>
-<div class='nav-item'>
+<div class='nav-item logo'>
 <a class="brand-logo-light nav-logo-swoosh" href="index.html" target="_top">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 30">
-  <linearGradient id="gust-logo-gradient" gradientUnits="userSpaceOnUse" x1="0.2989" y1="15" x2="65.7011" y2="15">
-    <stop offset="0" style="stop-color:#39B54A"></stop>
-    <stop offset="1" style="stop-color:#00AEEF"></stop>
-  </linearGradient>
-  <path class="swoosh" d="M64.1,0C63.9,0.2,54,11.5,39.4,19.8c-0.1,0.1-0.2-0.1-0.1-0.2C44.2,16.1,48.4,12,52,8.4
-  c0.8-0.8,0.8-2.2-0.1-3l-0.8-0.8c-5.9,6.1-13.9,14-23.8,19c-0.1,0.1-0.2-0.1-0.1-0.2c4.4-3,8.9-6.9,12.8-10.8c0.8-0.8,0.9-2.2,0-3
-  l-0.8-0.8c-6.7,6.6-14,13.3-21.3,16.7c-0.1,0.1-0.2-0.1-0.1-0.2c4.4-2.8,9.1-7.1,11.5-9.4c0.9-0.8,0.9-2.2,0.1-3l-0.6-0.6
-  c0,0-10.4,10.6-16.3,13.3c-5.8,2.7-9.8,2.6-11.9,2.2c-0.2,0-0.3,0.2-0.1,0.3c2.4,0.9,6.9,2.2,13.5,2c18.7-0.6,37.5-12,51.2-26.2
-  c0.9-0.9,0.8-2.3-0.2-3.1L64.1,0z"></path>
-</svg>
+<img src="img/navigation/logo-2.png"/>
 </a>
 </div>
 
@@ -116,17 +117,9 @@
 <nav id='main_nav_mobile'>
 <div class='container-fluid nav-contents'>
 <div class='nav-item'>
-<a class="brand-logo-light nav-logo-swoosh" href="index.html" target="_top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 30">
-  <linearGradient id="gust-logo-gradient" gradientUnits="userSpaceOnUse" x1="0.2989" y1="15" x2="65.7011" y2="15">
-    <stop  offset="0" style="stop-color:#39B54A"/>
-    <stop  offset="1" style="stop-color:#00AEEF"/>
-  </linearGradient>
-  <path class="swoosh" d="M64.1,0C63.9,0.2,54,11.5,39.4,19.8c-0.1,0.1-0.2-0.1-0.1-0.2C44.2,16.1,48.4,12,52,8.4
-  c0.8-0.8,0.8-2.2-0.1-3l-0.8-0.8c-5.9,6.1-13.9,14-23.8,19c-0.1,0.1-0.2-0.1-0.1-0.2c4.4-3,8.9-6.9,12.8-10.8c0.8-0.8,0.9-2.2,0-3
-  l-0.8-0.8c-6.7,6.6-14,13.3-21.3,16.7c-0.1,0.1-0.2-0.1-0.1-0.2c4.4-2.8,9.1-7.1,11.5-9.4c0.9-0.8,0.9-2.2,0.1-3l-0.6-0.6
-  c0,0-10.4,10.6-16.3,13.3c-5.8,2.7-9.8,2.6-11.9,2.2c-0.2,0-0.3,0.2-0.1,0.3c2.4,0.9,6.9,2.2,13.5,2c18.7-0.6,37.5-12,51.2-26.2
-  c0.9-0.9,0.8-2.3-0.2-3.1L64.1,0z"/>
-</svg>
+<a class="brand-logo-light nav-logo-swoosh" href="index.html" target="_top">
+
+<img src="img/navigation/logo-2.png"/>
 </a>
 </div>
 
@@ -140,10 +133,7 @@
 <li><a target="_top" href="startups.html">For Startups</a>
 </li>
 
-<li><a target="_top" href="investors.html">For Investors</a>
-</li>
-
-<li><a target="_top" href="search/new-accepting_applications=true&category=accelerators.html">Search</a>
+<li><a target="_top" href="investors.html">For Participants</a>
 </li>
 
 <li><a target="_top" href="users/sign_in.html">Sign In</a>
@@ -173,14 +163,19 @@
         ng-href="https://gust.com/companies/subscriptions/registrations/new?plan_group=launch&plan_url=launch-2-1-yearly{{vm.discountCode ? '&discountCode=' + vm.discountCode : ''}}">
         Sign Up
       </a>
-      <div class="learn-more" ng-click="vm.scrollTo('value')">
+      <a href="#myAnchor" rel="relativeanchor">
+      <div class="learn-more">
+      
         <span>Learn more</span>
+       
         <svg class="chevron-down">
           <polyline class="line" stroke-linecap="round" points="0.5,5.5 12,18.5 23.5,5.5 "/>
         </svg>
       </div>
+       </a>
     </div>
   </header>
+  <div id="myAnchor"></div>
   <section class="value">
     <div class="prop">
       <div class="icon">
@@ -822,7 +817,7 @@
               <span class="description">
                   Begin as an investor-friendly Delaware C-Corp
               </span>
-              <span class="learn-more">Click to learn more &raquo;</span>
+              <span class="learn-more"><a href="#">Click to learn more &raquo;</a></span>
   
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
@@ -1018,93 +1013,7 @@
   </section>
 
   
-  <section class="pricing">
-      <div class="price">
   
-          <h2>Simple pricing, everything included</h2>
-  
-          <div class="wrap">
-              <span class="old" ng-if="vm.discount">$199/mo</span>
-              <span class="currency">$</span>
-              <span class="amount">{{199 * (1 - vm.discount) | number:2}}</span>
-              <span class="period">/mo</span>
-              <span class="annual">Billed yearly</span>
-          </div>
-  
-          <span class="partner" ng-if="vm.discount" ng-style="vm.color">
-              Discount courtesy of
-              <img ng-src="/public/img/launch/{{vm.partnerImg}}" alt="{{vm.partner}}">
-          </span>
-  
-          <a class="signup"
-            ng-click="vm.analytics('pricing')"
-            ng-href="https://gust.com/companies/subscriptions/registrations/new?plan_group=launch&plan_url=launch-2-1-yearly{{vm.discountCode ? '&discountCode=' + vm.discountCode : ''}}">
-            Sign Up Now
-          </a>
-  
-          <span class="annual">or, ${{239 * (1 - vm.discount) | number:2}} month to month</span>
-  
-  
-          <h2 class="tagline">Doing things right the first time can help you save money over time. Confidently handle the challenges that come with a new venture with Gust Launch.</h2>
-  
-          <span class="note">Gust Launch is currently in beta and only available to entrepreneurs operating in the United States, who are not set up as an existing legal entity of any kind.</span>
-      </div>
-  
-      <div class="full-features">
-        <div class="legal">
-          <h2>Legal</h2>
-          <ul>
-            <li class="feature">Incorporation as a Delaware C-Corporation</li>
-            <li class="feature">Delaware registered agent</li>
-            <li class="feature">
-              Foreign qualification in your local state (additional fee may apply
-              <span class="info-tip above">
-                <svg class="tooltip-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26">
-                  <circle class="frame-circle" cx="12" cy="12" r="11.5"></circle>
-                  <g class="circle-symbol" transform="translate(6.6 6.6) scale(0.45)">
-                    <path class="shape" d="M10.1,23.4a2.17,2.17,0,0,0,3,0,2.1,2.1,0,0,0-1.5-3.6,2,2,0,0,0-1.5.6,1.72,1.72,0,0,0-.6,1.5,2.4,2.4,0,0,0,.6,1.5h0Z"></path>
-                    <path class="shape" d="M13.19,16.95v-1c0-.5.1-0.8,0.1-1.1a2.39,2.39,0,0,1,.3-0.9,1.53,1.53,0,0,1,.5-0.7c-0.6.6,3.1-3.2,3.1-3.2a5.44,5.44,0,0,0,1.1-1.8,6.87,6.87,0,0,0,.3-2.2c-0.1,1.3.9-6-6.6-6-4.4,0-6,2.7-6.4,3.9s-0.1,2.2.6,2.5a1.81,1.81,0,0,0,2.2-.7A3.51,3.51,0,0,1,12,3.25a2.77,2.77,0,0,1,1.3.3A2.66,2.66,0,0,1,15,6.35a4.07,4.07,0,0,1-1.6,3.4c-1.6,1.6-2.7,2.7-2.9,3a7.26,7.26,0,0,0-.5,1.2,6.05,6.05,0,0,0-.2,1.5V17h3.4Z"></path>
-                  </g>
-                </svg>
-                <div class="infotip-content">
-                  We file all paperwork to register your company in your local state. Foreign qualification fees vary by state and are billed separately.
-                </div>
-              </span>
-              )
-            </li>
-            <li class="feature">IRS filing for employer identification number (EIN)</li>
-            <li class="feature">Post-incorporation setup</li>
-            <li class="feature">Startup lawyer Q&amp;A through RocketLawyer</li>
-            <li class="feature">Cap table setup and management</li>
-            <li class="feature">Fundraising and exit modeling tools</li>
-            <li class="feature">Electronic stock issuance &amp; 83(b) elections</li>
-          </ul>
-        </div>
-  
-        <div class="accouting">
-          <h2>Accounting</h2>
-          <ul>
-            <li class="feature">Online accounting platform through Xero (Starter plan)</li>
-            <li class="feature">Bookkeeping services through Simplexity</li>
-            <li class="feature">Tax preparation and filing through EisnerAmper professional tax software</li>
-          </ul>
-        </div>
-  
-        <div class="financial">
-          <h2>Financial</h2>
-          <ul>
-            <li class="feature">Corporate bank account with Metropolitan Capital Bank</li>
-            <li class="feature">Business credit and debit cards</li>
-            <li class="feature">Online payment processing tools</li>
-          </ul>
-        </div>
-  
-      </div>
-  
-      <span class="coming-soon">We’ll keep growing with you. <em>Stay tuned for hiring, valuation, and other services we’ll be adding to Gust Launch soon.</em></span>
-  
-  
-  </section>
   
   
   <footer>

@@ -15649,6 +15649,11 @@ transform:scaleY(1.13) scaleX(2) translate3d(1px, 0, 0)
 #main_nav .nav-contents .nav-item:not(.nav-item-with-button):hover {
 	background-color: #f5f7f9
 }
+
+#main_nav .logo:hover {
+	background-color: transparent !important;
+}
+
 #main_nav .nav-contents .nav-item>a, #main_nav .nav-contents .nav-item .nav-text {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
@@ -15863,10 +15868,10 @@ transform:scaleY(1.13) scaleX(2) translate3d(1px, 0, 0)
 	display: block
 }
 #main_nav_mobile {
-	background-color: #1e2d3d
+	background-color: #fff
 }
 #main_nav_mobile, #main_nav_mobile a, #main_nav_mobile .fa, #main_nav_mobile .tablesorter-headerDesc>*:before, #main_nav_mobile .tablesorter-headerAsc>*:before, #main_nav_mobile li a.circle-with-checkbox:before, li #main_nav_mobile a.circle-with-checkbox:before, #main_nav_mobile .progress-state-arrow:after, #main_nav_mobile .fa-star-rating__full, #main_nav_mobile .fa-star-rating__empty, #main_nav_mobile .btn--selectable input+label:before, .btn--selectable #main_nav_mobile input+label:before, #main_nav_mobile ul.list--circle li:before, ul.list--circle #main_nav_mobile li:before {
-	color: white;
+	color: #1e2d3d;
 	text-decoration: none
 }
 #main_nav_mobile .nav-contents {
@@ -15902,7 +15907,7 @@ transform:scaleY(1.13) scaleX(2) translate3d(1px, 0, 0)
 	position: relative
 }
 #main_nav_mobile .nav-contents .nav-item:not(.nav-item-with-button):hover {
-	background-color: #2f465f
+	background-color: #fff
 }
 #main_nav_mobile .nav-contents .nav-item>a, #main_nav_mobile .nav-contents .nav-item .nav-text {
 	-webkit-box-flex: 1;
@@ -16071,7 +16076,8 @@ transform:scaleY(1.13) scaleX(2) translate3d(1px, 0, 0)
 }
 #main_nav_mobile ul li>a, #main_nav_mobile ul li.text-divider {
 	padding-right: 24px;
-	padding-left: 24px
+	padding-left: 24px;
+	color:#fff;
 }
 #main_nav_mobile ul li.active>a {
 	background: #1abc96
@@ -20266,3 +20272,6 @@ img.marketing-image-medium {
 #startup_checklist .sc-list-detail .list-detail-list .step.complete a:hover .check {
 	color: #a5a5a5
 }
+
+
+
