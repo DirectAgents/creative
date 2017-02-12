@@ -1055,6 +1055,17 @@ input, button, select, textarea {
 	font-size: inherit;
 	line-height: inherit
 }
+
+footer a {
+	color: #fff;
+	text-decoration: none !important
+}
+
+footer a:hover {
+	color: #fff;
+	text-decoration: underline !important
+}
+
 a {
 	color: #1983ca;
 	text-decoration: none
@@ -10474,9 +10485,9 @@ background:rgba(0,0,0,0.05)
 }
 section {
 	background: white;
-	border: #e3e3e3 1px solid;
+	border: #e3e3e3 0px solid;
 	padding: 24px;
-	margin-bottom: 12px
+	margin-bottom: 0px
 }
 .section--small {
 	padding: 12px
@@ -11528,6 +11539,49 @@ input[type="submit"] .btn-default.btn-block, input[type="submit"] div.hopscotch-
 	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 200ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 50ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
 	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 200ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 50ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 50ms cubic-bezier(0.62, 0.28, 0.23, 0.99)
 }
+
+.btn-signin{
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 2px;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	margin-bottom: 0;
+	-webkit-transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+	font-weight: 700;
+	font-size: 12px;
+	line-height: 10px;
+	letter-spacing: 1.4166666667px;
+	text-transform: uppercase;
+	line-height: 25px;
+	height: 25px;
+	padding: 0 10px;
+	border: 0;
+	color: white !important;
+	border-color: currentColor;
+	background-color: #1fa2ff
+}
+
+
+.btn-signin:hover{
+	-webkit-transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+	color: white;
+	border-color: currentColor;
+	background-color: #3c9cdd
+}
+
+
 .btn-primary.btn-sm, div.hopscotch-bubble .btn-sm.hopscotch-nav-button.hopscotch-done {
 	display: inline-block;
 	cursor: pointer;

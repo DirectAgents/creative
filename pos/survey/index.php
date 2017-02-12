@@ -1,3 +1,4 @@
+<?php require_once 'base_path.php'; ?>
 <script src="https://use.typekit.net/oos2wfr.js"></script>
 <script>try{Typekit.load({ async: false });}catch(e){}</script>
 <html itemscope itemtype="http://schema.org/Product">
@@ -9,55 +10,36 @@
 
     <link rel="icon" href="../public/img/favicon.ico" type="image/x-icon"/>
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="The modern way to start a scalable, high-growth business" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The modern way to start a scalable, high-growth business" />
 
-    <meta name="google"
-        content="nositelinkssearchbox" />
-    <meta itemprop="name"
-        content="Gust Launch">
-    <meta itemprop="image"
-        content="/public/img/logo.png">
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta itemprop="name" content="Gust Launch">
+    <meta itemprop="image" content="/public/img/logo.png">
 
-    <meta name="twitter:site"
-        content="@gustly">
-    <meta name="twitter:title"
-        content="Gust Launch">
-    <meta name="twitter:description"
-        content="The modern way to start a scalable, high-growth business">
-    <meta name="twitter:creator"
-        content="@gustly">
+    <meta name="twitter:site" content="@gustly">
+    <meta name="twitter:title" content="Gust Launch">
+    <meta name="twitter:description" content="The modern way to start a scalable, high-growth business">
+    <meta name="twitter:creator" content="@gustly">
 
-    <meta property="og:url"
-        content="https://launch.gust.com/start">
-    <meta property="og:title"
-        content="Gust Launch">
-    <meta property="og:image"
-        content="https://launch.gust.com/public/img/logo-gustlaunch-og.png">
-    <meta property="og:image:width"
-        content="1200">
-    <meta property="og:image:height"
-        content="630">
-    <meta property="og:description"
-        content="The modern way to start a scalable, high-growth business">
-    <meta property="og:site_name"
-        content="Gust Launch">
-    <meta property="og:locale"
-        content="en_US">
-    <meta property="article:author"
-        content="https://www.facebook.com/Gust-246116808757618">
-    <meta property="article:section"
-        content="Technology">
+    <meta property="og:url" content="https://launch.gust.com/start">
+    <meta property="og:title" content="Gust Launch">
+    <meta property="og:image" content="https://launch.gust.com/public/img/logo-gustlaunch-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:description" content="The modern way to start a scalable, high-growth business">
+    <meta property="og:site_name" content="Gust Launch">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="https://www.facebook.com/Gust-246116808757618">
+    <meta property="article:section" content="Technology">
 
   
     
 
-<link href="css/launch.css" rel="stylesheet">
+<link href="<?php echo BASE_PATH; ?>/css/launch.css" rel="stylesheet">
 
-<link rel="stylesheet" media="all" href="assets/application-d939c3182b808a58e625b4260b6955c9.css" />
-<script src="js/application-4b458517a28f0f3fb52cdb61d93011a6.js"></script>
+<link rel="stylesheet" media="all" href="<?php echo BASE_PATH; ?>/assets/application-d939c3182b808a58e625b4260b6955c9.css" />
+<script src="<?php echo BASE_PATH; ?>/js/application-4b458517a28f0f3fb52cdb61d93011a6.js"></script>
 
 
 <script type='text/javascript'>//<![CDATA[
@@ -90,12 +72,12 @@ $(document).ready(function() {
 </div>
 
 <div class='nav-item'>
-<a target="_top" href="startups.html">For Startups</a>
+<a target="_top" href="<?php echo BASE_PATH; ?>">For Startups</a>
 
 </div>
 
 <div class='nav-item'>
-<a target="_top" href="investors.html">For Participants</a>
+<a target="_top" href="<?php echo BASE_PATH; ?>/participant/">For Participants</a>
 
 </div>
 
@@ -104,12 +86,12 @@ $(document).ready(function() {
 
 
 <div class='nav-item nav-item-with-button'>
-<a class='btn-primary' target="_top" href="users/sign_in.html">Sign In</a>
+<a class='btn-signin' target="_top" href="<?php echo BASE_PATH; ?>/startup/login/">Sign In</a>
 
 </div>
 
 <div class='nav-item nav-item-with-button'>
-<a class='btn-primary' href='signup.html' target='_top'>Sign Up</a>
+<a class='btn-primary' href='<?php echo BASE_PATH; ?>/startup/signup/' target='_top'>Sign Up</a>
 </div>
 
 </div>
@@ -130,17 +112,17 @@ $(document).ready(function() {
 </a>
 </div>
 <ul class='mobile-nav-list collapse'>
-<li><a target="_top" href="startups.html">For Startups</a>
+<li><a target="_top" href="<?php echo BASE_PATH; ?>">For Startups</a>
 </li>
 
-<li><a target="_top" href="investors.html">For Participants</a>
+<li><a target="_top" href="<?php echo BASE_PATH; ?>/participant/">For Participants</a>
 </li>
 
-<li><a target="_top" href="users/sign_in.html">Sign In</a>
+<li><a target="_top" href="<?php echo BASE_PATH; ?>/startup/login/">Sign In</a>
 </li>
 
 <li>
-<a href='signup.html' target='_top'>Sign Up</a>
+<a href='<?php echo BASE_PATH; ?>/startup/signup/' target='_top'>Sign Up</a>
 </li>
 
 </ul>
@@ -158,9 +140,7 @@ $(document).ready(function() {
         One platform to easily start and run your company like a seasoned entrepreneur&mdash;designed by experienced startup founders, investors, and lawyers to help you from incorporation to exit.
       </span>
   
-      <a class="signup"
-        ng-click="vm.analytics('hero')"
-        ng-href="https://gust.com/companies/subscriptions/registrations/new?plan_group=launch&plan_url=launch-2-1-yearly{{vm.discountCode ? '&discountCode=' + vm.discountCode : ''}}">
+      <a class="signup" href="<?php echo BASE_PATH; ?>/startup/signup/">
         Sign Up
       </a>
       <a href="#myAnchor" rel="relativeanchor">
@@ -811,7 +791,7 @@ $(document).ready(function() {
                   viewed: vm.viewed[1] === true
               }">
               <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.36 69.36"><defs><style>.cls-1-1{fill:#cef0e8;}.cls-2{fill:#fff;}.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7{stroke:#26a990;stroke-width:0.75px;}.cls-2,.cls-3{stroke-miterlimit:10;}.cls-3{fill:#9ae0d0;}.cls-4{fill:none;stroke-linecap:square;}.cls-5{fill:#26a990;}.cls-6{fill:#e5f9f5;}.cls-7{fill:#f0fffc;}</style></defs><title>icon-1</title><g id="Layer_2" data-name="Layer 2"><g id="icons_color" data-name="icons color"><g id="Certificate"><circle id="Oval" class="cls-1" cx="34.68" cy="34.68" r="34.68"/><path id="Shape" class="cls-2" d="M53,18.88a2.46,2.46,0,0,1-2.46,2.46H17.43A2.46,2.46,0,0,0,15,23.81V49.09H50.54A2.46,2.46,0,0,0,53,46.63V18.88Z"/><path id="Shape-2" data-name="Shape" class="cls-3" d="M17.43,51.55a2.46,2.46,0,0,0,2.46-2.46V23.81a2.46,2.46,0,0,1-4.92,0V49.09A2.46,2.46,0,0,0,17.43,51.55Z"/><path id="Shape-3" data-name="Shape" class="cls-3" d="M53,18.88a2.46,2.46,0,1,0-4.92,0v2.46h2.46A2.46,2.46,0,0,0,53,18.88Z"/><path id="Line" class="cls-4" d="M30.61,38.84H24.44"/><path id="Line-2" data-name="Line" class="cls-4" d="M47.74,35.37H24.16"/><path id="Line-3" data-name="Line" class="cls-4" d="M47.74,31.91H24.16"/><path id="Line-4" data-name="Line" class="cls-4" d="M30.89,27.74H24.16"/><path id="Shape-4" data-name="Shape" class="cls-5" d="M42.79,48.27v6.16L45.67,53l2.88,1.45V48.11a5,5,0,0,1-5.76.16Z"/><path id="Shape-5" data-name="Shape" class="cls-6" d="M45.55,38.94a5.07,5.07,0,0,0,0,10.15V38.94Z"/><path id="Shape-6" data-name="Shape" class="cls-7" d="M50.62,44a5.08,5.08,0,0,0-5.07-5.07V49.09A5.08,5.08,0,0,0,50.62,44Z"/></g></g></g></svg>
+               <img src="img/features/lab.png"/>
               </div>
               <h2 class="title">Incorporate and set up your company</h2>
               <span class="description">
@@ -819,26 +799,6 @@ $(document).ready(function() {
               </span>
               <span class="learn-more"><a href="#">Click to learn more &raquo;</a></span>
   
-              <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
-  
-            <ul>
-              <li>Incorporate as a Delaware C-Corporation</li>
-              <li>Establish liability protection for you and your business</li>
-              <li>Use our simple, annotated forms and we’ll file the paperwork</li>
-              <li>Complete the necessary formation process with our easy post-incorporation set up</li>
-            </ul>
-  
-            <div class="faqs">
-                <div class="faq">
-                    <span class="question">What’s involved in company setup?</span>
-                    <span class="answer">Submitting for incorporation should only take you a few minutes, and Delaware will confirm your registration within a few business days. We then walk you through company formation, including adopting bylaws, electing your board of directors, authorizing stock issuances, and passing the First Action of the Board.
-                    </span>
-                </div>
-                <div class="faq">
-                    <span class="question">Why Incorporate as a Delaware C-Corporation?</span>
-                    <span class="answer">Angel investors and VCs will require you to be a Delaware C-Corp before investing in your company. All legal agreements, accounting, and tax rules are built for this incorporation type. If you plan on issuing equity, hiring employees, and having a successful exit, it is much cheaper to incorporate the right way from day one.</span>
-                </div>
-            </div>
           </div>
   
           <div class="feature"
@@ -1022,24 +982,30 @@ $(document).ready(function() {
       <h3>Not ready to get started?</h3>
       <p>We can still help you move your startup forward.
         Subscribe to hear from experienced founders and investors on building a scalable and investable business, delivered weekly to your inbox.</p>
-      <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/v2.js"></script>
-      <script>
-        hbspt.forms.create({
-          css: '',
-          portalId: '154017',
-          formId: '161abc1a-c145-43af-99b4-7e5fa8f0afa8',
-          onFormSubmit: function(){
-            analytics.track('Subscribe', {
-              category: 'Conversion',
-              label: 'Newsletter'
-            });
-          }
-        });
-      </script>
+
+
+<form novalidate="" accept-charset="UTF-8" action="https://forms.hubspot.com/uploads/form/v2/154017/161abc1a-c145-43af-99b4-7e5fa8f0afa8" enctype="multipart/form-data" id="hsForm_161abc1a-c145-43af-99b4-7e5fa8f0afa8" method="POST" class="hs-form stacked" data-form-id="161abc1a-c145-43af-99b4-7e5fa8f0afa8" data-portal-id="154017" data-reactid=".hbspt-forms-0">
+
+<div data-reactid=".hbspt-forms-0.0:$0">
+
+<div class="hs_email field hs-form-field" data-reactid=".hbspt-forms-0.0:$0.$email"><div class="input" data-reactid=".hbspt-forms-0.0:$0.$email.$email">
+
+<input id="email-161abc1a-c145-43af-99b4-7e5fa8f0afa8" class="hs-input" type="email" name="email" required="" placeholder="Your email" value="" data-reactid=".hbspt-forms-0.0:$0.$email.$email.0">
+
+</div>
+
+</div></div><div class="hs_submit" data-reactid=".hbspt-forms-0.2"><div class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.2.0"></div><div class="actions" data-reactid=".hbspt-forms-0.2.1"><input type="submit" value="Subscribe" class="hs-button primary large" data-reactid=".hbspt-forms-0.2.1.0"></div></div>
+
+</form>
+
+
+
+
+
     </div>
   
     <div class="copyright">
-      © 2016 Gust. All rights reserved  |  <a target="_blank" href="terms.php">Terms of Service</a>  |  <a target="_blank" href="privacy-policy.php">Privacy</a>
+      © 2016 Gust. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a> |  <a target="_blank" href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>
     </div>
   
   </footer>

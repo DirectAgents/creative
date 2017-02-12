@@ -1,137 +1,99 @@
 <?php require_once '../base_path.php'; ?>
 
+
 <script src="https://use.typekit.net/oos2wfr.js"></script>
 <script>try{Typekit.load({ async: false });}catch(e){}</script>
-<html itemscope itemtype="http://schema.org/Product">
+<!DOCTYPE html>
+<html>
+    
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible"content="IE=edge">
-
-    <title>Gust Launch</title>
-
-    <link rel="icon" href="../public/img/favicon.ico" type="image/x-icon"/>
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="The modern way to start a scalable, high-growth business" />
-
-    <meta name="google"
-        content="nositelinkssearchbox" />
-    <meta itemprop="name"
-        content="Gust Launch">
-    <meta itemprop="image"
-        content="/public/img/logo.png">
-
-    <meta name="twitter:site"
-        content="@gustly">
-    <meta name="twitter:title"
-        content="Gust Launch">
-    <meta name="twitter:description"
-        content="The modern way to start a scalable, high-growth business">
-    <meta name="twitter:creator"
-        content="@gustly">
-
-    <meta property="og:url"
-        content="https://launch.gust.com/start">
-    <meta property="og:title"
-        content="Gust Launch">
-    <meta property="og:image"
-        content="https://launch.gust.com/public/img/logo-gustlaunch-og.png">
-    <meta property="og:image:width"
-        content="1200">
-    <meta property="og:image:height"
-        content="630">
-    <meta property="og:description"
-        content="The modern way to start a scalable, high-growth business">
-    <meta property="og:site_name"
-        content="Gust Launch">
-    <meta property="og:locale"
-        content="en_US">
-    <meta property="article:author"
-        content="https://www.facebook.com/Gust-246116808757618">
-    <meta property="article:section"
-        content="Technology">
-
-    <script src="https://cdn.optimizely.com/js/2761650875.js"></script>
-    <script src="https://code.angularjs.org/1.5.7/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+    <meta charset="utf-8"/>
+    <title>General - Launch</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="canonical" href="index.php"/>
 
     
+        <link rel="stylesheet" href="../css/launch-1482254397619.css">
+    
+    
 
-<link href="../css/launch.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    
+        <script src="http://d25gbwvd82b2e5.cloudfront.net/assets/javascripts/html5shiv.min.js"></script>
+    
+    <![endif]-->
 
-<link rel="stylesheet" media="all" href="../assets/application-d939c3182b808a58e625b4260b6955c9.css" />
+<script src="../js/application-4b458517a28f0f3fb52cdb61d93011a6.js"></script>
 
+
+  
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+$(document).ready(function() {
+  $('a[rel="relativeanchor"]').click(function(){
+      $('html, body').animate({
+          scrollTop: $( $.attr(this, 'href') ).offset().top
+      }, 500);
+      return false;
+  }); 
+});
+});//]]> 
+
+</script>
+
+
+    
 </head>
+    
 
-<body
-  ng-app="app"
-  ng-class="{loaded: vm.loaded, IE11: vm.IE11}"
-  ng-controller="appController as vm">
+    <body>
+        
+<header id="mainNav" class="navbar">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            
+             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            
+            <a class="brand" href="<?php echo BASE_PATH; ?>">
+            
+                
+                 <img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/>
+                
 
-  <nav shrink>
-  <svg class="logo" viewBox="0 0 415.8 57">
-    <g class="swoosh">
-    	<path d="M119.2,0.8c-0.3,0.3-18.6,21.3-45.6,36.6c-0.2,0.1-0.4-0.2-0.2-0.3c9-6.6,16.8-14,23.4-20.8
-    		c1.5-1.6,1.5-4.1-0.1-5.6l-1.5-1.5C84.2,20.5,69.5,35,51.2,44.3C51,44.4,50.8,44.1,51,44c8.2-5.6,16.5-12.8,23.7-19.9
-    		c1.6-1.5,1.6-4.1,0-5.6l-1.5-1.5C60.9,29.2,47.4,41.6,33.8,47.9c-0.2,0.1-0.4-0.2-0.2-0.3c8.1-5.2,16.8-13.2,21.2-17.4
-    		c1.6-1.5,1.6-4,0.1-5.6l-1.2-1.2c0,0-19.1,19.5-30.2,24.6c-10.7,4.9-18.2,4.8-22.1,4c-0.4-0.1-0.5,0.4-0.2,0.6
-    		c4.4,1.7,12.8,4.1,25,3.7c34.7-1,69.4-22.1,94.6-48.4c1.6-1.6,1.4-4.3-0.3-5.8L119.2,0.8z"/>
-    </g>
-    <g class="launch">
-    	<path d="M261.3,14.1h2.6v25.6h13v2.4h-15.6V14.1z"/>
-    	<path d="M292.6,14.1h2.7l11.8,28h-2.9l-3-7.4h-14.8l-3.2,7.4h-2.7L292.6,14.1z M293.8,17l-6.5,15.3h12.8L293.8,17z"/>
-    	<path d="M330.4,31.4c0,1.5-0.2,2.9-0.5,4.3c-0.3,1.4-0.9,2.6-1.7,3.6c-0.8,1.1-1.9,1.9-3.2,2.5
-    		c-1.3,0.6-2.9,0.9-4.8,0.9s-3.5-0.3-4.8-0.9c-1.3-0.6-2.4-1.5-3.2-2.5c-0.8-1.1-1.4-2.3-1.7-3.6c-0.3-1.4-0.5-2.8-0.5-4.3V14.1h2.6
-    		v16.6c0,1,0.1,2.1,0.3,3.2c0.2,1.1,0.5,2.2,1.1,3.2c0.5,1,1.3,1.8,2.3,2.4c1,0.6,2.3,0.9,3.9,0.9s2.9-0.3,3.9-0.9
-    		c1-0.6,1.8-1.4,2.3-2.4c0.5-1,0.9-2,1.1-3.2c0.2-1.1,0.3-2.2,0.3-3.2V14.1h2.6V31.4z"/>
-    	<path d="M337,14.1h3.4l17,24.5h0.1V14.1h2.6v28h-3.4l-17-24.5h-0.1v24.5H337V14.1z"/>
-    	<path d="M389.9,37.7c-1.3,1.8-2.9,3.1-4.7,3.9c-1.8,0.8-3.7,1.2-5.7,1.2c-2.1,0-4.1-0.4-5.9-1.1
-    		c-1.8-0.7-3.3-1.7-4.6-3c-1.3-1.3-2.3-2.9-3-4.7c-0.7-1.8-1.1-3.8-1.1-5.9s0.4-4.1,1.1-5.9c0.7-1.8,1.7-3.3,3-4.6
-    		c1.3-1.3,2.8-2.3,4.6-3.1c1.8-0.7,3.7-1.1,5.9-1.1c1.9,0,3.7,0.3,5.3,1c1.6,0.7,3.1,1.8,4.3,3.4l-2.1,1.8c-0.9-1.3-2-2.3-3.3-2.9
-    		c-1.4-0.6-2.7-0.9-4.2-0.9c-1.8,0-3.5,0.3-4.9,0.9c-1.5,0.6-2.7,1.5-3.7,2.6c-1,1.1-1.8,2.4-2.4,3.9c-0.6,1.5-0.8,3.1-0.8,4.9
-    		c0,1.7,0.3,3.4,0.8,4.9c0.6,1.5,1.3,2.8,2.4,3.9c1,1.1,2.3,2,3.7,2.6c1.5,0.6,3.1,0.9,4.9,0.9c0.7,0,1.4-0.1,2.2-0.3
-    		c0.8-0.2,1.5-0.4,2.2-0.8c0.7-0.4,1.4-0.8,2.1-1.3c0.7-0.5,1.2-1.2,1.7-2L389.9,37.7z"/>
-    	<path d="M395,14.1h2.6v12.3h15.6V14.1h2.6v28h-2.6V28.8h-15.6v13.3H395V14.1z"/>
-    </g>
-    <g class="gust">
-    	<path d="M151.5,41.9c0,8.4-6.1,14.4-15.3,14.4c-5.3,0-9.7-1.4-13.7-5l3.6-4.5c2.8,3,5.9,4.5,10,4.5
-    		c7.9,0,10.1-5,10.1-9.7v-4.1h-0.2c-2,3.4-5.8,5-9.7,5c-8.2,0-14.3-6.2-14.2-14.3c0-8.3,5.5-14.7,14.2-14.7c3.8,0,7.7,1.7,9.7,4.7
-    		h0.1v-4h5.3V41.9z M127.8,28.1c0,5.7,3.5,9.4,9.2,9.4c5.7,0,9.2-3.7,9.2-9.4c0-5.7-3.5-9.7-9.2-9.7
-    		C131.4,18.4,127.8,22.4,127.8,28.1z"/>
-    	<path d="M187.3,42.1H182v-4.3h-0.1c-1.4,2.9-4.9,5-9.2,5c-5.4,0-10.1-3.2-10.1-10.7v-18h5.3v16.5c0,5.3,3,7.2,6.4,7.2
-    		c4.4,0,7.8-2.8,7.8-9.3V14.1h5.3V42.1z"/>
-    	<path d="M213.1,21.1c-1.2-1.5-3.1-2.8-5.7-2.8c-2.5,0-4.7,1.1-4.7,3.1c0,3.4,4.8,3.8,7.1,4.4c4.6,1.1,8.1,2.9,8.1,8.1
-    		c0,6.3-5.8,8.8-11.3,8.8c-4.6,0-8-1.2-10.8-5l4-3.3c1.7,1.7,3.7,3.3,6.8,3.3c2.7,0,5.7-1.1,5.7-3.5c0-3.2-4.4-3.8-6.7-4.3
-    		c-4.5-1.1-8.6-2.6-8.6-8c0-5.8,5.4-8.6,10.6-8.6c3.7,0,7.5,1.3,9.6,4.6L213.1,21.1z"/>
-    	<path d="M242.4,18.7h-7.6v12.7c0,3.1,0,6.4,4,6.4c1.2,0,2.7-0.2,3.8-0.8v4.8c-1.2,0.7-3.7,0.9-4.8,0.9
-    		c-8.2,0-8.3-5-8.3-9.5V18.7h-6.1v-4.6h6.1V6.3h5.3v7.8h7.6V18.7z"/>
-    </g>
-  </svg>
-  
-  <span class="amp"
-    ng-style="vm.color"
-    ng-if="vm.discount">
-    &amp;
-  </span>
-  
-  <div class="partner" ng-if="vm.discount">
-    <img ng-src="/public/img/launch/{{vm.partnerImg}}" alt="{{vm.partner}}">
-  </div>
-    <a class="signup" href="startup/signup/">
-      Sign Up
-    </a>
-    <a class="login" href="startup/login/" target="_self">Login</a>
-  </nav>
+            
+            </a>
 
- 
-  
-  
-  <section class="privacy-policy">
-     <div class="col-md-9">
+             <div class="nav-collapse collapse">
+                <ul class="nav">
+                    
+                        <li id="home"><a href="<?php echo BASE_PATH; ?>/startup/login/">Sign in <b class="caret"></b></a></li>
+                        <li id="home"><a href="<?php echo BASE_PATH; ?>/startup/signup/">Sign up <b class="caret"></b></a></li>
+                    
+                    
+                    
+                </ul>
+            </div><!--/.nav-collapse -->
+          
+        </div><!--/container-->
+    </div><!--/navbar-inner-->
+</header>
+        <section id="contentArea" class="container-fluid">
+            <div class="row-fluid">
+                <section id="main-content" class="span12">
+                    <div class="contentWrapper">
+                        
+                        
+   <div class="col-md-9">
 <h1 class="gust-margin--large--bottom gust-margin--large--top">
-Privacy Policy
+Terms of Service
 </h1>
 <p><b>Scope of this Privacy Policy</b>&nbsp;
 </p>
@@ -409,28 +371,37 @@ We partner with a third party to either display advertising on our website or to
 
 
 </div>
-  
-  </section>
-  
-  
-  <footer>
-  
-   
-  
-    <div class="copyright">
-      © 2016 Gust. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy">Privacy</a>
-    </div>
-  
-  </footer>
-  <footer class="email">
-  
-    <span class="title">Not ready to get started?</span>
-    <span class="instructions">We can still help you move your startup forward. Subscribe to hear from experienced founders and investors on building a scalable and investable business, delivered weekly to your inbox.</span>
-  
-    <input type="email">
-    <button>Subscribe</button>
-    
-  </footer>
 
-<script type="text/javascript" src="../js/launch.js"></script></body>
+        
+    
+
+                    </div><!--/contentWrapper-->
+                    
+                </section><!--/content-->
+               
+            </div><!--/row-->
+            <footer>
+                
+
+<p>&copy;
+    
+      
+    
+    2017
+    
+    
+        
+    
+</p>
+            </footer>
+        </section><!--/.fluid-container-->
+        
+
+        
+        
+
+
+        
+
+    </body>
 </html>
