@@ -136,7 +136,7 @@ $(document).ready(function() {
   <header class="hero">
   
     <div class="wrap">
-      <h1 class="title">Start your Startup with confidence.</h1>
+      <h1 class="title">Help Startups to succeed.</h1>
       <span class="description">
         One platform to easily start and run your company like a seasoned entrepreneur&mdash;designed by experienced startup founders, investors, and lawyers to help you from incorporation to exit.
       </span>

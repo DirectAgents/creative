@@ -530,7 +530,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
    <?php if(isset($msg)) echo $msg;  ?>
   <div class="logo">
-    <h1>CIRCL</h1>
+    <a href="<?php echo BASE_PATH; ?>"><h1>CIRCL</h1></a>
   </div>
 </div>
 

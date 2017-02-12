@@ -398,8 +398,7 @@ h1 {
   font-size:24px; 
   text-align:center;
   background:#eff4f7;
-  border-bottom:1px solid #dde0e7;
-  box-shadow:0 -1px 0 #fff inset;
+  border-bottom:0px solid #dde0e7;
   border-radius:5px 5px 0 0; /* otherwise we get some uncut corners with container div */
   text-shadow:1px 1px 0 #fff;
 }
@@ -457,7 +456,7 @@ button {
   padding:8px 15px;
   width:150px;
   border-radius:20px;
-  box-shadow:0 1px 0 #bbb, 0 1px 0 #9cccf3 inset;
+  /*box-shadow:0 1px 0 #bbb, 0 1px 0 #9cccf3 inset;*/
 }
 button:active {
   background: #3a76c4; /* Old browsers */
@@ -543,7 +542,7 @@ body:before {
   top: 0;
   left: 0;
   display: block;
-  background: rgba(255, 255, 255, 0.8);
+  background: #f5f7f9;
   width: 100%;
   height: 100%;
 }
