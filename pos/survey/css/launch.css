@@ -2551,7 +2551,26 @@ body section.features .feature .icon {
 	border-radius: 50%;
 	margin: 0 auto 20px
 }
+
+body section.features .feature .icon-features {
+    height: 60px;
+	width: 60px;
+	border-radius: 50%;
+	margin: 0 auto 20px
+}
+
 @media only screen and (min-width: 1025px) {
+
+body section.features .feature .icon-features {
+    height: 60px;
+    width: 60px;
+    margin: 0;
+    position: absolute;
+    left: 25px;
+    top: 20px;
+}
+
+
 body section.features .feature .icon {
 	height: 60px;
 	width: 60px;

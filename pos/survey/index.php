@@ -790,7 +790,7 @@ $(document).ready(function() {
                   active: vm.activeCard === 1,
                   viewed: vm.viewed[1] === true
               }">
-              <div class="icon">
+              <div class="icon-features">
                <img src="img/features/lab.png"/>
               </div>
               <h2 class="title">Incorporate and set up your company</h2>
