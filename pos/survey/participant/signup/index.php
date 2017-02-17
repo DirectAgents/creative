@@ -255,6 +255,8 @@ if($_POST['passwordpass'] == 'good'){
 
   $firstname = trim($_POST['txtfirstname']);
   $lastname = trim($_POST['txtlastname']);
+  $city = trim($_POST['txtcity']);
+  $state = trim($_POST['txtstate']);
   $email = trim($_POST['txtemail']);
   $upass = trim($_POST['txtpass']);
   $code = md5(uniqid(rand()));
@@ -274,7 +276,7 @@ if($_POST['passwordpass'] == 'good'){
   }
   else
   {
-    if($reg_user->register($firstname,$lastname,$email,$upass,$code))
+    if($reg_user->register($firstname,$lastname,$city,$state,$email,$upass,$code))
     {     
       $id = $reg_user->lasdID();    
       $key = base64_encode($id);
@@ -283,7 +285,7 @@ if($_POST['passwordpass'] == 'good'){
       $msg = "
           <div class='alert alert-success'>
             <button class='close' data-dismiss='alert'>&times;</button>
-            <strong>Success!</strong>  We've sent an email to $email.<br>
+            <strong>Success!</strong>  We've sent an email to $email.<br><br>
                     Click on the confirmation link in the email to create your account. 
             </div>
           ";
