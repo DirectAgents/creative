@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 26, 2016 at 08:43 PM
+-- Generation Time: Feb 17, 2017 at 12:33 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -46,6 +46,13 @@ CREATE TABLE IF NOT EXISTS `c5t_comment` (
   `comment_rating` int(12) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `c5t_comment`
+--
+
+INSERT INTO `c5t_comment` (`id`, `startup_id`, `comment_id`, `comment_identifier_id`, `comment_identifier`, `comment_identifier_hash`, `comment_author_name`, `comment_author_email`, `comment_author_homepage`, `comment_author_ip`, `comment_author_host`, `comment_author_user_agent`, `comment_title`, `comment_text`, `comment_timestamp`, `comment_status`, `comment_rating`) VALUES
+(0, 47, 111, 31, '/creative/pos/survey/profile/participant/rating/?id=31', 'a9705170d0d438a3fef50dba245ce4eb', 'Bobby', NULL, NULL, '::1', 'localhost', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36', NULL, 'Great meeting', 1485814014, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -65,6 +72,13 @@ CREATE TABLE IF NOT EXISTS `c5t_identifier` (
   `identifier_rating_value` int(12) NOT NULL DEFAULT '0',
   `identifier_rating_number` int(12) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `c5t_identifier`
+--
+
+INSERT INTO `c5t_identifier` (`id`, `identifier_id`, `identifier_value`, `identifier_hash`, `identifier_name`, `identifier_url`, `identifier_status`, `identifier_allow_comment`, `identifier_moderate_comment`, `identifier_rating_value`, `identifier_rating_number`) VALUES
+(0, 31, '/creative/pos/survey/profile/participant/rating/?id=31', 'a9705170d0d438a3fef50dba245ce4eb', NULL, 'http://localhost/creative/pos/survey/profile/participant/rating/?id=31', 0, 'Y', 'N', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -86,8 +100,8 @@ INSERT INTO `c5t_setting` (`id`, `setting_name`, `setting_value`) VALUES
 (1, 'administration_login', 'a:3:{s:5:"login";s:5:"admin";s:5:"email";s:17:"ald183s@gmail.com";s:8:"password";s:32:"202cb962ac59075b964b07152d234b70";}'),
 (2, 'script_url', '/survey/snippets/comment/'),
 (3, 'database_version', '2.1.2'),
-(4, 'sequence_identifier', '45'),
-(5, 'sequence_comment', '110'),
+(4, 'sequence_identifier', '46'),
+(5, 'sequence_comment', '111'),
 (6, 'installed_modules', 'a:7:{i:0;s:25:"gentlesource_module_dummy";i:1;s:25:"gentlesource_module_nl2br";i:2;s:36:"gentlesource_module_flood_protection";i:3;s:26:"gentlesource_module_smiley";i:4;s:25:"gentlesource_module_surbl";i:5;s:35:"gentlesource_module_content_replace";i:6;s:27:"gentlesource_module_captcha";}'),
 (7, 'module_flood_protection_mode', 'off'),
 (8, 'module_content_replace_active', 'Y'),
@@ -99,6 +113,30 @@ INSERT INTO `c5t_setting` (`id`, `setting_name`, `setting_value`) VALUES
 (14, 'module_captcha_image_height', '60'),
 (15, 'module_captcha_alternative', 'Y'),
 (16, 'module_captcha_garbage_collector_active', 'Y');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `days`
+--
+
+CREATE TABLE IF NOT EXISTS `days` (
+  `id` int(11) NOT NULL,
+  `day` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `days`
+--
+
+INSERT INTO `days` (`id`, `day`) VALUES
+(1, 'Monday'),
+(2, 'Tuesday'),
+(3, 'Wednesday'),
+(4, 'Thursday'),
+(5, 'Friday'),
+(6, 'Saturday'),
+(7, 'Sunday');
 
 -- --------------------------------------------------------
 
@@ -400,13 +438,6 @@ CREATE TABLE IF NOT EXISTS `participant_profile_images` (
   `thumbnail_image` varchar(250) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `participant_profile_images`
---
-
-INSERT INTO `participant_profile_images` (`id`, `userID`, `thumbnail_image`) VALUES
-(107, 2, 'thumb_148166158407-snow-mountain-sunset.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -422,7 +453,144 @@ CREATE TABLE IF NOT EXISTS `participant_rating` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 = Block, 0 = Unblock'
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_meeting_archived`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_meeting_archived` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `startupID` int(11) NOT NULL,
+  `ProjectID` int(11) NOT NULL,
+  `Meetupchoice` varchar(255) NOT NULL,
+  `Meeting_Status` varchar(255) NOT NULL,
+  `Viewed_by_Startup` varchar(255) NOT NULL DEFAULT 'No',
+  `Viewed_by_Participant` varchar(255) NOT NULL DEFAULT 'No',
+  `Date_of_Meeting` date NOT NULL,
+  `Final_Time` varchar(255) NOT NULL,
+  `Location` varchar(255) NOT NULL,
+  `Status` varchar(255) NOT NULL,
+  `Met` varchar(255) NOT NULL,
+  `Payment` varchar(255) NOT NULL,
+  `Rated_Participant` varchar(255) NOT NULL,
+  `Comment_Participant` varchar(255) NOT NULL,
+  `Potential_Answer_Given` varchar(255) NOT NULL,
+  `Participant_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Participant_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Startup_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Date_Posted` date NOT NULL,
+  `Time_Posted` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_meeting_recent`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_meeting_recent` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `startupID` int(11) NOT NULL,
+  `ProjectID` int(11) NOT NULL,
+  `Meetupchoice` varchar(255) NOT NULL,
+  `Meeting_Status` varchar(255) NOT NULL,
+  `Viewed_by_Startup` varchar(255) NOT NULL DEFAULT 'No',
+  `Viewed_by_Participant` varchar(255) NOT NULL DEFAULT 'No',
+  `Date_of_Meeting` date NOT NULL,
+  `Final_Time` varchar(255) NOT NULL,
+  `Location` varchar(255) NOT NULL,
+  `Accepted_to_Participate` varchar(255) NOT NULL,
+  `Not_Qualified_Anymore` varchar(255) NOT NULL,
+  `Status` varchar(255) NOT NULL,
+  `Requested_By` varchar(255) NOT NULL,
+  `Met` varchar(255) NOT NULL,
+  `Payment` varchar(255) NOT NULL,
+  `Rated_Participant` varchar(255) NOT NULL,
+  `Comment_Participant` varchar(255) NOT NULL,
+  `Potential_Answer_Given` varchar(255) NOT NULL,
+  `Participant_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Participant_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Startup_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Date_Posted` date NOT NULL,
+  `Time_Posted` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_meeting_request`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_meeting_request` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `startupID` int(11) NOT NULL,
+  `ProjectID` int(11) NOT NULL,
+  `Meetupchoice` varchar(255) NOT NULL,
+  `Meeting_Status` varchar(255) NOT NULL,
+  `Viewed_by_Startup` varchar(255) NOT NULL DEFAULT 'No',
+  `Viewed_by_Participant` varchar(255) NOT NULL DEFAULT 'No',
+  `Date_Option_One` date NOT NULL,
+  `Date_Option_Two` date NOT NULL,
+  `Date_Option_Three` date NOT NULL,
+  `Time_Option_One` varchar(255) NOT NULL,
+  `Time_Option_Two` varchar(255) NOT NULL,
+  `Time_Option_Three` varchar(255) NOT NULL,
+  `Location` varchar(255) NOT NULL,
+  `Accepted_to_Participate` varchar(255) NOT NULL,
+  `Not_Qualified_Anymore` varchar(255) NOT NULL,
+  `Status` varchar(255) NOT NULL,
+  `Requested_By` varchar(255) NOT NULL,
+  `Met` varchar(255) NOT NULL,
+  `Payment` varchar(255) NOT NULL,
+  `Rated_Participant` varchar(255) NOT NULL,
+  `Comment_Participant` varchar(255) NOT NULL,
+  `Potential_Answer_Given` varchar(255) NOT NULL,
+  `Participant_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Participant_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Startup_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Date_Posted` date NOT NULL,
+  `Time_Posted` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_meeting_upcoming`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_meeting_upcoming` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `startupID` int(11) NOT NULL,
+  `ProjectID` int(11) NOT NULL,
+  `Meetupchoice` varchar(255) NOT NULL,
+  `Meeting_Status` varchar(255) NOT NULL,
+  `Viewed_by_Startup` varchar(255) NOT NULL DEFAULT 'No',
+  `Viewed_by_Participant` varchar(255) NOT NULL DEFAULT 'No',
+  `Date_of_Meeting` date NOT NULL,
+  `Day` varchar(255) NOT NULL,
+  `Final_Time` varchar(255) NOT NULL,
+  `Location` varchar(255) NOT NULL,
+  `Met` varchar(255) NOT NULL,
+  `Payment` varchar(255) NOT NULL,
+  `Rated_Participant` varchar(255) NOT NULL,
+  `Comment_Participant` varchar(255) NOT NULL,
+  `Participant_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Participant_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Startup_Email_Upcoming_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
+  `Date_Accepted` date NOT NULL,
+  `Time_Accepted` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -451,7 +619,7 @@ CREATE TABLE IF NOT EXISTS `tbl_nda_draft` (
   `participant_sig_title` varchar(255) NOT NULL,
   `participant_sig_date` date NOT NULL,
   `Updated` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -505,14 +673,7 @@ CREATE TABLE IF NOT EXISTS `tbl_nda_signed` (
   `participant_sig_company` varchar(255) NOT NULL,
   `participant_sig_title` varchar(255) NOT NULL,
   `participant_sig_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_nda_signed`
---
-
-INSERT INTO `tbl_nda_signed` (`id`, `status`, `userID`, `startupID`, `participant_name`, `startup_name`, `nda_purpose`, `ProjectID`, `startup_signature`, `startup_sig_name`, `startup_sig_company`, `startup_sig_title`, `startup_sig_date`, `participant_signature`, `participant_sig_name`, `participant_sig_company`, `participant_sig_title`, `participant_sig_date`) VALUES
-(32, 'signed', '28', '46', 'Franz Peterle111', 'fasdasdf1114446666', 'asdfasdf', '86935', '3140665.png', 'asdfasdf5555', 'Inc.', 'Mr. Chef', '2016-11-23', '8707788.png', 'Franco Perle555', '', '', '2016-12-31');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -542,7 +703,7 @@ CREATE TABLE IF NOT EXISTS `tbl_participant` (
   `Drink` varchar(25) NOT NULL,
   `Diet` varchar(25) NOT NULL,
   `Religion` varchar(255) NOT NULL,
-  `Education` varchar(255) NOT NULL,
+  `Education` longtext NOT NULL,
   `Job` varchar(255) NOT NULL,
   `Interest` longtext NOT NULL,
   `Languages` longtext NOT NULL,
@@ -553,15 +714,15 @@ CREATE TABLE IF NOT EXISTS `tbl_participant` (
   `Country` varchar(255) NOT NULL,
   `Timezone` varchar(255) NOT NULL,
   `Bio` longtext NOT NULL,
-  `Date_Availability_Option1` date DEFAULT NULL,
+  `Days_Availability_Option1` varchar(255) DEFAULT NULL,
   `From_Time_Option1` varchar(255) NOT NULL,
   `To_Time_Option1` varchar(255) NOT NULL,
   `Location_Option1` varchar(255) NOT NULL,
-  `Date_Availability_Option2` date DEFAULT NULL,
+  `Days_Availability_Option2` varchar(255) DEFAULT NULL,
   `From_Time_Option2` varchar(22) NOT NULL,
   `To_Time_Option2` varchar(255) NOT NULL,
   `Location_Option2` varchar(255) NOT NULL,
-  `Date_Availability_Option3` date DEFAULT NULL,
+  `Days_Availability_Option3` varchar(255) DEFAULT NULL,
   `From_Time_Option3` varchar(255) NOT NULL,
   `To_Time_Option3` varchar(255) NOT NULL,
   `Location_Option3` varchar(255) NOT NULL,
@@ -589,6 +750,7 @@ CREATE TABLE IF NOT EXISTS `tbl_participant` (
   `userStatus` enum('Y','N') NOT NULL DEFAULT 'N',
   `tokenCode` varchar(100) NOT NULL,
   `profile_image` varchar(255) NOT NULL,
+  `Cash_Only` varchar(255) NOT NULL,
   `account_id` varchar(255) NOT NULL,
   `owner_user_id` varchar(255) NOT NULL,
   `access_token` varchar(255) NOT NULL,
@@ -596,17 +758,14 @@ CREATE TABLE IF NOT EXISTS `tbl_participant` (
   `bank_account` varchar(255) NOT NULL,
   `Date_Created` date NOT NULL,
   `account_verified` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_participant`
 --
 
-INSERT INTO `tbl_participant` (`userID`, `facebook_id`, `google_id`, `google_picture_link`, `FirstName`, `LastName`, `userEmail`, `userPass`, `EmailNotifications`, `Meetupchoice`, `CountryCode`, `Phone`, `Age`, `Gender`, `Height`, `Status`, `Ethnicity`, `Smoke`, `Drink`, `Diet`, `Religion`, `Education`, `Job`, `Interest`, `Languages`, `Street`, `City`, `State`, `Zip`, `Country`, `Timezone`, `Bio`, `Date_Availability_Option1`, `From_Time_Option1`, `To_Time_Option1`, `Location_Option1`, `Date_Availability_Option2`, `From_Time_Option2`, `To_Time_Option2`, `Location_Option2`, `Date_Availability_Option3`, `From_Time_Option3`, `To_Time_Option3`, `Location_Option3`, `Monday_From`, `Monday_To`, `Tuesday_From`, `Tuesday_To`, `Wednesday_From`, `Wednesday_To`, `Thursday_From`, `Thursday_To`, `Friday_From`, `Friday_To`, `Saturday_From`, `Saturday_To`, `Sunday_From`, `Sunday_To`, `Monday_Location`, `Tuesday_Location`, `Wednesday_Location`, `Thursday_Location`, `Friday_Location`, `Saturday_Location`, `Sunday_Location`, `userStatus`, `tokenCode`, `profile_image`, `account_id`, `owner_user_id`, `access_token`, `code`, `bank_account`, `Date_Created`, `account_verified`) VALUES
-(28, '10157632974310062', '0', '', 'Alper', 'Dilmen', 'ald183s@gmail.com', '', 'NULL', '', '', '61114444', '20', 'Female', '53', 'Married', 'Black', 'Sometimes', 'Very Often', 'Kosher', 'Atheist', 'High School', 'Banking / Finance', 'Dancing', '', '', 'New York', 'AL', '', '', '', '', '2016-11-27', '04:00pm', '10:00pm', 'Amsterdam Avenue, New York, NY, United States', '2016-11-27', '03:00pm', '10:00pm', '312 U.S. 1, Orange, CT, United States', '2016-11-27', '09:00pm', '12:00am', 'Amsterdam Avenue, New York, NY, United States', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'N', '', '', '613513821', '189754692', 'STAGE_af0287ec6ba197eb317a59bd62d51628cc9e47e8ac08fc7f6749a9007f36dc1b', '3e196f284d389d7160cc423b1872d2938185f468e1643c843a', '', '2016-11-18', '1'),
-(30, '0', '0', '', 'Lola', 'Bora', 'wepaystage2@hotmail.com', 'b8150db267de096dd2573e6d91882778', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', '1a88a05615fc3a2647d33746e69deb02', '', '1320903211', '189754692', 'STAGE_9b005dbacb9b7f86bf66f976c44e8cebde30be47b8d3c66a7ee0a1b6f257e8fe', '67bb20271c17f113866b706a6b166fa26fc84e13d1354228e7', '', '2016-12-09', ''),
-(31, '0', '116585564878133212506', 'https://lh5.googleusercontent.com/-gEtROnijSjk/AAAAAAAAAAI/AAAAAAAAAAs/9GAC4wQDn0U/photo.jpg', 'Franz', 'Peter', 'wepaystage@gmail.com', 'b8150db267de096dd2573e6d91882778', '', '', '', '', '20', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', '9bc6fd67e357180da31c4f70205e8289', '', '1812989742', '167070014', 'STAGE_3157a9551b8c9c076f9a3631d1af99785eeafaa1674ff9cebbe0ca8887846d69', '13af4b196b1ab193735c8c74a190140c80df84eabdc4d5e774', '', '2016-12-10', '1'),
-(32, '0', '0', '', 'Mike', 'Jackson', 'wepay.participant.stage4@gmail.com', 'b8150db267de096dd2573e6d91882778', 'NULL', '', '', '', '19', '', '', '', '', '', '', '', '', '', '', 'Dancing', '', '', '', 'AL', '', '', '', '', '2016-12-22', '04:00pm', '07:00pm', 'Starbucks, Astoria, Queens, NY, United States', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', 'b51fc221a72763e12d703b396ed963c6', 'thumb_148190933007-snow-mountain-sunset.jpg', '829457049', '27005031', 'STAGE_5dbb95faae50a159844a43d0c8a29ab25aa8ac429194999aad03799195ac536d', '111ea5148ca4c007ac0fea6e44117f4695af51a95a004c2afd', '', '2016-12-11', '');
+INSERT INTO `tbl_participant` (`userID`, `facebook_id`, `google_id`, `google_picture_link`, `FirstName`, `LastName`, `userEmail`, `userPass`, `EmailNotifications`, `Meetupchoice`, `CountryCode`, `Phone`, `Age`, `Gender`, `Height`, `Status`, `Ethnicity`, `Smoke`, `Drink`, `Diet`, `Religion`, `Education`, `Job`, `Interest`, `Languages`, `Street`, `City`, `State`, `Zip`, `Country`, `Timezone`, `Bio`, `Days_Availability_Option1`, `From_Time_Option1`, `To_Time_Option1`, `Location_Option1`, `Days_Availability_Option2`, `From_Time_Option2`, `To_Time_Option2`, `Location_Option2`, `Days_Availability_Option3`, `From_Time_Option3`, `To_Time_Option3`, `Location_Option3`, `Monday_From`, `Monday_To`, `Tuesday_From`, `Tuesday_To`, `Wednesday_From`, `Wednesday_To`, `Thursday_From`, `Thursday_To`, `Friday_From`, `Friday_To`, `Saturday_From`, `Saturday_To`, `Sunday_From`, `Sunday_To`, `Monday_Location`, `Tuesday_Location`, `Wednesday_Location`, `Thursday_Location`, `Friday_Location`, `Saturday_Location`, `Sunday_Location`, `userStatus`, `tokenCode`, `profile_image`, `Cash_Only`, `account_id`, `owner_user_id`, `access_token`, `code`, `bank_account`, `Date_Created`, `account_verified`) VALUES
+(31, '0', '0', '', 'Franz', 'Peter', 'wepaystage@gmail.com', 'b8150db267de096dd2573e6d91882778', 'New startup requests you participate,When you qualify to participate to provide feedback on an idea', '', '', '', '20', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'AL', '', '', '', '', 'Monday,Tuesday', '01:00pm', '03:00pm', 'Starbucks, Astoria, Queens, NY, United States', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', '9bc6fd67e357180da31c4f70205e8289', '', '', '1812989742', '167070014', 'STAGE_3157a9551b8c9c076f9a3631d1af99785eeafaa1674ff9cebbe0ca8887846d69', '13af4b196b1ab193735c8c74a190140c80df84eabdc4d5e774', '', '2016-12-10', '1');
 
 -- --------------------------------------------------------
 
@@ -618,21 +777,7 @@ CREATE TABLE IF NOT EXISTS `tbl_participant_interests` (
   `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `Interests` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_participant_interests`
---
-
-INSERT INTO `tbl_participant_interests` (`id`, `userID`, `Interests`) VALUES
-(74, 3, 'Sport'),
-(76, 0, 'Adventure Travel'),
-(77, 0, 'Adventure Travel'),
-(78, 0, 'Animal Rights'),
-(79, 0, 'African Americans'),
-(80, 0, 'Animal Rights'),
-(94, 32, 'Social Media'),
-(96, 32, 'Birds');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -644,49 +789,20 @@ CREATE TABLE IF NOT EXISTS `tbl_participant_languages` (
   `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `Languages` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_participant_languages`
---
-
-INSERT INTO `tbl_participant_languages` (`id`, `userID`, `Languages`) VALUES
-(15, 32, 'Arabic'),
-(20, 32, 'Cajun');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_project_request`
+-- Table structure for table `tbl_participant_potentialanswer`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_project_request` (
+CREATE TABLE IF NOT EXISTS `tbl_participant_potentialanswer` (
   `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `startupID` int(11) NOT NULL,
   `ProjectID` int(11) NOT NULL,
-  `Meetupchoice` varchar(255) NOT NULL,
-  `Meeting_Status` varchar(255) NOT NULL,
-  `Viewed_by_Startup` varchar(255) NOT NULL DEFAULT 'No',
-  `Viewed_by_Participant` varchar(255) NOT NULL DEFAULT 'No',
-  `Date_of_Meeting` date NOT NULL,
-  `Day` varchar(255) NOT NULL,
-  `From_Time` varchar(255) NOT NULL,
-  `To_Time` varchar(255) NOT NULL,
-  `Final_Time` varchar(255) NOT NULL,
-  `Location` varchar(255) NOT NULL,
-  `Accepted_to_Participate` varchar(255) NOT NULL,
-  `Not_Qualified_Anymore` varchar(255) NOT NULL,
-  `Status` varchar(255) NOT NULL,
-  `Requested_By` varchar(255) NOT NULL,
-  `Met` varchar(255) NOT NULL,
-  `Payment` varchar(255) NOT NULL,
-  `Rated_Participant` varchar(255) NOT NULL,
-  `Comment_Participant` varchar(255) NOT NULL,
-  `Potential_Answer_Given` varchar(255) NOT NULL,
-  `Date_Posted` date NOT NULL,
-  `Time_Posted` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `PotentialAnswerGiven` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -732,15 +848,14 @@ CREATE TABLE IF NOT EXISTS `tbl_startup` (
   `cc_name` varchar(255) NOT NULL,
   `Date_Created` date NOT NULL,
   `account_verified` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_startup`
 --
 
 INSERT INTO `tbl_startup` (`userID`, `facebook_id`, `google_id`, `google_picture_link`, `FirstName`, `LastName`, `userEmail`, `Phone`, `Age`, `Gender`, `City`, `State`, `Timezone`, `Bio`, `Linkedin`, `Twitter`, `Facebook`, `EmailNotifications`, `profile_image`, `userPass`, `userStatus`, `tokenCode`, `account_id`, `owner_user_id`, `access_token`, `code`, `billing_address_one`, `billing_address_two`, `billing_city`, `billing_state`, `billing_zip`, `billing_country`, `credit_card_id`, `cc_last_four`, `cc_name`, `Date_Created`, `account_verified`) VALUES
-(46, '10157632974310062', '0', '', 'Alper', 'Dilmen', 'ald183s@gmail.com', '', '', 'Male', '', '', '', '', '', '', '', '', '', '', 'Y', '', '1287756994', '226769035', 'STAGE_76b2521e20ca875586e8c10f64294f9675fd7aac02102c03baaece2821dc62f3', 'd915eae7de1723ae37f06128887cd6e9a34e5bafa0ae2f99c7', '123 Street', '', 'Queens', 'NY', '10001', 'US', '3093590278', '4018', 'Visa xxxxxx4018', '2016-11-18', '1'),
-(47, '0', '0', '', 'Bobby', 'Lobby', 'wepaystage3@hotmail.com', '', '', '', '', '', '', '', '', '', '', '', 'thumb_14816661960_(3).jpg', 'b8150db267de096dd2573e6d91882778', 'Y', 'b8c89fa7a4152220002c5fcdf5a36348', '', '', '', '', '11448 Doral Ave', '', 'Northridge', 'Alabama', '91326', 'US', '2815301230', '4769', 'MasterCard xxxxxx4769', '2016-12-09', '');
+(47, '0', '0', '', 'Bobby', 'Lobby', 'wepaystage4@gmail.com', '917-267-1767', '', '', 'Chicago', 'AL', '', 'this is me2222', 'http://www.thelinkedin.com', 'http://www.thetwitter.com', 'http://www.thefacebook.com', 'New participant requests to participate', 'thumb_1482788301_146751013008_10153819353100062_7688309_n.jpg', 'b8150db267de096dd2573e6d91882778', 'Y', 'b8c89fa7a4152220002c5fcdf5a36348', '1769778606', '27090090', 'STAGE_d13a8874bedcd54b4da1427b98fc48197c5d9ea1d81e8bc83cccb5e6d39990a4', '05ca3c0757fae173f14a9138cd908fb079f9c82533744aa36e', '123 Street Address', '', 'New York', 'CT', '10001', 'US', '2524482261', '4769', 'MasterCard xxxxxx4769', '2016-12-09', '');
 
 -- --------------------------------------------------------
 
@@ -754,28 +869,6 @@ CREATE TABLE IF NOT EXISTS `tbl_startup_interests` (
   `ProjectID` int(11) NOT NULL,
   `Interests` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_startup_interests`
---
-
-INSERT INTO `tbl_startup_interests` (`id`, `userID`, `ProjectID`, `Interests`) VALUES
-(141, 39, 14425, 'Sci-Fi and Games'),
-(151, 39, 14425, 'Family'),
-(153, 47, 19897, 'a'),
-(154, 47, 19897, 'a'),
-(155, 47, 19897, 'Entre'),
-(156, 47, 19897, 'Entre'),
-(157, 47, 83757, 'Adventure Travel'),
-(158, 47, 86935, 'Agile Project Management'),
-(159, 47, 99488, 'Entrepreneur Networking, Startups'),
-(160, 47, 99488, 'Animal Welfare'),
-(161, 47, 99488, 'Android Development'),
-(164, 47, 47476, 'Birds'),
-(165, 47, 47476, 'Animal Rights'),
-(166, 47, 47476, 'Adventure Travel'),
-(167, 47, 47476, 'African Americans'),
-(168, 47, 47476, 'Agile Project Management');
 
 -- --------------------------------------------------------
 
@@ -823,7 +916,7 @@ CREATE TABLE IF NOT EXISTS `tbl_startup_project` (
   `NDA` varchar(255) NOT NULL,
   `Date_Created` date NOT NULL,
   `Date_Updated` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -854,7 +947,7 @@ CREATE TABLE IF NOT EXISTS `tbl_startup_screeningquestion` (
   `PotentialAnswer3` varchar(255) NOT NULL,
   `Accepted` varchar(255) NOT NULL,
   `EnabledorDisabled` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -960,43 +1053,12 @@ CREATE TABLE IF NOT EXISTS `wepay` (
   `checkout_find_date` varchar(255) NOT NULL,
   `checkout_find_amount` varchar(255) NOT NULL,
   `fees` varchar(255) NOT NULL,
+  `service_fee` varchar(255) NOT NULL,
   `total` varchar(255) NOT NULL,
   `refundrequest` varchar(255) NOT NULL,
   `refundreason` longtext NOT NULL,
   `refunded` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `wepay`
---
-
-INSERT INTO `wepay` (`id`, `ProjectID`, `startup_id`, `participant_id`, `order_by`, `account_id`, `checkout_id`, `checkout_find_date`, `checkout_find_amount`, `fees`, `total`, `refundrequest`, `refundreason`, `refunded`) VALUES
-(20, '86935', '47', '28', 12, '613513821', '651690922', 'December 2016', '1.32', '0.32', '1.32', '', '', ''),
-(21, '86935', '47', '28', 12, '613513821', '936158616', 'December 2016', '2.35', '0.35', '2.35', '', '', ''),
-(22, '86935', '47', '28', 12, '613513821', '108237395', 'December 2016', '2.35', '0.35', '2.35', '', '', ''),
-(23, '86935', '47', '30', 12, '1320903211', '202368879', 'December 2016', '2.35', '0.35', '2.35', '', '', ''),
-(24, '86935', '47', '30', 12, '1320903211', '1624886903', 'December 2016', '3.77', '0.39', '3.77', '', '', ''),
-(25, '86935', '47', '30', 12, '1812989742', '252750906', 'December 2016', '5.77', '0.45', '5.77', '', '', ''),
-(26, '86935', '47', '30', 12, '1812989742', '1037760108', 'December 2016', '5.44', '0.44', '5.44', '', '', ''),
-(27, '86935', '47', '30', 12, '1812989742', '426917113', 'December 2016', '1.32', '0.32', '1.32', '', '', ''),
-(28, '86935', '47', '30', 12, '1812989742', '211502069', 'December 2016', '1.32', '0.32', '1.32', '', '', ''),
-(29, '86935', '47', '30', 12, '1812989742', '1063090120', 'December 2016', '1.32', '0.32', '1.32', '', '', ''),
-(30, '86935', '47', '30', 12, '1812989742', '15268416', 'December 2016', '1.32', '0.32', '1.32', '', '', ''),
-(31, '86935', '47', '30', 12, '1320903211', '1633807015', 'December 2016', '6.47', '0.47', '6.47', '', '', ''),
-(32, '86935', '47', '30', 1, '', '', 'January 1970', '', '', '', '', '', ''),
-(33, '86935', '47', '30', 1, '', '', 'January 1970', '', '', '', '', '', ''),
-(34, '86935', '47', '30', 12, '1812989742', '1601738383', 'December 2016', '1.32', '0.32', '1.32', '', '', ''),
-(35, '86935', '47', '30', 12, '1812989742', '694966760', 'December 2016', '1.53', '0.33', '1.53', '', '', ''),
-(36, '86935', '47', '30', 12, '1812989742', '1714779725', 'December 2016', '1.53', '0.33', '1.53', '', '', ''),
-(37, '86935', '47', '30', 12, '1812989742', '1497006163', 'December 2016', '1.53', '0.33', '1.53', '', '', ''),
-(38, '86935', '47', '30', 12, '1812989742', '1901453909', 'December 2016', '1.53', '0.33', '1.53', '', '', ''),
-(39, '86935', '47', '30', 12, '1320903211', '1997228661', 'December 2016', '8.53', '0.53', '8.53', '', '', ''),
-(40, '86935', '47', '30', 12, '1320903211', '2073202318', 'December 2016', '8', '0.53', '8.53', '', '', ''),
-(41, '86935', '47', '30', 12, '1320903211', '696253313', 'December 2016', '8', '0.53', '8.53', '', '', ''),
-(42, '86935', '47', '30', 12, '1320903211', '462970525', 'December 2016', '8', '0.53', '8.53', '', '', ''),
-(43, '86935', '47', '32', 12, '829457049', '1681749008', 'December 2016', '8', '0.53', '8.53', '', 'yo need the money back', 'yes'),
-(44, '86935', '47', '32', 12, '829457049', '484155685', 'December 2016', '8', '0.53', '8.53', '', '', ''),
-(45, '86935', '47', '32', 12, '829457049', '841701877', 'December 2016', '8', '0.53', '8.53', '', 'yo gotta need the money back', 'yes');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -1018,6 +1080,12 @@ ALTER TABLE `c5t_identifier`
 -- Indexes for table `c5t_setting`
 --
 ALTER TABLE `c5t_setting`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `days`
+--
+ALTER TABLE `days`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1057,6 +1125,30 @@ ALTER TABLE `participant_rating`
   ADD PRIMARY KEY (`rating_id`);
 
 --
+-- Indexes for table `tbl_meeting_archived`
+--
+ALTER TABLE `tbl_meeting_archived`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_meeting_recent`
+--
+ALTER TABLE `tbl_meeting_recent`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_meeting_request`
+--
+ALTER TABLE `tbl_meeting_request`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_meeting_upcoming`
+--
+ALTER TABLE `tbl_meeting_upcoming`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_nda_draft`
 --
 ALTER TABLE `tbl_nda_draft`
@@ -1094,9 +1186,9 @@ ALTER TABLE `tbl_participant_languages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_project_request`
+-- Indexes for table `tbl_participant_potentialanswer`
 --
-ALTER TABLE `tbl_project_request`
+ALTER TABLE `tbl_participant_potentialanswer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1155,6 +1247,11 @@ ALTER TABLE `wepay`
 --
 
 --
+-- AUTO_INCREMENT for table `days`
+--
+ALTER TABLE `days`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
@@ -1178,12 +1275,32 @@ ALTER TABLE `participant_profile_images`
 -- AUTO_INCREMENT for table `participant_rating`
 --
 ALTER TABLE `participant_rating`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tbl_meeting_archived`
+--
+ALTER TABLE `tbl_meeting_archived`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_meeting_recent`
+--
+ALTER TABLE `tbl_meeting_recent`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_meeting_request`
+--
+ALTER TABLE `tbl_meeting_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_meeting_upcoming`
+--
+ALTER TABLE `tbl_meeting_upcoming`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_nda_draft`
 --
 ALTER TABLE `tbl_nda_draft`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_nda_pending`
 --
@@ -1193,32 +1310,32 @@ ALTER TABLE `tbl_nda_pending`
 -- AUTO_INCREMENT for table `tbl_nda_signed`
 --
 ALTER TABLE `tbl_nda_signed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_participant`
 --
 ALTER TABLE `tbl_participant`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `tbl_participant_interests`
 --
 ALTER TABLE `tbl_participant_interests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_participant_languages`
 --
 ALTER TABLE `tbl_participant_languages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `tbl_project_request`
+-- AUTO_INCREMENT for table `tbl_participant_potentialanswer`
 --
-ALTER TABLE `tbl_project_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+ALTER TABLE `tbl_participant_potentialanswer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT for table `tbl_startup`
 --
 ALTER TABLE `tbl_startup`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `tbl_startup_interests`
 --
@@ -1228,7 +1345,7 @@ ALTER TABLE `tbl_startup_interests`
 -- AUTO_INCREMENT for table `tbl_startup_project`
 --
 ALTER TABLE `tbl_startup_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_startup_screening`
 --
@@ -1238,7 +1355,7 @@ ALTER TABLE `tbl_startup_screening`
 -- AUTO_INCREMENT for table `tbl_startup_screeningquestion`
 --
 ALTER TABLE `tbl_startup_screeningquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=136;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `time`
 --
@@ -1253,7 +1370,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wepay`
 --
 ALTER TABLE `wepay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

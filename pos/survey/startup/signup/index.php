@@ -220,7 +220,6 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 <script src="<?php echo BASE_PATH; ?>/startup/js/password.js"></script>
 
-<style href>a {text-decoration: none} </style>
 
 
   </head>
@@ -281,6 +280,14 @@ if($_POST['passwordpass'] == 'good'){
       $id = $reg_user->lasdID();    
       $key = base64_encode($id);
       $id = $key;
+
+       $msg = "
+          <div class='alert alert-success'>
+            <button class='close' data-dismiss='alert'>&times;</button>
+            <strong>Success!</strong>  We've sent an email to $email.<br><br>
+                  Click on the confirmation link in the email to create your account. 
+            </div>
+          ";
 
 
 // using SendGrid's PHP Library
@@ -359,7 +366,7 @@ $content = new SendGrid\Content("text/html", '
                                             </tr>
                                             
                                              <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
                                                 Let\'s confirm your email address.
                                                 
                                                 </td>
@@ -370,7 +377,6 @@ $content = new SendGrid\Content("text/html", '
                                 </td>
                             </tr>
                         </table>
-
 
 
 
@@ -390,7 +396,9 @@ $content = new SendGrid\Content("text/html", '
                                                 <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
                                                 
                                                  <a href="http://localhost/creative/pos/survey/startup/account/verify.php?id='.$id.'&code='.$code.'">
-                                                <div style="padding: 20px; max-width:240px; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">Confirm Email Address</div>
+                                                <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
+                                                <img alt="Logo" src="http://labfy.com/circl/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
+                                                </div>
                                                 </a>
                                                 
                                                 </td>

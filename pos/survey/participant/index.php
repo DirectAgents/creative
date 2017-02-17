@@ -4,10 +4,11 @@
 <script>try{Typekit.load({ async: false });}catch(e){}</script>
 <html itemscope itemtype="http://schema.org/Product">
 <head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
 
-    <title>Gust Launch</title>
+    <title>Circl Launch</title>
 
     <link rel="icon" href="../public/img/favicon.ico" type="image/x-icon"/>
 
@@ -15,23 +16,23 @@
     <meta name="description" content="The modern way to start a scalable, high-growth business" />
 
     <meta name="google" content="nositelinkssearchbox" />
-    <meta itemprop="name" content="Gust Launch">
+    <meta itemprop="name" content="Circl Launch">
     <meta itemprop="image" content="/public/img/logo.png">
 
-    <meta name="twitter:site" content="@gustly">
-    <meta name="twitter:title" content="Gust Launch">
+    <meta name="twitter:site" content="@Circlly">
+    <meta name="twitter:title" content="Circl Launch">
     <meta name="twitter:description" content="The modern way to start a scalable, high-growth business">
-    <meta name="twitter:creator" content="@gustly">
+    <meta name="twitter:creator" content="@Circlly">
 
-    <meta property="og:url" content="https://launch.gust.com/start">
-    <meta property="og:title" content="Gust Launch">
-    <meta property="og:image" content="https://launch.gust.com/public/img/logo-gustlaunch-og.png">
+    <meta property="og:url" content="https://launch.Circl.com/start">
+    <meta property="og:title" content="Circl Launch">
+    <meta property="og:image" content="https://launch.Circl.com/public/img/logo-Circllaunch-og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:description" content="The modern way to start a scalable, high-growth business">
-    <meta property="og:site_name" content="Gust Launch">
+    <meta property="og:site_name" content="Circl Launch">
     <meta property="og:locale" content="en_US">
-    <meta property="article:author" content="https://www.facebook.com/Gust-246116808757618">
+    <meta property="article:author" content="https://www.facebook.com/Circl-246116808757618">
     <meta property="article:section" content="Technology">
 
   
@@ -138,12 +139,12 @@ $(document).ready(function() {
     <div class="wrap">
       <h1 class="title">Help Startups to succeed.</h1>
       <span class="description">
-        One platform to easily start and run your company like a seasoned entrepreneur&mdash;designed by experienced startup founders, investors, and lawyers to help you from incorporation to exit.
+        One platform to help startups to validate their ideas.
       </span>
   
       <a class="signup"
         ng-click="vm.analytics('hero')"
-        ng-href="https://gust.com/companies/subscriptions/registrations/new?plan_group=launch&plan_url=launch-2-1-yearly{{vm.discountCode ? '&discountCode=' + vm.discountCode : ''}}">
+        ng-href="https://Circl.com/companies/subscriptions/registrations/new?plan_group=launch&plan_url=launch-2-1-yearly{{vm.discountCode ? '&discountCode=' + vm.discountCode : ''}}">
         Sign Up
       </a>
       <a href="#myAnchor" rel="relativeanchor">
@@ -313,12 +314,12 @@ $(document).ready(function() {
         </svg>
       </div>
       <div class="prop-text">
-        <h2 class="title">Start on a strong foundation.</h2>
-        <span class="description">Avoid common missteps many founders make in the beginning.</span>
+         <h2 class="title">Title here</h2>
+        <span class="description">Subtitle here</span>
         <ul>
-          <li>Form your company the right way, backed by startup lawyers’ best practices</li>
-          <li>Built-in governance for trusted recordkeeping</li>
-          <li>Accrual-based accounting from day one</li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
         </ul>
       </div>
     </div>
@@ -433,12 +434,12 @@ $(document).ready(function() {
         </svg>
       </div>
       <div class="prop-text">
-        <h2 class="title">Always investor-ready, without the headaches.</h2>
-        <span class="description">Due diligence is simple when your books are always organized.</span>
+       <h2 class="title">Title here</h2>
+         <span class="description">Subtitle here</span>
         <ul>
-          <li>Accurate financial statements delivered monthly</li>
-          <li>Your cap table is always current and shareable</li>
-          <li>An auditable electronic paper trail</li>
+         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
         </ul>
       </div>
     </div>
@@ -767,12 +768,12 @@ $(document).ready(function() {
         </svg>
       </div>
       <div class="prop-text">
-        <h2 class="title">Meet your team of experts.</h2>
-        <span class="description">Because you have enough to worry about as a founder.</span>
+       <h2 class="title">Title here</h2>
+       <span class="description">Subtitle here</span>
         <ul>
-          <li>Startup lawyers available for Q&A around the clock</li>
-          <li>Your own world-class bookkeeping team</li>
-          <li>A Gust Launch associate to guide you along the way</li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
         </ul>
       </div>
     </div>
@@ -907,7 +908,7 @@ $(document).ready(function() {
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
             <ul>
-              <li>Keep track of your company’s ownership structure through Gust Equity Management</li>
+              <li>Keep track of your company’s ownership structure through Circl Equity Management</li>
               <li>Issue stock online without involving outside counsel</li>
               <li>See how potential exits and funding rounds impact each stakeholder</li>
               <li>Secure all information and documents in one auditable place</li>
@@ -920,8 +921,8 @@ $(document).ready(function() {
                     </span>
                 </div>
                 <div class="faq">
-                    <span class="question">How can I issue stock through Gust Equity Management?</span>
-                    <span class="answer">Your stock documents will be built directly into Gust Equity Management to make issuance as simple as a few clicks. Any new stock grant will automatically generate paperwork that can be electronically signed by the stock recipient and yourself from within the platform.</span>
+                    <span class="question">How can I issue stock through Circl Equity Management?</span>
+                    <span class="answer">Your stock documents will be built directly into Circl Equity Management to make issuance as simple as a few clicks. Any new stock grant will automatically generate paperwork that can be electronically signed by the stock recipient and yourself from within the platform.</span>
                 </div>
             </div>
           </div>
@@ -948,13 +949,13 @@ $(document).ready(function() {
   
             <div class="faqs">
                 <div class="faq">
-                    <span class="question">Did lawyers help build Gust Launch? Do they trust it?</span>
-                    <span class="answer">Yes! The startup and operating documents generated by Gust Launch are a comprehensive, integrated set that has been created and reviewed by leading startup law firms.
+                    <span class="question">Did lawyers help build Circl Launch? Do they trust it?</span>
+                    <span class="answer">Yes! The startup and operating documents generated by Circl Launch are a comprehensive, integrated set that has been created and reviewed by leading startup law firms.
                     </span>
                 </div>
                 <div class="faq">
                     <span class="question">Are there any additional or hidden fees?</span>
-                    <span class="answer">No, unlimited online access to the lawyers at RocketLawyer is included with Gust Launch. In fact, Gust Launch helps you save on legal costs by helping you do everything right the first time. If you already work with legal counsel, we would be delighted to walk them through our platform and bring them into our legal network at no cost. </span>
+                    <span class="answer">No, unlimited online access to the lawyers at RocketLawyer is included with Circl Launch. In fact, Circl Launch helps you save on legal costs by helping you do everything right the first time. If you already work with legal counsel, we would be delighted to walk them through our platform and bring them into our legal network at no cost. </span>
                 </div>
             </div>
           </div>
@@ -981,7 +982,7 @@ $(document).ready(function() {
   
             <div class="faqs">
                 <div class="faq">
-                    <span class="question">How does Gust Launch make tax filing easier?</span>
+                    <span class="question">How does Circl Launch make tax filing easier?</span>
                     <span class="answer">Because your accounts are set up in Xero and integrated with your credit card, bank, and other financial services, tax filing is quick and easy. In addition, Simplexity’s bookkeeping means that everything is properly coded and up to date, so once the EisnerAmper software prepares tax forms based on your records, you’ll be able to file both federal and state taxes online with just a few clicks.
                     </span>
                 </div>
@@ -1028,7 +1029,7 @@ $(document).ready(function() {
     </div>
   
     <div class="copyright">
-      © 2016 Gust. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a> |  <a target="_blank" href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>
+      © 2016 Circl. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a> |  <a target="_blank" href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>
     </div>
   
   </footer>

@@ -279,6 +279,14 @@ if($_POST['passwordpass'] == 'good'){
       $id = $reg_user->lasdID();    
       $key = base64_encode($id);
       $id = $key;
+
+      $msg = "
+          <div class='alert alert-success'>
+            <button class='close' data-dismiss='alert'>&times;</button>
+            <strong>Success!</strong>  We've sent an email to $email.<br>
+                    Click on the confirmation link in the email to create your account. 
+            </div>
+          ";
       
      // using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
