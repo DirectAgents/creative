@@ -403,7 +403,7 @@ $("textarea[name=MYFIELDNAME]").val();
 
 
           if(projectname==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Project!</div>';
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Idea!</div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }
@@ -826,7 +826,9 @@ $("textarea[name=MYFIELDNAME]").val();
 //alert("aads"); 
 var btn= $(this).find("input[type=submit]:focus").val();
 
-
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        var proceed = true;
 
         //get input field values
         
@@ -836,10 +838,21 @@ var btn= $(this).find("input[type=submit]:focus").val();
         //var agenda_three  = $('input[name=agenda_three').val();
        
        //alert(details);
+
+       if(details==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your idea!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+        if(agenda_one==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your agenda during the feedback session!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
         
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
+        
       
          
 
@@ -900,6 +913,19 @@ var btn= $(this).find("input[type=submit]:focus").val();
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
         var proceed = true;
+
+
+        if(details==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your idea!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+        if(agenda_one==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your agenda during the feedback session!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
       
          
 

@@ -457,14 +457,15 @@ echo "</a>";
 
                       
                   <div class="action" tabindex="0" aria-hidden="false">
-                        
+                        <div class="btn-browse">
                         <a href="<?php echo BASE_PATH; ?>/startup/idea/browse/participants/new/?id=<?php echo $row2['ProjectID']; ?>">Browse New Participants</a>
-
+                        </div>
                       </div>
 
                       <div class="action" ng-click="triggerPreview(survey)" ng-show="survey.surveyLength > 0" role="button" tabindex="0" aria-hidden="false">
-                        
-                       <a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> Preview </a>
+                        <div class="btn-browse">
+                       <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> Preview </a>
+                        </div>
 
                       </div>
                     

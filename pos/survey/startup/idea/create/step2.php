@@ -142,7 +142,7 @@ $stage=explode(',',$rowproject['Stage']);
           <div class="filter">
              
                <label for="screening"><span ng-click="enableScreening()" role="button" tabindex="0">
-                <h2>Idea Summary</h2></span></label>
+                <h2>SHARE MORE ABOUT YOUR IDEA</h2></span></label>
              </div>
 
 
@@ -162,7 +162,7 @@ $stage=explode(',',$rowproject['Stage']);
  <h3>Idea Details</h3>
                 
                  <div class="screening-description">
-                  Briefly describe what you plan to do or offer to your future customers. This will give participants an overall picture of your idea
+                  Briefly describe what you plan to do or offer to your future customers. This will give participants an overall picture of your idea to provide a better feedback.
                 </div>
 
 

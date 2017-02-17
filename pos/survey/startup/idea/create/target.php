@@ -46,8 +46,8 @@ if($_POST['job'] == ''){$job = 'NULL';}else{$job = $_POST['job'];}
 
 if($_POST['screening'] == ''){$screening = 'Disabled';}else{$screening = $_POST['screening'];}
 
-if($_POST['interest'] == ''){$interests = '';}else{$interests = $_POST['interest'];}
-if($_POST['language'] == ''){$languages = '';}else{$languages = $_POST['language'];}
+if($_POST['interest'] == ''){$interests = 'NULL';}else{$interests = $_POST['interest'];}
+if($_POST['language'] == ''){$languages = 'NULL';}else{$languages = $_POST['language'];}
 
 
 if($_POST['potentialanswer1'] == ''){$potentialanswer1 = '';}else{$potentialanswer1 = $_POST['potentialanswer1'];}

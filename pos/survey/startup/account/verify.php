@@ -127,7 +127,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
 
 
   
-<form class="form-signin" method="post">
+<form class="form-signup" method="post">
 
   <input type="hidden" name="passwordpass" id="passwordpass"/>
 

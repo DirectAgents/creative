@@ -164,7 +164,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
       </ul>
       <ul class="external-logged-in">
       
-         <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000);?>">LIST YOUR IDEA</a></li>
+         <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000);?>">List Your Idea</a></li>
 
         <li class="my-projects"><a href="<?php echo BASE_PATH; ?>/startup">My Ideas</a></li>
 

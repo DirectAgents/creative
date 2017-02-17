@@ -215,7 +215,7 @@ jq(document).ready(function(){
             <div class="wrapper">
             
               <div class="in-person">
-               <label for="in-person"><h2><?php echo $rowproject['Name']; ?></h2></label>
+               <label for="in-person"><h2 class="grey"><?php echo $rowproject['Name']; ?></h2></label>
                <p>&nbsp;</p>
 
              </div>

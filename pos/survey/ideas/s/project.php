@@ -14,6 +14,7 @@ $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE Proje
 $rowproject = mysqli_fetch_array($Project);
 
 
+
 $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."' AND EnabledorDisabled = 'Enabled'");
 $rowscreening = mysqli_fetch_array($Screening);
 
@@ -44,31 +45,34 @@ $startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE start
 $rowstartup = mysqli_fetch_array($startup);
 
 
-
+if(isset($_GET['p'])){
 $participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['p']."'");
 $rowparticipant= mysqli_fetch_array($participant);
-
+}
 
 
 $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."' AND userID='".$_SESSION['startupSession']."' ");
 $screeningquestion = mysqli_fetch_array($Screening);
 
 
+if(isset($_GET['p'])){
 $sqlparticipantanswer = mysqli_query($connecDB,"SELECT * FROM tbl_participant_potentialanswer WHERE userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowparticipantanswer=mysqli_fetch_array($sqlparticipantanswer);
+}
 
 
-
+if(isset($_GET['p'])){
 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowmeetingrequest=mysqli_fetch_array($sql);
+}
 
-
+if(isset($_GET['p'])){
 $sqlupcoming = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowmeetingupcoming=mysqli_fetch_array($sqlupcoming);
-
+}
 
 
 
@@ -192,6 +196,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '
 
 
 
+if(isset($_GET['p'])){
 
 $results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_GET['p']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC");
 
@@ -208,6 +213,7 @@ if(mysqli_num_rows($startup)<0)
 
 }
 
+}
 
 
 
@@ -463,7 +469,9 @@ $(document).ready(function() {
 
 
 
-<?php if(mysqli_num_rows($results) == 0) { ?>
+<?php 
+if(isset($_GET['p'])){
+if(mysqli_num_rows($results) == 0) { ?>
 
 
 <center><h3><?php echo $rowparticipant['FirstName']; ?> does not qualify for this idea to provide feedback</h3></center>
@@ -491,6 +499,8 @@ You have sent <?php echo $rowparticipant['FirstName']; ?> a request to meet.
 
 
 
+
+
 <?php if(mysqli_num_rows($sqlupcoming) == 1) { ?>
 
 <div class="col-lg-11" style="padding:0px;">
@@ -506,9 +516,10 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 <?php } ?>
 
+<?php } ?>
 
+<?php } ?>
   
-
 
 
  <div class="col-lg-3">
@@ -532,7 +543,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
     <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
     
-<div class="col-lg-7"><h3>Payout</h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of <?php echo $rowparticipant['FirstName']; ?>'s time to meet with you</span></div>
+<div class="col-lg-7"><h3>Payout</h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes <?php if(isset($_GET['p'])){ ?>of <?php echo $rowparticipant['FirstName']; ?>'s time to meet with you<?php } ?></span></div>
 
 
 <?php }else{ ?>
@@ -565,9 +576,9 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 
     <div class="col-lg-12">
-      
-      <h3>What is the idea?</h3>
-      <p><?php echo $rowproject['Name']; ?></p>
+      <p>&nbsp;</p>
+      <h4>What is the idea?</h4>
+      <p class="grey"><?php echo $rowproject['Name']; ?></p>
      
       </div>
 
@@ -580,8 +591,8 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
  <?php if($rowproject['Details'] != ''){?> 
 
     <div class="col-lg-12">
-    <h3>What makes this idea special?</h3>
-      <p><?php echo $rowproject['Details']; ?></p>
+    <h4>What makes this idea special?</h4>
+      <p class="grey"><?php echo $rowproject['Details']; ?></p>
     </div>
   
   <?php } ?>
@@ -591,8 +602,8 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
   <?php if($rowproject['Agenda_One'] != ''){?> 
   
     <div class="col-lg-12">
-      <h3>What will be discussed during the meeting?</h3>
-      <p><?php echo $rowproject['Agenda_One']; ?></p>
+      <h4>What will be discussed during the meeting?</h4>
+      <p class="grey"><?php echo $rowproject['Agenda_One']; ?></p>
     </div>
   
   <?php } ?>
@@ -603,8 +614,8 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
   
     <div class="col-lg-12">
     <p>&nbsp;</p>
-      <h3>You asked the following Screening Question</h3>
-      <p><?php echo $screeningquestion['ScreeningQuestion']; ?></p>
+      <h4>You asked the following Screening Question</h4>
+      <p class="grey"><?php echo $screeningquestion['ScreeningQuestion']; ?></p>
       <p><h4>You accept the following Answer:</h4></p>
       <p>
       <?php if($screeningquestion['Accepted'] == 'Potential Answer 1'){echo $screeningquestion['PotentialAnswer1'];} ?>
@@ -849,7 +860,7 @@ echo '<br>';
   <?php } ?>
 
 
-
+<?php if(isset($_GET['p'])){ ?>
 
  <div class="col-lg-12">
 
@@ -1052,6 +1063,8 @@ echo '<br>';
 
 </div>
 
+<?php } ?>
+
 
 <p>&nbsp;</p>
 
@@ -1069,7 +1082,7 @@ echo '<br>';
 <?php } ?>
 
 
-<?php } ?>
+
 
 
 

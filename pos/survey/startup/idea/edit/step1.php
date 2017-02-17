@@ -400,7 +400,7 @@ $("#languages").blur(function (e) {
               <!--<h3>In Person</h3>-->
                <div class="form-group">
               <div class="in-person">
-               <input class="form-control" name="projectname" type="text" value="<?php echo $rowproject['Name'];?>"/>
+               <input class="form-control" name="projectname" type="text" value="<?php echo $rowproject['Name'];?>" placeholder="e.g  Service that helps people nearby to eat together"/>
               </div>
                
              </div>
