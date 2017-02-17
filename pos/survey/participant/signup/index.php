@@ -396,7 +396,7 @@ $content = new SendGrid\Content("text/html", '
                                               <tr>
                                                 <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
                                                 
-                                                 <a href="http://localhost/creative/pos/survey/startup/account/verify.php?id='.$id.'&code='.$code.'">
+                                                 <a href="http://localhost/creative/pos/survey/participant/account/verify.php?id='.$id.'&code='.$code.'">
                                                  <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
                                                 <img alt="Logo" src="http://labfy.com/circl/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
                                                 </div>
