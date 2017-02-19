@@ -1148,7 +1148,7 @@ foreach($days as $day){
 <p>&nbsp;</p>
 
 
-<?php if(mysqli_num_rows($Screening)==1) { ?>
+<?php if(mysqli_num_rows($Screening)==1 && $rowscreening['EnabledorDisabled'] == 'Enabled') { ?>
 
 
  <input type="hidden" id="screeningquestion_required" name="screeningquestion_required" style="display:block" value="Yes"/> 

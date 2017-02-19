@@ -16,7 +16,7 @@ $reg_user = new STARTUP();
 
 if($reg_user->is_logged_in()!="")
 {
-  $reg_user->redirect('../index');
+  $reg_user->redirect('../index.php');
 }
 
 

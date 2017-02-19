@@ -257,7 +257,7 @@ $row3 = mysqli_fetch_array($sql3);
 <h4>Accept payments in <u>cash</u> if you don't qualify above </h4>
 <h4>Note.: If you accept payments in cash we can't track your pay history</h4>
 <p>&nbsp;</p>
-<p><a href="#" class="wepay-widget-button">I want to accept payments in cash</a></p>
+<p><a href="#" id="pay-in-cash" class="wepay-widget-button">I want to accept payments in cash</a></p>
 
 <script type="text/javascript">
 

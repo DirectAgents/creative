@@ -23,7 +23,7 @@ $user_login = new PARTICIPANT();
 
 if($user_login->is_logged_in()!="")
 {
-  $user_login->redirect('../index.php');
+  $user_login->redirect('../meetings/');
 }
 
 if(isset($_POST['btn-login']))
