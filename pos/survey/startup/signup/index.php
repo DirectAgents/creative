@@ -12,7 +12,7 @@ require_once '../../class.startup.php';
 
 include_once("../../config.php");
 
-$reg_user = new startup();
+$reg_user = new STARTUP();
 
 if($reg_user->is_logged_in()!="")
 {
@@ -256,8 +256,7 @@ if($_POST['passwordpass'] == 'good'){
 
   $firstname = trim($_POST['txtfirstname']);
   $lastname = trim($_POST['txtlastname']);
-  $city = trim($_POST['txtcity']);
-  $state = trim($_POST['txtstate']);
+  $zip = trim($_POST['txtzip']);
   $email = trim($_POST['txtemail']);
   $upass = trim($_POST['txtpass']);
   $code = md5(uniqid(rand()));
@@ -277,7 +276,7 @@ if($_POST['passwordpass'] == 'good'){
   }
   else
   {
-    if($reg_user->register($firstname,$lastname,$city,$state,$email,$upass,$code))
+    if($reg_user->register($firstname,$lastname,$zip,$email,$upass,$code))
     {     
       $id = $reg_user->lasdID();    
       $key = base64_encode($id);
@@ -578,85 +577,26 @@ $response = $sg->client->mail()->send()->post($mail);
 
     <div class="name-field col-md-6">
       <div class="form-group">
-    <input type="text" name="txtfirstname" id="txtfirstname" class="txtfirstname" placeholder="First Name *" required/>
+    <input type="text" name="txtfirstname" id="txtfirstname" class="txtfirstname" placeholder="First Name *" oninvalid="this.setCustomValidity('Enter Your First Name')" oninput="setCustomValidity('')" required/>
     </div>
   </div>
     
     <div class="name-field col-md-6">
       <div class="form-group">
-    <input type="text" name="txtlastname" id="txtlastname" class="txtlastname" placeholder="Last Name *" required/>
+    <input type="text" name="txtlastname" id="txtlastname" class="txtlastname" placeholder="Last Name *" oninvalid="this.setCustomValidity('Enter Your Last Name')" oninput="setCustomValidity('')" required/>
     </div>
    </div>
 
-   <div class="name-field col-md-6">
+   <div class="name-field col-lg-12">
       <div class="form-group">
-    <input type="text" name="txtcity" id="txtcity" class="txtcity" placeholder="City *" required/>
+    <input type="text"  placeholder="Zip *" pattern="[0-9]{5}"  name="txtzip" id="txtzip" class="txtzip" oninvalid="this.setCustomValidity('Enter a valid Zip Code')" oninput="setCustomValidity('')" required/>
     </div>
   </div>
     
+   
     <div class="name-field col-md-6">
       <div class="form-group">
-     <select name="txtstate" id="txtstate">
-  <option value="AL">Alabama</option>
-  <option value="AK">Alaska</option>
-  <option value="AZ">Arizona</option>
-  <option value="AR">Arkansas</option>
-  <option value="CA">California</option>
-  <option value="CO">Colorado</option>
-  <option value="CT">Connecticut</option>
-  <option value="DE">Delaware</option>
-  <option value="DC">District Of Columbia</option>
-  <option value="FL">Florida</option>
-  <option value="GA">Georgia</option>
-  <option value="HI">Hawaii</option>
-  <option value="ID">Idaho</option>
-  <option value="IL">Illinois</option>
-  <option value="IN">Indiana</option>
-  <option value="IA">Iowa</option>
-  <option value="KS">Kansas</option>
-  <option value="KY">Kentucky</option>
-  <option value="LA">Louisiana</option>
-  <option value="ME">Maine</option>
-  <option value="MD">Maryland</option>
-  <option value="MA">Massachusetts</option>
-  <option value="MI">Michigan</option>
-  <option value="MN">Minnesota</option>
-  <option value="MS">Mississippi</option>
-  <option value="MO">Missouri</option>
-  <option value="MT">Montana</option>
-  <option value="NE">Nebraska</option>
-  <option value="NV">Nevada</option>
-  <option value="NH">New Hampshire</option>
-  <option value="NJ">New Jersey</option>
-  <option value="NM">New Mexico</option>
-  <option value="NY">New York</option>
-  <option value="NC">North Carolina</option>
-  <option value="ND">North Dakota</option>
-  <option value="OH">Ohio</option>
-  <option value="OK">Oklahoma</option>
-  <option value="OR">Oregon</option>
-  <option value="PA">Pennsylvania</option>
-  <option value="RI">Rhode Island</option>
-  <option value="SC">South Carolina</option>
-  <option value="SD">South Dakota</option>
-  <option value="TN">Tennessee</option>
-  <option value="TX">Texas</option>
-  <option value="UT">Utah</option>
-  <option value="VT">Vermont</option>
-  <option value="VA">Virginia</option>
-  <option value="WA">Washington</option>
-  <option value="WV">West Virginia</option>
-  <option value="WI">Wisconsin</option>
-  <option value="WY">Wyoming</option>
-</select>       
-    </div>
-   </div>
-
-
-
-    <div class="name-field col-md-6">
-      <div class="form-group">
-    <input type="email" name="txtemail" id="txtemail" placeholder="Email Address *" required/>
+    <input type="email" name="txtemail" id="txtemail" placeholder="Email Address *" oninvalid="this.setCustomValidity('Enter a valid Email Address')" oninput="setCustomValidity('')" required/>
     </div>
   </div>
     
@@ -867,6 +807,9 @@ echo 'id: ' . $user['id'];
        <script src="<?php echo BASE_PATH; ?>/bootstrap/js/jquery-1.9.1.min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/bootstrap/js/bootstrap.min.js"></script>
     
+
+
+
     
   </body>
 </html>

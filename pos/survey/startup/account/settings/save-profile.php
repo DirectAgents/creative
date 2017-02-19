@@ -18,6 +18,38 @@ if($_POST['emailnotifications'] == ''){$emailnotifications = 'NULL';}else{$email
  
 
 
+if($_POST['linkedin'] != ''){
+if(strpos($_POST['linkedin'], "http://") !== false){
+ $linkedin= $_POST['linkedin'];
+}else{
+ $linkedin= 'http://'.$_POST['linkedin'];
+}
+}else{
+  $linkedin = '';
+}
+
+
+if($_POST['twitter'] != ''){
+if(strpos($_POST['twitter'], "http://") !== false){
+  $twitter= $_POST['twitter'];
+}else{
+  $twitter= 'http://'.$_POST['twitter'];
+}
+}else{
+  $twitter= '';
+}
+
+if($_POST['facebook'] != ''){
+if(strpos($_POST['facebook'], "http://") !== false){
+  $facebook= $_POST['facebook'];
+}else{
+  $facebook= 'http://'.$_POST['facebook'];
+}
+}else{
+  $facebook= '';
+}
+
+
 //$all_game_value = implode(",",$_POST['testing']);
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
@@ -28,9 +60,9 @@ if($_POST['emailnotifications'] == ''){$emailnotifications = 'NULL';}else{$email
   City='".$_POST['city']."',
   State='".$_POST['state']."',
   Bio='".$_POST['bio']."',
-  Linkedin='".$_POST['linkedin']."',
-  Twitter='".$_POST['twitter']."',
-  Facebook='".$_POST['facebook']."',
+  Linkedin='".$linkedin."',
+  Twitter='".$twitter."',
+  Facebook='".$facebook."',
   EmailNotifications='".$emailnotifications."'
 
   WHERE userID='".$_SESSION['startupSession']."'");

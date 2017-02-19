@@ -374,7 +374,8 @@ header#main-header li.create-new-project a {
   padding: 5px 10px 28px 10px;
   border: 1px solid #1A82E2;
   color: #1A82E2 !important;
-  background-color: #fff
+  background-color: #fff;
+  margin-right:20px;
 }
 
 header#main-header li.create-new-project a:hover {

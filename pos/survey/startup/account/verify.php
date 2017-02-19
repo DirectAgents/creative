@@ -1,12 +1,31 @@
 <?php
+
+
+session_start();
+
+ob_start();
+
+
+
 require_once '../../base_path.php';
 require_once '../../class.startup.php';
+
+include_once("../../config.php");
+
 $user = new STARTUP();
 
 if(empty($_GET['id']) && empty($_GET['code']))
 {
 	$user->redirect('../login');
 }
+
+
+
+
+
+
+
+
 
 if(isset($_GET['id']) && isset($_GET['code']))
 {
@@ -98,9 +117,14 @@ if(isset($_GET['id']) && isset($_GET['code']))
     
 <div class="container">
 
-<?php if(isset($msg)) echo $msg;  ?>
+
+
+
+
+
+   <?php if(isset($msg)) echo $msg;  ?>
   <div class="logo">
-    <h1>CIRCL</h1>
+   <a href="<?php echo BASE_PATH; ?>"><h1>CIRCL</h1></a>
   </div>
 </div>
 
@@ -111,46 +135,6 @@ if(isset($_GET['id']) && isset($_GET['code']))
 
 
 
-<div class="form">
-
-<div class="info">
-  <h1>SIGNUP AS A STARTUP</h1>
-</div>
-
-<div class="loginas">
-  <h3>Are you a <span class="role">Participant</span>? <a href="<?php echo BASE_PATH; ?>/participant/signup/">Click here</a></h3>
-</div>
-
-<!--  <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>-->
-
-
-
-
-  
-<form class="form-signup" method="post">
-
-  <input type="hidden" name="passwordpass" id="passwordpass"/>
-
-    <div class="name-field col-md-6">
-      <div class="form-group">
-    <input type="text" name="txtfirstname" id="txtfirstname" class="txtfirstname" placeholder="First Name *" required/>
-    </div>
-  </div>
-    
-    <div class="name-field col-md-6">
-      <div class="form-group">
-    <input type="text" name="txtlastname" id="txtlastname" class="txtlastname" placeholder="Last Name *" required/>
-    </div>
-   </div>
-    
-    <input type="email" name="txtemail" id="txtemail" placeholder="Email Address *" required/>
-    <input type="password" name="txtpass" id="txtpass" placeholder="Password *" required/><span id="result"></span>
-    <button type="submit" name="btn-signup" id="btn-signup">SIGN UP</button>
-    <p class="message">Already registered? <a href="../login">Log in</a></p>
-</form>
-    
-
-</div>
 
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
@@ -159,10 +143,12 @@ if(isset($_GET['id']) && isset($_GET['code']))
        <script src="<?php echo BASE_PATH; ?>/bootstrap/js/jquery-1.9.1.min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/bootstrap/js/bootstrap.min.js"></script>
     
+
+
+
     
   </body>
 </html>
-
 
 
 

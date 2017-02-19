@@ -33,7 +33,7 @@ if(isset($_POST['btn-login']))
   
   if($user_login->login($email,$upass))
   {
-    $user_login->redirect('../index.php');
+    $user_login->redirect('../meetings/');
   }
 }
 

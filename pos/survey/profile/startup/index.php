@@ -311,8 +311,10 @@ if($row['profile_image'] != ''){
 
 
 
-
+<?php if($row['Linkedin'] != '' || $row['Twitter'] != '' || $row['Facebook'] != '') { ?>
 <div class="thetitle">Social</div>
+<?php } ?> 
+
 <?php if($row['Linkedin'] != '') { ?>
       <a href="<?php echo $row['Linkedin']; ?>" target="_blank">
      <img src="<?php echo BASE_PATH; ?>/images/icons/linkedin.png" width="25"/>
@@ -366,7 +368,7 @@ if($row['profile_image'] != ''){
 
 if(!empty($_SESSION['participantSession'])){
 
-echo '<div class="thetitle">Projects posted by '.$row['FirstName'].' you qualify to participate:</div>';
+echo '<div class="thetitle">Ideas posted by '.$row['FirstName'].' you qualify to participate:</div>';
 
 
 $sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."' ORDER BY id DESC");
@@ -811,7 +813,7 @@ if(empty($posts)){
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Projects</div>
+<div class="empty-projects">No Ideas</div>
   <div class="create-one-here-box">
       <div class="create-one">
         <button class="slide_open create-one-btn">Create one here</button>
@@ -841,7 +843,7 @@ echo '<div class="row">
 
 if(!empty($_SESSION['startupSession'])){
 
-echo '<div class="thetitle">Projects:</div>';
+echo '<div class="thetitle">Ideas:</div>';
 
 
 if($_SESSION['startupSession'] == $_GET['id']){
@@ -1010,7 +1012,7 @@ echo '</a>';
   //if projects exists
 
 
-} 
+} else{echo "No ideas posted yet";}
 
 }
 
