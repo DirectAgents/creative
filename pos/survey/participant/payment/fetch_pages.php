@@ -8,6 +8,11 @@ require_once '../../class.startup.php';
 
 <!DOCTYPE html>
 <html lang="en" id="features" class="tablet mobile">
+
+
+
+
+
     
     <head>
 
@@ -87,6 +92,10 @@ $( "#payment-received" ).load( "payment-received.php" );
       $( "#bankaccount" ).load( "bankaccount.php" );
 
     });
+
+     
+
+    
 
    
 

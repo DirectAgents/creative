@@ -31,6 +31,8 @@ if($row_participant['account_id'] != '' &&  $row_participant['Cash_Only'] != 'Ye
 
 
 
+
+
 <?php
 
   // WePay PHP SDK - http://git.io/mY7iQQ
@@ -258,6 +260,53 @@ $row3 = mysqli_fetch_array($sql3);
 <h4>Note.: If you accept payments in cash we can't track your pay history</h4>
 <p>&nbsp;</p>
 <p><a href="#" id="pay-in-cash" class="wepay-widget-button">I want to accept payments in cash</a></p>
+
+<input type="hidden" name="userid" value="<?php echo $_SESSION['participantSession']; ?>"/>
+
+<div id="result"></div>
+
+<script>
+$(document).ready(function() {
+
+
+$("#pay-in-cash").click(function (e) { //user clicks on button
+
+e.preventDefault();
+
+var proceed = true;
+
+
+if(proceed) //everything looks good! proceed...
+        {
+            //get input field values data to be sent to server
+            post_data = {
+                'userid'     : $('input[name=userid]').val()
+
+            };
+
+
+ //Ajax post data to server
+            $.post('save-cash-only.php', post_data, function(response){  
+                if(response.type == 'error'){ //load json data from server and output message     
+                    output = '<div class="error">'+response.text+'</div>';
+                }else{
+                    
+                    output = '<div class="success">'+response.text+'</div>';
+                    //reset values in all input fields
+                    //$("#result").slideUp();
+                }
+               $("#result").hide().html(output).slideDown();
+            }, 'json');
+        }
+    });
+});
+    
+   
+
+
+</script>
+
+
 
 <script type="text/javascript">
 

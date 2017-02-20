@@ -66,7 +66,7 @@ $emailnotifications=explode(',',$row['EmailNotifications']);
 <?php include("../../header.php"); ?>
     
 
-<script src="../account/js/script.js"></script>
+<script src="../js/script.js"></script>
 
 
 <!--JAVASCRIPT-->
