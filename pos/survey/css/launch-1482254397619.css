@@ -4319,6 +4319,10 @@ outline:0!important
 }
 .articleList li{
 	margin: 1.0em 0;
+	color: #686868;
+	font-size: 15px;
+	line-height: 22px;
+	font-family: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 .articleList a {
 	line-height: 1.5em;
@@ -5323,3 +5327,6 @@ footer a:after {
 	content: none
 }
 }
+
+
+.grey{color:#666;}

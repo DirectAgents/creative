@@ -272,7 +272,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
   <div class="logo">
-   <a href="<?php echo BASE_PATH; ?>"><h1>Circl</h1></a>
+   <a href="<?php echo BASE_PATH; ?>"><img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/></a>
   </div>
 </div>
 

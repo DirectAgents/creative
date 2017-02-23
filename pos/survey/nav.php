@@ -152,7 +152,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
 ?>
 
- <h1><a href="<?php echo BASE_PATH; ?>" title="Stripe"></a></h1>
+ <h1><a href="<?php echo BASE_PATH; ?>" title="Valify"></a></h1>
 
 <nav>
       <ul class="pages">

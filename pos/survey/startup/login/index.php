@@ -216,7 +216,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+   <title>Valify Startup Login</title>
     
     
     <link rel="stylesheet" href="../../css/reset.css">
@@ -279,7 +279,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
   <div class="logo">
-   <a href="<?php echo BASE_PATH; ?>"><h1>Circl</h1></a>
+   <a href="<?php echo BASE_PATH; ?>"><img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/></a>
   </div>
 </div>
 

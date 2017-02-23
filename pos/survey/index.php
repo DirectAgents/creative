@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
 
-    <title>Circl Launch</title>
+    <title>Valify Launch</title>
 
     <link rel="icon" href="../public/img/favicon.ico" type="image/x-icon"/>
 
@@ -15,23 +15,23 @@
     <meta name="description" content="The modern way to start a scalable, high-growth business" />
 
     <meta name="google" content="nositelinkssearchbox" />
-    <meta itemprop="name" content="Circl Launch">
+    <meta itemprop="name" content="Valify Launch">
     <meta itemprop="image" content="/public/img/logo.png">
 
-    <meta name="twitter:site" content="@Circlly">
-    <meta name="twitter:title" content="Circl Launch">
+    <meta name="twitter:site" content="@Valify">
+    <meta name="twitter:title" content="Valify Launch">
     <meta name="twitter:description" content="The modern way to start a scalable, high-growth business">
-    <meta name="twitter:creator" content="@Circlly">
+    <meta name="twitter:creator" content="@Valify">
 
-    <meta property="og:url" content="https://launch.Circl.com/start">
-    <meta property="og:title" content="Circl Launch">
-    <meta property="og:image" content="https://launch.Circl.com/public/img/logo-Circllaunch-og.png">
+    <meta property="og:url" content="https://valifyit.com">
+    <meta property="og:title" content="Valify Launch">
+    <meta property="og:image" content="https://launch.valifyit.com/public/img/logo-Valifylaunch-og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:description" content="The modern way to start a scalable, high-growth business">
-    <meta property="og:site_name" content="Circl Launch">
+    <meta property="og:site_name" content="Valify Launch">
     <meta property="og:locale" content="en_US">
-    <meta property="article:author" content="https://www.facebook.com/Circl-246116808757618">
+    <meta property="article:author" content="https://www.facebook.com/Valify-246116808757618">
     <meta property="article:section" content="Technology">
 
   
@@ -311,12 +311,12 @@ $(document).ready(function() {
         </svg>
       </div>
       <div class="prop-text">
-        <h2 class="title">Title here</h2>
-        <span class="description">Subtitle here</span>
+        <h2 class="title">Get Comfortable</h2>
+        <span class="description">Validate your idea</span>
         <ul>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Be sure your idea is something your customers want to use</li>
+          <li>Share your idea with the world</li>
+          <li>Find out if your idea stands out with the competition</li>
         </ul>
       </div>
     </div>
@@ -431,12 +431,12 @@ $(document).ready(function() {
         </svg>
       </div>
       <div class="prop-text">
-        <h2 class="title">Title here</h2>
-        <span class="description">Subtitle here</span>
+        <h2 class="title">Get Connected</h2>
+        <span class="description">Reach out to your target market</span>
         <ul>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Post and share your idea on valify</li>
+          <li>Get connected to potential customers</li>
+          <li>Arrange to meet to discuss your latest spark </li>
         </ul>
       </div>
     </div>
@@ -765,12 +765,12 @@ $(document).ready(function() {
         </svg>
       </div>
       <div class="prop-text">
-        <h2 class="title">Title here</h2>
-        <span class="description">Subtitle here</span>
+        <h2 class="title">Get Feedback</h2>
+        <span class="description">Hear direct from your audience</span>
         <ul>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+          <li>Hear what your target market really think </li>
+          <li>Pay them for their time</li>
+          <li>Get to work equipped with the feedback you need</li>
         </ul>
       </div>
     </div>
@@ -780,7 +780,7 @@ $(document).ready(function() {
       ng-click="vm.toggle()"
       ng-class="{active: vm.cards}">
   
-      <h2 class="title">Features</h2>
+      <h2 class="title">Benefits</h2>
 
       <div class="wrapper">
 
@@ -794,9 +794,9 @@ $(document).ready(function() {
               <div class="icon-features">
                <img src="img/features/lab.png"/>
               </div>
-              <h2 class="title">Incorporate and set up your company</h2>
+              <h2 class="title">Post your idea</h2>
               <span class="description">
-                  Begin as an investor-friendly Delaware C-Corp
+                  share your idea or project with the public
               </span>
               <span class="learn-more"><a href="#">Click to learn more &raquo;</a></span>
   
@@ -811,29 +811,14 @@ $(document).ready(function() {
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.33 69.33"><defs><style>.cls-2-1{fill:#cef0e8;}.cls-2-2,.cls-2-4{fill:#fff;}.cls-2-2,.cls-2-3,.cls-2-4{stroke:#26a990;stroke-miterlimit:10;}.cls-2-2{stroke-width:0.75px;}.cls-2-3{fill:#9ae0d0;}.cls-2-3,.cls-2-4{stroke-width:0.5px;}</style></defs><title>icon-2</title><g id="Layer_2" data-name="Layer 2"><g id="icons_color" data-name="icons color"><circle class="cls-2-1" cx="34.67" cy="34.67" r="34.67"/><rect class="cls-2-2" x="20" y="31.15" width="3.26" height="13.61"/><rect class="cls-2-2" x="46.07" y="31.15" width="3.26" height="13.61"/><rect class="cls-2-2" x="37.38" y="31.15" width="3.26" height="13.61"/><rect class="cls-2-2" x="28.69" y="31.15" width="3.26" height="13.61"/><path class="cls-2-2" d="M51.5,45.84v1.09H17.83V45.84a1.09,1.09,0,0,1,1-1.08H50.53A1.09,1.09,0,0,1,51.5,45.84Z"/><path class="cls-2-2" d="M53.68,48V49.1h-38V48a1.09,1.09,0,0,1,1.09-1.09H52.59A1.08,1.08,0,0,1,53.68,48Z"/><path class="cls-2-2" d="M51.5,30.06a1.08,1.08,0,0,1-1.08,1.09H18.92a1.09,1.09,0,0,1,0-2.17h31.5A1.08,1.08,0,0,1,51.5,30.06Z"/><path class="cls-2-2" d="M35.62,15.26a1.34,1.34,0,0,0-1.9,0L20,29H49.33Z"/><path class="cls-2-3" d="M34.67,18.72l7.4,7.4H27.27Z"/><path class="cls-2-4" d="M34.67,24.65A1.38,1.38,0,1,1,36,23.27,1.38,1.38,0,0,1,34.67,24.65Z"/></g></g></svg>
               </div>
-              <h2 class="title">Corporate banking and credit card</h2>
-              <span class="description">Designed with startups in mind, with no fees or minimums</span>
+              <h2 class="title">NDA</h2>
+              <span class="description">protect your idea with a NDA before you meet</span>
               <span class="learn-more">Click to learn more &raquo;</span>
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
-            <ul>
-              <li>Instantly get a company bank account at Metropolitan Capital Bank</li>
-              <li>Receive a business debit card and corporate credit card</li>
-              <li>Accept payments through an online payment processor</li>
-              <li>Direct integration into your accounting platform for seamless bookkeeping</li>
-            </ul>
+           
   
-            <div class="faqs">
-                <div class="faq">
-                    <span class="question">How long does it take?</span>
-                    <span class="answer">The approval process is quick, and there’s no need to visit a bank branch. You’ll be able to start making purchases immediately.
-                    </span>
-                </div>
-                <div class="faq">
-                    <span class="question">Why should I use a corporate bank account?</span>
-                    <span class="answer">Corporate bank accounts are necessary for proper accounting and to avoid the loss of liability protection that arises when commingling your personal accounts with your legal corporate entity. Metropolitan Capital Bank is a trusted, leading bank for startups.</span>
-                </div>
-            </div>
+          
           </div>
   
           <div class="feature"
@@ -845,29 +830,14 @@ $(document).ready(function() {
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 72.53 72.25"><defs><style>.cls-3-1{fill:#2ec3a1;}.cls-3-2,.cls-3-7{fill:#fff;}.cls-3-2,.cls-3-4,.cls-3-9{stroke:#26a990;stroke-width:0.75px;}.cls-3-3{fill:#9ae0d0;}.cls-3-4,.cls-3-6{fill:#cef0e8;}.cls-3-5{clip-path:url("index.html#clip-path");}.cls-3-8{clip-path:url("index.html#clip-path-2");}.cls-3-9{fill:none;}.cls-3-10{clip-path:url("index.html#clip-path-3");}.cls-3-11{clip-path:url("index.html#clip-path-4");}.cls-3-12{clip-path:url("index.html#clip-path-5");}.cls-3-13{clip-path:url("index.html#clip-path-6");}.cls-3-14{clip-path:url("index.html#clip-path-7");}.cls-3-15{clip-path:url("index.html#clip-path-8");}.cls-3-16{clip-path:url("index.html#clip-path-9");}.cls-3-17{clip-path:url("index.html#clip-path-10");}.cls-3-18{clip-path:url("index.html#clip-path-11");}.cls-3-19{clip-path:url("index.html#clip-path-12");}.cls-3-20{clip-path:url("index.html#clip-path-13");}.cls-3-21{clip-path:url("index.html#clip-path-14");}.cls-3-22{clip-path:url("index.html#clip-path-15");}.cls-3-23{clip-path:url("index.html#clip-path-16");}.cls-3-24{clip-path:url("index.html#clip-path-17");}.cls-3-25{clip-path:url("index.html#clip-path-18");}.cls-3-26{clip-path:url("index.html#clip-path-19");}</style><clipPath id="clip-path"><ellipse class="cls-3-1" cx="36.27" cy="36.12" rx="34.77" ry="34.63"/></clipPath><clipPath id="clip-path-2"><rect class="cls-3-2" x="20.91" y="27.64" width="30.74" height="30.62"/></clipPath><clipPath id="clip-path-3"><rect class="cls-3-1" x="24.07" y="30.68" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-4"><rect class="cls-3-1" x="31.01" y="30.68" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-5"><rect class="cls-3-3" x="37.97" y="30.68" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-6"><rect class="cls-3-3" x="44.91" y="30.68" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-7"><rect class="cls-3-1" x="24.07" y="37.6" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-8"><rect class="cls-3-1" x="31.01" y="37.6" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-9"><rect class="cls-3-3" x="37.97" y="37.6" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-10"><rect class="cls-3-3" x="44.91" y="37.6" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-11"><rect class="cls-3-3" x="24.07" y="44.52" width="3.79" height="3.78"/></clipPath><clipPath id="clip-path-12"><rect class="cls-3-3" x="31.01" y="44.52" width="3.79" height="3.78"/></clipPath><clipPath id="clip-path-13"><rect class="cls-3-3" x="37.97" y="44.52" width="3.79" height="3.78"/></clipPath><clipPath id="clip-path-14"><rect class="cls-3-3" x="24.07" y="51.45" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-15"><rect class="cls-3-3" x="31.01" y="51.45" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-16"><rect class="cls-3-3" x="37.97" y="51.45" width="3.79" height="3.77"/></clipPath><clipPath id="clip-path-17"><rect class="cls-3-1" x="44.91" y="44.52" width="3.79" height="10.7"/></clipPath><clipPath id="clip-path-18"><rect class="cls-3-2" x="20.91" y="14.01" width="30.74" height="13.63"/></clipPath><clipPath id="clip-path-19"><rect class="cls-3-4" x="24.07" y="16.91" width="24.42" height="7.84"/></clipPath></defs><title>icon-3</title><g id="Layer_2" data-name="Layer 2"><g id="icons_color" data-name="icons color"><ellipse class="cls-3-1" cx="36.27" cy="36.12" rx="34.77" ry="34.63"/><g class="cls-3-5"><rect class="cls-3-6" width="72.53" height="72.25"/></g><rect class="cls-3-7" x="20.91" y="27.64" width="30.74" height="30.62"/><g class="cls-3-8"><rect class="cls-3-2" x="19.41" y="26.15" width="33.73" height="33.6"/></g><rect class="cls-3-9" x="20.91" y="27.64" width="30.74" height="30.62"/><rect class="cls-3-1" x="24.07" y="30.68" width="3.79" height="3.77"/><g class="cls-3-10"><rect class="cls-3-1" x="22.57" y="29.19" width="6.78" height="6.76"/></g><rect class="cls-3-1" x="31.01" y="30.68" width="3.79" height="3.77"/><g class="cls-3-11"><rect class="cls-3-1" x="29.52" y="29.19" width="6.78" height="6.76"/></g><rect class="cls-3-3" x="37.97" y="30.68" width="3.79" height="3.77"/><g class="cls-3-12"><rect class="cls-3-3" x="36.47" y="29.19" width="6.77" height="6.76"/></g><rect class="cls-3-3" x="44.91" y="30.68" width="3.79" height="3.77"/><g class="cls-3-13"><rect class="cls-3-3" x="43.42" y="29.19" width="6.78" height="6.76"/></g><rect class="cls-3-1" x="24.07" y="37.6" width="3.79" height="3.77"/><g class="cls-3-14"><rect class="cls-3-1" x="22.57" y="36.11" width="6.78" height="6.76"/></g><rect class="cls-3-1" x="31.01" y="37.6" width="3.79" height="3.77"/><g class="cls-3-15"><rect class="cls-3-1" x="29.52" y="36.11" width="6.78" height="6.76"/></g><rect class="cls-3-3" x="37.97" y="37.6" width="3.79" height="3.77"/><g class="cls-3-16"><rect class="cls-3-3" x="36.47" y="36.11" width="6.77" height="6.76"/></g><rect class="cls-3-3" x="44.91" y="37.6" width="3.79" height="3.77"/><g class="cls-3-17"><rect class="cls-3-3" x="43.42" y="36.11" width="6.78" height="6.76"/></g><rect class="cls-3-3" x="24.07" y="44.52" width="3.79" height="3.78"/><g class="cls-3-18"><rect class="cls-3-3" x="22.57" y="43.03" width="6.78" height="6.76"/></g><rect class="cls-3-3" x="31.01" y="44.52" width="3.79" height="3.78"/><g class="cls-3-19"><rect class="cls-3-3" x="29.52" y="43.03" width="6.78" height="6.76"/></g><rect class="cls-3-3" x="37.97" y="44.52" width="3.79" height="3.78"/><g class="cls-3-20"><rect class="cls-3-3" x="36.47" y="43.03" width="6.77" height="6.76"/></g><rect class="cls-3-3" x="24.07" y="51.45" width="3.79" height="3.77"/><g class="cls-3-21"><rect class="cls-3-3" x="22.57" y="49.95" width="6.78" height="6.76"/></g><rect class="cls-3-3" x="31.01" y="51.45" width="3.79" height="3.77"/><g class="cls-3-22"><rect class="cls-3-3" x="29.52" y="49.95" width="6.78" height="6.76"/></g><rect class="cls-3-3" x="37.97" y="51.45" width="3.79" height="3.77"/><g class="cls-3-23"><rect class="cls-3-3" x="36.47" y="49.95" width="6.77" height="6.76"/></g><rect class="cls-3-1" x="44.91" y="44.52" width="3.79" height="10.7"/><g class="cls-3-24"><rect class="cls-3-1" x="43.42" y="43.03" width="6.78" height="13.68"/></g><rect class="cls-3-7" x="20.91" y="14.01" width="30.74" height="13.63"/><g class="cls-3-25"><rect class="cls-3-2" x="19.41" y="12.52" width="33.73" height="16.62"/></g><rect class="cls-3-9" x="20.91" y="14.01" width="30.74" height="13.63"/><rect class="cls-3-6" x="24.07" y="16.91" width="24.42" height="7.84"/><g class="cls-3-26"><rect class="cls-3-4" x="22.68" y="15.65" width="27.19" height="10.36"/></g><rect class="cls-3-9" x="24.07" y="16.91" width="24.42" height="7.84"/></g></g></svg>
               </div>
-              <h2 class="title">Accounting and bookkeeping handled</h2>
-              <span class="description">Your finances and expenses, set up and managed by real live experts</span>
+              <h2 class="title">Meet potential customers</h2>
+              <span class="description">choose who you want to share your idea with</span>
               <span class="learn-more">Click to learn more &raquo;</span>
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
-            <ul>
-              <li>Your bookkeeping team at Simplexity will handle all your accrual-based accounting</li>
-              <li>All transactions are coded for you</li>
-              <li>Keep track of finances with an included subscription to accounting software from Xero</li>
-              <li>Easily access invoicing, payments, financial reporting, and more</li>
-            </ul>
+        
   
-            <div class="faqs">
-                <div class="faq">
-                    <span class="question">Why accrual-based accounting?</span>
-                    <span class="answer">Investors and partners all prefer this method, so you’re always ready for quick due diligence and fundraising. Expenses are reported when the expense occurs, not when the expense is paid&mdash;this results in income statements that more accurately reflect company profitability and are GAAP-compliant.
-                    </span>
-                </div>
-                <div class="faq">
-                    <span class="question">Is it all right if I don’t know much about finance?</span>
-                    <span class="answer">Yes! Our bookkeeping partners at Simplexity are friendly and easy to work with. They’ll make sure you know everything you need to know.</span>
-                </div>
-            </div>
+       
           </div>
   
           <div class="feature"
@@ -879,29 +849,14 @@ $(document).ready(function() {
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70"><defs><style>.cls-4-1,.cls-4-2,.cls-4-5{fill:#cef0e8;}.cls-4-2,.cls-4-3,.cls-4-4,.cls-4-5,.cls-4-6,.cls-4-7{stroke:#26a990;stroke-miterlimit:10;}.cls-4-2{stroke-width:0.5px;}.cls-4-3{fill:#9ae0d0;}.cls-4-3,.cls-4-4,.cls-4-5,.cls-4-6{stroke-width:0.75px;}.cls-4-4{fill:#fff;}.cls-4-6{fill:#2ec3a1;}.cls-4-7{fill:none;stroke-width:1.25px;}</style></defs><title>icon-4</title><g id="Layer_2" data-name="Layer 2"><g id="icons_color" data-name="icons color"><circle class="cls-4-1" cx="35" cy="35" r="35"/><circle class="cls-4-2" cx="35" cy="35" r="13.56"/><path class="cls-4-3" d="M48.56,35a13.51,13.51,0,0,1-4,9.58l4,4A19.14,19.14,0,0,0,54.19,35H48.56Z"/><path class="cls-4-4" d="M35,21.45A13.56,13.56,0,0,1,48.56,35h5.64A19.2,19.2,0,0,0,35,15.81v5.64h0Z"/><path class="cls-4-5" d="M35,21.45V15.81a19,19,0,0,0-7.34,1.47l2.16,5.21A13.52,13.52,0,0,1,35,21.45Z"/><path class="cls-4-6" d="M44.58,44.59A13.55,13.55,0,1,1,29.81,22.48l-2.16-5.21A19.19,19.19,0,1,0,48.57,48.58Z"/><line class="cls-4-7" x1="30.23" y1="40.04" x2="40.25" y2="30.02"/><circle class="cls-4-7" cx="31.82" cy="31.58" r="2.26"/><circle class="cls-4-7" cx="38.66" cy="38.42" r="2.26"/></g></g></svg>
               </div>
-              <h2 class="title">Manage company ownership</h2>
-              <span class="description">Issue and manage stock from day one and avoid compliance issues</span>
+              <h2 class="title">Screening question</h2>
+              <span class="description">set up a screening question before you meet</span>
               <span class="learn-more">Click to learn more &raquo;</span>
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
-            <ul>
-              <li>Keep track of your company’s ownership structure through Circl Equity Management</li>
-              <li>Issue stock online without involving outside counsel</li>
-              <li>See how potential exits and funding rounds impact each stakeholder</li>
-              <li>Secure all information and documents in one auditable place</li>
-            </ul>
+          
   
-            <div class="faqs">
-                <div class="faq">
-                    <span class="question">Why do I need a cap table?</span>
-                    <span class="answer">Even if you’re the only person working on your project, you’ll need to keep track of who owns all the shares that represent ownership of your company. It will be necessary to have these records when you look for funding, hire employees, or explore an exit.
-                    </span>
-                </div>
-                <div class="faq">
-                    <span class="question">How can I issue stock through Circl Equity Management?</span>
-                    <span class="answer">Your stock documents will be built directly into Circl Equity Management to make issuance as simple as a few clicks. Any new stock grant will automatically generate paperwork that can be electronically signed by the stock recipient and yourself from within the platform.</span>
-                </div>
-            </div>
+       
           </div>
   
           <div class="feature"
@@ -913,28 +868,14 @@ $(document).ready(function() {
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.75 69.75"><defs><style>.cls-5-1{fill:#cef0e8;}.cls-5-2{fill:none;}.cls-5-2,.cls-5-3,.cls-5-5,.cls-5-6{stroke:#26a990;stroke-miterlimit:10;}.cls-5-2,.cls-5-5{stroke-width:0.5px;}.cls-5-3{fill:#fff;}.cls-5-3,.cls-5-6{stroke-width:0.75px;}.cls-5-4{fill:#26a990;}.cls-5-5{fill:#2ec3a1;}.cls-5-6{fill:#9ae0d0;}</style></defs><title>icon-5</title><g id="Layer_2" data-name="Layer 2"><g id="icons_color" data-name="icons color"><circle class="cls-5-1" cx="34.88" cy="34.88" r="34.88"/><polygon class="cls-5-2" points="27.91 35.1 22.36 24.83 16.81 35.1 27.91 35.1"/><path class="cls-5-3" d="M15.53,35.1a6.84,6.84,0,0,0,13.67,0H15.53Z"/><polygon class="cls-5-2" points="52.94 35.1 47.39 24.48 41.84 35.1 52.94 35.1"/><path class="cls-5-3" d="M40.55,35.1a6.84,6.84,0,0,0,13.67,0H40.55Z"/><path class="cls-5-4" d="M19.13,23.13a.9.9,0,0,0,0,1.8h13.5v-1.8Z"/><path class="cls-5-4" d="M51.26,23.39a.9.9,0,0,0-.64-.26H37.13v1.8h13.5a.9.9,0,0,0,.64-1.54Z"/><path class="cls-5-3" d="M32.63,47.71v-27a2.25,2.25,0,0,1,2.25-2.25h0a2.25,2.25,0,0,1,2.25,2.25v27h-4.5Z"/><circle class="cls-5-5" cx="34.88" cy="24.03" r="1"/><path class="cls-5-6" d="M47,49a1.35,1.35,0,0,0-1-.4H40.5v-.9H29.25v.9H23.71A1.35,1.35,0,0,0,22.36,50v1.35h25V50A1.35,1.35,0,0,0,47,49Z"/></g></g></svg>
               </div>
-              <h2 class="title">Legal expertise around the clock</h2>
-              <span class="description">Unlimited legal advice from the expert lawyers at RocketLawyer</span>
+              <h2 class="title">Title here</h2>
+              <span class="description">description here</span>
               <span class="learn-more">Click to learn more &raquo;</span>
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
-            <ul>
-              <li>Get startup legal advice in minutes with online Q&amp;A from RocketLawyer</li>
-              <li>Qualified legal counsel is always available to help</li>
-              <li>There’s no limit on the number of questions you can ask</li>
-            </ul>
+          
   
-            <div class="faqs">
-                <div class="faq">
-                    <span class="question">Did lawyers help build Circl Launch? Do they trust it?</span>
-                    <span class="answer">Yes! The startup and operating documents generated by Circl Launch are a comprehensive, integrated set that has been created and reviewed by leading startup law firms.
-                    </span>
-                </div>
-                <div class="faq">
-                    <span class="question">Are there any additional or hidden fees?</span>
-                    <span class="answer">No, unlimited online access to the lawyers at RocketLawyer is included with Circl Launch. In fact, Circl Launch helps you save on legal costs by helping you do everything right the first time. If you already work with legal counsel, we would be delighted to walk them through our platform and bring them into our legal network at no cost. </span>
-                </div>
-            </div>
+         
           </div>
   
           <div class="feature"
@@ -946,28 +887,13 @@ $(document).ready(function() {
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70"><defs><style>.cls-6-1,.cls-6-3{fill:#cef0e8;}.cls-6-2,.cls-6-7{fill:#fff;}.cls-6-2,.cls-6-3,.cls-6-4,.cls-6-5{stroke:#26a990;stroke-width:0.75px;}.cls-6-4{fill:#2ec3a1;}.cls-6-5{fill:#9ae0d0;}.cls-6-6{fill:#26a990;}</style></defs><title>icon-6</title><g id="Layer_2" data-name="Layer 2"><g id="icons_color" data-name="icons color"><g id="Tax-prep-and-filing"><circle id="Oval" class="cls-6-1" cx="35" cy="35" r="35"/><path id="Shape" class="cls-6-2" d="M49.2,18a1.15,1.15,0,0,1,1.15,1.15V49.46a1.15,1.15,0,0,1-1.15,1.15H25.4V18Z"/><path id="Shape-2" data-name="Shape" class="cls-6-3" d="M22.52,15.11A2.88,2.88,0,0,0,19.65,18V50.61a2.88,2.88,0,0,1,5.76,0V18A2.88,2.88,0,0,0,22.52,15.11Z"/><path id="Shape-3" data-name="Shape" class="cls-6-4" d="M25.4,50.61a2.88,2.88,0,1,0-2.88,2.88h23.8a1.15,1.15,0,0,0,1.15-1.15V50.61Z"/><path id="Shape-4" data-name="Shape" class="cls-6-5" d="M19.65,21.23v6.46a2.88,2.88,0,0,1,2.88-2.88V18.35A2.88,2.88,0,0,0,19.65,21.23Z"/><path id="Shape-5" data-name="Shape" class="cls-6-6" d="M19.65,29v1.29a2.88,2.88,0,0,1,2.88-2.88V26.1A2.88,2.88,0,0,0,19.65,29Z"/><path id="Shape-6" data-name="Shape" class="cls-6-6" d="M19.65,31.56v1.29A2.88,2.88,0,0,1,22.52,30V28.68A2.88,2.88,0,0,0,19.65,31.56Z"/><path id="Shape-7" data-name="Shape" class="cls-6-6" d="M19.65,34.14v1.29a2.88,2.88,0,0,1,2.88-2.88V31.26A2.88,2.88,0,0,0,19.65,34.14Z"/><path id="Shape-8" data-name="Shape" class="cls-6-6" d="M19.65,36.73V38a2.88,2.88,0,0,1,2.88-2.88V33.85A2.88,2.88,0,0,0,19.65,36.73Z"/><path id="Shape-9" data-name="Shape" class="cls-6-6" d="M19.65,39.31V40.6a2.88,2.88,0,0,1,2.88-2.88V36.43A2.88,2.88,0,0,0,19.65,39.31Z"/><rect id="Rectangle-path" class="cls-6-6" x="28.09" y="46.32" width="15.61" height="0.8"/><rect id="Rectangle-path-2" data-name="Rectangle-path" class="cls-6-6" x="28.09" y="43.74" width="19.66" height="0.8"/><rect id="Rectangle-path-3" data-name="Rectangle-path" class="cls-6-6" x="28.09" y="41.15" width="19.66" height="0.81"/><rect id="Rectangle-path-4" data-name="Rectangle-path" class="cls-6-6" x="28.09" y="21.73" width="19.58" height="1.58"/><ellipse class="cls-6-6" cx="37.92" cy="32.5" rx="6.2" ry="6.26"/><path class="cls-6-7" d="M39.59,32.58a1.6,1.6,0,0,0-1.15-.48h-.11V30.47h1.32v-.83H38.33v-.28h-.82v.28H37.4a1.6,1.6,0,0,0-1.15.48,1.64,1.64,0,0,0-.48,1.16,1.62,1.62,0,0,0,.48,1.16,1.59,1.59,0,0,0,1.15.48h.11v1.63H36.18v.82h1.33v.29h.82v-.29h.11a1.64,1.64,0,0,0,1.15-2.8Zm-2.76-.72a.79.79,0,0,1-.24-.57.8.8,0,0,1,.24-.58.78.78,0,0,1,.57-.23h.11v1.63H37.4A.78.78,0,0,1,36.83,31.85ZM39,34.31a.81.81,0,0,1-.57.24h-.11V32.92h.11a.81.81,0,0,1,.81.81A.82.82,0,0,1,39,34.31Z"/></g></g></g></svg>
               </div>
-              <h2 class="title">Tax prep and filing</h2>
-              <span class="description">Never worry about tax season again</span>
+              <h2 class="title">Title here</h2>
+              <span class="description">description here</span>
               <span class="learn-more">Click to learn more &raquo;</span>
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
-            <ul>
-              <li>Easily and quickly generate your federal, state, and local returns</li>
-              <li>Leading tax software by EisnerAmper prepares your taxes for you</li>
-              <li>File online in just a few clicks</li>
-            </ul>
   
-            <div class="faqs">
-                <div class="faq">
-                    <span class="question">How does Circl Launch make tax filing easier?</span>
-                    <span class="answer">Because your accounts are set up in Xero and integrated with your credit card, bank, and other financial services, tax filing is quick and easy. In addition, Simplexity’s bookkeeping means that everything is properly coded and up to date, so once the EisnerAmper software prepares tax forms based on your records, you’ll be able to file both federal and state taxes online with just a few clicks.
-                    </span>
-                </div>
-                <div class="faq">
-                    <span class="question">Who is EisnerAmper?</span>
-                    <span class="answer">EisnerAmper is a leading provider of tax advice, planning, and preparation to startups and other businesses throughout the United States.</span>
-                </div>
-            </div>
+          
           </div>
   
       </div>
@@ -980,9 +906,8 @@ $(document).ready(function() {
   <footer>
   
     <div class="subscribe-cta">
-      <h3>Not ready to get started?</h3>
-      <p>We can still help you move your startup forward.
-        Subscribe to hear from experienced founders and investors on building a scalable and investable business, delivered weekly to your inbox.</p>
+      <h3>Be notified?</h3>
+      <p>Subscribe to hear about new features delivered to your inbox.</p>
 
 
 <form novalidate="" accept-charset="UTF-8" action="https://forms.hubspot.com/uploads/form/v2/154017/161abc1a-c145-43af-99b4-7e5fa8f0afa8" enctype="multipart/form-data" id="hsForm_161abc1a-c145-43af-99b4-7e5fa8f0afa8" method="POST" class="hs-form stacked" data-form-id="161abc1a-c145-43af-99b4-7e5fa8f0afa8" data-portal-id="154017" data-reactid=".hbspt-forms-0">
@@ -1006,19 +931,11 @@ $(document).ready(function() {
     </div>
   
     <div class="copyright">
-      © 2016 Circl. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a> |  <a target="_blank" href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>
+      © 2017 Valify. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/benefits/">Benefits</a>
     </div>
   
   </footer>
-  <footer class="email">
-  
-    <span class="title">Not ready to get started?</span>
-    <span class="instructions">We can still help you move your startup forward. Subscribe to hear from experienced founders and investors on building a scalable and investable business, delivered weekly to your inbox.</span>
-  
-    <input type="email">
-    <button>Subscribe</button>
-    
-  </footer>
+ 
 
 <script type="text/javascript" src="js/launch.js"></script></body>
 </html>

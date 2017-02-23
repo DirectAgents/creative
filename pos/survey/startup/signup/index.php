@@ -196,7 +196,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Circl</title>
+    <title>Valify Startup Signup</title>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">
@@ -297,8 +297,8 @@ if($_POST['passwordpass'] == 'good'){
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Circl Support", "ald183s@gmail.com");
-$subject = "Welcome To Circl! Confirm Your Email";
+$from = new SendGrid\Email("Valify Support", "no-reply@valifyit.com");
+$subject = "Welcome To Valify! Confirm Your Email";
 $to = new SendGrid\Email($firstname, $email);
 $content = new SendGrid\Content("text/html", '
          
@@ -318,7 +318,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
                         <a href="http://litmus.com" target="_blank">
-                            <img alt="Logo" src="http://labfy.com/circl/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                            <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -398,7 +398,7 @@ $content = new SendGrid\Content("text/html", '
                                                 
                                                  <a href="http://localhost/creative/pos/survey/startup/account/verify.php?id='.$id.'&code='.$code.'">
                                                 <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
-                                                <img alt="Logo" src="http://labfy.com/circl/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
+                                                <img alt="Logo" src="http://valifyit.com/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
                                                 </div>
                                                 </a>
                                                 
@@ -460,7 +460,7 @@ $content = new SendGrid\Content("text/html", '
                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <img alt="Logo" src="http://labfy.com/circl/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <img alt="Logo" src="http://valifyit.com/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 
@@ -544,7 +544,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
    <?php if(isset($msg)) echo $msg;  ?>
   <div class="logo">
-   <a href="<?php echo BASE_PATH; ?>"><h1>CIRCL</h1></a>
+      <a href="<?php echo BASE_PATH; ?>"><img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/></a>
   </div>
 </div>
 
