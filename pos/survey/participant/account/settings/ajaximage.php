@@ -8,7 +8,9 @@ $path = "../../../images/profile/participant/";
 	$valid_formats = array("jpg", "jpeg", "png", "gif", "bmp", "JPG", "JPEG","PNG", "GIF", "BMP");
 	if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
 		{
-			$name = $_FILES['photoimg']['name'];
+			$lastDot = strrpos($_FILES['photoimg']['name'], ".");
+            $name = str_replace(array('.', '\\', '/', '*', ','), "", substr($_FILES['photoimg']['name'], 0, $lastDot)) . substr($_FILES['photoimg']['name'], $lastDot);
+            
 			$size = $_FILES['photoimg']['size'];
 			
 			if(strlen($name))
