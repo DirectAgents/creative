@@ -21,24 +21,28 @@ try {
   $accessToken = $helper->getAccessToken();
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   // When Graph returns an error
-  echo 'Graph returned an error: ' . $e->getMessage();
+  //echo 'Graph returned an error: ' . $e->getMessage();
+  header('Location: '.BASE_PATH.'/startup/login/');
   exit;
 } catch(Facebook\Exceptions\FacebookSDKException $e) {
   // When validation fails or other local issues
-  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  //echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  header('Location: '.BASE_PATH.'/startup/login/');
   exit;
 }
 
 if (! isset($accessToken)) {
   if ($helper->getError()) {
-    header('HTTP/1.0 401 Unauthorized');
-    echo "Error: " . $helper->getError() . "\n";
-    echo "Error Code: " . $helper->getErrorCode() . "\n";
-    echo "Error Reason: " . $helper->getErrorReason() . "\n";
-    echo "Error Description: " . $helper->getErrorDescription() . "\n";
+    //header('HTTP/1.0 401 Unauthorized');
+    //echo "Error: " . $helper->getError() . "\n";
+    //echo "Error Code: " . $helper->getErrorCode() . "\n";
+    //echo "Error Reason: " . $helper->getErrorReason() . "\n";
+    //echo "Error Description: " . $helper->getErrorDescription() . "\n";
+    header('Location: '.BASE_PATH.'/startup/login/');
   } else {
-    header('HTTP/1.0 400 Bad Request');
-    echo 'Bad request';
+    //header('HTTP/1.0 400 Bad Request');
+    //echo 'Bad request';
+    header('Location: '.BASE_PATH.'/startup/login/');
   }
   exit;
 }
@@ -79,7 +83,7 @@ $_SESSION['fb_access_token_startup'] = (string) $accessToken;
 
 
 
-echo $_SESSION['fb_access_token_startup'];
+//echo $_SESSION['fb_access_token_startup'];
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
 header('Location: '.BASE_PATH.'/startup/login/');
