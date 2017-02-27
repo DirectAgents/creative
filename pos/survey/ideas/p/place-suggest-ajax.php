@@ -73,7 +73,7 @@ $rownda = mysqli_fetch_array($sqlnda);
 }
 
 
-$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'");
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
 $row2 = mysqli_fetch_array($sql_participant);
 
 
@@ -88,7 +88,7 @@ $row5 = mysqli_fetch_array($sql5);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
+$from = new SendGrid\Email("Meeting Request from valifyit.com", $row2['userEmail']);
 $subject = "Meeting Request";
 $to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -113,7 +113,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
                         <a href="http://litmus.com" target="_blank">
-                            <img alt="Logo" src="http://labfy.com/circl/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                            <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -158,7 +158,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/person.jpg" alt="who" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height: 74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://valifyit.com/images/email/person.jpg" alt="who" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height: 74px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -213,7 +213,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/calendar.jpg" alt="when" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://valifyit.com/images/email/calendar.jpg" alt="when" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -280,7 +280,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/circl/images/email/location.jpg" alt="where" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://valifyit.com/images/email/location.jpg" alt="where" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -375,7 +375,7 @@ $content = new SendGrid\Content("text/html", '
                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <img alt="Logo" src="http://labfy.com/circl/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <img alt="Logo" src="http://valifyit.com/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 

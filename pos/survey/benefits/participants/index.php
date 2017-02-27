@@ -95,13 +95,13 @@ $(document).ready(function() {
 
     
         <ul class="articleList">
-                <li><a href="#post-your-idea" rel="relativeanchor"><span>Share your feedback</span></a></li>
+                <li><a href="#share-your-feedback" rel="relativeanchor"><span>Share your feedback</span></a></li>
             
-                <li><a href="#earn-money"><span>Earn money to share your feedback</span></a></li>
+                <li><a href="#earn-money" rel="relativeanchor"><span>Earn money to share your feedback</span></a></li>
 
-                <li><a href="#next-big-thing"><span>Be a part of the next big thing</span></a></li>
+                <li><a href="#next-big-thing" rel="relativeanchor"><span>Be a part of the next big thing</span></a></li>
 
-                <li><a href="#connection"><span>Make great connections with great Startups</span></a></li>
+                <li><a href="#connection" rel="relativeanchor"><span>Make great connections with great Startups</span></a></li>
             
             
         </ul>

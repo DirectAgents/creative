@@ -97,11 +97,11 @@ $(document).ready(function() {
         <ul class="articleList">
                 <li><a href="#post-your-idea" rel="relativeanchor"><span>Post your idea</span></a></li>
             
-                <li><a href="#meet-potential-customers"><span>Meet potential customers</span></a></li>
+                <li><a href="#meet-potential-customers" rel="relativeanchor"><span>Meet potential customers</span></a></li>
 
-                <li><a href="#non-disclosure-agreement"><span>Non-Disclosure Agreement</span></a></li>
+                <li><a href="#non-disclosure-agreement" rel="relativeanchor"><span>Non-Disclosure Agreement</span></a></li>
 
-                <li><a href="#screening-question"><span>Screening question</span></a></li>
+                <li><a href="#screening-question" rel="relativeanchor"><span>Screening question</span></a></li>
             
             
         </ul>
@@ -131,7 +131,9 @@ $(document).ready(function() {
 
                  <li><div id="screening-question"></div><strong>Screening question</strong></li>
 
-                <li class="grey">fasdasdf</li>
+                <li class="grey">
+                Ask a screening question to qualify or disqualify users to take part of your feedback session.
+Users that do not pass your Screening Question will be disqualified to arrange a meeting with you for a feedback session.</li>
                       
             
         </ul>

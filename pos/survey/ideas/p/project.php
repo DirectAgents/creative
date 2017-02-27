@@ -1167,7 +1167,7 @@ foreach($days as $day){
   <div class="col-sm-12">
   <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
 
-<?php if($rowscreening['PotentialAnswer1'] != '') { ?>
+<?php if($rowscreening['PotentialAnswer1'] != 'NULL') { ?>
   <div class="col-sm-12" style="padding-bottom:20px;">
 <div class="col-sm-radio">
  <input id="potentialanswer1" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 1"/> 
@@ -1180,7 +1180,7 @@ foreach($days as $day){
 <?php } ?>
 
 
-<?php if($rowscreening['PotentialAnswer2'] != '') { ?>
+<?php if($rowscreening['PotentialAnswer2'] != 'NULL') { ?>
 <div class="col-sm-12" style="padding-bottom:20px;">
  <div class="col-sm-radio">
  <input id="potentialanswer2" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 2"/> 
@@ -1193,13 +1193,13 @@ foreach($days as $day){
 <?php } ?>
 
 
-<?php if($rowscreening['PotentialAnswer3'] != '') { ?>
+<?php if($rowscreening['PotentialAnswer3'] != 'NULL') { ?>
 <div class="col-sm-12" style="padding-bottom:20px;">
   <div class="col-sm-radio">
  <input id="potentialanswer3" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 3"/> 
 </div>
 <div class="col-sm-2">
- <label for="potentialanswer3"><?php echo $rowscreening['PotentialAnswer1']; ?></label>
+ <label for="potentialanswer3"><?php echo $rowscreening['PotentialAnswer3']; ?></label>
  </div>
 </div>
 <?php } ?>

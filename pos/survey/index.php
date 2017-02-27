@@ -798,7 +798,7 @@ $(document).ready(function() {
               <span class="description">
                   share your idea or project with the public
               </span>
-              <span class="learn-more"><a href="#">Click to learn more &raquo;</a></span>
+              <span class="learn-more"><a href="<?php echo BASE_PATH; ?>/benefits/startups/#post-your-idea">Click to learn more &raquo;</a></span>
   
           </div>
   
@@ -813,7 +813,7 @@ $(document).ready(function() {
               </div>
               <h2 class="title">NDA</h2>
               <span class="description">protect your idea with a NDA before you meet</span>
-              <span class="learn-more">Click to learn more &raquo;</span>
+              <span class="learn-more"><a href="<?php echo BASE_PATH; ?>/benefits/startups/#non-disclosure-agreement">Click to learn more &raquo;</a></span>
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
            
@@ -832,7 +832,7 @@ $(document).ready(function() {
               </div>
               <h2 class="title">Meet potential customers</h2>
               <span class="description">choose who you want to share your idea with</span>
-              <span class="learn-more">Click to learn more &raquo;</span>
+              <span class="learn-more"><a href="<?php echo BASE_PATH; ?>/benefits/startups/#meet-potential-customers">Click to learn more &raquo;</a></span>
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
         
@@ -851,13 +851,14 @@ $(document).ready(function() {
               </div>
               <h2 class="title">Screening question</h2>
               <span class="description">set up a screening question before you meet</span>
-              <span class="learn-more">Click to learn more &raquo;</span>
+              <span class="learn-more"><a href="<?php echo BASE_PATH; ?>/benefits/startups/#screening-question">Click to learn more &raquo;</a></span>
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
           
   
        
           </div>
+  
   
           <div class="feature"
               ng-click="vm.toggle(5); $event.stopPropagation();"
