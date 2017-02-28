@@ -28,7 +28,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
- header("Location:../../../participant/");
+ header("Location:../../../participant/login/");
 }
 
 
@@ -262,6 +262,7 @@ $job=explode(',',$rowproject['Job']);
       showOn: "button",
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
+      minDate: 1,
       buttonText: "Select date"
     });
 
@@ -269,6 +270,7 @@ $job=explode(',',$rowproject['Job']);
       showOn: "button",
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
+      minDate: 1,
       buttonText: "Select date"
     });
 
@@ -276,6 +278,7 @@ $job=explode(',',$rowproject['Job']);
       showOn: "button",
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
+      minDate: 1,
       buttonText: "Select date"
     });
 
@@ -552,8 +555,8 @@ $('#location_option3').hide();
         };
 
         if(date_option_one && date_option_two && date_option_three && time_suggested_one && time_suggested_two && time_suggested_three && location && potentialanswergiven_checkedstatus == 1 ) {
-         output = '<div class="success2">Request to meet sent!</div>';
-                $("#result_success").hide().html(output).slideDown();
+         //output = '<div class="success2">Request to meet sent!</div>';
+                //$("#result_success").hide().html(output).slideDown();
                 proceed = true; //set do not proceed flag      
         }
 
@@ -661,7 +664,7 @@ $('#location_option3').hide();
 if($participant_home->is_logged_in())
 {
 
-if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['ProjectID'] == $_GET['id'] ){
+if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['ProjectID'] == $_GET['id'] && $rowrequest['ScreeningQuestion'] != 'Not Passed' ){
 
 //echo $rowrequest['ProjectID'];
 
@@ -678,7 +681,19 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 </div>
 
 
-<?php } } ?>
+<?php } ?> 
+
+
+
+
+
+
+<?php } ?>
+
+
+
+
+
 
 
 <?php 
@@ -841,12 +856,46 @@ $rowupcoming['ProjectID'] != $_GET['id'] && $rowupcoming['userID'] != $_SESSION[
 
 
 
-
+ <div class="col-lg-12" style="width:96%; margin-top:20px; background:#eee"> 
 
 
  <div class="col-lg-12">    
 <h3>Set up a meeting</h3>
 </div>
+
+
+
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+if($row['Phone'] == ''){ ?>
+
+
+
+<div class="col-lg-11" style="margin-top:20px;">
+
+<div class="request-sent">  
+  Please add your <strong><u>Phone Number</u></strong> to your account. This is required to request to meet. Click <a href="<?php echo BASE_PATH; ?>/participant/account/settings/">here</a> to add you number.
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+<?php
+}
+}
+
+?>
+
+
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+if($row['Phone'] != ''){ ?>
 
 <input type="hidden" value="<?php echo $_GET['id']; ?>" name="projectid" id="projectid"/>
 <input type="hidden" value="<?php echo $rowproject['startupID']; ?>" name="startupid" id="startupid"/>
@@ -1244,7 +1293,9 @@ foreach($days as $day){
 
 
 
+<?php } ?>
 
+<?php } ?>
    
     <p>&nbsp;</p>
     <div id="result_success"></div>
@@ -1257,7 +1308,7 @@ foreach($days as $day){
  </div>
  </div>
 
-
+ </div>
 
 
 

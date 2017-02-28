@@ -488,7 +488,7 @@ label{font-weight:normal !important;}
     margin: 0 auto;
     background: #fff;
     /*padding-top:30px;*/
-    padding-bottom:30px !important;
+    /*padding-bottom:30px !important;*/
     float:left;
     border:1px solid #DCDCDC;
 }

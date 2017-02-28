@@ -1,14 +1,14 @@
 <?php
-require_once '../class.participant.php';
+require_once '../class.startup.php';
 
 require_once '../base_path.php';
 
-$participant = new PARTICIPANT();
+$startup = new STARTUP();
 
 /*
 if(empty($_GET['id']) && empty($_GET['code']))
 {
-	$participant->redirect('login.php');
+	$startup->redirect('login.php');
 }*/
 
 if(isset($_GET['id']) && isset($_GET['code']))
@@ -16,7 +16,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
 	$id = base64_decode($_GET['id']);
 	$code = $_GET['code'];
 	
-	$stmt = $participant->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid AND tokenCode=:token");
+	$stmt = $startup->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid AND tokenCode=:token");
 	$stmt->execute(array(":uid"=>$id,":token"=>$code));
 	$rows = $stmt->fetch(PDO::FETCH_ASSOC);
 	
@@ -37,7 +37,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
 			else
 			{
 				$password = md5($cpass);
-				$stmt = $participant->runQuery("UPDATE tbl_participant SET userPass=:upass WHERE userID=:uid");
+				$stmt = $startup->runQuery("UPDATE tbl_startup SET userPass=:upass WHERE userID=:uid");
 				$stmt->execute(array(":upass"=>$password,":uid"=>$rows['userID']));
 				
 				$msg = "<div class='alert alert-success'>
@@ -68,7 +68,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Flat Login Form</title>
+    <title>Reset Password - Valify</title>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">

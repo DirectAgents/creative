@@ -15,7 +15,7 @@ if($_POST)
 
 if($_POST['cash_only'] == ''){$cash_only = '';}else{$cash_only = $_POST['cash_only'];}
 
-if($_POST['emailnotifications'] == ''){$emailnotifications = 'NULL';}else{$emailnotifications = $_POST['emailnotifications'];}
+if($_POST['emailnotifications'] == ''){$emailnotifications = '';}else{$emailnotifications = $_POST['emailnotifications'];}
  
 
 if($_POST['age'] == ''){$age = '';}else{$age = $_POST['age'];}

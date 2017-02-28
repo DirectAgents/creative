@@ -862,7 +862,7 @@ echo '<br>';
 
 <?php if(isset($_GET['p'])){ ?>
 
- <div class="col-lg-12">
+
 
 
 <p>&nbsp;</p>
@@ -876,17 +876,21 @@ echo '<br>';
 <input id="projectid" name="projectid" type="hidden" value="<?php echo $_GET['id']; ?>">
 
 
+
+
+<div class="col-lg-12" style="width:95%; margin-top:20px; background:#eee"> 
+
+
+<div id="select-dates">
+
+ <div class="col-lg-12">
+
 <center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>
 
 
  <p>Choose the date you want to request to meet</p>
 
 
-
-
-<div id="select-dates">
-
- <div class="col-lg-12">
 
 <div class="row-day">
 <div class="the-day">
@@ -1024,12 +1028,12 @@ echo '<br>';
 
 </div>
 
-</div>
+
 
 
 <div id="wheretomeet">
 <div class="therow">
-    <div class="col-lg-12" style="padding-left:0px">
+    <div class="col-lg-12" style="padding-left:10px; padding-right:15px;">
       <h4>Location to meet:</h4>
       <h5>(We suggest to enter a name and location of a venue to meet)</h5>
 
@@ -1070,12 +1074,13 @@ echo '<br>';
 
 
 
-
+<div class="col-lg-12" style="padding-right:15px; padding-left:0px">
 
     <input type="submit" class="btn-request" value="Request to Meet"/>
     <p>&nbsp;</p>
     <div id="result"></div>
 
+</div>
 
 
 
@@ -1084,7 +1089,7 @@ echo '<br>';
 
 
 
-
+</div>
 
 
  </div>

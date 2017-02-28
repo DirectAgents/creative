@@ -8,7 +8,7 @@ $user = new STARTUP();
 
 if($user->is_logged_in()!="")
 {
-	$user->redirect('../index.php');
+	$user->redirect('index.php');
 }
 
 if(isset($_POST['btn-submit']))
@@ -26,40 +26,242 @@ if(isset($_POST['btn-submit']))
 		$stmt = $user->runQuery("UPDATE tbl_startup SET tokenCode=:token WHERE userEmail=:email");
 		$stmt->execute(array(":token"=>$code,"email"=>$email));
 		
-		$message= "
-
-		<img src='http://labfy.com/circl/images/logo/email-logo.jpg' width='206' height='53'/>
-
-				   <br /><br />
-                   <span style='font-family: Arial, Helvetica, sans-serif; font-size: 23px; color: #363d4d;'>Reset your Circl password</span>
-				   <br />
-				 
-				   <p>&nbsp;</p>
-				   <a href='http://labfy.com/circl/account/resetpass.php?id=$id&code=$code' style='text-decoration:none !important; text-decoration:none;'>
-<span style='border:none; padding: 15px 20px; font-size: 16px; line-height: 1.375; border-radius: 4px; background:#528fcc;  color:#fff'>Click to reset password</span>
-
-				   </a>
-				   <p>&nbsp;</p>
-				   <br />
-
-				   <span style='font-family: Arial, Helvetica, sans-serif; font-size: 14px;'>If you didn’t ask to reset your password or don’t want to change it, feel free to ignore this message.</span>
-				    <br /><br />
-				   <span style='font-family: Arial, Helvetica, sans-serif; font-size: 14px;'>Best regards,</span><br />
-				   <span style='font-family: Arial, Helvetica, sans-serif; font-size: 14px;'>The Circl Team</span><br />
-                   <a href='mailto:support@circl.com'><span style='font-family: Arial, Helvetica, sans-serif; font-size: 14px;'>support@circl.com</span></a>
- <p>&nbsp;</p>
- <span style='font-family: Arial, Helvetica, sans-serif; font-size: 13px; color:#656e88'>
-                   You are receiving this message because you have a Circl account.</span>
-				   ";
-		$subject = "Password Recovery";
 		
-		$user->send_mail($email,$message,$subject);
+		
 		
 		$msg = "<div class='alert alert-success'>
 					<button class='close' data-dismiss='alert'>&times;</button>
 					<span style='font-family: Arial, Helvetica, sans-serif; font-size: 13px;'>Instructions have been sent to your email address.</span>
 
 			  	</div>";
+
+
+// using SendGrid's PHP Library
+// https://github.com/sendgrid/sendgrid-php
+// If you are using Composer (recommended)
+require '../sendgrid-php/vendor/autoload.php';
+// If you are not using Composer
+// require("path/to/sendgrid-php/sendgrid-php.php");
+$from = new SendGrid\Email("Password Recovery", "no-reply@valifyit.com");
+$subject = "Password Recovery";
+$to = new SendGrid\Email('franz', $email);
+$content = new SendGrid\Content("text/html", '
+         
+<body style="margin: 0 !important; padding: 0 !important;">
+
+
+<!-- HEADER -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td bgcolor="#fdfdfd" align="center">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="left" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="left" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
+                <tr>
+                    <td align="left" valign="top" style="padding:20px;" class="logo">
+                        <a href="http://valifyit.com/" target="_blank">
+                            <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    
+   
+    <tr>
+        <td bgcolor="#fdfdfd" align="center" style="padding: 10px 15px 30px 15px;" class="section-padding">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#fff; padding:20px; border:1px solid #f0f0f0; max-width: 600px;" class="responsive-table">
+                <!-- TITLE -->
+               
+                <tr>
+                  <td align="center" height="100%" valign="top" width="100%" colspan="2">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                        <tr>
+                        <td align="center" valign="top" width="600">
+                        <![endif]-->
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                Reset your Valify password
+                                                </td>
+                                            </tr>
+                                            
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                You are receiving this message because you have a Valify account.
+                                                
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                   
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tbody><tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                              <tr>
+                                                <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
+                                                
+                                                 <a href="http://valifyit.com/startup/resetpass.php?id='.$id.'&code='.$code.'">
+                                                <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
+                                                <img alt="Logo" src="http://valifyit.com/images/email/reset-password.png" width="219" height="15" style="display: block; border="0">
+                                                </div>
+                                                </a>
+                                                
+                                                </td>
+                                              </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        
+                        
+                        
+                        
+                     
+
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+              
+               
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <!-- UNSUBSCRIBE COPY -->
+
+          
+
+
+               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        <img alt="Logo" src="http://valifyit.com/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                           </td>
+                     </tr>
+
+                   
+            </table>
+
+
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        245 5th Ave Suite 201, New York, NY 10001
+                           </td>
+                     </tr>
+
+                      <tr>
+                      <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
+                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> | <a href="http://valifyit.com/benefits/" target="_blank" style="color: #666666; text-decoration: none;">Benefits</a> </td>
+                       
+                        
+ 
+                   
+                </tr>
+            </table>
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+
+
+            ');
+
+
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+$apiKey = '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';
+$sg = new \SendGrid($apiKey);
+$response = $sg->client->mail()->send()->post($mail);
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
+            
+
+
+
 	}
 	else
 	{
@@ -110,7 +312,7 @@ if(isset($_POST['btn-submit']))
 
 
    <div class="logo">
-   <a href="<?php echo BASE_PATH; ?>"><h1>Circl</h1></a>
+   <a href="<?php echo BASE_PATH; ?>"><img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/></a>
   </div>
 </div>
 
