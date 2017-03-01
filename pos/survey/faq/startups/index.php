@@ -95,7 +95,7 @@ $(document).ready(function() {
 
     
         <ul class="articleList">
-                <li><a href="#What-is-Gust-Launch" rel="relativeanchor"><span>What is Gust Launch?</span></a></li>
+                <li><a href="#What-is-Gust-Launch" rel="relativeanchor"><span>What is Valify?</span></a></li>
             
                 <li><a href="../article/243-who-should-use-gust-launch.html"><span>Who should use Gust Launch?</span></a></li>
             

@@ -25,6 +25,22 @@
     <![endif]-->
   
 
+<script src="../js/application-4b458517a28f0f3fb52cdb61d93011a6.js"></script>
+
+  
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+$(document).ready(function() {
+  $('a[rel="relativeanchor"]').click(function(){
+      $('html, body').animate({
+          scrollTop: $( $.attr(this, 'href') ).offset().top
+      }, 500);
+      return false;
+  }); 
+});
+});//]]> 
+
+</script>
 
 
     
@@ -69,7 +85,7 @@
                         
                         
     <hgroup id="categoryHead">
-        <h1>FAQ for Startups</h1>
+        <h1>FAQ</h1>
         <p class="descrip"></p>
       
     </hgroup><!--/categoryHead-->
@@ -77,9 +93,9 @@
     
        <ul class="articleList">
             
-                <li><a href="../article/242-what-is-gust-launch.html"><span>What is Gust Launch?</span></a></li>
+                <li><a href="#what-is-valify" rel="relativeanchor"><span>What is Valify?</span></a></li>
             
-                <li><a href="../article/243-who-should-use-gust-launch.html"><span>Who should use Gust Launch?</span></a></li>
+                <li><a href="#who-should-use-valify" rel="relativeanchor"><span>Who should use Valify?</span></a></li>
             
             
         </ul>
@@ -87,18 +103,18 @@
 
 
 
-     <hgroup id="categoryHead">
-        <h1>FAQ for Participants</h1>
-        <p class="descrip"></p>
-      
-    </hgroup><!--/categoryHead-->
+
 
     
         <ul class="articleList">
             
-                <li><a href="../article/242-what-is-gust-launch.html"><span>What is Gust Launch?</span></a></li>
+                <li><div id="what-is-valify"></div><strong>What is Valify?</strong></li>
             
-                <li><a href="../article/243-who-should-use-gust-launch.html"><span>Who should use Gust Launch?</span></a></li>
+                <li class="grey">dfasdasdf</li>
+
+                <li><div id="who-should-use-valify"></div><strong>Who should use Valify?</strong></li>
+            
+                <li class="grey">dfasdasdf</li>
             
             
         </ul>
