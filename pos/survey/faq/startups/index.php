@@ -95,9 +95,13 @@ $(document).ready(function() {
 
     
         <ul class="articleList">
-                <li><a href="#What-is-Gust-Launch" rel="relativeanchor"><span>What is Valify?</span></a></li>
+                <li><a href="#1" rel="relativeanchor"><span>What is Valify?</span></a></li>
             
-                <li><a href="../article/243-who-should-use-gust-launch.html"><span>Who should use Gust Launch?</span></a></li>
+                <li><a href="#2" rel="relativeanchor"><span>Why should I use Valify?</span></a></li>
+
+                <li><a href="#3" rel="relativeanchor"><span>What are the benefits of me using Valify?</span></a></li>
+
+                <li><a href="#4" rel="relativeanchor"><span>Is it free?</span></a></li>
             
             
         </ul>
@@ -107,9 +111,36 @@ $(document).ready(function() {
 
          <ul class="articleList">
             
-                <li><div id="What-is-Gust-Launch"></div>A: What is Gust Launch?</li>
+                <li><div id="1"></div><strong>What is Valify?</strong></li>
             
-                <li>A: What is Gust Launch?</li>
+                <li>A web application that primarily provides services for entrepreneurs to validate their idea by meeting with other potential future customers through the valify platform in person to gain feedback for their idea/product.</li>
+
+                <li><div id="2"></div><strong>Who should use Valify?</strong></li>
+            
+                <li>If you have an idea to start a company or in the process of starting a company but want to confirm and validate your idea with potential customers, then this is the right place to be.</li>
+
+                <li><div id="3"></div><strong>What are the benefits of me using Valify?</strong></li>
+            
+                <li style="color:#000"><i>Post your idea</i></li>
+            
+                <li>On valifyit.com you share and post your idea privately or publicly. You will tell briefly what your idea is about and people who qualify to provide you feedback can request to meet up with you. </li>
+
+                <li style="color:#000"><i>Protect your idea with an NDA</i></li>
+            
+                <li>A Non-Disclosure Agreement can protect your idea. Before you meet with a person you can require him or her to sign an NDA first.</li>
+
+                <li style="color:#000"><i>Meet potential customers</i></li>
+            
+                <li>This is the great part of our platform. We want you to meet the right person for a feedback for your idea. For each idea you post you can filter people by Age range, Gender, Profession etc. Based on the filter settings you set, you will only be matched with people that fit your criteria.</li>
+
+                 <li style="color:#000"><i>Screening Question</i></li>
+            
+                <li>Ask a screening question to qualify or disqualify a person who wants to meet with you. Based upon the answer they select, if the user does not select one of the qualifying answers, they will not take part with your feedback session.</li>
+                
+
+                 <li><div id="4"></div><strong>Is it free?</strong></li>
+            
+                <li>It is free to signup and to use the platform. The only time you will be charged is when you set up a meeting with people from the site. You are in control on how much you are willing to pay for someone you will meet. For each transaction we also charge a small processing fee and service fee.<br><br>Here is an example. Let's say you want to pay John Doe $3.00 for 5 minutes of his time to meet with you. The processing fee would be $0.38 and the service fee is $1.32. So, you would pay in total $4.70.</li>
                       
             
         </ul>

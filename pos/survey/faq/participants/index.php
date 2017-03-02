@@ -99,9 +99,13 @@ $(document).ready(function() {
     
         <ul class="articleList">
             
-                <li><a href="#What-is-Gust-Launch" rel="relativeanchor"><span>What is Gust Launch?</span></a></li>
+                <li><a href="#1" rel="relativeanchor"><span>What is Valify?</span></a></li>
             
-                <li><a href="../article/243-who-should-use-gust-launch.html"><span>Who should use Gust Launch?</span></a></li>
+                <li><a href="#2" rel="relativeanchor"><span>Why should I use Valify?</span></a></li>
+
+                <li><a href="#3" rel="relativeanchor"><span>What are the benefits of me using Valify?</span></a></li>
+
+                <li><a href="#4" rel="relativeanchor"><span>Is it free?</span></a></li>
             
             
         </ul>
@@ -111,9 +115,37 @@ $(document).ready(function() {
 
          <ul class="articleList">
             
-                <li><div id="What-is-Gust-Launch"></div>A: What is Gust Launch?</li>
+               <li><div id="1"></div><strong>What is Valify?</strong></li>
             
-                <li>A: What is Gust Launch?</li>
+                <li>A web application that primarily provides services for entrepreneurs to validate their idea by meeting with other potential future customers through the valify platform in person to gain feedback for their idea/product.</li>
+
+                <li><div id="2"></div><strong>Who should use Valify?</strong></li>
+            
+                <li>Here at Valify you can help startups with your feedback about their business idea and at the same time earn extra money on the side by just meeting with them. Provide your honest feedback, meet great people and help their businesses to grow.</li>
+
+                <li><div id="3"></div><strong>What are the benefits of me using Valify?</strong></li>
+            
+                <li style="color:#000"><i>Share your feedback</i></li>
+
+                <li>Meet and get to know great minded people by listening and sharing your opinion about their startup. You can be in the front row of successful startups by providing them their initial feedback about their idea(s).  </li>
+
+                <li style="color:#000"><i>Get paid for your time</i></li>
+
+                <li>Startups will pay you for your time while meeting with them. You will both agree for a place to meet that is convenient for you. The meetings are very casual. </li>
+
+                <li style="color:#000"><i>Make great connections</i></li>
+
+                <li>Entrepreneurs are the people that want to offer products or services that solve problems and make our life easier. While meeting directly with a founder or co-founder of a startup you build a friendship from the start and who knows, if the startup will succeed in the future they may offer you special perks because you helped them with your initial feedback.</li>
+
+
+                <li style="color:#000"><i>Learn about the next big thing</i></li>
+
+                <li>Each idea that is introduced to you by each startup can be unique in its own way. You can feel proud to be part of the development process of the next big thing.</li>
+
+
+                <li><div id="4"></div><strong>Is it free?</strong></li>
+            
+                <li>Yes. For individuals who participate to help startups to provide them with their feedback it is completely free. </li>
             
         </ul>
 

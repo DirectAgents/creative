@@ -1280,6 +1280,21 @@ table td[class*="col-"], table th[class*="col-"] {
 .alert-success .alert-link {
 	color: #148f72
 }
+
+
+.alert-error {
+	background-color: rgba(255, 0, 0,0.08);
+	border-color: red;
+	color: #1abc96
+}
+.alert-error hr {
+	border-top-color: #17a684
+}
+.alert-error .alert-link {
+	color: #148f72
+}
+
+
 .alert-info {
 	background-color: rgba(25,131,202,0.08);
 	border-color: #1983ca;

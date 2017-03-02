@@ -1,4 +1,270 @@
-<?php require_once 'base_path.php'; ?>
+<?php 
+
+require_once 'base_path.php'; 
+
+
+include_once("config.php");
+
+
+
+?>
+
+
+
+<?php
+
+
+if(isset($_POST['btn-notify']))
+{
+
+ 
+  $email = trim($_POST['txtemail']);
+ 
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_signups WHERE userEmail='".$email."'");
+
+
+if(mysqli_num_rows($sql)>0)
+{
+
+  
+    $msg = "
+          <div class='alert alert-error'>
+       <button class='close' data-dismiss='alert'>&times;</button>
+          <strong>Sorry !</strong>  Email already exists. Please Try another one
+        </div>
+        ";
+  }
+  else
+  {
+
+
+date_default_timezone_set('America/New_York');
+$date = date('Y-m-d'); 
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_signups(userEmail, Date) VALUES('".$email."', '".$date."')");
+      
+      
+
+       $msg = "
+          <div class='alert alert-success'>
+            <button class='close' data-dismiss='alert'>&times;</button>
+            <strong>Success! We'll notify you once a spot is available.</strong>
+            </div>
+          ";
+
+
+// using SendGrid's PHP Library
+// https://github.com/sendgrid/sendgrid-php
+// If you are using Composer (recommended)
+require 'sendgrid-php/vendor/autoload.php';
+// If you are not using Composer
+// require("path/to/sendgrid-php/sendgrid-php.php");
+$from = new SendGrid\Email("Thank you", "no-reply@valifyit.com");
+$subject = "Great!";
+$to = new SendGrid\Email('', $email);
+$content = new SendGrid\Content("text/html", '
+         
+<body style="margin: 0 !important; padding: 0 !important;">
+
+
+<!-- HEADER -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td bgcolor="#fdfdfd" align="center">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="left" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="left" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
+                <tr>
+                    <td align="left" valign="top" style="padding:20px;" class="logo">
+                        <a href="http://litmus.com" target="_blank">
+                            <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    
+   
+    <tr>
+        <td bgcolor="#fdfdfd" align="center" style="padding: 10px 15px 30px 15px;" class="section-padding">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#fff; padding:20px; border:1px solid #f0f0f0; max-width: 600px;" class="responsive-table">
+                <!-- TITLE -->
+               
+                <tr>
+                  <td align="center" height="100%" valign="top" width="100%" colspan="2">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                        <tr>
+                        <td align="center" valign="top" width="600">
+                        <![endif]-->
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                We\'ll notify you once we have space for you to sign up
+                                                </td>
+                                            </tr>
+                                            
+                                             
+                                        </table>
+                                    </div>
+                                   
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                        
+                        
+                        
+                     
+
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+              
+               
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <!-- UNSUBSCRIBE COPY -->
+
+          
+
+
+               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        <img alt="Logo" src="http://valifyit.com/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                           </td>
+                     </tr>
+
+                   
+            </table>
+
+
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        245 5th Ave Suite 201, New York, NY 10001
+                           </td>
+                     </tr>
+
+                      <tr>
+                      <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
+                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a></td>
+                       
+                        
+ 
+                   
+                </tr>
+            </table>
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+
+
+            ');
+
+
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+$apiKey = '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';
+$sg = new \SendGrid($apiKey);
+$response = $sg->client->mail()->send()->post($mail);
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
+            
+      
+            
+     
+   
+  }
+
+ 
+}
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="https://use.typekit.net/oos2wfr.js"></script>
 <script>try{Typekit.load({ async: false });}catch(e){}</script>
 <html itemscope itemtype="http://schema.org/Product">
@@ -51,11 +317,18 @@ $(document).ready(function() {
           scrollTop: $( $.attr(this, 'href') ).offset().top
       }, 500);
       return false;
-  }); 
+  });
+
 });
 });//]]> 
 
+
+
 </script>
+
+
+
+
 
 
 </head>
@@ -776,6 +1049,9 @@ $(document).ready(function() {
     </div>
   </section>
   
+
+<!--
+
   <section class="features"
       ng-click="vm.toggle()"
       ng-class="{active: vm.cards}">
@@ -860,68 +1136,39 @@ $(document).ready(function() {
           </div>
   
   
-          <div class="feature"
-              ng-click="vm.toggle(5); $event.stopPropagation();"
-              ng-class="{
-                  active: vm.activeCard === 5,
-                  viewed: vm.viewed[5] === true
-              }">
-              <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.75 69.75"><defs><style>.cls-5-1{fill:#cef0e8;}.cls-5-2{fill:none;}.cls-5-2,.cls-5-3,.cls-5-5,.cls-5-6{stroke:#26a990;stroke-miterlimit:10;}.cls-5-2,.cls-5-5{stroke-width:0.5px;}.cls-5-3{fill:#fff;}.cls-5-3,.cls-5-6{stroke-width:0.75px;}.cls-5-4{fill:#26a990;}.cls-5-5{fill:#2ec3a1;}.cls-5-6{fill:#9ae0d0;}</style></defs><title>icon-5</title><g id="Layer_2" data-name="Layer 2"><g id="icons_color" data-name="icons color"><circle class="cls-5-1" cx="34.88" cy="34.88" r="34.88"/><polygon class="cls-5-2" points="27.91 35.1 22.36 24.83 16.81 35.1 27.91 35.1"/><path class="cls-5-3" d="M15.53,35.1a6.84,6.84,0,0,0,13.67,0H15.53Z"/><polygon class="cls-5-2" points="52.94 35.1 47.39 24.48 41.84 35.1 52.94 35.1"/><path class="cls-5-3" d="M40.55,35.1a6.84,6.84,0,0,0,13.67,0H40.55Z"/><path class="cls-5-4" d="M19.13,23.13a.9.9,0,0,0,0,1.8h13.5v-1.8Z"/><path class="cls-5-4" d="M51.26,23.39a.9.9,0,0,0-.64-.26H37.13v1.8h13.5a.9.9,0,0,0,.64-1.54Z"/><path class="cls-5-3" d="M32.63,47.71v-27a2.25,2.25,0,0,1,2.25-2.25h0a2.25,2.25,0,0,1,2.25,2.25v27h-4.5Z"/><circle class="cls-5-5" cx="34.88" cy="24.03" r="1"/><path class="cls-5-6" d="M47,49a1.35,1.35,0,0,0-1-.4H40.5v-.9H29.25v.9H23.71A1.35,1.35,0,0,0,22.36,50v1.35h25V50A1.35,1.35,0,0,0,47,49Z"/></g></g></svg>
-              </div>
-              <h2 class="title">Title here</h2>
-              <span class="description">description here</span>
-              <span class="learn-more">Click to learn more &raquo;</span>
-              <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
-  
           
-  
-         
-          </div>
-  
-          <div class="feature"
-              ng-click="vm.toggle(6); $event.stopPropagation();"
-              ng-class="{
-                  active: vm.activeCard === 6,
-                  viewed: vm.viewed[6] === true
-              }">
-              <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70"><defs><style>.cls-6-1,.cls-6-3{fill:#cef0e8;}.cls-6-2,.cls-6-7{fill:#fff;}.cls-6-2,.cls-6-3,.cls-6-4,.cls-6-5{stroke:#26a990;stroke-width:0.75px;}.cls-6-4{fill:#2ec3a1;}.cls-6-5{fill:#9ae0d0;}.cls-6-6{fill:#26a990;}</style></defs><title>icon-6</title><g id="Layer_2" data-name="Layer 2"><g id="icons_color" data-name="icons color"><g id="Tax-prep-and-filing"><circle id="Oval" class="cls-6-1" cx="35" cy="35" r="35"/><path id="Shape" class="cls-6-2" d="M49.2,18a1.15,1.15,0,0,1,1.15,1.15V49.46a1.15,1.15,0,0,1-1.15,1.15H25.4V18Z"/><path id="Shape-2" data-name="Shape" class="cls-6-3" d="M22.52,15.11A2.88,2.88,0,0,0,19.65,18V50.61a2.88,2.88,0,0,1,5.76,0V18A2.88,2.88,0,0,0,22.52,15.11Z"/><path id="Shape-3" data-name="Shape" class="cls-6-4" d="M25.4,50.61a2.88,2.88,0,1,0-2.88,2.88h23.8a1.15,1.15,0,0,0,1.15-1.15V50.61Z"/><path id="Shape-4" data-name="Shape" class="cls-6-5" d="M19.65,21.23v6.46a2.88,2.88,0,0,1,2.88-2.88V18.35A2.88,2.88,0,0,0,19.65,21.23Z"/><path id="Shape-5" data-name="Shape" class="cls-6-6" d="M19.65,29v1.29a2.88,2.88,0,0,1,2.88-2.88V26.1A2.88,2.88,0,0,0,19.65,29Z"/><path id="Shape-6" data-name="Shape" class="cls-6-6" d="M19.65,31.56v1.29A2.88,2.88,0,0,1,22.52,30V28.68A2.88,2.88,0,0,0,19.65,31.56Z"/><path id="Shape-7" data-name="Shape" class="cls-6-6" d="M19.65,34.14v1.29a2.88,2.88,0,0,1,2.88-2.88V31.26A2.88,2.88,0,0,0,19.65,34.14Z"/><path id="Shape-8" data-name="Shape" class="cls-6-6" d="M19.65,36.73V38a2.88,2.88,0,0,1,2.88-2.88V33.85A2.88,2.88,0,0,0,19.65,36.73Z"/><path id="Shape-9" data-name="Shape" class="cls-6-6" d="M19.65,39.31V40.6a2.88,2.88,0,0,1,2.88-2.88V36.43A2.88,2.88,0,0,0,19.65,39.31Z"/><rect id="Rectangle-path" class="cls-6-6" x="28.09" y="46.32" width="15.61" height="0.8"/><rect id="Rectangle-path-2" data-name="Rectangle-path" class="cls-6-6" x="28.09" y="43.74" width="19.66" height="0.8"/><rect id="Rectangle-path-3" data-name="Rectangle-path" class="cls-6-6" x="28.09" y="41.15" width="19.66" height="0.81"/><rect id="Rectangle-path-4" data-name="Rectangle-path" class="cls-6-6" x="28.09" y="21.73" width="19.58" height="1.58"/><ellipse class="cls-6-6" cx="37.92" cy="32.5" rx="6.2" ry="6.26"/><path class="cls-6-7" d="M39.59,32.58a1.6,1.6,0,0,0-1.15-.48h-.11V30.47h1.32v-.83H38.33v-.28h-.82v.28H37.4a1.6,1.6,0,0,0-1.15.48,1.64,1.64,0,0,0-.48,1.16,1.62,1.62,0,0,0,.48,1.16,1.59,1.59,0,0,0,1.15.48h.11v1.63H36.18v.82h1.33v.29h.82v-.29h.11a1.64,1.64,0,0,0,1.15-2.8Zm-2.76-.72a.79.79,0,0,1-.24-.57.8.8,0,0,1,.24-.58.78.78,0,0,1,.57-.23h.11v1.63H37.4A.78.78,0,0,1,36.83,31.85ZM39,34.31a.81.81,0,0,1-.57.24h-.11V32.92h.11a.81.81,0,0,1,.81.81A.82.82,0,0,1,39,34.31Z"/></g></g></g></svg>
-              </div>
-              <h2 class="title">Title here</h2>
-              <span class="description">description here</span>
-              <span class="learn-more">Click to learn more &raquo;</span>
-              <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
-  
-  
-          
-          </div>
   
       </div>
   </section>
 
-  
+  -->
   
   
   
   <footer>
   
     <div class="subscribe-cta">
-      <h3>Be notified?</h3>
-      <p>Subscribe to hear about new features delivered to your inbox.</p>
+      <h3>Get notified?</h3>
+      <p>Subscribe to hear about when we have new space for new sign ups.</p>
 
 
-<form novalidate="" accept-charset="UTF-8" action="https://forms.hubspot.com/uploads/form/v2/154017/161abc1a-c145-43af-99b4-7e5fa8f0afa8" enctype="multipart/form-data" id="hsForm_161abc1a-c145-43af-99b4-7e5fa8f0afa8" method="POST" class="hs-form stacked" data-form-id="161abc1a-c145-43af-99b4-7e5fa8f0afa8" data-portal-id="154017" data-reactid=".hbspt-forms-0">
+<?php if(isset($msg)) echo $msg;  ?>
+
+<div id="form"></div>
+
+<form class="form-signin" method="post" action="#form">
 
 <div data-reactid=".hbspt-forms-0.0:$0">
 
 <div class="hs_email field hs-form-field" data-reactid=".hbspt-forms-0.0:$0.$email"><div class="input" data-reactid=".hbspt-forms-0.0:$0.$email.$email">
 
-<input id="email-161abc1a-c145-43af-99b4-7e5fa8f0afa8" class="hs-input" type="email" name="email" required="" placeholder="Your email" value="" data-reactid=".hbspt-forms-0.0:$0.$email.$email.0">
+<input type="email" name="txtemail" id="txtemail" class="hs-input" required="" placeholder="Your email" value="" oninvalid="this.setCustomValidity('Enter Your Email')" oninput="setCustomValidity('')" required>
 
 </div>
 
-</div></div><div class="hs_submit" data-reactid=".hbspt-forms-0.2"><div class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.2.0"></div><div class="actions" data-reactid=".hbspt-forms-0.2.1"><input type="submit" value="Subscribe" class="hs-button primary large" data-reactid=".hbspt-forms-0.2.1.0"></div></div>
+</div></div><div class="hs_submit" data-reactid=".hbspt-forms-0.2"><div class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.2.0"></div><div class="actions" data-reactid=".hbspt-forms-0.2.1">
+
+<input type="submit" value="Notify Me" name="btn-notify" id="btn-notify" class="hs-button primary large" rel="relativeanchor" data-reactid=".hbspt-forms-0.2.1.0"></div></div>
 
 </form>
 
@@ -932,7 +1179,7 @@ $(document).ready(function() {
     </div>
   
     <div class="copyright">
-      © 2017 Valify. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/benefits/">Benefits</a>
+      © 2017 Valify. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/faq/">FAQ</a> 
     </div>
   
   </footer>

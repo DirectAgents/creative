@@ -260,6 +260,29 @@ if($_POST['passwordpass'] == 'good'){
   $email = trim($_POST['txtemail']);
   $upass = trim($_POST['txtpass']);
   $code = md5(uniqid(rand()));
+
+
+
+
+ $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_startup");
+ $stmt->execute(array(":email_id"=>$email));
+ $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+  
+  if($row['total'] > 0)
+  {
+    $msg = "
+          <div class='alert alert-error'>
+       <button class='close' data-dismiss='alert'>&times;</button>
+          <strong>Sorry !</strong> We don't accept any new signups at the moment.<br><br>
+          Sign up to our list to let you know once space is available to signup.<br><br>
+          <a href='".BASE_PATH."/#form'>Click here to sign up</a>
+        </div>
+        ";
+  }else{
+
+
   
   $stmt = $reg_user->runQuery("SELECT * FROM tbl_startup WHERE userEmail=:email_id");
   $stmt->execute(array(":email_id"=>$email));
@@ -270,7 +293,7 @@ if($_POST['passwordpass'] == 'good'){
     $msg = "
           <div class='alert alert-error'>
        <!--<button class='close' data-dismiss='alert'>&times;</button>-->
-          <strong>Sorry !</strong>  email allready exists. Please Try another one
+          <strong>Sorry !</strong> Email already exists. Please Try another one
         </div>
         ";
   }
@@ -523,6 +546,7 @@ $response = $sg->client->mail()->send()->post($mail);
       echo "sorry , Query could no execute...";
     }   
   }
+ } 
  }else{
    $msg = "
 
@@ -556,6 +580,11 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 <div class="form">
+
+<div class='alert alert-error'>
+          <button class='close' data-dismiss='alert'>&times;</button>
+          We have limited spots available. Sign up now.
+        </div>
 
 <div class="info">
   <h1>SIGNUP AS A STARTUP</h1>

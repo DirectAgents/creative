@@ -350,7 +350,6 @@ echo "</div>";
 <?php
 
 
-require( "../../../phpmailer/class.phpmailer.php" );
 
 
 
@@ -389,6 +388,22 @@ $mail->AddAddress($row['userEmail']);
  
 $mail->Subject  = "Your Recent Payment";
 $mail->Body     = '
+
+
+
+ // using SendGrid's PHP Library
+// https://github.com/sendgrid/sendgrid-php
+// If you are using Composer (recommended)
+require '../../sendgrid-php/vendor/autoload.php';
+// If you are not using Composer
+// require("path/to/sendgrid-php/sendgrid-php.php");
+$from = new SendGrid\Email("Valify Team", "no-reply@valifyit.com");
+$subject = "Your Recent Payment";
+$to = new SendGrid\Email($row['FirstName'], $row['userEmail']);
+$content = new SendGrid\Content("text/html", '
+
+
+
 
 <body style="margin: 0 !important; padding: 0 !important;">
 
@@ -650,17 +665,37 @@ $mail->Body     = '
             <td align="center" valign="top" width="500">
             <![endif]-->
             <!-- UNSUBSCRIBE COPY -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        1234 Main Street, Anywhere, MA 01234, USA
-                        <br>
-                        <a href="http://litmus.com" target="_blank" style="color: #666666; text-decoration: none;">Unsubscribe</a>
-                        <span style="font-family: Arial, sans-serif; font-size: 12px; color: #444444;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                        <a href="http://litmus.com" target="_blank" style="color: #666666; text-decoration: none;">View this email in your browser</a>
-                    </td>
+                        <img alt="Logo" src="http://valifyit.com/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                           </td>
+                     </tr>
+
+                   
+            </table>
+
+
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                        245 5th Ave Suite 201, New York, NY 10001
+                           </td>
+                     </tr>
+
+                      <tr>
+                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
+                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a></td>
+                       
+                        
+ 
+                   
                 </tr>
             </table>
+
+
+
             <!--[if (gte mso 9)|(IE)]>
             </td>
             </tr>
@@ -676,19 +711,14 @@ $mail->Body     = '
 
 
 
-';
-
-
-
-
-$mail->WordWrap = 250;  
- 
-if(!$mail->Send()) {
-echo 'Message was not sent.';
-echo 'Mailer error: ' . $mail->ErrorInfo;
-} else {
-echo 'Message has been sent.';
-}
+    ');
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+$apiKey = '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';
+$sg = new \SendGrid($apiKey);
+$response = $sg->client->mail()->send()->post($mail);
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
 
 
 ?>

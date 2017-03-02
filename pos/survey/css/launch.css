@@ -2816,7 +2816,7 @@ body section.features {
 }
 }
 body section.features>.wrapper {
-	height: 500px;
+	height: 350px;
 	margin: 0 auto;
 	width: 100%;
 	max-width: 1460px;
@@ -2830,7 +2830,7 @@ body section.features {
 }
 @media only screen and (min-width: 1025px) {
 body section.features {
-	min-height: 720px
+	min-height: 420px
 }
 }
 body section.intercom {
