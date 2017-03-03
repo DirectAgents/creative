@@ -97,13 +97,13 @@ Privacy Policy
 </h1>
 <p><b>Scope of this Privacy Policy</b>&nbsp;
 </p>
-<p>Valify, Inc. respects your privacy and is committed to protecting it. This privacy policy applies to www.Valify.com (‘Valify Platform’) owned and operated by Valify, Inc. (‘Valify’, "We", "Us" or "Our").&nbsp; This Privacy Policy describes Valifys’ policies and procedures on the collection, use and disclosure of your personal data when you use the Valify Platform. It also describes the choices available to you regarding the use of, your access to, and how to update and correct your personal data. We will not use or share your confidential information with anyone except as described in this Privacy Policy. This Privacy Policy does not apply to information we collect from other sources.&nbsp;Information which you do not designate as confidential may be publicly available and disclosed.&nbsp;Capitalized terms that are not defined in this Privacy Policy have the meaning given them in Valifys’ Terms of Service .&nbsp;</p>
+<p>Valify, LLC. respects your privacy and is committed to protecting it. This privacy policy applies to www.valifyit.com (‘Valify Platform’) owned and operated by Valify, LLC. (‘Valify’, "We", "Us" or "Our").&nbsp; This Privacy Policy describes Valifys’ policies and procedures on the collection, use and disclosure of your personal data when you use the Valify Platform. It also describes the choices available to you regarding the use of, your access to, and how to update and correct your personal data. We will not use or share your confidential information with anyone except as described in this Privacy Policy. This Privacy Policy does not apply to information we collect from other sources.&nbsp;Information which you do not designate as confidential may be publicly available and disclosed.&nbsp;Capitalized terms that are not defined in this Privacy Policy have the meaning given them in Valifys’ Terms of Service .&nbsp;</p>
 <p>
 <br>
 </p>
 <p><b>The Valify Platform</b>&nbsp;
 </p>
-<p>The Valify Platform offers a set of tools for entrepreneurs on which they may do many things, including exchange information. Valify also allows access to the Valify Platform to Organizations for use by their members.</p>
+<p>The Valify Platform offers a set of tools for entrepreneurs on which they may do many things, including exchange information. </p>
 <p>
 <br>
 </p>
@@ -128,7 +128,6 @@ you may invoke binding arbitration when other dispute resolution procedures have
 <p>This Privacy Policy describes the types of information we may collect from you or that you may provide when you use the Valify Platform, and our practices for collecting, using, maintaining, protecting and disclosing that information.</p>
 <p>This Privacy Policy applies to information we collect:</p>
 <p>•    On the Valify Platform;</p>
-<p>•    In e-mail, text and other electronic messages between you and Valify, on the Valify Platform or otherwise; and</p>
 <p>•    When you interact with our links and applications on third-party websites and services if they include a link to this Privacy Policy.</p>
 <p>It does not apply to information collected by:</p>
 <p>•    Us offline or through any other means, including on any other website operated by Valify or any third party (including our affiliates and subsidiaries); or &nbsp;&nbsp;</p>
@@ -146,21 +145,17 @@ you may invoke binding arbitration when other dispute resolution procedures have
 <p><b>What kind of personal data is collected?</b>&nbsp;
 </p>
 <p>We collect personal data at different stages of your use of the Valify Platform.</p>
-<p><b>When you visit Valify.com -&nbsp;</b>If you visit www.Valify.com or use an interface which interacts with Valify.com, whether or not you sign-in as a registered user, we collect your IP address, the location of your Internet Service Provider, the type and version of Internet browser that you are using, and the website from which you came. We also collect information regarding your site usage, such as the time spent on a page and the number of pages you viewed.&nbsp;
+<p><b>When you visit valifyit.com -&nbsp;</b>If you visit www.valifyit.com or use an interface which interacts with valifyit.com, whether or not you sign-in as a registered user, we collect your IP address, the location of your Internet Service Provider, the type and version of Internet browser that you are using, and the website from which you came. We also collect information regarding your site usage, such as the time spent on a page and the number of pages you viewed.&nbsp;
 </p>
-<p><b>When you set up an account -</b>When you set up your account, you will be required to provide certain personal data including your name and email address. You may also be invited to provide optional personal data, such as biography, photograph, postal address or phone number.&nbsp;If you choose to do so, our use of your personal data shall be governed by this Privacy Policy.&nbsp;
+<p><b>When you set up an account -</b>When you set up your account, you will be required to provide certain personal data including your name and email address.
 </p>
 <p><b>When you interact with the Valify Platform -</b>We also collect personal data that you provide when you interact with the Valify Platform such as, for example, by sending a message or uploading documents, or when exchanging correspondence with us such as through support emails.&nbsp;
 </p>
 <p><b>When you use your account -</b>We collect information that you provide or create when you use your account:&nbsp;
 </p>
 <p>
-<b>•    If you are classified as an Investor,</b>
-you may record in your profile within your Organization’s information about yourself, such as your contact information, picture, biography, experience, or other groups to which you belong.&nbsp;While the Organization’s name will be name public, no investor information will be publicly disclosed.&nbsp;
-</p>
-<p>
-<b>•    If you are an entrepreneur,</b>
-and you represent a company that is seeking investors, you may record information about yourself, your company, and your company’s management team. You may also include a video recording or picture.&nbsp;All information you put onto the Valify Platform is confidential unless you decide to share any of it.&nbsp;
+<b>•    If you are an Entrepreneur,</b>
+and you represent a company or yourself that is seeking feedback for your idea, you may record information about yourself, your company. All information you put onto the Valify Platform is confidential unless you decide to share any of it.&nbsp;
 </p>
 <p>If you provide any information about or personal data of a third party (such as a person's name or photograph), you are representing to Valify that you have all necessary authority and/or have obtained all necessary consents from such individual to enable Valify to collect, use and disclose his or her personal data as set forth in this Privacy Policy.&nbsp;If we receive a written complaint or direction from the person, we will take down his or her information and notify you that we have done so.&nbsp;</p>
 <p>
@@ -176,19 +171,14 @@ and you represent a company that is seeking investors, you may record informatio
 <p><b>For what purpose will my personal data be used?</b>&nbsp;
 </p>
 <p>Valify uses your personal data to maintain your account and to provide you with the group and deal-flow management and other services offered on the Valify Platform. We also use your personal data to respond to requests that you make of us, and to contact you and to provide you with information that we believe may be of interest to you.</p>
-<p>We may also use your name and contact information to make queries to social networking and other sites, such as LinkedIn, for a variety of purposes, including, but not limited to, verifying your identity, and showing you how you are linked or connected to other individuals who are also Valify users.</p>
+
 <p>Your personal data may also be shared with companies in the Valify family of companies or to third parties as described below.</p>
 <p>
 <br>
 </p>
 <p><b>Can third parties see my personal data?</b>&nbsp;
 </p>
-<p>
-<b>•    If you are an investor</b>
-- The Valify Platform allows the Organization Administrator of an Organization the ability to set certain settings in the profile of the members of the Organization . Thus, for each Organization, the Administrator decides which information is available for access or review by entrepreneurs and/or other Organizations, and which information is not to be disclosed, or is disclosed to selected entrepreneurs and/or other Organizations, according to the policies of the Organization.&nbsp;Please note that (1)&nbsp;<b>the default settings that are set by an Organization Administrator may change from time to time;&nbsp;</b>(2) each Organization may opt for different default settings.&nbsp;While the Valify Platform includes initial defaults, Valify has
-<b>no control over the choice of a setting or the change in a default setting by an Organization’s Administrator.</b>&nbsp;
-</p>
-<p><b>• If you are an entrepreneur</b>- If you are an entrepreneur and you have posted or uploaded information about you and/or your team, this information is disclosed to the Organizations to whom you have chosen to disclose the information.&nbsp;
+<p><b>• If you are an Entrepreneur</b>- If you are an entrepreneur and you have posted or uploaded information about you and/or your team, this information is disclosed to the User to whom you have chosen to disclose the information.&nbsp;
 </p>
 <p>
 <br>
@@ -225,7 +215,7 @@ Parties are companies unaffiliated with the Valify Platform.&nbsp; We may share 
 </p>
 <p><b>Can I access or change my personal data?</b>&nbsp;
 </p>
-<p>Upon request Valify will provide you with information about whether we hold any of your personal information. If your personal data changes, you may correct, update, or amend by making the change on our member information page or by emailing our Customer Support at support@Valify.com or by contacting us by postal mail at the contact information listed below.&nbsp; If you wish to delete/remove/deactivate your profile or remove your testimonial from our site please email us at support@Valify.com.&nbsp; We will respond to your request to access within 30 days.</p>
+<p>Upon request Valify will provide you with information about whether we hold any of your personal information. If your personal data changes, you may correct, update, or amend by making the change on our member information page or by emailing our Customer Support at support@valifyit.com or by contacting us by postal mail at the contact information listed below.&nbsp; If you wish to delete/remove/deactivate your profile or remove your testimonial from our site please email us at support@valifyit.com.&nbsp; We will respond to your request to access within 30 days.</p>
 <p>
 <b>Data Retention</b>
 </p>
@@ -236,7 +226,7 @@ Parties are companies unaffiliated with the Valify Platform.&nbsp; We may share 
 </p>
 <p><b>Can I have my personal data deleted?</b>&nbsp;
 </p>
-<p>You can delete any personal data that is recorded in the profile that you create for yourself as an investor or for your company, or as an entrepreneur.</p>
+<p>You can delete any personal data that is recorded in the profile at any time.</p>
 <p>
 <b>Social Media Widgets</b>
 </p>
@@ -244,17 +234,13 @@ Parties are companies unaffiliated with the Valify Platform.&nbsp; We may share 
 <p>
 <b>Single Sign-On</b>
 </p>
-<p>You can log in to our site using sign-in services such as LinkedIn or an Open ID provider. These services will authenticate your identity and provide you the option to share certain personal data with us such as your name and email address to pre-populate our sign up form.&nbsp; Services like LinkedIn give you the option to post information about your activities on this Web site to your profile page to share with others within your network.&nbsp;</p>
-<p>
-<b>Testimonials</b>
-</p>
-<p>We display video testimonials of satisfied customers on our site in addition to other endorsements.&nbsp; With your consent we may post your video testimonial along with your name.&nbsp; If you wish to update or delete your testimonial, you can contact us at support@Valify.com.&nbsp;</p>
+<p>You can log in to our site using sign-in services such as Google and Facebook login. These services will authenticate your identity and provide you the option to share certain personal data with us such as your name and email address to pre-populate our sign up form.&nbsp; Valify does not have the right to post anything on your Google or Facebook account. Anything shared or posted on the Valify platform will not be shared on posted on your Google and Facebook account.</p>
 <p>
 <b>Invite Members</b>
 </p>
 <p>
-If you choose to invite a user to our platform, we will ask you for a name and email address.&nbsp; We will automatically send your invite a one-time email inviting him or her to visit the site.&nbsp; Valify stores this information for the sole purpose of sending this one-time email and tracking the success of invites claimed. Your invitee may contact us at
-<a href="mailto:support@Valify.com">support@Valify.com</a>
+To invite another user to Valify's platform, we will ask you for a name and email address.&nbsp; We will automatically send your invite a one-time email inviting him or her to visit the site.&nbsp; Valify stores this information for the sole purpose of sending this one-time email and tracking the success of invites claimed. Your invitee may contact us at
+<a href="mailto:support@valifyit.com">support@valifyit.com</a>
 to request that we remove this information from our database.
 </p>
 <p>
@@ -312,12 +298,6 @@ We partner with a third party to either display advertising on our website or to
 <p>
 <br>
 </p>
-<p><b>What about Uploaded Documents?</b>&nbsp;
-</p>
-<p>Documents that are uploaded to the Valify Platform for sharing are stored at a third party data-storage service. All uploads and downloads are transmitted through the web between users and the data storage service using the same encryption techniques as those that are used with personal data. However, uploaded documents are neither stored redundantly, nor backed up. Therefore, we recommend that Valify users keep back-up copies of their documents if they upload them to the Valify.com website.</p>
-<p>
-<br>
-</p>
 <p><b>When will Valify contact me?</b>&nbsp;
 </p>
 <p>Valify will communicate with you in response to your requests for service or customer support. We will contact you by phone or by email, according to your preference.</p>
@@ -352,12 +332,12 @@ We partner with a third party to either display advertising on our website or to
 <p>You will have the right to terminate your account at any time.</p>
 <p><b>Contacting Valify</b>&nbsp;
 </p>
-<p>Valify, Inc. owns and operates the Valify.com web site and the Valify Platform. Our mailing address is 44 West 28th Street, New York, NY 10001 USA.</p>
-<p>If you have any questions about this Privacy Policy, or believe that its terms have not been complied with, please email Valify at:&nbsp; support@Valify.com&nbsp;</p>
+<p>Valify, LLC. owns and operates the valifyit.com web site and the Valify Platform. Our mailing address is 245 5th Ave Suite 201, New York, NY 10001 USA.</p>
+<p>If you have any questions about this Privacy Policy, or believe that its terms have not been complied with, please email Valify at:&nbsp; support@valifyit.com&nbsp;</p>
 <p>
 <br>
 </p>
-<p>Effective Date: October 20, 2016</p>
+<p>Effective Date: March 31, 2017</p>
 <p>
 <br>
 </p>

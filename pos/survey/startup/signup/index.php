@@ -233,6 +233,19 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <?php
 
 
+ $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_startup");
+ $stmt->execute(array(":email_id"=>'test@test.com'));
+ $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+  if($row['total'] > 15)
+  {
+
+
+        
+  }else{
+
+
 if(isset($_POST['btn-signup']))
 {
 
@@ -270,7 +283,7 @@ if($_POST['passwordpass'] == 'good'){
 
 
   
-  if($row['total'] > 0)
+  if($row['total'] > 15)
   {
     $msg = "
           <div class='alert alert-error'>
@@ -558,6 +571,8 @@ $response = $sg->client->mail()->send()->post($mail);
  }
 }
 
+}
+
 
 ?>
 
@@ -581,10 +596,46 @@ $response = $sg->client->mail()->send()->post($mail);
 
 <div class="form">
 
-<div class='alert alert-error'>
+
+
+<?php 
+
+ $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_startup");
+ $stmt->execute(array(":email_id"=>'test@test.com'));
+ $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+  if($row['total'] > 15)
+  {
+
+     echo "
+          <div class='alert alert-error'>
+       <button class='close' data-dismiss='alert'>&times;</button>
+          <strong>Sorry !</strong> We don't accept any new signups at the moment.<br><br>
+          Sign up to our list to let you know once space is available to signup.<br><br>
+          <a href='".BASE_PATH."/#form'>Click here to sign up</a>
+        </div>
+        ";
+
+        unset($_SESSION['startupSession']); 
+   
+        
+  }else{
+
+    echo "<div class='alert alert-error'>
           <button class='close' data-dismiss='alert'>&times;</button>
           We have limited spots available. Sign up now.
-        </div>
+        </div>";
+
+      }  
+
+?>
+
+
+
+
+
+
 
 <div class="info">
   <h1>SIGNUP AS A STARTUP</h1>
@@ -651,6 +702,31 @@ $response = $sg->client->mail()->send()->post($mail);
   </div>
 
 
+
+
+
+
+<?php 
+
+
+ $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_startup");
+ $stmt->execute(array(":email_id"=>'test@test.com'));
+ $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+  if($row['total'] > 15)
+  {
+
+
+        
+  }else{
+
+?>
+
+
+
+
+
   <?php
 
 //Display user info or display login url as per the info we have.
@@ -685,6 +761,13 @@ $helper = $fb->getRedirectLoginHelper();
 $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/startup/signup/signup-callback.php', $permissions);
 
+
+
+
+
+
+
+
 if(!isset($_SESSION['fb_access_token_startup'])){
 //echo '<a href="' . htmlspecialchars($loginUrl) . '">Sign up with Facebook!</a>';
 echo '<div style="float:left; width:100%;">';
@@ -717,6 +800,9 @@ echo "<p>&nbsp;</p>";
 
 
 }
+
+
+
 
 //echo $_SESSION['fb_access_token_startup'];
 
@@ -779,6 +865,11 @@ echo 'id: ' . $user['id'];
   else //else greeting text "Thanks for registering"
   { 
 
+
+
+  
+
+
    date_default_timezone_set('America/New_York');
     $date = date('Y-m-d'); 
 
@@ -797,9 +888,15 @@ echo 'id: ' . $user['id'];
     header("Location: ../index.php");
     exit(); 
 
- 
+
+
 
     //echo $user->id;
+
+
+
+
+
 
     if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
     
@@ -816,6 +913,8 @@ echo 'id: ' . $user['id'];
 
   }
 
+ 
+
 
 
 
@@ -825,6 +924,8 @@ echo 'id: ' . $user['id'];
 ?>
 
 
+
+<?php } ?>
 
   
 </div>
