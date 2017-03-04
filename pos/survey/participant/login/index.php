@@ -3,6 +3,8 @@ session_start();
 
 ob_start();
 
+error_reporting(E_ERROR | E_PARSE);
+
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
 
@@ -47,159 +49,6 @@ if(isset($_POST['btn-login']))
 
 //echo $_SESSION['access_token'];
 
-
-require_once ('libraries/Google/autoload.php');
-
-//Insert your cient ID and secret 
-//You can get it from : https://console.developers.google.com/
-$client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
-$client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
-$redirect_uri = ''.BASE_PATH.'/participant/login/';
-
-//database
-$db_username = "root"; //Database Username
-$db_password = "123"; //Database Password
-$host_name = "localhost"; //Mysql Hostname
-$db_name = 'circl'; //Database Name
-
-
-//incase of logout request, just unset the session var
-if (isset($_GET['logout'])) {
-  unset($_SESSION['access_token']);
-  unset($_SESSION['fb_access_token_participant']);
-  unset($_SESSION['participantSession']);
-}
-
-/************************************************
-  Make an API request on behalf of a user. In
-  this case we need to have a valid OAuth 2.0
-  token for the user, so we need to send them
-  through a login flow. To do this we need some
-  information from our API console project.
- ************************************************/
-$client = new Google_Client();
-$client->setClientId($client_id);
-$client->setClientSecret($client_secret);
-$client->setRedirectUri($redirect_uri);
-$client->addScope("email");
-$client->addScope("profile");
-
-/************************************************
-  When we create the service here, we pass the
-  client to it. The client then queries the service
-  for the required scopes, and uses that when
-  generating the authentication URL later.
- ************************************************/
-$service = new Google_Service_Oauth2($client);
-
-/************************************************
-  If we have a code back from the OAuth 2.0 flow,
-  we need to exchange that with the authenticate()
-  function. We store the resultant access token
-  bundle in the session, and redirect to ourself.
-*/
-  //echo $_GET['code'];
-if (isset($_GET['code'])) {
-  $client->authenticate($_GET['code']);
-  $_SESSION['access_token'] = $client->getAccessToken();
-  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
-  exit;
-}
-
-/************************************************
-  If we have an access token, we can make
-  requests, else we generate an authentication URL.
- ************************************************/
-if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-  $client->setAccessToken($_SESSION['access_token']);
-} else {
-  $authUrl = $client->createAuthUrl();
-}
-
-
-
-
-
- if (!isset($authUrl)){ 
- 
-  
-  $user = $service->userinfo->get(); //get user info 
-  
-  // connect to database
-  $mysqli = new mysqli($host_name, $db_username, $db_password, $db_name);
-    if ($mysqli->connect_error) {
-        die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-    }
-  
-  //echo $user->id;
-
-   
-
-
-  //check if user exist in database using COUNT
-  $result = $mysqli->query("SELECT COUNT(google_id) as usercount FROM tbl_participant WHERE google_id=$user->id");
-  $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
-
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userEmail = '".$user->email."'");
-  $row = mysqli_fetch_array($sql);
-
-
-
-  //show user picture
-  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
-  //echo $user_count;
-  //echo $user->email;
-  if($user_count) //if user already exist change greeting text to "Welcome Back"
-    {
-        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['participantSession'] = $row['userID'];
-        header("Location: ../meetings/");
-        //echo $_SESSION['participantSession'];
-        exit();
-    }
-  else //else greeting text "Thanks for registering"
-  { 
-        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-    $statement = $mysqli->prepare("INSERT INTO tbl_participant (google_id, FirstName, LastName, userEmail, google_picture_link) VALUES (?,?,?,?,?)");
-    $statement->bind_param('issss', $user->id,  $user->givenName, $user->familyName, $user->email, $user->picture);
-    $statement->execute();
-    //echo $mysqli->error;
-
-   $statement = $mysqli->prepare("UPDATE tbl_participant SET 
-    profile_image = '',
-    facebook_id = '',
-    google_id = '".$user->id."',
-    FirstName = '".$user->givenName."',
-    LastName = '".$user->familyName."',
-    google_picture_link = '".$user->picture."',
-    account_verified = '1'  
-    
-    WHERE userEmail='".$user->email."'");
-   
-   $statement->execute();
-
-    //echo $user->id;
-
-    if($mysqli->error == "Duplicate entry '".$user->email."' for key 'userEmail'"){
-    
-      //exit(header("Location: ../index.php"));
-
-    }else{
-
-        $_SESSION['participantSession'] = $row['userID'];
-        header("Location: ../meetings/");
-        exit();
-
-    }
-
-    }
-  
-  //print user details
-  //echo '<pre>';
-  //print_r($user);
-  //echo '</pre>';
-}
-//echo '</div>';
 
 
 
@@ -322,6 +171,186 @@ if (isset($authUrl)){
 
 
 
+
+<?php
+
+
+require_once ('libraries/Google/autoload.php');
+
+//Insert your cient ID and secret 
+//You can get it from : https://console.developers.google.com/
+$client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
+$client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
+$redirect_uri = ''.BASE_PATH.'/participant/login/';
+
+//database
+$db_username = "root"; //Database Username
+$db_password = "123"; //Database Password
+$host_name = "localhost"; //Mysql Hostname
+$db_name = 'circl'; //Database Name
+
+
+//incase of logout request, just unset the session var
+if (isset($_GET['logout'])) {
+  unset($_SESSION['access_token']);
+  unset($_SESSION['fb_access_token_participant']);
+  unset($_SESSION['participantSession']);
+}
+
+/************************************************
+  Make an API request on behalf of a user. In
+  this case we need to have a valid OAuth 2.0
+  token for the user, so we need to send them
+  through a login flow. To do this we need some
+  information from our API console project.
+ ************************************************/
+$client = new Google_Client();
+$client->setClientId($client_id);
+$client->setClientSecret($client_secret);
+$client->setRedirectUri($redirect_uri);
+$client->addScope("email");
+$client->addScope("profile");
+
+/************************************************
+  When we create the service here, we pass the
+  client to it. The client then queries the service
+  for the required scopes, and uses that when
+  generating the authentication URL later.
+ ************************************************/
+$service = new Google_Service_Oauth2($client);
+
+/************************************************
+  If we have a code back from the OAuth 2.0 flow,
+  we need to exchange that with the authenticate()
+  function. We store the resultant access token
+  bundle in the session, and redirect to ourself.
+*/
+  //echo $_GET['code'];
+if (isset($_GET['code'])) {
+  $client->authenticate($_GET['code']);
+  $_SESSION['access_token'] = $client->getAccessToken();
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+  exit;
+}
+
+/************************************************
+  If we have an access token, we can make
+  requests, else we generate an authentication URL.
+ ************************************************/
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+  $client->setAccessToken($_SESSION['access_token']);
+} else {
+  $authUrl = $client->createAuthUrl();
+}
+
+
+
+
+
+
+
+ if (!isset($authUrl)){ 
+
+
+  $user = $service->userinfo->get(); //get user info 
+  
+  // connect to database
+  $mysqli = new mysqli($host_name, $db_username, $db_password, $db_name);
+    if ($mysqli->connect_error) {
+        die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+    }
+  
+  //echo $user->id;
+
+  
+
+
+  //check if user exist in database using COUNT
+  $result = mysqli_query($connecDB,"SELECT COUNT(userEmail) as usercount FROM tbl_participant WHERE userEmail='".$user->email."' ");
+  $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
+
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userEmail = '".$user->email."'");
+  $row = mysqli_fetch_array($sql);
+
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($user_count) //if user already exist change greeting text to "Welcome Back"
+    {
+
+    $statement = $mysqli->prepare("UPDATE tbl_participant SET 
+    profile_image = '',
+    facebook_id = '',
+    google_id = '".$user->id."',
+    FirstName = '".$user->givenName."',
+    LastName = '".$user->familyName."',
+    google_picture_link = '".$user->picture."',
+    account_verified = '1'  
+    
+    WHERE userEmail='".$user->email."'");
+   
+   $statement->execute();
+
+
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['participantSession'] = $row['userID'];
+        header("Location: ../meetings/");
+        exit();
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    
+    
+
+
+unset($_SESSION['participantSession']);
+unset($_SESSION['access_token']);
+
+
+
+echo "
+          <div class='alert alert-error'>
+       <button class='close' data-dismiss='alert'>&times;</button>
+          <strong>Sorry !</strong> No account found</a>
+        </div>
+        ";
+
+
+   
+    //mysqli_query($update_sql);
+
+    //echo $user->id;
+
+    if($mysqli->error == "Duplicate entry '".$user->email."' for key 'userEmail'"){
+    
+      //exit(header("Location: ../index.php"));
+
+    }
+
+    }
+  
+  //print user details
+  //echo '<pre>';
+  //print_r($user);
+  //echo '</pre>';
+}
+
+
+//echo '</div>';
+
+
+
+
+
+?>
+
+
+
+
+
 <?php
 
 $fb = new Facebook\Facebook([
@@ -352,6 +381,8 @@ echo "<p>&nbsp;</p>";
 
 }else{
 
+/*  
+
 echo '<div style="float:left; width:100%;">';
 
 echo '<div style="margin:0 auto; width: 82%;">';
@@ -364,7 +395,7 @@ echo '</div>';
 echo '</div>';
 
 echo "<p>&nbsp;</p>";
-
+*/
 
 }
 
@@ -430,55 +461,34 @@ echo 'id: ' . $user['id'];
   else //else greeting text "Thanks for registering"
   { 
 
-    date_default_timezone_set('America/New_York');
-    $date = date('Y-m-d'); 
 
-    $gender = ucfirst($user['gender']);
 
-        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant (facebook_id, FirstName, LastName, userEmail, Gender, Date_Created, account_verified) 
-      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' , '".$date."','1')");
-    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
-    //$statement->execute();
-    //echo $mysqli->error;
+unset($_SESSION['participantSession']);
+unset($_SESSION['facebook_photo']);
+unset($_SESSION['fb_access_token_participant']);
 
-    //mysqli_query($insert_sql);  
-    $_SESSION['participantSession'] = $row['userID'];
-    $_SESSION['facebook_photo'] = $user['id'];
-    
-    header("Location: ../meetings/");
+
+
+
+echo "
+          <div class='alert alert-error'>
+       <button class='close' data-dismiss='alert'>&times;</button>
+          <strong>Sorry !</strong> No account found</a>
+        </div>
+        ";
     exit();
 
     //echo $user->id;
 
-    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
+       if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
     
       //exit(header("Location: ../index.php"));
 
-    }else{
-
-        $_SESSION['participantSession'] = $user['id'];
-        $_SESSION['facebook_photo'] = $user['id'];
-
-
-    $statement = $mysqli->prepare("UPDATE tbl_participant SET 
-    facebook_id = '".$user['id']."',
-    google_id = '',
-    google_picture_link = '',
-    account_verified = '1'  
-    
-    WHERE userEmail='".$user->email."'");
-   
-   $statement->execute();
-
-
-
-        header("Location: ../meetings/");
-        exit();
-
     }
 
-  }
+ 
+
+  }  
 
 
 
