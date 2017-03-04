@@ -75,6 +75,12 @@ $rowmeetingupcoming=mysqli_fetch_array($sqlupcoming);
 }
 
 
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Startup='Yes'
+  WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
+
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Startup='Yes'
+  WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
+
 
 
 $Min_Req = str_replace(",","|",$rowproject['MinReq']);
@@ -283,7 +289,7 @@ $(document).ready(function() {
         //var screeningquestion_required  = $('input[name=screeningquestion_required]').val();
 
         var projectid  = $('input[name=projectid]').val();
-        var participantid  = $('input[name=participantid').val();
+        var participantid  = $('input[name=participantid]').val();
         
         var date_option_one  = $('input[name=date_option_one]').val();
         var date_option_two  = $('input[name=date_option_two]').val();
@@ -301,6 +307,8 @@ $(document).ready(function() {
         //we simply change border color to red if empty field using .css()
         var proceed = true;
 
+        
+        
 
         if(!date_option_one) {
 
@@ -486,7 +494,7 @@ if(mysqli_num_rows($results) == 0) { ?>
 
 <?php if($rowmeetingrequest['Requested_By'] == 'Startup'){ ?>
 
-<div class="col-lg-11" style="padding:0px;">
+<div class="col-lg-11" style="padding:0px; margin-bottom:30px;">
  <div class="success2">
 You have sent <?php echo $rowparticipant['FirstName']; ?> a request to meet.
 
@@ -1067,8 +1075,6 @@ echo '<br>';
 
 </div>
 
-<?php } ?>
-
 
 <p>&nbsp;</p>
 
@@ -1081,6 +1087,14 @@ echo '<br>';
     <div id="result"></div>
 
 </div>
+
+
+
+
+<?php } ?>
+
+
+
 
 
 

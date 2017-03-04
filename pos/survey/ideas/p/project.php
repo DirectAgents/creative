@@ -207,6 +207,9 @@ $sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE userID='
 $rowupcoming=mysqli_fetch_array($sql);
 
 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Participant='Yes'
+  WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
+
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Participant='Yes'
   WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
 
@@ -705,13 +708,18 @@ if($rowupcoming['userID'] == $_SESSION['participantSession'] && $rowupcoming['Pr
 
 //echo $rowrequest['ProjectID'];
 
+
+$startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$rowupcoming['startupID']."'");
+$rowstartup= mysqli_fetch_array($startup);
+
+
  ?>
 
 
-<div class="col-lg-11">
-
-<div class="request-sent">  
-  You both will be meeting
+<div class="col-lg-11" style="padding:0px; margin-bottom:30px;">
+ <div class="success2">
+  You will meet <?php echo $rowstartup['FirstName']; ?> on  <?php echo date('F j, Y',strtotime($rowupcoming['Date_of_Meeting'])); ?> 
+at <?php echo $rowupcoming['Final_Time']; ?><br>
 </div>
 <p>&nbsp;</p>
 

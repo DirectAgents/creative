@@ -5,7 +5,6 @@
 	<li><a href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a></li>
 	<li><a href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a></li>
 	<li><a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a></li>
-	<li><a href="<?php echo BASE_PATH; ?>/benefits/">Benefits</a></li>
 </ul>
 
 

@@ -403,7 +403,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
   
 
-        <div id="result"></div>
+        
      
 
       
@@ -420,9 +420,14 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
         <input type="hidden" name="submitok" value="Yes"/>
 
      </div> 
+     <div id="result" style="float:left; width:100%; margin-top:40px;"></div>
+
   </div>    
 
-       </div>     
+
+
+       </div>      
+
         </div> 
 
            <!--Footer-->

@@ -329,7 +329,7 @@ if($rowscreening['EnabledorDisabled'] == 'Enabled'){
 
 if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 
-  echo '<input type="radio" style="display:block; float:left" name="PotentialAnswer[]" id="PotentialAnswer3" value="Not Required" />';
+  echo '<input type="radio" style="display:none; float:left" name="PotentialAnswer[]" id="PotentialAnswer3" value="Not Required" />';
 
 }
 
@@ -974,7 +974,7 @@ $row3 = mysqli_fetch_array($sql3);
                    
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Idea</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Details</a>
 
 
                       </div>

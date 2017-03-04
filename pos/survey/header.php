@@ -1,7 +1,7 @@
  <?php require_once 'base_path.php'; ?>
 
 
- <title>Circl</title>
+ <title>Valify</title>
 
          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
