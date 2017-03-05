@@ -29,7 +29,7 @@ class PARTICIPANT
 		return $stmt;
 	}
 	
-	public function register($firstname,$lastname,$zip,$email,$upass,$code)
+	public function register($firstname,$lastname,$zip,$age,$email,$upass,$code)
 	{
 		try
 		{	
@@ -43,11 +43,12 @@ class PARTICIPANT
 			$stmt->execute(array(":user_zip"=>$zip));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			
-			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code,'New startup requests you participate,When you qualify to participate to provide feedback on an idea','".$the_date."')");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,Age,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
+			                                             VALUES(:first_name, :last_name,:user_zip,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code,'New startup requests you participate,When you qualify to participate to provide feedback on an idea','".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
 			$stmt->bindparam(":user_zip",$zip);
+			$stmt->bindparam(":user_age",$age);
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
 			$stmt->bindparam(":active_code",$code);

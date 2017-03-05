@@ -1029,10 +1029,6 @@ echo $row2['Languages'].'</li>';
          <span class="select-wrapper">
               <select name="age" class="age">
                <option value="" <?php if(in_array('',$age)){echo "selected";}?> disabled="disabled">Select your age</option>
-<option value="10" <?php if(in_array(10,$age)){echo "selected";}?>>10</option>
-<option value="11" <?php if(in_array(11,$age)){echo "selected";}?>>11</option>
-<option value="12" <?php if(in_array(12,$age)){echo "selected";}?>>12</option>
-<option value="13" <?php if(in_array(13,$age)){echo "selected";}?>>13</option>
 <option value="14" <?php if(in_array(14,$age)){echo "selected";}?>>14</option>
 <option value="15" <?php if(in_array(15,$age)){echo "selected";}?>>15</option>
 <option value="16" <?php if(in_array(16,$age)){echo "selected";}?>>16</option>

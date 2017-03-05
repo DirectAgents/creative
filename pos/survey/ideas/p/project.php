@@ -42,7 +42,7 @@ $rowparticipant_languages = mysqli_fetch_array($participant_languages);
 
 $participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_GET['id']."'");
 $rowparticipant_interest = mysqli_fetch_array($participant_interest);
-  
+
 
 $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
 $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
@@ -744,13 +744,38 @@ at <?php echo $rowupcoming['Final_Time']; ?><br>
 if($participant_home->is_logged_in())
 {
 
-if($row['account_id'] == '' && $row['Cash_Only'] == '') { ?>
+if($row['account_id'] == '' && $row['Payment_Method'] == 'Bank') { ?>
 
 
 <div class="col-lg-11">
 
 <div class="no-bankaccount-set">  
   Please add a bank account so you can receive payments. <a href="<?php echo BASE_PATH; ?>/participant/payment/">Set up Bank Account</a>
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
+
+
+<?php } } ?>
+
+
+
+
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+if($row['Payment_Method'] == 'Cash') { ?>
+
+
+<div class="col-lg-11">
+
+<div class="no-bankaccount-set">  
+  You will receive your payment in cash. <a href="<?php echo BASE_PATH; ?>/participant/payment/">Change to add a Bank Account</a>
 </div>
 <p>&nbsp;</p>
 
@@ -1278,14 +1303,21 @@ foreach($days as $day){
 
 
 
-<?php if($row['Cash_Only'] == '' && $row['account_id'] == '') { ?>
+<?php if($row['Payment_Method'] == 'Bank' && $row['account_id'] == '') { ?>
 
     <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
 
 <?php } ?>
 
 
-<?php if($row['Cash_Only'] == 'Yes' && $row['account_id'] == '') { ?>
+<?php if($row['Payment_Method'] == 'Bank' && $row['account_id'] != '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
+
+<?php if($row['Payment_Method'] == 'Cash' && $row['account_id'] != '') { ?>
 
     <input type="submit" class="btn-request" value="Request to Meet"/>
 
@@ -1293,18 +1325,12 @@ foreach($days as $day){
 
 
 
-<?php if($row['Cash_Only'] == '' && $row['account_id'] != '') { ?>
+<?php if($row['Payment_Method'] == 'Cash' && $row['account_id'] == '') { ?>
 
     <input type="submit" class="btn-request" value="Request to Meet"/>
 
 <?php } ?>
 
-
-<?php if($row['Cash_Only'] == 'Yes' && $row['account_id'] != '') { ?>
-
-    <input type="submit" class="btn-request" value="Request to Meet"/>
-
-<?php } ?>
 
 
 
