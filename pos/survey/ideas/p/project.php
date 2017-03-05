@@ -36,6 +36,14 @@ if(!$participant_home->is_logged_in())
 if($participant_home->is_logged_in())
 {
 
+
+$participant_languages = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_GET['id']."'");
+$rowparticipant_languages = mysqli_fetch_array($participant_languages);
+
+$participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_GET['id']."'");
+$rowparticipant_interest = mysqli_fetch_array($participant_interest);
+  
+
 $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
 $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -56,8 +64,8 @@ $Diet = str_replace(",","|",$rowproject['Diet']);
 $Religion = str_replace(",","|",$rowproject['Religion']);
 $Education = str_replace(",","|",$rowproject['Education']);
 $Job = str_replace(",","|",$rowproject['Job']);
-$Interest = str_replace(",","|",$rowproject['Interest']);
-$Languages = str_replace(",","|",$rowproject['Languages']);
+$Interest = str_replace(",","|",$rowparticipant_interest['Interests']);
+$Languages = str_replace(",","|",$rowparticipant_languages['Languages']);
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");

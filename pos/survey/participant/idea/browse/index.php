@@ -243,7 +243,7 @@ date_default_timezone_set('America/New_York');
     <div class="col-md-12">
 <div class="empty-projects">Sorry you don't qualify for any meetings yet</div>
 <p>&nbsp;</p>
-<p class="center">You will be qualified based on the requirements set by the startup.</p>
+<p class="center">You will qualify based on the requirements set by the startup.</p>
   <div class="create-one-here-box">
       <div class="get-notified">
        <a href="<?php echo BASE_PATH; ?>/participant/account/settings/">

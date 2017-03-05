@@ -839,14 +839,17 @@ var btn= $(this).find("input[type=submit]:focus").val();
        
        //alert(details);
 
-       if(details==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your idea!</div>';
+       
+
+        if(agenda_one==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your agenda during the feedback session!</div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }
 
-        if(agenda_one==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your agenda during the feedback session!</div>';
+
+        if(details==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your idea!</div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }

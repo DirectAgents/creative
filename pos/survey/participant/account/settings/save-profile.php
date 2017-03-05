@@ -13,7 +13,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 if($_POST)
 {
 
-if($_POST['cash_only'] == ''){$cash_only = '';}else{$cash_only = $_POST['cash_only'];}
+if($_POST['payment_method'] == ''){$payment_method = '';}else{$payment_method = $_POST['payment_method'];}
 
 if($_POST['emailnotifications'] == ''){$emailnotifications = '';}else{$emailnotifications = $_POST['emailnotifications'];}
  
@@ -52,7 +52,7 @@ if($_POST['job'] == ''){$job = '';}else{$job = $_POST['job'];}
   Religion='".$religion."',
   Education='".$education."',
   Job='".$job."',
-  Cash_Only='".$cash_only."',
+  Payment_Method='".$payment_method."',
   EmailNotifications='".$emailnotifications."'
 
   WHERE userID='".$_SESSION['participantSession']."'");

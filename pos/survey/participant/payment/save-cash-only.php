@@ -19,7 +19,7 @@ if($_POST)
 
 //$all_game_value = implode(",",$_POST['testing']);
   $update_sql =mysqli_query($connecDB,"UPDATE tbl_participant SET 
-  Cash_Only='Yes'
+  Payment_Method='Cash'
 
   WHERE userID='".$_SESSION['participantSession']."'");
 

@@ -41,7 +41,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <?php 
 
 
-if($row['Cash_Only'] == 'Yes'){
+if($row['Payment_Method'] == 'Cash'){
 
 echo "<h3>You set up to receive payments in cash.</h3>";
 
@@ -53,7 +53,7 @@ echo "<h3>You set up to receive payments in cash.</h3>";
 
 
 
-<?php if($row['account_id'] != '' && $row['Cash_Only'] != 'Yes' ) { ?>  
+<?php if($row['account_id'] != '' && $row['Cash_Only'] == 'Bank' ) { ?>  
 
 
 
@@ -137,7 +137,7 @@ exit();
     // create the withdrawal
     $response = $wepay->request('account/get_update_uri', array(
         'account_id'    => $row['account_id'],
-        'redirect_uri'  => 'http://localhost/creative/pos/survey/participant/payment/',
+        'redirect_uri'  => '<?php echo BASE_PATH; ?>/participant/payment/',
         'mode'          => 'iframe'
     ));
 
@@ -148,7 +148,7 @@ exit();
 ?>
 
 
-<iframe src="https://stage.wepay.com/api/account_update/<?php echo $row['account_id']; ?>?iframe=1&redirect_uri=http%3A%2F%2Flocalhost%2Fcreative%2Fpos%2Fsurvey%2Fparticipant%2Fpayment%2F" frameborder="0" border="0" cellspacing="0" scrolling="no" style="border-style: none;width: 100%; height: 400px; padding:0px;" ></iframe>
+<iframe src="https://stage.wepay.com/api/account_update/<?php echo $row['account_id']; ?>?iframe=1&redirect_uri=<?php echo BASE_PATH; ?>/payment" frameborder="0" border="0" cellspacing="0" scrolling="no" style="border-style: none;width: 100%; height: 400px; padding:0px;" ></iframe>
 
 
 
@@ -194,7 +194,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
-    "redirect_uri":"http://localhost/creative/pos/survey/participant/payment?verified=1",
+    "redirect_uri":"<?php echo BASE_PATH; ?>/participant/payment?verified=1",
     "top":100, // control the positioning of the popup with the top and left params
     "left":100,
     "state":"robot", // this is an optional parameter that lets you persist some state value through the flow
@@ -203,7 +203,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
         //alert(data.code);
     if (data.code.length !== 0) {
       // send the data to the server
-      window.location.href = "http://localhost/creative/pos/survey/participant/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=http://localhost/creative/pos/survey/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
+      window.location.href = "<?php echo BASE_PATH; ?>/participant/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=<?php echo BASE_PATH; ?>/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
 
     } else {
       // an error has occurred and will be in data.error

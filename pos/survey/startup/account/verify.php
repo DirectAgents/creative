@@ -80,10 +80,10 @@ if(isset($_GET['id']) && isset($_GET['code']))
 
 
 <!DOCTYPE html>
-<html >
+<html>
   <head>
     <meta charset="UTF-8">
-    <title>Circl</title>
+    <title>Valify</title>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">
@@ -124,7 +124,8 @@ if(isset($_GET['id']) && isset($_GET['code']))
 
    <?php if(isset($msg)) echo $msg;  ?>
   <div class="logo">
-   <a href="<?php echo BASE_PATH; ?>"><h1>CIRCL</h1></a>
+    <a href="<?php echo BASE_PATH; ?>"><img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/></a>
+  </div>
   </div>
 </div>
 

@@ -947,7 +947,7 @@ $(".choose-location-sunday").click(function() {
                 'religion'     : $("select[name='religion']").val(),
                 'education'     : $("select[name='education']").val(),
                 'job'     : $("select[name='job']").val(),
-                'cash_only'     : $('input[name="cash_only[]"]:checked').map(function () {return this.value;}).get().join(","),
+                'payment_method'     : $('input[name="payment_method[]"]:checked').map(function () {return this.value;}).get().join(","),
                 'emailnotifications'     : $('input[name="emailnotifications[]"]:checked').map(function () {return this.value;}).get().join(",")
 
             };

@@ -745,57 +745,57 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
             <span class="select-wrapper">
               <select name="state" id="state" class="timezone">
                 <option value="" disabled="disabled">Select your state</option>
-                  <option value="AL" <?php if($row['City'] == 'AL'){echo "selected";}?>>Alabama</option>
-  <option value="AK" <?php if($row['City'] == 'AK'){echo "selected";}?>>Alaska</option>
-  <option value="AZ" <?php if($row['City'] == 'AZ'){echo "selected";}?>>Arizona</option>
-  <option value="AR" <?php if($row['City'] == 'AR'){echo "selected";}?>>Arkansas</option>
-  <option value="CA" <?php if($row['City'] == 'CA'){echo "selected";}?>>California</option>
-  <option value="CO" <?php if($row['City'] == 'CO'){echo "selected";}?>>Colorado</option>
-  <option value="CT" <?php if($row['City'] == 'CT'){echo "selected";}?>>Connecticut</option>
-  <option value="DE" <?php if($row['City'] == 'DE'){echo "selected";}?>>Delaware</option>
-  <option value="DC" <?php if($row['City'] == 'DC'){echo "selected";}?>>District Of Columbia</option>
-  <option value="FL" <?php if($row['City'] == 'FL'){echo "selected";}?>>Florida</option>
-  <option value="GA" <?php if($row['City'] == 'GA'){echo "selected";}?>>Georgia</option>
-  <option value="HI" <?php if($row['City'] == 'HI'){echo "selected";}?>>Hawaii</option>
-  <option value="ID" <?php if($row['City'] == 'ID'){echo "selected";}?>>Idaho</option>
-  <option value="IL" <?php if($row['City'] == 'IL'){echo "selected";}?>>Illinois</option>
-  <option value="IN" <?php if($row['City'] == 'IN'){echo "selected";}?>>Indiana</option>
-  <option value="IA" <?php if($row['City'] == 'IA'){echo "selected";}?>>Iowa</option>
-  <option value="KS" <?php if($row['City'] == 'KS'){echo "selected";}?>>Kansas</option>
-  <option value="KY" <?php if($row['City'] == 'KY'){echo "selected";}?>>Kentucky</option>
-  <option value="LA" <?php if($row['City'] == 'LA'){echo "selected";}?>>Louisiana</option>
-  <option value="ME" <?php if($row['City'] == 'ME'){echo "selected";}?>>Maine</option>
-  <option value="MD" <?php if($row['City'] == 'MD'){echo "selected";}?>>Maryland</option>
-  <option value="MA" <?php if($row['City'] == 'MA'){echo "selected";}?>>Massachusetts</option>
-  <option value="MI" <?php if($row['City'] == 'MI'){echo "selected";}?>>Michigan</option>
-  <option value="MN" <?php if($row['City'] == 'MN'){echo "selected";}?>>Minnesota</option>
-  <option value="MS" <?php if($row['City'] == 'MS'){echo "selected";}?>>Mississippi</option>
-  <option value="MO" <?php if($row['City'] == 'MO'){echo "selected";}?>>Missouri</option>
-  <option value="MT" <?php if($row['City'] == 'MT'){echo "selected";}?>>Montana</option>
-  <option value="NE" <?php if($row['City'] == 'NE'){echo "selected";}?>>Nebraska</option>
-  <option value="NV" <?php if($row['City'] == 'NV'){echo "selected";}?>>Nevada</option>
-  <option value="NH" <?php if($row['City'] == 'NH'){echo "selected";}?>>New Hampshire</option>
-  <option value="NJ" <?php if($row['City'] == 'NJ'){echo "selected";}?>>New Jersey</option>
-  <option value="NM" <?php if($row['City'] == 'NM'){echo "selected";}?>>New Mexico</option>
-  <option value="NY" <?php if($row['City'] == 'NY'){echo "selected";}?>>New York</option>
-  <option value="NC" <?php if($row['City'] == 'NC'){echo "selected";}?>>North Carolina</option>
-  <option value="ND" <?php if($row['City'] == 'ND'){echo "selected";}?>>North Dakota</option>
-  <option value="OH" <?php if($row['City'] == 'OH'){echo "selected";}?>>Ohio</option>
-  <option value="OK" <?php if($row['City'] == 'OK'){echo "selected";}?>>Oklahoma</option>
-  <option value="OR" <?php if($row['City'] == 'OR'){echo "selected";}?>>Oregon</option>
-  <option value="PA" <?php if($row['City'] == 'PA'){echo "selected";}?>>Pennsylvania</option>
-  <option value="RI" <?php if($row['City'] == 'RI'){echo "selected";}?>>Rhode Island</option>
-  <option value="SC" <?php if($row['City'] == 'SC'){echo "selected";}?>>South Carolina</option>
-  <option value="SD" <?php if($row['City'] == 'SD'){echo "selected";}?>>South Dakota</option>
-  <option value="TN" <?php if($row['City'] == 'TN'){echo "selected";}?>>Tennessee</option>
-  <option value="TX" <?php if($row['City'] == 'TX'){echo "selected";}?>>Texas</option>
-  <option value="UT" <?php if($row['City'] == 'UT'){echo "selected";}?>>Utah</option>
-  <option value="VT" <?php if($row['City'] == 'VT'){echo "selected";}?>>Vermont</option>
-  <option value="VA" <?php if($row['City'] == 'VA'){echo "selected";}?>>Virginia</option>
-  <option value="WA" <?php if($row['City'] == 'WA'){echo "selected";}?>>Washington</option>
-  <option value="WV" <?php if($row['City'] == 'WV'){echo "selected";}?>>West Virginia</option>
-  <option value="WI" <?php if($row['City'] == 'WI'){echo "selected";}?>>Wisconsin</option>
-  <option value="WY" <?php if($row['City'] == 'WY'){echo "selected";}?>>Wyoming</option>
+                  <option value="AL" <?php if($row['State'] == 'AL'){echo "selected";}?>>Alabama</option>
+  <option value="AK" <?php if($row['State'] == 'AK'){echo "selected";}?>>Alaska</option>
+  <option value="AZ" <?php if($row['State'] == 'AZ'){echo "selected";}?>>Arizona</option>
+  <option value="AR" <?php if($row['State'] == 'AR'){echo "selected";}?>>Arkansas</option>
+  <option value="CA" <?php if($row['State'] == 'CA'){echo "selected";}?>>California</option>
+  <option value="CO" <?php if($row['State'] == 'CO'){echo "selected";}?>>Colorado</option>
+  <option value="CT" <?php if($row['State'] == 'CT'){echo "selected";}?>>Connecticut</option>
+  <option value="DE" <?php if($row['State'] == 'DE'){echo "selected";}?>>Delaware</option>
+  <option value="DC" <?php if($row['State'] == 'DC'){echo "selected";}?>>District Of Columbia</option>
+  <option value="FL" <?php if($row['State'] == 'FL'){echo "selected";}?>>Florida</option>
+  <option value="GA" <?php if($row['State'] == 'GA'){echo "selected";}?>>Georgia</option>
+  <option value="HI" <?php if($row['State'] == 'HI'){echo "selected";}?>>Hawaii</option>
+  <option value="ID" <?php if($row['State'] == 'ID'){echo "selected";}?>>Idaho</option>
+  <option value="IL" <?php if($row['State'] == 'IL'){echo "selected";}?>>Illinois</option>
+  <option value="IN" <?php if($row['State'] == 'IN'){echo "selected";}?>>Indiana</option>
+  <option value="IA" <?php if($row['State'] == 'IA'){echo "selected";}?>>Iowa</option>
+  <option value="KS" <?php if($row['State'] == 'KS'){echo "selected";}?>>Kansas</option>
+  <option value="KY" <?php if($row['State'] == 'KY'){echo "selected";}?>>Kentucky</option>
+  <option value="LA" <?php if($row['State'] == 'LA'){echo "selected";}?>>Louisiana</option>
+  <option value="ME" <?php if($row['State'] == 'ME'){echo "selected";}?>>Maine</option>
+  <option value="MD" <?php if($row['State'] == 'MD'){echo "selected";}?>>Maryland</option>
+  <option value="MA" <?php if($row['State'] == 'MA'){echo "selected";}?>>Massachusetts</option>
+  <option value="MI" <?php if($row['State'] == 'MI'){echo "selected";}?>>Michigan</option>
+  <option value="MN" <?php if($row['State'] == 'MN'){echo "selected";}?>>Minnesota</option>
+  <option value="MS" <?php if($row['State'] == 'MS'){echo "selected";}?>>Mississippi</option>
+  <option value="MO" <?php if($row['State'] == 'MO'){echo "selected";}?>>Missouri</option>
+  <option value="MT" <?php if($row['State'] == 'MT'){echo "selected";}?>>Montana</option>
+  <option value="NE" <?php if($row['State'] == 'NE'){echo "selected";}?>>Nebraska</option>
+  <option value="NV" <?php if($row['State'] == 'NV'){echo "selected";}?>>Nevada</option>
+  <option value="NH" <?php if($row['State'] == 'NH'){echo "selected";}?>>New Hampshire</option>
+  <option value="NJ" <?php if($row['State'] == 'NJ'){echo "selected";}?>>New Jersey</option>
+  <option value="NM" <?php if($row['State'] == 'NM'){echo "selected";}?>>New Mexico</option>
+  <option value="NY" <?php if($row['State'] == 'NY'){echo "selected";}?>>New York</option>
+  <option value="NC" <?php if($row['State'] == 'NC'){echo "selected";}?>>North Carolina</option>
+  <option value="ND" <?php if($row['State'] == 'ND'){echo "selected";}?>>North Dakota</option>
+  <option value="OH" <?php if($row['State'] == 'OH'){echo "selected";}?>>Ohio</option>
+  <option value="OK" <?php if($row['State'] == 'OK'){echo "selected";}?>>Oklahoma</option>
+  <option value="OR" <?php if($row['State'] == 'OR'){echo "selected";}?>>Oregon</option>
+  <option value="PA" <?php if($row['State'] == 'PA'){echo "selected";}?>>Pennsylvania</option>
+  <option value="RI" <?php if($row['State'] == 'RI'){echo "selected";}?>>Rhode Island</option>
+  <option value="SC" <?php if($row['State'] == 'SC'){echo "selected";}?>>South Carolina</option>
+  <option value="SD" <?php if($row['State'] == 'SD'){echo "selected";}?>>South Dakota</option>
+  <option value="TN" <?php if($row['State'] == 'TN'){echo "selected";}?>>Tennessee</option>
+  <option value="TX" <?php if($row['State'] == 'TX'){echo "selected";}?>>Texas</option>
+  <option value="UT" <?php if($row['State'] == 'UT'){echo "selected";}?>>Utah</option>
+  <option value="VT" <?php if($row['State'] == 'VT'){echo "selected";}?>>Vermont</option>
+  <option value="VA" <?php if($row['State'] == 'VA'){echo "selected";}?>>Virginia</option>
+  <option value="WA" <?php if($row['State'] == 'WA'){echo "selected";}?>>Washington</option>
+  <option value="WV" <?php if($row['State'] == 'WV'){echo "selected";}?>>West Virginia</option>
+  <option value="WI" <?php if($row['State'] == 'WI'){echo "selected";}?>>Wisconsin</option>
+  <option value="WY" <?php if($row['State'] == 'WY'){echo "selected";}?>>Wyoming</option>
                </select>
             </span>
           </span>
@@ -817,10 +817,10 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
               Short Bio
               <!--<small><a href="/settings/profile/mini-resume" data-action="show-examples">Examples</a></small>-->
             </label>
-            <textarea name="bio" id="bio" placeholder="Tell a little about yourself. No life story haha. Just couple phrases about yourself."><?php echo $row['Bio'];?></textarea>
+            <textarea name="bio" id="bio" maxlength="100" placeholder="Tell a little about yourself. No life story haha. Just couple phrases about yourself."><?php echo $row['Bio'];?></textarea>
           </span>
         </fieldset>
-         <div class="note">Optional — 50 characters</div> 
+         <div class="note">Optional — 100 characters</div> 
 
 
       

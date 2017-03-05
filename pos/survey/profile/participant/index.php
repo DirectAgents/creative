@@ -424,7 +424,20 @@ echo '</a>';
 
 <?php
 
+
+if(isset($_SESSION['startupSession'])) {
+
 echo '<div class="thetitle">'.$row['FirstName'].' qualify\'s for these ideas:</div>';
+
+}
+
+
+if($_SESSION['participantSession'] == $_GET['id']) {
+
+echo '<div class="thetitle">You qualify for these ideas:</div>';
+
+}
+
 
 
 $sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project ORDER BY id DESC");
@@ -439,6 +452,12 @@ $Min_Req = str_replace(",","|",$row3['MinReq']);
 //echo "<br>";
 
 
+
+$participant_languages = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_GET['id']."'");
+$rowparticipant_languages = mysqli_fetch_array($participant_languages);
+
+$participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_GET['id']."'");
+$rowparticipant_interest = mysqli_fetch_array($participant_interest);
 
 
 
@@ -465,8 +484,8 @@ $Diet = str_replace(",","|",$rowparticipant['Diet']);
 $Religion = str_replace(",","|",$rowparticipant['Religion']);
 $Education = str_replace(",","|",$rowparticipant['Education']);
 $Job = str_replace(",","|",$rowparticipant['Job']);
-$Interest = str_replace(",","|",$rowparticipant['Interest']);
-$Languages = str_replace(",","|",$rowparticipant['Languages']);
+$Interest = str_replace(",","|",$rowparticipant_interest['Interests']);
+$Languages = str_replace(",","|",$rowparticipant_languages['Languages']);
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['id']."'");
@@ -965,13 +984,66 @@ echo '<div class="row">
    <div class="therow">
     <div class="col-lg-4"><h4>Education:</h4> <?php if($row['Education'] != ''){echo $row['Education'];}else{echo "No Education Preference";} ?></div>
     <div class="col-lg-4"><h4>Occupation:</h4><?php if($row['Job'] != ''){echo $row['Job'];}else{echo "No Job Preference";} ?></div>
-    <div class="col-lg-4"><h4>Interests:</h4><?php if($row['Interest'] != ''){echo $row['Interest'];}else{echo "No Interests Provided";} ?></div>
+    <div class="col-lg-4"><h4>Interests:</h4>
+
+    <?php if($rowparticipant_interest['Interests'] != ''){
+
+
+$participant_interest=mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_GET['id']."'");
+//$resultsstartup=mysql_query($sqlstartup);
+
+while($rowparticipant_interest = mysqli_fetch_array($participant_interest)){
+
+$arr_interest[] = $rowparticipant_interest['Interests'];
+
+}
+
+$interests = implode(', ', $arr_interest);
+
+echo $interests;
+
+            
+      }else{
+        
+      echo "No Interests Provided";} 
+
+      ?>
+
+
+      </div>
 
   </div>
 
 
   <div class="therow">
-    <div class="col-lg-4"><h4>Languages:</h4> <?php if($row['Languages'] != ''){echo $row['Languages'];}else{echo "No Languages Provided";} ?></div>
+    <div class="col-lg-4"><h4>Languages:</h4> 
+
+
+<?php if($rowparticipant_languages['Languages'] != ''){
+
+
+$participant_languages=mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_GET['id']."'");
+//$resultsstartup=mysql_query($sqlstartup);
+
+while($rowparticipant_languages = mysqli_fetch_array($participant_languages)){
+
+$arr_languages[] = $rowparticipant_languages['Languages'];
+
+}
+
+$languages = implode(', ', $arr_languages);
+
+echo $languages;
+
+            
+      }else{
+        
+      echo "No Interests Provided";} 
+
+      ?>
+
+
+    </div>
 
   </div>
 

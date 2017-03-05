@@ -739,7 +739,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
             <div class="separator"></div>
           
             <div class="screening-description">
-                  Choose the amount you are willing to <strong>Pay</strong> and for how long you are planning to meet. 
+                  Choose the amount you are willing to <strong>Pay</strong> for the person you will meet and for how long you intend to have a meeting for. 
                 </div>
 </div>
 

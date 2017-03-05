@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+
+require_once '../../base_path.php';
+
 include("../../config.php"); //include config file
 require_once '../../class.participant.php';
 
@@ -17,14 +20,16 @@ $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=
 $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($row_participant['Cash_Only'] == 'Yes'){
+if($row_participant['Payment_Method'] == 'Cash'){
 
 echo "<h3>You set up to receive payments in cash.</h3>";
+echo "<br><br>";
+echo "<h4>Change to payments to a bank account. <a href='".BASE_PATH."/participant/account/settings'><u>Click here</u></h4>";
 
 }else{
 
 
-if($row_participant['account_id'] != '' &&  $row_participant['Cash_Only'] != 'Yes') {  
+if($row_participant['account_id'] != '' &&  $row_participant['Payment_Method'] == 'Bank') {  
 
 
 ?>
@@ -299,6 +304,15 @@ if(proceed) //everything looks good! proceed...
             }, 'json');
         }
     });
+
+
+
+
+
+
+
+
+
 });
     
    
@@ -317,7 +331,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
-    "redirect_uri":"http://localhost/creative/pos/survey/participant/payment?verified=1",
+    "redirect_uri": "<?php echo BASE_PATH; ?>/participant/payment?verified=1",
     "top":100, // control the positioning of the popup with the top and left params
     "left":100,
     "state":"robot", // this is an optional parameter that lets you persist some state value through the flow
@@ -326,7 +340,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
         //alert(data.code);
     if (data.code.length !== 0) {
       // send the data to the server
-      window.location.href = "http://localhost/creative/pos/survey/participant/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=http://localhost/creative/pos/survey/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
+      window.location.href = "<?php echo BASE_PATH; ?>/participant/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=<?php echo BASE_PATH; ?>/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
 
     } else {
       // an error has occurred and will be in data.error

@@ -586,7 +586,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
    <div class="name-field col-lg-12">
       <div class="form-group">
-    <input type="text"  placeholder="Zip *" pattern="[0-9]{5}"  name="txtzip" id="txtzip" class="txtzip" oninvalid="this.setCustomValidity('Enter a valid Zip Code')" oninput="setCustomValidity('')" required/>
+    <input type="text"  placeholder="Zip *" pattern="[0-9]{5}" maxlength="5"  name="txtzip" id="txtzip" class="txtzip" oninvalid="this.setCustomValidity('Enter a valid Zip Code')" oninput="setCustomValidity('')" required/>
     </div>
   </div>
     

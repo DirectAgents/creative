@@ -294,7 +294,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
             <div class="separator"></div>
             <div class="wrapper">
             <div class="screening-description">
-                 This is the amount you are willing to pay for the person you will be meeting with.
+                 This is the amount you are willing to pay for the person you will be meeting with and for how long you intend to have a meeting for.
                 </div>
 </div>
             </div>
