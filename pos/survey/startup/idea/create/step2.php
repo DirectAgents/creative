@@ -93,7 +93,7 @@ $stage=explode(',',$rowproject['Stage']);
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
         <i class="fa fa-circle-thin fa-stack-2x"></i>
-        <i class="fa fa-info fa-stack-1x"></i>
+        <i class="fa fa-male fa-stack-1x"></i>
       </span>
     </div>
 
@@ -102,7 +102,7 @@ $stage=explode(',',$rowproject['Stage']);
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
         <i class="fa fa-circle-thin fa-stack-2x"></i>
-        <i class="fa fa-info fa-stack-1x"></i>
+       <i class="fa fa-lightbulb-o fa-stack-1x"></i>
       </span>
     </div>
 </a>    
@@ -112,7 +112,7 @@ $stage=explode(',',$rowproject['Stage']);
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
         <i class="fa fa-circle-thin fa-stack-2x"></i>
-        <i class="fa fa-info fa-stack-1x"></i>
+        <i class="fa fa-lock fa-stack-1x"></i>
       </span>
     </div>
 
