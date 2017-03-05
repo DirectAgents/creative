@@ -63,10 +63,10 @@ html.tablet h1 {
 	font-size: 2.8em
 }
 html.tablet h2 {
-	font-size: 2em
+	font-size: 18px
 }
 html.tablet h3, html.tablet p {
-	font-size: 1.4em
+	font-size: 12px
 }
 html.tablet div#main {
 	min-width: 748px
@@ -90,7 +90,7 @@ html.mobile h1 {
 	font-weight: 500
 }
 html.mobile h2 {
-	font-size: 1.4em;
+	font-size: 14px;
 	font-weight: 500
 }
 html.mobile p {

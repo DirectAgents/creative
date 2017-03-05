@@ -1119,14 +1119,15 @@ echo '<br>';
 </div>
           
       </div>
+      
+      <!--Footer-->
+<?php include("../../../footer.php"); ?>
+<!--Footer-->
+
 
           </div>
 
 
-
-      <!--Footer-->
-<?php include("../../../footer.php"); ?>
-<!--Footer-->
 
       
 
