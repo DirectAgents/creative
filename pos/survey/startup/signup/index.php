@@ -222,6 +222,16 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webshim/1.16.0/minified/polyfiller.js"></script> 
+
+    <script> 
+        webshim.activeLang('en');
+        webshims.polyfill('forms');
+        webshims.cfg.no$Switch = true;
+    </script>
+
+
   </head>
 
   <body>

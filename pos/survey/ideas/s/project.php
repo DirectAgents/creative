@@ -551,7 +551,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
     <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
     
-<div class="col-lg-7"><h3>Payout</h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes <?php if(isset($_GET['p'])){ ?>of <?php echo $rowparticipant['FirstName']; ?>'s time to meet with you<?php } ?></span></div>
+<div class="col-lg-7"><h2>Payout</h2><h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes <?php if(isset($_GET['p'])){ ?>of <?php echo $rowparticipant['FirstName']; ?>'s time to meet with you<?php } ?></span></h3></div>
 
 
 <?php }else{ ?>
@@ -625,12 +625,14 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
       <h4>You asked the following Screening Question</h4>
       <p class="grey"><?php echo $screeningquestion['ScreeningQuestion']; ?></p>
       <p><h4>You accept the following Answer:</h4></p>
-      <p>
+      <p class="grey">
       <?php if($screeningquestion['Accepted'] == 'Potential Answer 1'){echo $screeningquestion['PotentialAnswer1'];} ?>
       <?php if($screeningquestion['Accepted'] == 'Potential Answer 2'){echo $screeningquestion['PotentialAnswer2'];} ?>
       <?php if($screeningquestion['Accepted'] == 'Potential Answer 3'){echo $screeningquestion['PotentialAnswer3'];} ?>
       </p>
 
+
+<?php if(isset($_GET['p'])){ ?>
 
 <?php if($rowparticipantanswer['PotentialAnswerGiven'] != '') { ?>
 
@@ -656,6 +658,8 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
       </p>
 
+<?php } ?> 
+
 <?php } ?>    
 
 
@@ -664,7 +668,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 <p><h4>You set the following as a requirement:</h4></p>
 
-      <p>
+      <p class="grey">
       <?php 
 
 
@@ -759,6 +763,7 @@ echo '<br>';
       </p>
 
 
+<?php if(isset($_GET['p'])){ ?>
 
       <p>
       <?php 
@@ -862,6 +867,8 @@ echo '<br>';
 
       ?>
       </p>
+
+      <?php } ?>
 
     </div>
  

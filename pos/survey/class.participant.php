@@ -42,9 +42,12 @@ class PARTICIPANT
 			$stmt = $this->conn->prepare("SELECT * FROM zip_state WHERE zip=:user_zip");
 			$stmt->execute(array(":user_zip"=>$zip));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
+			if($age >= 18){$payment_method = 'Bank';}else{$payment_method = 'Cash';}
 			
-			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,Age,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_zip,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code,'New startup requests you participate,When you qualify to participate to provide feedback on an idea','".$the_date."')");
+			
+			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,Age,City,State,userEmail,Payment_Method,userPass,tokenCode, EmailNotifications, Date_Created) 
+			                                             VALUES(:first_name, :last_name,:user_zip,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail,'".$payment_method."', :user_pass, :active_code,'New startup requests you participate,When you qualify to participate to provide feedback on an idea','".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
 			$stmt->bindparam(":user_zip",$zip);

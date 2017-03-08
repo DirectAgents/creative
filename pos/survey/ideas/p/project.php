@@ -739,27 +739,6 @@ at <?php echo $rowupcoming['Final_Time']; ?><br>
 
 
 
-<?php 
-
-if($participant_home->is_logged_in())
-{
-
-if($row['account_id'] == '' && $row['Payment_Method'] == 'Bank') { ?>
-
-
-<div class="col-lg-11">
-
-<div class="no-bankaccount-set">  
-  Please add a bank account so you can receive payments. <a href="<?php echo BASE_PATH; ?>/participant/payment/">Set up Bank Account</a>
-</div>
-<p>&nbsp;</p>
-
-</div>
-
-
-
-
-<?php } } ?>
 
 
 
@@ -775,7 +754,7 @@ if($row['Payment_Method'] == 'Cash') { ?>
 <div class="col-lg-11">
 
 <div class="no-bankaccount-set">  
-  You will receive your payment in cash. <a href="<?php echo BASE_PATH; ?>/participant/payment/">Change to add a Bank Account</a>
+  You will receive your payment in cash.
 </div>
 <p>&nbsp;</p>
 
@@ -817,7 +796,7 @@ if($row['Payment_Method'] == 'Cash') { ?>
   
 
 
-<div class="col-lg-5"><h3>Payout</h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></div>
+<div class="col-lg-6"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></h3></div>
 
 
 
@@ -905,6 +884,30 @@ $rowupcoming['ProjectID'] != $_GET['id'] && $rowupcoming['userID'] != $_SESSION[
 </div>
 
 
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+if($row['account_id'] == '' && $row['Payment_Method'] == 'Bank') { ?>
+
+
+<div class="col-lg-11">
+
+<div class="no-bankaccount-set">  
+  Please add a bank account so you can receive payments. <a href="<?php echo BASE_PATH; ?>/participant/payment/">Set up Bank Account</a>
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
+
+
+<?php } } ?>
+
+
+
 
 <?php 
 
@@ -936,7 +939,7 @@ if($row['Phone'] == ''){ ?>
 if($participant_home->is_logged_in())
 {
 
-if($row['Phone'] != ''){ ?>
+?>
 
 <input type="hidden" value="<?php echo $_GET['id']; ?>" name="projectid" id="projectid"/>
 <input type="hidden" value="<?php echo $rowproject['startupID']; ?>" name="startupid" id="startupid"/>
@@ -1257,7 +1260,7 @@ foreach($days as $day){
   <div class="col-sm-12">
   <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
 
-<?php if($rowscreening['PotentialAnswer1'] != 'NULL') { ?>
+<?php if($rowscreening['PotentialAnswer1'] != '') { ?>
   <div class="col-sm-12" style="padding-bottom:20px;">
 <div class="col-sm-radio">
  <input id="potentialanswer1" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 1"/> 
@@ -1270,7 +1273,7 @@ foreach($days as $day){
 <?php } ?>
 
 
-<?php if($rowscreening['PotentialAnswer2'] != 'NULL') { ?>
+<?php if($rowscreening['PotentialAnswer2'] != '') { ?>
 <div class="col-sm-12" style="padding-bottom:20px;">
  <div class="col-sm-radio">
  <input id="potentialanswer2" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 2"/> 
@@ -1283,7 +1286,7 @@ foreach($days as $day){
 <?php } ?>
 
 
-<?php if($rowscreening['PotentialAnswer3'] != 'NULL') { ?>
+<?php if($rowscreening['PotentialAnswer3'] != '') { ?>
 <div class="col-sm-12" style="padding-bottom:20px;">
   <div class="col-sm-radio">
  <input id="potentialanswer3" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 3"/> 
@@ -1337,8 +1340,7 @@ foreach($days as $day){
 
 <?php } ?>
 
-<?php } ?>
-   
+
     <p>&nbsp;</p>
     <div id="result_success"></div>
     <div id="result_error"></div>

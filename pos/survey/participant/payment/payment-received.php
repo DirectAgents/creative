@@ -240,7 +240,7 @@ $row3 = mysqli_fetch_array($sql3);
 <?php }else{ ?>
 
 <div class="no-account-yet">
-<p><h3>You havent created an account yet to receive payments!</h3></p>
+<p><h3>You havent created an bank account yet to receive payments!</h3></p>
 
 </div>
 
@@ -252,19 +252,18 @@ $row3 = mysqli_fetch_array($sql3);
 <div class="wepay_btn_box">  
   <div class="wepay_btn">
 
-<p>There are 2 ways to receive payments:</p>
-<h3>Bank Account</h3>
+<h3>Add a Bank Account</h3>
 <h4>Note.: You must be at least 18 years old and must have a tax ID (EIN or SSN)</h4>
 
-
+<p>&nbsp;</p>
 <a id="start_oauth2">Click here to create an Account to receive payments</a>
 <p>&nbsp;</p>
-<h4>or</h4>
+<!--<h4>or</h4>
 <p>&nbsp;</p>
 <h4>Accept payments in <u>cash</u> if you don't qualify above </h4>
 <h4>Note.: If you accept payments in cash we can't track your payment history</h4>
 <p>&nbsp;</p>
-<p><a href="#" id="pay-in-cash" class="wepay-widget-button">I want to accept payments in cash</a></p>
+<p><a href="#" id="pay-in-cash" class="wepay-widget-button">I want to accept payments in cash</a></p>-->
 
 <input type="hidden" name="userid" value="<?php echo $_SESSION['participantSession']; ?>"/>
 

@@ -29,19 +29,20 @@ $sql=mysqli_query($connecDB,"DELETE FROM tbl_nda_signed WHERE startupID='".$_SES
 
 
 
-$results = mysqli_query($connecDB,"SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."'");
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE ProjectID = '".$_POST['projectid']."'");
 
 
 while($row = mysqli_fetch_array($results))
 { 
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET 
-  Status = 'Cancelled_by_startup'
-
-  WHERE userID='".$row['userID']."' AND ProjectID= '".$_POST['projectid']."'");
 
 
+$the_date = date('Y-m-d'); 
+date_default_timezone_set('America/New_York');
+$the_time = date('h:i:s A');
 
+$insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Status, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$_SESSION['startupSession']."',
+  '".$row['ProjectID']."', 'No', 'No', '".$row['Date_of_Meeting']."', '".$row['Final_Time']."','".$row['Location']."','Canceled_by_Startup','".$the_date."','".$the_time."')");
 
 	
 	   
@@ -54,35 +55,16 @@ $row2 = mysqli_fetch_array($sql_participant);
 
 
 
-$mail = new PHPMailer();  
- 
-//$mail->IsSMTP();  // telling the class to use SMTP
-$mail->IsHTML(true);
-//$mail->Mailer = "smtp";
-//$mail->Host = "ssl://smtp.gmail.com";
-//$mail->Port = 465;
-
-
-
-
-$mail->SMTPSecure = 'tls'; 
-$mail->Host = 'tls://smtp.gmail.com';
-$mail->Port = 587; //You have to define the Port
-$mail->SMTPDebug  = 3;
-
-
-
-
-
-//$mail->SMTPAuth = true; // turn on SMTP authentication
-$mail->Username = "ald183s@gmail.com"; // SMTP username
-$mail->Password = "designtastic0711"; // SMTP password
- 
-$mail->From     = "ald183s@gmail.com";
-$mail->AddAddress($row2['userEmail']);  
- 
-$mail->Subject  = "Meeting Reminder";
-$mail->Body     = '
+// using SendGrid's PHP Library
+// https://github.com/sendgrid/sendgrid-php
+// If you are using Composer (recommended)
+require '../../sendgrid-php/vendor/autoload.php';
+// If you are not using Composer
+// require("path/to/sendgrid-php/sendgrid-php.php");
+$from = new SendGrid\Email("Meeting Canceled", "no-reply@valifyit.com");
+$subject = "Recent Meeting";
+$to = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
+$content = new SendGrid\Content("text/html", '
 
 <body style="margin: 0 !important; padding: 0 !important;">
 
@@ -98,8 +80,8 @@ $mail->Body     = '
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="wrapper">
                 <tr>
                     <td align="center" valign="top" style="padding: 15px 0;" class="logo">
-                        <a href="http://litmus.com" target="_blank">
-                            <img alt="Logo" src="http://www.labfy.com/survey/images/logo-1.jpg" width="60" height="60" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <a href="http://www.valifyit.com/" target="_blank">
+                            <img alt="Logo" src="http://www.valifyit.com/images/logo-1.jpg" width="60" height="60" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -157,7 +139,7 @@ $mail->Body     = '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.labfy.com/survey/images/calendar.png" alt="alt text here" width="105" height="105" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 105px; height: 105px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://litmus.com" target="_blank"><img src="http://www.valifyit.com/images/calendar.png" alt="alt text here" width="105" height="105" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 105px; height: 105px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -219,9 +201,9 @@ $mail->Body     = '
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        1234 Main Street, Anywhere, MA 01234, USA
+                         245 5th Ave Suite 201, New York, NY 10001
                         <br>
-                        <a href="http://litmus.com" target="_blank" style="color: #666666; text-decoration: none;">Unsubscribe</a>
+                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a>
                         
                         
                     </td>
@@ -244,29 +226,18 @@ $mail->Body     = '
 
 
 
-';
+   ');
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+$apiKey = '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';
+$sg = new \SendGrid($apiKey);
+$response = $sg->client->mail()->send()->post($mail);
+//echo $response->statusCode();
+//echo $response->headers();
+//echo $response->body();
 
 
 
-
-$mail->WordWrap = 250;  
-
-/*
-if(!$mail->Send()) {
-echo 'Message was not sent.';
-echo 'Mailer error: ' . $mail->ErrorInfo;
-} else {
-echo 'Message has been sent.';
-}*/
-
-
-
-if(!$mail->Send()) {
-//echo 'Message was not sent.';
-//echo 'Mailer error: ' . $mail->ErrorInfo;
-} else {
-//echo 'Message has been sent.';
-}
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_upcoming WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$row2['userID']."'");
 
 
 }

@@ -904,7 +904,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
              <!-- <h3>Your interests</h3> -->
             
 <div class="note">
-                  Add interests so we can recommend the best ideas for you.
+                  Add interests so we can recommend the best ideas for you to provide feedback for.
                 </div>
 
 

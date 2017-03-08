@@ -416,27 +416,14 @@ echo '</a>';
 
 
 
-<div class="therowtitle">
 
-<div class="col-lg-12">
      
       
 
 <?php
 
 
-if(isset($_SESSION['startupSession'])) {
 
-echo '<div class="thetitle">'.$row['FirstName'].' qualify\'s for these ideas:</div>';
-
-}
-
-
-if($_SESSION['participantSession'] == $_GET['id']) {
-
-echo '<div class="thetitle">You qualify for these ideas:</div>';
-
-}
 
 
 
@@ -639,7 +626,23 @@ $sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tb
 if(mysqli_num_rows($sql)>0)
 {
 
+  echo '<div class="therowtitle">
 
+<div class="col-lg-12">';
+
+
+if(isset($_SESSION['startupSession'])) {
+
+echo '<div class="thetitle">'.$row['FirstName'].' qualify\'s for these ideas:</div>';
+
+}
+
+
+if($_SESSION['participantSession'] == $_GET['id']) {
+
+echo '<div class="thetitle">You qualify for these ideas:</div>';
+
+}
 
 
 
@@ -855,6 +858,11 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
 </div>
 
 
+      </div>
+
+</div>
+
+
 
 <?php 
 
@@ -891,7 +899,7 @@ echo '</a>';
 
 }
 
-
+/*
 if(empty($posts)){
 
 echo '<div class="row">
@@ -908,7 +916,7 @@ echo '<div class="row">
 </div>';
 
 }
-
+*/
 
 
 
@@ -922,9 +930,7 @@ echo '<div class="row">
      
 
           
-      </div>
 
-</div>
 
 
 
@@ -1038,7 +1044,7 @@ echo $languages;
             
       }else{
         
-      echo "No Interests Provided";} 
+      echo "No Languages Provided";} 
 
       ?>
 
