@@ -29,7 +29,7 @@ echo "<h4>Change to payments to a bank account. <a href='".BASE_PATH."/participa
 }else{
 
 
-if($row_participant['account_id'] != '' &&  $row_participant['Payment_Method'] == 'Bank') {  
+if($row_participant['account_id'] != '' && $row_participant['bank_account'] != '' &&  $row_participant['Payment_Method'] == 'Bank') {  
 
 
 ?>
@@ -126,7 +126,7 @@ $sum = 0;
 
 
         <h2 class="no-mobile">
-         Total amount earned
+         Total payment received
         </h2>
 
   <fieldset>
@@ -240,7 +240,7 @@ $row3 = mysqli_fetch_array($sql3);
 <?php }else{ ?>
 
 <div class="no-account-yet">
-<p><h3>You havent created an bank account yet to receive payments!</h3></p>
+<p><h3>You haven't set up a bank account yet to receive payments!</h3></p>
 
 </div>
 
@@ -330,7 +330,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
-    "redirect_uri": "<?php echo BASE_PATH; ?>/participant/payment?verified=1",
+    "redirect_uri": "<?php echo BASE_PATH; ?>/participant/payment/",
     "top":100, // control the positioning of the popup with the top and left params
     "left":100,
     "state":"robot", // this is an optional parameter that lets you persist some state value through the flow

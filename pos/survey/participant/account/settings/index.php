@@ -1280,10 +1280,10 @@ echo $row2['Languages'].'</li>';
 
  
         
-
+<!--
         
 <h2 class="no-mobile">Receive payments in:</h2>
-         
+      
         <input id="cash" name="payment_method[]" style="display:block; float:left" type="radio"  value="Cash" <?php if(in_array('Cash',$payment_method)){echo "checked";}?>/>
   <label for="cash_only">Cash</label>
   <a href="#" alt="You will receive your payment in cash after your meeting" class="tooltiptext">(?)</a><br>
@@ -1291,9 +1291,7 @@ echo $row2['Languages'].'</li>';
   <input id="bank" name="payment_method[]" style="display:block; float:left" type="radio"  value="Bank" <?php if(in_array('Bank',$payment_method)){echo "checked";}?>/>
   <label for="bank_only">Bank Account</label>
   <a href="#" alt="You will receive your payment towards your bank account after your meeting" class="tooltiptext">(?)</a><br>
-
-   
-
+-->
 
   
 

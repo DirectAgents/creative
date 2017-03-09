@@ -451,7 +451,7 @@ $(document).ready(function() {
 
 
 <!-- Main -->
-
+<div class="container">
    <div class="container">
 
 
@@ -1105,34 +1105,38 @@ echo '<br>';
 
 
 
+
+
 <?php } ?>
 
 
 
 
-</div>
-
+ </div>
 
  </div>
 
-</div>
 
 
 </div>
-    
+    </div>
+ </div>
 
 
+  </div>
          
-</div>
+
           
-      </div>
+     
+ </div>
+     
       
       <!--Footer-->
 <?php include("../../../footer.php"); ?>
 <!--Footer-->
 
-
-          </div>
+         
+ </div>
 
 
 

@@ -63,7 +63,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ));
 
     // display the response
-    //print_r($response);
+    print_r($response);
 
     //header("Location:".$response -> uri."");
 

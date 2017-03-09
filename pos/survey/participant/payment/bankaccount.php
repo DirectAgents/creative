@@ -53,7 +53,7 @@ echo "<h3>You set up to receive payments in cash.</h3>";
 
 
 
-<?php if($row['account_id'] != '' && $row['Cash_Only'] == 'Bank' ) { ?>  
+<?php if($row['account_id'] != '' && $row['Payment_Method'] == 'Bank' ) { ?>  
 
 
 
@@ -100,6 +100,15 @@ exit();
     //print_r($response);
     $bankaccount = $response->balances[0]->withdrawal_bank_name;
 
+
+
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
+
+  bank_account = '".$bankaccount."'
+
+  WHERE userID='".$_SESSION['participantSession']."'");
+
+
 }
 
     //header("Location:".$response -> uri."");
@@ -120,7 +129,7 @@ exit();
 
  
 
-   <?php if($bankaccount == '' ) { ?>  
+   <?php if($row['bank_account'] == '' ) { ?>  
 
 
 <div class="no-account-yet">
@@ -137,7 +146,7 @@ exit();
     // create the withdrawal
     $response = $wepay->request('account/get_update_uri', array(
         'account_id'    => $row['account_id'],
-        'redirect_uri'  => '<?php echo BASE_PATH; ?>/participant/payment/',
+        'redirect_uri'  => BASE_PATH.'/participant/payment/verify/',
         'mode'          => 'iframe'
     ));
 
@@ -148,7 +157,7 @@ exit();
 ?>
 
 
-<iframe src="https://stage.wepay.com/api/account_update/<?php echo $row['account_id']; ?>?iframe=1&redirect_uri=<?php echo BASE_PATH; ?>/payment" frameborder="0" border="0" cellspacing="0" scrolling="no" style="border-style: none;width: 100%; height: 400px; padding:0px;" ></iframe>
+<iframe src="<?php echo $endpoint_url; ?>/api/account_update/<?php echo $row['account_id']; ?>?iframe=1&redirect_uri=<?php echo BASE_PATH; ?>/participant/payment/verify/" frameborder="0" border="0" cellspacing="0" scrolling="no" style="border-style: none;width: 100%; height: 400px; padding:0px;" ></iframe>
 
 
 
@@ -157,7 +166,7 @@ exit();
    <?php } ?>
 
 
-   <?php if($bankaccount != '') { ?>
+   <?php if($row['bank_account'] != '') { ?>
 <h3>
     You have currently set <i><?php echo $bankaccount;?></i> to receive payments
 </h3>
@@ -167,7 +176,7 @@ exit();
 
 
 
-<iframe src="https://stage.wepay.com/withdrawal_auto/edit/<?php echo $row['account_id']; ?>/US?iframe=1" frameborder="0" border="0" cellspacing="0" scrolling="no" style="border-style: none;width: 100%; height: 400px; padding:0px;" ></iframe>
+<iframe src="<?php echo $endpoint_url; ?>/withdrawal_auto/edit/<?php echo $row['account_id']; ?>/US?iframe=1" frameborder="0" border="0" cellspacing="0" scrolling="no" style="border-style: none;width: 100%; height: 400px; padding:0px;" ></iframe>
 
    <?php  } ?>  
 
@@ -176,12 +185,17 @@ exit();
 
 
   <div class="no-account-yet">
-   <h3>You haven't created an account yet to receive payments!<h3>
+   <h3>You haven't set up a bank account yet to receive payments!<h3>
 </div>
 
 
 <div class="wepay_btn_box">  
   <div class="wepay_btn">
+
+<h3>Add a Bank Account</h3>
+<h4>Note.: You must be at least 18 years old and must have a tax ID (EIN or SSN)</h4>
+
+<p>&nbsp;</p>  
 
 <a id="start_oauth3">Click here to create an Account to receive payments</a>
  
@@ -194,7 +208,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
-    "redirect_uri":"<?php echo BASE_PATH; ?>/participant/payment?verified=1",
+    "redirect_uri":"<?php echo BASE_PATH; ?>/participant/payment/?verified=1",
     "top":100, // control the positioning of the popup with the top and left params
     "left":100,
     "state":"robot", // this is an optional parameter that lets you persist some state value through the flow

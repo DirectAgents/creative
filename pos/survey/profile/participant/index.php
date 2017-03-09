@@ -626,6 +626,7 @@ $sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tb
 if(mysqli_num_rows($sql)>0)
 {
 
+
   echo '<div class="therowtitle">
 
 <div class="col-lg-12">';
@@ -638,12 +639,15 @@ echo '<div class="thetitle">'.$row['FirstName'].' qualify\'s for these ideas:</d
 }
 
 
+if(isset($_SESSION['participantSession'])) {
+
 if($_SESSION['participantSession'] == $_GET['id']) {
 
 echo '<div class="thetitle">You qualify for these ideas:</div>';
 
 }
 
+}
 
 
 //get all records from add_delete_record table

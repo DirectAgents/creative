@@ -22,21 +22,24 @@
  */
 
 /**Stage**/
-/*
+
 $wepay_account_id = 1058365630;
 $wepay_client_id = 164910;
 $wepay_client_secret = "9983463efa";
 $wepay_access_token = "STAGE_63d7bf841b108c6be1fdf8e74e47bcaac6ca3d897572738f14e77a1c7f724234";
-*/
 
+$endpoint_url = 'https://stage.wepay.com';
 
 /**Live**/
-
+/*
 $wepay_account_id = 2022328954;
 $wepay_client_id = 25628;
 $wepay_client_secret = "a6e03a9d1a";
 $wepay_access_token = "PRODUCTION_6cccd997536f69e393cb5ec4d7b617515778280429787d71bcb8bd95ad22c9a9";
 
+$endpoint_url = 'https://wepay.com';
+
+*/
 
 
 

@@ -68,7 +68,7 @@ if($row['account_id'] == ''){
 
 
 
-   header("Location:http://localhost/creative/pos/survey/participant/payment/");
+   header("Location:http://localhost/creative/pos/survey/participant/payment/?p=bankaccount");
 
 
 

@@ -6,6 +6,8 @@ session_start();
 require_once '../../../../../class.participant.php';
 include_once("../../../../../config.php");
 
+require_once '../../../../../base_path.php';
+
 
 $participant_home = new PARTICIPANT();
 
@@ -33,7 +35,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('oauth2/token', array(
     'client_id'    => $wepay_client_id,
     'client_secret'    => $wepay_client_secret,
-    'redirect_uri'    => "http://localhost/creative/pos/survey/participant/payment?verified=1",
+    'redirect_uri'    => BASE_PATH."/participant/payment/",
     'code'    => $_GET['code'],
 ));
 
