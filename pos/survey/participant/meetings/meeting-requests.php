@@ -818,11 +818,11 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
  if($rowprofileimage['google_picture_link'] != ''){ ?>
-        <li><img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="thumbnail-profile"/></li>
+        <img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="thumbnail-profile"/>
 <?php } ?>
 
 <?php if($rowprofileimage['facebook_id'] != '0'){  ?>
-        <li><img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="thumbnail-profile"/></li>
+        <img src="https://graph.facebook.com/<?php echo $rowprofileimage['facebook_id']; ?>/picture" class="thumbnail-profile"/>
 <?php } ?>
        
 <?php if($rowprofileimage['google_picture_link'] == '' && $rowprofileimage['facebook_id'] == '0'){ ?>
@@ -831,7 +831,7 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 <?php if($rowprofileimage['profile_image'] != ''){  ?>
         <img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
 <?php }else{ ?>
-        <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="thumbnail-profile"/></li>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="thumbnail-profile"/>
 <?php } ?>
 
       
