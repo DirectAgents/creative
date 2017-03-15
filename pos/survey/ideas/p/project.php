@@ -23,6 +23,11 @@ $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion
 $rowscreening = mysqli_fetch_array($Screening);
 
 
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowarchived=mysqli_fetch_array($sql);
+
+
 
 $participant_home = new PARTICIPANT();
 
@@ -856,7 +861,6 @@ if($row['Payment_Method'] == 'Cash') { ?>
 
 
 
-
 <?php if($participant_home->is_logged_in()) { ?>
 
 
@@ -867,7 +871,8 @@ if($row['Payment_Method'] == 'Cash') { ?>
 
 
 if($rowrequest['userID'] != $_SESSION['participantSession'] && $rowrequest['ProjectID'] != $_GET['id'] &&
-$rowupcoming['ProjectID'] != $_GET['id'] && $rowupcoming['userID'] != $_SESSION['participantSession'] ){
+$rowupcoming['ProjectID'] != $_GET['id'] && $rowupcoming['userID'] != $_SESSION['participantSession'] &&
+$rowarchived['ProjectID'] != $_GET['id'] && $rowarchived['userID'] != $_SESSION['participantSession']){
 
 
 

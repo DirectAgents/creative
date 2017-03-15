@@ -356,6 +356,8 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 </div>
 </div>
 
+</div>
+
 <!-- End Accept -->
 
 <?php } ?>
@@ -813,6 +815,9 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 <?php 
 
 
+
+
+
 $ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
 $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
@@ -866,9 +871,9 @@ $row3 = mysqli_fetch_array($sql3);
                       You will meet
                     </div>
                     <div class="edit-delete">
-                      
+           
             
-      <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
+      <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed') { ?>
       
                 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
                  <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn"><strong>Accept</strong></a> <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Decline</strong></a>
@@ -878,7 +883,7 @@ $row3 = mysqli_fetch_array($sql3);
 
          <?php } ?>           
 
-<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
+<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed') { ?>
 
                  <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
                  <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>Cancel Meeting Request</strong></a></a>
@@ -959,9 +964,10 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="status_request">Status: 
 
-                  <?php if($row2['Status'] == 'Waiting to Accept or Decline'){echo 'Waiting to Accept or Decline';} ?>
-                  <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline'){echo 'Waiting for Startup to Accept';} ?>
-                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline'){echo 'Waiting for you to Accept or Decline';} ?>
+                  <?php if($row2['Status'] == 'Waiting to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting to Accept or Decline';} ?>
+                  <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for Startup to Accept';} ?>
+                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for you to Accept or Decline';} ?>
+                   <?php if($row2['ScreeningQuestion'] == 'Not Passed'){echo 'Waiting for Startup to confirm meeting';} ?>
 
                           
 

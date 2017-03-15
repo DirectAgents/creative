@@ -28,9 +28,55 @@ $the_time = date('h:i:s A');
 
 
 
-if($_POST['selected_meeting'] == 'option_one'){ $date_of_meeting  = $row['Date_Option_One']; $time = $row['Time_Option_One']; }
-if($_POST['selected_meeting'] == 'option_two'){ $date_of_meeting  = $row['Date_Option_Two']; $time = $row['Time_Option_Two']; }
-if($_POST['selected_meeting'] == 'option_three'){ $date_of_meeting  = $row['Date_Option_Three']; $time = $row['Time_Option_Three']; }
+if($_POST['selected_meeting'] = 'option_one'){ $date_of_meeting  = $row['Date_Option_One']; $time = $row['Time_Option_One']; }
+if($_POST['selected_meeting'] = 'option_two'){ $date_of_meeting  = $row['Date_Option_Two']; $time = $row['Time_Option_Two']; }
+if($_POST['selected_meeting'] = 'option_three'){ $date_of_meeting  = $row['Date_Option_Three']; $time = $row['Time_Option_Three']; }
+
+
+
+
+
+
+
+
+
+$sqlscreeningquestion = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion  WHERE ProjectID = '".$_POST['projectid']."' ");
+$rowscreeningquestion = mysqli_fetch_array($sqlscreeningquestion);
+
+
+if($rowscreeningquestion['EnabledorDisabled'] == 'Enabled'){
+
+if($rowscreeningquestion['Accepted'] == $_POST['potentialanswergiven']){
+
+ $screening_passed = 'Passed';
+ 
+ $insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_participant_potentialanswer(userID, ProjectID, PotentialAnswerGiven) 
+  VALUES('".$_SESSION['participantSession']."','".$_POST['projectid']."', '".$_POST['potentialanswergiven']."')");
+
+
+}else{
+
+    $screening_passed = 'Not Passed';
+
+
+  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant_potentialanswer(userID, ProjectID, PotentialAnswerGiven) 
+VALUES('".$_SESSION['participantSession']."', '".$_POST['projectid']."','".$_POST['potentialanswergiven']."')");
+
+
+
+
+}
+
+
+}else{
+
+    $screening_passed = 'Not required';
+}
+
+
+
+if($screening_passed == 'Passed'){
+
 
 
   $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_upcoming(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Accepted, Time_Accepted) VALUES('".$row['userID']."','".$row['startupID']."',
@@ -38,12 +84,6 @@ if($_POST['selected_meeting'] == 'option_three'){ $date_of_meeting  = $row['Date
 
 
 
-if($_POST['potentialanswergiven'] != 'Not Required'){
-
-  $insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_participant_potentialanswer(userID, ProjectID, PotentialAnswerGiven) 
-  VALUES('".$_SESSION['participantSession']."','".$_POST['projectid']."', '".$_POST['potentialanswergiven']."')");
-
-}
 
 
 
@@ -388,17 +428,33 @@ echo $response->body();
     //header("Location: index.php"); 
 
 
-$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+//$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
 
 
 
- $output = json_encode(array('type'=>'message', 'text' => $_POST['projectid']));
-		die($output);
+
 
 
 }	
+
+
+if($screening_passed == 'Not Passed'){
+
+
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET 
+  ScreeningQuestion='Not Passed'
+
+  WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+
+
+}
+
+
+ $output = json_encode(array('type'=>'message', 'text' => $_POST['projectid']));
+        die($output);
 	
 
+}
 	
 
 ?>

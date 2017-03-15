@@ -50,13 +50,16 @@ if(strpos($_POST['facebook'], "http://") !== false){
 }
 
 
+$formatted_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $_POST['phone_number']);
+
+
 //$all_game_value = implode(",",$_POST['testing']);
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
   FirstName='".$_POST['firstname']."',
   LastName='".$_POST['lastname']."',
   userEmail='".$_POST['email']."',
-  Phone='".$_POST['phone_number']."',
+  Phone='".$formatted_number."',
   City='".$_POST['city']."',
   State='".$_POST['state']."',
   Bio='".$_POST['bio']."',

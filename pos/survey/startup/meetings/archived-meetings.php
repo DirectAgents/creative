@@ -249,6 +249,10 @@ $row3 = mysqli_fetch_array($sql3);
                 <?php if($row2['Status'] == 'Canceled_by_Participant'){echo 'Meeting Canceled By Participant';} ?>
                 <?php if($row2['Status'] == 'Declined_by_Participant'){echo 'Meeting Request Declined By Participant';} ?>
 
+                <?php if($row2['Status'] == 'Meeting Never Happened'){echo 'Meeting Never Happened';} ?>
+
+                <?php if($row2['Status'] == 'Screening Question Not Passed'){echo 'Screening Question Not Passed';} ?>
+
                 <?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
 Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
 <?php } ?> 

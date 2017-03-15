@@ -13,7 +13,12 @@ $ip = $_SERVER['REMOTE_ADDR'];
 if($_POST)
 {
 
-if($_POST['payment_method'] == ''){$payment_method = '';}else{$payment_method = $_POST['payment_method'];}
+
+if($_POST['age'] >= 18){
+$payment_method = 'Bank';
+}else{
+$payment_method = 'Cash';
+}
 
 if($_POST['emailnotifications'] == ''){$emailnotifications = '';}else{$emailnotifications = $_POST['emailnotifications'];}
  
@@ -31,13 +36,17 @@ if($_POST['education'] == ''){$education = '';}else{$education = $_POST['educati
 if($_POST['job'] == ''){$job = '';}else{$job = $_POST['job'];}
 
 
+
+$formatted_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $_POST['phone_number']);
+
+
 //$all_game_value = implode(",",$_POST['testing']);
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
   FirstName='".$_POST['firstname']."',
   LastName='".$_POST['lastname']."',
   userEmail='".$_POST['email']."',
-  Phone='".$_POST['phone_number']."',
+  Phone='".$formatted_number."',
   City='".$_POST['city']."',
   State='".$_POST['state']."',
   Bio='".$_POST['bio']."',

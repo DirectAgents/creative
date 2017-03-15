@@ -218,10 +218,10 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['FirstName'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row2['FirstName'].' '.$row2['LastName'].'</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 18px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$row5['Phone'].'</td>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 18px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$row2['Phone'].'</td>
                                                         </tr>
 
                                                         
@@ -471,14 +471,15 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
-
+//PASSED
 $output = json_encode(array('type'=>'message', 'text' => '<div class="success2">Request to meet sent!</div>'));
 die($output);
 
 
 }else{
 
-$output = json_encode(array('type'=>'message', 'text' => '<div class="errorXYZ">Sorry. But you unfortunately don\'t qualify.</div>'));
+//NOT PASSED
+$output = json_encode(array('type'=>'message', 'text' => '<div class="success2">Request to meet sent!</div>'));
 die($output);
 
 }

@@ -66,7 +66,7 @@ $row4 = mysqli_fetch_array($sql4);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email($row4['FirstName'], $row4['userEmail']);
+$from = new SendGrid\Email('Meeting Request at Valify', $row4['userEmail']);
 $subject = "Meeting Request";
 $to = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -151,8 +151,11 @@ $content = new SendGrid\Content("text/html", '
                                                     <!-- ARTICLE -->
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
+                                                       <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row4['FirstName'].' '.$row4['LastName'].'</td>
+                                                        </tr>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row4['FirstName'].'</td>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 18px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$row4['Phone'].'</td>
                                                         </tr>
                                                       
 

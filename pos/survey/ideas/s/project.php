@@ -19,6 +19,9 @@ $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion
 $rowscreening = mysqli_fetch_array($Screening);
 
 
+
+
+
 $participant_home = new PARTICIPANT();
 
 
@@ -59,6 +62,12 @@ if(isset($_GET['p'])){
 $sqlparticipantanswer = mysqli_query($connecDB,"SELECT * FROM tbl_participant_potentialanswer WHERE userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowparticipantanswer=mysqli_fetch_array($sqlparticipantanswer);
+
+
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowarchived=mysqli_fetch_array($sqlarchived);
+
 }
 
 
@@ -638,7 +647,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 
 <p><h4><?php echo $rowparticipant['FirstName']; ?>'s Answer was:</h4></p>
-      <p>
+      <p class="grey">
 <?php if($rowparticipantanswer ['PotentialAnswerGiven'] == 'Potential Answer 1') {echo $screeningquestion['PotentialAnswer1'];} ?>
 <?php if($rowparticipantanswer['PotentialAnswerGiven'] == 'Potential Answer 2') {echo $screeningquestion['PotentialAnswer2'];} ?>
 <?php if($rowparticipantanswer['PotentialAnswerGiven'] == 'Potential Answer 3') {echo $screeningquestion['PotentialAnswer3'];} ?>
@@ -781,9 +790,9 @@ if(mysqli_num_rows($results) == 1)
 
 echo'<p><h4>Based on your requirement '.$rowparticipant['FirstName'].' met the following:</h4></p>';
 
+echo '<div class="grey">';
 
-
-if (strpos($Min_Req, 'Age') !== false) {
+if (strpos($Min_Req, 'Age') !== false) {  
 echo 'Age: '.$rowparticipant['Age'];
 echo '<br>';
 }
@@ -862,6 +871,8 @@ echo 'Languages: '.$rowparticipant['Language'];
 echo '<br>';
 }
 
+echo '</div>';
+
 
 }
 
@@ -884,7 +895,7 @@ echo '<br>';
 
 
 
-  <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0) { ?>
+  <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0) { ?>
 
 
 <input id="participantid" name="participantid" type="hidden" value="<?php echo $_GET['p']; ?>">
@@ -900,7 +911,11 @@ echo '<br>';
 
  <div class="col-lg-12">
 
-<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>
+   
+<h3>Set up a meeting</h3>
+
+
+<!--<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>-->
 
 
  <p>Choose the date you want to request to meet</p>

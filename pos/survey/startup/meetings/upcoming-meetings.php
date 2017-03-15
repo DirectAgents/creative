@@ -99,7 +99,7 @@ $date = date('Y-m-d h:m A', strtotime('+1 hours'));
 //echo $date;
 
 
-$dtA = new DateTime($date);
+$dtA = new DateTime($date); //today's date
 $dtB = new DateTime($row2['Date_of_Meeting'].' '.$row2['Final_Time']);
 
 
