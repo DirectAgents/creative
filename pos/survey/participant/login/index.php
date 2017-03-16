@@ -15,6 +15,32 @@ require_once '../../class.participant.php';
 include_once("../../config.php");
 
 
+
+
+if(isset($_SESSION['cookie_deleted'])){
+
+$cookiehash = md5(sha1(username . user_ip));
+unset($_COOKIE['RememberMe']);
+setcookie('RememberMe', "", time() - 3600); // empty value and old timestamp
+
+}
+
+if(isset($_COOKIE['RememberMe'])){
+
+$stmt = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE login_session='".$_COOKIE['RememberMe']."'");
+$row = mysqli_fetch_array($stmt);
+
+if($row['login_session'] == $_COOKIE['RememberMe']){
+
+$_SESSION['participantSession'] = $row['userID'];
+
+header("Location:../meetings/");
+exit();
+}
+}
+
+
+
 if(isset($_GET['p'])){
 
   $_SESSION['p'] = $_GET['p']; 
@@ -32,8 +58,10 @@ if(isset($_POST['btn-login']))
 {
   $email = trim($_POST['txtemail']);
   $upass = trim($_POST['txtupass']);
-  
-  if($user_login->login($email,$upass))
+  $rememberme = trim($_POST['txtrememberme']);
+
+
+  if($user_login->login($email,$upass,$rememberme))
   {
     $user_login->redirect('../meetings/');
   }
@@ -153,6 +181,7 @@ if(isset($_POST['btn-login']))
   <form class="login-form">
     <input type="email" name="txtemail" placeholder="Email Address" required/>
     <input type="password" name="txtupass" placeholder="Password" required/>
+    <input type="checkbox" name="txtrememberme" value="Yes"/><label> Remember me</label>
     <button type="submit" name="btn-login">LOGIN</button>
     <p class="message">Not registered? <a href="<?php echo BASE_PATH; ?>/participant/signup">Sign up</a></p>
     <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>

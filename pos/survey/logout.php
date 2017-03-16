@@ -17,7 +17,7 @@ if(isset($_GET['t'], $_SESSION['participantSession'])){
 $_SESSION['cookie_deleted'] = '1';
 unset($_SESSION['participantSession']);
 unset($_SESSION['fb_access_token_participant']);
-header("Location:startup/login/");
+header("Location:participant/login/");
 exit();
 }
 

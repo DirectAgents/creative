@@ -76,7 +76,7 @@ class STARTUP
 						$_SESSION['startupSession'] = $userRow['userID'];
 						
 						//Remember me
-						//$_SESSION['RememberMe'] = 1;
+						
 						if($rememberme == 'Yes'){
 
 						unset($_SESSION['cookie_deleted']);

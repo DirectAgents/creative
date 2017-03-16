@@ -64,7 +64,7 @@ class PARTICIPANT
 		}
 	}
 	
-	public function login($email,$upass)
+	public function login($email,$upass,$rememberme)
 	{
 		try
 		{
@@ -79,6 +79,33 @@ class PARTICIPANT
 					if($userRow['userPass']==md5($upass))
 					{
 						$_SESSION['participantSession'] = $userRow['userID'];
+
+						//Remember me
+						
+						if($rememberme == 'Yes'){
+
+						unset($_SESSION['cookie_deleted']);
+						
+						//setcookie("uname",$cookiehash,time()+3600*24*365,'/','.http://localhost/creative/pos/survey/startup/login/');
+						$cookiehash = md5(sha1(username . user_ip));
+						$expire=time()+3600*24*365;
+
+						setcookie('RememberMe', $cookiehash, $expire);
+
+
+						
+						$stmt = $this->conn->prepare("UPDATE tbl_participant SET login_session='".$cookiehash."' WHERE userID='".$userRow['userID']."'");
+			
+						$stmt->execute();	
+						return $stmt;
+					  
+					  }else{
+
+					  	$stmt = $this->conn->prepare("UPDATE tbl_participant SET login_session='' WHERE userID='".$userRow['userID']."'");
+					  	$stmt->execute();	
+						return $stmt;
+					  }
+
 						return true;
 					}
 					else

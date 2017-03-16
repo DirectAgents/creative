@@ -193,9 +193,9 @@ if(isset($_POST['btn-login']))
   <form class="login-form">
     <input type="email" name="txtemail" placeholder="Email Address" required/>
     <input type="password" name="txtupass" placeholder="Password" required/>
-<span class="rememberme">
+
     <input type="checkbox" name="txtrememberme" value="Yes"/><label> Remember me</label>
-</span>    
+  
     <button type="submit" name="btn-login">LOGIN</button>
     <p class="message">Not registered? <a href="<?php echo BASE_PATH; ?>/startup/signup">Sign up</a></p>
     <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>
