@@ -4,6 +4,22 @@ require_once 'class.participant.php';
 require_once 'class.startup.php';
 
 
+if(isset($_GET['t'], $_SESSION['startupSession'])){
+$_SESSION['cookie_deleted'] = '1';
+unset($_SESSION['startupSession']);
+unset($_SESSION['fb_access_token_startup']);	
+header("Location:startup/login/");
+exit();
+}
+
+
+if(isset($_GET['t'], $_SESSION['participantSession'])){
+$_SESSION['cookie_deleted'] = '1';
+unset($_SESSION['participantSession']);
+unset($_SESSION['fb_access_token_participant']);
+header("Location:startup/login/");
+exit();
+}
 
 
 
@@ -34,26 +50,31 @@ $startup = new startup();
 
 if(!$startup->is_logged_in())
 {
-	$startup->redirect('startup/login.php');
+	$startup->redirect('startup/login/');
 }
 
 if($startup->is_logged_in()!="")
-{
+{	
 	$startup->logout();	
-	$startup->redirect('startup/login.php');
+	$startup->redirect('startup/login/');
 }
 
 }
 
 
+if(!isset($_SESSION['startupSession'] ,$_SESSION['participantSession'], $_SESSION['fb_access_token_startup'],$_SESSION['fb_access_token_participant'])){
+	header("Location:startup/login/");
+	}
 
-if(isset($_SESSION['fb_access_token_startup']) || isset($_SESSION['startupSession'])){
+
+if(isset($_SESSION['fb_access_token_startup'], $_SESSION['startupSession'])){
+	
 	unset($_SESSION['fb_access_token_startup']);	
 	header("Location:startup/login/");
 }
 
 
-if(isset($_SESSION['fb_access_token_participant']) || isset($_SESSION['participantSession'])){
+if(isset($_SESSION['fb_access_token_participant'], $_SESSION['participantSession'])){
 	unset($_SESSION['fb_access_token_participant']);	
 	header("Location:participant/login/");
 }

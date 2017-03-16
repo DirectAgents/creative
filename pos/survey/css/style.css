@@ -132,6 +132,28 @@ h2{font-size:25px;}
   color:#323844;
 }
 
+.form label {
+
+  
+  float:left;
+
+  font-size: 14px;
+  color:#323844;
+}
+
+.form input[type="checkbox"] {
+  outline: 0;
+  float:left;
+  width: 20px;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  border: 0px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+  color:#323844;
+}
+
 
 .form input[type="email"] {
   outline: 0;

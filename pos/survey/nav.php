@@ -200,7 +200,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/payment/">Payment</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/meetings/">My Meetings</a></li>
               <li class='separator'></li>
-              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
+              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $rownav['login_session'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 
             
             </ul>

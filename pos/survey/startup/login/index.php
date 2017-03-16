@@ -17,6 +17,30 @@ require_once '../../class.startup.php';
 include_once("../../config.php");
 
 
+if(isset($_SESSION['cookie_deleted'])){
+
+$cookiehash = md5(sha1(username . user_ip));
+unset($_COOKIE['RememberMe']);
+setcookie('RememberMe', "", time() - 3600); // empty value and old timestamp
+
+}
+
+if(isset($_COOKIE['RememberMe'])){
+
+$stmt = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE login_session='".$_COOKIE['RememberMe']."'");
+$row = mysqli_fetch_array($stmt);
+
+if($row['login_session'] == $_COOKIE['RememberMe']){
+
+$_SESSION['startupSession'] = $row['userID'];
+
+header("Location:../");
+exit();
+}
+}
+
+
+
 if(isset($_GET['p'])){
 
   $_SESSION['p'] = $_GET['p']; 
@@ -27,17 +51,28 @@ $user_login = new STARTUP();
 
 if($user_login->is_logged_in()!="")
 {
-  $user_login->redirect('../index.php');
+  
+  $user_login->redirect('../');
 }
+
+
+
+
+
+
+
+
+
 
 if(isset($_POST['btn-login']))
 {
   $email = trim($_POST['txtemail']);
   $upass = trim($_POST['txtupass']);
+  $rememberme = trim($_POST['txtrememberme']);
   
-  if($user_login->login($email,$upass))
+  if($user_login->login($email,$upass,$rememberme))
   {
-    $user_login->redirect('../index.php');
+    $user_login->redirect('../');
   }
 }
 
@@ -158,6 +193,9 @@ if(isset($_POST['btn-login']))
   <form class="login-form">
     <input type="email" name="txtemail" placeholder="Email Address" required/>
     <input type="password" name="txtupass" placeholder="Password" required/>
+<span class="rememberme">
+    <input type="checkbox" name="txtrememberme" value="Yes"/><label> Remember me</label>
+</span>    
     <button type="submit" name="btn-login">LOGIN</button>
     <p class="message">Not registered? <a href="<?php echo BASE_PATH; ?>/startup/signup">Sign up</a></p>
     <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>
