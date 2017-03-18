@@ -92,14 +92,14 @@ $payamount_to_participant = numberFormatPrecision($payamount, 2, '.');
 
 if($rowproject['Pay'] <= '7'){
 
-$payment_to_me = 1;
+$payment_to_me = 1.32;
 
 }
 
 
 ///If Payout is more than $7 than charge 15% for service fee////
 
-if($rowproject['Pay'] >= '7'){
+if($rowproject['Pay'] > '7'){
 
 $payment_to_me = $rowproject['Pay'] * 0.15;
 
@@ -125,7 +125,7 @@ $payamount_final = $payamount1.'.'.$payamount3;
     $client_id = $wepay_client_id;
     $client_secret = $wepay_client_secret;
     $access_token = $rowparticipant['access_token']; // Access Token of the account that you want the money to go to
-    $access_token_me = 'STAGE_3157a9551b8c9c076f9a3631d1af99785eeafaa1674ff9cebbe0ca8887846d69';
+    $access_token_me = $wepay_access_token;
 
 /** 
  * Initialize the WePay SDK object 

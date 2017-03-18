@@ -319,14 +319,14 @@ if(proceed) //everything looks good! proceed...
 
 </script>
 
-
+<?php require '../../wepay.php'; ?>
 
 <script type="text/javascript">
 
 WePay.set_endpoint("stage"); // stage or production
 
 WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
-    "client_id":"164910",
+    "client_id":"<?php echo $wepay_client_id; ?>",
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",

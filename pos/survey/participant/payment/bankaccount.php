@@ -10,6 +10,9 @@ require_once '../../config.php';
 require_once '../../config.inc.php';
 
 
+require '../../wepay.php';
+
+
 $startup_home = new STARTUP();
 
 if($startup_home->is_logged_in())
@@ -59,7 +62,7 @@ echo "<h3>You set up to receive payments in cash.</h3>";
 
 <?php
 
-require '../../wepay.php';
+
 
 
     // application settings
@@ -204,7 +207,7 @@ exit();
 WePay.set_endpoint("stage"); // stage or production
 
 WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
-    "client_id":"164910",
+    "client_id":"<?php echo $wepay_client_id; ?>",
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
