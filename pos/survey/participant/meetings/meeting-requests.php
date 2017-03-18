@@ -28,7 +28,8 @@ if(!$participant_home->is_logged_in())
 }
 
 
-
+$sqlparticipant = mysqli_query($connecDB,"SELECT * FROM tbl_participant  WHERE userID = '".$_SESSION['participantSession']."' ");
+$rowparticipant = mysqli_fetch_array($sqlparticipant);
 
 
 ?>
@@ -71,6 +72,33 @@ echo '<div class="row">
 
 
 }else{ 
+
+
+if($rowparticipant['Phone'] == ''){
+
+echo'
+
+<div class="col-lg-12" style="padding:0px; margin-bottom:30px;">
+ <div class="errorXYZ">
+Please add a Phone Number to your account
+
+</div>
+</div>';
+
+}
+
+if($rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == ''){
+
+echo'
+
+<div class="col-lg-12" style="padding:0px; margin-bottom:30px;">
+ <div class="errorXYZ">
+You haven\'t set up bank account yet to receive payments. <a href="'.BASE_PATH.'/participant/payment/" style="color:#fff; text-decoration:underline">Click here</a> to add one.
+
+</div>
+</div>';
+
+}
 
 
 //get all records from add_delete_record table
@@ -871,13 +899,12 @@ $row3 = mysqli_fetch_array($sql3);
                       You will meet
                     </div>
                     <div class="edit-delete">
-           
+   
             
       <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed') { ?>
       
                 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn"><strong>Accept</strong></a> <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Decline</strong></a>
-
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn" <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['Phone'] == '' || $row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == ''){?> id="disabled" <?php } ?>><strong>Accept</strong></a> <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn" <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['Phone'] == '' || $row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == ''){?> id="disabled" <?php } ?> ><strong>Decline</strong></a>
 
                  </div>
 
@@ -969,7 +996,7 @@ $row3 = mysqli_fetch_array($sql3);
                   <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for you to Accept or Decline';} ?>
                    <?php if($row2['ScreeningQuestion'] == 'Not Passed'){echo 'Waiting for Startup to confirm meeting';} ?>
 
-                          
+           
 
 
                   </div>

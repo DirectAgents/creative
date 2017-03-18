@@ -52,7 +52,7 @@ if ( $dtA > $dtB ) {
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Recent Meeting", "no-reply@valifyit.com");
+$from = new SendGrid\Email("Recent Meeting", "support@valifyit.com");
 $subject = "Recent Meeting";
 $to = new SendGrid\Email($rowstartup['FirstName'], $rowstartup['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -120,7 +120,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://www.labfy.com/circl/images/email/person.jpg" alt="who" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height: 74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/person.jpg" alt="who" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height: 74px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -138,10 +138,10 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowstartup['FirstName'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowparticipant['FirstName'].' '.$rowparticipant['LastName'].'</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$rowstartup['Phone'].'</td>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$rowparticipant['Phone'].'</td>
                                                         </tr>
 
                                                         
@@ -163,7 +163,7 @@ $content = new SendGrid\Content("text/html", '
 
 
 
-                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
                             <tbody><tr>
                                 <td align="center" valign="top" style="font-size:0;">
                                     <!--[if (gte mso 9)|(IE)]>
@@ -175,7 +175,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://www.labfy.com/circl/images/email/calendar.jpg" alt="when" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/calendar.jpg" alt="when" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -193,14 +193,11 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                                '.date('F j, Y',strtotime($row2['Date_of_Meeting'])).'
-                                                                </td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($row2['Date_of_Meeting'])).' @ '.$row2['Final_Time'].'
+                                                                
+                                                          </td>
                                                         </tr>
-                                                        <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row2['Final_Time'].'</td>
-                                                        </tr>
+                                                      
                                                       
 
                                                     </tbody></table>
@@ -232,7 +229,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://www.labfy.com/circl/images/email/location.jpg" alt="where" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/location.jpg" alt="where" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -253,8 +250,8 @@ $content = new SendGrid\Content("text/html", '
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row2['Location'].'</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             &nbsp;</td>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">&nbsp;
+                                                             </td>
                                                         </tr>
                                                       
 
@@ -271,13 +268,20 @@ $content = new SendGrid\Content("text/html", '
                                 </td>
                             </tr>
 
-   <tr>
+                              <tr>
+                                <td align="left" style="padding: 20px;  font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2">What to do next?</td>
+                              </tr>
+                              <tr>
                                
-                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/survey/startup/meetings/" style="font-weight: normal; color: #ffffff;">Pay</a></td>
+                    <td align="center" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2">If you have met with '.$rowparticipant['FirstName'].', please send a payment to him/her for the meeting.</td>
                 </tr>
+   <tr>
+     <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/survey/startup/meetings/" style="font-weight: normal; color: #ffffff;">Pay</a></td>
+   </tr>
 
 
-                        </tbody></table>
+                          </tbody>
+                        </table>
 
 
                         <!--[if (gte mso 9)|(IE)]>

@@ -320,15 +320,18 @@ if($row['profile_image'] != ''){
       <?php echo $row['Age']; ?>, <?php echo $row['City']; ?>, <?php echo $row['State']; ?>
       </div>
 
+
+ <?php if(isset($_SESSION['startupSession'])){ ?>  
+
  <div class="col-lg-5">
       <table class="table table-bordered">
     <thead>
       <tr>
         <th>Meetings Participated</th>
  
-<?php if(isset($_SESSION['startupSession'])){ ?>
+
         <th>Rating</th>
-     <?php  }  ?>   
+    
      <th>Comments</th>
       </tr>
     </thead>
@@ -339,7 +342,7 @@ if($row['profile_image'] != ''){
 <?php
 
 
-$result_count = mysqli_query($connecDB,"SELECT Status,userID, COUNT(userID) AS count FROM tbl_meeting_archived WHERE Status = 'Met' AND userID = '".$_GET['id']."'");
+$result_count = mysqli_query($connecDB,"SELECT userID, COUNT(DISTINCT userID) AS count FROM tbl_participant_meeting_participated WHERE userID = '".$_GET['id']."'");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -354,7 +357,7 @@ echo $count;
 
 
         </td>
- <?php if(isset($_SESSION['startupSession'])){ ?>     
+
         <td>
           
  
@@ -381,7 +384,7 @@ echo $count;
 
 
         </td>
-        <?php  }  ?>  
+      
 
         <td>
 
@@ -410,7 +413,7 @@ echo '</a>';
   </table>
 
     </div>
-
+  <?php  }  ?>  
 
   </div>
 

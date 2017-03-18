@@ -220,12 +220,32 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
           </form>
 
-   
+<?php if($row['credit_card_id'] == ''){ ?>
+
+<div class="col-lg-12" style="padding:0px; margin-bottom:30px;">
+ <div class="errorXYZ">
+Add a credit card to make a payment. 
+
+<?php if($row['account_id'] == ''){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/startup/payment/" style="color:#fff; text-decoration: underline">Click here</a>
+
+<?php } ?>
+
+<?php if($row['account_id'] != ''){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/startup/payment/?p=credit-card" style="color:#fff; text-decoration: underline">Click here</a>
+
+<?php } ?>
 
 
 
+</div>
+</div>
 
+<?php } ?>
   
+
    <iframe name="votar" style="display:none;"></iframe>
         
     <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
@@ -295,7 +315,7 @@ $processing_fee = '$1.32';
 
 ///If Payout is more than $7 than charge 15% for service fee////
 
-if($row4['Pay'] >= '7'){
+if($row4['Pay'] > '7'){
 
 $participant_payout = $row4['Pay'] + $fee;
 
@@ -340,8 +360,9 @@ $payamount_final = numberFormatPrecision($payamount, 2, '.');
 
 $processing_fee_final = numberFormatPrecision($fee, 2, '.');
 
-if($row4['Pay'] >= '7'){
-$service_fee_final = numberFormatPrecision($service_fee, 2, '.');
+if($row4['Pay'] > '7'){
+//$service_fee_final = numberFormatPrecision($service_fee, 2, '.');
+$service_fee_final = $row4['Pay'] * 0.15;
 }
 
 if($row4['Pay'] <= '7'){
@@ -361,10 +382,10 @@ $service_fee_final = '1.32';
            <div class="col-lg-3">Payment for <?php echo $row3['FirstName']; ?>:</div>
            <div class="col-lg-9">$<?php echo $row4['Pay']; ?></div>
 
-            <div class="col-lg-3">Processing Fee :</div>
+            <div class="col-lg-3">Processing Fee :  <a href="#" alt="This is a fee charge by the credit card processing company" class="tooltiptext"><i class="icon icon-question"></i></a></div>
            <div class="col-lg-9">$<?php echo $processing_fee_final; ?></div>
 
-             <div class="col-lg-3">Service Fee:</div>
+             <div class="col-lg-3">Service Fee: <a href="#" alt="This is a fee charge to maintain our service" class="tooltiptext"><i class="icon icon-question"></i></a></div>
            <div class="col-lg-9">$<?php echo $service_fee_final; ?></div>
 
            <div class="col-lg-3"><br>Total:</div>
@@ -383,7 +404,7 @@ $service_fee_final = '1.32';
 
 
         <div id="save">
-              <input type="submit" class="pay" value="Click here to Pay"/>
+              <input type="submit" class="pay" value="Click here to Pay" <?php if($row['credit_card_id'] == ''){ ?>disabled<?php } ?>/>
 
             </div>
 

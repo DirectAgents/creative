@@ -155,7 +155,8 @@ $(document).ready(function () {
 <div class="container">
   <div class="therow">
     <div class="col-lg-2">
-      
+
+<a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row['userID']; ?>">      
    <?php 
 
 
@@ -165,6 +166,7 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
  if($rowprofileimage['google_picture_link'] != ''){ ?>
         <img src="<?php echo $rowprofileimage['google_picture_link']; ?>" class="thumbnail-profile"/>
+
 <?php } ?>
 
 <?php if($rowprofileimage['facebook_id'] != '0'){  ?>
@@ -183,11 +185,13 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
       
 <?php } ?>
 
+</a>
+
 
     </div>
     <div class="col-lg-4">
      <h3><?php echo $row['FirstName']; ?>&nbsp;<?php echo $row['LastName']; ?></h3>
-      <?php if($row['Age']!=''){echo $row['Age'] .',';} ?><?php if($row['City']!=''){ echo $row['City'].',';} ?> <?php if($row['State']!=''){ echo $row['State'];} ?>
+      <?php if($row['Age']!=''){echo $row['Age'] .',';} ?> <?php if($row['City']!=''){ echo $row['City'].',';} ?> <?php if($row['State']!=''){ echo $row['State'];} ?>
       </div>
 
  <div class="col-lg-5">
@@ -208,7 +212,7 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 <?php
 
 
-$result_count = mysqli_query($connecDB,"SELECT userID, COUNT(DISTINCT userID) AS count FROM tbl_project_request WHERE Met = 'Yes' GROUP BY id");
+$result_count = mysqli_query($connecDB,"SELECT userID, COUNT(DISTINCT userID) AS count FROM tbl_participant_meeting_participated WHERE userID = '".$_GET['id']."'");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 

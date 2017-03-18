@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery Popup Overlay</title>
+
+    <!-- Force latest IE, Google Chrome Frame for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="description" content="jQuery plugin for responsive and accessible modal windows and tooltips." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+  
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+    <!-- jQuery Popup Overlay -->
+    <script src="jquery.popupoverlay.js"></script>
+
+
+<style>
+#slide_background {
+    -webkit-transition: all 0.3s 0.3s;
+       -moz-transition: all 0.3s 0.3s;
+            transition: all 0.3s 0.3s;
+}
+#slide,
+#slide_wrapper {
+    -webkit-transition: all 0.4s;
+       -moz-transition: all 0.4s;
+            transition: all 0.4s;
+}
+#slide {
+    -webkit-transform: translateX(0) translateY(-40%);
+       -moz-transform: translateX(0) translateY(-40%);
+        -ms-transform: translateX(0) translateY(-40%);
+            transform: translateX(0) translateY(-40%);
+}
+.popup_visible #slide {
+    -webkit-transform: translateX(0) translateY(0);
+       -moz-transform: translateX(0) translateY(0);
+        -ms-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+}
+</style>
+
+
+</head>
+<body>
+
+
+
+        <p class="lineheight">
+            
+            <button class="initialism slide_open btn btn-success">Slide</button>
+           
+        </p>
+
+
+
+
+<!-- Slide in -->
+
+<div id="slide" class="well">
+<h4>Slide in example</h4>
+<pre class="prettyprint">
+<code>$('#slide').popup({
+  outline: true, // optional
+  focusdelay: 400, // optional
+  vertical: 'top' //optional
+});
+</code>
+</pre>
+<pre class="prettyprint">
+<code>#slide_background {
+  transition: all 0.3s 0.3s;
+}
+#slide,
+#slide_wrapper {
+  transition: all 0.3s ease-out;
+}
+#slide {
+  transform: translateX(0) translateY(-40%);
+}
+.popup_visible #slide {
+  transform: translateX(0) translateY(0);
+}
+</code>
+</pre>
+    <button class="slide_close standalone_open btn btn-default">Next example</button>
+    <button class="slide_close btn btn-default">Close</button>
+</div>
+
+<script>
+$(document).ready(function () {
+
+    $('#slide').popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

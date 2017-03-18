@@ -58,7 +58,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('oauth2/token', array(
     'client_id'    => $wepay_client_id,
     'client_secret'    => $wepay_client_secret,
-    'redirect_uri'    => "http://localhost/creative/pos/survey/startup/payment?verified=1",
+    'redirect_uri'    => BASE_PATH."/startup/payment/",
     'code'    => $_GET['code'],
 ));
 

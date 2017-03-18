@@ -7,6 +7,7 @@ include("../../config.php"); //include config file
 require_once '../../class.startup.php';
 require_once '../../class.participant.php';
 
+require_once '../../wepay.php';
 
 $participant_home = new PARTICIPANT();
 
@@ -232,11 +233,11 @@ You haven't sent any payments yet!
 WePay.set_endpoint("stage"); // stage or production
 
 WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
-    "client_id":"164910",
+    "client_id":"<?php echo $wepay_client_id; ?>",
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
-    "redirect_uri":"http://localhost/creative/pos/survey/startup/payment?verified=1",
+    "redirect_uri":"<?php echo BASE_PATH; ?>/startup/payment/",
     "top":100, // control the positioning of the popup with the top and left params
     "left":100,
     "state":"robot", // this is an optional parameter that lets you persist some state value through the flow
@@ -245,7 +246,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
         //alert(data.code);
     if (data.code.length !== 0) {
       // send the data to the server
-      window.location.href = "http://localhost/creative/pos/survey/startup/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=http://localhost/creative/pos/survey/startup/account/wepay/&client_secret=9983463efa&code="+data.code;
+      window.location.href = "<?php echo BASE_PATH; ?>/startup/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=<?php echo BASE_PATH; ?>/startup/account/wepay/&client_secret=9983463efa&code="+data.code;
 
     } else {
       // an error has occurred and will be in data.error

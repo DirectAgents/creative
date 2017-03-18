@@ -89,7 +89,7 @@ if($row['account_id'] == ''){
 
 
 
-   header("Location:http://localhost/creative/pos/survey/startup/payment/");
+   header("Location:http://localhost/creative/pos/survey/startup/payment/?p=credit-card");
 
 
 
