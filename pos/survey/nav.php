@@ -94,7 +94,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li><img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture" class="nav-profile-photo"/></li>
 <?php } ?>
        
-<?php if($rownav['google_picture_link'] == '' && $row['facebook_id'] == '0'){ ?>
+<?php if($rownav['google_picture_link'] == '' && $rownav['facebook_id'] == '0'){ ?>
 
       
 <?php if($rownav['profile_image'] != ''){  ?>

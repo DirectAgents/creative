@@ -446,6 +446,28 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $startup_hom
                  
                     <div class="clearer"></div>
                   </div>
+
+                  <div class="theline"></div>
+
+                  <div class="status_request">Status: 
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
+Waiting to receive payment
+<?php } ?> 
+
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes'){ ?>
+Payment received.
+<?php } ?> 
+
+
+   <?php if($row2['Met'] == '' && $row2['Met'] != 'No didn\'t show up'){ ?>         
+                 <i class="icon-trash"></i>Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm you met  
+
+                 <?php } ?>               
+
+
+                  </div>
+
+
                   <div class="survey-actions">
                   
                       

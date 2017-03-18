@@ -34,6 +34,11 @@ $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+$wepay = mysqli_query($connecDB,"SELECT * FROM wepay WHERE id = '".$_GET['id']."'");
+$rowwepay = mysqli_fetch_array($wepay);
+
+$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$rowwepay['participant_id']."'");
+$rowparticipant = mysqli_fetch_array($participant);
 
 
 ?>
@@ -173,7 +178,12 @@ $row=mysqli_fetch_array($sql);
 
 ?>
 
-          <h2><?php echo "$"; echo $row['total']; ?></h2>
+<?php $totalrefund =  $row['total'] + $row['service_fee']; ?>
+
+          <h3>You will receive from <?php echo $rowparticipant['FirstName']; ?>: <?php echo "$"; echo $row['checkout_find_amount']; ?></h3>
+          <h3>+ Processing Fee: <?php echo "$"; echo $row['fees']; ?></h3>
+          <h3>+ Service Fee: <?php echo "$"; echo $row['service_fee']; ?></h3>
+          <h3>Your total refund: <?php echo "$"; echo $totalrefund; ?></h3>
         
         
       </div>
@@ -198,7 +208,7 @@ $row=mysqli_fetch_array($sql);
 
 
                 <div class="screening-description">
-                 Please explain briefly what your reason for a refund is.
+                 Please explain briefly what your reason is for the refund.
                 </div>
                
                 
