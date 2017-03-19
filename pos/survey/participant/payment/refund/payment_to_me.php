@@ -6,50 +6,10 @@ require_once '../../../base_path.php';
 
 include("../../../config.php"); //include config file
 include("../../../config.inc.php");
-require_once '../../../class.startup.php';
-require_once '../../../class.participant.php';
-
-
-
-
-date_default_timezone_set('America/New_York');
-
-
-$startup_home = new STARTUP();
-
-if($startup_home->is_logged_in())
-{
-  $startup_home->logout();
-}
-
-
-
-
-
-$participant_home  = new PARTICIPANT();
-
-if(!$participant_home ->is_logged_in())
-{
-  $participant_home ->redirect('../login');
-}
-
-
-
-
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
-$row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 $wepay = mysqli_query($connecDB,"SELECT * FROM wepay WHERE id = '".$_GET['id']."'");
 $rowwepay = mysqli_fetch_array($wepay);
-
-
-/*
-$stmtparticipant="SELECT * FROM tbl_participant WHERE userID='".$_GET['participantid']."' ";
-$resultparticipant=mysql_query($stmtparticipant);
-$rowparticipant=mysql_fetch_array($resultparticipant);
-*/
 
 
 
@@ -57,10 +17,10 @@ $rowparticipant=mysql_fetch_array($resultparticipant);
     require '../../../wepay.php';
 
     // application settings
-    $account_id = $row_participant['account_id']; // participant's account_id
+    $account_id = $wepay_account_id; // participant's account_id
     $client_id = $wepay_client_id;
     $client_secret = $wepay_client_secret;
-    $access_token = $row_participant['access_token']; // participant's access_token
+    $access_token = $wepay_access_token; // participant's access_token
 
     // change to useProduction for live environments
     Wepay::useStaging($client_id, $client_secret);
@@ -71,7 +31,7 @@ $rowparticipant=mysql_fetch_array($resultparticipant);
      // create the checkout
     try {
     $response = $wepay->request('/checkout/refund', array(
-        'checkout_id'        => $rowwepay['checkout_id'],
+        'checkout_id'        => $rowwepay['my_checkout_id'],
         'refund_reason'      => $rowwepay['refundreason']
      )
     );
@@ -113,18 +73,10 @@ if (isset($error)){
 }   
 
 
-$update_sql = mysqli_query($connecDB,"UPDATE wepay SET 
-  refundrequest='',
-  refunded='yes'
-
-  WHERE id='".$_GET['id']."'");
 
 
 
   ?>
-
-
-
 
 
 

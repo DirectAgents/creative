@@ -26,7 +26,7 @@
 $wepay_account_id = 1058365630;
 $wepay_client_id = 164910;
 $wepay_client_secret = "9983463efa";
-$wepay_access_token = "STAGE_63d7bf841b108c6be1fdf8e74e47bcaac6ca3d897572738f14e77a1c7f724234";
+$wepay_access_token = "STAGE_066d4f6978990e18a7e533ea85f639502efe710a0f3fa89b5af9534f632ae4d7";
 
 $endpoint_url = 'https://stage.wepay.com';
 

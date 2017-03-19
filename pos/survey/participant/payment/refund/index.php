@@ -81,8 +81,26 @@ $.ajax({
         
          $("#result").hide().html(success).slideDown();
             
+    
+
+$.ajax({
+    url: 'payment_to_me.php?id='+id,
+    cache: false,
+    success: function(response) {
+        var success = $(response).filter('.response');
+       
+        //alert("asdfasf"); // returns [object Object]
+        
+         //$("#result").hide().html(success).slideDown();
+            
+   }
     }
-});
+);
+            }
+        }
+    );    
+
+
 
     });
   

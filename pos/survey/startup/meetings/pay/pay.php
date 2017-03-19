@@ -92,7 +92,8 @@ $payamount_to_participant = numberFormatPrecision($payamount, 2, '.');
 
 if($rowproject['Pay'] <= '7'){
 
-$payment_to_me = 1.32;
+$payment_to_me = 1.00;
+$payment_to_me_mysql = 1.32;
 
 }
 
@@ -102,6 +103,8 @@ $payment_to_me = 1.32;
 if($rowproject['Pay'] > '7'){
 
 $payment_to_me = $rowproject['Pay'] * 0.15;
+$payment_to_me_mysql = $rowproject['Pay'] * 0.15;
+
 
 }
 
@@ -220,18 +223,16 @@ if($month == 'November') {$order_by = '11';}
 if($month == 'December') {$order_by = '12';}
 
 
-//continue here
-   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, service_fee, fees, total) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."', '".$payment_to_me."',
-   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
+
 
 
 
 
 try {
-    $checkout = $wepay_me->request('/checkout/create', array(
+    $my_checkout = $wepay_me->request('/checkout/create', array(
             'account_id' => $wepay_account_id, // ID of my account
             'amount' => $payment_to_me, // dollar amount you want to charge the user
-            'short_description' => "Payment from Cirl to me", // a short description of what the payment is for
+            'short_description' => "Payment from Valify to me", // a short description of what the payment is for
             'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
             'currency'          => 'USD',
             //'payment_method' => ['type' => 'credit_card', 'id' => $row["credit_card_id"] 
@@ -260,7 +261,9 @@ try {
 
 
 
-
+//continue here
+   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id,my_checkout_id, checkout_find_date, checkout_find_amount, service_fee, fees, total) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."','".$my_checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."', '".$payment_to_me_mysql."',
+   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
 
 
 
@@ -278,7 +281,7 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, 
   '".$rowpayment['ProjectID']."', 'No', 'No', '".$rowpayment['Date_of_Meeting']."', '".$rowpayment['Final_Time']."','".$rowpayment['Location']."','Yes','".$rowpayment['Met']."','".$the_date."','".$the_time."')");
 
 
-$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_recent WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."'");
+//$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_recent WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."'");
 
 
 
