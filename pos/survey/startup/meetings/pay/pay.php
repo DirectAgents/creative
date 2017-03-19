@@ -49,6 +49,8 @@ if($_POST){
 $stmtpayment=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."' ");
 $rowpayment=mysqli_fetch_array($stmtpayment);
 
+
+
 if($rowpayment['Payment'] != 'Yes'){
 
 
@@ -262,8 +264,8 @@ try {
 
 
 //continue here
-   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id,my_checkout_id, checkout_find_date, checkout_find_amount, service_fee, fees, total) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."','".$my_checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."', '".$payment_to_me_mysql."',
-   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
+   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id,my_checkout_id, checkout_find_date, checkout_find_amount, service_fee, fees, total, Date, Time) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."','".$my_checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."', '".$payment_to_me_mysql."',
+   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."','".$the_date."','".$the_time."')");
 
 
 
@@ -276,12 +278,19 @@ date_default_timezone_set('America/New_York');
 $the_time = date('h:i:s A');
 
 
-
+/*
 $insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Payment, Met, Date_Posted, Time_Posted) VALUES('".$rowpayment['userID']."','".$rowpayment['startupID']."',
   '".$rowpayment['ProjectID']."', 'No', 'No', '".$rowpayment['Date_of_Meeting']."', '".$rowpayment['Final_Time']."','".$rowpayment['Location']."','Yes','".$rowpayment['Met']."','".$the_date."','".$the_time."')");
+*/
+
+/*$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_recent WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."'");*/
 
 
-//$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_recent WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['participantid']."'");
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET 
+  Payment='Yes'
+
+  WHERE ProjectID='".$_POST['projectid']."'");
+
 
 
 
