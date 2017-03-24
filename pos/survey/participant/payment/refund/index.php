@@ -180,12 +180,17 @@ $sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE participant_id = '".$_SES
 $row=mysqli_fetch_array($sql);
 
 
+if (strpos($row['checkout_find_amount'], '.') == false) {
+    $final_amount =  $row['checkout_find_amount'].'.00';
+}else{
+    $final_amount =  $row['checkout_find_amount'];
+}
 
 
 
 ?>
 
-          <h2><?php echo "$"; echo $row['checkout_find_amount']; ?></h2>
+          <h2><?php echo "$"; echo $final_amount; ?></h2>
         
         
       </div>

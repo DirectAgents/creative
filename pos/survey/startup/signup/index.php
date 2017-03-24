@@ -201,6 +201,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
 <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
@@ -442,7 +444,7 @@ $content = new SendGrid\Content("text/html", '
                                               <tr>
                                                 <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
                                                 
-                                                 <a href="http://localhost/creative/pos/survey/startup/account/verify.php?id='.$id.'&code='.$code.'">
+                                                 <a href="'.BASE_PATH.'/startup/account/verify.php?id='.$id.'&code='.$code.'">
                                                 <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
                                                 <img alt="Logo" src="http://valifyit.com/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
                                                 </div>

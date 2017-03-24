@@ -605,7 +605,7 @@ $(document).ready(function() {
     </div>
   
     <div class="copyright">
-      © 2017 Valify. All rights reserved  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a>  |  <a target="_blank" href="<?php echo BASE_PATH; ?>/faq/">FAQ</a> 
+      © 2017 Valify. All rights reserved  |  <a href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a>  |  <a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a href="<?php echo BASE_PATH; ?>/about/">About</a>  |  <a href="<?php echo BASE_PATH; ?>/contact/">Contact us</a> 
     </div>
   
   </footer>

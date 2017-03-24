@@ -82,10 +82,12 @@ $.ajax({
     cache: false,
     success: function(response) {
         var success = $(response).filter('.success2');
+        var error = $(response).filter('.errorXYZ');
        
         //alert("asdfasf"); // returns [object Object]
         
          $("#result").hide().html(success).slideDown();
+        $("#result_error").hide().html(error).slideDown();
             
     }
 });
@@ -93,6 +95,7 @@ $.ajax({
 }else{
 
 $("#result").hide().html(refundreason_missing).slideDown();
+
 
 };
 
@@ -174,13 +177,18 @@ $row=mysqli_fetch_array($sql);
 
 
 
+if (strpos($row['checkout_find_amount'], '.') == false) {
+    $final_amount =  $row['checkout_find_amount'].'.00';
+}else{
+    $final_amount =  $row['checkout_find_amount'];
+}
 
 
 ?>
 
 <?php $totalrefund =  $row['total'] + $row['service_fee']; ?>
 
-          <h3>You will receive from <?php echo $rowparticipant['FirstName']; ?>: <?php echo "$"; echo $row['checkout_find_amount']; ?></h3>
+          <h3>You will receive from <?php echo $rowparticipant['FirstName']; ?>: <?php echo "$"; echo $final_amount; ?></h3>
           <h3>+ Processing Fee: <?php echo "$"; echo $row['fees']; ?></h3>
           <h3>+ Service Fee: <?php echo "$"; echo $row['service_fee']; ?></h3>
           <h3>Your total refund: <?php echo "$"; echo $totalrefund; ?></h3>
@@ -224,6 +232,7 @@ $row=mysqli_fetch_array($sql);
 <input type="submit" class="btn btn-request-refund" value="Request Refund"/>
     <p>&nbsp;</p>
     <div id="result"></div>
+    <div id="result_error"></div>
     
 
 

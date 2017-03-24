@@ -31,9 +31,15 @@ $wepay = mysqli_query($connecDB,"SELECT * FROM wepay WHERE id = '".$_GET['id']."
 $rowwepay = mysqli_fetch_array($wepay);
 
 
+$project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$rowwepay['ProjectID']."'");
+$rowproject = mysqli_fetch_array($project);
+
+
 $participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$rowwepay['participant_id']."'");
 $rowparticipant = mysqli_fetch_array($participant);
 
+
+if($rowwepay['refundrequest'] != 'yes'){
 
 /*
 $stmtparticipant="SELECT * FROM tbl_participant WHERE userID='".$_GET['participantid']."' ";
@@ -164,6 +170,17 @@ $update_sql = mysqli_query($connecDB,"UPDATE wepay SET
 <?php
 
 
+
+if (strpos($rowwepay['checkout_find_amount'], '.') == false) {
+    $final_amount =  $rowwepay['checkout_find_amount'].'.00';
+}else{
+    $final_amount =  $rowwepay['checkout_find_amount'];
+}
+
+
+
+
+
 // using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
 // If you are using Composer (recommended)
@@ -234,25 +251,77 @@ $content = new SendGrid\Content("text/html", '
                                     <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                            <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Refund Request
-                                                </td>
-                                            </tr>
+                                           
                                             
                                              <tr>
                                                  <td align="left" style="padding: 0 0 5px 25px;font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                '.$row['FirstName'].' is requesting a refund of $'.$rowwepay['checkout_find_amount'].'
+                                                '.$row['FirstName'].' '.$row['LastName'].' is requesting a refund of $'.$final_amount.'
+                                                
+                                                </td>
+                                            </tr>
+
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;
                                                 
                                                 </td>
                                             </tr>
 
                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Refund Reason: '.$rowwepay['refundreason'].'
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; color: #333333;" class="padding">
+                                                Refund Reason:
                                                 
                                                 </td>
                                             </tr>
+
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                '.$rowwepay['refundreason'].'
+                                                
+                                                </td>
+                                            </tr>
+
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                               &nbsp;
+                                                
+                                                </td>
+                                            </tr>
+
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; color: #333333;" class="padding">
+                                                You met with '.$row['FirstName'].' to provide feedback about this idea: 
+                                                
+                                                </td>
+                                            </tr>
+
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                              &nbsp;
+                                                
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                   <a href="'.BASE_PATH.'/ideas/p/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'">'.$rowproject['Name'].'</a>
+                                                
+                                                </td>
+                                            </tr>
+
+                                              <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                              &nbsp;
+                                                
+                                                </td>
+                                            </tr>
+
+
+                                               <tr>
+                               
+                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/participant/payment/" style="font-weight: normal; color: #ffffff;">Accept Refund Request</a></td>
+                </tr>
+                                           
+
 
 
                                         </table>
@@ -380,4 +449,15 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 <div class="success2">Refund Request Sent!</div>
+
+
+<?php }else{ ?>
+
+
+
+<div class="errorXYZ">Refund Request Already Sent!</div>
+
+
+<?php } ?>
+
 

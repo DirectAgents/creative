@@ -104,6 +104,13 @@ $sum = 0;
 
         
 
+        if (strpos($sum, '.') == false) {
+    $final_sum =  $sum.'.00';
+}else{
+    $final_sum =  $sum;
+}
+
+
 
         //$refund     = $responsefinal->refund->amount_refunded;
         //$refund_amount_sum+= $refund;
@@ -135,7 +142,7 @@ $sum = 0;
     
       <div class="note notforheader mobile-block">
         
-          <h2><?php echo "$"; echo $sum; ?></h2>
+          <h2><?php echo "$"; echo $final_sum; ?></h2>
         
         
       </div>
@@ -196,7 +203,11 @@ $sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2[
 $row3 = mysqli_fetch_array($sql3);
 
 
-
+if (strpos($row2['checkout_find_amount'], '.') == false) {
+    $final_amount =  $row2['checkout_find_amount'].'.00';
+}else{
+    $final_amount =  $row2['checkout_find_amount'];
+}
 
 
 ?>
@@ -204,7 +215,7 @@ $row3 = mysqli_fetch_array($sql3);
 
       <tr>
         <td style="text-align:left"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></td>
-        <td style="text-align:right">$<?php echo $row2['checkout_find_amount']; //echo $row2['id']; ?></td>
+        <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
        
       </tr>
     

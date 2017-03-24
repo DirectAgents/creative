@@ -289,12 +289,18 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, 
 
 
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET 
-  Payment=''
+  Payment='Yes'
 
   WHERE ProjectID='".$_POST['projectid']."'");
 
 
 
+
+if (strpos($checkout -> amount, '.') == false) {
+    $final_amount =  $checkout -> amount.'.00';
+}else{
+    $final_amount =  $checkout -> amount;
+}
 
 
 
@@ -368,8 +374,8 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                You\'ve received a $'.$checkout -> amount.' payment from '.$row['FirstName'].' '.$row['LastName'].'.
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                You\'ve received a $'.$final_amount.' payment from '.$row['FirstName'].' '.$row['LastName'].'.
                                                 </td>
                                             </tr>
                                             

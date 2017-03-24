@@ -161,12 +161,22 @@ while($row2 = mysqli_fetch_array($sql3)){
 $sql4=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['participant_id']."'");
 $row3 = mysqli_fetch_array($sql4);
 
+
+
+
+if (strpos($row2['checkout_find_amount'], '.') == false) {
+    $final_amount =  $row2['checkout_find_amount'].'.00';
+}else{
+    $final_amount =  $row2['checkout_find_amount'];
+}
+
+
 ?>
 
 
       <tr>
         <td style="text-align:left"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></td>
-        <td style="text-align:left">$<?php echo $row2['checkout_find_amount']; ?></td>
+        <td style="text-align:left">$<?php echo $final_amount; ?></td>
         <td style="text-align:left">$<?php echo $row2['fees']; ?></td>
          <td style="text-align:left">$<?php echo $row2['service_fee']; ?></td>
           <td style="text-align:left">$<?php echo $row2['checkout_find_amount'] + $row2['fees'] + $row2['service_fee'] ; ?></td>
@@ -174,7 +184,7 @@ $row3 = mysqli_fetch_array($sql4);
         <td style="text-align:left">
 
 <?php if($row2['refundrequest'] != 'yes' && $row2['refunded'] != 'yes') { ?>
-        <a href="request-refund?id=<?php echo $row2['id']; ?>">Request Refund</a>
+        <a href="request-refund?id=<?php echo $row2['id']; ?>" class="request-refund">Request Refund</a>
 <?php } ?>
 
 <?php if($row2['refundrequest'] == 'yes' && $row2['refunded'] == '') { ?>

@@ -1,139 +1,126 @@
+<?php require_once '../base_path.php'; ?>
+
+
+<script src="https://use.typekit.net/oos2wfr.js"></script>
+<script>try{Typekit.load({ async: false });}catch(e){}</script>
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="utf-8"/>
+    <title>Valify -  About us</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="canonical" href="index.php"/>
+
+    
+        <link rel="stylesheet" href="../css/launch-1482254397619.css">
+    
+    
+
+    <!--[if lt IE 9]>
+    
+        <script src="http://d25gbwvd82b2e5.cloudfront.net/assets/javascripts/html5shiv.min.js"></script>
+    
+    <![endif]-->
+
+<script src="../js/application-4b458517a28f0f3fb52cdb61d93011a6.js"></script>
+
+
+  
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+$(document).ready(function() {
+  $('a[rel="relativeanchor"]').click(function(){
+      $('html, body').animate({
+          scrollTop: $( $.attr(this, 'href') ).offset().top
+      }, 500);
+      return false;
+  }); 
+});
+});//]]> 
+
+</script>
+
+
+
+
+
+
+
+
+
+    
+</head>
+    
+
+    <body>
+        
+<header id="mainNav" class="navbar">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            
+             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            
+            <a class="brand" href="<?php echo BASE_PATH; ?>">
+            
+                
+                 <img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/>
+                
+
+            
+            </a>
+
+             <div class="nav-collapse collapse">
+                <ul class="nav">
+                    
+                        <li id="home"><a href="<?php echo BASE_PATH; ?>/startup/login/">Sign in <b class="caret"></b></a></li>
+                        <li id="home"><a href="<?php echo BASE_PATH; ?>/startup/signup/">Sign up <b class="caret"></b></a></li>
+                    
+                    
+                    
+                </ul>
+            </div><!--/.nav-collapse -->
+          
+        </div><!--/container-->
+    </div><!--/navbar-inner-->
+</header>
+        <section id="contentArea" class="container-fluid">
+            <div class="row-fluid">
+                <section id="main-content" class="span12">
+                    <div class="contentWrapper">
+                        
+                        
+   <div class="col-md-9">
+<h1 class="Valify-margin--large--bottom Valify-margin--large--top">
+
+
 <?php
 
 
-session_start();
-require_once '../../../base_path.php';
-
-include("../../../config.php"); //include config file
-include("../../../config.inc.php");
-require_once '../../../class.startup.php';
-require_once '../../../class.participant.php';
-
-
-
-
-date_default_timezone_set('America/New_York');
-
-
-$startup_home = new STARTUP();
-
-if($startup_home->is_logged_in())
+if(isset($_POST['btn-send']))
 {
-  $startup_home->logout();
-}
 
-
-
-
-
-$participant_home  = new PARTICIPANT();
-
-if(!$participant_home ->is_logged_in())
-{
-  $participant_home ->redirect('../login');
-}
-
-
-
-
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
-$row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-$wepay = mysqli_query($connecDB,"SELECT * FROM wepay WHERE id = '".$_GET['id']."'");
-$rowwepay = mysqli_fetch_array($wepay);
-
-
-$startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$rowwepay['startup_id']."'");
-$rowstartup = mysqli_fetch_array($startup);
-
-/*
-$stmtparticipant="SELECT * FROM tbl_participant WHERE userID='".$_GET['participantid']."' ";
-$resultparticipant=mysql_query($stmtparticipant);
-$rowparticipant=mysql_fetch_array($resultparticipant);
-*/
-
-
-
- // WePay PHP SDK - http://git.io/mY7iQQ
-    require '../../../wepay.php';
-
-    // application settings
-    $account_id = $row_participant['account_id']; // participant's account_id
-    $client_id = $wepay_client_id;
-    $client_secret = $wepay_client_secret;
-    $access_token = $row_participant['access_token']; // participant's access_token
-
-    // change to useProduction for live environments
-    Wepay::useStaging($client_id, $client_secret);
-
-    $wepay = new WePay($access_token);
-
-    // create the checkout
-     // create the checkout
-    try {
-    $response = $wepay->request('/checkout/refund', array(
-        'checkout_id'        => $rowwepay['checkout_id'],
-        'refund_reason'      => $rowwepay['refundreason']
-     )
-    );
-} catch (WePayException $e) { // if the API call returns an error, get the error message for display later
-    $error = $e->getMessage();
-}
-
-    // display the response
-    //print_r($response);
-
-if (isset($error)){
-    
-    //header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
-
- echo '<div class="response">';
-   //print_r ($response);
- 	echo '<div class="errorXYZ">';
-   		//echo htmlspecialchars($error);
- 	if(htmlspecialchars($error) =='Checkout object must be in state captured. Currently it is in state refunded'){
- 		echo "Refund is already accepted.";
- 	}else{
- 		//echo htmlspecialchars($error);
- 		echo "Sorry. Something went wrong";
- 	}
- 	echo "</div>";   
- echo "</div>";   
-
-    }else{
-
-
- echo '<div class="response">';
-   //print_r ($response);
-  echo '<div class="success2">';
-   echo 'Refund Accepted!';
-  echo "</div>";	  
- echo "</div>";   	
-
-
-if (strpos($rowwepay['checkout_find_amount'], '.') == false) {
-    $final_amount =  $rowwepay['checkout_find_amount'].'.00';
-}else{
-    $final_amount =  $rowwepay['checkout_find_amount'];
-}
-
-
-
+ 
 
 // using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
 // If you are using Composer (recommended)
-require '../../../sendgrid-php/vendor/autoload.php';
+require '../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Refund Request Accepted", "support@valifyit.com");
-$subject = "Refund Request Accepted";
-$to = new SendGrid\Email($rowstartup['FirstName'], $rowstartup['userEmail']);
+$from = new SendGrid\Email("Contact Form Valify", "support@valifyit.com");
+$subject = "Contact Form Valify";
+$to = new SendGrid\Email('', 'ald183s@gmail.com');
 $content = new SendGrid\Content("text/html", '
-
-
+         
 <body style="margin: 0 !important; padding: 0 !important;">
 
 
@@ -149,7 +136,7 @@ $content = new SendGrid\Content("text/html", '
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
-                        <a href="http://valifyit.com/" target="_blank">
+                        <a href="http://litmus.com" target="_blank">
                             <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
@@ -192,31 +179,31 @@ $content = new SendGrid\Content("text/html", '
                                     <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                           
-                                            
-                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                '.$rowstartup['FirstName'].' '.$rowstartup['LastName'].' accepted your refund request of $'.$final_amount.'
-                                                
-                                                </td>
-                                            </tr>
-
-                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;
-                                                
-                                                </td>
-                                            </tr>
-
                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; color: #333333;" class="padding">
-                                                You will receive your money within 2-3 business days
-                                                
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                Fullname: '.$_POST['txtfirstname'].' '.$_POST['txtlastname'].'
                                                 </td>
                                             </tr>
 
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                Email: '.$_POST['txtemail'].'
+                                                </td>
+                                            </tr>
+
+                                              <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                Message:
+                                                </td>
+                                            </tr>
+
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                '.$_POST['details'].'
+                                                </td>
+                                            </tr>
                                             
-
-
+                                             
                                         </table>
                                     </div>
                                    
@@ -226,7 +213,6 @@ $content = new SendGrid\Content("text/html", '
 
 
 
-            
                         
                         
                         
@@ -287,7 +273,7 @@ $content = new SendGrid\Content("text/html", '
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                       245 5th Ave Suite 201, New York, NY 10001
+                        245 5th Ave Suite 201, New York, NY 10001
                            </td>
                      </tr>
 
@@ -328,38 +314,91 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->statusCode();
 //echo $response->headers();
 //echo $response->body();
+            
+echo '<div class="name-field col-md-6">'; 
+echo '<div style="background:#eee; font-size:18px; width:auto; text-align:center; padding:5px;">';
+echo "Thank you for reaching to us. We'll get back to you shortly";       
+echo '</div>';
+echo '</div>'; 
+     
+   
+  }
 
 
-}   
-
-
-$update_sql = mysqli_query($connecDB,"UPDATE wepay SET 
-  refundrequest='',
-  refunded='yes'
-
-  WHERE id='".$_GET['id']."'");
-
-
-
-
-
+?>
 
 
 
 
+<p><h2>GET IN TOUCH WITH US</h2></p>
+<form id="contactForm" method="post">
+
+  <input type="hidden" name="passwordpass" id="passwordpass"/>
+
+    <div class="name-field col-md-6">
+      <div class="form-group">
+    <input type="text" name="txtfirstname" id="txtfirstname" class="txtfirstname" placeholder="First Name *" oninvalid="this.setCustomValidity('Enter Your First Name')" oninput="setCustomValidity('')" required/>
+    </div>
+  </div>
+    
+    <div class="name-field col-md-6">
+      <div class="form-group">
+    <input type="text" name="txtlastname" id="txtlastname" class="txtlastname" placeholder="Last Name *" oninvalid="this.setCustomValidity('Enter Your Last Name')" oninput="setCustomValidity('')" required/>
+    </div>
+   </div>
+    
+   
+    <div class="name-field col-md-6">
+      <div class="form-group">
+    <input type="email" name="txtemail" id="txtemail" placeholder="Email Address *" oninvalid="this.setCustomValidity('Enter a valid Email Address')" oninput="setCustomValidity('')" required/>
+    </div>
+  </div>
+    
+    <div class="name-field col-md-6">
+      <div class="form-group">
+   <textarea name="details" id="details" placeholder="Message"></textarea>
+
+   </div>
+    </div>
+  
+    <button type="submit" name="btn-send" id="btn-send">SEND</button>
+   
+</form>
 
 
 
+</div>
+
+        
+    
+
+                    </div><!--/contentWrapper-->
+                    
+                </section><!--/content-->
+               
+            </div><!--/row-->
+            <footer>
+                
+
+<p>&copy;
+    
+      
+    
+    2017
+    
+    
+        
+    
+</p>
+            </footer>
+        </section><!--/.fluid-container-->
+        
+
+        
+        
 
 
-  ?>
+        
 
-
-
-
-
-
-
-
-
-
+    </body>
+</html>

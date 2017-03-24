@@ -1,47 +1,249 @@
 <?php
 session_start();
 
-if(!empty($test)){
-include_once("../../config.php");
-}else{
-include_once("../config.php");
-}
+require_once '../../../base_path.php';
+
+require_once '../../../class.participant.php';
+require_once '../../../class.startup.php';
+include_once("../../../config.php");
+include("../../../config.inc.php");
 
 
-if($_SESSION['startupSession'] != ''){
 
 
 
-if(!empty($test)){
-require_once '../../class.startup.php';
-}else{
-require_once '../class.startup.php';
-}
 
 
-$startup_home = new STARTUP();
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID='".$_GET['id']."'");
+$rowproject = mysqli_fetch_array($Project);
 
-if(!$startup_home->is_logged_in())
+
+
+$Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."'");
+$rowscreening = mysqli_fetch_array($Screening);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowarchived=mysqli_fetch_array($sql);
+
+
+
+$participant_home = new PARTICIPANT();
+
+if(!$participant_home->is_logged_in())
 {
-  $startup_home->redirect('login.php');
+ header("Location:../../../participant/login/");
 }
 
-$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
+
+
+if($participant_home->is_logged_in())
+{
+
+
+$participant_languages = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_GET['id']."'");
+$rowparticipant_languages = mysqli_fetch_array($participant_languages);
+
+$participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_GET['id']."'");
+$rowparticipant_interest = mysqli_fetch_array($participant_interest);
+
+
+$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
+$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-}
 
-if(!empty($_GET["cat"])){
+$Min_Req = str_replace(",","|",$rowproject['MinReq']);
 
-$Project = mysql_query("SELECT * FROM tbl_startup_project WHERE Category='".$_GET['cat']."'");
-$rowproject = mysql_fetch_array($Project);
+$Meetupchoice = str_replace(",","|",$rowproject['Meetupchoice']);
+$Age = str_replace(",","|",$rowproject['Age']);
+$Gender = str_replace(",","|",$rowproject['Gender']);
+$Height = str_replace(",","|",$rowproject['MinHeight']);
+$City = str_replace(",","|",$rowproject['City']);
+$Status = str_replace(",","|",$rowproject['Status']); 
+$Ethnicity = str_replace(",","|",$rowproject['Ethnicity']);
+$Smoke = str_replace(",","|",$rowproject['Smoke']);
+$Drink = str_replace(",","|",$rowproject['Drink']);
+$Diet = str_replace(",","|",$rowproject['Diet']);
+$Religion = str_replace(",","|",$rowproject['Religion']);
+$Education = str_replace(",","|",$rowproject['Education']);
+$Job = str_replace(",","|",$rowproject['Job']);
+$Interest = str_replace(",","|",$rowparticipant_interest['Interests']);
+$Languages = str_replace(",","|",$rowparticipant_languages['Languages']);
+
+
+$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
+//$results2=mysql_query($sql2);
+$row2 = mysqli_fetch_array($sql2);
+
+
+
+if(($row['Height'] >= $rowproject['MinHeight']) && ($row['Height'] <= $rowproject['MaxHeight'])) {
+
+$Height_Final = $row['Height'];
 
 }else{
 
-$Project = mysql_query("SELECT * FROM tbl_startup_project");
-$rowproject = mysql_fetch_array($Project);
+$Height_Final = $row['Height'] + 1;  
+
 }
+
+
+//echo $Min_Req;
+//if (strpos($Min_Req, 'Age') !== false) {echo "yes";}
+
+
+//echo $Gender;
+
+
+if (strpos($Min_Req, 'Age') !== false) {
+if($Age != 'NULL' && $Age != ''){$theage = "AND p.Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
+}else{
+  $theage = '';
+}
+
+
+if (strpos($Min_Req, 'Gender') !== false) {
+if($Gender != 'NULL' && $Gender != ''){$thegender = "AND p.Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
+}else{
+  $thegender = '';
+}
+
+if (strpos($Min_Req, 'Height') !== false) {
+if($Height != 'NULL' && $Height != ''){$theheight = "AND p.Height RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
+}else{
+  $theheight = '';
+}
+
+if (strpos($Min_Req, 'City') !== false) {
+if($City != 'NULL' && $City != ''){$thecity = "AND p.City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
+}else{
+  $thecity = '';
+}
+
+
+if (strpos($Min_Req, 'Status') !== false) {
+if($Status != 'NULL' && $Status != ''){$thestatus = "AND p.Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
+}else{
+  $thestatus = '';
+}
+
+
+if (strpos($Min_Req, 'Ethnicity') !== false) {
+if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND p.Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
+}else{
+  $theethnicity = '';
+}
+
+
+if (strpos($Min_Req, 'Smoke') !== false) {
+if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND p.Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
+}else{
+  $thesmoke = '';
+}
+
+
+if (strpos($Min_Req, 'Drink') !== false) {
+if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND p.Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
+}else{
+  $thedrink = '';
+}
+
+
+if (strpos($Min_Req, 'Diet') !== false) {
+if($Diet != 'NULL' && $Diet != ''){$thediet = "AND p.Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
+}else{
+  $thediet = '';
+}
+
+if (strpos($Min_Req, 'Religion') !== false) {
+if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND p.Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
+}else{
+  $thereligion = '';
+}
+
+
+if (strpos($Min_Req, 'Education') !== false) {
+if($Education != 'NULL' && $Education != ''){$theeducation = "AND p.Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
+}else{
+  $theeducation = '';
+}
+
+
+if (strpos($Min_Req, 'Job') !== false) {
+if($Job != 'NULL' && $Job != ''){$thejob = "AND p.Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
+}else{
+  $thejob = '';
+}
+
+
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND p.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+}else{
+  $interest = '';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND p.Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+}else{
+  $languages = '';
+}
+
+
+
+
+$sql3 = mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_SESSION['participantSession']."'
+AND r.ProjectID ='".$_GET['id']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages");
+
+
+
+if(mysqli_num_rows($sql3) == false)
+{
+  //echo $_SESSION['participantSession'];
+  //echo "You can't view this page";
+  header("Location:../../../participant/");
+
+}
+
+
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowrequest=mysqli_fetch_array($sql);
+
+
+
+$sqlupcoming = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowupcoming=mysqli_fetch_array($sqlupcoming);
+
+
+$sqlrecent = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowmeetingrecent=mysqli_fetch_array($sqlrecent);
+
+
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+//$result=mysql_query($sql);
+$rowarchived=mysqli_fetch_array($sqlarchived);
+
+
+
+
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Participant='Yes'
+  WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
+
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Participant='Yes'
+  WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
+
+
+}
+
+
+
+
 
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
@@ -49,7 +251,7 @@ $age=explode(',',$rowproject['Age']);
 $gender=explode(',',$rowproject['Gender']);
 $minheight=explode(',',$rowproject['MinHeight']);
 $maxheight=explode(',',$rowproject['MaxHeight']);
-$location=explode(',',$rowproject['Location']);
+$city=explode(',',$rowproject['City']);
 $status=explode(',',$rowproject['Status']);
 $ethnicity=explode(',',$rowproject['Ethnicity']);
 $smoke=explode(',',$rowproject['Smoke']);
@@ -64,83 +266,350 @@ $job=explode(',',$rowproject['Job']);
 
 
 
+
+
 ?>
 
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en" id="features" class="tablet mobile">
     
     <head>
-        <title><?php echo $row['userEmail']; ?></title>
-        <!-- Bootstrap -->
-        <link href="<?php echo BASE_PATH; ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="<?php echo BASE_PATH; ?>/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <link href="<?php echo BASE_PATH; ?>/assets/styles.css" rel="stylesheet" media="screen">
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <link href="<?php echo BASE_PATH; ?>/css/font-awesome.css" rel="stylesheet" media="screen">
 
 
 
-
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,700,300" rel="stylesheet" type="text/css">
-
+<?php include("../../../header.php"); ?>
 
 
+  <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+   
 
+    $( "#date_option_one" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      buttonText: "Select date"
+    });
 
+    $( "#date_option_two" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      buttonText: "Select date"
+    });
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    $( "#date_option_three" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      buttonText: "Select date"
+    });
 
-<!--JAVASCRIPT-->
+  } );
+  </script>
 
- <!-- jQuery Popup Overlay -->
-<script src="<?php echo BASE_PATH; ?>/startup/project/js/jquery.popupoverlay.js"></script>
 
 <script>
 
-/**Create Project**/
+$(document).ready(function() {
 
-$(document).ready(function(){
+$('#wheretomeet').show();  
+$('#thetimeset-to').hide();
+$('#at').hide();
+$('#based').hide();
+$('#select-dates').show();
+  
 
- $(".go").click(function() {  
+$('#location_option1').show();  
+$('#days_availability_option2').hide();
+$('#days_availability_option3').hide();
+$('#location_option2').hide();
+$('#location_option3').hide();
+            
+
+ $("#option").change(function() { 
+
+
+ var option = $("select[name='option']").val();
+
+
+
+ $.ajax({
+        url: '../fromto.php',
+        data: {option : option},
+        dataType: "json",
+        success: function(data)
+        {
+          
+
+            if(option == 'Option1'){
+            $('#days_availability_option1').show();
+            $('#days_availability_option2').hide();
+            $('#days_availability_option3').hide();
+            $('#location_option1').show();  
+            $('#location_option2').hide();
+            $('#location_option3').hide();
+       
+            
+          }
+
+           if(option == 'Option2'){
+            $('#days_availability_option2').show();
+            $('#days_availability_option1').hide();
+            $('#days_availability_option3').hide();
+            $('#location_option1').hide();  
+            $('#location_option2').show();
+            $('#location_option3').hide();
+           
+          }
+
+          if(option == 'Option3'){
+            $('#days_availability_option3').show();
+            $('#days_availability_option2').hide();
+            $('#days_availability_option1').hide();
+            $('#location_option1').hide();  
+            $('#location_option2').hide();
+            $('#location_option3').show();
+         
+            
+          }
+
+          
+
+            //alert(data[0].from);
+
+            if(data[0].from == ''){ 
+            $('#select-dates').hide();  
+            $('#based').hide();  
+            $('#thetimeset-from').text('');
+            $('#thetimeset-to').text('');  
+            $('#from').text('');
+            $('#to').text(''); 
+            $('#notimeset').text('No time is set for '+ option); 
+            
+            }else{ 
+              $('#select-dates').show();
+              $('#wheretomeet').show();
+              $('#notimeset').text(''); 
+              $('#based').show();
+              $('#days').text(data[0].days);   
+              $('#at').show();
+              $('#from').text(data[0].from); 
+            }
+            
+
+            if(data[0].to == ''){ 
+            //$('#to').text('No time is set'); 
+            }else{ 
+            $('#thetimeset-to').show();
+            $('#to').text( data[0].to ); 
+            }
+
+             //$("#from option:first").val(data[0].from);
+             //$('#from option:first').text(data[0].from);
+
+             //$("#to option:first").val(data[0].to);
+             //$('#to option:first').text(data[0].to);
+
+         
+        }
+    });
+
+
+ });
+
+
+
+ $(".btn-request").click(function() {  
+  
 //alert("aads"); 
 
- //get input field values
+
+
+        //daysvalue = document.getElementById("days");
+        //fromtimevalue = document.getElementById("from");
+        //totimevalue = document.getElementById("to");
+
+        //get input field values
         
-        var projectname = $('input[name=projectname').val();
-       
+        var option = $("select[name='option']").val();
+
+
+        var projectid  = $('input[name=creditcard]').val();
+
+        var screeningquestion_required  = $('input[name=screeningquestion_required]').val();
+
+        var projectid  = $('input[name=projectid]').val();
+        var startupid  = $('input[name=startupid]').val();
+
+        var date_option_one  = $('input[name=date_option_one]').val();
+        var date_option_two  = $('input[name=date_option_two]').val();
+        var date_option_three  = $('input[name=date_option_three]').val();
+
+        var time_suggested_one = $("select[name='time_suggested_one']").val();
+        var time_suggested_two = $("select[name='time_suggested_two']").val();
+        var time_suggested_three = $("select[name='time_suggested_three']").val();
+
+        //alert(date_option_one);
+
+
+        //var day = $("select[name='day']").val();
+        
+        //var days = daysvalue.innerHTML;
+        //var fromtime = fromtimevalue.innerHTML;
+        //var totime = totimevalue.innerHTML;
+
+        var location = $('#pac-input').val();
+
+        //alert(location);
+
+        var potentialanswergiven = $('input[name="potentialanswergiven[]"]:checked').map(function () {return this.value;}).get().join(",");
+
+
+        //if(option == 'Option1'){var location  = $('input[name=location_option1]').val();}
+        //if(option == 'Option2'){var location  = $('input[name=location_option2]').val();}
+        //if(option == 'Option3'){var location  = $('input[name=location_option3]').val();}
+        
        
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
         var proceed = true;
-
-          if(projectname==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:95.5%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Project!</div>';
+        
+        /*
+        if(fromtime==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please choose your time under your settings</div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }
-      
-      
          
+         if(location==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a location to meet!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        } */
+
+
+       
+
+        if(!date_option_one) {
+
+                $("#date_option_one").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#date_option_one").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+        if(!time_suggested_one) {
+
+                $("#time_suggested_one").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_one").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+
+        if(!date_option_two) {
+
+                $("#date_option_two").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+         }else{
+                $("#date_option_two").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+         if(!time_suggested_two) {
+
+                $("#time_suggested_two").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_two").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+
+        if(!date_option_three) {
+
+                $("#date_option_three").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+         }else{
+                $("#date_option_three").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+         if(!time_suggested_three) {
+
+                $("#time_suggested_three").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#time_suggested_three").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+        if(!location) {
+
+                $("#pac-input").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        }else{
+                $("#pac-input").css('border-color','green');  //change border color to red 
+                proceed = true; //set do not proceed flag       
+        };
+
+
+        
+
+
+        if(screeningquestion_required == 'Yes'){
+
+        var potentialanswergiven_checkedstatus = $('input[name="potentialanswergiven[]"]:checked').size();
+
+       
+
+        if(potentialanswergiven_checkedstatus <1 ){ 
+           output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please select one Answer! </div>';
+            $("#result_error").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+                $("#result_error").hide();
+
+                //proceed = true; //set do not proceed flag       
+        };
+
+        if(date_option_one && date_option_two && date_option_three && time_suggested_one && time_suggested_two && time_suggested_three && location && potentialanswergiven_checkedstatus == 1 ) {
+         //output = '<div class="success2">Request to meet sent!</div>';
+                //$("#result_success").hide().html(output).slideDown();
+                proceed = true; //set do not proceed flag      
+        }
+
+        }
+
+
+       
+
+
 
         //everything looks good! proceed...
         if(proceed) 
         {
 
+        
 
-          $( ".processing" ).show();
+         //alert("123");
+
             //data to be sent to server
-            post_data = {'projectname':projectname};
+  post_data = {'projectid':projectid,'startupid':startupid,'time_suggested_one':time_suggested_one, 'time_suggested_two':time_suggested_two,'time_suggested_three':time_suggested_three,'date_option_one':date_option_one, 'date_option_two':date_option_two, 'date_option_three':date_option_three,'location':location, 'potentialanswergiven':potentialanswergiven};
             
             //Ajax post data to server
-            $.post('projectcreate.php', post_data, function(response){  
+            $.post('../place-suggest-ajax.php', post_data, function(response){  
               
+              //alert (projectid);
 
                 //load json data from server and output message     
         if(response.type == 'error')
@@ -148,31 +617,29 @@ $(document).ready(function(){
           output = '<div class="errorXYZ">'+response.text+'</div>';
         }else{
           
-            //alert(text);
-                
-            window.location.href = "create/step1.php?id="+response.text;
-            //output = '<div class="success">'+response.text+'</div>';
+         
+          output = response.text;
 
+
+        
           
           //reset values in all input fields
           $('#contact_form input').val(''); 
           $('#contact_form textarea').val(''); 
         }
         
-        $("#result").hide().html(output).slideDown();
+        $("#result_success").hide().html(output).slideDown();
             }, 'json');
       
         }
+    });
 
-});
+ });
 
-
- 
-
-});
 
 </script>
-   
+
+
 
         
     </head>
@@ -180,34 +647,38 @@ $(document).ready(function(){
     <body>
 
 <!--TopNav-->
-        <?php 
+         <header id="main-header" class='transparent'>
+  <div class="inner-col">
+   
 
-if($_SESSION['startupSession'] != ''){
 
-  if(!empty($test)){
-        include("../../startup/nav.php"); 
-    }else{
-      include("../startup/nav.php"); 
-    }
-  }
+<?php include("../../../nav.php"); ?>
 
-        ?>
+   
+  </div>
+</header>
+
 
 <!--TopNav-->
 
 
-  
-        
 
 
-    <!-- Main -->
+ <div class="clearer"></div>
+
+
+<!-- Main -->
+
+   <div class="container">
+
+
+<div class="row-fluid">
+  <div class="span12">
 
 
 
-
-
-
-
+<div id="white-container">
+      <div id="dashboardSurveyTargetingContainerLogic">
 
 
 
@@ -216,324 +687,711 @@ if($_SESSION['startupSession'] != ''){
 <div class="container">
 
 
+<?php 
 
-
-
-    <!-- Main -->
-
-
-     
-
-
-<?php
-//include db configuration file
-
-
-
-
-//MySQL query
-//$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
-
-
-if(!empty($_GET["cat"])){
-
-$sql="SELECT * FROM tbl_startup_project WHERE Category = '".$_GET['cat']."' ORDER BY id DESC ";
-$result=mysql_query($sql);
-
-}else{
-
-$sql="SELECT * FROM tbl_startup_project ORDER BY id DESC ";
-$result=mysql_query($sql);
-}
-
-
-
-//$row=mysql_fetch_array($result);
-
-  //if username exists
-if(mysql_num_rows($result)>0)
+if($participant_home->is_logged_in())
 {
-  //echo "asdf";
+
+if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['ProjectID'] == $_GET['id'] && $rowrequest['ScreeningQuestion'] != 'Not Passed' ){
+
+//echo $rowrequest['ProjectID'];
+
+ ?>
 
 
-//get all records from add_delete_record table
-while($row2 = mysql_fetch_array($result))
-{ 
+<div class="col-lg-11">
 
+<div class="request-sent">  
+  Already Request sent to Participate
+</div>
+<p>&nbsp;</p>
 
-
-$date = date_create($row2['Date_Created']);
-
-  ?>
-
-
-<!-- Delete a Project -->
-
-<div id="slide-delete-<?php echo $row2['ProjectID']; ?>" class="well slide-delete">
-  <div class="result-delete">
-  <div id="result-delete-<?php echo $row2['ProjectID']; ?>">Successfully Deleted!</div>
-  </div>
-<h4>Are you sure you want to delete this project?</h4>
-<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<div class="popupoverlay-btn">
-  <div class="cancel-delete">
-    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Cancel</button>
-    <button class="delete<?php echo $row2['ProjectID']; ?> btn-delete">Yes</button>
 </div>
 
-<div class="popupoverlay-btn">
-  <div class="close-delete">
-    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Close</button>
-</div>
-</div>
 
-</div>
-</div>
-
-<!-- End Delete a Project -->
+<?php } ?> 
 
 
 
 
 
 
-
-<script>
-$(document).ready(function () {
-
-    $('#slide-delete-'+<?php echo $row2['ProjectID']; ?>).popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
+<?php } ?>
 
 
 
-    $(".delete"+<?php echo $row2['ProjectID']; ?>).click(function() {  
-//alert("aads"); 
-
- //get input field values
-        
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-       
-       
-        
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
-
-        
-      
-      
-         
-
-        //everything looks good! proceed...
-        if(proceed) 
-        {
 
 
-          $( ".processing" ).show();
-            //data to be sent to server
-            post_data = {'projectid':projectid};
-            
-            //Ajax post data to server
-            $.post('project/projectdelete.php', post_data, function(response){  
-              
 
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-            //alert(text);
-                
-            output = '<div class="success">'+response.text+'</div>';
-
-          
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $(".cancel-delete").hide();
-        $(".result-delete").show();
-        $(".close-delete").show();
-        $("#result-delete-"+response.text).hide().slideDown();
-            }, 'json');
-      
-        }
-
-});
-  
-});
-</script>
-
-
-<a href="<?php echo BASE_PATH; ?>/ideas/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
-
-<div class="surveys-list">
-
-<div class="survey-info-container">
-
-<div class="row">
-    <div class="col-md-2">
 
 <?php 
 
-$ProjectImage = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$row2['ProjectID']."'");
-$rowprojectimage = mysql_fetch_array($ProjectImage);
+if($participant_home->is_logged_in())
+{
 
-if($rowprojectimage['project_image'] != '') { ?>
+if($rowupcoming['userID'] == $_SESSION['participantSession'] && $rowupcoming['ProjectID'] == $_GET['id'] ){
 
-<img src="<?php echo BASE_PATH; ?>/ideas/<?php echo $row2['Category']; ?>/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
-
-<?php }else{
-echo '<img src="uploads/thumbnail.jpg" width="100">'; 
-}
+//echo $rowrequest['ProjectID'];
 
 
-?></div>
+$startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$rowupcoming['startupID']."'");
+$rowstartup= mysqli_fetch_array($startup);
 
 
-    <div class="col-md-10">
+ ?>
 
 
-                  <div class="survey-header">
-                  
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?></div>
-                  <?php echo $row2['Headline']; ?>
-                   
-                  </div>
-                 
-                  <div class="survey-metadata">
-                    <div class="item ">
-                      <div class="label">Created:</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date, 'm/d/Y'); ?></div>
-                    </div>
-                    <div class="item date">
-                      <div class="label">status:</div>
-                      <div class="value">
-                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php echo $row2['ProjectStatus']; ?>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="item date">
-                      <div class="label">Participants:</div>
-                      <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
-                        
+<div class="col-lg-11" style="padding:0px; margin-bottom:30px;">
+ <div class="success2">
+  You will meet <?php echo $rowstartup['FirstName']; ?> on  <?php echo date('F j, Y',strtotime($rowupcoming['Date_of_Meeting'])); ?> 
+at <?php echo $rowupcoming['Final_Time']; ?><br>
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
+<?php } } ?>
+
+
+
+
+
+
+
+
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+if($row['Payment_Method'] == 'Cash') { ?>
+
+
+<div class="col-lg-11">
+
+<div class="no-bankaccount-set">  
+  You will receive your payment in cash.
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
+
+
+<?php } } ?>
+
+
+
+
+
+
+  
+
+
+
+ <div class="col-lg-3">
+      
+      <?php
+  if($rowproject['project_image'] != ''){ ?>
+  
+  <img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowproject['project_image']; ?>" class="img-circle-profile"/>
+
 <?php
 
-
-$result_count = mysql_query("SELECT ProjectID,userID, COUNT(DISTINCT userID) AS count FROM tbl_participant_request WHERE ProjectID = '".$row2['ProjectID']."' AND Not_Qualified_Anymore = '' GROUP BY ProjectID");
-$row_count = mysql_fetch_assoc($result_count);
-$count = $row_count['count'];
-
-if($count > 0 ){
-echo "<a href=project/browse/?id=".$row2['ProjectID'].">";
-echo $count;
-echo "</a>";
 }else{
-  echo "0";
+
+ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" class="img-circle-profile"/>';
 }
-?>
+  
+      ?>
 
 
-                      </div>
-                    </div>
-                    <div class="clearer"></div>
-                  </div>
-                 
-                  </div>
-               
-
+    </div>
 
   
-    
-   </div>
+
+
+<div class="col-lg-6"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></h3></div>
+
+
+
+
+<?php if(!$participant_home->is_logged_in() && $_SESSION['startupSession'] == '')
+{ ?>
+
+<div class="col-lg-4">
+  <a href="<?php echo BASE_PATH; ?>/participant/login/?p=<?php echo $_GET['id']; ?>" role="button" class="111slide_open">
+  <button type="button" class="btn-request">
+  Login to Participate</button></a>
 </div>
 
-
-<?php 
-
-}
-
-echo '</a>';
-
-
-}else{ ?>
-
-<div class="row">
-    <div class="col-md-12">
-<div class="empty-projects">No Projects</div>
-  <div class="create-one-here-box">
-      <div class="create-one">
-        <button class="slide_open create-one-btn">Create one here</button>
-       </div> 
-  </div>
-</div>
-
-</div>
-</div>
-
-
-<?php }
-
-//close db connection
-mysql_close($connecDB);
-?>
+<?php } ?>
 
 
 
-
-
-
-
-
-       
-        
-
-
-
-
-
+    <div class="col-lg-12">
+      
+      <h3>What is the idea?</h3>
+      <p><?php echo $rowproject['Name']; ?></p>
      
-
-          
       </div>
 
+
+      
+
+
+
+
+ <?php if($rowproject['Details'] != ''){?> 
+
+    <div class="col-lg-12">
+    <h3>What makes this idea special?</h3>
+      <p><?php echo $rowproject['Details']; ?></p>
+    </div>
+  
+  <?php } ?>
+
+
+
+  <?php if($rowproject['Agenda_One'] != ''){?> 
+  
+    <div class="col-lg-12">
+      <h3>What will be discussed during the meeting?</h3>
+      <p><?php echo $rowproject['Agenda_One']; ?></p>
+    </div>
+  
+  <?php } ?>
+
+
+
+
+
+
+
+
+
+
+<?php if($participant_home->is_logged_in()) { ?>
+
+
+
+
+
+
+  <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
+  && mysqli_num_rows($sqlrecent) == 0) { ?>
+
+
+ <div class="col-lg-12" style="width:96%; margin-top:20px; background:#eee"> 
+
+
+ <div class="col-lg-12">    
+<h3>Set up a meeting</h3>
+</div>
+
+
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+if($row['account_id'] == '' && $row['Payment_Method'] == 'Bank') { ?>
+
+
+<div class="col-lg-11">
+
+<div class="no-bankaccount-set">  
+  Please add a bank account so you can receive payments. <a href="<?php echo BASE_PATH; ?>/participant/payment/">Set up Bank Account</a>
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
+
+
+<?php } } ?>
+
+
+
+
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+if($row['Phone'] == ''){ ?>
+
+
+
+<div class="col-lg-11" style="margin-top:20px;">
+
+<div class="request-sent">  
+  Please add your <strong><u>Phone Number</u></strong> to your account. This is required to request to meet. Click <a href="<?php echo BASE_PATH; ?>/participant/account/settings/">here</a> to add you number.
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+<?php
+}
+}
+
+?>
+
+
+<?php 
+
+if($participant_home->is_logged_in())
+{
+
+?>
+
+<input type="hidden" value="<?php echo $_GET['id']; ?>" name="projectid" id="projectid"/>
+<input type="hidden" value="<?php echo $rowproject['startupID']; ?>" name="startupid" id="startupid"/>
+
+<!--
+<div class="col-sm-12">
+<div class="change-availablity"><a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/">Change your availability days and times</a></div>
+</div>-->
+
+<!--
+<?php if($row['From_Time_Option1'] == '' ){ ?>
+ <div class="col-sm-12">
+<h4>Looks like you haven't set up your available time and dates that lets the person you will meet know about your availabilty for a meetup. <br><br>Let's change that. Click <a href="<?php echo BASE_PATH; ?>/participant/account/settings/availability/">here</a> to set up your dates of availability.</h4>
+ </div>
+ <?php } ?>
+-->
+<!--
+ <div class="col-lg-12">
+
+<div class="row-day">
+<div class="the-day">
+<h4>Select your availability:</h4> 
+
+<div class="select-row">
+<select id="option" name="option">
+<option value="">Select your availability</option>
+<?php if($row['From_Time_Option1'] != ''){ ?>
+<option value="Option1">Availability Option#1</option>
+<?php } ?>
+<?php if($row['From_Time_Option2'] != ''){ ?>
+<option value="Option2">Availability Option#2</option>
+<?php } ?>
+<?php if($row['From_Time_Option3'] != ''){ ?>
+<option value="Option3">Availability Option#3</option>
+<?php } ?>
+</select>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="col-lg-12">
+
+<div class="row-day">
+<div class="the-day">
+<h4>Select a day:</h4> 
+<div class="select-row">
+
+<select id="days_availability_option1" name="days_availability_option1">
+
+<option value="Select a day">Select a day</option>
+
+<?php
+
+$days = explode(',', $row['Days_Availability_Option1']);
+
+
+foreach($days as $day){
+
+?>
+
+<option value="<?php echo $day; ?>"><?php echo $day; ?></option>
+
+
+<?php } ?>
+
+</select>
+
+
+<select id="days_availability_option2" name="days_availability_option2">
+
+<option value="Select a day">Select a day</option>
+
+<?php
+
+$days = explode(',', $row['Days_Availability_Option2']);
+
+
+foreach($days as $day){
+
+?>
+
+<option value="<?php echo $day; ?>"><?php echo $day; ?></option>
+
+
+<?php } ?>
+
+</select>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+-->
+
+
+
+
+
+<div id="select-dates">
+
+ <div class="col-lg-12">
+
+<div class="row-day">
+<div class="the-day">
+<h4>Meeting Date Option #1:</h4> 
+
+<div class="select-row">
+<div style="float:left; margin-left:3px;">
+<input type="text" name="date_option_one" id="date_option_one" placeholder="Pick a date" class="validate">
+</div>
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_one" id="time_suggested_one">
+  <option value="" selected disabled="disabled">Select a time</option>
+  <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
+               </select>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+ <div class="col-lg-12">
+
+<div class="row-day">
+<div class="the-day">
+<h4>Meeting Date Option #2:</h4> 
+
+<div class="select-row">
+<div style="float:left; margin-left:0px;">
+<input type="text" name="date_option_two" id="date_option_two" placeholder="Pick a date" class="validate">
+</div>
+
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_two" id="time_suggested_two">
+  <option value="" selected disabled="disabled">Select a time</option>
+ <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
+               </select>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+ <div class="col-lg-12">
+
+<div class="row-day">
+<div class="the-day">
+<h4>Meeting Date Option #3:</h4> 
+
+<div class="select-row">
+<div style="float:left; margin-left:0px;">
+<input type="text" name="date_option_three" id="date_option_three" placeholder="Pick a date" class="validate">
+</div>
+
+<div style="float:left; margin-left:15px;">
+<select name="time_suggested_three" id="time_suggested_three">
+  <option value="" selected disabled="disabled">Select a time</option>
+ <option value="06:00 am">06:00 AM</option>
+  <option value="07:00 am">07:00 AM</option>
+  <option value="08:00 am">08:00 AM</option>
+  <option value="09:00 am">09:00 AM</option>
+  <option value="10:00 am">10:00 AM</option>
+  <option value="11:00 am">11:00 AM</option>
+  <option value="12:00 pm">12:00 PM</option>
+  <option value="01:00 pm">01:00 PM</option>
+  <option value="02:00 pm">02:00 PM</option>
+  <option value="03:00 pm">03:00 PM</option>
+  <option value="04:00 pm">04:00 PM</option>
+  <option value="05:00 pm">05:00 PM</option>
+  <option value="06:00 pm">06:00 PM</option>
+  <option value="07:00 pm">07:00 PM</option>
+  <option value="08:00 pm">08:00 PM</option>
+  <option value="09:00 pm">09:00 PM</option>
+  <option value="10:00 pm">10:00 PM</option>
+  <option value="11:00 pm">11:00 PM</option>
+  <option value="12:00 am">12:00 AM</option>
+               </select>
+
+    </div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+<div id="wheretomeet">
+<div class="therow">
+    <div class="col-lg-12" style="padding-left:0px">
+      <h4>Location to meet:</h4>
+      <h5>(We suggest to enter a name and location of a venue to meet)</h5>
+
+
+
+
+      
+  
+<div id="location_option1">   
+    <input id="pac-input" name="location" class="controls" type="text" placeholder="e.g Starbucks, Astor Place, New York, NY, United States">
+  
+    <div id="map"></div>
+
+</div>
+
+<!--
+<div id="location_option2">   
+<input type="hidden" name="location_option2" id="location_option2" value="<?php echo $row['Location_Option2'];?>" />
+<iframe width="100%" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php echo $row['Location_Option2'];?>&key=AIzaSyDWVAsb7TmD-8_yRqe7jBIMrAcGFwHg06M"></iframe> 
+
+</div>
+
+<div id="location_option3">   
+<input type="hidden" name="location_option3" id="location_option3" value="<?php echo $row['Location_Option3'];?>" />  
+<iframe width="100%" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php echo $row['Location_Option3'];?>&key=AIzaSyDWVAsb7TmD-8_yRqe7jBIMrAcGFwHg06M"></iframe> 
+
+</div>
+-->
+
+
+
+</div>
+
+
+<p>&nbsp;</p>
+
+
+<?php if(mysqli_num_rows($Screening)==1 && $rowscreening['EnabledorDisabled'] == 'Enabled') { ?>
+
+
+ <input type="hidden" id="screeningquestion_required" name="screeningquestion_required" style="display:block" value="Yes"/> 
+
+
+ <div class="col-sm-12">
+
+<h3>Please answer the following question:</h4>
+
+<h4><?php echo $rowscreening['ScreeningQuestion']; ?></h3>
+
+<br>
+
+ </div>
+
+  <div class="col-sm-12">
+  <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+
+<?php if($rowscreening['PotentialAnswer1'] != '') { ?>
+  <div class="col-sm-12" style="padding-bottom:20px;">
+<div class="col-sm-radio">
+ <input id="potentialanswer1" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 1"/> 
+</div>
+<div class="col-sm-2">
+ <label for="potentialanswer1"><?php echo $rowscreening['PotentialAnswer1']; ?></label>
+ </div>
+ </div>
+<br>
+<?php } ?>
+
+
+<?php if($rowscreening['PotentialAnswer2'] != '') { ?>
+<div class="col-sm-12" style="padding-bottom:20px;">
+ <div class="col-sm-radio">
+ <input id="potentialanswer2" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 2"/> 
+</div>
+<div class="col-sm-2">
+ <label for="potentialanswer2"><?php echo $rowscreening['PotentialAnswer2']; ?></label>
+ </div>
+ </div>
+<br>
+<?php } ?>
+
+
+<?php if($rowscreening['PotentialAnswer3'] != '') { ?>
+<div class="col-sm-12" style="padding-bottom:20px;">
+  <div class="col-sm-radio">
+ <input id="potentialanswer3" name="potentialanswergiven[]" type="radio" style="display:block" value="Potential Answer 3"/> 
+</div>
+<div class="col-sm-2">
+ <label for="potentialanswer3"><?php echo $rowscreening['PotentialAnswer3']; ?></label>
+ </div>
+</div>
+<?php } ?>
+
+  </div>
+  </div>
+
+ <?php } ?>
+
+
+
+
+
+<?php if($row['Payment_Method'] == 'Bank' && $row['account_id'] == '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
+
+<?php } ?>
+
+
+<?php if($row['Payment_Method'] == 'Bank' && $row['account_id'] != '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
+
+<?php if($row['Payment_Method'] == 'Cash' && $row['account_id'] != '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
+
+
+<?php if($row['Payment_Method'] == 'Cash' && $row['account_id'] == '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
+
+
+
+
+<?php } ?>
+
+
+    <p>&nbsp;</p>
+    <div id="result_success"></div>
+    <div id="result_error"></div>
+
+      
+    
+  </div>
+
+ </div>
+ </div>
+
+ </div>
+
+
+
     
 
+<?php } ?>
 
-
-            
-
+<?php }  ?>            
+</div>
+          
+      </div>
 
           </div>
 
 
 
-  
-<!--Footer-->
-<?php 
-if(!empty($test)){
-include("../../footer.php"); 
-}else{
-include("../footer.php");
-}
-
-?>
+      <!--Footer-->
+<?php include("../../../footer.php"); ?>
 <!--Footer-->
 
       
 
- 
-</div>
-  
-  
+    </div>
+
+    <div class="clearer"></div>
 
   </div>
+  </div>
+
+  </div>
+
 
 
 
@@ -543,20 +1401,93 @@ include("../footer.php");
 
 
 
-<script>
-$(document).ready(function () {
 
-    $('#slide').popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
-  
-});
-</script>
+
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.730610, lng: -73.935242},
+          zoom: 8
+        });
+        var input = /** @type {!HTMLInputElement} */(
+            document.getElementById('pac-input'));
+
+        var types = document.getElementById('type-selector');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+          map: map,
+          anchorPoint: new google.maps.Point(0, -29)
+        });
+
+        autocomplete.addListener('place_changed', function() {
+          infowindow.close();
+          marker.setVisible(false);
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            window.alert("Autocomplete's returned place contains no geometry");
+            return;
+          }
+
+          // If the place has a geometry, then present it on a map.
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // Why 17? Because it looks good.
+          }
+          marker.setIcon(/** @type {google.maps.Icon} */({
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(35, 35)
+          }));
+          marker.setPosition(place.geometry.location);
+          marker.setVisible(true);
+
+          var address = '';
+          if (place.address_components) {
+            address = [
+              (place.address_components[0] && place.address_components[0].short_name || ''),
+              (place.address_components[1] && place.address_components[1].short_name || ''),
+              (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+          }
+
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infowindow.open(map, marker);
+        });
+
+        // Sets a listener on a radio button to change the filter type on Places
+        // Autocomplete.
+        function setupClickListener(id, types) {
+          var radioButton = document.getElementById(id);
+          radioButton.addEventListener('click', function() {
+            autocomplete.setTypes(types);
+          });
+        }
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-lNejAuVNUDCwo2UxOAT_N_lQZb7qiQY&libraries=places&callback=initMap"
+        async defer></script>
 
 
         
     </body>
 
 </html>
+
+
+
+

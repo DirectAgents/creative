@@ -141,19 +141,19 @@ h2{font-size:25px;}
   color:#323844;
 }
 
+
 .form input[type="checkbox"] {
   outline: 0;
   float:left;
   width: 20px;
+  max-width:20px;
   border: 0;
   margin: 0 0 15px;
-  padding: 15px;
+  padding: 5px;
   border: 0px solid #ccc;
   box-sizing: border-box;
-  font-size: 14px;
   color:#323844;
 }
-
 
 .form input[type="email"] {
   outline: 0;
@@ -320,7 +320,12 @@ button.close {
 .container .logo {
   margin: 50px auto;
   text-align: center;
+ 
+
 }
+
+
+
 .container .logo a {
 
   text-decoration: none !important;
