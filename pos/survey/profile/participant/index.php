@@ -57,6 +57,9 @@ $stmt->execute(array(":uid"=>$_GET['id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+if($row == false ){
+  header("Location:".BASE_PATH."/participant/meetings/");
+}else{
 
 
 
@@ -1117,3 +1120,5 @@ echo $languages;
     </body>
 
 </html>
+
+<?php } ?>

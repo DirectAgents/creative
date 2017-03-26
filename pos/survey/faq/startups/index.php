@@ -61,7 +61,7 @@ $(document).ready(function() {
             <a class="brand" href="<?php echo BASE_PATH; ?>">
             
                 
-                 <img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/>
+                 <img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png" width="137" height="54"/>
                 
 
             

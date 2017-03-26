@@ -9,6 +9,11 @@ include_once("../../config.php");
 include("../../config.inc.php");
 
 
+if(!isset($_GET['id'])){
+header("Location:".BASE_PATH."/startup/");
+}
+
+
 
 $participant_home = new PARTICIPANT();
 
@@ -36,7 +41,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-
+if($row == false ){
+  header("Location:".BASE_PATH."/startup/");
+}else{
 
 
 
@@ -234,7 +241,7 @@ initialize();
 
 
   
-        
+
 
 
 
@@ -1090,3 +1097,5 @@ echo '</a>';
     </body>
 
 </html>
+
+<?php } ?>

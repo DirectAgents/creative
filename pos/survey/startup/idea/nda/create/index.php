@@ -9,6 +9,11 @@ include_once("../../../../config.php");
 include("../../../../config.inc.php");
 
 
+if(!isset($_GET['id'])){
+header("Location:".BASE_PATH."/startup/");
+}
+
+
 $participant_home = new PARTICIPANT();
 
 if($participant_home->is_logged_in())

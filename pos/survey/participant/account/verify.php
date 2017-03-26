@@ -124,7 +124,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
 
    <?php if(isset($msg)) echo $msg;  ?>
   <div class="logo">
-   <a href="<?php echo BASE_PATH; ?>"><img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png"/></a>
+   <a href="<?php echo BASE_PATH; ?>"><img src="<?php echo BASE_PATH; ?>/img/navigation/logo-2.png" width="137" height="54"/></a>
   </div>
   </div>
 </div>

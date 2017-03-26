@@ -844,6 +844,10 @@ var btn= $(this).find("input[type=submit]:focus").val();
         if(agenda_one==""){ 
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your agenda during the feedback session!</div>';
             $("#result").hide().html(output).slideDown();
+            $("#agenda_one").css('border-color','red'); //change border color to red 
+            proceed = false;
+        }else{
+            $("#agenda_one").css('border-color','green'); //change border color to red 
             proceed = false;
         }
 
@@ -851,6 +855,10 @@ var btn= $(this).find("input[type=submit]:focus").val();
         if(details==""){ 
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your idea!</div>';
             $("#result").hide().html(output).slideDown();
+            $("#details").css('border-color','red'); //change border color to red 
+            proceed = false;
+        }else{
+            $("#details").css('border-color','green'); //change border color to red 
             proceed = false;
         }
 
@@ -921,12 +929,20 @@ var btn= $(this).find("input[type=submit]:focus").val();
         if(details==""){ 
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your idea!</div>';
             $("#result").hide().html(output).slideDown();
+            $("#details").css('border-color','red'); //change border color to red 
+            proceed = false;
+        }else{
+            $("#details").css('border-color','green'); //change border color to red 
             proceed = false;
         }
 
         if(agenda_one==""){ 
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please share more about your agenda during the feedback session!</div>';
             $("#result").hide().html(output).slideDown();
+            $("#agenda_one").css('border-color','red'); //change border color to red 
+            proceed = false;
+        }else{
+            $("#agenda_one").css('border-color','green'); //change border color to red 
             proceed = false;
         }
       
