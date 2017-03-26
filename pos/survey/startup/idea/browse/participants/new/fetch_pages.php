@@ -62,7 +62,7 @@ if($Gender != 'NULL' && $Gender != ''){$thegender = "AND Gender RLIKE '[[:<:]]".
 }
 
 if (strpos($Min_Req, 'Height') !== false) {
-if($Height != 'NULL' && $Height != ''){$theheight = "AND Height RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
+if($Height != 'NULL' && $Height != ''){$theheight = "AND Height Between '".$row['MinHeight']."' AND '".$row['MaxHeight']."'";}else{$theheight = '';}
 }else{
   $theheight = '';
 }

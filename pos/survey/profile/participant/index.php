@@ -17,6 +17,11 @@ $participant_home = new PARTICIPANT();
 $startup_home = new STARTUP();
 
 
+if(!isset($_GET['id'])){
+header("Location:".BASE_PATH."/404.php");
+exit();
+}
+
 
 /*
 $startup_home = new startup();
@@ -25,15 +30,19 @@ if($startup_home->is_logged_in())
 {
   $startup_home->logout();
 }
+*/
 
 
 
 
-
-if(!$participant_home->is_logged_in())
+if(!$startup_home->is_logged_in() && !$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../participant/login.php');
-}*/
+  $startup_home->redirect(BASE_PATH);
+  exit();
+}
+
+
+
 
 include_once '../../dbConfig_rating.php';
 
@@ -58,12 +67,13 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 if($row == false ){
-  header("Location:".BASE_PATH."/participant/meetings/");
+  //header("Location:".BASE_PATH."/participant/meetings/");
+  header("Location:".BASE_PATH."/404.php");
 }else{
 
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."'");
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND FinishedProcess = 'Y'");
 $rowproject = mysqli_fetch_array($Project);
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
@@ -430,13 +440,17 @@ echo '</a>';
 
 
 
-
-
-
-$sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project ORDER BY id DESC");
+$sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' AND FinishedProcess = 'Y' ORDER BY id DESC");
 //$resultsstartup=mysql_query($sqlstartup);
 
+
+
+
+
+
 while($row3 = mysqli_fetch_array($sqlstartup)){
+
+
 
 $Min_Req = str_replace(",","|",$row3['MinReq']);
 
@@ -607,9 +621,9 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 
 $sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_GET['id']."'
  $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages AND
- ProjectID = '".$row3['ProjectID']."'");
+ ProjectID = '".$row3['ProjectID']."' AND FinishedProcess = 'Y'");
 
-
+$rowsql = mysqli_fetch_array($sql);
 
 
 
@@ -629,8 +643,9 @@ $sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tb
 
 
   //if projects exists
-if(mysqli_num_rows($sql)>0)
+if($rowsql>0)
 {
+
 
 
   echo '<div class="therowtitle">
@@ -638,7 +653,7 @@ if(mysqli_num_rows($sql)>0)
 <div class="col-lg-12">';
 
 
-if(isset($_SESSION['startupSession'])) {
+if($_SESSION['startupSession'] == $rowsql['startupID']) {
 
 echo '<div class="thetitle">'.$row['FirstName'].' qualify\'s for these ideas:</div>';
 
@@ -656,8 +671,27 @@ echo '<div class="thetitle">You qualify for these ideas:</div>';
 }
 
 
+echo '</div>';
+echo '</div>';
+
+
+
+
+
+
+  echo '<div class="therowtitle">
+
+<div class="col-lg-12">';
+
+
+
+$listproject = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$rowsql['ProjectID']."' AND startupID = '".$_SESSION['startupSession']."' AND FinishedProcess = 'Y'");
+//$rowlistproject = mysqli_fetch_array($listproject);
+
+
+
 //get all records from add_delete_record table
-while($row2 = mysqli_fetch_array($sql))
+while($row2 = mysqli_fetch_array($listproject))
 { 
 
 
@@ -676,107 +710,6 @@ $date = date_create($row2['Date_Created']);
   ?>
 
 
-<!-- Delete a Project -->
-
-<div id="slide-delete-<?php echo $row2['ProjectID']; ?>" class="well slide-delete">
-  <div class="result-delete">
-  <div id="result-delete-<?php echo $row2['ProjectID']; ?>">Successfully Deleted!</div>
-  </div>
-<h4>Are you sure you want to delete this project?</h4>
-<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<div class="popupoverlay-btn">
-  <div class="cancel-delete">
-    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Cancel</button>
-    <button class="delete<?php echo $row2['ProjectID']; ?> btn-delete">Yes</button>
-</div>
-
-<div class="popupoverlay-btn">
-  <div class="close-delete">
-    <button class="slide-delete-<?php echo $row2['ProjectID']; ?>_close cancel">Close</button>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- End Delete a Project -->
-
-
-
-
-
-
-
-<script>
-$(document).ready(function () {
-
-    $('#slide-delete-'+<?php echo $row2['ProjectID']; ?>).popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
-
-
-
-    $(".delete"+<?php echo $row2['ProjectID']; ?>).click(function() {  
-//alert("aads"); 
-
- //get input field values
-        
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-       
-       
-        
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
-
-        
-      
-      
-         
-
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-
-
-          $( ".processing" ).show();
-            //data to be sent to server
-            post_data = {'projectid':projectid};
-            
-            //Ajax post data to server
-            $.post('project/projectdelete.php', post_data, function(response){  
-              
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-            //alert(text);
-                
-            output = '<div class="success">'+response.text+'</div>';
-
-          
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $(".cancel-delete").hide();
-        $(".result-delete").show();
-        $(".close-delete").show();
-        $("#result-delete-"+response.text).hide().slideDown();
-            }, 'json');
-      
-        }
-
-});
-  
-});
-</script>
 
 
 <?php if($participant_home->is_logged_in()){ ?>
@@ -802,7 +735,7 @@ $(document).ready(function () {
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row2['ProjectID']."'");
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row2['ProjectID']."' AND FinishedProcess = 'Y'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 

@@ -282,7 +282,43 @@ jq(document).ready(function(){
             <div class="wrapper">
               <h3>Height</h3>
               <div class="over-the-phone">
-               <label for="in-person"><?php if($rowproject['MinHeight'] != 'NULL'){echo $rowproject['MinHeight']; echo " - "; echo $rowproject['MaxHeight']; }else{ echo "not selected";};  ?></label>
+               <label for="in-person"><?php if($rowproject['MinHeight'] != 'NULL'){
+
+                if($rowproject['MinHeight'] == '50'){echo '5\'0"';}
+                if($rowproject['MinHeight'] == '51'){echo '5\'1"';}
+                if($rowproject['MinHeight'] == '52'){echo '5\'2"';}
+                if($rowproject['MinHeight'] == '53'){echo '5\'3"';}
+                if($rowproject['MinHeight'] == '54'){echo '5\'4"';}
+                if($rowproject['MinHeight'] == '55'){echo '5\'5"';}
+                if($rowproject['MinHeight'] == '56'){echo '5\'6"';}
+                if($rowproject['MinHeight'] == '57'){echo '5\'7"';}
+                if($rowproject['MinHeight'] == '58'){echo '5\'8"';}
+                if($rowproject['MinHeight'] == '59'){echo '5\'9"';}
+                if($rowproject['MinHeight'] == '60'){echo '6\'0"';}
+                if($rowproject['MinHeight'] == '61'){echo '6\'1"';}
+                if($rowproject['MinHeight'] == '62'){echo '6\'2"';}
+                if($rowproject['MinHeight'] == '63'){echo '6\'3"';}
+                if($rowproject['MinHeight'] == '64'){echo '6\'4"';}
+                echo " - "; 
+                
+                if($rowproject['MaxHeight'] == '50'){echo '5\'0"';}
+                if($rowproject['MaxHeight'] == '51'){echo '5\'1"';}
+                if($rowproject['MaxHeight'] == '52'){echo '5\'2"';}
+                if($rowproject['MaxHeight'] == '53'){echo '5\'3"';}
+                if($rowproject['MaxHeight'] == '54'){echo '5\'4"';}
+                if($rowproject['MaxHeight'] == '55'){echo '5\'5"';}
+                if($rowproject['MaxHeight'] == '56'){echo '5\'6"';}
+                if($rowproject['MaxHeight'] == '57'){echo '5\'7"';}
+                if($rowproject['MaxHeight'] == '58'){echo '5\'8"';}
+                if($rowproject['MaxHeight'] == '59'){echo '5\'9"';}
+                if($rowproject['MaxHeight'] == '60'){echo '6\'0"';}
+                if($rowproject['MaxHeight'] == '61'){echo '6\'1"';}
+                if($rowproject['MaxHeight'] == '62'){echo '6\'2"';}
+                if($rowproject['MaxHeight'] == '63'){echo '6\'3"';}
+                if($rowproject['MaxHeight'] == '64'){echo '6\'4"';}
+
+
+                }else{ echo "not selected";};  ?></label>
               </div>
             </div>
           </div>
@@ -862,7 +898,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
       <div id="submitproject">
        <div class="survey-info">
                <div class="wrapper">
-        <input type="submit" value="Submit Project"/>
+        <input type="submit" value="Post Idea"/>
         <input type="hidden" name="submitok" value="Yes"/>
  
             

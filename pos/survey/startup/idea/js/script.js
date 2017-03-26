@@ -121,7 +121,7 @@ $('#height').on('change', function() {
 $("#height-options").css({ display: "block" });
 }else{
 	$("#height-options").css({ display: "none" });
-	//$('#height-options').find('input[type=checkbox]:checked').removeAttr('checked');
+	$('#height-options').find('input[type=checkbox]:checked').removeAttr('checked');
     $("#minheight").val($("#minheight option:first").val());
     $("#maxheight").val($("#maxheight option:first").val());
 }
@@ -848,7 +848,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
             proceed = false;
         }else{
             $("#agenda_one").css('border-color','green'); //change border color to red 
-            proceed = false;
+           
         }
 
 
@@ -859,7 +859,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
             proceed = false;
         }else{
             $("#details").css('border-color','green'); //change border color to red 
-            proceed = false;
+           
         }
 
         
@@ -933,7 +933,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
             proceed = false;
         }else{
             $("#details").css('border-color','green'); //change border color to red 
-            proceed = false;
+            
         }
 
         if(agenda_one==""){ 
@@ -943,7 +943,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
             proceed = false;
         }else{
             $("#agenda_one").css('border-color','green'); //change border color to red 
-            proceed = false;
+            
         }
       
          

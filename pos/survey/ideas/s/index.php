@@ -53,6 +53,14 @@ $startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE start
 $rowstartup = mysqli_fetch_array($startup);
 
 
+if($rowstartup == false ){
+  //header("Location:".BASE_PATH."/participant/meetings/");
+  header("Location:".BASE_PATH."/404.php");
+  exit();
+}else{
+
+
+
 if(isset($_GET['p'])){
 $participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['p']."'");
 $rowparticipant= mysqli_fetch_array($participant);
@@ -1277,5 +1285,6 @@ echo '</div>';
 </html>
 
 
+<?php } ?>
 
 

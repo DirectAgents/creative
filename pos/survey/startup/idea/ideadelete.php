@@ -61,8 +61,8 @@ $row2 = mysqli_fetch_array($sql_participant);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Meeting Canceled", "no-reply@valifyit.com");
-$subject = "Recent Meeting";
+$from = new SendGrid\Email("Meeting Canceled", "support@valifyit.com");
+$subject = "Meeting Canceled";
 $to = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
 $content = new SendGrid\Content("text/html", '
 

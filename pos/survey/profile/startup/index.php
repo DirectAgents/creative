@@ -47,7 +47,7 @@ if($row == false ){
 
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."'");
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."' AND FinishedProcess = 'Y'");
 $rowproject = mysqli_fetch_array($Project);
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
@@ -312,16 +312,7 @@ if($row['profile_image'] != ''){
     <div class="col-lg-4">
       <h3><?php echo $row['FirstName']; ?>&nbsp;<?php echo $row['LastName']; ?></h3>
       <?php if(!empty($row['Age'])){echo $row['Age'].',';} ?> <?php if(!empty($row['City'])){echo $row['City'].',';} ?> <?php if(!empty($row['State'])){echo $row['State'];} ?>
-      </div>
-
-       <div class="col-lg-4">
-
-
-
-<?php if($row['Linkedin'] != '' || $row['Twitter'] != '' || $row['Facebook'] != '') { ?>
-<div class="thetitle">Social</div>
-<?php } ?> 
-
+<div style="margin-top:10px">
 <?php if($row['Linkedin'] != '') { ?>
       <a href="<?php echo $row['Linkedin']; ?>" target="_blank">
      <img src="<?php echo BASE_PATH; ?>/images/icons/linkedin.png" width="25"/>
@@ -338,8 +329,12 @@ if($row['profile_image'] != ''){
      </a>
 <?php } ?>  
 
+</div>
+
 
       </div>
+
+     
 
 
   </div>
@@ -378,7 +373,7 @@ if(!empty($_SESSION['participantSession'])){
 echo '<div class="thetitle">Ideas posted by '.$row['FirstName'].' you qualify to participate:</div>';
 
 
-$sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."' ORDER BY id DESC");
+$sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."' AND FinishedProcess = 'Y' ORDER BY id DESC");
 //$resultsstartup=mysql_query($sqlstartup);
 
 while($row3 = mysqli_fetch_array($sqlstartup)){
@@ -722,7 +717,7 @@ $(document).ready(function () {
 
 <?php 
 
-$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."' AND ProjectID = '".$row2['ProjectID']."'");
+$ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."' AND ProjectID = '".$row2['ProjectID']."' AND FinishedProcess = 'Y'");
 $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 
@@ -855,7 +850,7 @@ echo '<div class="thetitle">Ideas:</div>';
 
 if($_SESSION['startupSession'] == $_GET['id']){
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' AND FinishedProcess = 'Y' ORDER BY id DESC");
 
 }
 

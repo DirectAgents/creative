@@ -21,6 +21,12 @@ $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE Proje
 $rowproject = mysqli_fetch_array($Project);
 
 
+if($rowproject == false ){
+  //header("Location:".BASE_PATH."/participant/meetings/");
+  header("Location:".BASE_PATH."/404.php");
+  exit();
+}else{
+
 
 $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."'");
 $rowscreening = mysqli_fetch_array($Screening);
@@ -1493,4 +1499,4 @@ foreach($days as $day){
 
 
 
-
+<?php } ?>

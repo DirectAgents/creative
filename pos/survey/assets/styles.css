@@ -4406,7 +4406,7 @@ a:hover.btn-back{text-decoration: none; color:#fff; background:#868484;}
   width:95%; 
   margin:0px 0 0px 0; 
   border-bottom:0px solid #eee;
-  padding:20px;
+  padding:0px 20px 20px 20px;
 }
 
 .therow{
