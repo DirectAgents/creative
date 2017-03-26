@@ -341,7 +341,7 @@ $(document).ready(function() {
 <div class='container-fluid nav-contents'>
 <div class='nav-item logo'>
 <a class="brand-logo-light nav-logo-swoosh" href="index.html" target="_top">
-<img src="img/navigation/logo-2.png"/>
+<img src="img/navigation/logo-2.png" width="137" height="54"/>
 </a>
 </div>
 
@@ -375,7 +375,7 @@ $(document).ready(function() {
 <div class='nav-item'>
 <a class="brand-logo-light nav-logo-swoosh" href="index.html" target="_top">
 
-<img src="img/navigation/logo-2.png"/>
+<img src="img/navigation/logo-2.png" width="137" height="54"/>
 </a>
 </div>
 

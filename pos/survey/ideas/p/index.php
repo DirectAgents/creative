@@ -1,12 +1,15 @@
 <?php
 session_start();
 
-require_once '../../../base_path.php';
 
-require_once '../../../class.participant.php';
-require_once '../../../class.startup.php';
-include_once("../../../config.php");
-include("../../../config.inc.php");
+
+
+require_once(__DIR__."../../../base_path.php");
+
+require_once (__DIR__.'../../../class.participant.php');
+require_once (__DIR__.'../../../class.startup.php');
+require_once (__DIR__.'../../../config.php');
+require_once (__DIR__.'../../../config.inc.php');
 
 
 
@@ -33,7 +36,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
- header("Location:../../../participant/login/");
+ header("Location:".BASE_PATH."/participant/login/");
 }
 
 
