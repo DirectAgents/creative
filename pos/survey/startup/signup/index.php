@@ -345,7 +345,7 @@ if($_POST['passwordpass'] == 'good'){
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Valify Support", "no-reply@valifyit.com");
+$from = new SendGrid\Email("Valify Team", "support@valifyit.com");
 $subject = "Welcome To Valify! Confirm Your Email";
 $to = new SendGrid\Email($firstname, $email);
 $content = new SendGrid\Content("text/html", '
