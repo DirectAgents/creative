@@ -393,6 +393,12 @@ $participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userI
 $rowparticipant = mysqli_fetch_array($participant);
 
 
+$participant_languages = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_SESSION['participantSession']."'");
+$rowparticipant_languages = mysqli_fetch_array($participant_languages);
+
+$participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_SESSION['participantSession']."'");
+$rowparticipant_interest = mysqli_fetch_array($participant_interest);
+
 
 //echo $City;
 
@@ -411,8 +417,8 @@ $Diet = str_replace(",","|",$rowparticipant['Diet']);
 $Religion = str_replace(",","|",$rowparticipant['Religion']);
 $Education = str_replace(",","|",$rowparticipant['Education']);
 $Job = str_replace(",","|",$rowparticipant['Job']);
-$Interest = str_replace(",","|",$rowparticipant['Interest']);
-$Languages = str_replace(",","|",$rowparticipant['Languages']);
+$Interest = str_replace(",","|",$rowparticipant_interest['Interest']);
+$Languages = str_replace(",","|",$rowparticipant_languages['Languages']);
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");

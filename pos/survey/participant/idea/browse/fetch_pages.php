@@ -214,7 +214,7 @@ while($row3 = mysqli_fetch_array($sql3))
 echo '
 
 
-
+<div style="background:#fdfdfd; margin-bottom:20px;">
 <div class="row-fluid">
 <div class="therow">
   <div class="col-lg-2">';
@@ -230,12 +230,14 @@ echo '
   echo '</div>
   <div class="col-lg-7"><p><h4>'.$row['Name'].'</h4></p><p>'.$row['Details'].'</p>
   <p>Payout: $'.$row['Pay'].' for '.$row['Minutes'].' minutes </p></div>
-   <div class="col-lg-3"><a href="../../../ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'"><button type="button" class="btn-request">View Idea</button></a> </div>
+   <div class="col-lg-3">
+<div style="margin-top:30px">
+   <a href="../../../ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'"><button type="button" class="btn-request">View Idea</button></a> </div></div>
 </div>
 </div>
 
 
-
+</div>
 </div>
 
 

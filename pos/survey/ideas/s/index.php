@@ -512,7 +512,7 @@ if(isset($_GET['p'])){
 if(mysqli_num_rows($results) == 0) { ?>
 
 
-<center><h3><?php echo $rowparticipant['FirstName']; ?> does not qualify for this idea to provide feedback</h3></center>
+<!--<center><h3><?php echo $rowparticipant['FirstName']; ?> does not qualify for this idea to provide feedback</h3></center>-->
 
 
 <?php }else{ ?>
@@ -581,7 +581,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
     <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
     
-<div class="col-lg-7"><h2>Payout</h2><h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes <?php if(isset($_GET['p'])){ ?>of <?php echo $rowparticipant['FirstName']; ?>'s time to meet with you<?php } ?></span></h3></div>
+<div class="col-lg-7"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
 
 
 <?php }else{ ?>
@@ -916,8 +916,10 @@ echo '</div>';
 
 
 
+
+
   <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
-  && mysqli_num_rows($sqlrecent) == 0) { ?>
+  && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
 
 
 <input id="participantid" name="participantid" type="hidden" value="<?php echo $_GET['p']; ?>">

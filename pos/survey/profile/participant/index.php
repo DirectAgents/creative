@@ -23,6 +23,18 @@ exit();
 }
 
 
+$participant_languages = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_GET['id']."'");
+$rowparticipant_languages = mysqli_fetch_array($participant_languages);
+
+$participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_GET['id']."'");
+$rowparticipant_interest = mysqli_fetch_array($participant_interest);
+
+
+
+
+$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['id']."'");
+$rowparticipant = mysqli_fetch_array($participant);
+
 /*
 $startup_home = new startup();
 
@@ -69,27 +81,12 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if($row == false ){
   //header("Location:".BASE_PATH."/participant/meetings/");
   header("Location:".BASE_PATH."/404.php");
-}else{
+  exit();
+}
 
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND FinishedProcess = 'Y'");
-$rowproject = mysqli_fetch_array($Project);
 
-$meetupchoice=explode(',',$rowproject['Meetupchoice']);
-$age=explode(',',$rowproject['Age']);
-$gender=explode(',',$rowproject['Gender']);
-$minheight=explode(',',$rowproject['MinHeight']);
-$maxheight=explode(',',$rowproject['MaxHeight']);
-//$location=explode(',',$rowproject['Location']);
-$status=explode(',',$rowproject['Status']);
-$ethnicity=explode(',',$rowproject['Ethnicity']);
-$smoke=explode(',',$rowproject['Smoke']);
-$drink=explode(',',$rowproject['Drink']);
-$diet=explode(',',$rowproject['Diet']);
-$religion=explode(',',$rowproject['Religion']);
-$education=explode(',',$rowproject['Education']);
-$job=explode(',',$rowproject['Job']);
 
 
 
@@ -108,133 +105,6 @@ $job=explode(',',$rowproject['Job']);
 
 
 
-<!--Browse Participants-->
-
-<script type="text/javascript">
-$(document).ready(function() {
-
-  var track_click = 0; //track user click on "load more" button, righ now it is 0 click
-  
-  var total_pages = <?php echo $total_pages; ?>;
-  $('#results').load("fetch_pages.php?id="+<?php echo $_GET['id']; ?>, {'page':track_click}, function() {track_click++;}); //initial data to load
-
-
-
-  $(".load_more").click(function (e) { //user clicks on button
-
-    $(this).hide(); //hide load more button on click
-    $('.animation_image').show(); //show loading image
-
-    if(track_click <= total_pages) //make sure user clicks are still less than total pages
-    {
-      //post page number and load returned data into result element
-      $.post('fetch_pages.php?id='+<?php echo $_GET['id']; ?>,{'page': track_click}, function(data) {
-      
-        $(".load_more").show(); //bring back load more button
-        
-        $("#results").append(data); //append data received from server
-
-
-
-        //scroll page to button element
-        $("html, body").animate({scrollTop: $("#load_more_button").offset().top}, 500);
-        
-        //hide loading image
-
-        $('.animation_image').hide(); //hide loading image once data is received
-  
-        track_click++; //user click increment on load button
-      
-      }).fail(function(xhr, ajaxOptions, thrownError) { 
-        alert(thrownError); //alert any HTTP error
-        $(".load_more").show(); //bring back load more button
-        $('.animation_image').hide(); //hide loading image once data is received
-      });
-      
-      
-      if(track_click >= total_pages-1)
-      {
-        //reached end of the page yet? disable load button
-        $(".load_more").attr("disabled", "disabled");
-      }
-     }
-      
-    });
-});
-</script>
-
-
-
-
-    
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
-
-
-<script type='text/javascript'>//<![CDATA[
-$(function(){
-
-$(".launch-map").click(function(){
-//alert("asdf");
-    var me = $(this),
-        data = me.data('key');
-   
-var geocoder = new google.maps.Geocoder();
-var address = data.param1;
-var day = data.param2;
-var time = data.param3;
-
-//alert(data);
-
-$('.modal-day').text(day);
-$('.modal-time').text(time);
-
-
-geocoder.geocode( { 'address': address}, function(results, status) {
-
-  if (status == google.maps.GeocoderStatus.OK) {
-    var latitude = results[0].geometry.location.lat();
-    var longitude = results[0].geometry.location.lng();
-    
-  } 
-
-
-
-var center = new google.maps.LatLng(latitude, longitude);
-
-
-function initialize() {
-
-    var mapOptions = {
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        center: center
-    };
-
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-    var marker = new google.maps.Marker({
-        map: map,
-        position: center
-    });
-}
-
-$('#modal').modal({
-        backdrop: 'static',
-        keyboard: false
-    }).on('shown.bs.modal', function () {
-        google.maps.event.trigger(map, 'resize');
-        map.setCenter(center);
-    });
-
-
-initialize();
-});//]]> 
-
-}); 
-});
-
-</script>
 
 
         
@@ -439,9 +309,32 @@ echo '</a>';
 <?php
 
 
+if(isset($_SESSION['startupSession'])) {
+
+
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND FinishedProcess = 'Y'");
+$rowproject = mysqli_fetch_array($Project);
+
+$meetupchoice=explode(',',$rowproject['Meetupchoice']);
+$age=explode(',',$rowproject['Age']);
+$gender=explode(',',$rowproject['Gender']);
+$minheight=explode(',',$rowproject['MinHeight']);
+$maxheight=explode(',',$rowproject['MaxHeight']);
+//$location=explode(',',$rowproject['Location']);
+$status=explode(',',$rowproject['Status']);
+$ethnicity=explode(',',$rowproject['Ethnicity']);
+$smoke=explode(',',$rowproject['Smoke']);
+$drink=explode(',',$rowproject['Drink']);
+$diet=explode(',',$rowproject['Diet']);
+$religion=explode(',',$rowproject['Religion']);
+$education=explode(',',$rowproject['Education']);
+$job=explode(',',$rowproject['Job']);
+
+
 
 $sqlstartup=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' AND FinishedProcess = 'Y' ORDER BY id DESC");
 //$resultsstartup=mysql_query($sqlstartup);
+
 
 
 
@@ -460,17 +353,7 @@ $Min_Req = str_replace(",","|",$row3['MinReq']);
 
 
 
-$participant_languages = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_GET['id']."'");
-$rowparticipant_languages = mysqli_fetch_array($participant_languages);
 
-$participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_GET['id']."'");
-$rowparticipant_interest = mysqli_fetch_array($participant_interest);
-
-
-
-
-$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_GET['id']."'");
-$rowparticipant = mysqli_fetch_array($participant);
 
 
 
@@ -632,11 +515,6 @@ $rowsql = mysqli_fetch_array($sql);
 
 
 
-
-
-
-
-
 //$result=mysqli_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -648,31 +526,9 @@ if($rowsql>0)
 
 
 
-  echo '<div class="therowtitle">
-
-<div class="col-lg-12">';
 
 
-if($_SESSION['startupSession'] == $rowsql['startupID']) {
 
-echo '<div class="thetitle">'.$row['FirstName'].' qualify\'s for these ideas:</div>';
-
-}
-
-
-if(isset($_SESSION['participantSession'])) {
-
-if($_SESSION['participantSession'] == $_GET['id']) {
-
-echo '<div class="thetitle">You qualify for these ideas:</div>';
-
-}
-
-}
-
-
-echo '</div>';
-echo '</div>';
 
 
 
@@ -712,18 +568,7 @@ $date = date_create($row2['Date_Created']);
 
 
 
-<?php if($participant_home->is_logged_in()){ ?>
 
-<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
-
-<?php } ?>
-
-
-<?php if($startup_home->is_logged_in()){ ?>
-
-<a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
-
-<?php } ?>
 
 
 <div class="survey-info-container">
@@ -780,10 +625,26 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
                     </div>
 
                     <div class="item date">
-                      <div class="label">Idea is set to:</div>
-                      <div class="value">
+                     
+                       <div class="btn-browse">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php echo $row2['ProjectStatus']; ?> 
+                          
+<?php if($participant_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+
+<?php } ?>
+
+
+<?php if($startup_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+
+<?php } ?>
+
+                          Set up a meeting
+</a>
+
                         </span>
                       </div>
                     </div>
@@ -813,12 +674,11 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
 //echo $row2['id'];
 
 
-
+}
 
 
 }
 
-echo '</a>';
 
   //if projects exists
 
@@ -1054,4 +914,3 @@ echo $languages;
 
 </html>
 
-<?php } ?>
