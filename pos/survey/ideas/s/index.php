@@ -581,7 +581,15 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
     <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
     
-<div class="col-lg-7"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
+<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
+
+<div class="col-lg-3">
+  <div class="btn-setup-a-meeting">
+<a href="#select-dates">Set up a meeting</a>
+
+</div>
+
+</div>
 
 
 <?php }else{ ?>

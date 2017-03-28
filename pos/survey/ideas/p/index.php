@@ -826,8 +826,16 @@ if($row['Payment_Method'] == 'Cash') { ?>
   
 
 
-<div class="col-lg-6"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></h3></div>
+<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
 
+
+<div class="col-lg-3">
+  <div class="btn-setup-a-meeting">
+<a href="#select-dates">Set up a meeting</a>
+
+</div>
+
+</div>
 
 
 
