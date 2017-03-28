@@ -80,18 +80,13 @@ $(document).ready(function(){
         var proceed = true;
         //simple validation at client's end
         //loop through each field and we simply change border color to red for invalid fields   
-     
+        var projectid       = $('input[name="projectid"]').val();
+        var participantid   = $('input[name="participantid"]').val();
        
         if(proceed) //everything looks good! proceed...
         {
             //get input field values data to be sent to server
-            post_data = {
-                'projectid'     : $('input[name=projectid').val(),
-                'participantid'     : $('input[name=participantid').val()
-            };
- 
-
-            //alert(post_data['participantid']);
+            post_data = {'projectid':projectid,'participantid':participantid};
 
             //Ajax post data to server
             $.post('pay.php', post_data, function(response){  

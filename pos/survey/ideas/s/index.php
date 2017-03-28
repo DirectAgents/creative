@@ -77,7 +77,7 @@ $sqlparticipantanswer = mysqli_query($connecDB,"SELECT * FROM tbl_participant_po
 $rowparticipantanswer=mysqli_fetch_array($sqlparticipantanswer);
 
 
-$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sqlarchived);
 
@@ -936,13 +936,35 @@ echo '</div>';
  <div class="col-lg-12">
 
    
-<h3>Set up a meeting</h3>
+<h3>Set up a meeting with <?php echo $rowparticipant['FirstName']; ?></h3>
 
 
 <!--<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>-->
 
 
- <p>Choose the date you want to request to meet</p>
+<?php
+  
+if($rowparticipant['google_picture_link'] != ''){
+        echo '<img src="'.$rowparticipant['google_picture_link'].'" class="img-circle-profile"/>';
+ }
+
+if($rowparticipant['facebook_id'] != '0'){ 
+        echo '<img src="https://graph.facebook.com/'.$rowparticipant['facebook_id'].'/picture?width=100&height=100" class="img-circle-profile"/>';
+}
+       
+if($rowparticipant['google_picture_link'] == '' && $rowparticipant['facebook_id'] == '0'){
+
+if($rowparticipant['profile_image'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$rowparticipant['profile_image'].'" class="img-circle-profile"/>';
+}else{
+        echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
+ }
+
+}
+
+      ?>
+
+
 
 
 

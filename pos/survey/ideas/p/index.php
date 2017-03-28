@@ -28,11 +28,15 @@ if($rowproject == false ){
 }else{
 
 
+$startupprofile = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$rowproject['startupID']."'");
+$rowstartupprofile= mysqli_fetch_array($startupprofile);
+
+
 $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."'");
 $rowscreening = mysqli_fetch_array($Screening);
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sql);
 
@@ -218,23 +222,23 @@ if(mysqli_num_rows($sql3) == false)
 
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."'");
 //$result=mysql_query($sql);
 $rowrequest=mysqli_fetch_array($sql);
 
 
 
-$sqlupcoming = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+$sqlupcoming = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."'");
 //$result=mysql_query($sql);
 $rowupcoming=mysqli_fetch_array($sqlupcoming);
 
 
-$sqlrecent = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+$sqlrecent = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."'");
 //$result=mysql_query($sql);
 $rowmeetingrecent=mysqli_fetch_array($sqlrecent);
 
 
-$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."'");
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sqlarchived);
 
@@ -889,15 +893,15 @@ if($row['Payment_Method'] == 'Cash') { ?>
 
 
 
-  <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
-  && mysqli_num_rows($sqlrecent) == 0) { ?>
+  <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 
+  && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($sqlarchived) == 0) { ?>
 
 
  <div class="col-lg-12" style="width:96%; margin-top:20px; background:#eee"> 
 
 
  <div class="col-lg-12">    
-<h3>Set up a meeting</h3>
+<h3>Set up a meeting with <?php echo $rowstartupprofile['FirstName']; ?></h3>
 </div>
 
 
@@ -1071,9 +1075,34 @@ foreach($days as $day){
 
 
 
+
+
 <div id="select-dates">
 
  <div class="col-lg-12">
+
+  <?php
+  
+if($rowstartupprofile['google_picture_link'] != ''){
+        echo '<img src="'.$rowstartupprofile['google_picture_link'].'" class="img-circle-profile"/>';
+ }
+
+if($rowstartupprofile['facebook_id'] != '0'){ 
+        echo '<img src="https://graph.facebook.com/'.$rowstartupprofile['facebook_id'].'/picture?width=100&height=100" class="img-circle-profile"/>';
+}
+       
+if($rowstartupprofile['google_picture_link'] == '' && $rowstartupprofile['facebook_id'] == '0'){
+
+if($rowstartupprofile['profile_image'] != ''){ 
+        echo '<img src="'.BASE_PATH.'/images/profile/startup/'.$rowstartupprofile['profile_image'].'" class="img-circle-profile"/>';
+}else{
+        echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
+ }
+
+}
+
+      ?>
+
 
 <div class="row-day">
 <div class="the-day">
