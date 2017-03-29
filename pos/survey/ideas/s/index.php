@@ -14,6 +14,10 @@ $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE Proje
 $rowproject = mysqli_fetch_array($Project);
 
 
+$startupprofile = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$_SESSION['startupSession']."'");
+$rowstartupprofile = mysqli_fetch_array($startupprofile);
+
+
 
 $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."' AND EnabledorDisabled = 'Enabled'");
 $rowscreening = mysqli_fetch_array($Screening);
@@ -312,8 +316,7 @@ if(mysqli_num_rows($startup)<0)
         var msecsInADay = 86400000;
         var endDate = new Date(selectedDate.getTime() + msecsInADay);
 
-        $("#date_option_two").datepicker( "option", "minDate", endDate );
-        $("#date_option_two").datepicker( "option", "maxDate", '+2y' );
+        
 
         $("#date_option_three").datepicker( "option", "minDate", endDate );
         $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
@@ -986,6 +989,57 @@ echo '</div>';
 <h3>Set up a meeting with <?php echo $rowparticipant['FirstName']; ?></h3>
 
 
+<?php 
+
+if($startup_home->is_logged_in())
+{
+
+if($rowstartupprofile['credit_card_id'] == '') { ?>
+
+
+<div class="col-lg-11">
+
+<div class="no-bankaccount-set">  
+  Please add a credit card to send payments. <a href="<?php echo BASE_PATH; ?>/startup/payment/">Set up here</a>
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
+
+
+<?php } } ?>
+
+
+
+
+<?php 
+
+if($startup_home->is_logged_in())
+{
+
+if($rowstartupprofile['Phone'] == ''){ ?>
+
+
+
+<div class="col-lg-11" style="margin-top:20px;">
+
+<div class="request-sent">  
+  Please add your <strong><u>Phone Number</u></strong> to your account. This is required to request to meet. Click <a href="<?php echo BASE_PATH; ?>/startup/account/settings/">here</a> to add you number.
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+<?php
+}
+}
+
+?>
+
+
+
 <!--<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>-->
 
 
@@ -1197,7 +1251,17 @@ if($rowparticipant['profile_image'] != ''){
 
 <div class="col-lg-12" style="padding-right:15px; padding-left:0px">
 
+
+<?php if($rowstartupprofile['credit_card_id'] == '' || $rowstartupprofile['Phone'] == '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
+
+<?php }else{ ?>
+
     <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
     <p>&nbsp;</p>
     <div id="result"></div>
 

@@ -26,7 +26,7 @@ if(!$startup_home->is_logged_in())
 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID='".$_SESSION['startupSession']."' AND Payment = '' ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent, tbl_meeting_archived WHERE tbl_meeting_recent.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_recent.Payment = '' AND tbl_meeting_recent.Met = 'Yes' OR tbl_meeting_archived.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_archived.Payment = '' AND tbl_meeting_archived.Met = 'Yes'");
 //$result=mysql_query($sql);
 
 
@@ -91,7 +91,7 @@ $.post('payments-pending-popup.php?projectid='+projectid+'&participantid='+parti
 
 <?php
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID = '".$_SESSION['startupSession']."' AND Payment = '' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent, tbl_meeting_archived WHERE tbl_meeting_recent.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_recent.Payment = '' AND tbl_meeting_recent.Met = 'Yes' OR tbl_meeting_archived.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_archived.Payment = '' AND tbl_meeting_archived.Met = 'Yes'");
 //$row=mysql_fetch_array($result);
 
   //if username exists

@@ -224,8 +224,12 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 You haven't sent any payments yet!
 </h3>
 
-<?php if($rowstartup['credit_card_id'] == '') { ?>
+<?php if($rowstartup['credit_card_id'] == '' && $rowstartup['account_id'] != '') { ?>
 <p>Looks like you haven't set up a credit card to your account yet! Click on Credit Card to add a new card.</p>
+ <?php } ?>
+
+ <?php if($rowstartup['credit_card_id'] == '' && $rowstartup['account_id'] == '') { ?>
+<p>Looks like you haven't set up an account yet to send money! Click on button below to create one.</p>
  <?php } ?>
 
 
@@ -235,7 +239,7 @@ You haven't sent any payments yet!
 <div class="wepay_btn_box">  
   <div class="wepay_btn">
 
-<a id="start_oauth2">Click here to create an Account to receive payments</a>
+<a id="start_oauth2">Click here to create an Account to send money</a>
  
 <script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
 <script type="text/javascript">

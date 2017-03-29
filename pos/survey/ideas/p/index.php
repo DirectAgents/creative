@@ -335,8 +335,7 @@ $job=explode(',',$rowproject['Job']);
         var msecsInADay = 86400000;
         var endDate = new Date(selectedDate.getTime() + msecsInADay);
 
-        $("#date_option_two").datepicker( "option", "minDate", endDate );
-        $("#date_option_two").datepicker( "option", "maxDate", '+2y' );
+        
 
         $("#date_option_three").datepicker( "option", "minDate", endDate );
         $("#date_option_three").datepicker( "option", "maxDate", '+2y' );

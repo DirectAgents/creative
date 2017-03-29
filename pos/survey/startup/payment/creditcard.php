@@ -9,6 +9,9 @@ require_once '../../class.startup.php';
 require_once '../../class.participant.php';
 
 
+require_once '../../wepay.php';
+
+
 $participant_home = new PARTICIPANT();
 
 if($participant_home->is_logged_in())
@@ -35,13 +38,60 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?> 
 
+<?php if($row['account_id'] == '') { ?>
 
+<h3>You haven't set up an account yet!</h3>
+<p>Looks like you haven't set up an account yet to send money! Click on button below to create one.</p>
+
+
+
+<div class="wepay_btn_box">  
+  <div class="wepay_btn">
+
+<a id="start_oauth3">Click here to create an Account to send money</a>
+ 
+<script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+WePay.set_endpoint("stage"); // stage or production
+
+WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
+    "client_id":"<?php echo $wepay_client_id; ?>",
+     "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
+    //"user_name":"test user",
+    //"user_email":"test@example.com",
+    "redirect_uri":"<?php echo BASE_PATH; ?>/startup/payment/",
+    "top":100, // control the positioning of the popup with the top and left params
+    "left":100,
+    "state":"robot", // this is an optional parameter that lets you persist some state value through the flow
+    "callback":function(data) {
+    /** This callback gets fired after the user clicks "grant access" in the popup and the popup closes. The data object will include the code which you can pass to your server to make the /oauth2/token call **/
+        //alert(data.code);
+    if (data.code.length !== 0) {
+      // send the data to the server
+      window.location.href = "<?php echo BASE_PATH; ?>/startup/account/wepay/oauth2/token/?client_id=<?php echo $wepay_client_id; ?>&code="+data.code+"&redirect_uri=<?php echo BASE_PATH; ?>/startup/account/wepay/&client_secret=<?php echo $wepay_client_secret; ?>&code="+data.code;
+
+    } else {
+      // an error has occurred and will be in data.error
+    }
+  }
+});
+
+</script>
+
+</div>
+
+</div>
+
+
+
+<?php } ?>
 
 
 <?php if($row['credit_card_id'] == '') { ?>
 
 
-<!--You haven't set up credit card to your account yet!-->
+<!--<h3>Please add a Credit Card</h3>-->
 
 
 
@@ -66,6 +116,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <?php } ?>
 
 
+<?php if($row['account_id'] != '') { ?>
 
  <form class="ff" id="profile-form" name="edit profile" method="get" action="<?php echo BASE_PATH; ?>/startup/payment/wepay/credit_card/create" target="_self">
   
@@ -797,7 +848,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
         </form>
 
 
-
+<?php } ?>
 
 
 
