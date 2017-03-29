@@ -79,8 +79,8 @@ if($rowparticipant['Phone'] == ''){
 echo'
 
 <div class="col-lg-12" style="padding:0px; margin-bottom:30px;">
- <div class="errorXYZ">
-Please add a Phone Number to your account
+ <div class="errorXYZ" style="font-size:16px;">
+Please add a Phone Number to your account. <a href="'.BASE_PATH.'/participant/account/settings/" style="color:#fff; text-decoration:underline">Click here</a>
 
 </div>
 </div>';
@@ -92,7 +92,7 @@ if($rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == '')
 echo'
 
 <div class="col-lg-12" style="padding:0px; margin-bottom:30px;">
- <div class="errorXYZ">
+ <div class="errorXYZ" style="font-size:16px;">
 You haven\'t set up bank account yet to receive payments. <a href="'.BASE_PATH.'/participant/payment/" style="color:#fff; text-decoration:underline">Click here</a> to add one.
 
 </div>

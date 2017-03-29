@@ -715,7 +715,16 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 <div class="col-lg-11">
 
 <div class="request-sent">  
+
+
+<?php if($rowrequest['Status'] == 'Waiting for Participant to Accept or Decline'){ ?>
+  Already received a request to meet
+<?php } ?>
+<?php if($rowrequest['Status'] == 'Waiting for Startup to Accept or Decline'){ ?>
   Already Request sent to Participate
+<?php } ?>
+
+
 </div>
 <p>&nbsp;</p>
 
