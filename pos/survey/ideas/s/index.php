@@ -106,10 +106,10 @@ $rowmeetingrecent=mysqli_fetch_array($sqlrecent);
 
 
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Startup='Yes'
-  WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
+  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Startup='Yes'
-  WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
+  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 
 
 
@@ -281,7 +281,21 @@ if(mysqli_num_rows($startup)<0)
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
       minDate: 1,
-      buttonText: "Select date"
+      maxDate: '+2y',
+      buttonText: "Select date",
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+        $("#date_option_two").datepicker( "option", "minDate", endDate );
+        $("#date_option_two").datepicker( "option", "maxDate", '+2y' );
+
+        $("#date_option_three").datepicker( "option", "minDate", endDate );
+        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
+
+    }
     });
 
     $( "#date_option_two" ).datepicker({
@@ -289,7 +303,22 @@ if(mysqli_num_rows($startup)<0)
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
       minDate: 1,
-      buttonText: "Select date"
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true,
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+        $("#date_option_two").datepicker( "option", "minDate", endDate );
+        $("#date_option_two").datepicker( "option", "maxDate", '+2y' );
+
+        $("#date_option_three").datepicker( "option", "minDate", endDate );
+        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
+
+    }
     });
 
     $( "#date_option_three" ).datepicker({
@@ -297,7 +326,9 @@ if(mysqli_num_rows($startup)<0)
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
       minDate: 1,
-      buttonText: "Select date"
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true
     });
 
   } );
@@ -583,6 +614,13 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
     
 <div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
 
+
+
+<?php if(isset($_GET['p'])){ ?>
+
+<?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
+  && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
+
 <div class="col-lg-3">
   <div class="btn-setup-a-meeting">
 <a href="#select-dates">Set up a meeting</a>
@@ -590,12 +628,13 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 </div>
 
 </div>
-
+<?php } ?>
+<?php } ?>
 
 <?php }else{ ?>
 
 
-<div class="col-lg-5"><h3>Payout</h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></div>
+<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
 
 
 <?php } ?>

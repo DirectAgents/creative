@@ -303,7 +303,7 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="survey-header">
                     <div class="account-project-name">
-                      You are meeting with:
+                      <?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?>
                     </div>
                     <div class="edit-delete">
                       
@@ -318,7 +318,7 @@ $row3 = mysqli_fetch_array($sql3);
                     </div>  
                    
                   </div>
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
+                  <div class="survey-name" ng-bind="(survey.name)">Phone.: <?php echo $row3['Phone']; ?></div>
                   <div class="survey-metadata">
                     <div class="item">
                       <div class="label">Date of meeting:</div>

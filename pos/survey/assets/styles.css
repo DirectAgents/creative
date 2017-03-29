@@ -584,7 +584,7 @@ label{font-weight:normal !important;}
     font-size: 14px;
     font-weight: 700;
     color: #2d313c;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     margin-bottom: 15px;
     float:left;
     width:100%;

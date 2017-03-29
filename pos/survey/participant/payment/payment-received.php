@@ -85,6 +85,7 @@ print_r($checkout);
 
 $presum = 0;
 $sum = 0;
+$final_sum = 0;
 //$refund_amount_sum = 0;
 
  foreach ($checkout as $responsefinal) {

@@ -106,10 +106,10 @@ while($row2 = mysqli_fetch_array($sql))
 { 
 
 
-/*
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Viewed_by_Participant='Yes'
-WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."' AND Meeting_Status = 'Meeting Request' ");
-*/
+
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Participant='Yes'
+WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'");
+
 
 
 $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
