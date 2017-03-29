@@ -241,10 +241,10 @@ You haven't sent any payments yet!
 
 <a id="start_oauth2">Click here to create an Account to send money</a>
  
-<script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
+<script src="<?php echo $endpoint_url; ?>/min/js/wepay.v2.js" type="text/javascript"></script>
 <script type="text/javascript">
 
-WePay.set_endpoint("stage"); // stage or production
+WePay.set_endpoint("<?php echo $endpoint; ?>"); // stage or production
 
 WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
     "client_id":"<?php echo $wepay_client_id; ?>",

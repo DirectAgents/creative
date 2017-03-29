@@ -50,10 +50,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <a id="start_oauth3">Click here to create an Account to send money</a>
  
-<script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
+<script src="<?php echo $endpoint_url; ?>/min/js/wepay.v2.js" type="text/javascript"></script>
 <script type="text/javascript">
 
-WePay.set_endpoint("stage"); // stage or production
+WePay.set_endpoint("<?php echo $endpoint; ?>"); // stage or production
 
 WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
     "client_id":"<?php echo $wepay_client_id; ?>",

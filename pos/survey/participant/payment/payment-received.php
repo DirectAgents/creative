@@ -335,7 +335,7 @@ if(proceed) //everything looks good! proceed...
 
 <script type="text/javascript">
 
-WePay.set_endpoint("stage"); // stage or production
+WePay.set_endpoint("<?php echo $endpoint; ?>"); // stage or production
 
 WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
     "client_id":"<?php echo $wepay_client_id; ?>",

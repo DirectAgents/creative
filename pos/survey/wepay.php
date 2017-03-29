@@ -29,6 +29,7 @@ $wepay_client_secret = "9983463efa";
 $wepay_access_token = "STAGE_066d4f6978990e18a7e533ea85f639502efe710a0f3fa89b5af9534f632ae4d7";
 
 $endpoint_url = 'https://stage.wepay.com';
+$endpoint = 'stage';
 
 /**Live**/
 /*
