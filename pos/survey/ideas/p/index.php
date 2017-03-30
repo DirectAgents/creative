@@ -238,7 +238,7 @@ $sqlrecent = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE user
 $rowmeetingrecent=mysqli_fetch_array($sqlrecent);
 
 
-$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_participant WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."' AND Status != 'Meeting Never Happened'");
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_participant WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."' AND Met = 'Yes'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sqlarchived);
 
@@ -868,8 +868,10 @@ if($row['Payment_Method'] == 'Cash') { ?>
 <div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
 
 
+
+
 <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
-  && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
+  && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($sql3) == 1) { ?>
 
 <div class="col-lg-3">
   <div class="btn-setup-a-meeting">

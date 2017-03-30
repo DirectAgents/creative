@@ -194,8 +194,9 @@ $row3 = mysqli_fetch_array($sql3);
   <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Deleted!</div>
   </div>
 <h4>Are you sure you want to delete it?</h4>
-<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="id<?php echo $row2['id']; ?>" id="id" value="<?php echo $row2['id']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-decline">
@@ -259,6 +260,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
         var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        var id = $('input[name=id'+<?php echo $row2['id']; ?>+']').val();
        
        
         
@@ -274,7 +276,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'userid':userid};
+            post_data = {'id':id,'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
             $.post('delete-meeting-archived.php', post_data, function(response){  

@@ -191,8 +191,9 @@ $row3 = mysqli_fetch_array($sql3);
   <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Deleted!</div>
   </div>
 <h4>Are you sure you want to delete it?</h4>
-<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="startupid<?php echo $row2['startupID']; ?>" id="startupid" value="<?php echo $row2['startupID']; ?>"/>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="startupid<?php echo $row2['startupID']; ?>" id="startupid" value="<?php echo $row2['startupID']; ?>"/>
+<input type="hidden" name="id<?php echo $row2['id']; ?>" id="id" value="<?php echo $row2['id']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-decline">
@@ -256,6 +257,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
         var startupid = $('input[name=startupid'+<?php echo $row2['startupID']; ?>+']').val();
+        var id = $('input[name=id'+<?php echo $row2['id']; ?>+']').val();
        
         
         //simple validation at client's end
@@ -270,7 +272,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'startupid':startupid};
+            post_data = {'id':id,'projectid':projectid,'startupid':startupid};
             
             //Ajax post data to server
             $.post('delete-meeting-archived.php', post_data, function(response){  
@@ -388,10 +390,10 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
                 <?php if($row2['Status'] == 'Meeting Never Happened'){echo 'Meeting Never Happened';} ?>
 
                 <?php if($row2['Status'] == 'Screening Question Not Passed'){echo 'Screening Question Not Passed';} ?>
-
-                <?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
-                -->
-
+ -->
+                
+               
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
 Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
 <?php } ?> 
 

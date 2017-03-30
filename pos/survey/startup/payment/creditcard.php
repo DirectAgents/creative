@@ -91,7 +91,16 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
 <?php if($row['credit_card_id'] == '') { ?>
 
 
-<!--<h3>Please add a Credit Card</h3>-->
+
+
+<div class="col-lg-11">
+
+<div class="no-bankaccount-set">  
+  Please add a credit card below to send payments.
+</div>
+<p>&nbsp;</p>
+
+</div>
 
 
 

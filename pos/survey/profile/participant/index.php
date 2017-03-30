@@ -633,6 +633,9 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
 
 <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
 
+    Set up a meeting
+</a>    
+
 <?php } ?>
 
 
@@ -640,10 +643,12 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
 
 <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
 
-<?php } ?>
+
 
                           Set up a meeting
 </a>
+
+<?php } ?>
 
                         </span>
                       </div>

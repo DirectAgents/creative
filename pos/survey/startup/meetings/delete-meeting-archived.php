@@ -15,7 +15,7 @@ if($_POST)
 
 
 
-$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_archived_startup WHERE ProjectID = '".$_POST['projectid']."' AND startupID = '".$_POST['startupid']."'");
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_archived_startup WHERE id = '".$_POST['id']."' AND ProjectID = '".$_POST['projectid']."' AND startupID = '".$_POST['startupid']."'");
 
 
 

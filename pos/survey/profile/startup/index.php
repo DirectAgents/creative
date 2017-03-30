@@ -699,18 +699,7 @@ $(document).ready(function () {
 </script>
 
 
-<?php if($participant_home->is_logged_in()){ ?>
 
-<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
-
-<?php } ?>
-
-
-<?php if($startup_home->is_logged_in()){ ?>
-
-<a href="<?php echo BASE_PATH; ?>/ideas/s/pr/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
-
-<?php } ?>
 
 
 
@@ -762,7 +751,34 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
                       <div class="label">For:</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php echo $row2['Minutes']; ?> minutes of your time
+                          <?php echo $row2['Minutes']; ?> minutes
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="item date">
+                     
+                      <div class="btn-browse">
+                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
+        
+        <?php if($participant_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+
+                          Set up a meeting
+</a>
+
+<?php } ?>
+
+
+<?php if($startup_home->is_logged_in()){ ?>
+
+<a href="<?php echo BASE_PATH; ?>/ideas/s/pr/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>">
+
+                          Set up a meeting
+</a>
+
+<?php } ?>
                         </span>
                       </div>
                     </div>
@@ -792,7 +808,7 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
 
 }
 
-echo '</a>';
+
 
   //if projects exists
 
