@@ -143,14 +143,20 @@ $rowstartup=mysqli_fetch_array($sqlstartup);
 
 date_default_timezone_set('America/New_York');	
 
-$date = date('Y-m-d h:m A');
+$date = date('Y-m-d');
 
 $dtA = new DateTime($date);
-$dtB = new DateTime($row2['Date_of_Meeting'].' '.$row2['Final_Time']);
+$dtB = new DateTime($row2['Date_of_Meeting']);
 
-//echo $row2['Date_of_Meeting'];
 
-if ( $dtB > $dtA ) {
+
+$interval = $dtB->diff($dtA);
+
+
+//send email 2 days before actual meeting
+
+
+if($interval->days == 2) {
 
 
   //$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Meeting_Status='Upcoming Meetings'
@@ -164,7 +170,7 @@ if ( $dtB > $dtA ) {
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Upcoming Meeting", "no-reply@valifyit.com");
+$from = new SendGrid\Email("Upcoming Meeting", "support@valifyit.com");
 $subject = "Upcoming Meeting";
 $to = new SendGrid\Email($rowparticipant['FirstName'], $rowparticipant['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -483,7 +489,7 @@ $response = $sg->client->mail()->send()->post($mail);
   
   Participant_Email_Upcoming_Meeting_Reminder_Sent = 'Yes'
 
-  WHERE userID='".$rowparticipant['userID']."'");
+  WHERE userID='".$rowparticipant['userID']."' AND ProjectID = '".$row2['ProjectID']."'");
 
 
 

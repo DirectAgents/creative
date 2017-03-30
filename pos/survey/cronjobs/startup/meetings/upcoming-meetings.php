@@ -143,14 +143,20 @@ $rowstartup=mysqli_fetch_array($sqlstartup);
 
 date_default_timezone_set('America/New_York');	
 
-$date = date('Y-m-d h:m A');
+$date = date('Y-m-d');
 
 $dtA = new DateTime($date);
-$dtB = new DateTime($row2['Date_of_Meeting'].' '.$row2['Final_Time']);
+$dtB = new DateTime($row2['Date_of_Meeting']);
 
-//echo $row2['Date_of_Meeting'];
 
-if ( $dtB > $dtA ) {
+
+$interval = $dtB->diff($dtA);
+
+
+//send email 2 days before actual meeting
+
+
+if($interval->days == 2) {
 
 
   //$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Meeting_Status='Upcoming Meetings'
@@ -483,7 +489,7 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET
   
   Startup_Email_Upcoming_Meeting_Reminder_Sent = 'Yes'
 
-  WHERE startupID='".$rowstartup['userID']."'");
+  WHERE startupID='".$rowstartup['userID']."' AND ProjectID = '".$row2['ProjectID']."'");
 
 
 
