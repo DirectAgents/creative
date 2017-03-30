@@ -100,12 +100,14 @@
 
 <?php
 
+
+
+
+
+
 include("../../../../config.php"); //include config file
 
-
-
-
-
+require_once '../../../../base_path.php'; 
 
 
 
@@ -129,18 +131,22 @@ if(mysqli_num_rows($sql)>0)
 {
 
 //while($results->fetch()){ //fetch values
-while($row = mysqli_fetch_array($sql))
-{ 
+$row = mysqli_fetch_array($sql);
+ 
 
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE EmailNotifications LIKE '%When you qualify to participate to provide feedback on an idea%' ");
-$row2 = mysqli_fetch_array($sql2);
+//$row2 = mysqli_fetch_array($sql2);
 
 
-if(mysqli_num_rows($sql2)>0)
-{
+while($row2 = mysqli_fetch_array($sql2))
+{ 
 
+
+
+
+//echo $row['Participant_EmailNotifications'];
 
 $emailnotifications=explode(',',$row['Participant_EmailNotifications']);
 
@@ -517,7 +523,7 @@ $content = new SendGrid\Content("text/html", '
 
                               <tr>
                                
-                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://valifyit.com/ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'" style="font-weight: normal; color: #ffffff;">View Details</a></td>
+                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'" style="font-weight: normal; color: #ffffff;">View Details</a></td>
                 </tr>
 
 
@@ -635,7 +641,7 @@ echo "sent";
 
 }
 
-}
+
 
 
 ?>
