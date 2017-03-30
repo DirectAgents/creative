@@ -627,7 +627,11 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->body();
 
 
-echo "sent";
+//echo "sent";
+
+echo $row2['userEmail'];
+echo "<br>";
+
 
 } 
 
