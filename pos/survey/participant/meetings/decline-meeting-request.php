@@ -24,8 +24,6 @@ $row = mysqli_fetch_array($sql_participant);
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO  tbl_meeting_archived(userID, startupID, ProjectID, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Status, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
-  '".$row['ProjectID']."', 'No', 'No', '".$row['Date_of_Meeting']."', '".$row['Final_Time']."','".$row['Location']."','Declined_by_Participant','".$the_date."','".$the_time."')");
 
 	
 	   
@@ -386,7 +384,11 @@ $response = $sg->client->mail()->send()->post($mail);
 
    
 
- $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
+ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived_participant(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
+  '".$row['ProjectID']."','Meeting Declined by Participant', 'No', 'No', '".$row['Date_of_Meeting']."', '".$row['Final_Time']."','".$row['Location']."','".$row['Date_Accepted']."','".$row['Time_Accepted']."')");
+
+
+  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived_startup(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
   '".$row['ProjectID']."','Meeting Declined by Participant', 'No', 'No', '".$row['Date_of_Meeting']."', '".$row['Final_Time']."','".$row['Location']."','".$row['Date_Accepted']."','".$row['Time_Accepted']."')");
 
 

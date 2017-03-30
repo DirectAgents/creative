@@ -59,7 +59,7 @@ $dtA = new DateTime($date);
 
 
 
-  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
+  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived_startup(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
   '".$row['ProjectID']."','Screening Question Not Passed', 'No', 'No', '0000-00-00', 'Not Set','".$row['Location']."','".$row['Date_Accepted']."','".$row['Time_Accepted']."')");
 
 

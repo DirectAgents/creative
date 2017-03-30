@@ -59,7 +59,7 @@ if ( $dtB < $dtA ) {
 
 
 
-  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
+  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived_startup(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Date_Posted, Time_Posted) VALUES('".$row['userID']."','".$row['startupID']."',
   '".$row['ProjectID']."','Meeting Never Happened', 'No', 'No', '".$row['Date_of_Meeting']."', '".$row['Final_Time']."','".$row['Location']."','".$row['Date_Accepted']."','".$row['Time_Accepted']."')");
 
 

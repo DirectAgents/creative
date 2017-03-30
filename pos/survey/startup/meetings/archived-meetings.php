@@ -47,7 +47,7 @@ if(!$startup_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_startup WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 
 //$row=mysql_fetch_array($result);
@@ -178,8 +178,142 @@ $row3 = mysqli_fetch_array($sql3);
             
    
 
-
+<div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Delete</strong></a>
+                 </div>
                
+
+
+<!-- Start Decline -->
+
+<div id="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-decline">
+  <div class="result-decline">
+  <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Deleted!</div>
+  </div>
+<h4>Are you sure you want to delete it?</h4>
+<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+
+<div class="popupoverlay-btn">
+  <div class="cancel-decline">
+    <button class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_close cancel">Cancel</button>
+    <button class="decline<?php echo $row2['ProjectID']; ?> btn-delete">Yes</button>
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-decline">
+    <button class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- End Decline -->
+
+
+<script>
+$(document).ready(function () {
+
+
+
+$(".slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_open").click(function() {  
+//alert("open"+<?php echo $row2['ProjectID']; ?>);
+$("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_wrapper").show();
+$("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").show();
+});
+
+
+    $('#slide-delete-two'+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>).popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+
+$(".slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_close").click(function() {  
+//alert("close"+<?php echo $row2['ProjectID']; ?>);
+$("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_wrapper").hide();
+$("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
+});
+
+
+
+
+    $(".decline"+<?php echo $row2['ProjectID']; ?>).click(function() {  
+      //alert("delete"+<?php echo $row2['ProjectID']; ?>); 
+
+     
+      $(".result-decline").show();
+      $(".cancel-decline").hide();
+      $(".close-decline").show();
+
+
+      $("#result-decline-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
+      
+
+ //get input field values
+        
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
+       
+       
+        
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        var proceed = true;
+
+        //everything looks good! proceed...
+        if(proceed) 
+        {
+
+
+
+          $( ".processing" ).show();
+            //data to be sent to server
+            post_data = {'projectid':projectid,'userid':userid};
+            
+            //Ajax post data to server
+            $.post('delete-meeting-archived.php', post_data, function(response){  
+              //alert("yes"); 
+
+                //load json data from server and output message     
+        if(response.type == 'error')
+        {
+          output = '<div class="errorXYZ">'+response.text+'</div>';
+        }else{
+          
+            //alert(text);
+                
+            output = '<div class="success">Yo</div>';
+
+
+
+          
+          //reset values in all input fields
+          $('#contact_form input').val(''); 
+          $('#contact_form textarea').val(''); 
+        }
+        
+        $(".cancel-decline").hide();
+        $(".result-decline").show();
+        $(".close-decline").show();
+        $("#result-decline-"+response.text).hide().slideDown();
+            }, 'json');
+      
+        }
+
+});
+  
+
+
+
+
+});
+</script>
+
+
+
 
 
                     </div>  
