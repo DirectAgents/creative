@@ -36,7 +36,7 @@ $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion
 $rowscreening = mysqli_fetch_array($Screening);
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_participant WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sql);
 
@@ -238,7 +238,7 @@ $sqlrecent = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE user
 $rowmeetingrecent=mysqli_fetch_array($sqlrecent);
 
 
-$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."' AND Status != 'Meeting Never Happened'");
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_participant WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' AND startupID = '".$rowstartupprofile['userID']."' AND Status != 'Meeting Never Happened'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sqlarchived);
 

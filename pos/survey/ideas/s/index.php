@@ -81,7 +81,7 @@ $sqlparticipantanswer = mysqli_query($connecDB,"SELECT * FROM tbl_participant_po
 $rowparticipantanswer=mysqli_fetch_array($sqlparticipantanswer);
 
 
-$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."'");
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_startup WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sqlarchived);
 

@@ -192,7 +192,7 @@ $row3 = mysqli_fetch_array($sql3);
   </div>
 <h4>Are you sure you want to delete it?</h4>
 <input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="text" name="startupid<?php echo $row2['startupID']; ?>" id="startupid" value="<?php echo $row2['startupID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-decline">
@@ -254,9 +254,8 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
-       
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var startupid = $('input[name=startupid'+<?php echo $row2['startupID']; ?>+']').val();
        
         
         //simple validation at client's end
@@ -271,7 +270,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'userid':userid};
+            post_data = {'projectid':projectid,'startupid':startupid};
             
             //Ajax post data to server
             $.post('delete-meeting-archived.php', post_data, function(response){  
@@ -377,6 +376,9 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
                   <div class="status_request">Status: 
 
+                <?php echo $row2['Status']; ?>  
+
+              <!--
                 <?php if($row2['Status'] == 'Canceled_by_Startup'){echo 'Meeting Canceled By Startup';} ?>
                 <?php if($row2['Status'] == 'Declined_by_Startup'){echo 'Meeting Request Declined By Startup';} ?>
                 
@@ -388,6 +390,8 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
                 <?php if($row2['Status'] == 'Screening Question Not Passed'){echo 'Screening Question Not Passed';} ?>
 
                 <?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
+                -->
+
 Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
 <?php } ?> 
 
