@@ -117,9 +117,17 @@ $sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE u
 $row2 = mysqli_fetch_array($sql_participant);
 
 
+
+
 $sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$_POST['startupid']."'");
 $row5 = mysqli_fetch_array($sql5);
 
+
+
+$emailnotifications=explode(',',$row5['EmailNotifications']);
+
+
+if(in_array('Participant requests to meet you',$emailnotifications)){
 
 
 
@@ -469,6 +477,8 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->headers();
 //echo $response->body();
 
+
+}
 
 
 //PASSED

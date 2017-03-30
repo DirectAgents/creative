@@ -105,6 +105,20 @@ include("../../../config.php"); //include config file
 
 
 
+$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant");
+//$rowstartupprofile = mysqli_fetch_array($startup);
+
+
+while($rowparticipantprofile = mysqli_fetch_array($participant))
+{ 
+
+$emailnotifications=explode(',',$rowparticipantprofile['EmailNotifications']);
+
+
+if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){
+
+
+
 
 $sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE Participant_Email_Upcoming_Meeting_Reminder_Sent = '' ORDER BY id DESC ");
 //$result=mysql_query($sql);
@@ -236,7 +250,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowstartup['FirstName'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowstartup['FirstName'].' '.$rowstartup['LastName'].'</td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$rowstartup['Phone'].'</td>
@@ -292,13 +306,10 @@ $content = new SendGrid\Content("text/html", '
                                                         <tbody>
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                                '.date('F j, Y',strtotime($row2['Date_of_Meeting'])).'
+                                                                '.date('F j, Y',strtotime($row2['Date_of_Meeting'])).' @ '.$row2['Final_Time'].'
                                                                 </td>
                                                         </tr>
-                                                        <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row2['Final_Time'].'</td>
-                                                        </tr>
+                                                       
                                                       
 
                                                     </tbody></table>
@@ -480,6 +491,10 @@ $response = $sg->client->mail()->send()->post($mail);
 }
 
 } 
+
+}
+
+}
 
 }
 

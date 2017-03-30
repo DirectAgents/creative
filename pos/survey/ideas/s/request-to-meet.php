@@ -60,6 +60,13 @@ $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup  WHERE userID = '".$_S
 $row4 = mysqli_fetch_array($sql4);
 
 
+
+$emailnotifications=explode(',',$row2['EmailNotifications']);
+
+
+if(in_array('Startup requests to meet you',$emailnotifications)){
+
+
 // using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
 // If you are using Composer (recommended)
@@ -404,7 +411,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
-
+}
 
 
 

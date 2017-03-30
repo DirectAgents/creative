@@ -105,6 +105,19 @@ include("../../../config.php"); //include config file
 
 
 
+$startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup");
+//$rowstartupprofile = mysqli_fetch_array($startup);
+
+
+while($rowstartupprofile = mysqli_fetch_array($startup))
+{ 
+
+$emailnotifications=explode(',',$rowstartupprofile['EmailNotifications']);
+
+
+if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){
+
+
 
 $sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE Startup_Email_Upcoming_Meeting_Reminder_Sent = '' ORDER BY id DESC ");
 
@@ -151,8 +164,8 @@ if ( $dtB > $dtA ) {
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Recent Meeting", "no-reply@valifyit.com");
-$subject = "Upcoming Meeting";
+$from = new SendGrid\Email("Upcoming Meeting Reminder", "support@valifyit.com");
+$subject = "Upcoming Meeting Reminder";
 $to = new SendGrid\Email($rowstartup['FirstName'], $rowstartup['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -237,7 +250,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowparticipant['FirstName'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowparticipant['FirstName'].' '.$rowparticipant['LastName'].'</td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$rowparticipant['Phone'].'</td>
@@ -292,12 +305,11 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($row2['Date_of_Meeting'])).'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                                '.date('F j, Y',strtotime($row2['Date_of_Meeting'])).' @ '.$row2['Final_Time'].'
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row2['Final_Time'].'</td>
-                                                        </tr>
+                                                       
                                                       
 
                                                     </tbody></table>
@@ -461,9 +473,9 @@ $mail = new SendGrid\Mail($from, $subject, $to, $content);
 $apiKey = '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';
 $sg = new \SendGrid($apiKey);
 $response = $sg->client->mail()->send()->post($mail);
-//echo $response->statusCode();
-//echo $response->headers();
-//echo $response->body();
+echo $response->statusCode();
+echo $response->headers();
+echo $response->body();
 
 
 
@@ -482,6 +494,9 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET
 
 }
 
+}
+
+}
 
 ?>
 

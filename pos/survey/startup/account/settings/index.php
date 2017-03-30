@@ -852,10 +852,17 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
         
 
         
-<h2 class="no-mobile">Receive email notifications when:</h2>
+<h2 class="no-mobile">Email notifications:</h2>
          
-        <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="New participant requests to participate" <?php if(in_array('New participant requests to participate',$emailnotifications)){echo "checked";}?>/>
-  <label for="New-participant-requests-to-participate">New participant requests to participate</label><br>
+        <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Participant requests to meet you" <?php if(in_array('Participant requests to meet you',$emailnotifications)){echo "checked";}?>/>
+  <label for="New-participant-requests-to-participate">Participant requests to meet you</label>
+<a href="#" alt="If a participant sents you a request to meet you for a feedback session, you will get notified per email" class="tooltiptext">(?)</a>
+  <br>
+
+  <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Email reminder about an upcoming meeting" <?php if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){echo "checked";}?>/>
+  <label for="New-participant-requests-to-participate">Email reminder about an upcoming meeting</label>
+<a href="#" alt="We will send you an email reminder once a meeting approaches" class="tooltiptext">(?)</a>
+  <br>
 
 
 

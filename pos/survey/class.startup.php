@@ -42,8 +42,8 @@ class STARTUP
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 
-			$stmt = $this->conn->prepare("INSERT INTO tbl_startup(FirstName,LastName,Zip,City,State,userEmail,userPass,tokenCode, Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, '".$the_date."')");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_startup(FirstName,LastName,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
+			                                             VALUES(:first_name, :last_name,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, 'Participant requests to meet you,Email reminder about an upcoming meeting', '".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
 			$stmt->bindparam(":user_zip",$zip);

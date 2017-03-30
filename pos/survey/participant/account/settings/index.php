@@ -1296,16 +1296,20 @@ echo $row2['Languages'].'</li>';
   
 
         
-<h2 class="no-mobile">Receive email notifications when:</h2>
+<h2 class="no-mobile">Email notifications:</h2>
          
-        <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="New startup requests you participate" <?php if(in_array('New startup requests you participate',$emailnotifications)){echo "checked";}?>/>
-  <label for="New-participant-requests-to-participate">New startup requests you participate</label>
-  <a href="#" alt="If a startup sents you a request to participate in a feedback session, you will get notified per email" class="tooltiptext">(?)</a><br>
+        <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Startup requests to meet you" <?php if(in_array('Startup requests to meet you',$emailnotifications)){echo "checked";}?>/>
+  <label for="New-participant-requests-to-participate">Startup requests to meet you</label>
+  <a href="#" alt="If a startup sents you a request to meet you for a feedback session, you will get notified per email" class="tooltiptext">(?)</a><br>
 
    <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="When you qualify to participate to provide feedback on an idea" <?php if(in_array('When you qualify to participate to provide feedback on an idea',$emailnotifications)){echo "checked";}?>/>
   <label for="New-participant-requests-to-participate">When you qualify to participate to provide feedback on an idea</label>
   <a href="#" alt="Each feedback session has certain requirements. Those requirements can be based on age, gender or education. If you qualify to participate to provide feedback for an idea, we will notify you per email" class="tooltiptext">(?)</a><br>
 
+ <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Email reminder about an upcoming meeting" <?php if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){echo "checked";}?>/>
+  <label for="New-participant-requests-to-participate">Email reminder about an upcoming meeting</label>
+<a href="#" alt="We will send you an email reminder once a meeting approaches" class="tooltiptext">(?)</a>
+  <br>
 
 
   <h2 class="no-mobile">Delete account:</h2>

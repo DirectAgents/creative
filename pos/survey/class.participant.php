@@ -47,7 +47,7 @@ class PARTICIPANT
 			
 			
 			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,Age,City,State,userEmail,Payment_Method,userPass,tokenCode, EmailNotifications, Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_zip,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail,'".$payment_method."', :user_pass, :active_code,'New startup requests you participate,When you qualify to participate to provide feedback on an idea','".$the_date."')");
+			                                             VALUES(:first_name, :last_name,:user_zip,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail,'".$payment_method."', :user_pass, :active_code,'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting','".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
 			$stmt->bindparam(":user_zip",$zip);
