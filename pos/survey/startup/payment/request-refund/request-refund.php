@@ -39,7 +39,7 @@ $participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userI
 $rowparticipant = mysqli_fetch_array($participant);
 
 
-if($rowwepay['refundrequest'] != 'yes'){
+if($rowwepay['refundrequest'] != 'yes' && $rowwepay['refunded'] != 'yes'){
 
 /*
 $stmtparticipant="SELECT * FROM tbl_participant WHERE userID='".$_GET['participantid']."' ";
@@ -275,7 +275,7 @@ $content = new SendGrid\Content("text/html", '
 
                                              <tr>
                                                  <td align="left" style="padding: 0 0 5px 25px;font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                '.$rowwepay['refundreason'].'
+                                                '.$_GET['refundreason'].'
                                                 
                                                 </td>
                                             </tr>

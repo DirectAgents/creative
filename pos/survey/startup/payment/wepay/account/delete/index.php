@@ -72,6 +72,13 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET
   WHERE userID='".$_SESSION['startupSession']."'");
 
 
+$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
+while($row = mysqli_fetch_array($sql)){
+
+$sql3=mysqli_query($connecDB,"DELETE FROM wepay WHERE id = '".$row['id']."'");
+
+}
+
 
 //header("Location:../../../");
 

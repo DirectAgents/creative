@@ -103,6 +103,8 @@
 
 include("../../../config.php"); //include config file
 
+require_once '../../../base_path.php';
+
 
 
 
@@ -236,7 +238,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowstartup['FirstName'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowstartup['FirstName'].' '.$rowstartup['LastName'].'</td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$rowstartup['Phone'].'</td>
@@ -292,13 +294,10 @@ $content = new SendGrid\Content("text/html", '
                                                         <tbody>
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                                '.date('F j, Y',strtotime($row2['Date_of_Meeting'])).'
+                                                                '.date('F j, Y',strtotime($row2['Date_of_Meeting'])).' @ '.$row2['Final_Time'].'
                                                                 </td>
                                                         </tr>
-                                                        <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             '.$row2['Final_Time'].'</td>
-                                                        </tr>
+                                                       
                                                       
 
                                                     </tbody></table>
@@ -356,7 +355,7 @@ $content = new SendGrid\Content("text/html", '
                                                         </tr>
                                                       
 
-                                                    </tbody></table>
+                                                   </tbody></table>
                                                 </td>
                                             </tr>
                                         </tbody></table>
@@ -368,7 +367,21 @@ $content = new SendGrid\Content("text/html", '
                                     <![endif]-->
                                 </td>
                             </tr>
-                        </tbody></table>
+
+                              <tr>
+                                <td align="left" style="padding: 20px;  font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">What to do next?</td>
+                              </tr>
+                              <tr>
+                               
+                    <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowstartup['FirstName'].', please send a payment to him/her for the meeting.</td>
+                </tr>
+   <tr>
+     <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/participant/meetings/" style="font-weight: normal; color: #ffffff;">Confirm You Met</a></td>
+   </tr>
+
+
+                          </tbody>
+                        </table>
 
 
                         <!--[if (gte mso 9)|(IE)]>
@@ -431,8 +444,8 @@ $content = new SendGrid\Content("text/html", '
                      </tr>
 
                       <tr>
-                      <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
+                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
+                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> | <a href="http://valifyit.com/benefits/" target="_blank" style="color: #666666; text-decoration: none;">Benefits</a> </td>
                        
                         
  

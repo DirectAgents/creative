@@ -196,8 +196,8 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
        
        
         
@@ -269,8 +269,8 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
        
        
         
@@ -398,11 +398,10 @@ $row3 = mysqli_fetch_array($sql3);
 
 
 
-if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $startup_home->is_logged_in()){ ?>
+if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $startup_home->is_logged_in()){ ?>
 
 
 
-   <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><strong>Rate and Review your meeting</strong></a>
                 
 
   <?php } ?>
@@ -412,7 +411,7 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $startup_hom
                       
              
 
-          <?php if($row2['Met'] == '' && $row2['Met'] != 'No didn\'t show up'){ ?>         
+          <?php if($row2['Met'] == '' && $row2['Status'] != 'No show up. Meeting didn\'t happen'){ ?>         
                  <i class="icon-trash"></i>Did the meeting happen? Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm  
 
                  <?php } ?>
@@ -450,19 +449,28 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $startup_hom
                   <div class="theline"></div>
 
                   <div class="status_request">Status: 
-<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == ''){ ?>
 Waiting to receive payment
 <?php } ?> 
 
-<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == 'Yes'){ ?>
 Payment received.
 <?php } ?> 
 
 
-   <?php if($row2['Met'] == '' && $row2['Met'] != 'No didn\'t show up'){ ?>         
+   <?php if($row2['Met'] == '' && $row2['Status'] != 'No show up. Meeting didn\'t happen'){ ?>         
                  <i class="icon-trash"></i>Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm you met  
 
-                 <?php } ?>               
+                 <?php } ?>    
+
+
+
+
+              <?php if($row2['Status'] == 'No show up. Meeting didn\'t happen'){ ?>         
+                 
+                 <i class="icon-trash"></i>No show up. Meeting didn't happen
+
+                 <?php } ?>                    
 
 
                   </div>

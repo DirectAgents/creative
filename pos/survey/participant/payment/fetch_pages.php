@@ -132,7 +132,25 @@ a.verify-badge img#verify-image-payment{display:none !important;}
  <ul>
     <li><a href="#payment-received" class="payment-received">Payment Received</a></li>
     <li>&nbsp;</li>
-    <li><a href="#refund-requests" class="refund-requests">Refund Requests</a></li>
+    <li><a href="#refund-requests" class="refund-requests">Refund Requests</a>
+
+
+ <?php
+
+$result_count = mysqli_query($connecDB,"SELECT refundrequest,participant_id,id, COUNT(DISTINCT id) AS count FROM wepay WHERE refundrequest = 'yes' AND participant_id = '".$_SESSION['participantSession']."' GROUP BY id");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
+if($count > 0 ){
+echo ' <div class="viewed-bubble">';
+echo $count;
+echo '</div>';
+}
+?>
+
+
+
+    </li>
     <li>&nbsp;</li>
     <li><a href="#bankaccount" class="bankaccount">Bank Account</a></li>
    

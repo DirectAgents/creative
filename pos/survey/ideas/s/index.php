@@ -115,6 +115,9 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_S
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Startup='Yes'
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET Viewed_by_Startup='Yes'
+  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
+
 
 
 $Min_Req = str_replace(",","|",$rowproject['MinReq']);

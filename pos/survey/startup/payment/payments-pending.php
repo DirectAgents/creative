@@ -26,7 +26,7 @@ if(!$startup_home->is_logged_in())
 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent, tbl_meeting_archived WHERE tbl_meeting_recent.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_recent.Payment = '' AND tbl_meeting_recent.Met = 'Yes' OR tbl_meeting_archived.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_archived.Payment = '' AND tbl_meeting_archived.Met = 'Yes'");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent, tbl_meeting_archived_startup WHERE tbl_meeting_recent.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_recent.Payment = '' AND tbl_meeting_recent.Met = 'Yes' OR tbl_meeting_archived_startup.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_archived_startup.Payment = '' AND tbl_meeting_archived_startup.Met = 'Yes'");
 //$result=mysql_query($sql);
 
 

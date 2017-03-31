@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-include ('../../config2.php');
-require( "../../phpmailer/class.phpmailer.php" );
+include ('../../config.php');
 
 $ip = $_SERVER['REMOTE_ADDR'];
 
@@ -17,33 +16,22 @@ if($_POST)
 date_default_timezone_set('America/New_York');
 
 
-$sql_participant = "SELECT * FROM tbl_project_request WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'";
-$result_participant=mysql_query($sql_participant);
-$row = mysql_fetch_array($result_participant);
+
+$sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE ProjectID = '".$_POST['projectid']."' AND userID = '".$_POST['userid']."'");
+$row = mysqli_fetch_array($sql_participant);
 
 
 
 
 
-  $update_sql = "UPDATE tbl_project_request SET 
-  Met = '".mysql_real_escape_string('No didn\'t show up')."'
-
-  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'";
-
-  mysql_query($update_sql);
 
 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET 
+  Met = '".mysql_real_escape_string('No show up')."'
+
+  WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
 
 	
-	   
-	
-    //header("Location: index.php?s=success"); 
-
-
-$sql_participant = "SELECT * FROM tbl_participant WHERE userID='".$_POST['userid']."'";
-$result_participant=mysql_query($sql_participant);
-$row2 = mysql_fetch_array($result_participant);
-
 
 
 

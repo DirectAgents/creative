@@ -186,12 +186,12 @@ if (strpos($row['checkout_find_amount'], '.') == false) {
 
 ?>
 
-<?php $totalrefund =  $row['total'] + $row['service_fee']; ?>
+
 
           <h3>You will receive from <?php echo $rowparticipant['FirstName']; ?>: <?php echo "$"; echo $final_amount; ?></h3>
           <h3>+ Processing Fee: <?php echo "$"; echo $row['fees']; ?></h3>
           <h3>+ Service Fee: <?php echo "$"; echo $row['service_fee']; ?></h3>
-          <h3>Your total refund: <?php echo "$"; echo $totalrefund; ?></h3>
+          <h3>Your total refund: <?php echo "$"; echo $row['total']; ?></h3>
         
         
       </div>

@@ -373,7 +373,7 @@ $content = new SendGrid\Content("text/html", '
                                                         </tr>
                                                       
 
-                                                    </tbody></table>
+                                                     </tbody></table>
                                                 </td>
                                             </tr>
                                         </tbody></table>
@@ -385,6 +385,15 @@ $content = new SendGrid\Content("text/html", '
                                     <![endif]-->
                                 </td>
                             </tr>
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td align="left" valign="top" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;">What to do next?</td>
+                              </tr>
+                               <tr>
+                                <td align="left" valign="top" style="padding: 0 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;">Before the date of your meeting approaches, please get in touch with '.$rowstartup['FirstName'].' over the phone.</td>
+                              </tr>
                         </tbody></table>
 
 
@@ -448,7 +457,7 @@ $content = new SendGrid\Content("text/html", '
                      </tr>
 
                       <tr>
-                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
+                      <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
                         <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a></td>
                        
                         

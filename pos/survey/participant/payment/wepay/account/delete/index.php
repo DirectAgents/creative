@@ -76,7 +76,13 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET
 
   WHERE userID='".$_SESSION['participantSession']."'");
 
+  
+  $sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
+while($row = mysqli_fetch_array($sql)){
 
+$sql3=mysqli_query($connecDB,"DELETE FROM wepay WHERE id = '".$row['id']."'");
+
+}
 
 //header("Location:../../../");
 

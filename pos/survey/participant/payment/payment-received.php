@@ -79,7 +79,7 @@ if (isset($error)){
     //header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
     }else{
 
-print_r($checkout);
+//print_r($checkout);
 
   ////////Total Amount////////
 

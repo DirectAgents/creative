@@ -155,7 +155,7 @@ while($row = mysqli_fetch_array($sql2))
 
 
 <?php 
-$sql3=mysqli_query($connecDB,"SELECT * FROM wepay WHERE checkout_find_date = '".$row['checkout_find_date']."' ORDER BY id DESC ");
+$sql3=mysqli_query($connecDB,"SELECT * FROM wepay WHERE checkout_find_date = '".$row['checkout_find_date']."' AND startup_id = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 while($row2 = mysqli_fetch_array($sql3)){
 
 $sql4=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['participant_id']."'");

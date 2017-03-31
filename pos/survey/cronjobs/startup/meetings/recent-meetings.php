@@ -273,10 +273,10 @@ $content = new SendGrid\Content("text/html", '
                               </tr>
                               <tr>
                                
-                    <td align="center" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowparticipant['FirstName'].', please send a payment to him/her for the meeting.</td>
+                    <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowparticipant['FirstName'].', please send a payment to him/her for the meeting.</td>
                 </tr>
    <tr>
-     <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/startup/meetings/" style="font-weight: normal; color: #ffffff;">Pay</a></td>
+     <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/startup/meetings/" style="font-weight: normal; color: #ffffff;">Confirm Meeting & Make Payment</a></td>
    </tr>
 
 
@@ -397,7 +397,7 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_recent(userID, sta
 
 
 
-$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_upcoming WHERE ProjectID = '".$row2['ProjectID']."' AND startupID = '".$rowstartup['userID']."'");
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_upcoming WHERE ProjectID = '".$row2['ProjectID']."' AND startupID = '".$rowstartup['userID']."' AND userID = '".$rowparticipant['userID']."'");
 
 
 

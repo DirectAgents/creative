@@ -420,7 +420,7 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
                       </div>
                     </div>
                     <div class="item date">
-                      <div class="label">Participants:</div>
+                      <div class="label">People Participate:</div>
                       <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
                         
 <?php

@@ -374,7 +374,7 @@ $service_fee_final = '1.32';
 
          
 
-           <div class="col-lg-3">Payment for <?php echo $row3['FirstName']; ?>:</div>
+           <div class="col-lg-3">Payment to <?php echo $row3['FirstName']; ?>:</div>
            <div class="col-lg-9">$<?php echo $row4['Pay']; ?></div>
 
             <div class="col-lg-3">Processing Fee :  <a href="#" alt="This is a fee charge by the credit card processing company" class="tooltiptext"><i class="icon icon-question"></i></a></div>

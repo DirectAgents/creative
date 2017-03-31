@@ -251,6 +251,9 @@ $rowarchived=mysqli_fetch_array($sqlarchived);
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Participant='Yes'
   WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET Viewed_by_Participant='Yes'
+  WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$_GET['id']."' ");
+
 
 }
 
@@ -898,9 +901,9 @@ if($row['Payment_Method'] == 'Cash') { ?>
 
 
     <div class="col-lg-12">
-      
-      <h3>What is the idea?</h3>
-      <p><?php echo $rowproject['Name']; ?></p>
+      <p>&nbsp;</p>
+      <h4>What is the idea?</h4>
+     <p class="grey"><?php echo $rowproject['Name']; ?></p>
      
       </div>
 
@@ -913,8 +916,8 @@ if($row['Payment_Method'] == 'Cash') { ?>
  <?php if($rowproject['Details'] != ''){?> 
 
     <div class="col-lg-12">
-    <h3>What makes this idea special?</h3>
-      <p><?php echo $rowproject['Details']; ?></p>
+   <h4>What makes this idea special?</h4>
+      <p class="grey"><?php echo $rowproject['Details']; ?></p>
     </div>
   
   <?php } ?>
@@ -924,8 +927,8 @@ if($row['Payment_Method'] == 'Cash') { ?>
   <?php if($rowproject['Agenda_One'] != ''){?> 
   
     <div class="col-lg-12">
-      <h3>What will be discussed during the meeting?</h3>
-      <p><?php echo $rowproject['Agenda_One']; ?></p>
+ <h4>What will be discussed during the meeting?</h4>
+      <p class="grey"><?php echo $rowproject['Agenda_One']; ?></p>
     </div>
   
   <?php } ?>
