@@ -43,7 +43,7 @@ $interval = $dtA->diff($dtB);
 //send email 2 days before actual meeting
 
 
-if($interval->days == 7) {
+if($interval->days >= 7) {
 
 
 
