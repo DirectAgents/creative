@@ -195,6 +195,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
         var startupid = $('input[name=startupid'+<?php echo $row2['startupID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
        
        
         
