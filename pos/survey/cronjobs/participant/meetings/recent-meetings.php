@@ -241,7 +241,7 @@ $content = new SendGrid\Content("text/html", '
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$rowstartup['FirstName'].' '.$rowstartup['LastName'].'</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$rowstartup['Phone'].'</td>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 22px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$rowstartup['Phone'].'</td>
                                                         </tr>
 
                                                         

@@ -212,7 +212,7 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 <?php
 
 
-$result_count = mysqli_query($connecDB,"SELECT userID, COUNT(DISTINCT userID) AS count FROM tbl_participant_meeting_participated WHERE userID = '".$_GET['id']."'");
+$result_count = mysqli_query($connecDB,"SELECT userID,ProjectID, COUNT(DISTINCT ProjectID) AS count FROM tbl_participant_meeting_participated WHERE userID = '".$_GET['id']."'");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 

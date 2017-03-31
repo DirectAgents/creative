@@ -131,6 +131,7 @@ if ( $dtA > $dtB ) {
 <h4>Please confirm that you both met!</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="startupid<?php echo $row2['startupID']; ?>" id="startupid" value="<?php echo $row2['startupID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
@@ -198,6 +199,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
         var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        var startupid = $('input[name=startupid'+<?php echo $row2['startupID']; ?>+']').val();
        
        
         
@@ -218,7 +220,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'userid':userid};
+            post_data = {'projectid':projectid,'userid':userid,'startupid':startupid};
             
             //Ajax post data to server
             $.post('confirmmeeting.php', post_data, function(response){  

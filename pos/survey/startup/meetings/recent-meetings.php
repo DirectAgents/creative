@@ -127,6 +127,7 @@ if ( $dtA > $dtB ) {
 <h4>Please confirm that you both met!</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="startupid<?php echo $row2['startupID']; ?>" id="startupid" value="<?php echo $row2['startupID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
@@ -214,7 +215,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'startupid':startupid};
+            post_data = {'projectid':projectid,'startupid':startupid,'userid':userid};
             
             //Ajax post data to server
             $.post('confirmmeeting.php', post_data, function(response){  
@@ -406,7 +407,7 @@ $row5 = mysqli_fetch_array($sql5);
 
 
 
-if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row5['startup_id'] != $_SESSION['startupSession']){ ?>
+if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row5['startup_id'] != $_SESSION['startupSession']){ ?>
 
 
 
