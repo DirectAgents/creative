@@ -2,7 +2,22 @@
 
 session_start();
 include("../../config.php"); //include config file
-require_once '../../class.startup.php';
+require_once '../../class.participant.php';
+
+
+$participant_home = new PARTICIPANT();
+
+if(!$participant_home->is_logged_in())
+{
+  $participant_home->redirect('../login');
+}
+
+
+$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
 
 ?>
 
@@ -132,8 +147,9 @@ a.verify-badge img#verify-image-payment{display:none !important;}
  <ul>
     <li><a href="#payment-received" class="payment-received">Payment Received</a></li>
     <li>&nbsp;</li>
+    <?php if($row['Payment_Method'] == 'Bank'){ ?>
     <li><a href="#refund-requests" class="refund-requests">Refund Requests</a>
-
+    <?php } ?>
 
  <?php
 
@@ -152,7 +168,9 @@ echo '</div>';
 
     </li>
     <li>&nbsp;</li>
+    <?php if($row['Payment_Method'] == 'Bank'){ ?>
     <li><a href="#bankaccount" class="bankaccount">Bank Account</a></li>
+    <?php } ?>
    
   </ul>  
 

@@ -22,9 +22,9 @@ $row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if($row_participant['Payment_Method'] == 'Cash'){
 
-echo "<h3>You set up to receive payments in cash.</h3>";
-echo "<br><br>";
-echo "<h4>Change to payments to a bank account. <a href='".BASE_PATH."/participant/account/settings'><u>Click here</u></h4>";
+echo "<h3>You will receive payments in cash.</h3>";
+//echo "<br><br>";
+//echo "<h4>Change to payments to a bank account. <a href='".BASE_PATH."/participant/account/settings'><u>Click here</u></h4>";
 
 }else{
 

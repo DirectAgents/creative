@@ -46,7 +46,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if($row['Payment_Method'] == 'Cash'){
 
-echo "<h3>You set up to receive payments in cash.</h3>";
+echo "<h3>You will receive payments in cash.</h3>";
 
 }else{
 

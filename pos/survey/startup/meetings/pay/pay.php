@@ -377,9 +377,17 @@ $content = new SendGrid\Content("text/html", '
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                  <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                You\'ve received a $'.$final_amount.' payment from '.$row['FirstName'].' '.$row['LastName'].'.
+                                        You\'ve received a $'.$final_amount.' payment from '.$row['FirstName'].' '.$row['LastName'].'
                                                 </td>
                                             </tr>
+
+                                            <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                The funds should appear in your bank account in 2-5 business days.
+                                                </td>
+                                            </tr>
+
+                                            
                                             
                                             
                                         </table>

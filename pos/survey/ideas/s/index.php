@@ -997,7 +997,7 @@ echo '</div>';
 if($startup_home->is_logged_in())
 {
 
-if($rowstartupprofile['credit_card_id'] == '') { ?>
+if($rowstartupprofile['credit_card_id'] == '' && $rowparticipant['Payment_Method'] == 'Bank') { ?>
 
 
 <div class="col-lg-11">
@@ -1254,6 +1254,7 @@ if($rowparticipant['profile_image'] != ''){
 
 <div class="col-lg-12" style="padding-right:15px; padding-left:0px">
 
+<?php if($rowparticipant['Payment_Method'] == 'Bank') { ?>
 
 <?php if($rowstartupprofile['credit_card_id'] == '' || $rowstartupprofile['Phone'] == '') { ?>
 
@@ -1264,6 +1265,26 @@ if($rowparticipant['profile_image'] != ''){
     <input type="submit" class="btn-request" value="Request to Meet"/>
 
 <?php } ?>
+
+<?php } ?>
+
+
+<?php if($rowparticipant['Payment_Method'] == 'Cash') { ?>
+
+<?php if($rowstartupprofile['Phone'] == '') { ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
+
+<?php }else{ ?>
+
+    <input type="submit" class="btn-request" value="Request to Meet"/>
+
+<?php } ?>
+
+<?php } ?>
+
+
+
 
     <p>&nbsp;</p>
     <div id="result"></div>
