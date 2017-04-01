@@ -378,8 +378,15 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
                   <div class="status_request">Status: 
 
-                <?php echo $row2['Status']; ?>  
+                <?php if($row2['Status'] == '' && $row2['Met'] != 'Yes' ){ ?>
+                
+                Meeting never happened
+                
+                <?php }else{ ?>
+                
+                <?php echo $row2['Status']; ?>
 
+                <?php } ?>
               <!--
                 <?php if($row2['Status'] == 'Canceled_by_Startup'){echo 'Meeting Canceled By Startup';} ?>
                 <?php if($row2['Status'] == 'Declined_by_Startup'){echo 'Meeting Request Declined By Startup';} ?>

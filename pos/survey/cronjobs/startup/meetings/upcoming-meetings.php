@@ -105,17 +105,7 @@ include("../../../config.php"); //include config file
 
 
 
-$startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup");
-//$rowstartupprofile = mysqli_fetch_array($startup);
 
-
-while($rowstartupprofile = mysqli_fetch_array($startup))
-{ 
-
-$emailnotifications=explode(',',$rowstartupprofile['EmailNotifications']);
-
-
-if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){
 
 
 
@@ -153,10 +143,17 @@ $dtB = new DateTime($row2['Date_of_Meeting']);
 $interval = $dtB->diff($dtA);
 
 
-//send email 2 days before actual meeting
+//send email 1 day before actual meeting
 
 
-if($interval->days == 2) {
+if($interval->days == 1) {
+
+
+
+$emailnotifications=explode(',',$rowstartup['EmailNotifications']);
+
+
+if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){
 
 
   //$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Meeting_Status='Upcoming Meetings'
@@ -170,8 +167,8 @@ if($interval->days == 2) {
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Upcoming Meeting Reminder", "support@valifyit.com");
-$subject = "Upcoming Meeting Reminder";
+$from = new SendGrid\Email("Upcoming Meeting Reminder (Cronjob)", "support@valifyit.com");
+$subject = "Upcoming Meeting Reminder (Cronjob)";
 $to = new SendGrid\Email($rowstartup['FirstName'], $rowstartup['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -493,10 +490,19 @@ echo $response->headers();
 echo $response->body();
 
 
+$Startup_Email_Upcoming_Meeting_Reminder_Sent = 'Yes';
+
+}else{
+
+$Startup_Email_Upcoming_Meeting_Reminder_Sent = '';    
+
+}
+
+
 
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET 
   
-  Startup_Email_Upcoming_Meeting_Reminder_Sent = 'Yes'
+  Startup_Email_Upcoming_Meeting_Reminder_Sent = '".$Startup_Email_Upcoming_Meeting_Reminder_Sent."'
 
   WHERE startupID='".$rowstartup['userID']."' AND ProjectID = '".$row2['ProjectID']."'");
 
@@ -509,9 +515,7 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET
 
 }
 
-}
 
-}
 
 ?>
 

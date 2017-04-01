@@ -105,17 +105,7 @@ include("../../../config.php"); //include config file
 
 
 
-$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant");
-//$rowstartupprofile = mysqli_fetch_array($startup);
 
-
-while($rowparticipantprofile = mysqli_fetch_array($participant))
-{ 
-
-$emailnotifications=explode(',',$rowparticipantprofile['EmailNotifications']);
-
-
-if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){
 
 
 
@@ -153,10 +143,18 @@ $dtB = new DateTime($row2['Date_of_Meeting']);
 $interval = $dtB->diff($dtA);
 
 
-//send email 2 days before actual meeting
+//send email 1 day before actual meeting
 
 
-if($interval->days == 2) {
+if($interval->days == 1) {
+
+
+
+
+$emailnotifications=explode(',',$rowparticipant['EmailNotifications']);
+
+
+if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){    
 
 
   //$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Meeting_Status='Upcoming Meetings'
@@ -170,8 +168,8 @@ if($interval->days == 2) {
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Upcoming Meeting", "support@valifyit.com");
-$subject = "Upcoming Meeting";
+$from = new SendGrid\Email("Upcoming Meeting (Cronjob)", "support@valifyit.com");
+$subject = "Upcoming Meeting (Cronjob)";
 $to = new SendGrid\Email($rowparticipant['FirstName'], $rowparticipant['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -493,10 +491,19 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->body();
 
 
+$Participant_Email_Upcoming_Meeting_Reminder_Sent = 'Yes';
+
+}else{
+
+$Participant_Email_Upcoming_Meeting_Reminder_Sent = '';    
+
+}
+
+
 
  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET 
   
-  Participant_Email_Upcoming_Meeting_Reminder_Sent = 'Yes'
+  Participant_Email_Upcoming_Meeting_Reminder_Sent = '".$Participant_Email_Upcoming_Meeting_Reminder_Sent."'
 
   WHERE userID='".$rowparticipant['userID']."' AND ProjectID = '".$row2['ProjectID']."'");
 
@@ -509,9 +516,6 @@ $response = $sg->client->mail()->send()->post($mail);
 
 }
 
-}
-
-}
 
 
 ?>

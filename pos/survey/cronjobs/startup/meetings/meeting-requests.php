@@ -62,7 +62,7 @@ $the_time = date('h:i:s A');
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived_participant(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Startup_Email_Recent_Meeting_Reminder_Sent ,Date_Posted, Time_Posted) VALUES('".$rowparticipant['userID']."','".$rowstartup['userID']."',
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived_startup(userID, startupID, ProjectID, Status, Viewed_by_Startup, Viewed_by_Participant, Date_of_Meeting, Final_Time, Location, Startup_Email_Recent_Meeting_Reminder_Sent ,Date_Posted, Time_Posted) VALUES('".$rowparticipant['userID']."','".$rowstartup['userID']."',
   '".$row2['ProjectID']."', 'Meeting Never Happened', '".$row2['Viewed_by_Startup']."', '".$row2['Viewed_by_Participant']."', '0000-00-00', '','', '', '".$the_date."','".$the_time."')");
 
 

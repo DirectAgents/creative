@@ -258,7 +258,6 @@ $response = $sg->client->mail()->send()->post($mail);
 <script>try{Typekit.load({ async: false });}catch(e){}</script>
 <html itemscope itemtype="http://schema.org/Product">
 <head>
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
 

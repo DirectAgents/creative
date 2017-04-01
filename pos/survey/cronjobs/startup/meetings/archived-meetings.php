@@ -40,7 +40,7 @@ $dtB = new DateTime($row2['Date_Posted']);
 $interval = $dtA->diff($dtB);
 
 
-//send email 2 days before actual meeting
+//check meeting after 7 days then put to archive
 
 
 if($interval->days >= 7) {
