@@ -796,7 +796,7 @@ $rowstartup= mysqli_fetch_array($startup);
  ?>
 
 
-<div class="col-lg-11" style="padding:0px; margin-bottom:30px;">
+<div class="col-lg-11" style="padding:0px; margin-bottom:0px;">
  <div class="success2">
   You will meet <?php echo $rowstartup['FirstName']; ?> on  <?php echo date('F j, Y',strtotime($rowupcoming['Date_of_Meeting'])); ?> 
 at <?php echo $rowupcoming['Final_Time']; ?><br>
@@ -823,10 +823,10 @@ if($participant_home->is_logged_in())
 if($row['Payment_Method'] == 'Cash') { ?>
 
 
-<div class="col-lg-11">
+<div class="col-lg-11" style="padding:0px; margin-bottom:0px;">
 
 <div class="no-bankaccount-set">  
-  You will receive your payment in cash.
+  You will receive your payment in cash. <br>If meeting is confirmed and you and <?php echo $rowstartupprofile['FirstName']; ?> met, please remind <?php echo $rowstartupprofile['FirstName']; ?> to pay you $<?php echo $rowproject['Pay']; ?> in cash.  
 </div>
 <p>&nbsp;</p>
 

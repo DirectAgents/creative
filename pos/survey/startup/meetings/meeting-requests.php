@@ -801,9 +801,9 @@ $row3 = mysqli_fetch_array($sql3);
 
 
                   <div class="survey-header">
-                    <div class="account-project-name">
-                      Person Name
-                    </div>
+                    <!--<div class="account-project-name">
+                      PERSON NAME
+                    </div>-->
                     <div class="edit-delete">
                       
             

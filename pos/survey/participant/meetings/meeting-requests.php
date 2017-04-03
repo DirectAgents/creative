@@ -384,12 +384,15 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 </div>
 </div>
 
-</div>
+
 
 <!-- End Accept -->
 
 <?php } ?>
 
+
+
+</div>
 
 <!-- Start Decline -->
 
@@ -427,8 +430,8 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
   <div id="result-cancel-<?php echo $row2['ProjectID']; ?>">Successfully Canceled!</div>
   </div>
 <h4>Are you sure you want to cancel the meeting request?</h4>
-<input type="text" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
-<input type="text" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 <div class="popupoverlay-btn">
   <div class="cancel-cancel">
@@ -845,7 +848,6 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
 
 
-
 $ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
 $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
@@ -895,9 +897,9 @@ $row3 = mysqli_fetch_array($sql3);
 
 
                   <div class="survey-header">
-                    <div class="account-project-name">
+                    <!--<div class="account-project-name">
                       Requested By
-                    </div>
+                    </div>-->
                     <div class="edit-delete">
    
             
