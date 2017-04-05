@@ -145,7 +145,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '
 
 //Limit our results within a specified range. 
 
-$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$_GET['id']."') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC LIMIT $position, $item_per_page");
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$_GET['id']."') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC LIMIT $position, $item_per_page");
 
 
 

@@ -342,7 +342,7 @@ $row3 = mysqli_fetch_array($sql3);
                           <?php echo $row2['Location']; ?>
                         </span>
                       </div>
-                      <a href="http://maps.google.com/?q=<?php echo $row2['Location']; ?>" target="_blank">View Map</a>
+                      <a href="http://maps.google.com/?q=<?php echo $row2['Location']; ?>" target="_blank" class="viewmap">View Map</a>
                     </div>
                  
                     <div class="clearer"></div>
