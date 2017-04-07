@@ -498,12 +498,14 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
         var selected_meeting = $('input[name="selected_meeting[]"]:checked').map(function () {return this.value;}).get().join(",");
 
+        
+
 
         var selected_meeting_checkedstatus = $('input[name="selected_meeting[]"]:checked').size();
 
         //alert(userid);
         
-        if(selected_meeting_checkedstatus <1 ){ 
+        if(selected_meeting_checkedstatus <1){ 
           $(".result-no-date").show();
           proceed = false;
          }else{
@@ -511,6 +513,8 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
                 //proceed = true; //set do not proceed flag       
         };
           
+
+        //alert(selected_meeting);  
    
       
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();

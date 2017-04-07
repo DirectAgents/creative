@@ -28,10 +28,9 @@ $the_time = date('h:i:s A');
 
 
 
-if($_POST['selected_meeting'] = 'option_one'){ $date_of_meeting  = $row['Date_Option_One']; $time = $row['Time_Option_One']; }
-if($_POST['selected_meeting'] = 'option_two'){ $date_of_meeting  = $row['Date_Option_Two']; $time = $row['Time_Option_Two']; }
-if($_POST['selected_meeting'] = 'option_three'){ $date_of_meeting  = $row['Date_Option_Three']; $time = $row['Time_Option_Three']; }
-
+if($_POST['selected_meeting'] == 'option_one'){ $date_of_meeting  = $row['Date_Option_One']; $time = $row['Time_Option_One']; }
+if($_POST['selected_meeting'] == 'option_two'){ $date_of_meeting  = $row['Date_Option_Two']; $time = $row['Time_Option_Two']; }
+if($_POST['selected_meeting'] == 'option_three'){ $date_of_meeting  = $row['Date_Option_Three']; $time = $row['Time_Option_Three']; }
 
 
 

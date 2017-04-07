@@ -160,9 +160,10 @@ if($rowprojectimage['profile_image'] != '') { ?>
 <?php
 
 $sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'");
-//$result3=mysql_query($sql3);
-
 $row3 = mysqli_fetch_array($sql3);
+
+$sqlparticipant=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."'");
+$rowparticipant = mysqli_fetch_array($sqlparticipant);
 
 ?>
 
@@ -387,27 +388,23 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
                   <div class="theline"></div>
 
                   <div class="status_request">Status: 
-
-                    <?php if($row2['Payment'] == 'Yes'){ ?>
-                   
-                    Payment received.
-                   
-                    <?php }else{ ?>
-                   
-                   <?php echo $row2['Status']; ?>
-
-                   <?php } ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
+Waiting for Payment pending.</a> 
+<?php } ?> 
 
 
-                <?php if($row2['Status'] == '' && $row2['Met'] != 'Yes' ){ ?>
-                
-                Meeting never happened
-                
-                <?php }else{ ?>
-                
-                <?php echo $row2['Status']; ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
+Payment received. View <a href="<?php echo BASE_PATH; ?>/startup/payment/">Payment History</a>
+<?php } ?> 
 
-                <?php } ?>
+
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Cash'){ ?>
+You met with <?php echo $row3['FirstName']; ?>.
+<?php } ?> 
+
+<?php if($row2['Met'] == '' && $row2['Status'] != '' && $row2['Payment'] == ''){ ?>
+Meeting never happened.
+<?php } ?> 
                <!--   
 
                 <?php if($row2['Status'] == 'Canceled_by_Startup'){echo 'Meeting Canceled By Startup';} ?>

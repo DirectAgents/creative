@@ -33,14 +33,14 @@ date_default_timezone_set('America/New_York');
 $date = date('Y-m-d');
 
 $dtA = new DateTime($date);
-$dtB = new DateTime($row2['Date_Posted']);
+$dtB = new DateTime($row2['Date_of_Meeting']);
 
 
 
 $interval = $dtA->diff($dtB);
 
 
-//check meeting after 7 days then put to archive
+//check meeting after 7 days passed then put to archived meetings
 
 
 if($interval->days >= 7) {

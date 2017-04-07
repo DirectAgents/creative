@@ -400,15 +400,22 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
  -->
                 
                
-<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == ''){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Bank'){ ?>
 Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
 <?php } ?> 
 
-<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes' && $row3['Payment_Method'] == 'Bank'){ ?>
 Payment sent. View <a href="<?php echo BASE_PATH; ?>/startup/payment/">Payment History</a>
 <?php } ?> 
 
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Cash'){ ?>
+You met with <?php echo $row3['FirstName']; ?>.
+<?php } ?> 
 
+
+<?php if($row2['Met'] == '' && $row2['Status'] != '' && $row2['Payment'] == ''){ ?>
+Meeting never happened.
+<?php } ?> 
 
 
                   </div>

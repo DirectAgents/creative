@@ -393,7 +393,7 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="survey-header">
                     <div class="account-project-name">
-                      Person Name
+                      You met with
                     </div>
                     <div class="edit-delete">
 
@@ -427,7 +427,7 @@ if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Status'] != 'No sho
                  <?php } ?>
 
 
-                 <?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == ''){ ?>
+                 <?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Bank'){ ?>
 <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>" class="accept-btn">Send Payment</a> 
 <?php } ?> 
 
@@ -478,12 +478,17 @@ if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Status'] != 'No sho
                    <div class="theline"></div>
 
                   <div class="status_request">Status: 
-<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == ''){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Bank'){ ?>
 Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
 <?php } ?> 
 
-<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == 'Yes'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == 'Yes' && $row3['Payment_Method'] == 'Bank'){ ?>
 Payment sent.
+<?php } ?> 
+
+
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Cash'){ ?>
+You met with <?php echo $row3['FirstName']; ?>.
 <?php } ?> 
 
 

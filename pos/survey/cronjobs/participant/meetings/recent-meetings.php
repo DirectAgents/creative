@@ -376,7 +376,7 @@ $content = new SendGrid\Content("text/html", '
                               </tr>
                               <tr>
                                
-                    <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowstartup['FirstName'].', please allow 2-5 business days to receive your payment. If you haven\'t received your payment by then, please get in touch with us.</td>
+                    <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowstartup['FirstName'].', please allow 2-5 business days to receive your payment. If you haven\'t received your payment by then, please get in touch with us at <a href="mailto:support@valifyit.com">support@valifyit.com</a></td>
                 </tr>
    <tr>
      <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/participant/meetings/" style="font-weight: normal; color: #ffffff;">Confirm You Met</a></td>
@@ -719,7 +719,7 @@ $content = new SendGrid\Content("text/html", '
                               </tr>
                               <tr>
                                
-                    <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowstartup['FirstName'].', and didn\'t receice your payment, please get in touch with us.</td>
+                    <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowstartup['FirstName'].', and didn\'t receice your payment, please get in touch with us at <a href="mailto:support@valifyit.com">support@valifyit.com</a></td>
                 </tr>
    <tr>
      <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/participant/meetings/" style="font-weight: normal; color: #ffffff;">Confirm You Met</a></td>

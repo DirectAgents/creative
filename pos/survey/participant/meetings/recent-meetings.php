@@ -378,6 +378,11 @@ $sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2[
 $row3 = mysqli_fetch_array($sql3);
 
 
+$sqlparticipant=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."'");
+
+$rowparticipant = mysqli_fetch_array($sqlparticipant);
+
+
 
 
 
@@ -392,7 +397,7 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="survey-header">
                     <div class="account-project-name">
-                      Person Name
+                     You met with
                     </div>
                     <div class="edit-delete">
 
@@ -451,12 +456,17 @@ if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happ
                   <div class="theline"></div>
 
                   <div class="status_request">Status: 
-<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == ''){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
 Waiting to receive payment
 <?php } ?> 
 
-<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == 'Yes'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == 'Yes' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
 Payment received.
+<?php } ?> 
+
+
+<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Cash'){ ?>
+You met with <?php echo $row3['FirstName']; ?>.
 <?php } ?> 
 
 
