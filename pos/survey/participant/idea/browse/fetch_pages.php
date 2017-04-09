@@ -88,6 +88,8 @@ $Diet = str_replace(",","|",$row['Diet']);
 $Religion = str_replace(",","|",$row['Religion']);
 $Education = str_replace(",","|",$row['Education']);
 $Job = str_replace(",","|",$row['Job']);
+$Interest = str_replace(",","|",$row['Interest']);
+$Languages = str_replace(",","|",$row['Languages']);
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
@@ -192,12 +194,25 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]
 }
 
 
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+}else{
+  $interest = '';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+}else{
+  $languages = '';
+}
 
 
 
-$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$row['ProjectID']."') AND userID='".$_SESSION['participantSession']."' $theage $thegender $theheight
-	$thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob
-  ");
+
+
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$row['ProjectID']."') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC LIMIT $position, $item_per_page");
+
+
 
 
 

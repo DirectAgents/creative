@@ -348,10 +348,21 @@ $row3 = mysqli_fetch_array($sql3);
                     <div class="clearer"></div>
                   </div>
 
+                  <div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
+Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"><?php echo $row4['Name']; ?></a>
+ </div>
+
                   <div class="theline"></div>
 
                   
                   <div class="survey-actions">
+
+                  <div class="status_request">
+
+                 <!--Please stay in touch with <?php echo $row3['FirstName']; ?> before you both meet-->
+
+
+                  </div>
                   
                       
                   <div class="action" tabindex="0" aria-hidden="false">

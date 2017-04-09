@@ -475,6 +475,10 @@ if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Status'] != 'No sho
                     <div class="clearer"></div>
                   </div>
 
+                   <div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
+Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"><?php echo $row4['Name']; ?></a>
+ </div>
+
                    <div class="theline"></div>
 
                   <div class="status_request">Status: 

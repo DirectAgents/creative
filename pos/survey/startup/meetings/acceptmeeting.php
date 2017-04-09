@@ -969,7 +969,7 @@ $content = new SendGrid\Content("text/html", '
                               </tr>
 
                                <tr>
-                                <td align="left" valign="top" style="padding: 0 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;">After your meeting, you are required to pay '.$row5['FirstName'].' $'.$rowproject['Pay'].' in cash. </td>
+                                <td align="left" valign="top" style="padding: 0 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;">After your meeting, please don\'t forget to pay '.$row5['FirstName'].' $'.$rowproject['Pay'].' in cash. </td>
                               </tr>
 
 
