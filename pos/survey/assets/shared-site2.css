@@ -75,7 +75,7 @@ html.tablet .block, html.tablet .inner-col {
 	width: 748px
 }
 }
-@media screen and (max-width:479px) {
+@media screen and (max-width:679px) {
 
 header#main-header.transparent div.inner-col{
 	padding-left:15px;
@@ -719,7 +719,7 @@ background-image:url("../img/navigation/mobile/nav@2x.png");
 background-size:23px 20px
 }
 }
-@media screen and (max-width:479px) {
+@media screen and (max-width:679px) {
 
 
 .nav-profile-photo{display:none;}
@@ -921,7 +921,7 @@ footer#main-footer {
 	color: #b0bfc7;
 	font-size: 1.2em
 }
-@media screen and (max-width:479px) {
+@media screen and (max-width:679px) {
 
 
 
@@ -1001,7 +1001,7 @@ footer#main-footer ul {
 	margin: 0;
 	padding: 0
 }
-@media screen and (max-width:479px) {
+@media screen and (max-width:679px) {
 footer#main-footer ul {
 	display: block;
 	margin-top: 1em;
@@ -1015,7 +1015,7 @@ footer#main-footer ul li {
 	margin: 0 10px 0 0;
 	display: inline
 }
-@media screen and (max-width:479px) {
+@media screen and (max-width:679px) {
 footer#main-footer ul li {
 	margin: 0 5px 0 0;
 	opacity: .5;
@@ -1034,7 +1034,7 @@ footer#main-footer div.country-selector {
 	padding-right: 13px;
 	margin-right: 10px
 }
-@media screen and (max-width:479px) {
+@media screen and (max-width:679px) {
 footer#main-footer div.country-selector {
 	border: 0
 }
@@ -1186,7 +1186,7 @@ footer#main-footer p {
 	margin: 0;
 	font-size: 1em
 }
-@media screen and (max-width:479px) {
+@media screen and (max-width:679px) {
 footer#main-footer p {
 	display: none
 }

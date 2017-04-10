@@ -7,7 +7,7 @@ $(document).ready(function() {
 		var pswd = $(this).val();
 		
 		//validate the length
-		if ( pswd.length < 3 ) {
+		if ( pswd.length < 8 ) {
 			$('#length').removeClass('valid').addClass('invalid');
 		} else {
 			$('#length').removeClass('invalid').addClass('valid');
@@ -28,14 +28,15 @@ $(document).ready(function() {
 		}*/
 		
 		//validate number
-		/*if ( pswd.match(/\d/) ) {
+		if ( pswd.match(/\d/) ) {
 			$('#number').removeClass('invalid').addClass('valid');
 		} else {
 			$('#number').removeClass('valid').addClass('invalid');
-		}*/
+		}
 
-		//if ( pswd.length > 3 && pswd.match(/[A-z]/) && pswd.match(/\d/) ) {
-		if ( pswd.length > 3 && pswd.match(/[A-z]/)) {
+		//if ( pswd.length > 8 && pswd.match(/[A-z]/) && pswd.match(/[A-Z]/) && pswd.match(/\d/) ) {
+		if ( pswd.length > 8 && pswd.match(/[A-z]/) && pswd.match(/\d/) ) {
+
 			//alert("asdfasdf");
 
 			$("#passwordpass").val('good');
