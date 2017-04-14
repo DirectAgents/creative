@@ -405,7 +405,7 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
                   
 
 
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?> (  <a href="#" alt="<?php if($row2['ProjectStatus'] == 'Public'){ ?>This project is set to Public. <?php } ?><?php if($row2['ProjectStatus'] == 'Private'){ ?>This project is set to Private. <?php } ?>" class="tooltiptext"><i class="icon <?php if($row2['ProjectStatus'] == 'Public'){ ?>icon-unlocked<?php } ?> <?php if($row2['ProjectStatus'] == 'Private'){ ?>icon-lock <?php } ?>"></i></a>)</div>
+                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?> (  <a href="#" alt="<?php if($row2['ProjectStatus'] == 'Public'){ ?>This project is set to Public. This is visible to everyone. <?php } ?><?php if($row2['ProjectStatus'] == 'Private'){ ?>This project is set to Private. Only you and people you invite to meet with can see it. <?php } ?>" class="tooltiptext"><i class="icon <?php if($row2['ProjectStatus'] == 'Public'){ ?>icon-unlocked<?php } ?> <?php if($row2['ProjectStatus'] == 'Private'){ ?>icon-lock <?php } ?>"></i></a>)</div>
                   <div class="survey-metadata">
                     <div class="item ">
                       <div class="label">Created:</div>

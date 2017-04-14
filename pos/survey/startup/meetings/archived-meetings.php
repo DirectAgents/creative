@@ -177,10 +177,19 @@ $row3 = mysqli_fetch_array($sql3);
                       
             
    
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Bank'){ ?>
+<a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>" class="accept-btn">Send Payment</a> 
+<?php } ?>
 
+
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'yes' && $row3['Payment_Method'] == 'Bank'){ ?>
 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
                  <i class="icon-trash"></i><a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Delete</strong></a>
                  </div>
+<?php } ?>
+
+
+
                
 
 

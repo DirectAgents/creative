@@ -748,7 +748,7 @@ jq(document).ready(function(){
 </div>
 
 <div class="file-upload">
-  <form id="imageform" method="post" enctype="multipart/form-data" action='ajaximage.php'>
+  <form id="imageform" method="post" enctype="multipart/form-data" action='ajaximage.php?projectid=<?php echo $_SESSION['projectid']; ?>'>
 Update your image <input type="file" name="photoimg" id="photoimg" />
 </form>
   </div>

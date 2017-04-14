@@ -1635,7 +1635,7 @@ $ctop = explode(',',$ctop);
 
 
 
-if($row2['Interest'] != '' ){
+if($row2['Interest'] != '' && $row2['Interest'] != 'NULL' ){
 
 
 
@@ -1736,7 +1736,7 @@ $row2 = mysqli_fetch_array($Result);
 $ctop_language = $row2['Languages']; 
 $ctop_language = explode(',',$ctop_language); 
 
-if($row2['Languages'] != '' ){
+if($row2['Languages'] != '' && $row2['Languages'] != 'NULL' ){
 
 foreach($ctop_language as $language)  
 { 

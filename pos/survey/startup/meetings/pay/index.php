@@ -29,15 +29,10 @@ if(!$startup_home->is_logged_in())
 
 
 
-$get_total_rows = 0;
-$results = $mysqli->query("SELECT COUNT(*) FROM tbl_startup_project");
-if($results){
-$get_total_rows = $results->fetch_row(); 
-}
+$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' ");
+$row4 = mysqli_fetch_array($sql4);
 
 
-//break total records into pages
-$total_pages = ceil($get_total_rows[0]/$item_per_page); 
 
 
 $stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
@@ -46,7 +41,21 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 $sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' AND userID = '".$_GET['p']."' ");
+
+
+if(mysqli_num_rows($sql2) == 1)
+{
 $row2 = mysqli_fetch_array($sql2);
+}
+
+
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_startup  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' AND userID = '".$_GET['p']."' ");
+
+
+if(mysqli_num_rows($sql3) == 1)
+{
+$row2 = mysqli_fetch_array($sql3);
+}
 
 
 
@@ -251,18 +260,24 @@ Add a credit card to make a payment.
          Payment
         </h2>
 
+        <fieldset>
+          <span class="input">
+            <label for="firstname">About Idea</label>
+           
+      <input type="text" name="date" id="date" value="<?php echo $row4['Name']; ?>" disabled>
+
+          </span>
+
+          </span>
+        </fieldset>
+
 
         <fieldset>
           <span class="input">
             <label for="firstname">Date of meeting</label>
            
-  
-             
       <input type="text" name="date" id="date" value="<?php echo date('F j, Y',strtotime($row2['Date_of_Meeting'])); ?> @ <?php echo $row2['Final_Time'];  ?>" disabled>
 
- 
-               
-           
           </span>
 
           </span>
@@ -287,8 +302,7 @@ Add a credit card to make a payment.
 
 
 <?php
-$sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$_GET['id']."' AND startupID = '".$_SESSION['startupSession']."' ");
-$row4 = mysqli_fetch_array($sql4);
+
 
 
 $fee = ($row4['Pay']) * (2.9 / 100) + 0.30;

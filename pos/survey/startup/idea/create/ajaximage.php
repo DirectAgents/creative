@@ -36,9 +36,9 @@ if(mysqli_num_rows($sql2)>0)
   
  
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET project_image='$actual_image_name'
-  WHERE startupID='".$_SESSION['startupSession']."'");
+  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID='".$_SESSION['projectid']."'");
   
-  echo "<img src='../../../ideas/uploads/".$actual_image_name."'  class='preview'>";
+  echo "<img src='".BASE_PATH."/ideas/uploads/".$actual_image_name."'  class='preview'>";
  
 	}
 									
