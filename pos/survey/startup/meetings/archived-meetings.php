@@ -362,18 +362,33 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
                     </div>
 
 
-                    <div class="item date">
-                      <div class="label">Location:</div>
+                    <div class="item">
+                      <div class="label">Duration</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row4['Minutes']; ?> minutes </div>
+                    </div>
+
+                    <div class="item">
+                      <div class="label">Payout</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">$<?php echo $row4['Pay']; ?></div>
+                    </div>
+                 
+                    <div class="clearer"></div>
+                  </div>
+
+
+<div class="survey-metadata">
+<div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
+
+                      <div class="label">Location</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
                           <?php echo $row2['Location']; ?>
                         </span>
                       </div>
-                       <a href="http://maps.google.com/?q=<?php echo $row2['Location']; ?>" target="_blank" class="viewmap">View Map</a>
+                      <a href="http://maps.google.com/?q=<?php echo $row2['Location']; ?>" target="_blank" class="viewmap">View Map</a>
                     </div>
-                 
-                    <div class="clearer"></div>
-                  </div>
+</div>
+
 
 <div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
 Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"><?php echo $row4['Name']; ?></a>
@@ -410,13 +425,25 @@ You met with <?php echo $row3['FirstName']; ?>.
 <?php } ?> 
 
 
-<?php if($row2['Met'] == '' && $row2['Status'] != '' && $row2['Payment'] == ''){ ?>
+<?php if($row2['Met'] == '' && $row2['Status'] != '' && $row2['Status'] != 'Meeting Canceled by Startup' && $row2['Status'] != 'Meeting Canceled by Participant' && $row2['Payment'] == ''){ ?>
 Meeting never happened.
 <?php } ?> 
 
-<?php if($row2['Met'] == '' && $row2['Status'] == '' && $row2['Payment'] == ''){ ?>
+<?php if($row2['Met'] == '' && $row2['Status'] == '' && $row2['Status'] != 'Meeting Canceled by Startup' && $row2['Status'] != 'Meeting Canceled by Participant' && $row2['Payment'] == ''){ ?>
 Meeting never happened.
 <?php } ?> 
+
+
+<?php if($row2['Met'] == '' && $row2['Status'] == 'Meeting Canceled by Startup' && $row2['Payment'] == ''){ ?>
+Meeting was canceled.
+<?php } ?> 
+
+<?php if($row2['Met'] == '' && $row2['Status'] == 'Meeting Canceled by Participant' && $row2['Payment'] == ''){ ?>
+Meeting was canceled.
+<?php } ?> 
+
+
+
 
 
                   </div>

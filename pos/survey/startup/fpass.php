@@ -42,9 +42,9 @@ if(isset($_POST['btn-submit']))
 require '../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Password Recovery", "no-reply@valifyit.com");
+$from = new SendGrid\Email("Password Recovery", "support@valifyit.com");
 $subject = "Password Recovery";
-$to = new SendGrid\Email('franz', $email);
+$to = new SendGrid\Email($row['FirstName'], $email);
 $content = new SendGrid\Content("text/html", '
          
 <body style="margin: 0 !important; padding: 0 !important;">
@@ -110,9 +110,16 @@ $content = new SendGrid\Content("text/html", '
                                                 Reset your Valify password
                                                 </td>
                                             </tr>
+
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                &nbsp;
+                                                
+                                                </td>
+                                            </tr>
                                             
                                              <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
                                                 You are receiving this message because you have a Valify account.
                                                 
                                                 </td>
@@ -141,7 +148,7 @@ $content = new SendGrid\Content("text/html", '
                                               <tr>
                                                 <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
                                                 
-                                                 <a href="http://valifyit.com/startup/resetpass.php?id='.$id.'&code='.$code.'">
+                                                 <a href="'.BASE_PATH.'/startup/resetpass.php?id='.$id.'&code='.$code.'">
                                                 <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
                                                 <img alt="Logo" src="http://valifyit.com/images/email/reset-password.png" width="219" height="15" style="display: block; border="0">
                                                 </div>
@@ -223,7 +230,7 @@ $content = new SendGrid\Content("text/html", '
 
                       <tr>
                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> | <a href="http://valifyit.com/benefits/" target="_blank" style="color: #666666; text-decoration: none;">Benefits</a> </td>
+                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
                        
                         
  

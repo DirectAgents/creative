@@ -624,6 +624,13 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
                       </div>
                     </div>
 
+                     <div class="item date">
+                   
+                      <div class="value">
+                      &nbsp;
+                      </div>
+                    </div>
+
                     <div class="item date">
                      
                        <div class="btn-browse">

@@ -4,7 +4,7 @@ session_start();
 include("../../config.php"); //include config file
 
 
-
+require_once '../../base_path.php';
 
 
 
@@ -51,6 +51,9 @@ $date_option_three = '0000-00-00';
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_request(userID, startupID, ProjectID, Meeting_Status, Date_Option_One,Date_Option_Two,Date_Option_Three, Time_Option_One,Time_Option_Two,Time_Option_Three, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
 VALUES('".$_POST['participantid']."','".$_SESSION['startupSession']."', '".$_POST['projectid']."', 'Meeting Request' , '".$date_option_one."','".$date_option_two."','".$date_option_three."', '".$_POST['time_suggested_one']."','".$_POST['time_suggested_two']."','".$_POST['time_suggested_three']."', '".$_POST['location']."' , 'Pending', 'Waiting for Participant to Accept or Decline', 'Startup' , '".$the_date."','".$the_time."')");
 
+
+$sqlproject = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_POST['projectid']."' ");
+$rowproject = mysqli_fetch_array($sqlproject);
 
 
 $sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_POST['participantid']."'");
@@ -119,9 +122,7 @@ $content = new SendGrid\Content("text/html", '
             <![endif]-->
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#fff; padding:20px; border:1px solid #f0f0f0; max-width: 600px;" class="responsive-table">
                 <!-- TITLE -->
-                <tr>
-                    <td align="center" style="padding: 0 0 10px 0; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Meeting Request</td>
-                </tr>
+             
                 <tr>
                   <td align="center" height="100%" valign="top" width="100%" colspan="2">
                         <!--[if (gte mso 9)|(IE)]>
@@ -141,7 +142,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/person.jpg" alt="who" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height: 74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/person.jpg" alt="who" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height: 55px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -159,10 +160,10 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                        <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row4['FirstName'].' '.$row4['LastName'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row4['FirstName'].' '.$row4['LastName'].'</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 22px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #333333;" class="padding">'.$row4['Phone'].'</td>
+                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 18px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #333333;" class="padding">'.$row4['Phone'].'</td>
                                                         </tr>
                                                       
 
@@ -197,7 +198,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/calendar.jpg" alt="when" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/calendar.jpg" alt="when" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -215,23 +216,23 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Meeting Date Options</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Meeting Date Options</td>
                                                         </tr>
 
                                                          <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;</td>
                                                         </tr>
 
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_one)).' @ '.$_POST['time_suggested_one'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_one)).' @ '.$_POST['time_suggested_one'].'</td>
 
                                                         </tr>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_two)).' @ '.$_POST['time_suggested_two'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_two)).' @ '.$_POST['time_suggested_two'].'</td>
                                                         </tr>
 
                                                          <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_three)).' @ '.$_POST['time_suggested_three'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_three)).' @ '.$_POST['time_suggested_three'].'</td>
                                                         </tr>
                                                       
 
@@ -264,7 +265,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/location.jpg" alt="where" width="80" height="74" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 80px; height:74px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/location.jpg" alt="where" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -282,12 +283,9 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$_POST['location'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$_POST['location'].'</td>
                                                         </tr>
-                                                        <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">
-                                                             &nbsp;</td>
-                                                        </tr>
+                                                       
                                                       
 
                                                     </tbody></table>
@@ -303,15 +301,157 @@ $content = new SendGrid\Content("text/html", '
                                 </td>
                             </tr>
 
-                            <tr>
-                               
-                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/survey/participant/meetings/" style="font-weight: normal; color: #ffffff;">Accept To Meet</a></td>
-                </tr>
+                           
 
 
 
 
                         </tbody></table>
+
+
+
+                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tbody><tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
+                                            <tbody><tr>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/lightbulb.jpg" alt="idea" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td align="left" valign="top" width="385">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody><tr>
+
+                                                <td style="padding: 40px 0 0 0;" class="no-padding">
+                                                    <!-- ARTICLE -->
+                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">To provide feedback for:</td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                            <a href="'.BASE_PATH.'/ideas/p/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
+                                                 
+                                                        </tr>
+                                                        
+
+                                                        
+                                                      
+
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+
+                         
+
+
+                        </tbody></table>
+
+
+
+
+
+
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tbody><tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
+                                            <tbody><tr>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/money.jpg" alt="idea" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td align="left" valign="top" width="385">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:385px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody><tr>
+
+                                                <td style="padding: 40px 0 0 0;" class="no-padding">
+                                                    <!-- ARTICLE -->
+                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                        <tbody>
+                                                        
+                                                         <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Duration: '.$rowproject['Minutes'].' minutes</td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Payout: $'.$rowproject['Pay'].'</td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;</td>
+                                                        </tr>
+
+                                                         <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;</td>
+                                                        </tr>
+
+                                                        
+
+                                                        
+                                                      
+
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+
+                             <tr>
+                               
+                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/participant/meetings/" style="font-weight: normal; color: #ffffff;">Accept To Meet</a></td>
+                </tr>
+
+
+                        </tbody></table>
+
+
+
+
 
 
                         <!--[if (gte mso 9)|(IE)]>

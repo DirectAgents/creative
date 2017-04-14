@@ -324,19 +324,37 @@ $row3 = mysqli_fetch_array($sql3);
                 <div class="survey-name" ng-bind="(survey.name)">Phone.: <?php echo $row3['Phone']; ?></div>
                   <div class="survey-metadata">
                     <div class="item">
-                      <div class="label">Date of Meeting:</div>
+                      <div class="label">Date of Meeting</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                       <?php echo date('F j, Y',strtotime($row2['Date_of_Meeting'])); ?></div>
                     </div>
 
                     <div class="item">
-                      <div class="label">Time:</div>
+                      <div class="label">Time</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row2['Final_Time']; ?> </div>
                     </div>
 
+                      <div class="item">
+                      <div class="label">Duration</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row4['Minutes']; ?> minutes </div>
+                    </div>
 
-                    <div class="item date">
-                      <div class="label">Location:</div>
+                    <div class="item">
+                      <div class="label">Payout</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">$<?php echo $row4['Pay']; ?></div>
+                    </div>
+
+
+                  
+                 
+                    <div class="clearer"></div>
+                  </div>
+
+
+<div class="survey-metadata">
+<div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
+
+                      <div class="label">Location</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
                           <?php echo $row2['Location']; ?>
@@ -344,9 +362,7 @@ $row3 = mysqli_fetch_array($sql3);
                       </div>
                       <a href="http://maps.google.com/?q=<?php echo $row2['Location']; ?>" target="_blank" class="viewmap">View Map</a>
                     </div>
-                 
-                    <div class="clearer"></div>
-                  </div>
+</div>
 
                   <div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
 Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"><?php echo $row4['Name']; ?></a>

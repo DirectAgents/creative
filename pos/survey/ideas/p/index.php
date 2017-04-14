@@ -823,7 +823,7 @@ if($participant_home->is_logged_in())
 if($row['Payment_Method'] == 'Cash') { ?>
 
 
-<div class="col-lg-11" style="padding:0px; margin-bottom:0px;">
+<div class="col-lg-11" style="padding-left:15px; margin-bottom:0px;">
 
 <div class="no-bankaccount-set">  
   You will receive your payment in cash. <br>If meeting is confirmed and you and <?php echo $rowstartupprofile['FirstName']; ?> met, please remind <?php echo $rowstartupprofile['FirstName']; ?> to pay you $<?php echo $rowproject['Pay']; ?> in cash.  

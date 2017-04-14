@@ -419,6 +419,17 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
                         </span>
                       </div>
                     </div>
+
+
+                     <div class="item date">
+                     
+                      <div class="value">
+                      &nbsp;
+                      </div>
+                    </div>
+
+
+
                     <div class="item date">
                       <div class="label">People Participate:</div>
                       <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
@@ -434,10 +445,15 @@ if($count > 0 ){
 echo "<a href=".BASE_PATH."/startup/idea/browse/participants/?id=".$row2['ProjectID'].">";
 echo $count;
 echo "</a>";
+echo "&nbsp;&nbsp;";
+echo "<a href=".BASE_PATH."/startup/idea/browse/participants/?id=".$row2['ProjectID'].">";
+echo "(view participants)";
+echo "</a>";
 }else{
   echo "0";
 }
 ?>
+
 
 
                       </div>
