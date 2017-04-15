@@ -215,7 +215,7 @@ if($row['profile_image'] != ''){
 
         <th>Rating</th>
     
-     <th>Comments</th>
+     <th>Reviews</th>
       </tr>
     </thead>
     <tbody>
