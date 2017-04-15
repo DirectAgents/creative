@@ -181,7 +181,7 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
          <td style="text-align:left">$<?php echo $row2['service_fee']; ?></td>
           <td style="text-align:left">$<?php echo $row2['checkout_find_amount'] + $row2['fees'] + $row2['service_fee'] ; ?></td>
         
-        <td style="text-align:left">
+        <td style="text-align:left" valign="middle">
 
 <?php if($row2['refundrequest'] != 'yes' && $row2['refunded'] != 'yes') { ?>
         <a href="request-refund?id=<?php echo $row2['id']; ?>" class="request-refund">Request Refund</a>
