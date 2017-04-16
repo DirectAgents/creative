@@ -535,9 +535,9 @@ if($rowsql>0)
 
 
 
-  echo '<div class="therowtitle">
+  echo '
 
-<div class="col-lg-12">';
+<div class="col-lg-11">';
 
 
 
@@ -549,6 +549,14 @@ $listproject = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE P
 //get all records from add_delete_record table
 while($row2 = mysqli_fetch_array($listproject))
 { 
+
+
+$sqlparticipated = mysqli_query($connecDB,"SELECT * FROM tbl_participant_meeting_participated WHERE ProjectID = '".$row2['ProjectID']."' 
+AND userID = '".$_GET['id']."' ");
+$rowparticipated=mysqli_fetch_array($sqlparticipated);
+
+
+if(mysqli_num_rows($sqlparticipated) == 0) {
 
 
 $posts = 0;
@@ -674,8 +682,6 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
 </div>
 
 
-      </div>
-
 </div>
 
 
@@ -684,6 +690,9 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
 
 
 //echo $row2['id'];
+
+
+}
 
 
 }
@@ -749,8 +758,8 @@ echo '<div class="row">
 
 
 
+<p>&nbsp;</p>
 
-<div class="therowtitle">
     <div class="col-lg-12">
    <div class="thetitle">About <?php echo $row['FirstName']; ?></div>
  </div>
@@ -882,7 +891,7 @@ echo $languages;
 
     
 
-                 
+           </div></div></div>      
 
 
             
@@ -893,7 +902,9 @@ echo $languages;
     
 
   
-
+ <!--Footer-->
+<?php include("../../footer.php"); ?>
+<!--Footer-->  
       
 
     </div>
@@ -902,9 +913,7 @@ echo $languages;
 
   </div>
 
-   <!--Footer-->
-<?php include("../../footer.php"); ?>
-<!--Footer-->
+
 
   </div>
 

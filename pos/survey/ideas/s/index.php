@@ -85,6 +85,11 @@ $sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_startu
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sqlarchived);
 
+
+$sqlparticipated = mysqli_query($connecDB,"SELECT * FROM tbl_participant_meeting_participated WHERE ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."'");
+//$result=mysql_query($sql);
+$rowparticipated=mysqli_fetch_array($sqlparticipated);
+
 }
 
 
@@ -625,7 +630,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 <?php if(isset($_GET['p'])){ ?>
 
 <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
-  && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
+  && mysqli_num_rows($sqlparticipated) == 0 && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
 
 <div class="col-lg-3">
   <div class="btn-setup-a-meeting">
@@ -972,7 +977,7 @@ echo '</div>';
 
 
   <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
-  && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
+    && mysqli_num_rows($sqlparticipated) == 0 && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
 
 
 <input id="participantid" name="participantid" type="hidden" value="<?php echo $_GET['p']; ?>">
