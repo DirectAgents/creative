@@ -138,7 +138,7 @@ if(in_array('Participant requests to meet you',$emailnotifications)){
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Meeting Request at Valify", $row2['userEmail']);
+$from = new SendGrid\Email("Meeting Request at Valify", 'support@valifyit.com');
 $subject = "Meeting Request";
 $to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
