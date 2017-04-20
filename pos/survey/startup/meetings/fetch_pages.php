@@ -328,7 +328,7 @@ echo '</div>';
 ?>
 
     </li>
-    <li>&nbsp;</li>
+    
     <li><a href="#upcoming-meetings" class="upcoming-meetings">Upcoming Meetings</a>
 
  <?php
@@ -346,7 +346,7 @@ echo '</div>';
 
 
     </li>
-    <li>&nbsp;</li>
+    
     <li><a href="#recent-meetings" class="recent-meetings">Recent Meetings</a>
 
  <?php
@@ -365,7 +365,7 @@ echo '</div>';
 
 
     </li>
-    <li>&nbsp;</li>
+    
     <li><a href="#archived-meetings" class="archived-meetings">Archived Meetings</a>
 
 

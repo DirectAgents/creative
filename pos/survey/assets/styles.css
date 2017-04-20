@@ -4615,6 +4615,40 @@ float:left;
 
   @media screen and (max-width: 600px) {
 
+.ui-tabs .ui-tabs-nav li{
+      list-style: none;
+    float: left;
+    position: relative;
+    top: 0;
+    margin: 1px .2em 0 0;
+    border-bottom-width: 0;
+    padding: 0;
+    white-space: nowrap;
+    width: 100%;
+}
+
+
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr{
+  border-top-right-radius:0px;
+  border-top-left-radius:0px;
+}
+
+.footer ul.footer-links{
+  float: left;
+    width: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.footer ul li{display:block; margin-bottom:10px;}
+
+.footer .navbar-nav_rt {
+    width: 80px;
+    margin: 0 auto;
+    float:none;
+  }
+
+
  #white-container {
     width: 100%;
     margin: 0 auto;
