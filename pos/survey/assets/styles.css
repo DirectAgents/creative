@@ -25,6 +25,7 @@
   border-radius: 50%;
   vertical-align: middle;
   padding:3px;
+  z-index:1;
 
   }
 

@@ -150,6 +150,8 @@ $results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NO
 
 
 
+
+
 //Check if Screening Question is required for this idea
 
 
@@ -222,7 +224,7 @@ echo '
 
 
 
-  <div class="col-lg-3" style="background:#eee; margin-right:20px; padding:10px 0 10px 0;">';
+  <div class="col-lg-3" style="background:#eee; margin-right:65px; margin-bottom:40px; padding:10px 0 10px 0;">';
 
 echo '
 <table class="table-no-border">

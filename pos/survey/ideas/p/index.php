@@ -796,7 +796,7 @@ $rowstartup= mysqli_fetch_array($startup);
  ?>
 
 
-<div class="col-lg-11" style="padding:0px; margin-bottom:0px;">
+<div class="col-lg-11" style="padding-left:15px; margin-bottom:0px;">
  <div class="success2">
   You will meet <?php echo $rowstartup['FirstName']; ?> on  <?php echo date('F j, Y',strtotime($rowupcoming['Date_of_Meeting'])); ?> 
 at <?php echo $rowupcoming['Final_Time']; ?><br>

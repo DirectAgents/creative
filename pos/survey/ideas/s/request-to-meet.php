@@ -12,7 +12,29 @@ require_once '../../base_path.php';
 
 if($_POST){
 
+/*
 $sql = mysqli_query($connecDB, "SELECT * FROM tbl_meeting_request WHERE userID='".$_POST['participantid']."' AND ProjectID = '".$_POST['projectid']."'");
+*/
+
+
+
+$sql = mysqli_query($connecDB,"SELECT * 
+from (
+    select userID, ProjectID from tbl_meeting_request
+    union all
+    select userID, ProjectID from tbl_meeting_upcoming
+    union all
+    select userID, ProjectID from tbl_meeting_recent
+    union all
+    select userID, ProjectID from tbl_meeting_archived_startup
+    union all
+    select userID, ProjectID from tbl_meeting_archived_participant
+   
+) tbl_participant
+where userID = '".$_POST['participantid']."' AND ProjectID = '".$_POST['projectid']."'");
+
+
+
 
 if(mysqli_num_rows($sql) == 0)
 {
