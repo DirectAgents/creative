@@ -212,7 +212,44 @@ date_default_timezone_set('America/New_York');
 
 ?>
 
-<?php if ($row['Age'] == '' && $row['Gender'] == '' && $row['Status'] == '' && $row['Ethnicity'] == '') { ?>
+<?php
+
+
+
+
+$sql4 = mysqli_query($connecDB,"SELECT *
+from (
+    select userID, ProjectID from tbl_meeting_request
+    union all
+    select userID, ProjectID from tbl_meeting_upcoming
+    union all
+    select userID, ProjectID from tbl_meeting_recent
+    union all
+    select userID, ProjectID from tbl_meeting_archived_startup
+    union all
+    select userID, ProjectID from tbl_meeting_archived_participant
+    union all
+    select userID, ProjectID from tbl_participant_meeting_participated
+    
+   
+) tbl_participant
+where userID = '".$_SESSION['participantSession']."'");
+
+
+if(mysqli_num_rows($sql4) > 0)
+{
+echo "abc";
+}else{
+  echo "111";
+}
+
+
+
+
+
+
+
+ if ($row['Age'] == '' && $row['Gender'] == '' && $row['Status'] == '' && $row['Ethnicity'] == '') { ?>
 
 <div id="results-no-results">
   

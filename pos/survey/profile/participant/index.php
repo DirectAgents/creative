@@ -551,10 +551,27 @@ while($row2 = mysqli_fetch_array($listproject))
 { 
 
 
-$sqlparticipated = mysqli_query($connecDB,"SELECT * FROM tbl_participant_meeting_participated WHERE ProjectID = '".$row2['ProjectID']."' 
-AND userID = '".$_GET['id']."' ");
-$rowparticipated=mysqli_fetch_array($sqlparticipated);
 
+
+$sqlparticipated = mysqli_query($connecDB,"SELECT * 
+from (
+    select userID, ProjectID from tbl_meeting_request
+    union all
+    select userID, ProjectID from tbl_meeting_upcoming
+    union all
+    select userID, ProjectID from tbl_meeting_recent
+    union all
+    select userID, ProjectID from tbl_meeting_archived_startup
+    union all
+    select userID, ProjectID from tbl_meeting_archived_participant
+    union all
+    select userID, ProjectID from tbl_participant_meeting_participated
+   
+) tbl_participant
+where userID = '".$_GET['id']."' AND ProjectID = '".$row2['ProjectID']."'");
+
+
+$rowparticipated=mysqli_fetch_array($sqlparticipated);
 
 if(mysqli_num_rows($sqlparticipated) == 0) {
 
@@ -758,12 +775,14 @@ echo '<div class="row">
 
 
 
-<p>&nbsp;</p>
 
     <div class="col-lg-12">
+<p>&nbsp;</p>
+<div class="therow">
    <div class="thetitle">About <?php echo $row['FirstName']; ?></div>
  </div>
-</div>
+ </div>
+<!--</div>-->
 
 <?php if($row['Bio'] != 'NULL' && $row['Bio'] != ''){ ?>
  <div class="therow">

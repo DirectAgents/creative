@@ -462,7 +462,7 @@ if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happ
 
                       <div class="label">Location</div>
                       <div class="value">
-                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
+                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="thelocation">
                           <?php echo $row2['Location']; ?>
                         </span>
                       </div>

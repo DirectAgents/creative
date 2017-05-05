@@ -224,9 +224,11 @@ from (
     select userID, ProjectID from tbl_meeting_archived_startup
     union all
     select userID, ProjectID from tbl_meeting_archived_participant
+    union all
+    select userID, ProjectID from tbl_participant_meeting_participated
    
 ) tbl_participant
-where userID = '".$_SESSION['participantSession']."' AND ProjectID != '".$row['ProjectID']."'");
+where userID != '".$_SESSION['participantSession']."' ");
 
 
 if(mysqli_num_rows($sql4)>0)
