@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2017 at 04:23 AM
+-- Generation Time: May 05, 2017 at 07:06 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -492,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_archived_participant` (
   `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
   `Date_Posted` date NOT NULL,
   `Time_Posted` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -524,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_archived_startup` (
   `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
   `Date_Posted` date NOT NULL,
   `Time_Posted` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -559,7 +559,7 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_recent` (
   `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
   `Date_Posted` date NOT NULL,
   `Time_Posted` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -599,14 +599,7 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_request` (
   `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
   `Date_Posted` date NOT NULL,
   `Time_Posted` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_meeting_request`
---
-
-INSERT INTO `tbl_meeting_request` (`id`, `userID`, `startupID`, `ProjectID`, `Meetupchoice`, `ScreeningQuestion`, `Meeting_Status`, `Viewed_by_Startup`, `Viewed_by_Participant`, `Date_Option_One`, `Date_Option_Two`, `Date_Option_Three`, `Time_Option_One`, `Time_Option_Two`, `Time_Option_Three`, `Location`, `Accepted_to_Participate`, `Not_Qualified_Anymore`, `Status`, `Requested_By`, `Met`, `Payment`, `Rated_Participant`, `Comment_Participant`, `Potential_Answer_Given`, `Participant_Email_Upcoming_Meeting_Reminder_Sent`, `Participant_Email_Recent_Meeting_Reminder_Sent`, `Startup_Email_Upcoming_Meeting_Reminder_Sent`, `Startup_Email_Recent_Meeting_Reminder_Sent`, `Date_Posted`, `Time_Posted`) VALUES
-(4, 14, 18, 54593, '', 'Not required', 'Meeting Request', 'No', 'No', '2017-04-19', '2017-04-20', '2017-04-21', '08:00 am', '09:00 am', '02:00 pm', '2134 Amsterdam Avenue, New York, NY, United States', 'Pending', '', 'Waiting for Startup to Accept or Decline', 'Participant', '', '', '', '', '', '', '', '', '', '2017-04-19', '10:20:41 PM');
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -637,7 +630,7 @@ CREATE TABLE IF NOT EXISTS `tbl_meeting_upcoming` (
   `Startup_Email_Recent_Meeting_Reminder_Sent` varchar(255) NOT NULL,
   `Date_Accepted` date NOT NULL,
   `Time_Accepted` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -803,7 +796,7 @@ CREATE TABLE IF NOT EXISTS `tbl_participant` (
   `bank_account` varchar(255) NOT NULL,
   `Date_Created` date NOT NULL,
   `account_verified` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_participant`
@@ -813,7 +806,7 @@ INSERT INTO `tbl_participant` (`userID`, `facebook_id`, `google_id`, `google_pic
 (8, '0', '0', '', 'Lora', 'Bora', 'wepaystage5@gmail.com', '97285088ab6d156b8e6697796dbc3c02', '', 'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting', '', '', '917-827-8278', '19', '', '51', '', '', '', '', '', '', '', '', 'NEW YORK', 'NY', '10001', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', '33e5197eef56bb4a3276b34c9df038b8', 'thumb_1489779099_146751013008_10153819353100062_7688309_n.jpg', 'Bank', '1776873183', '145231015', 'STAGE_ed7ecfd7e08bfef43cffc264c38326b77a4bf593beea0b87ffd7d3c53a4c13fc', '8b48bd1b86990b8bdf39f39b4aa3e9c5e7563a882f70b178c2', 'Chase XXXXXX123', '2017-03-17', ''),
 (9, '0', '0', '', 'Boris', 'Becker', 'wepaystage6@gmail.com', '97285088ab6d156b8e6697796dbc3c02', '', 'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting', '', '', '917-287-2827', '16', '', '', '', '', '', '', '', '', '', '', 'PORTSMOUTH', 'NH', '00210', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', 'b341be861d61bb0dc891c07ab54dc73a', 'thumb_149081031137169003505267.jpg', 'Cash', '707387703', '205176909', 'STAGE_8e7b23edb542e241718cdfb7c41853e0e877b50a7716524c432c8c7f3b33fd03', 'd7cb01ea30972b41a953ed39b4829bdb5567886b4cb0d08f4a', 'Chase XXXXXX123', '2017-03-26', ''),
 (10, '0', '0', '', 'Sandra', 'Balacka', 'wepaystage8@gmail.com', '97285088ab6d156b8e6697796dbc3c02', '', 'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting', '', '', '917-256-2562', '23', '', '', '', '', '', '', '', '', '', '', 'NEW YORK', 'NY', '10001', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', 'a24792fc54d29874115b56e0349dfd9b', 'thumb_149209817088-1236882541jpeg.jpg', 'Bank', '213231658', '136006409', 'STAGE_eb2972493a64001535a22dcb39f48f2e701e30d02c33aa574f1bdc5d146ffa34', '357c415a8800e3cd99fd948f78039b0ecfdd0f0e8fc750ed0a', 'Chase XXXXXX123', '2017-04-09', ''),
-(14, '0', '0', '', 'Matze', 'Gatze', 'wepaystage10@gmail.com', '97285088ab6d156b8e6697796dbc3c02', '', 'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting', '', '', '917-256-2452', '20', '', '', '', '', '', '', '', '', '', '', 'NEW YORK', 'NY', '10001', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', '019c1b1141e04a386b48e30b7c0cf202', '', 'Bank', '630839281', '10473722', 'STAGE_9262e1a5183a3541b51b1c03a134cb89836185563253bb749907cea322b0c520', '0be09c0b4d098518fb812f8590bc72649c37ccf9b5c42c3e12', 'Chase XXXXXX123', '2017-04-18', '');
+(26, '0', '0', '', 'Matze', 'Gatze', 'wepaystage10@gmail.com', '97285088ab6d156b8e6697796dbc3c02', '', 'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting', '', '', '917-256-2542', '24', '', '', '', '', '', '', '', '', '', '', 'NEW YORK', 'NY', '10001', '', '', '', NULL, '', '', '', NULL, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', '49344357f512c2f4be4b572e7981b1bd', '', 'Bank', '659232274', '10473722', 'STAGE_c122804f9da83a4a1553dc4d7864f9db9d6ee1b65709c96b139a14f6a165bc66', '920c14d48d3897e62351fdce4154335f108714e194d0e0d8c6', 'Chase XXXXXX123', '2017-04-22', '');
 
 -- --------------------------------------------------------
 
@@ -868,7 +861,7 @@ CREATE TABLE IF NOT EXISTS `tbl_participant_meeting_participated` (
   `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `ProjectID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -901,7 +894,7 @@ CREATE TABLE IF NOT EXISTS `tbl_participant_potentialanswer` (
   `userID` int(11) NOT NULL,
   `ProjectID` int(11) NOT NULL,
   `PotentialAnswerGiven` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_participant_potentialanswer`
@@ -909,7 +902,8 @@ CREATE TABLE IF NOT EXISTS `tbl_participant_potentialanswer` (
 
 INSERT INTO `tbl_participant_potentialanswer` (`id`, `userID`, `ProjectID`, `PotentialAnswerGiven`) VALUES
 (13, 8, 65516, 'Potential Answer 1'),
-(14, 9, 65516, 'Potential Answer 1');
+(14, 9, 65516, 'Potential Answer 1'),
+(15, 26, 65516, 'Potential Answer 1');
 
 -- --------------------------------------------------------
 
@@ -1059,7 +1053,7 @@ INSERT INTO `tbl_startup_project` (`id`, `ProjectID`, `Stage`, `Category`, `star
 (4, 65516, 'Just an idea', 'arts-and-entertainment', 17, 'Service to do this and that', '7.00', '20', 'Age', '', '18,19,20,21,22,23,24', 'NULL', 'NULL', 'NULL', '', '', '', '', '', 'NULL', 'NULL', 'NULL', 'Very Often', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'its an idea bla bla bla', 'get feedback about the idea', '', '', 'thumb_148900306307-18_022303.jpg', 'Public', 'Y', '', '', '2017-03-26', '0000-00-00'),
 (5, 77299, 'About to launch', 'arts-and-entertainment', 18, 'Service that helps handicaps etc.', '', '', 'Age,Gender', '', '14,15,16,17,18,19,20,21,22,23,24', 'Male', 'NULL', 'NULL', '', '', '', '', '', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '', '', '', '', 'thumb_1492195201ed_(1).jpg', '', 'N', '', '', '2017-03-25', '0000-00-00'),
 (6, 30162, 'Just an idea', 'business-and-career', 17, 'This is idea #3', '', '', 'Age', '', '18,19,20,21,22,23,24', 'NULL', 'NULL', 'NULL', '', '', '', '', '', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'yo', 'aha', '', '', '', '', 'N', 'No', '', '2017-03-26', '0000-00-00'),
-(7, 54593, 'About to launch', 'cultures-and-languages', 18, 'Helping Kids', '1.00', '5', 'Age', '', '14,15,16,17,18,19,20,21,22,23,24', 'NULL', '50', '52', '', '', '', '', '', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'this and that', 'hello there', '', '', 'thumb_148900306307-18_022303.jpg', 'Public', 'Y', 'No', ',9,8', '2017-04-08', '0000-00-00'),
+(7, 54593, 'About to launch', 'cultures-and-languages', 18, 'Helping Kids', '1.00', '5', 'Age', '', '14,15,16,17,18,19,20,21,22,23,24', 'NULL', 'NULL', 'NULL', '', '', '', '', '', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'this and that', 'hello there', '', '', 'thumb_148900306307-18_022303.jpg', 'Public', 'Y', 'No', ',9,8', '2017-04-08', '0000-00-00'),
 (11, 9449, 'Just an idea', 'arts-and-entertainment', 18, 'Popper', '4.00', '40', 'Age', '', '18,19,20,21,22,23,24', 'NULL', 'NULL', 'NULL', '', '', '', '', '', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'ASDFASDF', 'ASDFASDFASDFASDF', '', '', 'thumb_1492195770ed_(1).jpg', 'Private', 'Y', '', '', '2017-04-14', '0000-00-00');
 
 -- --------------------------------------------------------
@@ -43728,27 +43722,27 @@ ALTER TABLE `participant_rating`
 -- AUTO_INCREMENT for table `tbl_meeting_archived_participant`
 --
 ALTER TABLE `tbl_meeting_archived_participant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_meeting_archived_startup`
 --
 ALTER TABLE `tbl_meeting_archived_startup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_meeting_recent`
 --
 ALTER TABLE `tbl_meeting_recent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_meeting_request`
 --
 ALTER TABLE `tbl_meeting_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
 --
 -- AUTO_INCREMENT for table `tbl_meeting_upcoming`
 --
 ALTER TABLE `tbl_meeting_upcoming`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_nda_draft`
 --
@@ -43768,7 +43762,7 @@ ALTER TABLE `tbl_nda_signed`
 -- AUTO_INCREMENT for table `tbl_participant`
 --
 ALTER TABLE `tbl_participant`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `tbl_participant_interests`
 --
@@ -43783,7 +43777,7 @@ ALTER TABLE `tbl_participant_languages`
 -- AUTO_INCREMENT for table `tbl_participant_meeting_participated`
 --
 ALTER TABLE `tbl_participant_meeting_participated`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_participant_newsletter`
 --
@@ -43793,7 +43787,7 @@ ALTER TABLE `tbl_participant_newsletter`
 -- AUTO_INCREMENT for table `tbl_participant_potentialanswer`
 --
 ALTER TABLE `tbl_participant_potentialanswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `tbl_signups`
 --
