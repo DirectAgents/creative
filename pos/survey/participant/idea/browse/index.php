@@ -217,32 +217,6 @@ date_default_timezone_set('America/New_York');
 
 
 
-$sql4 = mysqli_query($connecDB,"SELECT *
-from (
-    select userID, ProjectID from tbl_meeting_request
-    union all
-    select userID, ProjectID from tbl_meeting_upcoming
-    union all
-    select userID, ProjectID from tbl_meeting_recent
-    union all
-    select userID, ProjectID from tbl_meeting_archived_startup
-    union all
-    select userID, ProjectID from tbl_meeting_archived_participant
-    union all
-    select userID, ProjectID from tbl_participant_meeting_participated
-    
-   
-) tbl_participant
-where userID = '".$_SESSION['participantSession']."'");
-
-
-if(mysqli_num_rows($sql4) > 0)
-{
-echo "abc";
-}else{
-  echo "111";
-}
-
 
 
 
@@ -283,7 +257,7 @@ echo "abc";
 <p class="center">You will qualify based on the requirements set by the startup.</p>
   <div class="create-one-here-box">
       <div class="get-notified">
-       <a href="<?php echo BASE_PATH; ?>/participant/account/settings/">
+       <a href="<?php echo BASE_PATH; ?>/participant/account/settings/#notify">
         <div class="slide_open get-notified-btn">Get notified when you qualify</div>
         </a>
         <p>&nbsp;</p>

@@ -215,23 +215,23 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '
 
 $sql4 = mysqli_query($connecDB,"SELECT * 
 from (
-    select userID, ProjectID from tbl_meeting_request
+    select userID, ProjectID, Met from tbl_meeting_request
     union all
-    select userID, ProjectID from tbl_meeting_upcoming
+    select userID, ProjectID, Met from tbl_meeting_upcoming
     union all
-    select userID, ProjectID from tbl_meeting_recent
+    select userID, ProjectID, Met from tbl_meeting_recent
     union all
-    select userID, ProjectID from tbl_meeting_archived_startup
+    select userID, ProjectID, Met from tbl_meeting_archived_startup
     union all
-    select userID, ProjectID from tbl_meeting_archived_participant
+    select userID, ProjectID, Met from tbl_meeting_archived_participant
     union all
-    select userID, ProjectID from tbl_participant_meeting_participated
+    select userID, ProjectID, Met from tbl_participant_meeting_participated
    
 ) tbl_participant
-where userID != '".$_SESSION['participantSession']."' ");
+where userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row['ProjectID']."' AND Met != 'yes' ");
 
 
-if(mysqli_num_rows($sql4)>0)
+if(mysqli_num_rows($sql4) == true)
 {
 
 

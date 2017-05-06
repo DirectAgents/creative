@@ -754,7 +754,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
   Already received a request to meet
 <?php } ?>
 <?php if($rowrequest['Status'] == 'Waiting for Startup to Accept or Decline'){ ?>
-  Already Request sent to Participate
+  Already Request sent to Participate. Waiting for Startup to respond.
 <?php } ?>
 
 

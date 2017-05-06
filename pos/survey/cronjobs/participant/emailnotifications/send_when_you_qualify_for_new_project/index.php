@@ -325,7 +325,7 @@ if(mysqli_num_rows($sql3)>0)
 require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Meeting you qualify", "no-reply@valifyit.com");
+$from = new SendGrid\Email("Meeting you qualify", "support@valifyit.com");
 $subject = "Meeting you qualify";
 $to = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
 $content = new SendGrid\Content("text/html", '

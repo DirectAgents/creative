@@ -1295,7 +1295,7 @@ echo $row2['Languages'].'</li>';
 
   
 
-        
+<div id="notify"></div>     
 <h2 class="no-mobile">Email notifications:</h2>
          
         <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Startup requests to meet you" <?php if(in_array('Startup requests to meet you',$emailnotifications)){echo "checked";}?>/>

@@ -552,28 +552,42 @@ while($row2 = mysqli_fetch_array($listproject))
 
 
 
-
 $sqlparticipated = mysqli_query($connecDB,"SELECT * 
 from (
-    select userID, ProjectID from tbl_meeting_request
+    select userID, ProjectID, Met from tbl_meeting_request
     union all
-    select userID, ProjectID from tbl_meeting_upcoming
+    select userID, ProjectID, Met from tbl_meeting_upcoming
     union all
-    select userID, ProjectID from tbl_meeting_recent
+    select userID, ProjectID, Met from tbl_meeting_recent
     union all
-    select userID, ProjectID from tbl_meeting_archived_startup
+    select userID, ProjectID, Met from tbl_meeting_archived_startup
     union all
-    select userID, ProjectID from tbl_meeting_archived_participant
+    select userID, ProjectID, Met from tbl_meeting_archived_participant
     union all
-    select userID, ProjectID from tbl_participant_meeting_participated
+    select userID, ProjectID, Met from tbl_participant_meeting_participated
    
 ) tbl_participant
-where userID = '".$_GET['id']."' AND ProjectID = '".$row2['ProjectID']."'");
+where userID = '".$_GET['id']."' AND ProjectID = '".$row2['ProjectID']."' AND Met = 'yes' ");
+
+
+
+
 
 
 $rowparticipated=mysqli_fetch_array($sqlparticipated);
 
-if(mysqli_num_rows($sqlparticipated) == 0) {
+if(mysqli_num_rows($sqlparticipated) == false) {
+
+
+
+
+
+
+
+
+
+
+
 
 
 $posts = 0;
