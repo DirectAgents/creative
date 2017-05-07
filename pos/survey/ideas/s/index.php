@@ -708,8 +708,8 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
  <?php if($screeningquestion['EnabledorDisabled'] == 'Enabled'){?> 
   
-    <div class="col-lg-12">
-    <p>&nbsp;</p>
+    <div class="col-lg-12" style="width:95%; margin-top:20px; background:#eee">
+    
       <h4>You asked the following Screening Question</h4>
       <p class="grey"><?php echo $screeningquestion['ScreeningQuestion']; ?></p>
       <p><h4>You accept the following Answer:</h4></p>

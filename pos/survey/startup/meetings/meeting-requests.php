@@ -908,8 +908,7 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Cat
                   <div class="status_request">Status: 
 
                   <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline'){echo 'Waiting for you to Accept or Decline';} ?>
-                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline'){echo 'Waiting for Participant to accept or decline';} ?>
-
+                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline'){echo 'Waiting for '.$row3['FirstName'].' to accept or decline';} ?>
 
                   </div>
 

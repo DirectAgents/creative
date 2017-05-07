@@ -74,6 +74,8 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_meeting_archived_participa
 
 $sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_request WHERE ProjectID = '".$row2['ProjectID']."' AND userID = '".$row2['userID']."'");
 
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_participant_potentialanswer WHERE ProjectID = '".$row2['ProjectID']."' AND userID = '".$row2['userID']."'");
+
 
 }
 

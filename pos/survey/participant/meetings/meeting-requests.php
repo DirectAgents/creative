@@ -1012,9 +1012,9 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Cat
                   <div class="status_request">Status: 
 
                   <?php if($row2['Status'] == 'Waiting to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting to Accept or Decline';} ?>
-                  <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for Startup to Accept';} ?>
+                  <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for '.$row3['FirstName'].' to Accept';} ?>
                   <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for you to Accept or Decline';} ?>
-                   <?php if($row2['ScreeningQuestion'] == 'Not Passed'){echo 'Waiting for Startup to confirm meeting';} ?>
+                   <?php if($row2['ScreeningQuestion'] == 'Not Passed'){echo 'Waiting for '.$row3['FirstName'].' to confirm meeting';} ?>
 
            
 
