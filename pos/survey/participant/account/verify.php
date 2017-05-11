@@ -59,7 +59,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
 			$msg = "
 		           <div class='alert alert-error'>
 				   <button class='close' data-dismiss='alert'>&times;</button>
-					  <strong>Sorry !</strong>  Your Account is allready Activated : <a href='../login/'>Login here</a>
+					  <strong>Sorry !</strong>  Your Account is already Activated : <a href='../login/'>Login here</a>
 			       </div>
 			       ";
 		}

@@ -408,11 +408,11 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?> (  <a href="#" alt="<?php if($row2['ProjectStatus'] == 'Public'){ ?>This project is set to Public. This is visible to everyone. <?php } ?><?php if($row2['ProjectStatus'] == 'Private'){ ?>This project is set to Private. Only you and people you invite to meet with can see it. <?php } ?>" class="tooltiptext"><i class="icon <?php if($row2['ProjectStatus'] == 'Public'){ ?>icon-unlocked<?php } ?> <?php if($row2['ProjectStatus'] == 'Private'){ ?>icon-lock <?php } ?>"></i></a>)</div>
                   <div class="survey-metadata">
                     <div class="item ">
-                      <div class="label">Created:</div>
+                      <div class="label">Created</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date, 'M d, Y'); ?></div>
                     </div>
                     <div class="item date">
-                      <div class="label">Category:</div>
+                      <div class="label">Category</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
                           <?php $category = str_replace("-"," ",$row2['Category']); echo $category; ?>
@@ -421,17 +421,12 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
                     </div>
 
 
-                     <div class="item date">
-                     
-                      <div class="value">
-                      &nbsp;
-                      </div>
-                    </div>
+                  
 
 
 
                     <div class="item date">
-                      <div class="label">People Participate:</div>
+                      <div class="label">People Participate to provide feedback</div>
                       <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
                         
 <?php

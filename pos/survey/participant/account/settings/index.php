@@ -100,7 +100,7 @@ $(document).ready(function() {
       });
   });
 
-  $("body").on("click", "#responds .del_button", function(e) {
+  $("body").on("click", "#responds .del_button_interest", function(e) {
      e.preventDefault();
      var clickedID = this.id.split('-'); 
      //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
@@ -115,8 +115,8 @@ $(document).ready(function() {
       dataType:"text", 
       data:myData, 
       success:function(response){
-        
-        $('#item_'+DbNumberID).fadeOut("slow");
+        alert(DbNumberID);
+        $('#item_interest_'+DbNumberID).fadeOut("slow");
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -930,7 +930,7 @@ if(!empty($_SESSION['participantSession'])){
 
 
 //MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID = '".$_SESSION['participantSession']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_SESSION['participantSession']."' ");
 
 
 //get all records from add_delete_record table
@@ -941,12 +941,20 @@ while($row2 = mysqli_fetch_array($Result))
 
 
 
-echo '<li id="item_'.$row2['id'].'">';
-echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row2['id'].'">';
-echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
-echo '</a></div>';
-//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-echo $row2['Interests'].'</li>';
+if($row2['Interests'] != ''){
+
+$interests = explode(',', $row2['Interests']);
+foreach ($interests as &$interest) {
+  $interest = "<li id='item_interest_".$interest."'><div class='del_wrapper'><a href='#'' class='del_button_interest' id='del-".$interest."'>
+    ".$interest ."<img src='".BASE_PATH."/images/icon_del.gif' border='0' class='icon_del' /></a></div></li>";
+}
+
+
+echo implode('', $interests);
+
+}
+
+
 
 }
 
@@ -992,23 +1000,30 @@ if(!empty($_SESSION['participantSession'])){
 
 
 //MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID = '".$_SESSION['participantSession']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_SESSION['participantSession']."' ");
 
 
 //get all records from add_delete_record table
 while($row2 = mysqli_fetch_array($Result))
 {
 
+if($row2['Languages'] != ''){
+
+$languages = explode(',', $row2['Languages']);
+foreach ($languages as &$language) {
+    $language = "<li id='item_".$language."'><div class='del_wrapper'><a href='#'' class='del_button' id='del-".$language."'>
+    ".$language ."<img src='".BASE_PATH."/images/icon_del.gif' border='0' class='icon_del' /></a></div></li>";
+}
+
+
+echo implode('', $languages);
 
 
 
 
-echo '<li id="item_'.$row2['id'].'">';
-echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row2['id'].'">';
-echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
-echo '</a></div>';
-//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-echo $row2['Languages'].'</li>';
+}
+
+
 
 }
 

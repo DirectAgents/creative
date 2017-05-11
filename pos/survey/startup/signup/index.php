@@ -335,6 +335,10 @@ if($_POST['passwordpass'] == 'good'){
             <button class='close' data-dismiss='alert'>&times;</button>
             <strong>Success!</strong>  We've sent an email to $email.<br><br>
                   Click on the confirmation link in the email to create your account. 
+
+                           <br><br>
+             Some email providers may automatically mark the emails as spam. All automated emails will be sent from support@valifyit.com, please add this to your safe list    
+             
             </div>
           ";
 

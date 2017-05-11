@@ -422,7 +422,7 @@ jq(document).ready(function(){
                <label for="in-person">
                  
 
-<?php if($rowproject['Interest'] != ''){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Interest']); }else{ echo "not selected";};  ?>
+<?php if($rowproject['Interest'] != 'NULL'){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Interest']); }else{ echo "not selected";};  ?>
 
 
 
@@ -457,7 +457,7 @@ jq(document).ready(function(){
                <label for="in-person">
                  
 
-<?php if($rowproject['Languages'] != ''){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Languages']); }else{ echo "not selected";};  ?>
+<?php if($rowproject['Languages'] != 'NULL'){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Languages']); }else{ echo "not selected";};  ?>
 
 
 

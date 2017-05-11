@@ -537,7 +537,7 @@ $(document).ready(function() {
   <label for="ageimportant">Required</label>
 
    <input id="selectallages" type="checkbox" onClick="selectAllages(this,'ages')" />
-  <label for="selectallages">select all</label>
+  <label for="selectallages">Select all</label>
 </div>
 
 
@@ -615,7 +615,7 @@ $(document).ready(function() {
   <label for="ageimportant">Required</label>
 
    <input id="selectallgender" type="checkbox" onClick="selectAllgender(this,'gender')" />
-  <label for="selectallgender">select all</label>
+  <label for="selectallgender">Select all</label>
 </div>
 
 <div class="dashboardSurveyTargetingContainerAgeInputContainer first">
@@ -839,7 +839,7 @@ $(document).ready(function() {
   <label for="statusimportant">Required</label>
 
    <input id="selectallstatus" type="checkbox" onClick="selectAllstatus(this,'status')" />
-  <label for="selectallstatus">select all</label>
+  <label for="selectallstatus">Select all</label>
 </div>  
 
 <p>&nbsp;</p>
@@ -912,7 +912,7 @@ $(document).ready(function() {
   <label for="ethnicityimportant">Required</label>
 
    <input id="selectallethnicity" type="checkbox" onClick="selectAllethnicity(this,'status')" />
-  <label for="selectallethnicity">select all</label>
+  <label for="selectallethnicity">Select all</label>
 </div>  
 
 <p>&nbsp;</p>
@@ -1010,7 +1010,7 @@ $(document).ready(function() {
 
 
    <input id="selectallsmoke" type="checkbox" onClick="selectAllsmoke(this,'smoke')" />
-  <label for="selectallsmoke">select all</label>
+  <label for="selectallsmoke">Select all</label>
 </div>   
 
 <p>&nbsp;</p>
@@ -1092,7 +1092,7 @@ $(document).ready(function() {
 
 
    <input id="selectalldrinks" type="checkbox" onClick="selectAlldrinks(this,'drinks')" />
-  <label for="selectalldrinks">select all</label>
+  <label for="selectalldrinks">Select all</label>
 </div>  
 
 
@@ -1179,7 +1179,7 @@ $(document).ready(function() {
 
 
    <input id="selectalldiet" type="checkbox" onClick="selectAlldiet(this,'diet')" />
-  <label for="selectalldiet">select all</label>
+  <label for="selectalldiet">Select all</label>
 </div>       
 
 <p>&nbsp;</p>   
@@ -1261,7 +1261,7 @@ $(document).ready(function() {
   <label for="religionimportant">Required</label>
 
    <input id="selectallreligion" type="checkbox" onClick="selectAllreligion(this,'diet')" />
-  <label for="selectallreligion">select all</label>
+  <label for="selectallreligion">Select all</label>
 </div>   
 
 <p>&nbsp;</p>
@@ -1587,7 +1587,7 @@ $(document).ready(function() {
               <h3>Are Interested In:</h3>
              
 <div class="screening-description">
-                  Please enter the interest your potential customer should have before you interview them about your idea.
+                  Please enter the interest your potential customer should have before you meet for a feedback session about your idea.
                 </div>
 
 
