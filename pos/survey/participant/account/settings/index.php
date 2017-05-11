@@ -115,7 +115,7 @@ $(document).ready(function() {
       dataType:"text", 
       data:myData, 
       success:function(response){
-        alert(DbNumberID);
+        //alert(DbNumberID);
         $('#item_interest_'+DbNumberID).fadeOut("slow");
       },
       error:function (xhr, ajaxOptions, thrownError){
