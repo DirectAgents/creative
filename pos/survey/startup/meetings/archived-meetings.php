@@ -434,7 +434,12 @@ You met with <?php echo $row3['FirstName']; ?>.
 <?php } ?> 
 
 
-<?php if($row2['Met'] == '' && $row2['Status'] != '' && $row2['Status'] != 'Meeting Canceled by Startup' && $row2['Status'] != 'Meeting Canceled by Participant' && $row2['Payment'] == ''){ ?>
+<?php if($row2['Met'] == '' && $row2['Status'] == 'Meeting Request Canceled'){ ?>
+Meeting request canceled.
+<?php } ?> 
+
+
+<?php if($row2['Met'] == '' && $row2['Status'] != '' && $row2['Status'] != 'Meeting Canceled by Startup' && $row2['Status'] != 'Meeting Canceled by Participant' && $row2['Payment'] == '' && $row2['Status'] != 'Meeting Request Canceled'){ ?>
 Meeting never happened.
 <?php } ?> 
 
