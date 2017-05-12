@@ -989,7 +989,7 @@ $(".choose-location-sunday").click(function() {
 
         var proceed = true;
 
-     alert(userid);
+     //alert(userid);
 
      //everything looks good! proceed...
         if(proceed) 
