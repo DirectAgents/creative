@@ -71,6 +71,8 @@ $job=explode(',',$rowproject['Job']);
 
 
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -524,7 +526,7 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND r.Job RLIKE '[[:<:]]".$Job."[[:>
 
 
 if (strpos($Min_Req, 'Interests') !== false) {
-if($Interests != 'NULL' && $Interests != ''){$interest = "AND r.Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
+if($Interests != 'NULL' && $Interests != ''){$interests = "AND r.Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
 }else{
   $interests = '';
 }
@@ -540,32 +542,37 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 //echo $rowproject['City'];
 
 
+$sql4 = mysqli_query($connecDB,"SELECT * 
+from (
+    select userID, ProjectID, Met from tbl_meeting_request
+    union all
+    select userID, ProjectID, Met from tbl_meeting_upcoming
+    union all
+    select userID, ProjectID, Met from tbl_meeting_recent
+    union all
+    select userID, ProjectID, Met from tbl_meeting_archived_startup
+    union all
+    select userID, ProjectID, Met from tbl_meeting_archived_participant
+    union all
+    select userID, ProjectID, Met from tbl_participant_meeting_participated
+   
+) tbl_participant
+where userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row3['ProjectID']."' AND Met != 'yes' ");
+
+
+if(mysqli_num_rows($sql4) == false)
+{
+
+
 $sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_SESSION['participantSession']."'
  $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND
  ProjectID = '".$row3['ProjectID']."'");
 
 
 
-
-
-//}
-
-
-
-
-
-
-
-
-
-//$result=mysqli_query($sql);
-//$row=mysql_fetch_array($result);
-
-
-
-  //if projects exists
 if(mysqli_num_rows($sql)>0)
 {
+
 
 
 
@@ -839,10 +846,12 @@ if(empty($posts)){
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Ideas</div>
+<div class="empty-projects">Sorry you don\'t qualify for any ideas posted by '.$row['FirstName'].' yet</div>
   <div class="create-one-here-box">
-      <div class="create-one">
-        <button class="slide_open create-one-btn">Create one here</button>
+      <div class="create-one"><br>
+      <a href="'.BASE_PATH.'/participant/idea/browse/">
+        <button class="slide_open create-one-btn">Browse other Ideas</button>
+        </a>
        </div> 
   </div>
 </div>
@@ -855,7 +864,7 @@ echo '<div class="row">
 }
 
 
-
+}
 
 ?>
 
@@ -1089,13 +1098,13 @@ echo '</a>';
 
     </div>
 
-  
-
-  </div>
-
    <!--Footer-->
 <?php include("../../footer.php"); ?>
 <!--Footer-->
+
+  </div>
+
+  
 
   </div>
 

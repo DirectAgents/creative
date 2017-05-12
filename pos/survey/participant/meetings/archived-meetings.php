@@ -118,6 +118,8 @@ $dtB = new DateTime($row2['Date_of_Meeting']);
 <div class="row">
     <div class="col-md-2">
 
+<a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>">
+
 <?php 
 
 $ProjectImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
@@ -151,6 +153,8 @@ if($rowprojectimage['profile_image'] != '') { ?>
 
 <?php }  ?>
 
+
+</a>
 
 </div>
 
@@ -327,7 +331,9 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
                     </div>  
                    
                   </div>
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
+                  <div class="survey-name" ng-bind="(survey.name)">
+<a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>">
+<?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></a></div>
                   <div class="survey-metadata">
                     <div class="item">
                       <div class="label">Date:</div>

@@ -846,6 +846,7 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 <div class="row">
     <div class="col-md-2">
 
+<a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>">
 
 <?php 
 
@@ -877,7 +878,7 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 <?php } ?>
 
 
-
+</a>
 
 
 </div>
@@ -930,7 +931,9 @@ $row3 = mysqli_fetch_array($sql3);
                     </div>  
                    
                   </div>
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
+                  <div class="survey-name" ng-bind="(survey.name)">
+<a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>">
+<?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></a></div>
                   <div class="survey-metadata">
                     <div class="item">
                      

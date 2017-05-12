@@ -120,6 +120,8 @@ $dtB = new DateTime($row2['Date_of_Meeting']);
 <div class="row">
     <div class="col-md-2">
 
+<a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>">
+
 <?php 
 
 
@@ -146,6 +148,8 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
       
 <?php } ?>
+
+</a>
 
 
 </div>
@@ -330,7 +334,8 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
                     </div>  
                    
                   </div>
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></div>
+                  <div class="survey-name" ng-bind="(survey.name)">
+                  <a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>"><?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></a></div>
                   <div class="survey-metadata">
                     <div class="item">
                       <div class="label">Date of Meeting:</div>
@@ -456,6 +461,28 @@ Meeting was canceled.
 Meeting was canceled.
 <?php } ?> 
 
+
+
+<?php 
+$sql5=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE startup_id = '".$_SESSION['startupSession']."' AND comment_identifier_id = '".$row2['userID']."'");
+//$result5=mysql_query($sql5);
+
+if(mysqli_num_rows($sql5)<1)
+{
+
+$row5 = mysqli_fetch_array($sql5);
+
+
+
+if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row5['startup_id'] != $_SESSION['startupSession']){ ?>
+
+
+
+   <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><br><strong>Rate and Review your meeting with <?php echo $row3['FirstName']; ?> </strong></a>
+                 <?php } ?>
+
+
+<?php } ?>
 
 
 
