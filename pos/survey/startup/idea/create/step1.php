@@ -1600,7 +1600,7 @@ $(document).ready(function() {
              </div>
 
 
-  <input id="interestimportant" name="minreq[]" type="checkbox" value="Interest" <?php if(in_array('Interest',$minreq)){echo "checked";}?>/>
+  <input id="interestimportant" name="minreq[]" type="checkbox" value="Interests" <?php if(in_array('Interests',$minreq)){echo "checked";}?>/>
    <label for="Interest">Make Interest as required</label>
 
                    
@@ -1630,12 +1630,12 @@ $row2 = mysqli_fetch_array($Result);
 
 
 
-$ctop = $row2['Interest']; 
+$ctop = $row2['Interests']; 
 $ctop = explode(',',$ctop); 
 
 
 
-if($row2['Interest'] != '' && $row2['Interest'] != 'NULL' ){
+if($row2['Interests'] != '' && $row2['Interests'] != 'NULL' ){
 
 
 

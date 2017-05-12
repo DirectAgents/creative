@@ -29,7 +29,7 @@ if(isset($_POST["languages"]) && strlen($_POST["languages"])>0)
 
         if($row['language'] == $contentToSave){
 
-        echo '<li id="item_'.$my_id.'">';
+        echo '<li id="item_languages'.$my_id.'">';
         echo '<input id="languageselection_'.$my_id.'" name="languageselection[]" type="checkbox"  value="'.$my_language.'" style="display:none" checked/>';
         echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
         echo $my_language;

@@ -176,7 +176,7 @@ $(document).ready(function() {
       success:function(response){
         $("#responds-languages").append(response);
         $('#languageselection_'+DbNumberID).prop('checked', false); // Unchecks it
-        $('#item_'+DbNumberID).fadeOut("slow");
+        $('#item_languages'+DbNumberID).fadeOut("slow");
         
       },
       error:function (xhr, ajaxOptions, thrownError){
@@ -1049,7 +1049,7 @@ $sqllanguage = mysqli_query($connecDB,"SELECT * FROM languages WHERE language = 
 $row3 = mysqli_fetch_array($sqllanguage);
 
 
-echo '<li id="item_'.$row3['id'].'">';
+echo '<li id="item_languages'.$row3['id'].'">';
 if(in_array($language,$ctop)){
 echo '<input id="languageselection_'.$row3['id'].'" name="languageselection[]" type="checkbox"  value="'.$language.'" style="display:none" checked/>';
 }

@@ -71,7 +71,7 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET
   Religion='".$religion."',
   Education='".$education."',
   Job='".$job."',
-  Interest = '".$interests."',
+  Interests = '".$interests."',
   Languages = '".$languages."',
   Date_Created = '".$date."'
 

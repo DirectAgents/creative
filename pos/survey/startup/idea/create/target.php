@@ -83,7 +83,7 @@ if(mysqli_num_rows($sql)>0)
   Religion='".$religion."',
   Education='".$education."',
   Job='".$job."',
-  Interest = '".$interests."',
+  Interests = '".$interests."',
   Languages = '".$languages."',
   Date_Created = '".$date."'
 

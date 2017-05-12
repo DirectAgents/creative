@@ -40,7 +40,7 @@ $Diet = str_replace(",","|",$row['Diet']);
 $Religion = str_replace(",","|",$row['Religion']);
 $Education = str_replace(",","|",$row['Education']);
 $Job = str_replace(",","|",$row['Job']);
-$Interest = str_replace(",","|",$row['Interest']);
+$Interests = str_replace(",","|",$row['Interests']);
 $Languages = str_replace(",","|",$row['Languages']);
 
 
@@ -129,10 +129,10 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]
 }
 
 
-if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+if (strpos($Min_Req, 'Interests') !== false) {
+if($Interests != 'NULL' && $Interests != ''){$interests = "AND Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
 }else{
-  $interest = '';
+  $interests = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
@@ -145,7 +145,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '
 
 //Limit our results within a specified range. 
 
-$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$_GET['id']."' AND Met = 'yes') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$_GET['id']."' AND Met = 'yes') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $languages ORDER BY userID DESC LIMIT $position, $item_per_page");
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$_GET['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$_GET['id']."' AND Met = 'yes') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$_GET['id']."' AND Met = 'yes') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages ORDER BY userID DESC LIMIT $position, $item_per_page");
 
 
 
