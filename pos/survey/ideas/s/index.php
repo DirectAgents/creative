@@ -140,7 +140,7 @@ $Diet = str_replace(",","|",$rowproject['Diet']);
 $Religion = str_replace(",","|",$rowproject['Religion']);
 $Education = str_replace(",","|",$rowproject['Education']);
 $Job = str_replace(",","|",$rowproject['Job']);
-$Interest = str_replace(",","|",$rowproject['Interest']);
+$Interests = str_replace(",","|",$rowproject['Interests']);
 $Languages = str_replace(",","|",$rowproject['Languages']);
 
 
@@ -229,10 +229,10 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]
 }
 
 
-if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+if (strpos($Min_Req, 'Interests') !== false) {
+if($Interests != 'NULL' && $Interests != ''){$interests = "AND Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
 }else{
-  $interest = '';
+  $interests = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
@@ -246,7 +246,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '
 
 if(isset($_GET['p'])){
 
-$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_GET['p']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC");
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_GET['p']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages ORDER BY userID DESC");
 
 
 

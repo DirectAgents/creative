@@ -369,7 +369,7 @@ $Diet = str_replace(",","|",$rowparticipant['Diet']);
 $Religion = str_replace(",","|",$rowparticipant['Religion']);
 $Education = str_replace(",","|",$rowparticipant['Education']);
 $Job = str_replace(",","|",$rowparticipant['Job']);
-$Interest = str_replace(",","|",$rowparticipant['Interests']);
+$Interests = str_replace(",","|",$rowparticipant['Interests']);
 $Languages = str_replace(",","|",$rowparticipant['Languages']);
 
 
@@ -480,10 +480,10 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND r.Job RLIKE '[[:<:]]".$Job."[[:>
 }
 
 
-if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND r.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+if (strpos($Min_Req, 'Interests') !== false) {
+if($Interests != 'NULL' && $Interests != ''){$interests = "AND r.Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
 }else{
-  $interest = '';
+  $interests = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
@@ -498,7 +498,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 
 
 $sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_GET['id']."'
- $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages AND
+ $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND
  ProjectID = '".$row3['ProjectID']."' AND FinishedProcess = 'Y'");
 
 $rowsql = mysqli_fetch_array($sql);

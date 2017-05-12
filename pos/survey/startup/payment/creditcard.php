@@ -88,7 +88,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
 <?php } ?>
 
 
-<?php if($row['credit_card_id'] == '') { ?>
+<?php if($row['credit_card_id'] == '' && $row['account_id'] != '' ) { ?>
 
 
 
@@ -104,7 +104,11 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
 
 
 
-<?php }else{ ?>
+<?php } ?>
+
+
+<?php if($row['credit_card_id'] != '' && $row['account_id'] != '' ) { ?>
+
 
  <h2 class="heading no-gap">
 

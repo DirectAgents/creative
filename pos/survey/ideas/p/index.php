@@ -55,11 +55,7 @@ if($participant_home->is_logged_in())
 {
 
 
-$participant_languages = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_GET['id']."'");
-$rowparticipant_languages = mysqli_fetch_array($participant_languages);
 
-$participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_GET['id']."'");
-$rowparticipant_interest = mysqli_fetch_array($participant_interest);
 
 
 $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
@@ -82,8 +78,8 @@ $Diet = str_replace(",","|",$rowproject['Diet']);
 $Religion = str_replace(",","|",$rowproject['Religion']);
 $Education = str_replace(",","|",$rowproject['Education']);
 $Job = str_replace(",","|",$rowproject['Job']);
-$Interest = str_replace(",","|",$rowparticipant_interest['Interests']);
-$Languages = str_replace(",","|",$rowparticipant_languages['Languages']);
+$Interests = str_replace(",","|",$rowproject['Interests']);
+$Languages = str_replace(",","|",$rowproject['Languages']);
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
@@ -191,10 +187,10 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND p.Job RLIKE '[[:<:]]".$Job."[[:>
 }
 
 
-if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND p.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+if (strpos($Min_Req, 'Interests') !== false) {
+if($Interests != 'NULL' && $Interests != ''){$interest = "AND p.Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
 }else{
-  $interest = '';
+  $interests = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
@@ -207,7 +203,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND p.Languages RLIKE
 
 
 $sql3 = mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_SESSION['participantSession']."'
-AND r.ProjectID ='".$_GET['id']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages");
+AND r.ProjectID ='".$_GET['id']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages");
 
 
 

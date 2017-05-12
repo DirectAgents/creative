@@ -100,7 +100,7 @@ if(mysqli_num_rows($sql)>0)
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID, startupID, Name, Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
-Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interest, Languages, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
+Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interests, Languages, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
   '".$projectname."', '".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
   '".$status."','".$ethnicity."','".$smoke."','".$drink."','".$diet."',
   '".$religion."','".$education."','".$job."', '".$interests."' , '".$languages."' ,'".$date."')");

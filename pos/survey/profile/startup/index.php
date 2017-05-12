@@ -393,11 +393,6 @@ $participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userI
 $rowparticipant = mysqli_fetch_array($participant);
 
 
-$participant_languages = mysqli_query($connecDB,"SELECT * FROM tbl_participant_languages WHERE userID='".$_SESSION['participantSession']."'");
-$rowparticipant_languages = mysqli_fetch_array($participant_languages);
-
-$participant_interest = mysqli_query($connecDB,"SELECT * FROM tbl_participant_interests WHERE userID='".$_SESSION['participantSession']."'");
-$rowparticipant_interest = mysqli_fetch_array($participant_interest);
 
 
 //echo $City;
@@ -417,8 +412,8 @@ $Diet = str_replace(",","|",$rowparticipant['Diet']);
 $Religion = str_replace(",","|",$rowparticipant['Religion']);
 $Education = str_replace(",","|",$rowparticipant['Education']);
 $Job = str_replace(",","|",$rowparticipant['Job']);
-$Interest = str_replace(",","|",$rowparticipant_interest['Interest']);
-$Languages = str_replace(",","|",$rowparticipant_languages['Languages']);
+$Interests = str_replace(",","|",$rowparticipant['Interests']);
+$Languages = str_replace(",","|",$rowparticipant['Languages']);
 
 
 $sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$_SESSION['participantSession']."'");
@@ -528,10 +523,10 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND r.Job RLIKE '[[:<:]]".$Job."[[:>
 }
 
 
-if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND r.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+if (strpos($Min_Req, 'Interests') !== false) {
+if($Interests != 'NULL' && $Interests != ''){$interest = "AND r.Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
 }else{
-  $interest = '';
+  $interests = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
@@ -546,7 +541,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 
 
 $sql=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$_SESSION['participantSession']."'
- $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages AND
+ $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND
  ProjectID = '".$row3['ProjectID']."'");
 
 

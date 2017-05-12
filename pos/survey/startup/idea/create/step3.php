@@ -422,7 +422,7 @@ jq(document).ready(function(){
                <label for="in-person">
                  
 
-<?php if($rowproject['Interest'] != 'NULL'){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Interest']); }else{ echo "not selected";};  ?>
+<?php if($rowproject['Interests'] != 'NULL'){echo preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowproject['Interests']); }else{ echo "not selected";};  ?>
 
 
 
