@@ -31,9 +31,10 @@ if(isset($_POST["interests"]) && strlen($_POST["interests"])>0)
         echo '<li id="item_'.$my_id.'">';
         echo '<input id="interestselection_'.$my_id.'" name="interestselection[]" type="checkbox"  value="'.$my_interest .'" style="display:none" checked/>';
         echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
+        echo $my_interest;
         echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
         echo '</a></div>';
-        echo $my_interest.'</li>';
+        echo '</li>';
        
        }
 

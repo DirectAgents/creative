@@ -84,7 +84,8 @@ $(document).ready(function() {
         //alert("Please enter a job position!");
         return false;
       }
-      var myData = 'interests='+ $("#interests").val()+'&userid='+ $("#userid").val(); 
+      var myData = 'interests='+ $("#interests").val(); 
+      //alert(myData);
       jQuery.ajax({
       type: "POST", 
       url: "interests.php", 
@@ -93,6 +94,8 @@ $(document).ready(function() {
       success:function(response){
         $("#responds").append(response);
         $("#interests").val('');
+       //$('#interestimportant').prop('checked', true); // checks it
+      
       },
       error:function (xhr, ajaxOptions, thrownError){
         alert(thrownError);
@@ -100,12 +103,12 @@ $(document).ready(function() {
       });
   });
 
-  $("body").on("click", "#responds .del_button_interest", function(e) {
+  $("body").on("click", "#responds .del_button", function(e) {
      e.preventDefault();
      var clickedID = this.id.split('-'); 
      //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
      var DbNumberID = clickedID[1]; 
-     var myData = 'recordToDelete='+ DbNumberID; 
+     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
      
      //alert(DbNumberID);
 
@@ -115,8 +118,10 @@ $(document).ready(function() {
       dataType:"text", 
       data:myData, 
       success:function(response){
-        //alert(DbNumberID);
-        $('#item_interest_'+DbNumberID).fadeOut("slow");
+        $("#responds").append(response);
+        $('#interestselection_'+DbNumberID).prop('checked', false); // Unchecks it
+        $('#item_'+DbNumberID).fadeOut("slow");
+        
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -135,7 +140,8 @@ $(document).ready(function() {
         //alert("Please enter a job position!");
         return false;
       }
-      var myData = 'languages='+ $("#languages").val()+'&userid='+ $("#userid").val(); 
+      var myData = 'languages='+ $("#languages").val(); 
+      //alert(myData);
       jQuery.ajax({
       type: "POST", 
       url: "languages.php", 
@@ -144,6 +150,8 @@ $(document).ready(function() {
       success:function(response){
         $("#responds-languages").append(response);
         $("#languages").val('');
+       //$('#interestimportant').prop('checked', true); // checks it
+      
       },
       error:function (xhr, ajaxOptions, thrownError){
         alert(thrownError);
@@ -156,7 +164,7 @@ $(document).ready(function() {
      var clickedID = this.id.split('-'); 
      //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
      var DbNumberID = clickedID[1]; 
-     var myData = 'recordToDelete='+ DbNumberID; 
+     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
      
      //alert(DbNumberID);
 
@@ -166,8 +174,10 @@ $(document).ready(function() {
       dataType:"text", 
       data:myData, 
       success:function(response){
-        
+        $("#responds-languages").append(response);
+        $('#languageselection_'+DbNumberID).prop('checked', false); // Unchecks it
         $('#item_'+DbNumberID).fadeOut("slow");
+        
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -175,6 +185,7 @@ $(document).ready(function() {
       }
       });
   });
+
 
 });
 </script>
@@ -926,33 +937,46 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
 if(!empty($_SESSION['participantSession'])){
 
-//echo '<input type="hidden" name="userid" id="userid" value="'.$_SESSION['participantSession'].'">';
 
 
 //MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_SESSION['participantSession']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_SESSION['participantSession']."'");
 
 
 //get all records from add_delete_record table
-while($row2 = mysqli_fetch_array($Result))
-{
+$row2 = mysqli_fetch_array($Result);
 
 
 
 
+$ctop = $row2['Interests']; 
+$ctop = explode(',',$ctop); 
 
-if($row2['Interests'] != ''){
 
-$interests = explode(',', $row2['Interests']);
-foreach ($interests as &$interest) {
-  $interest = "<li id='item_interest_".$interest."'><div class='del_wrapper'><a href='#'' class='del_button_interest' id='del-".$interest."'>
-    ".$interest ."<img src='".BASE_PATH."/images/icon_del.gif' border='0' class='icon_del' /></a></div></li>";
+if($row2['Interests'] != '' ){
+
+foreach($ctop as $interest)  
+{ 
+    //Uncomment the last commented line if single quotes are showing up  
+    //otherwise delete these 3 commented lines 
+    
+
+//MySQL query
+$sqlinterest = mysqli_query($connecDB,"SELECT * FROM interests WHERE interest = '".$interest."' ");
+$row3 = mysqli_fetch_array($sqlinterest);
+
+
+echo '<li id="item_'.$row3['id'].'">';
+if(in_array($interest,$ctop)){
+echo '<input id="interestselection_'.$row3['id'].'" name="interestselection[]" type="checkbox"  value="'.$interest.'" style="display:none" checked/>';
 }
-
-
-echo implode('', $interests);
-
-}
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row3['id'].'">';
+echo $interest;
+echo "<img src='".BASE_PATH."/images/icon_del.gif' border='0' class='icon_del' />";
+echo '</a></div>';
+//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
+echo '</li>';
+} 
 
 
 
@@ -996,32 +1020,46 @@ echo implode('', $interests);
 
 if(!empty($_SESSION['participantSession'])){
 
-//echo '<input type="hidden" name="userid" id="userid" value="'.$_SESSION['participantSession'].'">';
 
 
 //MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_SESSION['participantSession']."' ");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_SESSION['participantSession']."'");
 
 
 //get all records from add_delete_record table
-while($row2 = mysqli_fetch_array($Result))
-{
+$row2 = mysqli_fetch_array($Result);
 
-if($row2['Languages'] != ''){
 
-$languages = explode(',', $row2['Languages']);
-foreach ($languages as &$language) {
-    $language = "<li id='item_".$language."'><div class='del_wrapper'><a href='#'' class='del_button' id='del-".$language."'>
-    ".$language ."<img src='".BASE_PATH."/images/icon_del.gif' border='0' class='icon_del' /></a></div></li>";
+
+
+$ctop = $row2['Languages']; 
+$ctop = explode(',',$ctop); 
+
+
+if($row2['Languages'] != '' ){
+
+foreach($ctop as $language)  
+{ 
+    //Uncomment the last commented line if single quotes are showing up  
+    //otherwise delete these 3 commented lines 
+    
+
+//MySQL query
+$sqllanguage = mysqli_query($connecDB,"SELECT * FROM languages WHERE language = '".$language."' ");
+$row3 = mysqli_fetch_array($sqllanguage);
+
+
+echo '<li id="item_'.$row3['id'].'">';
+if(in_array($language,$ctop)){
+echo '<input id="languageselection_'.$row3['id'].'" name="languageselection[]" type="checkbox"  value="'.$language.'" style="display:none" checked/>';
 }
-
-
-echo implode('', $languages);
-
-
-
-
-}
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row3['id'].'">';
+echo $language;
+echo "<img src='".BASE_PATH."/images/icon_del.gif' border='0' class='icon_del' />";
+echo '</a></div>';
+//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
+echo '</li>';
+} 
 
 
 

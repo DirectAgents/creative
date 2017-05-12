@@ -1655,10 +1655,11 @@ if(in_array($interest,$ctop)){
 echo '<input id="interestselection_'.$row3['id'].'" name="interestselection[]" type="checkbox"  value="'.$interest.'" style="display:none" checked/>';
 }
 echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row3['id'].'">';
+echo $interest;
 echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
 echo '</a></div>';
 //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-echo $interest . '</li>';
+echo '</li>';
 
 } 
 
@@ -1754,10 +1755,11 @@ if(in_array($language,$ctop_language)){
 echo '<input id="languageselection_'.$row4['id'].'" name="languageselection[]" type="checkbox"  value="'.$language.'" style="display:none" checked/>';
 }
 echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row4['id'].'">';
+echo $language;
 echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
 echo '</a></div>';
 //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-echo $language . '</li>';
+echo '</li>';
 } 
 
 

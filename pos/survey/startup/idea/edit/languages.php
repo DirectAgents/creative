@@ -31,9 +31,10 @@ if(isset($_POST["languages"]) && strlen($_POST["languages"])>0)
         echo '<li id="item_'.$my_id.'">';
         echo '<input id="languageselection_'.$my_id.'" name="languageselection[]" type="checkbox"  value="'.$my_language .'" style="display:none" checked/>';
         echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
+        echo $my_language;
         echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
         echo '</a></div>';
-        echo $my_language.'</li>';
+        echo '</li>';
        
        }
 

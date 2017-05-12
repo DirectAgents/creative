@@ -35,6 +35,9 @@ if($_POST['religion'] == ''){$religion = '';}else{$religion = $_POST['religion']
 if($_POST['education'] == ''){$education = '';}else{$education = $_POST['education'];}
 if($_POST['job'] == ''){$job = '';}else{$job = $_POST['job'];}
 
+if($_POST['interests'] == ''){$interests = '';}else{$interests = $_POST['interests'];}
+if($_POST['languages'] == ''){$languages = '';}else{$languages = $_POST['languages'];}
+
 
 
 $formatted_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $_POST['phone_number']);
@@ -60,6 +63,8 @@ $formatted_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $_POST
   Diet='".$diet."',
   Religion='".$religion."',
   Education='".$education."',
+  Interests = '".$interests."',
+  Languages = '".$languages."',
   Job='".$job."',
   Payment_Method='".$payment_method."',
   EmailNotifications='".$emailnotifications."'
