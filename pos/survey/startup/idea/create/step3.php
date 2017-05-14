@@ -902,7 +902,11 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
            
             
               <div class="in-person">
-            <input placeholder="XXX-XXX-XXXX" type="text" name="phone_number" id="phone_number" class="validate">
+
+
+            <input placeholder="XXX-XXX-XXXX" type="tel" name="phone_number" id="phone_number" pattern="^\d{3}-\d{3}-\d{4}$" value="<?php echo $row['Phone'];?>" required>
+
+
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
@@ -922,7 +926,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
        
        
 
-       <div id="result"></div>
+      
 
 
 
@@ -941,11 +945,13 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
             </div>
 </div>  
               </div>
+
+              
               </div>
    
 </div> 
 </div> 
-
+ <div id="result"></div>
 
 <!--Footer-->
 <?php include("../../../footer.php"); ?>

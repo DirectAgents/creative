@@ -989,7 +989,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
  $("#submitproject").click(function() {  
 
-
+        var proceed = true;
  
 
         //get input field values
@@ -1001,13 +1001,35 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var phone      = $('input[name=phone_number]').val();
 
 
+
+       var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        if(!phone.match(phoneno)) {
+           
+            //alert("aasfasd");
+            output = '<div style="float:left; text-align:center;font-size:18px; padding:20px 10px 20px 10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please add your phone number!</div>';
+            $("#result").hide().html(output).slideDown();
+            $("#details").css('border-color','red'); //change border color to red 
+            //alert("asdfasd");
+            proceed = false;  
+            }   
+
+       
+
+        if(phone==""){ 
+
+         output = '<div style="float:left; text-align:center;font-size:18px; padding:20px 10px 20px 10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please add your phone number!</div>';
+            $("#result").hide().html(output).slideDown();
+            $("#details").css('border-color','red'); //change border color to red 
+            //alert("asdfasd");
+            proceed = false;
+        }
         
        //alert(phone);
        
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
-        var proceed = true;
+        
       
          
 
@@ -1031,8 +1053,8 @@ var btn= $(this).find("input[type=submit]:focus").val();
           output = '<div class="errorXYZ">'+response.text+'</div>';
         }else{
           
-         
-            //output = '<div class="success">'+response.text+'</div>';
+            
+            
             window.location.href = "../../index.php";
           
           
@@ -1418,6 +1440,8 @@ $(".choose-location-sunday").click(function() {
     $(".save-profile").click(function() { 
        //alert("asdf");
         var proceed = true;
+
+        var phone = $('input[name=phone_number]').val();
         //simple validation at client's end
         //loop through each field and we simply change border color to red for invalid fields       
         $("#profile-form input[required=true], #profile-form textarea[required=true]").each(function(){
@@ -1433,7 +1457,16 @@ $(".choose-location-sunday").click(function() {
                 proceed = false; //set do not proceed flag              
             }   
         });
-        
+
+
+        var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+       
+             if(!phone.match(phoneno)){
+                $(phone).css('border-color','red'); //change border color to red   
+                proceed = false; //set do not proceed flag                  
+           
+            }   
+
        
         if(proceed) //everything looks good! proceed...
         {
