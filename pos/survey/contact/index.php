@@ -191,6 +191,13 @@ $content = new SendGrid\Content("text/html", '
                                                 </td>
                                             </tr>
 
+                                               <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                Reason: '.$_POST['txtsubject'].'
+                                                </td>
+                                            </tr>
+
+
                                               <tr>
                                                  <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
                                                 Message:
@@ -351,6 +358,21 @@ echo '</div>';
     <div class="name-field col-md-6">
       <div class="form-group">
     <input type="email" name="txtemail" id="txtemail" placeholder="Email Address *" oninvalid="this.setCustomValidity('Enter a valid Email Address')" oninput="setCustomValidity('')" required/>
+    </div>
+  </div>
+
+
+   <div class="name-field col-md-6">
+      <div class="form-group">
+      <select id="txtsubject" name="txtsubject" style="width:306px" required/>
+      <option value="">Select a reason</option>
+      <option value="General Inquiry">General Inquiry</option>
+      <option value="Technical Support">Technical Support</option>
+      <option value="Request a Bug">Report a Bug</option>
+      <option value="Request a Feature">Request a Feature</option>
+
+      </select>
+  
     </div>
   </div>
     

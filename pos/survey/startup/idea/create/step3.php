@@ -883,8 +883,40 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
          <div class="separator"></div>
 
+
+<?php if($row['Phone'] == ''){ ?>
         
- 
+   <div class="survey-info">
+
+           <div class="reach-people">
+              <h2>Phone Number:</h2>
+            <div class="separator"></div>
+          
+            <div class="screening-description">
+                  Please add your phone number for people to be able to reach you. 
+                </div>
+
+
+
+          <div class="input-full">
+           
+            
+              <div class="in-person">
+            <input placeholder="XXX-XXX-XXXX" type="text" name="phone_number" id="phone_number" class="validate">
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+             </div>
+            </div>
+         
+
+                 
+</div>
+
+</div>
+
+
+<?php } ?>
 
 
        

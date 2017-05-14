@@ -998,9 +998,11 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var projectstatus = $('input[name="projectstatus[]"]:checked').map(function () {return this.value;}).get().join(",");
         var pay = $("select[name='pay']").val();
         var minutes = $("select[name='minutes']").val();
+        var phone      = $('input[name=phone_number]').val();
+
 
         
-       
+       //alert(phone);
        
         
         //simple validation at client's end
@@ -1017,7 +1019,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
             //data to be sent to server
 
            //alert("aad11111"); 
-           post_data = {'projectstatus':projectstatus,'pay':pay,'minutes':minutes};
+           post_data = {'projectstatus':projectstatus,'pay':pay,'minutes':minutes, 'phone':phone};
          
             //Ajax post data to server
             $.post('confirm.php', post_data, function(response){  

@@ -725,7 +725,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
                 
               </select>
             </span>-->
-            <input placeholder="XXX-XXX-XXXX" type="text" name="phone_number" id="phone_number" value="<?php echo $row['Phone']; ?>" class="validate">
+            <input placeholder="XXX-XXX-XXXX" type="tel" name="phone_number" id="phone_number" value="<?php echo $row['Phone']; ?>" class="validate">
           </span>
         </fieldset>
 

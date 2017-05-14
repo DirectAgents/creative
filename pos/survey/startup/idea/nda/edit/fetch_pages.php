@@ -35,6 +35,10 @@ $nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_
 $rowsqlnda = mysqli_fetch_array($nda);
 
 
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."' ");
+$rowproject = mysqli_fetch_array($Project);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -177,7 +181,10 @@ $("#save-nda").click(function(){
 <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=drafted-nda">Drafted NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/?p=pending-nda">Pending NDA</a> </div>
 
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name" value="<?php echo $rowsqlnda['startup_name']; ?>"></span> and <strong>"Recipient Party"</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the purpose of evaluating and validating the idea or product of the disclosure party.</p>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name" value="<?php echo $rowsqlnda['startup_name']; ?>"></span> and <strong>"Recipient Party"</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p>
+
+<p><strong><?php echo $rowproject['Name']; ?></strong></p>
+
 <!--<textarea name="nda_purpose" id="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="What is the reason that confidential information is being shared?"></textarea>-->
 The parties are only allowed to use the confidential information for the above purpose.
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>

@@ -36,6 +36,9 @@ $nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending WHERE userID='".$_S
 $rowsqlnda = mysqli_fetch_array($nda);
 
 
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."' ");
+$rowproject = mysqli_fetch_array($Project);
+
 
 ?>
 
@@ -195,8 +198,11 @@ $("#save-nda").click(function(){
 <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=pending-nda">Pending NDA</a> </div>
 
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:</p><br>
-<?php echo $rowsqlnda['nda_purpose']; ?><br><br>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p><br>
+
+
+<p><strong><?php echo $rowproject['Name']; ?></strong></p>
+
 
 The parties are only allowed to use the confidential information for the above purpose.
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>
