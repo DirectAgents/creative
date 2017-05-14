@@ -941,6 +941,7 @@ $date = date_create($row2['Date_Created']);
 
 
 
+<div class="surveys-list">
 
 <div class="survey-info-container">
 
@@ -983,19 +984,20 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
                  
                   <div class="survey-metadata">
                     <div class="item ">
-                      <div class="label">Created:</div>
+                      <div class="label">Created</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo date_format($date, 'm/d/Y'); ?></div>
                     </div>
                     <div class="item date">
-                      <div class="label">status:</div>
+                      <div class="label">Category</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php echo $rowproject['ProjectStatus']; ?>
+                        
+                          <?php $category = str_replace("-"," ",$rowproject['Category']); echo $category; ?>
                         </span>
                       </div>
                     </div>
                     <div class="item date">
-                      <div class="label">Participants:</div>
+                      <div class="label">People participate to provide feedback</div>
                       <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
                         
 <?php
@@ -1006,8 +1008,12 @@ $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
 if($count > 0 ){
-echo "<a href=project/browse/?id=".$row2['ProjectID'].">";
+echo "<a href=".BASE_PATH."/startup/idea/browse/participants/?id=".$row2['ProjectID'].">";
 echo $count;
+echo "</a>";
+echo "&nbsp;&nbsp;";
+echo "<a href=".BASE_PATH."/startup/idea/browse/participants/?id=".$row2['ProjectID'].">";
+echo "(view participants)";
 echo "</a>";
 }else{
   echo "0";
@@ -1025,7 +1031,7 @@ echo "</a>";
 
 
   
-    
+     </div>
    </div>
 </div>
 
