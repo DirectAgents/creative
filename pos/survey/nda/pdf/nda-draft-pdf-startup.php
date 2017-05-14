@@ -120,9 +120,9 @@ $pdf->AddPage();
 
 // create some HTML content
 $html = '<h1>Non-Disclosure Agreement</h1>
-<strong>'.$rowsqlnda['startup_name'].'</strong> and "Recipient Name" are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:<br><br>
+<strong>'.$rowsqlnda['startup_name'].'</strong> and "Recipient Name" are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:<br><br>
 
-<strong>'.$rowsqlnda['nda_purpose'].'</strong>
+<strong>'.$rowproject['Name'].'</strong>
 
 <p>The parties are only allowed to use the confidential information for the above purpose.</p>
 
@@ -192,39 +192,38 @@ $html = '
 	
 
 	<tr>
-	  <td style="text-align:left;"><strong>Disclosure Party</strong></td>
-	  <td rowspan="4" colspan="2"></td>
-	  <td style="text-align:left;"><strong>Recipient Party</strong></td>
+	  <td style="text-align:left;width:200px"><strong>Disclosure Party</strong></td>
+	  <td>&nbsp;</td>
+	  <td style="text-align:left;width:200px"><strong>Recipient Party</strong></td>
   </tr>
 	<tr>
-	  <td style="text-align:left;">Signature:</td>
-	  <td style="text-align:left;">Signature:</td>
+	  <td style="text-align:left;width:200px">Signature:</td>
+	  <td>&nbsp;</td>
+	  <td style="text-align:left;width:200px">Signature:</td>
   </tr>
 	<tr>
 		<td style="text-align:left;"><img src="signatures/'.$rowsqlnda['startup_signature'].'" border="0" height="100" width="250" align="top" /></td>
 		<td style="text-align:left;"><img src="signatures/'.$rowsqlnda['participant_signature'].'" border="0" height="41" width="41" align="top" /></td>
 	</tr>
 	<tr>
-		<td>Name: '.$rowsqlnda['startup_sig_name'].'</td>
-		<td>Name: _____________</td>
+		<td style="width:200px">Name: '.$rowsqlnda['startup_sig_name'].'</td>
+		 <td>&nbsp;</td>
+		<td style="width:200px">Name: _____________</td>
 	</tr>
 	<tr>
-		<td>Title: '.$rowsqlnda['startup_sig_title'].'</td>
-		<td></td>
-		<td></td>
-		<td>Title:_____________</td>
+		<td style="width:200px">Title: '.$rowsqlnda['startup_sig_title'].'</td>
+		 <td>&nbsp;</td>
+		<td style="width:200px">Title:_____________</td>
 	</tr>
 	<tr>
-		<td>Company: '.$rowsqlnda['startup_sig_company'].'</td>
-		<td></td>
-		<td></td>
-		<td>Company: ___________</td>
+		<td style="width:200px">Company: '.$rowsqlnda['startup_sig_company'].'</td>
+		 <td>&nbsp;</td>
+		<td style="width:200px">Company: ___________</td>
 	</tr>
 	<tr>
-		<td>Date: '.$thedate.'</td>
-		<td></td>
-		<td></td>
-		<td>Date: ____________</td>
+		<td style="width:200px">Date: '.$thedate.'</td>
+		 <td>&nbsp;</td>
+		<td style="width:200px">Date: ____________</td>
 	</tr>
 </table>
 ';

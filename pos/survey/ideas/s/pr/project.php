@@ -30,7 +30,7 @@ $Diet = str_replace(",","|",$rowproject['Diet']);
 $Religion = str_replace(",","|",$rowproject['Religion']);
 $Education = str_replace(",","|",$rowproject['Education']);
 $Job = str_replace(",","|",$rowproject['Job']);
-$Interest = str_replace(",","|",$rowproject['Interest']);
+$Interests = str_replace(",","|",$rowproject['Interests']);
 $Languages = str_replace(",","|",$rowproject['Languages']);
 
 
@@ -185,7 +185,7 @@ if(mysqli_num_rows($startup)<0)
     </div>
 
     
-<div class="col-lg-7"><h3>Payout</h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes </span></div>
+<div class="col-lg-7"><h2>Payout</h2><h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes </span></h3></div>
 
 
 

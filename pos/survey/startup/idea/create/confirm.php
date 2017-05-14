@@ -25,6 +25,7 @@ $date = date('Y-m-d');
   Pay = '".$_POST['pay']."',
   Minutes = '".$_POST['minutes']."',
   Date_Created='".$date."', 
+  NDA='No', 
   FinishedProcess='Y'
 
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");

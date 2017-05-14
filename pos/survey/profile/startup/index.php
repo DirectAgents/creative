@@ -878,7 +878,7 @@ echo '<div class="row">
 
 if(!empty($_SESSION['startupSession'])){
 
-echo '<div class="thetitle">Ideas:</div>';
+echo '<div class="thetitle">Your Ideas Posted:</div>';
 
 
 if($_SESSION['startupSession'] == $_GET['id']){
