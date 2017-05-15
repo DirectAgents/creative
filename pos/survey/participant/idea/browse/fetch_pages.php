@@ -243,12 +243,15 @@ if(mysqli_num_rows($sql4) == false)
 */
 
 
-$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink ORDER BY userID DESC LIMIT $position, $item_per_page");
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND userID = '".$_SESSION['participantSession']."' ORDER BY userID DESC LIMIT $position, $item_per_page");
 
 
 
-if(mysqli_num_rows($sql3)<1)
+if(mysqli_num_rows($sql3)>0)
 {
+
+
+
 
 
 
