@@ -44,7 +44,7 @@ if(mysqli_num_rows($results)<1)
 {
 echo "<div class='no-participants'>";
 echo "<h3>";
-echo "No more potential Participants available!";
+echo "No more Participants!";
 echo "</h3>";
 echo "</div>";
 
@@ -106,7 +106,7 @@ echo '
    <tbody>
 <tr><td>
 
-<a href="'.BASE_PATH.'/profile/participant/?id='.$row3['userID'].'&p='.$_GET['id'].'">';
+<a href="'.BASE_PATH.'/profile/participant/?id='.$row2['userID'].'&p='.$_GET['id'].'">';
 
 
 

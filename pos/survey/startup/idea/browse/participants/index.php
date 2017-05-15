@@ -23,14 +23,14 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../../../login');
+  $startup_home->redirect('../../../../login');
 }
 
 
 
 
 $get_total_rows = 0;
-$results = $mysqli->query("SELECT COUNT(*) FROM tbl_project_request");
+$results = $mysqli->query("SELECT COUNT(*) FROM tbl_startup_project");
 if($results){
 $get_total_rows = $results->fetch_row(); 
 }
@@ -48,9 +48,34 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+$rowproject = mysqli_fetch_array($Project);
+
+$meetupchoice=explode(',',$rowproject['Meetupchoice']);
+$age=explode(',',$rowproject['Age']);
+$gender=explode(',',$rowproject['Gender']);
+$minheight=explode(',',$rowproject['MinHeight']);
+$maxheight=explode(',',$rowproject['MaxHeight']);
+$city=explode(',',$rowproject['City']);
+$status=explode(',',$rowproject['Status']);
+$ethnicity=explode(',',$rowproject['Ethnicity']);
+$smoke=explode(',',$rowproject['Smoke']);
+$drink=explode(',',$rowproject['Drink']);
+$diet=explode(',',$rowproject['Diet']);
+$religion=explode(',',$rowproject['Religion']);
+$education=explode(',',$rowproject['Education']);
+$job=explode(',',$rowproject['Job']);
 
 
 
+
+
+$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+$rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
+
+$screening=explode(',',$rowpotentialanswers['ScreeningQuestion']);
+
+$potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 ?>
 
