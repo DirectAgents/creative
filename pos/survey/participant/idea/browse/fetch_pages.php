@@ -211,7 +211,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '
 
 
 
-
+/*
 
 $sql4 = mysqli_query($connecDB,"SELECT * 
 from (
@@ -228,18 +228,26 @@ from (
     select userID, ProjectID, Met from tbl_participant_meeting_participated
    
 ) tbl_participant
-where userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row['ProjectID']."' AND Met != 'yes' ");
+where userID != '".$_SESSION['participantSession']."' AND ProjectID != '".$row['ProjectID']."' AND Met != 'yes' ");
 
 
 if(mysqli_num_rows($sql4) == false)
 {
 
 
+
+
+
   $sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_SESSION['participantSession']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages ORDER BY userID DESC LIMIT $position, $item_per_page");
 
+*/
 
 
-if(mysqli_num_rows($sql3)>0)
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink ORDER BY userID DESC LIMIT $position, $item_per_page");
+
+
+
+if(mysqli_num_rows($sql3)<1)
 {
 
 
@@ -288,7 +296,7 @@ echo '
 
 
 
-}
+//}
 
 
 }
