@@ -186,7 +186,7 @@ $("#save-nda").click(function(){
 <p><strong><?php echo $rowproject['Name']; ?></strong></p>
 
 <!--<textarea name="nda_purpose" id="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="What is the reason that confidential information is being shared?"></textarea>-->
-The parties are only allowed to use the confidential information for the above purpose.
+
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>
 <ul class="no-bullets">
   <li>(a) the recipient of the confidential information already knew through proper means;</li>

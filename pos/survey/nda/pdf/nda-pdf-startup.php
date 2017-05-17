@@ -120,11 +120,10 @@ $pdf->AddPage();
 
 // create some HTML content
 $html = '<h1>Non-Disclosure Agreement</h1>
-<strong>'.$rowsqlnda['startup_name'].'</strong> and <strong>'.$rowsqlnda['participant_name'].'</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the following purpose:<br><br>
+<strong>'.$rowsqlnda['startup_name'].'</strong> and <strong>'.$rowsqlnda['participant_name'].'</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:<br><br>
 
-<strong>'.$rowsqlnda['nda_purpose'].'</strong>
+<strong>'.$rowproject['Name'].'</strong>
 
-<p>The parties are only allowed to use the confidential information for the above purpose.</p>
 
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that</p>
 

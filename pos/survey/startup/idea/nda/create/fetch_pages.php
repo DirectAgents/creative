@@ -32,6 +32,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."' ");
+$rowproject = mysqli_fetch_array($Project);
+
+
 
 ?>
 
@@ -193,9 +197,11 @@ $("#save-nda").click(function(){
   <!-- ngInclude: 'edit.html' --><div ng-include="'edit.html'" class=""><!-- ngInclude: 'subnav.html' --><div class="subnav" ng-include="'subnav.html'" ng-controller="SubnavController"><!-- ngIf: displaySubnav -->
 </div>
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name"></span> and <span contenteditable="false"><strong>"Recipient Party"</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the purpose of evaluating and validating the idea or product of the disclosure party.</p>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><input type="text" name="disclosure_party" id="disclosure_party"  placeholder="Enter you Full Name"></span> and <span contenteditable="false"><strong>"Recipient Party"</strong> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p>
 <!--<textarea name="nda_purpose" id="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="What is the reason that confidential information is being shared?"></textarea>-->
-The parties are only allowed to use the confidential information for the above purpose.
+
+<p><strong><?php echo $rowproject['Name']; ?></strong></p>
+
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>
 <ul class="no-bullets">
   <li>(a) the recipient of the confidential information already knew through proper means;</li>

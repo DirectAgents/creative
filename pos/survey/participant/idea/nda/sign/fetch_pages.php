@@ -86,24 +86,24 @@ function isCanvasBlank(canvas) {
 $("#save-nda").click(function(){
         var proceed = true;
         
-        var projectid  = $('input[name=projectid').val();
-        var recipient_party  = $('input[name=recipient_party').val();
-        var the_signature  = $('input[name=the_signature').val();
-        var participant_name  = $('input[name=participant_name').val();
-        var participant_sig_name  = $('input[name=participant_sig_name').val();
-        var participant_sig_title  = $('input[name=participant_sig_title').val();
-        var participant_sig_company  = $('input[name=participant_sig_company').val();
-        var participant_sig_date  = $('input[name=participant_sig_date').val();
+        var projectid  = $('input[name=projectid]').val();
+        var recipient_party  = $('input[name=recipient_party]').val();
+        var the_signature  = $('input[name=the_signature]').val();
+        var participant_name  = $('input[name=participant_name]').val();
+        var participant_sig_name  = $('input[name=participant_sig_name]').val();
+        var participant_sig_title  = $('input[name=participant_sig_title]').val();
+        var participant_sig_company  = $('input[name=participant_sig_company]').val();
+        var participant_sig_date  = $('input[name=participant_sig_date]').val();
 
-        var startupID  = $('input[name=startupID').val();
-        var disclosure_party  = $('input[name=disclosure_party').val();
+        var startupID  = $('input[name=startupID]').val();
+        var disclosure_party  = $('input[name=disclosure_party]').val();
         var nda_purpose = $("textarea[name='nda_purpose']").val();
-        var startup_signature  = $('input[name=startup_signature').val();
-        var startup_name  = $('input[name=startup_name').val();
-        var startup_sig_name  = $('input[name=startup_sig_name').val();
-        var startup_sig_title  = $('input[name=startup_sig_title').val();
-        var startup_sig_company  = $('input[name=startup_sig_company').val();
-        var startup_sig_date  = $('input[name=startup_sig_date').val();
+        var startup_signature  = $('input[name=startup_signature]').val();
+        var startup_name  = $('input[name=startup_name]').val();
+        var startup_sig_name  = $('input[name=startup_sig_name]').val();
+        var startup_sig_title  = $('input[name=startup_sig_title]').val();
+        var startup_sig_company  = $('input[name=startup_sig_company]').val();
+        var startup_sig_date  = $('input[name=startup_sig_date]').val();
         
    
 
@@ -125,7 +125,7 @@ $("#save-nda").click(function(){
      if (blank) {
 
         $("#signature").css('border-color','red'); //change border color to red 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter add a signature! </div>';
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please add a signature! </div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
 
@@ -144,10 +144,11 @@ $("#save-nda").click(function(){
         }
        if(proceed) //everything looks good! proceed...
         {  
+
         $.ajax({
             method: "POST",
             url: "../../../../nda/pdf/signatures/sign-participant.php",
-            data: { signature: dataURI, projectid: projectid, recipient_party: recipient_party, participant_sig_name: participant_sig_name,
+            data: { signature: dataURI, projectid: projectid, participant_sig_name: participant_sig_name,
             participant_sig_title: participant_sig_title, participant_sig_company: participant_sig_company, participant_sig_date: participant_sig_date,
             startupID : startupID, disclosure_party: disclosure_party, nda_purpose: nda_purpose, startup_signature: startup_signature, startup_sig_name: startup_sig_name,
             startup_sig_title: startup_sig_title, startup_sig_company: startup_sig_company, startup_sig_date: startup_sig_date  }
@@ -198,13 +199,13 @@ $("#save-nda").click(function(){
 <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=pending-nda">Pending NDA</a> </div>
 
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p><br>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="participant_name" name="participant_name" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p>
 
 
 <p><strong><?php echo $rowproject['Name']; ?></strong></p>
 
 
-The parties are only allowed to use the confidential information for the above purpose.
+
 <p>Confidential information is information that either party has developed or obtained and has taken reasonable steps to protect from disclosure. Confidential information is NOT information that </p>
 <ul class="no-bullets">
   <li>(a) the recipient of the confidential information already knew through proper means;</li>

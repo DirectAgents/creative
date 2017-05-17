@@ -1047,7 +1047,7 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Cat
 
                     </div>
 
-                     <div class="col-md-12">
+                     <div class="col-md-12" style="padding-left:0px;">
                    <?php if($row4['NDA'] == 'Yes') { ?>
 
                   <br>Important Note.: <?php echo $row3['FirstName']; ?> requires you to sign an NDA before you both meet. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/sign/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to sign.
