@@ -16,7 +16,7 @@ $reg_user = new PARTICIPANT();
 
 if($reg_user->is_logged_in()!="")
 {
-  $reg_user->redirect('../index.php');
+  $reg_user->redirect('../meetings/');
 }
 
 
