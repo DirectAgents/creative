@@ -53,9 +53,9 @@ $( "#pending-nda" ).load( "pending-nda.php" );
       
     });
 
-    $(".completed-nda").click(function() {  
+    $(".signed-nda").click(function() {  
 
-      $( "#completed-nda" ).load( "completed-nda.php" );
+      $( "#signed-nda" ).load( "signed-nda.php" );
 
     });
 
@@ -97,7 +97,7 @@ a.verify-badge img#verify-image-payment{display:none !important;}
  <ul>
     <li><a href="#pending-nda" class="pending-nda">Pending</a></li>
     <li>&nbsp;</li>
-    <li><a href="#completed-nda" class="completed-nda">Completed</a></li>
+    <li><a href="#signed-nda" class="signed-nda">Signed</a></li>
    
    
   </ul>  
@@ -110,7 +110,7 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
 <div id="pending-nda" class="tabContent" > </div>
 
-<div id="completed-nda" class="tabContent" ></div>
+<div id="signed-nda" class="tabContent" ></div>
 
 
 

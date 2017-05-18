@@ -43,7 +43,7 @@ if(!is_numeric($page_number)){
 //get current starting point of records
 $position = ($page_number * $item_per_page);
 
-
+//echo $item_per_page;
 
 
 

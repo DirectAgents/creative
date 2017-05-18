@@ -73,6 +73,19 @@ $sql=mysqli_query($connecDB,"DELETE FROM tbl_meeting_archived_startup WHERE star
 
 
 
+$sql5=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_POST['userid']."' ORDER BY id DESC ");
+
+if(mysqli_num_rows($sql5)>0)
+{
+
+while($row2 = mysqli_fetch_array($sql4))
+{ 
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_startup_project WHERE startupID = '".$_POST['userid']."'");
+}
+}
+
+
+
 
 $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Account Successfully Deleted!</div>'));
 die($output);
