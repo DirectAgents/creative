@@ -19,7 +19,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../login.php');
+  $participant_home->redirect('../../../login/');
 }
 
 
@@ -28,7 +28,6 @@ if(!$participant_home->is_logged_in())
 $stmt = $startup_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
 
 
 
@@ -145,6 +144,11 @@ if(mysqli_num_rows($sql)>0)
 //get all records from add_delete_record table
 while($row2 = mysqli_fetch_array($sql))
 { 
+
+
+
+$sqlproject = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$row2['ProjectID']."' ");
+$rowproject = mysqli_fetch_array($sqlproject);  
 
 
 date_default_timezone_set('America/New_York');
@@ -275,9 +279,7 @@ $(document).ready(function () {
 
 
                   <div class="survey-header">
-                    <div class="account-project-name">
-                      Project Name
-                    </div>
+                  
                     <div class="edit-delete">
                       <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/sign/?id=<?php echo $row2['ProjectID']; ?>">
                   <i class="icon icon-pencil"></i> Sign NDA</a>
@@ -289,7 +291,12 @@ $(document).ready(function () {
                   
 
 
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $rowproject['Name']; ?></div>
+                  <div class="survey-name" ng-bind="(survey.name)">
+<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowproject['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_SESSION['participantSession']; ?>">
+                  <?php echo $rowproject['Name']; ?>
+                    </a>
+
+                  </div>
                   <div class="survey-metadata">
                   
                     <div class="item date">

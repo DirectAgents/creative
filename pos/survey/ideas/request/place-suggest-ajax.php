@@ -298,7 +298,7 @@ $mail->Body     = '
                                             <td align="center" style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding">Can\'t make it?</td>
                                         </tr>
                                         <tr>
-                                            <td align="center" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">Login into your account to view details. <a href="http://labfy.com/survey/startup/login.php">My Account</a>.</td>
+                                            <td align="center" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">Login into your account to view details. <a href="http://labfy.com/survey/startup/login/">My Account</a>.</td>
                                         </tr>
                                     </tbody></table>
 

@@ -23,7 +23,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../../participant/login.php');
+  $participant_home->redirect('../../participant/login/');
 }
 
 
@@ -361,7 +361,7 @@ $('#location_option3').hide();
 <?php if(!empty($_GET['q'])){ ?>
 
 <div class="col-lg-4">
-  <a href="<?php echo BASE_PATH; ?>/participant/login.php?p=<?php echo $_GET['id']; ?>" role="button" class="111slide_open">
+  <a href="<?php echo BASE_PATH; ?>/participant/login/?p=<?php echo $_GET['id']; ?>" role="button" class="111slide_open">
   <button type="button" class="btn-request">
   Login to Participate</button></a>
 </div>

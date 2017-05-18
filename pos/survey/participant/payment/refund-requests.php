@@ -10,7 +10,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../login.php');
+  $participant_home->redirect('../login/');
 }
 
 $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");

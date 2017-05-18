@@ -22,7 +22,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../login.php');
+  $participant_home->redirect('../../../login/');
 }
 
 

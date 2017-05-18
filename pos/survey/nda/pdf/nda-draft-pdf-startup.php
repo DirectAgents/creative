@@ -202,7 +202,8 @@ $html = '
   </tr>
 	<tr>
 		<td style="text-align:left;"><img src="signatures/'.$rowsqlnda['startup_signature'].'" border="0" height="100" width="250" align="top" /></td>
-		<td style="text-align:left;"><img src="signatures/'.$rowsqlnda['participant_signature'].'" border="0" height="41" width="41" align="top" /></td>
+		 <td>&nbsp;</td>
+		<td style="text-align:left;"><img src="signatures/'.$rowsqlnda['participant_signature'].'" border="0" height="100" width="250" align="top" /></td>
 	</tr>
 	<tr>
 		<td style="width:200px">Name: '.$rowsqlnda['startup_sig_name'].'</td>

@@ -300,11 +300,11 @@ $(document).ready(function () {
                       <div class="label">Disclosure Party:</div>
  <?php
 $date = new DateTime($rownda['startup_sig_date']);
-$thedate1 =  $date->format('m/d/Y');
+$thedate1 =  $date->format('M d, Y');
     ?>
 
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
-                      Signed NDA on <?php echo $thedate1; ?></div>
+                      Signed NDA on <br><?php echo $thedate1; ?></div>
                     </div>
                     <div class="item date">
                       <div class="label">Recipient Party:</div>
@@ -313,11 +313,11 @@ $thedate1 =  $date->format('m/d/Y');
 
  <?php
 $date = new DateTime($rownda['participant_sig_date']);
-$thedate2 =  $date->format('m/d/Y');
+$thedate2 =  $date->format('M d, Y');
     ?>
 
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          You signed NDA on <?php echo $thedate2; ?>
+                          You signed NDA on <br><?php echo $thedate2; ?>
                         </span>
                       </div>
                     </div>

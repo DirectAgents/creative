@@ -29,7 +29,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND status = 'draft' ");
+$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed WHERE startupID='".$_SESSION['startupSession']."' AND status = 'signed' ");
 $rownda = mysqli_fetch_array($nda);
 
  
@@ -469,7 +469,7 @@ $(document).ready(function () {
                   <div class="survey-name" ng-bind="(survey.name)"><?php echo $rowproject['Name']; ?></div>
                   <div class="survey-metadata">
                     <div class="item ">
-                      <div class="label">Created:</div>
+                      <div class="label">Disclosure Party:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
 
                       <?php 
@@ -479,13 +479,14 @@ $thedate =  $date->format('M d, Y');
                       echo $thedate; ?></div>
                     </div>
                     <div class="item date">
-                      <div class="label">Status:</div>
+                      <div class="label">Recipient Party:</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
 
 <?php
 $Participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
 $rowparticipant = mysqli_fetch_array($Participant);
+
 
 $date = new DateTime($rownda['participant_sig_date']);
 $thedate =  $date->format('M d, Y');
@@ -494,7 +495,7 @@ $thedate =  $date->format('M d, Y');
 
 
 
-                          <?php echo $rowparticipant['FirstName']; ?> signed NDA on <?php echo $thedate; ?>
+                          <?php echo $rowparticipant['FirstName']; ?> signed NDA on<br> <?php echo $thedate; ?>
                         </span>
                       </div>
                     </div>

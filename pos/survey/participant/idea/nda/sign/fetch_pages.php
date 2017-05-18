@@ -89,15 +89,14 @@ $("#save-nda").click(function(){
         var projectid  = $('input[name=projectid]').val();
         var recipient_party  = $('input[name=recipient_party]').val();
         var the_signature  = $('input[name=the_signature]').val();
-        var participant_name  = $('input[name=participant_name]').val();
         var participant_sig_name  = $('input[name=participant_sig_name]').val();
         var participant_sig_title  = $('input[name=participant_sig_title]').val();
         var participant_sig_company  = $('input[name=participant_sig_company]').val();
         var participant_sig_date  = $('input[name=participant_sig_date]').val();
-
+        var state  = $('input[name=state]').val();
         var startupID  = $('input[name=startupID]').val();
         var disclosure_party  = $('input[name=disclosure_party]').val();
-        var nda_purpose = $("textarea[name='nda_purpose']").val();
+        //var nda_purpose = $("textarea[name='nda_purpose']").val();
         var startup_signature  = $('input[name=startup_signature]').val();
         var startup_name  = $('input[name=startup_name]').val();
         var startup_sig_name  = $('input[name=startup_sig_name]').val();
@@ -150,8 +149,8 @@ $("#save-nda").click(function(){
             url: "../../../../nda/pdf/signatures/sign-participant.php",
             data: { signature: dataURI, projectid: projectid, participant_sig_name: participant_sig_name,
             participant_sig_title: participant_sig_title, participant_sig_company: participant_sig_company, participant_sig_date: participant_sig_date,
-            startupID : startupID, disclosure_party: disclosure_party, nda_purpose: nda_purpose, startup_signature: startup_signature, startup_sig_name: startup_sig_name,
-            startup_sig_title: startup_sig_title, startup_sig_company: startup_sig_company, startup_sig_date: startup_sig_date  }
+            startupID : startupID, state: state, disclosure_party: disclosure_party, startup_signature: startup_signature, startup_sig_name: startup_sig_name,
+            startup_sig_title: startup_sig_title, recipient_party: recipient_party, startup_sig_company: startup_sig_company, startup_sig_date: startup_sig_date  }
         })  
         .success(function( response ) {
            
@@ -199,7 +198,7 @@ $("#save-nda").click(function(){
 <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=pending-nda">Pending NDA</a> </div>
 
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="participant_name" name="participant_name" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p>
 
 
 <p><strong><?php echo $rowproject['Name']; ?></strong></p>
@@ -412,6 +411,7 @@ $thedate =  $date->format('m/d/Y');
 <input type="hidden" style="width:250px" name="startup_sig_title" id="startup_sig_title" value="<?php echo $rowsqlnda['startup_sig_title']; ?>"  />
 <input type="hidden" style="width:250px" name="startup_sig_company" id="startup_sig_company" value="<?php echo $rowsqlnda['startup_sig_company']; ?>"  />
 <input type="hidden" style="width:250px" name="startup_sig_date" id="startup_sig_date" value="<?php echo $rowsqlnda['startup_sig_date']; ?>"  />
+<input type="hidden" style="width:250px" name="state" id="state" value="<?php echo $rowsqlnda['State']; ?>"  />
 
 
 <textarea name="nda_purpose" data-question="What is the reason that confidential information is being shared?" data-help="Examples include 'to discuss a potential partnership' or 'to discuss a potential transaction.'" placeholder="Purpose of disclosure" style="display:none"><?php echo $rowsqlnda['nda_purpose']; ?></textarea>

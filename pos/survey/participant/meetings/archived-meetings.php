@@ -23,7 +23,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../login.php');
+  $participant_home->redirect('../login/');
 }
 
 
@@ -469,6 +469,26 @@ Meeting was canceled.
 
 
                   </div>
+
+
+                   <?php 
+$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
+$rownda = mysqli_fetch_array($sqlnda);
+
+if(mysqli_num_rows($sqlnda) == 1) {
+                   
+                   ?>
+                   <div class="col-md-12" style="padding-left:0px;">
+                
+
+                  <br>Note: You signed an NDA for this idea. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/view/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to view.
+                     
+</div>
+
+                  
+
+                   <? } ?>   
+                   
 
                   <div class="survey-actions">
                    

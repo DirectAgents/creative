@@ -197,7 +197,7 @@ $("#save-nda").click(function(){
 <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=signed-nda">Signed NDA</a> | <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/?p=pending-nda">Pending NDA</a> </div>
 
 <h1>Non-Disclosure Agreement</h1>
-<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><input type="text" id="recipient_party" name="recipient_party" placeholder="Your Full Name Here" value="<?php echo $rowsqlnda['participant_name']; ?>"></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p>
+<div class="edit-terms" contenteditable="false"><p><span contenteditable="false"><strong><?php echo $rowsqlnda['startup_name']; ?></strong></span> and <span contenteditable="false"><?php echo $rowsqlnda['participant_name']; ?></span> are the parties to this agreement. They expect to disclose confidential information to each other for the following idea:</p>
 
 <p><strong><?php echo $rowproject['Name']; ?></strong></p>
 
@@ -246,7 +246,7 @@ $("#save-nda").click(function(){
 
 <div class="col-lg-12" style="padding-left:0px;">
 <div class="col-lg-4" style="padding-left:0px; text-align:right"><label>Signature:</label></div>
-<div class="col-lg-4"><img src="<?php echo BASE_PATH; ?>/nda/pdf/signatures/<?php echo $rowsqlnda['startup_signature']; ?> "/>
+<div class="col-lg-4" style="padding-left:0px; text-align:left"><img src="<?php echo BASE_PATH; ?>/nda/pdf/signatures/<?php echo $rowsqlnda['startup_signature']; ?> "/>
 </div>
 </div>
 
@@ -313,15 +313,7 @@ $thedate =  $date->format('m/d/Y');
 
 
 
-<div class="col-lg-12" style="padding-left:0px;">
 
-<div style="float:left; width:100%"><label>Draw your Signature*:</label></div>  
-
-<canvas id="signature" name="signature" width="250" height="100" style="border: 1px solid #ddd;"></canvas>
-<br>
-<button id="clear-signature">Clear</button>
-
-</div>
 
 
 
@@ -341,7 +333,7 @@ $thedate =  $date->format('m/d/Y');
 
 <div class="col-sm-4" style="padding-left:0px; text-align:right"><label>Full Name*:</label></div>
 <div class="col-lg-4" style="padding-left:0px; text-align:left">
-<input type="text" style="width:250px" name="participant_sig_name" id="participant_sig_name" placeholder="Your Full Name" value="<?php echo $rowsqlnda['participant_sig_name']; ?>" /></div>
+<?php echo $rowsqlnda['participant_sig_name']; ?></div>
 
 
 </div>
@@ -351,7 +343,7 @@ $thedate =  $date->format('m/d/Y');
 
 <div class="col-sm-4" style="padding-left:0px; text-align:right"><label>Title:</label></div>
 <div class="col-lg-4" style="padding-left:0px; text-align:left">
-<input type="text" style="width:250px" name="participant_sig_title" id="participant_sig_title" placeholder="Your Title" value="<?php echo $rowsqlnda['participant_sig_title']; ?>"  /></div>
+<?php echo $rowsqlnda['participant_sig_title']; ?></div>
 
 
 </div>
@@ -361,7 +353,7 @@ $thedate =  $date->format('m/d/Y');
 
 <div class="col-sm-4" style="padding-left:0px; text-align:right"><label>Company:</label></div>
 <div class="col-lg-4" style="padding-left:0px; text-align:left">
-<input type="text" style="width:250px" name="participant_sig_company" id="participant_sig_company" placeholder="Your Company (if applicable)" value="<?php echo $rowsqlnda['participant_sig_company']; ?>"  /></div>
+<?php echo $rowsqlnda['participant_sig_company']; ?></div>
 
 
 </div>
@@ -381,7 +373,7 @@ $thedate =  $date->format('m/d/Y');
     ?>
 <div class="col-lg-4" style="padding-left:0px; text-align:right"><label>Date*:</label></div>
 <div class="col-lg-4" style="padding-left:0px; text-align:left">
-  <input type="text" style="width:250px" name="participant_sig_date" id="participant_sig_date" placeholder="Today's Date" value="<?php echo $thedate; ?>"  />
+<?php echo $thedate; ?>
 
 </div>
 
@@ -420,13 +412,6 @@ $thedate =  $date->format('m/d/Y');
 
 <input type="hidden" style="width:250px" name="projectid" id="projectid" value="<?php echo $_GET['id']; ?>"  />
 
-<div class="col-lg-12" style="padding-left:0px; text-align:center">
- <div id="save-nda">
-            
-        <input type="submit" value="I have read the NDA Agreement and Agree with the Terms and Conditions"/>
-
-            </div>
-</div>
 
 
 

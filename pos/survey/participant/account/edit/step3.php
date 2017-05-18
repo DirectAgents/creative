@@ -7,7 +7,7 @@ $startup_home = new startup();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('login.php');
+  $startup_home->redirect('../../login/');
 }
 
 

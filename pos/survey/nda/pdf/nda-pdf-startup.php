@@ -190,38 +190,42 @@ $thedate2 =  $date2->format('m/d/Y');
 $html = '
 <table border="0" cellspacing="3" cellpadding="4">
 	
+	<tr>
+	  <td style="text-align:left;width:200px"><strong>Disclosure Party</strong></td>
+	  <td>&nbsp;</td>
+	  <td style="text-align:left;width:200px"><strong>Recipient Party</strong></td>
+  </tr>
 	
 
 	<tr>
-	  <td style="text-align:left;">Signature:</td>
-	  <td rowspan="3" colspan="2"></td>
-	  <td style="text-align:left;">Signature:</td>
+	  <td style="text-align:left;width:200px">Signature:</td>
+	  <td>&nbsp;</td>
+	  <td style="text-align:left;width:200px">Signature:</td>
   </tr>
 	<tr>
 		<td style="text-align:left;"><img src="signatures/'.$rowsqlnda['startup_signature'].'" border="0" height="100" width="250" align="top" /></td>
-		<td style="text-align:left;"><img src="signatures/'.$rowsqlnda['participant_signature'].'" border="0" height="41" width="41" align="top" /></td>
+		 <td>&nbsp;</td>
+		<td style="text-align:left;"><img src="signatures/'.$rowsqlnda['participant_signature'].'" border="0" height="100" width="250" align="top" /></td>
 	</tr>
 	<tr>
-		<td>Name: '.$rowsqlnda['startup_sig_name'].'</td>
-		<td>Name: '.$rowsqlnda['participant_sig_name'].'</td>
+		<td style="width:200px">Name: '.$rowsqlnda['startup_sig_name'].'</td>
+		<td>&nbsp;</td>
+		<td style="width:200px">Name: '.$rowsqlnda['participant_sig_name'].'</td>
 	</tr>
 	<tr>
-		<td>Title: '.$rowsqlnda['startup_sig_title'].'</td>
-		<td></td>
-		<td></td>
-		<td>Title: '.$rowsqlnda['participant_sig_title'].'</td>
+		<td style="width:200px">Title: '.$rowsqlnda['startup_sig_title'].'</td>
+		<td>&nbsp;</td>
+		<td style="width:200px">Title: '.$rowsqlnda['participant_sig_title'].'</td>
 	</tr>
 	<tr>
-		<td>Company: '.$rowsqlnda['startup_sig_company'].'</td>
-		<td></td>
-		<td></td>
-		<td>Company: '.$rowsqlnda['participant_sig_company'].'</td>
+		<td style="width:200px">Company: '.$rowsqlnda['startup_sig_company'].'</td>
+		<td>&nbsp;</td>
+		<td style="width:200px">Company: '.$rowsqlnda['participant_sig_company'].'</td>
 	</tr>
 	<tr>
-		<td>Date: '.$thedate.'</td>
-		<td></td>
-		<td></td>
-		<td>Date: '.$thedate2.'</td>
+		<td style="width:200px">Date: '.$thedate.'</td>
+		<td>&nbsp;</td>
+		<td style="width:200px">Date: '.$thedate2.'</td>
 	</tr>
 </table>';
 
