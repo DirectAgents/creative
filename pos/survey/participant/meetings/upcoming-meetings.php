@@ -23,7 +23,7 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../login/');
+  $participant_home->redirect('../login.php');
 }
 
 
@@ -416,6 +416,27 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Cat
 
                     </div>
 
+
+                     <?php 
+$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
+$rownda = mysqli_fetch_array($sqlnda);
+
+if(mysqli_num_rows($sqlnda) == 1) {
+                   
+                   ?>
+                   <div class="col-md-12" style="padding-left:0px;">
+                
+
+                  <br>Note: <?php echo $row3['FirstName']; ?> requires you to sign an NDA before you both meet. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/sign/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to sign.
+                     
+</div>
+
+                  
+
+                   <? } ?>  
+
+                   
+
                      <?php 
 $sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
 $rownda = mysqli_fetch_array($sqlnda);
@@ -433,6 +454,10 @@ if(mysqli_num_rows($sqlnda) == 1) {
                   
 
                    <? } ?>   
+
+
+ 
+
                   </div>
                
 
