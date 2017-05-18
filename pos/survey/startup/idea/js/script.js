@@ -998,9 +998,9 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var projectstatus = $('input[name="projectstatus[]"]:checked').map(function () {return this.value;}).get().join(",");
         var pay = $("select[name='pay']").val();
         var minutes = $("select[name='minutes']").val();
-        var phone      = $('input[name=phone_number]').val();
+        var phone = $('input[name=phone_number]').val();
 
-
+       
 
        var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
         if(!phone.match(phoneno)) {

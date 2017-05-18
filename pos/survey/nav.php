@@ -13,7 +13,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
 ?>
 
- <h1><a href="<?php echo BASE_PATH; ?>" title="Stripe"></a></h1>
+ <h1><a href="<?php echo BASE_PATH; ?>" title="Valify"></a></h1>
 
 
 <nav>
@@ -28,7 +28,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
         <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/idea/browse/">BROWSE IDEAS</a></li>
 
-
+<a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $_SESSION['participantSession'];?>">
 <?php if($rownav['google_picture_link'] != ''){ ?>
         <li><img src="<?php echo $_SESSION['google_picture_link']; ?>" class="nav-profile-photo"/></li>
 <?php } ?>
@@ -46,7 +46,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
 <?php } ?>
 
-      
+  </a>
 <?php } ?>
 
 
@@ -112,7 +112,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li class="my-projects"><a href="<?php echo BASE_PATH; ?>/startup">My Ideas</a></li>
 
        
-
+<a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $_SESSION['startupSession'];?>">
 
 <?php if(isset($_SESSION['access_token'])){ ?>
         <li><img src="<?php echo $_SESSION['google_picture_link']; ?>" class="nav-profile-photo"/></li>
@@ -129,6 +129,8 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 <?php }else{ ?>
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
 <?php } ?>
+
+</a>
 
 <?php } ?>
 

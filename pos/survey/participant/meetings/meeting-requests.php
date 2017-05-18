@@ -92,8 +92,7 @@ if($rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == '')
 echo'
 
 <div class="col-lg-12" style="padding:0px; margin-bottom:30px;">
- <div class="errorXYZ" style="font-size:16px;">
-You haven\'t set up bank account yet to receive payments. <a href="'.BASE_PATH.'/participant/payment/" style="color:#fff; text-decoration:underline">Click here</a> to add one.
+ <div class="errorXYZ" style="font-size:16px;">Before you can accept to meet, please set up a bank account to receive payments.<br> <a href="'.BASE_PATH.'/participant/payment/" style="color:#fff; text-decoration:underline">Click here</a> to add one.
 
 </div>
 </div>';
@@ -911,7 +910,7 @@ $row3 = mysqli_fetch_array($sql3);
       <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed') { ?>
       
                 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn" <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['Phone'] == '' || $row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == ''){?> id="disabled" <?php } ?>><strong>Accept</strong></a> <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn" <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['Phone'] == '' || $row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == ''){?> id="disabled" <?php } ?> ><strong>Decline</strong></a>
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn" <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['Phone'] == '' || $row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == ''){?> id="disabled" <?php } ?>><strong>Accept</strong></a> <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn" ><strong>Decline</strong></a>
 
                  </div>
 

@@ -186,7 +186,7 @@ $row3 = mysqli_fetch_array($sql3);
 <?php } ?>
 
 
-<?php if($row2['Status'] == 'Meeting Never Happened' || $row2['Met'] == 'Yes' || $row2['Met'] != 'No didn\'t show up' || $row2['Payment'] == 'Yes' && $row3['Payment_Method'] == 'Bank'){ ?>
+<?php if($row2['Payment'] == 'Yes' && $row2['Met'] == 'Yes' && $row3['Payment_Method'] == 'Bank' || $row2['Payment'] == 'Yes' && $row2['Met'] == 'Yes' && $row3['Payment_Method'] == 'Cash' || $row2['Met'] == '' && $row2['Status'] == 'Meeting Never Happened' || $row2['Met'] == '' && $row2['Met'] != 'No didn\'t show up'){ ?>
 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
                  <i class="icon-trash"></i><a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Delete</strong></a>
                  </div>

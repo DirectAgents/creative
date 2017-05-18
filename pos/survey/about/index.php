@@ -97,7 +97,7 @@ $(document).ready(function() {
 
 
 <p><h2>ABOUT US</h2></p>
-<p>Valify is a platform that allows startups to valify their ideas before spend more time and money on their ideas.</p>
+<p>Valify is a platform that allows startups to validate their ideas by meeting potential customers in person and receive the initial and crucial feedback before spending more time and money on their ideas.</p>
 
 
 

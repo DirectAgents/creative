@@ -920,6 +920,18 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 </div>
 
 
+<?php }else{ ?>
+
+          <div class="input-full">
+           
+            
+              <div class="in-person">
+
+  <input placeholder="XXX-XXX-XXXX" type="hidden" name="phone_number" id="phone_number" pattern="^\d{3}-\d{3}-\d{4}$" value="<?php echo $row['Phone'];?>">
+
+   </div>
+            </div>
+
 <?php } ?>
 
 
