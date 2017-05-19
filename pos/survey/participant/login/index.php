@@ -87,7 +87,7 @@ if(isset($_POST['btn-login']))
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Valify Participant Login</title>
     
     
     <link rel="stylesheet" href="../../css/reset.css">

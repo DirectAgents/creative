@@ -5,7 +5,7 @@
     
 <head>
     <meta charset="utf-8"/>
-    <title>General - Launch</title>
+    <title>FAQ's - Participants</title>
     <meta name="viewport" content="width=device-width, maximum-scale=1"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="description" content=""/>

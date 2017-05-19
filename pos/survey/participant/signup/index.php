@@ -196,7 +196,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Valify Signup</title>
+    <title>Valify Participant Signup</title>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">

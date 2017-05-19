@@ -561,7 +561,7 @@ label{font-weight:normal !important;}
 }
 
 .survey-info-container {
-    padding: 30px 20px 30px 20px;
+    padding: 30px 0px 30px 0px;
     border-left: 0px solid #2fb1ee;
     border-bottom: 1px solid #eee;
 }
@@ -652,6 +652,7 @@ label{font-weight:normal !important;}
 
 
 .survey-actions {
+    padding-right: 30px;
     padding-top: 20px;
     margin-top: 10px;
     /*border-top: 1px solid #b6d3c8;*/
@@ -4616,6 +4617,38 @@ float:left;
 
 
   @media screen and (max-width: 600px) {
+
+
+.survey-header{
+    float: left;
+    width: 100%;
+    padding-right: 30px;
+    margin-bottom: 10px;
+}
+
+.survey-metadata .item {
+    float: left;
+    width: 100%;
+    margin-bottom:20px;
+    margin-right:20px;
+    /*width: 33.3%;*/
+}
+
+
+.survey-actions div {
+    display: inline-block;
+    padding-right: 10px;
+    margin-left: 0px;
+    margin-bottom:10px;
+    text-transform: uppercase;
+    color: #2d313c;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    float: left;
+}
+
+
 
 .ui-tabs .ui-tabs-nav li{
       list-style: none;

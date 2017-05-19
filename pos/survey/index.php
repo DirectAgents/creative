@@ -277,7 +277,7 @@ $response = $sg->client->mail()->send()->post($mail);
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The modern way to start a scalable, high-growth business" />
+    <meta name="description" content="One platform to help startups to validate their ideas." />
 
     <meta name="google" content="nositelinkssearchbox" />
     <meta itemprop="name" content="Valify Launch">
@@ -285,7 +285,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
     <meta name="twitter:site" content="@Valifyit">
     <meta name="twitter:title" content="Valify Launch">
-    <meta name="twitter:description" content="The modern way to start a scalable, high-growth business">
+    <meta name="twitter:description" content="One platform to help startups to validate their ideas.">
     <meta name="twitter:creator" content="@Valifyit">
 
     <meta property="og:url" content="https://valifyit.com">
@@ -293,7 +293,7 @@ $response = $sg->client->mail()->send()->post($mail);
     <meta property="og:image" content="https://launch.valifyit.com/public/img/logo-Valifylaunch-og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:description" content="The modern way to start a scalable, high-growth business">
+    <meta property="og:description" content="One platform to help startups to validate their ideas.">
     <meta property="og:site_name" content="Valify Launch">
     <meta property="og:locale" content="en_US">
     <meta property="article:author" content="https://www.facebook.com/valifyit/">
@@ -345,7 +345,7 @@ $(document).ready(function() {
 <nav id='main_nav' role='main-navigation'>
 <div class='container-fluid nav-contents'>
 <div class='nav-item logo'>
-<a class="brand-logo-light nav-logo-swoosh" href="index.html" target="_top">
+<a class="brand-logo-light nav-logo-swoosh" href="" target="_top">
 <img src="img/navigation/logo-2.png" width="137" height="54"/>
 </a>
 </div>

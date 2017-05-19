@@ -282,7 +282,7 @@ $response = $sg->client->mail()->send()->post($mail);
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Password Recovery - Valify</title>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">

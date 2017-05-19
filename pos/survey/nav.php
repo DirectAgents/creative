@@ -17,13 +17,13 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
 
 <nav>
-      <ul class="pages">
+      <!--<ul class="pages">
         <li class="home"><a href="../index.php">Home</a></li>
         <li class="features"><a href="features.html">About</a></li>
         <li class="pricing"><a href="pricing.html">Pricing</a></li>
         <li class="gallery"><a href="../gallery.html">Gallery</a></li>
        
-      </ul>
+      </ul>-->
       <ul class="external-logged-in">
 
         <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/idea/browse/">BROWSE IDEAS</a></li>
@@ -98,13 +98,13 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
  <h1><a href="<?php echo BASE_PATH; ?>" title="Valify"></a></h1>
 
 <nav>
-      <ul class="pages">
+      <!--<ul class="pages">
         <li class="home"><a href="../index.php">Home</a></li>
         <li class="features"><a href="features.html">About</a></li>
         <li class="pricing"><a href="pricing.html">Pricing</a></li>
         <li class="gallery"><a href="../gallery.html">Gallery</a></li>
        
-      </ul>
+      </ul>-->
       <ul class="external-logged-in">
       
          <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/startup/idea/create/step1.php?id=<?php echo rand(100, 100000);?>">List Your Idea</a></li>

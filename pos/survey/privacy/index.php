@@ -341,13 +341,7 @@ We partner with a third party to either display advertising on our website or to
 <p>
 <br>
 </p>
-<div class="security clearfix">
-<div>
-<a href="https://privacy.truste.com/privacy-seal/validation?rid=3ca9e17f-4a0f-4390-bec5-0d919b2d210b&amp;lang=en" target="_blank" title="TRUSTe Privacy Certification">
-<img alt="TRUSTe Privacy Certification" src="https://privacy-policy.truste.com/privacy-seal/seal?rid=3ca9e17f-4a0f-4390-bec5-0d919b2d210b" style="border: none">
-</a>
-</div>
-</div>
+
 
 
 </div>
