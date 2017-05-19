@@ -66,6 +66,8 @@ a:hover{text-decoration: none !important}
     width:0%;
 }
 
+.idea-image img{margin-left:20px;}
+
 #disabled {pointer-events: none; cursor: default;}
 
 .thenote{color:red;}

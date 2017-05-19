@@ -3,7 +3,7 @@
 session_start();
 include ('../../config.php');
 
-
+require_once '../../base_path.php';
 
 
 $ip = $_SERVER['REMOTE_ADDR'];
