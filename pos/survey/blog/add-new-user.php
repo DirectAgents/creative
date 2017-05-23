@@ -4,6 +4,7 @@
 // Put this file in your Wordpress root directory and run it from your browser.
 // Delete it when you're done.
 
+/*
 if ($_POST){
 
 require_once('wp-blog-header.php');
@@ -48,8 +49,68 @@ else {
 }
 
 }
+*/
 
 ?>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+
+
+
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.js'></script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function($)
+{
+    // Signup form
+    $("#signupForm").validate(
+    {
+        rules: 
+        {           
+            firstname:               {   required:true },
+            lastname:               {   required:true },
+            user_id:               {   required:true },
+            user_email:         {   required:true, email: true },
+            user_password:      {   required:true },
+            user_repassword:    {   required:true, equalTo: "#user_password" },
+            user_terms:         {   required:true }         
+        },
+        submitHandler: function(form)
+        {
+            var form_data = $( "form#signupForm" ).serialize();
+            $.ajax(
+            {
+                type: "POST",
+                url: 'add-new-user.php',
+                data: form_data,
+                success: function(responseData) {
+                    if( responseData == 1 ) {
+                            location.reload();
+                    }
+                    else {
+                            jQuery(".error-msg").html(responseData);
+                    }
+                }
+            });
+            return false;
+        }
+    });
+});
+</script>
+
+
+
+</head>
+
+<body>
+
 
 
 
@@ -90,3 +151,7 @@ else {
         </div>
     </form>
 </div>
+
+
+</body>
+</html>
