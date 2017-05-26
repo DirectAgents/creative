@@ -32,8 +32,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed WHERE userID='".$_SESSION['participantSession']."' AND participant_signature != '' ");
-$rownda = mysqli_fetch_array($nda);
+
 
 
 
@@ -155,6 +154,11 @@ $date = date_create($row2['participant_sig_date']);
 
 $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row2['ProjectID']."' ");
 $rowproject = mysqli_fetch_array($Project);
+
+
+
+$nda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed WHERE userID='".$_SESSION['participantSession']."' AND participant_signature != '' AND ProjectID = '".$row2['ProjectID']."' ");
+$rownda = mysqli_fetch_array($nda);
 
 
   ?>

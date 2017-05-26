@@ -747,10 +747,10 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 
 
 <?php if($rowrequest['Status'] == 'Waiting for Participant to Accept or Decline'){ ?>
-  Already received a request to meet
+  Already received a request to meet. Waiting for you to accept or decline.
 <?php } ?>
 <?php if($rowrequest['Status'] == 'Waiting for Startup to Accept or Decline'){ ?>
-  Already Request sent to Participate. Waiting for Startup to respond.
+  Already Request sent to Participate. Waiting for <strong><?php echo $rowstartupprofile['FirstName']; ?></strong> to respond.
 <?php } ?>
 
 
@@ -761,11 +761,6 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 
 
 <?php } ?> 
-
-
-
-
-
 
 <?php } ?>
 
@@ -1524,7 +1519,7 @@ if($rowstartupprofile['profile_image'] != ''){
           marker.setVisible(false);
           var place = autocomplete.getPlace();
           if (!place.geometry) {
-            window.alert("Autocomplete's returned place contains no geometry");
+            window.alert("Please choose a different address!");
             return;
           }
 

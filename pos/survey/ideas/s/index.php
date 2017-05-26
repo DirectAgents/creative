@@ -543,6 +543,43 @@ $(document).ready(function() {
 
 
 
+<?php 
+
+if($startup_home->is_logged_in())
+{
+
+if($rowmeetingrequest['startupID'] == $_SESSION['startupSession'] && $rowmeetingrequest['ProjectID'] == $_GET['id'] && $rowmeetingrequest['ScreeningQuestion'] != 'Not Passed' ){
+
+//echo $rowrequest['ProjectID'];
+
+ ?>
+
+
+<div class="col-lg-11">
+
+<div class="request-sent">  
+
+
+<?php if($rowmeetingrequest['Status'] == 'Waiting for Participant to Accept or Decline'){ ?>
+  Already Request sent to Participate. Waiting for <strong><?php echo $rowparticipant['FirstName']; ?></strong> to respond.
+<?php } ?>
+<?php if($rowmeetingrequest['Status'] == 'Waiting for Startup to Accept or Decline'){ ?>
+  Already received a request to meet. Waiting for you to accept or decline. 
+<?php } ?>
+
+
+</div>
+<p>&nbsp;</p>
+
+</div>
+
+
+<?php } ?> 
+
+<?php } ?>
+
+
+
 <div class="col-lg-12">
 
 
@@ -1394,7 +1431,8 @@ if($rowparticipant['profile_image'] != ''){
           marker.setVisible(false);
           var place = autocomplete.getPlace();
           if (!place.geometry) {
-            window.alert("Autocomplete's returned place contains no geometry");
+            //window.alert("Autocomplete's returned place contains no geometry");
+            window.alert("Please choose a different address!");
             return;
           }
 

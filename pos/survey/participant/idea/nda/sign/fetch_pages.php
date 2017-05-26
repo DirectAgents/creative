@@ -380,7 +380,7 @@ $thedate =  $date->format('m/d/Y');
     ?>
 <div class="col-lg-4" style="padding-left:0px; text-align:right"><label>Date*:</label></div>
 <div class="col-lg-4" style="padding-left:0px; text-align:left">
-  <input type="text" style="width:250px" name="participant_sig_date" id="participant_sig_date" placeholder="Today's Date"  />
+  <input type="text" style="width:250px" name="participant_sig_date" id="participant_sig_date" placeholder="Date of Agreement"  />
 
 </div>
 

@@ -89,9 +89,7 @@ $content = new SendGrid\Content("text/html", '
             <![endif]-->
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#fff; padding:20px; border:1px solid #f0f0f0; max-width: 600px;" class="responsive-table">
                 <!-- TITLE -->
-                <tr>
-                    <td align="center" style="padding: 0 0 10px 0; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Meeting Request Declined</td>
-                </tr>
+                
                 <tr>
                   <td align="center" height="100%" valign="top" width="100%" colspan="2">
                         <!--[if (gte mso 9)|(IE)]>

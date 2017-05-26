@@ -789,15 +789,16 @@ echo '<div class="row">
 <p>&nbsp;</p>
 <div class="therow">
    <div class="thetitle">About <?php echo $row['FirstName']; ?></div>
+   <?php if($row['Bio'] != 'NULL' && $row['Bio'] != ''){ ?>
+
+ <h4><?php if($row['Bio'] != 'NULL'){echo $row['Bio'];}else{echo "No Bio";} ?></h4>
+
+  <?php } ?>
  </div>
  </div>
 <!--</div>-->
 
-<?php if($row['Bio'] != 'NULL' && $row['Bio'] != ''){ ?>
- <div class="therow">
-    <div class="col-lg-12"><?php if($row['Bio'] != 'NULL'){echo $row['Bio'];}else{echo "No Bio";} ?></div>
-  </div>
-  <?php } ?>
+
 
 
 

@@ -435,7 +435,7 @@ You met with <?php echo $row3['FirstName']; ?>.
 Meeting request canceled.
 <?php } ?> 
 
-<?php if($row2['Met'] == '' && $row2['Status'] != '' && $row2['Status'] != 'Meeting Canceled by Startup' && $row2['Status'] != 'Meeting Canceled by Participant' && $row2['Payment'] == '' && $row2['Status'] != 'Meeting Request Canceled'){ ?>
+<?php if($row2['Met'] == '' && $row2['Status'] != '' && $row2['Status'] != 'Meeting Canceled by Startup' && $row2['Status'] != 'Meeting Canceled by Participant' && $row2['Payment'] == '' && $row2['Status'] != 'Meeting Request Canceled' && $row2['Status'] != 'Meeting Request Declined by Startup' && $row2['Status'] != 'Meeting Request Declined by Participant'){ ?>
 Meeting never happened.
 <?php } ?> 
 
@@ -450,6 +450,16 @@ Meeting was canceled.
 
 <?php if($row2['Met'] == '' && $row2['Status'] == 'Meeting Canceled by Participant' && $row2['Payment'] == ''){ ?>
 Meeting was canceled.
+<?php } ?> 
+
+
+<?php if($row2['Met'] == '' && $row2['Status'] == 'Meeting Request Declined by Startup' && $row2['Payment'] == ''){ ?>
+Meeting Request Declined by <?php echo $row3['FirstName']; ?>.
+<?php } ?> 
+
+
+<?php if($row2['Met'] == '' && $row2['Status'] == 'Meeting Request Declined by Participant' && $row2['Payment'] == ''){ ?>
+Meeting Request Declined by you.
 <?php } ?> 
 
 
