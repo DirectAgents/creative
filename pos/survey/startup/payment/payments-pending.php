@@ -26,24 +26,14 @@ if(!$startup_home->is_logged_in())
 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent, tbl_meeting_archived_startup WHERE tbl_meeting_recent.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_recent.Payment = '' AND tbl_meeting_recent.Met = 'Yes' OR tbl_meeting_archived_startup.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_archived_startup.Payment = '' AND tbl_meeting_archived_startup.Met = 'Yes'");
-//$result=mysql_query($sql);
-
-
-//$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
- 
-  //if username exists
-if(mysqli_num_rows($sql)>0)
-{
-
-
-//get all records from add_delete_record table
-while($row = mysqli_fetch_array($sql))
-{ 
-
 
 ?>
+
+
+
+
+
+
 
 
 
@@ -82,21 +72,33 @@ $.post('payments-pending-popup.php?projectid='+projectid+'&participantid='+parti
 
 
     
-<p>&nbsp;</p>
 
- <h3>Pending Payments</h3>
 
 
 
 
 <?php
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent, tbl_meeting_archived WHERE tbl_meeting_recent.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_recent.Payment = '' AND tbl_meeting_recent.Met = 'Yes' OR tbl_meeting_archived.startupID='".$_SESSION['startupSession']."' AND tbl_meeting_archived.Payment = '' AND tbl_meeting_archived.Met = 'Yes'");
-//$row=mysql_fetch_array($result);
+$sql = mysqli_query($connecDB,"SELECT * 
+from (
+    select startupID, userID, ProjectID, Met, Payment from tbl_meeting_recent
+    union all
+    select startupID, userID, ProjectID, Met, Payment from tbl_meeting_archived_startup
+    union all
+    select startupID, userID, ProjectID, Met, Payment from tbl_meeting_archived_participant
+   
+   
+) tbl_startup_project
+where startupID = '".$_SESSION['startupSession']."' AND Met = 'Yes' AND Payment = '' GROUP BY ProjectID ");
 
-  //if username exists
-if(mysqli_num_rows($sql)>0)
+
+if(mysqli_num_rows($sql) == true)
 {
+
+
+echo '
+<h3>Pending Payments</h3>
+ <p>&nbsp;</p>';
 
 
 //get all records from add_delete_record table
@@ -105,12 +107,13 @@ while($row = mysqli_fetch_array($sql))
 
 
 
+
 ?>
 
 
 
 
- <div class="therow">
+
     <div class="col-lg-12">
      
 
@@ -120,7 +123,7 @@ while($row = mysqli_fetch_array($sql))
     <tbody>
       <tr class="info">
         <td colspan="1" style="text-align:left">Project#: <?php echo $row['ProjectID']; ?></td>
-        <td colspan="1" style="text-align:right"> <a href="<?php echo BASE_PATH; ?>/startup/meetings/pay/?id=<?php echo $row['ProjectID']; ?>&p=<?php echo $row['userID']; ?>" class="launch-photo">Pay Amount</a></td>
+        <td colspan="1" style="text-align:right"> <a href="<?php echo BASE_PATH; ?>/startup/meetings/pay/?id=<?php echo $row['ProjectID']; ?>&p=<?php echo $row['userID']; ?>" class="pay-amount">Pay Amount</a></td>
         
       </tr>
 
@@ -162,7 +165,7 @@ $row3 = mysqli_fetch_array($sql3);
   </form>
 </div>
       
-    </div>
+  
   
 
 
@@ -170,7 +173,7 @@ $row3 = mysqli_fetch_array($sql3);
 
 
 
-  <?php } } }  ?>
+  <?php }   ?>
 
 
 <?php }else{ ?>

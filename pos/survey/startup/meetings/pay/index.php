@@ -305,6 +305,19 @@ Add a credit card to make a payment.
 
 
 
+function numberFormatPrecision($number, $precision = 2, $separator = '.')
+{
+    $numberParts = explode($separator, $number);
+    $response = $numberParts[0];
+    if(count($numberParts)>1){
+        $response .= $separator;
+        $response .= substr($numberParts[1], 0, $precision);
+    }
+    return $response;
+}
+
+
+
 $fee = ($row4['Pay']) * (2.9 / 100) + 0.30;
 
 
@@ -320,7 +333,24 @@ $payamount = $row4['Pay'] + $fee + 1.32;
 
 $processing_fee = '$1.32';
 
+$service_fee_final = '1.32';
+
+
+$payamount_final = numberFormatPrecision($payamount, 2, '.');
+
+$processing_fee_final = numberFormatPrecision($fee, 2, '.');
+
+
+$payamount = $row4['Pay'] + $processing_fee_final + $service_fee_final;
+
+
+$payamount_final = numberFormatPrecision($payamount, 2, '.');
+
 }
+
+
+
+
 
 ///If Payout is more than $7 than charge 15% for service fee////
 
@@ -337,13 +367,33 @@ $fee_of_fifteenpercent = ($fitfteenpercent) * (2.9 / 100) + 0.30;
 
 $my_payout = $fitfteenpercent + $fee_of_fifteenpercent;
 
-
+//echo $my_payout;
 
 $payamount = $participant_payout + $my_payout;
-
+//echo $payamount;
 //echo $fee;
 
+
+
+
+
+
+$processing_fee_final = numberFormatPrecision($fee, 2, '.');
+
+
 $service_fee = $my_payout;
+
+$service_fee_final = $row4['Pay'] * 0.15;
+
+
+
+$payamount = $row4['Pay'] + $processing_fee_final + $service_fee_final;
+
+
+$payamount_final = numberFormatPrecision($payamount, 2, '.');
+
+//echo $processing_fee_final;
+
 
 }
 
@@ -353,30 +403,13 @@ $service_fee = $my_payout;
 //echo $payamount;
 
 
-function numberFormatPrecision($number, $precision = 2, $separator = '.')
-{
-    $numberParts = explode($separator, $number);
-    $response = $numberParts[0];
-    if(count($numberParts)>1){
-        $response .= $separator;
-        $response .= substr($numberParts[1], 0, $precision);
-    }
-    return $response;
-}
 
 
-$payamount_final = numberFormatPrecision($payamount, 2, '.');
 
-$processing_fee_final = numberFormatPrecision($fee, 2, '.');
 
-if($row4['Pay'] > '7'){
-//$service_fee_final = numberFormatPrecision($service_fee, 2, '.');
-$service_fee_final = $row4['Pay'] * 0.15;
-}
 
-if($row4['Pay'] <= '7'){
-$service_fee_final = '1.32';
-}
+
+
 
 
 ?>
