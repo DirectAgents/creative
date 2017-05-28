@@ -235,7 +235,7 @@ try {
     $my_checkout = $wepay_me->request('/checkout/create', array(
             'account_id' => $wepay_account_id, // ID of my account
             'amount' => $payment_to_me, // dollar amount you want to charge the user
-            'short_description' => "Payment from Valify to me", // a short description of what the payment is for
+            'short_description' => "Payment for project ID#" .$_POST['projectid'], // a short description of what the payment is for
             'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
             'currency'          => 'USD',
             //'payment_method' => ['type' => 'credit_card', 'id' => $row["credit_card_id"] 
@@ -262,8 +262,9 @@ try {
 
 
 
-$the_date = date('Y-m-d'); 
+
 date_default_timezone_set('America/New_York');
+$the_date = date('Y-m-d'); 
 $the_time = date('h:i:s A');
 
 
@@ -271,8 +272,7 @@ $total = $checkout -> amount + $checkout -> gross + $checkout -> fee-> processin
 
 
 //continue here
-   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id,my_checkout_id, checkout_find_date, checkout_find_amount, service_fee, fees, total, Date, Time) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."','".$my_checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."', '".$payment_to_me_mysql."',
-   '".$checkout -> fee-> processing_fee."', '".$total."','".$the_date."','".$the_time."')");
+   $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(ProjectID, startup_id, participant_id, order_by, account_id, checkout_id,my_checkout_id, checkout_find_date, checkout_find_amount, service_fee, fees, total, Date, Time) VALUES('".$_POST['projectid']."','".$_SESSION['startupSession']."','".$_POST['participantid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."','".$my_checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."', '".$payment_to_me_mysql."','".$checkout -> fee-> processing_fee."', '".$total."','".$the_date."','".$the_time."')");
 
 
 

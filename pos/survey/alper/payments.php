@@ -38,8 +38,8 @@ require_once '../base_path.php';
 
         'account_id'        => $wepay_account_id,
         'sort_order' => 'DESC'
-        //'start_time' => '2016/11/04',
-        //'end_time' => '2016/11/06'
+        //'start_time' => '2017/05/25',
+        //'end_time' => '2017/05/29'
         //'state' => 'new'
       )
     );

@@ -2,11 +2,11 @@
 
 session_start();
 
-require_once '../../../../base_path.php';
+require_once '../../../base_path.php';
 
-include("../../../../config.php"); //include config file
-require_once '../../../../class.participant.php';
-require_once '../../../../class.startup.php';
+include("../../../config.php"); //include config file
+require_once '../../../class.participant.php';
+require_once '../../../class.startup.php';
 
 
 
@@ -32,7 +32,7 @@ $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-    require '../../../../wepay.php';
+    require '../../../wepay.php';
 
 
     // application settings

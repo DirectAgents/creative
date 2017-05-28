@@ -34,8 +34,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('checkout/find/', array(
         'account_id'        => $row['account_id'],
         'sort_order' => 'DESC',
-        'start_time' => '2017/05/27',
-        'end_time' => '2017/05/28'
+        'start_time' => '2017/05/28',
+        'end_time' => '2017/05/29'
         //'state' => 'new'
     ));
 
