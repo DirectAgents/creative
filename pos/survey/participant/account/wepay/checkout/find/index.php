@@ -1,6 +1,6 @@
 <?php
     // WePay PHP SDK - http://git.io/mY7iQQ
-    require '../../wepay.php';
+    require '../../../../../wepay.php';
 
 session_start();
 require_once '../../../../../class.participant.php';
@@ -21,8 +21,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // application settings
     $account_id = $row['account_id']; // your app's account_id
-    $client_id = 131244;
-    $client_secret = "5a612c797c";
+    $client_id = $wepay_client_id;
+    $client_secret = $wepay_client_secret;
     $access_token = $row['access_token']; // your app's access_token
 
     // change to useProduction for live environments
@@ -34,8 +34,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('checkout/find/', array(
         'account_id'        => $row['account_id'],
         'sort_order' => 'DESC',
-        'start_time' => '2016/08/01',
-        'end_time' => '2016/08/31'
+       
         //'state' => 'new'
     ));
 

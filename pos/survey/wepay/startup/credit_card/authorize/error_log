@@ -1,0 +1,6 @@
+[02-Aug-2016 10:17:03 America/Chicago] PHP Fatal error:  Uncaught exception 'WePayRequestException' with message 'The credit card must be in state new to authorize, currently it is in state deleted' in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php:307
+Stack trace:
+#0 /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php(333): WePay::make_request('credit_card/aut...', Array, Array)
+#1 /home4/ald183s/public_html/wepay/PHP-SDK-master/demoapp/credit_card/authorize/index.php(25): WePay->request('credit_card/aut...', Array)
+#2 {main}
+  thrown in /home4/ald183s/public_html/wepay/PHP-SDK-master/wepay.php on line 307

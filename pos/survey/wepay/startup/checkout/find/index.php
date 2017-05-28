@@ -1,15 +1,15 @@
 <?php
    
 session_start();
-require_once '../../../../../base_path.php';
+require_once '../../../../base_path.php';
 
-include("../../../../../config.php"); //include config file
-require_once '../../../../../class.startup.php';
-require_once '../../../../../class.participant.php';
+include("../../../../config.php"); //include config file
+require_once '../../../../class.startup.php';
+require_once '../../../../class.participant.php';
 
 
  // WePay PHP SDK - http://git.io/mY7iQQ
-    require '../../../../../wepay.php';
+    require '../../../../wepay.php';
 
 
 $participant_home = new PARTICIPANT();
@@ -25,7 +25,7 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../../../login');
+  $startup_home->redirect('../../../startup/login');
 }
 
 
@@ -35,6 +35,7 @@ $stmt = $participant_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid
 $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+//echo $row['account_id'];
 
     // application settings
     $account_id = $row['account_id']; // startup's account id
@@ -49,10 +50,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // find the checkout
     $response = $wepay->request('checkout/find/', array(
-        'account_id'        => 923160482,
-        'sort_order' => 'DESC',
-        'start_time' => '2016/11/06',
-        'end_time' => '2016/12/06'
+        'account_id'        => $row['account_id'],
+        'sort_order' => 'DESC'
+        //'start_time' => '2016/11/06',
+        //'end_time' => '2016/12/06'
         //'state' => 'new'
     ));
 
