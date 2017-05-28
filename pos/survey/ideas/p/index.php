@@ -734,6 +734,8 @@ $('#location_option3').hide();
 if($participant_home->is_logged_in())
 {
 
+if(isset($_GET['p'])){
+
 if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['ProjectID'] == $_GET['id'] && $rowrequest['ScreeningQuestion'] != 'Not Passed' ){
 
 //echo $rowrequest['ProjectID'];
@@ -764,7 +766,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 
 <?php } ?>
 
-
+<?php } ?>
 
 
 

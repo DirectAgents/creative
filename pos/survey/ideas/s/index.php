@@ -548,6 +548,9 @@ $(document).ready(function() {
 if($startup_home->is_logged_in())
 {
 
+
+if(isset($_GET['p'])){
+
 if($rowmeetingrequest['startupID'] == $_SESSION['startupSession'] && $rowmeetingrequest['ProjectID'] == $_GET['id'] && $rowmeetingrequest['ScreeningQuestion'] != 'Not Passed' ){
 
 //echo $rowrequest['ProjectID'];
@@ -575,6 +578,8 @@ if($rowmeetingrequest['startupID'] == $_SESSION['startupSession'] && $rowmeeting
 
 
 <?php } ?> 
+
+<?php } ?>
 
 <?php } ?>
 

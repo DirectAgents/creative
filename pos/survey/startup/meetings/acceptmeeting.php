@@ -321,7 +321,7 @@ $content = new SendGrid\Content("text/html", '
 
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                            <a href="'.BASE_PATH.'/ideas/s/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
+                                                            <a href="'.BASE_PATH.'/ideas/s/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'&p='.$row5['userID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
                                                  
                                                         </tr>
                                                         
@@ -809,7 +809,7 @@ $content = new SendGrid\Content("text/html", '
 
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                            <a href="'.BASE_PATH.'/ideas/p/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
+                                                            <a href="'.BASE_PATH.'/ideas/p/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'&p='.$row4['userID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
                                                  
                                                         </tr>
                                                         
@@ -1299,7 +1299,7 @@ $content = new SendGrid\Content("text/html", '
 
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                            <a href="'.BASE_PATH.'/ideas/s/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
+                                                            <a href="'.BASE_PATH.'/ideas/s/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'&p='.$row5['userID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
                                                  
                                                         </tr>
                                                         
@@ -1796,7 +1796,7 @@ $content = new SendGrid\Content("text/html", '
 
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                            <a href="'.BASE_PATH.'/ideas/p/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
+                                                            <a href="'.BASE_PATH.'/ideas/p/'.$rowproject['Category'].'/?id='.$rowproject['ProjectID'].'&p='.$row4['userID'].'" target="_blank">'.$rowproject['Name'].'</a></td>
                                                  
                                                         </tr>
                                                         
