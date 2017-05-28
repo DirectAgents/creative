@@ -105,6 +105,9 @@ while($row2 = mysqli_fetch_array($sql))
 { 
 
 
+$sqlndasigned = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
+$rowndasigned = mysqli_fetch_array($sqlndasigned);
+
 
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Participant='Yes'
 WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'");
@@ -1052,10 +1055,10 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Cat
                      
                    
                    <?php 
-$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
-$rownda = mysqli_fetch_array($sqlnda);
+$sqlndapending = mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
+$rowndapending = mysqli_fetch_array($sqlndapending);
 
-if(mysqli_num_rows($sqlnda) == 1) {
+if(mysqli_num_rows($sqlndapending) == 1 && mysqli_num_rows($sqlndasigned) == 0) {
                    
                    ?>
                    <div class="col-md-12" style="padding-left:0px;">
@@ -1064,7 +1067,7 @@ if(mysqli_num_rows($sqlnda) == 1) {
                      
 </div>
 
-                  </div>
+                 
 
                    <? } ?>         
 
@@ -1073,10 +1076,9 @@ if(mysqli_num_rows($sqlnda) == 1) {
 
 
   <?php 
-$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
-$rownda = mysqli_fetch_array($sqlnda);
 
-if(mysqli_num_rows($sqlnda) == 1) {
+
+if(mysqli_num_rows($sqlndasigned) == 1) {
                    
                    ?>
                    <div class="col-md-12" style="padding-left:0px;">
