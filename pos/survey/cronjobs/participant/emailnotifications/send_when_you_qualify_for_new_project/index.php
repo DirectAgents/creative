@@ -172,7 +172,7 @@ $Diet = str_replace(",","|",$row['Diet']);
 $Religion = str_replace(",","|",$row['Religion']);
 $Education = str_replace(",","|",$row['Education']);
 $Job = str_replace(",","|",$row['Job']);
-$Interest = str_replace(",","|",$row['Interest']);
+$Interests = str_replace(",","|",$row['Interests']);
 $Languages = str_replace(",","|",$row['Languages']);
 
 
@@ -284,10 +284,10 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND r.Job RLIKE '[[:<:]]".$Job."[[:>
 }
 
 
-if (strpos($Min_Req, 'Interest') !== false) {
-if($Interest != 'NULL' && $Interest != ''){$interest = "AND r.Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
+if (strpos($Min_Req, 'Interests') !== false) {
+if($Interests != 'NULL' && $Interests != ''){$interests = "AND r.Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
 }else{
-  $interest = '';
+  $interests = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
@@ -302,7 +302,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 
 
 $sql3=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$row2['userID']."'
- $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages AND
+ $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND
  ProjectID = '".$row['ProjectID']."' LIMIT 1");
 
 
@@ -371,9 +371,7 @@ $content = new SendGrid\Content("text/html", '
             <![endif]-->
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#fff; padding:20px; border:1px solid #f0f0f0; max-width: 600px;" class="responsive-table">
                 <!-- TITLE -->
-                <tr>
-                    <td align="center" style="padding: 0 0 10px 0; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Meeting you qualify</td>
-                </tr>
+               
                 <tr>
                   <td align="center" height="100%" valign="top" width="100%" colspan="2">
                         <!--[if (gte mso 9)|(IE)]>
@@ -414,7 +412,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                        
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row['Name'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row['Name'].'</td>
                                                         </tr>
                                                         <tr>
                                                              <td align="left" style="padding: 10px 0 15px 25px; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding">'.$row['Details'].'</td>
@@ -469,7 +467,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
                                                                 $'.$row['Pay'].' for '.$row['Minutes'].' minutes of meeting
                                                                 </td>
                                                         </tr>
@@ -523,7 +521,7 @@ $content = new SendGrid\Content("text/html", '
 
                               <tr>
                                
-                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'" style="font-weight: normal; color: #ffffff;">View Details</a></td>
+                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'&p='.$row2['userID'].'" target="_blank" style="font-weight: normal; color: #ffffff;">View Details</a></td>
                 </tr>
 
 
