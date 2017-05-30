@@ -154,7 +154,6 @@ if(!in_array($row2['userID'],$emailnotifications)){
 
 
 
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET Participant_EmailNotifications = '".$row['Participant_EmailNotifications']."' '".','."' '".$row2['userID']."' WHERE id = '".$row['id']."'  ");
 
 
 
@@ -301,6 +300,9 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 //echo $rowproject['City'];
 
 
+$rows = array();
+
+
 $sql3=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$row2['userID']."'
  $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND
  ProjectID = '".$row['ProjectID']."' LIMIT 1");
@@ -311,11 +313,100 @@ if(mysqli_num_rows($sql3)>0)
 {
 
 
+while($rowparticipant = mysqli_fetch_array($sql3))
+{ 
+
+
+$rows[] = $rowparticipant['userID'];
+
+
+
+
+
+
+
+}
+
+
+
+$franz = implode(", ", $rows);
+
+//echo "sent";
+
+$yo = $franz;
+
+echo $yo;
+
+$text = "8,9,10,";
+
+
+
+$template = explode(", ", $text);
+
+
+
+
+$string_template = serialize($template);
+
+// just insert the variable $string_template
+
+// when you need to restore the array, as the following:
+
+$template= unserialize($string_template);
+
+$mysql_values  = implode(", ", $template );
+
+
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET Participant_EmailNotifications = '".$mysql_values."' WHERE id = '".$row['id']."'  ");
+
+
+} 
+
+} 
+
+}
+
+
+
+
+
+
+
+
     
+    //print_r($template);
+
+
 
 
   //$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Meeting_Status='Upcoming Meetings'
   //WHERE id = '".$row2['id']."' ");
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -615,7 +706,7 @@ $content = new SendGrid\Content("text/html", '
 
 
 
-	');
+    ');
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 $apiKey = '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';
 $sg = new \SendGrid($apiKey);
@@ -623,25 +714,6 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->statusCode();
 //echo $response->headers();
 //echo $response->body();
-
-
-//echo "sent";
-
-echo $row2['userEmail'];
-echo "<br>";
-
-
-} 
-
-} 
-
-}
-
-
-
-
-
-}
 
 
 
