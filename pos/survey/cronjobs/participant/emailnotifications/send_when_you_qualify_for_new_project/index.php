@@ -300,7 +300,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 //echo $rowproject['City'];
 
 
-$rows = array();
+$menu = array();
 
 
 $sql3=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$row2['userID']."'
@@ -317,9 +317,11 @@ while($rowparticipant = mysqli_fetch_array($sql3))
 { 
 
 
-$rows[] = $rowparticipant['userID'];
 
 
+    $menu[] = array(
+        "userID" => $rowparticipant['userID']
+    );
 
 
 
@@ -327,42 +329,32 @@ $rows[] = $rowparticipant['userID'];
 
 }
 
+//var_dump($menu);
 
-
-$franz = implode(", ", $rows);
-
-//echo "sent";
-
-$yo = $franz;
-
-echo $yo;
-
-$text = "8,9,10,";
-
-
-
-$template = explode(", ", $text);
+foreach($menu as $index => $record){
+    $test = "{$record['userID']}";
+    echo $test ;
+}
 
 
 
 
-$string_template = serialize($template);
-
-// just insert the variable $string_template
-
-// when you need to restore the array, as the following:
-
-$template= unserialize($string_template);
-
-$mysql_values  = implode(", ", $template );
 
 
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET Participant_EmailNotifications = '".$mysql_values."' WHERE id = '".$row['id']."'  ");
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET Participant_EmailNotifications = " .$menu. "  WHERE id = '".$row['id']."'  ");
+
+
+
+
 
 
 } 
 
+
+
 } 
+
+
 
 }
 
@@ -388,20 +380,6 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET Participant
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -714,6 +692,16 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->statusCode();
 //echo $response->headers();
 //echo $response->body();
+
+
+
+
+
+
+
+
+
+
 
 
 
