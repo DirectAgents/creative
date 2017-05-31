@@ -33,10 +33,7 @@ $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE Project
 $row4 = mysqli_fetch_array($sql4);
 
 
-if(isset($_GET['p'])) {
-$wepay=mysqli_query($connecDB,"SELECT * FROM wepay WHERE ProjectID = '".$_GET['id']."' AND participant_id = '".$_GET['p']."' ");
-$rowwepay=mysqli_fetch_array($wepay);
-}
+
 
 
 
@@ -212,18 +209,23 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
 
 
+<?php if(isset($_GET['p'])) {
 
-<?php if(isset($_GET['p'])) { ?>
 
+$wepay=mysqli_query($connecDB,"SELECT * FROM wepay WHERE ProjectID = '".$_GET['id']."' AND participant_id = '".$_GET['p']."' ");
+$rowwepay=mysqli_fetch_array($wepay);
 
+ ?>
+
+<?php if(mysqli_num_rows($wepay)>0) {?>
 <div class="col-lg-11">
 
 <div class="request-sent">  
 
 
-<?php if($wepay == true){ ?>
+
   Payment was already sent!
-<?php } ?>
+
 
 
 
@@ -232,6 +234,7 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
 </div>
 
+<?php } ?>
 
 <?php } ?>
     
