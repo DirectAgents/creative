@@ -212,6 +212,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         if(proceed) 
         {
 
+          
 
 
           $( ".processing" ).show();
@@ -255,7 +256,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
         $(".no"+<?php echo $row2['ProjectID']; ?>).click(function() {  
       //alert("no"+<?php echo $row2['ProjectID']; ?>); 
-
+      
      
       $(".result-delete").show();
       $(".cancel-delete").hide();
@@ -269,8 +270,9 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
         var startupid = $('input[name=startupid'+<?php echo $row2['startupID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
        
-       
+       //alert(userid);
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -289,7 +291,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'startupid':startupid};
+            post_data = {'projectid':projectid,'startupid':startupid,'userid':userid};
             
             //Ajax post data to server
             $.post('noshowup.php', post_data, function(response){  
@@ -411,7 +413,7 @@ $row5 = mysqli_fetch_array($sql5);
 
 
 
-if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row5['startup_id'] != $_SESSION['startupSession']){ ?>
+if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Met'] != 'No didn\'t show up' && $row5['startup_id'] != $_SESSION['startupSession']){ ?>
 
 
 
@@ -424,13 +426,13 @@ if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Status'] != 'No sho
                       
              
 
-          <?php if($row2['Met'] == '' && $row2['Status'] != 'No show up. Meeting didn\'t happen'){ ?>         
+          <?php if($row2['Met'] == '' && $row2['Met'] != 'No didn\'t show up'){ ?>         
                  <i class="icon-trash"></i>Did the meeting happen? Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm  
 
                  <?php } ?>
 
 
-                 <?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Bank'){ ?>
+                 <?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Bank'){ ?>
 <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>" class="accept-btn">Send Payment</a> 
 <?php } ?> 
 
@@ -507,27 +509,27 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Cat
                    <div class="theline"></div>
 
                   <div class="status_request">Status: 
-<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Bank'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Bank'){ ?>
 Payment pending. Pay <a href="pay/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row2['userID']; ?>">here</a> 
 <?php } ?> 
 
-<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == 'Yes' && $row3['Payment_Method'] == 'Bank'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes' && $row3['Payment_Method'] == 'Bank'){ ?>
 Payment sent.
 <?php } ?> 
 
 
-<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Cash'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == '' && $row3['Payment_Method'] == 'Cash'){ ?>
 You met with <?php echo $row3['FirstName']; ?>.
 <?php } ?> 
 
 
-   <?php if($row2['Met'] == '' && $row2['Status'] != 'No show up. Meeting didn\'t happen'){ ?>         
+   <?php if($row2['Met'] == '' && $row2['Met'] != 'No didn\'t show up'){ ?>         
                  <i class="icon-trash"></i>Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm you met  
 
                  <?php } ?>   
 
 
-              <?php if($row2['Status'] == 'No show up. Meeting didn\'t happen'){ ?>         
+              <?php if($row2['Met'] == 'No didn\'t show up'){ ?>         
                  
                  <i class="icon-trash"></i>No show up. Meeting didn't happen
 

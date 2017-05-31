@@ -53,8 +53,9 @@ if($interval->days >= 7) {
 
 
 
-$the_date = date('Y-m-d'); 
+
 date_default_timezone_set('America/New_York');
+$the_date = date('Y-m-d'); 
 $the_time = date('h:i:s A');
 
 
