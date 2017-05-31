@@ -51,9 +51,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     // find the checkout
     $response = $wepay->request('checkout/find/', array(
         'account_id'        => $row['account_id'],
-        'sort_order' => 'DESC'
-        //'start_time' => '2016/11/06',
-        //'end_time' => '2016/12/06'
+        'sort_order' => 'DESC',
+        'start_time' => '2017/05/30',
+        'end_time' => '2017/05/31'
         //'state' => 'new'
     ));
 

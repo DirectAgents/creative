@@ -170,6 +170,15 @@ if(mysqli_num_rows($sql)>0)
 while($row = mysqli_fetch_array($sql))
 { 
 
+  echo $row['ProjectID'];
+
+
+$sqlprojectwepay=mysqli_query($connecDB,"SELECT * FROM wepay WHERE account_id = '".$row_participant['account_id']."' AND checkout_find_date = '".$row['checkout_find_date']."' AND refunded = '' ORDER BY id DESC ");
+$rowprojectwepay = mysqli_fetch_array($sqlprojectwepay);
+
+
+$sqlproject=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$rowprojectwepay['ProjectID']."'");
+$rowproject = mysqli_fetch_array($sqlproject);
 
 
 ?>
@@ -177,7 +186,7 @@ while($row = mysqli_fetch_array($sql))
 
 
 
- <div class="therow">
+
     <div class="col-lg-12">
      
 
@@ -185,9 +194,13 @@ while($row = mysqli_fetch_array($sql))
 
   <table class="table">
     <tbody>
+     
+
       <tr class="info">
-        <td colspan="2" style="text-align:left"><?php echo $row['checkout_find_date']; ?></td>
-        
+        <td style="text-align:left"><?php echo $row['checkout_find_date']; ?></td>
+        <td style="text-align:right">Idea#</td>
+        <td style="text-align:right">Amount</td>
+       
       </tr>
 
 
@@ -216,6 +229,7 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 
       <tr>
         <td style="text-align:left"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></td>
+        <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowproject['Category']; ?>/?id=<?php echo $rowproject['ProjectID']; ?>"><?php echo $rowproject['ProjectID']; //echo $row2['id']; ?></a></td>
         <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
        
       </tr>
@@ -230,8 +244,7 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 
   </tbody>
   </table>
-</div>
-      
+
     </div>
   
 

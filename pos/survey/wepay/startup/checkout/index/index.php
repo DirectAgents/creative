@@ -1,12 +1,51 @@
 <?php
+
+
+session_start();
+require_once '../../../../base_path.php';
+
+include("../../../../config.php"); //include config file
+require_once '../../../../class.startup.php';
+require_once '../../../../class.participant.php';
+
+
     // WePay PHP SDK - http://git.io/mY7iQQ
-    require '../../../../../wepay.php';
+    require '../../../../wepay.php';
+
+
+
+
+$participant_home = new PARTICIPANT();
+
+if($participant_home->is_logged_in())
+{
+  $participant_home->logout();
+}
+
+
+
+$startup_home = new STARTUP();
+
+if(!$startup_home->is_logged_in())
+{
+  $startup_home->redirect('../../../startup/login');
+}
+
+
+
+
+$stmt = $participant_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
 
     // application settings
-    $account_id = "1489540520";  // id of the account where the money is sent to
+    $account_id = $row['account_id']; // startup's account id
     $client_id = $wepay_client_id;
     $client_secret = $wepay_client_secret;
-    $access_token = "STAGE_dd8cb573ddb535adff60053c82d2371997e30b72b6e4e4d65e450c2453b2377e"; // access_token of the account where the money is sent to
+    $access_token = $row['access_token']; // startup's access_token
 
     // change to useProduction for live environments
     Wepay::useStaging($client_id, $client_secret);
@@ -15,7 +54,7 @@
 
     // create the checkout
     $response = $wepay->request('checkout/', array(
-        'checkout_id'        => 91493942
+        'checkout_id'        => 1192837631
     ));
 
     // display the response

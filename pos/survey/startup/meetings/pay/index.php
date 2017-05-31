@@ -234,7 +234,13 @@ $rowwepay=mysqli_fetch_array($wepay);
 
 </div>
 
-<?php } ?>
+<?php }else{
+
+$notsentpaymentyet = 1;
+
+} 
+
+?>
 
 <?php } ?>
     
@@ -467,12 +473,11 @@ $payamount_final = numberFormatPrecision($payamount, 2, '.');
 
         
 
-
   
 
 
         <div id="save">
-              <input type="submit" class="pay" value="Click here to Pay" <?php if($row['credit_card_id'] == '' || $wepay == true){ ?>disabled<?php } ?>/>
+              <input type="submit" class="pay" value="Click here to Pay" <?php if($row['credit_card_id'] == '' || $notsentpaymentyet != '1'){ ?>disabled<?php } ?>/>
 
             </div>
 
