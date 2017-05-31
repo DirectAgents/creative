@@ -202,98 +202,98 @@ $Min_Req = str_replace(",","|",$row['MinReq']);
 
 if (strpos($Min_Req, 'Age') !== false) {
 
-if($Age != 'NULL' && $Age != ''){$theage = "AND r.Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
+if($Age != 'NULL' && $Age != ''){$theage = "AND Age RLIKE '[[:<:]]".$Age."[[:>:]]'";}else{$theage = "";}
 }else{
   $theage = '';
 }
 
 
 if (strpos($Min_Req, 'Gender') !== false) {
-if($Gender != 'NULL' && $Gender != ''){$thegender = "AND r.Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
+if($Gender != 'NULL' && $Gender != ''){$thegender = "AND Gender RLIKE '[[:<:]]".$Gender."[[:>:]]'";}else{$thegender = '';}
 }else{
   $thegender = '';
 }
 
 if (strpos($Min_Req, 'Height') !== false) {
-if($Height != 'NULL' && $Height != ''){$theheight = "AND r.MinHeight RLIKE '[[:<:]]".$Height_Final."[[:>:]]'";}else{$theheight = '';}
+if($Height != 'NULL' && $Height != ''){$theheight = "AND Height Between '".$row['MinHeight']."' AND '".$row['MaxHeight']."'";}else{$theheight = '';}
 }else{
   $theheight = '';
 }
 
 if (strpos($Min_Req, 'City') !== false) {
-  //echo $City;
-if($City != 'NULL' && $City != ''){$thecity = "AND r.City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
+if($City != 'NULL' && $City != ''){$thecity = "AND City RLIKE '[[:<:]]".$City."[[:>:]]'";}else{$thecity = '';}
 }else{
   $thecity = '';
 }
 
 
 if (strpos($Min_Req, 'Status') !== false) {
-if($Status != 'NULL' && $Status != ''){$thestatus = "AND r.Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
+if($Status != 'NULL' && $Status != ''){$thestatus = "AND Status RLIKE '[[:<:]]".$Status."[[:>:]]'";}else{$thestatus = '';}
 }else{
   $thestatus = '';
 }
 
 
 if (strpos($Min_Req, 'Ethnicity') !== false) {
-if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND r.Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
+if($Ethnicity != 'NULL' && $Ethnicity != ''){$theethnicity = "AND Ethnicity RLIKE '[[:<:]]".$Ethnicity."[[:>:]]'";}else{$theethnicity = '';}
 }else{
   $theethnicity = '';
 }
 
 
 if (strpos($Min_Req, 'Smoke') !== false) {
-if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND r.Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
+if($Smoke != 'NULL' && $Smoke != ''){$thesmoke = "AND Smoke RLIKE '[[:<:]]".$Smoke."[[:>:]]'";}else{$thesmoke = '';}
 }else{
   $thesmoke = '';
 }
 
 
 if (strpos($Min_Req, 'Drink') !== false) {
-if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND r.Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
+if($Drink != 'NULL' && $Drink != ''){$thedrink = "AND Drink RLIKE '[[:<:]]".$Drink."[[:>:]]'";}else{$thedrink = '';}
 }else{
   $thedrink = '';
 }
 
 
 if (strpos($Min_Req, 'Diet') !== false) {
-if($Diet != 'NULL' && $Diet != ''){$thediet = "AND r.Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
+if($Diet != 'NULL' && $Diet != ''){$thediet = "AND Diet RLIKE '[[:<:]]".$Diet."[[:>:]]'";}else{$thediet = '';}
 }else{
   $thediet = '';
 }
 
 if (strpos($Min_Req, 'Religion') !== false) {
-if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND r.Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
+if($Religion != 'NULL' && $Religion != ''){$thereligion = "AND Religion RLIKE '[[:<:]]".$Religion."[[:>:]]'";}else{$thereligion = '';}
 }else{
   $thereligion = '';
 }
 
 
 if (strpos($Min_Req, 'Education') !== false) {
-if($Education != 'NULL' && $Education != ''){$theeducation = "AND r.Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
+if($Education != 'NULL' && $Education != ''){$theeducation = "AND Education RLIKE '[[:<:]]".$Education."[[:>:]]'";}else{$theeducation = '';}
 }else{
   $theeducation = '';
 }
 
 
 if (strpos($Min_Req, 'Job') !== false) {
-if($Job != 'NULL' && $Job != ''){$thejob = "AND r.Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
+if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]]'";}else{$thejob = '';}
 }else{
   $thejob = '';
 }
 
 
 if (strpos($Min_Req, 'Interests') !== false) {
-if($Interests != 'NULL' && $Interests != ''){$interests = "AND r.Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
+if($Interests != 'NULL' && $Interests != ''){$interests = "AND Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
 }else{
   $interests = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
-if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
+if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '[[:<:]]".$Languages."[[:>:]]'";}else{$languages = '';}
 }else{
   $languages = '';
 }
+
 
 
 
@@ -302,10 +302,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 
 
 
-
-$sql3=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$row2['userID']."'
- $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND
- ProjectID = '".$row['ProjectID']."' LIMIT 1");
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$row['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$row['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$row['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$row['id']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$row['id']."' AND Met = 'yes') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$row['id']."' AND Met = 'yes') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages ORDER BY userID DESC");
 
 
 
@@ -322,6 +319,11 @@ while($rowparticipant = mysqli_fetch_array($sql3))
     $results[] = $rowparticipant['userID'];
 
 
+echo $rowparticipant['userID'];
+echo "<br>";
+
+
+//echo $row2['userID'];
 
 
 
@@ -642,20 +644,21 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
-
 } 
 
 
 
 $userID = implode(",", $results);
 
-
+//echo $userID;
 
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET Participant_EmailNotifications = '".$userID."'  WHERE id = '".$row['id']."'  ");
 
+exit();
 
 
 } 
+
 
 
 
