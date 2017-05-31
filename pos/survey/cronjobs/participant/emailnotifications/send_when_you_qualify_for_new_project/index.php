@@ -111,7 +111,7 @@ require_once '../../../../base_path.php';
 
 
 
-
+$results = array();
 
 
 $sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project ORDER BY id DESC ");
@@ -300,7 +300,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND r.Languages RLIKE
 //echo $rowproject['City'];
 
 
-$menu = array();
+
 
 
 $sql3=mysqli_query($connecDB,"SELECT * FROM `tbl_participant` AS p INNER JOIN `tbl_startup_project` AS r ON p.userID='".$row2['userID']."'
@@ -313,73 +313,13 @@ if(mysqli_num_rows($sql3)>0)
 {
 
 
+
+
 while($rowparticipant = mysqli_fetch_array($sql3))
 { 
 
 
-
-
-    $menu[] = array(
-        "userID" => $rowparticipant['userID']
-    );
-
-
-
-
-
-}
-
-//var_dump($menu);
-
-foreach($menu as $index => $record){
-    $test = "{$record['userID']}";
-    echo $test ;
-}
-
-
-
-
-
-
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET Participant_EmailNotifications = " .$menu. "  WHERE id = '".$row['id']."'  ");
-
-
-
-
-
-
-} 
-
-
-
-} 
-
-
-
-}
-
-
-
-
-
-
-
-
-    
-    //print_r($template);
-
-
-
-
-  //$update_sql = mysqli_query($connecDB,"UPDATE tbl_project_request SET Meeting_Status='Upcoming Meetings'
-  //WHERE id = '".$row2['id']."' ");
-
-
-
-
-
-
-}
+    $results[] = $rowparticipant['userID'];
 
 
 
@@ -396,7 +336,7 @@ require '../../../sendgrid-php/vendor/autoload.php';
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Meeting you qualify", "support@valifyit.com");
 $subject = "Meeting you qualify";
-$to = new SendGrid\Email($row2['FirstName'], $row2['userEmail']);
+$to = new SendGrid\Email($rowparticipant['FirstName'], $rowparticipant['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -590,7 +530,7 @@ $content = new SendGrid\Content("text/html", '
 
                               <tr>
                                
-                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'&p='.$row2['userID'].'" target="_blank" style="font-weight: normal; color: #ffffff;">View Details</a></td>
+                    <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'&p='.$rowparticipant['userID'].'" target="_blank" style="font-weight: normal; color: #ffffff;">View Details</a></td>
                 </tr>
 
 
@@ -696,7 +636,38 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
+   
 
+}
+
+
+
+
+} 
+
+
+
+$userID = implode(",", $results);
+
+
+
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET Participant_EmailNotifications = '".$userID."'  WHERE id = '".$row['id']."'  ");
+
+
+
+} 
+
+
+
+}
+
+
+
+
+
+
+
+}
 
 
 
