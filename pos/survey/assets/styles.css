@@ -4115,6 +4115,7 @@ margin-left:0px;
     max-height: 100px;
     border: 1px solid #eee;
     padding: 5px;
+    margin-bottom:30px;
 }
 
 
@@ -5742,6 +5743,23 @@ FORM.ff .note.notforheader {
     padding-left: 52px;
 }
 
+
+
+
+@media (max-width: 979px) and (min-width: 768px){
+
+  #white-container {
+    width: 100%;
+    float: left;
+    padding:30px;
+    margin: 0px auto;
+    background: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(220, 220, 220);
+    border-image: initial;
+}
+}
 
 
 
