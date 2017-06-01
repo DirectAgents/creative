@@ -595,12 +595,15 @@ $('#location_option3').hide();
                 proceed = true; //set do not proceed flag       
         };
 
-        if(!location) {
+       
+
+        if(!location || !date_option_one || !date_option_two || !date_option_three || !time_suggested_one || !time_suggested_two || !time_suggested_three ) {
 
                 $("#pac-input").css('border-color','red');  //change border color to red   
                 proceed = false; //set do not proceed flag            
         }else{
                 $("#pac-input").css('border-color','green');  //change border color to red 
+               
                 proceed = true; //set do not proceed flag       
         };
 

@@ -185,7 +185,7 @@ $rowparticipant = mysqli_fetch_array($sqlparticipant);
                     <div class="edit-delete">
                       
             
-<?php if($row2['Status'] == 'Meeting Never Happened' || $row2['Met'] == 'Yes' || $row2['Met'] != 'No didn\'t show up' || $row2['Payment'] == 'Yes' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
+<?php if($row2['Status'] == 'Meeting Never Happened' || $row2['Met'] == 'Yes' || $row2['Met'] != 'No show up' || $row2['Payment'] == 'Yes' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
                  <i class="icon-trash"></i><a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Delete</strong></a>
                  </div>
@@ -416,17 +416,17 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Cat
                   <div class="theline"></div>
 
                   <div class="status_request">Status: 
-<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No show up' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
 Waiting for Payment pending.</a> 
 <?php } ?> 
 
 
-<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No didn\'t show up' && $row2['Payment'] == 'Yes' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No show up' && $row2['Payment'] == 'Yes' && $rowparticipant['Payment_Method'] == 'Bank'){ ?>
 Payment received. View <a href="<?php echo BASE_PATH; ?>/startup/payment/">Payment History</a>
 <?php } ?> 
 
 
-<?php if($row2['Met'] == 'Yes' && $row2['Status'] != 'No show up. Meeting didn\'t happen' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Cash'){ ?>
+<?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No show up' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Cash'){ ?>
 You met with <?php echo $row3['FirstName']; ?>.
 <?php } ?> 
 
@@ -441,6 +441,11 @@ Meeting never happened.
 
 <?php if($row2['Met'] == '' && $row2['Status'] == '' && $row2['Status'] != 'Meeting Canceled by Startup' && $row2['Status'] != 'Meeting Canceled by Participant' && $row2['Payment'] == ''){ ?>
 Meeting never happened.
+<?php } ?> 
+
+
+<?php if($row2['Met'] == 'No show up' && $row2['Payment'] == ''){ ?>
+Meeting never happened. No show up
 <?php } ?> 
 
 

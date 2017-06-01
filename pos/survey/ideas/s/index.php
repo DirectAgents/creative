@@ -385,7 +385,8 @@ $(document).ready(function() {
         if(!date_option_one) {
 
                 $("#date_option_one").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
+                proceed = false; //set do not proceed flag   
+                    
         }else{
                 $("#date_option_one").css('border-color','green');  //change border color to red 
                 proceed = true; //set do not proceed flag       
@@ -438,19 +439,20 @@ $(document).ready(function() {
                 proceed = true; //set do not proceed flag       
         };
 
-        if(!location) {
+        if(!location || !date_option_one || !date_option_two || !date_option_three || !time_suggested_one || !time_suggested_two || !time_suggested_three ) {
 
                 $("#pac-input").css('border-color','red');  //change border color to red   
                 proceed = false; //set do not proceed flag            
         }else{
                 $("#pac-input").css('border-color','green');  //change border color to red 
+               
                 proceed = true; //set do not proceed flag       
         };
         
         //everything looks good! proceed...
         if(proceed) 
         {
-
+         
             //data to be sent to server
    post_data = {'projectid':projectid,'participantid':participantid,'time_suggested_one':time_suggested_one, 'time_suggested_two':time_suggested_two,'time_suggested_three':time_suggested_three,'date_option_one':date_option_one, 'date_option_two':date_option_two, 'date_option_three':date_option_three,'location':location};
             

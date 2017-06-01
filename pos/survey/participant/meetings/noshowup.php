@@ -27,7 +27,7 @@ $row = mysqli_fetch_array($sql_participant);
 
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET 
-  Met = 'No didn\'t show up'
+  Met = 'No show up'
 
   WHERE userID='".$_POST['userid']."' AND ProjectID= '".$_POST['projectid']."'");
 
