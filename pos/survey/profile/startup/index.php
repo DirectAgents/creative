@@ -822,12 +822,19 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
   //if projects exists
 
 
+
+
+
+
+} 
+
+
 }else{
 
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">111Sorry you don\'t qualify for any ideas posted by '.$row['FirstName'].' yet</div>
+<div class="empty-projects">Sorry you don\'t qualify for any ideas posted by '.$row['FirstName'].' yet</div>
   <div class="create-one-here-box">
       <div class="create-one"><br>
       <a href="'.BASE_PATH.'/participant/idea/browse/">
@@ -841,10 +848,6 @@ echo '<div class="row">
 </div>';
 
 }
-
-
-
-} 
 
 
 ?>
