@@ -5,6 +5,8 @@ if(!empty($_POST['ratingPoints'])){
     $postID = $_POST['postID'];
     $ratingNum = 1;
     $ratingPoints = $_POST['ratingPoints'];
+
+    $results = array();
     
     //Check the rating row with same post ID
     $prevRatingQuery = "SELECT * FROM participant_rating WHERE post_id = ".$postID;
@@ -14,7 +16,11 @@ if(!empty($_POST['ratingPoints'])){
         $ratingNum = $prevRatingRow['rating_number'] + $ratingNum;
         $ratingPoints = $prevRatingRow['total_points'] + $ratingPoints;
         //Update rating data into the database
-        $query = "UPDATE participant_rating SET rating_number = '".$ratingNum."', total_points = '".$ratingPoints."', modified = '".date("Y-m-d H:i:s")."' WHERE post_id = ".$postID;
+
+        $startup_id = $prevRatingRow['startup_id'].','.$_SESSION['startupSession'];
+
+
+        $query = "UPDATE participant_rating SET startup_id = '".$startup_id."', rating_number = '".$ratingNum."', total_points = '".$ratingPoints."', modified = '".date("Y-m-d H:i:s")."' WHERE post_id = ".$postID;
         $update = $db->query($query);
     else:
         //Insert rating data into the database

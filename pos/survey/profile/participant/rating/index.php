@@ -41,8 +41,8 @@ $row = mysqli_fetch_array($stmt);
 $comment=mysqli_query($connecDB,"SELECT * FROM c5t_comment WHERE startup_id='".$_SESSION['startupSession']."' AND comment_identifier_id = '".$_GET['id']."'");
 
 
-$rating=mysqli_query($connecDB,"SELECT * FROM participant_rating WHERE startup_id='".$_SESSION['startupSession']."' AND post_id = '".$_GET['id']."'");
-
+$rating=mysqli_query($connecDB,"SELECT * FROM participant_rating WHERE post_id = '".$_GET['id']."'");
+$rowrating = mysqli_fetch_array($rating);
 
 
 $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_GET['id']."'");
@@ -260,7 +260,11 @@ Based on <span id="totalrat"><?php echo $ratingRow['rating_number']; ?></span>  
   <div class="therow">
     <div class="col-lg-12">
 
-<?php if(mysqli_num_rows($rating)<1) { ?>
+<?php 
+
+$startup_id=explode(',',$rowrating['startup_id']);
+
+if(!in_array($_SESSION['startupSession'],$startup_id)){ ?>
   <h2>Rate <?php echo $row['FirstName']; ?></h2>
   <input name="rating" value="0" id="rating_star" type="hidden" postID="<?php echo $_GET['id']; ?>" />
   <p>&nbsp;</p>
