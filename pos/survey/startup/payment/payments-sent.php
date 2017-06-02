@@ -119,13 +119,13 @@ while($row = mysqli_fetch_array($sql2))
 
 
 
- <div class="therow">
+
     <div class="col-lg-12">
      
 
 
 
-<table>
+<table style="background:#eee">
     <tbody>
       <tr>
         <td style="text-align:center;"><?php echo $row['checkout_find_date']; ?></td>
@@ -143,6 +143,7 @@ while($row = mysqli_fetch_array($sql2))
     <tbody>
       <tr>
         <td style="text-align:left;">&nbsp;</td>
+        <td style="text-align:left;">Date of Payment</td>
         <td style="text-align:left;">Participant Received</td>
         <td style="text-align:left;">Processing Fees</td>
          <td style="text-align:left;">Service Fee</td>
@@ -175,7 +176,8 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 
 
       <tr>
-        <td style="text-align:left"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></td>
+        <td style="text-align:left"><a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row3['userID']; ?>"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></a></td>
+        <td style="text-align:left"><?php echo date('F j, Y',strtotime($row2['Date'])); ?></td>
         <td style="text-align:left">$<?php echo $final_amount; ?></td>
         <td style="text-align:left">$<?php echo $row2['fees']; ?></td>
          <td style="text-align:left">$<?php echo $row2['service_fee']; ?></td>
@@ -208,7 +210,6 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
   </table>
 </div>
       
-    </div>
   
 
 

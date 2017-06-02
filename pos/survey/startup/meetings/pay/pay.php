@@ -642,7 +642,22 @@ $content = new SendGrid\Content("text/html", '
                                                 $'.$total.'
                                                 </td>
                                             </tr>
+
+
+                                            <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                               &nbsp;
+                                                </td>
+                                            </tr>
+
+
+                                             <tr>
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                               Note.: Please review '.$rowparticipant['FirstName'].' and share with other startups how the feedback session was. We appreciate it. <a href="'.BASE_PATH.'/profile/participant/rating/?id='.$rowparticipant['userID'].'" target="_blank" style="color: #666666; text-decoration: none;">Click here</a> to review.
+                                                </td>
                                             
+                                            </tr>
+                                            http://localhost/creative/pos/survey/profile/participant/rating/?id=12
                                             
                                         </table>
                                     </div>
