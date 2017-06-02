@@ -519,8 +519,12 @@ $content = new SendGrid\Content("text/html", '
                                 <td align="left" style="padding: 20px;  font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">What to do next?</td>
                               </tr>
                               <tr>
+
+                              <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">Please confirm below if you have met.</td>
+                </tr>
+
                                
-                    <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowstartup['FirstName'].', please send a payment to him/her for the meeting.</td>
+                    <td align="left" style="padding: 20px;  font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding" colspan="2">If you have met with '.$rowstartup['FirstName'].', and don\'t receice your payment to your bank account within a week, please get in touch with us at <a href="mailto:support@valifyit.com">support@valifyit.com</a></td>
                 </tr>
    <tr>
      <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="'.BASE_PATH.'/participant/meetings/" style="font-weight: normal; color: #ffffff;">Confirm You Met</a></td>
