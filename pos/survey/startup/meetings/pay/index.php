@@ -234,7 +234,11 @@ $rowwepay=mysqli_fetch_array($wepay);
 
 </div>
 
-<?php }else{
+<?php 
+
+$notsentpaymentyet = 0;
+
+}else{
 
 $notsentpaymentyet = 1;
 
