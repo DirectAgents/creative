@@ -211,7 +211,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
                                                 Thank you for signing up!
                                                 </td>
                                             </tr>
@@ -224,33 +224,17 @@ $content = new SendGrid\Content("text/html", '
                                             </tr>
                                             
                                              <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                We are very new and just started accepting sign ups. So, it may take a bit some time until you will see Startups posting their ideas.
+                                                 <td align="left" style="line-height:20px; padding: 0 0 5px 25px; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                We are very new and just started accepting sign ups. So, it may take a bit some time until you will see Startups posting their ideas.<br><br>
+                                                 To match you up with a Startup, please visit your account and edit your profile.<br><br>
+                                                 The more we know about you, the better we can match you up with the right Startup. 
                                                 
                                                 </td>
                                             </tr>
 
 
-                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                To match you up with a Startup, please visit your account and edit your profile. 
-                                                
-                                                </td>
-                                            </tr>
 
-                                            <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                &nbsp;
-                                                
-                                                </td>
-                                            </tr>
-
-                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                              The more we know about you, the better we can match you up with the right Startup.
-                                                
-                                                </td>
-                                            </tr>
+                                          
 
                                               <tr>
                                                  <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">

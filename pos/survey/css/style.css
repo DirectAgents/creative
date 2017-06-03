@@ -119,7 +119,8 @@ h2{font-size:25px;}
   display: block;
   width: 100%;
 }
-.form input {
+
+.form input[type="text"], .form input[type="password"], .form input[type="email"] {
   outline: 0;
   background: #fff;
   width: 100%;
@@ -155,49 +156,11 @@ h2{font-size:25px;}
   color:#323844;
 }
 
-.form input[type="email"] {
-  outline: 0;
-  background: #fff;
-  width: 100%;
-  border: 0;
-  float:left;
-  margin: 0 0px 15px 0px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 14px;
-  color:#323844;
-}
 
 
-.form #txtpass {
-  outline: 0;
-  background: #fff;
-  width: 100%;
-  border: 0;
-  float:left;
-  margin: 0 0px 15px 10px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 14px;
-  color:#323844;
-}
 
 
-.form .form-signup #txtpass {
-  outline: 0;
-  background: #fff;
-  width: 100%;
-  border: 0;
-  float:left;
-  margin: 0 0px 15px 0px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 14px;
-  color:#323844;
-}
+
 
 
 .form select {
@@ -205,7 +168,7 @@ h2{font-size:25px;}
   background: #fff;
   width: 100%;
   border: 0;
-  margin: 0 0 15px 10px;
+  margin: 0 0 15px 0px;
   padding: 15px;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -605,8 +568,13 @@ body:before {
     width: 49%;
 }
 
-.txtfirstname {
-    margin-right: 11px;
+#txtpass {
+    margin-left: 10px !important;
+}
+
+.txtage
+{
+    margin-left: 10px !important;
 }
 
 .txtlastname {

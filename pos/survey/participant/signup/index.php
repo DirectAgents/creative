@@ -272,6 +272,7 @@ if($_POST['passwordpass'] == 'good'){
   $email = trim($_POST['txtemail']);
   $upass = trim($_POST['txtpass']);
   $code = md5(uniqid(rand()));
+  $signupcode = trim($_POST['txtcode']);
   
   $stmt = $reg_user->runQuery("SELECT * FROM tbl_participant WHERE userEmail=:email_id");
   $stmt->execute(array(":email_id"=>$email));
@@ -288,7 +289,7 @@ if($_POST['passwordpass'] == 'good'){
   }
   else
   {
-    if($reg_user->register($firstname,$lastname,$zip,$age,$email,$upass,$code))
+    if($reg_user->register($firstname,$lastname,$zip,$age,$email,$upass,$code,$signupcode))
     {     
       $id = $reg_user->lasdID();    
       $key = base64_encode($id);
@@ -675,6 +676,13 @@ $response = $sg->client->mail()->send()->post($mail);
    <input type="password" name="txtpass" id="txtpass" placeholder="Password *" required/><span id="result"></span>
    </div>
     </div>
+
+
+
+  <div class="form-group">
+  <input type="text" name="txtcode" id="txtcode" placeholder="Enter Registration code here" required/>
+   </div>
+   
   
     <button type="submit" name="btn-signup" id="btn-signup">SIGN UP</button>
     <p class="message">Already registered? <a href="../login">Log in</a></p>

@@ -29,13 +29,14 @@ class PARTICIPANT
 		return $stmt;
 	}
 	
-	public function register($firstname,$lastname,$zip,$age,$email,$upass,$code)
+	public function register($firstname,$lastname,$zip,$age,$email,$upass,$code,$signupcode)
 	{
 		try
 		{	
 
-		    $the_date = date('Y-m-d'); 
-		    date_default_timezone_set('America/New_York'); 
+		    
+		    date_default_timezone_set('America/New_York');
+		    $the_date = date('Y-m-d');  
 
 			$password = md5($upass);
 
@@ -43,11 +44,15 @@ class PARTICIPANT
 			$stmt->execute(array(":user_zip"=>$zip));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+			$stmt = $this->conn->prepare("SELECT * FROM tbl_signup_codes WHERE code=:signup_code");
+			$stmt->execute(array(":signup_code"=>$signupcode));
+			$rowsignupcode=$stmt->fetch(PDO::FETCH_ASSOC);
+
 			if($age >= 18){$payment_method = 'Bank';}else{$payment_method = 'Cash';}
 			
 			
-			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,Age,City,State,userEmail,Payment_Method,userPass,tokenCode, EmailNotifications, Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_zip,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail,'".$payment_method."', :user_pass, :active_code,'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting','".$the_date."')");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,Age,City,State,userEmail,Payment_Method,userPass,tokenCode,EmailNotifications,signup_code,signup_code_firstname,signup_code_lastname, Date_Created) 
+			                                             VALUES(:first_name, :last_name,:user_zip,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail,'".$payment_method."', :user_pass, :active_code,'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting',:signup_code,'".$rowsignupcode['Firstname']."','".$rowsignupcode['Lastname']."','".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
 			$stmt->bindparam(":user_zip",$zip);
@@ -55,6 +60,7 @@ class PARTICIPANT
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
 			$stmt->bindparam(":active_code",$code);
+			$stmt->bindparam(":signup_code",$signupcode);
 			$stmt->execute();	
 			return $stmt;
 		}

@@ -32,8 +32,9 @@ class STARTUP
 	{
 		try
 		{		
-			$the_date = date('Y-m-d');  
+			
 			date_default_timezone_set('America/New_York');
+			$the_date = date('Y-m-d');
 
 			$password = md5($upass);
 
