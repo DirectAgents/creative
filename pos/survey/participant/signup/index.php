@@ -305,7 +305,7 @@ if($_POST['passwordpass'] == 'good'){
             </div>
           ";
       
-     // using SendGrid's PHP Library
+// using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
 // If you are using Composer (recommended)
 require '../../sendgrid-php/vendor/autoload.php';
