@@ -141,7 +141,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     $date = date('Y-m-d'); 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant (google_id, FirstName, LastName, userEmail, google_picture_link, EmailNotifications, Date_Created, account_verified) 
-      VALUES ('".$user->id."',  '".$user->givenName."', '".$user->familyName."', '".$user->email."', '".$user->picture."' , 'New startup requests you participate when you qualify to participate to provide feedback on an idea','".$date."','1')");
+      VALUES ('".$user->id."',  '".$user->givenName."', '".$user->familyName."', '".$user->email."', '".$user->picture."' , 'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting','".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
@@ -822,7 +822,7 @@ echo 'id: ' . $user['location'];
 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant (facebook_id, FirstName, LastName, userEmail, Gender, EmailNotifications, Date_Created, account_verified) 
-      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$user['gender']."' ,'New startup requests you participate when you qualify to participate to provide feedback on an idea','".$date."','1')");
+      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$user['gender']."' ,'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting','".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
