@@ -46,9 +46,9 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
 <?php } ?>
 
-  </a>
 <?php } ?>
 
+  </a>
 
 
         <li class="more">
@@ -130,10 +130,11 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
 <?php } ?>
 
-</a>
+
 
 <?php } ?>
 
+</a>
 
       
 

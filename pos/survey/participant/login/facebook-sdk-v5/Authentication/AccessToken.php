@@ -153,6 +153,7 @@ class AccessToken
      */
     protected function setExpiresAtFromTimeStamp($timeStamp)
     {
+        date_default_timezone_set('America/New_York');
         $dt = new \DateTime();
         $dt->setTimestamp($timeStamp);
         $this->expiresAt = $dt;

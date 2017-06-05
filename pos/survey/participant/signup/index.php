@@ -757,7 +757,7 @@ if(isset($_SESSION['fb_access_token_participant'])){
 
 try {
   // Returns a `Facebook\FacebookResponse` object
-  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_participant']);
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender,location', $_SESSION['fb_access_token_participant']);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
@@ -773,6 +773,8 @@ echo "<br>";
 echo 'Email: ' . $user['email'];
 echo "<br>";
 echo 'id: ' . $user['id'];
+echo "<br>";
+echo 'id: ' . $user['location'];
 */
 
 
@@ -820,7 +822,7 @@ echo 'id: ' . $user['id'];
 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_participant (facebook_id, FirstName, LastName, userEmail, Gender, EmailNotifications, Date_Created, account_verified) 
-      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' ,'New startup requests you participate when you qualify to participate to provide feedback on an idea','".$date."','1')");
+      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$user['gender']."' ,'New startup requests you participate when you qualify to participate to provide feedback on an idea','".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
