@@ -93,7 +93,7 @@ h2{font-size:25px;}
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 550px;
+  max-width: 600px;
   margin: 0 auto 100px;
   padding: 30px;
   border-top-left-radius: 3px;
@@ -125,7 +125,7 @@ h2{font-size:25px;}
   background: #fff;
   width: 100%;
   border: 0;
-  margin: 0 0 15px;
+  margin: 0 0 0px;
   padding: 15px;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -137,10 +137,13 @@ h2{font-size:25px;}
 
   
   float:left;
-
   font-size: 14px;
   color:#323844;
+  padding:20px 0 15px 0;
+  font-weight:bold;
 }
+
+
 
 
 .form input[type="checkbox"] {
@@ -168,13 +171,13 @@ h2{font-size:25px;}
   background: #fff;
   width: 100%;
   border: 0;
-  margin: 0 0 15px 0px;
+  margin: 0 0 0px 0px;
   padding: 15px;
   border: 1px solid #ccc;
   box-sizing: border-box;
   font-size: 14px;
   color:#323844;
-  height:50px;
+  height:49px;
 }
 
 
@@ -588,6 +591,55 @@ body:before {
 @media (min-width: 992px) {
 .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
     float: left;
+}
+
+.form .label-right-col{
+  float: left; font-size: 14px; font-weight:bold; color: #323844; padding:20px 0 15px 13px;
+}
+
+.form .label-birthday{
+  float: left; font-size: 14px; font-weight:bold; color: #323844; padding:20px 0 15px 0; width:10px;
+}
+
+.birthday{margin-left:10px;}
+
+.form .label-birthday-day{
+  float: left; font-size: 14px; font-weight:bold; color: #323844; padding:20px 0 15px 0; width:10px;
+}
+
+.form .label-birthday-year{
+  float: left; font-size: 14px; font-weight:bold; color: #323844; padding:20px 0 15px 0; width:10px;
+}
+
+
+}
+
+
+
+@media (max-width: 991px) {
+
+.form .label-right-col {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #323844;
+    padding: 20px 0 15px 0px;
+}
+
+.form .label-birthday{
+  float: left; font-size: 14px; font-weight:bold; color: #323844; padding:20px 0 15px 0; width:10px;
+}
+
+.form .label-birthday-day{
+  float: left; font-size: 14px; font-weight:bold; color: #323844; padding:0px 0 15px 0; width:10px;
+}
+
+.form .label-birthday-year{
+  float: left; font-size: 14px; font-weight:bold; color: #323844; padding:0px 0 15px 0; width:10px;
+}
+
+.birthday{margin-left:0px;}
+
 }
 
 

@@ -29,7 +29,7 @@ class PARTICIPANT
 		return $stmt;
 	}
 	
-	public function register($firstname,$lastname,$zip,$age,$email,$upass,$code,$signupcode)
+	public function register($firstname,$lastname,$zip,$month,$day,$year,$age,$email,$upass,$code,$signupcode)
 	{
 		try
 		{	
@@ -51,11 +51,14 @@ class PARTICIPANT
 			if($age >= 18){$payment_method = 'Bank';}else{$payment_method = 'Cash';}
 			
 			
-			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,Age,City,State,userEmail,Payment_Method,userPass,tokenCode,EmailNotifications,signup_code,signup_code_firstname,signup_code_lastname, Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_zip,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail,'".$payment_method."', :user_pass, :active_code,'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting',:signup_code,'".$rowsignupcode['Firstname']."','".$rowsignupcode['Lastname']."','".$the_date."')");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_participant(FirstName,LastName,Zip,Month,Day,Year,Age,City,State,userEmail,Payment_Method,userPass,tokenCode,EmailNotifications,signup_code,signup_code_firstname,signup_code_lastname, Date_Created) 
+			                                             VALUES(:first_name, :last_name,:user_zip,:user_month,:user_day,:user_year,:user_age,'".$userRow['city']."','".$userRow['state']."',:user_mail,'".$payment_method."', :user_pass, :active_code,'Startup requests to meet you,When you qualify to participate to provide feedback on an idea,Email reminder about an upcoming meeting',:signup_code,'".$rowsignupcode['Firstname']."','".$rowsignupcode['Lastname']."','".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
 			$stmt->bindparam(":user_zip",$zip);
+			$stmt->bindparam(":user_month",$month);
+			$stmt->bindparam(":user_day",$day);
+			$stmt->bindparam(":user_year",$year);
 			$stmt->bindparam(":user_age",$age);
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
