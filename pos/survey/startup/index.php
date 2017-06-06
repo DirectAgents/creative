@@ -458,6 +458,23 @@ $date = date_create($row2['Date_Created']);
 
 
 
+<?php if(isset($_SESSION['access_token']) && $row['Zip'] == ''){ ?>
+
+<script>
+$(document).ready(function () {
+
+$('#more-info-needed').modal({
+      backdrop: 'static'
+    });
+
+});
+
+</script>
+
+<? } ?>
+
+
+
 
 
 
@@ -465,9 +482,7 @@ $date = date_create($row2['Date_Created']);
 $(document).ready(function () {
 
 
-$('#more-info-needed').modal({
-      backdrop: 'static'
-    });
+
 
 
 
