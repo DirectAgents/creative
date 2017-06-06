@@ -133,6 +133,35 @@ h2{font-size:25px;}
   color:#323844;
 }
 
+
+.form .form-login input[type="text"], .form .form-login input[type="password"], .form .form-login input[type="email"] {
+  outline: 0;
+  background: #fff;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+  color:#323844;
+}
+
+
+.form .form-login label
+
+{
+
+  
+  float:left;
+  font-size: 14px;
+  color:#323844;
+  padding:0px 0 15px 5px;
+  font-weight:bold;
+}
+
+
+
 .form label {
 
   

@@ -184,6 +184,8 @@ if(isset($_POST['btn-login']))
   <h3>Are you a <span class="role">Startup</span>? <a href="<?php echo BASE_PATH; ?>/startup/login/">Click here</a></h3>
 </div>
   
+<div class="form-login">
+
   <form class="login-form">
     <input type="email" name="txtemail" placeholder="Email Address" required/>
     <input type="password" name="txtupass" placeholder="Password" required/>
@@ -193,6 +195,9 @@ if(isset($_POST['btn-login']))
     <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>
    
   </form>
+
+</div>
+
 
   <div style="margin-top:30px; background:#f5f5f5">
   

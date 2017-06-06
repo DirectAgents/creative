@@ -1076,7 +1076,7 @@ echo '</li>';
 
 
 
-        <fieldset>
+        <!--<fieldset>
          <span class="select gap-before">
          <label>Age</label>
          <span class="select-wrapper">
@@ -1134,7 +1134,7 @@ echo '</li>';
                </select> 
                </span>
             </span>
- </fieldset>
+ </fieldset>-->
          <fieldset>    
            <span class="select gap-before">
             <label>Gender</label>
