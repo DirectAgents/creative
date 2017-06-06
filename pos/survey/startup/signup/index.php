@@ -665,7 +665,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
-
+<div class="form-login">
   
 <form class="form-signin" method="post">
 
@@ -705,6 +705,8 @@ $response = $sg->client->mail()->send()->post($mail);
     <button type="submit" name="btn-signup" id="btn-signup">SIGN UP</button>
     <p class="message">Already registered? <a href="../login">Log in</a></p>
 </form>
+
+</div>
 
 
 <div id="pswd_info">

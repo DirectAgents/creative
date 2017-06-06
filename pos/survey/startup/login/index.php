@@ -190,6 +190,7 @@ if(isset($_POST['btn-login']))
 </div>
 
 
+<div class="form-login">
 
   
   <form class="login-form">
@@ -201,6 +202,10 @@ if(isset($_POST['btn-login']))
     <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>
    
   </form>
+
+</div>
+
+
 
 <div style="margin-top:30px; background:#f5f5f5">
   

@@ -1209,3 +1209,10 @@ background-image:url("../img/flags/sprite@2x.png")
 }
 }
 
+
+.modal-open {padding-right:0px !important;}
+
+.modal-dialog {
+    width: 333px;
+    margin: 130px auto;
+}
