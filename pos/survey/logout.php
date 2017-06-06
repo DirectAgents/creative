@@ -6,6 +6,7 @@ require_once 'class.startup.php';
 
 if(isset($_GET['t'], $_SESSION['startupSession'])){
 $_SESSION['cookie_deleted'] = '1';
+unset($_SESSION['access_token']);
 unset($_SESSION['startupSession']);
 unset($_SESSION['fb_access_token_startup']);	
 header("Location:startup/login/");
@@ -15,6 +16,7 @@ exit();
 
 if(isset($_GET['t'], $_SESSION['participantSession'])){
 $_SESSION['cookie_deleted'] = '1';
+unset($_SESSION['access_token']);
 unset($_SESSION['participantSession']);
 unset($_SESSION['fb_access_token_participant']);
 header("Location:participant/login/");
