@@ -1141,8 +1141,8 @@ echo '</li>';
             <span class="select-wrapper">
               <select name="gender" class="gender">
                 <option value="" disabled="disabled" <?php if(in_array('',$gender)){echo "selected";}?>>Select your gender</option>
-                <option value="Female" <?php if(in_array('Female',$gender)){echo "selected";}?>>Female</option>
-                <option value="Male" <?php if(in_array('Male',$gender)){echo "selected";}?>>Male</option>
+                <option value="Female" <?php if(in_array('Female',$gender) || in_array('female',$gender)){echo "selected";}?>>Female</option>
+                <option value="Male" <?php if(in_array('Male',$gender)|| in_array('male',$gender)){echo "selected";}?>>Male</option>
                </select> 
             </span>
           </span>

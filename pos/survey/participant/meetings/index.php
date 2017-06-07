@@ -452,7 +452,7 @@ $(".load_more_pending").click(function (e) { //user clicks on button
 
 
 
-<?php if(isset($_SESSION['access_token']) && $row['Zip'] == ''){ ?>
+<?php if(isset($_SESSION['fb_access_token_participant']) && $row['Zip'] == '' || isset($_SESSION['access_token']) && $row['Zip'] == ''){ ?>
 
 <script>
 $(document).ready(function () {
