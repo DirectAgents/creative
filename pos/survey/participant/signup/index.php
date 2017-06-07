@@ -613,18 +613,13 @@ $response = $sg->client->mail()->send()->post($mail);
    </div>
 
    <div class="name-field col-md-6">
-      <div class="form-group">
-      <label>Zip</label>
-    <input type="text"  placeholder="Zip *" pattern="[0-9]{5}" maxlength="5"  name="txtzip" id="txtzip" class="txtzip" oninvalid="this.setCustomValidity('Enter a valid Zip Code')" oninput="setCustomValidity('')" required/>
-    </div>
-  </div>
 
-  <div class="name-field birthday col-md-1">
+  <div class="name-field birthday-month col-md-1">
       <div class="form-group">
       <div class="label-birthday">Birthday</div>
    
 <select name="txtmonth" class="txtmonth" oninvalid="this.setCustomValidity('Select a month')" oninput="setCustomValidity('')" required>
-  <option value=""> - Month - </option>
+  <option value="">Month</option>
   <option value="1">January</option>
   <option value="2">Febuary</option>
   <option value="3">March</option>
@@ -643,11 +638,11 @@ $response = $sg->client->mail()->send()->post($mail);
   </div>
 
 
-   <div class="name-field birthday col-md-1">
+   <div class="name-field birthday-day col-md-1">
       <div class="form-group">
   <div class="label-birthday-day">&nbsp;</div>
 <select name="txtday" class="txtday" oninvalid="this.setCustomValidity('Select a day')" oninput="setCustomValidity('')" required>
-  <option value=""> - Day - </option>
+  <option value="">Day</option>
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
@@ -686,11 +681,11 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
-    <div class="name-field birthday col-md-1">
+    <div class="name-field birthday-year col-md-1">
       <div class="form-group">
    <div class="label-birthday-year">&nbsp;</div>
 <select name="txtyear" class="txtyear" oninvalid="this.setCustomValidity('Select a year')" oninput="setCustomValidity('')" required>
-  <option value=""> - Year - </option>
+  <option value="">Year</option>
   <option value="2002">2002</option>
   <option value="2001">2001</option>
   <option value="2000">2000</option>
@@ -749,6 +744,14 @@ $response = $sg->client->mail()->send()->post($mail);
   <option value="1947">1947</option>
 </select>
 
+    </div>
+  </div>
+</div>
+
+  <div class="name-field col-md-6">
+      <div class="form-group">
+      <div class="label-right-col">Zip</div>
+    <input type="text"  placeholder="Zip *" pattern="[0-9]{5}" maxlength="5"  name="txtzip" id="txtzip" class="txtzip" oninvalid="this.setCustomValidity('Enter a valid Zip Code')" oninput="setCustomValidity('')" required/>
     </div>
   </div>
     

@@ -93,7 +93,7 @@ h2{font-size:25px;}
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 600px;
+  max-width: 608px;
   margin: 0 auto 100px;
   padding: 30px;
   border-top-left-radius: 3px;
@@ -192,7 +192,7 @@ h2{font-size:25px;}
 
 
 
-
+.full-width{float:left; width:100%;}
 
 
 .form select {
@@ -207,6 +207,7 @@ h2{font-size:25px;}
   font-size: 14px;
   color:#323844;
   height:49px;
+  float: left;
 }
 
 
@@ -613,6 +614,10 @@ body:before {
     margin-left: 10px !important;
 }
 
+.txtzip {
+    margin-left: 10px !important;
+}
+
 
 }
 
@@ -630,7 +635,7 @@ body:before {
   float: left; font-size: 14px; font-weight:bold; color: #323844; padding:20px 0 15px 0; width:10px;
 }
 
-.birthday{margin-left:10px;}
+
 
 .form .label-birthday-day{
   float: left; font-size: 14px; font-weight:bold; color: #323844; padding:20px 0 15px 0; width:10px;
@@ -639,6 +644,14 @@ body:before {
 .form .label-birthday-year{
   float: left; font-size: 14px; font-weight:bold; color: #323844; padding:20px 0 15px 0; width:10px;
 }
+
+
+.birthday{margin-left:0px;}
+
+.birthday-month{width:110px;}
+.birthday-day{margin-left:10px; width:80px;}
+.birthday-year{float:right; width:90px;}
+
 
 
 }
@@ -668,6 +681,10 @@ body:before {
 }
 
 .birthday{margin-left:0px;}
+
+.birthday-month{width:100%;}
+.birthday-day{width:100%;}
+.birthday-year{width:100%;}
 
 }
 
