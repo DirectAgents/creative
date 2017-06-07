@@ -76,8 +76,8 @@ $formatted_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $_POST
 
 
 	
-	  $output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Saved!</div>'));
-		die($output);
+	  //$output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Saved!</div>'));
+		//die($output);
 	
 
 

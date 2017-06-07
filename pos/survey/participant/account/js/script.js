@@ -939,6 +939,7 @@ $(".choose-location-sunday").click(function() {
        
         if(proceed) //everything looks good! proceed...
         {
+            $("#profile-form #profile_results").hide().html('<div class="success">Successfully Saved!</div>').slideDown();
             //get input field values data to be sent to server
             post_data = {
                 'firstname'     : $('input[name=firstname]').val(),
@@ -978,8 +979,9 @@ $(".choose-location-sunday").click(function() {
                     //reset values in all input fields
                     $("#profile-form input[required=true], #profile-form textarea[required=true]").val(''); 
                     $("#profile-form #contact_body").slideUp(); //hide form after success
+
                 }
-                $("#profile-form #profile_results").hide().html(output).slideDown();
+                
             }, 'json');
         }
     });
