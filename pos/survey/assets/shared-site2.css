@@ -213,7 +213,8 @@ div#grid div:nth-child(12) {
 }
 header#main-header {
 	position: relative;
-	z-index: 9000;
+	/*z-index: 9000;*/
+	z-index: 1;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
