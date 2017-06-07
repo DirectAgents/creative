@@ -939,7 +939,9 @@ $(".choose-location-sunday").click(function() {
        
         if(proceed) //everything looks good! proceed...
         {
+            
             $("#profile-form #profile_results").hide().html('<div class="success">Successfully Saved!</div>').slideDown();
+
             //get input field values data to be sent to server
             post_data = {
                 'firstname'     : $('input[name=firstname]').val(),
