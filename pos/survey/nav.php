@@ -33,11 +33,11 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li><img src="<?php echo $_SESSION['google_picture_link']; ?>" class="nav-profile-photo"/></li>
 <?php } ?>
 
-<?php if($rownav['facebook_id'] != '0'){  ?>
+<?php if(isset($_SESSION['fb_access_token_participant'])){ ?>
         <li><img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture" class="nav-profile-photo"/></li>
 <?php } ?>
        
-<?php if($rownav['google_picture_link'] == '' && $rownav['facebook_id'] == '0'){ ?>
+<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['fb_access_token_participant']))){ ?>
 
       
 <?php if($rownav['profile_image'] != ''){  ?>
@@ -118,11 +118,11 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li><img src="<?php echo $_SESSION['google_picture_link']; ?>" class="nav-profile-photo"/></li>
 <?php } ?>
 
-<?php if(isset($_SESSION['facebook_photo'])){ ?>
+<?php if(isset($_SESSION['fb_access_token_startup'])){ ?>
         <li><img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture" class="nav-profile-photo"/></li>
 <?php } ?>
        
-<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){ ?>
+<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['fb_access_token_startup']))){ ?>
 
 <?php if($_SESSION['profileimage'] != ''){ ?>
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $_SESSION['profileimage'];?>" class="nav-profile-photo"/></li>
