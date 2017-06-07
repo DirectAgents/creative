@@ -556,6 +556,11 @@ if(mysqli_num_rows($sqlnda) == 1) {
                    <? } ?>   
 
 
+
+
+
+
+
                   <div class="survey-actions">
                   
                       
@@ -576,8 +581,14 @@ if(mysqli_num_rows($sqlnda) == 1) {
                     
 
                     </div>
+
+<div class="col-md-12" style="padding-left:0px;">
+                    <?php if($row2['Met'] == 'Yes' && $row2['Met'] != 'No show up' && $row2['Payment'] == '' && $rowparticipant['Payment_Method'] == 'Cash'){ ?>
+<br>Note.: If you haven't received your payment in cash from <?php echo $row3['FirstName']; ?>, please get in touch with us.
+<?php } ?> 
+
                   </div>
-               
+             </div>   
 
 
   
