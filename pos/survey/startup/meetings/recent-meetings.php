@@ -412,13 +412,26 @@ if(mysqli_num_rows($sql5)<1)
 $row5 = mysqli_fetch_array($sql5);
 
 
-
-if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Met'] != 'No show up' && $row5['startup_id'] != $_SESSION['startupSession']){ ?>
+if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Met'] != 'No show up' && $row5['startup_id'] != $_SESSION['startupSession'] && $row3['Payment_Method'] == 'Bank'){ ?>
 
 
 
    <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><strong>Rate and Review your meeting with <?php echo $row3['FirstName']; ?> </strong></a>
+                 
+
                  <?php } ?>
+
+
+
+
+    <?php if($row2['Met'] == 'Yes' && $row2['Payment'] == '' && $row2['Met'] != 'No show up' && $row5['startup_id'] != $_SESSION['startupSession'] && $row3['Payment_Method'] == 'Cash'){ ?>
+
+
+
+   <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><strong>Rate and Review your meeting with <?php echo $row3['FirstName']; ?> </strong></a>
+                 
+
+                 <?php } ?>           
 
 
 <?php } ?>
