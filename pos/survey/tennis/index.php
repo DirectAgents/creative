@@ -1,16 +1,19 @@
 <?php 
 
+session_start();
+
 require_once 'base_path.php'; 
 
 
 include_once("config.php");
 
 
-if($_GET['id'] == '1'){
+if(isset($_GET['id'])){
 $_SESSION['craigslist'] = 'yes';
 }else{
 $_SESSION['craigslist'] = 'no';
 }
+
 
 ?>
 
@@ -330,6 +333,7 @@ $(document).ready(function() {
 
 
 <!-- Facebook Pixel Code -->
+<!--
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
