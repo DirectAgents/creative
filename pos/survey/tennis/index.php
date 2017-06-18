@@ -9,9 +9,17 @@ include_once("config.php");
 
 
 if(isset($_GET['id'])){
-$_SESSION['craigslist'] = 'yes';
+
+if($_GET['id'] == '1'){ 
+$_SESSION['source'] = 'craigslist';
+}
+
+if($_GET['id'] == '2'){ 
+$_SESSION['source'] = 'twitter';
+}
+
 }else{
-$_SESSION['craigslist'] = 'no';
+$_SESSION['source'] = 'no';
 }
 
 
@@ -53,7 +61,7 @@ if(mysqli_num_rows($sql)>0)
 date_default_timezone_set('America/New_York');
 $date = date('Y-m-d'); 
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_signups(userEmail,share,craigslist, Date) VALUES('".$email."','".$share."', '".$_SESSION['craigslist']."', '".$date."')");
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_signups(userEmail,share,source, Date) VALUES('".$email."','".$share."', '".$_SESSION['source']."', '".$date."')");
       
       
 
