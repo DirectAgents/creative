@@ -93,7 +93,7 @@ $google_map_lower_class='';
                     echo esc_attr($_GET['check_out']);
                 }?>">
         </div>
-        
+       <!--
         <div class="col-md-12">
             <div class="dropdown form-control">
                 <div data-toggle="dropdown" id="guest_no" class="filter_menu_trigger"  
@@ -121,6 +121,7 @@ $google_map_lower_class='';
                 </ul>        
             </div>
         </div>
+        -->
         
         <div class="col-md-12">
         <input name="submit" type="submit" class="wpb_btn-info wpb_btn-small wpestate_vc_button  vc_button" id="advanced_submit_2" value="<?php esc_html_e('Search','wpestate');?>">
