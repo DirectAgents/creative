@@ -65,7 +65,7 @@ $google_map_lower_class='';
                 print '<input type="hidden" class="stype" id="stype" name="stype" value="tax">';
             }
             ?>
-            <input type="text"    id="search_location<?php echo $wpestate_internal_search;?>"      class="form-control" name="search_location" placeholder="<?php esc_html_e('Where do you want to go ?','wpestate');?>" value="" >              
+            <input type="text"    id="search_location<?php echo $wpestate_internal_search;?>"      class="form-control" name="search_location" placeholder="<?php esc_html_e('Where do you want to rent ?','wpestate');?>" value="" >              
             <input type="hidden" id="advanced_city"      class="form-control" name="advanced_city" data-value=""   value="" >              
             <input type="hidden" id="advanced_area"      class="form-control" name="advanced_area"   data-value="" value="" >              
             <input type="hidden" id="advanced_country"   class="form-control" name="advanced_country"   data-value="" value="" >              

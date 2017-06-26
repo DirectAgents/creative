@@ -47,7 +47,7 @@ if ($where_currency == 'before') {
                 
             }
             ?>
-            <input type="text"   id="search_location_filter<?php echo $wpestate_internal_search;?>" class="form-control search_location_city" name="search_location" placeholder="<?php esc_html_e('Where do you want to go ?','wpestate');?>" value="<?php if(isset( $_GET['search_location'] )){echo wp_kses( esc_attr($_GET['search_location']),$allowed_html );}?>" >              
+            <input type="text"   id="search_location_filter<?php echo $wpestate_internal_search;?>" class="form-control search_location_city" name="search_location" placeholder="<?php esc_html_e('Where do you want to rent ?','wpestate');?>" value="<?php if(isset( $_GET['search_location'] )){echo wp_kses( esc_attr($_GET['search_location']),$allowed_html );}?>" >              
             <input type="hidden" id="search_location_city" value="<?php if(isset( $_GET['advanced_city'] )){echo wp_kses( esc_attr($_GET['advanced_city']),$allowed_html);}?>" >
             <input type="hidden" id="search_location_area" value="<?php if(isset( $_GET['advanced_area'] )){echo wp_kses ( esc_attr($_GET['advanced_area']),$allowed_html);}?>" >
             <input type="hidden" id="search_location_country"    value="<?php if(isset( $_GET['advanced_country'] )){echo wp_kses ( esc_attr($_GET['advanced_country']),$allowed_html);}?>" >              
