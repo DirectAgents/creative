@@ -85,12 +85,12 @@ function wpestate_booking_meta_function( $post ) {
     </p>
     
     <p class="meta-options">
-        <label for="booking_from_date">'.esc_html__( 'Check In:','wpestate').' </label><br />
+        <label for="booking_from_date">'.esc_html__( 'Pick Up:','wpestate').' </label><br />
         <input type="text" id="booking_from_date" size="58" name="booking_from_date" value="'.  esc_html(get_post_meta($post->ID, 'booking_from_date', true)).'">
     </p>
     
     <p class="meta-options">
-        <label for="booking_to_date">'.esc_html__( 'Check Out:','wpestate').' </label><br />
+        <label for="booking_to_date">'.esc_html__( 'Return:','wpestate').' </label><br />
         <input type="text" id="booking_to_date" size="58" name="booking_to_date" value="'.  esc_html(get_post_meta($post->ID, 'booking_to_date', true)).'">
     </p>
 

@@ -79,7 +79,7 @@ $google_map_lower_class='';
         </div>
         
         <div class="col-md-12 has_calendar calendar_icon">
-            <input type="text" id="check_in"    class="form-control " name="check_in"  placeholder="<?php esc_html_e('Check In','wpestate');?>" 
+            <input type="text" id="check_in"    class="form-control " name="check_in"  placeholder="<?php esc_html_e('Pick Up','wpestate');?>" 
                 value="<?php  
                 if(isset($_GET['check_in'])){
                     echo esc_attr($_GET['check_in']);
@@ -87,7 +87,7 @@ $google_map_lower_class='';
         </div>
         
         <div class="col-md-12  has_calendar calendar_icon">
-            <input type="text" id="check_out"   disabled class="form-control" name="check_out" placeholder="<?php esc_html_e('Check Out','wpestate');?>"   
+            <input type="text" id="check_out"   disabled class="form-control" name="check_out" placeholder="<?php esc_html_e('Return','wpestate');?>"   
                 value="<?php  
                 if(isset($_GET['check_out'])){
                     echo esc_attr($_GET['check_out']);

@@ -153,12 +153,12 @@ global $property_icalendar_import_multi;
              
                 <div id="booking_form_request_mess_modal"></div>    
                 
-                <label for="start_date_owner_book"><?php esc_html_e('Check In','wpestate');?></label>
+                <label for="start_date_owner_book"><?php esc_html_e('Pick Up','wpestate');?></label>
                 <input type="text" id="start_date_owner_book" size="40" name="booking_from_date" class="form-control" value="" readonly>
 
 
 
-                <label for="end_date_owner_book"><?php  esc_html_e('Check Out','wpestate');?></label>
+                <label for="end_date_owner_book"><?php  esc_html_e('Return','wpestate');?></label>
                 <input type="text" id="end_date_owner_book" size="40" name="booking_to_date" class="form-control" value="" readonly>
             
 

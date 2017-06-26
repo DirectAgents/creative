@@ -2251,11 +2251,11 @@ if( !function_exists('wpestate_ajax_show_contact_owner_form') ):
                             <div class="modal-body">
                                 <div id="booking_form_request_mess_modal"></div>  
                                 <div class=" has_calendar calendar_icon">
-                                    <input type="text" id="booking_from_date" size="40" name="booking_from_date" class="form-control" placeholder="'.esc_html__( 'Check In','wpestate').'" value="">
+                                    <input type="text" id="booking_from_date" size="40" name="booking_from_date" class="form-control" placeholder="'.esc_html__( 'Pick Up','wpestate').'" value="">
                                 </div>
 
                                 <div class=" has_calendar calendar_icon">
-                                    <input type="text" id="booking_to_date" size="40" name="booking_to_date" class="form-control" placeholder="'.esc_html__( 'Check Out','wpestate').'" value="">
+                                    <input type="text" id="booking_to_date" size="40" name="booking_to_date" class="form-control" placeholder="'.esc_html__( 'Return','wpestate').'" value="">
                                 </div>
 
                                 <div class="">
