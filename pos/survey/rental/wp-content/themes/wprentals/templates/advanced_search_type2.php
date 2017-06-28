@@ -46,7 +46,7 @@ $google_map_lower_class='';
 ?>
 
  <div class="adv-2-header">
-     <?php esc_html_e('Make a Reservation','wpestate');?>
+     <?php esc_html_e('Rent a Tennis Racquet','wpestate');?>
 </div>  
 
 <div class="adv-2-wrapper"> 

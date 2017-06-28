@@ -536,7 +536,7 @@ endif;
            
         </div>
         <div class="col-md-3">
-            <label for="checkin_change_over"><?php esc_html_e('Allow only bookings starting with the check in on:','wpestate');?></label>
+            <label for="checkin_change_over"><?php esc_html_e('Allow only bookings starting with the pick up on:','wpestate');?></label>
             <select id="checkin_change_over" name="checkin_change_over" class="select-submit2">
                <?php 
                 foreach($week_days as $key=>$value){
@@ -551,7 +551,7 @@ endif;
             </select>
         </div>
         <div class="col-md-3">
-            <label for="checkin_checkout_change_over"><?php esc_html_e('Allow only bookings with the check in/check out on: ','wpestate');?></label>
+            <label for="checkin_checkout_change_over"><?php esc_html_e('Allow only bookings with the pick up/return on: ','wpestate');?></label>
             <select id="checkin_checkout_change_over" name="checkin_checkout_change_over" class="select-submit2">
                <?php 
                 foreach($week_days as $key=>$value){
@@ -731,7 +731,7 @@ endif;
                     
                     
                 <div class="col-md-6">
-                    <label for="period_checkin_change_over"><?php echo esc_html__( 'Allow only bookings starting with the check in on changeover days','wpestate');?></label>
+                    <label for="period_checkin_change_over"><?php echo esc_html__( 'Allow only bookings starting with the pick up on changeover days','wpestate');?></label>
                     <select id="period_checkin_change_over" name="period_checkin_change_over" class="select-submit2">
                         <?php 
                         foreach($week_days as $key=>$value){
@@ -742,7 +742,7 @@ endif;
                 </div>
                 
                 <div class="col-md-6">
-                    <label for="period_checkin_checkout_change_over"><?php echo esc_html__( 'Allow only bookings with the check in/check out (changeover) days/nights','wpestate');?></label>
+                    <label for="period_checkin_checkout_change_over"><?php echo esc_html__( 'Allow only bookings with the pick up/return (changeover) days/nights','wpestate');?></label>
                     <select id="period_checkin_checkout_change_over" name="period_checkin_checkout_change_over" class="select-submit2">
                         <?php 
                         foreach($week_days as $key=>$value){

@@ -50,11 +50,11 @@ $guest_list             =   wpestate_get_guest_dropdown();
         </div>
         
         <div class="col-md-2 has_calendar calendar_icon">
-            <input type="text" id="check_in_mobile"    class="form-control " name="check_in"  placeholder="<?php esc_html_e('Check in','wpestate');?>" value="" >       
+            <input type="text" id="check_in_mobile"    class="form-control " name="check_in"  placeholder="<?php esc_html_e('Pick up','wpestate');?>" value="" >       
         </div>
         
         <div class="col-md-2  has_calendar calendar_icon">
-            <input type="text" id="check_out_mobile" disabled  class="form-control" name="check_out" placeholder="<?php esc_html_e('Check Out','wpestate');?>" value="">
+            <input type="text" id="check_out_mobile" disabled  class="form-control" name="check_out" placeholder="<?php esc_html_e('Return','wpestate');?>" value="">
         </div>
         
         <div class="col-md-2">

@@ -58,12 +58,12 @@ if ($where_currency == 'before') {
         
                         
         <div class="col-md-3 has_calendar calendar_icon ">
-            <input type="text" id="check_in_list"        class="form-control" name="check_in"  placeholder="<?php esc_html_e('Check in','wpestate');?>" value="<?php if(isset( $_GET['check_in'] )){echo wp_kses (  esc_attr($_GET['check_in']),$allowed_html);}?>" >       
+            <input type="text" id="check_in_list"        class="form-control" name="check_in"  placeholder="<?php esc_html_e('Pick up','wpestate');?>" value="<?php if(isset( $_GET['check_in'] )){echo wp_kses (  esc_attr($_GET['check_in']),$allowed_html);}?>" >       
         </div>
 
 
         <div class="col-md-3 has_calendar calendar_icon ">
-            <input type="text" id="check_out_list"       class="form-control" name="check_out" placeholder="<?php esc_html_e('Check Out','wpestate');?>" value="<?php if(isset( $_GET['check_out'] )){echo wp_kses( esc_attr($_GET['check_out']),$allowed_html);}?>">
+            <input type="text" id="check_out_list"       class="form-control" name="check_out" placeholder="<?php esc_html_e('Return','wpestate');?>" value="<?php if(isset( $_GET['check_out'] )){echo wp_kses( esc_attr($_GET['check_out']),$allowed_html);}?>">
         </div>
 
         <div class="col-md-3">

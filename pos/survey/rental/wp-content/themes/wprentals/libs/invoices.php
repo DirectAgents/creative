@@ -298,7 +298,7 @@ if( !function_exists('wpestate_print_create_form_invoice') ):
                         if($invoice_saved=='Reservation fee' || $invoice_saved==esc_html__('Reservation fee','wpestate') ){
                             print'
                             <span class="date_interval"><span class="invoice_data_legend">'.esc_html__( 'Period','wpestate').' : </span>'.$booking_from_date.' '.esc_html__( 'to','wpestate').' '.$booking_to_date.'</span>
-                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of nights','wpestate').': </span>'.$booking_array['numberDays'].'</span>
+                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of days','wpestate').': </span>'.$booking_array['numberDays'].'</span>
                             <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Guests','wpestate').': </span>'.$booking_guests.'</span>';
 
                             if($booking_array['price_per_guest_from_one']==1){

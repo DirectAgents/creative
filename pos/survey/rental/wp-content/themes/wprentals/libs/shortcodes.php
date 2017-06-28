@@ -843,11 +843,11 @@ function wpestate_advanced_search_function($attributes, $content = null){
                 </div>
                 
                 <div class="col-md-3 has_calendar calendar_icon ">  <!-- calendar_icon -->
-                    <input type="text" id="checkinshortcode" class="form-control " name="check_in" placeholder="'.esc_html__( 'Check in','wpestate').'">       
+                    <input type="text" id="checkinshortcode" class="form-control " name="check_in" placeholder="'.esc_html__( 'Pick up','wpestate').'">       
                 </div>
                 
                 <div class="col-md-3 has_calendar calendar_icon checkout_sh ">  <!-- calendar_icon -->
-                    <input type="text" id="checkoutshortcode" disabled class="form-control " name="check_out" placeholder="'.esc_html__( 'Check Out','wpestate').'">
+                    <input type="text" id="checkoutshortcode" disabled class="form-control " name="check_out" placeholder="'.esc_html__( 'Return','wpestate').'">
                 </div>
 
                 <div class="col-md-3 dropdown guest_form_sh_wr">

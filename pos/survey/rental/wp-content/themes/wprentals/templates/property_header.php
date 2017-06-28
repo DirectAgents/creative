@@ -91,11 +91,11 @@ global $options;
             <h3 ><?php esc_html_e('Book Now','wpestate');?></h3>
              
                 <div class="has_calendar calendar_icon">
-                    <input type="text" id="start_date" placeholder="<?php esc_html_e('Check in','wpestate'); ?>"  class="form-control calendar_icon" size="40" name="start_date" value="">
+                    <input type="text" id="start_date" placeholder="<?php esc_html_e('Pick up','wpestate'); ?>"  class="form-control calendar_icon" size="40" name="start_date" value="">
                 </div>
 
                 <div class=" has_calendar calendar_icon">
-                    <input type="text" id="end_date" disabled placeholder="<?php esc_html_e('Check Out','wpestate'); ?>" class="form-control calendar_icon" size="40" name="end_date" value="">
+                    <input type="text" id="end_date" disabled placeholder="<?php esc_html_e('Return','wpestate'); ?>" class="form-control calendar_icon" size="40" name="end_date" value="">
                 </div>
 
                 <div class=" has_calendar guest_icon ">

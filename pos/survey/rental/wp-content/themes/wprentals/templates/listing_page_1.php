@@ -320,7 +320,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
             <h3 ><?php esc_html_e('Book Now','wpestate');?></h3>
              
                 <div class="has_calendar calendar_icon">
-                    <input type="text" id="start_date" placeholder="<?php esc_html_e('Check in','wpestate'); ?>"  class="form-control calendar_icon" size="40" name="start_date" 
+                    <input type="text" id="start_date" placeholder="<?php esc_html_e('Pick up','wpestate'); ?>"  class="form-control calendar_icon" size="40" name="start_date" 
                             value="<?php if( isset($_GET['check_in_prop']) ){
                                echo sanitize_text_field ( $_GET['check_in_prop'] );
                             }
@@ -328,7 +328,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                 </div>
 
                 <div class=" has_calendar calendar_icon">
-                    <input type="text" id="end_date" disabled placeholder="<?php esc_html_e('Check Out','wpestate'); ?>" class="form-control calendar_icon" size="40" name="end_date" 
+                    <input type="text" id="end_date" disabled placeholder="<?php esc_html_e('Return','wpestate'); ?>" class="form-control calendar_icon" size="40" name="end_date" 
                            value="<?php if( isset($_GET['check_out_prop']) ){
                                echo sanitize_text_field ( $_GET['check_out_prop'] );
                             }

@@ -633,14 +633,14 @@ if( !function_exists('wpestate_create_pay_user_invoice_form') ):
                    <div class="invoice_table">
                        <div class="invoice_data">
                             <span class="date_interval"><span class="invoice_data_legend">'.esc_html__( 'Period','wpestate').' : </span>'.$booking_from_date.' '.esc_html__( 'to','wpestate').' '.$booking_to_date.'</span>
-                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of nights','wpestate').': </span>'.$booking_array['numberDays'].'</span>
+                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of days','wpestate').': </span>'.$booking_array['numberDays'].'</span>
                             <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Guests','wpestate').': </span>'.$booking_guests.'</span>';
                             if($booking_array['price_per_guest_from_one']==1){
                                 print'<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per Guest','wpestate').': </span>'; 
                                 print $extra_price_per_guest;
                                 print'</span>';
                             }else{
-                                print '<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per night','wpestate').': </span>';
+                                print '<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per day','wpestate').': </span>';
                           
                                 print $price_show;
                                 if($booking_array['has_custom']){

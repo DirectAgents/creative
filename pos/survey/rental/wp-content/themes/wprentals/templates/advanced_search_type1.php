@@ -76,7 +76,7 @@ $google_map_lower_class='';
         <div style="display:none;" id="searchmap"></div>
         
         <div class="col-md-2 has_calendar calendar_icon">
-            <input type="text" id="check_in"    class="form-control " name="check_in"  placeholder="<?php esc_html_e('Check in','wpestate');?>" 
+            <input type="text" id="check_in"    class="form-control " name="check_in"  placeholder="<?php esc_html_e('Pick up','wpestate');?>" 
                 value="<?php  
                 if(isset($_GET['check_in'])){
                     echo esc_attr($_GET['check_in']);
@@ -84,13 +84,13 @@ $google_map_lower_class='';
         </div>
         
         <div class="col-md-2  has_calendar calendar_icon">
-            <input type="text" id="check_out"   disabled class="form-control" name="check_out" placeholder="<?php esc_html_e('Check Out','wpestate');?>" 
+            <input type="text" id="check_out"   disabled class="form-control" name="check_out" placeholder="<?php esc_html_e('Return','wpestate');?>" 
                 value="<?php  
                 if(isset($_GET['check_out'])){
                     echo esc_attr($_GET['check_out']);
                 }?>">
         </div>
-        
+        <!--
         <div class="col-md-2">
             <div class="dropdown form-control">
                 <div data-toggle="dropdown" id="guest_no" class="filter_menu_trigger" 
@@ -118,6 +118,7 @@ $google_map_lower_class='';
                 </ul>        
             </div>
         </div>
+    -->
         
         <div class="col-md-2">
         <input name="submit" type="submit" class="wpb_btn-info wpb_btn-small wpestate_vc_button  vc_button" id="advanced_submit_2" value="<?php esc_html_e('Search','wpestate');?>">

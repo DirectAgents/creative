@@ -91,11 +91,11 @@ class Wpestate_Advanced_Search_widget extends WP_Widget {
                 </div>
                 
                 <div class="has_calendar calendar_icon ">
-                    <input type="text" id="checkinwidget" class="form-control " name="check_in" placeholder="'.esc_html__( 'Check in','wpestate').'">       
+                    <input type="text" id="checkinwidget" class="form-control " name="check_in" placeholder="'.esc_html__( 'Pick up','wpestate').'">       
                 </div>
                 
                 <div class="has_calendar calendar_icon ">
-                    <input type="text" id="checkoutwidget" disabled class="form-control " name="check_out" placeholder="'.esc_html__( 'Check Out','wpestate').'">
+                    <input type="text" id="checkoutwidget" disabled class="form-control " name="check_out" placeholder="'.esc_html__( 'Return','wpestate').'">
                 </div>
                 
                 <div class="dropdown form-control guest_form">
