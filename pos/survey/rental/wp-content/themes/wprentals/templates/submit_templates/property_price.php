@@ -49,9 +49,9 @@ if( !function_exists('wpestate_dropdown_fee_select')):
     function wpestate_dropdown_fee_select($name, $selected){
         $options_array=array(
             0   =>  esc_html__('Single Fee','wpestate'),
-            1   =>  esc_html__('Per Night','wpestate'),
-            2   =>  esc_html__('Per Guest','wpestate'),
-            3   =>  esc_html__('Per Night per Guest','wpestate')
+            1   =>  esc_html__('Per Day','wpestate'),
+            2   =>  esc_html__('Per Racquet','wpestate'),
+            3   =>  esc_html__('Per Day per Racquet','wpestate')
         );
         
         $return='<select class="select_submit_price" name="'.$name.'" id="'.$name.'" >';
@@ -352,22 +352,25 @@ endif;
     
     <div class="row">       
        <div class="col-md-3 dashboard_chapter_label">
-            <label  class="label_adjust" for="property_price"> <?php esc_html_e('Price per night in ','wpestate');print $wp_estate_currency_symbol.' '; esc_html_e('(daily price,only numbers)','wpestate'); ?>  </label>
+            <label  class="label_adjust" for="property_price"> <?php esc_html_e('Price per day in ','wpestate');print $wp_estate_currency_symbol.' '; esc_html_e('($5.00 per day)','wpestate'); ?>  </label>
         </div>
         <div class="col-md-3">    
-            <label  class="label_adjust" for="property_price"> <?php esc_html_e('Price per night','wpestate'); ?>  </label>
-            <input type="text" id="property_price" class="form-control" size="40" name="property_price" value="<?php print $property_price;?>">
+            <label  class="label_adjust" for="property_price"> <?php esc_html_e('Price per day','wpestate'); ?>  </label>
+            <input type="text" id="property_price" class="form-control" size="40" name="property_price" value="5" disabled>
         </div>
-        <div class="col-md-3">  
+        <!--<div class="col-md-3">  
             <label  class="label_adjust" for="property_price_before_label"> <?php esc_html_e('Before Label ','wpestate');?></label>
             <input type="text" id="property_price_before_label" class="form-control" size="40" name="property_price_before_label" value="<?php print $property_price_before_label;?>">
-        </div>
+        </div>-->
+        <!--
         <div class="col-md-3">
             <label  class="label_adjust" for="property_price_after_label"> <?php esc_html_e('After Label ','wpestate'); ?>  </label>
             <input type="text" id="property_price_after_label" class="form-control" size="40" name="property_price_after_label" value="<?php print $property_price_after_label;?>">
         </div>
+        -->
     </div>
     
+    <!--
     <div class="row">
         <div class="col-md-3 dashboard_chapter_label">
             <label for="property_taxes"> <?php esc_html_e('Taxes in % (taxes are considered included in the daily price) ','wpestate'); ?>  </label>
@@ -379,28 +382,32 @@ endif;
         <div class="col-md-3"> </div>
         <div class="col-md-3"> </div>
     </div>
+    -->
     
     
     
     <div class="row">
+    <!--
         <div class="col-md-3 dashboard_chapter_label">
-            <label for="property_price_per_week"> <?php esc_html_e('Price per night if the item is rented for more than 1 week (7 nights) or more than 1 month (30 nights)','wpestate'); ?>  </label>
+            <label for="property_price_per_week"> <?php esc_html_e('Price per day if the item is rented for more than 1 week (7 days) or more than 1 month (30 days)','wpestate'); ?>  </label>
         </div>
         
         <div class="col-md-3"> 
-            <label for="property_price_per_week"> <?php esc_html_e('Price per night for more than 7 days','wpestate'); ?>  </label>
+            <label for="property_price_per_week"> <?php esc_html_e('Price per day for more than 7 days','wpestate'); ?>  </label>
             <input type="text" id="property_price_per_week" class="form-control" size="40" name="property_price_per_week" value="<?php print $property_price_week;?>">
         </div>
         
         
         <div class="col-md-3">
-             <label for="property_price_per_month"> <?php esc_html_e('Price per night for more than 30 days','wpestate'); ?>  </label>
+             <label for="property_price_per_month"> <?php esc_html_e('Price per day for more than 30 days','wpestate'); ?>  </label>
              <input type="text" id="property_price_per_month" class="form-control" size="40" name="property_price_per_month" value="<?php print $property_price_month;?>">
         </div>
+        -->
         
         <div class="col-md-3"> </div>
     </div>
  
+ <!--
     <div class="row">
         <div class="col-md-3 dashboard_chapter_label">
             <label  for="price_per_weekeend"> 
@@ -417,8 +424,9 @@ endif;
         <div class="col-md-3"> </div>
         <div class="col-md-3"> </div>
     </div>
-    
+   --> 
  
+ <!--
     <div class="row">
         <div class="col-md-3 dashboard_chapter_label">
             <label><?php esc_html_e('Cleaning Fee ','wpestate')?></label>
@@ -434,9 +442,9 @@ endif;
         <div class="col-md-3"> </div>
     </div>
     
+   --> 
     
-    
-    
+  <!--
   <div class="row">
         <div class="col-md-3 dashboard_chapter_label">
             <label for="city_fee"><?php esc_html_e('City Fee in ','wpestate');print $wp_estate_currency_symbol.' '; esc_html_e('(only numbers)','wpestate'); ?></label>
@@ -455,11 +463,11 @@ endif;
         </div>
     </div>
     
-    
+    -->
     
  
    
-    
+    <!--
     <div class="row">
         <div class="col-md-3 dashboard_chapter_label">
             <label for="min_days_booking"> <?php esc_html_e('Minimum days of booking (only numbers) ','wpestate'); ?>  </label>
@@ -471,7 +479,7 @@ endif;
         <div class="col-md-3"> </div>
         <div class="col-md-3"> </div>
     </div>
-    
+    -->
     
     
        
@@ -487,9 +495,11 @@ endif;
         <div class="col-md-3"> </div>
     </div>
     
+    <!--
+    
     <div class="row">
         <div class="col-md-3 dashboard_chapter_label">
-            <label for="security_deposit"> <?php esc_html_e('Early Bird Discount - in % from the price per night','wpestate'); ?>  </label>
+            <label for="security_deposit"> <?php esc_html_e('Early Bird Discount - in % from the price per day','wpestate'); ?>  </label>
         </div>
         <div class="col-md-3">
             <label for="security_deposit"> <?php esc_html_e('Value in %','wpestate'); ?>  </label>
@@ -501,16 +511,18 @@ endif;
         </div>
         <div class="col-md-3"> </div>
     </div>
+    -->
     
+    <!--
     
    <div class="row">
         <div class="col-md-3 dashboard_chapter_label">
             <label>
-                <?php esc_html_e('Extra Guests ','wpestate');?>
+                <?php esc_html_e('Extra Racquets ','wpestate');?>
             </label>
         </div>
         <div class="col-md-3"> 
-            <label for="extra_price_per_guest"> <?php esc_html_e('Extra Price per guest per night in ','wpestate');print $wp_estate_currency_symbol.' ';  ?>  </label>
+            <label for="extra_price_per_guest"> <?php esc_html_e('Extra Price per guest per day in ','wpestate');print $wp_estate_currency_symbol.' ';  ?>  </label>
             <input type="text" id="extra_price_per_guest" class="form-control" size="40" name="extra_price_per_guest" value="<?php print $extra_price_per_guest;?>">
         </div>
         <div class="col-md-3 extra_guest_label">
@@ -520,11 +532,13 @@ endif;
         
     </div>
     
+    -->
+    
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6"> 
                 <input  style="float:left;" type="checkbox" class="form-control" value="1"  id="price_per_guest_from_one" name="price_per_guest_from_one" <?php print $price_per_guest_from_one; ?> >
-                <label style="display:inline;" for="price_per_guest_from_one"><?php esc_html_e('Pay by the no of guests (room prices will NOT be used anymore and billing will be done by guest no only)','wpestate');?></label>
+                <label style="display:inline;" for="price_per_guest_from_one"><?php esc_html_e('Pay by the no of racquets (racquet prices will NOT be used anymore and billing will be done by racquet no only)','wpestate');?></label>
         </div>
     </div>
     
@@ -536,7 +550,7 @@ endif;
            
         </div>
         <div class="col-md-3">
-            <label for="checkin_change_over"><?php esc_html_e('Allow only bookings starting with the pick up on:','wpestate');?></label>
+            <label for="checkin_change_over"><?php esc_html_e('Allow only rentals starting with the pick up on:','wpestate');?></label>
             <select id="checkin_change_over" name="checkin_change_over" class="select-submit2">
                <?php 
                 foreach($week_days as $key=>$value){
@@ -551,7 +565,7 @@ endif;
             </select>
         </div>
         <div class="col-md-3">
-            <label for="checkin_checkout_change_over"><?php esc_html_e('Allow only bookings with the pick up/return on: ','wpestate');?></label>
+            <label for="checkin_checkout_change_over"><?php esc_html_e('Allow only rentals with the pick up/return on: ','wpestate');?></label>
             <select id="checkin_checkout_change_over" name="checkin_checkout_change_over" class="select-submit2">
                <?php 
                 foreach($week_days as $key=>$value){
@@ -567,7 +581,7 @@ endif;
         <div class="col-md-3"> </div>
     </div>
     
-    
+    <!--
    <div class="row">
         
         <div class="col-md-3 dashboard_chapter_label">
@@ -609,6 +623,8 @@ endif;
         <div class="col-md-3"> </div>
     </div>
    </div>
+   
+   -->
     
      
    
@@ -622,6 +638,7 @@ endif;
   
     </div>
     
+    <!--
   
     <h4 class="user_dashboard_panel_title" style="margin-top:20px;"><?php esc_html_e('Price Adjustments ','wpestate');?></h4>
     <?php echo '<div class="price_explaning" >'.esc_html__( ' *(click to select multiple days and modify price for a certain period)','wpestate').'</div>';?>
@@ -641,7 +658,7 @@ endif;
         <div id="calendar-prev-internal-price" class="internal-calendar-left"><i class="fa fa-angle-left"></i></div>
         <div id="calendar-next-internal-price" class="internal-calendar-right"><i class="fa fa-angle-right"></i></div>
     </div>
-    
+    -->
     
     
     <?php  
@@ -708,12 +725,12 @@ endif;
                     
                     
                 <div class="col-md-6">
-                    <label for="period_week_price"><?php echo esc_html__( 'Price per night for 7+ nights','wpestate');?></label>
+                    <label for="period_week_price"><?php echo esc_html__( 'Price per day for 7+ days','wpestate');?></label>
                     <input type="text" id="period_week_price" size="40" name="period_week_price" class="form-control" value="">
                 </div> 
                 
                 <div class="col-md-6">
-                    <label for="period_month_price"><?php echo esc_html__( 'Price per night for 30+ days','wpestate');?></label>
+                    <label for="period_month_price"><?php echo esc_html__( 'Price per day for 30+ days','wpestate');?></label>
                     <input type="text" id="period_month_price" size="40" name="period_month_price" class="form-control" value="">
                 </div>     
                     
@@ -742,7 +759,7 @@ endif;
                 </div>
                 
                 <div class="col-md-6">
-                    <label for="period_checkin_checkout_change_over"><?php echo esc_html__( 'Allow only bookings with the pick up/return (changeover) days/nights','wpestate');?></label>
+                    <label for="period_checkin_checkout_change_over"><?php echo esc_html__( 'Allow only rental requests with the pick up/return (changeover) days','wpestate');?></label>
                     <select id="period_checkin_checkout_change_over" name="period_checkin_checkout_change_over" class="select-submit2">
                         <?php 
                         foreach($week_days as $key=>$value){

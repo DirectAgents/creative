@@ -8,11 +8,11 @@ global $edit_link_calendar;
 
 <div class="col-md-12">
     <div class="user_dashboard_panel">
-    <h4 class="user_dashboard_panel_title"><?php esc_html_e('Amenities and Features','wpestate');?></h4>                 
+    <h4 class="user_dashboard_panel_title"><?php esc_html_e('Pros using or used this racquet','wpestate');?></h4>                 
     <div class="col-md-12" id="profile_message"></div>
     <div class="row">  
         <div class="col-md-12 dashboard_amenities">  
-            <div class="col-md-3 dashboard_chapter_label"><?php esc_html_e('Select the amenities and features that apply for your property','wpestate');?></div>
+            <div class="col-md-3 dashboard_chapter_label"><?php esc_html_e('Select the pros using or used your racquet','wpestate');?></div>
             <div class="col-md-9">
                 <?php
 

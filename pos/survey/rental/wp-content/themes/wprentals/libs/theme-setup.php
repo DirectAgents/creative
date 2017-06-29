@@ -133,7 +133,7 @@ function wp_estate_setup() {
         add_option('wp_estate_feature_list', $default_feature_list);
         add_option('wp_estate_show_no_features', 'yes');
         add_option('wp_estate_property_features_text', 'Property Features');
-        add_option('wp_estate_property_description_text', 'Property Description');
+        add_option('wp_estate_property_description_text', 'Racquet Description');
         add_option('wp_estate_property_details_text',  'Property Details ');
         $default_status_list='verified';
         add_option('wp_estate_status_list', $default_status_list);
@@ -360,7 +360,7 @@ We charged your account on %merchant for a subscription on %website_url ! You sh
         add_option ('wp_estate_subject_bookingconfirmeduser',$to_save);
         
         $to_save=__('Hi there,
-Your booking made on %website_url was confirmed! You can see all your reservations by logging in your account and visiting My Reservations page.','wpestate');
+Your booking made on %website_url was confirmed! You can see all your reservations by logging in your account and visiting My Rentals page.','wpestate');
         add_option ('wp_estate_bookingconfirmeduser',$to_save);
         
         //bookingconfirmed
@@ -386,8 +386,12 @@ You confirmed a booking on %website_url! The booking was confirmed with no depos
         add_option ('wp_estate_subject_inbox',$to_save);
         
         $to_save=__('Hi there,
-You have a new message on %website_url! You should go and check it out!
+You have a new message on %website_url! 
+
+You should go and check it out!
+
 The message is:
+
 %content','wpestate');
         add_option ('wp_estate_inbox',$to_save);
         
@@ -406,7 +410,7 @@ The property is: %booking_property_link','wpestate');
         add_option ('wp_estate_subject_mynewbook',$to_save);
         
         $to_save=__('Hi there,
-You have booked a period for your own listing on %website_url !  The reservation will appear in your account, under My Bookings. 
+You have booked a period for your own listing on %website_url !  The reservation will appear in your account, under My Rental Requests. 
 The property is: %booking_property_link','wpestate');
         add_option ('wp_estate_mynewbook',$to_save);
         
@@ -415,7 +419,7 @@ The property is: %booking_property_link','wpestate');
         add_option ('wp_estate_subject_newinvoice',$to_save);
         
         $to_save=__('Hi there,
-An invoice was generated for your booking request on %website_url !  A deposit will be required for booking to be confirmed. For more details check out your account, My Reservations page.','wpestate');
+An invoice was generated for your booking request on %website_url !  A deposit will be required for booking to be confirmed. For more details check out your account, My Rentals page.','wpestate');
         add_option ('wp_estate_newinvoice',$to_save);
         
         

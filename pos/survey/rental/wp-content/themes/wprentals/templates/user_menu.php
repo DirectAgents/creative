@@ -160,12 +160,12 @@ if($user_custom_picture==''){
             <a href="<?php print $dash_pack;?>" class="<?php print $activemypack; ?>"><i class="fa fa-tasks"></i> <?php esc_html_e('My Subscription','wpestate');?></a>
         <?php } ?>
         <?php if( $dash_link!=$home_url  && wpestate_check_user_level()){ ?>
-            <a href="<?php print $dash_link;?>"     class="<?php print $activedash; ?>"> <i class="fa fa-map-marker"></i> <?php esc_html_e('My Properties','wpestate');?></a>
+            <a href="<?php print $dash_link;?>"     class="<?php print $activedash; ?>"> <i class="fa fa-map-marker"></i> <?php esc_html_e('My Tennis Racquets','wpestate');?></a>
         <?php } ?>
         <?php if( $add_link!=$home_url  && wpestate_check_user_level()){ 
               $edit_class="";?>
             
-            <a href="<?php print $add_link;?>"      class="<?php print $activeadd; print $edit_class; ?>"> <i class="fa fa-plus-circle"></i><?php esc_html_e('Add New Property','wpestate');?></a>  
+            <a href="<?php print $add_link;?>"      class="<?php print $activeadd; print $edit_class; ?>"> <i class="fa fa-plus-circle"></i><?php esc_html_e('Add New Tennis Racquet','wpestate');?></a>  
            
            
             <?php
@@ -212,10 +212,10 @@ if($user_custom_picture==''){
             <a href="<?php print $dash_searches;?>" class="<?php print $activesearch; ?>"><i class="fa fa-search"></i> <?php esc_html_e('Saved Searches','wpestate');?></a>
         <?php } ?>
         <?php if( $dash_my_bookings!=$home_url  && wpestate_check_user_level()){ ?>
-            <a href="<?php print $dash_my_bookings;?>" class="<?php print $activemybookins; ?>"><i class="fa fa-folder-open-o"></i> <?php esc_html_e('My Bookings','wpestate');?></a>
+            <a href="<?php print $dash_my_bookings;?>" class="<?php print $activemybookins; ?>"><i class="fa fa-folder-open-o"></i> <?php esc_html_e('My Rental Requests','wpestate');?></a>
         <?php } ?>
         <?php if( $dash_my_reservations!=$home_url ){ ?>
-            <a href="<?php print $dash_my_reservations;?>" class="<?php print $activemyreservations; ?>"><i class="fa fa-folder-open"></i> <?php esc_html_e('My Reservations','wpestate');?></a>
+            <a href="<?php print $dash_my_reservations;?>" class="<?php print $activemyreservations; ?>"><i class="fa fa-folder-open"></i> <?php esc_html_e('My Rentals','wpestate');?></a>
         <?php } ?>   
             
         <?php if( $dash_inbox!=$home_url ){ ?>

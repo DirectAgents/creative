@@ -95,12 +95,12 @@ function wpestate_booking_meta_function( $post ) {
     </p>
 
     <p class="meta-options">
-        <label for="booking_id">'.esc_html__( 'Property ID:','wpestate').' </label><br />
+        <label for="booking_id">'.esc_html__( 'Tennis Racquet ID:','wpestate').' </label><br />
         <input type="text" id="booking_id" size="58" name="booking_id" value="'.  $property_id.'">
     </p>
    
     <p class="meta-options">
-        <label for="booking_guests">'.esc_html__( 'Guests No:','wpestate').' </label><br />
+        <label for="booking_guests">'.esc_html__( 'Racquets No:','wpestate').' </label><br />
         <input type="text" id="booking_guests" size="58" name="booking_guests" value="'.  esc_html(get_post_meta($post->ID, 'booking_guests', true)).'">
     </p>
     
@@ -496,7 +496,7 @@ function wpestate_payments_management(){
         </div>
 
         <div class="col-md-1 payment_management_head">
-            '.esc_html__('Guests').'
+            '.esc_html__('Racquets').'
         </div>
 
         <div class="col-md-1 payment_management_head">

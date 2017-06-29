@@ -68,7 +68,7 @@ $property_area      =   get_the_term_list($post->ID, 'property_area', '', ', ', 
                 if( $price_per_guest_from_one == 1){
                     echo ' '.esc_html__( 'per guest','wpestate'); 
                 }else{
-                    echo ' '.esc_html__( 'per night','wpestate'); 
+                    echo ' '.esc_html__( 'per day','wpestate'); 
                 }
             }
           
@@ -108,4 +108,4 @@ $property_area      =   get_the_term_list($post->ID, 'property_area', '', ', ', 
         ?>
     </div>
     
-</div><!--
+</div><---

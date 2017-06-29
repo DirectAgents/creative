@@ -31,7 +31,7 @@ global $options;
                         <?php  if( $property_category!='') {
                             echo $property_category;?> <span class="property_header_separator">|</span> 
                         <?php } ?> 
-                        <?php print '<span class="no_link_details">'.$guests.' '. esc_html__( 'Guests','wpestate').'</span>';?> <span class="property_header_separator">|</span>
+                        <?php print '<span class="no_link_details">'.$guests.' '. esc_html__( 'Racquets','wpestate').'</span>';?> <span class="property_header_separator">|</span>
                         <?php print '<span class="no_link_details">'.$bedrooms.' '.esc_html__( 'Bedrooms','wpestate').'</span>';?><span class="property_header_separator">|</span>
                         <?php print '<span class="no_link_details">'.$bathrooms.' '.esc_html__( 'Baths','wpestate').'</span>';?>
                     </div>
@@ -121,7 +121,7 @@ global $options;
                         if(isset($_GET['guest_no_prop']) && $_GET['guest_no_prop']!=''){
                             echo esc_html( $_GET['guest_no_prop'] ).' '.esc_html__( 'guests','wpestate');
                         }else{
-                            esc_html_e('Guests','wpestate');
+                            esc_html_e('Racquets','wpestate');
                         }
                  
                         

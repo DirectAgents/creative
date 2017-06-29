@@ -1244,7 +1244,7 @@ if( !function_exists('wpestate_get_booking_data') ):
       
         print __('Booking id','wpestate').': '.$internal_booking_id;
         print'<div class="allinone-booking-data">'.__('From','wpestate').' '.$booking_from_date.' '.__('To ','wpestate').' '.$booking_to_date.'</div>';
-        print'<div class="allinone-booking-data-guests">'.__('Guests','wpestate').': '.$booking_guests.'</div>';
+        print'<div class="allinone-booking-data-guests">'.__('Racquets','wpestate').': '.$booking_guests.'</div>';
         print'<div class="allinone-booking-data-invoice">'.__('Invoice','wpestate').': '.$invoice_no.'</div>';
         die();
     }
@@ -1478,11 +1478,11 @@ if( !function_exists('wpestate_update_menu_bar') ):
         }
 
         if($home_url!=$dash_link){
-            $menu.=' <a href="'.$dash_link.'" ><i class="fa fa-map-marker"></i>'. esc_html__( 'My Properties List','wpestate').'</a>';
+            $menu.=' <a href="'.$dash_link.'" ><i class="fa fa-map-marker"></i>'. esc_html__( 'My Tennis Racquets List','wpestate').'</a>';
         }
 
         if($home_url!=$add_link){
-            $menu.='<a href="'.$add_link.'" ><i class="fa fa-plus"></i>'. esc_html__( 'Add New Property','wpestate').'</a>';        
+            $menu.='<a href="'.$add_link.'" ><i class="fa fa-plus"></i>'. esc_html__( 'Add New Tennis Racquet','wpestate').'</a>';        
         }
 
         if($home_url!=$dash_favorite){
@@ -2250,27 +2250,18 @@ if( !function_exists('wpestate_ajax_show_contact_owner_form') ):
 
                             <div class="modal-body">
                                 <div id="booking_form_request_mess_modal"></div>  
-                                <div class=" has_calendar calendar_icon">
-                                    <input type="text" id="booking_from_date" size="40" name="booking_from_date" class="form-control" placeholder="'.esc_html__( 'Pick Up','wpestate').'" value="">
-                                </div>
+                            
+								
+								
 
-                                <div class=" has_calendar calendar_icon">
-                                    <input type="text" id="booking_to_date" size="40" name="booking_to_date" class="form-control" placeholder="'.esc_html__( 'Return','wpestate').'" value="">
-                                </div>
-
-                                <div class="">
-                                    <select id="booking_guest_no"  name="booking_guest_no"  class="cd-select form-control" >
-                                        <option value="1">1 '.esc_html__( 'Guest','wpestate').'</option>';
-                                        for ($i = 2; $i <= 14; $i++) {
-                                            print '<option value="'.$i.'">'.$i.' '.esc_html__( 'Guests','wpestate').'</option>';
-                                        }
-                                    print'
-                                    </select>    
-                                </div>
                                 
                                 <input type="hidden" id="property_id" name="property_id" value="'.$post_id.'" />
                                 <input name="prop_id" type="hidden"  id="agent_property_id" value="'.$post_id.'">
                                 <input name="agent_id" type="hidden"  id="agent_id" value="'.$agent_id .'">
+								
+								<div class="">
+								 <input type="text" id="subject_title" size="100%" name="subject_title" class="form-control" placeholder="'.esc_html__( 'Subject','wpestate').'" value="">
+								</div>
 
                                 <div class="">
                                     <textarea id="booking_mes_mess" name="booking_mes_mess" cols="50" rows="6" placeholder="'. esc_html__( 'Your message','wpestate').'" class="form-control"></textarea>

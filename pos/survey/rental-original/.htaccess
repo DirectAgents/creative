@@ -1,0 +1,16 @@
+
+# BEGIN WordPress
+
+php_value max_execution_time 300
+
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /creative/pos/survey/rental-original/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /creative/pos/survey/rental-original/index.php [L]
+</IfModule>
+
+# END WordPress

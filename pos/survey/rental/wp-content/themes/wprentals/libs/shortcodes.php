@@ -852,7 +852,7 @@ function wpestate_advanced_search_function($attributes, $content = null){
 
                 <div class="col-md-3 dropdown guest_form_sh_wr">
                 <div class=" form-control guest_form">
-                    <div data-toggle="dropdown" id="guest_no_shortcode" class="filter_menu_trigger" data-value="all"> '.esc_html__( 'Guests','wpestate').' <span class="caret caret_filter"></span> </div>           
+                    <div data-toggle="dropdown" id="guest_no_shortcode" class="filter_menu_trigger" data-value="all"> '.esc_html__( 'Racquets','wpestate').' <span class="caret caret_filter"></span> </div>           
                     <input type="hidden" name="guest_no" id="guest_no_input_sh" value="">
                     <ul class="dropdown-menu filter_menu" role="menu" aria-labelledby="guest_no_input_sh">'. wpestate_get_guest_dropdown().'
                     </ul>

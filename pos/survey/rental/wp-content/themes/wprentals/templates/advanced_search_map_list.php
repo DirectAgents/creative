@@ -73,7 +73,7 @@ if ($where_currency == 'before') {
                 if(isset($_GET['guest_no']) && $_GET['guest_no']!=''){
                     echo wp_kses( esc_html($_GET['guest_no']), $allowed_html);
                 }else{
-                    esc_html_e('Guests','wpestate');
+                    esc_html_e('Racquets','wpestate');
                 }
                 ?> 
                     

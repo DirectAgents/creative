@@ -954,9 +954,9 @@ if(!function_exists('wpestate_extra_options_exp')):
 function wpestate_extra_options_exp($extra_id){
     $options_array=array(
             0   =>  esc_html__('Single Fee','wpestate'),
-            1   =>  esc_html__('Per Night','wpestate'),
-            2   =>  esc_html__('Per Guest','wpestate'),
-            3   =>  esc_html__('Per Night per Guest','wpestate')
+            1   =>  esc_html__('Per Day','wpestate'),
+            2   =>  esc_html__('Per Racquet','wpestate'),
+            3   =>  esc_html__('Per Day per Racquet','wpestate')
         );
     
     return $options_array[$extra_id];
@@ -991,7 +991,7 @@ if(!function_exists('wpestate_calculate_cleaning_fee')):
             case 0:// single fee
                 $return_value = $cleaning_fee;
                 break;
-            case 1://per night
+            case 1://per day
                 $return_value = $cleaning_fee*$count_days;
                 break;
             case 2://per guest
@@ -1018,7 +1018,7 @@ if(!function_exists('wpestate_calculate_city_fee')):
                 case 0:// single fee
                     $return_value = $city_fee;
                     break;
-                case 1://per night
+                case 1://per day
                     $return_value = $city_fee*$count_days;
                     break;
                 case 2://per guest

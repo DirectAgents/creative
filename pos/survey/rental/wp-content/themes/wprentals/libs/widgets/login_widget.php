@@ -177,10 +177,10 @@ class Wpestate_Login_widget extends WP_Widget {
                         $logged_display.='<li> <a href="'.$dash_profile.'"  class="'.$activeprofile.'"><i class="fa fa-cogs"></i>  '.esc_html__( 'My Profile','wpestate').'</a> </li>';
                     }
                     if($home_url!=$dash_link && wpestate_check_user_level()){
-                        $logged_display.=' <li> <a href="'.$dash_link.'"     class="'.$activedash.'"><i class="fa fa-map-marker"></i>'.esc_html__( 'My Properties','wpestate').'</a> </li>';
+                        $logged_display.=' <li> <a href="'.$dash_link.'"     class="'.$activedash.'"><i class="fa fa-map-marker"></i>'.esc_html__( 'My Tennis Racquets','wpestate').'</a> </li>';
                     }
                     if($home_url!=$add_link && wpestate_check_user_level()){
-                        $logged_display.=' <li> <a href="'.$add_link.'"      class="'.$activeadd.'"><i class="fa fa-plus"></i>'. esc_html__( 'Add New Property','wpestate').'</a> </li>';
+                        $logged_display.=' <li> <a href="'.$add_link.'"      class="'.$activeadd.'"><i class="fa fa-plus"></i>'. esc_html__( 'Add New Tennis Racquet','wpestate').'</a> </li>';
                     }
                     if($home_url!=$dash_favorite){
                         $logged_display.=' <li> <a href="'.$dash_favorite.'" class="'.$activefav.'"><i class="fa fa-heart"></i>'.esc_html__( 'Favorites','wpestate').'</a> </li>';

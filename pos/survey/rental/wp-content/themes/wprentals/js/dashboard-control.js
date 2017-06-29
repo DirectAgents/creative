@@ -73,7 +73,7 @@ jQuery(document).ready(function ($) {
         }
         
         
-        return '<select class="select_submit_price"><option value="0" '+type_free+'>Single Fee</option><option value="1" '+type_per_night+' >Per Night</option><option value="2" '+type_per_guest+'>Per Guest</option><option value="3" '+type_per_night_guest+'>Per Night per Guest</option></select>'
+        return '<select class="select_submit_price"><option value="0" '+type_free+'>Single Fee</option><option value="1" '+type_per_night+' >Per Day</option><option value="2" '+type_per_guest+'>Per Guest</option><option value="3" '+type_per_night_guest+'>Per Day per Racquet</option></select>'
     }
     
     

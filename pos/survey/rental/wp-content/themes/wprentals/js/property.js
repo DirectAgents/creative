@@ -282,11 +282,12 @@ jQuery(document).ready(function ($) {
 
         $('#submit_mess_front').click(function (event) {
             event.preventDefault();
-            var ajaxurl, subject, booking_from_date, booking_to_date, booking_guest_no, message, nonce, agent_property_id, agent_id;
+            var ajaxurl, subject, booking_from_date, booking_to_date, booking_guest_no,subject_title, message, nonce, agent_property_id, agent_id;
             ajaxurl              =   control_vars.admin_url + 'admin-ajax.php';
             booking_from_date       =   $("#booking_from_date").val();
             booking_to_date         =   $("#booking_to_date").val();
             booking_guest_no        =   $("#booking_guest_no").val();
+            subject_title           =   $("#subject_title").val();
             message                 =   $("#booking_mes_mess").val();
             agent_property_id       =   $("#agent_property_id").val();
             agent_id                =   $('#agent_id').val();
@@ -303,7 +304,8 @@ jQuery(document).ready(function ($) {
                 type: 'POST',
                 url: ajaxurl,
                 data: {
-                    'action'            :   'wpestate_mess_front_end',
+                    'action'            :   'wpestate_mess_front_end', 
+                    'subject_title'           :   subject_title,
                     'message'           :   message,
                     'booking_guest_no'  :   booking_guest_no,
                     'booking_from_date' :   booking_from_date,

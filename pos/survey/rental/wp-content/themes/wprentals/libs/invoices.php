@@ -299,14 +299,14 @@ if( !function_exists('wpestate_print_create_form_invoice') ):
                             print'
                             <span class="date_interval"><span class="invoice_data_legend">'.esc_html__( 'Period','wpestate').' : </span>'.$booking_from_date.' '.esc_html__( 'to','wpestate').' '.$booking_to_date.'</span>
                             <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of days','wpestate').': </span>'.$booking_array['numberDays'].'</span>
-                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Guests','wpestate').': </span>'.$booking_guests.'</span>';
+                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Racquets','wpestate').': </span>'.$booking_guests.'</span>';
 
                             if($booking_array['price_per_guest_from_one']==1){
                                 print'<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per Guest','wpestate').': </span>'; 
                                 print $extra_price_per_guest;
                                 print'</span>';
                             }else{
-                                print '<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per night','wpestate').': </span>';
+                                print '<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per day','wpestate').': </span>';
                           
                                 print $price_show;
                                 if($booking_array['has_custom']){
@@ -357,12 +357,12 @@ if( !function_exists('wpestate_print_create_form_invoice') ):
 
                                         if( trim($detail[0]) ==esc_html__( 'Subtotal','wpestate') ){
                                             if($booking_array['price_per_guest_from_one']==1){
-                                                print  $extra_price_per_guest.' x '.$booking_array['count_days'].' '.esc_html__( 'nights','wpestate').' x '.$booking_array['curent_guest_no'].' '.esc_html__( 'guests','wpestate');
+                                                print  $extra_price_per_guest.' x '.$booking_array['count_days'].' '.esc_html__( 'days','wpestate').' x '.$booking_array['curent_guest_no'].' '.esc_html__( 'guests','wpestate');
                                                 if($booking_array['custom_period_quest']==1){
                                                     print ' - '.esc_html__(" period with custom price per guest","wpestate");
                                                 }
                                             }else{
-                                                print $booking_array['numberDays'].' '.esc_html__( 'nights','wpestate').' x ';
+                                                print $booking_array['numberDays'].' '.esc_html__( 'days','wpestate').' x ';
                                                 if($booking_array['cover_weekend']){
                                                     echo esc_html__('has weekend price of','wpestate').' '.$price_per_weekeend_show;
                                                 }else{
@@ -379,11 +379,11 @@ if( !function_exists('wpestate_print_create_form_invoice') ):
                                         if($booking_array['custom_period_quest']==1){
                                             $new_guest_price=esc_html__("custom price","wpestate");
                                         }else{
-                                            $new_guest_price=$guest_price.' '.esc_html__( 'per night','wpestate');
+                                            $new_guest_price=$guest_price.' '.esc_html__( 'per day','wpestate');
                                         }
 
-                                        if(trim($detail[0])==esc_html__( 'Extra Guests','wpestate')){ 
-                                            print $booking_array['numberDays'].' '.esc_html__( 'nights','wpestate').' x '.$booking_array['extra_guests'].' '.esc_html__('extra guests','wpestate').' x '.$new_guest_price;
+                                        if(trim($detail[0])==esc_html__( 'Extra Racquets','wpestate')){ 
+                                            print $booking_array['numberDays'].' '.esc_html__( 'days','wpestate').' x '.$booking_array['extra_guests'].' '.esc_html__('extra guests','wpestate').' x '.$new_guest_price;
                                         }
 
                                         if(isset($detail[2])){

@@ -140,15 +140,15 @@ if( !function_exists('estate_listing_price') ):
         if($price_per_guest_from_one!=1){
         
             if ($property_price != 0){
-                $return_string.='<div class="listing_detail list_detail_prop_price_per_night col-md-6"><span class="item_head">'.esc_html__( 'Price per night','wpestate').':</span> ' .$property_price_before_label.' '. $property_price_show.' '.$property_price_after_label. '</div>'; 
+                $return_string.='<div class="listing_detail list_detail_prop_price_per_night col-md-6"><span class="item_head">'.esc_html__( 'Price per day','wpestate').':</span> ' .$property_price_before_label.' '. $property_price_show.' '.$property_price_after_label. '</div>'; 
             }
 
             if ($property_price_per_week != 0){
-                $return_string.='<div class="listing_detail list_detail_prop_price_per_night_7d col-md-6"><span class="item_head">'.esc_html__( 'Price per night (7d+)','wpestate').':</span> ' . $property_price_per_week_show . '</div>'; 
+                $return_string.='<div class="listing_detail list_detail_prop_price_per_night_7d col-md-6"><span class="item_head">'.esc_html__( 'Price per day (7d+)','wpestate').':</span> ' . $property_price_per_week_show . '</div>'; 
             }
 
             if ($property_price_per_month != 0){
-                $return_string.='<div class="listing_detail list_detail_prop_price_per_night_30d col-md-6"><span class="item_head">'.esc_html__( 'Price per night (30d+)','wpestate').':</span> ' . $property_price_per_month_show . '</div>'; 
+                $return_string.='<div class="listing_detail list_detail_prop_price_per_night_30d col-md-6"><span class="item_head">'.esc_html__( 'Price per day (30d+)','wpestate').':</span> ' . $property_price_per_month_show . '</div>'; 
             }
 
             if ($price_per_weekeend!=0){
@@ -165,15 +165,15 @@ if( !function_exists('estate_listing_price') ):
         }
           $options_array=array(
             0   =>  esc_html__('Single Fee','wpestate'),
-            1   =>  esc_html__('Per Night','wpestate'),
-            2   =>  esc_html__('Per Guest','wpestate'),
-            3   =>  esc_html__('Per Night per Guest','wpestate')
+            1   =>  esc_html__('Per Day','wpestate'),
+            2   =>  esc_html__('Per Racquet','wpestate'),
+            3   =>  esc_html__('Per Day per Racquet','wpestate')
         );
         if ($cleaning_fee != 0){
             $return_string.='<div class="listing_detail list_detail_prop_price_cleaning_fee col-md-6"><span class="item_head">'.esc_html__( 'Cleaning Fee','wpestate').':</span> ' . $cleaning_fee_show ;
            
                 $return_string .= $options_array[$cleaning_fee_per_day];
-                //' '.esc_html__('per night','wpestate');
+                //' '.esc_html__('per day','wpestate');
            
             $return_string.='</div>'; 
         }
@@ -183,14 +183,14 @@ if( !function_exists('estate_listing_price') ):
             if($city_fee_percent==0){
                 $return_string .= $city_fee_show.' '.$options_array[$city_fee_per_day];
             }else{
-                $return_string .= $city_fee.'%'.' '.__('of price per night','wpestate');
+                $return_string .= $city_fee.'%'.' '.__('of price per day','wpestate');
             }
             $return_string.='</div>'; 
             
         }
         
         if ($min_days_booking!=0){
-            $return_string.='<div class="listing_detail list_detail_prop_price_min_nights col-md-6"><span class="item_head">'.esc_html__( 'Minimum no of nights','wpestate').':</span> ' . $min_days_booking . '</div>'; 
+            $return_string.='<div class="listing_detail list_detail_prop_price_min_nights col-md-6"><span class="item_head">'.esc_html__( 'Minimum no of days','wpestate').':</span> ' . $min_days_booking . '</div>'; 
         }
         
         if($overload_guest!=0){
@@ -213,7 +213,7 @@ if( !function_exists('estate_listing_price') ):
         
         
         if($early_bird_percent!=0){
-            $return_string.='<div class="listing_detail list_detail_prop_book_starts_end col-md-6"><span class="item_head">'.esc_html__( 'Early Bird Discount','wpestate').':</span> '.$early_bird_percent.'% '.esc_html__( 'discount','wpestate').' '.esc_html__( 'for bookings made','wpestate').' '.$early_bird_days.' '.esc_html__('nights in advance','wpestate').'</div>'; 
+            $return_string.='<div class="listing_detail list_detail_prop_book_starts_end col-md-6"><span class="item_head">'.esc_html__( 'Early Bird Discount','wpestate').':</span> '.$early_bird_percent.'% '.esc_html__( 'discount','wpestate').' '.esc_html__( 'for bookings made','wpestate').' '.$early_bird_days.' '.esc_html__('days in advance','wpestate').'</div>'; 
     
         }
                   
@@ -291,12 +291,12 @@ if( !function_exists('wpestate_show_custom_details') ):
                 
                 if($price_per_guest_from_one!=1){
                     print'
-                    <div class="custom_price_per_day">'.esc_html__('Price per night','wpestate').'</div>    
-                    <div class="custom_price_per_day">'.esc_html__('Price per night (7n+)','wpestate').'</div>  
-                    <div class="custom_price_per_day">'.esc_html__('Price per night (30n+)','wpestate').'</div>  
+                    <div class="custom_price_per_day">'.esc_html__('Price per day','wpestate').'</div>    
+                    <div class="custom_price_per_day">'.esc_html__('Price per day (7n+)','wpestate').'</div>  
+                    <div class="custom_price_per_day">'.esc_html__('Price per day (30n+)','wpestate').'</div>  
                     <div class="custom_day_min_days">'.esc_html__('Minimum Booking days','wpestate').'</div>   
                     <div class="custom_day_name_price_per_guest">'.esc_html__('Extra price per guest','wpestate').'</div>
-                    <div class="custom_day_name_price_per_weekedn">'.esc_html__('Price per night in weekends','wpestate').'</div>';
+                    <div class="custom_day_name_price_per_weekedn">'.esc_html__('Price per day in weekends','wpestate').'</div>';
                 }else{
                     print '<div class="custom_day_name_price_per_guest">'.esc_html__('Price per guest','wpestate').'</div>';
                 }
@@ -617,7 +617,7 @@ if( !function_exists('estate_listing_details') ):
             $return_string.= '<div class="listing_detail list_detail_prop_status col-md-6"><span class="item_head">'.esc_html__( 'Property Status','wpestate').':</span> ' . $property_status . '</div>';
         }   
         
-        $return_string.= '<div class="listing_detail list_detail_prop_id col-md-6"><span class="item_head">'.esc_html__( 'Property ID','wpestate').':</span> ' . $post_id . '</div>';
+        $return_string.= '<div class="listing_detail list_detail_prop_id col-md-6"><span class="item_head">'.esc_html__( 'Tennis Racquet ID','wpestate').':</span> ' . $post_id . '</div>';
       
         
         if ($property_size != ''){

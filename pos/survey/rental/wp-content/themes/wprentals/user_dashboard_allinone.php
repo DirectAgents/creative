@@ -135,7 +135,7 @@ $options=wpestate_page_details($post->ID);
                 </div> 
                 
                 <div class="col-md-6">
-                    <label for="period_extra_price_per_guest"><?php echo esc_html__( 'Extra Price per guest per night in','wpestate').' '.$wp_estate_currency_symbol;?></label>
+                    <label for="period_extra_price_per_guest"><?php echo esc_html__( 'Extra Price per guest per day in','wpestate').' '.$wp_estate_currency_symbol;?></label>
                     <input type="text" id="period_extra_price_per_guest" size="40" name="period_extra_price_per_guest" class="form-control" value="0">
                 </div> 
                

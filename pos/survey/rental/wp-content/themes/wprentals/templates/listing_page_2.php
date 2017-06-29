@@ -86,7 +86,7 @@ get_template_part('templates/property_header2');
                 <?php if($property_price_text!=''){
                     echo $property_price_text;
                 } else{
-                    esc_html_e('Property Price','wpestate');
+                    esc_html_e('Tennis Racquet Daily Rental Price','wpestate');
                 }  ?>
             </a>
             <div id="collapseOne" class="panel-collapse collapse in">
@@ -105,7 +105,7 @@ get_template_part('templates/property_header2');
                 <?php if($property_adr_text!=''){
                     echo $property_adr_text;
                 } else{
-                    esc_html_e('Property Address','wpestate');
+                    esc_html_e('Address For Pick Up','wpestate');
                 }
                 ?>
             </a>    

@@ -8,7 +8,7 @@ function wpestate_create_property_type() {
         'labels' => array(
             'name'                  => esc_html__( 'Properties','wpestate'),
             'singular_name'         => esc_html__( 'Property','wpestate'),
-            'add_new'               => esc_html__( 'Add New Property','wpestate'),
+            'add_new'               => esc_html__( 'Add New Tennis Racquet','wpestate'),
             'add_new_item'          => esc_html__( 'Add Property','wpestate'),
             'edit'                  => esc_html__( 'Edit','wpestate'),
             'edit_item'             => esc_html__( 'Edit Property','wpestate'),
@@ -38,7 +38,7 @@ function wpestate_create_property_type() {
     register_taxonomy('property_category', 'estate_property', array(
         'labels' => array(
             'name'              => esc_html__( 'Categories','wpestate'),
-            'add_new_item'      => esc_html__( 'Add New Property Category','wpestate'),
+            'add_new_item'      => esc_html__( 'Add New Tennis Racquet Category','wpestate'),
             'new_item_name'     => esc_html__( 'New Property Category','wpestate')
         ),
         'hierarchical'  => true,
@@ -289,9 +289,9 @@ function details_estate_box($post) {
    
     $options_array=array(
             0   =>  esc_html__('Single Fee','wpestate'),
-            1   =>  esc_html__('Per Night','wpestate'),
-            2   =>  esc_html__('Per Guest','wpestate'),
-            3   =>  esc_html__('Per Night per Guest','wpestate')
+            1   =>  esc_html__('Per Day','wpestate'),
+            2   =>  esc_html__('Per Racquet','wpestate'),
+            3   =>  esc_html__('Per Day per Racquet','wpestate')
         );
     
     $mypost             =   $post->ID;
@@ -353,7 +353,7 @@ function details_estate_box($post) {
     <tr >
         <td width="33%" valign="top" align="left">
             <p class="meta-options">
-            <label for="early_bird_percent">'.esc_html__( 'Early Bird Discount value- in % from the price per night','wpestate').'</label><br />
+            <label for="early_bird_percent">'.esc_html__( 'Early Bird Discount value- in % from the price per day','wpestate').'</label><br />
             <input type="text" id="early_bird_percent" size="40" name="early_bird_percent" value="' . esc_html(get_post_meta($mypost, 'early_bird_percent', true)) . '">
             </p>
         </td>';
@@ -457,14 +457,14 @@ function details_estate_box($post) {
     <tr>
         <td width="33%" valign="top" align="left">
             <p class="meta-options">
-            <label for="property_price">'.esc_html__( 'Price per night (7d+): ','wpestate').'</label><br />
+            <label for="property_price">'.esc_html__( 'Price per day (7d+): ','wpestate').'</label><br />
             <input type="text" id="property_price_per_week" size="40" name="property_price_per_week" value="' . esc_html(get_post_meta($mypost, 'property_price_per_week', true)) . '">
             </p>
         </td>
 
         <td width="33%" valign="top" align="left">
             <p class="meta-options">
-            <label for="property_price">'.esc_html__( 'Price per night (30d+): ','wpestate').'</label><br />
+            <label for="property_price">'.esc_html__( 'Price per day (30d+): ','wpestate').'</label><br />
             <input type="text" id="property_price_per_month" size="40" name="property_price_per_month" value="' . esc_html(get_post_meta($mypost, 'property_price_per_month', true)) . '">
             </p>
         </td>
@@ -473,7 +473,7 @@ function details_estate_box($post) {
     <tr>
         <td width="33%" valign="top" align="left">
             <p class="meta-options">
-            <label for="extra_price_per_guest">'.esc_html__( 'Extra Price per guest per night','wpestate').'</label><br />
+            <label for="extra_price_per_guest">'.esc_html__( 'Extra Price per guest per day','wpestate').'</label><br />
             <input type="text" id="extra_price_per_guest" size="40" name="extra_price_per_guest" value="' . esc_html(get_post_meta($mypost, 'extra_price_per_guest', true)) . '">
             </p>
         </td>
@@ -573,7 +573,7 @@ function details_estate_box($post) {
     <tr>
     <td valign="top" align="left">  
         <p class="meta-options">
-        <label for="guest_no">'.esc_html__( 'Guests: ','wpestate').'</label><br />
+        <label for="guest_no">'.esc_html__( 'People: ','wpestate').'</label><br />
         <input type="text" id="guest_no" size="40" name="guest_no" value="' . esc_html(get_post_meta($mypost, 'guest_no', true)) . '">
         </p>
     </td>
@@ -654,7 +654,7 @@ function map_estate_box($post) {
     <p class="meta-options"> 
     <div id="googleMap" style="width:100%;height:380px;margin-bottom:30px;"></div>    
     <p class="meta-options"> 
-        <a class="button" href="#" id="admin_place_pin">'.esc_html__( 'Place Pin with Property Address','wpestate').'</a>
+        <a class="button" href="#" id="admin_place_pin">'.esc_html__( 'Place Pin with Address For Pick Up','wpestate').'</a>
     </p>
     '.esc_html__( 'Latitude:','wpestate').'  <input type="text" id="property_latitude" style="margin-right:20px;" size="40" name="property_latitude" value="' . $gmap_lat . '">
     '.esc_html__( 'Longitude:','wpestate').' <input type="text" id="property_longitude" style="margin-right:20px;" size="40" name="property_longitude" value="' . $gmap_long . '">
@@ -1215,7 +1215,7 @@ if( !function_exists('wpestate_my_columns') ):
         $columns['estate_category'] = esc_html__( 'Category','wpestate');
         $columns['estate_autor']    = esc_html__( 'User','wpestate');
         $columns['estate_status']   = esc_html__( 'Status','wpestate');
-        $columns['estate_price']    = esc_html__( 'Price per night','wpestate');
+        $columns['estate_price']    = esc_html__( 'Price per day','wpestate');
         return  array_merge($columns,array_reverse($slice));
     }
 endif; // end   wpestate_my_columns  

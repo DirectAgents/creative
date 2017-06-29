@@ -238,7 +238,7 @@ if ( isset($_GET['check_in']) && isset($_GET['check_out']) ){
                     <div class="price_unit"><?php  
                     wpestate_show_price($post->ID,$currency,$where_currency,0);
                     if($is_widget==1){
-                        echo '<span class="pernight">'.esc_html__( 'per night','wpestate').'</span>';
+                        echo '<span class="pernight">'.esc_html__( 'per day','wpestate').'</span>';
                     }
                     ?></div> 
                 </div>

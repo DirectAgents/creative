@@ -1,5 +1,9 @@
 
 # BEGIN WordPress
+
+php_value max_execution_time 300
+
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /creative/pos/survey/rental/

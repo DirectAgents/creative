@@ -99,7 +99,7 @@ if ($where_currency == 'before') {
             </div>
 
             <div class="user_dashboard_listed">
-                <strong><?php esc_html_e('Guests: ','wpestate');?> </strong> <?php print $booking_guests; ?>  
+                <strong><?php esc_html_e('People: ','wpestate');?> </strong> <?php print $booking_guests; ?>  
             </div>    
 
             <?php  if($to_be_paid>0 && $booking_status_full!='confirmed') { ?>

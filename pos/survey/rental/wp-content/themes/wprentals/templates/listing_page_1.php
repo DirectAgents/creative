@@ -126,9 +126,9 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                     echo $property_category;?> <span class="property_header_separator">|</span> 
                 <?php } ?> 
                     
-                <?php print '<span class="no_link_details">'.$guests.' '. esc_html__( 'Guests','wpestate').'</span>';?> <span class="property_header_separator">|</span>
-                <?php print '<span class="no_link_details">'.$bedrooms.' '.esc_html__( 'Bedrooms','wpestate').'</span>';?><span class="property_header_separator">|</span>
-                <?php print '<span class="no_link_details">'.$bathrooms.' '.esc_html__( 'Baths','wpestate').'</span>';?>
+                <?php print '<span class="no_link_details">'.$guests.' '. esc_html__( 'Racquets','wpestate').'</span>';?> <!--<span class="property_header_separator">|</span>-->
+                <?php //print '<span class="no_link_details">'.$bedrooms.' '.esc_html__( 'Bedrooms','wpestate').'</span>';?><!--<span class="property_header_separator">|</span>-->
+                <?php //print '<span class="no_link_details">'.$bathrooms.' '.esc_html__( 'Baths','wpestate').'</span>';?>
             </div>
 
             <a href="#listing_calendar" class="check_avalability"><?php esc_html_e('Check Availability','wpestate');?></a>
@@ -163,7 +163,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                 <?php if($property_price_text!=''){
                     echo $property_price_text;
                 } else{
-                    esc_html_e('Property Price','wpestate');
+                    esc_html_e('Tennis Racquet Daily Rental Price','wpestate');
                 }  ?>
             </a>
             <div id="collapseOne" class="panel-collapse collapse in">
@@ -182,7 +182,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                 <?php if($property_adr_text!=''){
                     echo $property_adr_text;
                 } else{
-                    esc_html_e('Property Address','wpestate');
+                    esc_html_e('Address For Pick Up','wpestate');
                 }
                 ?>
             </a>    
@@ -309,7 +309,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                     if( $price_per_guest_from_one == 1){
                         echo ' '.esc_html__( 'per guest','wpestate'); 
                     }else{
-                        echo ' '.esc_html__( 'per night','wpestate'); 
+                        echo ' '.esc_html__( 'per day','wpestate'); 
                     }
                 }
                 ?>
@@ -353,14 +353,14 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                         if(isset($_GET['guest_no_prop']) && $_GET['guest_no_prop']!=''){
                             echo esc_html( $_GET['guest_no_prop'] ).' '.esc_html__( 'guests','wpestate');
                         }else{
-                            esc_html_e('Guests','wpestate');
+                            esc_html_e('Racquets','wpestate');
                         }
                 
                         print'<span class="caret caret_filter"></span>
                         </div>           
                         <input type="hidden" name="booking_guest_no"  value="">
                         <ul  class="dropdown-menu filter_menu" role="menu" aria-labelledby="booking_guest_no_wrapper" id="booking_guest_no_wrapper_list">
-                            '.$guest_list.'
+                             <li role="presentation" data-value="1">1 guest</li>
                         </ul>        
                     </div>';
                     ?> 

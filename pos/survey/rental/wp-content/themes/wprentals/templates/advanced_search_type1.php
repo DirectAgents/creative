@@ -105,7 +105,7 @@ $google_map_lower_class='';
                 if(isset($_GET['guest_no'])){
                    echo intval($_GET['guest_no']).' '.esc_html__('guests','wpestate');
                 }else{
-                    esc_html_e('Guests','wpestate');
+                    esc_html_e('Racquets','wpestate');
                 }?>     
                 <span class="caret caret_filter"></span> </div>           
                 <input type="hidden" name="guest_no" id="guest_no_main" 

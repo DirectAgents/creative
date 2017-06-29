@@ -44,8 +44,8 @@
             <ul class="user_mobile_menu_list">
                 <li><a href="<?php print $dash_profile;?>" ><i class="fa fa-cog"></i><?php esc_html_e('My Profile','wpestate');?></a></li>   
                 <?php if( wpestate_check_user_level() ) { ?>
-                    <li><a href="<?php print $dash_link;?>" ><i class="fa fa-map-marker"></i><?php esc_html_e('My Properties','wpestate');?></a></li>
-                    <li><a href="<?php print $add_link;?>" ><i class="fa fa-plus"></i><?php esc_html_e('Add New Property','wpestate');?></a></li> 
+                    <li><a href="<?php print $dash_link;?>" ><i class="fa fa-map-marker"></i><?php esc_html_e('My Tennis Racquets','wpestate');?></a></li>
+                    <li><a href="<?php print $add_link;?>" ><i class="fa fa-plus"></i><?php esc_html_e('Add New Tennis Racquet','wpestate');?></a></li> 
                 <?php } ?>
                 
                       

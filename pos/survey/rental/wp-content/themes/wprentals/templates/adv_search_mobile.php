@@ -59,7 +59,7 @@ $guest_list             =   wpestate_get_guest_dropdown();
         
         <div class="col-md-2">
             <div class="dropdown form-control guest_form">
-                <div data-toggle="dropdown" id="guest_no_mobile" class="filter_menu_trigger" data-value="all"> <?php esc_html_e('Guests','wpestate');?> <span class="caret caret_filter"></span> </div>           
+                <div data-toggle="dropdown" id="guest_no_mobile" class="filter_menu_trigger" data-value="all"> <?php esc_html_e('Racquets','wpestate');?> <span class="caret caret_filter"></span> </div>           
                 <input type="hidden" name="guest_no" id="guest_no_main_mobile" value="">
                 <ul  class="dropdown-menu filter_menu"  id="guest_no_main_list_mobile" role="menu" aria-labelledby="guest_no_mobile">
                     <?php print $guest_list;?>

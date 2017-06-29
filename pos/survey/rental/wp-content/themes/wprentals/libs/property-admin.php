@@ -170,7 +170,7 @@ if( !function_exists('wpestate_display_labels') ):
 
         
     print'<div class="estate_option_row">
-        <div class="label_option_row">'.__('Property Address Label','wpestate').'</div>
+        <div class="label_option_row">'.__('Address For Pick Up Label','wpestate').'</div>
         <div class="option_row_explain">'.__('Custom title instead of Features and Amenities label.','wpestate').'</div>    
             <input  type="text" id="property_adr_text"  name="property_adr_text"   value="'.$property_adr_text.'"/>
         </div>';
@@ -182,7 +182,7 @@ if( !function_exists('wpestate_display_labels') ):
         </div>';
                 
     print'<div class="estate_option_row">
-        <div class="label_option_row">'.__('Property Description Label','wpestate').'</div>
+        <div class="label_option_row">'.__('Racquet Description Label','wpestate').'</div>
         <div class="option_row_explain">'.__('Custom title instead of Description label.','wpestate').'</div>    
             <input  type="text" id="property_description_text"  name="property_description_text"   value="'.$property_description_text.'" size="40"/>
         </div>';
@@ -195,8 +195,8 @@ if( !function_exists('wpestate_display_labels') ):
 
  
     print'<div class="estate_option_row">
-        <div class="label_option_row">'.__('Property Price Label','wpestate').'</div>
-        <div class="option_row_explain">'.__('Custom title instead of Property Price label. ','wpestate').'</div>    
+        <div class="label_option_row">'.__('Tennis Racquet Daily Rental Price Label','wpestate').'</div>
+        <div class="option_row_explain">'.__('Custom title instead of Tennis Racquet Daily Rental Price label. ','wpestate').'</div>    
             <input  type="text" id="property_price_text"  name="property_price_text"   value="'.$property_price_text.'" size="40"/>
         </div>';
 

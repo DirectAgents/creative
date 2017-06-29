@@ -738,7 +738,7 @@ function wpestate_scripts() {
                             'err_title'                 =>  esc_html__( 'Please submit a title !','wpestate'),
                             'err_category'              =>  esc_html__( 'Please pick a category !','wpestate'),
                             'err_type'                  =>  esc_html__( 'Please pick a typr !','wpestate'),
-                            'err_guest'                 =>  esc_html__( 'Please select the guest no !','wpestate'),
+                            'err_guest'                 =>  esc_html__( 'Please select the racquet no !','wpestate'),
                             'err_city'                  =>  esc_html__( 'Please pick a city !','wpestate'),
                             'sending'                   =>  esc_html__( 'sending...','wpestate'),
                             'doublebook'                =>  esc_html__( 'This period is already booked','wpestate'),

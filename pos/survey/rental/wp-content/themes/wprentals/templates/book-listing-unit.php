@@ -106,7 +106,7 @@ $price_per_booking         =   wpestate_show_price_booking($booking_array['total
 
             <div class="user_dashboard_listed">
                 <span class="booking_details_title"><?php esc_html_e('Pay Amount: ','wpestate');?> </span> <?php print wpestate_show_price_booking ( floatval( get_post_meta($invoice_no, 'item_price', true)) ,$currency,$where_currency,1); ?>  
-                <span class="booking_details_title guest_details"><?php esc_html_e('Guests: ','wpestate');?> </span> <?php print $booking_guests; ?>  
+                <span class="booking_details_title guest_details"><?php esc_html_e('People: ','wpestate');?> </span> <?php print $booking_guests; ?>  
             </div>
 
         

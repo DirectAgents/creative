@@ -61,13 +61,13 @@ if ( 0 != $current_user->ID  && is_user_logged_in() ) {
         ?>
         
         <?php if($home_url!=$dash_link && wpestate_check_user_level()){?>
-            <a href="<?php print $dash_link;?>" ><i class="fa fa-map-marker"></i><?php esc_html_e('My Properties','wpestate');?></a>
+            <a href="<?php print $dash_link;?>" ><i class="fa fa-map-marker"></i><?php esc_html_e('My Tennis Racquets','wpestate');?></a>
         <?php   
         }
         ?>
         
         <?php if($home_url!=$add_link && wpestate_check_user_level()){?>
-            <a href="<?php print $add_link;?>" ><i class="fa fa-plus"></i><?php esc_html_e('Add New Property','wpestate');?></a>        
+            <a href="<?php print $add_link;?>" ><i class="fa fa-plus"></i><?php esc_html_e('Add New Tennis Racquet','wpestate');?></a>        
         <?php   
         }
         ?>

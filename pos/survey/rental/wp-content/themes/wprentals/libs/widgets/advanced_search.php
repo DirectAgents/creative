@@ -99,7 +99,7 @@ class Wpestate_Advanced_Search_widget extends WP_Widget {
                 </div>
                 
                 <div class="dropdown form-control guest_form">
-                    <div data-toggle="dropdown" id="guest_no_widget" class="filter_menu_trigger" data-value="all"> '.esc_html__( 'Guests','wpestate').' <span class="caret caret_filter"></span> </div>           
+                    <div data-toggle="dropdown" id="guest_no_widget" class="filter_menu_trigger" data-value="all"> '.esc_html__( 'Racquets','wpestate').' <span class="caret caret_filter"></span> </div>           
                     <input type="hidden" name="guest_no" id="guest_no_wid" value="">
                     <ul class="dropdown-menu filter_menu" role="menu" aria-labelledby="guest_no_wid">'. wpestate_get_guest_dropdown().'
                     </ul>

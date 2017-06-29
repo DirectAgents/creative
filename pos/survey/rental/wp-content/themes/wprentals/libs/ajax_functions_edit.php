@@ -971,9 +971,9 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
             $extra_pay_options     =      ( get_post_meta($property_id,  'extra_pay_options', true) );
               $options_array_explanations=array(
                                 0   =>  esc_html__('Single Fee','wpestate'),
-                                1   =>  esc_html__('Per Night','wpestate'),
-                                2   =>  esc_html__('Per Guest','wpestate'),
-                                3   =>  esc_html__('Per Night per Guest','wpestate')
+                                1   =>  esc_html__('Per Day','wpestate'),
+                                2   =>  esc_html__('Per Racquet','wpestate'),
+                                3   =>  esc_html__('Per Day per Racquet','wpestate')
                             );
             foreach ($extra_options_array as $key=>$value){
                 if( isset($extra_pay_options[$value][0]) ){
@@ -1155,7 +1155,7 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
                    <div class="invoice_table">
                         <div class="invoice_data">
                                 <span class="date_interval"><span class="invoice_data_legend">'.esc_html__( 'Period','wpestate').' : </span>'.$booking_from_date.' '.esc_html__( 'to','wpestate').' '.$booking_to_date.'</span>
-                                <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of nights','wpestate').': </span>'.$booking_array['count_days'].'</span>
+                                <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of days','wpestate').': </span>'.$booking_array['count_days'].'</span>
                                 <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of guests','wpestate').': </span>'.$booking_guests.'</span>';
                                 if($booking_array['price_per_guest_from_one']==1){
                                     print'    
@@ -1164,7 +1164,7 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
                                     print'</span>';
                                 }else{
                                     print'    
-                                    <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per night','wpestate').': </span>';
+                                    <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per day','wpestate').': </span>';
                                     print $price_show;
                                     if($booking_array['has_custom']){
                                         print ', '.esc_html__('has custom price','wpestate');
@@ -1199,7 +1199,7 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
                             <span class="inv_data">   '.$inter_price_show.'</span>';
                         
                             if($booking_array['price_per_guest_from_one']==1){
-                                print  $extra_price_per_guest.' x '.$booking_array['count_days'].' '.esc_html__( 'nights','wpestate').' x '.$booking_array['curent_guest_no'].' '.esc_html__( 'guests','wpestate');
+                                print  $extra_price_per_guest.' x '.$booking_array['count_days'].' '.esc_html__( 'days','wpestate').' x '.$booking_array['curent_guest_no'].' '.esc_html__( 'guests','wpestate');
                             } else{ 
                                 if($booking_array['cover_weekend']){
                                     $new_price_to_show= esc_html__('has weekend price of','wpestate').' '.$price_per_weekeend_show;
@@ -1207,7 +1207,7 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
                                     if($booking_array['has_custom']){
                                         $new_price_to_show=esc_html__("custom price","wpestate");
                                     }else{
-                                        $new_price_to_show=$price_show.' '.esc_html__( 'per night','wpestate');
+                                        $new_price_to_show=$price_show.' '.esc_html__( 'per day','wpestate');
                                     }
                                 }
                                                 
@@ -1217,7 +1217,7 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
                                 if($booking_array['numberDays']==1){
                                     print ' <span class="inv_exp">   ('.$booking_array['numberDays'].' '.esc_html__( 'night','wpestate').' | '.$new_price_to_show.') </span>';
                                 }else{
-                                    print ' <span class="inv_exp">   ('.$booking_array['numberDays'].' '.esc_html__( 'nights','wpestate').' | '.$new_price_to_show.') </span>';
+                                    print ' <span class="inv_exp">   ('.$booking_array['numberDays'].' '.esc_html__( 'days','wpestate').' | '.$new_price_to_show.') </span>';
                                 }
                             }
                             
@@ -1232,11 +1232,11 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
                             if($booking_array['has_guest_overload']!=0 && $booking_array['total_extra_price_per_guest']!=0){
                                 print'
                                 <div class="invoice_row invoice_content">
-                                    <span class="inv_legend">   '.esc_html__( 'Extra Guests','wpestate').'</span>
+                                    <span class="inv_legend">   '.esc_html__( 'Extra Racquets','wpestate').'</span>
                                     <span class="inv_data" id="extra-guests" data-extra-guests="'.$booking_array['total_extra_price_per_guest'].'">  '.$total_guest.'</span>
-                                    <span class="inv_exp">   ('.$booking_array['numberDays'].' '.esc_html__( 'nights','wpestate').' | '.$booking_array['extra_guests'].' '.esc_html__('extra guests','wpestate').' ) </span>
+                                    <span class="inv_exp">   ('.$booking_array['numberDays'].' '.esc_html__( 'days','wpestate').' | '.$booking_array['extra_guests'].' '.esc_html__('extra guests','wpestate').' ) </span>
                                 </div>';
-                                $details[]        =array(esc_html__('Extra Guests'),$booking_array['total_extra_price_per_guest']);  
+                                $details[]        =array(esc_html__('Extra Racquets'),$booking_array['total_extra_price_per_guest']);  
                             }
                         
                             
@@ -1270,9 +1270,9 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
                         
                             $options_array_explanations=array(
                                 0   =>  esc_html__('Single Fee','wpestate'),
-                                1   =>  esc_html__('Per Night','wpestate'),
-                                2   =>  esc_html__('Per Guest','wpestate'),
-                                3   =>  esc_html__('Per Night per Guest','wpestate')
+                                1   =>  esc_html__('Per Day','wpestate'),
+                                2   =>  esc_html__('Per Racquet','wpestate'),
+                                3   =>  esc_html__('Per Day per Racquet','wpestate')
                             );
 //extra_options$extra_options_array
                             foreach ($extra_options_array as $key=>$value){

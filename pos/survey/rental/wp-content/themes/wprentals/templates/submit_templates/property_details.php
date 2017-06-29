@@ -22,31 +22,35 @@ $measure_sys            = esc_html ( get_option('wp_estate_measure_sys','') );
         <div class="col-md-12" id="profile_message"></div>
         <div class="row">  
             <div class="col-md-12">   
-                <div class="col-md-3 dashboard_chapter_label"><?php esc_html_e('Listing Details of your property','wpestate');?></div>
+                <div class="col-md-3 dashboard_chapter_label"><?php esc_html_e('Listing Details of your racquet','wpestate');?></div>
                 <div class="col-md-6">  
-                    <div class="col-md-6">
+                    <!--<div class="col-md-6">
                         <p>
                             <label for="property_size"> <?php esc_html_e('Size in','wpestate');print ' '.$measure_sys.'<sup>2</sup>';?></label>
                             <input type="text" id="property_size" size="40" class="form-control"  name="property_size" value="<?php print $property_size;?>">
                         </p>
-                    </div>
-
+                    </div>-->
+			 <!--
                 <div class="col-md-6">
                     <p>
                         <label for="property_rooms"><?php esc_html_e('Rooms','wpestate');?></label>
                         <input type="text" id="property_rooms" size="40" class="form-control"  name="property_rooms" value="<?php print $property_rooms;?>">
                     </p>
                 </div>
+                -->
 
 
-
+ <!--
                 <div class="col-md-6">
                     <p>
                         <label for="property_bedrooms "><?php esc_html_e('Bedrooms','wpestate');?></label>
                         <input type="text" id="property_bedrooms" size="40" class="form-control"  name="property_bedrooms" value="<?php print $property_bedrooms;?>">
                     </p>
                 </div>
+                
+                -->
 
+ <!--
                 <div class="col-md-6">
                     <p>
                         <label for="property_bedrooms"><?php esc_html_e('Bathrooms','wpestate');?></label>
@@ -54,7 +58,7 @@ $measure_sys            = esc_html ( get_option('wp_estate_measure_sys','') );
                     </p>
                 </div>
 
-
+-->
                 <!-- Add custom details -->
 
                 <?php

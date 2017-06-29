@@ -49,13 +49,13 @@ global $instant_booking;
 
             <div class="col-md-3 dashboard_chapter_label"> 
                 <p>
-                    <label for="prop_category"><?php esc_html_e('*Category and *Listed In/Room Type','wpestate');?></label>
+                    <label for="prop_category"><?php esc_html_e('*Racquet Brand','wpestate');?></label>
                 </p>
             </div>
 
             <div class="col-md-3"> 
                 <p>
-                    <label for="prop_category"><?php esc_html_e('*Category (mandatory)','wpestate');?></label>
+                    <label for="prop_category"><?php esc_html_e('*Brand (mandatory)','wpestate');?></label>
                     <?php 
                         $args=array(
                                 'class'       => 'select-submit2',
@@ -76,7 +76,7 @@ global $instant_booking;
 
             <div class="col-md-3"> 
                 <p>
-                    <label for="prop_action_category"> <?php esc_html_e('*Listed In/Room Type (mandatory)','wpestate'); $prop_action_category;?></label>
+                    <label for="prop_action_category"> <?php esc_html_e('*Type (mandatory)','wpestate'); $prop_action_category;?></label>
                     <?php 
                     $args=array(
                             'class'       => 'select-submit2',
@@ -103,13 +103,13 @@ global $instant_booking;
 
             <div class="col-md-3 dashboard_chapter_label "> 
                 <p>
-                    <label for="guest_no"><?php esc_html_e('*Guest No','wpestate');?></label>  
+                    <label for="guest_no"><?php esc_html_e('*Racquet No','wpestate');?></label>  
                 </p>
             </div>
 
             <div class="col-md-3"> 
                 <p>
-                    <label for="guest_no"><?php esc_html_e('*Guest No (mandatory)','wpestate');?></label>
+                    <label for="guest_no"><?php esc_html_e('*Racquet No (mandatory)','wpestate');?></label>
                     <select id="guest_no" name="guest_no">
                         <?php 
                         for($i=0; $i<15; $i++) {
@@ -178,13 +178,13 @@ global $instant_booking;
 
         <div class="col-md-12"> 
             <div class="col-md-3 dashboard_chapter_label"> 
-                <label for="property_description"><?php esc_html_e('Property Description','wpestate');?></label>
+                <label for="property_description"><?php esc_html_e('Racquet Description','wpestate');?></label>
             </div>
 
             <div class="col-md-6"> 
-                <label for="property_description"><?php esc_html_e('Property Description','wpestate');?></label>
+                <label for="property_description"><?php esc_html_e('Racquet Description','wpestate');?></label>
                 <textarea rows="4" id="property_description" name="property_description"  class="advanced_select  form-control" 
-                           placeholder="<?php esc_html_e('Describe your property','wpestate');?>"><?php print $submit_description; ?></textarea>
+                           placeholder="<?php esc_html_e('Describe your racquet','wpestate');?>"><?php print $submit_description; ?></textarea>
             </div>
         </div>    
     </div>

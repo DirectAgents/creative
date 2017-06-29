@@ -35,7 +35,7 @@ global $options;
 
                     <div class="category_icon_wrapper">
                         <div class="category_icon"><img src="<?php print get_template_directory_uri().'/img/guest_icon.png';?>" height="25" alt="guests" class="retina_ready"></div>
-                        <div class="category_text"><?php print $guests.' '. esc_html__( 'Guests','wpestate');?></div>
+                        <div class="category_text"><?php print $guests.' '. esc_html__( 'Racquets','wpestate');?></div>
                     </div>
 
                     <div class="category_icon_wrapper">
@@ -104,7 +104,7 @@ global $options;
                     print '
                     <div class="dropdown form-control">
                         <div data-toggle="dropdown" id="booking_guest_no_wrapper" class="filter_menu_trigger" data-value="all">
-                            '. esc_html__( 'Guests','wpestate').' 
+                            '. esc_html__( 'Racquets','wpestate').' 
                             <span class="caret caret_filter"></span>
                         </div>           
                         <input type="hidden" name="booking_guest_no"  value="">
