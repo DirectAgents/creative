@@ -1651,7 +1651,7 @@ if( !function_exists('wpestate_ajax_register_form') ):
                     update_user_meta($user_id, 'user_type', intval($_POST['user_type']));
                 }
                 if($enable_user_pass_status=='yes' ){
-                    echo json_encode(array('register'=>true,'message'=>esc_html__( 'The account was created.You can login now.','wpestate')));
+                    echo json_encode(array('register'=>true,'message'=>esc_html__( 'The account was created. You can login now.','wpestate')));
                 }else{
                     echo json_encode(array('register'=>true,'message'=>esc_html__( 'An email with the generated password was sent','wpestate')));
                 }

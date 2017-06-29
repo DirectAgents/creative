@@ -28,7 +28,7 @@ if( $user_small_picture_id == '' ){
         <div class="signuplink" id="topbarregister"><?php esc_html_e('Signup','wpestate')?></div>
         
         <?php if(  esc_html ( get_option('wp_estate_show_submit','') ) ==='yes'){ ?>
-            <a href="<?php print  wpestate_get_dasboard_add_listing();?>" id="submit_action"><?php esc_html_e('Submit Property','wpestate');?></a>
+            <a href="<?php print  wpestate_get_dasboard_add_listing();?>" id="submit_action"><?php esc_html_e('Post Your Racquet','wpestate');?></a>
         <?php } ?>                   
        
 <?php } ?>   
