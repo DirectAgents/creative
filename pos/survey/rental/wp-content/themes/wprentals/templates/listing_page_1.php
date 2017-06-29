@@ -339,7 +339,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                     <?php 
                     $max_guest = get_post_meta($post_id,'guest_no',true);
                     print '
-                    <div class="dropdown form-control">
+                    <div class="dropdown form-control" style="display:none">
                         <div data-toggle="dropdown" id="booking_guest_no_wrapper" class="filter_menu_trigger" data-value="';
                         if(isset($_GET['guest_no_prop']) && $_GET['guest_no_prop']!=''){
                             echo esc_html( $_GET['guest_no_prop'] );
@@ -360,7 +360,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                         </div>           
                         <input type="hidden" name="booking_guest_no"  value="">
                         <ul  class="dropdown-menu filter_menu" role="menu" aria-labelledby="booking_guest_no_wrapper" id="booking_guest_no_wrapper_list">
-                             <li role="presentation" data-value="1">1 guest</li>
+                            '.$guest_list.'
                         </ul>        
                     </div>';
                     ?> 

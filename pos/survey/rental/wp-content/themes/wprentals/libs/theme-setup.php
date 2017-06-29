@@ -406,12 +406,12 @@ The property is: %booking_property_link','wpestate');
         add_option ('wp_estate_newbook',$to_save);
         
         //mynewbook
-        $to_save=__('You booked a period on %website_url.','wpestate');
+        $to_save=__('You have requested to rent a tennis racquet on %website_url.','wpestate');
         add_option ('wp_estate_subject_mynewbook',$to_save);
         
         $to_save=__('Hi there,
-You have booked a period for your own listing on %website_url !  The reservation will appear in your account, under My Rental Requests. 
-The property is: %booking_property_link','wpestate');
+You have requested to rent a tennis racquet for your own listing on %website_url !  The reservation will appear in your account, under My Rental Requests. 
+The tennis racquet is: %booking_property_link','wpestate');
         add_option ('wp_estate_mynewbook',$to_save);
         
         //newinvoice

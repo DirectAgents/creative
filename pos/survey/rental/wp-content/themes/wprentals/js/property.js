@@ -491,7 +491,8 @@ jQuery(document).ready(function ($) {
             return;
         }
         
-        guest_number = jQuery('#booking_guest_no_wrapper').attr('data-value');
+        //guest_number = jQuery('#booking_guest_no_wrapper').attr('data-value');
+        guest_number = 1;
         guest_number = parseInt(guest_number,10);
         
         if (isNaN(guest_number)){

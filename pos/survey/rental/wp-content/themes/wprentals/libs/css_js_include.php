@@ -455,7 +455,7 @@ function wpestate_scripts() {
                     'terms_cond'            =>  esc_html__( 'You must to agree with terms and conditions!','wpestate'),
                     'slider_min'            =>  floatval(get_option('wp_estate_show_slider_min_price','')),
                     'slider_max'            =>  floatval(get_option('wp_estate_show_slider_max_price','')),
-                    'bookconfirmed'         =>  esc_html__( 'Booking request sent. Please wait for owner\'s confirmation!','wpestate'),
+                    'bookconfirmed'         =>  esc_html__( 'Rental request for the racquet was sent. Please wait for owner\'s confirmation!','wpestate'),
                     'bookdenied'            =>  esc_html__( 'The selected period is already booked. Please choose a new one!','wpestate'),
                     'to'                    =>  esc_html__( 'to','wpestate'),
                     'curency'               =>  esc_html( get_option('wp_estate_currency_label_main', '') ),
