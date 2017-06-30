@@ -717,7 +717,7 @@ function wpestate_advanced_search_function($attributes, $content = null){
                     else if($search_field=='types'){
                             $return_string.='           
                                 <div class="dropdown listing_filter_select form-control" >
-                                <div data-toggle="dropdown" id="adv_actions_shortcode" class="filter_menu_trigger" data-value="all">'.esc_html__( 'All Sizes','wpestate').'<span class="caret caret_filter"></span> </div>           
+                                <div data-toggle="dropdown" id="adv_actions_shortcode" class="filter_menu_trigger" data-value="all">'.esc_html__( 'All Models','wpestate').'<span class="caret caret_filter"></span> </div>           
                                     <input type="hidden" name="filter_search_action[]" value="">
                                     <ul class="dropdown-menu filter_menu" role="menu" aria-labelledby="adv_actions_shortcode">
                                         '.$action_select_list.'
@@ -726,7 +726,7 @@ function wpestate_advanced_search_function($attributes, $content = null){
                    }else if($search_field=='categories'){
                             $return_string.='
                              <div class="dropdown listing_filter_select form-control" >
-                                <div data-toggle="dropdown" id="adv_categ_shortcode" class="filter_menu_trigger" data-value="all">'.esc_html__( 'All Types','wpestate').' <span class="caret caret_filter"></span> </div>           
+                                <div data-toggle="dropdown" id="adv_categ_shortcode" class="filter_menu_trigger" data-value="all">'.esc_html__( 'All Brands','wpestate').' <span class="caret caret_filter"></span> </div>           
                                   <input type="hidden" name="filter_search_type[]" value="">
 
                                   <ul class="dropdown-menu filter_menu" role="menu" aria-labelledby="adv_categ_shortcode">

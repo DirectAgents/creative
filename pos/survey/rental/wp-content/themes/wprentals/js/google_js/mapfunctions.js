@@ -39,8 +39,8 @@ function show_pins_filters_from_file() {
         var county      =   jQuery('#a_filter_county').attr('data-value');
     }
    
-    jQuery('#a_filter_action').attr('data-value','All Sizes');
-    jQuery('#a_filter_categ').attr('data-value','All Types');
+    jQuery('#a_filter_action').attr('data-value','All Models');
+    jQuery('#a_filter_categ').attr('data-value','All Brands');
     jQuery('#a_filter_cities').attr('data-value','All Cities');
     jQuery('#a_filter_areas').attr('data-value','All Areas');
  

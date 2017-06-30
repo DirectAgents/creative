@@ -2484,7 +2484,7 @@ if( !function_exists('wpestate_ajax_filter_listings') ):
         ///// category filters 
         //////////////////////////////////////////////////////////////////////////////////////
         $allowed_html   =   array();
-        if (isset($_POST['category_values']) && trim($_POST['category_values']) != esc_html__( 'All Types','wpestate')  && trim($_POST['category_values']) != 'All Types' && $_POST['category_values']!=''&& $_POST['category_values']!='all' ){
+        if (isset($_POST['category_values']) && trim($_POST['category_values']) != esc_html__( 'All Brands','wpestate')  && trim($_POST['category_values']) != 'All Brands' && $_POST['category_values']!=''&& $_POST['category_values']!='all' ){
             $taxcateg_include   =   sanitize_title ( wp_kses(  $_POST['category_values'],$allowed_html  ) );
             $categ_array=array(
                 'taxonomy'  => 'property_category',
@@ -2499,7 +2499,7 @@ if( !function_exists('wpestate_ajax_filter_listings') ):
         ///// action  filters 
         //////////////////////////////////////////////////////////////////////////////////////
 
-        if ( ( isset($_POST['action_values']) && trim($_POST['action_values']) != esc_html__( 'All Sizes','wpestate') ) && trim($_POST['action_values']) != 'All Sizes' && $_POST['action_values']!='' && $_POST['action_values']!='all'){
+        if ( ( isset($_POST['action_values']) && trim($_POST['action_values']) != esc_html__( 'All Models','wpestate') ) && trim($_POST['action_values']) != 'All Models' && $_POST['action_values']!='' && $_POST['action_values']!='all'){
             $taxaction_include   =   sanitize_title ( wp_kses(  $_POST['action_values'],$allowed_html  ) );   
             $action_array=array(
                 'taxonomy'  => 'property_action_category',

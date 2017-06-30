@@ -481,7 +481,7 @@ if( !function_exists('estate_listing_options') ):
         <p class="meta-options">
         <label for="listing_categ">'.esc_html__( 'Pick Category','wpestate').'</label><br />
          <select name="listing_categ"  >
-                        <option value="all">'.esc_html__( 'All Types','wpestate').'</option>
+                        <option value="all">'.esc_html__( 'All Brands','wpestate').'</option>
                         '. $categ_select.'
                     </select>
         </p>

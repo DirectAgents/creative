@@ -99,7 +99,7 @@ if ($where_currency == 'before') {
         
         <div class="col-md-3">
             <div class="dropdown form-control types_icon" id="categ_list" >
-                <div data-toggle="dropdown" id="adv_categ" class="filter_menu_trigger" data-value="all"> <?php esc_html_e('All Types','wpestate');?> <span class="caret caret_filter"></span> </div>           
+                <div data-toggle="dropdown" id="adv_categ" class="filter_menu_trigger" data-value="all"> <?php esc_html_e('All Brands','wpestate');?> <span class="caret caret_filter"></span> </div>           
                 <input type="hidden" name="filter_search_type[]" value="">
                 <ul  class="dropdown-menu filter_menu" role="menu" aria-labelledby="adv_categ">
                     <?php  print wp_kses($categ_select_list,$allowed_html_list); ?>
@@ -109,7 +109,7 @@ if ($where_currency == 'before') {
         
         <div class="col-md-3">
             <div class="dropdown form-control actions_icon">
-                <div data-toggle="dropdown" id="adv_actions" class="filter_menu_trigger" data-value="all"> <?php esc_html_e('All Sizes','wpestate');?> <span class="caret caret_filter"></span> </div>           
+                <div data-toggle="dropdown" id="adv_actions" class="filter_menu_trigger" data-value="all"> <?php esc_html_e('All Models','wpestate');?> <span class="caret caret_filter"></span> </div>           
                 <input type="hidden" name="filter_search_action[]" value="">
                 <ul  class="dropdown-menu filter_menu" role="menu" aria-labelledby="adv_actions">
                     <?php print wp_kses($action_select_list,$allowed_html_list);?>

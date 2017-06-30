@@ -71,7 +71,7 @@ wp_reset_postdata();
             
             <h1 class="entry-title title_prop"> 
                 <?php 
-                esc_html_e('Properties listed in ','wpestate');single_cat_title();
+                esc_html_e('Brands listed in ','wpestate');single_cat_title();
                 ?>
             </h1>
         <?php } ?>

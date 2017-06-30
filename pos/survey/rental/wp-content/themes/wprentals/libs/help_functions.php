@@ -2900,7 +2900,7 @@ if( !function_exists('wpestate_show_search_field_mobile') ):
             else if($search_field=='types'){
                   $return_string='
                   <div class="dropdown form-control">
-                  <div data-toggle="dropdown" id="adv_actions_mobile" class="filter_menu_trigger" data-value="all">'.esc_html__( 'All Sizes','wpestate').'<span class="caret caret_filter"></span> </div>           
+                  <div data-toggle="dropdown" id="adv_actions_mobile" class="filter_menu_trigger" data-value="all">'.esc_html__( 'All Models','wpestate').'<span class="caret caret_filter"></span> </div>           
                      <input type="hidden" name="filter_search_action[]" value="">
                                                           
                     <ul class="dropdown-menu filter_menu" role="menu" aria-labelledby="adv_actions_mobile">
@@ -2912,7 +2912,7 @@ if( !function_exists('wpestate_show_search_field_mobile') ):
                     
                   $return_string='
                   <div class="dropdown form-control">
-                  <div data-toggle="dropdown" id="adv_categ_mobile" class="filter_menu_trigger" data-value="all">'.esc_html__( 'All Types','wpestate').' <span class="caret caret_filter"></span> </div>           
+                  <div data-toggle="dropdown" id="adv_categ_mobile" class="filter_menu_trigger" data-value="all">'.esc_html__( 'All Brands','wpestate').' <span class="caret caret_filter"></span> </div>           
                     <input type="hidden" name="filter_search_type[]" value="">
                                                               
                     <ul class="dropdown-menu filter_menu" role="menu" aria-labelledby="adv_categ_mobile">
@@ -3025,7 +3025,7 @@ if( !function_exists('wpestate_show_search_field') ):
                     $return_string='
                     <div class="dropdown form-control">
                         <div data-toggle="dropdown" id="adv_actions" class="filter_menu_trigger" data-value="all">'
-                            .esc_html__( 'All Sizes','wpestate').'<span class="caret caret_filter"></span>
+                            .esc_html__( 'All Models','wpestate').'<span class="caret caret_filter"></span>
                         </div>           
                         <input type="hidden" name="filter_search_action[]" value="">
 
@@ -3039,7 +3039,7 @@ if( !function_exists('wpestate_show_search_field') ):
                     $return_string='
                     <div class="dropdown  form-control">
                         <div data-toggle="dropdown" id="adv_categ" class="filter_menu_trigger" data-value="all">'
-                        .esc_html__( 'All Types','wpestate').' <span class="caret caret_filter"></span>
+                        .esc_html__( 'All Brands','wpestate').' <span class="caret caret_filter"></span>
                         </div>           
                         <input type="hidden" name="filter_search_type[]" value="">
 
@@ -3318,7 +3318,7 @@ if( !function_exists('wpestate_get_action_select_list') ):
     /*function wpestate_get_action_select_list($args){
         $taxonomy           =   'property_action_category';
         $tax_terms          =   get_terms($taxonomy,$args);
-        $action_select_list =   ' <li role="presentation" data-value="all">'. esc_html__( 'All Sizes','wpestate').'</li>';
+        $action_select_list =   ' <li role="presentation" data-value="all">'. esc_html__( 'All Models','wpestate').'</li>';
 
         foreach ($tax_terms as $tax_term) {
             $action_select_list     .=  '<li role="presentation" data-value="'.$tax_term->slug.'">'. ucwords ( urldecode($tax_term->name ) ).' ('.$tax_term->count.')'.'</li>';
@@ -3331,7 +3331,7 @@ if( !function_exists('wpestate_get_action_select_list') ):
         $taxonomy           =   'property_action_category';
         $categories          =   get_terms($taxonomy,$args);
        
-        $categ_select_list =   ' <li role="presentation" data-value="all">'. __('All Sizes','wpestate').'</li>';
+        $categ_select_list =   ' <li role="presentation" data-value="all">'. __('All Models','wpestate').'</li>';
        
         foreach ($categories as $categ) {
             $received = wpestate_hierarchical_category_childen($taxonomy, $categ->term_id,$args ); 
@@ -3358,7 +3358,7 @@ if( !function_exists('wpestate_get_category_select_list') ):
     /*function wpestate_get_category_select_list($args){
         $taxonomy           =   'property_category';
         $categories         =   get_terms($taxonomy,$args);
-        $categ_select_list  =  '<li role="presentation" data-value="all">'. esc_html__( 'All Types','wpestate').'</li>'; 
+        $categ_select_list  =  '<li role="presentation" data-value="all">'. esc_html__( 'All Brands','wpestate').'</li>'; 
 
         foreach ($categories as $categ) {
             $categ_select_list     .=   '<li role="presentation" data-value="'.$categ->slug.'">'. ucwords ( urldecode( $categ->name ) ).' ('.$categ->count.')'.'</li>';
@@ -3370,7 +3370,7 @@ if( !function_exists('wpestate_get_category_select_list') ):
         $taxonomy           =   'property_category';
         $categories         =   get_terms($taxonomy,$args);
       
-        $categ_select_list  =  '<li role="presentation" data-value="all">'. __('All Types','wpestate').'</li>'; 
+        $categ_select_list  =  '<li role="presentation" data-value="all">'. __('All Brands','wpestate').'</li>'; 
 
         foreach ($categories as $categ) {
             $counter = $categ->count;

@@ -53,7 +53,7 @@ if (!empty($current_adv_filter_search_action) && $current_adv_filter_search_acti
     
     $current_adv_filter_search_label    =    $current_adv_filter_search_action[0];
 }else{
-    $current_adv_filter_search_label    =   esc_html__( 'All Sizes','wpestate');
+    $current_adv_filter_search_label    =   esc_html__( 'All Models','wpestate');
 }
       
 /////////////////////////////////////////////////////////////////////////category
@@ -72,7 +72,7 @@ if ( !empty($current_adv_filter_search_category) && $current_adv_filter_search_c
     $current_adv_filter_category_label  = $current_adv_filter_search_category[0];
     
 }else{
-    $current_adv_filter_category_label  = esc_html__( 'All Types','wpestate');
+    $current_adv_filter_category_label  = esc_html__( 'All Brands','wpestate');
 }
 /////////////////////////////////////////////////////////////////////////////
 

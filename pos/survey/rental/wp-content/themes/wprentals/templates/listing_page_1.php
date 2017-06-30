@@ -123,10 +123,10 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                 <?php } ?>
                 
                 <?php  if( $property_category!='') {
-                    echo $property_category;?> <span class="property_header_separator">|</span> 
+                    echo $property_category;?> <!--<span class="property_header_separator">|</span>--> 
                 <?php } ?> 
                     
-                <?php print '<span class="no_link_details">'.$guests.' '. esc_html__( 'Racquets','wpestate').'</span>';?> <!--<span class="property_header_separator">|</span>-->
+                <?php //print '<span class="no_link_details">'.$guests.' '. esc_html__( 'Racquets','wpestate').'</span>';?> <!--<span class="property_header_separator">|</span>-->
                 <?php //print '<span class="no_link_details">'.$bedrooms.' '.esc_html__( 'Bedrooms','wpestate').'</span>';?><!--<span class="property_header_separator">|</span>-->
                 <?php //print '<span class="no_link_details">'.$bathrooms.' '.esc_html__( 'Baths','wpestate').'</span>';?>
             </div>
@@ -307,7 +307,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                 wpestate_show_price($post->ID,$currency,$where_currency,0); 
                 if($price!=0){
                     if( $price_per_guest_from_one == 1){
-                        echo ' '.esc_html__( 'per guest','wpestate'); 
+                        echo ' '.esc_html__( 'per racquet','wpestate'); 
                     }else{
                         echo ' '.esc_html__( 'per day','wpestate'); 
                     }

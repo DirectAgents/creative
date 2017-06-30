@@ -34,10 +34,10 @@ if( isset($post->ID) ){
 
 if( is_tax() ){
     $show_filter_area = 'yes';
-    $current_adv_filter_search_label        =   esc_html__( 'All Sizes','wpestate');
-    $current_adv_filter_search_label_non    =   'All Sizes';
-    $current_adv_filter_category_label      =   esc_html__( 'All Types','wpestate');
-    $current_adv_filter_category_label_non  =   'All Types';
+    $current_adv_filter_search_label        =   esc_html__( 'All Models','wpestate');
+    $current_adv_filter_search_label_non    =   'All Models';
+    $current_adv_filter_category_label      =   esc_html__( 'All Brands','wpestate');
+    $current_adv_filter_category_label_non  =   'All Brands';
     $current_adv_filter_city_label          =   esc_html__( 'All Cities','wpestate');
     $current_adv_filter_city_label_non      =   'All Cities';
     $current_adv_filter_area_label          =   esc_html__( 'All Areas','wpestate');

@@ -2,8 +2,8 @@
 $allowed_html=array();
 if( is_tax() ){
     
-    $current_adv_filter_search_label    ='All Sizes';
-    $current_adv_filter_category_label  ='All Types';
+    $current_adv_filter_search_label    ='All Models';
+    $current_adv_filter_category_label  ='All Brands';
     $current_adv_filter_city_label      ='All Cities';
     $current_adv_filter_area_label      ='All Areas';
     $taxonmy                            = get_query_var('taxonomy');

@@ -60,7 +60,7 @@ wp_reset_query();
             }else{ ?>
                 <h1 class="entry-title title_prop"> 
                     <?php 
-                    esc_html_e('Properties listed in ','wpestate');echo '"';single_cat_title();echo '" ';
+                    esc_html_e('Brands listed in ','wpestate');echo '"';single_cat_title();echo '" ';
                     ?>
                 </h1>
         

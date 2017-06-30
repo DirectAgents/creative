@@ -138,7 +138,7 @@ class Wpestate_Advanced_Search_widget extends WP_Widget {
                         if( !empty($action_select_list) ){
                             print'
                               <div class="dropdown form-control" >
-                                <div data-toggle="dropdown" id="sidebar_filter_action" class="sidebar_filter_menu"> '.esc_html__( 'All Sizes','wpestate').' <span class="caret caret_sidebar"></span> </div>           
+                                <div data-toggle="dropdown" id="sidebar_filter_action" class="sidebar_filter_menu"> '.esc_html__( 'All Models','wpestate').' <span class="caret caret_sidebar"></span> </div>           
                                 <input type="hidden" name="filter_search_action[]" value="">
                                 <ul id="list_sidebar_filter_action" class="dropdown-menu filter_menu" role="menu" aria-labelledby="sidebar_filter_action">
                                     '.$action_select_list.'
@@ -149,7 +149,7 @@ class Wpestate_Advanced_Search_widget extends WP_Widget {
                         if( !empty($cate_select_list) ){
                              print'                                            
                                 <div class="dropdown form-control" >
-                                    <div data-toggle="dropdown" id="a_sidebar_filter_categ" class="sidebar_filter_menu"> '. esc_html__( 'All Types','wpestate').' <span class="caret caret_sidebar"></span> </div>           
+                                    <div data-toggle="dropdown" id="a_sidebar_filter_categ" class="sidebar_filter_menu"> '. esc_html__( 'All Brands','wpestate').' <span class="caret caret_sidebar"></span> </div>           
                                         <input type="hidden" name="filter_search_type[]" value="">
                                         <ul id="sidebar_filter_categ" class="dropdown-menu filter_menu" role="menu" aria-labelledby="a_sidebar_filter_categ">
                                         '.$cate_select_list.'

@@ -282,7 +282,7 @@ class Wpestate_footer_latest_widget extends WP_Widget {
 
                     $current_adv_filter_search_label= $current_adv_filter_search_action[0];
                 }else{
-                     $current_adv_filter_search_label=esc_html__( 'All Sizes','wpestate');
+                     $current_adv_filter_search_label=esc_html__( 'All Models','wpestate');
                 }
 
 
@@ -303,7 +303,7 @@ class Wpestate_footer_latest_widget extends WP_Widget {
                     );
                      $current_adv_filter_category_label=$current_adv_filter_search_category[0];
                 }else{
-                    $current_adv_filter_category_label=esc_html__( 'All Types','wpestate');
+                    $current_adv_filter_category_label=esc_html__( 'All Brands','wpestate');
                 }
                 /////////////////////////////////////////////////////////////////////////////
 
