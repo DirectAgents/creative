@@ -85,7 +85,7 @@ if( isset($_POST['wpestate_prop_title']) ){
     <div class="dashboard-margin">
         <div class="dashboard-header">
             <?php if (esc_html( get_post_meta($post->ID, 'page_show_title', true) ) != 'no') { ?>
-                <h1 class="entry-title listings-title-dash"><?php the_title(); ?></h1>
+                <h1 class="entry-title listings-title-dash">My Rentals</h1>
             <?php } ?>
                 
             <div class="back_to_home">
@@ -96,7 +96,7 @@ if( isset($_POST['wpestate_prop_title']) ){
         <div class="search_dashborad_header">
             <form method="post" action="<?php echo wpestate_get_my_reservation_link();?>">
             <div class="col-md-4">
-                <input type="text" id="title" class="form-control" value="" size="20" name="wpestate_prop_title" placeholder="<?php esc_html_e('Search by property name.','wpestate');?>">
+                <input type="text" id="title" class="form-control" value="" size="20" name="wpestate_prop_title" placeholder="<?php esc_html_e('Search by racquet name.','wpestate');?>">
             </div>
             <div class="col-md-6">
                 <input type="submit" class="wpb_btn-info wpb_btn-small wpestate_vc_button  vc_button" value="<?php esc_html_e('Search','wpestate');?>">
@@ -137,7 +137,7 @@ if( isset($_POST['wpestate_prop_title']) ){
                 if($new_mess==1){
                     print '<h4 class="no_favorites">'.esc_html__( 'No results!','wpestate').'</h4>';
                 }else{
-                    print '<h4 class="no_favorites">'.esc_html__( 'You don\'t have any reservations made!','wpestate').'</h4>';
+                    print '<h4 class="no_favorites">'.esc_html__( 'You don\'t have any rentals made!','wpestate').'</h4>';
                 }
       
             } 

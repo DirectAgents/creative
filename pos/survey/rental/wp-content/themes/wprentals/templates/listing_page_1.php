@@ -317,7 +317,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
         
             <div class="booking_form_request" id="booking_form_request">
             <div id="booking_form_request_mess"></div>
-            <h3 ><?php esc_html_e('Book Now','wpestate');?></h3>
+            <h3 ><?php esc_html_e('Rent Now','wpestate');?></h3>
              
                 <div class="has_calendar calendar_icon">
                     <input type="text" id="start_date" placeholder="<?php esc_html_e('Pick up','wpestate'); ?>"  class="form-control calendar_icon" size="40" name="start_date" 
@@ -387,7 +387,7 @@ $guest_list= wpestate_get_guest_dropdown('noany');
                     if($instant_booking ==1){ ?>
                         <div id="submit_booking_front_instant_wrap"><input type="submit" id="submit_booking_front_instant" data-maxguest="<?php echo $max_guest; ?>" data-overload="<?php echo $overload_guest;?>" data-guestfromone="<?php echo $price_per_guest_from_one; ?>"  class="wpb_btn-info wpb_btn-small wpestate_vc_button  vc_button" value=" <?php esc_html_e('Instant Booking','wpestate');?>" /></div>
                     <?php }else{?>   
-                        <input type="submit" id="submit_booking_front" data-maxguest="<?php echo $max_guest; ?>" data-overload="<?php echo $overload_guest;?>" data-guestfromone="<?php echo $price_per_guest_from_one; ?>"  class="wpb_btn-info wpb_btn-small wpestate_vc_button  vc_button" value="<?php esc_html_e('Book Now','wpestate');?>" />
+                        <input type="submit" id="submit_booking_front" data-maxguest="<?php echo $max_guest; ?>" data-overload="<?php echo $overload_guest;?>" data-guestfromone="<?php echo $price_per_guest_from_one; ?>"  class="wpb_btn-info wpb_btn-small wpestate_vc_button  vc_button" value="<?php esc_html_e('Rent Now','wpestate');?>" />
                     <?php }?>
 
 

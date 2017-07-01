@@ -636,7 +636,7 @@ if( !function_exists('wpestate_create_pay_user_invoice_form') ):
                             <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of days','wpestate').': </span>'.$booking_array['numberDays'].'</span>
                             <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Racquets','wpestate').': </span>'.$booking_guests.'</span>';
                             if($booking_array['price_per_guest_from_one']==1){
-                                print'<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per Guest','wpestate').': </span>'; 
+                                print'<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per Racquet','wpestate').': </span>'; 
                                 print $extra_price_per_guest;
                                 print'</span>';
                             }else{
@@ -690,7 +690,7 @@ if( !function_exists('wpestate_create_pay_user_invoice_form') ):
                                         }
                                         if(trim($detail[0])==esc_html__( 'Subtotal','wpestate')){ 
                                             if($booking_array['price_per_guest_from_one']==1){
-                                                print  $extra_price_per_guest.' x '.$booking_array['count_days'].' '.esc_html__( 'days','wpestate').' x '.$booking_array['curent_guest_no'].' '.esc_html__( 'guests','wpestate');
+                                                print  $extra_price_per_guest.' x '.$booking_array['count_days'].' '.esc_html__( 'days','wpestate').' x '.$booking_array['curent_guest_no'].' '.esc_html__( 'racquets','wpestate');
                                             
                                                 if($booking_array['price_per_guest_from_one']==1 && $booking_array['custom_period_quest']==1){
                                                     echo " - ".esc_html__("period with custom price per guest","wpestate"); 
@@ -715,7 +715,7 @@ if( !function_exists('wpestate_create_pay_user_invoice_form') ):
                                         }
                             
                                         if(trim($detail[0])==esc_html__( 'Extra Racquets','wpestate')){ 
-                                            print $booking_array['numberDays'].' '.esc_html__( 'days','wpestate').' x '.$booking_array['extra_guests'].' '.esc_html__('extra guests','wpestate');
+                                            print $booking_array['numberDays'].' '.esc_html__( 'days','wpestate').' x '.$booking_array['extra_guests'].' '.esc_html__('extra racquets','wpestate');
                                             if ( $booking_array['custom_period_quest']==1 ){
                                                 echo  esc_html__(" , period with custom price per guest","wpestate");
                                             }
@@ -736,7 +736,7 @@ if( !function_exists('wpestate_create_pay_user_invoice_form') ):
                                <span class="inv_legend"><strong>'.esc_html__( 'Total','wpestate').'</strong></span>
                                <span class="inv_data" id="total_amm" data-total="'.$invoice_price.'">'.$total_price_show.'</span></br>
                                
-                               <span class="inv_legend">'.esc_html__( 'Reservation Fee Required','wpestate').':</span> <span class="inv_depozit depozit_show" data-value="'.$depozit.'"> '.$depozit_show.'</span></br>
+                               <span class="inv_legend">'.esc_html__( 'Rental Fee Required','wpestate').':</span> <span class="inv_depozit depozit_show" data-value="'.$depozit.'"> '.$depozit_show.'</span></br>
                                <span class="inv_legend">'.esc_html__( 'Balance Owing','wpestate').':</span> <span class="inv_depozit balance_show"  data-value="'.$balance.'">'.$balance_show.'</span>
                            </div>
                        </div>';
@@ -1762,16 +1762,17 @@ if( !function_exists('wpestate_create_invoice_form') ):
                         <div style="display:none" id="property_details_invoice" data-taxes_value="'.floatval(get_post_meta($property_id, 'property_taxes', true)).'" data-earlyb="'.floatval(get_post_meta($property_id, 'early_bird_percent', true)).'"></div>
                         <span class="date_interval"><span class="invoice_data_legend">'.esc_html__( 'Period','wpestate').' : </span>'.$booking_from_date.' '.esc_html__( 'to','wpestate').' '.$booking_to_date.'</span>
                         <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of days','wpestate').': </span>'.$booking_array['count_days'].'</span>
-                        <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of guests','wpestate').': </span>'.$booking_guests.'</span>';
+                        <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of racquets','wpestate').': </span>
+						1</span>';
                         if($booking_array['price_per_guest_from_one']==1){
                             print'    
-                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per Guest','wpestate').': </span>'; 
+                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per Racquet','wpestate').': </span>'; 
                                 print $extra_price_per_guest;
                             print'</span>';
                         }else{
                             print'    
                             <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per day','wpestate').': </span>';
-                            print __('default price:','wpestate').' '.$price_show;
+                            print __('','wpestate').' '.$price_show;
                             if($booking_array['has_custom']){
                                 print ', '.esc_html__('has custom price','wpestate');
                               
@@ -1925,10 +1926,10 @@ if( !function_exists('wpestate_create_invoice_form') ):
                             print'  
                             <div class="invoice_row invoice_total invoice_total_generate_invoice">
                                 <div style="display:none;" id="inter_price" data-value="'.$booking_array ['inter_price'].'"></div>
-                                <span class="inv_legend"><strong>'.esc_html__( 'Guest Pays','wpestate').'</strong></span>
+                                <span class="inv_legend"><strong>'.esc_html__( 'Person Pays','wpestate').'</strong></span>
                                 <span class="inv_data" id="total_amm" data-total="'.$total_price_comp.'">'.$total_price_show.'</span>
 
-                                <span class="total_inv_span"><span class="inv_legend"> '.esc_html__( 'Reservation Fee Required','wpestate').':</span> <span id="inv_depozit" data-value="'.$depozit.'">'.$deposit_show.'</span>
+                                <span class="total_inv_span"><span class="inv_legend"> '.esc_html__( 'Rental Fee Required','wpestate').':</span> <span id="inv_depozit" data-value="'.$depozit.'">'.$deposit_show.'</span>
                                 <div style="width:100%"></div>
                                 <span class="inv_legend">'.esc_html__( 'Balance Owing','wpestate').':</span> <span id="inv_balance" data-val="'.$balance.'">'.$balance_show.'</span>
                             </div>';
@@ -1950,7 +1951,7 @@ if( !function_exists('wpestate_create_invoice_form') ):
                                 <span class="inv_data" id="youearned" data-youearned="'.$booking_array ['youearned'].'"><strong>'.$you_earn_show.'</strong></span>
                                 
 
-                                <div class="invoice_explantions">'.esc_html__('we deduct security deposit, city fees, cleaning fees and website service fee','wpestate').'</div>
+                                <div class="invoice_explantions">'.esc_html__('we deduct security deposit and website service fee','wpestate').'</div>
                                 
                                 <span class="total_inv_span">
                                     <span class="inv_legend">'.esc_html__( 'Service Fee','wpestate').':</span>
@@ -1979,7 +1980,7 @@ if( !function_exists('wpestate_create_invoice_form') ):
                         $label          =   esc_html__( 'Send Invoice','wpestate');
                         $is_confirmed   =   0;
                     }else{
-                        $label  =   esc_html__( 'Confirm Booking - No Reservation Fee Required','wpestate');
+                        $label  =   esc_html__( 'Confirm Rental Request - No Rental Fee Required','wpestate');
                         $is_confirmed   =   1;
                         
                     }
@@ -2203,7 +2204,7 @@ if( !function_exists('wpestate_ajax_add_booking_font_end') ):
         $fromdate           =   trim (  wp_kses ( $_POST['fromdate'],$allowed_html) );
         $to_date            =   trim (  wp_kses ( $_POST['todate'],$allowed_html ) );
         $guests             =   trim (  wp_kses ( $_POST['guests'],$allowed_html) );
-        $event_name         =   esc_html__( 'Booking Request','wpestate');
+        $event_name         =   esc_html__( 'Tennis Rental Request','wpestate');
         
         $post = array(
             'post_title'	=> $event_name,
@@ -2242,7 +2243,7 @@ if( !function_exists('wpestate_ajax_add_booking_font_end') ):
         wpestate_send_booking_email('newbook',$owner_email);
         
         // add into inbox
-        $subject        =  'New Booking Request';
+        $subject        =  'New Tennis Rental Request';
         $message_user   = 'New booking request for listing  '.$property_title;
         wpestate_add_to_inbox($userID,$user_login,$owner_login,$subject,$message_user);
         
@@ -2451,7 +2452,7 @@ if( !function_exists('wpestate_new_ajax_add_booking') ):
         $property_id        =   intval( $_POST['property_name'] );
         $fromdate           =   trim (  wp_kses ( $_POST['fromdate'],$allowed_html));
         $to_date            =   trim (  wp_kses ( $_POST['todate'],$allowed_html) );
-        $event_name         =   esc_html__( 'Booking Request','wpestate');
+        $event_name         =   esc_html__( 'Tennis Rental Request','wpestate');
         
         
        $post = array(

@@ -255,10 +255,9 @@ E-mail: %user_email_register','wpestate');
         add_option ('wp_estate_subject_new_user',$to_save);
         
         $to_save=__('Hi there,
-Welcome to %website_url ! You can login now using the below credentials:
-Username:%user_login_register
-Password: %user_pass_register
-If you have any problems, please contact me.
+Welcome to %website_url ! You can login now using and start posting your racquet that you want to rent to other people in your area.
+
+If you have any questions, please get in touch with us at <a href="mailto:contact@xyz.com">contact@xyz.com</a>
 Thank you!','wpestate');
         add_option ('wp_estate_new_user',$to_save);
         
@@ -266,8 +265,8 @@ Thank you!','wpestate');
         add_option ('wp_estate_subject_admin_expired_listing',$to_save);
         
         $to_save=__('Hi there,
-A user has re-submited a new property on %website_url ! You should go check it out.
-This is the property title: %submission_title.','wpestate');
+A user has re-submited a new tennis racquet for rent on %website_url ! You should go check it out.
+This is the listing title: %submission_title.','wpestate');
         add_option ('wp_estate_admin_expired_listing',$to_save);
         
         //Paid Submissions  
@@ -368,15 +367,17 @@ Your booking made on %website_url was confirmed! You can see all your reservatio
         add_option ('wp_estate_subject_bookingconfirmed',$to_save);
         
         $to_save=__('Hi there,
-Somebody confirmed a booking on %website_url! You should go and check it out!Please remember that the confirmation is made based on the payment confirmation of a non-refundable fee of the total invoice cost, processed through %website_url and sent to website administrator. ','wpestate');
+Somebody confirmed a tennis racquet rental request on %website_url! You should go and check it out! 
+
+Please remember that the confirmation is made based on the payment confirmation of a non-refundable fee of the total invoice cost, processed through %website_url and sent to website administrator. ','wpestate');
         add_option ('wp_estate_bookingconfirmed',$to_save);
         
          //bookingconfirmed_nodeposit
-        $to_save=__('Booking Confirmed on %website_url','wpestate');
+        $to_save=__('Tennis Racquet Rental Confirmed on %website_url','wpestate');
         add_option ('wp_estate_subject_bookingconfirmed_nodeposit',$to_save);
         
         $to_save=__('Hi there,
-You confirmed a booking on %website_url! The booking was confirmed with no deposit!','wpestate');
+You confirmed a tennis racquet rental request on %website_url! The tennis racquet rental request was confirmed with no deposit!','wpestate');
         add_option ('wp_estate_bookingconfirmed_nodeposit',$to_save);
         
         
@@ -397,12 +398,15 @@ The message is:
         
         
         //newbook
-        $to_save=__('New Booking Request on %website_url.','wpestate');
+        $to_save=__('New Tennis Rental Request on %website_url.','wpestate');
         add_option ('wp_estate_subject_newbook',$to_save);
         
         $to_save=__('Hi there,
-You have received a new booking request on %website_url !  Go to your account in Bookings page to see the request, issue the invoice or reject it!
-The property is: %booking_property_link','wpestate');
+You have received a new tennis racquet rental request on %website_url !  
+
+Go to your account in My Rental Requests page to see the request, issue the invoice or reject it!
+
+The listing is: %booking_property_link','wpestate');
         add_option ('wp_estate_newbook',$to_save);
         
         //mynewbook
@@ -410,7 +414,7 @@ The property is: %booking_property_link','wpestate');
         add_option ('wp_estate_subject_mynewbook',$to_save);
         
         $to_save=__('Hi there,
-You have requested to rent a tennis racquet for your own listing on %website_url !  The reservation will appear in your account, under My Rental Requests. 
+You have requested to rent a tennis racquet for your own listing on %website_url !  The rental request will appear in your account, under My Rental Requests. 
 The tennis racquet is: %booking_property_link','wpestate');
         add_option ('wp_estate_mynewbook',$to_save);
         
@@ -419,32 +423,32 @@ The tennis racquet is: %booking_property_link','wpestate');
         add_option ('wp_estate_subject_newinvoice',$to_save);
         
         $to_save=__('Hi there,
-An invoice was generated for your booking request on %website_url !  A deposit will be required for booking to be confirmed. For more details check out your account, My Rentals page.','wpestate');
+An invoice was generated for your tennis rental request on %website_url !  A deposit will be required for rental request to be confirmed. For more details check out your account, My Rentals page.','wpestate');
         add_option ('wp_estate_newinvoice',$to_save);
         
         
          //deletebooking
-        $to_save=__('Booking Request Rejected on %website_url','wpestate');
+        $to_save=__('Tennis Racquet Rental Request Rejected on %website_url','wpestate');
         add_option ('wp_estate_subject_deletebooking',$to_save);
         
         $to_save=__('Hi there,
-One of your booking requests sent on %website_url was rejected by the owner. The rejected reservation is automatically removed from your account. ','wpestate');
+One of your tennis racquet rental requests sent on %website_url was rejected by the owner. The rejected reservation is automatically removed from your account. ','wpestate');
         add_option ('wp_estate_deletebooking',$to_save);
         
          //deletebookinguser
-        $to_save=__('Booking Request Cancelled on %website_url','wpestate');
+        $to_save=__('Tennis Racquet Rental Request Cancelled on %website_url','wpestate');
         add_option ('wp_estate_subject_deletebookinguser',$to_save);
         
         $to_save=__('Hi there,
-One of the unconfirmed booking requests you received on %website_url  was cancelled! The request is automatically deleted from your account!','wpestate');
+One of the unconfirmed tennis racquet rental requests you received on %website_url  was cancelled! The request is automatically deleted from your account!','wpestate');
         add_option ('wp_estate_deletebookinguser',$to_save);
         
          //deletebookingconfirmed
-        $to_save=__('Booking Period Cancelled on %website_url.','wpestate');
+        $to_save=__('Tennis racquet rental requests Period Cancelled on %website_url.','wpestate');
         add_option ('wp_estate_subject_deletebookingconfirmed',$to_save);
         
         $to_save=__('Hi there,
-One of your confirmed bookings on %website_url  was cancelled by property owner. ','wpestate');
+One of your confirmed rental requests on %website_url  was cancelled by the tennis racquet owner. ','wpestate');
         add_option ('wp_estate_deletebookingconfirmed',$to_save);
         
         
@@ -471,7 +475,7 @@ Please wait until the payment is made to activate the user purchase.','wpestate'
         add_option ('wp_estate_subject_full_invoice_reminder',$to_save);
         
         $to_save=__('Hi there,
-We remind you that you need to fully pay the invoice no %invoice_id until  %until_date. This invoice is for booking no %booking_id on property %property_title with the url %property_url.
+We remind you that you need to fully pay the invoice no %invoice_id until  %until_date. This invoice is for tennis racquet rental request no %booking_id on listing %property_title with the url %property_url.
 Thank you.','wpestate');
         add_option ('wp_estate_full_invoice_reminder',$to_save);
 }

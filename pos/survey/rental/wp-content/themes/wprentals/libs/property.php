@@ -573,7 +573,7 @@ function details_estate_box($post) {
     <tr>
     <td valign="top" align="left">  
         <p class="meta-options">
-        <label for="guest_no">'.esc_html__( 'People: ','wpestate').'</label><br />
+        <label for="guest_no">'.esc_html__( 'Racquets: ','wpestate').'</label><br />
         <input type="text" id="guest_no" size="40" name="guest_no" value="' . esc_html(get_post_meta($mypost, 'guest_no', true)) . '">
         </p>
     </td>

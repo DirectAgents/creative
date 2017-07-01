@@ -99,7 +99,7 @@ if ($where_currency == 'before') {
             </div>
 
             <div class="user_dashboard_listed">
-                <strong><?php esc_html_e('People: ','wpestate');?> </strong> <?php print $booking_guests; ?>  
+                <strong><?php esc_html_e('Racquets: ','wpestate');?> </strong> <?php print $booking_guests; ?>  
             </div>    
 
             <?php  if($to_be_paid>0 && $booking_status_full!='confirmed') { ?>
@@ -140,20 +140,20 @@ if ($where_currency == 'before') {
                     if ( get_post_meta($booking_id,'review_by_'.$userID,true) != 'has' ){
                         print '<span class="tag-post-review post_review" data-bookid="'.$post->ID.'" data-listing-review="'.$booking_id.'">'.esc_html__( 'Post Review','wpestate').'</span>';
                     }else{
-                        print '<span class="tag-published">'.esc_html__( 'You already reviewed this property!','wpestate').'</span>';
+                        print '<span class="tag-published">'.esc_html__( 'You already reviewed this racquet!','wpestate').'</span>';
                     }
                 }else{
-                    print '<span class="tag-published">'.esc_html__( 'You can post the review after the trip!','wpestate').'</span>'; 
+                    print '<span class="tag-published">'.esc_html__( 'You can post the review after you tried the racquet!','wpestate').'</span>'; 
                 }
                 
            
                   
             }else if( $booking_status=='waiting'){
                 print '<span class="proceed-payment" data-invoiceid="'.$invoice_no.'" data-bookid="'.$post->ID.'">'.esc_html__( 'Invoice Created - Check & Pay','wpestate').'</span>';                  
-                print '<span class="delete_booking usercancel" data-bookid="'.$post->ID.'">'.esc_html__( 'Cancel Booking Request','wpestate').'</span>';              
+                print '<span class="delete_booking usercancel" data-bookid="'.$post->ID.'">'.esc_html__( 'Cancel Tennis Rental Request','wpestate').'</span>';              
             }else{
                 print '<span class="waiting_payment_user" data-bookid="'.$post->ID.'">'.esc_html__( 'Request Pending','wpestate').'</span>';            
-                print '<span class="delete_booking usercancel" data-bookid="'.$post->ID.'">'.esc_html__( 'Cancel Booking Request','wpestate').'</span>';  
+                print '<span class="delete_booking usercancel" data-bookid="'.$post->ID.'">'.esc_html__( 'Cancel Tennis Rental Request','wpestate').'</span>';  
 
             } 
 

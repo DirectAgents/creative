@@ -411,7 +411,7 @@ if( !function_exists('wpestate_print_create_form_invoice') ):
 
                             if($invoice_saved=='Reservation fee' || $invoice_saved==esc_html__('Reservation fee','wpestate')){
                                 print'
-                                <span class="inv_legend">'.esc_html__( 'Reservation Fee Required','wpestate').':</span> <span class="inv_depozit">'.$depozit_show.' </span></br>
+                                <span class="inv_legend">'.esc_html__( 'Rental Fee Required','wpestate').':</span> <span class="inv_depozit">'.$depozit_show.' </span></br>
                                 <span class="inv_legend">'.esc_html__( 'Balance','wpestate').':</span> <span class="inv_depozit">'.$balance_show.'</span>';
                             }else{
                                 echo $invoice_saved;

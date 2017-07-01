@@ -106,7 +106,7 @@ $price_per_booking         =   wpestate_show_price_booking($booking_array['total
 
             <div class="user_dashboard_listed">
                 <span class="booking_details_title"><?php esc_html_e('Pay Amount: ','wpestate');?> </span> <?php print wpestate_show_price_booking ( floatval( get_post_meta($invoice_no, 'item_price', true)) ,$currency,$where_currency,1); ?>  
-                <span class="booking_details_title guest_details"><?php esc_html_e('People: ','wpestate');?> </span> <?php print $booking_guests; ?>  
+                <span class="booking_details_title guest_details"><?php esc_html_e('Racquets: ','wpestate');?> </span> <?php print $booking_guests; ?>  
             </div>
 
         
@@ -155,10 +155,10 @@ $price_per_booking         =   wpestate_show_price_booking($booking_array['total
         }else if( $booking_status=='waiting'){
             print '<span class="waiting_payment" data-bookid="'.$post->ID.'">'.esc_html__( 'Invoice Issued ','wpestate').'</span>';             
             print '<span class="delete_invoice" data-invoiceid="'.$invoice_no.'" data-bookid="'.$post->ID.'">'.esc_html__( 'Delete Invoice','wpestate').'</span>';
-            print '<span class="delete_booking" data-bookid="'.$post->ID.'">'.esc_html__( 'Reject Booking Request','wpestate').'</span>';    
+            print '<span class="delete_booking" data-bookid="'.$post->ID.'">'.esc_html__( 'Reject Tennis Rental Request','wpestate').'</span>';    
         }else{
             print '<span class="generate_invoice" data-bookid="'.$post->ID.'">'.esc_html__( 'Issue invoice','wpestate').'</span>';  
-            print '<span class="delete_booking" data-bookid="'.$post->ID.'">'.esc_html__( 'Reject Booking Request','wpestate').'</span>';    
+            print '<span class="delete_booking" data-bookid="'.$post->ID.'">'.esc_html__( 'Reject Tennis Rental Request','wpestate').'</span>';    
         } 
        
         ?>

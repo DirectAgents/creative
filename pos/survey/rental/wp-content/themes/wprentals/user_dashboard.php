@@ -101,7 +101,7 @@ if( isset($_POST['wpestate_prop_title']) ){
         <div class="search_dashborad_header">
             <form method="post" action="<?php echo wpestate_get_dashboard_link();?>">
             <div class="col-md-4">
-                <input type="text" id="title" class="form-control" value="" size="20" name="wpestate_prop_title" placeholder="<?php esc_html_e('Search by property name.','wpestate');?>">
+                <input type="text" id="title" class="form-control" value="" size="20" name="wpestate_prop_title" placeholder="<?php esc_html_e('Search by racquet name.','wpestate');?>">
             </div>
             <div class="col-md-6">
                 <input type="submit" class="wpb_btn-info wpb_btn-small wpestate_vc_button  vc_button" value="<?php esc_html_e('Search','wpestate');?>">

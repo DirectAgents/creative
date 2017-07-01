@@ -645,7 +645,7 @@ if( !function_exists('wpestate_ajax_add_booking') ):
         $owner_id           =   wpsestate_get_author($property_id);
         $fromdate           =   wp_kses ( $_POST['fromdate'], $allowded_html );
         $to_date            =   wp_kses ( $_POST['todate'], $allowded_html );
-        $event_name         =   esc_html__( 'Booking Request','wpestate');
+        $event_name         =   esc_html__( 'Tennis Rental Request','wpestate');
         $extra_options      =   wp_kses ( $_POST['extra_options'], $allowded_html );
         $post = array(
             'post_title'	=> $event_name,
@@ -708,8 +708,8 @@ if( !function_exists('wpestate_ajax_add_booking') ):
             
         }else{
             
-            $subject    =   esc_html__( 'New Booking Request from ','wpestate');
-            $description=   esc_html__( 'You have received a new booking request','wpestate');
+            $subject    =   esc_html__( 'New Tennis Rental Request from ','wpestate');
+            $description=   esc_html__( 'You have received a new tennis racquet rental request','wpestate');
             
             $from               =   $current_user->ID;
             $to                 =   $owner_id;
@@ -842,7 +842,7 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
         $taxes_value            =   floatval(get_post_meta($property_id, 'property_taxes', true));
         $fromdate               =   wp_kses ( $_POST['fromdate'], $allowded_html );
         $to_date                =   wp_kses ( $_POST['todate'], $allowded_html );
-        $event_name             =   esc_html__( 'Booking Request','wpestate');
+        $event_name             =   esc_html__( 'Tennis Rental Request','wpestate');
         $security_deposit       =   get_post_meta(  $property_id,'security_deposit',true);
         $full_pay_invoice_id    =   0;
         $to_be_paid             =   0;
@@ -1321,7 +1321,7 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
                                <span class="inv_legend"><strong>'.esc_html__( 'Total','wpestate').'</strong></span>
                                <span class="inv_data" id="total_amm" data-total="'.$invoice_price.'">'.$total_price_show.'</span></br>
                                
-                               <span class="inv_legend">'.esc_html__( 'Reservation Fee Required','wpestate').':</span> <span class="inv_depozit depozit_show" data-value="'.$depozit.'"> '.$depozit_show.'</span></br>
+                               <span class="inv_legend">'.esc_html__( 'Rental Fee Required','wpestate').':</span> <span class="inv_depozit depozit_show" data-value="'.$depozit.'"> '.$depozit_show.'</span></br>
                                <span class="inv_legend">'.esc_html__( 'Balance Owing','wpestate').':</span> <span class="inv_depozit balance_show"  data-value="'.$balance.'">'.$balance_show.'</span>
                            </div>
                        </div>';
@@ -1330,7 +1330,7 @@ if( !function_exists('wpestate_ajax_add_booking_instant') ):
            
 
                     if( floatval($depozit)==0){
-                        print '<span id="confirm_zero_instant_booking"   data-propid="'.$property_id.'" data-bookid="'.$booking_id.'" data-invoiceid="'.$invoice_id.'">'.esc_html__( 'Confirm Booking - Nothing To Pay','wpestate').'</span>';
+                        print '<span id="confirm_zero_instant_booking"   data-propid="'.$property_id.'" data-bookid="'.$booking_id.'" data-invoiceid="'.$invoice_id.'">'.esc_html__( 'Confirm Rental Request - Nothing To Pay','wpestate').'</span>';
                      
                     }else{
                         $is_paypal_live= esc_html ( get_option('wp_estate_enable_paypal','') );
