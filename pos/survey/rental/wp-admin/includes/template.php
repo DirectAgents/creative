@@ -646,7 +646,7 @@ function meta_form( $post = null ) {
 ?>
 </select>
 <input class="hide-if-js" type="text" id="metakeyinput" name="metakeyinput" value="" />
-<a href="#postcustomstuff" class="hide-if-no-js" onclick="jQuery('#metakeyinput, #metakeyselect, #enternew, #cancelnew').toggle();return false;">
+<a href="#postcustomstuff" class="hide-if-no-js" onClick="jQuery('#metakeyinput, #metakeyselect, #enternew, #cancelnew').toggle();return false;">
 <span id="enternew"><?php _e('Enter new'); ?></span>
 <span id="cancelnew" class="hidden"><?php _e('Cancel'); ?></span></a>
 <?php } else { ?>

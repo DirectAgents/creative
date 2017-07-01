@@ -187,11 +187,11 @@ class Wpestate_Login_widget extends WP_Widget {
                     }
                     
                     if($home_url!=$dash_reservation){
-                        $logged_display.=' <li> <a href="'.$dash_reservation.'" class="'.$activefav.'"><i class="fa fa-folder-open"></i>'.esc_html__( 'Reservations','wpestate').'</a> </li>';
+                        $logged_display.=' <li> <a href="'.$dash_reservation.'" class="'.$activefav.'"><i class="fa fa-folder-open"></i>'.esc_html__( 'My Rental Requests','wpestate').'</a> </li>';
                     }
                     
                     if($home_url!=$dash_bookings && wpestate_check_user_level() ){
-                        $logged_display.=' <li> <a href="'.$dash_bookings.'" class="'.$activefav.'"><i class="fa fa-folder-open-o"></i>'.esc_html__( 'Bookings','wpestate').'</a> </li>';
+                        $logged_display.=' <li> <a href="'.$dash_bookings.'" class="'.$activefav.'"><i class="fa fa-folder-open-o"></i>'.esc_html__( 'My Rentals','wpestate').'</a> </li>';
                     }
                     
                     if($home_url!=$dash_inbox){

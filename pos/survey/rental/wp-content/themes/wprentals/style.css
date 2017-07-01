@@ -17452,5 +17452,8 @@ table.booking-calendar th{
 
 /**********CUSTOM STYLE************/
 
+.property_flex:hover .blog_unit_back, .property_flex:hover .property_listing, .listing_type_1 .check_avalability, .check_avalability, .menu_user_picture, .theme-slider-view, .scrollon, #submit_action{
+    border:none;
+}
 
 

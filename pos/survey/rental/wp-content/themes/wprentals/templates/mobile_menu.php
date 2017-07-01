@@ -50,10 +50,10 @@
                 
                       
                 <li><a href="<?php print $dash_favorite;?>" class="active_fav"><i class="fa fa-heart"></i><?php esc_html_e('Favorites','wpestate');?></a></li>
-                <li><a href="<?php print $dash_reservation;?>" class="active_fav"><i class="fa fa-folder-open"></i><?php esc_html_e('Reservations','wpestate');?></a></li>
+                <li><a href="<?php print $dash_reservation;?>" class="active_fav"><i class="fa fa-folder-open"></i><?php esc_html_e('My Rental Requests','wpestate');?></a></li>
                 
                 <?php if( wpestate_check_user_level() ) { ?>
-                    <li><a href="<?php print $dash_bookings;?>" class="active_fav"><i class="fa fa-folder-open-o"></i><?php esc_html_e('Bookings','wpestate');?></a></li>
+                    <li><a href="<?php print $dash_bookings;?>" class="active_fav"><i class="fa fa-folder-open-o"></i><?php esc_html_e('My Rentals','wpestate');?></a></li>
                 <?php } ?>
                 
                 <li><a href="<?php print $dash_inbox;?>" class="active_fav"><i class="fa fa-inbox"></i><?php esc_html_e('Inbox','wpestate');?></a></li>

@@ -83,12 +83,12 @@ if ( 0 != $current_user->ID  && is_user_logged_in() ) {
         <?php   
         }
         if($home_url!=$dash_reservation  ){?>
-            <a href="<?php print $dash_reservation;?>" class="active_fav"><i class="fa fa-folder-open"></i><?php esc_html_e('Reservations','wpestate');?></a>
+            <a href="<?php print $dash_reservation;?>" class="active_fav"><i class="fa fa-folder-open"></i><?php esc_html_e('My Rental Requests','wpestate');?></a>
         <?php   
         }
         
         if($home_url!=$dash_bookings && wpestate_check_user_level() ){?>
-            <a href="<?php print $dash_bookings;?>" class="active_fav"><i class="fa fa-folder-open-o"></i><?php esc_html_e('Bookings','wpestate');?></a>
+            <a href="<?php print $dash_bookings;?>" class="active_fav"><i class="fa fa-folder-open-o"></i><?php esc_html_e('My Rentals','wpestate');?></a>
         <?php   
         }
         if($home_url!=$dash_inbox){?>

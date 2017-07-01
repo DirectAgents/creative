@@ -137,7 +137,7 @@ $options                        =   wpestate_page_details($post->ID);
                 if($new_mess==1){
                     print '<h4 class="no_favorites">'.esc_html__( 'No results!','wpestate').'</h4>';
                 }else{
-                    print '<h4 class="no_favorites">'.esc_html__( 'You don\'t have any booking requests yet!','wpestate').'</h4>';
+                    print '<h4 class="no_favorites">'.esc_html__( 'You don\'t have any rental requests yet!','wpestate').'</h4>';
                 }
       
             }
