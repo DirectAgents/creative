@@ -299,7 +299,7 @@ if( !function_exists('wpestate_print_create_form_invoice') ):
                             print'
                             <span class="date_interval"><span class="invoice_data_legend">'.esc_html__( 'Period','wpestate').' : </span>'.$booking_from_date.' '.esc_html__( 'to','wpestate').' '.$booking_to_date.'</span>
                             <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'No of days','wpestate').': </span>'.$booking_array['numberDays'].'</span>
-                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Racquets','wpestate').': </span>'.$booking_guests.'</span>';
+                            <span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Racquets','wpestate').': </span>1</span>';
 
                             if($booking_array['price_per_guest_from_one']==1){
                                 print'<span class="date_duration"><span class="invoice_data_legend">'.esc_html__( 'Price per Guest','wpestate').': </span>'; 
