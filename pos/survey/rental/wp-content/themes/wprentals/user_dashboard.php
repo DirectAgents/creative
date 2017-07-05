@@ -90,7 +90,7 @@ if( isset($_POST['wpestate_prop_title']) ){
         
         <div class="dashboard-header">
             <?php if (esc_html( get_post_meta($post->ID, 'page_show_title', true) ) != 'no') { ?>
-                <h1 class="entry-title listings-title-dash"><?php the_title(); ?></h1>
+                <h1 class="entry-title listings-title-dash">My Tennis Racquets</h1>
             <?php } ?>
             <div class="back_to_home">
                 <a href="<?php echo home_url();?>" title="home url"><?php esc_html_e('Front page','wpestate');?></a>  
