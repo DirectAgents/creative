@@ -139,7 +139,7 @@ if( isset($_POST['wpestate_prop_title']) ){
             if($new_mess==1){
                 print '<h4 class="no_favorites">'.esc_html__( 'No results!','wpestate').'</h4>';
             }else{
-                print '<h4 class="no_list_yet">'.esc_html__( 'You don\'t have any properties yet!','wpestate').'</h4>';
+                print '<h4 class="no_list_yet">'.esc_html__( 'You don\'t have any listings yet!','wpestate').'</h4>';
             }
          }
 

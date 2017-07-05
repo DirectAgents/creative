@@ -177,7 +177,7 @@ $user_pack                  =   get_the_author_meta( 'package_id' , $userID );
              
                 <div class="info-container">
                     <a  data-original-title="<?php esc_html_e('Edit listing','wpestate');?>"   class="dashboad-tooltip" href="<?php  print $edit_link;?>"><i class="fa fa-pencil editprop"></i></a>
-                    <a  data-original-title="<?php esc_html_e('Delete property','wpestate');?>" class="dashboad-tooltip" onclick="return confirm(' <?php echo esc_html__( 'Are you sure you wish to delete ','wpestate').get_the_title(); ?>?')" href="<?php print esc_url ( add_query_arg( 'delete_id', $post_id,esc_url($_SERVER['REQUEST_URI']) ) );?>"><i class="fa fa-times deleteprop"></i></a>  
+                    <a  data-original-title="<?php esc_html_e('Delete listing','wpestate');?>" class="dashboad-tooltip" onclick="return confirm(' <?php echo esc_html__( 'Are you sure you wish to delete ','wpestate').get_the_title(); ?>?')" href="<?php print esc_url ( add_query_arg( 'delete_id', $post_id,esc_url($_SERVER['REQUEST_URI']) ) );?>"><i class="fa fa-times deleteprop"></i></a>  
                     <?php
                     if( $post_status == 'expired' ){ 
                         print'<span data-original-title="'.esc_html__( 'Resend for approval','wpestate').'" class="dashboad-tooltip resend_pending" data-listingid="'.$post_id.'"><i class="fa fa-arrow-up"></i></span>';   
