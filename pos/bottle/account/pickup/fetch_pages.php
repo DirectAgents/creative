@@ -86,12 +86,12 @@ $( "#bankaccount" ).load( "bankaccount.php" );
 }
 
 
-$( "#schedulepickup" ).load( "bankaccount.php" );
+$( "#schedulepickup" ).load( "schedulepickup.php" );
 
     $(".schedulepickup").click(function() {  
 
       //$( "#tabs-1" ).load( "send-payment.php" );
-      $( "#schedulepickup" ).load( "bankaccount.php" );
+      $( "#schedulepickup" ).load( "schedulepickup.php" );
       
     });
 
