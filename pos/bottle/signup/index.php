@@ -12,7 +12,7 @@ require_once '../class.customer.php';
 
 include_once("../config.php");
 
-$reg_user = new PARTICIPANT();
+$reg_user = new CUSTOMER();
 
 if($reg_user->is_logged_in()!="")
 {
@@ -39,13 +39,13 @@ $redirect_uri = ''.BASE_PATH.'/startup/signup/';
 $db_username = "root"; //Database Username
 $db_password = "123"; //Database Password
 $host_name = "localhost"; //Mysql Hostname
-$db_name = 'circl'; //Database Name
+$db_name = 'bottle'; //Database Name
 
 
 //incase of logout request, just unset the session var
 if (isset($_GET['logout'])) {
   unset($_SESSION['access_token']);
-  unset($_SESSION['startupSession']);
+  unset($_SESSION['customerSession']);
 }
 
 /************************************************
@@ -115,10 +115,10 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
   //check if user exist in database using COUNT
-  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_startup WHERE google_id=$user->id ");
+  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_customer WHERE google_id=$user->id ");
   $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userEmail = '".$user->email."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userEmail = '".$user->email."'");
   $row = mysqli_fetch_array($sql);
 
 
@@ -130,7 +130,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   if($user_count) //if user already exist change greeting text to "Welcome Back"
     {
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['startupSession'] = $row['userID'];
+        $_SESSION['customerSession'] = $row['userID'];
         header("Location: ../index.php");
         exit();
     }
@@ -140,7 +140,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     date_default_timezone_set('America/New_York');
     $date = date('Y-m-d'); 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup (google_id, FirstName, LastName, userEmail, google_picture_link, Date_Created, account_verified) 
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_customer (google_id, FirstName, LastName, userEmail, google_picture_link, Date_Created, account_verified) 
       VALUES ('".$user->id."',  '".$user->givenName."', '".$user->familyName."', '".$user->email."', '".$user->picture."' , '".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
@@ -150,7 +150,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
 
-    $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
     google_id = '".$user->id."',
     FirstName = '".$user->givenName."',
     LastName = '".$user->familyName."',
@@ -169,7 +169,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
     }else{
 
-        $_SESSION['startupSession'] = $row['userID'];
+        $_SESSION['customerSession'] = $row['userID'];
         header("Location: ../index.php");
         exit();
 
@@ -196,7 +196,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Valify Startup Signup</title>
+    <title>Valify Signup</title>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">
@@ -220,7 +220,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
 
-<script src="<?php echo BASE_PATH; ?>/startup/js/password.js"></script>
+<script src="<?php echo BASE_PATH; ?>/js/password.js"></script>
 
 
 
@@ -245,7 +245,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <?php
 
 
- $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_startup");
+ $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_customer");
  $stmt->execute(array(":email_id"=>'test@test.com'));
  $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -281,7 +281,6 @@ if($_POST['passwordpass'] == 'good'){
 
   $firstname = trim($_POST['txtfirstname']);
   $lastname = trim($_POST['txtlastname']);
-  $zip = trim($_POST['txtzip']);
   $email = trim($_POST['txtemail']);
   $upass = trim($_POST['txtpass']);
   $code = md5(uniqid(rand()));
@@ -289,7 +288,7 @@ if($_POST['passwordpass'] == 'good'){
 
 
 
- $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_startup");
+ $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_customer");
  $stmt->execute(array(":email_id"=>$email));
  $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -309,7 +308,7 @@ if($_POST['passwordpass'] == 'good'){
 
 
   
-  $stmt = $reg_user->runQuery("SELECT * FROM tbl_startup WHERE userEmail=:email_id");
+  $stmt = $reg_user->runQuery("SELECT * FROM tbl_customer WHERE userEmail=:email_id");
   $stmt->execute(array(":email_id"=>$email));
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
   
@@ -324,7 +323,7 @@ if($_POST['passwordpass'] == 'good'){
   }
   else
   {
-    if($reg_user->register($firstname,$lastname,$zip,$email,$upass,$code))
+    if($reg_user->register($firstname,$lastname,$email,$upass,$code))
     {     
       $id = $reg_user->lasdID();    
       $key = base64_encode($id);
@@ -346,7 +345,7 @@ if($_POST['passwordpass'] == 'good'){
 // using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
 // If you are using Composer (recommended)
-require '../../sendgrid-php/vendor/autoload.php';
+require '../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Valify Team", "support@valifyit.com");
@@ -618,7 +617,7 @@ $response = $sg->client->mail()->send()->post($mail);
 
 /*
 
- $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_startup");
+ $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_customer");
  $stmt->execute(array(":email_id"=>'test@test.com'));
  $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -635,7 +634,7 @@ $response = $sg->client->mail()->send()->post($mail);
         </div>
         ";
 
-        unset($_SESSION['startupSession']); 
+        unset($_SESSION['customerSession']); 
    
         
   }else{
@@ -725,7 +724,7 @@ $response = $sg->client->mail()->send()->post($mail);
 <?php 
 
 
- $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_startup");
+ $stmt = $reg_user->runQuery("SELECT count(*) as total from tbl_customer");
  $stmt->execute(array(":email_id"=>'test@test.com'));
  $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -849,10 +848,10 @@ echo 'id: ' . $user['id'];
 //check if user exist in database using COUNT
 
 
-  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_startup WHERE facebook_id='".$user['id']."' ");
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_customer WHERE facebook_id='".$user['id']."' ");
   $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
 
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userEmail = '".$user['email']."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userEmail = '".$user['email']."'");
   $row = mysqli_fetch_array($sql);
 
 
@@ -864,7 +863,7 @@ echo 'id: ' . $user['id'];
   if($user_count_facebook) //if user already exist change greeting text to "Welcome Back"
     {
 
-    $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
     facebook_id = '".$user['id']."', 
     profile_image = '',
     google_picture_link = '',
@@ -873,7 +872,7 @@ echo 'id: ' . $user['id'];
     WHERE userEmail='".$user['email']."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['startupSession'] = $row['userID'];
+        $_SESSION['customerSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
         header("Location: ../index.php");
         exit();
@@ -892,7 +891,7 @@ echo 'id: ' . $user['id'];
     $gender = ucfirst($user['gender']);
 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup (facebook_id, FirstName, LastName, userEmail, Gender, Date_Created, account_verified) 
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_customer (facebook_id, FirstName, LastName, userEmail, Gender, Date_Created, account_verified) 
       VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' , '".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
@@ -900,7 +899,7 @@ echo 'id: ' . $user['id'];
 
     //mysqli_query($insert_sql);  
 
-    $_SESSION['startupSession'] = $row['userID'];
+    $_SESSION['customerSession'] = $row['userID'];
     header("Location: ../index.php");
     exit(); 
 
@@ -920,7 +919,7 @@ echo 'id: ' . $user['id'];
 
     }else{
 
-        $_SESSION['startupSession'] = $user['id'];
+        $_SESSION['customerSession'] = $user['id'];
         $_SESSION['facebook_photo'] = $user['id'];
         header("Location: ../index.php");
         exit();

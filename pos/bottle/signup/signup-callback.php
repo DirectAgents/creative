@@ -5,7 +5,7 @@ session_start();
 
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
-require_once '../../base_path.php';
+require_once '../base_path.php';
 
 
 $fb = new Facebook\Facebook([
@@ -86,7 +86,7 @@ $_SESSION['fb_access_token_startup'] = (string) $accessToken;
 //echo $_SESSION['fb_access_token_startup'];
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
-header('Location: '.BASE_PATH.'/startup/signup/');
+header('Location: '.BASE_PATH.'/signup/');
 
 
 

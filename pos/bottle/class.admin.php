@@ -4,8 +4,7 @@ require_once 'dbconfig.php';
 
 date_default_timezone_set('America/New_York');
 
-
-class CUSTOMER
+class STARTUP
 {	
 
 	private $conn;
@@ -29,32 +28,26 @@ class CUSTOMER
 		return $stmt;
 	}
 	
-	public function register($firstname,$lastname,$email,$upass,$code)
+	public function register($firstname,$lastname,$zip,$email,$upass,$code)
 	{
 		try
-		{	
-
-		    
-		    date_default_timezone_set('America/New_York');
-		    $the_date = date('Y-m-d');  
+		{		
+			
+			date_default_timezone_set('America/New_York');
+			$the_date = date('Y-m-d');
 
 			$password = md5($upass);
 
-			//$stmt = $this->conn->prepare("SELECT * FROM zip_state WHERE zip=:user_zip");
-			//$stmt->execute(array(":user_zip"=>$zip));
-			//$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+			$stmt = $this->conn->prepare("SELECT * FROM zip_state WHERE zip=:user_zip");
+			$stmt->execute(array(":user_zip"=>$zip));
+			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-			//$stmt = $this->conn->prepare("SELECT * FROM tbl_signup_codes WHERE code=:signup_code");
-			//$stmt->execute(array(":signup_code"=>$signupcode));
-			//$rowsignupcode=$stmt->fetch(PDO::FETCH_ASSOC);
 
-			//if($age >= 18){$payment_method = 'Bank';}else{$payment_method = 'Cash';}
-			$payment_method = 'Bank';
-			
-			$stmt = $this->conn->prepare("INSERT INTO tbl_customer(FirstName,LastName,userEmail,Payment_Method,userPass,tokenCode,Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_mail,'".$payment_method."', :user_pass, :active_code,'".$the_date."')");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_startup(FirstName,LastName,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
+			                                             VALUES(:first_name, :last_name,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, 'Participant requests to meet you,Email reminder about an upcoming meeting', '".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
+			$stmt->bindparam(":user_zip",$zip);
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
 			$stmt->bindparam(":active_code",$code);
@@ -71,7 +64,7 @@ class CUSTOMER
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT * FROM tbl_customer WHERE userEmail=:email_id");
+			$stmt = $this->conn->prepare("SELECT * FROM tbl_startup WHERE userEmail=:email_id");
 			$stmt->execute(array(":email_id"=>$email));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			
@@ -81,8 +74,8 @@ class CUSTOMER
 				{
 					if($userRow['userPass']==md5($upass))
 					{
-						$_SESSION['participantSession'] = $userRow['userID'];
-
+						$_SESSION['startupSession'] = $userRow['userID'];
+						
 						//Remember me
 						
 						if($rememberme == 'Yes'){
@@ -97,18 +90,19 @@ class CUSTOMER
 
 
 						
-						$stmt = $this->conn->prepare("UPDATE tbl_customer SET login_session='".$cookiehash."' WHERE userID='".$userRow['userID']."'");
+						$stmt = $this->conn->prepare("UPDATE tbl_startup SET login_session='".$cookiehash."' WHERE userID='".$userRow['userID']."'");
 			
 						$stmt->execute();	
 						return $stmt;
 					  
 					  }else{
 
-					  	$stmt = $this->conn->prepare("UPDATE tbl_customer SET login_session='' WHERE userID='".$userRow['userID']."'");
+					  	$stmt = $this->conn->prepare("UPDATE tbl_startup SET login_session='' WHERE userID='".$userRow['userID']."'");
 					  	$stmt->execute();	
 						return $stmt;
 					  }
 
+						
 						return true;
 					}
 					else
@@ -138,7 +132,7 @@ class CUSTOMER
 	
 	public function is_logged_in()
 	{
-		if(isset($_SESSION['participantSession']))
+		if(isset($_SESSION['startupSession']))
 		{
 			return true;
 		}
@@ -152,7 +146,7 @@ class CUSTOMER
 	public function logout()
 	{
 		session_destroy();
-		$_SESSION['participantSession'] = false;
+		$_SESSION['startupSession'] = false;
 	}
 	
 	function send_mail($email,$message,$subject)

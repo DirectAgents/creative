@@ -1,6 +1,6 @@
 <?php 
 
-define('BASE_PATH','http://valifyit.com'); 
+define('BASE_PATH','http://localhost/creative/pos/bottle'); 
 
 $test = '123';
 
