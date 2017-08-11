@@ -13,7 +13,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
 ?>
 
- <h1><a href="<?php echo BASE_PATH; ?>" title="Valify"></a></h1>
+ <h1><a href="<?php echo BASE_PATH; ?>/account/" title="Valify"></a></h1>
 
 
 <nav>
@@ -54,9 +54,10 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li class="more">
             <span>My account</span>
             <ul>
-              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/settings/?id=<?php echo $_SESSION['customerSession'];?>">My Account</a></li>
+              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/myinfo/?id=<?php echo $_SESSION['customerSession'];?>">My Info</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/payment/">Payment</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/bankinfo/">Bank Information</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/pickup/">Pickup</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/pickup/">Pickup</a></li>
               <li class='separator'></li>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['participantSession'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 

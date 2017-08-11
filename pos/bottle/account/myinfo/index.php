@@ -10,16 +10,6 @@ include_once("../../config.php");
 
 $customer_home = new CUSTOMER();
 
-$admin_home = new ADMIN();
-
-
-if(!$admin_home->is_logged_in() && !$customer_home->is_logged_in())
-{
-  $startup_home->redirect('../../login');
-  exit();
-}
-
-
 
 
 
