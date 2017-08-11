@@ -377,7 +377,7 @@ $(document).ready(function() {
 
 
 <div class='nav-item nav-item-with-button'>
-<a class='btn-signin' target="_top" href="<?php echo BASE_PATH; ?>/startup/login/">Sign In</a>
+<a class='btn-signin' target="_top" href="<?php echo BASE_PATH; ?>/login/">Sign In</a>
 
 </div>
 

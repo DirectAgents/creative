@@ -33,7 +33,7 @@ require_once ('libraries/Google/autoload.php');
 //You can get it from : https://console.developers.google.com/
 $client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
 $client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
-$redirect_uri = ''.BASE_PATH.'/startup/signup/';
+$redirect_uri = ''.BASE_PATH.'/customer/signup/';
 
 //database
 $db_username = "root"; //Database Username
@@ -369,7 +369,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
                         <a href="http://valifyit.com/" target="_blank">
-                            <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                            <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.png" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -447,7 +447,7 @@ $content = new SendGrid\Content("text/html", '
                                               <tr>
                                                 <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
                                                 
-                                                 <a href="'.BASE_PATH.'/startup/account/verify.php?id='.$id.'&code='.$code.'">
+                                                 <a href="'.BASE_PATH.'/account/verify.php?id='.$id.'&code='.$code.'">
                                                 <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
                                                 <img alt="Logo" src="http://valifyit.com/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
                                                 </div>
@@ -659,7 +659,7 @@ $response = $sg->client->mail()->send()->post($mail);
 </div>
 
 <div class="loginas">
-  <h3>You own a restaurant? <a href="<?php echo BASE_PATH; ?>/participant/signup/">Click here</a></h3>
+  <h3>You own a restaurant? <a href="<?php echo BASE_PATH; ?>/restaurant/signup/">Click here</a></h3>
 </div>
 
 <!--  <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>-->
@@ -774,7 +774,7 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 
 $permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/startup/signup/signup-callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup/signup-callback.php', $permissions);
 
 
 
@@ -783,7 +783,7 @@ $loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/startup/signup/signup-callback.p
 
 
 
-if(!isset($_SESSION['fb_access_token_startup'])){
+if(!isset($_SESSION['fb_access_token_customer'])){
 //echo '<a href="' . htmlspecialchars($loginUrl) . '">Sign up with Facebook!</a>';
 echo '<div style="float:left; width:100%;">';
 
@@ -819,14 +819,14 @@ echo "<p>&nbsp;</p>";
 
 
 
-//echo $_SESSION['fb_access_token_startup'];
+//echo $_SESSION['fb_access_token_customer'];
 
 
-if(isset($_SESSION['fb_access_token_startup'])){
+if(isset($_SESSION['fb_access_token_customer'])){
 
 try {
   // Returns a `Facebook\FacebookResponse` object
-  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_startup']);
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_customer']);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;

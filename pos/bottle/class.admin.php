@@ -4,7 +4,7 @@ require_once 'dbconfig.php';
 
 date_default_timezone_set('America/New_York');
 
-class STARTUP
+class ADMIN
 {	
 
 	private $conn;
@@ -43,7 +43,7 @@ class STARTUP
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 
-			$stmt = $this->conn->prepare("INSERT INTO tbl_startup(FirstName,LastName,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
+			$stmt = $this->conn->prepare("INSERT INTO tbl_admin(FirstName,LastName,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
 			                                             VALUES(:first_name, :last_name,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, 'Participant requests to meet you,Email reminder about an upcoming meeting', '".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
@@ -64,7 +64,7 @@ class STARTUP
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT * FROM tbl_startup WHERE userEmail=:email_id");
+			$stmt = $this->conn->prepare("SELECT * FROM tbl_admin WHERE userEmail=:email_id");
 			$stmt->execute(array(":email_id"=>$email));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			
@@ -74,7 +74,7 @@ class STARTUP
 				{
 					if($userRow['userPass']==md5($upass))
 					{
-						$_SESSION['startupSession'] = $userRow['userID'];
+						$_SESSION['adminSession'] = $userRow['userID'];
 						
 						//Remember me
 						
@@ -82,7 +82,7 @@ class STARTUP
 
 						unset($_SESSION['cookie_deleted']);
 						
-						//setcookie("uname",$cookiehash,time()+3600*24*365,'/','.http://localhost/creative/pos/survey/startup/login/');
+						//setcookie("uname",$cookiehash,time()+3600*24*365,'/','.http://localhost/creative/pos/survey/admin/login/');
 						$cookiehash = md5(sha1(username . user_ip));
 						$expire=time()+3600*24*365;
 
@@ -90,14 +90,14 @@ class STARTUP
 
 
 						
-						$stmt = $this->conn->prepare("UPDATE tbl_startup SET login_session='".$cookiehash."' WHERE userID='".$userRow['userID']."'");
+						$stmt = $this->conn->prepare("UPDATE tbl_admin SET login_session='".$cookiehash."' WHERE userID='".$userRow['userID']."'");
 			
 						$stmt->execute();	
 						return $stmt;
 					  
 					  }else{
 
-					  	$stmt = $this->conn->prepare("UPDATE tbl_startup SET login_session='' WHERE userID='".$userRow['userID']."'");
+					  	$stmt = $this->conn->prepare("UPDATE tbl_admin SET login_session='' WHERE userID='".$userRow['userID']."'");
 					  	$stmt->execute();	
 						return $stmt;
 					  }
@@ -132,7 +132,7 @@ class STARTUP
 	
 	public function is_logged_in()
 	{
-		if(isset($_SESSION['startupSession']))
+		if(isset($_SESSION['adminSession']))
 		{
 			return true;
 		}
@@ -146,7 +146,7 @@ class STARTUP
 	public function logout()
 	{
 		session_destroy();
-		$_SESSION['startupSession'] = false;
+		$_SESSION['adminSession'] = false;
 	}
 	
 	function send_mail($email,$message,$subject)

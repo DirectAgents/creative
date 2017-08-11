@@ -81,7 +81,7 @@ class CUSTOMER
 				{
 					if($userRow['userPass']==md5($upass))
 					{
-						$_SESSION['participantSession'] = $userRow['userID'];
+						$_SESSION['customerSession'] = $userRow['userID'];
 
 						//Remember me
 						
@@ -138,7 +138,7 @@ class CUSTOMER
 	
 	public function is_logged_in()
 	{
-		if(isset($_SESSION['participantSession']))
+		if(isset($_SESSION['customerSession']))
 		{
 			return true;
 		}
@@ -152,7 +152,7 @@ class CUSTOMER
 	public function logout()
 	{
 		session_destroy();
-		$_SESSION['participantSession'] = false;
+		$_SESSION['customerSession'] = false;
 	}
 	
 	function send_mail($email,$message,$subject)
