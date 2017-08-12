@@ -75,7 +75,7 @@ $(document).ready(function(){
        
         if(proceed) //everything looks good! proceed...
         {
-          $("#profile-form #profile_results").hide().html('<div class="success">Successfully Saved!</div>').slideDown();
+          $("#profile-form #profile_results").hide().html('<div class="success">Pick-Up Schedule Requested!</div>').slideDown();
             //get input field values data to be sent to server
             post_data = {
                 'date_option1'     : $('input[name=date_option_one]').val(),
