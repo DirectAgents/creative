@@ -99,7 +99,7 @@ $(document).ready(function(){
                     $("#profile-form select[required=true]").val(''); 
                     $("#profile-form #profile_results").slideUp(); //hide form after success
                   
-         
+          
 
                 }
                 $("#profile-form #profile_results").hide().html(output).slideDown();

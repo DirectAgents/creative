@@ -11,6 +11,9 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 
 
+
+
+
 if($_POST)
 {
 
@@ -376,7 +379,6 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->statusCode();
 //echo $response->headers();
 //echo $response->body();
-
 
 
 $output = json_encode(array('status' => 'success','text'=> '<div class="success">Successfully Sent Payment!</div>'));
