@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 require_once '../../../class.customer.php';
 include_once("../../../config.php");
@@ -12,6 +13,12 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 if($_POST)
 {
+
+
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_SESSION['customerSession']."'");
+$row5 = mysqli_fetch_array($sql5);
+
+
 
 
 
@@ -52,9 +59,6 @@ $date_option_three = '';
 
 
 
-
-$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_SESSION['customerSession']."'");
-$row5 = mysqli_fetch_array($sql5);
 
 
 // using SendGrid's PHP Library
@@ -375,10 +379,12 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
-
-  
+$output = json_encode(array('status' => 'success','text'=> '<div class="success">Successfully Sent Payment!</div>'));
+die($output);
 
 
 
 }
+
+
 ?>

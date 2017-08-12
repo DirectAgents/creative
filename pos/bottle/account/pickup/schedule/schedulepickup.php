@@ -75,7 +75,7 @@ $(document).ready(function(){
        
         if(proceed) //everything looks good! proceed...
         {
-          $("#profile-form #profile_results").hide().html('<div class="success">Pick-Up Schedule Requested!</div>').slideDown();
+          //$("#profile-form #profile_results").hide().html('<div class="success">Pick-Up Schedule Requested!</div>').slideDown();
             //get input field values data to be sent to server
             post_data = {
                 'date_option1'     : $('input[name=date_option_one]').val(),
@@ -90,18 +90,23 @@ $(document).ready(function(){
             
 
             //Ajax post data to server
-            $.post('save.php', post_data, function(response){  
+            $.post('save.php', post_data, function(response){ 
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
-                    output = '<div class="success">'+response.text+'</div>';
+                    output = response.text;
                     //reset values in all input fields
                     $("#profile-form select[required=true]").val(''); 
-                    $("#profile-form #contact_body").slideUp(); //hide form after success
+                    $("#profile-form #profile_results").slideUp(); //hide form after success
+                  
+         
+
                 }
                 $("#profile-form #profile_results").hide().html(output).slideDown();
             }, 'json');
         }
+       
+
     });
  });
 </script> 
