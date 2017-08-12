@@ -1432,6 +1432,11 @@ $(".choose-location-sunday").click(function() {
   
 
 
+
+$(".schedule-pickup").click(function() { 
+alert("123");
+});
+
 /**Save Profile**/
 
 

@@ -241,6 +241,70 @@ $(".load_more_pending").click(function (e) { //user clicks on button
 <script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
 
 
+
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+   
+
+    $( "#date_option_one" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+        $("#date_option_two").datepicker( "option", "minDate", endDate );
+        $("#date_option_two").datepicker( "option", "maxDate", '+2y' );
+
+        $("#date_option_three").datepicker( "option", "minDate", endDate );
+        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
+
+    }
+    });
+
+    $( "#date_option_two" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true,
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+        
+
+        $("#date_option_three").datepicker( "option", "minDate", endDate );
+        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
+
+    }
+    });
+
+    $( "#date_option_three" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true
+    });
+
+  } );
+  </script>
+
         
     </head>
     
@@ -290,70 +354,7 @@ $(".load_more_pending").click(function (e) { //user clicks on button
 
 
   
-<div id="results">
-  
-
-
-
-<div class="wepay_btn_box">  
-  <div class="wepay_btn">
-
-
-
-<p>&nbsp;</p>  
-
-
-<div class="row-day">
-<div class="the-day">
-<h4>Meeting Date Option #1:</h4> 
-
-<div class="select-row">
-<div style="float:left; margin-left:3px;">
-<input type="text" name="date_option_one" id="date_option_one" placeholder="Pick a date" class="validate">
-</div>
-<div style="float:left; margin-left:15px;">
-<select name="time_suggested_one" id="time_suggested_one">
-  <option value="" selected disabled="disabled">Select a time</option>
-  <option value="06:00 am">06:00 AM</option>
-  <option value="07:00 am">07:00 AM</option>
-  <option value="08:00 am">08:00 AM</option>
-  <option value="09:00 am">09:00 AM</option>
-  <option value="10:00 am">10:00 AM</option>
-  <option value="11:00 am">11:00 AM</option>
-  <option value="12:00 pm">12:00 PM</option>
-  <option value="01:00 pm">01:00 PM</option>
-  <option value="02:00 pm">02:00 PM</option>
-  <option value="03:00 pm">03:00 PM</option>
-  <option value="04:00 pm">04:00 PM</option>
-  <option value="05:00 pm">05:00 PM</option>
-  <option value="06:00 pm">06:00 PM</option>
-  <option value="07:00 pm">07:00 PM</option>
-  <option value="08:00 pm">08:00 PM</option>
-  <option value="09:00 pm">09:00 PM</option>
-  <option value="10:00 pm">10:00 PM</option>
-  <option value="11:00 pm">11:00 PM</option>
-  <option value="12:00 am">12:00 AM</option>
-               </select>
-
-    </div>
-</div>
-
-</div>
-
-</div>
-
-</div> 
-
-
-</div>
-
-</div>
-
-<input type="submit" class="btn-request" value="Request to Meet"/>
-
-
-  
-</div>
+<div id="results"></div>
 
 
 

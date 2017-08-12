@@ -5190,7 +5190,6 @@ FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN 
   border: 1px solid #d9d9d9;
   border-radius: 0;
   line-height: 21px;
-  padding: 11px;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -5294,7 +5293,7 @@ FORM.ff FIELDSET>SPAN LABEL.and{
 
 
 
-FORM.ff FIELDSET>SPAN SELECT.fromto{width:115px; float:left; /*border-left:1px solid #d9d9d9 !important;*/}
+FORM.ff FIELDSET>SPAN SELECT.fromto{ float:left; /*border-left:1px solid #d9d9d9 !important;*/}
 
 
 @media only screen and (max-width: 667px) {
@@ -5489,7 +5488,8 @@ FORM.ff FIELDSET>SPAN .fake-select SELECT, FORM.ff FIELDSET>SPAN .select-wrapper
   z-index: 4
 }
 FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-select {
-  color: #747474
+  color: #747474;
+  padding-left:10px;
 }
 FORM.ff FIELDSET>SPAN SELECT:active, FORM.ff FIELDSET>SPAN SELECT.active-tap, FORM.ff FIELDSET>SPAN .fake-select:active, FORM.ff FIELDSET>SPAN .fake-select.active-tap {
   background-color: #fdfdfd
@@ -5760,6 +5760,8 @@ FORM.ff .note.notforheader {
     border-image: initial;
 }
 }
+
+
 
 
 
