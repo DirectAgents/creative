@@ -40,36 +40,118 @@ $(document).ready(function(){
         var proceed = true;
         //simple validation at client's end
         //loop through each field and we simply change border color to red for invalid fields   
-        var date_option1 = $('input[name=date_option_one]').val()
+        var date_option1 = $("input[name='date_option_one']").val()
         var time_option1 = $("select[name='time_option_one']").val()
 
-        var date_option2 = $('input[name=date_option_two]').val()
+        var date_option2 = $("input[name='date_option_two']").val()
         var time_option2 = $("select[name='time_option_two']").val()
 
-        var date_option3 = $('input[name=date_option_three]').val()
+        var date_option3 = $("input[name='date_option_three']").val()
         var time_option3 = $("select[name='time_option_three']").val()
        
 
 
 
-        if(date_option1 == '' ){ 
+       if (date_option1.length < 0 ) {
             
             $("#date_option_one").css('border-color','red');  //change border color to red  
             proceed = false;
+           
           
         }
 
+
+        if (time_option1 == "" ) { 
+            $("#time_option_one").css('border-color','red');  //change border color to red   
+                proceed = false;
+        }
         
-        if(!time_option1) {
-
-                $("#time_option_one").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        };
-
-       
+    
 
 
-      
+       if (date_option1.length > 0 && time_option1 != ""  ) {
+            
+            $("#date_option_one").css('border-color','green');  //change border color to red   
+            $("#time_option_one").css('border-color','green');  //change border color to red   
+            proceed = true;
+          
+        }
+
+
+
+
+
+         if (date_option2.length > 0 ) {
+            
+            $("#time_option_two").css('border-color','red');  //change border color to red  
+            proceed = false;
+           
+          
+        }
+
+
+        if (time_option2 != "" ) { 
+            $("#date_option_two").css('border-color','red');  //change border color to red   
+                proceed = false;
+        }
+        
+
+       if (date_option2.length < 0 && time_option2 == ""  ) {
+            
+            $("#date_option_two").css('border-color','none');  //change border color to red   
+            $("#time_option_two").css('border-color','none');  //change border color to red   
+            proceed = false;
+          
+        } 
+    
+
+
+       if (date_option2.length > 0 && time_option2 != ""  ) {
+            
+            $("#date_option_two").css('border-color','green');  //change border color to red   
+            $("#time_option_two").css('border-color','green');  //change border color to red   
+            proceed = true;
+          
+        }
+
+
+
+
+        if (date_option3.length > 0 ) {
+            
+            $("#time_option_three").css('border-color','red');  //change border color to red  
+            proceed = false;
+           
+          
+        }
+
+
+        if (time_option3 != "" ) { 
+            $("#date_option_three").css('border-color','red');  //change border color to red   
+                proceed = false;
+        }
+        
+
+
+       if (date_option3.length < 0 && time_option3 == ""  ) {
+            
+            $("#date_option_three").css('border-color','none');  //change border color to red   
+            $("#time_option_three").css('border-color','none');  //change border color to red   
+            proceed = false;
+          
+        }
+    
+
+
+       if (date_option3.length > 0 && time_option3 != ""  ) {
+            
+            $("#date_option_three").css('border-color','green');  //change border color to red   
+            $("#time_option_three").css('border-color','green');  //change border color to red   
+            proceed = true;
+          
+        }
+
+
 
        
        
@@ -78,16 +160,16 @@ $(document).ready(function(){
           //$("#profile-form #profile_results").hide().html('<div class="success">Pick-Up Schedule Requested!</div>').slideDown();
             //get input field values data to be sent to server
             post_data = {
-                'date_option1'     : $('input[name=date_option_one]').val(),
+                'date_option1'     : $("input[name='date_option_one']").val(),
                 'time_option1'     : $("select[name='time_option_one']").val(),
-                'date_option2'     : $('input[name=date_option_two]').val(),
-                'time_option2'     : $("select[name='date_option_two']").val(),
-                'date_option3'     : $('input[name=date_option_three]').val(),
+                'date_option2'     : $("input[name='date_option_two']").val(),
+                'time_option2'     : $("select[name='time_option_two']").val(),
+                'date_option3'     : $("input[name='date_option_three']").val(),
                 'time_option3'     : $("select[name='time_option_three']").val()
             };
  
 
-            
+            //alert(time_option1);
 
             //Ajax post data to server
             $.post('save.php', post_data, function(response){ 
@@ -114,14 +196,13 @@ $(document).ready(function(){
 
 
 
-<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <script>
   
   $(function() {
-    $( "#date_option_one" ).datepicker({ minDate: 0});
-    $( "#date_option_two" ).datepicker({ minDate: 0});
-    $( "#date_option_three" ).datepicker({ minDate: 0});
+    $( "#date_option_one" ).datepicker({ minDate: 2});
+    $( "#date_option_two" ).datepicker({ minDate: 2});
+    $( "#date_option_three" ).datepicker({ minDate: 2});
   });
 
   </script>
@@ -144,6 +225,29 @@ $(document).ready(function(){
 
   
    <iframe name="votar" style="display:none;"></iframe>
+
+
+
+
+<?php if($row['Address'] == '' || $row['City'] == '' || $row['State'] == '' || $row['Zip'] == '') { ?>
+
+<h3>Please provide your physical address to be able the schedule a pick-up </h3>
+
+
+<div class="create-one-here-box">
+      <div class="create-one">
+
+        <a href="<?php echo BASE_PATH; ?>/account/myinfo/?id=<?php echo $_SESSION['customerSession'];?>" class="create-one-btn">Add Address</a>
+
+       </div> 
+       <p>&nbsp;</p>
+  </div>
+  </div>
+
+
+<?php }else{ ?>
+
+
         
     <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
         
@@ -181,7 +285,7 @@ $(document).ready(function(){
              <span class="select-wrapper">
             
               <select name="time_option_one" id="time_option_one" class="fromto">
-  <option value="" <?php if($row['Schedule_Time_Option1'] == ''){echo 'selected';}?> disabled="disabled">Time of pickup</option>
+  <option value="" <?php if($row['Schedule_Time_Option1'] == ''){echo 'selected';}?>>Time of pickup</option>
   <option value="06:00am" <?php if($row['Schedule_Time_Option1'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
   <option value="07:00am" <?php if($row['Schedule_Time_Option1'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
   <option value="08:00am" <?php if($row['Schedule_Time_Option1'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
@@ -247,7 +351,7 @@ $(document).ready(function(){
              <span class="select-wrapper">
             
               <select name="time_option_two" id="time_option_two" class="fromto">
-  <option value="" <?php if($row['Schedule_Time_Option2'] == ''){echo 'selected';}?> disabled="disabled">Time of pickup</option>
+  <option value="" <?php if($row['Schedule_Time_Option2'] == ''){echo 'selected';}?>>Time of pickup</option>
   <option value="06:00am" <?php if($row['Schedule_Time_Option2'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
   <option value="07:00am" <?php if($row['Schedule_Time_Option2'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
   <option value="08:00am" <?php if($row['Schedule_Time_Option2'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
@@ -296,7 +400,7 @@ $(document).ready(function(){
      
                <input class="form-control" name="date_option_three" id="date_option_three" type="text" placeholder="Choose date of pick-up"
                value="<?php echo $row['Schedule_Date_Option3']; ?>"/>
-
+              
           
           </span>
 
@@ -316,7 +420,7 @@ $(document).ready(function(){
              <span class="select-wrapper">
             
               <select name="time_option_three" id="time_option_three" class="fromto">
-  <option value="" <?php if($row['Schedule_Time_Option3'] == ''){echo 'selected';}?> disabled="disabled">Time of pickup</option>
+  <option value="" <?php if($row['Schedule_Time_Option3'] == ''){echo 'selected';}?>>Time of pickup</option>
   <option value="06:00am" <?php if($row['Schedule_Time_Option3'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
   <option value="07:00am" <?php if($row['Schedule_Time_Option3'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
   <option value="08:00am" <?php if($row['Schedule_Time_Option3'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
@@ -379,7 +483,7 @@ $(document).ready(function(){
 
 
   
-
+<?php } ?>
       
 
   

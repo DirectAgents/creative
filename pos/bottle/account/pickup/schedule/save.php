@@ -55,7 +55,7 @@ $date_option_two = date('F j, Y',strtotime($_POST['date_option2'])).' @ '.$_POST
 $date_option_two = '';	
 }
 
-if(isset($_POST['date_option3'],$_POST['time_option3'])){
+if($_POST['date_option3'] != NULL && $_POST['time_option3'] != NULL){
 
 $date_option_three = date('F j, Y',strtotime($_POST['date_option3'])).' @ '.$_POST['time_option3'];
 
@@ -162,7 +162,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Pick-Up Date Options</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Pick-Up Dates Request</td>
                                                         </tr>
 
                                                          <tr>

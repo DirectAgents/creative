@@ -1483,7 +1483,7 @@ $(".choose-location-sunday").click(function() {
                 'address'     : $('input[name=address]').val(),
                 'city'     : $('input[name=city]').val(),
                 'state'     : $("select[name='state']").val(),
-                'zip'     : $("select[name='zip']").val()
+                'zip'     : $('input[name=zip]').val()
 
             };
  
