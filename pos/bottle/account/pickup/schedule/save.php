@@ -23,7 +23,10 @@ $row5 = mysqli_fetch_array($sql5);
 
 
 
-
+if(isset($_POST['date_option2'])){$date_option2 = $_POST['date_option2'];}else{$date_option2 = '';}
+if(isset($_POST['time_option2'])){$time_option2 = $_POST['time_option2'];}else{$time_option2 = '';}
+if(isset($_POST['date_option3'])){$date_option3 = $_POST['date_option3'];}else{$date_option3 = '';}
+if(isset($_POST['time_option3'])){$time_option3 = $_POST['time_option3'];}else{$time_option3 = '';}
 
 
 //$all_game_value = implode(",",$_POST['testing']);
@@ -31,10 +34,10 @@ $row5 = mysqli_fetch_array($sql5);
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
   Schedule_Date_Option1='".$_POST['date_option1']."',
   Schedule_Time_Option1='".$_POST['time_option1']."',
-  Schedule_Date_Option2='".$_POST['date_option2']."',
-  Schedule_Time_Option2='".$_POST['time_option2']."',
-  Schedule_Date_Option3='".$_POST['date_option3']."',
-  Schedule_Time_Option3='".$_POST['time_option3']."'
+  Schedule_Date_Option2='".$date_option2."',
+  Schedule_Time_Option2='".$time_option2."',
+  Schedule_Date_Option3='".$date_option3."',
+  Schedule_Time_Option3='".$time_option3."'
 
   WHERE userID='".$_SESSION['customerSession']."'");
 
@@ -44,15 +47,15 @@ $row5 = mysqli_fetch_array($sql5);
   
 $date_option_one = $_POST['date_option1'];
 
-if($_POST['date_option2'] != ''){
+if(isset($_POST['date_option2'],$_POST['time_option2'])){
 
-$date_option_two = date('F j, Y',strtotime($_POST['date_option2'])).' @ '.$_POST['time_option3'];
+$date_option_two = date('F j, Y',strtotime($_POST['date_option2'])).' @ '.$_POST['time_option2'];
 
 }else{
 $date_option_two = '';	
 }
 
-if($_POST['date_option3'] != ''){
+if(isset($_POST['date_option3'],$_POST['time_option3'])){
 
 $date_option_three = date('F j, Y',strtotime($_POST['date_option3'])).' @ '.$_POST['time_option3'];
 
@@ -226,7 +229,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$_POST['location'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding"></td>
                                                         </tr>
                                                        
 
