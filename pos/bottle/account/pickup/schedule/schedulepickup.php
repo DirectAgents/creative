@@ -35,6 +35,19 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <script>
 $(document).ready(function(){
+
+
+$("#request-new-pick-up-date").click(function() { 
+
+
+
+$(".pick-up-requested").hide();
+$(".pick-up-request").show();
+
+ }); 
+
+
+
  $(".schedule-pickup").click(function() { 
        //alert("asdf");
         var proceed = true;
@@ -245,10 +258,50 @@ $(document).ready(function(){
   </div>
 
 
-<?php }else{ ?>
+<?php } ?>
 
 
-        
+
+
+<?php if($row['Schedule_Date_Option1'] != '' && $row['Schedule_Time_Option1'] != '') { ?>
+
+<div class="pick-up-requested">
+
+<h3>You have requested a pick up for the following date(s) </h3>
+<p>&nbsp;</p>
+<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option1'])).' @ '.$row['Schedule_Time_Option1']  ?> </h4>
+
+<?php if($row['Schedule_Date_Option2'] != '' && $row['Schedule_Time_Option1'] != '' ) { ?>
+<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option2'])).' @ '.$row['Schedule_Time_Option2']  ?> </h4>
+<?php } ?>
+
+<?php if($row['Schedule_Date_Option3'] != '' && $row['Schedule_Time_Option3'] != '' ) { ?>
+<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option3'])).' @ '.$row['Schedule_Time_Option3']  ?> </h4>
+<?php } ?>
+
+<p>&nbsp;</p>
+
+      <div class="create-one">
+
+        <a href="#" class="create-one-btn" id="request-new-pick-up-date">Request New Pick up Date</a>
+
+       </div> 
+       <p>&nbsp;</p>
+  </div>
+
+</div>
+
+<?php } ?>
+
+
+
+<div class="pick-up-request">
+
+
+ <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row['Schedule_Date_Option1'] == '' && $row['Schedule_Time_Option1'] == '') { ?>
+
+
+
     <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
         
         
@@ -482,8 +535,9 @@ $(document).ready(function(){
       <div class="clearer"></div>
 
 
-  
+
+
 <?php } ?>
       
-
+ </div>
   

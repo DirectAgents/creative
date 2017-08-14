@@ -229,7 +229,10 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding"></td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['Address'].'</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['Zip'].' '.$row5['State'].', '.$row5['City'].'</td>
                                                         </tr>
                                                        
 
@@ -264,6 +267,13 @@ $content = new SendGrid\Content("text/html", '
 
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
                             <tbody>
+
+ <tr>
+                               
+                    <td align="center" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+    
+                    </td>
+                </tr>
 
                              <tr>
                                
@@ -384,7 +394,7 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->body();
 
 
-$output = json_encode(array('status' => 'success','text'=> '<div class="success">Successfully Sent Payment!</div>'));
+$output = json_encode(array('status' => 'success','text'=> '<div class="success">Successfully Pick Up Requested!</div>'));
 die($output);
 
 

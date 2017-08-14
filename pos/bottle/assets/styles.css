@@ -5205,11 +5205,17 @@ FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN 
   outline: none;
   text-align: left
 }
+
+FORM.ff FIELDSET>SPAN INPUT{
+  padding-left:10px;
+}
+
 FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN BUTTON, FORM.ff FIELDSET>SPAN TEXTAREA, FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-input, FORM.ff FIELDSET>SPAN .fake-select, FORM.ff FIELDSET>SPAN .select-wrapper, FORM.ff FIELDSET>SPAN .group {
   width: 100%;
   min-height: 46px;
   display: table-cell;
-  vertical-align: middle
+  vertical-align: middle;
+  
 }
 @media only screen and (max-width: 667px) {
 FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN BUTTON, FORM.ff FIELDSET>SPAN TEXTAREA, FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-input, FORM.ff FIELDSET>SPAN .fake-select, FORM.ff FIELDSET>SPAN .select-wrapper, FORM.ff FIELDSET>SPAN .group {
@@ -5366,7 +5372,7 @@ FORM.ff FIELDSET>SPAN.required LABEL {
 FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN BUTTON, FORM.ff FIELDSET>SPAN TEXTAREA, FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-input, FORM.ff FIELDSET>SPAN .fake-select, FORM.ff FIELDSET>SPAN .select-wrapper {
   border-left-width: 1 !important;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
-  padding-left:10px;
+
 }
 FORM.ff FIELDSET>SPAN INPUT:first-child, FORM.ff FIELDSET>SPAN BUTTON:first-child, FORM.ff FIELDSET>SPAN TEXTAREA:first-child, FORM.ff FIELDSET>SPAN SELECT:first-child, FORM.ff FIELDSET>SPAN .fake-input:first-child, FORM.ff FIELDSET>SPAN .fake-select:first-child, FORM.ff FIELDSET>SPAN .select-wrapper:first-child {
   border-left-width: 1px !important
@@ -5489,7 +5495,6 @@ FORM.ff FIELDSET>SPAN .fake-select SELECT, FORM.ff FIELDSET>SPAN .select-wrapper
   z-index: 4
 }
 FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-select {
-  color: #747474;
   padding-left:10px;
 }
 FORM.ff FIELDSET>SPAN SELECT:active, FORM.ff FIELDSET>SPAN SELECT.active-tap, FORM.ff FIELDSET>SPAN .fake-select:active, FORM.ff FIELDSET>SPAN .fake-select.active-tap {
