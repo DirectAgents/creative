@@ -3171,6 +3171,29 @@ textarea {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+.schedule-pickup{
+
+text-transform: uppercase;
+    padding: 14px 24px;
+    border-radius: 0px;
+    font-family:'Circular', sans-serif;
+    font-weight:300;
+    font-size: 14px;
+    margin-right: 15px;
+    margin-top:20px;
+    border:none !important;
+    box-shadow: 0px !important;
+    cursor: pointer;
+    background:#2bb90a; 
+    color: #fff;
+    float:left;
+    text-align:center;
+     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
 .cancel{
     text-transform: uppercase;
     padding: 14px 24px;
@@ -3835,7 +3858,7 @@ margin-left:0px;
 
 #slide{
   display:none;
-  width:45%;
+  width:25%;
   margin-top:30px;
   background-color: #fff;
     border: 1px solid #e5e5e5;

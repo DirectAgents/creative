@@ -12,36 +12,83 @@ require_once '../../../config.inc.php';
 require '../../../wepay.php';
 
 
+?>
 
 
-$customer_home = new CUSTOMER();
-
-if(!$customer_home->is_logged_in())
-{
-  $customer_home->redirect('../../login');
-}
-
-$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+<script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
+
+
+
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
 
 
   
 
-?> 
+    $( "#date_option_one" ).datepicker({
+    
+      minDate: 2,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+       
+
+    }
+    });
+
+    $( "#date_option_two" ).datepicker({
+     
+      minDate: 2,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true,
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+        
+
+       
+
+    }
+    });
+
+    $( "#date_option_three" ).datepicker({
+    
+      minDate: 2,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true
+    });
+
+  } );
+  </script>
+
+
+
+
 
 
 <script>
 $(document).ready(function(){
 
 
-$("#request-new-pick-up-date").click(function() { 
+$(".cancel").click(function() { 
 
 
 
-         $( "#white-container-account" ).load( "request-new-pickup.php" );
+         $( "#white-container-account" ).load( "schedulepickup.php" );
 
 
  }); 
@@ -53,7 +100,7 @@ $("#request-new-pick-up-date").click(function() {
         var proceed = true;
         //simple validation at client's end
         //loop through each field and we simply change border color to red for invalid fields   
-        var date_option1 = $("input[name=date_option_one]").val()
+        var date_option1 = $("input[name='date_option_one']").val()
         var time_option1 = $("select[name='time_option_one']").val()
 
         var date_option2 = $("input[name='date_option_two']").val()
@@ -65,7 +112,7 @@ $("#request-new-pick-up-date").click(function() {
 
 
 
-       if (date_option1.length < 1 ) {
+        if (date_option1.length < 1 ) {
         
             
             $("#date_option_one").css('border-color','red');  //change border color to red  
@@ -212,36 +259,6 @@ $("#request-new-pick-up-date").click(function() {
        
 
     });
-
-
-
-$(".cancel-pickup").click(function() { 
-
-
-post_data = {
-                'confirmed_pickup_date'     : $("input[name='confirmed_pickup_date']").val(),
-                'confirmed_pickup_time'     : $("input[name='confirmed_pickup_time']").val()
-            };
-
-
- //Ajax post data to server
-            $.post('cancel-pickup.php', post_data, function(response){ 
-                if(response.type == 'error'){ //load json data from server and output message     
-                    output = '<div class="error">'+response.text+'</div>';
-                }else{
-                    output = response.text;
-                    //reset values in all input fields
-                   
-                  
-                  $(".result-accept").show().slideDown(); 
-
-                }
-                $("#profile-form #profile_results").hide().html(output).slideDown();
-            }, 'json');
-
-});
-
-
  });
 </script> 
 
@@ -249,160 +266,12 @@ post_data = {
 
 
 
-  <script>
-  
-  $(function() {
-    $( "#date_option_one" ).datepicker({ minDate: 2});
-    $( "#date_option_two" ).datepicker({ minDate: 2});
-    $( "#date_option_three" ).datepicker({ minDate: 2});
-  });
 
-  </script>
-
-
-
-<!-- Main -->
-
-
-
-
-
-
-    <div id="white-container-account">
-      
-
-
-
-
-
-  
    <iframe name="votar" style="display:none;"></iframe>
 
 
 
-
-
-
-
-<?php if($row['Address'] == '' || $row['City'] == '' || $row['State'] == '' || $row['Zip'] == '') { ?>
-
-<h3>Please provide your physical address to be able the schedule a pick-up </h3>
-
-
-<div class="create-one-here-box">
-      <div class="create-one">
-
-        <a href="<?php echo BASE_PATH; ?>/account/myinfo/?id=<?php echo $_SESSION['customerSession'];?>" class="create-one-btn">Add Address</a>
-
-       </div> 
-       <p>&nbsp;</p>
-  </div>
-  </div>
-
-
-<?php } ?>
-
-
-
-
-<?php if($row['Confirmed_Pickup_Date'] != '' && $row['Confirmed_Pickup_Time'] != '') { ?>
-
-<div class="pick-up-requested">
-
-<h3>We have confirmed the following pick-up date: </h3>
-<p>&nbsp;</p>
-<h4><?php echo date('F j, Y',strtotime($row['Confirmed_Pickup_Date'])).' @ '.$row['Confirmed_Pickup_Time']  ?> </h4>
- <p>&nbsp;</p>
-
-      <div class="create-one">
-
-        <a href="#" role="button" class="slide_open create-one-btn">Cancel Pick up Date</a>
-       </div> 
-      
-  </div>
-
-</div>
-
-
-
- <!-- Add content to the popup -->
-
-<div id="slide" class="well slide">
-  <div class="result-accept">
-  <div id="result-accept">Successfully Canceled!</div>
-  </div>
-
-<input type="text" name="confirmed_pickup_date" id="confirmed_pickup_date" value="<?php echo $row['Confirmed_Pickup_Date']; ?>"/>
-<input type="text" name="confirmed_pickup_time" id="confirmed_pickup_time" value="<?php echo $row['Confirmed_Pickup_Time']; ?>"/>
-
-<h4>Are you sure you want to cancel the pick-up date?</h4>
-
-
-<div class="popupoverlay-btn">
-  <div class="cancel-decline">
-    <button class="slide_close cancel">Cancel</button>
-    <button class="decline btn-delete cancel-pickup">Yes</button>
-</div>
-
-<div class="popupoverlay-btn">
-  <div class="close-decline">
-    <button class="slide_close cancel">Close</button>
-</div>
-</div>
-
-</div>
-</div>
-
- <!-- End content to the popup -->
-
-
-
-<?php } ?>
-
-
-
-
-
-<?php if($row['Schedule_Date_Option1'] != '' && $row['Schedule_Time_Option1'] != '' && $row['Confirmed_Pickup_Date'] == '' && $row['Confirmed_Pickup_Time'] == '') { ?>
-
-<div class="pick-up-requested">
-
-<h3>You have requested a pick up for the following date(s) </h3>
-<p>&nbsp;</p>
-<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option1'])).' @ '.$row['Schedule_Time_Option1']  ?> </h4>
-
-<?php if($row['Schedule_Date_Option2'] != '' && $row['Schedule_Time_Option1'] != '' ) { ?>
-<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option2'])).' @ '.$row['Schedule_Time_Option2']  ?> </h4>
-<?php } ?>
-
-<?php if($row['Schedule_Date_Option3'] != '' && $row['Schedule_Time_Option3'] != '' ) { ?>
-<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option3'])).' @ '.$row['Schedule_Time_Option3']  ?> </h4>
-<?php } ?>
-
-<p>&nbsp;</p>
-
-      <div class="create-one">
-
-        <a href="#" class="create-one-btn" id="request-new-pick-up-date">Request New Pick up Date</a>
-
-       </div> 
-       <p>&nbsp;</p>
-  </div>
-
-</div>
-
-<?php } ?>
-
-
-
-<div class="pick-up-request">
-
-
- <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row['Schedule_Date_Option1'] == '' && $row['Schedule_Time_Option1'] == '') { ?>
-
-
-
-    <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
+<form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
         
         
 
@@ -607,8 +476,13 @@ post_data = {
   
 
 
-        <div id="save">
-              <input type="submit" class="schedule-pickup" value="Schedule Pickup"/>
+     
+              <input type="submit" class="schedule-pickup" value="Schedule New Pickup"/>
+
+           
+
+             <div id="cancel">
+              <input type="submit" class="cancel" value="Cancel"/>
 
             </div>
 
@@ -618,39 +492,3 @@ post_data = {
 </div>
 
       </form>
-
-
-
-
-    
-
-                    <div class="clearer"></div>
-
-
-            
-
-
-          </div>
-
-      <div class="clearer"></div>
-
-
-
-
-<?php } ?>
-      
- </div>
-
-
-   <script>
-$(document).ready(function () {
-
-    $('#slide').popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
-
-});
-</script>
-  

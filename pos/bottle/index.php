@@ -428,9 +428,9 @@ $(document).ready(function() {
   <header class="hero">
   
     <div class="wrap">
-      <h1 class="title">Let us pick up your recycle and get paid</h1>
+      <h1 class="title">Turn that trash to cash + help the homeless</h1>
       <span class="description">
-         We do the hard work for you
+        without having to step a foot out your apartment!
       </span>
 
       
@@ -535,7 +535,7 @@ $(document).ready(function() {
   </section>
   
 
-
+<!--
 <div id="benefits"></div>
   <section class="features"
       ng-click="vm.toggle()"
@@ -625,14 +625,14 @@ $(document).ready(function() {
   
       </div>
   </section>
-
+-->
 
 
 
 
 
   <div id="facts"></div>
-  <section class="features" style="background:#fff"
+  <section class="features" 
       ng-click="vm.toggle()"
       ng-class="{active: vm.cards}">
   
@@ -652,7 +652,7 @@ $(document).ready(function() {
               </div>
               <h2 class="title">Not convenient or accessible</h2>
               <span class="description">
-               25% of americanc don't recylce because of invonvience and lack of easy access to recycle bins or centers
+               Reverse Vending Machines are just not easy to to reach or accessible 
               </span>
              
   
@@ -687,8 +687,8 @@ $(document).ready(function() {
               <div class="icon-features">
                <img src="img/features/forget.png"/>
               </div>
-              <h2 class="title">Forget</h2>
-              <span class="description">You forget to recycle your bottles and cans and put them into one trash bin.</span>
+              <h2 class="title">Not taking the advantage</h2>
+              <span class="description">You recycle your bottles and cans but never really thought more that you could make money from it</span>
              
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
@@ -707,8 +707,8 @@ $(document).ready(function() {
               <div class="icon-features">
                <img src="img/features/lazy.png"/>
               </div>
-              <h2 class="title">Being Lazy</h2>
-              <span class="description">People are not willing to walk to the next vending machine to receive $0.05 for each bottle</span>
+              <h2 class="title">Busy Schedule</h2>
+              <span class="description">Some of us are just too busy to do extra work after a long day</span>
              
               <svg class="close" ng-click="vm.activeCard = null; $event.stopPropagation();" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 26 26"><path class="line" d="M.5.5l23 23M23.5.5l-23 23"></path></svg>
   
@@ -749,7 +749,7 @@ $(document).ready(function() {
       </div>
       <div class="prop-text-how-it-works">
         <h2 class="title">Step 3</h2>
-        <span class="description">Recycle your bottles into trash bags</span>
+        <span class="description">Place your bottles into trash bag</span>
        <img src="images/recycle-bottles.jpg"/>
       </div>
 
@@ -782,7 +782,7 @@ $(document).ready(function() {
    
   
    <div class="copyright">
-      © 2017 Valify. All rights reserved  |  <a href="#">Terms of Service</a>  |  <a href="#">Privacy</a>  |  <a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a href="#">About</a>  |  <a href="#">Contact us</a> 
+      © 2017 Valify. All rights reserved  |  <a href="#">Terms of Service</a>  |  <a href="#">Privacy</a>  |  <a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a href="<?php echo BASE_PATH; ?>/about/">About</a>  |  <a href="#">Contact us</a> 
     </div>
   
   </footer>

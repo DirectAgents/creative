@@ -2260,7 +2260,7 @@ body section.value>.title {
 	text-align: center;
 	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
 	font-weight: 700;
-	font-size: 32px;
+	font-size: 40px;
 	line-height: 36px
 }
 @media only screen and (min-width: 768px) and (orientation: landscape) {
@@ -2820,7 +2820,7 @@ body section.features>.title {
 	text-align: center;
 	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
 	font-weight: 700;
-	font-size: 32px;
+	font-size: 40px;
 	line-height: 36px
 }
 @media only screen and (min-width: 768px) and (orientation: landscape) {

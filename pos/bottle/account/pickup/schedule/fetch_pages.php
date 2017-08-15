@@ -95,9 +95,9 @@ $( "#schedulepickup" ).load( "schedulepickup.php" );
       
     });
 
-    $(".cancelpickup").click(function() {  
+    $(".pastpickup").click(function() {  
 
-      $( "#cancelpickup" ).load( "refund-requests.php" );
+      $( "#pastpickup" ).load( "pastpickups.php" );
 
     });
 
@@ -165,7 +165,7 @@ echo '</div>';
     </li>
     <li>&nbsp;</li>
     <?php if($row['Payment_Method'] == 'Bank'){ ?>
-    <li><a href="#cancelpickup" class="cancelpickup">Cancel Pickup</a></li>
+    <li><a href="#pastpickup" class="pastpickup">Past Pickups</a></li>
     <?php } ?>
    
   </ul>  
@@ -180,7 +180,7 @@ echo '</div>';
 
 <!--<div id="refund-requests" class="tabContent" ></div>-->
 
-<div id="cancelpickup" class="tabContent" ></div>
+<div id="pastpickup" class="tabContent" ></div>
 
 
 
@@ -216,14 +216,3 @@ echo '</div>';
 
 
 
-<script>
-$(document).ready(function () {
-
-    $('#slide').popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
-
-});
-</script>
