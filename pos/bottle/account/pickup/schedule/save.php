@@ -162,7 +162,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Pick-Up Dates Request</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Pick-Up Dates Requested</td>
                                                         </tr>
 
                                                          <tr>
@@ -277,7 +277,7 @@ $content = new SendGrid\Content("text/html", '
 
                              <tr>
                                
-                    <td align="center" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+                    <td align="left" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
 	What to do next?
                     </td>
                 </tr>
@@ -285,7 +285,7 @@ $content = new SendGrid\Content("text/html", '
 
                 <tr>
                                
-                    <td align="center" style="padding: 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
 	We will send you a confirmation by email once we can confirm the pick up date and time requested by you.
                     </td>
                 </tr>

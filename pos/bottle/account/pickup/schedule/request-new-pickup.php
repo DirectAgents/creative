@@ -12,6 +12,19 @@ require_once '../../../config.inc.php';
 require '../../../wepay.php';
 
 
+$customer_home = new CUSTOMER();
+
+if(!$customer_home->is_logged_in())
+{
+  $customer_home->redirect('../../../login');
+}
+
+
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
 ?>
 
 
@@ -77,7 +90,15 @@ require '../../../wepay.php';
 
 
 
+ <script>
+  
+  $(function() {
+    $( "#date_option_one" ).datepicker({ minDate: 2});
+    $( "#date_option_two" ).datepicker({ minDate: 2});
+    $( "#date_option_three" ).datepicker({ minDate: 2});
+  });
 
+  </script>
 
 
 <script>
