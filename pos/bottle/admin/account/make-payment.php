@@ -25,7 +25,7 @@ $admin_home = new ADMIN();
 
 if(!$admin_home->is_logged_in())
 {
-  $admin_home->redirect('../login');
+  $admin_home->redirect('../../admin/login');
 }
 
 $stmt = $admin_home->runQuery("SELECT * FROM tbl_admin WHERE userID=:uid");
@@ -33,7 +33,7 @@ $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$stmtcustomer="SELECT * FROM tbl_customer WHERE userID='".$_GET['customerid']."' ";
+$stmtcustomer="SELECT * FROM tbl_customer WHERE userID='".$_GET['userid']."' ";
 $resultcustomer=mysql_query($stmtcustomer);
 $rowcustomer=mysql_fetch_array($resultcustomer);
 
@@ -44,16 +44,16 @@ $rowcustomer=mysql_fetch_array($resultcustomer);
 //exit();
 
 
-$stmtpickup="SELECT * FROM tbl_pickup_finished WHERE adminID='".$_GET['adminid']."' AND taskID = '".$_GET['taskid']."' ";
+$stmtpickup="SELECT * FROM tbl_pickup_finished WHERE userID='".$_GET['userid']."' AND taskID = '".$_GET['taskid']."' ";
 $resultpickup=mysql_query($stmtpickup);
 $rowpickup=mysql_fetch_array($resultpickup);
 
 
 
-$payamount = $rowpickup['Pay'] * 2.9 / 100 + 0.30;
+$payamount = $_POST['amount'] * 2.9 / 100 + 0.30;
 
 
-$payamount_final = $rowpickup['Pay'] + 1 ;
+//$payamount_final = $rowpickup['Pay'] + 1 ;
 
 /* 
 $arr = explode('.', $payamount);
@@ -89,7 +89,7 @@ $wepay = new WePay($access_token);
 try {
     $checkout = $wepay->request('/checkout/create', array(
             'account_id' => $account_id, // ID of the account that you want the money to go to
-            'amount' => $payamount_final, // dollar amount you want to charge the user
+            'amount' => $payamount, // dollar amount you want to charge the user
             'short_description' => "Payment to ".$rowcustomer['FirstName']." ", // a short description of what the payment is for
             'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
             'currency'          => 'USD',
@@ -152,7 +152,7 @@ if($month == 'December') {$order_by = '12';}
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_GET['taskid']."','".$_GET['adminid']."','".$_GET['customerid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
+$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_GET['taskid']."','".$_GET['adminid']."','".$_GET['userid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
    '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
 
 

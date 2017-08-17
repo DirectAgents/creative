@@ -6,24 +6,24 @@ session_start();
 require_once '../../../base_path.php';
 
 include("../../../config.php"); //include config file
-require_once '../../../class.participant.php';
+require_once '../../../class.customer.php';
 
 
-$participant_home = new PARTICIPANT();
+$customer_home = new CUSTOMER();
 
-if(!$participant_home->is_logged_in())
+if(!$customer_home->is_logged_in())
 {
-  $participant_home->redirect('../../login');
+  $customer_home->redirect('../../../login');
 }
 
 
 
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
-$row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$row_customer = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-if($row_participant['Payment_Method'] == 'Bank' && $row_participant['bank_account'] == ''){
+if($row_customer['Payment_Method'] == 'Bank' && $row_customer['bank_account'] == ''){
 
 
     // WePay PHP SDK - http://git.io/mY7iQQ
@@ -33,7 +33,7 @@ if($row_participant['Payment_Method'] == 'Bank' && $row_participant['bank_accoun
     // application settings
     $client_id = $wepay_client_id;
     $client_secret = $wepay_client_secret;
-    $access_token = $row_participant['access_token'];
+    $access_token = $row_customer['access_token'];
 
     // change to useProduction for live environments
     Wepay::useStaging($client_id, $client_secret);
@@ -47,7 +47,7 @@ if($row_participant['Payment_Method'] == 'Bank' && $row_participant['bank_accoun
   
 
 
-    'account_id' =>    $row_participant['account_id']
+    'account_id' =>    $row_customer['account_id']
 
     
     
@@ -69,11 +69,11 @@ exit();
     $bankaccount = $response->balances[0]->withdrawal_bank_name;
 
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
 
   bank_account = '".$bankaccount."'
 
-  WHERE userID='".$_SESSION['participantSession']."'");
+  WHERE userID='".$_SESSION['customerSession']."'");
 
   header("Location:../");
 

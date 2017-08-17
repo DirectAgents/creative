@@ -97,11 +97,11 @@ exit();
 
 
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
 
   bank_account = '".$bankaccount."'
 
-  WHERE userID='".$_SESSION['participantSession']."'");
+  WHERE userID='".$_SESSION['customerSession']."'");
 
 
 }
@@ -141,7 +141,7 @@ exit();
     // create the withdrawal
     $response = $wepay->request('account/get_update_uri', array(
         'account_id'    => $row['account_id'],
-        'redirect_uri'  => BASE_PATH.'/participant/payment/verify/',
+        'redirect_uri'  => BASE_PATH.'/account/bankinfo/verify/',
         'mode'          => 'iframe'
     ));
 
@@ -152,7 +152,7 @@ exit();
 ?>
 
 
-<iframe src="<?php echo $endpoint_url; ?>/api/account_update/<?php echo $row['account_id']; ?>?iframe=1&redirect_uri=<?php echo BASE_PATH; ?>/participant/payment/verify/" frameborder="0" border="0" cellspacing="0" scrolling="no" style="border-style: none;width: 100%; height: 400px; padding:0px;" ></iframe>
+<iframe src="<?php echo $endpoint_url; ?>/api/account_update/<?php echo $row['account_id']; ?>?iframe=1&redirect_uri=<?php echo BASE_PATH; ?>/account/bankinfo/verify/" frameborder="0" border="0" cellspacing="0" scrolling="no" style="border-style: none;width: 100%; height: 400px; padding:0px;" ></iframe>
 
 
 
@@ -203,7 +203,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
      "scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     //"user_name":"test user",
     //"user_email":"test@example.com",
-    "redirect_uri":"<?php echo BASE_PATH; ?>/participant/payment/?verified=1",
+    "redirect_uri":"<?php echo BASE_PATH; ?>/account/bankinfo/?verified=1",
     "top":100, // control the positioning of the popup with the top and left params
     "left":100,
     "state":"robot", // this is an optional parameter that lets you persist some state value through the flow
@@ -212,7 +212,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
         //alert(data.code);
     if (data.code.length !== 0) {
       // send the data to the server
-      window.location.href = "<?php echo BASE_PATH; ?>/participant/account/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=<?php echo BASE_PATH; ?>/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
+      window.location.href = "<?php echo BASE_PATH; ?>/account/bankinfo/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=<?php echo BASE_PATH; ?>/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
 
     } else {
       // an error has occurred and will be in data.error

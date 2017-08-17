@@ -10,11 +10,13 @@ include_once("../../config.php");
 
 
 
+
+
 $admin_home = new ADMIN();
 
 if(!$admin_home->is_logged_in())
 {
-  $admin_home->redirect('../login');
+  $admin_home->redirect('../../admin/login');
 }
 
 
@@ -140,6 +142,8 @@ $random = rand(5, 20000);
 <input type="hidden" name="id<?php echo $row2['id']; ?>" id="projectid" value="<?php echo $row2['id']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 <input type="hidden" name="taskid<?php echo $row2['userID']; ?>" id="taskid" value="<?php echo $row2['taskID']; ?>"/>
+<input type="hidden" name="adminid<?php echo $_SESSION['adminSession']; ?>" id="adminid" value="<?php echo $_SESSION['adminSession']; ?>"/>
+
 
 
 
@@ -227,12 +231,13 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
         
         var id = $('input[name=id'+<?php echo $row2['id']; ?>+']').val();
         var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        var adminid = $('input[name=adminid'+<?php echo $_SESSION['adminSession']; ?>+']').val();
         var taskid = $('input[name=taskid'+<?php echo $row2['userID']; ?>+']').val();
+        var amount = $('input[name=amount'+<?php echo $row2['userID']; ?>+']').val();
 
 
 
 
-       
         
 
         //everything looks good! proceed...
@@ -248,7 +253,7 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'id':id,'userid':userid,'taskid':taskid};
+            post_data = {'id':id,'userid':userid,'adminid':adminid,'taskid':taskid,'amount':amount};
             
             //Ajax post data to server
             $.post('make-payment.php', post_data, function(response){  
