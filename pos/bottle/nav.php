@@ -158,3 +158,79 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
 <? } ?>
 
+
+
+
+<?php
+
+if(!empty($_SESSION['adminSession'])){
+
+
+
+$stmt = mysqli_query($connecDB, "SELECT * FROM tbl_admin WHERE userID='".$_SESSION['adminSession']."'");
+$rownav = mysqli_fetch_array($stmt);
+
+
+$_SESSION['profileimage'] = $rownav['profile_image'];
+$_SESSION['google_picture_link'] = $rownav['google_picture_link'];
+
+?>
+
+ <h1><a href="<?php echo BASE_PATH; ?>/account/" title="Valify"></a></h1>
+
+
+<nav>
+      <!--<ul class="pages">
+        <li class="home"><a href="../index.php">Home</a></li>
+        <li class="features"><a href="features.html">About</a></li>
+        <li class="pricing"><a href="pricing.html">Pricing</a></li>
+        <li class="gallery"><a href="../gallery.html">Gallery</a></li>
+       
+      </ul>-->
+      <ul class="external-logged-in">
+
+        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/idea/browse/">SCHEDULE PICKUP</a></li>
+
+<a href="<?php echo BASE_PATH; ?>/account/settings/?id=<?php echo $_SESSION['customerSession'];?>">
+<?php if($rownav['google_picture_link'] != ''){ ?>
+        <li><img src="<?php echo $_SESSION['google_picture_link']; ?>" class="nav-profile-photo"/></li>
+<?php } ?>
+
+<?php if(isset($_SESSION['fb_access_token_customer'])){ ?>
+        <li><img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture" class="nav-profile-photo"/></li>
+<?php } ?>
+       
+<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['fb_access_token_customer']))){ ?>
+
+      
+<?php if($rownav['profile_image'] != ''){  ?>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/customer/<?php echo $rownav['profile_image'];?>" class="nav-profile-photo"/></li>
+<?php }else{ ?>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
+<?php } ?>
+
+<?php } ?>
+
+  </a>
+
+
+        <li class="more">
+            <span>My account</span>
+            <ul>
+              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/myinfo/?id=<?php echo $_SESSION['customerSession'];?>">My Info</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/payment/">Payment</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/bankinfo/">Bank Information</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/pickup/schedule/">Schedule Pickup</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/pickup/cancel/">Cancel Pickup</a></li>
+              <li class='separator'></li>
+              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['participantSession'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
+
+            
+            </ul>
+        </li>
+      </ul>
+</nav>
+
+
+<? } ?>
+

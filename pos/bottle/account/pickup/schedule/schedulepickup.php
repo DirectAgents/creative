@@ -25,6 +25,15 @@ $stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid")
 $stmt->execute(array(":uid"=>$_SESSION['customerSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_pickup_request WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$row_pickup_request = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_pickup_confirmed WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$row_pickup_confirmed = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 
 
@@ -62,7 +71,7 @@ $("#request-new-pick-up-date").click(function() {
         var date_option3 = $("input[name='date_option_three']").val()
         var time_option3 = $("select[name='time_option_three']").val()
        
-
+        alert(date_option2);
 
 
        if (date_option1.length < 1 ) {
@@ -305,13 +314,13 @@ post_data = {
 
 
 
-<?php if($row['Confirmed_Pickup_Date'] != '' && $row['Confirmed_Pickup_Time'] != '') { ?>
+<?php if($row_pickup_confirmed['Pickup_Date'] != '' && $row_pickup_confirmed['Pickup_Time'] != '') { ?>
 
 <div class="pick-up-requested">
 
 <h3>We have confirmed the following pick-up date: </h3>
 <p>&nbsp;</p>
-<h4><?php echo date('F j, Y',strtotime($row['Confirmed_Pickup_Date'])).' @ '.$row['Confirmed_Pickup_Time']  ?> </h4>
+<h4><?php echo date('F j, Y',strtotime($row_pickup_confirmed['Pickup_Date'])).' @ '.$row_pickup_confirmed['Pickup_Time']  ?> </h4>
  <p>&nbsp;</p>
 
       <div class="create-one">
@@ -363,20 +372,20 @@ post_data = {
 
 
 
-<?php if($row['Schedule_Date_Option1'] != '' && $row['Schedule_Time_Option1'] != '' && $row['Confirmed_Pickup_Date'] == '' && $row['Confirmed_Pickup_Time'] == '') { ?>
+<?php if($row_pickup_request['Schedule_Date_Option1'] != '' && $row_pickup_request['Schedule_Time_Option1'] != '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '') { ?>
 
 <div class="pick-up-requested">
 
 <h3>You have requested a pick up for the following date(s) </h3>
 <p>&nbsp;</p>
-<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option1'])).' @ '.$row['Schedule_Time_Option1']  ?> </h4>
+<h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option1'])).' @ '.$row_pickup_request['Schedule_Time_Option1']  ?> </h4>
 
-<?php if($row['Schedule_Date_Option2'] != '' && $row['Schedule_Time_Option1'] != '' ) { ?>
-<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option2'])).' @ '.$row['Schedule_Time_Option2']  ?> </h4>
+<?php if($row_pickup_request['Schedule_Date_Option2'] != '' && $row_pickup_request['Schedule_Time_Option1'] != '' ) { ?>
+<h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option2'])).' @ '.$row_pickup_request['Schedule_Time_Option2']  ?> </h4>
 <?php } ?>
 
-<?php if($row['Schedule_Date_Option3'] != '' && $row['Schedule_Time_Option3'] != '' ) { ?>
-<h4><?php echo date('F j, Y',strtotime($row['Schedule_Date_Option3'])).' @ '.$row['Schedule_Time_Option3']  ?> </h4>
+<?php if($row_pickup_request['Schedule_Date_Option3'] != '' && $row_pickup_request['Schedule_Time_Option3'] != '' ) { ?>
+<h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option3'])).' @ '.$row_pickup_request['Schedule_Time_Option3']  ?> </h4>
 <?php } ?>
 
 <p>&nbsp;</p>
@@ -398,7 +407,7 @@ post_data = {
 <div class="pick-up-request">
 
 
- <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row['Schedule_Date_Option1'] == '' && $row['Schedule_Time_Option1'] == '') { ?>
+ <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row_pickup_request['Schedule_Date_Option1'] == '' && $row_pickup_request['Schedule_Time_Option1'] == '') { ?>
 
 
 
@@ -417,7 +426,7 @@ post_data = {
 
      
                <input class="form-control" name="date_option_one" id="date_option_one" type="text" placeholder="Choose date of pick-up" 
-               value="<?php echo $row['Schedule_Date_Option1']; ?>"/>
+               value="<?php echo $row_pickup_request['Schedule_Date_Option1']; ?>"/>
 
           
           </span>
@@ -438,26 +447,26 @@ post_data = {
              <span class="select-wrapper">
             
               <select name="time_option_one" id="time_option_one" class="fromto">
-  <option value="" <?php if($row['Schedule_Time_Option1'] == ''){echo 'selected';}?>>Time of pickup</option>
-  <option value="06:00am" <?php if($row['Schedule_Time_Option1'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
-  <option value="07:00am" <?php if($row['Schedule_Time_Option1'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
-  <option value="08:00am" <?php if($row['Schedule_Time_Option1'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
-  <option value="09:00am" <?php if($row['Schedule_Time_Option1'] == '09:00am'){echo 'selected';}?>>09:00 AM</option>
-  <option value="10:00am" <?php if($row['Schedule_Time_Option1'] == '10:00am'){echo 'selected';}?>>10:00 AM</option>
-  <option value="11:00am" <?php if($row['Schedule_Time_Option1'] == '11:00am'){echo 'selected';}?>>11:00 AM</option>
-  <option value="12:00pm" <?php if($row['Schedule_Time_Option1'] == '12:00pm'){echo 'selected';}?>>12:00 PM</option>
-  <option value="01:00pm" <?php if($row['Schedule_Time_Option1'] == '01:00pm'){echo 'selected';}?>>01:00 PM</option>
-  <option value="02:00pm" <?php if($row['Schedule_Time_Option1'] == '02:00pm'){echo 'selected';}?>>02:00 PM</option>
-  <option value="03:00pm" <?php if($row['Schedule_Time_Option1'] == '03:00pm'){echo 'selected';}?>>03:00 PM</option>
-  <option value="04:00pm" <?php if($row['Schedule_Time_Option1'] == '04:00pm'){echo 'selected';}?>>04:00 PM</option>
-  <option value="05:00pm" <?php if($row['Schedule_Time_Option1'] == '05:00pm'){echo 'selected';}?>>05:00 PM</option>
-  <option value="06:00pm" <?php if($row['Schedule_Time_Option1'] == '06:00pm'){echo 'selected';}?>>06:00 PM</option>
-  <option value="07:00pm" <?php if($row['Schedule_Time_Option1'] == '07:00pm'){echo 'selected';}?>>07:00 PM</option>
-  <option value="08:00pm" <?php if($row['Schedule_Time_Option1'] == '08:00pm'){echo 'selected';}?>>08:00 PM</option>
-  <option value="09:00pm" <?php if($row['Schedule_Time_Option1'] == '09:00pm'){echo 'selected';}?>>09:00 PM</option>
-  <option value="10:00pm" <?php if($row['Schedule_Time_Option1'] == '10:00pm'){echo 'selected';}?>>10:00 PM</option>
-  <option value="11:00pm" <?php if($row['Schedule_Time_Option1'] == '11:00pm'){echo 'selected';}?>>11:00 PM</option>
-  <option value="12:00am" <?php if($row['Schedule_Time_Option1'] == '12:00am'){echo 'selected';}?>>12:00 AM</option>
+  <option value="" <?php if($row_pickup_request['Schedule_Time_Option1'] == ''){echo 'selected';}?>>Time of pickup</option>
+  <option value="06:00am" <?php if($row_pickup_request['Schedule_Time_Option1'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
+  <option value="07:00am" <?php if($row_pickup_request['Schedule_Time_Option1'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
+  <option value="08:00am" <?php if($row_pickup_request['Schedule_Time_Option1'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
+  <option value="09:00am" <?php if($row_pickup_request['Schedule_Time_Option1'] == '09:00am'){echo 'selected';}?>>09:00 AM</option>
+  <option value="10:00am" <?php if($row_pickup_request['Schedule_Time_Option1'] == '10:00am'){echo 'selected';}?>>10:00 AM</option>
+  <option value="11:00am" <?php if($row_pickup_request['Schedule_Time_Option1'] == '11:00am'){echo 'selected';}?>>11:00 AM</option>
+  <option value="12:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '12:00pm'){echo 'selected';}?>>12:00 PM</option>
+  <option value="01:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '01:00pm'){echo 'selected';}?>>01:00 PM</option>
+  <option value="02:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '02:00pm'){echo 'selected';}?>>02:00 PM</option>
+  <option value="03:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '03:00pm'){echo 'selected';}?>>03:00 PM</option>
+  <option value="04:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '04:00pm'){echo 'selected';}?>>04:00 PM</option>
+  <option value="05:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '05:00pm'){echo 'selected';}?>>05:00 PM</option>
+  <option value="06:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '06:00pm'){echo 'selected';}?>>06:00 PM</option>
+  <option value="07:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '07:00pm'){echo 'selected';}?>>07:00 PM</option>
+  <option value="08:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '08:00pm'){echo 'selected';}?>>08:00 PM</option>
+  <option value="09:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '09:00pm'){echo 'selected';}?>>09:00 PM</option>
+  <option value="10:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '10:00pm'){echo 'selected';}?>>10:00 PM</option>
+  <option value="11:00pm" <?php if($row_pickup_request['Schedule_Time_Option1'] == '11:00pm'){echo 'selected';}?>>11:00 PM</option>
+  <option value="12:00am" <?php if($row_pickup_request['Schedule_Time_Option1'] == '12:00am'){echo 'selected';}?>>12:00 AM</option>
                </select>
 
                
@@ -483,7 +492,7 @@ post_data = {
 
      
                <input class="form-control" name="date_option_two" id="date_option_two" type="text" placeholder="Choose date of pick-up"
-               value="<?php echo $row['Schedule_Date_Option2']; ?>"/>
+               value="<?php echo $row_pickup_request['Schedule_Date_Option2']; ?>"/>
 
           
           </span>
@@ -504,26 +513,26 @@ post_data = {
              <span class="select-wrapper">
             
               <select name="time_option_two" id="time_option_two" class="fromto">
-  <option value="" <?php if($row['Schedule_Time_Option2'] == ''){echo 'selected';}?>>Time of pickup</option>
-  <option value="06:00am" <?php if($row['Schedule_Time_Option2'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
-  <option value="07:00am" <?php if($row['Schedule_Time_Option2'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
-  <option value="08:00am" <?php if($row['Schedule_Time_Option2'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
-  <option value="09:00am" <?php if($row['Schedule_Time_Option2'] == '09:00am'){echo 'selected';}?>>09:00 AM</option>
-  <option value="10:00am" <?php if($row['Schedule_Time_Option2'] == '10:00am'){echo 'selected';}?>>10:00 AM</option>
-  <option value="11:00am" <?php if($row['Schedule_Time_Option2'] == '11:00am'){echo 'selected';}?>>11:00 AM</option>
-  <option value="12:00pm" <?php if($row['Schedule_Time_Option2'] == '12:00pm'){echo 'selected';}?>>12:00 PM</option>
-  <option value="01:00pm" <?php if($row['Schedule_Time_Option2'] == '01:00pm'){echo 'selected';}?>>01:00 PM</option>
-  <option value="02:00pm" <?php if($row['Schedule_Time_Option2'] == '02:00pm'){echo 'selected';}?>>02:00 PM</option>
-  <option value="03:00pm" <?php if($row['Schedule_Time_Option2'] == '03:00pm'){echo 'selected';}?>>03:00 PM</option>
-  <option value="04:00pm" <?php if($row['Schedule_Time_Option2'] == '04:00pm'){echo 'selected';}?>>04:00 PM</option>
-  <option value="05:00pm" <?php if($row['Schedule_Time_Option2'] == '05:00pm'){echo 'selected';}?>>05:00 PM</option>
-  <option value="06:00pm" <?php if($row['Schedule_Time_Option2'] == '06:00pm'){echo 'selected';}?>>06:00 PM</option>
-  <option value="07:00pm" <?php if($row['Schedule_Time_Option2'] == '07:00pm'){echo 'selected';}?>>07:00 PM</option>
-  <option value="08:00pm" <?php if($row['Schedule_Time_Option2'] == '08:00pm'){echo 'selected';}?>>08:00 PM</option>
-  <option value="09:00pm" <?php if($row['Schedule_Time_Option2'] == '09:00pm'){echo 'selected';}?>>09:00 PM</option>
-  <option value="10:00pm" <?php if($row['Schedule_Time_Option2'] == '10:00pm'){echo 'selected';}?>>10:00 PM</option>
-  <option value="11:00pm" <?php if($row['Schedule_Time_Option2'] == '11:00pm'){echo 'selected';}?>>11:00 PM</option>
-  <option value="12:00am" <?php if($row['Schedule_Time_Option2'] == '12:00am'){echo 'selected';}?>>12:00 AM</option>
+  <option value="" <?php if($row_pickup_request['Schedule_Time_Option2'] == ''){echo 'selected';}?>>Time of pickup</option>
+  <option value="06:00am" <?php if($row_pickup_request['Schedule_Time_Option2'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
+  <option value="07:00am" <?php if($row_pickup_request['Schedule_Time_Option2'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
+  <option value="08:00am" <?php if($row_pickup_request['Schedule_Time_Option2'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
+  <option value="09:00am" <?php if($row_pickup_request['Schedule_Time_Option2'] == '09:00am'){echo 'selected';}?>>09:00 AM</option>
+  <option value="10:00am" <?php if($row_pickup_request['Schedule_Time_Option2'] == '10:00am'){echo 'selected';}?>>10:00 AM</option>
+  <option value="11:00am" <?php if($row_pickup_request['Schedule_Time_Option2'] == '11:00am'){echo 'selected';}?>>11:00 AM</option>
+  <option value="12:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '12:00pm'){echo 'selected';}?>>12:00 PM</option>
+  <option value="01:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '01:00pm'){echo 'selected';}?>>01:00 PM</option>
+  <option value="02:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '02:00pm'){echo 'selected';}?>>02:00 PM</option>
+  <option value="03:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '03:00pm'){echo 'selected';}?>>03:00 PM</option>
+  <option value="04:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '04:00pm'){echo 'selected';}?>>04:00 PM</option>
+  <option value="05:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '05:00pm'){echo 'selected';}?>>05:00 PM</option>
+  <option value="06:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '06:00pm'){echo 'selected';}?>>06:00 PM</option>
+  <option value="07:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '07:00pm'){echo 'selected';}?>>07:00 PM</option>
+  <option value="08:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '08:00pm'){echo 'selected';}?>>08:00 PM</option>
+  <option value="09:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '09:00pm'){echo 'selected';}?>>09:00 PM</option>
+  <option value="10:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '10:00pm'){echo 'selected';}?>>10:00 PM</option>
+  <option value="11:00pm" <?php if($row_pickup_request['Schedule_Time_Option2'] == '11:00pm'){echo 'selected';}?>>11:00 PM</option>
+  <option value="12:00am" <?php if($row_pickup_request['Schedule_Time_Option2'] == '12:00am'){echo 'selected';}?>>12:00 AM</option>
                </select>
 
                
@@ -552,7 +561,7 @@ post_data = {
 
      
                <input class="form-control" name="date_option_three" id="date_option_three" type="text" placeholder="Choose date of pick-up"
-               value="<?php echo $row['Schedule_Date_Option3']; ?>"/>
+               value="<?php echo $row_pickup_request['Schedule_Date_Option3']; ?>"/>
               
           
           </span>
@@ -573,26 +582,26 @@ post_data = {
              <span class="select-wrapper">
             
               <select name="time_option_three" id="time_option_three" class="fromto">
-  <option value="" <?php if($row['Schedule_Time_Option3'] == ''){echo 'selected';}?>>Time of pickup</option>
-  <option value="06:00am" <?php if($row['Schedule_Time_Option3'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
-  <option value="07:00am" <?php if($row['Schedule_Time_Option3'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
-  <option value="08:00am" <?php if($row['Schedule_Time_Option3'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
-  <option value="09:00am" <?php if($row['Schedule_Time_Option3'] == '09:00am'){echo 'selected';}?>>09:00 AM</option>
-  <option value="10:00am" <?php if($row['Schedule_Time_Option3'] == '10:00am'){echo 'selected';}?>>10:00 AM</option>
-  <option value="11:00am" <?php if($row['Schedule_Time_Option3'] == '11:00am'){echo 'selected';}?>>11:00 AM</option>
-  <option value="12:00pm" <?php if($row['Schedule_Time_Option3'] == '12:00pm'){echo 'selected';}?>>12:00 PM</option>
-  <option value="01:00pm" <?php if($row['Schedule_Time_Option3'] == '01:00pm'){echo 'selected';}?>>01:00 PM</option>
-  <option value="02:00pm" <?php if($row['Schedule_Time_Option3'] == '02:00pm'){echo 'selected';}?>>02:00 PM</option>
-  <option value="03:00pm" <?php if($row['Schedule_Time_Option3'] == '03:00pm'){echo 'selected';}?>>03:00 PM</option>
-  <option value="04:00pm" <?php if($row['Schedule_Time_Option3'] == '04:00pm'){echo 'selected';}?>>04:00 PM</option>
-  <option value="05:00pm" <?php if($row['Schedule_Time_Option3'] == '05:00pm'){echo 'selected';}?>>05:00 PM</option>
-  <option value="06:00pm" <?php if($row['Schedule_Time_Option3'] == '06:00pm'){echo 'selected';}?>>06:00 PM</option>
-  <option value="07:00pm" <?php if($row['Schedule_Time_Option3'] == '07:00pm'){echo 'selected';}?>>07:00 PM</option>
-  <option value="08:00pm" <?php if($row['Schedule_Time_Option3'] == '08:00pm'){echo 'selected';}?>>08:00 PM</option>
-  <option value="09:00pm" <?php if($row['Schedule_Time_Option3'] == '09:00pm'){echo 'selected';}?>>09:00 PM</option>
-  <option value="10:00pm" <?php if($row['Schedule_Time_Option3'] == '10:00pm'){echo 'selected';}?>>10:00 PM</option>
-  <option value="11:00pm" <?php if($row['Schedule_Time_Option3'] == '11:00pm'){echo 'selected';}?>>11:00 PM</option>
-  <option value="12:00am" <?php if($row['Schedule_Time_Option3'] == '12:00am'){echo 'selected';}?>>12:00 AM</option>
+  <option value="" <?php if($row_pickup_request['Schedule_Time_Option3'] == ''){echo 'selected';}?>>Time of pickup</option>
+  <option value="06:00am" <?php if($row_pickup_request['Schedule_Time_Option3'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
+  <option value="07:00am" <?php if($row_pickup_request['Schedule_Time_Option3'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
+  <option value="08:00am" <?php if($row_pickup_request['Schedule_Time_Option3'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
+  <option value="09:00am" <?php if($row_pickup_request['Schedule_Time_Option3'] == '09:00am'){echo 'selected';}?>>09:00 AM</option>
+  <option value="10:00am" <?php if($row_pickup_request['Schedule_Time_Option3'] == '10:00am'){echo 'selected';}?>>10:00 AM</option>
+  <option value="11:00am" <?php if($row_pickup_request['Schedule_Time_Option3'] == '11:00am'){echo 'selected';}?>>11:00 AM</option>
+  <option value="12:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '12:00pm'){echo 'selected';}?>>12:00 PM</option>
+  <option value="01:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '01:00pm'){echo 'selected';}?>>01:00 PM</option>
+  <option value="02:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '02:00pm'){echo 'selected';}?>>02:00 PM</option>
+  <option value="03:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '03:00pm'){echo 'selected';}?>>03:00 PM</option>
+  <option value="04:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '04:00pm'){echo 'selected';}?>>04:00 PM</option>
+  <option value="05:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '05:00pm'){echo 'selected';}?>>05:00 PM</option>
+  <option value="06:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '06:00pm'){echo 'selected';}?>>06:00 PM</option>
+  <option value="07:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '07:00pm'){echo 'selected';}?>>07:00 PM</option>
+  <option value="08:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '08:00pm'){echo 'selected';}?>>08:00 PM</option>
+  <option value="09:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '09:00pm'){echo 'selected';}?>>09:00 PM</option>
+  <option value="10:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '10:00pm'){echo 'selected';}?>>10:00 PM</option>
+  <option value="11:00pm" <?php if($row_pickup_request['Schedule_Time_Option3'] == '11:00pm'){echo 'selected';}?>>11:00 PM</option>
+  <option value="12:00am" <?php if($row_pickup_request['Schedule_Time_Option3'] == '12:00am'){echo 'selected';}?>>12:00 AM</option>
                </select>
 
                

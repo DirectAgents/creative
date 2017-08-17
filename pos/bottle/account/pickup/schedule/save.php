@@ -31,23 +31,19 @@ if(isset($_POST['time_option3'])){$time_option3 = $_POST['time_option3'];}else{$
 
 //$all_game_value = implode(",",$_POST['testing']);
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
-  Schedule_Date_Option1='".$_POST['date_option1']."',
-  Schedule_Time_Option1='".$_POST['time_option1']."',
-  Schedule_Date_Option2='".$date_option2."',
-  Schedule_Time_Option2='".$time_option2."',
-  Schedule_Date_Option3='".$date_option3."',
-  Schedule_Time_Option3='".$time_option3."'
-
-  WHERE userID='".$_SESSION['customerSession']."'");
 
 
+
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_pickup_request(userID, Schedule_Date_Option1, Schedule_Time_Option1, Schedule_Date_Option2, Schedule_Time_Option2, Schedule_Date_Option3, Schedule_Time_Option3) 
+VALUES('".$_SESSION['customerSession']."','".$_POST['date_option1']."', '".$_POST['time_option1']."', '".$date_option2."', 
+'".$time_option2."', '".$date_option3."', '".$time_option3."')");
 
 
   
 $date_option_one = $_POST['date_option1'];
 
-if(isset($_POST['date_option2'],$_POST['time_option2'])){
+if($_POST['date_option2'] != NULL && $_POST['time_option2'] != NULL){
 
 $date_option_two = date('F j, Y',strtotime($_POST['date_option2'])).' @ '.$_POST['time_option2'];
 
