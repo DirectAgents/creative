@@ -599,8 +599,23 @@ label{font-weight:normal !important;}
 
 .survey-metadata .item {
     float: left;
-    width: 22%;
-    margin-right:20px;
+    width: 30%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+
+.survey-metadata .item.name {
+    float: left;
+    width: 20%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.location {
+    float: left;
+    width: 20%;
+    margin-right:0px;
     /*width: 33.3%;*/
 }
 
@@ -3906,7 +3921,7 @@ margin-left:0px;
 }
 
 
-
+.slide_accept{width:35% !important;}
 
 
 

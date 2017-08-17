@@ -12,26 +12,14 @@ require_once '../../../../../class.startup.php';
 
 $startup_home = new STARTUP();
 
-if($startup_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $startup_home->logout();
+  $startup_home->redirect('../../../../login');
 }
 
-
-
-$participant_home = new PARTICIPANT();
-
-if(!$participant_home->is_logged_in())
-{
-  $participant_home->redirect('../../../login');
-}
-
-
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
 
 
 
@@ -67,22 +55,30 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     //header("Location:".$response -> uri."");
 
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
   account_id='',
   owner_user_id='',
   access_token='',
   code = '',
-  bank_account=''
-
-  WHERE userID='".$_SESSION['participantSession']."'");
-
+  billing_address_one='',
+  billing_city='',
+  billing_state='',
+  billing_country='',
+  credit_card_id='',
+  cc_last_four='',
+  cc_name=''
   
-  $sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
+
+  WHERE userID='".$_SESSION['startupSession']."'");
+
+
+$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 while($row = mysqli_fetch_array($sql)){
 
 $sql3=mysqli_query($connecDB,"DELETE FROM wepay WHERE id = '".$row['id']."'");
 
 }
+
 
 //header("Location:../../../");
 

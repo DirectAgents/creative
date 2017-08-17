@@ -32,7 +32,7 @@ $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-    require '../../../../wepay.php';
+    require '../../wepay.php';
 
 
     // application settings
@@ -49,7 +49,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('account', array(
 
 
-    'account_id' =>    $row['account_id']
+    'account_id' =>    1489540520
 
     
     

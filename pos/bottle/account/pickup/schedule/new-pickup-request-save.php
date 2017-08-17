@@ -29,6 +29,10 @@ if(isset($_POST['date_option3'])){$date_option3 = $_POST['date_option3'];}else{$
 if(isset($_POST['time_option3'])){$time_option3 = $_POST['time_option3'];}else{$time_option3 = '';}
 
 
+date_default_timezone_set('America/New_York');
+$the_date = date('Y-m-d'); 
+$the_time = date('h:i:s A');
+
 
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_pickup_request SET 
@@ -37,7 +41,9 @@ if(isset($_POST['time_option3'])){$time_option3 = $_POST['time_option3'];}else{$
   Schedule_Date_Option2='".$date_option2."',
   Schedule_Time_Option2='".$time_option2."',
   Schedule_Date_Option3='".$date_option3."',
-  New_Request='Y'
+  New_Request='Y',
+  Date='".$the_date."',
+  Time='".$the_time."'
 
 
   WHERE userID='".$_SESSION['customerSession']."'");

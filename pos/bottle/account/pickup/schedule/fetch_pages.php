@@ -142,31 +142,13 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
  <ul>
     <li><a href="#schedulepickup" class="schedulepickup">Schedule Pickup</a></li>
+   
+   
+   
     <li>&nbsp;</li>
-    <?php if($row['Payment_Method'] == 'Bank'){ ?>
-    <!--<li><a href="#refund-requests" class="refund-requests">Refund Requests</a>-->
-    <?php } ?>
-
- <?php
-
-$result_count = mysqli_query($connecDB,"SELECT refundrequest,participant_id,id, COUNT(DISTINCT id) AS count FROM wepay WHERE refundrequest = 'yes' AND participant_id = '".$_SESSION['customerSession']."' GROUP BY id");
-$row_count = mysqli_fetch_assoc($result_count);
-$count = $row_count['count'];
-
-if($count > 0 ){
-echo ' <div class="viewed-bubble">';
-echo $count;
-echo '</div>';
-}
-?>
-
-
-
-    </li>
-    <li>&nbsp;</li>
-    <?php if($row['Payment_Method'] == 'Bank'){ ?>
+   
     <li><a href="#pastpickup" class="pastpickup">Past Pickups</a></li>
-    <?php } ?>
+  
    
   </ul>  
 

@@ -325,7 +325,7 @@ header#main-header li.my-projects a {
     transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
     font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 10px;
     letter-spacing: 1.4166666667px;
     line-height: 25px;
@@ -334,6 +334,8 @@ header#main-header li.my-projects a {
     border: 1px solid #1A82E2;
     color: #1A82E2 !important;
     background-color: #fff;
+    float:left;
+    margin-right:20px;
 }
 
 .btn-browse a:hover {

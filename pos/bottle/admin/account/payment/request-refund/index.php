@@ -9,32 +9,36 @@ require_once '../../../class.participant.php';
 
 
 
+$participant_home = new PARTICIPANT();
+
+if($participant_home->is_logged_in())
+{
+  $participant_home->logout();
+}
+
+
+
 $startup_home = new STARTUP();
 
-if($startup_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $startup_home->logout();
+  $startup_home->redirect('../../login');
 }
 
 
 
 
 
-$participant_home  = new PARTICIPANT();
-
-if(!$participant_home ->is_logged_in())
-{
-  $participant_home ->redirect('../../login');
-}
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+$wepay = mysqli_query($connecDB,"SELECT * FROM wepay WHERE id = '".$_GET['id']."'");
+$rowwepay = mysqli_fetch_array($wepay);
 
-
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
-$row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
+$participant = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$rowwepay['participant_id']."'");
+$rowparticipant = mysqli_fetch_array($participant);
 
 
 ?>
@@ -50,8 +54,7 @@ $row_participant = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
        
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery.form.js"></script>
+
 
 <script type="text/javascript" >
 
@@ -69,38 +72,32 @@ $(".btn-request-refund").click(function() {
 var id       = $('input[name=id]').val();
 var refundreason = $("textarea[name='refundreason']").val();
 
+var refundreason_missing = '<div class="errorXYZ">Refund Reason is required!</div>';
+
+if ($("#refundreason").val()) {
 
 
 $.ajax({
-    url: 'accept-refund.php?id='+id,
+    url: 'request-refund.php?id='+id+'&refundreason='+refundreason,
     cache: false,
     success: function(response) {
-        var success = $(response).filter('.response');
+        var success = $(response).filter('.success2');
+        var error = $(response).filter('.errorXYZ');
        
         //alert("asdfasf"); // returns [object Object]
         
          $("#result").hide().html(success).slideDown();
+        $("#result_error").hide().html(error).slideDown();
             
-    
-
-$.ajax({
-    url: 'payment_to_me.php?id='+id,
-    cache: false,
-    success: function(response) {
-        var success = $(response).filter('.response');
-       
-        //alert("asdfasf"); // returns [object Object]
-        
-         //$("#result").hide().html(success).slideDown();
-            
-   }
     }
-);
-            }
-        }
-    );    
+});
+
+}else{
+
+$("#result").hide().html(refundreason_missing).slideDown();
 
 
+};
 
     });
   
@@ -175,9 +172,9 @@ $.ajax({
 
 <?php
 
-$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE participant_id = '".$_SESSION['participantSession']."' AND id = '".$_GET['id']."' ORDER BY order_by DESC ");
-
+$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' AND id = '".$_GET['id']."' ORDER BY order_by DESC ");
 $row=mysqli_fetch_array($sql);
+
 
 
 if (strpos($row['checkout_find_amount'], '.') == false) {
@@ -187,10 +184,14 @@ if (strpos($row['checkout_find_amount'], '.') == false) {
 }
 
 
-
 ?>
 
-          <h2><?php echo "$"; echo $final_amount; ?></h2>
+
+
+          <h3>You will receive from <?php echo $rowparticipant['FirstName']; ?>: <?php echo "$"; echo $final_amount; ?></h3>
+          <h3>+ Processing Fee: <?php echo "$"; echo $row['fees']; ?></h3>
+          <h3>+ Service Fee: <?php echo "$"; echo $row['service_fee']; ?></h3>
+          <h3>Your total refund: <?php echo "$"; echo $row['total']; ?></h3>
         
         
       </div>
@@ -215,12 +216,12 @@ if (strpos($row['checkout_find_amount'], '.') == false) {
 
 
                 <div class="screening-description">
-                 <?php echo $row['refundreason']; ?>
+                 Please explain briefly what your reason is for the refund.
                 </div>
                
                 
 
-
+  <textarea rows="3" tabindex="0" placeholder="Add your request reason here" name="refundreason" id="refundreason"></textarea>
                
              
 
@@ -228,9 +229,10 @@ if (strpos($row['checkout_find_amount'], '.') == false) {
 
 
 
-<input type="submit" class="btn btn-request-refund" value="Accept Refund"/>
+<input type="submit" class="btn btn-request-refund" value="Request Refund"/>
     <p>&nbsp;</p>
     <div id="result"></div>
+    <div id="result_error"></div>
     
 
 

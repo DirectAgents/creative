@@ -2,33 +2,21 @@
 
 
 session_start();
-require_once '../../base_path.php';
-
-
-require_once '../../class.participant.php';
 require_once '../../class.startup.php';
-require_once '../../config.php';
-require_once '../../config.inc.php';
+include_once("../../config.php");
+include("../../config.inc.php");
+
 
 
 $startup_home = new STARTUP();
 
-if($startup_home->is_logged_in())
+if(!$startup_home->is_logged_in())
 {
-  $startup_home->logout();
+  $startup_home->redirect('login.php');
 }
 
-
-
-$participant_home = new PARTICIPANT();
-
-if(!$participant_home->is_logged_in())
-{
-  $participant_home->redirect('../login.php');
-}
-
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
+$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 

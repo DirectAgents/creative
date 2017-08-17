@@ -189,7 +189,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
       </ul>-->
       <ul class="external-logged-in">
 
-        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/idea/browse/">SCHEDULE PICKUP</a></li>
+        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/admin/account/tasks/completed/">FINISHED TASKS</a></li>
 
 <a href="<?php echo BASE_PATH; ?>/account/settings/?id=<?php echo $_SESSION['customerSession'];?>">
 <?php if($rownav['google_picture_link'] != ''){ ?>
@@ -217,11 +217,11 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li class="more">
             <span>My account</span>
             <ul>
-              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/myinfo/?id=<?php echo $_SESSION['customerSession'];?>">My Info</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/payment/">Payment</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/bankinfo/">Bank Information</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/pickup/schedule/">Schedule Pickup</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/pickup/cancel/">Cancel Pickup</a></li>
+              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/admin/account/myinfo/?id=<?php echo $_SESSION['customerSession'];?>">My Info</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/admin/account/payment/">Payment</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/admin/account/bankinfo/">Bank Information</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/admin/account/pickup/schedule/">Schedule Pickup</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/admin/account/pickup/cancel/">Cancel Pickup</a></li>
               <li class='separator'></li>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['participantSession'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 

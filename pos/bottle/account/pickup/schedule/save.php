@@ -32,12 +32,17 @@ if(isset($_POST['time_option3'])){$time_option3 = $_POST['time_option3'];}else{$
 //$all_game_value = implode(",",$_POST['testing']);
 
 
+date_default_timezone_set('America/New_York');
+$the_date = date('Y-m-d'); 
+$the_time = date('h:i:s A');
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_pickup_request(userID, Schedule_Date_Option1, Schedule_Time_Option1, Schedule_Date_Option2, Schedule_Time_Option2, Schedule_Date_Option3, Schedule_Time_Option3) 
+
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_pickup_request(userID, Schedule_Date_Option1, Schedule_Time_Option1, Schedule_Date_Option2, Schedule_Time_Option2, Schedule_Date_Option3, Schedule_Time_Option3, Date, Time) 
 VALUES('".$_SESSION['customerSession']."','".$_POST['date_option1']."', '".$_POST['time_option1']."', '".$date_option2."', 
-'".$time_option2."', '".$date_option3."', '".$time_option3."')");
+'".$time_option2."', '".$date_option3."', '".$time_option3."', '".$the_date."', '".$the_time."')");
 
 
   

@@ -71,7 +71,6 @@ $("#request-new-pick-up-date").click(function() {
         var date_option3 = $("input[name='date_option_three']").val()
         var time_option3 = $("select[name='time_option_three']").val()
        
-        alert(date_option2);
 
 
        if (date_option1.length < 1 ) {
@@ -228,6 +227,7 @@ $(".cancel-pickup").click(function() {
 
 
 post_data = {
+                'confirmed_pickup_id'       : $("input[name='confirmed_pickup_id']").val(),
                 'confirmed_pickup_date'     : $("input[name='confirmed_pickup_date']").val(),
                 'confirmed_pickup_time'     : $("input[name='confirmed_pickup_time']").val()
             };
@@ -325,7 +325,7 @@ post_data = {
 
       <div class="create-one">
 
-        <a href="#" role="button" class="slide_open create-one-btn">Cancel Pick up Date</a>
+        <a href="#" role="button" class="slide_open create-one-btn">Cancel Pick up</a>
        </div> 
       
   </div>
@@ -341,8 +341,9 @@ post_data = {
   <div id="result-accept">Successfully Canceled!</div>
   </div>
 
-<input type="text" name="confirmed_pickup_date" id="confirmed_pickup_date" value="<?php echo $row['Confirmed_Pickup_Date']; ?>"/>
-<input type="text" name="confirmed_pickup_time" id="confirmed_pickup_time" value="<?php echo $row['Confirmed_Pickup_Time']; ?>"/>
+<input type="text" name="confirmed_pickup_id" id="confirmed_pickup_id" value="<?php echo $row_pickup_confirmed['id']; ?>"/>
+<input type="text" name="confirmed_pickup_date" id="confirmed_pickup_date" value="<?php echo $row_pickup_confirmed['Pickup_Date']; ?>"/>
+<input type="text" name="confirmed_pickup_time" id="confirmed_pickup_time" value="<?php echo $row_pickup_confirmed['Pickup_Time']; ?>"/>
 
 <h4>Are you sure you want to cancel the pick-up date?</h4>
 
@@ -372,7 +373,7 @@ post_data = {
 
 
 
-<?php if($row_pickup_request['Schedule_Date_Option1'] != '' && $row_pickup_request['Schedule_Time_Option1'] != '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '') { ?>
+<?php if($row_pickup_request['Schedule_Date_Option1'] != '' && $row_pickup_request['Schedule_Time_Option1'] != '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '') { ?>
 
 <div class="pick-up-requested">
 
@@ -407,7 +408,7 @@ post_data = {
 <div class="pick-up-request">
 
 
- <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row_pickup_request['Schedule_Date_Option1'] == '' && $row_pickup_request['Schedule_Time_Option1'] == '') { ?>
+ <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row_pickup_request['Schedule_Date_Option1'] == '' && $row_pickup_request['Schedule_Time_Option1'] == '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '') { ?>
 
 
 

@@ -1,31 +1,23 @@
 <?php
 session_start();
-require_once '../../base_path.php';
+require_once '../../../base_path.php';
+
+include("../../../config.php"); //include config file
+include("../../../config.inc.php");
+require_once '../../../class.admin.php';
+require_once '../../../class.customer.php';
 
 
-require_once '../../class.customer.php';
-require_once '../../class.admin.php';
-require_once '../../config.php';
-require_once '../../config.inc.php';
 
+$admin_home = new ADMIN();
 
-/*
-$restaurant_home = new CUSTOMER();
-
-if($restaurant_home->is_logged_in())
+if(!$admin_home->is_logged_in())
 {
-  $restaurant_home->logout();
+  $admin_home->redirect('../login');
 }
-*/
 
 
 
-$customer_home = new CUSTOMER();
-
-if(!$customer_home->is_logged_in())
-{
-  $customer_home->redirect('../../login');
-}
 
 
 $get_total_rows = 0;
@@ -40,83 +32,22 @@ $total_pages = ceil($get_total_rows[0]/$item_per_page);
 
 
 
-
-$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$stmt = $admin_home->runQuery("SELECT * FROM tbl_admin WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-if(isset($_GET['verified']) == '1'){
-
-
-
-require '../../wepay.php';
-
-
-    // application settings
-    $client_id = $wepay_client_id;
-    $client_secret = $wepay_client_secret;
-    $access_token = $row['access_token'];
-
-    // change to useProduction for live environments
-    Wepay::useStaging($client_id, $client_secret);
-
-    $wepay = new WePay($access_token);
-
-    // create an account for a user
-      try {
-    $response = $wepay->request('account', array(
-
-  
-
-
-    'account_id' =>    $row['account_id']
-
-    
-    
-
-
-) );
-} catch (WePayException $e) { // if the API call returns an error, get the error message for display later
-    $error = $e->getMessage();
-}
-
-
-if (isset($error)){
-echo htmlspecialchars($error);
-echo". Please refresh page and try again.";
-exit();
-    }else{
-    // display the response
-    //print_r($response);
-    $bankaccount = $response->balances[0]->withdrawal_bank_name;
-
-
-
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
-  account_verified='1',
-  bank_account = '".$bankaccount."'
-
-  WHERE userID='".$_SESSION['customerSession']."'");
 
 
 
 
-    //header("Location:".$response -> uri."");
-        //'address' => ['address1' => '100 Main Street','city'=>'New York','region'=>"CA",'country'=> "US",'postal_code'=> "94025"]*/
-
-    //echo $response -> balances -> reserved_amount;
 
 
 
- }
 
-}
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en" id="features" class="tablet mobile">
@@ -127,6 +58,8 @@ exit();
 
 <?php include("../header.php"); ?>
 
+
+       
 
 
 
@@ -238,7 +171,11 @@ $(".load_more_pending").click(function (e) { //user clicks on button
 
 
 
+   
+
+
 <script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
+
 
 
         
@@ -252,7 +189,7 @@ $(".load_more_pending").click(function (e) { //user clicks on button
    
 
 
-<?php include("../../nav.php"); ?>
+<?php include("../../../nav.php"); ?>
 
    
   </div>
@@ -280,9 +217,9 @@ $(".load_more_pending").click(function (e) { //user clicks on button
       <div id="dashboardSurveyTargetingContainerLogic">
 
 
-
-
-
+<?php if(isset($_GET['error'])) { ?>
+<h4 class="error_api_call"><?php echo $_GET['error']; ?> </h4>
+<?php } ?>
 
 
 
@@ -335,17 +272,17 @@ $(".load_more_pending").click(function (e) { //user clicks on button
       <div class="clearer"></div>
 
 
-  
-
-       </div>
-  <?php include("../../footer.php"); ?>
   </div>
+  <?php include("../../../footer.php"); ?>
+  </div>
+
+      
 
     </div>
 
     <div class="clearer"></div>
 
- 
+  
 
   </div>
 

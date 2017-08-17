@@ -1,40 +1,188 @@
 <?php 
 
 session_start();
-include("../../config.php"); //include config file
-require_once '../../class.customer.php';
-
-
-$customer_home = new CUSTOMER();
-
-if(!$customer_home->is_logged_in())
-{
-  $customer_home->redirect('../../login');
-}
-
-
-$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
+include("../../../config.php"); //include config file
+require_once '../../../class.admin.php';
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en" id="features" class="tablet mobile">
-
-
-
-
-
     
     <head>
 
 
 
 
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
+<script type="text/javascript">
+
+
+$(".launch-map").click(function() {  
+//alert("aads"); 
+
+
+
+$.post('map.php', $("#contact-form").serialize(), function(data) {
+    //$("#contact-form").hide();
+    $('#result-map').html(data);
+   });
+
+
+    });
+
+
+</script>
+
+
+
+<script type='text/javascript'>//<![CDATA[
+$(function(){
+
+$(".map-canvas-monday").show();
+$(".map-canvas-tuesday").hide();
+
+$(".tabs-1").click(function(){
+$(".map-canvas-tuesday").hide();
+$(".map-canvas-monday").show();
+}); 
+
+$(".tabs-2").click(function(){
+$(".map-canvas-monday").hide();
+$(".map-canvas-tuesday").show();
+}); 
+
+
+
+$(".launch-map121212").click(function(){
+//alert("asdf");
+
+
+
+    var me = $(this),
+        data = me.data('key');
+   
+var geocoder = new google.maps.Geocoder();
+
+
+
+var user_id = data.param1;
+
+
+
+
+
+
+var monday = data.param2;
+var monday_time = data.param3;
+var monday_status = data.param4;
+
+var tuesday_address = data.param5;
+var tuesday = data.param6;
+var tuesday_time = data.param7;
+var tuesday_status = data.param8;
+
+var wednesday_address = data.param9;
+var wednesday = data.param10;
+var wednesday_time = data.param11;
+var wednesday_status = data.param12;
+
+var thursday_address = data.param13;
+var thursday = data.param14;
+var thursday_time = data.param15;
+var thursday_status = data.param16;
+
+var friday_address = data.param13;
+var friday = data.param14;
+var friday_time = data.param15;
+var friday_status = data.param16;
+
+var saturday_address = data.param17;
+var saturday = data.param18;
+var saturday_time = data.param19;
+var saturday_status = data.param20;
+
+var sunday_address = data.param21;
+var sunday = data.param22;
+var sunday_time = data.param23;
+var sunday_status = data.param24;
+
+
+
+if(status == ''){$('.modal-status').text('Pending');}else{$('.modal-status').text(status);}
+
+
+$('#userid').html(user_id);
+
+var payload = document.getElementById("userid").innerHTML;
+document.getElementById("divContents").value = payload;
+
+
+$('.monday-day').text(monday);
+$('.monday-time').text(monday_time);
+$('.monday-status').text(monday_status);
+$('.tuesday-day').text(monday);
+$('.tuesday-time').text(monday_time);
+$('.wednesday-day').text(wednesday);
+$('.wednesday-time').text(wednesday_time);
+$('.thursday-day').text(thursday);
+$('.thursday-time').text(thursday_time);
+$('.friday-day').text(friday);
+$('.friday-time').text(friday_time);
+$('.friday-day').text(friday);
+$('.friday-time').text(friday_time);
+
+
+geocoder.geocode( { 'address': monday_address}, function(results, status) {
+
+  if (status == google.maps.GeocoderStatus.OK) {
+    var latitude = results[0].geometry.location.lat();
+    var longitude = results[0].geometry.location.lng();
+    
+  } 
+
+
+
+var center = new google.maps.LatLng(latitude, longitude);
+
+
+function initialize() {
+
+    var mapOptions = {
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        center: center
+    };
+
+
+    map = new google.maps.Map(document.getElementById('map-canvwwas'), mapOptions);
+
+
+    var marker = new google.maps.Marker({
+        map: map,
+        position: center
+    });
+
+
+}
+
+$('#modal').modal({
+        backdrop: 'static',
+        keyboard: false
+    }).on('shown.bs.modal', function () {
+        google.maps.event.trigger(map, 'resize');
+        map.setCenter(center);
+    });
+
+
+initialize();
+});//]]> 
+
+}); 
+});
+
+</script>
 
 
 
@@ -61,8 +209,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
   </script>
 
 <script type='text/javascript'>//<![CDATA[
-//$.noConflict();
+$.noConflict();
 jQuery( document ).ready(function( $ ) {
+
 
 
 function getParameterByName(name, url) {
@@ -78,41 +227,39 @@ function getParameterByName(name, url) {
 
 var p = getParameterByName('p');
 
-
-
-if(p == 'bankaccount'){
-$('.bankaccount').click();
-$( "#bankaccount" ).load( "bankaccount.php" );
+if(p == 'credit-card'){
+$('.creditcard').click();
+$( "#credit-card" ).load( "creditcard.php" );
 }
 
 
-$( "#payment-received" ).load( "payment-received.php" );
 
-    $(".payment-received").click(function() {  
+
+$( "#credit-card" ).load( "creditcard.php" );
+
+$( "#payments-sent" ).load( "payments-sent.php" );
+
+    $(".payments-sent").click(function() {  
 
       //$( "#tabs-1" ).load( "send-payment.php" );
-      $( "#payment-received" ).load( "payment-received.php" );
+      $( "#payments-sent" ).load( "payments-sent.php" );
       
     });
 
-    $(".refund-requests").click(function() {  
+    $(".payments-pending").click(function() {  
 
-      $( "#refund-requests" ).load( "refund-requests.php" );
+      $( "#payments-pending" ).load( "payments-pending.php" );
+
+    });
+
+    $(".creditcard").click(function() {  
+
+      $( "#credit-card" ).load( "creditcard.php" );
 
     });
 
 
-    $(".bankaccount").click(function() {  
-
-      $( "#bankaccount" ).load( "bankaccount.php" );
-
-    });
-
-     
-
-    
-
-   
+ 
 
 
 });//]]> 
@@ -124,11 +271,7 @@ $( "#payment-received" ).load( "payment-received.php" );
 </script>
 
 
-<style>
 
-a.verify-badge img#verify-image-payment{display:none !important;}
-
-</style>
 
 
 
@@ -145,33 +288,12 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 <div id="tabs">
 
  <ul>
-    <li><a href="#payment-received" class="payment-received">Payment Received</a></li>
+    <li><a href="#payments-sent" class="payments-sent">Payments Sent</a></li>
     <li>&nbsp;</li>
-    <?php if($row['Payment_Method'] == 'Bank'){ ?>
-    <!--<li><a href="#refund-requests" class="refund-requests">Refund Requests</a>-->
-    <?php } ?>
-
- <?php
-
-$result_count = mysqli_query($connecDB,"SELECT refundrequest,participant_id,id, COUNT(DISTINCT id) AS count FROM wepay WHERE refundrequest = 'yes' AND participant_id = '".$_SESSION['customerSession']."' GROUP BY id");
-$row_count = mysqli_fetch_assoc($result_count);
-$count = $row_count['count'];
-
-if($count > 0 ){
-echo ' <div class="viewed-bubble">';
-echo $count;
-echo '</div>';
-}
-?>
-
-
-
-    </li>
+    <li><a href="#payments-pending" class="payments-pending">Payments Pending</a></li>
     <li>&nbsp;</li>
-    <?php if($row['Payment_Method'] == 'Bank'){ ?>
-    <!--<li><a href="#bankaccount" class="bankaccount">Bank Account</a></li>-->
-    <?php } ?>
-   
+    <li><a href="#credit-card" class="creditcard">Credit Card</a></li>
+    
   </ul>  
 
 
@@ -180,12 +302,13 @@ echo '</div>';
 
 <div id="white-container">
 
-<div id="payment-received" class="tabContent" > </div>
+<div id="payments-sent" class="tabContent" > </div>
 
-<!--<div id="refund-requests" class="tabContent" ></div>-->
+<div id="payments-pending" class="tabContent" > </div>
 
-<div id="bankaccount" class="tabContent" ></div>
 
+
+<div id="credit-card" class="tabContent" ></div>
 
 
 

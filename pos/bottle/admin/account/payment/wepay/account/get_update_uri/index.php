@@ -10,7 +10,7 @@ require_once '../../../../../config.php';
 require_once '../../../../../config.inc.php';
 
 
-$startup_home = new startup();
+$startup_home = new STARTUP();
 
 if($startup_home->is_logged_in())
 {
@@ -23,14 +23,14 @@ $participant_home = new PARTICIPANT();
 
 if(!$participant_home->is_logged_in())
 {
-  $participant_home->redirect('../../../../login/');
+  $participant_home->redirect('../login.php');
 }
 
 $stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['participantSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    require '../../../../../wepay.php';
+    require '../../../wepay.php';
 
 
     // application settings
@@ -48,7 +48,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
     'account_id' =>    $row['account_id'],
-    'redirect_uri'  => BASE_PATH.'/participant/payment/',
     'mode'    => 'iframe'
 
     
