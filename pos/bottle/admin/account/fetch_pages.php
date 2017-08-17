@@ -209,7 +209,7 @@ initialize();
   </script>
 
 <script type='text/javascript'>//<![CDATA[
-$.noConflict();
+//$.noConflict();
 jQuery( document ).ready(function( $ ) {
 
 

@@ -380,7 +380,7 @@ $row_customer = mysqli_fetch_array($customer);
 
             
                   <div class="survey-metadata">
-                    <div class="item ">
+                    <div class="item name">
                       <div class="label">Name</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row_customer['FirstName']; ?> <?php echo $row_customer['LastName']; ?></div>
                     </div>
@@ -394,7 +394,7 @@ $row_customer = mysqli_fetch_array($customer);
                     </div>
 
 
-                    <div class="item date">
+                    <div class="item location">
                       <div class="label">Location</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
