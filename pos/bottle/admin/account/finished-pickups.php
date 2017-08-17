@@ -120,7 +120,7 @@ $random = rand(5, 20000);
 
 <div class="result-no-date">
 <div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
-    <div id="result-accept-<?php echo $row2['id']; ?>">Please choose a date!</div>
+    <div id="result-accept-<?php echo $row2['id']; ?>">Make a payment!</div>
     </div>
   </div>
 
@@ -130,7 +130,7 @@ $random = rand(5, 20000);
 
 
 
-<h4>Confirm Pick up</h4>
+<h4>Pay the Customer</h4>
 <p>&nbsp;</p>
 
 
@@ -139,47 +139,19 @@ $random = rand(5, 20000);
 
 <input type="hidden" name="id<?php echo $row2['id']; ?>" id="projectid" value="<?php echo $row2['id']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="taskid<?php echo $row2['userID']; ?>" id="taskid" value="<?php echo $row2['taskID']; ?>"/>
 
 
 
-Choose the date:
+
+Enter amount
 
 <br><br>
 
- <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option1'])); ?></td>
-        <td><?php echo $row2['Schedule_Time_Option1']; ?></td>
-        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
-      </tr>
-      <?php if($row2['Schedule_Date_Option2'] != '' && $row2['Schedule_Time_Option2'] ){ ?>
-      <tr>
-        <td><?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option2'])); ?></td>
-        <td><?php echo $row2['Schedule_Time_Option2']; ?></td>
-        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
-      </tr>
-      <?php } ?>
-      <?php if($row2['Schedule_Date_Option3'] != '' && $row2['Schedule_Time_Option3'] ){ ?>
-      <tr>
-       <td><?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option3'])); ?></td>
-        <td><?php echo $row2['Schedule_Time_Option3']; ?></td>
-        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
-      </tr>
-      <?php } ?>
-    </tbody>
-  </table>
+<input type="text" name="amount<?php echo $row2['userID']; ?>" id="amount"/>
 
 
-<br>
-
+ 
 
 
 
@@ -255,39 +227,12 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
         
         var id = $('input[name=id'+<?php echo $row2['id']; ?>+']').val();
         var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
-        var selected_date = $('input[name="selected_date[]"]:checked').map(function () {return this.value;}).get().join(",");
+        var taskid = $('input[name=taskid'+<?php echo $row2['userID']; ?>+']').val();
 
 
 
-        var selected_date_checkedstatus = $('input[name="selected_date[]"]:checked').size();
-
-        //alert(userid);
-        
-        if(selected_date_checkedstatus <1 ){ 
-          $(".result-no-date").show();
-          proceed = false;
-        }else{
-          $(".result-no-date").hide();
-                //proceed = true; //set do not proceed flag       
-        };
-
-
-        /*if(the_date == '' ){
-            $(".result-no-date").show(); 
-            proceed = false;
-            }
-        */    
-        /*
-        if(date == '' ){
-            $(".result-no-date").show(); 
-            proceed = false;
-        }*/
 
        
-        //alert(date);
-        
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
         
 
         //everything looks good! proceed...
@@ -303,10 +248,10 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'id':id,'userid':userid,'selected_date':selected_date};
+            post_data = {'id':id,'userid':userid,'taskid':taskid};
             
             //Ajax post data to server
-            $.post('accept-pickup-date.php', post_data, function(response){  
+            $.post('make-payment.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
