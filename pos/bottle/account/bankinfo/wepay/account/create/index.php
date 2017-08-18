@@ -12,7 +12,7 @@ $customer_home = new CUSTOMER();
 
 if(!$customer_home->is_logged_in())
 {
-  $customer_home->redirect('../../login');
+  $customer_home->redirect('../../../../../login');
 }
 
 $stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");

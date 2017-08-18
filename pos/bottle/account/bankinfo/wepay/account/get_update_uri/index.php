@@ -12,7 +12,7 @@ $customer_home = new CUSTOMER();
 
 if(!$customer_home->is_logged_in())
 {
-  $customer_home->redirect('../../login');
+  $customer_home->redirect('../../../../../login');
 }
 
 $stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
@@ -36,7 +36,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     // create the withdrawal
     $response = $wepay->request('account/get_update_uri', array(
         'account_id'    => $account_id,
-        'redirect_uri'  => 'http://localhost/creative/pos/bottle/account/bankinfo/payment?finished=yes',
+        'redirect_uri'  => 'http://localhost/creative/pos/bottle/account/bankinfo/?finished=yes',
         'mode'          => 'iframe'
     ));
 
@@ -50,7 +50,7 @@ header("Location: https://stage.wepay.com/api/account_update/".$row['account_id'
 
 }else{
 
-header("Location: http://localhost/creative/pos/bottle/account/bankinfo/payment");
+header("Location: http://localhost/creative/pos/bottle/account/bankinfo/");
 
 }
 

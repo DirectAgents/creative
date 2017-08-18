@@ -5195,7 +5195,6 @@ FORM.ff FIELDSET>SPAN {
   table-layout: auto;
   width: 100%;
   margin-bottom: -1px;
-  position: relative;
   z-index: 1;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);

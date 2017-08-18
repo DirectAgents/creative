@@ -12,7 +12,7 @@
  * https://stage.wepay.com/app
  */
 session_start();
-require_once '../../class.customer.php';
+require_once '../../class.admin.php';
 include_once("../../config.php");
 
 require '../../wepay.php';
@@ -33,9 +33,10 @@ $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$stmtcustomer="SELECT * FROM tbl_customer WHERE userID='".$_GET['userid']."' ";
-$resultcustomer=mysql_query($stmtcustomer);
-$rowcustomer=mysql_fetch_array($resultcustomer);
+$stmtcustomer = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_POST['userid']."'");
+$rowcustomer = mysqli_fetch_array($stmtcustomer);
+
+
 
 
 
@@ -44,13 +45,14 @@ $rowcustomer=mysql_fetch_array($resultcustomer);
 //exit();
 
 
-$stmtpickup="SELECT * FROM tbl_pickup_finished WHERE userID='".$_GET['userid']."' AND taskID = '".$_GET['taskid']."' ";
-$resultpickup=mysql_query($stmtpickup);
-$rowpickup=mysql_fetch_array($resultpickup);
+
+
+$stmtpickup = mysqli_query($connecDB,"SELECT * FROM tbl_pickup_finished WHERE userID='".$_POST['userid']."' AND taskID = '".$_POST['taskid']."'");
+$rowpickup = mysqli_fetch_array($stmtpickup);
 
 
 
-$payamount = $_POST['amount'] * 2.9 / 100 + 0.30;
+$payamount = $_POST['amount'];
 
 
 //$payamount_final = $rowpickup['Pay'] + 1 ;
@@ -149,19 +151,21 @@ if($month == 'December') {$order_by = '12';}
 
 
 //continue here
+date_default_timezone_set('America/New_York');
+$the_date = date('Y-m-d'); 
+$the_time = date('h:i:s A');
 
 
-
-$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total) VALUES('".$_GET['taskid']."','".$_GET['adminid']."','".$_GET['userid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
-   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total, Date, Time) VALUES('".$_POST['taskid']."','".$_POST['adminid']."','".$_POST['userid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
+   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."', '".$the_date."','".$the_time."')");
 
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_completed_tasks(userID, taskID, Pickup_Date, Pickup_Time) 
-VALUES('".$_POST['userid']."', '".$_GET['taskid']."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."')");
+VALUES('".$_POST['userid']."', '".$_POST['taskid']."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."')");
 
 
-//$sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_GET['taskid']."'");
+//$sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");
 
 
 
@@ -678,6 +682,7 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->headers();
 //echo $response->body();
 
+}
 
 ?>
 

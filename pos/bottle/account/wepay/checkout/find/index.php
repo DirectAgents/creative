@@ -1,28 +1,29 @@
 <?php
     // WePay PHP SDK - http://git.io/mY7iQQ
-    require '../../wepay.php';
+    require '../../../../wepay.php';
 
 session_start();
-require_once '../../../../../class.participant.php';
-include_once("../../../../../config.php");
+require_once '../../../../class.customer.php';
+include_once("../../../../config.php");
 
 
-$participant_home = new PARTICIPANT();
+$customer_home = new CUSTOMER();
 
-if(!$participant_home->is_logged_in())
+if(!$customer_home->is_logged_in())
 {
-  $participant_home->redirect('../../../../login.php');
+  $customer_home->redirect('../../../../login.php');
 }
 
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 
     // application settings
     $account_id = $row['account_id']; // your app's account_id
-    $client_id = 131244;
-    $client_secret = "5a612c797c";
+    $client_id = 164910;
+    $client_secret = "9983463efa";
     $access_token = $row['access_token']; // your app's access_token
 
     // change to useProduction for live environments
@@ -32,10 +33,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // create the checkout
     $response = $wepay->request('checkout/find/', array(
-        'account_id'        => $row['account_id'],
-        'sort_order' => 'DESC',
-        'start_time' => '2016/08/01',
-        'end_time' => '2016/08/31'
+        'account_id'        => $account_id,
+        'sort_order' => 'DESC'
+        //'start_time' => '2017/08/16',
+        //'end_time' => '2017/08/18'
         //'state' => 'new'
     ));
 

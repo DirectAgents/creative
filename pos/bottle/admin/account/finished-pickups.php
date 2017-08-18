@@ -16,7 +16,7 @@ $admin_home = new ADMIN();
 
 if(!$admin_home->is_logged_in())
 {
-  $admin_home->redirect('../../admin/login');
+  $admin_home->redirect('../../admin/');
 }
 
 
@@ -238,7 +238,6 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
 
 
 
-        
 
         //everything looks good! proceed...
         if(proceed) 

@@ -36,7 +36,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response = $wepay->request('oauth2/token', array(
     'client_id'    => $wepay_client_id,
     'client_secret'    => $wepay_client_secret,
-    'redirect_uri'    => BASE_PATH."/account/bankinfo/",
+    'redirect_uri'    => BASE_PATH."/account/bankinfo/?verified=1",
     'code'    => $_GET['code'],
 ));
 

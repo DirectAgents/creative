@@ -204,7 +204,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
       
 <?php if($rownav['profile_image'] != ''){  ?>
-        <li><img src="<?php echo BASE_PATH; ?>/images/profile/customer/<?php echo $rownav['profile_image'];?>" class="nav-profile-photo"/></li>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/admin/<?php echo $rownav['profile_image'];?>" class="nav-profile-photo"/></li>
 <?php }else{ ?>
         <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="nav-profile-photo"/></li>
 <?php } ?>

@@ -61,7 +61,7 @@ if($row['checkout_id'] != '') {
 
 <?php
 
-$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' AND refunded = '' ORDER BY order_by DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM wepay WHERE admin_id = '".$_SESSION['adminSession']."' AND refunded = '' ORDER BY order_by DESC ");
 //$row=mysql_fetch_array($result);
 
 $sum = 0;
@@ -93,7 +93,7 @@ $sum+= $row['checkout_find_amount'] + $row['fees'] + $row['service_fee'];
 
 <?php
 
-$sql2=mysqli_query($connecDB,"SELECT DISTINCT(checkout_find_date) FROM wepay WHERE startup_id = '".$_SESSION['startupSession']."' ORDER BY order_by DESC ");
+$sql2=mysqli_query($connecDB,"SELECT DISTINCT(checkout_find_date) FROM wepay WHERE admin_id = '".$_SESSION['adminSession']."' ORDER BY order_by DESC ");
 //$row=mysql_fetch_array($result);
 
   //if username exists
@@ -149,10 +149,10 @@ while($row = mysqli_fetch_array($sql2))
 
 
 <?php 
-$sql3=mysqli_query($connecDB,"SELECT * FROM wepay WHERE checkout_find_date = '".$row['checkout_find_date']."' AND startup_id = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
+$sql3=mysqli_query($connecDB,"SELECT * FROM wepay WHERE checkout_find_date = '".$row['checkout_find_date']."' AND admin_id = '".$_SESSION['adminSession']."' ORDER BY id DESC ");
 while($row2 = mysqli_fetch_array($sql3)){
 
-$sql4=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['participant_id']."'");
+$sql4=mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID = '".$row2['customer_id']."'");
 $row3 = mysqli_fetch_array($sql4);
 
 

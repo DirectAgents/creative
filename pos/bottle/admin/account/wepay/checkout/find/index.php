@@ -1,29 +1,28 @@
 <?php
-    // WePay PHP SDK - http://git.io/mY7iQQ
-    require '../../wepay.php';
 
 session_start();
-require_once '../../../../../class.participant.php';
-include_once("../../../../../config.php");
+
+require_once '../../../../../base_path.php';
 
 
-$participant_home = new PARTICIPANT();
 
-if(!$participant_home->is_logged_in())
-{
-  $participant_home->redirect('../../../../login.php');
-}
-
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
 
 
-    // application settings
-    $account_id = $row['account_id']; // your app's account_id
-    $client_id = 131244;
-    $client_secret = "5a612c797c";
-    $access_token = $row['access_token']; // your app's access_token
+
+
+
+<?php
+
+  // WePay PHP SDK - http://git.io/mY7iQQ
+    require '../../../../../wepay.php';
+
+
+ // application settings
+    $account_id = $wepay_account_id; // your participant's account_id
+    $client_id = $wepay_client_id;
+    $client_secret = $wepay_client_secret;
+    $access_token = $wepay_access_token; // your participant's access_token
 
     // change to useProduction for live environments
     Wepay::useStaging($client_id, $client_secret);
@@ -31,49 +30,92 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $wepay = new WePay($access_token);
 
     // create the checkout
-    $response = $wepay->request('checkout/find/', array(
-        'account_id'        => $row['account_id'],
-        'sort_order' => 'DESC',
-        'start_time' => '2016/08/01',
-        'end_time' => '2016/08/31'
+  
+
+       try {
+    $checkout = $wepay->request('/checkout/find', array(
+
+
+        'account_id'        => $wepay_account_id,
+        'sort_order' => 'DESC'
+        //'start_time' => '2017/08/10',
+        //'end_time' => '2017/08/18'
         //'state' => 'new'
-    ));
+      )
+    );
+} catch (WePayException $e) { // if the API call returns an error, get the error message for display later
+    $error = $e->getMessage();
+}
 
-    // display the response
-    print_r($response);
+if (isset($error)){
+    echo htmlspecialchars($error);
+    exit();
+    //header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
+    }else{
 
-//echo $response[0]['checkout_id'];
+print_r($checkout);
 
+  ////////Total Amount////////
 
-////////Total Amount////////
-
+$presum = 0;
 $sum = 0;
+//$refund_amount_sum = 0;
 
- foreach ($response as $responsefinal) {
-        $amount         = $responsefinal->amount; 
-        $sum+= $amount;
+ foreach ($checkout as $responsefinal) {
+        $gross     = $responsefinal->gross; 
+        $net     = $responsefinal->gross - $responsefinal->fee->processing_fee; 
+        $fee = $responsefinal->fee->processing_fee;
+        
+        //$presum+= $gross - $responsefinal->refund->amount_refunded;
+
+        if($responsefinal->refund->amount_refunded != ''){
+        $sum+= $gross - $responsefinal->refund->amount_refunded;
+        }
+
+        if($responsefinal->refund->amount_refunded == ''){
+        $sum+= $net;
+        }
+
+        
+
+
+        //$refund     = $responsefinal->refund->amount_refunded;
+        //$refund_amount_sum+= $refund;
+
     }
 
-echo $sum;
+
+   
 
 
-
-////////Month////////
-
- foreach ($response as $responsefinal) {
-        $time         = $responsefinal->create_time; 
-        //echo $time;
-
-        //echo date("g:i a F j, Y ", $time);
-
-        //echo date("F Y", $time);
-    }
-
-
+}
     
+
+
+?> 
+
+
+        
       
 
-?>
+
+          <h2><?php echo "$"; echo $sum; ?></h2>
+        
+   
+
+
+
+
+
+
+
+
+
+
+
+      
+          
+
 
 
 

@@ -71,17 +71,7 @@ $.post('payments-pending-popup.php?projectid='+projectid+'&participantid='+parti
 
 <?php
 
-$sql = mysqli_query($connecDB,"SELECT * 
-from (
-    select startupID, userID, ProjectID, Met, Payment from tbl_meeting_recent
-    union all
-    select startupID, userID, ProjectID, Met, Payment from tbl_meeting_archived_startup
-    union all
-    select startupID, userID, ProjectID, Met, Payment from tbl_meeting_archived_participant
-   
-   
-) tbl_startup_project
-where startupID = '".$_SESSION['startupSession']."' AND Met = 'Yes' AND Payment = '' GROUP BY ProjectID ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_pickup_finished WHERE Payment = 'N' ORDER BY id DESC ");
 
 
 if(mysqli_num_rows($sql) == true)
@@ -114,8 +104,8 @@ while($row = mysqli_fetch_array($sql))
   <table class="table">
     <tbody>
       <tr class="info">
-        <td colspan="1" style="text-align:left">Project#: <?php echo $row['ProjectID']; ?></td>
-        <td colspan="1" style="text-align:right"> <a href="<?php echo BASE_PATH; ?>/startup/meetings/pay/?id=<?php echo $row['ProjectID']; ?>&p=<?php echo $row['userID']; ?>" class="pay-amount">Pay Amount</a></td>
+        <td colspan="1" style="text-align:left">Task#: <?php echo $row['taskID']; ?></td>
+        <td colspan="1" style="text-align:right"> </td>
         
       </tr>
 
@@ -125,12 +115,11 @@ while($row = mysqli_fetch_array($sql))
 <?php 
 //echo $row['userID'];
 
-$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row['userID']."'");
+$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID = '".$row['userID']."'");
 
 while($row2 = mysqli_fetch_array($sql2)){
 
-$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$row['ProjectID']."'");
-$row3 = mysqli_fetch_array($sql3);
+
 
 
 
@@ -139,7 +128,7 @@ $row3 = mysqli_fetch_array($sql3);
 
       <tr>
         <td style="text-align:left"><?php echo $row2['FirstName'].' '.$row2['LastName']; ?></td>
-        <td style="text-align:right">$<?php echo $row3['Pay']; ?></td>
+        <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/meetings/pay/?id=<?php echo $row['ProjectID']; ?>&p=<?php echo $row['userID']; ?>">Pay Customer</a></td>
        
       </tr>
     

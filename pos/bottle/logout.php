@@ -9,7 +9,7 @@ $_SESSION['cookie_deleted'] = '1';
 unset($_SESSION['access_token']);
 unset($_SESSION['adminSession']);
 unset($_SESSION['fb_access_token_startup']);	
-header("Location:admin/login/");
+header("Location:admin/");
 exit();
 }
 

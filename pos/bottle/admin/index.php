@@ -10,11 +10,11 @@ ob_start();
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
 
-require_once '../../base_path.php';
+require_once '../base_path.php';
 
-require_once '../../class.admin.php';
+require_once '../class.admin.php';
 
-include_once("../../config.php");
+include_once("../config.php");
 
 
 if(isset($_SESSION['cookie_deleted'])){
@@ -34,7 +34,7 @@ if($row['login_session'] == $_COOKIE['RememberMe']){
 
 $_SESSION['customerSession'] = $row['userID'];
 
-header("Location:../account/");
+header("Location:../admin/account/");
 exit();
 }
 }
@@ -52,7 +52,7 @@ $user_login = new ADMIN();
 if($user_login->is_logged_in()!="")
 {
   
-  $user_login->redirect('../../admin/account/');
+  $user_login->redirect('../admin/account/');
 }
 
 
@@ -72,7 +72,7 @@ if(isset($_POST['btn-login']))
   
   if($user_login->login($email,$upass,$rememberme))
   {
-    $user_login->redirect('../account/');
+    $user_login->redirect('account/');
   }
 }
 
@@ -189,7 +189,7 @@ if(isset($_POST['btn-login']))
 
   
   <form class="login-form">
-    <input type="email" name="txtemail" placeholder="Email Address" required/>
+    <input type="text" name="txtemail" placeholder="Email Address" required/>
     <input type="password" name="txtupass" placeholder="Password" required/>
     <input type="checkbox" name="txtrememberme" value="Yes"/><label> Remember me</label>
     <button type="submit" name="btn-login">LOGIN</button>
