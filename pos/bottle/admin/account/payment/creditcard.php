@@ -1,39 +1,33 @@
 <?php
 
 session_start();
-require_once '../../base_path.php';
+require_once '../../../base_path.php';
 
-include("../../config.php"); //include config file
-include("../../config.inc.php");
-require_once '../../class.startup.php';
-require_once '../../class.participant.php';
-
-
-require_once '../../wepay.php';
+include("../../../config.php"); //include config file
+include("../../../config.inc.php");
+require_once '../../../class.admin.php';
+require_once '../../../class.customer.php';
 
 
-$participant_home = new PARTICIPANT();
+require_once '../../../wepay.php';
 
-if($participant_home->is_logged_in())
+
+
+
+
+$admin_home = new ADMIN();
+
+if(!$admin_home->is_logged_in())
 {
-  $participant_home->logout();
-}
-
-
-
-$startup_home = new STARTUP();
-
-if(!$startup_home->is_logged_in())
-{
-  $startup_home->redirect('../login');
+  $admin_home->redirect('../../../admin/login');
 }
 
 
 
 
 
-$stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['startupSession']));
+$stmt = $admin_home->runQuery("SELECT * FROM tbl_admin WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?> 

@@ -20,16 +20,9 @@ $stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid")
 $stmt->execute(array(":uid"=>$_SESSION['customerSession']));
 $row_customer = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($row_customer['Payment_Method'] == 'Cash'){
-
-echo "<h3>You will receive payments in cash.</h3>";
-//echo "<br><br>";
-//echo "<h4>Change to payments to a bank account. <a href='".BASE_PATH."/customer/account/settings'><u>Click here</u></h4>";
-
-}else{
 
 
-if($row_customer['account_id'] != '' && $row_customer['bank_account'] != '' &&  $row_customer['Payment_Method'] == 'Bank') {  
+if($row_customer['account_id'] != '' && $row_customer['bank_account'] != '') {  
 
 
 ?>
@@ -86,35 +79,16 @@ if (isset($error)){
 $presum = 0;
 $sum = 0;
 $final_sum = 0;
+
+
 //$refund_amount_sum = 0;
 
  foreach ($checkout as $responsefinal) {
-        $gross     = $responsefinal->gross; 
-        $net     = $responsefinal->gross - $responsefinal->fee->processing_fee; 
-        $fee = $responsefinal->fee->processing_fee;
-        
-        //$presum+= $gross - $responsefinal->refund->amount_refunded;
+      
+  $amount = $responsefinal->gross;
 
-        if($responsefinal->refund->amount_refunded != ''){
-        $sum+= $gross - $responsefinal->refund->amount_refunded;
-        }
+  $final_sum+= $amount;        
 
-        if($responsefinal->refund->amount_refunded == ''){
-        $sum+= $net;
-        }
-
-        
-
-        if (strpos($sum, '.') == false) {
-    $final_sum =  $sum.'.00';
-}else{
-    $final_sum =  $sum;
-}
-
-
-
-        //$refund     = $responsefinal->refund->amount_refunded;
-        //$refund_amount_sum+= $refund;
 
     }
 
@@ -177,9 +151,6 @@ $sqlprojectwepay=mysqli_query($connecDB,"SELECT * FROM wepay WHERE account_id = 
 $rowprojectwepay = mysqli_fetch_array($sqlprojectwepay);
 
 
-$sqlproject=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$rowprojectwepay['ProjectID']."'");
-$rowproject = mysqli_fetch_array($sqlproject);
-
 
 ?>
 
@@ -198,7 +169,7 @@ $rowproject = mysqli_fetch_array($sqlproject);
 
       <tr class="info">
         <td style="text-align:left"><?php echo $row['checkout_find_date']; ?></td>
-        <td style="text-align:right">Idea#</td>
+        <td style="text-align:right">PickUp#</td>
         <td style="text-align:right">Amount</td>
        
       </tr>
@@ -213,7 +184,7 @@ while($row2 = mysqli_fetch_array($sql2)){
 
   
 
-$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startup_id']."'");
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_admin WHERE userID = '".$row2['admin_id']."'");
 $row3 = mysqli_fetch_array($sql3);
 
 
@@ -229,7 +200,7 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 
       <tr>
         <td style="text-align:left"><a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row3['userID']; ?>"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></a></td>
-        <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowproject['Category']; ?>/?id=<?php echo $rowproject['ProjectID']; ?>"><?php echo $rowproject['ProjectID']; //echo $row2['id']; ?></a></td>
+        <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo $rowprojectwepay['TaskID']; //echo $row2['id']; ?></a></td>
         <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
        
       </tr>
@@ -379,7 +350,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
 </div>
 
 
-  <?php } } ?>
+  <?php }  ?>
 
 
 
