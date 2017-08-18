@@ -161,11 +161,11 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, custom
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_completed_tasks(userID, taskID, Pickup_Date, Pickup_Time) 
-VALUES('".$_POST['userid']."', '".$_POST['taskid']."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_completed_tasks(userID, taskID, Pickup_Date, Pickup_Time, Payment) 
+VALUES('".$_POST['userid']."', '".$_POST['taskid']."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."', 'Y' )");
 
 
-//$sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");
 
 
 

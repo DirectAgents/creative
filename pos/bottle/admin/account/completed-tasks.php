@@ -10,11 +10,13 @@ include_once("../../config.php");
 
 
 
+
+
 $admin_home = new ADMIN();
 
 if(!$admin_home->is_logged_in())
 {
-  $admin_home->redirect('../login');
+  $admin_home->redirect('../../admin/');
 }
 
 
@@ -101,7 +103,6 @@ while($row2 = mysqli_fetch_array($sql))
 
 date_default_timezone_set('America/New_York');
 
-$date = date_create($row2['Date']);
 
 $random = rand(5, 20000);
 
@@ -121,7 +122,7 @@ $random = rand(5, 20000);
 
 <div class="result-no-date">
 <div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
-    <div id="result-accept-<?php echo $row2['id']; ?>">Please choose a date!</div>
+    <div id="result-accept-<?php echo $row2['id']; ?>">Make a payment!</div>
     </div>
   </div>
 
@@ -131,7 +132,7 @@ $random = rand(5, 20000);
 
 
 
-<h4>Confirm Pick up</h4>
+<h4>Pay the Customer</h4>
 <p>&nbsp;</p>
 
 
@@ -140,47 +141,21 @@ $random = rand(5, 20000);
 
 <input type="hidden" name="id<?php echo $row2['id']; ?>" id="projectid" value="<?php echo $row2['id']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="taskid<?php echo $row2['userID']; ?>" id="taskid" value="<?php echo $row2['taskID']; ?>"/>
+<input type="hidden" name="adminid<?php echo $_SESSION['adminSession']; ?>" id="adminid" value="<?php echo $_SESSION['adminSession']; ?>"/>
 
 
 
-Choose the date:
+
+
+Enter amount
 
 <br><br>
 
- <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option1'])); ?></td>
-        <td><?php echo $row2['Schedule_Time_Option1']; ?></td>
-        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
-      </tr>
-      <?php if($row2['Schedule_Date_Option2'] != '' && $row2['Schedule_Time_Option2'] ){ ?>
-      <tr>
-        <td><?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option2'])); ?></td>
-        <td><?php echo $row2['Schedule_Time_Option2']; ?></td>
-        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
-      </tr>
-      <?php } ?>
-      <?php if($row2['Schedule_Date_Option3'] != '' && $row2['Schedule_Time_Option3'] ){ ?>
-      <tr>
-       <td><?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option3'])); ?></td>
-        <td><?php echo $row2['Schedule_Time_Option3']; ?></td>
-        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
-      </tr>
-      <?php } ?>
-    </tbody>
-  </table>
+<input type="text" name="amount<?php echo $row2['userID']; ?>" id="amount"/>
 
 
-<br>
-
+ 
 
 
 
@@ -256,40 +231,13 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
         
         var id = $('input[name=id'+<?php echo $row2['id']; ?>+']').val();
         var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
-        var selected_date = $('input[name="selected_date[]"]:checked').map(function () {return this.value;}).get().join(",");
+        var adminid = $('input[name=adminid'+<?php echo $_SESSION['adminSession']; ?>+']').val();
+        var taskid = $('input[name=taskid'+<?php echo $row2['userID']; ?>+']').val();
+        var amount = $('input[name=amount'+<?php echo $row2['userID']; ?>+']').val();
 
 
 
-        var selected_date_checkedstatus = $('input[name="selected_date[]"]:checked').size();
 
-        //alert(userid);
-        
-        if(selected_date_checkedstatus <1 ){ 
-          $(".result-no-date").show();
-          proceed = false;
-        }else{
-          $(".result-no-date").hide();
-                //proceed = true; //set do not proceed flag       
-        };
-
-
-        /*if(the_date == '' ){
-            $(".result-no-date").show(); 
-            proceed = false;
-            }
-        */    
-        /*
-        if(date == '' ){
-            $(".result-no-date").show(); 
-            proceed = false;
-        }*/
-
-       
-        //alert(date);
-        
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        
 
         //everything looks good! proceed...
         if(proceed) 
@@ -304,10 +252,10 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'id':id,'userid':userid,'selected_date':selected_date};
+            post_data = {'id':id,'userid':userid,'adminid':adminid,'taskid':taskid,'amount':amount};
             
             //Ajax post data to server
-            $.post('accept-pickup-date.php', post_data, function(response){  
+            $.post('make-payment.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -369,6 +317,9 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
 $customer = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID = '".$row2['userID']."'");
 $row_customer = mysqli_fetch_array($customer);
 
+$amount = mysqli_query($connecDB,"SELECT * FROM wepay WHERE TaskID = '".$row2['taskID']."'");
+$row_amount = mysqli_fetch_array($amount);
+
 
 ?>
 
@@ -380,25 +331,44 @@ $row_customer = mysqli_fetch_array($customer);
 
             
                   <div class="survey-metadata">
-                    <div class="item ">
+                    
+                    <div class="item name">
+                      <div class="label">Task#</div>
+                      <div class="value"><?php echo $row_amount['TaskID']; ?> </div>
+                    </div>
+
+                  <div class="item name">
                       <div class="label">Name</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row_customer['FirstName']; ?> <?php echo $row_customer['LastName']; ?></div>
                     </div>
+
                     <div class="item date">
                       <div class="label">Pick Up Date & Time</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option1'])).' @ '.$row2['Schedule_Time_Option1'] ?>
+                          <?php echo date('F j, Y',strtotime($row2['Pickup_Date'])).' @ '.$row2['Pickup_Time'] ?>
                         </span>
                       </div>
                     </div>
 
 
-                    <div class="item date">
-                      <div class="label">Location</div>
+
+
+                     <div class="item name">
+                      <div class="label">Status</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php echo $row_customer['Address'].'<br>'.$row_customer['City'].','.$row_customer['State'].' '.$row_customer['Zip'];  ?>
+                          <?php if($row2['Payment'] == 'Y'){ echo "Paid";}else{echo "Not Paid"; } ?>
+                        </span>
+                      </div>
+                    </div>
+
+
+                     <div class="item name">
+                      <div class="label">Amount</div>
+                      <div class="value">
+                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
+                          $<?php echo $row_amount['checkout_find_amount'];  ?>
                         </span>
                       </div>
                     </div>
@@ -407,22 +377,6 @@ $row_customer = mysqli_fetch_array($customer);
 
 
 
-
-
-                    <div class="item date">
-                      <div class="label"></div>
-                      <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
-                        
- <div class="btn-browse"> <a href="#" role="button" class="slide-accept<?php echo $row2['id']; ?>_<?php echo $random; ?>_open"> Accept </a></div>
-                      
-                        
-
- <div class="btn-browse">
-                       <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> Deny </a>
-                        </div>
-
-                      </div>
-                    </div>
 
 
 
