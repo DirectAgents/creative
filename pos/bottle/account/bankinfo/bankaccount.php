@@ -212,7 +212,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth3'), {
         //alert(data.code);
     if (data.code.length !== 0) {
       // send the data to the server
-      window.location.href = "<?php echo BASE_PATH; ?>/account/bankinfo/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=<?php echo BASE_PATH; ?>/participant/account/wepay/&client_secret=9983463efa&code="+data.code;
+      window.location.href = "<?php echo BASE_PATH; ?>/account/bankinfo/wepay/oauth2/token/?client_id=164910&code="+data.code+"&redirect_uri=<?php echo BASE_PATH; ?>/account/bankinfo/wepay/&client_secret=9983463efa&code="+data.code;
 
     } else {
       // an error has occurred and will be in data.error

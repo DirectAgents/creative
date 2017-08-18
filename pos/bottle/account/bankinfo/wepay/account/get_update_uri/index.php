@@ -1,22 +1,22 @@
 <?php
 
 session_start();
-require_once '../../../../../class.participant.php';
+require_once '../../../../../class.customer.php';
 include_once("../../../../../config.php");
 
     // WePay PHP SDK - http://git.io/mY7iQQ
     require '../../../../../wepay.php';
 
 
-$participant_home = new PARTICIPANT();
+$customer_home = new CUSTOMER();
 
-if(!$participant_home->is_logged_in())
+if(!$customer_home->is_logged_in())
 {
-  $participant_home->redirect('../../../../login');
+  $customer_home->redirect('../../login');
 }
 
-$stmt = $participant_home->runQuery("SELECT * FROM tbl_participant WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['participantSession']));
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
@@ -36,7 +36,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     // create the withdrawal
     $response = $wepay->request('account/get_update_uri', array(
         'account_id'    => $account_id,
-        'redirect_uri'  => 'http://localhost/creative/pos/survey/participant/payment?finished=yes',
+        'redirect_uri'  => 'http://localhost/creative/pos/bottle/account/bankinfo/payment?finished=yes',
         'mode'          => 'iframe'
     ));
 
@@ -50,7 +50,7 @@ header("Location: https://stage.wepay.com/api/account_update/".$row['account_id'
 
 }else{
 
-header("Location: http://localhost/creative/pos/survey/participant/payment");
+header("Location: http://localhost/creative/pos/bottle/account/bankinfo/payment");
 
 }
 
