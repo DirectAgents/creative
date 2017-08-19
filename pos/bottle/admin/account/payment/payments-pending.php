@@ -71,7 +71,7 @@ $.post('payments-pending-popup.php?projectid='+projectid+'&participantid='+parti
 
 <?php
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_pickup_finished WHERE Payment = 'N' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE Payment = 'N' ORDER BY id DESC ");
 
 
 if(mysqli_num_rows($sql) == true)

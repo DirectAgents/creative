@@ -26,7 +26,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
       </ul>-->
       <ul class="external-logged-in">
 
-        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/idea/browse/">SCHEDULE PICKUP</a></li>
+        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/account/pickup/schedule/">SCHEDULE PICKUP</a></li>
 
 <a href="<?php echo BASE_PATH; ?>/account/settings/?id=<?php echo $_SESSION['customerSession'];?>">
 <?php if($rownav['google_picture_link'] != ''){ ?>
@@ -189,7 +189,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
       </ul>-->
       <ul class="external-logged-in">
 
-        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/admin/account/tasks/completed/">FINISHED TASKS</a></li>
+        <!--<li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/admin/account/tasks/completed/">FINISHED TASKS</a></li>-->
 
 <a href="<?php echo BASE_PATH; ?>/account/settings/?id=<?php echo $_SESSION['customerSession'];?>">
 <?php if($rownav['google_picture_link'] != ''){ ?>

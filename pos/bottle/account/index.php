@@ -210,7 +210,7 @@ $(document).ready(function(){
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['customerSession']."' AND FinishedProcess = 'Y' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_pickup_request WHERE userID = '".$_SESSION['customerSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -221,11 +221,11 @@ if(mysqli_num_rows($sql) == 0)
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">Account Balance</div>
+<div class="empty-projects">No Pickup Requests</div>
   <div class="create-one-here-box">
       <div class="create-one">
  <p>&nbsp;</p>
-        <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="create-one-btn">Create one here</a>
+        <a href="'.BASE_PATH.'/account/pickup/schedule/" class="create-one-btn">Schedule One Here</a>
 
        </div> 
        <p>&nbsp;</p>
