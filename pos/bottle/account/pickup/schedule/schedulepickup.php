@@ -46,6 +46,9 @@ $row_pickup_confirmed = $stmt->fetch(PDO::FETCH_ASSOC);
 $(document).ready(function(){
 
 
+
+
+
 $("#request-new-pick-up-date").click(function() { 
 
 

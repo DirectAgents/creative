@@ -30,7 +30,7 @@ $stmt->execute(array(":uid"=>$_SESSION['customerSession']));
 $row_pickup_request = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$stmt = $customer_home->runQuery("SELECT * FROM tbl_pickup_confirmed WHERE userID=:uid");
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_pickup_upcoming WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['customerSession']));
 $row_pickup_confirmed = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -76,17 +76,22 @@ function getParameterByName(name, url) {
 }
 
 
+
+
 var p = getParameterByName('p');
 
 
+if(p == 'new'){
 
-if(p == 'bankaccount'){
-$('.bankaccount').click();
-$( "#bankaccount" ).load( "bankaccount.php" );
+$( "#schedulepickup" ).load( "request-new-pickup.php" );
+
+}else{
+
+$( "#schedulepickup" ).load( "schedulepickup.php" );
+
 }
 
 
-$( "#schedulepickup" ).load( "schedulepickup.php" );
 
     $(".schedulepickup").click(function() {  
 
