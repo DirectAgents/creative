@@ -75,7 +75,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE userID = '".$_SESSION['customerSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -95,7 +95,7 @@ echo '<div class="row">
 
 }else{
 
-echo "<h2>Completed Tasks</h2>";
+echo "<h2>Completed Pick-Ups</h2>";
 
 //get all records from add_delete_record table
 while($row2 = mysqli_fetch_array($sql))
@@ -334,14 +334,11 @@ $row_amount = mysqli_fetch_array($amount);
                   <div class="survey-metadata">
                     
                     <div class="item name">
-                      <div class="label">Task#</div>
+                      <div class="label">Pick-Up#</div>
                       <div class="value"><?php echo $row_amount['TaskID']; ?> </div>
                     </div>
 
-                  <div class="item name">
-                      <div class="label">Name</div>
-                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row_customer['FirstName']; ?> <?php echo $row_customer['LastName']; ?></div>
-                    </div>
+                
 
                     <div class="item date">
                       <div class="label">Pick Up Date & Time</div>
@@ -355,7 +352,7 @@ $row_amount = mysqli_fetch_array($amount);
 
 
 
-                     <div class="item name">
+                     <div class="item status">
                       <div class="label">Status</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
@@ -370,6 +367,16 @@ $row_amount = mysqli_fetch_array($amount);
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
                           $<?php echo $row_amount['checkout_find_amount'];  ?>
+                        </span>
+                      </div>
+                    </div>
+
+
+                  <div class="item receipt">
+                      <div class="label">Receipt</div>
+                      <div class="value">
+                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
+                          <a target="_blank" href="<?php echo BASE_PATH; ?>/images/receipts/<?php echo $row2['Receipt'];?>">View Receipt</a>
                         </span>
                       </div>
                     </div>

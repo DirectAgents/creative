@@ -152,6 +152,10 @@ $rowprojectwepay = mysqli_fetch_array($sqlprojectwepay);
 
 
 
+$sqltask=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE taskID = '".$rowprojectwepay['TaskID']."'");
+$rowtask = mysqli_fetch_array($sqltask);
+
+
 ?>
 
 
@@ -159,8 +163,6 @@ $rowprojectwepay = mysqli_fetch_array($sqlprojectwepay);
 
 
     <div class="col-lg-12">
-     
-
 
 
   <table class="table">
@@ -169,8 +171,22 @@ $rowprojectwepay = mysqli_fetch_array($sqlprojectwepay);
 
       <tr class="info">
         <td style="text-align:left"><?php echo $row['checkout_find_date']; ?></td>
-        <td style="text-align:right">PickUp#</td>
-        <td style="text-align:right">Amount</td>
+        <td style="text-align:right">&nbsp;</td>
+        <td style="text-align:right">&nbsp;</td>
+       
+      </tr>
+   </table>  
+
+
+
+  <table class="table">
+    <tbody>
+     
+
+       <tr>
+        <td style="text-align:left" class="grey">PickUp#</td>
+        <td style="text-align:right" class="grey">Date of Pickup</td>
+        <td style="text-align:right" class="grey">Amount</td>
        
       </tr>
 
@@ -199,8 +215,8 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 
 
       <tr>
-        <td style="text-align:left"><a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row3['userID']; ?>"><?php echo $row3['FirstName'].' '.$row3['LastName']; ?></a></td>
-        <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo $rowprojectwepay['TaskID']; //echo $row2['id']; ?></a></td>
+        <td style="text-align:left"><?php echo $rowprojectwepay['TaskID']; //echo $row2['id']; ?></td>
+        <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo date('F j, Y',strtotime($rowtask['Pickup_Date'])); ?></a></td>
         <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
        
       </tr>
@@ -227,7 +243,7 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
   <?php } }else{?>
 
 <div class="no-account-yet">
-<p>No Transactions so far!</p>
+<p>No Payments so far!</p>
 </div>
 
     <?php } ?>

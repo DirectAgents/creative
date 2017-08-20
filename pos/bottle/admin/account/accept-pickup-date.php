@@ -154,13 +154,9 @@ $content = new SendGrid\Content("text/html", '
                                                     <!-- ARTICLE -->
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
-                                                        <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Confirmed Pick-Up Date</td>
-                                                        </tr>
+                                                       
 
-                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">&nbsp;</td>
-                                                        </tr>
+                                                      
 
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_of_pickup.'</td>
@@ -272,8 +268,25 @@ $content = new SendGrid\Content("text/html", '
 
                 <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
 	We will send you a reminder to your email before we come to you and pick up the bag(s).
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                               
+                    <td align="left" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+    Have Questions?
+                    </td>
+                </tr>
+
+
+                <tr>
+                               
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+    If you have any type of questions about your pick-up, you can reach us at <a href="mailto:contact@misterpao.com">contact@misterpao.com</a>
                     </td>
                 </tr>
 
@@ -484,8 +497,8 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                        
+                                                     
 
-                                                        
 
                                                         <tr>
                                                             <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_of_pickup.'</td>
@@ -587,36 +600,10 @@ $content = new SendGrid\Content("text/html", '
                     </td>
                 </tr>
 
-                             <tr>
+                             
+                              <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
-    What to do next?
-                    </td>
-                </tr>
-
-
-                <tr>
-                               
-                    <td align="left" style="padding: 10px 20px 10px 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
-    We will send you a confirmation by email once we can confirm the pick up date and time requested by you.
-                    </td>
-                </tr>
-
-
-
-                 <tr>
-                               
-                    <td align="left" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
-    Have Questions?
-                    </td>
-                </tr>
-
-
-                <tr>
-                               
-                    <td align="left" style="padding: 10px 20px 10px 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
-    If you have any type of questions about your pick-up, you can reach us at <a href="mailto:contact@misterpao.com">contact@misterpao.com</a>
-                    </td>
+                     <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/bottle/admin/account/" style="font-weight: normal; color: #ffffff;">View Details</a></td>
                 </tr>
 
 

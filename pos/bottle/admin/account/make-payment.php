@@ -17,6 +17,8 @@ include_once("../../config.php");
 
 require '../../wepay.php';
 
+$random = rand(5, 20000);
+
 
 date_default_timezone_set('America/New_York');
 
@@ -156,13 +158,13 @@ $the_date = date('Y-m-d');
 $the_time = date('h:i:s A');
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total, Date, Time) VALUES('".$_POST['taskid']."','".$_POST['adminid']."','".$_POST['userid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
+$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total, Date, Time) VALUES('".$random."','".$_POST['adminid']."','".$_POST['userid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
    '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."', '".$the_date."','".$the_time."')");
 
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_completed_tasks(userID, taskID, Pickup_Date, Pickup_Time, Receipt, Payment) 
-VALUES('".$_POST['userid']."', '".$_POST['taskid']."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."','".$rowpickup['Receipt']."' , 'Y' )");
+VALUES('".$_POST['userid']."', '".$random."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."','".$rowpickup['Receipt']."' , 'Y' )");
 
 
 $sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");

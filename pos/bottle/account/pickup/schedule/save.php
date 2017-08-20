@@ -297,6 +297,22 @@ $content = new SendGrid\Content("text/html", '
                 </tr>
 
 
+                <tr>
+                               
+                    <td align="left" style="padding: 10px 20px 10px 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+    Have Questions?
+                    </td>
+                </tr>
+
+
+                <tr>
+                               
+                    <td align="left" style="padding: 10px 20px 10px 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+    If you have any type of questions about your pick-up, you can reach us at <a href="mailto:contact@misterpao.com">contact@misterpao.com</a>
+                    </td>
+                </tr>
+
+
                         </tbody></table>
 
 
