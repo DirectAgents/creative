@@ -12,7 +12,7 @@ require_once '../../../base_path.php';
 $ip = $_SERVER['REMOTE_ADDR'];
 
 
-
+$random = rand(5, 20000);
 
 
 
@@ -45,8 +45,8 @@ $the_time = date('h:i:s A');
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_pickup_request(userID, Schedule_Date_Option1, Schedule_Time_Option1, Schedule_Date_Option2, Schedule_Time_Option2, Schedule_Date_Option3, Schedule_Time_Option3, Date, Time) 
-VALUES('".$_SESSION['customerSession']."','".$_POST['date_option1']."', '".$_POST['time_option1']."', '".$date_option2."', 
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_pickup_request(userID, RequestID, Schedule_Date_Option1, Schedule_Time_Option1, Schedule_Date_Option2, Schedule_Time_Option2, Schedule_Date_Option3, Schedule_Time_Option3, Date, Time) 
+VALUES('".$_SESSION['customerSession']."', '".$random."' ,'".$_POST['date_option1']."', '".$_POST['time_option1']."', '".$date_option2."', 
 '".$time_option2."', '".$date_option3."', '".$time_option3."', '".$the_date."', '".$the_time."')");
 
 
@@ -430,7 +430,7 @@ require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Request for Pick up", 'support@valifyit.com');
-$subject = "Request for Pick up";
+$subject = "Request for Pick up (Request#".$random.")";
 $to = new SendGrid\Email($rowadmin['FirstName'], $rowadmin['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
