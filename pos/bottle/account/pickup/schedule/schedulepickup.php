@@ -437,6 +437,155 @@ post_data = {
 
 <?php if($row_pickup_request['Schedule_Date_Option1'] != '' && $row_pickup_request['Schedule_Time_Option1'] != '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '') { ?>
 
+
+
+<!-- Start Cancel Pick up Request -->
+
+<div id="slide-accept" class="well slide-accept">
+  <div class="result-accept">
+    <div id="result-accept">Successfully Canceled!</div>
+  </div>
+
+
+
+<h4>Are you sure you want to cancel?</h4>
+<p>&nbsp;</p>
+
+
+<input type="hidden" name="taskid" id="taskid" value="<?php echo $row_pickup_request['id']; ?>"/>
+
+
+
+<div class="popupoverlay-btn">
+  <div class="cancel-accept">
+    <button class="slide-accept_close cancel">Cancel</button>
+    <button class="accept btn-delete cancel-pick-up-request">Yes</button>
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-accept">
+    <button class="slide-accept_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- End Cancel Pick up Request -->
+
+
+
+
+<script>
+
+/**Accept Pick Up**/
+
+$(document).ready(function(){
+
+
+
+$(".slide-accept_open").click(function() {  
+$("#slide-accept_wrapper").show();
+$("#slide-accept_background").show();
+});
+
+
+    $('#slide-accept').popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+
+$(".slide-accept_close").click(function() {  
+$("#slide-accept_wrapper").hide();
+$("#slide-accept_background").hide();
+});
+
+ 
+
+    
+    $(".result-no-date").hide();
+
+
+    $(".cancel-pick-up-request").click(function() {  
+
+      var proceed = true;
+
+
+      //var input = date;
+        //var the_date = $('input[name=the_date]').val();
+
+        
+     
+      $("#result-accept").hide().slideDown();
+
+
+      
+
+ //get input field values
+        
+        var id = $('input[name=id]').val();
+        var taskid = $('input[name=taskid]').val();
+
+
+
+        //everything looks good! proceed...
+        if(proceed) 
+        {
+
+      $(".result-no-date").hide(); 
+      $(".result-accept").show().slideDown();
+      $(".cancel-accept").hide();
+      $(".close-accept").show();
+
+
+
+          $( ".processing" ).show();
+            //data to be sent to server
+            post_data = {'id':id,'taskid':taskid};
+            
+            //Ajax post data to server
+            $.post('cancel-pickup-request.php', post_data, function(response){  
+              //alert("yes"); 
+
+                //load json data from server and output message     
+        if(response.type == 'error')
+        {
+          output = '<div class="errorXYZ">'+response.text+'</div>';
+        }else{
+          
+            
+            output = '<div class="success">Yo</div>';
+
+
+          //reset values in all input fields
+          $('#contact_form input').val(''); 
+          $('#contact_form textarea').val(''); 
+        }
+        
+        $(".cancel-accept").hide();
+        $(".result-accept").show();
+        $(".close-accept").show();
+        $("#result-accept"+response.text).hide().slideDown();
+            }, 'json');
+      
+        }
+
+});
+
+
+ 
+
+});
+
+</script>
+
+
+
+
+
+
 <div class="pick-up-requested">
 
 <h3>You have requested a pick up for the following date(s) </h3>
@@ -470,11 +619,10 @@ post_data = {
 
 <p>&nbsp;</p>
 
-      <div class="create-one">
-
         <a href="#" class="create-one-btn" id="request-new-pick-up-date">Request New Pick up Date</a>
 
-       </div> 
+ <a href="#" role="button" class="slide-accept_open cancel-btn">Cancel Pick up</a>
+      
        <p>&nbsp;</p>
   </div>
 

@@ -119,12 +119,6 @@ $random = rand(5, 20000);
 
 
 
-
-
-
-
-
-
 <h4>Confirm Pick up</h4>
 <p>&nbsp;</p>
 
