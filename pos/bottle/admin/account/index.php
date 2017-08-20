@@ -13,7 +13,7 @@ $admin_home = new ADMIN();
 
 if(!$admin_home->is_logged_in())
 {
-  $admin_home->redirect('../login');
+  $admin_home->redirect('../');
 }
 
 

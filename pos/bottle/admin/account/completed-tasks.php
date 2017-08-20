@@ -180,115 +180,6 @@ Enter amount
 
 
 
-<script>
-
-/**Accept Pick Up**/
-
-$(document).ready(function(){
-
-
-
-$(".slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_open").click(function() {  
-$("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_wrapper").show();
-$("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_background").show();
-});
-
-
-    $('#slide-accept'+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>).popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
-
-
-$(".slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_close").click(function() {  
-$("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_wrapper").hide();
-$("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
-});
-
- 
-
-    
-    $(".result-no-date").hide();
-
-
-    $(".accept"+<?php echo $row2['id']; ?>).click(function() {  
-
-      var proceed = true;
-
-
-      //var input = date;
-        //var the_date = $('input[name=the_date]').val();
-
-        
-     
-      $("#result-accept-"+<?php echo $row2['id']; ?>).hide().slideDown();
-
-
-      
-
- //get input field values
-        
-        var id = $('input[name=id'+<?php echo $row2['id']; ?>+']').val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
-        var adminid = $('input[name=adminid'+<?php echo $_SESSION['adminSession']; ?>+']').val();
-        var taskid = $('input[name=taskid'+<?php echo $row2['userID']; ?>+']').val();
-        var amount = $('input[name=amount'+<?php echo $row2['userID']; ?>+']').val();
-
-
-
-
-
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-
-      $(".result-no-date").hide(); 
-      $(".result-accept").show().slideDown();
-      $(".cancel-accept").hide();
-      $(".close-accept").show();
-
-
-
-          $( ".processing" ).show();
-            //data to be sent to server
-            post_data = {'id':id,'userid':userid,'adminid':adminid,'taskid':taskid,'amount':amount};
-            
-            //Ajax post data to server
-            $.post('make-payment.php', post_data, function(response){  
-              //alert("yes"); 
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-            
-            output = '<div class="success">Yo</div>';
-
-
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $(".cancel-accept").hide();
-        $(".result-accept").show();
-        $(".close-accept").show();
-        $("#result-accept-"+response.text).hide().slideDown();
-            }, 'json');
-      
-        }
-
-});
-
-
- 
-
-});
-
-</script>
 
 
 
@@ -354,7 +245,7 @@ $row_amount = mysqli_fetch_array($amount);
 
 
 
-                     <div class="item name">
+                     <div class="item status">
                       <div class="label">Status</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
@@ -364,11 +255,21 @@ $row_amount = mysqli_fetch_array($amount);
                     </div>
 
 
-                     <div class="item name">
+                     <div class="item amount">
                       <div class="label">Amount</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
                           $<?php echo $row_amount['checkout_find_amount'];  ?>
+                        </span>
+                      </div>
+                    </div>
+
+
+                      <div class="item receipt">
+                      <div class="label">Receipt</div>
+                      <div class="value">
+                       <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
+                          <a target="_blank" href="<?php echo BASE_PATH; ?>/images/receipts/<?php echo $row2['Receipt'];?>">View Receipt</a>
                         </span>
                       </div>
                     </div>

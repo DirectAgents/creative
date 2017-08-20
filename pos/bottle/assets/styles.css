@@ -38,6 +38,9 @@
 }
 
 
+td.h3{color:#333;}
+
+
 .pay-amount{background:#eee; padding:10px;}
 
 .thelocation{font-size:13px;}
@@ -608,6 +611,27 @@ label{font-weight:normal !important;}
 .survey-metadata .item.name {
     float: left;
     width: 17%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.status {
+    float: left;
+    width: 10%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.receipt {
+    float: left;
+    width: 10%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.amount {
+    float: left;
+    width: 10%;
     margin-right:0px;
     /*width: 33.3%;*/
 }

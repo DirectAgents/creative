@@ -116,7 +116,7 @@ $random = rand(5, 20000);
 
 <div id="slide-accept<?php echo $row2['id']; ?>_<?php echo $random; ?>" class="well slide-accept">
   <div class="result-accept">
-    <div id="result-accept-<?php echo $row2['id']; ?>">Successfully Accepted!</div>
+    <div id="result-accept-<?php echo $row2['id']; ?>">Payment was sent successfully!</div>
   </div>
 
 
@@ -127,8 +127,26 @@ $random = rand(5, 20000);
   </div>
 
 
+  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo BASE_PATH; ?>/js/jquery.form.js"></script>
 
+<script type="text/javascript" >
 
+var jq = $.noConflict();
+jq(document).ready(function(){
+    
+            jq('#photoimg').live('change', function()      { 
+                 jq("#preview").html('');
+          jq("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+      jq("#imageform").ajaxForm({
+            target: '#preview'
+    }).submit();
+    
+      });
+
+        }); 
+
+</script>
 
 
 
@@ -148,14 +166,26 @@ $random = rand(5, 20000);
 
 
 
-Enter amount
-
-<br><br>
-
-<input type="text" name="amount<?php echo $row2['userID']; ?>" id="amount"/>
+<h3>Enter amount</h3>
+<input type="text" name="amount<?php echo $row2['userID']; ?>" id="amount<?php echo $row2['userID']; ?>"/>
 
 
- 
+
+<p>&nbsp;</p>
+
+
+<h3>Upload Receipt</h3>
+
+<form id="imageform" method="post" enctype="multipart/form-data" action='ajaximage.php?userid=<?php echo $row2['userID']; ?>&taskid=<?php echo $row2['taskID']; ?>'>
+ <input type="file" name="photoimg" id="photoimg" />
+</form>
+
+<p>&nbsp;</p>
+
+ <div id="preview">
+
+
+ </div>
 
 
 
@@ -220,6 +250,8 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
       //var input = date;
         //var the_date = $('input[name=the_date]').val();
 
+
+
         
      
       $("#result-accept-"+<?php echo $row2['id']; ?>).hide().slideDown();
@@ -236,6 +268,12 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
         var amount = $('input[name=amount'+<?php echo $row2['userID']; ?>+']').val();
 
 
+        if (amount < 1 ) {
+
+         $("#amount"+<?php echo $row2['userID']; ?>).css('border-color','red');  //change border color to red  
+            proceed = false;
+
+        }
 
 
 

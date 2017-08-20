@@ -250,15 +250,31 @@ while($row_pickup_request = mysqli_fetch_array($sql))
 
 <h3>You have requested a pick up for the following date(s) </h3>
 <p>&nbsp;</p>
-<h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option1'])).' @ '.$row_pickup_request['Schedule_Time_Option1']  ?> </h4>
 
-<?php if($row_pickup_request['Schedule_Date_Option2'] != '' && $row_pickup_request['Schedule_Time_Option1'] != '' ) { ?>
-<h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option2'])).' @ '.$row_pickup_request['Schedule_Time_Option2']  ?> </h4>
-<?php } ?>
 
-<?php if($row_pickup_request['Schedule_Date_Option3'] != '' && $row_pickup_request['Schedule_Time_Option3'] != '' ) { ?>
-<h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option3'])).' @ '.$row_pickup_request['Schedule_Time_Option3']  ?> </h4>
-<?php } ?>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="grey"><h3>Dates</h3></td>
+<td class="grey"><h3>Time</h3></td>
+</tr>
+
+<tr>
+<td><h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option1']));?> </h4></td>
+<td><h4><?php echo $row_pickup_request['Schedule_Time_Option1'];  ?> </h4></td>
+</tr>
+
+<tr>
+<td><h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option2']));?> </h4></td>
+<td><h4><?php echo $row_pickup_request['Schedule_Time_Option2'];  ?> </h4></td>
+</tr>
+
+<tr>
+<td><h4><?php echo date('F j, Y',strtotime($row_pickup_request['Schedule_Date_Option3']));?> </h4></td>
+<td><h4><?php echo $row_pickup_request['Schedule_Time_Option3'];  ?> </h4></td>
+</tr>
+
+</table>
+
 
 <p>&nbsp;</p>
 

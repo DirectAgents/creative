@@ -165,14 +165,14 @@ Choose the date:
       <tr>
         <td><?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option2'])); ?></td>
         <td><?php echo $row2['Schedule_Time_Option2']; ?></td>
-        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
+        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_two"/></td>
       </tr>
       <?php } ?>
       <?php if($row2['Schedule_Date_Option3'] != '' && $row2['Schedule_Time_Option3'] ){ ?>
       <tr>
        <td><?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option3'])); ?></td>
         <td><?php echo $row2['Schedule_Time_Option3']; ?></td>
-        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
+        <td><input name="selected_date[]" type="radio" style="display:block; margin: 0 auto;" value="option_three"/></td>
       </tr>
       <?php } ?>
     </tbody>
@@ -388,7 +388,9 @@ $row_customer = mysqli_fetch_array($customer);
                       <div class="label">Pick Up Date & Time</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option1'])).' @ '.$row2['Schedule_Time_Option1'] ?>
+                          <?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option1'])).' @ '.$row2['Schedule_Time_Option1'] ?><br>
+                          <?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option2'])).' @ '.$row2['Schedule_Time_Option2'] ?><br>
+                          <?php echo date('F j, Y',strtotime($row2['Schedule_Date_Option3'])).' @ '.$row2['Schedule_Time_Option3'] ?>
                         </span>
                       </div>
                     </div>

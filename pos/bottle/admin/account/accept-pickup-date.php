@@ -21,6 +21,9 @@ if($_POST)
 $sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_POST['userid']."'");
 $row5 = mysqli_fetch_array($sql5);
 
+$sqladmin = mysqli_query($connecDB,"SELECT * FROM tbl_admin");
+$rowadmin = mysqli_fetch_array($sqladmin);
+
 
 $sql_participant = mysqli_query($connecDB,"SELECT * FROM tbl_pickup_request WHERE id = '".$_POST['id']."' AND userID = '".$_POST['userid']."'");
 $row = mysqli_fetch_array($sql_participant);
@@ -152,7 +155,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Pick-Up Dates Requested</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Confirmed Pick-Up Date</td>
                                                         </tr>
 
                                                          <tr>
@@ -394,7 +397,7 @@ require '../../sendgrid-php/vendor/autoload.php';
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Pick up Confirmed", 'support@valifyit.com');
 $subject = "Pick up Confirmed";
-$to = new SendGrid\Email('Alper', 'brendanimak@gmail.com');
+$to = new SendGrid\Email($rowadmin['FirstName'], $rowadmin['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -481,7 +484,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Pick-Up Dates Requested</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Confirmed Pick-Up Dates</td>
                                                         </tr>
 
                                                          <tr>

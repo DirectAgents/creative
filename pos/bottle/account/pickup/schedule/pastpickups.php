@@ -86,7 +86,7 @@ if(mysqli_num_rows($sql) == 0)
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Completed Tasks</div>
+<div class="empty-projects">No Past Pickups</div>
 
 </div>
 

@@ -5,6 +5,9 @@ session_start();
 require_once '../../../class.customer.php';
 include_once("../../../config.php");
 
+
+require_once '../../../base_path.php';
+
 //require( "phpmailer/class.phpmailer.php" );
 
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -20,6 +23,9 @@ if($_POST)
 
 $sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_SESSION['customerSession']."'");
 $row5 = mysqli_fetch_array($sql5);
+
+$sqladmin = mysqli_query($connecDB,"SELECT * FROM tbl_admin");
+$rowadmin = mysqli_fetch_array($sqladmin);
 
 
 
@@ -82,8 +88,8 @@ $date_option_three = '';
 require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Updated Request for Pick up", 'support@valifyit.com');
-$subject = "Updated Request for Pick up";
+$from = new SendGrid\Email("New Request for Pick up", 'support@valifyit.com');
+$subject = "New Request for Pick up";
 $to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -106,7 +112,7 @@ $content = new SendGrid\Content("text/html", '
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
-                        <a href="http://valifyit.com/" target="_blank">
+                        <a href="'.BASE_PATH.'/" target="_blank">
                             <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.png" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
@@ -408,6 +414,14 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
+
+
+
+
+
+
+
+
 /////////////////Send email to me/////////////////
 
 
@@ -417,9 +431,9 @@ $response = $sg->client->mail()->send()->post($mail);
 require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Updated Request for Pick up", 'support@valifyit.com');
-$subject = "Updated Request for Pick up";
-$to = new SendGrid\Email('Alper', 'brendanimak@gmail.com');
+$from = new SendGrid\Email("New Request for Pick up", 'support@valifyit.com');
+$subject = "New Request for Pick up";
+$to = new SendGrid\Email($rowadmin['FirstName'], $rowadmin['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -612,26 +626,15 @@ $content = new SendGrid\Content("text/html", '
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
                             <tbody>
 
- <tr>
+     <tr>
                                
-                    <td align="center" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
-    
-                    </td>
-                </tr>
-
-                             <tr>
-                               
-                    <td align="left" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
-    What to do next?
-                    </td>
+                     <td align="center" style="padding: 20px; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2">&nbsp;</td>
                 </tr>
 
 
                 <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
-    We will send you a confirmation by email once we can confirm the pick up date and time requested by you.
-                    </td>
+                     <td align="center" style="padding: 20px; background:#4c71dc; font-size: 25px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff;" class="padding" colspan="2"><a href="http://localhost/creative/pos/bottle/admin/account/" style="font-weight: normal; color: #ffffff;">View Details</a></td>
                 </tr>
 
 
@@ -703,7 +706,7 @@ $content = new SendGrid\Content("text/html", '
 
                       <tr>
                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
+                        <a href="'.BASE_PATH.'/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="'.BASE_PATH.'/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="'.BASE_PATH.'/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
                        
                         
  
