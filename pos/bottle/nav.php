@@ -13,7 +13,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
 ?>
 
- <h1><a href="<?php echo BASE_PATH; ?>/account/" title="Valify"></a></h1>
+ <h1><a href="<?php echo BASE_PATH; ?>/account/" title="Mr.Pao"></a></h1>
 
 
 <nav>
