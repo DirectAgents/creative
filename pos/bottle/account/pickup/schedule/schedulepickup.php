@@ -461,6 +461,7 @@ post_data = {
     <button class="slide-accept_close cancel">Cancel</button>
     <button class="accept btn-delete cancel-pick-up-request">Yes</button>
 </div>
+</div>
 
 <div class="popupoverlay-btn">
   <div class="close-accept">
