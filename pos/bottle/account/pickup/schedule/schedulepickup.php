@@ -58,6 +58,10 @@ $("#request-new-pick-up-date").click(function() {
 
          $( "#white-container-account" ).load( "request-new-pickup.php" );
 
+         $( ".pick-up-requested" ).hide();
+         
+
+
 
  }); 
 
@@ -589,7 +593,19 @@ $("#slide-accept_background").hide();
 
 <div class="pick-up-requested">
 
+<?php if($row_pickup_request['RequestDenied'] == 'Y') { ?>
+
+<div style="float:left; width:100%; background-color:orange; margin-bottom:20px; text-align:center">
+<h4>Your previous pick-up request was denied. Please select new dates to request new pick-up date options </h4>
+</div>
+
+<?php } ?>
+
+
 <h3>You have requested a pick up for the following date(s) </h3>
+
+<h4>Sit tight. We will confirm your pick-up request soon.</h4>
+
 <p>&nbsp;</p>
 
 

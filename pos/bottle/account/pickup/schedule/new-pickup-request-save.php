@@ -48,6 +48,7 @@ $the_time = date('h:i:s A');
   Schedule_Time_Option2='".$time_option2."',
   Schedule_Date_Option3='".$date_option3."',
   New_Request='Y',
+  RequestDenied='N',
   Date='".$the_date."',
   Time='".$the_time."'
 
