@@ -402,7 +402,15 @@ post_data = {
 
 <div class="pick-up-requested">
 
-<h3>We have confirmed the following pick-up date: </h3>
+
+<div style="float:left; width:100%; background-color:green; margin-bottom:20px; color:#fff; text-align:center">
+<h4>We have confirmed the following pick-up</h4>
+</div>
+
+<h3>The following upcoming pick-up is on: </h3>
+
+
+
 <p>&nbsp;</p>
 <h4><?php echo date('F j, Y',strtotime($row_pickup_upcoming['Pickup_Date'])).' @ '.$row_pickup_upcoming['Pickup_Time']  ?> </h4>
  <p>&nbsp;</p>
@@ -411,12 +419,12 @@ post_data = {
 
 <?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'N' && $row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'N') { ?>
 
-        <a href="#" role="button" class="slide_open create-one-btn">Cancel Pick up</a>
+        <a href="#" role="button" class="slide_cancel_upcoming_open create-one-btn">Cancel Pick up</a>
 
 <? }else{ ?>
 
   <a href="#" class="create-one-btn" id="request-new-pick-up-date">Request New Pick up Date</a>
-  
+
 <?php } ?>
 
        </div> 
@@ -425,6 +433,41 @@ post_data = {
 
 </div>
 
+
+
+
+
+<!-- Cancel Upcoming Pick-up -->
+
+<div id="slide_cancel_upcoming" class="well slide_cancel_upcoming">
+  <div class="result-accept">
+  <div id="result-accept">Successfully Canceled!</div>
+  </div>
+
+<input type="text" name="confirmed_pickup_id" id="confirmed_pickup_id" value="<?php echo $row_pickup_upcoming['id']; ?>"/>
+<input type="text" name="confirmed_pickup_date" id="confirmed_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
+<input type="text" name="confirmed_pickup_time" id="confirmed_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
+
+<h4>Are you sure you want to cancel the pick-up date?</h4>
+
+
+<div class="popupoverlay-btn">
+  <div class="cancel-decline">
+    <button class="slide_cancel_upcoming_close cancel">Cancel</button>
+    <button class="decline btn-delete cancel-pickup">Yes</button>
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-decline">
+    <button class="slide_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+ <!-- End Cancel Upcoming Pick-up -->
+ 
 
 
  <!-- Add content to the popup -->
@@ -663,7 +706,7 @@ $("#slide-accept_background").hide();
 
 <p>&nbsp;</p>
 
-        <a href="#" class="create-one-btn" id="request-new-pick-up-date">Request New Pick up Date</a>
+ <a href="#" class="create-one-btn" id="request-new-pick-up-date">Request New Pick up Date</a>
 
  <a href="#" role="button" class="slide-accept_open cancel-btn">Cancel Pick up</a>
       
@@ -890,6 +933,12 @@ $("#slide-accept_background").hide();
 $(document).ready(function () {
 
     $('#slide').popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+     $('#slide_cancel_upcoming').popup({
         focusdelay: 400,
         outline: true,
         vertical: 'top'
