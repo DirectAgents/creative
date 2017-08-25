@@ -22,12 +22,12 @@ try {
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   // When Graph returns an error
   //echo 'Graph returned an error: ' . $e->getMessage();
-  header('Location: '.BASE_PATH.'/startup/login/');
+  header('Location: '.BASE_PATH.'/login/');
   exit;
 } catch(Facebook\Exceptions\FacebookSDKException $e) {
   // When validation fails or other local issues
   //echo 'Facebook SDK returned an error: ' . $e->getMessage();
-  header('Location: '.BASE_PATH.'/startup/login/');
+  header('Location: '.BASE_PATH.'/login/');
   exit;
 }
 
@@ -38,11 +38,11 @@ if (! isset($accessToken)) {
     //echo "Error Code: " . $helper->getErrorCode() . "\n";
     //echo "Error Reason: " . $helper->getErrorReason() . "\n";
     //echo "Error Description: " . $helper->getErrorDescription() . "\n";
-    header('Location: '.BASE_PATH.'/startup/signup/');
+    header('Location: '.BASE_PATH.'/signup/');
   } else {
     //header('HTTP/1.0 400 Bad Request');
     //echo 'Bad request';
-    header('Location: '.BASE_PATH.'/startup/signup/');
+    header('Location: '.BASE_PATH.'/signup/');
   }
   exit;
 }
@@ -78,7 +78,7 @@ if (! $accessToken->isLongLived()) {
   var_dump($accessToken->getValue());
 }
 
-$_SESSION['fb_access_token_startup'] = (string) $accessToken;
+$_SESSION['fb_access_token_customer'] = (string) $accessToken;
 
 
 

@@ -110,6 +110,56 @@ $random = rand(5, 20000);
 
 
 
+
+
+ <!-- Cancel Pick up -->
+
+<div id="slide-deny<?php echo $row2['id']; ?>_<?php echo $random; ?>" class="well slide-accept">
+  <div class="result-accept">
+    <div id="result-deny-<?php echo $row2['id']; ?>">Successfully Canceled!</div>
+  </div>
+
+
+<div class="result-no-date">
+<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
+    <div id="result-deny-<?php echo $row2['id']; ?>">Please choose a date!</div>
+    </div>
+  </div>
+
+
+<input type="hidden" name="the_date" id="the_date" value=""/>
+
+
+<input type="hidden" name="id<?php echo $row2['id']; ?>" id="projectid" value="<?php echo $row2['id']; ?>"/>
+<input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="hidden" name="requestid<?php echo $row2['userID']; ?>" id="requestid" value="<?php echo $row2['RequestID']; ?>"/>
+
+
+<h4>Are you sure you want to cancel the pick-up?</h4>
+<p>&nbsp;</p>
+
+
+
+
+<div class="popupoverlay-btn">
+  <div class="cancel-accept">
+    <button class="slide-deny<?php echo $row2['id']; ?>_<?php echo $random; ?>_close cancel">Cancel</button>
+    <button class="deny<?php echo $row2['id']; ?> btn-delete">Yes</button>
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-accept">
+    <button class="slide-deny<?php echo $row2['id']; ?>_<?php echo $random; ?>_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+ <!-- Cancel Pick up -->  
+
+
+
 <!-- Start Accept -->
 
 <div id="slide-accept<?php echo $row2['id']; ?>_<?php echo $random; ?>" class="well slide-accept">
@@ -258,6 +308,121 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
 });
 
 
+
+
+//Cancel Pick-up
+
+
+$(".slide-deny"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_open").click(function() {  
+$("#slide-deny"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_wrapper").show();
+$("#slide-deny"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_background").show();
+});
+
+
+    $('#slide-deny'+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>).popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+
+$(".slide-deny"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_close").click(function() {  
+$("#slide-deny"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_wrapper").hide();
+$("#slide-deny"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
+});
+
+ 
+
+    
+    $(".result-no-date").hide();
+
+
+    $(".deny"+<?php echo $row2['id']; ?>).click(function() {  
+
+      var proceed = true;
+
+
+      //var input = date;
+        //var the_date = $('input[name=the_date]').val();
+
+        
+     
+      $("#result-deny-"+<?php echo $row2['id']; ?>).hide().slideDown();
+
+
+      
+
+ //get input field values
+        
+        var id = $('input[name=id'+<?php echo $row2['id']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        var requestid = $('input[name=requestid'+<?php echo $row2['userID']; ?>+']').val();
+
+
+
+        /*if(the_date == '' ){
+            $(".result-no-date").show(); 
+            proceed = false;
+            }
+        */    
+        /*
+        if(date == '' ){
+            $(".result-no-date").show(); 
+            proceed = false;
+        }*/
+
+       
+        //alert(date);
+        
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        
+
+        //everything looks good! proceed...
+        if(proceed) 
+        {
+
+      $(".result-no-date").hide(); 
+      $(".result-accept").show().slideDown();
+      $(".cancel-accept").hide();
+      $(".close-accept").show();
+
+
+
+          $( ".processing" ).show();
+            //data to be sent to server
+            post_data = {'id':id,'userid':userid,'requestid':requestid};
+            
+            //Ajax post data to server
+            $.post('cancel-pick-up.php', post_data, function(response){  
+              //alert("yes"); 
+
+                //load json data from server and output message     
+        if(response.type == 'error')
+        {
+          output = '<div class="errorXYZ">'+response.text+'</div>';
+        }else{
+          
+            
+            output = '<div class="success">Yo</div>';
+
+
+          //reset values in all input fields
+          $('#contact_form input').val(''); 
+          $('#contact_form textarea').val(''); 
+        }
+        
+        $(".cancel-accept").hide();
+        $(".result-accept").show();
+        $(".close-accept").show();
+        $("#result-accept-"+response.text).hide().slideDown();
+            }, 'json');
+      
+        }
+
+});    
+
+
  
 
 });
@@ -334,14 +499,28 @@ $row_customer = mysqli_fetch_array($customer);
                     <div class="item date">
                       <div class="label"></div>
                       <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
-                        
+
+<?php if($row2['PickupCanceled_ByMe'] == 'N' && $row2['PickupCanceled_ByCustomer'] == 'N') { ?>
+                  
  <div class="btn-browse"> <a href="#" role="button" class="slide-accept<?php echo $row2['id']; ?>_<?php echo $random; ?>_open">Finished </a></div>
                       
-                        
+ <div class="btn-browse"><a href="#" role="button" class="slide-deny<?php echo $row2['id']; ?>_<?php echo $random; ?>_open"> Cancel </a></div>
 
- <div class="btn-browse">
-                       <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> Cancel </a>
-                        </div>
+<?php } ?>
+
+<?php if($row2['PickupCanceled_ByMe'] == 'Y') { ?>
+                  
+ <h4>Canceled By Me</h4>
+                      
+<?php } ?>
+
+<?php if($row2['PickupCanceled_ByCustomer'] == 'Y') { ?>
+                  
+ <h4>Canceled By Customer</h4>
+                      
+<?php } ?>
+
+
 
                       </div>
                     </div>

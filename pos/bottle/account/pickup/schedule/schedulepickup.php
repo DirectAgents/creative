@@ -32,7 +32,7 @@ $row_pickup_request = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $stmt = $customer_home->runQuery("SELECT * FROM tbl_pickup_upcoming WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['customerSession']));
-$row_pickup_confirmed = $stmt->fetch(PDO::FETCH_ASSOC);
+$row_pickup_upcoming = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
@@ -380,18 +380,45 @@ post_data = {
 
 
 
-<?php if($row_pickup_confirmed['Pickup_Date'] != '' && $row_pickup_confirmed['Pickup_Time'] != '') { ?>
+<?php if($row_pickup_upcoming['Pickup_Date'] != '' && $row_pickup_upcoming['Pickup_Time'] != '') { ?>
+
+<?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'Y') { ?>
+
+<div style="float:left; width:100%; background-color:orange; margin-bottom:20px; text-align:center">
+<h4>We have canceled the Pick-Up</h4>
+</div>
+
+<?php } ?>
+
+
+<?php if($row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'Y') { ?>
+
+<div style="float:left; width:100%; background-color:orange; margin-bottom:20px; text-align:center">
+<h4>You have canceled the Pick-Up</h4>
+</div>
+
+<?php } ?>
+
 
 <div class="pick-up-requested">
 
 <h3>We have confirmed the following pick-up date: </h3>
 <p>&nbsp;</p>
-<h4><?php echo date('F j, Y',strtotime($row_pickup_confirmed['Pickup_Date'])).' @ '.$row_pickup_confirmed['Pickup_Time']  ?> </h4>
+<h4><?php echo date('F j, Y',strtotime($row_pickup_upcoming['Pickup_Date'])).' @ '.$row_pickup_upcoming['Pickup_Time']  ?> </h4>
  <p>&nbsp;</p>
 
       <div class="create-one">
 
+<?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'N' && $row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'N') { ?>
+
         <a href="#" role="button" class="slide_open create-one-btn">Cancel Pick up</a>
+
+<? }else{ ?>
+
+  <a href="#" class="create-one-btn" id="request-new-pick-up-date">Request New Pick up Date</a>
+  
+<?php } ?>
+
        </div> 
       
   </div>
@@ -407,9 +434,9 @@ post_data = {
   <div id="result-accept">Successfully Canceled!</div>
   </div>
 
-<input type="text" name="confirmed_pickup_id" id="confirmed_pickup_id" value="<?php echo $row_pickup_confirmed['id']; ?>"/>
-<input type="text" name="confirmed_pickup_date" id="confirmed_pickup_date" value="<?php echo $row_pickup_confirmed['Pickup_Date']; ?>"/>
-<input type="text" name="confirmed_pickup_time" id="confirmed_pickup_time" value="<?php echo $row_pickup_confirmed['Pickup_Time']; ?>"/>
+<input type="text" name="confirmed_pickup_id" id="confirmed_pickup_id" value="<?php echo $row_pickup_upcoming['id']; ?>"/>
+<input type="text" name="confirmed_pickup_date" id="confirmed_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
+<input type="text" name="confirmed_pickup_time" id="confirmed_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
 
 <h4>Are you sure you want to cancel the pick-up date?</h4>
 
@@ -439,7 +466,7 @@ post_data = {
 
 
 
-<?php if($row_pickup_request['Schedule_Date_Option1'] != '' && $row_pickup_request['Schedule_Time_Option1'] != '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '') { ?>
+<?php if($row_pickup_request['Schedule_Date_Option1'] != '' && $row_pickup_request['Schedule_Time_Option1'] != '' && $row_pickup_upcoming['Pickup_Date'] == '' && $row_pickup_upcoming['Pickup_Time'] == '' && $row_pickup_upcoming['Pickup_Date'] == '' && $row_pickup_upcoming['Pickup_Time'] == '') { ?>
 
 
 
@@ -652,7 +679,7 @@ $("#slide-accept_background").hide();
 <div class="pick-up-request">
 
 
- <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row_pickup_request['Schedule_Date_Option1'] == '' && $row_pickup_request['Schedule_Time_Option1'] == '' && $row_pickup_confirmed['Pickup_Date'] == '' && $row_pickup_confirmed['Pickup_Time'] == '') { ?>
+ <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row_pickup_request['Schedule_Date_Option1'] == '' && $row_pickup_request['Schedule_Time_Option1'] == '' && $row_pickup_upcoming['Pickup_Date'] == '' && $row_pickup_upcoming['Pickup_Time'] == '') { ?>
 
   <h3>Choose 3 possible dates and pick up times for us to collect your bag(s)</h3>
   <p>&nbsp;</p>

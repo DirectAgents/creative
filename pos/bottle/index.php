@@ -79,7 +79,7 @@ $date = date('Y-m-d');
 require 'sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Thank you", "no-reply@valifyit.com");
+$from = new SendGrid\Email("Thank you", "no-reply@misterpao.com");
 $subject = "Great!";
 $to = new SendGrid\Email('', $email);
 $content = new SendGrid\Content("text/html", '
@@ -88,7 +88,7 @@ $content = new SendGrid\Content("text/html", '
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Valifys - Update</title>
+    <title>Mr.Pao - Update</title>
     
   <style type="text/css">
     .ReadMsgBody{
@@ -270,7 +270,7 @@ $response = $sg->client->mail()->send()->post($mail);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
 
-    <title>Valify Launch</title>
+    <title>Mr.Pao Launch</title>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
@@ -278,21 +278,21 @@ $response = $sg->client->mail()->send()->post($mail);
     <meta name="description" content="Recycle and get rewarded in cash" />
 
     <meta name="google" content="nositelinkssearchbox" />
-    <meta itemprop="name" content="Valify Launch">
+    <meta itemprop="name" content="Mr.Pao Launch">
     <meta itemprop="image" content="/public/img/logo.png">
 
-    <meta name="twitter:site" content="@Valifyit">
-    <meta name="twitter:title" content="Valify Launch">
+    <meta name="twitter:site" content="@mymisterpao">
+    <meta name="twitter:title" content="Mr.Pao Launch">
     <meta name="twitter:description" content="Recycle and get rewarded in cash">
-    <meta name="twitter:creator" content="@Valifyit">
+    <meta name="twitter:creator" content="@mymisterpao">
 
-    <meta property="og:url" content="https://valifyit.com">
-    <meta property="og:title" content="Valify Launch">
-    <meta property="og:image" content="https://launch.valifyit.com/public/img/logo-Valifylaunch-og.png">
+    <meta property="og:url" content="https://misterpao.com">
+    <meta property="og:title" content="Mr.Pao Launch">
+    <meta property="og:image" content="https://misterpao.com/images/logo/email-logo-large.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:description" content="Recycle and get rewarded in cash">
-    <meta property="og:site_name" content="Valify Launch">
+    <meta property="og:site_name" content="Mr.Pao Launch">
     <meta property="og:locale" content="en_US">
     <meta property="article:author" content="">
     <meta property="article:section" content="Technology">
@@ -1059,7 +1059,7 @@ $(document).ready(function() {
    
   
    <div class="copyright">
-      © 2017 Valify. All rights reserved  |  <a href="#">Terms of Service</a>  |  <a href="#">Privacy</a>  |  <a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a href="<?php echo BASE_PATH; ?>/about/">About</a>  |  <a href="#">Contact us</a> 
+      © 2017 Paotastik. All rights reserved  |  <a href="#">Terms of Service</a>  |  <a href="#">Privacy</a>  |  <a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a href="<?php echo BASE_PATH; ?>/about/">About</a>  |  <a href="#">Contact us</a> 
     </div>
   
   </footer>

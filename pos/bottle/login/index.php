@@ -186,7 +186,7 @@ if(isset($_POST['btn-login']))
 </div>
 
 <div class="loginas">
-  <h3>You own a restaurant? <a href="<?php echo BASE_PATH; ?>/restaurant/login/">Click here</a></h3>
+  <h3>You own a restaurant? <a href="<?php echo BASE_PATH; ?>/restaurant/">Click here</a></h3>
 </div>
 
 

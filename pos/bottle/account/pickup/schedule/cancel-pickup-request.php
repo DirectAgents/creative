@@ -66,7 +66,7 @@ $date_option_three = '';
 require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Pick up Request Canceled", 'support@valifyit.com');
+$from = new SendGrid\Email("Pick up Request Canceled", 'support@misterpao.com');
 $subject = "Pick up Request Canceled (Request#".$rowrequest['RequestID'].")";
 $to = new SendGrid\Email($rowadmin['FirstName'], $rowadmin['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -137,7 +137,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://misterpao.com" target="_blank"><img src="http://misterpao.comimages/email/calendar.jpg" alt="when" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://misterpao.com" target="_blank"><img src="http://misterpao.com/images/email/calendar.jpg" alt="when" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -204,7 +204,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://misterpao.com" target="_blank"><img src="http://misterpao.comimages/email/location.jpg" alt="where" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://misterpao.com" target="_blank"><img src="http://misterpao.com/images/email/location.jpg" alt="where" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -334,13 +334,35 @@ $content = new SendGrid\Content("text/html", '
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
 
-            <tr>
+           <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
                        &nbsp;
                            </td>
                      </tr>
-                     
+
                 <tr>
+
+
+                <tr>
+                   <td align="center">
+                      <a href="https://twitter.com/mymisterpao" target="_blank">
+                      <img src="http://misterpao.com/images/email/twitter-icon.jpg" width="36" height="36"/></a>
+                          <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
+                           <img src="http://misterpao.com/images/email/facebook-icon.jpg" alt="" width="36" height="36"/></a>
+                    <a href="https://instagram.com/mymrpao" target="_blank">
+                           <img src="http://misterpao.com/images/email/instagram-icon.jpg" alt="" width="36" height="36"/
+                        </a>
+                    </td>       
+                  
+              </tr>
+
+              <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                       &nbsp;
+                           </td>
+                     </tr>
+
+              <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
                         245 5th Ave Suite 201, New York, NY 10001
                            </td>

@@ -63,7 +63,7 @@ $date_of_pickup3 = date('F j, Y',strtotime($date_of_pickup3)).' @ '.$time3;
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Pick up Request Denied", 'support@valifyit.com');
+$from = new SendGrid\Email("Pick up Request Denied", 'support@misterpao.com');
 $subject = "Pick up Request Denied";
 $to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -341,11 +341,27 @@ $content = new SendGrid\Content("text/html", '
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                
-         <tr>
+        <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                      &nbsp;
+                       &nbsp;
                            </td>
                      </tr>
+
+                <tr>
+
+
+                <tr>
+                   <td align="center">
+                      <a href="https://twitter.com/mymisterpao" target="_blank">
+                      <img src="http://misterpao.com/images/email/twitter-icon.jpg" width="36" height="36"/></a>
+                          <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
+                           <img src="http://misterpao.com/images/email/facebook-icon.jpg" alt="" width="36" height="36"/></a>
+                    <a href="https://instagram.com/mymrpao" target="_blank">
+                           <img src="http://misterpao.com/images/email/instagram-icon.jpg" alt="" width="36" height="36"/
+                        </a>
+                    </td>       
+                  
+              </tr>
 
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
@@ -404,7 +420,7 @@ $response = $sg->client->mail()->send()->post($mail);
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Pick up Request Denied", 'support@valifyit.com');
+$from = new SendGrid\Email("Pick up Request Denied", 'support@misterpao.com');
 $subject = "Pick up Request Denied";
 $to = new SendGrid\Email($rowadmin['FirstName'], $rowadmin['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -470,7 +486,7 @@ $content = new SendGrid\Content("text/html", '
 
                              <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
     What to do next?
                     </td>
                 </tr>
@@ -698,7 +714,29 @@ $content = new SendGrid\Content("text/html", '
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                
 
-                 <tr>
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                       &nbsp;
+                           </td>
+                     </tr>
+
+                <tr>
+
+
+                <tr>
+                   <td align="center">
+                      <a href="https://twitter.com/mymisterpao" target="_blank">
+                      <img src="http://misterpao.com/images/email/twitter-icon.jpg" width="36" height="36"/></a>
+                          <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
+                           <img src="http://misterpao.com/images/email/facebook-icon.jpg" alt="" width="36" height="36"/></a>
+                    <a href="https://instagram.com/mymrpao" target="_blank">
+                           <img src="http://misterpao.com/images/email/instagram-icon.jpg" alt="" width="36" height="36"/
+                        </a>
+                    </td>       
+                  
+              </tr>
+
+               <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
                        &nbsp;
                            </td>
