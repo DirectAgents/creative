@@ -289,18 +289,18 @@ $("#request-new-pick-up-date").click(function() {
 
 
 
-$(".cancel-pickup").click(function() { 
+$(".cancel-upcoming-pickup").click(function() { 
 
 
 post_data = {
-                'confirmed_pickup_id'       : $("input[name='confirmed_pickup_id']").val(),
-                'confirmed_pickup_date'     : $("input[name='confirmed_pickup_date']").val(),
-                'confirmed_pickup_time'     : $("input[name='confirmed_pickup_time']").val()
+                'upcoming_pickup_requestid': $("input[name='upcoming_pickup_requestid']").val(),
+                'upcoming_pickup_date'     : $("input[name='upcoming_pickup_date']").val(),
+                'upcoming_pickup_time'     : $("input[name='upcoming_pickup_time']").val()
             };
 
 
  //Ajax post data to server
-            $.post('cancel-pickup.php', post_data, function(response){ 
+            $.post('cancel-pickup-upcoming.php', post_data, function(response){ 
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
@@ -315,6 +315,14 @@ post_data = {
             }, 'json');
 
 });
+
+
+
+
+
+
+
+
 
 
  });
@@ -402,10 +410,13 @@ post_data = {
 
 <div class="pick-up-requested">
 
+<?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'N' && $row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'N' ) { ?>
 
 <div style="float:left; width:100%; background-color:green; margin-bottom:20px; color:#fff; text-align:center">
 <h4>We have confirmed the following pick-up</h4>
 </div>
+
+<?php } ?>
 
 <h3>The following upcoming pick-up is on: </h3>
 
@@ -419,7 +430,7 @@ post_data = {
 
 <?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'N' && $row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'N') { ?>
 
-        <a href="#" role="button" class="slide_cancel_upcoming_open create-one-btn">Cancel Pick up</a>
+        <a href="#" role="button" class="slide_open create-one-btn">Cancel Pick up</a>
 
 <? }else{ ?>
 
@@ -437,24 +448,26 @@ post_data = {
 
 
 
-<!-- Cancel Upcoming Pick-up -->
 
-<div id="slide_cancel_upcoming" class="well slide_cancel_upcoming">
+ <!-- Cancel Upcoming Pick-up -->
+
+<div id="slide" class="well slide">
   <div class="result-accept">
   <div id="result-accept">Successfully Canceled!</div>
   </div>
 
-<input type="text" name="confirmed_pickup_id" id="confirmed_pickup_id" value="<?php echo $row_pickup_upcoming['id']; ?>"/>
-<input type="text" name="confirmed_pickup_date" id="confirmed_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
-<input type="text" name="confirmed_pickup_time" id="confirmed_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
+<input type="hidden" name="upcoming_pickup_requestid" id="upcoming_pickup_requestid" value="<?php echo $row_pickup_upcoming['RequestID']; ?>"/>
+<input type="hidden" name="upcoming_pickup_date" id="upcoming_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
+<input type="hidden" name="upcoming_pickup_time" id="upcoming_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
 
-<h4>Are you sure you want to cancel the pick-up date?</h4>
+
+<h4>Are you sure you want to cancel the pick-up?</h4>
 
 
 <div class="popupoverlay-btn">
   <div class="cancel-decline">
-    <button class="slide_cancel_upcoming_close cancel">Cancel</button>
-    <button class="decline btn-delete cancel-pickup">Yes</button>
+    <button class="slide_close cancel">Cancel</button>
+    <button class="decline btn-delete cancel-upcoming-pickup">Yes</button>
 </div>
 
 <div class="popupoverlay-btn">
@@ -467,39 +480,6 @@ post_data = {
 </div>
 
  <!-- End Cancel Upcoming Pick-up -->
- 
-
-
- <!-- Add content to the popup -->
-
-<div id="slide" class="well slide">
-  <div class="result-accept">
-  <div id="result-accept">Successfully Canceled!</div>
-  </div>
-
-<input type="text" name="confirmed_pickup_id" id="confirmed_pickup_id" value="<?php echo $row_pickup_upcoming['id']; ?>"/>
-<input type="text" name="confirmed_pickup_date" id="confirmed_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
-<input type="text" name="confirmed_pickup_time" id="confirmed_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
-
-<h4>Are you sure you want to cancel the pick-up date?</h4>
-
-
-<div class="popupoverlay-btn">
-  <div class="cancel-decline">
-    <button class="slide_close cancel">Cancel</button>
-    <button class="decline btn-delete cancel-pickup">Yes</button>
-</div>
-
-<div class="popupoverlay-btn">
-  <div class="close-decline">
-    <button class="slide_close cancel">Close</button>
-</div>
-</div>
-
-</div>
-</div>
-
- <!-- End content to the popup -->
 
 
 
@@ -553,7 +533,7 @@ post_data = {
 
 <script>
 
-/**Accept Pick Up**/
+/**Cancel Pick Up Request**/
 
 $(document).ready(function(){
 
@@ -648,6 +628,13 @@ $("#slide-accept_background").hide();
         }
 
 });
+
+
+
+
+
+
+
 
 
  
@@ -938,12 +925,7 @@ $(document).ready(function () {
         vertical: 'top'
     });
 
-     $('#slide_cancel_upcoming').popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
-
+    
 });
 </script>
   

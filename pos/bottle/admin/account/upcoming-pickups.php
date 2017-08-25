@@ -394,7 +394,7 @@ $("#slide-deny"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgrou
             post_data = {'id':id,'userid':userid,'requestid':requestid};
             
             //Ajax post data to server
-            $.post('cancel-pick-up.php', post_data, function(response){  
+            $.post('cancel-pickup-upcoming.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
