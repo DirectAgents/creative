@@ -196,7 +196,9 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Valify Signup</title>
+    <title>Mr.Pao Signup</title>
+
+    <link rel="icon" href="../favicon.ico" type="image/x-icon"/>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">
@@ -882,7 +884,7 @@ $response = $sg->client->mail()->send()->post($mail);
 </g>
 </svg>
 
-        
+
       </a>
   </div>
 </div>

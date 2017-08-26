@@ -93,7 +93,9 @@ if(isset($_POST['btn-login']))
 <html >
   <head>
     <meta charset="UTF-8">
-   <title>Valify Login</title>
+   <title>Mr.Pao Login</title>
+
+   <link rel="icon" href="../favicon.ico" type="image/x-icon"/>
     
     
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/reset.css">
