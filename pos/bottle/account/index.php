@@ -28,24 +28,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['customerSession']."' AND FinishedProcess = 'Y' ");
-$rowproject = mysqli_fetch_array($Project);
-
-$meetupchoice=explode(',',$rowproject['Meetupchoice']);
-$age=explode(',',$rowproject['Age']);
-$gender=explode(',',$rowproject['Gender']);
-$minheight=explode(',',$rowproject['MinHeight']);
-$maxheight=explode(',',$rowproject['MaxHeight']);
-$city=explode(',',$rowproject['City']);
-$status=explode(',',$rowproject['Status']);
-$ethnicity=explode(',',$rowproject['Ethnicity']);
-$smoke=explode(',',$rowproject['Smoke']);
-$drink=explode(',',$rowproject['Drink']);
-$diet=explode(',',$rowproject['Diet']);
-$religion=explode(',',$rowproject['Religion']);
-$education=explode(',',$rowproject['Education']);
-$job=explode(',',$rowproject['Job']);
-
 
 
 
@@ -198,6 +180,158 @@ $(document).ready(function(){
 
 
     <div id="white-container">
+
+
+
+
+
+
+
+
+<?php
+
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_pickup_upcoming WHERE userID = '".$_SESSION['customerSession']."' ORDER BY id DESC ");
+
+if(mysqli_num_rows($sql) == 1)
+{
+
+$row_pickup_upcoming = mysqli_fetch_array($sql); ?>
+
+
+
+<?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'Y') { ?>
+
+<div style="float:left; width:100%; background-color:orange; margin-bottom:20px; text-align:center">
+<h4>We have canceled the Pick-Up</h4>
+</div>
+
+<?php } ?>
+
+
+<?php if($row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'Y') { ?>
+
+<div style="float:left; width:100%; background-color:orange; margin-bottom:20px; text-align:center">
+<h4>You have canceled the Pick-Up</h4>
+</div>
+
+<?php } ?>
+
+
+<?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'N' && $row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'N' ) { ?>
+
+<div style="float:left; width:100%; background-color:green; margin-bottom:20px; color:#fff; text-align:center">
+<h4>We have confirmed the following pick-up</h4>
+</div>
+
+<?php } ?>
+
+
+
+<p>&nbsp;</p>
+<h4 class="center"><?php echo date('F j, Y',strtotime($row_pickup_upcoming['Pickup_Date'])).' @ '.$row_pickup_upcoming['Pickup_Time']  ?> </h4>
+ <p>&nbsp;</p>
+
+
+ <div class="create-one center">
+
+<?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'N' && $row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'N') { ?>
+
+        <a href="#" role="button" class="slide_open create-one-btn">Cancel Pick up</a>
+
+<? }else{ ?>
+
+  <a href="<?php echo BASE_PATH; ?>/account/pickup/schedule/?p=new" class="create-one-btn" id="request-new-pick-up-date-after-canceled-upcoming-pickup">Request New Pick up Date</a>
+
+<?php } ?>
+
+
+
+
+<!--Check if Upcoming Pickups exist -->
+
+
+ <!-- Cancel Upcoming Pick-up -->
+
+<div id="slide" class="well slide">
+  <div class="result-accept">
+  <div id="result-accept">Successfully Canceled!</div>
+  </div>
+
+<input type="hidden" name="upcoming_pickup_requestid" id="upcoming_pickup_requestid" value="<?php echo $row_pickup_upcoming['RequestID']; ?>"/>
+<input type="hidden" name="upcoming_pickup_date" id="upcoming_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
+<input type="hidden" name="upcoming_pickup_time" id="upcoming_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
+
+
+<h4>Are you sure you want to cancel the pick-up?</h4>
+
+
+<div class="popupoverlay-btn">
+  <div class="cancel-decline">
+    <button class="slide_close cancel">Cancel</button>
+    <button class="decline btn-delete cancel-upcoming-pickup">Yes</button>
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-decline">
+    <button class="slide_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+ <!-- End Cancel Upcoming Pick-up -->
+
+
+
+<script>
+$(document).ready(function(){
+
+
+$(".cancel-upcoming-pickup").click(function() { 
+
+
+post_data = {
+                'upcoming_pickup_requestid': $("input[name='upcoming_pickup_requestid']").val(),
+                'upcoming_pickup_date'     : $("input[name='upcoming_pickup_date']").val(),
+                'upcoming_pickup_time'     : $("input[name='upcoming_pickup_time']").val()
+            };
+
+
+ //Ajax post data to server
+            $.post('pickup/schedule/cancel-pickup-upcoming.php', post_data, function(response){ 
+                if(response.type == 'error'){ //load json data from server and output message     
+                    output = '<div class="error">'+response.text+'</div>';
+                }else{
+                    output = response.text;
+                    //reset values in all input fields
+                   
+                  
+                  $(".result-accept").show().slideDown(); 
+
+                }
+                $("#profile-form #profile_results").hide().html(output).slideDown();
+            }, 'json');
+
+});
+
+
+
+
+
+
+
+
+
+
+ });
+</script> 
+
+
+
+
+<?php }else{ ?>
+
      
 
 
@@ -300,6 +434,8 @@ while($row_pickup_request = mysqli_fetch_array($sql))
 
 }
 
+}
+
 ?>
 
 
@@ -335,7 +471,18 @@ while($row_pickup_request = mysqli_fetch_array($sql))
         <script src="<?php echo BASE_PATH; ?>/assets/scripts.js"></script>
 
 
+   <script>
+$(document).ready(function () {
 
+    $('#slide').popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+    
+});
+</script>
 
 
 

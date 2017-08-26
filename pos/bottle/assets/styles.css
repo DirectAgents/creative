@@ -607,6 +607,20 @@ label{font-weight:normal !important;}
     /*width: 33.3%;*/
 }
 
+.survey-metadata .buttons {
+    float: left;
+    width: 22%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .date {
+    float: left;
+    width: 38%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
 
 .survey-metadata .item.name {
     float: left;
@@ -667,14 +681,14 @@ label{font-weight:normal !important;}
 }
 
 .survey-metadata .item .value {
-    font-size: 12px;
+    font-size: 13px;
     color: #6a7486;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 
 .survey-metadata .label {
-    font-size: 12px;
+    font-size: 14px;
     color: #3fa208 !important;
     text-transform: uppercase;
     font-weight: 700;
@@ -2894,11 +2908,10 @@ textarea {
    width:100%;
 }
 
-
+.center{text-align:center;}
 
 
 .create-one-btn{
-  float:left;
   display: inline-block;
   cursor: pointer;
   border-radius: 0px;

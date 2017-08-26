@@ -414,7 +414,6 @@ post_data = {
 
 
 
-
 <?php if($row_pickup_upcoming['PickupCanceled_ByMe'] == 'N' && $row_pickup_upcoming['PickupCanceled_ByCustomer'] == 'N' ) { ?>
 
 <div style="float:left; width:100%; background-color:green; margin-bottom:20px; color:#fff; text-align:center">

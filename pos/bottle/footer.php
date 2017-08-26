@@ -1,7 +1,7 @@
 <div class="footer">
 
 <ul class="footer-links">
-	<li>&copy; 2017 Valify, LLC</li>
+	<li>&copy; 2017 Paotastik, LLC</li>
 	<li><a href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a></li>
 	<li><a href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a></li>
 	<li><a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a></li>
