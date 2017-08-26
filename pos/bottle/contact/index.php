@@ -408,12 +408,9 @@ echo '</div>';
             <footer>
                 
 
-<p>&copy; 2017 Paotastik, LLC
-    
-    
-        
-    
-</p>
+<p>&copy; 2017 Paotastik, LLC</p>
+
+
             </footer>
         </section><!--/.fluid-container-->
         

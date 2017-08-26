@@ -1059,7 +1059,7 @@ $(document).ready(function() {
    
   
    <div class="copyright">
-      © 2017 Paotastik. All rights reserved  |  <a href="#">Terms of Service</a>  |  <a href="#">Privacy</a>  |  <a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a href="<?php echo BASE_PATH; ?>/about/">About</a>  |  <a href="#">Contact us</a> 
+      © 2017 Paotastik. All rights reserved  |  <a href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a>  |  <a href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a>  |  <a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a>  |  <a href="<?php echo BASE_PATH; ?>/about/">About</a>  |  <a href="#">Contact us</a> 
     </div>
   
   </footer>
