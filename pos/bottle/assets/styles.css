@@ -600,6 +600,8 @@ label{font-weight:normal !important;}
     width:100%;
 }
 
+
+
 .survey-metadata .item {
     float: left;
     width: 30%;
@@ -607,16 +609,26 @@ label{font-weight:normal !important;}
     /*width: 33.3%;*/
 }
 
-.survey-metadata .buttons {
+
+
+.survey-metadata .date {
+    float: left;
+    width: 33%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+
+.survey-metadata .item.buttons {
     float: left;
     width: 25%;
     margin-right:0px;
     /*width: 33.3%;*/
 }
 
-.survey-metadata .date {
+.survey-metadata .item.userid {
     float: left;
-    width: 38%;
+    width: 5%;
     margin-right:0px;
     /*width: 33.3%;*/
 }

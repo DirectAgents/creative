@@ -467,6 +467,11 @@ $row_customer = mysqli_fetch_array($customer);
 
             
                   <div class="survey-metadata">
+                    <div class="item userid">
+                      <div class="label">ID#</div>
+                      <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row_customer['userID']; ?> </div>
+                    </div>
+
                     <div class="item name">
                       <div class="label">Name</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row_customer['FirstName']; ?> <?php echo $row_customer['LastName']; ?></div>
