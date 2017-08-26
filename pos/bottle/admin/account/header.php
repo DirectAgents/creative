@@ -2,6 +2,9 @@
 
          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+            <link rel="icon" href="<?php echo BASE_PATH; ?>/favicon.ico" type="image/x-icon"/>
+
+
         <!-- Bootstrap -->
         <link href="<?php echo BASE_PATH; ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="<?php echo BASE_PATH; ?>/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">

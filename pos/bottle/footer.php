@@ -15,10 +15,10 @@
 <ul class="navbar-nav navbar-nav_rt"> 
 <li class="navbar-nav__i">
 
-<a class="navbar-nav__a footer__a footer__a_social footer__a_social_facebook" href="https://www.facebook.com/valifyit/" target="_blank"><span class="footer__social"></span></a>
+<a class="navbar-nav__a footer__a footer__a_social footer__a_social_facebook" href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank"><span class="footer__social"></span></a>
 </li> 
 
-<li class="navbar-nav__i"><a class="navbar-nav__a footer__a footer__a_social footer__a_social_twitter" href="https://twitter.com/valifyit" target="_blank"><span class="footer__social"></span></a>
+<li class="navbar-nav__i"><a class="navbar-nav__a footer__a footer__a_social footer__a_social_twitter" href="https://twitter.com/mymisterpao" target="_blank"><span class="footer__social"></span></a>
 </li> 
 <!--
 <li class="navbar-nav__i"><a class="navbar-nav__a footer__a footer__a_social footer__a_social_gplus" href="https://plus.google.com/#" target="_blank"><span class="footer__social"></span></a></li> 
