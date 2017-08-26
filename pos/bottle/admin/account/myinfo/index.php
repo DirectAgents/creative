@@ -1,66 +1,35 @@
 <?php
 session_start();
-require_once '../../base_path.php';
+require_once '../../../base_path.php';
 
-require_once '../../class.customer.php';
-require_once '../../class.admin.php';
-include_once("../../config.php");
-
-
-
-$customer_home = new CUSTOMER();
+require_once '../../../class.admin.php';
+include_once("../../../config.php");
 
 
 
+$admin_home = new ADMIN();
 
-if(!$customer_home->is_logged_in())
+
+
+
+if(!$admin_home->is_logged_in())
 {
   
-  $customer_home->redirect('../../login');
+  $admin_home->redirect('../../../admin');
 
 }
 
 
-$profileimage = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_SESSION['customerSession']."'");
+$profileimage = mysqli_query($connecDB,"SELECT * FROM tbl_admin WHERE userID='".$_SESSION['adminSession']."'");
 $rowimage = mysqli_fetch_array($profileimage);
 
-$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$stmt = $admin_home->runQuery("SELECT * FROM tbl_admin WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$emailnotifications=explode(',',$row['EmailNotifications']);
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['customerSession']."'");
-$rowproject = mysqli_fetch_array($Project);
-
-$meetupchoice=explode(',',$rowproject['Meetupchoice']);
-$age=explode(',',$rowproject['Age']);
-$gender=explode(',',$rowproject['Gender']);
-$minheight=explode(',',$rowproject['MinHeight']);
-$maxheight=explode(',',$rowproject['MaxHeight']);
-$city=explode(',',$rowproject['City']);
-$status=explode(',',$rowproject['Status']);
-$ethnicity=explode(',',$rowproject['Ethnicity']);
-$smoke=explode(',',$rowproject['Smoke']);
-$drink=explode(',',$rowproject['Drink']);
-$diet=explode(',',$rowproject['Diet']);
-$religion=explode(',',$rowproject['Religion']);
-$education=explode(',',$rowproject['Education']);
-$job=explode(',',$rowproject['Job']);
-
-
-
-
-
-
-$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['customerSession']."' AND ProjectID = '41'");
-$rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
-
-$screening=explode(',',$rowpotentialanswers['Screening']);
-
-$potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 ?>
 
@@ -112,7 +81,7 @@ jq(document).ready(function(){
    
 
 
-<?php include("../../nav.php"); ?>
+<?php include("../../../nav.php"); ?>
 
    
   </div>
@@ -166,7 +135,7 @@ jq(document).ready(function(){
 <?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['facebook_photo']))){ ?>
 
 <?php if($_SESSION['profileimage'] != ''){ 
-        echo '<img src="'.BASE_PATH.'/images/profile/customer/'.$_SESSION['profileimage'].'" class="profile-photo"/>';
+        echo '<img src="'.BASE_PATH.'/images/profile/admin/'.$_SESSION['profileimage'].'" class="profile-photo"/>';
 }else{
         echo '
   
@@ -825,7 +794,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
   
 <!--Footer-->
-<?php include("../../footer.php"); ?>
+<?php include("../../../footer.php"); ?>
 <!--Footer-->
       
 

@@ -395,7 +395,7 @@ $row_customer = mysqli_fetch_array($customer);
 
 
 
-                    <div class="item date">
+                    <div class="item buttons">
                       <div class="label"></div>
                       <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
                         

@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once '../../class.customer.php';
-include_once("../../config.php");
+require_once '../../../class.admin.php';
+include_once("../../../config.php");
 
 //require( "phpmailer/class.phpmailer.php" );
 
@@ -21,7 +21,7 @@ $formatted_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $_POST
 
 //$all_game_value = implode(",",$_POST['testing']);
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_admin SET 
   FirstName='".$_POST['firstname']."',
   LastName='".$_POST['lastname']."',
   userEmail='".$_POST['email']."',
@@ -30,8 +30,8 @@ $formatted_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $_POST
   City='".$_POST['city']."',
   State='".$_POST['state']."',
   Zip='".$_POST['zip']."'
-
-  WHERE userID='".$_SESSION['customerSession']."'");
+  
+  WHERE userID='".$_SESSION['adminSession']."'");
 
 
 

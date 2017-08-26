@@ -1548,7 +1548,7 @@ $(".choose-location-sunday").click(function() {
          
 
         var delay = 5000; //Your delay in milliseconds
-        setTimeout(function(){ window.location = '../../../logout.php'; }, delay);
+        setTimeout(function(){ window.location = '../../logout.php'; }, delay);
           
           //reset values in all input fields
           $('#contact_form input').val(''); 

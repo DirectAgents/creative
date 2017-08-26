@@ -32,35 +32,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $emailnotifications=explode(',',$row['EmailNotifications']);
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['customerSession']."'");
-$rowproject = mysqli_fetch_array($Project);
-
-$meetupchoice=explode(',',$rowproject['Meetupchoice']);
-$age=explode(',',$rowproject['Age']);
-$gender=explode(',',$rowproject['Gender']);
-$minheight=explode(',',$rowproject['MinHeight']);
-$maxheight=explode(',',$rowproject['MaxHeight']);
-$city=explode(',',$rowproject['City']);
-$status=explode(',',$rowproject['Status']);
-$ethnicity=explode(',',$rowproject['Ethnicity']);
-$smoke=explode(',',$rowproject['Smoke']);
-$drink=explode(',',$rowproject['Drink']);
-$diet=explode(',',$rowproject['Diet']);
-$religion=explode(',',$rowproject['Religion']);
-$education=explode(',',$rowproject['Education']);
-$job=explode(',',$rowproject['Job']);
-
-
-
-
-
-
-$ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['customerSession']."' AND ProjectID = '41'");
-$rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
-
-$screening=explode(',',$rowpotentialanswers['Screening']);
-
-$potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 ?>
 

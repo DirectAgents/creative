@@ -361,7 +361,7 @@ echo "</div>";
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Valify Team", "no-reply@valifyit.com");
+$from = new SendGrid\Email("Mr.Pao Team", "no-reply@misterpao.com");
 $subject = "Your Recent Payment";
 $to = new SendGrid\Email($row['FirstName'], $row['userEmail']);
 $content = new SendGrid\Content("text/html", '
@@ -384,7 +384,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                     <td align="center" valign="top" style="padding: 15px 0;" class="logo">
                       
-                            <img alt="Logo" src="http://labfy.com/circl/images/logo/email-logo.jpg" width="206" height="53" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                            <img alt="Logo" src="http://misterpao.com/images/email/email-logo-large.png" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                        
                     </td>
                 </tr>
@@ -632,7 +632,7 @@ $content = new SendGrid\Content("text/html", '
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <img alt="Logo" src="http://valifyit.com/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <img alt="Logo" src="http://misterpao.com/images/email/email-logo-small.jpg" width="150" height="41" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 
@@ -642,6 +642,38 @@ $content = new SendGrid\Content("text/html", '
 
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+               
+
+                <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                       &nbsp;
+                           </td>
+                     </tr>
+
+                <tr>
+
+
+                <tr>
+                   <td align="center">
+                      <a href="https://twitter.com/mymisterpao" target="_blank">
+                      <img src="http://misterpao.com/images/email/twitter-icon.jpg" width="44" height="36"/></a>
+                          <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
+                           <img src="http://misterpao.com/images/email/facebook-icon.jpg" alt="" width="44" height="36"/></a>
+                    <a href="https://instagram.com/mymrpao" target="_blank">
+                           <img src="http://misterpao.com/images/email/instagram-icon.jpg" alt="" width="44" height="36"/
+                        </a>
+                    </td>       
+                  
+              </tr>
+
+               <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                       &nbsp;
+                           </td>
+                     </tr>
+
+
+
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
                         245 5th Ave Suite 201, New York, NY 10001
@@ -649,8 +681,8 @@ $content = new SendGrid\Content("text/html", '
                      </tr>
 
                       <tr>
-                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a></td>
+                      <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
+                        <a href="http://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
                        
                         
  

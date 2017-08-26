@@ -478,7 +478,7 @@ if(isset($_POST['btn-login']))
     <input type="checkbox" name="txtrememberme" value="Yes"/><label> Remember me</label>
     <button type="submit" name="btn-login">LOGIN</button>
     <p class="message">Not registered? <a href="<?php echo BASE_PATH; ?>/signup">Sign up</a></p>
-    <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>
+    <p class="message"> <a href="<?php echo BASE_PATH; ?>/account/fpass.php">Forgot your Password ? </a></p>
    
   </form>
 
