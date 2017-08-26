@@ -113,7 +113,7 @@ $(document).ready(function() {
 <nav id='main_nav' role='main-navigation'>
 <div class='container-fluid nav-contents'>
 <div class='nav-item logo'>
-<a class="brand-logo-light nav-logo-swoosh" href="" target="_top">
+<a class="brand-logo-light nav-logo-swoosh" href="<?php echo BASE_PATH; ?>" target="_top">
 
 
 
