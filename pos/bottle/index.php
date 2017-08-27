@@ -960,16 +960,22 @@ $(document).ready(function() {
 <li><a href="#howitworks" rel="relativeanchor">How it works</a>
 </li>
 
-<li><a href="#benefits" rel="relativeanchor">Benefits</a>
+<li><a href="#facts" rel="relativeanchor">Facts</a>
 </li>
-<!--
-<li><a target="_top" href="<?php echo BASE_PATH; ?>/startup/login/">Sign In</a>
+
+<li><a href="<?php echo BASE_PATH; ?>/homeless/" target='_top'>Meet The Homeless</a>
+
+</li>
+
+
+
+<li><a target="_top" href="<?php echo BASE_PATH; ?>/login/">Sign In</a>
 </li>
 
 <li>
-<a href='<?php echo BASE_PATH; ?>/startup/signup/' target='_top'>Sign Up</a>
+<a href='<?php echo BASE_PATH; ?>/signup/' target='_top'>Sign Up</a>
 </li>
--->
+
 
 </ul>
 </div>

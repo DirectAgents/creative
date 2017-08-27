@@ -19,6 +19,13 @@ $random = rand(5, 20000);
 if($_POST)
 {
 
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_pickup_request WHERE userID = '".$_SESSION['customerSession']."' ORDER BY id DESC");
+
+
+if(mysqli_num_rows($sql) == 0)
+{
+
+
 
 $sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_SESSION['customerSession']."'");
 $row5 = mysqli_fetch_array($sql5);
@@ -809,6 +816,13 @@ $response = $sg->client->mail()->send()->post($mail);
 
 $output = json_encode(array('status' => 'success','text'=> '<div class="success">Successfully Pick Up Requested!</div>'));
 die($output);
+
+}else{
+
+$output = json_encode(array('status' => 'success','text'=> '<div class="errorXYZ">Pick Up request already sent!</div>'));
+die($output);
+
+}
 
 
 

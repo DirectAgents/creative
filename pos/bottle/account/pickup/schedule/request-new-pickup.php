@@ -141,7 +141,9 @@ history.back();
 
 }else{  
 
-$( "#white-container-account" ).load( "schedulepickup.php" );
+//$( "#white-container-account" ).load( "schedulepickup.php" );
+window.location.reload();
+
 }
 
 
@@ -559,6 +561,7 @@ $( "#white-container-account" ).load( "schedulepickup.php" );
            
 
              <div id="cancel">
+
               <input type="submit" class="cancel" value="Cancel"/>
 
             </div>

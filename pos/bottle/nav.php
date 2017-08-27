@@ -334,7 +334,6 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/payment/">Payment</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/bankinfo/">Bank Information</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/pickup/schedule/">Schedule Pickup</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/account/pickup/cancel/">Cancel Pickup</a></li>
               <li class='separator'></li>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['participantSession'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 
