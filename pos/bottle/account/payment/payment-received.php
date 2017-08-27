@@ -187,7 +187,9 @@ $rowtask = mysqli_fetch_array($sqltask);
         <td style="text-align:left" class="grey">PickUp#</td>
         <td style="text-align:left" class="grey">Transaction ID#</td>
         <td style="text-align:right" class="grey">Date of Pickup</td>
-        <td style="text-align:right" class="grey">Amount</td>
+        <td style="text-align:right" class="grey">Total Amount</td>
+        <td style="text-align:right" class="grey">You Earned</td>
+        <td style="text-align:right" class="grey">You Donated</td>
         <td style="text-align:right" class="grey">&nbsp;</td>
        
       </tr>
@@ -228,6 +230,8 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
         <td style="text-align:left"><?php echo $row2['checkout_id']; //echo $row2['id']; ?></td>
         <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo date('F j, Y',strtotime($rowtask['Pickup_Date'])); ?></a></td>
         <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
+        <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
+        <td style="text-align:right">$<?php echo $row2['homeless_donation']; //echo $row2['id']; ?></td>
         <td style="text-align:right"><a target="_blank" href="<?php echo BASE_PATH; ?>/images/receipts/<?php echo $rowreceipt['Receipt'];?>">View Receipt</a></td>
        
       </tr>

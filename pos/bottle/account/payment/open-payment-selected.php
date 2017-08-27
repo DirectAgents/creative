@@ -111,12 +111,19 @@ $(".make-payment").click(function() {
 
 <div id="the-container">
 
-<h2>You have earned $<?php echo $row['Amount']; ?></h2>
+<h2>We have collected $<?php echo $row['Amount']; ?> from your recycles</h2>
 
 <h3>Please choose a homeless person you want to donate to <a href="<?php echo BASE_PATH; ?>/homeless" target="_blank">Click Here</a></h3>
 
 Enter amount you want to donate to the homeless person you have selected
 
 <input type="text" id="amount" name="amount" placeholder="e.g 3"/>
+
+
+
+
+
+<a href="#" class="create-one-btn" id="request-new-pick-up-date-after-canceled-upcoming-pickup">Submit Payment Request</a>
+
 
 </div>
