@@ -16,94 +16,66 @@ $row = mysqli_fetch_array($sql);
 
 
 
-<script>
-
-$(document).ready(function(){
-
-$(".make-payment").click(function() {  
-
-      var proceed = true;
-
-
-      //var input = date;
-        //var the_date = $('input[name=the_date]').val();
 
 
 
-        
-     
-      $("#result-accept-"+<?php echo $row2['id']; ?>).hide().slideDown();
+<!-- Start Accept -->
+
+<div id="slide" class="well slide">
+  <div class="result-accept">
+    <div id="result-accept">Payment was sent successfully!</div>
+  </div>
 
 
-      
-
- //get input field values
-        
-        var id = $('input[name=id'+<?php echo $row2['id']; ?>+']').val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
-        var adminid = $('input[name=adminid'+<?php echo $_SESSION['adminSession']; ?>+']').val();
-        var taskid = $('input[name=taskid'+<?php echo $row2['userID']; ?>+']').val();
-        var amount = $('input[name=amount'+<?php echo $row2['userID']; ?>+']').val();
-
-
-        if (amount < 1 ) {
-
-         $("#amount"+<?php echo $row2['userID']; ?>).css('border-color','red');  //change border color to red  
-            proceed = false;
-
-        }
+<div class="result-no-date">
+<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
+    <div id="result-accept-<?php echo $row2['id']; ?>">Make a payment!</div>
+    </div>
+  </div>
 
 
 
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-
-      $(".result-no-date").hide(); 
-      $(".result-accept").show().slideDown();
-      $(".cancel-accept").hide();
-      $(".close-accept").show();
+<h4>Pay the Customer</h4>
+<p>&nbsp;</p>
 
 
-
-          $( ".processing" ).show();
-            //data to be sent to server
-            post_data = {'id':id,'userid':userid,'adminid':adminid,'taskid':taskid,'amount':amount};
-            
-            //Ajax post data to server
-            $.post('make-payment.php', post_data, function(response){  
-              //alert("yes"); 
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-            
-            output = '<div class="success">Yo</div>';
+<input type="hidden" name="the_date" id="the_date" value=""/>
 
 
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $(".cancel-accept").hide();
-        $(".result-accept").show();
-        $(".close-accept").show();
-        $("#result-accept-"+response.text).hide().slideDown();
-            }, 'json');
-      
-        }
-
-});
-
-});
+<input type="text" name="id" id="projectid" value="<?php echo $row2['id']; ?>"/>
+<input type="text" name="userid" id="userid" value="<?php echo $row2['userID']; ?>"/>
+<input type="text" name="taskid" id="taskid" value="<?php echo $row2['taskID']; ?>"/>
+<input type="text" name="adminid" id="adminid" value="<?php echo $_SESSION['adminSession']; ?>"/>
 
 
 
-</script>
+
+
+<h3>Enter amount</h3>
+<input type="text" name="amount" id="amount"/>
+
+
+
+
+
+
+
+<div class="popupoverlay-btn">
+  <div class="cancel-accept">
+    <button class="slide_close cancel">Cancel</button>
+    <button class="accept btn-delete">Yes</button>
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-accept">
+    <button class="slide_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- End Accept -->
 
 
 
@@ -120,10 +92,32 @@ Enter amount you want to donate to the homeless person you have selected
 <input type="text" id="amount" name="amount" placeholder="e.g 3"/>
 
 
+<h3>Payout explained:</h3>
+
+You will receive: 
+
+You donate: 
+
+Total payout to you: 
 
 
 
-<a href="#" class="create-one-btn" id="request-new-pick-up-date-after-canceled-upcoming-pickup">Submit Payment Request</a>
+
+<a href="#" class="create-one-btn slide_open">Submit Payment Request</a>
 
 
 </div>
+
+<script>
+$(document).ready(function () {
+
+    $('#slide').popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+});
+</script>
+
+
