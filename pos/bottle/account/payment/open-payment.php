@@ -42,14 +42,15 @@ $(function(){
        var options = $.parseJSON($(this).attr('data-button'));
         
        var taskid = (options.taskid);
+       var userid = (options.userid);
        //alert(options.option2);
 
        if(taskid !=''){
 
-      $( "#the-container" ).load( "open-payment-selected.php?taskid="+taskid );
+      $( "#the-container" ).load( "open-payment-selected.php?taskid="+taskid+"&userid="+userid );
     
       }
-      
+
        return this;
     }
 
@@ -57,7 +58,7 @@ $(function(){
         //var data='hello inside';
     
         $(this).taskid();
-        $(this).option2();
+        $(this).userid();
     });
 
 
@@ -140,7 +141,6 @@ $rowtask = mysqli_fetch_array($sqltask);
 
        <tr>
         <td style="text-align:left" class="grey">PickUp#</td>
-        <td style="text-align:left" class="grey">Transaction ID#</td>
         <td style="text-align:right" class="grey">Date of Pickup</td>
         <td style="text-align:right" class="grey">Amount</td>
         <td style="text-align:right" class="grey">&nbsp;</td>
@@ -151,39 +151,20 @@ $rowtask = mysqli_fetch_array($sqltask);
 
 
 <?php 
-$sql2=mysqli_query($connecDB,"SELECT * FROM wepay WHERE account_id = '".$row_customer['account_id']."' AND checkout_find_date = '".$row['checkout_find_date']."' AND refunded = '' ORDER BY id DESC ");
+$sql2=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE userID = '".$_SESSION['customerSession']."' ORDER BY id DESC ");
 
 while($row2 = mysqli_fetch_array($sql2)){
 
-  
-
-$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_admin WHERE userID = '".$row2['admin_id']."'");
-$row3 = mysqli_fetch_array($sql3);
-
-
-$sqlreceipt=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE taskID = '".$row2['TaskID']."'");
-$rowreceipt = mysqli_fetch_array($sqlreceipt);
-
-
-
-
-
-if (strpos($row2['checkout_find_amount'], '.') == false) {
-    $final_amount =  $row2['checkout_find_amount'].'.00';
-}else{
-    $final_amount =  $row2['checkout_find_amount'];
-}
 
 
 ?>
 
 
       <tr>
-        <td style="text-align:left"><?php echo $row2['TaskID']; //echo $row2['id']; ?></td>
-        <td style="text-align:left"><?php echo $row2['checkout_id']; //echo $row2['id']; ?></td>
+        <td style="text-align:left"><?php echo $row2['taskID']; //echo $row2['id']; ?></td>
         <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo date('F j, Y',strtotime($rowtask['Pickup_Date'])); ?></a></td>
-        <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
-        <td style="text-align:right"><button type='button' data-button='{"taskid": <?php echo $row2['TaskID'];?>, "option2": "option2"}'>Retrieve Payment</button>
+        <td style="text-align:right">$<?php echo $row2['Amount'];?></td>
+        <td style="text-align:right"><button type='button' data-button='{"taskid": <?php echo $row2['taskID'];?>, "userid": <?php echo $row2['userID'];?>}'>Retrieve Payment</button>
 
      </td>
        
