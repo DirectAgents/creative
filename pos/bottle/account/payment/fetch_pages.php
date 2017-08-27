@@ -86,12 +86,20 @@ $( "#bankaccount" ).load( "bankaccount.php" );
 }
 
 
-$( "#payment-received" ).load( "payment-received.php" );
+$( "#open-payment" ).load( "open-payment.php" );
 
     $(".payment-received").click(function() {  
 
       //$( "#tabs-1" ).load( "send-payment.php" );
       $( "#payment-received" ).load( "payment-received.php" );
+      
+    });
+
+
+     $(".open-payment").click(function() {  
+
+      //$( "#tabs-1" ).load( "send-payment.php" );
+      $( "#open-payment" ).load( "open-payment.php" );
       
     });
 
@@ -145,6 +153,7 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 <div id="tabs">
 
  <ul>
+    <li><a href="#open-payment" class="bankaccount">Open Payments</a></li>
     <li><a href="#payment-received" class="payment-received">Payment Received</a></li>
    
     
@@ -152,7 +161,7 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 
     <li>&nbsp;</li>
     <?php if($row['Payment_Method'] == 'Bank'){ ?>
-    <!--<li><a href="#bankaccount" class="bankaccount">Bank Account</a></li>-->
+    <!--<li><a href="#open-payment" class="bankaccount">Open Payments</a></li>-->
     <?php } ?>
    
   </ul>  
@@ -164,6 +173,9 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 <div id="white-container">
 
 <div id="payment-received" class="tabContent" > </div>
+
+<div id="open-payment" class="tabContent" > </div>
+
 
 <!--<div id="refund-requests" class="tabContent" ></div>-->
 
