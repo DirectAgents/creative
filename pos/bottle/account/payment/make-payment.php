@@ -50,8 +50,12 @@ $rowadmin = mysqli_fetch_array($stmtadmin);
 
 
 
-$stmtpickup = mysqli_query($connecDB,"SELECT * FROM tbl_pickup_finished WHERE userID='".$_POST['userid']."' AND taskID = '".$_GET['taskid']."'");
+$stmtpickup = mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE userID='".$_POST['userid']."' AND taskID = '".$_GET['taskid']."'");
 $rowpickup = mysqli_fetch_array($stmtpickup);
+
+
+
+
 
 
 

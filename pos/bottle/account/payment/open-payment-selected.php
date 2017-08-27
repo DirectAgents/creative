@@ -12,9 +12,87 @@ $sql=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE taskID = '"
 $row = mysqli_fetch_array($sql);
 
 
+$sqladmin=mysqli_query($connecDB,"SELECT * FROM tbl_admin");
+$rowadmin = mysqli_fetch_array($sqladmin);
+
+
 ?>
 
 
+<script>
+
+$(document).ready(function(){
+
+ $(".accept").click(function() {  
+
+      var proceed = true;
+
+
+        var id = $('input[name=id]').val();
+        var userid = $('input[name=userid]').val();
+        var adminid = $('input[name=adminid]').val();
+        var taskid = $('input[name=taskid').val();
+        var amount = $('input[name=amount').val();
+        var homeless_donation = $('input[name=homeless_donation').val();
+
+        //alert(homeless_donation);
+
+        /*if (amount < 1 ) {
+
+         $("#amount"+<?php echo $row2['userID']; ?>).css('border-color','red');  //change border color to red  
+            proceed = false;
+
+        }*/
+
+
+        //everything looks good! proceed...
+        if(proceed) 
+        {
+
+      $(".result-no-date").hide(); 
+      $(".result-accept").show().slideDown();
+      $(".cancel-accept").hide();
+      $(".close-accept").show();
+
+
+
+          $( ".processing" ).show();
+            //data to be sent to server
+            post_data = {'userid':userid,'adminid':adminid,'taskid':taskid,'amount':amount,'homeless_donation':homeless_donation};
+            
+            //Ajax post data to server
+            $.post('make-payment.php', post_data, function(response){  
+              //alert("yes"); 
+
+                //load json data from server and output message     
+        if(response.type == 'error')
+        {
+          output = '<div class="errorXYZ">'+response.text+'</div>';
+        }else{
+          
+            
+            output = '<div class="success">Yo</div>';
+
+
+          //reset values in all input fields
+          $('#contact_form input').val(''); 
+          $('#contact_form textarea').val(''); 
+        }
+        
+        $(".cancel-accept").hide();
+        $(".result-accept").show();
+        $(".close-accept").show();
+        $("#result-accept-"+response.text).hide().slideDown();
+            }, 'json');
+      
+        }
+
+
+ });
+ 
+ });     
+
+</script>
 
 
 
@@ -42,21 +120,10 @@ $row = mysqli_fetch_array($sql);
 <input type="hidden" name="the_date" id="the_date" value=""/>
 
 
-<input type="text" name="id" id="projectid" value="<?php echo $row2['id']; ?>"/>
-<input type="text" name="userid" id="userid" value="<?php echo $row2['userID']; ?>"/>
-<input type="text" name="taskid" id="taskid" value="<?php echo $row2['taskID']; ?>"/>
-<input type="text" name="adminid" id="adminid" value="<?php echo $_SESSION['adminSession']; ?>"/>
-
-
-
-
-
-<h3>Enter amount</h3>
-<input type="text" name="amount" id="amount"/>
-
-
-
-
+<input type="text" name="userid" id="userid" value="<?php echo $_GET['userid']; ?>"/>
+<input type="text" name="taskid" id="taskid" value="<?php echo $_GET['taskid']; ?>"/>
+<input type="text" name="adminid" id="adminid" value="<?php echo $rowadmin['userID']; ?>"/>
+<input type="text" name="amount" id="amount" value="<?php echo $row['Amount']; ?>"//>
 
 
 
@@ -89,7 +156,7 @@ $row = mysqli_fetch_array($sql);
 
 Enter amount you want to donate to the homeless person you have selected
 
-<input type="text" id="amount" name="amount" placeholder="e.g 3"/>
+<input type="text" id="homeless_donation" name="homeless_donation" placeholder="e.g 3"/>
 
 
 <h3>Payout explained:</h3>
@@ -107,6 +174,7 @@ Total payout to you:
 
 
 </div>
+
 
 <script>
 $(document).ready(function () {
