@@ -33,6 +33,8 @@ $_SESSION['source'] = 'no';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
 
+    <link rel="icon" href="../favicon.ico" type="image/x-icon"/>
+
     <title>Mr.Pao Launch</title>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>

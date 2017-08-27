@@ -99,6 +99,7 @@ $( "#open-payment" ).load( "open-payment.php" );
      $(".open-payment").click(function() {  
 
       //$( "#tabs-1" ).load( "send-payment.php" );
+     
       $( "#open-payment" ).load( "open-payment.php" );
       
     });
@@ -153,7 +154,7 @@ a.verify-badge img#verify-image-payment{display:none !important;}
 <div id="tabs">
 
  <ul>
-    <li><a href="#open-payment" class="bankaccount">Open Payments</a></li>
+    <li><a href="#open-payment" class="open-payment">Open Payments</a></li>
     <li><a href="#payment-received" class="payment-received">Payment Received</a></li>
    
     

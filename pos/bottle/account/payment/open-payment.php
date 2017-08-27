@@ -28,101 +28,56 @@ if($row_customer['account_id'] != '' && $row_customer['bank_account'] != '') {
 ?>
 
 
+<script>
+$(document).ready(function(){
 
 
 
-<?php
-
-  // WePay PHP SDK - http://git.io/mY7iQQ
-    require '../../wepay.php';
 
 
- // application settings
-    $account_id = $row_customer['account_id']; // your customer's account_id
-    $client_id = $wepay_client_id;
-    $client_secret = $wepay_client_secret;
-    $access_token = $row_customer['access_token']; // your customer's access_token
+$(function(){
+    
+    jQuery.fn.taskid = function () {
+    
+       var options = $.parseJSON($(this).attr('data-button'));
+        
+       var taskid = (options.taskid);
+       //alert(options.option2);
 
-    // change to useProduction for live environments
-    Wepay::useStaging($client_id, $client_secret);
+       if(taskid !=''){
 
-    $wepay = new WePay($access_token);
-
-    // create the checkout
-  
-
-       try {
-    $checkout = $wepay->request('/checkout/find', array(
-
-
-        'account_id'        => $row_customer['account_id'],
-        'sort_order' => 'DESC'
-        //'start_time' => '2016/11/04',
-        //'end_time' => '2016/11/06'
-        //'state' => 'new'
-      )
-    );
-} catch (WePayException $e) { // if the API call returns an error, get the error message for display later
-    $error = $e->getMessage();
-}
-
-if (isset($error)){
-    echo htmlspecialchars($error);
-    exit();
-    //header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
-    }else{
-
-//print_r($checkout);
-
-  ////////Total Amount////////
-
-$presum = 0;
-$sum = 0;
-$final_sum = 0;
-
-
-//$refund_amount_sum = 0;
-
- foreach ($checkout as $responsefinal) {
+      $( "#the-container" ).load( "open-payment-selected.php?taskid="+taskid );
+    
+      }
       
-  $amount = $responsefinal->gross;
-
-  $final_sum+= $amount;        
-
-
+       return this;
     }
 
-
-   
-
-
-}
+    $('button').click(function(){
+        //var data='hello inside';
     
+        $(this).taskid();
+        $(this).option2();
+    });
 
 
-?> 
+});
 
 
-        
+
+ }); 
+
+ </script>
+
+
+
+
+
+
+
       
 
-
-        <!--<h2 class="no-mobile">
-         Total payment received
-        </h2>-->
-
-  <fieldset>
-
-<section data-group="payment" style="">
-    
-     <!-- <div class="note notforheader mobile-block">
-        
-          <h2><?php echo "$"; echo $final_sum; ?></h2>
-        
-        
-      </div>-->
-    
-
+<div id="the-container">
 
  <h3>Transactions</h3>
 
@@ -228,7 +183,9 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
         <td style="text-align:left"><?php echo $row2['checkout_id']; //echo $row2['id']; ?></td>
         <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo date('F j, Y',strtotime($rowtask['Pickup_Date'])); ?></a></td>
         <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
-        <td style="text-align:right"><a target="_blank" href="<?php echo BASE_PATH; ?>/images/receipts/<?php echo $rowreceipt['Receipt'];?>">Retrieve Payment</a></td>
+        <td style="text-align:right"><button type='button' data-button='{"taskid": <?php echo $row2['TaskID'];?>, "option2": "option2"}'>Retrieve Payment</button>
+
+     </td>
        
       </tr>
     
@@ -380,7 +337,7 @@ WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
   <?php }  ?>
 
 
-
+</div>
 
 
 
