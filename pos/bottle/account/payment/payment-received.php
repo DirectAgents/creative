@@ -188,6 +188,7 @@ $rowtask = mysqli_fetch_array($sqltask);
         <td style="text-align:left" class="grey">Transaction ID#</td>
         <td style="text-align:right" class="grey">Date of Pickup</td>
         <td style="text-align:right" class="grey">Amount</td>
+        <td style="text-align:right" class="grey">&nbsp;</td>
        
       </tr>
 
@@ -205,6 +206,13 @@ $sql3=mysqli_query($connecDB,"SELECT * FROM tbl_admin WHERE userID = '".$row2['a
 $row3 = mysqli_fetch_array($sql3);
 
 
+$sqlreceipt=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE taskID = '".$row2['TaskID']."'");
+$rowreceipt = mysqli_fetch_array($sqlreceipt);
+
+
+
+
+
 if (strpos($row2['checkout_find_amount'], '.') == false) {
     $final_amount =  $row2['checkout_find_amount'].'.00';
 }else{
@@ -216,10 +224,11 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 
 
       <tr>
-        <td style="text-align:left"><?php echo $rowprojectwepay['TaskID']; //echo $row2['id']; ?></td>
-        <td style="text-align:left"><?php echo $rowprojectwepay['checkout_id']; //echo $row2['id']; ?></td>
+        <td style="text-align:left"><?php echo $row2['TaskID']; //echo $row2['id']; ?></td>
+        <td style="text-align:left"><?php echo $row2['checkout_id']; //echo $row2['id']; ?></td>
         <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo date('F j, Y',strtotime($rowtask['Pickup_Date'])); ?></a></td>
         <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
+        <td style="text-align:right"><a target="_blank" href="<?php echo BASE_PATH; ?>/images/receipts/<?php echo $rowreceipt['Receipt'];?>">View Receipt</a></td>
        
       </tr>
     
