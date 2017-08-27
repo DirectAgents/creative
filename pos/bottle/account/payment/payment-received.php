@@ -185,6 +185,7 @@ $rowtask = mysqli_fetch_array($sqltask);
 
        <tr>
         <td style="text-align:left" class="grey">PickUp#</td>
+        <td style="text-align:left" class="grey">Transaction ID#</td>
         <td style="text-align:right" class="grey">Date of Pickup</td>
         <td style="text-align:right" class="grey">Amount</td>
        
@@ -216,6 +217,7 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 
       <tr>
         <td style="text-align:left"><?php echo $rowprojectwepay['TaskID']; //echo $row2['id']; ?></td>
+        <td style="text-align:left"><?php echo $rowprojectwepay['checkout_id']; //echo $row2['id']; ?></td>
         <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo date('F j, Y',strtotime($rowtask['Pickup_Date'])); ?></a></td>
         <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
        
