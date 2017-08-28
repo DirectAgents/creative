@@ -54,6 +54,103 @@ $rowpickup = mysqli_fetch_array($stmtpickup);
 
 
 
+$payamount = $_POST['amount'];
+
+
+//$payamount_final = $rowpickup['Pay'] + 1 ;
+
+/* 
+$arr = explode('.', $payamount);
+$payamount1  = $arr[0];
+$payamount2  = $arr[1];
+
+$payamount3 = substr($payamount2, 0, 2);
+
+
+$payamount_final = $payamount1.'.'.$payamount3;
+*/
+
+
+
+
+    // application settings
+    $account_id = $rowcustomer['account_id']; // ID of the account that you want the money to go to
+    $client_id = $wepay_client_id;
+    $client_secret = $wepay_client_secret;
+    $access_token = $rowcustomer['access_token']; // Access Token of the account that you want the money to go to
+
+/** 
+ * Initialize the WePay SDK object 
+ */
+
+Wepay::useStaging($client_id, $client_secret);
+$wepay = new WePay($access_token);
+
+/**
+ * Make the API request to get the checkout_uri
+ * 
+ */
+try {
+    $checkout = $wepay->request('/checkout/create', array(
+            'account_id' => $account_id, // ID of the account that you want the money to go to
+            'amount' => $payamount, // dollar amount you want to charge the user
+            'short_description' => "Payment to ".$rowcustomer['FirstName']." ", // a short description of what the payment is for
+            'type' => "service", // the type of the payment - choose from GOODS SERVICE DONATION or PERSONAL
+            'currency'          => 'USD',
+            //'payment_method' => ['type' => 'credit_card', 'id' => $row["credit_card_id"] 
+
+
+ 
+
+'payment_method' => [ 
+'type' => 'credit_card', 
+'credit_card'=> [ 
+'id'=> $row["credit_card_id"]
+]
+]
+    
+
+
+
+           
+        )
+    );
+} catch (WePayException $e) { // if the API call returns an error, get the error message for display later
+    $error = $e->getMessage();
+}
+
+
+if (isset($error)){
+    echo htmlspecialchars($error);
+    //header("Location:http://localhost/creative/pos/survey/startup/payment/?error=".htmlspecialchars($error)."#credit-card");
+    }else{
+    
+
+
+
+
+
+
+//echo $checkout -> create_time;
+
+$timestamp=$checkout -> create_time;
+$checkout_find_date = gmdate("F Y", $timestamp);
+
+$month = gmdate("F", $timestamp);
+
+if($month == 'January') {$order_by = '1';}
+if($month == 'February') {$order_by = '2';}
+if($month == 'March') {$order_by = '3';}
+if($month == 'April') {$order_by = '4';}
+if($month == 'May') {$order_by = '5';}
+if($month == 'June') {$order_by = '6';}
+if($month == 'July') {$order_by = '7';}
+if($month == 'August') {$order_by = '8';}
+if($month == 'September') {$order_by = '9';}
+if($month == 'October') {$order_by = '10';}
+if($month == 'November') {$order_by = '11';}
+if($month == 'December') {$order_by = '12';}
+
 
 //continue here
 date_default_timezone_set('America/New_York');
@@ -61,10 +158,13 @@ $the_date = date('Y-m-d');
 $the_time = date('h:i:s A');
 
 
+$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total, Date, Time) VALUES('".$random."','".$_POST['adminid']."','".$_POST['userid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
+   '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."', '".$the_date."','".$the_time."')");
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_completed_tasks(userID, taskID, Pickup_Date, Pickup_Time, Receipt, Amount) 
-VALUES('".$_POST['userid']."', '".$random."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."','".$rowpickup['Receipt']."' , '".$_POST['amount']."')");
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_completed_tasks(userID, taskID, Pickup_Date, Pickup_Time, Receipt, Payment) 
+VALUES('".$_POST['userid']."', '".$random."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."','".$rowpickup['Receipt']."' , 'Y' )");
 
 
 $sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");
@@ -263,7 +363,7 @@ require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Mr.Pao Team", "no-reply@misterpao.com");
-$subject = "We have credited your account";
+$subject = "You received a payment";
 $to = new SendGrid\Email($rowcustomer['FirstName'], $rowcustomer['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -310,15 +410,7 @@ $content = new SendGrid\Content("text/html", '
                         <!-- COPY -->
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy">We have credited your account with '.$_POST['amount'].'</td>
-                            </tr>
-
-                              <tr>
-                                <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy">&nbsp;</td>
-                            </tr>
-
-                              <tr>
-                                <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy">Please visit your account to withdraw your money</td>
+                                <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy">Your recent payment!</td>
                             </tr>
                             
                         </table>
@@ -332,7 +424,206 @@ $content = new SendGrid\Content("text/html", '
             <![endif]-->
         </td>
     </tr>
-   
+    <tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 15px;" class="padding">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+            <tr>
+            <td align="center" valign="top" width="500">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
+
+
+            <tr>
+                    <td style="padding: 10px 0 0px 0; border-top: 1px solid #eaeaea; border-bottom: 1px dashed #aaaaaa;">
+                        <!-- TWO COLUMNS -->
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td valign="top" class="mobile-wrapper">
+                                    <!-- LEFT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="left">
+                                        <tr>
+                                            <td style="padding: 0 0 10px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px; font-weight: bold;">Transaction ID#</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- RIGHT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="right" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px; font-weight: bold;">'.$checkout -> checkout_id.'</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td style="padding: 10px 0 0 0; border-top: 1px dashed #aaaaaa;">
+                        <!-- TWO COLUMNS -->
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td valign="top" class="mobile-wrapper">
+                                    <!-- LEFT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="left">
+                                        <tr>
+                                            <td style="padding: 0 0 10px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">
+                                                        Payment Amount:</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- RIGHT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
+                                        <tr>
+                                            <td style="padding: 0 0 10px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="right" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">
+                                                        $'.$checkout -> amount.'</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td>
+                        <!-- TWO COLUMNS -->
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td valign="top" style="padding: 0;" class="mobile-wrapper">
+                                    <!-- LEFT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="left">
+                                        <tr>
+                                            <td style="padding: 0 0 10px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">Paid on</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- RIGHT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
+                                        <tr>
+                                            <td style="padding: 0 0 10px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="right" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">'.$payment_date.'</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 0 0px 0; border-top: 1px solid #eaeaea; border-bottom: 1px dashed #aaaaaa;">
+                        <!-- TWO COLUMNS -->
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td valign="top" class="mobile-wrapper">
+                                    <!-- LEFT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="left">
+                                        <tr>
+                                            <td style="padding: 0 0 10px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px; font-weight: bold;">Total</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- RIGHT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="right" style="font-family: Arial, sans-serif; color: #7ca230; font-size: 16px; font-weight: bold;">$'.$checkout -> amount.'</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tbody>
+
+ <tr>
+                               
+                    <td align="center" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+    
+                    </td>
+                </tr>
+
+                       
+
+
+                <tr>
+                               
+                    <td align="left" style="padding: 20px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #6a6a6a;" class="padding" colspan="2">
+    Note.: The funds should appear in your bank account in 2-5 business days.
+                    </td>
+                </tr>
+
+
+             
+
+              
+
+
+                        </tbody></table>
+
+
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
  
     <tr>
         <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
