@@ -285,7 +285,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                     <td align="center" valign="top" style="padding: 15px 0;" class="logo">
                       
-                            <img alt="Logo" src="http://misterpao.com/images/email/email-logo-large.png" width="264" height="73" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                            <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="73" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                        
                     </td>
                 </tr>
@@ -345,7 +345,7 @@ $content = new SendGrid\Content("text/html", '
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <img alt="Logo" src="http://misterpao.com/images/email/email-logo-small.jpg" width="150" height="41" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <img alt="Logo" src="https://misterpao.com/images/email/email-logo-small.jpg" width="150" height="41" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 
@@ -369,11 +369,11 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                    <td align="center">
                       <a href="https://twitter.com/mymisterpao" target="_blank">
-                      <img src="http://misterpao.com/images/email/twitter-icon.jpg" width="44" height="36"/></a>
+                      <img src="https://misterpao.com/images/email/twitter-icon.jpg" width="44" height="36"/></a>
                           <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
-                           <img src="http://misterpao.com/images/email/facebook-icon.jpg" alt="" width="44" height="36"/></a>
+                           <img src="https://misterpao.com/images/email/facebook-icon.jpg" alt="" width="44" height="36"/></a>
                     <a href="https://instagram.com/mymrpao" target="_blank">
-                           <img src="http://misterpao.com/images/email/instagram-icon.jpg" alt="" width="44" height="36"/
+                           <img src="https://misterpao.com/images/email/instagram-icon.jpg" alt="" width="44" height="36"/
                         </a>
                     </td>       
                   
@@ -395,7 +395,7 @@ $content = new SendGrid\Content("text/html", '
 
                       <tr>
                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
+                        <a href="https://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="https://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="https://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
                        
                         
  
@@ -467,7 +467,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                     <td align="center" valign="top" style="padding: 15px 0;" class="logo">
                       
-                            <img alt="Logo" src="http://misterpao.com/images/email/email-logo-large.png" width="264" height="73" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                            <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="73" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                        
                     </td>
                 </tr>
@@ -715,7 +715,7 @@ $content = new SendGrid\Content("text/html", '
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <img alt="Logo" src="http://misterpao.com/images/email/email-logo-small.jpg" width="150" height="41" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <img alt="Logo" src="https://misterpao.com/images/email/email-logo-small.jpg" width="150" height="41" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 
@@ -739,11 +739,11 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                    <td align="center">
                       <a href="https://twitter.com/mymisterpao" target="_blank">
-                      <img src="http://misterpao.com/images/email/twitter-icon.jpg" width="44" height="36"/></a>
+                      <img src="https://misterpao.com/images/email/twitter-icon.jpg" width="44" height="36"/></a>
                           <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
-                           <img src="http://misterpao.com/images/email/facebook-icon.jpg" alt="" width="44" height="36"/></a>
+                           <img src="https://misterpao.com/images/email/facebook-icon.jpg" alt="" width="44" height="36"/></a>
                     <a href="https://instagram.com/mymrpao" target="_blank">
-                           <img src="http://misterpao.com/images/email/instagram-icon.jpg" alt="" width="44" height="36"/
+                           <img src="https://misterpao.com/images/email/instagram-icon.jpg" alt="" width="44" height="36"/
                         </a>
                     </td>       
                   
@@ -765,7 +765,7 @@ $content = new SendGrid\Content("text/html", '
 
                       <tr>
                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
+                        <a href="https://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="https://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="https://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
                        
                         
  

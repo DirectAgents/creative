@@ -374,8 +374,8 @@ $content = new SendGrid\Content("text/html", '
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
-                        <a href="http://misterpao.com/" target="_blank">
-                            <img alt="Logo" src="http://misterpao.com/images/email/email-logo-large.png" width="264" height="73" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <a href="https://misterpao.com/" target="_blank">
+                            <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="73" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -455,7 +455,7 @@ $content = new SendGrid\Content("text/html", '
                                                 
                                                  <a href="'.BASE_PATH.'/account/verify.php?id='.$id.'&code='.$code.'">
                                                 <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
-                                                <img alt="Logo" src="http://misterpao.com/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
+                                                <img alt="Logo" src="https://misterpao.com/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
                                                 </div>
                                                 </a>
                                                 
@@ -517,7 +517,7 @@ $content = new SendGrid\Content("text/html", '
                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <img alt="Logo" src="http://misterpao.com/images/email/email-logo-small.jpg" width="150" height="41" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <img alt="Logo" src="https://misterpao.com/images/email/email-logo-small.jpg" width="150" height="41" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 
@@ -544,7 +544,7 @@ $content = new SendGrid\Content("text/html", '
 
                       <tr>
                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a></td>
+                        <a href="https://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="https://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="https://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a></td>
                        
                         
  
