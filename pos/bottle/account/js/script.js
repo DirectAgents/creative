@@ -1461,14 +1461,14 @@ $(".choose-location-sunday").click(function() {
         });
 
 
-        var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        /*var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
        
              if(!phone.match(phoneno)){
                 $(phone).css('border-color','red'); //change border color to red   
                 proceed = false; //set do not proceed flag                  
            
             }   
-
+        */
        
         if(proceed) //everything looks good! proceed...
         {
