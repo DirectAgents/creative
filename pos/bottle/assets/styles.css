@@ -5615,10 +5615,11 @@ background-size:1240px 32px !important
 }
 FORM.ff FIELDSET>SPAN .fake-select SELECT, FORM.ff FIELDSET>SPAN .select-wrapper SELECT {
   position: relative;
-  z-index: 4
+  z-index: 4;
 }
 FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-select {
   padding-left:10px;
+
 }
 FORM.ff FIELDSET>SPAN SELECT:active, FORM.ff FIELDSET>SPAN SELECT.active-tap, FORM.ff FIELDSET>SPAN .fake-select:active, FORM.ff FIELDSET>SPAN .fake-select.active-tap {
   background-color: #fdfdfd
@@ -5772,7 +5773,8 @@ FORM.ff FIELDSET>SPAN.select .select-wrapper SELECT {
   width: 100%;
   border: 0;
   background: none;
-  box-shadow: none
+  box-shadow: none;
+  padding:.8em;/.4em;
 }
 FORM.ff FIELDSET>SPAN.select .select-wrapper SELECT:active, FORM.ff FIELDSET>SPAN.select .select-wrapper SELECT.active-tap {
   background-color: #fdfdfd

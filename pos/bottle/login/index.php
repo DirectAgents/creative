@@ -795,7 +795,7 @@ echo 'id: ' . $user['id'];
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['customerSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
-        header("Location: ../index.php");
+        header("Location: ../account/");
         //echo $_SESSION['customerSession'];
         exit();
     }

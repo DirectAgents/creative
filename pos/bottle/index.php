@@ -660,7 +660,7 @@ $(document).ready(function() {
 </div>
 
 <div class='nav-item nav-item-with-button'>
-<a class='btn-primary' href="<?php echo BASE_PATH; ?>/signup/' target='_top'">Sign Up</a>
+<a class='btn-primary' href="<?php echo BASE_PATH; ?>/signup/" target='_top'>Sign Up</a>
 </div>
 
 

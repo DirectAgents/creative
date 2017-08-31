@@ -14,7 +14,7 @@ include_once("../config.php");
 
 $customer_home = new CUSTOMER();
 
-if(!$customer_home->is_logged_in())
+if($_SESSION['customerSession'] == '')
 {
   $customer_home->redirect('../login');
 }
