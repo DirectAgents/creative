@@ -87,7 +87,7 @@ require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Request for Pick up", 'support@misterpao.com');
-$subject = "Request for Pick up";
+$subject = "Request for Pick up (Request#".$random.")";
 $to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
