@@ -33,7 +33,7 @@ require_once ('libraries/Google/autoload.php');
 //You can get it from : https://console.developers.google.com/
 $client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
 $client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
-$redirect_uri = ''.BASE_PATH.'/customer/signup/';
+$redirect_uri = ''.BASE_PATH.'/signup/';
 
 //database
 $db_username = "root"; //Database Username
@@ -131,7 +131,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     {
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['customerSession'] = $row['userID'];
-        header("Location: ../index.php");
+        //$_SESSION['customerSession'] = '11';
+        header("Location: ../account/");
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -165,12 +166,15 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
     if($mysqli->error == "Duplicate entry '".$user->email."' for key 'userEmail'"){
     
-      //exit(header("Location: ../index.php"));
+      //exit(header("Location: ../signup/"));
 
     }else{
 
+      $sql = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userEmail = '".$user->email."'");
+      $row = mysqli_fetch_array($sql);
+
         $_SESSION['customerSession'] = $row['userID'];
-        header("Location: ../index.php");
+        header("Location: ../account/");
         exit();
 
     }

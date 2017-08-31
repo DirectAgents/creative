@@ -10,7 +10,7 @@ include_once("../config.php");
 
 
 
-
+//echo $_SESSION['customerSession'];
 
 $customer_home = new CUSTOMER();
 

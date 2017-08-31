@@ -623,12 +623,12 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     
     WHERE userEmail='".$user->email."'");
    
-   $statement->execute();
+   mysqli_query($statement);
 
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['customerSession'] = $row['userID'];
-        header("Location: ../index.php");
+        header("Location: ../account/");
         exit();
     }
   else //else greeting text "Thanks for registering"
