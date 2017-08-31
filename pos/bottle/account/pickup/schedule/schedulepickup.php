@@ -368,13 +368,16 @@ post_data = {
 
 
 
+<?php if($row['Address'] == '' || $row['City'] == '' || $row['State'] == '' || $row['Zip'] == '' || $row['Phone'] == '') { ?>
 
+<h4 class="center"><strong>Before we can schedule a pick-up date we need the following below </strong></h4>
+<p>&nbsp;</p>
 
-
+<?php } ?>
 
 <?php if($row['Address'] == '' || $row['City'] == '' || $row['State'] == '' || $row['Zip'] == '') { ?>
 
-<h3>Please provide your physical address to be able the schedule a pick-up </h3>
+<h4 class="center">Please provide your physical address to be able the schedule a pick-up </h4>
 
 
 <div class="create-one-here-box">
@@ -389,6 +392,26 @@ post_data = {
 
 
 <?php } ?>
+
+
+<?php if($row['Phone'] == '') { ?>
+
+<h4 class="center">A phone number is missing </h4>
+
+
+<div class="create-one-here-box">
+      <div class="create-one">
+
+        <a href="<?php echo BASE_PATH; ?>/account/myinfo/?id=<?php echo $_SESSION['customerSession'];?>" class="create-one-btn">Add Phone Number</a>
+
+       </div> 
+       <p>&nbsp;</p>
+  </div>
+  </div>
+
+
+<?php } ?>
+
 
 
 <div class="pick-up-requested">
@@ -715,7 +738,7 @@ $("#slide-accept_background").hide();
 
  <?php if($row['Address'] != '' && $row['City'] != '' && $row['State'] != '' && $row['Zip'] != '' && $row_pickup_request['Schedule_Date_Option1'] == '' && $row_pickup_request['Schedule_Time_Option1'] == '' && $row_pickup_upcoming['Pickup_Date'] == '' && $row_pickup_upcoming['Pickup_Time'] == '') { ?>
 
-  <h3>Choose 3 possible dates and pick up times for us to collect your bag(s)</h3>
+  <h4><strong>Choose 3 possible dates and pick up times for us to collect your bag(s)</strong></h4>
   <p>&nbsp;</p>
 
     <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">

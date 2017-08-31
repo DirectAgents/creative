@@ -613,7 +613,8 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
                 
               </select>
             </span>-->
-            <input placeholder="XXX-XXX-XXXX" type="tel" name="phone_number" id="phone_number" value="<?php echo $row['Phone']; ?>" pattern="^\d{3}-\d{3}-\d{4}$" required>
+            <input placeholder="XXX-XXX-XXXX" type="tel" name="phone_number" id="phone_number" value="<?php echo $row['Phone']; ?>">
+            <!--<input placeholder="XXX-XXX-XXXX" type="tel" name="phone_number" id="phone_number" value="<?php echo $row['Phone']; ?>" pattern="^\d{3}-\d{3}-\d{4}$" required>-->
           </span>
         </fieldset>
 
