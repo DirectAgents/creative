@@ -5616,6 +5616,7 @@ background-size:1240px 32px !important
 FORM.ff FIELDSET>SPAN .fake-select SELECT, FORM.ff FIELDSET>SPAN .select-wrapper SELECT {
   position: relative;
   z-index: 4;
+  padding: .8em;
 }
 FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-select {
   padding-left:10px;
