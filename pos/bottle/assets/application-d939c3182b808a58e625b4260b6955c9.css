@@ -11506,7 +11506,7 @@ input[type="submit"] .btn-default.btn-block, input[type="submit"] div.hopscotch-
 	line-height: 12px;
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
-	line-height: 34px;
+	line-height: 25px;
 	height: 34px;
 	padding: 0 12px;
 	border: 0;
@@ -17548,6 +17548,9 @@ svg.icon.icon-linkedin.icon-inverse .caution-badge-symbol .line, svg.icon.icon-l
 	opacity: 0.6;
 	color: white
 }
+
+.logo{padding-top:7px; margin-right:20px;}
+
 .logo-container {
 	text-align: center;
 	display: inline-block

@@ -349,7 +349,7 @@ $(document).ready(function() {
    <div id='header'>
 <nav id='main_nav' role='main-navigation'>
 <div class='container-fluid nav-contents'>
-<div class='nav-item logo'>
+<div class='logo'>
 <a class="brand-logo-light nav-logo-swoosh" href="" target="_top">
 
 
@@ -657,19 +657,21 @@ $(document).ready(function() {
 
 <div class='nav-item nav-item-with-button'>
 <a class='btn-signin' target="_top" href="<?php echo BASE_PATH; ?>/login/">Sign In</a>
-
 </div>
 
 <div class='nav-item nav-item-with-button'>
-<a class='btn-primary' href='<?php echo BASE_PATH; ?>/signup/' target='_top'>Sign Up</a>
+<a class='btn-primary' href="<?php echo BASE_PATH; ?>/signup/' target='_top'">Sign Up</a>
 </div>
+
+
+
 
 
 </div>
 </nav>
 <nav id='main_nav_mobile'>
 <div class='container-fluid nav-contents'>
-<div class='nav-item'>
+<div class='logo'>
 <a class="brand-logo-light nav-logo-swoosh" href="<?php echo BASE_PATH; ?>" target="_top">
 
 

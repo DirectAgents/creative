@@ -946,7 +946,7 @@ $response = $sg->client->mail()->send()->post($mail);
 </div>
 
 <div class="loginas">
-  <h3>You own a restaurant? <a href="<?php echo BASE_PATH; ?>/restaurant/">Click here</a></h3>
+  <!--<h3>You own a restaurant? <a href="<?php echo BASE_PATH; ?>/restaurant/">Click here</a></h3>-->
 </div>
 
 <!--  <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>-->
