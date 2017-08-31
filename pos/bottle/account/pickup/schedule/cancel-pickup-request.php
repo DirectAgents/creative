@@ -69,7 +69,7 @@ require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Pick up Request Canceled", 'support@misterpao.com');
-$subject = "Pick up Request Canceled (Request#".$rowrequest['RequestID'].")";
+$subject = "Pick up Request Canceled (Request #".$rowrequest['RequestID'].")";
 $to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -423,7 +423,7 @@ require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Pick up Request Canceled", 'support@misterpao.com');
-$subject = "Pick up Request Canceled (Request#".$rowrequest['RequestID'].")";
+$subject = "Pick up Request Canceled (Request #".$rowrequest['RequestID'].")";
 $to = new SendGrid\Email($rowadmin['FirstName'], $rowadmin['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
