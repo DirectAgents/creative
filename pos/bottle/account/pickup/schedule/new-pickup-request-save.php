@@ -293,7 +293,7 @@ $content = new SendGrid\Content("text/html", '
 
                              <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
 	What to do next?
                     </td>
                 </tr>
@@ -301,7 +301,7 @@ $content = new SendGrid\Content("text/html", '
 
                 <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
 	We will send you a confirmation by email once we can confirm the pick up date and time requested by you.
                     </td>
                 </tr>
@@ -309,7 +309,7 @@ $content = new SendGrid\Content("text/html", '
 
  <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
     Have Questions?
                     </td>
                 </tr>
@@ -317,7 +317,7 @@ $content = new SendGrid\Content("text/html", '
 
                 <tr>
                                
-                    <td align="left" style="padding: 10px 20px 10px 20px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
     If you have any type of questions about your pick-up, you can reach us at <a href="mailto:support@misterpao.com">support@misterpao.com</a>
                     </td>
                 </tr>

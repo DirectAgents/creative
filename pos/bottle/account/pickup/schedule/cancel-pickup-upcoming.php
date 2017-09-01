@@ -129,7 +129,7 @@ $content = new SendGrid\Content("text/html", '
 
                              <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 0px 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
     What to do next?
                     </td>
                 </tr>
@@ -137,7 +137,7 @@ $content = new SendGrid\Content("text/html", '
 
                 <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
     Sorry for the inconvenience, however, unfortunately we are not able to arrange a pick-up at the date chosen. Please re-schedule a new pick-up request with new dates options.
                     </td>
                 </tr>
@@ -477,7 +477,7 @@ $content = new SendGrid\Content("text/html", '
 
                              <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 0px 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
     What to do next?
                     </td>
                 </tr>
@@ -485,7 +485,7 @@ $content = new SendGrid\Content("text/html", '
 
                 <tr>
                                
-                    <td align="left" style="padding: 20px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #000;" class="padding" colspan="2">
     Sorry for the inconvenience, however, unfortunately we are not able to schedule a pick-up with the dates and times you chose. Please re-schedule a new pick-up request with different dates.
                     </td>
                 </tr>

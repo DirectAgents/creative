@@ -8,12 +8,34 @@
     
 <head>
     <meta charset="utf-8"/>
-    <title>Privacy - Launch</title>
-    <meta name="viewport" content="width=device-width, maximum-scale=1"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <link rel="canonical" href="index.php"/>
+    <title>Mr.Pao - Privacy</title>
+    <link rel="icon" href="<?php echo BASE_PATH; ?>/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recycle and get rewarded in cash" />
+
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta itemprop="name" content="Mr.Pao Launch">
+    <meta itemprop="image" content="/public/img/logo.png">
+
+    <meta name="twitter:site" content="@mymisterpao">
+    <meta name="twitter:title" content="Mr.Pao Launch">
+    <meta name="twitter:description" content="Recycle and get rewarded in cash">
+    <meta name="twitter:creator" content="@mymisterpao">
+
+    <meta property="og:url" content="https://misterpao.com">
+    <meta property="og:title" content="Mr.Pao Launch">
+    <meta property="og:image" content="https://misterpao.com/images/logo/email-logo-large.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:description" content="Recycle and get rewarded in cash">
+    <meta property="og:site_name" content="Mr.Pao Launch">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="">
+    <meta property="article:section" content="Technology">
+
+    
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/launch-1482254397619.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/styles.css">
 
     
         <link rel="stylesheet" href="../css/launch-1482254397619.css">
@@ -628,7 +650,22 @@ We partner with a third party to either display advertising on our website or to
             <footer>
                 
 
-<p>&copy; 2017 Paotastik, LLC</p>
+<ul class="footer-links">
+  <li>&copy; 2017 Paotastik, LLC</li>
+  <li><a href="<?php echo BASE_PATH; ?>">Home</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/homeless/">Meet the Homeless</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/about/">About</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/contact/">Contact Us</a></li>
+  <li>&nbsp;</li>
+  <li>&nbsp;</li>
+  <li>&nbsp;</li>
+  <li><a class="navbar-nav__a footer__a footer__a_social footer__a_social_facebook" href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank"><span class="footer__social"></span></a></li>
+  <li><a class="navbar-nav__a footer__a footer__a_social footer__a_social_twitter" href="https://twitter.com/mymisterpao" target="_blank"><span class="footer__social"></span></a></li>
+  <li><a class="navbar-nav__a footer__a footer__a_social footer__a_social_gplus" href="https://instagram.com/mymrpao" target="_blank"><span class="footer__social"></span></a></li>
+</ul>
 
 
             </footer>

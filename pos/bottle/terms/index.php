@@ -9,15 +9,33 @@
 <head>
     <meta charset="utf-8"/>
     <title>Mr.Pao -  Terms of Service</title>
-    <meta name="viewport" content="width=device-width, maximum-scale=1"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <link rel="canonical" href="index.php"/>
+    <link rel="icon" href="<?php echo BASE_PATH; ?>/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recycle and get rewarded in cash" />
+
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta itemprop="name" content="Mr.Pao Launch">
+    <meta itemprop="image" content="/public/img/logo.png">
+
+    <meta name="twitter:site" content="@mymisterpao">
+    <meta name="twitter:title" content="Mr.Pao Launch">
+    <meta name="twitter:description" content="Recycle and get rewarded in cash">
+    <meta name="twitter:creator" content="@mymisterpao">
+
+    <meta property="og:url" content="https://misterpao.com">
+    <meta property="og:title" content="Mr.Pao Launch">
+    <meta property="og:image" content="https://misterpao.com/images/logo/email-logo-large.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:description" content="Recycle and get rewarded in cash">
+    <meta property="og:site_name" content="Mr.Pao Launch">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="">
+    <meta property="article:section" content="Technology">
 
     
-        <link rel="stylesheet" href="../css/launch-1482254397619.css">
-    
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/launch-1482254397619.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/styles.css">
     
 
     <!--[if lt IE 9]>
@@ -367,7 +385,7 @@ $(document).ready(function() {
 
 
 
-<p><b>TERMS OF SERVICE</b></p>
+<p><h1>TERMS OF SERVICE</h1></p>
 <p>Thank you for your interest in Paotastik. Please review the following Terms of Service, which will govern your registration with and use of the Paotastik Platform. </p>
 <p>By using the Paotastik Platform, you agree to the terms and conditions ('Terms of Service') contained in this document ('Agreement') as well as to the terms of the Paotastik Privacy Policy, which is available at <a href="http://Paotastikit.com/privacy/">http://www.Paotastikit.com/privacy/</a> You agree to accept these Terms of Service electronically. If you do not want to be bound by the Terms of Service, you may not make use of the Paotastik Platform. </p>
 <p><b>DEFINITIONS</b></p>
@@ -503,7 +521,26 @@ $(document).ready(function() {
             <footer>
                 
 
-<p>&copy; 2017 Paotastik, LLC</p>
+<ul class="footer-links">
+  <li>&copy; 2017 Paotastik, LLC</li>
+  <li><a href="<?php echo BASE_PATH; ?>">Home</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/terms/">Terms of Service</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/homeless/">Meet the Homeless</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/about/">About</a></li>
+  <li><a href="<?php echo BASE_PATH; ?>/contact/">Contact Us</a></li>
+  <li>&nbsp;</li>
+  <li>&nbsp;</li>
+  <li>&nbsp;</li>
+  <li><a class="navbar-nav__a footer__a footer__a_social footer__a_social_facebook" href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank"><span class="footer__social"></span></a></li>
+  <li><a class="navbar-nav__a footer__a footer__a_social footer__a_social_twitter" href="https://twitter.com/mymisterpao" target="_blank"><span class="footer__social"></span></a></li>
+  <li><a class="navbar-nav__a footer__a footer__a_social footer__a_social_gplus" href="https://instagram.com/mymrpao" target="_blank"><span class="footer__social"></span></a></li>
+</ul>
+
+
+
+<p>&nbsp;</p>
 
 
             </footer>

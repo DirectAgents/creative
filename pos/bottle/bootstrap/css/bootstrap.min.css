@@ -1447,12 +1447,12 @@ pre code {
 }
 @media (min-width:992px) {
 .container {
-	width: 899px
+	width: 1024px
 }
 }
 @media (min-width:1200px) {
 .container {
-	width: 899px;
+	width: 1024px;
 	padding-bottom:30px;
 }
 }
