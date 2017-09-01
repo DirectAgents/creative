@@ -52,3 +52,10 @@
 
 
 
+
+    <!-- Add IntroJs styles -->
+    <link href="<?php echo BASE_PATH; ?>/assets/intro/css/introjs.css" rel="stylesheet">
+
+
+
+

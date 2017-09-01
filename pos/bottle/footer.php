@@ -30,3 +30,42 @@
 
 
 </div>
+
+
+
+
+ <script type="text/javascript" src="<?php echo BASE_PATH; ?>/assets/intro/intro.js"></script>
+    <script type="text/javascript">
+      function startIntro(){
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              {
+                element: '#create-one',
+                intro: "<img src='<?php echo BASE_PATH; ?>/img/navigation/google-logo.png'/>"
+              },
+              {
+                element: '#step2',
+                intro: "Ok, <i>wasn't</i> that fun?",
+                position: 'right'
+              },
+              {
+                element: '#step3',
+                intro: 'More features, more <span style="color: red;">f</span><span style="color: green;">u</span><span style="color: blue;">n</span>.',
+                position: 'left'
+              },
+              {
+                element: '#step4',
+                intro: "<span style='font-family: Tahoma'>Another step with new font!</span>",
+                position: 'bottom'
+              },
+              {
+                element: '#step5',
+                intro: '<strong>Get</strong> it, <strong>use</strong> it.'
+              }
+            ]
+          });
+
+          intro.start();
+      }
+    </script>

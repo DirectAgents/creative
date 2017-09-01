@@ -185,6 +185,45 @@ $(document).ready(function(){
 
 
 
+ <!-- Intro PopUp -->
+
+<div id="slide-intro" class="well slide">
+  <div class="result-accept">
+  <div id="result-accept">Successfully Canceled!</div>
+  </div>
+
+<input type="hidden" name="upcoming_pickup_requestid" id="upcoming_pickup_requestid" value="<?php echo $row_pickup_upcoming['RequestID']; ?>"/>
+<input type="hidden" name="upcoming_pickup_date" id="upcoming_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
+<input type="hidden" name="upcoming_pickup_time" id="upcoming_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
+
+
+<h4>Welcome to Mr.Pao</h4>
+
+
+<div class="popupoverlay-btn">
+  <div class="cancel-decline">
+
+    <input type="checkbox">&nbsp;Don't show again</button>
+    <a href="#" class="slide-intro_close decline btn-delete cancel-upcoming-pickup" href="javascript:void(0);" onclick="startIntro();">Let's Go</a>
+
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-decline">
+    <button class="slide-intro_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+ <!-- End Intro PopUp -->
+
+
+
+
+
+
 
 
 
@@ -247,7 +286,6 @@ $row_pickup_upcoming = mysqli_fetch_array($sql); ?>
 
 
 
-<!--Check if Upcoming Pickups exist -->
 
 
  <!-- Cancel Upcoming Pick-up -->
@@ -352,6 +390,9 @@ $sql=mysqli_query($connecDB,"SELECT * FROM tbl_pickup_request WHERE userID = '".
 if(mysqli_num_rows($sql) == 0)
 {
   //echo "asdf";
+
+
+echo '<a class="btn btn-large btn-success" href="javascript:void(0);" onclick="startIntro();">Show me how</a>';
 
 echo '<div class="row">
     <div class="col-md-12">
@@ -479,6 +520,19 @@ $(document).ready(function () {
         outline: true,
         vertical: 'top'
     });
+
+     $('#slide-intro').popup('show');
+
+     $('#slide-intro').popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top',
+        transition: 'all 0.3s',
+        scrolllock: true // optional
+    });
+
+     
+
 
     
 });

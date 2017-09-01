@@ -7,6 +7,25 @@
   overflow-x:hidden;
 }
 
+
+
+
+
+#slide-intro_background {
+  transition: all 0.3s 0.3s;
+}
+#slide-intro,
+#slide-intro_wrapper {
+  transition: all 0.3s ease-out;
+}
+#slide-intro {
+  transform: translateX(0) translateY(-40%);
+}
+.popup_visible #slide-intro {
+  transform: translateX(0) translateY(0);
+}
+
+
 .viewed-bubble{
  position:absolute;
 
