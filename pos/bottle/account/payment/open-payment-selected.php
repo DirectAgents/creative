@@ -120,10 +120,10 @@ $(document).ready(function(){
 <input type="hidden" name="the_date" id="the_date" value=""/>
 
 
-<input type="text" name="userid" id="userid" value="<?php echo $_GET['userid']; ?>"/>
-<input type="text" name="taskid" id="taskid" value="<?php echo $_GET['taskid']; ?>"/>
-<input type="text" name="adminid" id="adminid" value="<?php echo $rowadmin['userID']; ?>"/>
-<input type="text" name="amount" id="amount" value="<?php echo $row['Amount']; ?>"//>
+<input type="text" name="userid" id="userid" value="<?php echo $_GET['userid']; ?>">
+<input type="text" name="taskid" id="taskid" value="<?php echo $_GET['taskid']; ?>">
+<input type="text" name="adminid" id="adminid" value="<?php echo $rowadmin['userID']; ?>">
+<input type="text" name="amount" id="amount" value="<?php echo $row['Amount']; ?>">
 
 
 
@@ -154,9 +154,13 @@ $(document).ready(function(){
 
 <h3>Please choose a homeless person you want to donate to <a href="<?php echo BASE_PATH; ?>/homeless" target="_blank">Click Here</a></h3>
 
-Enter amount you want to donate to the homeless person you have selected
+Enter amount you want to donate to the homeless person you have selected<br>
+<br>
 
 <input type="text" id="homeless_donation" name="homeless_donation" placeholder="e.g 3"/>
+<br>
+<br>
+<input type="text" id="homeless_link" name="homeless_link" placeholder="link"/>
 
 
 <h3>Payout explained:</h3>
@@ -170,7 +174,7 @@ Total payout to you:
 
 
 
-<a href="#" class="create-one-btn slide_open">Submit Payment Request</a>
+<a href="#" class="create-one-btn slide_open">Preview Payment</a>
 
 
 </div>
