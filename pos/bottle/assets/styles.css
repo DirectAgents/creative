@@ -5368,7 +5368,7 @@ FORM.ff FIELDSET>SPAN INPUT{
 
 FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN BUTTON, FORM.ff FIELDSET>SPAN TEXTAREA, FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-input, FORM.ff FIELDSET>SPAN .fake-select, FORM.ff FIELDSET>SPAN .select-wrapper, FORM.ff FIELDSET>SPAN .group {
   width: 100%;
-  min-height: 46px;
+  min-height: 49px;
   display: table-cell;
   vertical-align: middle;
   

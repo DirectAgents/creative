@@ -755,7 +755,7 @@ $("#slide-accept_background").hide();
             <label for="firstname">Day of Pickup</label>
 
      
-               <input class="form-control" name="date_option_one" id="date_option_one" type="text" placeholder="Click to select date of pick-up" 
+               <input class="form-control" name="date_option_one" id="date_option_one" type="text" placeholder="Click to select a date" 
                value="<?php echo $row_pickup_request['Schedule_Date_Option1']; ?>"/>
 
           
@@ -809,7 +809,7 @@ $("#slide-accept_background").hide();
             <label for="firstname">Day of Pickup</label>
 
      
-               <input class="form-control" name="date_option_two" id="date_option_two" type="text" placeholder="Choose date of pick-up"
+               <input class="form-control" name="date_option_two" id="date_option_two" type="text" placeholder="Click to select a date"
                value="<?php echo $row_pickup_request['Schedule_Date_Option2']; ?>"/>
 
           
@@ -865,7 +865,7 @@ $("#slide-accept_background").hide();
             <label for="firstname">Day of Pickup</label>
 
      
-               <input class="form-control" name="date_option_three" id="date_option_three" type="text" placeholder="Choose date of pick-up"
+               <input class="form-control" name="date_option_three" id="date_option_three" type="text" placeholder="Click to select a date"
                value="<?php echo $row_pickup_request['Schedule_Date_Option3']; ?>"/>
               
           
