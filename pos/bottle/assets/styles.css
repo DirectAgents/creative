@@ -11,20 +11,6 @@
 
 
 
-#slide-intro_background {
-  transition: all 0.3s 0.3s;
-}
-#slide-intro,
-#slide-intro_wrapper {
-  transition: all 0.3s ease-out;
-}
-#slide-intro {
-  transform: translateX(0) translateY(-40%);
-}
-.popup_visible #slide-intro {
-  transform: translateX(0) translateY(0);
-}
-
 
 .viewed-bubble{
  position:absolute;
@@ -2940,6 +2926,7 @@ textarea {
 }
 
 .center{text-align:center;}
+.left{float:left; text-align: left}
 
 
 .create-one-btn{
@@ -3971,10 +3958,37 @@ margin-left:0px;
 .row-day, .row-time{float:left; width:100%;}
 
 
-
+img.center{display: block; margin:0 auto; width:100%; max-width: 264px}
 
 
 /**Popup overlay**/
+
+
+#slide-intro{
+  display:none;
+  width:50%;
+  margin-top:30px;
+  background:#fff;
+}
+
+.checkbox-intro{float:left; margin-top:30px;}
+
+#slide-intro_background {
+  transition: all 0.3s 0.3s;
+}
+#slide-intro,
+#slide-intro_wrapper {
+  transition: all 0.3s ease-out;
+}
+#slide-intro {
+  transform: translateX(0) translateY(-40%);
+}
+.popup_visible #slide-intro {
+  transform: translateX(0) translateY(0);
+}
+
+
+
 
 #slide{
   display:none;

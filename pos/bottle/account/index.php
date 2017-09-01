@@ -196,14 +196,20 @@ $(document).ready(function(){
 <input type="hidden" name="upcoming_pickup_date" id="upcoming_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
 <input type="hidden" name="upcoming_pickup_time" id="upcoming_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
 
+<img src="<?php echo BASE_PATH; ?>/images/email/email-logo-large.png" class="center"/>
 
-<h4>Welcome to Mr.Pao</h4>
+<h2>Welcome to Mr.Pao</h2>
 
+<h4>Mr.Pao will turn your trash to cash. 
+Let us show you show you a quick intro to
+schedule your first pick-up.</h4>
+
+<div class="left checkbox-intro"><input type="checkbox">&nbsp;Don't show again</button></div>
 
 <div class="popupoverlay-btn">
   <div class="cancel-decline">
 
-    <input type="checkbox">&nbsp;Don't show again</button>
+    
     <a href="#" class="slide-intro_close decline btn-delete cancel-upcoming-pickup" href="javascript:void(0);" onclick="startIntro();">Let's Go</a>
 
 </div>
@@ -392,7 +398,6 @@ if(mysqli_num_rows($sql) == 0)
   //echo "asdf";
 
 
-echo '<a class="btn btn-large btn-success" href="javascript:void(0);" onclick="startIntro();">Show me how</a>';
 
 echo '<div class="row">
     <div class="col-md-12">
