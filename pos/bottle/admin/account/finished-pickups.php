@@ -400,7 +400,7 @@ $row_customer = mysqli_fetch_array($customer);
                       <div class="label"></div>
                       <div class="value" ng-bind="(survey.numberOfCompletedSurveys)">
                         
- <div class="btn-browse"> <a href="#" role="button" class="slide-accept<?php echo $row2['id']; ?>_<?php echo $random; ?>_open"> Pay Customer </a></div>
+ <div class="btn-browse"> <a href="#" role="button" class="slide-accept<?php echo $row2['id']; ?>_<?php echo $random; ?>_open"> Credit Customer </a></div>
                       
                         
 

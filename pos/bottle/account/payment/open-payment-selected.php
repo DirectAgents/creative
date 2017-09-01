@@ -23,7 +23,18 @@ $rowadmin = mysqli_fetch_array($sqladmin);
 
 $(document).ready(function(){
 
- $(".accept").click(function() {  
+
+
+        //alert(homeless_donation);
+
+        /*if (amount < 1 ) {
+
+         $("#amount"+<?php echo $row2['userID']; ?>).css('border-color','red');  //change border color to red  
+            proceed = false;
+
+        }*/
+
+$(".accept").click(function() { 
 
       var proceed = true;
 
@@ -36,14 +47,6 @@ $(document).ready(function(){
         var homeless_donation = $('input[name=homeless_donation').val();
 
         //alert(homeless_donation);
-
-        /*if (amount < 1 ) {
-
-         $("#amount"+<?php echo $row2['userID']; ?>).css('border-color','red');  //change border color to red  
-            proceed = false;
-
-        }*/
-
 
         //everything looks good! proceed...
         if(proceed) 
@@ -88,6 +91,7 @@ $(document).ready(function(){
         }
 
 
+
  });
  
  });     
@@ -105,15 +109,9 @@ $(document).ready(function(){
   </div>
 
 
-<div class="result-no-date">
-<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
-    <div id="result-accept-<?php echo $row2['id']; ?>">Make a payment!</div>
-    </div>
-  </div>
 
 
-
-<h4>Pay the Customer</h4>
+<h4>Retrieve Payment</h4>
 <p>&nbsp;</p>
 
 
@@ -124,6 +122,61 @@ $(document).ready(function(){
 <input type="text" name="taskid" id="taskid" value="<?php echo $_GET['taskid']; ?>">
 <input type="text" name="adminid" id="adminid" value="<?php echo $rowadmin['userID']; ?>">
 <input type="text" name="amount" id="amount" value="<?php echo $row['Amount']; ?>">
+
+
+<script>
+
+$(document).ready(function(){
+
+ $(".preview-payment").click(function() {  
+
+        var id = $('input[name=id]').val();
+        var userid = $('input[name=userid]').val();
+        var adminid = $('input[name=adminid]').val();
+        var taskid = $('input[name=taskid').val();
+        var amount = $('input[name=amount').val();
+        var homeless_donation = $('input[name=homeless_donation').val();
+
+        //alert(homeless_donation);
+
+        $("#amount-credited").text(amount);
+        $("#homeless_donation_amount").text(homeless_donation);
+
+        var payout_to_customer = amount - homeless_donation;
+
+        $("#payout-to-customer").text(payout_to_customer);
+
+        if (homeless_donation > amount){
+          $("#error-calculation").html('<div class="result-no-date"><div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please lower your donation amount!</div></div>');
+        }
+
+ });
+ 
+ });
+
+
+</script>
+
+
+
+
+<div id="error-calculation"></div>
+
+
+<h3>Payout explained:</h3>
+
+<div style="float:left; width:100%">
+<p><h4><div style="float:left">Amount credited: $</div><div id="amount-credited" style="float:left"></div></h4></p>
+</div>
+
+
+<div style="float:left; width:100%">
+<p><h4><div style="float:left">Your donation to the homeless:  $</div><div id="homeless_donation_amount" style="float:left"></div></h4></p>
+</div>
+
+<div style="float:left; width:100%">
+<p><h4><div style="float:left">Total payout to you:  $</div><div id="payout-to-customer" style="float:left"></div></h4></p>
+</div>
 
 
 
@@ -150,31 +203,21 @@ $(document).ready(function(){
 
 <div id="the-container">
 
-<h2>We have collected $<?php echo $row['Amount']; ?> from your recycles</h2>
+<h2>We have collected <strong>$<?php echo $row['Amount']; ?></strong> from your recycles</h2>
 
 <h3>Please choose a homeless person you want to donate to <a href="<?php echo BASE_PATH; ?>/homeless" target="_blank">Click Here</a></h3>
 
 Enter amount you want to donate to the homeless person you have selected<br>
 <br>
 
-<input type="text" id="homeless_donation" name="homeless_donation" placeholder="e.g 3"/>
-<br>
-<br>
-<input type="text" id="homeless_link" name="homeless_link" placeholder="link"/>
+<p>$<input type="text" id="homeless_donation" name="homeless_donation" placeholder="e.g 3.00"/></p>
 
-
-<h3>Payout explained:</h3>
-
-You will receive: 
-
-You donate: 
-
-Total payout to you: 
+<p><input type="text" id="homeless_link" name="homeless_link" placeholder="link"/></p>
 
 
 
 
-<a href="#" class="create-one-btn slide_open">Preview Payment</a>
+<p><a href="#" class="create-one-btn slide_open preview-payment">Preview Payment</a></p>
 
 
 </div>
