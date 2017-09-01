@@ -183,6 +183,15 @@ $(document).ready(function(){
 
 
 
+<?php
+
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID = '".$_SESSION['customerSession']."' AND intropopup = 'Show' ");
+
+if(mysqli_num_rows($sql) == 1)
+{
+
+  ?>
+
 
 
  <!-- Intro PopUp -->
@@ -192,9 +201,8 @@ $(document).ready(function(){
   <div id="result-accept">Successfully Canceled!</div>
   </div>
 
-<input type="hidden" name="upcoming_pickup_requestid" id="upcoming_pickup_requestid" value="<?php echo $row_pickup_upcoming['RequestID']; ?>"/>
-<input type="hidden" name="upcoming_pickup_date" id="upcoming_pickup_date" value="<?php echo $row_pickup_upcoming['Pickup_Date']; ?>"/>
-<input type="hidden" name="upcoming_pickup_time" id="upcoming_pickup_time" value="<?php echo $row_pickup_upcoming['Pickup_Time']; ?>"/>
+<input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['customerSession']; ?>"/>
+
 
 <img src="<?php echo BASE_PATH; ?>/images/email/email-logo-large.png" class="center"/>
 
@@ -204,7 +212,7 @@ $(document).ready(function(){
 Let us show you show you a quick intro to
 schedule your first pick-up.</h4>
 
-<div class="left checkbox-intro"><input type="checkbox">&nbsp;Don't show again</button></div>
+<div class="left checkbox-intro"><input type="checkbox" name="dontshow" class="dontshow">&nbsp;Don't show again</button></div>
 
 <div class="popupoverlay-btn">
   <div class="cancel-decline">
@@ -228,8 +236,65 @@ schedule your first pick-up.</h4>
 
 
 
+<script>
+$(document).ready(function(){
 
 
+
+$(".dontshow").change(function() {
+
+if(this.checked) {  
+
+post_data = {
+                'userid': $("input[name='userid']").val()
+            };
+
+
+ //Ajax post data to server
+            $.post('dontshow.php', post_data, function(response){ 
+                if(response.type == 'error'){ //load json data from server and output message     
+                    output = '<div class="error">'+response.text+'</div>';
+                }else{
+                    output = response.text;
+                    //reset values in all input fields
+                   
+                  
+                  //$(".result-accept").show().slideDown(); 
+
+                }
+                $("#profile-form #profile_results").hide().html(output).slideDown();
+            }, 'json');
+
+}else{
+
+
+//Ajax post data to server
+            $.post('show.php', post_data, function(response){ 
+                if(response.type == 'error'){ //load json data from server and output message     
+                    output = '<div class="error">'+response.text+'</div>';
+                }else{
+                    output = response.text;
+                    //reset values in all input fields
+                   
+                  
+                  //$(".result-accept").show().slideDown(); 
+
+                }
+                $("#profile-form #profile_results").hide().html(output).slideDown();
+            }, 'json');
+
+
+}
+
+
+});
+
+
+ });
+</script> 
+
+
+<?php } ?>
 
 
 
