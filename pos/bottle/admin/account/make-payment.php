@@ -13,6 +13,7 @@
  */
 session_start();
 require_once '../../class.admin.php';
+require_once '../../class.customer.php';
 include_once("../../config.php");
 
 require '../../wepay.php';
@@ -33,6 +34,10 @@ if(!$admin_home->is_logged_in())
 $stmt = $admin_home->runQuery("SELECT * FROM tbl_admin WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+if($_POST)
+{
 
 
 $stmtcustomer = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_POST['userid']."'");
@@ -64,10 +69,10 @@ $the_time = date('h:i:s A');
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_completed_tasks(userID, taskID, Pickup_Date, Pickup_Time, Receipt, Amount) 
-VALUES('".$_POST['userid']."', '".$random."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."','".$rowpickup['Receipt']."' , '".$_POST['amount']."')");
+VALUES('".$_POST['userid']."', '".$_POST['taskid']."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."','".$rowpickup['Receipt']."' , '".$_POST['amount']."')");
 
 
-$sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");
+//$sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");
 
 
 

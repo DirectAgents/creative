@@ -11,7 +11,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 
 
-
+$random = rand(5, 20000);
 
 
 if($_POST)
@@ -35,7 +35,7 @@ $the_time = date('h:i:s A');
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_pickup_finished(userID, taskID, Pickup_Date, Pickup_Time) 
-VALUES('".$_POST['userid']."', '".$row['id']."','".$row['Pickup_Date']."', '".$row['Pickup_Time']."')");
+VALUES('".$_POST['userid']."', '".$row['RequestID']."','".$row['Pickup_Date']."', '".$row['Pickup_Time']."')");
 
 
 

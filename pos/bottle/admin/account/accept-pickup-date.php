@@ -3,6 +3,7 @@
 
 session_start();
 require_once '../../class.admin.php';
+require_once '../../class.customer.php';
 include_once("../../config.php");
 
 //require( "phpmailer/class.phpmailer.php" );
@@ -363,11 +364,11 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                    <td align="center">
                       <a href="https://twitter.com/mymisterpao" target="_blank">
-                      <img src="https://misterpao.com/images/email/twitter-icon.jpg" width="36" height="36"/></a>
+                      <img src="https://misterpao.com/images/email/twitter-icon.jpg" width="44" height="36"/></a>
                           <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
-                           <img src="https://misterpao.com/images/email/facebook-icon.jpg" alt="" width="36" height="36"/></a>
+                           <img src="https://misterpao.com/images/email/facebook-icon.jpg" alt="" width="44" height="36"/></a>
                     <a href="https://instagram.com/mymrpao" target="_blank">
-                           <img src="https://misterpao.com/images/email/instagram-icon.jpg" alt="" width="36" height="36"/
+                           <img src="https://misterpao.com/images/email/instagram-icon.jpg" alt="" width="44" height="36"/
                         </a>
                     </td>       
                   
@@ -708,11 +709,11 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                    <td align="center">
                       <a href="https://twitter.com/mymisterpao" target="_blank">
-                      <img src="https://misterpao.com/images/email/twitter-icon.jpg" width="36" height="36"/></a>
+                      <img src="https://misterpao.com/images/email/twitter-icon.jpg" width="44" height="36"/></a>
                           <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
-                           <img src="https://misterpao.com/images/email/facebook-icon.jpg" alt="" width="36" height="36"/></a>
+                           <img src="https://misterpao.com/images/email/facebook-icon.jpg" alt="" width="44" height="36"/></a>
                     <a href="https://instagram.com/mymrpao" target="_blank">
-                           <img src="https://misterpao.com/images/email/instagram-icon.jpg" alt="" width="36" height="36"/
+                           <img src="https://misterpao.com/images/email/instagram-icon.jpg" alt="" width="44" height="36"/
                         </a>
                     </td>       
                   

@@ -335,7 +335,7 @@ $row_amount = mysqli_fetch_array($amount);
                     
                     <div class="item name">
                       <div class="label">Pick-Up#</div>
-                      <div class="value"><?php echo $row_amount['TaskID']; ?> </div>
+                      <div class="value"><?php echo $row2['taskID']; ?> </div>
                     </div>
 
                 

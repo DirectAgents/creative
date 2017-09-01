@@ -80,14 +80,14 @@ $(function(){
 
 <div id="the-container">
 
- <h3>Transactions</h3>
+ <h3>Open Payments</h3>
 
 
 
 
 <?php
 
-$sql=mysqli_query($connecDB,"SELECT DISTINCT(checkout_find_date) FROM wepay WHERE account_id = '".$row_customer['account_id']."' AND refunded = '' ORDER BY order_by DESC ");
+$sql=mysqli_query($connecDB,"SELECT  * FROM tbl_completed_tasks WHERE userID = '".$_SESSION['customerSession']."' AND Payment = 'N' ORDER BY id DESC");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -103,14 +103,6 @@ while($row = mysqli_fetch_array($sql))
   //echo $row['ProjectID'];
 
 
-$sqlprojectwepay=mysqli_query($connecDB,"SELECT * FROM wepay WHERE account_id = '".$row_customer['account_id']."' AND checkout_find_date = '".$row['checkout_find_date']."' AND refunded = '' ORDER BY id DESC ");
-$rowprojectwepay = mysqli_fetch_array($sqlprojectwepay);
-
-
-
-$sqltask=mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE taskID = '".$rowprojectwepay['TaskID']."'");
-$rowtask = mysqli_fetch_array($sqltask);
-
 
 ?>
 
@@ -121,18 +113,18 @@ $rowtask = mysqli_fetch_array($sqltask);
     <div class="col-lg-12">
 
 
-  <table class="table">
+ <!-- <table class="table">
     <tbody>
      
 
       <tr class="info">
-        <td style="text-align:left"><?php echo $row['checkout_find_date']; ?></td>
+        <td style="text-align:left"><?php echo $row['Pickup_Date']; ?></td>
         <td style="text-align:right">&nbsp;</td>
         <td style="text-align:right">&nbsp;</td>
        
       </tr>
    </table>  
-
+-->
 
 
   <table class="table">
@@ -162,7 +154,7 @@ while($row2 = mysqli_fetch_array($sql2)){
 
       <tr>
         <td style="text-align:left"><?php echo $row2['taskID']; //echo $row2['id']; ?></td>
-        <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo date('F j, Y',strtotime($rowtask['Pickup_Date'])); ?></a></td>
+        <td style="text-align:right"><a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $rowprojectwepay['Category']; ?>/?id=<?php echo $rowprojectwepay['ProjectID']; ?>"><?php echo date('F j, Y',strtotime($row['Pickup_Date'])); ?></a></td>
         <td style="text-align:right">$<?php echo $row2['Amount'];?></td>
         <td style="text-align:right"><button type='button' data-button='{"taskid": <?php echo $row2['taskID'];?>, "userid": <?php echo $row2['userID'];?>}'>Retrieve Payment</button>
 

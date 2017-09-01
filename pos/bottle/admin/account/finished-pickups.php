@@ -193,7 +193,7 @@ jq(document).ready(function(){
 <div class="popupoverlay-btn">
   <div class="cancel-accept">
     <button class="slide-accept<?php echo $row2['id']; ?>_<?php echo $random; ?>_close cancel">Cancel</button>
-    <button class="accept<?php echo $row2['id']; ?> btn-delete">Yes</button>
+    <button class="accept<?php echo $row2['id']; ?> btn-delete">Pay</button>
 </div>
 
 <div class="popupoverlay-btn">
@@ -266,6 +266,7 @@ $("#slide-accept"+<?php echo $row2['id']; ?>+"_"+<?php echo $random; ?>+"_backgr
         var adminid = $('input[name=adminid'+<?php echo $_SESSION['adminSession']; ?>+']').val();
         var taskid = $('input[name=taskid'+<?php echo $row2['userID']; ?>+']').val();
         var amount = $('input[name=amount'+<?php echo $row2['userID']; ?>+']').val();
+
 
 
         if (amount < 1 ) {
