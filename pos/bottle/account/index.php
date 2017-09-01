@@ -468,7 +468,7 @@ echo '<div class="row">
     <div class="col-md-12">
 <div class="empty-projects">No Pickup Requests</div>
   <div class="create-one-here-box">
-      <div class="create-one">
+      <div class="create-one schedule-one-here">
  <p>&nbsp;</p>
         <a href="'.BASE_PATH.'/account/pickup/schedule/" class="create-one-btn">Schedule One Here</a>
 

@@ -41,20 +41,20 @@
           intro.setOptions({
             steps: [
               {
-                element: '#create-one',
-                intro: "<img src='<?php echo BASE_PATH; ?>/img/navigation/google-logo.png'/>"
+                element: '.schedule-one-here',
+                intro: "<img src='<?php echo BASE_PATH; ?>/images/email/email-logo-small.jpg'/><br><br>To schedule your first pick-up"
               },
               {
-                element: '#step2',
-                intro: "Ok, <i>wasn't</i> that fun?",
+                element: '.more',
+                intro: "<img src='<?php echo BASE_PATH; ?>/images/email/email-logo-small.jpg'/><br><br>Manage your account here.<br>Add a bank account and check your balance",
                 position: 'right'
               },
               {
                 element: '#step3',
-                intro: 'More features, more <span style="color: red;">f</span><span style="color: green;">u</span><span style="color: blue;">n</span>.',
+                intro: "<img src='<?php echo BASE_PATH; ?>/images/email/email-logo-small.jpg'/><br><br>Enjoy!",
                 position: 'left'
-              },
-              {
+              }
+              /*{
                 element: '#step4',
                 intro: "<span style='font-family: Tahoma'>Another step with new font!</span>",
                 position: 'bottom'
@@ -62,7 +62,7 @@
               {
                 element: '#step5',
                 intro: '<strong>Get</strong> it, <strong>use</strong> it.'
-              }
+              }*/
             ]
           });
 
