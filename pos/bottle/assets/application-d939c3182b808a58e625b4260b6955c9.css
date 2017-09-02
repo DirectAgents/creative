@@ -15742,7 +15742,7 @@ transform:scaleY(1.13) scaleX(2) translate3d(1px, 0, 0)
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
-	padding: 12px 18px
+	padding: 0px 18px
 }
 #main_nav .nav-contents .nav-item>a .nav-badge, #main_nav .nav-contents .nav-item .nav-text .nav-badge {
 	background-color: #f55b23;
@@ -17549,7 +17549,7 @@ svg.icon.icon-linkedin.icon-inverse .caution-badge-symbol .line, svg.icon.icon-l
 	color: white
 }
 
-.logo{padding-top:7px; margin-right:20px;}
+.logo{padding-top:0px; margin-right:20px;}
 
 .logo-container {
 	text-align: center;
