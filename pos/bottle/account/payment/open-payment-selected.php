@@ -183,7 +183,7 @@ $(document).ready(function(){
 <div class="popupoverlay-btn">
   <div class="cancel-accept">
     <button class="slide_close cancel">Cancel</button>
-    <button class="accept btn-delete">Yes</button>
+    <button class="accept btn-delete">Submit</button>
 </div>
 
 <div class="popupoverlay-btn">

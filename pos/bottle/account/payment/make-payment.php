@@ -33,7 +33,7 @@ if(!$customer_home->is_logged_in())
 
 $stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['customerSession']));
-$row_customer = $stmt->fetch(PDO::FETCH_ASSOC);
+$rowcustomer = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 $stmtadmin = mysqli_query($connecDB,"SELECT * FROM tbl_admin");
@@ -41,7 +41,8 @@ $rowadmin = mysqli_fetch_array($stmtadmin);
 
 
 
-
+if($_POST)
+{
 
 //echo $rowparticipant['FirstName'];
 
@@ -50,7 +51,7 @@ $rowadmin = mysqli_fetch_array($stmtadmin);
 
 
 
-$stmtpickup = mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE userID='".$_POST['userid']."' AND taskID = '".$_GET['taskid']."'");
+$stmtpickup = mysqli_query($connecDB,"SELECT * FROM tbl_completed_tasks WHERE userID='".$_POST['userid']."' AND taskID = '".$_POST['taskid']."'");
 $rowpickup = mysqli_fetch_array($stmtpickup);
 
 
@@ -108,7 +109,7 @@ try {
 'payment_method' => [ 
 'type' => 'credit_card', 
 'credit_card'=> [ 
-'id'=> $row["credit_card_id"]
+'id'=> $rowadmin["credit_card_id"]
 ]
 ]
     
@@ -744,7 +745,7 @@ require '../../sendgrid-php/vendor/autoload.php';
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Mr.Pao Team", "no-reply@misterpao.com");
 $subject = "Your Recent Payment";
-$to = new SendGrid\Email($row['FirstName'], $row['userEmail']);
+$to = new SendGrid\Email($rowadmin['FirstName'], $rowadmin['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
@@ -1096,6 +1097,8 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->statusCode();
 //echo $response->headers();
 //echo $response->body();
+
+}
 
 }
 
