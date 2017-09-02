@@ -4,7 +4,7 @@ session_start();
 require_once '../../../base_path.php';
 
 
-require_once '../../../class.admin.php';
+require_once '../../../class.customer.php';
 require_once '../../../config.php';
 require_once '../../../config.inc.php';
 
@@ -12,21 +12,27 @@ require_once '../../../config.inc.php';
 require '../../../wepay.php';
 
 
-$admin_home = new ADMIN();
+$customer_home = new CUSTOMER();
 
-if(!$admin_home->is_logged_in())
+if(!$customer_home->is_logged_in())
 {
-  $admin_home->redirect('../../../admin/');
+  $customer_home->redirect('../../../login');
 }
 
 
-
-$stmt = $admin_home->runQuery("SELECT * FROM tbl_admin WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['adminSession']));
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_pickup_request WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$row_pickup_request = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_pickup_upcoming WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$row_pickup_confirmed = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 ?>
@@ -34,14 +40,75 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
+<script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
 
 
 
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+
+
+  
+
+    $( "#date_option_one" ).datepicker({
+    
+      minDate: 2,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+       
+
+    }
+    });
+
+    $( "#date_option_two" ).datepicker({
+     
+      minDate: 2,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true,
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+        
+
+       
+
+    }
+    });
+
+    $( "#date_option_three" ).datepicker({
+    
+      minDate: 2,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true
+    });
+
+  } );
+  </script>
 
 
 
+ <script>
+  
+  $(function() {
+    $( "#date_option_one" ).datepicker({ minDate: 2});
+    $( "#date_option_two" ).datepicker({ minDate: 2});
+    $( "#date_option_three" ).datepicker({ minDate: 2});
+  });
+
+  </script>
 
 
 <script>
@@ -74,9 +141,7 @@ history.back();
 
 }else{  
 
-//$( "#white-container-account" ).load( "schedulepickup.php" );
-window.location.reload();
-
+$( "#white-container-account" ).load( "schedulepickup.php" );
 }
 
 
@@ -85,6 +150,8 @@ window.location.reload();
 
 
  }); 
+
+
 
 
 
@@ -290,7 +357,7 @@ window.location.reload();
             //alert(time_option1);
 
             //Ajax post data to server
-            $.post('new-pickup-request-save.php', post_data, function(response){ 
+            $.post('new-pickup-request-after-canceled-upcoming-pickup-save.php', post_data, function(response){ 
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
@@ -334,7 +401,7 @@ window.location.reload();
             <label for="firstname">Day of Pickup</label>
 
      
-               <input class="form-control" name="date_option_one" id="date_option_one" type="text" placeholder="Click to select a date" 
+               <input class="form-control" name="date_option_one" id="date_option_one" type="text" placeholder="Choose date of pick-up" 
                value="<?php echo $row_pickup_request['Schedule_Date_Option1']; ?>"/>
 
           
@@ -387,7 +454,7 @@ window.location.reload();
             <label for="firstname">Day of Pickup</label>
 
      
-               <input class="form-control" name="date_option_two" id="date_option_two" type="text" placeholder="Click to select a date"
+               <input class="form-control" name="date_option_two" id="date_option_two" type="text" placeholder="Choose date of pick-up"
                value="<?php echo $row_pickup_request['Schedule_Date_Option2']; ?>"/>
 
           
@@ -443,7 +510,7 @@ window.location.reload();
             <label for="firstname">Day of Pickup</label>
 
      
-               <input class="form-control" name="date_option_three" id="date_option_three" type="text" placeholder="Click to select a date"
+               <input class="form-control" name="date_option_three" id="date_option_three" type="text" placeholder="Choose date of pick-up"
                value="<?php echo $row_pickup_request['Schedule_Date_Option3']; ?>"/>
               
           
@@ -492,7 +559,6 @@ window.location.reload();
            
 
              <div id="cancel">
-
               <input type="submit" class="cancel" value="Cancel"/>
 
             </div>

@@ -37,7 +37,7 @@
 
 <!--JAVASCRIPT-->
 
-<script src="<?php echo BASE_PATH; ?>/account/js/script.js"></script>
+<script src="<?php echo BASE_PATH; ?>/admin/account/js/script.js"></script>
 
 
 

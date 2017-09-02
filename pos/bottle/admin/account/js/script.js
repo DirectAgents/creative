@@ -1433,10 +1433,12 @@ $(".choose-location-sunday").click(function() {
 
 
 
+
+
+
+
+
 /**Save Profile**/
-
-
-
 
     $(".save-profile").click(function() { 
        //alert("asdf");

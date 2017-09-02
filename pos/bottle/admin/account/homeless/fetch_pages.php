@@ -4,10 +4,30 @@ session_start();
 include("../../../config.php"); //include config file
 require_once '../../../class.admin.php';
 
+
+$admin_home = new ADMIN();
+
+if(!$admin_home->is_logged_in())
+{
+  $admin_home->redirect('../../../admin/');
+}
+
+
+$stmt = $admin_home->runQuery("SELECT * FROM tbl_admin WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['adminSession']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en" id="features" class="tablet mobile">
+
+
+
+
+
     
     <head>
 
@@ -18,7 +38,6 @@ require_once '../../../class.admin.php';
 
 
 
- <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/startup/project/css/jquery-ui.css">
   <script>
 
 
@@ -41,9 +60,8 @@ require_once '../../../class.admin.php';
   </script>
 
 <script type='text/javascript'>//<![CDATA[
-$.noConflict();
+//$.noConflict();
 jQuery( document ).ready(function( $ ) {
-
 
 
 function getParameterByName(name, url) {
@@ -57,17 +75,18 @@ function getParameterByName(name, url) {
 }
 
 
-var p = getParameterByName('p');
 
-if(p == 'credit-card'){
-$('.creditcard').click();
-$( "#credit-card" ).load( "creditcard.php" );
-}
+
+var p = getParameterByName('p');
 
 
 
 
 $( "#homeless" ).load( "homeless.php" );
+
+
+
+
 
 
     $(".homeless").click(function() {  
@@ -83,9 +102,14 @@ $( "#homeless" ).load( "homeless.php" );
 
     });
 
+
     
 
- 
+     
+
+    
+
+   
 
 
 });//]]> 
@@ -97,7 +121,11 @@ $( "#homeless" ).load( "homeless.php" );
 </script>
 
 
+<style>
 
+a.verify-badge img#verify-image-payment{display:none !important;}
+
+</style>
 
 
 
@@ -115,10 +143,14 @@ $( "#homeless" ).load( "homeless.php" );
 
  <ul>
     <li><a href="#homeless" class="homeless">Homeless</a></li>
+   
+   
+   
     <li>&nbsp;</li>
+   
     <li><a href="#homeless-add" class="homeless-add">Add Homeless</a></li>
   
-    
+   
   </ul>  
 
 
@@ -129,9 +161,9 @@ $( "#homeless" ).load( "homeless.php" );
 
 <div id="homeless" class="tabContent" > </div>
 
-<div id="homeless-add" class="tabContent" > </div>
+<!--<div id="refund-requests" class="tabContent" ></div>-->
 
-
+<div id="homeless-add" class="tabContent" ></div>
 
 
 
@@ -167,14 +199,3 @@ $( "#homeless" ).load( "homeless.php" );
 
 
 
-<script>
-$(document).ready(function () {
-
-    $('#slide').popup({
-        focusdelay: 400,
-        outline: true,
-        vertical: 'top'
-    });
-
-});
-</script>

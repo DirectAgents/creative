@@ -1,0 +1,689 @@
+<?php
+session_start();
+require_once '../../../../base_path.php';
+
+
+require_once '../../../../class.customer.php';
+include_once("../../../../config.php");
+include("../../../../config.inc.php");
+
+
+
+$customer_home = new CUSTOMER();
+
+if(!$customer_home->is_logged_in())
+{
+  $customer_home->redirect('../../../../login/');
+}
+
+
+
+
+
+
+$stmt = $customer_home->runQuery("SELECT * FROM tbl_customer WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['customerSession']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+
+
+
+if(isset($_GET['verified']) == '1'){
+
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
+  account_verified='1'
+
+  WHERE userID='".$_SESSION['participantSession']."'");
+
+
+}
+
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en" id="features" class="tablet mobile">
+    
+    <head>
+
+
+
+<?php include("../../../header.php"); ?>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  $("#days").blur(function (e) {
+       e.preventDefault();
+     if($("#days").val()==='')
+      {
+        //alert("Please enter a job position!");
+        return false;
+      }
+      var myData = 'days='+ $("#days").val()+'&userid='+ $("#userid").val(); 
+      //alert(myData);
+      jQuery.ajax({
+      type: "POST", 
+      url: "days.php", 
+      dataType:"text", 
+      data:myData,
+      success:function(response){
+        $("#responds").append(response);
+        $("#days").val('');
+       
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        alert(thrownError);
+      }
+      });
+  });
+
+  $("body").on("click", "#responds .del_button", function(e) {
+     e.preventDefault();
+     var clickedID = this.id.split('-'); 
+    
+     var DbNumberID = clickedID[1]; 
+     var myData = 'recordToDelete='+ DbNumberID; 
+     
+     //alert(DbNumberID);
+
+
+      jQuery.ajax({
+      type: "POST", 
+      url: "days.php", 
+      dataType:"text", 
+      data:myData, 
+      success:function(response){
+        $("#responds").append(response);
+        $('#dayselection_'+DbNumberID).prop('checked', false); // Unchecks it
+        
+        $('#item_'+DbNumberID).fadeOut("slow");
+
+        
+        //alert(response);
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        
+        alert(thrownError);
+      }
+      });
+  });
+
+});  
+</script>
+
+
+
+  <script>
+  $(function() {
+    $( "#days" ).autocomplete({
+      source: 'search-day.php'
+    });
+  });
+  </script>
+
+
+
+<script>
+$(document).ready(function(){
+ $(".save").click(function() { 
+       //alert("asdf");
+        var proceed = true;
+        //simple validation at client's end
+        //loop through each field and we simply change border color to red for invalid fields   
+        var date_value = $('#date').val()
+        var time_value = $('#time').val()
+       
+
+
+
+        if(date_value == '' ){ 
+            
+            $("#days").css('border-color','red');  //change border color to red  
+            proceed = false;
+          
+        }
+
+        
+        if(!time_value) {
+
+                $("#time").css('border-color','red');  //change border color to red   
+                proceed = false; //set do not proceed flag            
+        };
+
+       
+
+
+      
+
+       
+       
+        if(proceed) //everything looks good! proceed...
+        {
+            //get input field values data to be sent to server
+            post_data = {
+                'date'     : $('input[name=date]').val(),
+                'time'     : $("select[name='time']").val()
+            };
+ 
+
+            
+
+            //Ajax post data to server
+            $.post('save.php', post_data, function(response){  
+                if(response.type == 'error'){ //load json data from server and output message     
+                    output = '<div class="error">'+response.text+'</div>';
+                }else{
+                    output = '<div class="success">'+response.text+'</div>';
+                    //reset values in all input fields
+                    $("#profile-form select[required=true]").val(''); 
+                    $("#profile-form #contact_body").slideUp(); //hide form after success
+                }
+                $("#profile-form #profile_results").hide().html(output).slideDown();
+            }, 'json');
+        }
+    });
+ });
+</script> 
+
+
+
+
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+jQuery( document ).ready(function( $ ) {
+
+$( "#tabs-1" ).load( "index.php" );
+
+    $(".availability1").click(function() {  
+
+      
+      window.location.replace( "" );
+       
+    });
+
+   $(".availability2").click(function() {  
+
+
+       window.location.replace( "../option2/" );
+
+     });
+
+    $(".availability3").click(function() {  
+
+       window.location.replace( "../option3/" );
+
+    });
+
+     
+
+
+});//]]> 
+
+
+
+
+
+</script>
+
+
+  <script>
+
+
+
+  $(function() {
+    $( "#tabs" ).tabs({
+      beforeLoad: function( event, ui ) {
+        ui.jqXHR.fail(function() {
+          ui.panel.html(
+            "Couldn't load this tab. We'll try to fix this as soon as possible. ");
+        });
+      }
+    });
+  });
+
+
+
+
+
+  </script>
+
+
+<style>
+
+a.verify-badge img#verify-image-payment{display:none !important;}
+
+</style>
+
+
+
+
+
+
+        
+    </head>
+    
+    <body>
+
+<!--TopNav-->
+         <header id="main-header" class='transparent'>
+  <div class="inner-col">
+   
+
+
+<?php include("../../../../nav.php"); ?>
+
+   
+  </div>
+</header>
+
+
+<!--TopNav-->
+
+
+
+ <div class="clearer"></div>
+
+
+<!-- Main -->
+
+   <div class="container">
+
+
+<div class="row-fluid">
+  <div class="span12">
+
+
+ 
+      
+      <div id="dashboardSurveyTargetingContainerLogic">
+
+
+  
+
+
+<div id="tabs">
+
+
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+
+
+
+
+   <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="-1" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="false" aria-expanded="false"><a href="#tabs-1" class="availability1 ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Pick up  Option #1</a></li>
+   
+   <li class="ui-state-default ui-corner-top" role="tab" tabindex="0" aria-controls="tabs-2" aria-labelledby="ui-id-2" aria-selected="true" aria-expanded="true"><a href="#tabs-2" class="availability2 ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Pick up Option #2</a></li>
+   
+   <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="#tabs-3" class="availability3 ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Pick up Option #3</a></li>
+
+  </ul>
+
+
+
+
+
+
+
+
+<div id="white-container">
+
+
+
+
+<!-- Main -->
+
+
+
+
+
+
+    <div id="white-container-account">
+      
+
+
+
+
+
+
+    
+
+    
+   
+
+
+
+
+  
+   <iframe name="votar" style="display:none;"></iframe>
+        
+    <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
+        
+        
+
+        <h2 class="no-mobile">
+          Availability
+        </h2>
+
+
+        <fieldset>
+          <span class="input">
+            <label for="firstname">Day of Pickup</label>
+           
+     
+               <input class="form-control" name="days" id="days" type="text" placeholder="Enter here the days you are available to meet"/>
+
+          
+          </span>
+
+          </span>
+        </fieldset>
+
+
+
+
+<fieldset>
+          <span class="input">
+           
+           
+     
+   
+          
+
+ 
+               
+           
+          </span>
+
+          </span>
+        </fieldset>
+
+
+
+
+
+
+
+        <fieldset>
+          <span class="input">
+            <label for="firstname">Time</label>
+           
+             <span class="select-wrapper">
+            
+              <select name="time" id="time" class="fromto">
+  <option value="" <?php if($row['Time_Option1'] == ''){echo 'selected';}?> disabled="disabled">Time of pickup</option>
+  <option value="06:00am" <?php if($row['Time_Option1'] == '06:00am'){echo 'selected';}?>>06:00 AM</option>
+  <option value="07:00am" <?php if($row['Time_Option1'] == '07:00am'){echo 'selected';}?>>07:00 AM</option>
+  <option value="08:00am" <?php if($row['Time_Option1'] == '08:00am'){echo 'selected';}?>>08:00 AM</option>
+  <option value="09:00am" <?php if($row['Time_Option1'] == '09:00am'){echo 'selected';}?>>09:00 AM</option>
+  <option value="10:00am" <?php if($row['Time_Option1'] == '10:00am'){echo 'selected';}?>>10:00 AM</option>
+  <option value="11:00am" <?php if($row['Time_Option1'] == '11:00am'){echo 'selected';}?>>11:00 AM</option>
+  <option value="12:00pm" <?php if($row['Time_Option1'] == '12:00pm'){echo 'selected';}?>>12:00 PM</option>
+  <option value="01:00pm" <?php if($row['Time_Option1'] == '01:00pm'){echo 'selected';}?>>01:00 PM</option>
+  <option value="02:00pm" <?php if($row['Time_Option1'] == '02:00pm'){echo 'selected';}?>>02:00 PM</option>
+  <option value="03:00pm" <?php if($row['Time_Option1'] == '03:00pm'){echo 'selected';}?>>03:00 PM</option>
+  <option value="04:00pm" <?php if($row['Time_Option1'] == '04:00pm'){echo 'selected';}?>>04:00 PM</option>
+  <option value="05:00pm" <?php if($row['Time_Option1'] == '05:00pm'){echo 'selected';}?>>05:00 PM</option>
+  <option value="06:00pm" <?php if($row['Time_Option1'] == '06:00pm'){echo 'selected';}?>>06:00 PM</option>
+  <option value="07:00pm" <?php if($row['Time_Option1'] == '07:00pm'){echo 'selected';}?>>07:00 PM</option>
+  <option value="08:00pm" <?php if($row['Time_Option1'] == '08:00pm'){echo 'selected';}?>>08:00 PM</option>
+  <option value="09:00pm" <?php if($row['Time_Option1'] == '09:00pm'){echo 'selected';}?>>09:00 PM</option>
+  <option value="10:00pm" <?php if($row['Time_Option1'] == '10:00pm'){echo 'selected';}?>>10:00 PM</option>
+  <option value="11:00pm" <?php if($row['Time_Option1'] == '11:00pm'){echo 'selected';}?>>11:00 PM</option>
+  <option value="12:00am" <?php if($row['Time_Option1'] == '12:00am'){echo 'selected';}?>>12:00 AM</option>
+               </select>
+
+               
+            </span>
+          </span>
+
+          </span>
+        </fieldset>
+
+        
+
+        
+
+
+
+        
+
+       
+
+  
+
+
+        <div id="save">
+              <input type="submit" class="save" value="Save"/>
+
+            </div>
+
+
+   <div style="float:left; width:100%; margin-top:30px;">
+ <div id="profile_results"></div>
+</div>
+
+      </form>
+
+
+
+
+    
+
+                    <div class="clearer"></div>
+
+
+            
+
+
+          </div>
+
+      <div class="clearer"></div>
+
+
+  
+
+      
+
+    </div>
+
+    <div class="clearer"></div>
+
+
+
+
+
+
+
+</div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+<a href="#" style="display:none" id="requestbutton" class="initialism slide_open btn btn-success"></a>
+
+
+
+
+
+<!--
+<div align="center">
+<button class="load_more" id="load_more_button">load More</button>
+<button class="load_more_pending" id="load_more_button">load More </button>
+<div class="animation_image" style="display:none;"><img src="ajax-loader.gif"> Loading...</div>
+</div>-->
+
+
+
+
+
+
+
+
+<div class="clearer"></div>
+
+       
+        
+
+
+
+
+
+     
+
+          
+    
+
+    
+
+                    <div class="clearer"></div>
+
+
+            
+
+
+          </div>
+
+      <div class="clearer"></div>
+
+
+  
+
+      <?php include("../../../../footer.php"); ?>
+
+    </div>
+
+    <div class="clearer"></div>
+
+  </div>
+  
+  </div>
+
+  </div>
+
+        <!--/.fluid-container-->
+        <script src="<?php echo BASE_PATH; ?>/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo BASE_PATH; ?>/assets/scripts.js"></script>
+
+
+
+<input type="hidden" id='base_path' value="<?php echo BASE_PATH; ?>">
+
+
+
+
+ <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.730610, lng: -73.935242},
+          zoom: 8
+        });
+        var input = /** @type {!HTMLInputElement} */(
+            document.getElementById('pac-input'));
+
+        var types = document.getElementById('type-selector');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+          map: map,
+          anchorPoint: new google.maps.Point(0, -29)
+        });
+
+        autocomplete.addListener('place_changed', function() {
+          infowindow.close();
+          marker.setVisible(false);
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            window.alert("Autocomplete's returned place contains no geometry");
+            return;
+          }
+
+          // If the place has a geometry, then present it on a map.
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // Why 17? Because it looks good.
+          }
+          marker.setIcon(/** @type {google.maps.Icon} */({
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(35, 35)
+          }));
+          marker.setPosition(place.geometry.location);
+          marker.setVisible(true);
+
+          var address = '';
+          if (place.address_components) {
+            address = [
+              (place.address_components[0] && place.address_components[0].short_name || ''),
+              (place.address_components[1] && place.address_components[1].short_name || ''),
+              (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+          }
+
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infowindow.open(map, marker);
+        });
+
+        // Sets a listener on a radio button to change the filter type on Places
+        // Autocomplete.
+        function setupClickListener(id, types) {
+          var radioButton = document.getElementById(id);
+          radioButton.addEventListener('click', function() {
+            autocomplete.setTypes(types);
+          });
+        }
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-lNejAuVNUDCwo2UxOAT_N_lQZb7qiQY&libraries=places&callback=initMap&region=US"
+        async defer></script>
+
+
+        
+    </body>
+
+</html>

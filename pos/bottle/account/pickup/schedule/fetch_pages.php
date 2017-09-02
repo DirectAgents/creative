@@ -38,7 +38,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
- <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/startup/project/css/jquery-ui.css">
   <script>
 
 

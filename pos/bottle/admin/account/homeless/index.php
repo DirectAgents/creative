@@ -2,10 +2,20 @@
 session_start();
 require_once '../../../base_path.php';
 
-include("../../../config.php"); //include config file
-include("../../../config.inc.php");
+
 require_once '../../../class.admin.php';
-require_once '../../../class.customer.php';
+require_once '../../../config.php';
+require_once '../../../config.inc.php';
+
+
+/*
+$restaurant_home = new CUSTOMER();
+
+if($restaurant_home->is_logged_in())
+{
+  $restaurant_home->logout();
+}
+*/
 
 
 
@@ -13,11 +23,8 @@ $admin_home = new ADMIN();
 
 if(!$admin_home->is_logged_in())
 {
-  $admin_home->redirect('../login');
+  $admin_home->redirect('../../../admin/');
 }
-
-
-
 
 
 $get_total_rows = 0;
@@ -32,6 +39,7 @@ $total_pages = ceil($get_total_rows[0]/$item_per_page);
 
 
 
+
 $stmt = $admin_home->runQuery("SELECT * FROM tbl_admin WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -40,14 +48,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-
-
-
-
-
-
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en" id="features" class="tablet mobile">
@@ -58,8 +61,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <?php include("../header.php"); ?>
 
-
-       
 
 
 
@@ -171,12 +172,72 @@ $(".load_more_pending").click(function (e) { //user clicks on button
 
 
 
-   
-
-
 <script src="https://static.wepay.com/min/js/wepay.v2.js" type="text/javascript"></script>
 
 
+
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+   
+
+    $( "#date_option_one" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+        $("#date_option_two").datepicker( "option", "minDate", endDate );
+        $("#date_option_two").datepicker( "option", "maxDate", '+2y' );
+
+        $("#date_option_three").datepicker( "option", "minDate", endDate );
+        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
+
+    }
+    });
+
+    $( "#date_option_two" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true,
+      onSelect: function(date){
+
+        var selectedDate = new Date(date);
+        var msecsInADay = 86400000;
+        var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+        
+
+        $("#date_option_three").datepicker( "option", "minDate", endDate );
+        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
+
+    }
+    });
+
+    $( "#date_option_three" ).datepicker({
+      showOn: "button",
+      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+      buttonImageOnly: false,
+      minDate: 1,
+      maxDate: '+2y',
+      buttonText: "Select date",
+      changeMonth: true
+    });
+
+  } );
+  </script>
 
         
     </head>
@@ -217,9 +278,9 @@ $(".load_more_pending").click(function (e) { //user clicks on button
       <div id="dashboardSurveyTargetingContainerLogic">
 
 
-<?php if(isset($_GET['error'])) { ?>
-<h4 class="error_api_call"><?php echo $_GET['error']; ?> </h4>
-<?php } ?>
+
+
+
 
 
 
@@ -272,17 +333,17 @@ $(".load_more_pending").click(function (e) { //user clicks on button
       <div class="clearer"></div>
 
 
-  </div>
+  
+
+       </div>
   <?php include("../../../footer.php"); ?>
   </div>
-
-      
 
     </div>
 
     <div class="clearer"></div>
 
-  
+ 
 
   </div>
 

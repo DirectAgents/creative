@@ -5,6 +5,7 @@ session_start();
 require_once '../../../class.customer.php';
 include_once("../../../config.php");
 
+
 require_once '../../../base_path.php';
 
 //require( "phpmailer/class.phpmailer.php" );
@@ -12,19 +13,12 @@ require_once '../../../base_path.php';
 $ip = $_SERVER['REMOTE_ADDR'];
 
 
-$random = rand(5, 20000);
+
 
 
 
 if($_POST)
 {
-
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_pickup_request WHERE userID = '".$_SESSION['customerSession']."' ORDER BY id DESC");
-
-
-if(mysqli_num_rows($sql) == 0)
-{
-
 
 
 $sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userID='".$_SESSION['customerSession']."'");
@@ -41,20 +35,29 @@ if(isset($_POST['date_option3'])){$date_option3 = $_POST['date_option3'];}else{$
 if(isset($_POST['time_option3'])){$time_option3 = $_POST['time_option3'];}else{$time_option3 = '';}
 
 
-//$all_game_value = implode(",",$_POST['testing']);
-
-
 date_default_timezone_set('America/New_York');
 $the_date = date('Y-m-d'); 
 $the_time = date('h:i:s A');
 
 
 
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_pickup_request SET 
+  Schedule_Date_Option1='".$_POST['date_option1']."',
+  Schedule_Time_Option1='".$_POST['time_option1']."',
+  Schedule_Date_Option2='".$date_option2."',
+  Schedule_Time_Option2='".$time_option2."',
+  Schedule_Date_Option3='".$date_option3."',
+  New_Request='Y',
+  RequestDenied='N',
+  Date='".$the_date."',
+  Time='".$the_time."'
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_pickup_request(userID, RequestID, Schedule_Date_Option1, Schedule_Time_Option1, Schedule_Date_Option2, Schedule_Time_Option2, Schedule_Date_Option3, Schedule_Time_Option3, Date, Time) 
-VALUES('".$_SESSION['customerSession']."', '".$random."' ,'".$_POST['date_option1']."', '".$_POST['time_option1']."', '".$date_option2."', 
-'".$time_option2."', '".$date_option3."', '".$time_option3."', '".$the_date."', '".$the_time."')");
+  WHERE userID='".$_SESSION['customerSession']."'");
+
+
+
+
 
 
   
@@ -86,8 +89,8 @@ $date_option_three = '';
 require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Request for Pick up", 'support@misterpao.com');
-$subject = "Request for Pick up (Request #".$random.")";
+$from = new SendGrid\Email("New Request for Pick up", 'support@misterpao.com');
+$subject = "New Request for Pick up";
 $to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -110,12 +113,8 @@ $content = new SendGrid\Content("text/html", '
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
-                        <a href="https://misterpao.com/" target="_blank">
-                            
-                    <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="79" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
-                    
-
-
+                         <a href="https://misterpao.com/" target="_blank">
+                             <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="79" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -187,15 +186,15 @@ $content = new SendGrid\Content("text/html", '
                                                         </tr>
 
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_one)).' @ '.$_POST['time_option1'].'</td>
+                                                            <td align="left" style="padding: 10px 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_one)).' @ '.$_POST['time_option1'].'</td>
 
                                                         </tr>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_two.'</td>
+                                                            <td align="left" style="padding: 10px 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_two.'</td>
                                                         </tr>
 
                                                          <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_three.'</td>
+                                                            <td align="left" style="padding: 10px 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$date_option_three.'</td>
                                                         </tr>
                                                       
 
@@ -246,10 +245,10 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['Address'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['Address'].'</td>
                                                         </tr>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['Zip'].' '.$row5['State'].', '.$row5['City'].'</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.$row5['Zip'].' '.$row5['State'].', '.$row5['City'].'</td>
                                                         </tr>
                                                        
 
@@ -294,7 +293,7 @@ $content = new SendGrid\Content("text/html", '
 
                              <tr>
                                
-                    <td align="left" style="padding: 10px 20px 0px 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+                    <td align="left" style="padding: 0px 20px 10px 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
 	What to do next?
                     </td>
                 </tr>
@@ -308,9 +307,9 @@ $content = new SendGrid\Content("text/html", '
                 </tr>
 
 
-                <tr>
+ <tr>
                                
-                    <td align="left" style="padding: 10px 20px 0px 20px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
+                    <td align="left" style="padding: 20px 20px 10px 20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #666;" class="padding" colspan="2">
     Have Questions?
                     </td>
                 </tr>
@@ -322,6 +321,7 @@ $content = new SendGrid\Content("text/html", '
     If you have any type of questions about your pick-up, you can reach us at <a href="mailto:support@misterpao.com">support@misterpao.com</a>
                     </td>
                 </tr>
+
 
 
                         </tbody></table>
@@ -374,7 +374,7 @@ $content = new SendGrid\Content("text/html", '
                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                         <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="150" height="45" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                       <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="150" height="45" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 
@@ -394,7 +394,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
 
 
-                <tr>
+               <tr>
                    <td align="center">
                       <a href="https://twitter.com/mymisterpao" target="_blank">
                       <img src="https://misterpao.com/images/email/twitter-icon.png" width="33" height="33"/></a>
@@ -406,13 +406,6 @@ $content = new SendGrid\Content("text/html", '
                     </td>       
                   
               </tr>
-
-              <tr>
-                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                       &nbsp;
-                           </td>
-                     </tr>
-
 
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
@@ -461,6 +454,15 @@ $response = $sg->client->mail()->send()->post($mail);
 
 
 
+
+
+
+
+
+
+
+
+
 /////////////////Send email to me/////////////////
 
 
@@ -470,16 +472,15 @@ $response = $sg->client->mail()->send()->post($mail);
 require '../../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Request for Pick up", 'support@misterpao.com');
-$subject = "Request for Pick up (Request #".$random.")";
+$from = new SendGrid\Email("New Request for Pick up", 'support@misterpao.com');
+$subject = "New Request for Pick up";
 $to = new SendGrid\Email($rowadmin['FirstName'], $rowadmin['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
 
 
 
-
-   <body style="margin: 0 !important; padding: 0 !important;">
+<body style="margin: 0 !important; padding: 0 !important;">
 
 
 
@@ -496,9 +497,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
                         <a href="https://misterpao.com/" target="_blank">
-                            <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="79" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
-
-
+                           <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="79" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -542,9 +541,9 @@ $content = new SendGrid\Content("text/html", '
                                     <![endif]-->
                                     <div style="display:inline-block; margin: 0 -2px; max-width:115px; vertical-align:top; width:100%;">
 
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="115">
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" align="center" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/calendar.jpg" alt="when" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/calendar.jpg" alt="when" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -562,7 +561,7 @@ $content = new SendGrid\Content("text/html", '
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; color: #333333;" class="padding">Pick-Up Dates Requested</td>
+                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">Pick-Up Dates Requested</td>
                                                         </tr>
 
                                                          <tr>
@@ -570,7 +569,7 @@ $content = new SendGrid\Content("text/html", '
                                                         </tr>
 
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_one)).' @ '.$_POST['time_option1'].'</td>
+                                                            <td align="left" style="padding: 10px 0 5px 25px; font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">'.date('F j, Y',strtotime($date_option_one)).' @ '.$_POST['time_option1'].'</td>
 
                                                         </tr>
                                                         <tr>
@@ -611,7 +610,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" align="center" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/location.jpg" alt="where" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/location.jpg" alt="where" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -730,9 +729,7 @@ $content = new SendGrid\Content("text/html", '
                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <a href="https://misterpao.com/" target="_blank">
                         <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="150" height="45" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
-                        </a>
                            </td>
                      </tr>
 
@@ -742,8 +739,8 @@ $content = new SendGrid\Content("text/html", '
 
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
-                
-          <tr>
+
+            <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
                        &nbsp;
                            </td>
@@ -752,7 +749,7 @@ $content = new SendGrid\Content("text/html", '
                 <tr>
 
 
-                <tr>
+                  <tr>
                    <td align="center">
                       <a href="https://twitter.com/mymisterpao" target="_blank">
                       <img src="https://misterpao.com/images/email/twitter-icon.png" width="33" height="33"/></a>
@@ -765,7 +762,7 @@ $content = new SendGrid\Content("text/html", '
                   
               </tr>
 
-              <tr>
+               <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
                        &nbsp;
                            </td>
@@ -779,7 +776,7 @@ $content = new SendGrid\Content("text/html", '
 
                       <tr>
                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="https://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="https://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="https://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
+                        <a href="'.BASE_PATH.'/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="'.BASE_PATH.'/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="'.BASE_PATH.'/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
                        
                         
  
@@ -814,15 +811,12 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->body();
 
 
+
+
+
+
 $output = json_encode(array('status' => 'success','text'=> '<div class="success">Successfully Pick Up Requested!</div>'));
 die($output);
-
-}else{
-
-$output = json_encode(array('status' => 'success','text'=> '<div class="errorXYZ">Pick Up request already sent!</div>'));
-die($output);
-
-}
 
 
 
