@@ -162,7 +162,7 @@ $the_date = date('Y-m-d');
 $the_time = date('h:i:s A');
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, checkout_find_amount, fees, total, homeless_donation , Date, Time) VALUES('".$_POST['taskid']."','".$_POST['adminid']."','".$_POST['userid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."','".$checkout -> amount."',
+$insert_sql = mysqli_query($connecDB,"INSERT INTO wepay(TaskID, admin_id, customer_id, order_by, account_id, checkout_id, checkout_find_date, total_credit, checkout_find_amount, fees, total, homeless_donation , Date, Time) VALUES('".$_POST['taskid']."','".$_POST['adminid']."','".$_POST['userid']."', '".$order_by."' ,'".$checkout -> account_id."', '".$checkout -> checkout_id."', '".$checkout_find_date."', '".$_POST['amount']."','".$checkout -> amount."',
    '".$checkout -> fee-> processing_fee."', '".$checkout -> gross."', '".$_POST['homeless_donation']."' ,'".$the_date."','".$the_time."')");
 
 
