@@ -770,6 +770,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
             <ul>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/admin/account/myinfo/?id=<?php echo $_SESSION['adminSession'];?>">My Info</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/admin/account/payment/">Payment</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/admin/account/homeless/">Homeless</a></li>
               <li class='separator'></li>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['participantSession'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 
