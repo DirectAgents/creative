@@ -37,7 +37,11 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $(document).ready(function(){
 
 
+$("#add_homeless").click(function() {  
 
+      $( "#the-container" ).load( "homeless-add.php" );
+
+    });
 
 
 $(function(){
@@ -148,6 +152,18 @@ while($row = mysqli_fetch_array($sql))
 <?php }else{ ?>
 <p>&nbsp;</p>
 <h4 class="center">No Homeless Person so far!</h4>
+
+
+  <div class="create-one-here-box">
+      <div class="create-one schedule-one-here">
+        <a href="#" id="add_homeless" class="create-one-btn">+Add Homeless</a>
+
+       </div> 
+  </div>
+</div>
+
+
+
 
  <?php } ?>
 

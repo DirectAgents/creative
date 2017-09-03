@@ -189,7 +189,7 @@ $(document).ready(function(){
 
 
         <div id="save">
-              <input type="submit" class="save-homeless" value="Schedule Pickup"/>
+              <input type="submit" class="save-homeless" value="Add Homeless"/>
 
             </div>
 

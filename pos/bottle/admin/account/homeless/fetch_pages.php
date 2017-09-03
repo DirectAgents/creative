@@ -105,12 +105,6 @@ $( "#homeless" ).load( "homeless.php" );
 
     
 
-     
-
-    
-
-   
-
 
 });//]]> 
 
@@ -146,9 +140,9 @@ a.verify-badge img#verify-image-payment{display:none !important;}
    
    
    
-    <li>&nbsp;</li>
+   <!--  <li>&nbsp;</li>-->
    
-    <li><a href="#homeless-add" class="homeless-add">Add Homeless</a></li>
+   <!-- <li><a href="#homeless-add" class="homeless-add">Add Homeless</a></li>-->
   
    
   </ul>  
