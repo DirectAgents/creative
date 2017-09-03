@@ -91,7 +91,7 @@ $payment_date = $the_date.' at '.$the_time. ' EST';
 
 echo '<div id="payment-complete-title">';
   //print_r ($checkout);
-  echo '<div class="success2">Payment was sent successfully!</div>';
+  echo '<div class="success2">Customer was successfully credited!</div>';
 echo "</div>";
   
 echo '<div id="receipt">';

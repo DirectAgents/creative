@@ -45,6 +45,7 @@ $(".accept").click(function() {
         var taskid = $('input[name=taskid').val();
         var amount = $('input[name=amount').val();
         var homeless_donation = $('input[name=homeless_donation').val();
+        var homeless_id = $('input[name=homeless_id').val();
 
         //alert(homeless_donation);
 
@@ -61,7 +62,7 @@ $(".accept").click(function() {
 
           $( ".processing" ).show();
             //data to be sent to server
-            post_data = {'userid':userid,'adminid':adminid,'taskid':taskid,'amount':amount,'homeless_donation':homeless_donation};
+            post_data = {'userid':userid,'adminid':adminid,'taskid':taskid,'amount':amount,'homeless_donation':homeless_donation, 'homeless_id':homeless_id};
             
             //Ajax post data to server
             $.post('make-payment.php', post_data, function(response){  
@@ -136,19 +137,29 @@ $(document).ready(function(){
         var taskid = $('input[name=taskid').val();
         var amount = $('input[name=amount').val();
         var homeless_donation = $('input[name=homeless_donation').val();
+        var homeless_id = $('input[name=homeless_id').val();
+
+        //alert(homeless_id);
+
+
+        
 
         //alert(homeless_donation);
+        //alert(amount);
 
         $("#amount-credited").text(amount);
         $("#homeless_donation_amount").text(homeless_donation);
+        
 
         var payout_to_customer = amount - homeless_donation;
 
         $("#payout-to-customer").text(payout_to_customer);
 
-        if (homeless_donation > amount){
+        if (homeless_donation-amount > 0 ){
           $("#error-calculation").html('<div class="result-no-date"><div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please lower your donation amount!</div></div>');
         }
+
+
 
  });
  
@@ -171,7 +182,12 @@ $(document).ready(function(){
 
 
 <div style="float:left; width:100%">
-<p><h4><div style="float:left">Your donation to the homeless:  $</div><div id="homeless_donation_amount" style="float:left"></div></h4></p>
+<p><h4><div style="float:left">Your donation to the homeless:  $</div><div id="homeless_donation_amount" style="float:left"></div></h4>
+
+<div id="homeless_donation_id" style="float:left"></div>
+
+
+</p>
 </div>
 
 <div style="float:left; width:100%">
@@ -212,7 +228,7 @@ Enter amount you want to donate to the homeless person you have selected<br>
 
 <p>$<input type="text" id="homeless_donation" name="homeless_donation" placeholder="e.g 3.00"/></p>
 
-<p><input type="text" id="homeless_link" name="homeless_link" placeholder="link"/></p>
+<p><input type="text" id="homeless_id" name="homeless_id" placeholder="link"/></p>
 
 
 

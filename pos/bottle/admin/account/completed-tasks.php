@@ -256,10 +256,10 @@ $row_amount = mysqli_fetch_array($amount);
 
 
                      <div class="item amount">
-                      <div class="label">Amount</div>
+                      <div class="label">Credit</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          $<?php echo $row_amount['checkout_find_amount'];  ?>
+                          $<?php echo $row2['Amount'];  ?>
                         </span>
                       </div>
                     </div>
