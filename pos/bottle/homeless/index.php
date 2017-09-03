@@ -737,7 +737,8 @@ $(document).ready(function() {
       <h1 class="title">Meet The Homeless</h1>
 
 
-<div class="video-box">
+<table class="homeless-table">
+<tr>
 
 <?php 
 
@@ -753,8 +754,10 @@ while($row = mysqli_fetch_array($sql))
 {  
 
   echo '
-<div class="prop">
-      <div class="video">
+
+<td>
+
+ <div class="col-lg-6">
        
 
 <iframe src="'.$row['Video'].'" frameborder="0" allowfullscreen></iframe>
@@ -766,8 +769,9 @@ while($row = mysqli_fetch_array($sql))
 
 <p>ID#: '.$row['homelessID'].'</p>
 
+</td>
 
-      </div>
+</div>
 
   ';
 
@@ -779,14 +783,14 @@ while($row = mysqli_fetch_array($sql))
 
 ?>
 
-
-    
-      
-
+</tr>
+</table>
 
 
-</div>
-</div>
+
+
+
+
 
 
   </section>

@@ -1214,6 +1214,11 @@ table td[class*="col-"], table th[class*="col-"] {
 	background-color: rgba(176,57,45,0.08)
 }
 @media (max-width: 767px) {
+
+
+.homeless-table td{float:left; width:100%;}
+
+
 .table-responsive {
 	width: 100%;
 	margin-bottom: 14.25px;
@@ -1548,6 +1553,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
 	margin-bottom: 1px
 }
 @media (min-width: 768px) {
+
+.homeless-table{margin:0 auto;}
+.homeless-table td{padding:10px;}
+.homeless-table .col-lg-6{padding:10px;}
+
 .navbar-right .dropdown-menu {
 	right: 0;
 	left: auto
@@ -20345,6 +20355,10 @@ img.marketing-image-medium {
 #startup_checklist .sc-list-detail .list-detail-list .step.complete a:hover .check {
 	color: #a5a5a5
 }
+
+
+
+
 
 
 

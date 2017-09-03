@@ -154,7 +154,14 @@ while($row = mysqli_fetch_array($sql))
 
       <tr>
         <td style="text-align:center"><?php echo $row['homelessID']; ?></td>
+        
+        <?php if($row['profile_image'] != ''){ ?>
         <td style="text-align:center"><img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $row['profile_image']; ?>" class="thumb"/></td>
+        <?php }else{ ?>
+    <td style="text-align:center"><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="thumb"/></td>
+        <?php } ?>
+
+
         <td style="text-align:center"><?php echo $row['Firstname']; ?> <?php echo $row['Lastname']; ?></td>
         <td style="text-align:center"><?php echo $row['Location']; ?></td>
         <td style="text-align:center"><?php echo $row['Needs']; ?></td>
