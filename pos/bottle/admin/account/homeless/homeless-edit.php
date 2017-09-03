@@ -26,6 +26,10 @@ $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+$sqlhomeless=mysqli_query($connecDB,"SELECT  * FROM homeless WHERE id='".$_GET['id']."'");
+$rowhomeless = mysqli_fetch_array($sqlhomeless);   
+
+
 
 ?> 
 
@@ -43,6 +47,10 @@ $(document).ready(function(){
         var lastname = $("input[name=lastname]").val()
         var location = $("input[name=location]").val()
         var video = $("input[name=video]").val()
+
+        var id = $("input[name=id]").val()
+
+
 
 
         if (firstname == "" ) { 
@@ -87,6 +95,7 @@ $(document).ready(function(){
           //$("#profile-form #profile_results").hide().html('<div class="success">Pick-Up Schedule Requested!</div>').slideDown();
             //get input field values data to be sent to server
             post_data = {
+                'id'           : $("input[name='id']").val(),
                 'firstname'    : $("input[name='firstname']").val(),
                 'lastname'     : $("input[name='lastname']").val(),
                 'location'     : $("input[name='location']").val(),
@@ -97,7 +106,7 @@ $(document).ready(function(){
             //alert(time_option1);
 
             //Ajax post data to server
-            $.post('save-homeless.php', post_data, function(response){ 
+            $.post('save-homeless-edit.php', post_data, function(response){ 
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
@@ -143,7 +152,7 @@ $(document).ready(function(){
     <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
         
         
-
+<input type="hidden" name="id" id="id" value="<?php echo $_GET['id']; ?>" class="validate">
        
 
   <span class="col-sm-12">
@@ -152,7 +161,7 @@ $(document).ready(function(){
             <label for="firstname">Firstname</label>
 
      
-             <input type="text" name="firstname" id="firstname" class="validate">
+             <input type="text" name="firstname" id="firstname" value="<?php echo $rowhomeless['Firstname']; ?>" class="validate">
     
           
           </span>
@@ -161,7 +170,7 @@ $(document).ready(function(){
             <label for="firstname">Lastname</label>
 
      
-             <input type="text" name="lastname" id="lastname" class="validate">
+             <input type="text" name="lastname" id="lastname" value="<?php echo $rowhomeless['Lastname']; ?>" class="validate">
     
           
           </span>
@@ -170,7 +179,7 @@ $(document).ready(function(){
             <label for="firstname">Location</label>
 
      
-             <input type="text" name="location" id="location" class="validate">
+             <input type="text" name="location" id="location" value="<?php echo $rowhomeless['Location']; ?>" class="validate">
     
           
           </span>
@@ -179,7 +188,7 @@ $(document).ready(function(){
             <label for="firstname">Video</label>
 
      
-             <input type="text" name="video" id="video" class="validate">
+             <input type="text" name="video" id="video" value="<?php echo $rowhomeless['Video']; ?>" class="validate">
     
           
           </span>
@@ -189,7 +198,7 @@ $(document).ready(function(){
 
 
         <div id="save">
-              <input type="submit" class="save-homeless" value="Schedule Pickup"/>
+              <input type="submit" class="save-homeless" value="Save"/>
 
             </div>
 
