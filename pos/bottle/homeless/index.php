@@ -737,8 +737,11 @@ $(document).ready(function() {
       <h1 class="title">Meet The Homeless</h1>
 
 
-<table class="homeless-table">
-<tr>
+<div class="container">
+
+<div class="col-lg-12">
+
+
 
 <?php 
 
@@ -755,7 +758,7 @@ while($row = mysqli_fetch_array($sql))
 
   echo '
 
-<td>
+
 
  <div class="col-lg-6">
        
@@ -769,7 +772,6 @@ while($row = mysqli_fetch_array($sql))
 
 <p>ID#: '.$row['homelessID'].'</p>
 
-</td>
 
 </div>
 
@@ -783,12 +785,11 @@ while($row = mysqli_fetch_array($sql))
 
 ?>
 
-</tr>
-</table>
 
 
+</div>
 
-
+</div>
 
 
 
