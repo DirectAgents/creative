@@ -5026,6 +5026,17 @@ span.message img {
 }
 
 
+.thumb{
+ background-repeat: no-repeat;
+ background-position: 50%;
+ border-radius: 50%;
+ width: 30px;
+ height: 30px;
+ border:solid 0px #dedede;
+ padding:0px;
+}
+
+
 .choose-a-file{margin-top:15px; width:100%; padding:16px; border:1px solid #eee;}
 
 .photo-buttons{float:right;}

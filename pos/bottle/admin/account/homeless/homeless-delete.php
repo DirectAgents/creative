@@ -102,10 +102,6 @@ $(document).ready(function(){
 
 
 
-
-  <p>&nbsp;</p>
-
-
   <img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>" class="profile-photo"/>
 <br><br>
 

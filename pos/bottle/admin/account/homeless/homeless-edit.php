@@ -153,8 +153,6 @@ $(document).ready(function(){
 
 
 
-  <p>&nbsp;</p>
-
 
 <div id='preview'>
 

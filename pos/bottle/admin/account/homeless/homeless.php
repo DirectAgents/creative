@@ -113,13 +113,15 @@ if(mysqli_num_rows($sql)>0)
 
 echo '
 
-  <div class="create-one-here-box">
+  <div class="create-one-here-box" style="float:right">
       <div class="create-one schedule-one-here">
         <a href="#" id="add_homeless" class="create-one-btn">+Add Homeless</a>
 
        </div> 
   </div>
 </div>
+
+<p>&nbsp;</p>
 
 
 ';
@@ -133,6 +135,7 @@ echo '
 
        <tr>
         <td style="text-align:center" class="grey">#</td>
+        <td style="text-align:center" class="grey">&nbsp;</td>
         <td style="text-align:center" class="grey">Name</td>
         <td style="text-align:center" class="grey">Location</td>
         <td style="text-align:center" class="grey">Needs</td>
@@ -151,6 +154,7 @@ while($row = mysqli_fetch_array($sql))
 
       <tr>
         <td style="text-align:center"><?php echo $row['homelessID']; ?></td>
+        <td style="text-align:center"><img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $row['profile_image']; ?>" class="thumb"/></td>
         <td style="text-align:center"><?php echo $row['Firstname']; ?> <?php echo $row['Lastname']; ?></td>
         <td style="text-align:center"><?php echo $row['Location']; ?></td>
         <td style="text-align:center"><?php echo $row['Needs']; ?></td>
