@@ -8,19 +8,6 @@ require_once '../base_path.php';
 include_once("../config.php");
 
 
-if(isset($_GET['id'])){
-
-if($_GET['id'] == '1'){ 
-$_SESSION['source'] = 'craigslist';
-}
-
-if($_GET['id'] == '2'){ 
-$_SESSION['source'] = 'twitter';
-}
-
-}else{
-$_SESSION['source'] = 'no';
-}
 
 
 ?>
@@ -399,14 +386,14 @@ $(document).ready(function() {
 
 
 <div class='nav-item'>
-<a href="#howitworks" rel="relativeanchor">How it works</a>
+<a href="<?php echo BASE_PATH; ?>/#howitworks" rel="relativeanchor">How it works</a>
 
 </div>
 
 
 
 <div class='nav-item'>
-<a href="#facts" rel="relativeanchor">Facts</a>
+<a href="<?php echo BASE_PATH; ?>/#facts" rel="relativeanchor">Facts</a>
 
 </div>
 
@@ -719,19 +706,22 @@ $(document).ready(function() {
 </a>
 </div>
 <ul class='mobile-nav-list collapse'>
-<li><a href="#howitworks" rel="relativeanchor">How it works</a>
+<li><a href="<?php echo BASE_PATH; ?>/#howitworks" rel="relativeanchor">How it works</a>
 </li>
 
-<li><a href="#benefits" rel="relativeanchor">Benefits</a>
+<li><a href="<?php echo BASE_PATH; ?>/#facts" rel="relativeanchor">Facts</a>
 </li>
-<!--
-<li><a target="_top" href="<?php echo BASE_PATH; ?>/startup/login/">Sign In</a>
+
+<li><a href="<?php echo BASE_PATH; ?>/homeless/" rel="relativeanchor">Meet The Homeless</a>
+</li>
+
+<li><a target="_top" href="<?php echo BASE_PATH; ?>/login/">Sign In</a>
 </li>
 
 <li>
-<a href='<?php echo BASE_PATH; ?>/startup/signup/' target='_top'>Sign Up</a>
+<a href='<?php echo BASE_PATH; ?>/signup/' target='_top'>Sign Up</a>
 </li>
--->
+
 
 </ul>
 </div>
@@ -748,46 +738,46 @@ $(document).ready(function() {
 
 
 <div class="video-box">
-    <div class="prop">
+
+<?php 
+
+$sql=mysqli_query($connecDB,"SELECT  * FROM homeless ORDER BY id DESC");
+//$result=mysql_query($sql);
+//$row=mysql_fetch_array($result);
+
+  //if username exists
+if(mysqli_num_rows($sql)>0)
+{
+
+while($row = mysqli_fetch_array($sql))
+{  
+
+  echo '
+<div class="prop">
       <div class="video">
        
 
-<iframe src="https://www.youtube.com/embed/qFp2-cT7_0k" frameborder="0" allowfullscreen></iframe>
+<iframe src="'.$row['Video'].'" frameborder="0" allowfullscreen></iframe>
+
+<p>&nbsp;</p>
+<p>'.$row['Firstname'].' '.$row['Lastname'].'</p>
 
 
       </div>
+
+  ';
+
+
+}
+
+} 
+
+
+?>
+
+
+    
       
-
-
-      <div class="prop-video">
-       
-       <span class="video">
-<iframe src="https://www.youtube.com/embed/qFp2-cT7_0k" frameborder="0" allowfullscreen></iframe>
-</span>
-     
-    </div>
-
-
-
-
-   <div class="prop">
-      <div class="video">
-       
-
-<iframe src="https://www.youtube.com/embed/qFp2-cT7_0k" frameborder="0" allowfullscreen></iframe>
-
-
-      </div>
-      
-
-
-      <div class="prop-video">
-       
-       <span class="video">
-<iframe src="https://www.youtube.com/embed/qFp2-cT7_0k" frameborder="0" allowfullscreen></iframe>
-</span>
-     
-    </div>
 
 
 

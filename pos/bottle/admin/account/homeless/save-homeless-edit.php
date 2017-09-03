@@ -30,14 +30,25 @@ if($_POST)
   Firstname='".$_POST['firstname']."',
   Lastname='".$_POST['lastname']."',
   Location='".$_POST['location']."',
-  Video='".$_POST['video']."'
+  Needs='".$_POST['needs']."',
+  Video='".$_POST['video']."',
+  profile_image='".$_FILES['file']['name']."'
 
   WHERE id='".$_POST['id']."'");
 
 
-  
-$output = json_encode(array('status' => 'success','text'=> '<div class="success">Successfully Saved!</div>'));
-die($output);
+
+  if ( 0 < $_FILES['file']['error'] ) {
+        echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+    }
+    else {
+        move_uploaded_file($_FILES['file']['tmp_name'], '../../../images/profile/homeless/' . $_FILES['file']['name']);
+
+    echo '<div class="success">Successfully Saved!</div>';
+
+    }
+
+
 
 
 }

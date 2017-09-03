@@ -105,6 +105,10 @@ $(document).ready(function(){
 
   <p>&nbsp;</p>
 
+
+  <img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>" class="profile-photo"/>
+<br><br>
+
     <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">
         
         
@@ -136,6 +140,15 @@ $(document).ready(function(){
 
      
              <input type="text" name="location" id="location" value="<?php echo $rowhomeless['Location']; ?>" class="validate">
+    
+          
+          </span>
+
+          <span class="input">
+            <label for="firstname">Needs</label>
+
+     
+             <input type="text" name="needs" id="needs" value="<?php echo $rowhomeless['Needs']; ?>" class="validate">
     
           
           </span>

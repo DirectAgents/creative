@@ -8,19 +8,6 @@ require_once 'base_path.php';
 include_once("config.php");
 
 
-if(isset($_GET['id'])){
-
-if($_GET['id'] == '1'){ 
-$_SESSION['source'] = 'craigslist';
-}
-
-if($_GET['id'] == '2'){ 
-$_SESSION['source'] = 'twitter';
-}
-
-}else{
-$_SESSION['source'] = 'no';
-}
 
 
 ?>

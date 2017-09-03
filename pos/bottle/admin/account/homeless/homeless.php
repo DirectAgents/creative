@@ -111,6 +111,19 @@ $sql=mysqli_query($connecDB,"SELECT  * FROM homeless ORDER BY id DESC");
 if(mysqli_num_rows($sql)>0)
 {
 
+echo '
+
+  <div class="create-one-here-box">
+      <div class="create-one schedule-one-here">
+        <a href="#" id="add_homeless" class="create-one-btn">+Add Homeless</a>
+
+       </div> 
+  </div>
+</div>
+
+
+';
+
 
 echo '
 
@@ -122,6 +135,7 @@ echo '
         <td style="text-align:center" class="grey">#</td>
         <td style="text-align:center" class="grey">Name</td>
         <td style="text-align:center" class="grey">Location</td>
+        <td style="text-align:center" class="grey">Needs</td>
         <td style="text-align:center" class="grey">Video</td>
         <td style="text-align:center" class="grey">&nbsp;</td>
         <td style="text-align:center" class="grey">&nbsp;</td>
@@ -139,6 +153,7 @@ while($row = mysqli_fetch_array($sql))
         <td style="text-align:center"><?php echo $row['homelessID']; ?></td>
         <td style="text-align:center"><?php echo $row['Firstname']; ?> <?php echo $row['Lastname']; ?></td>
         <td style="text-align:center"><?php echo $row['Location']; ?></td>
+        <td style="text-align:center"><?php echo $row['Needs']; ?></td>
         <td style="text-align:center"><a href="<?php echo $row['Video']; ?>">Watch Video</a></td>
         <td style="text-align:center"><button type='button' data-button='{"id": <?php echo $row['id'];?>,"homelessid":""}'>Edit</button></td>
         <td style="text-align:center"><button type='button' data-button='{"id": <?php echo $row['id'];?>,"homelessid": <?php echo $row['homelessID'];?>}'>Delete</button></td>

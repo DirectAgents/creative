@@ -7,7 +7,7 @@
  
 define('BASE_PATH','http://localhost/creative/pos/survey/snippets/image-upload/');
 define('DB_HOST', 'localhost');
-define('DB_NAME','circl');
+define('DB_NAME','bottle');
 define('DB_USER','root');
 define('DB_PASSWORD','123');
 

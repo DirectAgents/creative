@@ -12,8 +12,8 @@ require_once '../../../base_path.php';
 $ip = $_SERVER['REMOTE_ADDR'];
 
 
-$random = rand(5, 20000);
 
+$random = rand(5, 20000);
 
 
 
@@ -33,14 +33,38 @@ if($_POST)
 {
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO homeless(homelessID, Firstname, Lastname, Location, Video, Date, Time) 
-VALUES('".$random."' ,'".$_POST['firstname']."', '".$_POST['lastname']."' , '".$_POST['location']."', '".$_POST['video']."', '".$the_date."', '".$the_time."')");
 
+
+
+if(isset($_FILES['file'])){
+
+ if ( 0 < $_FILES['file']['error'] ) {
+        echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+    }
+    else {
+
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO homeless(homelessID, Firstname, Lastname, Location, Needs, Video, profile_image, Date, Time) 
+VALUES('".$random."' ,'".$_POST['firstname']."', '".$_POST['lastname']."' , '".$_POST['location']."', '".$_POST['needs']."', '".$_POST['video']."' , '".$_FILES['file']['name']."' , '".$the_date."', '".$the_time."')");
+
+
+        move_uploaded_file($_FILES['file']['tmp_name'], '../../../images/profile/homeless/' . $_FILES['file']['name']);
+
+        
+
+    }
+
+}else{
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO homeless(homelessID, Firstname, Lastname, Location, Needs, Video, Date, Time) 
+VALUES('".$random."' ,'".$_POST['firstname']."', '".$_POST['lastname']."' , '".$_POST['location']."', '".$_POST['needs']."', '".$_POST['video']."', '".$the_date."', '".$the_time."')");
 
   
-$output = json_encode(array('status' => 'success','text'=> '<div class="success">Successfully Added!</div>'));
-die($output);
 
+}
+
+
+echo '<div class="success">Successfully Added!</div>';
 
 }
 
