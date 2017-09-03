@@ -762,6 +762,10 @@ while($row = mysqli_fetch_array($sql))
 <p>&nbsp;</p>
 <p>'.$row['Firstname'].' '.$row['Lastname'].'</p>
 
+<p>Needs: '.$row['Needs'].'</p>
+
+<p>ID#: '.$row['homelessID'].'</p>
+
 
       </div>
 
