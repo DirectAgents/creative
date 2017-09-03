@@ -101,8 +101,15 @@ $(document).ready(function(){
 <div class="pick-up-request">
 
 
+ <?php if($rowhomeless['profile_image'] != ''){ ?>
+       <img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>" class="profile-photo"/>
 
-  <img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>" class="profile-photo"/>
+        <?php }else{ ?>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="profile-photo"/>
+
+        <?php } ?>
+
+
 <br><br>
 
     <form class="ff" id="profile-form" name="edit profile" method="post" target="votar">

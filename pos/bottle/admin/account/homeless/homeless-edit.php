@@ -157,7 +157,14 @@ $(document).ready(function(){
 <div id='preview'>
 
 
-<img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>" class="profile-photo"/>
+ <?php if($rowhomeless['profile_image'] != ''){ ?>
+       <img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>" class="profile-photo"/>
+
+        <?php }else{ ?>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="profile-photo"/>
+
+        <?php } ?>
+
 <br><br>
 <form id="imageform" method="post" enctype="multipart/form-data" action='ajaximage.php'>
 <input type="file" name="photoimg" id="photoimg" />
