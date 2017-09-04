@@ -5,11 +5,11 @@ require_once '../base_path.php';
 
 $participant = new CUSTOMER();
 
-/*
+
 if(empty($_GET['id']) && empty($_GET['code']))
 {
-	$participant->redirect('login.php');
-}*/
+	$participant->redirect('../login/');
+}
 
 if(isset($_GET['id']) && isset($_GET['code']))
 {
