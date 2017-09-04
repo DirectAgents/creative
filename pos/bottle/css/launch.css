@@ -2069,17 +2069,7 @@ max-width: 500px !important;
 min-width: 490px !important;
 }
 
-.video {
-	float:left;
-	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 36px;
-	color: #4a4a4a;
-	letter-spacing: 0.05px;
-	padding:15px;
-	width:100%;
-}
+
 
 }
 @media only screen and (min-width: 768px) and (orientation: landscape) {

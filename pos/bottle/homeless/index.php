@@ -7,6 +7,8 @@ require_once '../base_path.php';
 
 include_once("../config.php");
 
+require_once '../class.customer.php';
+require_once '../class.admin.php';
 
 
 
@@ -101,7 +103,7 @@ $(document).ready(function() {
    <div id='header'>
 <nav id='main_nav' role='main-navigation'>
 <div class='container-fluid nav-contents'>
-<div class='nav-item logo'>
+<div class='logo'>
 <a class="brand-logo-light nav-logo-swoosh" href="<?php echo BASE_PATH; ?>" target="_top">
 
 
@@ -760,19 +762,25 @@ while($row = mysqli_fetch_array($sql))
 
 
 
- <div class="col-lg-6 video">
+ <div class="col-lg-6 video" style="margin-bottom:30px;">
        
 
 <iframe src="'.$row['Video'].'" frameborder="0" allowfullscreen></iframe>
 
-<p>&nbsp;</p>
+<br>
 <p>'.$row['Firstname'].' '.$row['Lastname'].'</p>
 
 <p>Needs: '.$row['Needs'].'</p>';
 
+
+if($_SESSION['customerSession'] != '' || $_SESSION['adminSession'] != '' ){
+
+
 if(isset($_GET['d'])){
 
 echo'<p><a href="'.BASE_PATH.'/account/payment/?d='.$_GET['d'].'&h='.$row['homelessID'].'" class="donate">Donate</a></p>';
+
+}
 
 }
 
