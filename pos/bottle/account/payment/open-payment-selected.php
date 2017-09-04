@@ -23,6 +23,7 @@ $rowhomeless = mysqli_fetch_array($sqlhomeless);
 
 }
 
+
 ?>
 
 

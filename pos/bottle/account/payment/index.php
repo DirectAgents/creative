@@ -28,6 +28,22 @@ if(!$customer_home->is_logged_in())
 }
 
 
+
+if(isset($_GET['h'])){
+
+$sqlwepay=mysqli_query($connecDB,"SELECT * FROM wepay WHERE homelessID = '".$_GET['h']."' AND TaskID = '".$_GET['d']."'");
+
+if(mysqli_num_rows($sqlwepay)>0)
+{
+
+   header("Location:../payment/"); 
+}
+
+}
+
+
+
+
 $get_total_rows = 0;
 $results = $mysqli->query("SELECT COUNT(*) FROM tbl_startup_project");
 if($results){

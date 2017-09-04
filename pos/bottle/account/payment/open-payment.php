@@ -184,7 +184,7 @@ while($row2 = mysqli_fetch_array($sql2)){
   <?php } }else{?>
 
 <div class="no-account-yet">
-<p>No Payments so far!</p>
+<p>No New Open Payments!</p>
 </div>
 
     <?php } ?>
