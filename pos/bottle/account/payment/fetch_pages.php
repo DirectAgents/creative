@@ -76,17 +76,20 @@ function getParameterByName(name, url) {
 }
 
 
-var p = getParameterByName('p');
+var d = getParameterByName('d');
+var h = getParameterByName('h');
 
 
 
-if(p == 'bankaccount'){
-$('.bankaccount').click();
-$( "#bankaccount" ).load( "bankaccount.php" );
-}
+if(d > 0 && h > 0){
 
+$( "#open-payment" ).load( "open-payment-selected.php?taskid="+d+"&h="+h);
+
+}else{
 
 $( "#open-payment" ).load( "open-payment.php" );
+
+}
 
     $(".payment-received").click(function() {  
 

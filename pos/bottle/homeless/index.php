@@ -760,7 +760,7 @@ while($row = mysqli_fetch_array($sql))
 
 
 
- <div class="col-lg-6">
+ <div class="col-lg-6 video">
        
 
 <iframe src="'.$row['Video'].'" frameborder="0" allowfullscreen></iframe>
@@ -770,9 +770,9 @@ while($row = mysqli_fetch_array($sql))
 
 <p>Needs: '.$row['Needs'].'</p>
 
-<p>ID#: '.$row['homelessID'].'</p>
+<p><a href="'.BASE_PATH.'/account/payment/?d='.$_GET['d'].'&h='.$row['homelessID'].'" class="donate">Donate</a></p>
 
-
+  
 </div>
 
   ';
