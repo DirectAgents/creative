@@ -37,9 +37,9 @@ $redirect_uri = ''.BASE_PATH.'/signup/';
 
 //database
 $db_username = "root"; //Database Username
-$db_password = "123"; //Database Password
-$host_name = "localhost"; //Mysql Hostname
-$db_name = 'bottle'; //Database Name
+$db_password = "Q|2[J0pk1^W}"; //Database Password
+$host_name = "amazon-direct-agents-database.cwmohzhqenjy.us-east-1.rds.amazonaws.com:3306"; //Mysql Hostname
+$db_name = 'p'; //Database Name
 
 
 //incase of logout request, just unset the session var
@@ -209,8 +209,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
-<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
         <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/style.css">
@@ -220,8 +220,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
 
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- jQuery Library-->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- jQuery Library-->
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/passwordscheck.css" /><!-- Include Your CSS file here-->   
 
 
@@ -615,7 +615,7 @@ $response = $sg->client->mail()->send()->post($mail);
   <div class="logo">
       <a href="<?php echo BASE_PATH; ?>">
         
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="Layer_1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px"
    width="177.628px" height="48.228px" viewBox="0 0 177.628 48.228" enable-background="new 0 0 177.628 48.228"
    xml:space="preserve">
 <g>
@@ -1236,7 +1236,7 @@ echo 'id: ' . $user['id'];
   
 </div>
 
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
        <script src="<?php echo BASE_PATH; ?>/js/index.js"></script>
 
