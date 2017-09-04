@@ -204,7 +204,7 @@ $(document).ready(function(){
 
 
 
-<h4>Retrieve Payment</h4>
+<h4>Retrieve Payment & Donation</h4>
 <p>&nbsp;</p>
 
 
@@ -279,7 +279,7 @@ $(document).ready(function(){
 
 <?php }else{ ?>
 
-<p>You have selected the following individual to donate:</p>
+<p>You have selected the following individual for donation:</p>
 
 
 <p><img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>"/></p>
