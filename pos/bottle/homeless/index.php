@@ -768,14 +768,15 @@ while($row = mysqli_fetch_array($sql))
 <p>&nbsp;</p>
 <p>'.$row['Firstname'].' '.$row['Lastname'].'</p>
 
-<p>Needs: '.$row['Needs'].'</p>
+<p>Needs: '.$row['Needs'].'</p>';
 
-<p><a href="'.BASE_PATH.'/account/payment/?d='.$_GET['d'].'&h='.$row['homelessID'].'" class="donate">Donate</a></p>
+if(isset($_GET['d'])){
 
-  
-</div>
+echo'<p><a href="'.BASE_PATH.'/account/payment/?d='.$_GET['d'].'&h='.$row['homelessID'].'" class="donate">Donate</a></p>';
 
-  ';
+}
+
+echo '</div>';
 
 
 }
