@@ -639,6 +639,14 @@ label{font-weight:normal !important;}
 }
 
 
+.survey-metadata .item.id {
+    float: left;
+    width: 5%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+
 .survey-metadata .item.name {
     float: left;
     width: 17%;
@@ -3466,9 +3474,8 @@ a:hover.suggest-a-place{text-decoration: none !important;}
     text-transform: uppercase;
     padding: 14px 24px;
     border-radius: 0px;
-    font-family:'Circular', sans-serif;
     font-weight:300;
-    font-size: 14px;
+    font-size: 18px;
     margin-left: 0px;
     margin-top:20px;
     box-shadow: 0px !important;
