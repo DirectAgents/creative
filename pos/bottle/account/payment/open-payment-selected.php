@@ -198,7 +198,7 @@ $(document).ready(function(){
 
 <div id="slide" class="well slide">
   <div class="result-accept">
-    <div id="result-accept">Payment was sent successfully!</div>
+    <div id="result-accept">Thank You!<br>Donation and a Payout to your account was made successfully!</div>
   </div>
 
 
