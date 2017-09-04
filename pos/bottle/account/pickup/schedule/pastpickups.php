@@ -352,21 +352,21 @@ $row_amount = mysqli_fetch_array($amount);
 
 
 
-                     <div class="item status">
+                     <div class="item name">
                       <div class="label">Status</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php if($row2['Payment'] == 'Y'){ echo "Paid";}else{echo "Not Paid"; } ?>
+                          <?php if($row2['Payment'] == 'Y'){ echo "Paid";}else{echo "Not Paid Out"; } ?>
                         </span>
                       </div>
                     </div>
 
 
                      <div class="item name">
-                      <div class="label">Payment Amount</div>
+                      <div class="label">Credit</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          $<?php echo $row_amount['checkout_find_amount'];  ?>
+                          $<?php echo $row2['Amount'];?> (<a href="<?php echo BASE_PATH; ?>/account/payment/">Get paid now</a>)
                         </span>
                       </div>
                     </div>

@@ -72,7 +72,7 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_completed_tasks(userID, ta
 VALUES('".$_POST['userid']."', '".$_POST['taskid']."','".$rowpickup['Pickup_Date']."', '".$rowpickup['Pickup_Time']."','".$rowpickup['Receipt']."' , '".$_POST['amount']."')");
 
 
-//$sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_pickup_finished WHERE taskID = '".$_POST['taskid']."'");
 
 
 

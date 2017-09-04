@@ -134,7 +134,7 @@ $(document).ready(function(){
 
      //alert(homeless_id);
 
-     if(homeless_id == 'undefined'){
+     if(homeless_id == ''){
 
      alert("Please choose a homeless to make a donation to!");
 
@@ -310,6 +310,8 @@ $(document).ready(function(){
 
 <?php if(isset($_GET['h'])){ ?>
 <input type="hidden" id="homeless_id" name="homeless_id" value="<?php echo $_GET['h']; ?>"/>
+<?php }else{ ?>
+<input type="hidden" id="homeless_id" name="homeless_id" value=""/>
 <?php } ?>
 
 <p>&nbsp;</p>

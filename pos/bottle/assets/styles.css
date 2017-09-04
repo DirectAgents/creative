@@ -3185,8 +3185,7 @@ textarea {
     color: #fff;
     float:left;
     text-align:center;
-     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+
 }
 
 .btn-delete{
@@ -3204,8 +3203,7 @@ textarea {
     color: #fff;
     float:left;
     text-align:center;
-     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    
 }
 
 .btn-no-show-up{
@@ -3287,8 +3285,7 @@ text-transform: uppercase;
     color: #fff;
     float:left;
     text-align:center;
-     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+   
 }
 
 
