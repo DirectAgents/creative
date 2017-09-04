@@ -2023,9 +2023,9 @@ body>header.homeless {
 
 iframe {
 width: 100%;
-height: 315px !important;
-max-width: 560px !important;
-min-width: 560px !important;
+height: 250px !important;
+max-width: 500px !important;
+min-width: 490px !important;
 }
 
 }
@@ -2074,9 +2074,7 @@ body>header.hero .title {
 
 iframe {
 width: 100%;
-height: 300px !important;
-max-width: 300px !important;
-min-width: 300px !important;
+height: 340px !important;
 margin-bottom:30px;
 float:left;
 }
@@ -2102,9 +2100,9 @@ margin-bottom:30px;
 @media only screen and (max-width: 480px) {
 iframe {
 width: 100%;
-height: 200px !important;
-max-width: 300px !important;
-min-width: 300px !important;
+height: 130px !important;
+max-width: 200px !important;
+min-width: 250px !important;
 margin-bottom:30px;
 }
 }
