@@ -116,7 +116,7 @@ $random = rand(5, 20000);
 
 <div id="slide-accept<?php echo $row2['id']; ?>_<?php echo $random; ?>" class="well slide-accept">
   <div class="result-accept">
-    <div id="result-accept-<?php echo $row2['id']; ?>">Payment was sent successfully!</div>
+    <div id="result-accept-<?php echo $row2['id']; ?>">Credit was sent successfully!</div>
   </div>
 
 
@@ -150,7 +150,7 @@ jq(document).ready(function(){
 
 
 
-<h4>Pay the Customer</h4>
+<h4>Credit the Customer</h4>
 <p>&nbsp;</p>
 
 
@@ -373,7 +373,7 @@ $row_customer = mysqli_fetch_array($customer);
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row_customer['userID']; ?> </div>
                     </div>
 
-                    
+
                     <div class="item name">
                       <div class="label">Name</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row_customer['FirstName']; ?> <?php echo $row_customer['LastName']; ?></div>

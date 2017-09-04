@@ -184,13 +184,13 @@ $rowtask = mysqli_fetch_array($sqltask);
      
 
        <tr>
-        <td style="text-align:left" class="grey">PickUp#</td>
-        <td style="text-align:left" class="grey">Transaction ID#</td>
-        <td style="text-align:right" class="grey">Date of Payment</td>
-        <td style="text-align:right" class="grey">Total Credit</td>
-        <td style="text-align:right" class="grey">You Donated</td>
-        <td style="text-align:right" class="grey">You Earned</td>
-        <td style="text-align:right" class="grey">&nbsp;</td>
+        <td style="text-align:center" class="grey">PickUp#</td>
+        <td style="text-align:center" class="grey">Transaction ID#</td>
+        <td style="text-align:center" class="grey">Date of Payment</td>
+        <td style="text-align:center" class="grey">Total Credit</td>
+        <td style="text-align:center" class="grey">You Donated</td>
+        <td style="text-align:center" class="grey">You Earned</td>
+        <td style="text-align:center" class="grey">&nbsp;</td>
        
       </tr>
 
@@ -226,13 +226,13 @@ if (strpos($row2['checkout_find_amount'], '.') == false) {
 
 
       <tr>
-        <td style="text-align:left"><?php echo $row2['TaskID']; //echo $row2['id']; ?></td>
-        <td style="text-align:left"><?php echo $row2['checkout_id']; //echo $row2['id']; ?></td>
-        <td style="text-align:right"><?php echo date('F j, Y',strtotime($row2['Date']));  ?></td>
-        <td style="text-align:right">$<?php echo $row2['total_credit']; //echo $row2['id']; ?></td>
-        <td style="text-align:right">$<?php echo $row2['homeless_donation']; //echo $row2['id']; ?></td>
-        <td style="text-align:right">$<?php echo $final_amount; //echo $row2['id']; ?></td>
-        <td style="text-align:right"><a target="_blank" href="<?php echo BASE_PATH; ?>/images/receipts/<?php echo $rowreceipt['Receipt'];?>">View Receipt</a></td>
+        <td style="text-align:center"><?php echo $row2['TaskID']; //echo $row2['id']; ?></td>
+        <td style="text-align:center"><?php echo $row2['checkout_id']; //echo $row2['id']; ?></td>
+        <td style="text-align:center"><?php echo date('F j, Y',strtotime($row2['Date']));  ?></td>
+        <td style="text-align:center">$<?php echo $row2['total_credit']; //echo $row2['id']; ?></td>
+        <td style="text-align:center">$<?php echo $row2['homeless_donation']; //echo $row2['id']; ?></td>
+        <td style="text-align:center">$<?php echo $final_amount; //echo $row2['id']; ?></td>
+        <td style="text-align:center"><a target="_blank" href="<?php echo BASE_PATH; ?>/images/receipts/<?php echo $rowreceipt['Receipt'];?>">View Receipt</a></td>
        
       </tr>
     

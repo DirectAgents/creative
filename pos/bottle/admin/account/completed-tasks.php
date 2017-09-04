@@ -225,7 +225,7 @@ $row_amount = mysqli_fetch_array($amount);
                     
                     <div class="item name">
                       <div class="label">Task#</div>
-                      <div class="value"><?php echo $row_amount['TaskID']; ?> </div>
+                      <div class="value"><?php echo $row2['taskID']; ?> </div>
                     </div>
 
                   <div class="item name">
@@ -249,7 +249,7 @@ $row_amount = mysqli_fetch_array($amount);
                       <div class="label">Status</div>
                       <div class="value">
                        <span ng-if="!survey.running &amp;&amp; !survey.finalized &amp;&amp; !survey.waitingForApproval" class="draft">
-                          <?php if($row2['Payment'] == 'Y'){ echo "Paid";}else{echo "Not Paid"; } ?>
+                          <?php if($row2['Payment'] == 'Y'){ echo "Paid";}else{echo "Not Paid Out"; } ?>
                         </span>
                       </div>
                     </div>

@@ -131,6 +131,17 @@ $(document).ready(function(){
         var homeless_donation_amount = $('input[name=homeless_donation').val();
         var homeless_id = $('input[name=homeless_id').val();
 
+     //alert(homeless_id);
+
+     if(homeless_id == 'undefined'){
+
+     alert("Please choose a homeless to make a donation to!");
+
+     return false
+
+
+     }   
+
 
      if(homeless_donation_amount == ''){
 
@@ -139,7 +150,7 @@ $(document).ready(function(){
      return false
 
 
-     }else{   
+     }
 
         //alert(homeless_id);
 
@@ -183,7 +194,7 @@ $(document).ready(function(){
                 }
         });
 
-    }
+    
 
  });
  
@@ -205,27 +216,22 @@ $(document).ready(function(){
 
 
 <h4>Retrieve Payment & Donation</h4>
-<p>&nbsp;</p>
+
 
 
 <input type="hidden" name="the_date" id="the_date" value=""/>
 
 
-<input type="text" name="userid" id="userid" value="<?php echo $_SESSION['customerSession']; ?>">
-<input type="text" name="taskid" id="taskid" value="<?php echo $_GET['taskid']; ?>">
-<input type="text" name="adminid" id="adminid" value="<?php echo $rowadmin['userID']; ?>">
-<input type="text" name="amount" id="amount" value="<?php echo $row['Amount']; ?>">
-
-
-
-
-
+<input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['customerSession']; ?>">
+<input type="hidden" name="taskid" id="taskid" value="<?php echo $_GET['taskid']; ?>">
+<input type="hidden" name="adminid" id="adminid" value="<?php echo $rowadmin['userID']; ?>">
+<input type="hidden" name="amount" id="amount" value="<?php echo $row['Amount']; ?>">
 
 
 <div id="error-calculation"></div>
 
 
-<h3>Payout explained:</h3>
+<h3>Payout explained</h3>
 
 <div style="float:left; width:100%">
 <p><h4><div style="float:left">Amount credited: $</div><div id="amount-credited" style="float:left; font-weight:bold"></div></h4></p>
@@ -275,14 +281,18 @@ $(document).ready(function(){
 <p>&nbsp;</p>
 <?php if(!isset($_GET['h'])){ ?>
 
-<h3>Please choose a homeless person you want to donate to <a href="<?php echo BASE_PATH; ?>/homeless/?d=<?php echo $_GET['taskid']; ?>">Click Here</a></h3>
+<h4>Step 1: Please choose a homeless person you want to donate to <strong><a href="<?php echo BASE_PATH; ?>/homeless/?d=<?php echo $_GET['taskid']; ?>">Click Here</a></strong></h4>
 
 <?php }else{ ?>
 
 <p>You have selected the following individual for donation:</p>
 
+<?php if($rowhomeless['profile_image'] != '') { ?>
+<p><img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>" class="profile-photo"/></p>
+<?php }else{ ?>
+<p><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="profile-photo"/></p>
+<?php } ?>
 
-<p><img src="<?php echo BASE_PATH; ?>/images/profile/homeless/<?php echo $rowhomeless['profile_image']; ?>"/></p>
 <p><?php echo $rowhomeless['Firstname']; ?> <?php echo $rowhomeless['Lastname']; ?></p>
 <p>Needs: <?php echo $rowhomeless['Needs']; ?></p>
 
@@ -293,12 +303,13 @@ $(document).ready(function(){
 <p>&nbsp;</p>
 
 
-<p>Enter amount you want to donate (min. 1 cent)</p>
+<p><h4>Step 2: Enter amount you want to donate (min. 1 cent)</h4></p>
+<br>
+<p>$<input type="text" id="homeless_donation" name="homeless_donation" placeholder="e.g 3.00" style="width:100px"/></p>
 
-<p>$<input type="text" id="homeless_donation" name="homeless_donation" placeholder="e.g 3.00"/></p>
-
+<?php if(isset($_GET['h'])){ ?>
 <input type="hidden" id="homeless_id" name="homeless_id" value="<?php echo $_GET['h']; ?>"/>
-
+<?php } ?>
 
 <p>&nbsp;</p>
 <p><a href="#" class="create-one-btn slide_open preview-payment">Preview Payment</a></p>
