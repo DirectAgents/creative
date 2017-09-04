@@ -37,9 +37,9 @@ $redirect_uri = ''.BASE_PATH.'/signup/';
 
 //database
 $db_username = "root"; //Database Username
-$db_password = "Q|2[J0pk1^W}"; //Database Password
-$host_name = "amazon-direct-agents-database.cwmohzhqenjy.us-east-1.rds.amazonaws.com:3306"; //Mysql Hostname
-$db_name = 'p'; //Database Name
+$db_password = "123"; //Database Password
+$host_name = "localhost"; //Mysql Hostname
+$db_name = 'bottle'; //Database Name
 
 
 //incase of logout request, just unset the session var
