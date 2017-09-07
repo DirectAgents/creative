@@ -1,96 +1,53 @@
 <?php
 
+
 session_start();
 
+require_once '../class.customer.php';
 
-require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
-
-require_once '../base_path.php';
-
-
-$fb = new Facebook\Facebook([
-  'app_id' => '1797081013903216',
-  'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
-  'default_graph_version' => 'v2.2',
-  ]);
+include_once("../config.php");
 
 
-$helper = $fb->getRedirectLoginHelper();
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userEmail = '".$_GET['email']."'");
 
-try {
-  $accessToken = $helper->getAccessToken();
-} catch(Facebook\Exceptions\FacebookResponseException $e) {
-  // When Graph returns an error
-  //echo 'Graph returned an error: ' . $e->getMessage();
-  header('Location: '.BASE_PATH.'/login/');
-  exit;
-} catch(Facebook\Exceptions\FacebookSDKException $e) {
-  // When validation fails or other local issues
-  //echo 'Facebook SDK returned an error: ' . $e->getMessage();
-  header('Location: '.BASE_PATH.'/login/');
-  exit;
+//if user already exist
+if(mysqli_num_rows($sql) > 0)
+{
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userEmail = '".$_GET['email']."'");
+$row = mysqli_fetch_array($sql);  
+
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
+    facebook_id = '".$_GET['id']."', 
+    profile_image = '',
+    google_picture_link = '',
+    account_verified = '1'  
+
+    WHERE userEmail='".$_GET['email']."'");
+    
+    $_SESSION['customerSession'] = $row['userID'];
+    $_SESSION['facebook_photo'] = $_GET['id'];
+    $_SESSION['fb_access_token_customer'] = $_GET['accessToken'];
+    header("Location: ../account/");
+    exit(); 
+
+}else{
+
+  date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+
+    $gender = ucfirst($_GET['gender']);
+
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_customer (facebook_id, FirstName, LastName, userEmail, Gender, Date_Created, account_verified) 
+      VALUES ('".$_GET['id']."',  '".$_GET['firstname']."', '".$_GET['lastname']."', '".$_GET['email']."', '".$gender."' , '".$date."','1')");
+
+    $_SESSION['customerSession'] = $row['userID'];
+    $_SESSION['fb_access_token_customer'] = $_GET['accessToken'];
+    
+    header("Location: ../account/");
+    exit(); 
 }
-
-if (! isset($accessToken)) {
-  if ($helper->getError()) {
-    //header('HTTP/1.0 401 Unauthorized');
-    //echo "Error: " . $helper->getError() . "\n";
-    //echo "Error Code: " . $helper->getErrorCode() . "\n";
-    //echo "Error Reason: " . $helper->getErrorReason() . "\n";
-    //echo "Error Description: " . $helper->getErrorDescription() . "\n";
-    header('Location: '.BASE_PATH.'/signup/');
-  } else {
-    //header('HTTP/1.0 400 Bad Request');
-    //echo 'Bad request';
-    header('Location: '.BASE_PATH.'/signup/');
-  }
-  exit;
-}
-
-// Logged in
-//echo '<h3>Access Token</h3>';
-//var_dump($accessToken->getValue());
-
-// The OAuth 2.0 client handler helps us manage access tokens
-$oAuth2Client = $fb->getOAuth2Client();
-
-// Get the access token metadata from /debug_token
-$tokenMetadata = $oAuth2Client->debugToken($accessToken);
-//echo '<h3>Metadata</h3>';
-//var_dump($tokenMetadata);
-
-// Validation (these will throw FacebookSDKException's when they fail)
-$tokenMetadata->validateAppId('1797081013903216'); // Replace {app-id} with your app id
-// If you know the user ID this access token belongs to, you can validate it here
-//$tokenMetadata->validateUserId('123');
-$tokenMetadata->validateExpiration();
-
-if (! $accessToken->isLongLived()) {
-  // Exchanges a short-lived access token for a long-lived one
-  try {
-    $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-  } catch (Facebook\Exceptions\FacebookSDKException $e) {
-    echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
-    exit;
-  }
-
-  echo '<h3>Long-lived</h3>';
-  var_dump($accessToken->getValue());
-}
-
-$_SESSION['fb_access_token_customer'] = (string) $accessToken;
-
-
-
-
-//echo $_SESSION['fb_access_token_startup'];
-// User is logged in with a long-lived access token.
-// You can redirect them to a members-only page.
-header('Location: '.BASE_PATH.'/signup/');
-
-
-
-
 
 
 

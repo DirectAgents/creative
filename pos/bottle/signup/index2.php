@@ -37,9 +37,9 @@ $redirect_uri = ''.BASE_PATH.'/signup/';
 
 //database
 $db_username = "root"; //Database Username
-$db_password = "Q|2[J0pk1^W}"; //Database Password
-$host_name = "amazon-direct-agents-database.cwmohzhqenjy.us-east-1.rds.amazonaws.com:3306"; //Mysql Hostname
-$db_name = 'p'; //Database Name
+$db_password = "123"; //Database Password
+$host_name = "localhost"; //Mysql Hostname
+$db_name = 'bottle'; //Database Name
 
 
 //incase of logout request, just unset the session var
@@ -209,8 +209,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
-<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
         <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/style.css">
@@ -220,8 +220,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
 
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- jQuery Library-->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- jQuery Library-->
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/passwordscheck.css" /><!-- Include Your CSS file here-->   
 
 
@@ -615,7 +615,7 @@ $response = $sg->client->mail()->send()->post($mail);
   <div class="logo">
       <a href="<?php echo BASE_PATH; ?>">
         
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="Layer_1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px"
    width="177.628px" height="48.228px" viewBox="0 0 177.628 48.228" enable-background="new 0 0 177.628 48.228"
    xml:space="preserve">
 <g>
@@ -1052,119 +1052,23 @@ if (isset($authUrl)){
 
 
 
-<script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      //testAPI();
-      //alert("123");
-
-     var uid = response.authResponse.userID;
-     var accessToken = response.authResponse.accessToken;
-     
-     //alert(accessToken);
-
-     FB.api('/me?fields=id,first_name, last_name,email,gender', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.first_name + '!';
-        //'Thanks for logging in, ' + accessToken + '!';
-        //window.location.href = "signup-callback.php?email="+response.email+"&id="+response.id+"&firstname="+response.first_name+"&lastname="+response.last_name+"&gender="+response.gender+"&accessToken="+accessToken;
-    });
-
-
-    } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-       
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-
-  function logout() {
-     FB.logout(function(response) {
-   // Person is now logged out
-   statusChangeCallback(response);
-  });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1797081013903216',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-  });
-
-
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
- 
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me?fields=id,first_name, last_name,email,gender', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        //'Thanks for logging in, ' + response.name + '!';
-        //'Thanks for logging in, ' + accessToken + '!';
-        window.location.href = "signup-callback.php?email="+response.email+"&id="+response.id+"&firstname="+response.first_name+"&lastname="+response.last_name+"&gender="+response.gender+"&accessToken="+accessToken;
-    });
-  }
-</script>
-<!--
-  Below we include the Login Button social plugin. This button uses
-  the JavaScript SDK to present a graphical Login button that triggers
-  the FB.login() function when clicked.
--->
-
-
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<fb:login-button scope="public_profile,email" onlogin="logout();">
-</fb:login-button>
-
-<div id="status">
-</div>
-
 
 
 <?php
+
+$fb = new Facebook\Facebook([
+  'app_id' => '1797081013903216',
+  'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
+  'default_graph_version' => 'v2.2',
+  ]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup/signup-callback2.php', $permissions);
+
+
+
 
 
 
@@ -1178,7 +1082,7 @@ echo '<div style="margin:0 auto; width: 82%;">';
 
 echo '<a class="social-signin__btn btn_google btn_default-bis" href="' . $authUrl . '"> <span class="icon icon_google"></span> Google </a>';
 
-
+echo '<a class="social-signin__btn btn_facebook btn_default-bis" href="' . htmlspecialchars($loginUrl) . '"> <span class="icon icon_facebook"></span> Facebook </a>';
 
 echo '</div>';
 echo '</div>';
@@ -1205,7 +1109,123 @@ echo "<p>&nbsp;</p>";
 
 
 
+
+//echo $_SESSION['fb_access_token_customer'];
+
+
+if(isset($_SESSION['fb_access_token_customer'])){
+
+try {
+  // Returns a `Facebook\FacebookResponse` object
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_customer']);
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
+
+$user = $response->getGraphUser();
+/*
+echo 'Name: ' . $user['name'];
+echo "<br>";
+echo 'Email: ' . $user['email'];
+echo "<br>";
+echo 'id: ' . $user['id'];
+*/
+
+
+//check if user exist in database using COUNT
+
+
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_customer WHERE facebook_id='".$user['id']."' ");
+  $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
+
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_customer WHERE userEmail = '".$user['email']."'");
+  $row = mysqli_fetch_array($sql);
+
+
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($user_count_facebook) //if user already exist change greeting text to "Welcome Back"
+    {
+
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_customer SET 
+    facebook_id = '".$user['id']."', 
+    profile_image = '',
+    google_picture_link = '',
+    account_verified = '1'  
+
+    WHERE userEmail='".$user['email']."'");
+
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['customerSession'] = $row['userID'];
+        $_SESSION['facebook_photo'] = $user['id'];
+        header("Location: ../account/");
+        exit();
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+
+
+
+  
+
+
+   date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+
+    $gender = ucfirst($user['gender']);
+
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_customer (facebook_id, FirstName, LastName, userEmail, Gender, Date_Created, account_verified) 
+      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' , '".$date."','1')");
+    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
+    //$statement->execute();
+    //echo $mysqli->error;
+
+    //mysqli_query($insert_sql);  
+
+    $_SESSION['customerSession'] = $row['userID'];
+    header("Location: ../index.php");
+    exit(); 
+
+
+
+
+    //echo $user->id;
+
+
+
+
+
+
+    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
+    
+      //exit(header("Location: ../index.php"));
+
+    }else{
+
+        $_SESSION['customerSession'] = $user['id'];
+        $_SESSION['facebook_photo'] = $user['id'];
+        header("Location: ../index.php");
+        exit();
+
+    }
+
+  }
+
  
+
+
+
+
+}
+
 
 ?>
 
@@ -1216,7 +1236,7 @@ echo "<p>&nbsp;</p>";
   
 </div>
 
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
        <script src="<?php echo BASE_PATH; ?>/js/index.js"></script>
 
