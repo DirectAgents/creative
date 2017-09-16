@@ -17,6 +17,9 @@ if($_POST)
 {
 
 
+
+
+
 $_SESSION['projectid'] = $_POST['projectid'];
 
 
@@ -67,7 +70,7 @@ if(mysqli_num_rows($sql)>0)
 
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET 
-  Name='".$projectname."',
+  Problem='".$projectname."',
   Stage='".$stage."',
   Category='".$category."',
   MinReq='".$minreq."',
@@ -99,7 +102,7 @@ if(mysqli_num_rows($sql)>0)
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID, startupID, Name, Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID, startupID, Problem, Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
 Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interests, Languages, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
   '".$projectname."', '".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
   '".$status."','".$ethnicity."','".$smoke."','".$drink."','".$diet."',
@@ -150,9 +153,6 @@ PotentialAnswer3, Accepted, EnabledorDisabled) VALUES('".$_SESSION['startupSessi
 
 
 
-
-$output = json_encode(array('type'=>'message', 'text' => '<div class="success">Successfully Saved!</div>'));
- die($output);
 
     
   

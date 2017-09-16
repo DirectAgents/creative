@@ -1,7 +1,7 @@
 <?php
 $db_username = 'root';
 $db_password = '123';
-$db_name = 'circl';
+$db_name = 'mrpao';
 $db_host = 'localhost';
 
 

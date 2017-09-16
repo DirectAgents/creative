@@ -125,7 +125,7 @@ h2{font-size:25px;}
   background: #fff;
   width: 100%;
   border: 0;
-  margin: 0 0 0px;
+  margin: 10px 0 0px;
   padding: 15px;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -228,6 +228,7 @@ h2{font-size:25px;}
   transition: all 0.3 ease;
   cursor: pointer;
   font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+  margin-top:10px;
 
 }
 .form .message {
@@ -687,7 +688,6 @@ body:before {
 .birthday-year{width:100%;}
 
 }
-
 
 
 

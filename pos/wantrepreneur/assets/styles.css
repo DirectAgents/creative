@@ -7,6 +7,11 @@
   overflow-x:hidden;
 }
 
+
+
+
+
+
 .viewed-bubble{
  position:absolute;
 
@@ -36,6 +41,9 @@
   width: auto;
   padding-bottom: 100%;
 }
+
+
+td.h3{color:#333;}
 
 
 .pay-amount{background:#eee; padding:10px;}
@@ -597,10 +605,80 @@ label{font-weight:normal !important;}
     width:100%;
 }
 
+
+
 .survey-metadata .item {
     float: left;
-    width: 22%;
-    margin-right:20px;
+    width: 30%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+
+
+.survey-metadata .date {
+    float: left;
+    width: 33%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+
+.survey-metadata .item.buttons {
+    float: left;
+    width: 25%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.userid {
+    float: left;
+    width: 5%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+
+.survey-metadata .item.id {
+    float: left;
+    width: 5%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+
+.survey-metadata .item.name {
+    float: left;
+    width: 17%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.status {
+    float: left;
+    width: 10%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.receipt {
+    float: left;
+    width: 10%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.amount {
+    float: left;
+    width: 10%;
+    margin-right:0px;
+    /*width: 33.3%;*/
+}
+
+.survey-metadata .item.location {
+    float: left;
+    width: 20%;
+    margin-right:0px;
     /*width: 33.3%;*/
 }
 
@@ -628,14 +706,14 @@ label{font-weight:normal !important;}
 }
 
 .survey-metadata .item .value {
-    font-size: 12px;
+    font-size: 13px;
     color: #6a7486;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 
 .survey-metadata .label {
-    font-size: 12px;
+    font-size: 13px;
     color: #3fa208 !important;
     text-transform: uppercase;
     font-weight: 700;
@@ -2855,13 +2933,14 @@ textarea {
    width:100%;
 }
 
-
+.center{text-align:center;}
+.left{float:left; text-align: left}
 
 
 .create-one-btn{
   display: inline-block;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 0px;
   white-space: nowrap;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3106,15 +3185,13 @@ textarea {
     color: #fff;
     float:left;
     text-align:center;
-     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+
 }
 
 .btn-delete{
     text-transform: uppercase;
     padding: 14px 24px;
     border-radius: 0px;
-    font-family:'Circular', sans-serif;
     font-weight:300;
     font-size: 14px;
     margin-left: 0px;
@@ -3126,8 +3203,7 @@ textarea {
     color: #fff;
     float:left;
     text-align:center;
-     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    
 }
 
 .btn-no-show-up{
@@ -3171,11 +3247,33 @@ textarea {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+.schedule-pickup{
+
+text-transform: uppercase;
+    padding: 14px 24px;
+    border-radius: 0px;
+    font-family:'Circular', sans-serif;
+    font-weight:300;
+    font-size: 14px;
+    margin-right: 15px;
+    margin-top:20px;
+    border:none !important;
+    box-shadow: 0px !important;
+    cursor: pointer;
+    background:#2bb90a; 
+    color: #fff;
+    float:left;
+    text-align:center;
+     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
 .cancel{
     text-transform: uppercase;
     padding: 14px 24px;
     border-radius: 0px;
-    font-family:'Circular', sans-serif;
     font-weight:300;
     font-size: 14px;
     margin-right: 15px;
@@ -3187,9 +3285,44 @@ textarea {
     color: #fff;
     float:left;
     text-align:center;
-     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+   
 }
+
+
+.cancel-btn{
+    
+    
+  float:right;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 0px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  margin-bottom: 0;
+  -webkit-transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+  font-size: 18px;
+  line-height: 10px;
+  letter-spacing: 1.4166666667px;
+  line-height: 25px;
+  height: 25px;
+  padding: 10px 15px 35px 15px;
+  border: 0;
+  color: white !important;
+  border-color: currentColor;
+ background: #e44044;
+
+
+
+}
+
 
 .result-delete, .result-decline, .result-cancel, .result-accept{
   display:none;
@@ -3336,9 +3469,8 @@ a:hover.suggest-a-place{text-decoration: none !important;}
     text-transform: uppercase;
     padding: 14px 24px;
     border-radius: 0px;
-    font-family:'Circular', sans-serif;
     font-weight:300;
-    font-size: 14px;
+    font-size: 18px;
     margin-left: 0px;
     margin-top:20px;
     box-shadow: 0px !important;
@@ -3754,7 +3886,9 @@ margin-left:0px;
 .no-participants{float:left; width:100%; text-align:center; padding:20px;}
 
 .processmenu-inactive{padding:10px;}
-.processmenu-active{padding-top:11px; color:#000 !important;}
+.processmenu-active{padding-top:11px; color:#aef9ad !important;}
+
+.green{color:#aef9ad !important;}
 
 #dashboardSurveyProcessMenu {
     background: #3c9cdd;
@@ -3828,14 +3962,41 @@ margin-left:0px;
 .row-day, .row-time{float:left; width:100%;}
 
 
-
+img.center{display: block; margin:0 auto; width:100%; max-width: 264px}
 
 
 /**Popup overlay**/
 
+
+#slide-intro{
+  display:none;
+  width:50%;
+  margin-top:30px;
+  background:#fff;
+}
+
+.checkbox-intro{float:left; margin-top:30px;}
+
+#slide-intro_background {
+  transition: all 0.3s 0.3s;
+}
+#slide-intro,
+#slide-intro_wrapper {
+  transition: all 0.3s ease-out;
+}
+#slide-intro {
+  transform: translateX(0) translateY(-40%);
+}
+.popup_visible #slide-intro {
+  transform: translateX(0) translateY(0);
+}
+
+
+
+
 #slide{
   display:none;
-  width:45%;
+  width:35%;
   margin-top:30px;
   background-color: #fff;
     border: 1px solid #e5e5e5;
@@ -3883,7 +4044,7 @@ margin-left:0px;
 }
 
 
-
+.slide_accept{width:35% !important;}
 
 
 
@@ -4608,7 +4769,7 @@ float:left;
     /* margin-left: 5px; */
     color: #fff;
     /* text-shadow: 0 -1px 0 rgba(0,0,0,0.25); */
-    background-color: #2d313c !important;
+    /*background-color: #2d313c !important;*/
    
    
     margin-right:0px;
@@ -4859,6 +5020,17 @@ span.message img {
 }
 
 .nav-profile-photo{
+ background-repeat: no-repeat;
+ background-position: 50%;
+ border-radius: 50%;
+ width: 30px;
+ height: 30px;
+ border:solid 0px #dedede;
+ padding:0px;
+}
+
+
+.thumb{
  background-repeat: no-repeat;
  background-position: 50%;
  border-radius: 50%;
@@ -5157,7 +5329,6 @@ FORM.ff FIELDSET>SPAN {
   table-layout: auto;
   width: 100%;
   margin-bottom: -1px;
-  position: relative;
   z-index: 1;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
@@ -5190,7 +5361,6 @@ FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN 
   border: 1px solid #d9d9d9;
   border-radius: 0;
   line-height: 21px;
-  padding: 11px;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -5206,11 +5376,17 @@ FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN 
   outline: none;
   text-align: left
 }
+
+FORM.ff FIELDSET>SPAN INPUT{
+  padding-left:10px;
+}
+
 FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN BUTTON, FORM.ff FIELDSET>SPAN TEXTAREA, FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-input, FORM.ff FIELDSET>SPAN .fake-select, FORM.ff FIELDSET>SPAN .select-wrapper, FORM.ff FIELDSET>SPAN .group {
   width: 100%;
-  min-height: 46px;
+  min-height: 49px;
   display: table-cell;
-  vertical-align: middle
+  vertical-align: middle;
+  
 }
 @media only screen and (max-width: 667px) {
 FORM.ff FIELDSET>SPAN LABEL, FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN BUTTON, FORM.ff FIELDSET>SPAN TEXTAREA, FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-input, FORM.ff FIELDSET>SPAN .fake-select, FORM.ff FIELDSET>SPAN .select-wrapper, FORM.ff FIELDSET>SPAN .group {
@@ -5294,7 +5470,7 @@ FORM.ff FIELDSET>SPAN LABEL.and{
 
 
 
-FORM.ff FIELDSET>SPAN SELECT.fromto{width:115px; float:left; /*border-left:1px solid #d9d9d9 !important;*/}
+FORM.ff FIELDSET>SPAN SELECT.fromto{ float:left; /*border-left:1px solid #d9d9d9 !important;*/}
 
 
 @media only screen and (max-width: 667px) {
@@ -5366,7 +5542,8 @@ FORM.ff FIELDSET>SPAN.required LABEL {
 }
 FORM.ff FIELDSET>SPAN INPUT, FORM.ff FIELDSET>SPAN BUTTON, FORM.ff FIELDSET>SPAN TEXTAREA, FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-input, FORM.ff FIELDSET>SPAN .fake-select, FORM.ff FIELDSET>SPAN .select-wrapper {
   border-left-width: 1 !important;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04)
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+
 }
 FORM.ff FIELDSET>SPAN INPUT:first-child, FORM.ff FIELDSET>SPAN BUTTON:first-child, FORM.ff FIELDSET>SPAN TEXTAREA:first-child, FORM.ff FIELDSET>SPAN SELECT:first-child, FORM.ff FIELDSET>SPAN .fake-input:first-child, FORM.ff FIELDSET>SPAN .fake-select:first-child, FORM.ff FIELDSET>SPAN .select-wrapper:first-child {
   border-left-width: 1px !important
@@ -5486,10 +5663,12 @@ background-size:1240px 32px !important
 }
 FORM.ff FIELDSET>SPAN .fake-select SELECT, FORM.ff FIELDSET>SPAN .select-wrapper SELECT {
   position: relative;
-  z-index: 4
+  z-index: 4;
+  padding: .8em;
 }
 FORM.ff FIELDSET>SPAN SELECT, FORM.ff FIELDSET>SPAN .fake-select {
-  color: #747474
+  padding-left:10px;
+
 }
 FORM.ff FIELDSET>SPAN SELECT:active, FORM.ff FIELDSET>SPAN SELECT.active-tap, FORM.ff FIELDSET>SPAN .fake-select:active, FORM.ff FIELDSET>SPAN .fake-select.active-tap {
   background-color: #fdfdfd
@@ -5643,7 +5822,8 @@ FORM.ff FIELDSET>SPAN.select .select-wrapper SELECT {
   width: 100%;
   border: 0;
   background: none;
-  box-shadow: none
+  box-shadow: none;
+  padding:.8em;/.4em;
 }
 FORM.ff FIELDSET>SPAN.select .select-wrapper SELECT:active, FORM.ff FIELDSET>SPAN.select .select-wrapper SELECT.active-tap {
   background-color: #fdfdfd
@@ -5760,6 +5940,7 @@ FORM.ff .note.notforheader {
     border-image: initial;
 }
 }
+
 
 
 

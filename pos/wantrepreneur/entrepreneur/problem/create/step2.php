@@ -166,15 +166,16 @@ jq(document).ready(function(){
 </a>
 
 <a href="step2.php"> 
-    <div class="col-md-4 processmenu-inactive">
+    <div class="col-md-4 processmenu-active">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
         <i class="fa fa-circle-thin fa-stack-2x"></i>
         <i class="fa fa-lightbulb-o fa-stack-1x"></i>
       </span>
     </div>
-      <div class="dashboardProcessMenuText"><span class="number">2</span> IDEA SUMMARY </div></div>
+      <div class="dashboardProcessMenuText green"><span class="number"></span> PROBLEM SUMMARY </div></div>
 </a>
+<!--
 <a href="step3.php">    
     <div class="col-sm-4">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
@@ -187,6 +188,7 @@ jq(document).ready(function(){
       <div class="dashboardProcessMenuText"> <div class="processmenu-active"><span class="number">3</span> CONFIRM</div></div></div>
   </div>
  </a> 
+ -->
 
     
   </div>
@@ -205,7 +207,7 @@ jq(document).ready(function(){
         <div class="survey-info">
 
            <div class="reach-people">
-              <h2>What is the idea?</h2>
+              <h2>The Problem</h2>
               <div class="edit"><a href="step1.php?id=<?php echo $_SESSION['projectid']; ?>">Edit</a></div>
             <div class="separator"></div>
             </div>
@@ -215,7 +217,7 @@ jq(document).ready(function(){
             <div class="wrapper">
             
               <div class="in-person">
-               <label for="in-person"><h2 class="grey"><?php echo $rowproject['Name']; ?></h2></label>
+               <label for="in-person"><h2 class="grey"><?php echo $rowproject['Problem']; ?></h2></label>
                <p>&nbsp;</p>
 
              </div>

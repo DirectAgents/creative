@@ -1085,7 +1085,6 @@ figure {
 img {
 	vertical-align: middle;
     display: block;
-    margin: 0 auto;
 }
 .img-responsive {
 	display: block;
@@ -1215,6 +1214,11 @@ table td[class*="col-"], table th[class*="col-"] {
 	background-color: rgba(176,57,45,0.08)
 }
 @media (max-width: 767px) {
+
+
+.homeless-table td{float:left; width:100%;}
+
+
 .table-responsive {
 	width: 100%;
 	margin-bottom: 14.25px;
@@ -1549,6 +1553,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
 	margin-bottom: 1px
 }
 @media (min-width: 768px) {
+
+.homeless-table{margin:0 auto;}
+.homeless-table td{padding:10px;}
+.homeless-table .col-lg-6{padding:10px;}
+
 .navbar-right .dropdown-menu {
 	right: 0;
 	left: auto
@@ -11507,7 +11516,7 @@ input[type="submit"] .btn-default.btn-block, input[type="submit"] div.hopscotch-
 	line-height: 12px;
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
-	line-height: 34px;
+	line-height: 25px;
 	height: 34px;
 	padding: 0 12px;
 	border: 0;
@@ -15743,7 +15752,7 @@ transform:scaleY(1.13) scaleX(2) translate3d(1px, 0, 0)
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
-	padding: 12px 18px
+	padding: 0px 18px
 }
 #main_nav .nav-contents .nav-item>a .nav-badge, #main_nav .nav-contents .nav-item .nav-text .nav-badge {
 	background-color: #f55b23;
@@ -15840,7 +15849,7 @@ transform:scaleY(1.13) scaleX(2) translate3d(1px, 0, 0)
 	color: #1983ca
 }
 #main_nav .nav-item .nav-logo-swoosh svg {
-	width: 66px
+	width: 178px
 }
 #main_nav .nav-item .nav-logo-launch svg {
 	width: 230px
@@ -17549,6 +17558,9 @@ svg.icon.icon-linkedin.icon-inverse .caution-badge-symbol .line, svg.icon.icon-l
 	opacity: 0.6;
 	color: white
 }
+
+.logo{padding-top:5px; margin-right:20px;}
+
 .logo-container {
 	text-align: center;
 	display: inline-block
@@ -17644,7 +17656,7 @@ svg.icon.icon-linkedin.icon-inverse .caution-badge-symbol .line, svg.icon.icon-l
 	display: block
 }
 .brand-logo-light svg {
-	height: 30px
+	height: 48px
 }
 .brand-logo-light .gust {
 	fill: white
@@ -20343,6 +20355,10 @@ img.marketing-image-medium {
 #startup_checklist .sc-list-detail .list-detail-list .step.complete a:hover .check {
 	color: #a5a5a5
 }
+
+
+
+
 
 
 

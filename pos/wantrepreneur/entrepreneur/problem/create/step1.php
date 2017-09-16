@@ -320,7 +320,7 @@ $(document).ready(function() {
     </div>
 
       <div class="dashboardProcessMenuText">
-      <div class="processmenu-active"><span class="number">1</span> TARGET AUDIENCE</div></div></div>
+      <div class="processmenu-active"><span class="number"></span> TARGET AUDIENCE</div></div></div>
     <div class="col-md-4 processmenu-inactive">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
@@ -328,7 +328,7 @@ $(document).ready(function() {
         <i class="fa fa-lightbulb-o fa-stack-1x"></i>
       </span>
     </div>
-      <div class="dashboardProcessMenuText"><span class="number">2</span> IDEA SUMMARY </div></div>
+      <div class="dashboardProcessMenuText"><span class="number"></span> PROBLEM SUMMARY </div></div>
     <div class="col-sm-4 processmenu-inactive">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
@@ -337,7 +337,7 @@ $(document).ready(function() {
       </span>
     </div>
 
-      <div class="dashboardProcessMenuText"><span class="number">3</span> CONFIRM</div></div>
+      <div class="dashboardProcessMenuText"><span class="number"></span> CONFIRM</div></div>
   </div>
 
     
@@ -356,11 +356,11 @@ $(document).ready(function() {
  <div class="survey-info">
 
            <div class="reach-people">
-              <h2>What is the idea?</h2>
+              <h2>What is the Problem you might think is a problem to your target market?</h2>
             <div class="separator"></div>
 
              <div class="screening-description">
-                  Provide an overall subject line of your idea or your product. Be short and specfic.
+                  Provide an overall subject line of your idea or your product. Be short and precise with your problem statement as possible.
                 </div>
 
             </div>
@@ -370,7 +370,11 @@ $(document).ready(function() {
               <!--<h3>In Person</h3>-->
                <div class="form-group">
               <div class="in-person">
-               <input class="form-control" name="projectname" type="text" value="<?php echo $rowproject['Name'];?>" placeholder="e.g  Service that helps people nearby to eat together"/>
+          
+
+                <textarea rows="3" tabindex="0" placeholder="Example: While you are shopping, have you ever wondered whether you can get the same item that you want to buy for a cheaper price somewhere else?" name="projectname" id="projectname"><?php echo $rowproject['Problem'];?></textarea>
+
+
               </div>
                
              </div>
@@ -384,7 +388,7 @@ $(document).ready(function() {
 
 
 
-
+<!--
 <div class="survey-info">
 
            <div class="reach-people">
@@ -412,7 +416,7 @@ $(document).ready(function() {
 
         </div>
 
-
+-->
 
 
 <!--

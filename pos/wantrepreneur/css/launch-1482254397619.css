@@ -615,6 +615,19 @@ ul.inline>li, ol.inline>li {
 	padding-left: 5px;
 	padding-right: 5px
 }
+
+ul.footer-links li{
+
+    list-style: none;
+    display: inline;
+    margin-right: 15px;
+
+
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:14px;
+
+}
+
+
 dl {
 	margin-bottom: 18px
 }
@@ -1999,8 +2012,8 @@ button.btn.btn-mini, input[type=submit].btn.btn-mini {
 }
 .navbar-inner {
 	min-height: 60px;
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 30px;
+	padding-right: 30px;
 	padding-top:10px;
 
 	
@@ -3834,7 +3847,7 @@ body {
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
-	border: 1px solid #d4d4d4;
+	border: 0px solid #d4d4d4;
 	background: #fff;
 	filter: none
 }
@@ -4279,9 +4292,9 @@ outline:0!important
 .contentWrapper p {
 	color: #686868;
 	margin: 0 0 9.5px;
-    line-height: 22px;
+    line-height: 30px;
     font-size: 15px;
-    font-family: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", Helvetica, Arial, sans-serif;
+   
 
 }
 
@@ -5037,6 +5050,19 @@ footer p a:hover {
 }
 @media (max-width:768px) {/*! Help Scout DOCS - Mobile */
 
+ul.footer-links li{
+	float:left;
+	text-align: center;
+	width:100%;
+    list-style: none;
+    display: inline;
+    margin-right: 15px;
+
+
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:14px;
+
+}
+
 #contactMobile, #sbContactMobile {
 	display: inline-block
 }
@@ -5062,12 +5088,13 @@ footer p a:hover {
 	padding-left:20px;
 }
 .navbar .nav li a:hover, .navbar .nav li a:focus {
-	color: #fff;
-	background: #2f465f;
+	color:#000 !important;
+	background: #eaf5ff !important;
+	border-radius: 0 !important;
 }
 .navbar .nav .active a, .navbar .nav .active a:hover, .navbar .nav .active a:focus {
 	color: #fff;
-	background: 0 0;
+	background: #eaf5ff;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
@@ -5222,7 +5249,7 @@ footer p a:hover {
 	padding: 10px 20px
 }
 .contentWrapper {
-	padding: 25px 20px;
+	/*padding: 25px 20px;*/
 	border-color: #DEDEDE;
 	border-left: 0;
 	border-right: 0;

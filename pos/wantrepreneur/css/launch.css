@@ -208,6 +208,47 @@ pre, code, kbd, samp {
 	font-family: monospace;
 	line-height: 1.25em
 }
+
+a.donate {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 0px;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    margin-bottom: 0;
+    -webkit-transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+    font-size: 18px;
+    line-height: 10px;
+    letter-spacing: 1.4166666667px;
+    line-height: 25px;
+    height: 25px;
+    padding: 10px 15px 35px 15px;
+    border: 0;
+    color: white !important;
+    border-color: currentColor;
+    background-color: #1fa2ff;
+}
+
+a.donate:hover{
+  -webkit-transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  color: white;
+  border-color: currentColor;
+  background-color: #3c9cdd
+}
+
+
+
 button {
 	padding: 10px;
 	color: #fff;
@@ -2010,9 +2051,26 @@ body>header.hero {
 @media only screen and (min-width: 1025px) {
 body>header.hero {
 	padding: 200px 40px 100px;
-	min-height: 640px;
+	min-height: 750px;
 	height: calc(100vh - 120px)
 }
+
+body>header.homeless {
+	padding: 200px 40px 100px;
+	min-height: 1075px;
+	height: calc(100vh - 120px)
+}
+
+
+iframe {
+width: 100%;
+height: 250px !important;
+max-width: 500px !important;
+min-width: 490px !important;
+}
+
+
+
 }
 @media only screen and (min-width: 768px) and (orientation: landscape) {
 body>header.hero {
@@ -2040,12 +2098,63 @@ body>header.hero .title {
 	color: #2f465f;
 	letter-spacing: 0.2px
 }
+
+
+@media only screen and (min-width: 668px) and (max-width: 1024px) {
+
+.video {
+	float:left;
+	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 36px;
+	color: #4a4a4a;
+	letter-spacing: 0.05px;
+	padding:15px;
+	width:100%;
+}
+
+
+iframe {
+width: 100%;
+height: 340px !important;
+margin-bottom:30px;
+float:left;
+}
+}
+
+
 @media only screen and (max-width: 667px) {
 body>header.hero .title {
 	font-size: 36px;
 	line-height: 1.3
 }
+
+iframe {
+width: 100%;
+height: 300px !important;
+max-width: 530px !important;
+min-width: 530px !important;
+margin-bottom:30px;
 }
+
+}
+
+@media only screen and (max-width: 480px) {
+iframe {
+width: 100%;
+height: 130px !important;
+max-width: 200px !important;
+min-width: 250px !important;
+margin-bottom:30px;
+}
+}
+
+
+
+
+
+
 body>header.hero .description {
 	margin: 0 auto;
 	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
@@ -2055,6 +2164,18 @@ body>header.hero .description {
 	color: #4a4a4a;
 	max-width: 660px;
 	letter-spacing: 0.05px
+}
+body>header.hero .note {
+	margin: 0 auto;
+	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 22px;
+	color: #4a4a4a;
+	letter-spacing: 0.05px;
+	float:left;
+	width:100%;
+	text-align: center;
 }
 @media only screen and (max-width: 667px) {
 body>header.hero .description {
@@ -2189,7 +2310,7 @@ body>header.hero .categories>span {
 }
 }
 body>header.hero .learn-more {
-	margin: 60px auto 20px
+	margin: 140px auto 20px
 }
 body>header.hero .learn-more>span {
 	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
@@ -2231,6 +2352,7 @@ body>header.hero .learn-more .chevron-down:hover {
 	transform: scale(2.1) translateY(3px)
 }
 }
+
 body section.value {
 	padding: 80px 30px;
 	position: relative;
@@ -2248,9 +2370,28 @@ body section.value>.title {
 	text-align: center;
 	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
 	font-weight: 700;
-	font-size: 32px;
+	font-size: 40px;
 	line-height: 36px
 }
+
+
+@media only screen and (max-width: 768px){
+body section.value.homeless>.title {
+    margin: 40px auto;
+    font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 56px;
+    color: #2f465f;
+    letter-spacing: 0.2px;
+    margin-top:100px;
+
+
+}
+}
+
+
+
 @media only screen and (min-width: 768px) and (orientation: landscape) {
 body section.value>.title {
 	margin-bottom: 80px
@@ -2260,17 +2401,42 @@ body section.value>.title {
 body section.value {
 	padding: 80px 40px
 }
+
+body section.value .title {
+    margin: 40px auto;
+    font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 56px;
+    color: #2f465f;
+    letter-spacing: 0.2px;
+}
+
+
+
+
 }
 body section.value .icon {
 	overflow: visible;
 	width: 100%;
 	margin: 0 0 40px
 }
+
+body section.value .video {
+	width: 100%;
+	float: left;
+	margin: 0
+}
 @media only screen and (min-width: 768px) and (orientation: landscape) {
 body section.value .icon {
 	width: 33%;
 	float: left;
 	margin: 0
+}
+body section.value .video {
+	width: 50%;
+	float: left;
+	margin: 0;
 }
 }
 body section.value .icon svg {
@@ -2307,8 +2473,18 @@ body section.value .prop-text {
 	width: 66%;
 	float: right
 }
+body section.value .prop-video {
+	width: 50%;
+	float: right
 }
-body section.value .prop-text .title {
+
+body section.value .prop-text-how-it-works {
+	width: 33%;
+	float: left
+}
+
+}
+body section.value .prop-text .title, body section.value .prop-text-how-it-works .title {
 	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
 	font-weight: 400;
 	font-size: 24px;
@@ -2355,6 +2531,13 @@ body section.value .prop {
 	max-width: 950px;
 	margin: 0 auto 60px;
 	overflow: hidden
+}
+body section.value .video-box .prop  {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto 60px;
+	overflow: hidden;
+	padding-top:35px;
 }
 body section.value .prop:last-of-type {
 	margin-bottom: 0
@@ -2802,7 +2985,7 @@ body section.features>.title {
 	text-align: center;
 	font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
 	font-weight: 700;
-	font-size: 32px;
+	font-size: 40px;
 	line-height: 36px
 }
 @media only screen and (min-width: 768px) and (orientation: landscape) {
@@ -4242,7 +4425,7 @@ body>footer {
 body>footer .subscribe-cta {
 	position: relative;
 	width: 100%;
-	max-width: 800px;
+	max-width: 980px;
 	text-align: center;
 	padding: 100px 40px;
 	margin: 0 auto
@@ -4267,7 +4450,8 @@ body>footer .subscribe-cta>p {
 	line-height: 28px;
 	color: rgba(255,255,255,0.8);
 	letter-spacing: 0.05px;
-	margin: 40px 0
+	margin: 40px 0;
+	text-align: left;
 }
 @media only screen and (max-width: 667px) {
 body>footer .subscribe-cta>p {
@@ -4276,7 +4460,18 @@ body>footer .subscribe-cta>p {
 	text-align: left
 }
 }
-body>footer .subscribe-cta form {
+
+body>header .subscribe-cta form textarea {
+float:left;
+width:100%;
+background:#dae0e6;
+margin:15px 0 15px 0;
+color: #4a4a4a;
+padding: 10px 10px;
+border-radius: 2px;
+}
+
+body>header .subscribe-cta form {
 	width: 100%;
 	max-width: 450px;
 	height: 50px;
@@ -4288,41 +4483,42 @@ body>footer .subscribe-cta form {
 	-ms-flex-align: end;
 	align-items: flex-end
 }
-body>footer .subscribe-cta form>div:first-child {
+body>header .subscribe-cta form>div:first-child {
 	-ms-flex-positive: 3;
 	flex-grow: 3;
 	min-width: 150px;
 	color: #fff
 }
-body>footer .subscribe-cta form>div:first-child .hs_email, body>footer .subscribe-cta form>div:first-child .field, body>footer .subscribe-cta form>div:first-child .hs-form-field {
+body>header .subscribe-cta form>div:first-child .hs_email, body>header .subscribe-cta form>div:first-child .field, body>header .subscribe-cta form>div:first-child .hs-form-field {
 	position: relative
 }
-body>footer .subscribe-cta form>div:first-child .hs-error-msgs, body>footer .subscribe-cta form>div:first-child .inputs-list {
+body>header .subscribe-cta form>div:first-child .hs-error-msgs, body>header .subscribe-cta form>div:first-child .inputs-list {
 	position: absolute;
 	margin-top: 60px
 }
 @media only screen and (min-width: 768px) and (orientation: landscape) {
-body>footer .subscribe-cta form>div:first-child .hs-error-msgs, body>footer .subscribe-cta form>div:first-child .inputs-list {
+body>header .subscribe-cta form>div:first-child .hs-error-msgs, body>header .subscribe-cta form>div:first-child .inputs-list {
 	margin-top: 10px
 }
 }
-body>footer .subscribe-cta form>div:first-child label {
+body>header .subscribe-cta form>div:first-child label {
 	text-align: left;
 	color: #ccc;
 	margin-bottom: 10px
 }
-body>footer .subscribe-cta form>div:first-child label>span {
+body>header .subscribe-cta form>div:first-child label>span {
 	display: none
 }
-body>footer .subscribe-cta form>div:first-child input {
+body>header .subscribe-cta form>div:first-child input {
 	width: 100%;
-	height: 100%;
-	border-radius: 2px;
-	background: #fff;
-	color: #4a4a4a;
-	padding: 0 10px
+    height: 100%;
+    border-radius: 2px;
+    background: #dae0e6;
+    color: #4a4a4a;
+    padding: 0 10px;
+    border: none;
 }
-body>footer .subscribe-cta form .hs_submit {
+body>header .subscribe-cta form .hs_submit {
 	-ms-flex-positive: 1;
 	flex-grow: 1;
 	display: inline-block;
@@ -4348,41 +4544,43 @@ body>footer .subscribe-cta form .hs_submit {
 	border: 0;
 	color: #fff;
 	border-color: currentColor;
-	background-color: #1abc96
+	background-color: #1abc96;
+	float:left;
+	width:100%;
 }
-body>footer .subscribe-cta form .hs_submit:hover, body>footer .subscribe-cta form .hs_submit:focus, body>footer .subscribe-cta form .hs_submit:active {
+body>header .subscribe-cta form .hs_submit:hover, body>header .subscribe-cta form .hs_submit:focus, body>header .subscribe-cta form .hs_submit:active {
 	text-decoration: none
 }
-body>footer .subscribe-cta form .hs_submit:active, body>footer .subscribe-cta form .hs_submit.active {
+body>header .subscribe-cta form .hs_submit:active, body>header .subscribe-cta form .hs_submit.active {
 	outline: 0;
 	background-image: none
 }
-body>footer .subscribe-cta form .hs_submit.disabled, body>footer .subscribe-cta form .hs_submit[disabled], fieldset[disabled] body>footer .subscribe-cta form .hs_submit, body>footer .subscribe-cta form .hs_submit:after, body>footer .subscribe-cta form .hs_submit:disabled {
+body>header .subscribe-cta form .hs_submit.disabled, body>header .subscribe-cta form .hs_submit[disabled], fieldset[disabled] body>header .subscribe-cta form .hs_submit, body>header .subscribe-cta form .hs_submit:after, body>header .subscribe-cta form .hs_submit:disabled {
 	pointer-events: none;
 	cursor: not-allowed
 }
-body>footer .subscribe-cta form .hs_submit:hover {
+body>header .subscribe-cta form .hs_submit:hover {
 	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
 	color: #fff;
 	border-color: currentColor;
 	background-color: #1dd2a8
 }
-body>footer .subscribe-cta form .hs_submit:active, body>footer .subscribe-cta form .hs_submit.active {
+body>header .subscribe-cta form .hs_submit:active, body>header .subscribe-cta form .hs_submit.active {
 	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99);
 	color: #fff;
 	border-color: currentColor;
 	background-color: #1cc9a1
 }
-body>footer .subscribe-cta form .hs_submit[disabled], body>footer .subscribe-cta form .hs_submit[disabled]:hover, body>footer .subscribe-cta form .hs_submit[disabled]:focus, body>footer .subscribe-cta form .hs_submit[disabled]:active, body>footer .subscribe-cta form .hs_submit[disabled].active, fieldset[disabled] body>footer .subscribe-cta form .hs_submit, fieldset[disabled] body>footer .subscribe-cta form .hs_submit:hover, fieldset[disabled] body>footer .subscribe-cta form .hs_submit:focus, fieldset[disabled] body>footer .subscribe-cta form .hs_submit:active, fieldset[disabled] body>footer .subscribe-cta form .hs_submit.active, body>footer .subscribe-cta form .hs_submit.disabled, body>footer .subscribe-cta form .hs_submit.disabled:hover, body>footer .subscribe-cta form .hs_submit.disabled:focus, body>footer .subscribe-cta form .hs_submit.disabled:active, body>footer .subscribe-cta form .hs_submit.disabled.active {
+body>header .subscribe-cta form .hs_submit[disabled], body>header .subscribe-cta form .hs_submit[disabled]:hover, body>header .subscribe-cta form .hs_submit[disabled]:focus, body>header .subscribe-cta form .hs_submit[disabled]:active, body>header .subscribe-cta form .hs_submit[disabled].active, fieldset[disabled] body>header .subscribe-cta form .hs_submit, fieldset[disabled] body>header .subscribe-cta form .hs_submit:hover, fieldset[disabled] body>header .subscribe-cta form .hs_submit:focus, fieldset[disabled] body>header .subscribe-cta form .hs_submit:active, fieldset[disabled] body>header .subscribe-cta form .hs_submit.active, body>header .subscribe-cta form .hs_submit.disabled, body>header .subscribe-cta form .hs_submit.disabled:hover, body>header .subscribe-cta form .hs_submit.disabled:focus, body>header .subscribe-cta form .hs_submit.disabled:active, body>header .subscribe-cta form .hs_submit.disabled.active {
 	color: #fff;
 	border-color: currentColor;
 	background-color: #d9e1df
 }
-body>footer .subscribe-cta form .hs_submit:active:hover, body>footer .subscribe-cta form .hs_submit.active {
+body>header .subscribe-cta form .hs_submit:active:hover, body>header .subscribe-cta form .hs_submit.active {
 	box-shadow: inset 0 3px 5px rgba(0,0,0,0.1);
 	transition: color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), border-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), background-color 300ms cubic-bezier(0.62, 0.28, 0.23, 0.99), box-shadow 200ms cubic-bezier(0.62, 0.28, 0.23, 0.99), transform 50ms cubic-bezier(0.62, 0.28, 0.23, 0.99)
 }
-body>footer .subscribe-cta form .hs_submit input {
+body>header .subscribe-cta form .hs_submit input {
 	padding: 0;
 	width: 100%;
 	line-height: 50px;
@@ -4409,3 +4607,7 @@ body footer.email {
 .intercom-launcher-frame{display:none !important;}
 
 /*# sourceMappingURL=launch.css.map*/
+
+
+
+

@@ -1,20 +1,20 @@
 <?php
 session_start();
 
-ob_start();
-
 error_reporting(E_ERROR | E_PARSE);
+
+
+
+ob_start();
 
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
 
 require_once '../../base_path.php';
 
-require_once '../../class.participant.php';
+require_once '../../class.startup.php';
 
 include_once("../../config.php");
-
-
 
 
 if(isset($_SESSION['cookie_deleted'])){
@@ -27,14 +27,14 @@ setcookie('RememberMe', "", time() - 3600); // empty value and old timestamp
 
 if(isset($_COOKIE['RememberMe'])){
 
-$stmt = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE login_session='".$_COOKIE['RememberMe']."'");
+$stmt = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE login_session='".$_COOKIE['RememberMe']."'");
 $row = mysqli_fetch_array($stmt);
 
 if($row['login_session'] == $_COOKIE['RememberMe']){
 
-$_SESSION['participantSession'] = $row['userID'];
+$_SESSION['startupSession'] = $row['userID'];
 
-header("Location:../meetings/");
+header("Location:../");
 exit();
 }
 }
@@ -47,23 +47,32 @@ if(isset($_GET['p'])){
 }
 
 
-$user_login = new PARTICIPANT();
+$user_login = new STARTUP();
 
 if($user_login->is_logged_in()!="")
 {
-  $user_login->redirect('../meetings/');
+  
+  $user_login->redirect('../');
 }
+
+
+
+
+
+
+
+
+
 
 if(isset($_POST['btn-login']))
 {
   $email = trim($_POST['txtemail']);
   $upass = trim($_POST['txtupass']);
   $rememberme = trim($_POST['txtrememberme']);
-
-
+  
   if($user_login->login($email,$upass,$rememberme))
   {
-    $user_login->redirect('../meetings/');
+    $user_login->redirect('../');
   }
 }
 
@@ -78,17 +87,14 @@ if(isset($_POST['btn-login']))
 //echo $_SESSION['access_token'];
 
 
-
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Mr. Pao Login</title>
-    
+   <title>Mr. Pao Login</title>
+
     <link rel="icon" href="../../favicon.ico" type="image/x-icon"/>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -140,6 +146,7 @@ if(isset($_POST['btn-login']))
   </head>
 
   <body>
+
     
 <div class="container">
 
@@ -163,7 +170,7 @@ if(isset($_POST['btn-login']))
       ?>
             <div class='alert alert-error'>
         <button class='close' data-dismiss='alert'>&times;</button>
-        <strong>Sorry!</strong> <br><br>This Account is not Activated Go to your Inbox and Activate it. 
+       <strong>Sorry!</strong> <br><br>This Account is not Activated Go to your Inbox and Activate it. 
       </div>
             <?php
     }
@@ -469,29 +476,29 @@ if(isset($_POST['btn-login']))
 
 
 
+
 <div class="form">
+
+
   
-<?php 
-//echo $_COOKIE['RememberMe'];
-//echo $_SESSION['cookie_deleted'];
-//echo "asdfa";
-?>
 <div class="info">
   <h1>Sign in to your account</h1>
 </div>
 
 <div class="loginas">
-  <h3>Are you an <span class="role">Entrepreneur</span>? <a href="<?php echo BASE_PATH; ?>/entrepreneur/login/">Click here</a></h3>
+  <h3>Are you a <span class="role">Potential Customer</span>? <a href="<?php echo BASE_PATH; ?>/participant/login/">Click here</a></h3>
 </div>
-  
+
+
 <div class="form-login">
 
+  
   <form class="login-form">
     <input type="email" name="txtemail" placeholder="Email Address" required/>
     <input type="password" name="txtupass" placeholder="Password" required/>
     <input type="checkbox" name="txtrememberme" value="Yes"/><label> Remember me</label>
     <button type="submit" name="btn-login">LOGIN</button>
-    <p class="message">Not registered? <a href="<?php echo BASE_PATH; ?>/participant/signup">Sign up</a></p>
+    <p class="message">Not registered? <a href="<?php echo BASE_PATH; ?>/startup/signup">Sign up</a></p>
     <p class="message"> <a href="../fpass.php">Forgot your Password ? </a></p>
    
   </form>
@@ -499,7 +506,8 @@ if(isset($_POST['btn-login']))
 </div>
 
 
-  <div style="margin-top:30px; background:#f5f5f5">
+
+<div style="margin-top:30px; background:#f5f5f5">
   
 <?php
 
@@ -511,13 +519,10 @@ if (isset($authUrl)){
   echo '<h3>Or connect with</h3>';
   echo "<p>&nbsp;</p>";
 
-
   
 }
 
 ?>
-
-
 
 
 <?php
@@ -529,20 +534,20 @@ require_once ('libraries/Google/autoload.php');
 //You can get it from : https://console.developers.google.com/
 $client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
 $client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
-$redirect_uri = ''.BASE_PATH.'/participant/login/';
+$redirect_uri = ''.BASE_PATH.'/entrepreneur/login/';
 
 //database
 $db_username = "root"; //Database Username
 $db_password = "123"; //Database Password
 $host_name = "localhost"; //Mysql Hostname
-$db_name = 'circl'; //Database Name
+$db_name = 'mrpao'; //Database Name
 
 
 //incase of logout request, just unset the session var
 if (isset($_GET['logout'])) {
   unset($_SESSION['access_token']);
-  unset($_SESSION['fb_access_token_participant']);
-  unset($_SESSION['participantSession']);
+  unset($_SESSION['fb_access_token_startup']);
+  unset($_SESSION['startupSession']);
 }
 
 /************************************************
@@ -614,10 +619,10 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
   //check if user exist in database using COUNT
-  $result = mysqli_query($connecDB,"SELECT COUNT(userEmail) as usercount FROM tbl_participant WHERE userEmail='".$user->email."' ");
+  $result = mysqli_query($connecDB,"SELECT COUNT(userEmail) as usercount FROM tbl_startup WHERE userEmail='".$user->email."' ");
   $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userEmail = '".$user->email."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userEmail = '".$user->email."'");
   $row = mysqli_fetch_array($sql);
 
 
@@ -628,7 +633,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   if($user_count) //if user already exist change greeting text to "Welcome Back"
     {
 
-    $statement = $mysqli->prepare("UPDATE tbl_participant SET 
+    $statement = $mysqli->prepare("UPDATE tbl_startup SET 
     profile_image = '',
     facebook_id = '',
     google_id = '".$user->id."',
@@ -643,8 +648,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['participantSession'] = $row['userID'];
-        header("Location: ../meetings/");
+        $_SESSION['startupSession'] = $row['userID'];
+        header("Location: ../index.php");
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -653,10 +658,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     
     
 
-
-unset($_SESSION['participantSession']);
+unset($_SESSION['startupSession']);
 unset($_SESSION['access_token']);
-
 
 
 echo "
@@ -697,8 +700,6 @@ echo "
 
 
 
-
-
 <?php
 
 $fb = new Facebook\Facebook([
@@ -710,15 +711,23 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 
 $permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/participant/login/login-callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/startup/login/login-callback.php', $permissions);
 
-if(!isset($_SESSION['fb_access_token_participant'])){
+
+
+
+
+
+
+
+if(!isset($_SESSION['fb_access_token_startup'])){
 //echo '<a href="' . htmlspecialchars($loginUrl) . '">Sign up with Facebook!</a>';
 echo '<div style="float:left; width:100%;">';
 
 echo '<div style="margin:0 auto; width: 82%;">';
 
 echo '<a class="social-signin__btn btn_google btn_default-bis" href="' . $authUrl . '"> <span class="icon icon_google"></span> Google </a>';
+
 
 echo '<a class="social-signin__btn btn_facebook btn_default-bis" href="' . htmlspecialchars($loginUrl) . '"> <span class="icon icon_facebook"></span> Facebook </a>';
 
@@ -745,16 +754,18 @@ echo '</div>';
 echo "<p>&nbsp;</p>";
 */
 
+
+
 }
 
-//echo $_SESSION['fb_access_token_participant'];
+//echo $_SESSION['fb_access_token_startup'];
 
 
-if(isset($_SESSION['fb_access_token_participant'])){
+if(isset($_SESSION['fb_access_token_startup'])){
 
 try {
   // Returns a `Facebook\FacebookResponse` object
-  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_participant']);
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_startup']);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
@@ -764,6 +775,9 @@ try {
 }
 
 $user = $response->getGraphUser();
+
+$_SESSION['user_id'] = $user['id'];
+
 /*
 echo 'Name: ' . $user['name'];
 echo "<br>";
@@ -776,10 +790,10 @@ echo 'id: ' . $user['id'];
 //check if user exist in database using COUNT
 
 
-  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_participant WHERE userEmail='".$user['email']."' ");
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_startup WHERE userEmail='".$user['email']."' ");
   $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
 
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userEmail = '".$user['email']."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userEmail = '".$user['email']."'");
   $row = mysqli_fetch_array($sql);
 
 
@@ -789,10 +803,9 @@ echo 'id: ' . $user['id'];
   //echo $user_count;
   //echo $user->email;
   if($user_count_facebook) //if user already exist change greeting text to "Welcome Back"
-    {
-        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        
-    $update_sql = mysqli_query($connecDB,"UPDATE tbl_participant SET 
+    {   
+
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
     facebook_id = '".$user['id']."',   
     profile_image = '',
     google_picture_link = '',
@@ -800,10 +813,11 @@ echo 'id: ' . $user['id'];
     
     WHERE userEmail='".$user['email']."'");
 
-
-        $_SESSION['participantSession'] = $row['userID'];
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['startupSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
-        header("Location: ../meetings/");
+        header("Location: ../index.php");
+        //echo $_SESSION['startupSession'];
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -811,9 +825,10 @@ echo 'id: ' . $user['id'];
 
 
 
-unset($_SESSION['participantSession']);
+
+unset($_SESSION['startupSession']);
 unset($_SESSION['facebook_photo']);
-unset($_SESSION['fb_access_token_participant']);
+unset($_SESSION['fb_access_token_startup']);
 
 
 
@@ -824,11 +839,21 @@ echo "
           <strong>Sorry !</strong> No account found</a>
         </div>
         ";
+
+
+
+
+
     exit();
+
+
 
     //echo $user->id;
 
-       if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
+
+
+
+    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
     
       //exit(header("Location: ../index.php"));
 
@@ -844,8 +869,12 @@ echo "
 }
 
 
-?>
 
+
+
+
+
+?>
 
 </div>
 

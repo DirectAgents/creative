@@ -318,7 +318,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
         //get input field values
         var projectid       = $('input[name=projectid]').val();
-        var projectname       = $('input[name=projectname]').val();
+        var projectname       = $("textarea[name='projectname']").val();
         var stage = $("select[name='stage']").val();
         var category = $("select[name='category']").val();
         var minreq = $('input[name="minreq[]"]:checked').map(function () {return this.value;}).get().join(",");
@@ -402,12 +402,21 @@ $("textarea[name=MYFIELDNAME]").val();
         }
 
 
-          if(projectname==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Idea!</div>';
+        if(projectname==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please state a Problem!</div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }
 
+         var minLength = 15;
+
+         if(projectname.length < minLength){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter at least a complete sentence!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+       
 
         
 
@@ -519,6 +528,7 @@ $("textarea[name=MYFIELDNAME]").val();
         {
 
 
+
           //$( ".processing" ).show();
             //data to be sent to server
             post_data = {'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
@@ -544,12 +554,12 @@ $("textarea[name=MYFIELDNAME]").val();
           
           
           //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
+          //$('#contact_form input').val(''); 
+          //$('#contact_form textarea').val(''); 
         }
         
-        $("#result").hide().html(output).slideDown();
-            }, 'json');
+        //$("#result").hide().html(output).slideDown();
+            });
       
         }
     });
