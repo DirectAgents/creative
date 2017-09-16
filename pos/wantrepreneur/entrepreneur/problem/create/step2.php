@@ -162,7 +162,7 @@ jq(document).ready(function(){
       </span>
     </div>
 
-      <div class="dashboardProcessMenuText"><span class="number">1</span> TARGET AUDIENCE </div></div>
+      <div class="dashboardProcessMenuText"><span class="number"></span> TARGET AUDIENCE </div></div>
 </a>
 
 <a href="step2.php"> 
@@ -185,10 +185,12 @@ jq(document).ready(function(){
       </span>
     </div>
 
-      <div class="dashboardProcessMenuText"> <div class="processmenu-active"><span class="number">3</span> CONFIRM</div></div></div>
+      <div class="dashboardProcessMenuText"> <div class="processmenu-active"><span class="number">3</span> CONFIRM</div></div></div> 
+
+       </a> -->
   </div>
- </a> 
- -->
+
+
 
     
   </div>

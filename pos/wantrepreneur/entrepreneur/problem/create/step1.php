@@ -329,7 +329,8 @@ $(document).ready(function() {
       </span>
     </div>
       <div class="dashboardProcessMenuText"><span class="number"></span> PROBLEM SUMMARY </div></div>
-    <div class="col-sm-4 processmenu-inactive">
+   
+   <!-- <div class="col-sm-4 processmenu-inactive">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
         <i class="fa fa-circle-thin fa-stack-2x"></i>
@@ -337,7 +338,7 @@ $(document).ready(function() {
       </span>
     </div>
 
-      <div class="dashboardProcessMenuText"><span class="number"></span> CONFIRM</div></div>
+      <div class="dashboardProcessMenuText"><span class="number"></span> CONFIRM</div></div>-->
   </div>
 
     
@@ -382,10 +383,39 @@ $(document).ready(function() {
           </div>
 
          
-          <div class="clearer"></div>
 
         </div>
 
+
+<div class="survey-info">
+
+<div class="reach-people">
+              <h2>What stage is your idea/product in?</h2>
+            <div class="separator"></div>
+            </div>
+
+ <div class="wrapper">
+<div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+  <h3>Potential Answer 1</h3>
+    <input class="form-control" type="text" name="potentialanswertext1" id="potentialanswertext1" value="<?php echo $rowpotentialanswers['PotentialAnswer1'];?>" />
+   <input id="potentialanswer1" name="potentialansweraccepted[]" type="radio" value="Potential Answer 1" <?php if(in_array('Potential Answer 1',$potentialanswers)){echo "checked";}?>/>
+</div>
+
+
+<div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+  <h3>Potential Answer 2</h3>
+    <input class="form-control" type="text" name="potentialanswertext2" id="potentialanswertext2" value="<?php echo $rowpotentialanswers['PotentialAnswer2'];?>" />
+   <input id="potentialanswer2" name="potentialansweraccepted[]" type="radio" value="Potential Answer 2" <?php if(in_array('Potential Answer 2',$potentialanswers)){echo "checked";}?>/>
+</div>
+
+<div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+  <h3>Potential Answer 3</h3>
+    <input class="form-control" type="text" name="potentialanswertext3" id="potentialanswertext3" value="<?php echo $rowpotentialanswers['PotentialAnswer3'];?>" />
+   <input id="potentialanswer3" name="potentialansweraccepted[]" type="radio" value="Potential Answer 3" <?php if(in_array('Potential Answer 3',$potentialanswers)){echo "checked";}?>/>
+</div>
+
+</div>
+</div>
 
 
 <!--
@@ -463,11 +493,11 @@ $(document).ready(function() {
 -->
 
 
-
+<div class="clearer"></div>
         <div class="survey-info">
 
            <div class="reach-people">
-              <h2>Choose Category:</h2>
+              <h2>Choose Category for the stated Problem:</h2>
             <div class="separator"></div>
             </div>
   <div class="input-full">
