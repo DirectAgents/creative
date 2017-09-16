@@ -269,46 +269,6 @@ $("#languages").blur(function (e) {
     <!-- Main -->
 
 
- <div id="dashboardSurveyProcessMenu">
-    
-
-    <div class="dashboardProcessMenu audienceDashboard audience">
-
-  <div class="row">
-    <div class="col-md-4">
-<div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
-      <span class="fa-stack fa-md">
-        <i class="fa fa-circle-thin fa-stack-2x"></i>
-        <i class="fa fa-male fa-stack-1x"></i>
-      </span>
-    </div>
-
-      <div class="dashboardProcessMenuText">
-      <div class="processmenu-active"><span class="number"></span> TARGET AUDIENCE</div></div></div>
-
-
-    <div class="col-md-4 processmenu-inactive">
-<div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
-      <span class="fa-stack fa-md">
-        <i class="fa fa-circle-thin fa-stack-2x"></i>
-        <i class="fa fa-lightbulb-o fa-stack-1x"></i>
-      </span>
-    </div>
-      <div class="dashboardProcessMenuText"><span class="number"></span> PROBLEM SUMMARY (<a href="step2.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>) </div></div>
- <!--   <div class="col-sm-4 processmenu-inactive">
-<div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
-      <span class="fa-stack fa-md">
-        <i class="fa fa-circle-thin fa-stack-2x"></i>
-        <i class="fa fa-lock fa-stack-1x"></i>
-      </span>
-    </div>
-   
-      <div class="dashboardProcessMenuText"><span class="number"></span> IDEA SETTINGS (<a href="step3.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>)</div></div>-->
-  </div>
-
-    
-  </div>
-</div>
 
 <!--
 <div id="white-container">
@@ -382,7 +342,10 @@ $("#languages").blur(function (e) {
     <div id="white-container">
       <div id="dashboardSurveyTargetingContainerLogic">
 
+ <div id="back">
+              <a href="<?php echo BASE_PATH; ?>/entrepreneur/">< Back</a>
 
+            </div>
 
 
 
