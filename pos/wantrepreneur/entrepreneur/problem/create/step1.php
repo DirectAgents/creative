@@ -390,28 +390,28 @@ $(document).ready(function() {
 <div class="survey-info">
 
 <div class="reach-people">
-              <h2>What stage is your idea/product in?</h2>
+              <h2>Possible Answers</h2>
             <div class="separator"></div>
             </div>
 
  <div class="wrapper">
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Potential Answer 1</h3>
-    <input class="form-control" type="text" name="potentialanswertext1" id="potentialanswertext1" value="<?php echo $rowpotentialanswers['PotentialAnswer1'];?>" />
-   <input id="potentialanswer1" name="potentialansweraccepted[]" type="radio" value="Potential Answer 1" <?php if(in_array('Potential Answer 1',$potentialanswers)){echo "checked";}?>/>
+    <input class="form-control" type="text" name="possibleanswertext1" id="possibleanswertext1" placeholder="Ex. Yes, I have that problem" value="<?php echo $rowproject['PossibleAnswer1'];?>" />
+  
 </div>
 
 
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Potential Answer 2</h3>
-    <input class="form-control" type="text" name="potentialanswertext2" id="potentialanswertext2" value="<?php echo $rowpotentialanswers['PotentialAnswer2'];?>" />
-   <input id="potentialanswer2" name="potentialansweraccepted[]" type="radio" value="Potential Answer 2" <?php if(in_array('Potential Answer 2',$potentialanswers)){echo "checked";}?>/>
+    <input class="form-control" type="text" name="possibleanswertext2" id="possibleanswertext2" placeholder="Ex. No, I don't have that problem" value="<?php echo $rowproject['PossibleAnswer2'];?>" />
+
 </div>
 
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Potential Answer 3</h3>
-    <input class="form-control" type="text" name="potentialanswertext3" id="potentialanswertext3" value="<?php echo $rowpotentialanswers['PotentialAnswer3'];?>" />
-   <input id="potentialanswer3" name="potentialansweraccepted[]" type="radio" value="Potential Answer 3" <?php if(in_array('Potential Answer 3',$potentialanswers)){echo "checked";}?>/>
+    <input class="form-control" type="text" name="possibleanswertext3" id="possibleanswertext3" placeholder="Ex. Sometimes" value="<?php echo $rowproject['PossibleAnswer3'];?>" />
+  
 </div>
 
 </div>

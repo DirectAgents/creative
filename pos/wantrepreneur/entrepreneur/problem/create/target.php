@@ -29,6 +29,9 @@ if($_POST['minreq'] == ''){$minreq = '';}else{$minreq = $_POST['minreq'];}
 
 
 if($_POST['projectname'] == ''){$projectname = 'NULL';}else{$projectname = $_POST['projectname'];}
+if($_POST['possibleanswer1'] == ''){$possibleanswer1 = '';}else{$possibleanswer1 = $_POST['possibleanswer1'];}
+if($_POST['possibleanswer2'] == ''){$possibleanswer2 = '';}else{$possibleanswer2 = $_POST['possibleanswer2'];}
+if($_POST['possibleanswer3'] == ''){$possibleanswer3 = '';}else{$possibleanswer3 = $_POST['possibleanswer3'];}
 if($_POST['stage'] == ''){$stage = 'NULL';}else{$stage = $_POST['stage'];}
 if($_POST['category'] == ''){$category = 'NULL';}else{$category = $_POST['category'];}
 //if($_POST['meetupchoice'] == ''){$meetupchoice = 'NULL';}else{$meetupchoice = $_POST['meetupchoice'];}
@@ -71,6 +74,9 @@ if(mysqli_num_rows($sql)>0)
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET 
   Problem='".$projectname."',
+  PossibleAnswer1='".$possibleanswer1."',
+  PossibleAnswer2='".$possibleanswer2."',
+  PossibleAnswer3='".$possibleanswer3."',
   Stage='".$stage."',
   Category='".$category."',
   MinReq='".$minreq."',
@@ -101,10 +107,9 @@ if(mysqli_num_rows($sql)>0)
 
 
 
-
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID, startupID, Problem, Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID, startupID, Problem,PossibleAnswer1,PossibleAnswer2,PossibleAnswer3, Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
 Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interests, Languages, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
-  '".$projectname."', '".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
+  '".$projectname."','".$possibleanswer1."','".$possibleanswer2."','".$possibleanswer3."', '".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
   '".$status."','".$ethnicity."','".$smoke."','".$drink."','".$diet."',
   '".$religion."','".$education."','".$job."', '".$interests."' , '".$languages."' ,'".$date."')");
 

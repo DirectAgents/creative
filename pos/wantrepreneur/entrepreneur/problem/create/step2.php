@@ -221,8 +221,25 @@ jq(document).ready(function(){
               <div class="in-person">
                <label for="in-person"><h2 class="grey"><?php echo $rowproject['Problem']; ?></h2></label>
                <p>&nbsp;</p>
+              </div>
+              
 
-             </div>
+              <div class="in-person">
+               <label for="in-person"><h2>Possible Answer Choices</h2></label>
+              </div>
+
+
+              
+               <label for="in-person"><h3 class="grey"><?php echo $rowproject['PossibleAnswer1'];?></h3></label>
+              
+             
+               <label for="in-person"><h3 class="grey"><?php echo $rowproject['PossibleAnswer2'];?></h3></label>
+             
+
+            
+               <label for="in-person"><h3 class="grey"><?php echo $rowproject['PossibleAnswer3'];?></h3></label>
+              
+             
             </div>
           </div>
         </div>
@@ -792,7 +809,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
            
              <div class="wrapper">
               <div class="in-person">
-                <label for="public">Amount you pay:</label>
+                <label for="public">Amount you pay to the potential customer:</label>
                  <div class="styled-select">
 <select name="pay" id="pay">
 
@@ -857,7 +874,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
           <div class="input-inline">
                         <div class="wrapper">
               <!--<h3>Select survey language:</h3>-->
-             <div class="in-person">
+             <!--<div class="in-person">
                <label for="public">How long do you want to meet?</label>
                           <div class="styled-select">
 <select name="minutes" id="minutes">
@@ -876,7 +893,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 <option value="60" <?php if(in_array('60',$minutes)){echo "selected";}?>>60 minutes</option>
 
 </select>
-</div>
+</div>-->
             
             
           </div>
@@ -942,10 +959,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
        
        
 
-      
-
-
-
+<div class="full-width">
  
       <div id="submitproject">
        <div class="survey-info">
@@ -962,7 +976,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 </div>  
               </div>
 
-              
+         </div>     
               </div>
    
 </div> 
