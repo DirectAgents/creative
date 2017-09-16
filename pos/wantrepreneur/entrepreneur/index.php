@@ -262,7 +262,7 @@ $date = date_create($row2['Date_Created']);
   <div class="result-delete">
   <div id="result-delete">Successfully Deleted!</div>
   </div>
-<h4>Are you sure you want to delete this idea?</h4>
+<h4>Are you sure you want to delete this problem?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
@@ -529,7 +529,7 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
                       Project Name
                     </div> -->
                     <div class="edit-delete">
-                      <a href="<?php echo BASE_PATH; ?>/startup/idea/edit/step1.php?id=<?php echo $row2['ProjectID']; ?>">
+                      <a href="<?php echo BASE_PATH; ?>/entrepreneur/problem/edit/step1.php?id=<?php echo $row2['ProjectID']; ?>">
                   <i class="icon icon-pencil"></i> Edit</a>&nbsp;&nbsp;&nbsp;| &nbsp;
                    <a href="#" role="button" class="slide-delete-<?php echo $row2['ProjectID']; ?>_open">
                       <i class="icon icon-bin"></i>Delete</a>
@@ -541,7 +541,7 @@ echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">';
                   
 
 
-                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Name']; ?> (  <a href="#" alt="<?php if($row2['ProjectStatus'] == 'Public'){ ?>This project is set to Public. This is visible to everyone. <?php } ?><?php if($row2['ProjectStatus'] == 'Private'){ ?>This project is set to Private. Only you and people you invite to meet with can see it. <?php } ?>" class="tooltiptext"><i class="icon <?php if($row2['ProjectStatus'] == 'Public'){ ?>icon-unlocked<?php } ?> <?php if($row2['ProjectStatus'] == 'Private'){ ?>icon-lock <?php } ?>"></i></a>)</div>
+                  <div class="survey-name" ng-bind="(survey.name)"><?php echo $row2['Problem']; ?> (  <a href="#" alt="<?php if($row2['ProjectStatus'] == 'Public'){ ?>This problem is set to Public. This is visible to everyone. <?php } ?><?php if($row2['ProjectStatus'] == 'Private'){ ?>This problem is set to Private. Only you and people you invite to meet with can see it. <?php } ?>" class="tooltiptext"><i class="icon <?php if($row2['ProjectStatus'] == 'Public'){ ?>icon-unlocked<?php } ?> <?php if($row2['ProjectStatus'] == 'Private'){ ?>icon-lock <?php } ?>"></i></a>)</div>
                   <div class="survey-metadata">
                     <div class="item ">
                       <div class="label">Created</div>

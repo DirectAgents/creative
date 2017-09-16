@@ -619,6 +619,9 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
         var projectid       = $('input[name=projectid]').val();
         var projectname       = $('input[name=projectname]').val();
+        var possibleanswer1      = $('input[name=possibleanswertext1]').val();
+        var possibleanswer2      = $('input[name=possibleanswertext2]').val();
+        var possibleanswer3      = $('input[name=possibleanswertext3]').val();
         var stage = $("select[name='stage']").val();
         var category = $("select[name='category']").val();
         var minreq = $('input[name="minreq[]"]:checked').map(function () {return this.value;}).get().join(",");
@@ -708,6 +711,41 @@ $("textarea[name=MYFIELDNAME]").val();
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a name for your Project!</div>';
             $("#result").hide().html(output).slideDown();
             proceed = false;
+        }
+
+        var minLength = 15;
+
+         if(projectname.length < minLength){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter at least a complete sentence!</div>';
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }
+
+          if(possibleanswer3==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #3!</div>';
+            $('input[name=possibleanswertext3]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswertext3]').css('border-color','green'); 
+        }
+
+         if(possibleanswer2==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #2!</div>';
+            $('input[name=possibleanswertext2]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswertext2]').css('border-color','green'); 
+        }
+
+        if(possibleanswer1==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #1!</div>';
+            $('input[name=possibleanswertext1]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswertext1]').css('border-color','green'); 
         }
 
 
@@ -826,7 +864,7 @@ $("textarea[name=MYFIELDNAME]").val();
 
           //$( ".processing" ).show();
             //data to be sent to server
-            post_data = {'nda':nda,'projectid':projectid,'projectname':projectname,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
+            post_data = {'nda':nda,'projectid':projectid,'projectname':projectname,'possibleanswer1':possibleanswer1 , 'possibleanswer2':possibleanswer2,'possibleanswer3':possibleanswer3,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
             'maxheight':maxheight, 'status':status,'ethnicity':ethnicity,
             'smoke':smoke,'drink':drink,'diet':diet,'religion':religion,'education':education,'job':job,
             'interest':interest, 'screening':screening,'screeningquestion':screeningquestion, 'potentialanswer1':potentialanswer1 , 'potentialanswer2':potentialanswer2,'potentialanswer3':potentialanswer3,
@@ -852,9 +890,9 @@ $("textarea[name=MYFIELDNAME]").val();
           $('#contact_form input').val(''); 
           $('#contact_form textarea').val(''); 
         }
-        
+        var output = '<div class="success">Successfully Saved!</div>';
         $("#result").hide().html(output).slideDown();
-            }, 'json');
+            });
       
         }
     });
@@ -1107,8 +1145,8 @@ var btn= $(this).find("input[type=submit]:focus").val();
           $('#contact_form textarea').val(''); 
         }
         
-        $("#result").hide().html(output).slideDown();
-            }, 'json');
+        //$("#result").hide().html(output).slideDown();
+            });
       
         }
     });

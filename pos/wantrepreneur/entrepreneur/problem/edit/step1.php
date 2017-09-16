@@ -284,7 +284,7 @@ $("#languages").blur(function (e) {
     </div>
 
       <div class="dashboardProcessMenuText">
-      <div class="processmenu-active"><span class="number">1</span> TARGET AUDIENCE</div></div></div>
+      <div class="processmenu-active"><span class="number"></span> TARGET AUDIENCE</div></div></div>
 
 
     <div class="col-md-4 processmenu-inactive">
@@ -294,8 +294,8 @@ $("#languages").blur(function (e) {
         <i class="fa fa-lightbulb-o fa-stack-1x"></i>
       </span>
     </div>
-      <div class="dashboardProcessMenuText"><span class="number">2</span> IDEA SUMMARY (<a href="step2.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>) </div></div>
-    <div class="col-sm-4 processmenu-inactive">
+      <div class="dashboardProcessMenuText"><span class="number"></span> PROBLEM SUMMARY (<a href="step2.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>) </div></div>
+ <!--   <div class="col-sm-4 processmenu-inactive">
 <div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
       <span class="fa-stack fa-md">
         <i class="fa fa-circle-thin fa-stack-2x"></i>
@@ -303,14 +303,14 @@ $("#languages").blur(function (e) {
       </span>
     </div>
    
-      <div class="dashboardProcessMenuText"><span class="number">3</span> IDEA SETTINGS (<a href="step3.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>)</div></div>
+      <div class="dashboardProcessMenuText"><span class="number"></span> IDEA SETTINGS (<a href="step3.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>)</div></div>-->
   </div>
 
     
   </div>
 </div>
 
-
+<!--
 <div id="white-container">
       <div id="dashboardSurveyTargetingContainerLogic">
 
@@ -335,7 +335,7 @@ $("#languages").blur(function (e) {
 
           <div class="input-inline">
             <div class="wrapper">
-              <!--<h3>Select survey language:</h3>-->
+              <h3>Select survey language:</h3>
              <div class="in-person">
                <input id="nonda" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda) || in_array('',$nda)){echo "checked";}?> />
                <label for="nonda">No, not necessary</label>
@@ -374,12 +374,13 @@ $("#languages").blur(function (e) {
  </div>
  </div>
 
+
+
 <p>&nbsp;</p>
 
-
+-->
     <div id="white-container">
       <div id="dashboardSurveyTargetingContainerLogic">
-
 
 
 
@@ -388,7 +389,7 @@ $("#languages").blur(function (e) {
  <div class="survey-info">
 
            <div class="reach-people">
-              <h2>What is the idea?</h2>
+              <h2>The Problem</h2>
             <div class="separator"></div>
 
         
@@ -400,7 +401,7 @@ $("#languages").blur(function (e) {
               <!--<h3>In Person</h3>-->
                <div class="form-group">
               <div class="in-person">
-               <input class="form-control" name="projectname" type="text" value="<?php echo $rowproject['Name'];?>" placeholder="e.g  Service that helps people nearby to eat together"/>
+               <input class="form-control" name="projectname" type="text" value="<?php echo $rowproject['Problem'];?>" placeholder="e.g  Service that helps people nearby to eat together"/>
               </div>
                
              </div>
@@ -408,13 +409,44 @@ $("#languages").blur(function (e) {
           </div>
 
          
-          <div class="clearer"></div>
 
         </div>
 
 
+<div class="survey-info">
+
+<div class="reach-people">
+              <h2>Possible Answers</h2>
+            <div class="separator"></div>
+            </div>
+
+ <div class="wrapper">
+<div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+  <h3>Potential Answer 1</h3>
+    <input class="form-control" type="text" name="possibleanswertext1" id="possibleanswertext1" placeholder="Ex. Yes, I have that problem" value="<?php echo $rowproject['PossibleAnswer1'];?>" />
+  
+</div>
 
 
+<div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+  <h3>Potential Answer 2</h3>
+    <input class="form-control" type="text" name="possibleanswertext2" id="possibleanswertext2" placeholder="Ex. No, I don't have that problem" value="<?php echo $rowproject['PossibleAnswer2'];?>" />
+
+</div>
+
+<div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+  <h3>Potential Answer 3</h3>
+    <input class="form-control" type="text" name="possibleanswertext3" id="possibleanswertext3" placeholder="Ex. Sometimes" value="<?php echo $rowproject['PossibleAnswer3'];?>" />
+  
+</div>
+
+</div>
+</div>
+
+
+<div class="clearer"></div>
+
+<!--
 <div class="survey-info">
 
            <div class="reach-people">
@@ -441,7 +473,7 @@ $("#languages").blur(function (e) {
           <div class="clearer"></div>
 
         </div>
-<!--
+
         <div class="survey-info">
 
            <div class="reach-people">
@@ -491,7 +523,7 @@ $("#languages").blur(function (e) {
     <div class="survey-info">
 
            <div class="reach-people">
-              <h2>Choose Category:</h2>
+              <h2>Chosen Category for the stated Problem:</h2>
             <div class="separator"></div>
             </div>
   <div class="input-full">
@@ -1880,7 +1912,7 @@ echo '</li>';
 
       <p>&nbsp;</p>
 
- <div id="result"></div>
+
   
     <!--
 <div id="savetargetaudience">
@@ -1898,8 +1930,8 @@ echo '</li>';
              
                     <div class="clearer"></div>
 
-
-            
+<p>&nbsp;</p>
+           <div id="result"></div>  
  </div>
  </div>
 
