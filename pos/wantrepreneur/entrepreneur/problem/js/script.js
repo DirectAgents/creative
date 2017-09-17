@@ -319,9 +319,10 @@ var btn= $(this).find("input[type=submit]:focus").val();
         //get input field values
         var projectid       = $('input[name=projectid]').val();
         var projectname       = $("textarea[name='projectname']").val();
-        var possibleanswer1      = $('input[name=possibleanswertext1]').val();
-        var possibleanswer2      = $('input[name=possibleanswertext2]').val();
-        var possibleanswer3      = $('input[name=possibleanswertext3]').val();
+        var possibleanswer1      = $("textarea[name='possibleanswertext1']").val();
+        var possibleanswer2      = $("textarea[name='possibleanswertext2']").val();
+        var possibleanswer3      = $("textarea[name='possibleanswertext3']").val();
+        var possibleanswer4      = $("textarea[name='possibleanswertext4']").val();
         var stage = $("select[name='stage']").val();
         var category = $("select[name='category']").val();
         var minreq = $('input[name="minreq[]"]:checked').map(function () {return this.value;}).get().join(",");
@@ -406,6 +407,47 @@ $("textarea[name=MYFIELDNAME]").val();
         }
 
 
+
+
+
+         if(possibleanswer4==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Very rare" is chosen!</div>';
+            $('textarea[name=possibleanswertext4]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('textarea[name=possibleanswertext4]').css('border-color','green'); 
+        }
+
+        
+        if(possibleanswer3==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Sometimes" is chosen!</div>';
+            $('textarea[name=possibleanswertext3]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('textarea[name=possibleanswertext3]').css('border-color','green'); 
+        }
+
+         if(possibleanswer2==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "No, I don\'t have that problem" is chosen!</div>';
+            $('textarea[name=possibleanswertext2]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('textarea[name=possibleanswertext2]').css('border-color','green'); 
+        }
+
+        if(possibleanswer1==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Yes, I have that problem" is chosen!</div>';
+            $('textarea[name=possibleanswertext1]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('textarea[name=possibleanswertext1]').css('border-color','green'); 
+        }
+
+        
         if(projectname==""){ 
              output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please state a Problem!</div>';
             $("#result").hide().html(output).slideDown();
@@ -415,41 +457,13 @@ $("textarea[name=MYFIELDNAME]").val();
          var minLength = 15;
 
          if(projectname.length < minLength){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter at least a complete sentence!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-          if(possibleanswer3==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #3!</div>';
-            $('input[name=possibleanswertext3]').css('border-color','red'); 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a complete sentence to list your problem!</div>';
+            $('textarea[name=projectname]').css('border-color','red'); 
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }else{
-            $('input[name=possibleanswertext3]').css('border-color','green'); 
+            $('textarea[name=projectname]').css('border-color','green');
         }
-
-         if(possibleanswer2==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #2!</div>';
-            $('input[name=possibleanswertext2]').css('border-color','red'); 
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }else{
-            $('input[name=possibleanswertext2]').css('border-color','green'); 
-        }
-
-        if(possibleanswer1==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #1!</div>';
-            $('input[name=possibleanswertext1]').css('border-color','red'); 
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }else{
-            $('input[name=possibleanswertext1]').css('border-color','green'); 
-        }
-
-        
-
-       
        
 
         
@@ -565,7 +579,7 @@ $("textarea[name=MYFIELDNAME]").val();
 
           //$( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'projectname':projectname,'possibleanswer1':possibleanswer1 , 'possibleanswer2':possibleanswer2,'possibleanswer3':possibleanswer3,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
+            post_data = {'projectid':projectid,'projectname':projectname,'possibleanswer1':possibleanswer1 , 'possibleanswer2':possibleanswer2,'possibleanswer3':possibleanswer3, 'possibleanswer4':possibleanswer4,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
             'maxheight':maxheight, 'status':status,'ethnicity':ethnicity,
             'smoke':smoke,'drink':drink,'diet':diet,'religion':religion,'education':education,'job':job,
             'interest':interest,'screening':screening,'screeningquestion':screeningquestion, 'potentialanswer1':potentialanswer1 , 'potentialanswer2':potentialanswer2,'potentialanswer3':potentialanswer3,
@@ -619,9 +633,10 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
         var projectid       = $('input[name=projectid]').val();
         var projectname       = $('input[name=projectname]').val();
-        var possibleanswer1      = $('input[name=possibleanswertext1]').val();
-        var possibleanswer2      = $('input[name=possibleanswertext2]').val();
-        var possibleanswer3      = $('input[name=possibleanswertext3]').val();
+        var possibleanswer1      = $("textarea[name='possibleanswertext1']").val();
+        var possibleanswer2      = $("textarea[name='possibleanswertext2']").val();
+        var possibleanswer3      = $("textarea[name='possibleanswertext3']").val();
+        var possibleanswer4      = $("textarea[name='possibleanswertext4']").val();
         var stage = $("select[name='stage']").val();
         var category = $("select[name='category']").val();
         var minreq = $('input[name="minreq[]"]:checked').map(function () {return this.value;}).get().join(",");
@@ -716,36 +731,49 @@ $("textarea[name=MYFIELDNAME]").val();
         var minLength = 15;
 
          if(projectname.length < minLength){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter at least a complete sentence!</div>';
-            $("#result").hide().html(output).slideDown();
-            proceed = false;
-        }
-
-          if(possibleanswer3==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #3!</div>';
-            $('input[name=possibleanswertext3]').css('border-color','red'); 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a complete sentence to list your problem!</div>';
+            $('textarea[name=projectname]').css('border-color','red'); 
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }else{
-            $('input[name=possibleanswertext3]').css('border-color','green'); 
+            $('textarea[name=projectname]').css('border-color','green');
+        }
+
+          if(possibleanswer4==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Very rare" is chosen!</div>';
+            $('textarea[name=possibleanswertext4]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('textarea[name=possibleanswertext4]').css('border-color','green'); 
+        }
+
+        
+        if(possibleanswer3==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Sometimes" is chosen!</div>';
+            $('textarea[name=possibleanswertext3]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('textarea[name=possibleanswertext3]').css('border-color','green'); 
         }
 
          if(possibleanswer2==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #2!</div>';
-            $('input[name=possibleanswertext2]').css('border-color','red'); 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "No, I don\'t have that problem" is chosen!</div>';
+            $('textarea[name=possibleanswertext2]').css('border-color','red'); 
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }else{
-            $('input[name=possibleanswertext2]').css('border-color','green'); 
+            $('textarea[name=possibleanswertext2]').css('border-color','green'); 
         }
 
         if(possibleanswer1==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter a possible Answer #1!</div>';
-            $('input[name=possibleanswertext1]').css('border-color','red'); 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Yes, I have that problem" is chosen!</div>';
+            $('textarea[name=possibleanswertext1]').css('border-color','red'); 
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }else{
-            $('input[name=possibleanswertext1]').css('border-color','green'); 
+            $('textarea[name=possibleanswertext1]').css('border-color','green'); 
         }
 
 
@@ -864,7 +892,7 @@ $("textarea[name=MYFIELDNAME]").val();
 
           //$( ".processing" ).show();
             //data to be sent to server
-            post_data = {'nda':nda,'projectid':projectid,'projectname':projectname,'possibleanswer1':possibleanswer1 , 'possibleanswer2':possibleanswer2,'possibleanswer3':possibleanswer3,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
+            post_data = {'nda':nda,'projectid':projectid,'projectname':projectname,'possibleanswer1':possibleanswer1 , 'possibleanswer2':possibleanswer2,'possibleanswer3':possibleanswer3,'possibleanswer4':possibleanswer4,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
             'maxheight':maxheight, 'status':status,'ethnicity':ethnicity,
             'smoke':smoke,'drink':drink,'diet':diet,'religion':religion,'education':education,'job':job,
             'interest':interest, 'screening':screening,'screeningquestion':screeningquestion, 'potentialanswer1':potentialanswer1 , 'potentialanswer2':potentialanswer2,'potentialanswer3':potentialanswer3,

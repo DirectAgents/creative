@@ -24,6 +24,7 @@ if($_POST['projectname'] == ''){$projectname = 'NULL';}else{$projectname = $_POS
 if($_POST['possibleanswer1'] == ''){$possibleanswer1 = '';}else{$possibleanswer1 = $_POST['possibleanswer1'];}
 if($_POST['possibleanswer2'] == ''){$possibleanswer2 = '';}else{$possibleanswer2 = $_POST['possibleanswer2'];}
 if($_POST['possibleanswer3'] == ''){$possibleanswer3 = '';}else{$possibleanswer3 = $_POST['possibleanswer3'];}
+if($_POST['possibleanswer4'] == ''){$possibleanswer4 = '';}else{$possibleanswer4 = $_POST['possibleanswer4'];}
 if($_POST['stage'] == ''){$stage = 'NULL';}else{$stage = $_POST['stage'];}
 if($_POST['category'] == ''){$category = 'NULL';}else{$category = $_POST['category'];}
 
@@ -62,6 +63,7 @@ $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET
   PossibleAnswer1='".$possibleanswer1."',
   PossibleAnswer2='".$possibleanswer2."',
   PossibleAnswer3='".$possibleanswer3."',
+  PossibleAnswer4='".$possibleanswer4."',
   Stage='".$stage."',
   Category='".$category."',
   MinReq='".$minreq."',

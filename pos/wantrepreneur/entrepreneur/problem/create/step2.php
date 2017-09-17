@@ -225,19 +225,54 @@ jq(document).ready(function(){
               
 
               <div class="in-person">
-               <label for="in-person"><h2>Possible Answer Choices</h2></label>
+               <label for="in-person"><h2>Questions</h2></label>
               </div>
 
 
               
-               <label for="in-person"><h3 class="grey"><?php echo $rowproject['PossibleAnswer1'];?></h3></label>
+               <label for="in-person"><h3 class="grey">If Answer Chosen: Yes, I have that problem</h3></label>
+
+               <div class="in-person">
+               <label for="in-person">
+
+            <?php echo $rowproject['PossibleAnswer1'];?>
+
+                </label>
+             </div>
+            
               
              
-               <label for="in-person"><h3 class="grey"><?php echo $rowproject['PossibleAnswer2'];?></h3></label>
-             
+               <label for="in-person"><h3 class="grey">If Answer Chosen: No, I don't have that problem</h3></label>
 
-            
-               <label for="in-person"><h3 class="grey"><?php echo $rowproject['PossibleAnswer3'];?></h3></label>
+               <div class="in-person">
+               <label for="in-person">
+
+            <?php echo $rowproject['PossibleAnswer2'];?>
+
+                </label>
+             </div>             
+
+               
+                <label for="in-person"><h3 class="grey">If Answer Chosen: Sometimes</h3></label>
+
+               <div class="in-person">
+               <label for="in-person">
+
+            <?php echo $rowproject['PossibleAnswer3'];?>
+
+                </label>
+             </div>  
+
+
+               <label for="in-person"><h3 class="grey">If Answer Chosen: Very rare</h3></label>
+
+               <div class="in-person">
+               <label for="in-person">
+
+            <?php echo $rowproject['PossibleAnswer4'];?>
+
+                </label>
+             </div>  
               
              
             </div>

@@ -385,21 +385,26 @@ $("#languages").blur(function (e) {
 
  <div class="wrapper">
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
-  <h3>Potential Answer 1</h3>
-    <input class="form-control" type="text" name="possibleanswertext1" id="possibleanswertext1" placeholder="Ex. Yes, I have that problem" value="<?php echo $rowproject['PossibleAnswer1'];?>" />
+  <h3>Yes, I have that problem</h3>
+   <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem. Tell me why, how often you experience it and whether you are already know a service that solves this problem already or not." name="possibleanswertext1" id="possibleanswertext1"><?php echo $rowproject['Problem'];?></textarea>
   
 </div>
 
 
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
-  <h3>Potential Answer 2</h3>
-    <input class="form-control" type="text" name="possibleanswertext2" id="possibleanswertext2" placeholder="Ex. No, I don't have that problem" value="<?php echo $rowproject['PossibleAnswer2'];?>" />
-
+  <h3>No, I don't have that problem</h3>
+    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you don't have that problem. Tell me why you don't have that problem." name="possibleanswertext2" id="possibleanswertext2"><?php echo $rowproject['Problem'];?></textarea>
 </div>
 
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
-  <h3>Potential Answer 3</h3>
-    <input class="form-control" type="text" name="possibleanswertext3" id="possibleanswertext3" placeholder="Ex. Sometimes" value="<?php echo $rowproject['PossibleAnswer3'];?>" />
+ <h3>Sometimes</h3>
+    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you have that problem only occassionally. Tell me what in what type of occasions you are experience that problem." name="possibleanswertext3" id="possibleanswertext3"><?php echo $rowproject['Problem'];?></textarea>
+  
+</div>
+
+<div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
+  <h3>Very rare</h3>
+    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why barely experience this problem. Tell me more why you experience this problem rarely." name="possibleanswertext4" id="possibleanswertext4"><?php echo $rowproject['Problem'];?></textarea>
   
 </div>
 
