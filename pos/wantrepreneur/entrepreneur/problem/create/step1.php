@@ -406,16 +406,16 @@ $(document).ready(function() {
   <h3>Yes, I have that problem</h3>
      
      Question #1
-     <input class="form-control" type="text" name="possibleanswer1_question1" id="possibleanswer1_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem." value="<?php echo $rowpotentialanswers['PossibleAnswer1_Question1'];?>" />
+     <input class="form-control" type="text" name="possibleanswer1_question1" id="possibleanswer1_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem." value="<?php echo $rowproject['PossibleAnswer1_Question1'];?>" />
 <br>
      Question #2
-     <input class="form-control" type="text" name="possibleanswer1_question2" id="possibleanswer1_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowpotentialanswers['PossibleAnswer1_Question2'];?>" />
+     <input class="form-control" type="text" name="possibleanswer1_question2" id="possibleanswer1_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowproject['PossibleAnswer1_Question2'];?>" />
 <br>
      Question #3
-     <input class="form-control" type="text" name="possibleanswer1_question3" id="possibleanswer1_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowpotentialanswers['PossibleAnswer1_Question3'];?>" />
+     <input class="form-control" type="text" name="possibleanswer1_question3" id="possibleanswer1_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowproject['PossibleAnswer1_Question3'];?>" />
 <br>
      Question #4
-     <input class="form-control" type="text" name="possibleanswer1_question4" id="possibleanswer1_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowpotentialanswers['PossibleAnswer1_Question4'];?>" />
+     <input class="form-control" type="text" name="possibleanswer1_question4" id="possibleanswer1_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowproject['PossibleAnswer1_Question4'];?>" />
 
   
 </div>
@@ -429,10 +429,10 @@ $(document).ready(function() {
   <h3>No, I don't have that problem</h3>
 
        Question #1
-     <input class="form-control" type="text" name="possibleanswer2_question1" id="possibleanswer2_question1" placeholder="Example: Please explain in further details why you don't have the same problem." value="<?php echo $rowpotentialanswers['PossibleAnswer2_Question1'];?>" />
+     <input class="form-control" type="text" name="possibleanswer2_question1" id="possibleanswer2_question1" placeholder="Example: Please explain in further details why you don't have the same problem." value="<?php echo $rowproject['PossibleAnswer2_Question1'];?>" />
 <br>
      Question #2
-     <input class="form-control" type="text" name="possibleanswer2_question2" id="possibleanswer2_question2" placeholder="Example: Tell me more why you are not experiencing it" value="<?php echo $rowpotentialanswers['PossibleAnswer2_Question2'];?>" />
+     <input class="form-control" type="text" name="possibleanswer2_question2" id="possibleanswer2_question2" placeholder="Example: Tell me more why you are not experiencing it" value="<?php echo $rowproject['PossibleAnswer2_Question2'];?>" />
 
 
 </div>
@@ -444,16 +444,16 @@ $(document).ready(function() {
   <h3>Sometimes</h3>
 
       Question #1
-     <input class="form-control" type="text" name="possibleanswer3_question1" id="possibleanswer3_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem occasionally." value="<?php echo $rowpotentialanswers['PossibleAnswer3_Question1'];?>" />
+     <input class="form-control" type="text" name="possibleanswer3_question1" id="possibleanswer3_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem occasionally." value="<?php echo $rowproject['PossibleAnswer3_Question1'];?>" />
 <br>
      Question #2
-     <input class="form-control" type="text" name="possibleanswer3_question2" id="possibleanswer3_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowpotentialanswers['PossibleAnswer3_Question2'];?>" />
+     <input class="form-control" type="text" name="possibleanswer3_question2" id="possibleanswer3_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowproject['PossibleAnswer3_Question2'];?>" />
 <br>
      Question #3
-     <input class="form-control" type="text" name="possibleanswer3_question3" id="possibleanswer3_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowpotentialanswers['PossibleAnswer3_Question3'];?>" />
+     <input class="form-control" type="text" name="possibleanswer3_question3" id="possibleanswer3_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowproject['PossibleAnswer3_Question3'];?>" />
 <br>
      Question #4
-     <input class="form-control" type="text" name="possibleanswer3_question4" id="possibleanswer3_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowpotentialanswers['PossibleAnswer3_Question4'];?>" />
+     <input class="form-control" type="text" name="possibleanswer3_question4" id="possibleanswer3_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowproject['PossibleAnswer3_Question4'];?>" />
   
 </div>
 </div>
@@ -466,16 +466,16 @@ $(document).ready(function() {
   <h3>Very rare</h3>
 
    Question #1
-     <input class="form-control" type="text" name="possibleanswer4_question1" id="possibleanswer4_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem." value="<?php echo $rowpotentialanswers['PossibleAnswer4_Question1'];?>" />
+     <input class="form-control" type="text" name="possibleanswer4_question1" id="possibleanswer4_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem." value="<?php echo $rowproject['PossibleAnswer4_Question1'];?>" />
 <br>
      Question #2
-     <input class="form-control" type="text" name="possibleanswer4_question2" id="possibleanswer4_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowpotentialanswers['PossibleAnswer4_Question2'];?>" />
+     <input class="form-control" type="text" name="possibleanswer4_question2" id="possibleanswer4_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowproject['PossibleAnswer4_Question2'];?>" />
 <br>
      Question #3
-     <input class="form-control" type="text" name="possibleanswer4_question3" id="possibleanswer4_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowpotentialanswers['PossibleAnswer4_Question3'];?>" />
+     <input class="form-control" type="text" name="possibleanswer4_question3" id="possibleanswer4_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowproject['PossibleAnswer4_Question3'];?>" />
 <br>
      Question #4
-     <input class="form-control" type="text" name="possibleanswer4_question4" id="possibleanswer4_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowpotentialanswers['PossibleAnswer4_Question4'];?>" />
+     <input class="form-control" type="text" name="possibleanswer4_question4" id="possibleanswer4_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowproject['PossibleAnswer4_Question4'];?>" />
   
 </div>
 

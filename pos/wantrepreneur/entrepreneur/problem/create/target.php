@@ -37,12 +37,13 @@ if($_POST['possibleanswer1_question4'] == ''){$possibleanswer1_question4 = '';}e
 if($_POST['possibleanswer2_question1'] == ''){$possibleanswer2_question1 = '';}else{$possibleanswer2_question1 = $_POST['possibleanswer2_question1'];}
 if($_POST['possibleanswer2_question2'] == ''){$possibleanswer2_question2 = '';}else{$possibleanswer2_question2 = $_POST['possibleanswer2_question2'];}
 
-if($_POST['possibleanswer3_question1'] == ''){$possibleanswer1_question1 = '';}else{$possibleanswer1_question1 = $_POST['possibleanswer1_question1'];}
+
+if($_POST['possibleanswer3_question1'] == ''){$possibleanswer3_question1 = '';}else{$possibleanswer3_question1 = $_POST['possibleanswer3_question1'];}
 if($_POST['possibleanswer3_question2'] == ''){$possibleanswer3_question2 = '';}else{$possibleanswer3_question2 = $_POST['possibleanswer3_question2'];}
 if($_POST['possibleanswer3_question3'] == ''){$possibleanswer3_question3 = '';}else{$possibleanswer3_question3 = $_POST['possibleanswer3_question3'];}
 if($_POST['possibleanswer3_question4'] == ''){$possibleanswer3_question4 = '';}else{$possibleanswer3_question4 = $_POST['possibleanswer3_question4'];}
 
-if($_POST['possibleanswer4_question1'] == ''){$possibleanswer1_question1 = '';}else{$possibleanswer1_question1 = $_POST['possibleanswer1_question1'];}
+if($_POST['possibleanswer4_question1'] == ''){$possibleanswer4_question1 = '';}else{$possibleanswer4_question1 = $_POST['possibleanswer4_question1'];}
 if($_POST['possibleanswer4_question2'] == ''){$possibleanswer4_question2 = '';}else{$possibleanswer4_question2 = $_POST['possibleanswer4_question2'];}
 if($_POST['possibleanswer4_question3'] == ''){$possibleanswer4_question3 = '';}else{$possibleanswer4_question3 = $_POST['possibleanswer4_question3'];}
 if($_POST['possibleanswer4_question4'] == ''){$possibleanswer4_question4 = '';}else{$possibleanswer4_question4 = $_POST['possibleanswer4_question4'];}
@@ -104,6 +105,7 @@ if(mysqli_num_rows($sql)>0)
   PossibleAnswer4_Question2='".$possibleanswer4_question2."',
   PossibleAnswer4_Question3='".$possibleanswer4_question3."',
   PossibleAnswer4_Question4='".$possibleanswer4_question4."',
+
   Stage='".$stage."',
   Category='".$category."',
   MinReq='".$minreq."',
@@ -139,8 +141,8 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID,
   PossibleAnswer2_Question2,PossibleAnswer3_Question1,PossibleAnswer3_Question2,PossibleAnswer3_Question3,PossibleAnswer3_Question4,
   PossibleAnswer4_Question1,PossibleAnswer4_Question2,PossibleAnswer4_Question3,PossibleAnswer4_Question4,Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
 Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interests, Languages, ProjectStatus, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
-  '".$projectname."','".$possibleanswer1_question1."','".$possibleanswer1_question2."','".$possibleanswer1_question3."','".$possibleanswer1_question4."',
-  '".$possibleanswer2_question1."','".$possibleanswer2_question2."','".$possibleanswer3_question1."','".$possibleanswer3_question2."','".$possibleanswer3_question3."','".$possibleanswer3_question4."','".$possibleanswer4_question1."','".$possibleanswer4_question2."','".$possibleanswer4_question3."','".$possibleanswer4_question4."', '".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
+  '".$projectname."','".$possibleanswer1_question1."','".$possibleanswer1_question2."','".$possibleanswer1_question3."','".$possibleanswer1_question4."'
+  ,'".$possibleanswer2_question1."','".$possibleanswer2_question2."','".$possibleanswer3_question1."','".$possibleanswer3_question2."','".$possibleanswer3_question3."','".$possibleanswer3_question4."','".$possibleanswer4_question1."','".$possibleanswer4_question2."','".$possibleanswer4_question3."','".$possibleanswer4_question4."','".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
   '".$status."','".$ethnicity."','".$smoke."','".$drink."','".$diet."',
   '".$religion."','".$education."','".$job."', '".$interests."' , '".$languages."', 'Draft','".$date."')");
 

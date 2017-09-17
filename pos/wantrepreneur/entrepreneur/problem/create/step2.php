@@ -39,7 +39,7 @@ $rowproject = mysqli_fetch_array($Project);
 
 
 if($_SESSION['projectid'] != $rowproject['ProjectID']){
-  header("Location:../../index.php");
+  //header("Location:../../index.php");
 }
 
 
