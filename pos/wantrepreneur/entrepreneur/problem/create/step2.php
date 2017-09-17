@@ -21,7 +21,7 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../../login');
+  $startup_home->redirect('../../entrepreneur/login');
 }
 
 $stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
@@ -1005,15 +1005,22 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
  
             
 
-            <div id="back">
-              <a href="step2.php?<?php echo $_SESSION['projectid']; ?>">< Back</a>
-
-            </div>
+           
 </div>  
+
+
               </div>
 
+
+
            
-              </div></div>
+              </div>
+
+ <div id="back">
+              <a href="<?php echo BASE_PATH; ?>/entrepreneur/problem/create/step1.php?id=<?php echo $_SESSION['projectid']; ?>">< Back</a>
+
+            </div>
+              </div>
    
 </div> 
 </div> 

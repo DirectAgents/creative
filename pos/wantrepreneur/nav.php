@@ -693,10 +693,10 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
         <li class="more">
             <span>My account</span>
             <ul>
-              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $_SESSION['startupSession'];?>">Profile</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/account/settings/">Settings</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/payment/">Payment</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/startup/meetings/">My Meetings</a></li>
+              <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/profile/entrepreneur/?id=<?php echo $_SESSION['startupSession'];?>">Profile</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/entrepreneur/account/settings/">Settings</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/entrepreneur/payment/">Payment</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/entrepreneur/meetings/">My Meetings</a></li>
               <li class='separator'></li>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['startupSession'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 

@@ -96,6 +96,7 @@ if(mysqli_num_rows($sql)>0)
   Job='".$job."',
   Interests = '".$interests."',
   Languages = '".$languages."',
+  ProjectStatus = 'Draft',
   Date_Created = '".$date."'
 
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");
@@ -110,10 +111,10 @@ if(mysqli_num_rows($sql)>0)
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID, startupID, Problem,PossibleAnswer1,PossibleAnswer2,PossibleAnswer3,PossibleAnswer4, Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
-Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interests, Languages, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
+Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interests, Languages, ProjectStatus, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
   '".$projectname."','".$possibleanswer1."','".$possibleanswer2."','".$possibleanswer3."','".$possibleanswer4."', '".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
   '".$status."','".$ethnicity."','".$smoke."','".$drink."','".$diet."',
-  '".$religion."','".$education."','".$job."', '".$interests."' , '".$languages."' ,'".$date."')");
+  '".$religion."','".$education."','".$job."', '".$interests."' , '".$languages."', 'Draft','".$date."')");
 
 
 
