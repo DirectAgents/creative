@@ -384,6 +384,7 @@ $("#languages").blur(function (e) {
             </div>
 
  <div class="wrapper">
+ <div class="space"></div>
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Yes, I have that problem</h3>
    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem. Tell me why, how often you experience it and whether you are already know a service that solves this problem already or not." name="possibleanswertext1" id="possibleanswertext1"><?php echo $rowproject['Problem'];?></textarea>

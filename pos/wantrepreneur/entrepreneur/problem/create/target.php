@@ -75,7 +75,7 @@ if(mysqli_num_rows($sql)>0)
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET 
   Problem='".$projectname."',
-  PossibleAnswer1='".$possibleanswer1."',
+  PossibleAnswer1_Question1='".$possibleanswer1."',
   PossibleAnswer2='".$possibleanswer2."',
   PossibleAnswer3='".$possibleanswer3."',
   PossibleAnswer4='".$possibleanswer4."',

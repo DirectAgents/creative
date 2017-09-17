@@ -359,7 +359,7 @@ $(document).ready(function() {
            <div class="reach-people">
               <h2>What is the Problem you might think is a problem to your target market?</h2>
             <div class="separator"></div>
-
+<div class="space"></div>
              <div class="screening-description">
                   Provide an overall subject line of your idea or your product. Be short and precise with your problem statement as possible.
                 </div>
@@ -395,34 +395,87 @@ $(document).ready(function() {
             </div>
 
  <div class="wrapper">
-
+<div class="space"></div>
 <div class="screening-description">
                   Below are the possible choice of answers given to your potential customers. They will choose only one of them. For each choice, please explain your specific question you have for each person who will participate.
                 </div>
 
+<div class="thebox">
+
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Yes, I have that problem</h3>
-   
-     <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem. Tell me why, how often you experience it and whether you are already know a service that solves this problem already or not." name="possibleanswertext1" id="possibleanswertext1"><?php echo $rowproject['PossibleAnswer1'];?></textarea>
+     
+     Question #1
+     <input class="form-control" type="text" name="possibleanswer1_question1" id="possibleanswer1_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem." value="<?php echo $rowpotentialanswers['PossibleAnswer1_Question1'];?>" />
+<br>
+     Question #2
+     <input class="form-control" type="text" name="possibleanswer1_question2" id="possibleanswer1_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowpotentialanswers['PossibleAnswer1_Question2'];?>" />
+<br>
+     Question #3
+     <input class="form-control" type="text" name="possibleanswer1_question3" id="possibleanswer1_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowpotentialanswers['PossibleAnswer1_Question3'];?>" />
+<br>
+     Question #4
+     <input class="form-control" type="text" name="possibleanswer1_question4" id="possibleanswer1_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowpotentialanswers['PossibleAnswer1_Question4'];?>" />
+
   
 </div>
 
+</div>
 
+<div class="space"></div>
+
+<div class="thebox">
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>No, I don't have that problem</h3>
-    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you don't have that problem. Tell me why you don't have that problem." name="possibleanswertext2" id="possibleanswertext2"><?php echo $rowproject['PossibleAnswer2'];?></textarea>
+
+       Question #1
+     <input class="form-control" type="text" name="possibleanswer2_question1" id="possibleanswer2_question1" placeholder="Example: Please explain in further details why you don't have the same problem." value="<?php echo $rowpotentialanswers['PossibleAnswer2_Question1'];?>" />
+<br>
+     Question #2
+     <input class="form-control" type="text" name="possibleanswer2_question2" id="possibleanswer2_question2" placeholder="Example: Tell me more why you are not experiencing it" value="<?php echo $rowpotentialanswers['PossibleAnswer2_Question2'];?>" />
+
 
 </div>
+</div>
 
+<div class="space"></div>
+<div class="thebox">
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Sometimes</h3>
-    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you have that problem only occassionally. Tell me what in what type of occasions you are experience that problem." name="possibleanswertext3" id="possibleanswertext3"><?php echo $rowproject['PossibleAnswer3'];?></textarea>
+
+      Question #1
+     <input class="form-control" type="text" name="possibleanswer3_question1" id="possibleanswer3_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem occasionally." value="<?php echo $rowpotentialanswers['PossibleAnswer3_Question1'];?>" />
+<br>
+     Question #2
+     <input class="form-control" type="text" name="possibleanswer3_question2" id="possibleanswer3_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowpotentialanswers['PossibleAnswer3_Question2'];?>" />
+<br>
+     Question #3
+     <input class="form-control" type="text" name="possibleanswer3_question3" id="possibleanswer3_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowpotentialanswers['PossibleAnswer3_Question3'];?>" />
+<br>
+     Question #4
+     <input class="form-control" type="text" name="possibleanswer3_question4" id="possibleanswer3_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowpotentialanswers['PossibleAnswer3_Question4'];?>" />
   
 </div>
+</div>
 
+
+<div class="space"></div>
+
+<div class="thebox">
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Very rare</h3>
-    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why barely experience this problem. Tell me more why you experience this problem rarely." name="possibleanswertext4" id="possibleanswertext4"><?php echo $rowproject['PossibleAnswer4'];?></textarea>
+
+   Question #1
+     <input class="form-control" type="text" name="possibleanswer4_question1" id="possibleanswer4_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem." value="<?php echo $rowpotentialanswers['PossibleAnswer4_Question1'];?>" />
+<br>
+     Question #2
+     <input class="form-control" type="text" name="possibleanswer4_question2" id="possibleanswer4_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowpotentialanswers['PossibleAnswer4_Question2'];?>" />
+<br>
+     Question #3
+     <input class="form-control" type="text" name="possibleanswer4_question3" id="possibleanswer4_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowpotentialanswers['PossibleAnswer4_Question3'];?>" />
+<br>
+     Question #4
+     <input class="form-control" type="text" name="possibleanswer4_question4" id="possibleanswer4_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowpotentialanswers['PossibleAnswer4_Question4'];?>" />
   
 </div>
 
@@ -1976,7 +2029,7 @@ echo '</li>';
  </div>     
 
   </div>
-
+  </div>
 
             </div>
                     <div class="clearer"></div>

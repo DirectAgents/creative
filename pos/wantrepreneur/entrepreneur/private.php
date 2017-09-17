@@ -190,11 +190,11 @@ if(mysqli_num_rows($sql) == 0)
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">You haven\'t posted any ideas yet.</div>
+<div class="empty-projects">You don\'t have any problems marked as private.</div>
   <div class="create-one-here-box">
       <div class="create-one">
  <p>&nbsp;</p>
-        <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="create-one-btn">Create one here</a>
+         <a href="'.BASE_PATH.'/entrepreneur/problem/create/step1.php?id='.rand(100, 100000).'" class="create-one-btn">List a Problem</a>
 
        </div> 
        <p>&nbsp;</p>

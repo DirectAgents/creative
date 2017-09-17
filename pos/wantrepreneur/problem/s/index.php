@@ -651,13 +651,13 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
       <?php
   if($rowproject['project_image'] != ''){ ?>
   
-  <img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowproject['project_image']; ?>" class="img-circle-profile"/>
+  <img src="<?php echo BASE_PATH; ?>/problem/uploads/<?php echo $rowproject['project_image']; ?>" class="img-circle-profile"/>
 
 <?php
 
 }else{
 
- echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" class="img-circle-profile"/>';
+ echo '<img src="'.BASE_PATH.'/problem/uploads/thumbnail.jpg" class="img-circle-profile"/>';
 }
   
       ?>
@@ -667,7 +667,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
     <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
     
-<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
+<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span></h3></div>
 
 
 
@@ -689,7 +689,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 <?php }else{ ?>
 
 
-<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes</span></h3></div>
+<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span></h3></div>
 
 
 <?php } ?>
@@ -700,25 +700,10 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="col-lg-12">
       <p>&nbsp;</p>
-      <h4>What is the idea?</h4>
-      <p class="grey"><?php echo $rowproject['Name']; ?></p>
+      <h4>The Problem</h4>
+      <p class="grey"><?php echo $rowproject['Problem']; ?></p>
      
       </div>
 
@@ -731,7 +716,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
  <?php if($rowproject['Details'] != ''){?> 
 
     <div class="col-lg-12">
-    <h4>What makes this idea special?</h4>
+    <h4>Please choose </h4>
       <p class="grey"><?php echo $rowproject['Details']; ?></p>
     </div>
   

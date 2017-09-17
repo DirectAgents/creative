@@ -3342,6 +3342,8 @@ text-transform: uppercase;
 .popupoverlay-btn{float:right;}
 
 
+.thebox{float:left; width:100%; background:#eee; padding:20px;}
+
 #back a{
     text-transform: uppercase;
     padding: 14px 24px;

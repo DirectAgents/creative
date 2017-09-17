@@ -661,7 +661,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
       
          <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/entrepreneur/problem/create/step1.php?id=<?php echo rand(100, 100000);?>">Post a Problem</a></li>
 
-        <li class="my-projects"><a href="<?php echo BASE_PATH; ?>/entrepreneur">My Ideas</a></li>
+        <li class="my-projects"><a href="<?php echo BASE_PATH; ?>/entrepreneur">My Listed Problems</a></li>
 
        
 <a href="<?php echo BASE_PATH; ?>/profile/entrepreneur/?id=<?php echo $_SESSION['startupSession'];?>">
