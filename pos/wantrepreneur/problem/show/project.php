@@ -14,10 +14,6 @@ $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE Proje
 $rowproject = mysqli_fetch_array($Project);
 
 
-$startupprofile = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$_SESSION['startupSession']."'");
-$rowstartupprofile = mysqli_fetch_array($startupprofile);
-
-
 
 $Screening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE ProjectID='".$_GET['id']."' AND EnabledorDisabled = 'Enabled'");
 $rowscreening = mysqli_fetch_array($Screening);
@@ -43,11 +39,6 @@ if(!$startup_home->is_logged_in())
 }
 
 
-if(!isset($_GET['id'])){
-header("Location:../../../startup/");
-}
-
-
 if($startup_home->is_logged_in())
 {
 //exit();
@@ -55,14 +46,6 @@ if($startup_home->is_logged_in())
 
 $startup = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
 $rowstartup = mysqli_fetch_array($startup);
-
-
-if($rowstartup == false ){
-  //header("Location:".BASE_PATH."/participant/meetings/");
-  header("Location:".BASE_PATH."/404.php");
-  exit();
-}else{
-
 
 
 if(isset($_GET['p'])){
@@ -81,14 +64,9 @@ $sqlparticipantanswer = mysqli_query($connecDB,"SELECT * FROM tbl_participant_po
 $rowparticipantanswer=mysqli_fetch_array($sqlparticipantanswer);
 
 
-$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_startup WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."' AND Met = 'Yes'");
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sqlarchived);
-
-
-$sqlparticipated = mysqli_query($connecDB,"SELECT * FROM tbl_participant_meeting_participated WHERE ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."'");
-//$result=mysql_query($sql);
-$rowparticipated=mysqli_fetch_array($sqlparticipated);
 
 }
 
@@ -115,13 +93,10 @@ $rowmeetingrecent=mysqli_fetch_array($sqlrecent);
 
 
 $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Startup='Yes'
-  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
+  WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Startup='Yes'
-  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
-
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET Viewed_by_Startup='Yes'
-  WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
+  WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 
 
 
@@ -140,7 +115,7 @@ $Diet = str_replace(",","|",$rowproject['Diet']);
 $Religion = str_replace(",","|",$rowproject['Religion']);
 $Education = str_replace(",","|",$rowproject['Education']);
 $Job = str_replace(",","|",$rowproject['Job']);
-$Interests = str_replace(",","|",$rowproject['Interests']);
+$Interest = str_replace(",","|",$rowproject['Interest']);
 $Languages = str_replace(",","|",$rowproject['Languages']);
 
 
@@ -229,10 +204,10 @@ if($Job != 'NULL' && $Job != ''){$thejob = "AND Job RLIKE '[[:<:]]".$Job."[[:>:]
 }
 
 
-if (strpos($Min_Req, 'Interests') !== false) {
-if($Interests != 'NULL' && $Interests != ''){$interests = "AND Interests RLIKE '[[:<:]]".$Interests."[[:>:]]'";}else{$interests = '';}
+if (strpos($Min_Req, 'Interest') !== false) {
+if($Interest != 'NULL' && $Interest != ''){$interest = "AND Interest RLIKE '[[:<:]]".$Interest."[[:>:]]'";}else{$interest = '';}
 }else{
-  $interests = '';
+  $interest = '';
 }
 
 if (strpos($Min_Req, 'Languages') !== false) {
@@ -246,7 +221,7 @@ if($Languages != 'NULL' && $Languages != ''){$languages = "AND Languages RLIKE '
 
 if(isset($_GET['p'])){
 
-$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_GET['p']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages ORDER BY userID DESC");
+$results = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$_GET['p']."' $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interest $languages ORDER BY userID DESC");
 
 
 
@@ -293,21 +268,7 @@ if(mysqli_num_rows($startup)<0)
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
       minDate: 1,
-      maxDate: '+2y',
-      buttonText: "Select date",
-      onSelect: function(date){
-
-        var selectedDate = new Date(date);
-        var msecsInADay = 86400000;
-        var endDate = new Date(selectedDate.getTime() + msecsInADay);
-
-        $("#date_option_two").datepicker( "option", "minDate", endDate );
-        $("#date_option_two").datepicker( "option", "maxDate", '+2y' );
-
-        $("#date_option_three").datepicker( "option", "minDate", endDate );
-        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
-
-    }
+      buttonText: "Select date"
     });
 
     $( "#date_option_two" ).datepicker({
@@ -315,21 +276,7 @@ if(mysqli_num_rows($startup)<0)
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
       minDate: 1,
-      maxDate: '+2y',
-      buttonText: "Select date",
-      changeMonth: true,
-      onSelect: function(date){
-
-        var selectedDate = new Date(date);
-        var msecsInADay = 86400000;
-        var endDate = new Date(selectedDate.getTime() + msecsInADay);
-
-        
-
-        $("#date_option_three").datepicker( "option", "minDate", endDate );
-        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
-
-    }
+      buttonText: "Select date"
     });
 
     $( "#date_option_three" ).datepicker({
@@ -337,9 +284,7 @@ if(mysqli_num_rows($startup)<0)
       buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
       buttonImageOnly: false,
       minDate: 1,
-      maxDate: '+2y',
-      buttonText: "Select date",
-      changeMonth: true
+      buttonText: "Select date"
     });
 
   } );
@@ -385,8 +330,7 @@ $(document).ready(function() {
         if(!date_option_one) {
 
                 $("#date_option_one").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag   
-                    
+                proceed = false; //set do not proceed flag            
         }else{
                 $("#date_option_one").css('border-color','green');  //change border color to red 
                 proceed = true; //set do not proceed flag       
@@ -439,20 +383,19 @@ $(document).ready(function() {
                 proceed = true; //set do not proceed flag       
         };
 
-        if(!location || !date_option_one || !date_option_two || !date_option_three || !time_suggested_one || !time_suggested_two || !time_suggested_three ) {
+        if(!location) {
 
                 $("#pac-input").css('border-color','red');  //change border color to red   
                 proceed = false; //set do not proceed flag            
         }else{
                 $("#pac-input").css('border-color','green');  //change border color to red 
-               
                 proceed = true; //set do not proceed flag       
         };
         
         //everything looks good! proceed...
         if(proceed) 
         {
-         
+
             //data to be sent to server
    post_data = {'projectid':projectid,'participantid':participantid,'time_suggested_one':time_suggested_one, 'time_suggested_two':time_suggested_two,'time_suggested_three':time_suggested_three,'date_option_one':date_option_one, 'date_option_two':date_option_two, 'date_option_three':date_option_three,'location':location};
             
@@ -545,48 +488,6 @@ $(document).ready(function() {
 
 
 
-<?php 
-
-if($startup_home->is_logged_in())
-{
-
-
-if(isset($_GET['p'])){
-
-if($rowmeetingrequest['startupID'] == $_SESSION['startupSession'] && $rowmeetingrequest['ProjectID'] == $_GET['id'] && $rowmeetingrequest['ScreeningQuestion'] != 'Not Passed' ){
-
-//echo $rowrequest['ProjectID'];
-
- ?>
-
-
-<div class="col-lg-11">
-
-<div class="request-sent">  
-
-
-<?php if($rowmeetingrequest['Status'] == 'Waiting for Participant to Accept or Decline'){ ?>
-  Already Request sent to Participate. Waiting for <strong><?php echo $rowparticipant['FirstName']; ?></strong> to respond.
-<?php } ?>
-<?php if($rowmeetingrequest['Status'] == 'Waiting for Startup to Accept or Decline'){ ?>
-  Already received a request to meet. Waiting for you to accept or decline. 
-<?php } ?>
-
-
-</div>
-<p>&nbsp;</p>
-
-</div>
-
-
-<?php } ?> 
-
-<?php } ?>
-
-<?php } ?>
-
-
-
 <div class="col-lg-12">
 
 
@@ -598,7 +499,7 @@ if(isset($_GET['p'])){
 if(mysqli_num_rows($results) == 0) { ?>
 
 
-<!--<center><h3><?php echo $rowparticipant['FirstName']; ?> does not qualify for this idea to provide feedback</h3></center>-->
+<center><h3><?php echo $rowparticipant['FirstName']; ?> does not qualify for this idea to provide feedback</h3></center>
 
 
 <?php }else{ ?>
@@ -646,18 +547,18 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
   
 
 
- <div class="col-lg-2">
+ <div class="col-lg-3">
       
       <?php
   if($rowproject['project_image'] != ''){ ?>
   
-  <img src="<?php echo BASE_PATH; ?>/problem/uploads/<?php echo $rowproject['project_image']; ?>" class="img-circle-profile"/>
+  <img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowproject['project_image']; ?>" class="img-circle-profile"/>
 
 <?php
 
 }else{
 
- echo '<img src="'.BASE_PATH.'/problem/uploads/thumbnail.jpg" class="img-circle-profile"/>';
+ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" class="img-circle-profile"/>';
 }
   
       ?>
@@ -667,29 +568,13 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
     <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
     
-<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span></h3></div>
+<div class="col-lg-7"><h2>Payout</h2><h3>You will pay <span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes <?php if(isset($_GET['p'])){ ?>of <?php echo $rowparticipant['FirstName']; ?>'s time to meet with you<?php } ?></span></h3></div>
 
-
-
-<?php if(isset($_GET['p'])){ ?>
-
-<?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
-  && mysqli_num_rows($sqlparticipated) == 0 && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
-
-<div class="col-lg-3">
-  <div class="btn-setup-a-meeting">
-<a href="#select-dates">Set up a meeting</a>
-
-</div>
-
-</div>
-<?php } ?>
-<?php } ?>
 
 <?php }else{ ?>
 
 
-<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span></h3></div>
+<div class="col-lg-5"><h3>Payout</h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span> for <span class="details-box"><?php echo $rowproject['Minutes']; ?></span> minutes of your time</span></div>
 
 
 <?php } ?>
@@ -700,33 +585,313 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
  
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="col-lg-12">
       <p>&nbsp;</p>
-      <h3>The Problem</h3>
-      <h4 class="grey"><?php echo $rowproject['Problem']; ?></h4>
+      <h4>What is the idea?</h4>
+      <p class="grey"><?php echo $rowproject['Name']; ?></p>
      
       </div>
 
 
+      
 
-       <div class="col-lg-12">
-      <p>&nbsp;</p>
-      <h4>To participate, please choose one of the following:</h4>
 
-       <div class="problem">
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer1">Yes, I have that problem</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer2">No, I don't have that problem</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer3">Sometimes</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer4">Very rare</p>
-    
 
-  </div>
 
-<div class="space"></div>
-  <div class="col-lg-12">
-<div id="participate-btn">Submit Answer</div>
-</div>
+ <?php if($rowproject['Details'] != ''){?> 
 
+    <div class="col-lg-12">
+    <h4>What makes this idea special?</h4>
+      <p class="grey"><?php echo $rowproject['Details']; ?></p>
+    </div>
+  
+  <?php } ?>
+
+
+
+  <?php if($rowproject['Agenda_One'] != ''){?> 
+  
+    <div class="col-lg-12">
+      <h4>What will be discussed during the meeting?</h4>
+      <p class="grey"><?php echo $rowproject['Agenda_One']; ?></p>
+    </div>
+  
+  <?php } ?>
+
+
+
+ <?php if($screeningquestion['EnabledorDisabled'] == 'Enabled'){?> 
+  
+    <div class="col-lg-12">
+    <p>&nbsp;</p>
+      <h4>You asked the following Screening Question</h4>
+      <p class="grey"><?php echo $screeningquestion['ScreeningQuestion']; ?></p>
+      <p><h4>You accept the following Answer:</h4></p>
+      <p class="grey">
+      <?php if($screeningquestion['Accepted'] == 'Potential Answer 1'){echo $screeningquestion['PotentialAnswer1'];} ?>
+      <?php if($screeningquestion['Accepted'] == 'Potential Answer 2'){echo $screeningquestion['PotentialAnswer2'];} ?>
+      <?php if($screeningquestion['Accepted'] == 'Potential Answer 3'){echo $screeningquestion['PotentialAnswer3'];} ?>
+      </p>
+
+
+<?php if(isset($_GET['p'])){ ?>
+
+<?php if($rowparticipantanswer['PotentialAnswerGiven'] != '') { ?>
+
+
+<p><h4><?php echo $rowparticipant['FirstName']; ?>'s Answer was:</h4></p>
+      <p class="grey">
+<?php if($rowparticipantanswer ['PotentialAnswerGiven'] == 'Potential Answer 1') {echo $screeningquestion['PotentialAnswer1'];} ?>
+<?php if($rowparticipantanswer['PotentialAnswerGiven'] == 'Potential Answer 2') {echo $screeningquestion['PotentialAnswer2'];} ?>
+<?php if($rowparticipantanswer['PotentialAnswerGiven'] == 'Potential Answer 3') {echo $screeningquestion['PotentialAnswer3'];} ?>
+
+      </p>
+
+<?php } ?>    
+
+
+
+<?php if($rowparticipantanswer['PotentialAnswerGiven'] == '') { ?>
+
+
+<p><h4><?php echo $rowparticipant['FirstName']; ?> will respond to your screening question once a meeting request is established</h4></p>
+      <p>
+
+
+      </p>
+
+<?php } ?> 
+
+<?php } ?>    
+
+
+      
+<p>&nbsp;</p>
+
+<p><h4>You set the following as a requirement:</h4></p>
+
+      <p class="grey">
+      <?php 
+
+
+
+
+
+if (strpos($Min_Req, 'Age') !== false) {
+echo 'Age: '.$rowproject['Age'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Gender') !== false) {
+echo 'Gender: '.$rowproject['Gender'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Height') !== false) {
+echo 'Height: '.$rowproject['Height'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'City') !== false) {
+echo 'City: '.$rowproject['City'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Status') !== false) {
+echo 'Status: '.$rowproject['Status'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Ethnicity') !== false) {
+echo 'Ethnicity: '.$rowproject['Ethnicity'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Smoke') !== false) {
+echo 'Smoke: '.$rowproject['Smoke'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Drink') !== false) {
+echo 'Drink: '.$rowproject['Drink'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Diet') !== false) {
+echo 'Diet: '.$rowproject['Diet'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Religion') !== false) {
+echo 'Religion: '.$rowproject['Religion'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Education') !== false) {
+echo 'Education: '.$rowproject['Education'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Job') !== false) {
+echo 'Job: '.$rowproject['Job'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Interest') !== false) {
+echo 'Interests: '.$rowproject['Interest'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+echo 'Languages: '.$rowproject['Language'];
+echo '<br>';
+}
+
+
+
+
+
+
+      ?>
+      </p>
+
+
+<?php if(isset($_GET['p'])){ ?>
+
+      <p>
+      <?php 
+
+
+
+
+
+
+$rowparticipant = mysqli_fetch_array($results);
+
+if(mysqli_num_rows($results) == 1)
+{
+
+
+echo'<p><h4>Based on your requirement '.$rowparticipant['FirstName'].' met the following:</h4></p>';
+
+echo '<div class="grey">';
+
+if (strpos($Min_Req, 'Age') !== false) {  
+echo 'Age: '.$rowparticipant['Age'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Gender') !== false) {
+echo 'Gender: '.$rowparticipant['Gender'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Height') !== false) {
+echo 'Height: '.$rowparticipant['Height'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'City') !== false) {
+echo 'City: '.$rowparticipant['City'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Status') !== false) {
+echo 'Status: '.$rowparticipant['Status'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Ethnicity') !== false) {
+echo 'Ethnicity: '.$rowparticipant['Ethnicity'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Smoke') !== false) {
+echo 'Smoke: '.$rowparticipant['Smoke'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Drink') !== false) {
+echo 'Drink: '.$rowparticipant['Drink'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Diet') !== false) {
+echo 'Diet: '.$rowparticipant['Diet'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Religion') !== false) {
+echo 'Religion: '.$rowparticipant['Religion'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Education') !== false) {
+echo 'Education: '.$rowparticipant['Education'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Job') !== false) {
+echo 'Job: '.$rowparticipant['Job'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Interest') !== false) {
+echo 'Interests: '.$rowparticipant['Interest'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+echo 'Languages: '.$rowparticipant['Language'];
+echo '<br>';
+}
+
+echo '</div>';
+
+
+}
+
+      ?>
+      </p>
+
+      <?php } ?>
+
+    </div>
+ 
+  <?php } ?>
 
 
 <?php if(isset($_GET['p'])){ ?>
@@ -734,8 +899,12 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 
 
+<p>&nbsp;</p>
+
+
+
   <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
-    && mysqli_num_rows($sqlparticipated) == 0 && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
+  && mysqli_num_rows($sqlrecent) == 0) { ?>
 
 
 <input id="participantid" name="participantid" type="hidden" value="<?php echo $_GET['p']; ?>">
@@ -752,86 +921,13 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
  <div class="col-lg-12">
 
    
-<h3>Set up a meeting with <?php echo $rowparticipant['FirstName']; ?></h3>
-
-
-<?php 
-
-if($startup_home->is_logged_in())
-{
-
-if($rowstartupprofile['credit_card_id'] == '' && $rowparticipant['Payment_Method'] == 'Bank') { ?>
-
-
-<div class="col-lg-11">
-
-<div class="no-bankaccount-set">  
-  Please add a credit card to send payments. <a href="<?php echo BASE_PATH; ?>/startup/payment/">Set up here</a>
-</div>
-<p>&nbsp;</p>
-
-</div>
-
-
-
-
-<?php } } ?>
-
-
-
-
-<?php 
-
-if($startup_home->is_logged_in())
-{
-
-if($rowstartupprofile['Phone'] == ''){ ?>
-
-
-
-<div class="col-lg-11" style="margin-top:20px;">
-
-<div class="request-sent">  
-  Please add your <strong><u>Phone Number</u></strong> to your account. This is required to request to meet. Click <a href="<?php echo BASE_PATH; ?>/startup/account/settings/">here</a> to add you number.
-</div>
-<p>&nbsp;</p>
-
-</div>
-
-<?php
-}
-}
-
-?>
-
+<h3>Set up a meeting</h3>
 
 
 <!--<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>-->
 
 
-<?php
-  
-if($rowparticipant['google_picture_link'] != ''){
-        echo '<img src="'.$rowparticipant['google_picture_link'].'" class="img-circle-profile"/>';
- }
-
-if($rowparticipant['facebook_id'] != '0'){ 
-        echo '<img src="https://graph.facebook.com/'.$rowparticipant['facebook_id'].'/picture?width=100&height=100" class="img-circle-profile"/>';
-}
-       
-if($rowparticipant['google_picture_link'] == '' && $rowparticipant['facebook_id'] == '0'){
-
-if($rowparticipant['profile_image'] != ''){ 
-        echo '<img src="'.BASE_PATH.'/images/profile/participant/'.$rowparticipant['profile_image'].'" class="img-circle-profile"/>';
-}else{
-        echo '<img src="'.BASE_PATH.'/images/profile/thumbnail.jpg" class="img-circle-profile"/>';
- }
-
-}
-
-      ?>
-
-
+ <p>Choose the date you want to request to meet</p>
 
 
 
@@ -1017,38 +1113,7 @@ if($rowparticipant['profile_image'] != ''){
 
 <div class="col-lg-12" style="padding-right:15px; padding-left:0px">
 
-<?php if($rowparticipant['Payment_Method'] == 'Bank') { ?>
-
-<?php if($rowstartupprofile['credit_card_id'] == '' || $rowstartupprofile['Phone'] == '') { ?>
-
-    <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
-
-<?php }else{ ?>
-
     <input type="submit" class="btn-request" value="Request to Meet"/>
-
-<?php } ?>
-
-<?php } ?>
-
-
-<?php if($rowparticipant['Payment_Method'] == 'Cash') { ?>
-
-<?php if($rowstartupprofile['Phone'] == '') { ?>
-
-    <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
-
-<?php }else{ ?>
-
-    <input type="submit" class="btn-request" value="Request to Meet"/>
-
-<?php } ?>
-
-<?php } ?>
-
-
-
-
     <p>&nbsp;</p>
     <div id="result"></div>
 
@@ -1152,8 +1217,7 @@ if($rowparticipant['profile_image'] != ''){
           marker.setVisible(false);
           var place = autocomplete.getPlace();
           if (!place.geometry) {
-            //window.alert("Autocomplete's returned place contains no geometry");
-            window.alert("Please choose a different address!");
+            window.alert("Autocomplete's returned place contains no geometry");
             return;
           }
 
@@ -1208,6 +1272,5 @@ if($rowparticipant['profile_image'] != ''){
 </html>
 
 
-<?php } ?>
 
 

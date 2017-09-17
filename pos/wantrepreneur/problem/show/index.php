@@ -39,12 +39,12 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
- header("Location:../../../startup/");
+ header("Location:../../../entrepreneur/");
 }
 
 
 if(!isset($_GET['id'])){
-header("Location:../../../startup/");
+header("Location:../../../entrepreneur/");
 }
 
 
@@ -282,222 +282,6 @@ if(mysqli_num_rows($startup)<0)
 
 
 
- <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-   
-
-    $( "#date_option_one" ).datepicker({
-      showOn: "button",
-      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-      buttonImageOnly: false,
-      minDate: 1,
-      maxDate: '+2y',
-      buttonText: "Select date",
-      onSelect: function(date){
-
-        var selectedDate = new Date(date);
-        var msecsInADay = 86400000;
-        var endDate = new Date(selectedDate.getTime() + msecsInADay);
-
-        $("#date_option_two").datepicker( "option", "minDate", endDate );
-        $("#date_option_two").datepicker( "option", "maxDate", '+2y' );
-
-        $("#date_option_three").datepicker( "option", "minDate", endDate );
-        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
-
-    }
-    });
-
-    $( "#date_option_two" ).datepicker({
-      showOn: "button",
-      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-      buttonImageOnly: false,
-      minDate: 1,
-      maxDate: '+2y',
-      buttonText: "Select date",
-      changeMonth: true,
-      onSelect: function(date){
-
-        var selectedDate = new Date(date);
-        var msecsInADay = 86400000;
-        var endDate = new Date(selectedDate.getTime() + msecsInADay);
-
-        
-
-        $("#date_option_three").datepicker( "option", "minDate", endDate );
-        $("#date_option_three").datepicker( "option", "maxDate", '+2y' );
-
-    }
-    });
-
-    $( "#date_option_three" ).datepicker({
-      showOn: "button",
-      buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-      buttonImageOnly: false,
-      minDate: 1,
-      maxDate: '+2y',
-      buttonText: "Select date",
-      changeMonth: true
-    });
-
-  } );
-  </script>
-
-
-
-
-<script>
-
-$(document).ready(function() {
-
-
- $(".btn-request").click(function() {  
-  
-//alert("aads"); 
-
-
-        //var screeningquestion_required  = $('input[name=screeningquestion_required]').val();
-
-        var projectid  = $('input[name=projectid]').val();
-        var participantid  = $('input[name=participantid]').val();
-        
-        var date_option_one  = $('input[name=date_option_one]').val();
-        var date_option_two  = $('input[name=date_option_two]').val();
-        var date_option_three  = $('input[name=date_option_three]').val();
-
-        var time_suggested_one = $("select[name='time_suggested_one']").val();
-        var time_suggested_two = $("select[name='time_suggested_two']").val();
-        var time_suggested_three = $("select[name='time_suggested_three']").val();
-
-        var location = $('#pac-input').val();
-
-        //alert(days_availability_option);
-
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
-
-        
-        
-
-        if(!date_option_one) {
-
-                $("#date_option_one").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag   
-                    
-        }else{
-                $("#date_option_one").css('border-color','green');  //change border color to red 
-                proceed = true; //set do not proceed flag       
-        };
-
-        if(!time_suggested_one) {
-
-                $("#time_suggested_one").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        }else{
-                $("#time_suggested_one").css('border-color','green');  //change border color to red 
-                proceed = true; //set do not proceed flag       
-        };
-
-
-        if(!date_option_two) {
-
-                $("#date_option_two").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-         }else{
-                $("#date_option_two").css('border-color','green');  //change border color to red 
-                proceed = true; //set do not proceed flag       
-        };
-
-         if(!time_suggested_two) {
-
-                $("#time_suggested_two").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        }else{
-                $("#time_suggested_two").css('border-color','green');  //change border color to red 
-                proceed = true; //set do not proceed flag       
-        };
-
-
-        if(!date_option_three) {
-
-                $("#date_option_three").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-         }else{
-                $("#date_option_three").css('border-color','green');  //change border color to red 
-                proceed = true; //set do not proceed flag       
-        };
-
-         if(!time_suggested_three) {
-
-                $("#time_suggested_three").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        }else{
-                $("#time_suggested_three").css('border-color','green');  //change border color to red 
-                proceed = true; //set do not proceed flag       
-        };
-
-        if(!location || !date_option_one || !date_option_two || !date_option_three || !time_suggested_one || !time_suggested_two || !time_suggested_three ) {
-
-                $("#pac-input").css('border-color','red');  //change border color to red   
-                proceed = false; //set do not proceed flag            
-        }else{
-                $("#pac-input").css('border-color','green');  //change border color to red 
-               
-                proceed = true; //set do not proceed flag       
-        };
-        
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-         
-            //data to be sent to server
-   post_data = {'projectid':projectid,'participantid':participantid,'time_suggested_one':time_suggested_one, 'time_suggested_two':time_suggested_two,'time_suggested_three':time_suggested_three,'date_option_one':date_option_one, 'date_option_two':date_option_two, 'date_option_three':date_option_three,'location':location};
-            
-            //Ajax post data to server
-            $.post('../request-to-meet.php', post_data, function(response){  
-              
-              //alert (projectid);
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-         
-          output = response.text;
-
-
-        
-          
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        $("#result").hide().html(output).slideDown();
-            }, 'json');
-      
-        }
-    });
-
-
-
-
-
-
-
-
- });
-
-
-</script>
-
-
-
         
     </head>
     
@@ -714,13 +498,16 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
       <h4>To participate, please choose one of the following:</h4>
 
        <div class="problem">
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer1">Yes, I have that problem</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer2">No, I don't have that problem</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer3">Sometimes</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer4">Very rare</p>
+      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer1" value="Yes, I have that problem">Yes, I have that problem</p>
+      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer2" value="No, I don't have that problem">No, I don't have that problem</p>
+      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer3" value="Sometimes">Sometimes</p>
+      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer4" value="Very rare">Very rare</p>
     
 
   </div>
+
+<input type="hidden" name="problemid" id="problemid" value="<?php echo $_GET['id']; ?>"/>  
+
 
 <div class="space"></div>
   <div class="col-lg-12">
@@ -729,9 +516,11 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 
 
+
+
 <?php if(isset($_GET['p'])){ ?>
 
-
+asdfasdf
 
 
   <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
@@ -739,7 +528,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 
 <input id="participantid" name="participantid" type="hidden" value="<?php echo $_GET['p']; ?>">
-<input id="projectid" name="projectid" type="hidden" value="<?php echo $_GET['id']; ?>">
+
 
 
 

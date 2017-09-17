@@ -94,6 +94,8 @@ a:hover{text-decoration: none !important}
 
 .step6 input[type="checkbox"], input[type="radio"]{display:none;}
 
+.problem input[type="checkbox"], input[type="radio"]{display:block;float:left; margin-right:10px;}
+
 
 .request-sent{text-align:center; padding:15px; background:#eee; border:1px solid #333;}
 
@@ -3417,6 +3419,34 @@ a:hover.suggest-a-place{text-decoration: none !important;}
    
 }
 
+
+#participate-btn{
+  
+    text-transform: uppercase;
+    padding: 14px 24px;
+    border-radius: 0px;
+    font-family:'Circular', sans-serif;
+    font-weight:700;
+    font-size: 14px;
+    margin-left: 0px;
+    margin-top:0px;
+    box-shadow: 0px !important;
+    cursor: pointer;
+    float:left;
+    text-align:center;
+    background-color: #41ca6d;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #41ca6d), color-stop(100%, #2cc55d));
+    background-image: -webkit-linear-gradient(top, #41ca6d, #2cc55d);
+    background-image: -moz-linear-gradient(top, #41ca6d, #2cc55d);
+    background-image: -ms-linear-gradient(top, #41ca6d, #2cc55d);
+    background-image: -o-linear-gradient(top, #41ca6d, #2cc55d);
+    background-image: linear-gradient(top, #41ca6d, #2cc55d);
+    border: 0px solid #239d4a;
+    color: #fff;
+     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
 
 
 #publish-btn{
