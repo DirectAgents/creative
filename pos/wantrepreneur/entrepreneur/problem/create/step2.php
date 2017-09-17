@@ -230,7 +230,7 @@ jq(document).ready(function(){
 
 
               
-               <label for="in-person"><h3 class="grey">If Answer Chosen: Yes, I have that problem</h3></label>
+               <label for="in-person"><h3 class="grey">If This Answer Is Chosen: Yes, I have that problem</h3></label>
 
                <div class="in-person">
                <label for="in-person">
@@ -242,7 +242,7 @@ jq(document).ready(function(){
             
               
              
-               <label for="in-person"><h3 class="grey">If Answer Chosen: No, I don't have that problem</h3></label>
+               <label for="in-person"><h3 class="grey">If This Answer Is Chosen: No, I don't have that problem</h3></label>
 
                <div class="in-person">
                <label for="in-person">
@@ -253,7 +253,7 @@ jq(document).ready(function(){
              </div>             
 
                
-                <label for="in-person"><h3 class="grey">If Answer Chosen: Sometimes</h3></label>
+                <label for="in-person"><h3 class="grey">If This Answer Is Chosen: Sometimes</h3></label>
 
                <div class="in-person">
                <label for="in-person">
@@ -264,7 +264,7 @@ jq(document).ready(function(){
              </div>  
 
 
-               <label for="in-person"><h3 class="grey">If Answer Chosen: Very rare</h3></label>
+               <label for="in-person"><h3 class="grey">If This Answer Is Chosen: Very rare</h3></label>
 
                <div class="in-person">
                <label for="in-person">
@@ -309,6 +309,7 @@ jq(document).ready(function(){
 
 
    <div class="reach-people">
+   <div class="space"></div>
               <h2>Target Audience Summary</h2>
               <div class="edit"><a href="step1.php?id=<?php echo $_SESSION['projectid']; ?>">Edit</a></div>
             <div class="separator"></div>
@@ -540,7 +541,7 @@ jq(document).ready(function(){
 
 
  <div class="survey-info">
-
+<div class="space"></div>
            <div class="reach-people">
               <h2>Screening Question</h2>
               <div class="edit"><a href="step1.php?id=<?php echo $_SESSION['projectid']; ?>">Edit</a></div>
@@ -631,7 +632,7 @@ jq(document).ready(function(){
 
 
 
-
+<!--
  <div class="survey-info">
 
            <div class="reach-people">
@@ -717,7 +718,7 @@ jq(document).ready(function(){
           </div>
 
 </div>
--->
+
 
 
 
@@ -733,18 +734,17 @@ jq(document).ready(function(){
      
 </div>
 
-
+-->
 
   <div class="survey-info">
-
+<div class="space"></div>
            <div class="reach-people">
-              <h2>Idea Setting</h2>
+              <h2>Public or Private</h2>
             <div class="separator"></div>
          <div style="float:left; width:100%">
             <div class="screening-description">
-                  If you like to share your idea with the public then choose <strong>Public</strong>. <br>Choose <strong>Private</strong>
-                  if you like to keep your idea as private. When set to Private only you can see the idea. <br>In Private mode you can still share
-                  your idea with people you choose.
+                  If you like to make the problem visible to everyone mark it as <strong>"Public"</strong>. <br><br>Choose <strong>Private</strong>
+                  If you like to keep the problem hidden to everyone, then mark is as <strong>"Private"</strong>. <br>When set to Private, only you can see the problem. In Private mode you can still share the problem with people you choose.
                 </div>
 </div>
             </div>
@@ -784,6 +784,7 @@ jq(document).ready(function(){
 
 
 <div class="survey-info">
+<div class="space"></div>
 
            <div class="reach-people">
               <h2>Upload Image</h2>
@@ -825,7 +826,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
 
 
   <div class="survey-info">
-
+<div class="space"></div>
            <div class="reach-people">
               <h2>Pay Out</h2>
             <div class="separator"></div>
@@ -1012,7 +1013,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
               </div>
 
            
-              </div>
+              </div></div>
    
 </div> 
 </div> 

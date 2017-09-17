@@ -531,6 +531,7 @@ label{font-weight:normal !important;}
 
 .survey-info {
     border-bottom: 0px solid #eef1f4;
+
 }
 
 
@@ -2801,7 +2802,7 @@ a#disabled {
 
 
 
-
+.space{float:left; width:100%; margin-top:20px;}
 
 .survey-info.countries .wrapper{
     padding: 20px;
@@ -2845,7 +2846,7 @@ a#disabled {
     background: #d9dee7;
     height: 1px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     width:100%;
     float:left;
 }
