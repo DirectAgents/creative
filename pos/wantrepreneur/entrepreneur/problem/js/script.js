@@ -416,45 +416,137 @@ $("textarea[name=MYFIELDNAME]").val();
             proceed = false;
         }
 
-
-
-
-
-         if(possibleanswer4==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Very rare" is chosen!</div>';
-            $('textarea[name=possibleanswertext4]').css('border-color','red'); 
+        
+        if(possibleanswer4_question4==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the forth question if "Very rare" is chosen!</div>';
+            $('input[name=possibleanswer4_question4]').css('border-color','red'); 
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }else{
-            $('textarea[name=possibleanswertext4]').css('border-color','green'); 
+            $('input[name=possibleanswer4_question4]').css('border-color','green'); 
+        }
+
+
+        if(possibleanswer4_question3==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the third question if "Very rare" is chosen!</div>';
+            $('input[name=possibleanswer4_question3]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer4_question3]').css('border-color','green'); 
+        }
+        
+
+        if(possibleanswer4_question2==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the second question if "Very rare" is chosen!</div>';
+            $('input[name=possibleanswer4_question2]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer4_question2]').css('border-color','green'); 
+        }
+
+        if(possibleanswer4_question1==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the first question if "Very rare" is chosen!</div>';
+            $('input[name=possibleanswer4_question1]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer4_question1]').css('border-color','green'); 
+        }
+
+        if(possibleanswer3_question4==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the forth question if "Sometimes" is chosen!</div>';
+            $('input[name=possibleanswer3_question4]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer3_question4]').css('border-color','green'); 
+        }
+
+        if(possibleanswer3_question3==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the third question if "Sometimes" is chosen!</div>';
+            $('input[name=possibleanswer3_question3]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer3_question3]').css('border-color','green'); 
+        }
+
+        if(possibleanswer3_question2==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the second question if "Sometimes" is chosen!</div>';
+            $('input[name=possibleanswer3_question2]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer3_question2]').css('border-color','green'); 
+        }
+
+        if(possibleanswer3_question1==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the first question if "Sometimes" is chosen!</div>';
+            $('input[name=possibleanswer3_question1]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer3_question1]').css('border-color','green'); 
+        }
+
+
+        if(possibleanswer2_question2==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the second question if "No, I don\'t have that problem" is chosen!</div>';
+            $('input[name=possibleanswer2_question2]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer2_question2]').css('border-color','green'); 
+        }
+
+
+        if(possibleanswer2_question1==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the first question if "No, I don\'t have that problem" is chosen!</div>';
+            $('input[name=possibleanswer2_question1]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer2_question1]').css('border-color','green'); 
+        }
+
+
+         if(possibleanswer1_question4==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the forth question if "Yes, I have that problem" is chosen!</div>';
+            $('input[name=possibleanswer1_question4]').css('border-color','red'); 
+            $("#result").hide().html(output).slideDown();
+            proceed = false;
+        }else{
+            $('input[name=possibleanswer1_question4]').css('border-color','green'); 
         }
 
         
-        if(possibleanswer3==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Sometimes" is chosen!</div>';
-            $('textarea[name=possibleanswertext3]').css('border-color','red'); 
+       if(possibleanswer1_question3==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the third question if "Yes, I have that problem" is chosen!</div>';
+            $('input[name=possibleanswer1_question3]').css('border-color','red'); 
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }else{
-            $('textarea[name=possibleanswertext3]').css('border-color','green'); 
+            $('input[name=possibleanswer1_question3]').css('border-color','green'); 
         }
 
-         if(possibleanswer2==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "No, I don\'t have that problem" is chosen!</div>';
-            $('textarea[name=possibleanswertext2]').css('border-color','red'); 
+         if(possibleanswer1_question2==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the second question if "Yes, I have that problem" is chosen!</div>';
+            $('input[name=possibleanswer1_question2]').css('border-color','red'); 
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }else{
-            $('textarea[name=possibleanswertext2]').css('border-color','green'); 
+            $('input[name=possibleanswer1_question2]').css('border-color','green'); 
         }
 
-        if(possibleanswer1==""){ 
-             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter question(s) if "Yes, I have that problem" is chosen!</div>';
-            $('textarea[name=possibleanswertext1]').css('border-color','red'); 
+        if(possibleanswer1_question1==""){ 
+             output = '<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">Please enter the first question if "Yes, I have that problem" is chosen!</div>';
+            $('input[name=possibleanswer1_question1]').css('border-color','red'); 
             $("#result").hide().html(output).slideDown();
             proceed = false;
         }else{
-            $('textarea[name=possibleanswertext1]').css('border-color','green'); 
+            $('input[name=possibleanswer1_question1]').css('border-color','green'); 
         }
 
         
@@ -589,7 +681,7 @@ $("textarea[name=MYFIELDNAME]").val();
 
           //$( ".processing" ).show();
             //data to be sent to server
-            post_data = {'projectid':projectid,'projectname':projectname,'possibleanswer1':possibleanswer1 , 'possibleanswer2':possibleanswer2,'possibleanswer3':possibleanswer3, 'possibleanswer4':possibleanswer4,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
+            post_data = {'projectid':projectid,'projectname':projectname,'possibleanswer1_question1':possibleanswer1_question1,'possibleanswer1_question2':possibleanswer1_question2,'possibleanswer1_question3':possibleanswer1_question3,'possibleanswer1_question4':possibleanswer1_question4,'possibleanswer2_question1':possibleanswer2_question2,'possibleanswer3_question1':possibleanswer3_question1,'possibleanswer3_question2':possibleanswer3_question2,'possibleanswer3_question3':possibleanswer3_question3,'possibleanswer3_question4':possibleanswer3_question4,'possibleanswer4_question1':possibleanswer4_question1,'possibleanswer4_question2':possibleanswer4_question2,'possibleanswer4_question3':possibleanswer4_question3,'possibleanswer4_question4':possibleanswer4_question4,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
             'maxheight':maxheight, 'status':status,'ethnicity':ethnicity,
             'smoke':smoke,'drink':drink,'diet':diet,'religion':religion,'education':education,'job':job,
             'interest':interest,'screening':screening,'screeningquestion':screeningquestion, 'potentialanswer1':potentialanswer1 , 'potentialanswer2':potentialanswer2,'potentialanswer3':potentialanswer3,
