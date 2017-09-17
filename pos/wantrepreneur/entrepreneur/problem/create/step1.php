@@ -428,7 +428,7 @@ $(document).ready(function() {
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>No, I don't have that problem</h3>
 
-       Question #1
+     Question #1
      <input class="form-control" type="text" name="possibleanswer2_question1" id="possibleanswer2_question1" placeholder="Example: Please explain in further details why you don't have the same problem." value="<?php echo $rowproject['PossibleAnswer2_Question1'];?>" />
 <br>
      Question #2

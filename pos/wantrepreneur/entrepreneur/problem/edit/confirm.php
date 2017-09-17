@@ -23,7 +23,6 @@ $date = date('Y-m-d');
   $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup_project SET 
   ProjectStatus = '".$_POST['projectstatus']."',
   Pay = '".$_POST['pay']."',
-  Minutes = '".$_POST['minutes']."',
   Date_Created='".$date."'
   
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");

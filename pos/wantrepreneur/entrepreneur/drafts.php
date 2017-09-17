@@ -34,8 +34,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
-$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND FinishedProcess = 'Y' 
-  AND ProjectStatus = 'Draft' ");
+$Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND FinishedProcess = 'N'");
 $rowproject = mysqli_fetch_array($Project);
 
 $meetupchoice=explode(',',$rowproject['Meetupchoice']);
@@ -178,8 +177,7 @@ $(document).ready(function(){
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' AND FinishedProcess = 'Y'
-AND ProjectStatus = 'Draft' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' AND FinishedProcess = 'N' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -474,10 +472,10 @@ $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 if($rowprojectimage['project_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/problem/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
 
 <?php }else{
-echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">'; 
+echo '<img src="../problem/uploads/thumbnail.jpg" width="100">'; 
 }
 
 

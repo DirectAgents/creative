@@ -744,7 +744,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var nda = $('input[name="nda[]"]:checked').map(function () {return this.value;}).get().join(",");
 
         var projectid       = $('input[name=projectid]').val();
-        var projectname       = $('input[name=projectname]').val();
+        var projectname       = $('textarea[name=projectname]').val();
         var possibleanswer1_question1      = $("input[name='possibleanswer1_question1']").val();
         var possibleanswer1_question2      = $("input[name='possibleanswer1_question2']").val();
         var possibleanswer1_question3      = $("input[name='possibleanswer1_question3']").val();
@@ -1119,6 +1119,7 @@ $("textarea[name=MYFIELDNAME]").val();
         if(proceed) 
         {
 
+
           //$( ".processing" ).show();
             //data to be sent to server
             post_data = {'projectid':projectid,'projectname':projectname,'possibleanswer1_question1':possibleanswer1_question1,'possibleanswer1_question2':possibleanswer1_question2,'possibleanswer1_question3':possibleanswer1_question3,'possibleanswer1_question4':possibleanswer1_question4,'possibleanswer2_question1':possibleanswer2_question1,'possibleanswer2_question2':possibleanswer2_question2,'possibleanswer3_question1':possibleanswer3_question1,'possibleanswer3_question2':possibleanswer3_question2,'possibleanswer3_question3':possibleanswer3_question3,'possibleanswer3_question4':possibleanswer3_question4,'possibleanswer4_question1':possibleanswer4_question1,'possibleanswer4_question2':possibleanswer4_question2,'possibleanswer4_question3':possibleanswer4_question3,'possibleanswer4_question4':possibleanswer4_question4,'stage':stage,'category':category,'minreq':minreq,'age':age,'interest':interest, 'language':language, 'gender':gender, 'minheight':minheight, 
@@ -1420,14 +1421,14 @@ var btn= $(this).find("input[type=submit]:focus").val();
 //alert($('input[type=file').val()); 
 var btn= $(this).find("input[type=submit]:focus").val();
 
- 
+
 
         //get input field values
 
        
         var projectstatus = $('input[name="projectstatus[]"]:checked').map(function () {return this.value;}).get().join(",");
         var pay = $("select[name='pay']").val();
-        var minutes = $("select[name='minutes']").val();
+        //var minutes = $("select[name='minutes']").val();
 
       
         
@@ -1444,7 +1445,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
             //data to be sent to server
          
        
-            post_data = {'projectstatus':projectstatus,'pay':pay,'minutes':minutes};
+            post_data = {'projectstatus':projectstatus,'pay':pay};
           
             //Ajax post data to server
             $.post('confirm.php', post_data, function(response){  
@@ -1466,8 +1467,9 @@ var btn= $(this).find("input[type=submit]:focus").val();
           $('#contact_form textarea').val(''); 
         }
         
+        var output = '<div class="success" style="float:left; width:100%; padding-top:10px;">Successfully Saved!</div>';
         $("#result").hide().html(output).slideDown();
-            }, 'json');
+            });
       
         }
     });

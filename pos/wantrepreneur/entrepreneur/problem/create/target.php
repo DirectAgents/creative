@@ -123,7 +123,7 @@ if(mysqli_num_rows($sql)>0)
   Job='".$job."',
   Interests = '".$interests."',
   Languages = '".$languages."',
-  ProjectStatus = 'Draft',
+  FinishedProcess = 'N',
   Date_Created = '".$date."'
 
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID= '".$_SESSION['projectid']."'");
@@ -140,11 +140,11 @@ if(mysqli_num_rows($sql)>0)
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup_project(ProjectID, startupID, Problem,PossibleAnswer1_Question1,PossibleAnswer1_Question2,PossibleAnswer1_Question3,PossibleAnswer1_Question4,PossibleAnswer2_Question1,
   PossibleAnswer2_Question2,PossibleAnswer3_Question1,PossibleAnswer3_Question2,PossibleAnswer3_Question3,PossibleAnswer3_Question4,
   PossibleAnswer4_Question1,PossibleAnswer4_Question2,PossibleAnswer4_Question3,PossibleAnswer4_Question4,Stage, Category,MinReq,Age,Gender,MinHeight,MaxHeight,
-Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interests, Languages, ProjectStatus, Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
+Status, Ethnicity, Smoke,Drink, Diet,Religion,Education,Job, Interests, Languages, FinishedProcess , Date_Created) VALUES('".$_SESSION['projectid']."','".$_SESSION['startupSession']."',
   '".$projectname."','".$possibleanswer1_question1."','".$possibleanswer1_question2."','".$possibleanswer1_question3."','".$possibleanswer1_question4."'
   ,'".$possibleanswer2_question1."','".$possibleanswer2_question2."','".$possibleanswer3_question1."','".$possibleanswer3_question2."','".$possibleanswer3_question3."','".$possibleanswer3_question4."','".$possibleanswer4_question1."','".$possibleanswer4_question2."','".$possibleanswer4_question3."','".$possibleanswer4_question4."','".$stage."', '".$category."', '".$minreq."', '".$age."','".$gender."','".$minheight."','".$maxheight."',
   '".$status."','".$ethnicity."','".$smoke."','".$drink."','".$diet."',
-  '".$religion."','".$education."','".$job."', '".$interests."' , '".$languages."', 'Draft','".$date."')");
+  '".$religion."','".$education."','".$job."', '".$interests."' , '".$languages."', 'N','".$date."')");
 
 
 

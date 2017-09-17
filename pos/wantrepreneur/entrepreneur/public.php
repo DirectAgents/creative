@@ -428,7 +428,7 @@ $(document).ready(function () {
             post_data = {'projectid':projectid};
             
             //Ajax post data to server
-            $.post('idea/ideadelete.php', post_data, function(response){  
+            $.post('problem/ideadelete.php', post_data, function(response){  
             
 
 
@@ -474,10 +474,10 @@ $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 if($rowprojectimage['project_image'] != '') { ?>
 
-<img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
+<img src="<?php echo BASE_PATH; ?>/problem/uploads/<?php echo $rowprojectimage['project_image']; ?>" width="100">
 
 <?php }else{
-echo '<img src="../ideas/uploads/thumbnail.jpg" width="100">'; 
+echo '<img src="../problem/uploads/thumbnail.jpg" width="100">'; 
 }
 
 
@@ -536,11 +536,11 @@ $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
 if($count > 0 ){
-echo "<a href=".BASE_PATH."/startup/idea/browse/participants/?id=".$row2['ProjectID'].">";
+echo "<a href=".BASE_PATH."/entrepreneur/problem/browse/participants/?id=".$row2['ProjectID'].">";
 echo $count;
 echo "</a>";
 echo "&nbsp;&nbsp;";
-echo "<a href=".BASE_PATH."/startup/idea/browse/participants/?id=".$row2['ProjectID'].">";
+echo "<a href=".BASE_PATH."/entrepreneur/problem/browse/participants/?id=".$row2['ProjectID'].">";
 echo "(view participants)";
 echo "</a>";
 }else{

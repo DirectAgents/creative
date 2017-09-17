@@ -21,30 +21,48 @@ $startup_home = new STARTUP();
 
 if(!$startup_home->is_logged_in())
 {
-  $startup_home->redirect('../../login.php');
+  $startup_home->redirect('../../login');
 }
+
+
+ 
+
+
+
+
 
 
 $stmt = $startup_home->runQuery("SELECT * FROM tbl_startup WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['startupSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-
-$_SESSION['projectid'] = $_GET['id'];
-
-
 //echo $_SESSION['projectid'];
 
+
+if(empty($_GET["id"])){
+header("Location:../../../404.php");
+}
+
+
+if(!empty($_GET["id"])){
+
+$_SESSION['projectid'] = $_GET["id"];
 
 $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."' AND
   ProjectID = '".$_GET['id']."'");
 
+
+}
+
+
 $rowproject = mysqli_fetch_array($Project);
 
-if($rowproject < 1){
-  header("Location:../../../404.php");
-}
+
+
+//echo $rowproject['Name'];
+
+//echo $_SESSION['projectid'];
+
 
 
 $minreq=explode(',',$rowproject['MinReq']);
@@ -70,11 +88,16 @@ $education=explode(',',$rowproject['Education']);
 $job=explode(',',$rowproject['Job']);
 
 
-$nda=explode(',',$rowproject['NDA']);
+
+
+if(!empty($_GET['id'])){
 
 
 
 $ProjectPotentialanswers = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion WHERE userID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."'");
+
+}
+
 $rowpotentialanswers = mysqli_fetch_array($ProjectPotentialanswers);
 
 $screening= $rowpotentialanswers['EnabledorDisabled'];
@@ -83,11 +106,6 @@ $potentialanswers =explode(',',$rowpotentialanswers['Accepted']);
 
 
 
-$sqlnda = mysqli_query($connecDB,"SELECT * FROM tbl_nda_draft WHERE startupID='".$_SESSION['startupSession']."' AND
-  ProjectID = '".$_GET['id']."'");
-
-$rownda = mysqli_fetch_array($sqlnda);
-
 
 ?>
 
@@ -95,8 +113,8 @@ $rownda = mysqli_fetch_array($sqlnda);
 <html lang="en" id="features" class="tablet mobile">
     
     <head>
-       
-       <?php include("../../header.php"); ?>
+
+<?php include("../../header.php"); ?>
 
 <!--JAVASCRIPT-->
 
@@ -123,8 +141,8 @@ $(document).ready(function() {
       success:function(response){
         $("#responds").append(response);
         $("#interests").val('');
-       //$('#interestimportant').prop('checked', true); // checks it
-      
+        //$('#interestimportant').prop('checked', true); // checks it
+       
       },
       error:function (xhr, ajaxOptions, thrownError){
         alert(thrownError);
@@ -141,6 +159,7 @@ $(document).ready(function() {
      
      //alert(DbNumberID);
 
+
       jQuery.ajax({
       type: "POST", 
       url: "interests.php", 
@@ -149,8 +168,12 @@ $(document).ready(function() {
       success:function(response){
         $("#responds").append(response);
         $('#interestselection_'+DbNumberID).prop('checked', false); // Unchecks it
-        $('#item_'+DbNumberID).fadeOut("slow");
         
+        $('#item_'+DbNumberID).fadeOut("slow");
+
+        
+        //alert(response);
+      
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -160,7 +183,8 @@ $(document).ready(function() {
   });
 
 
-$("#languages").blur(function (e) {
+
+  $("#languages").blur(function (e) {
        e.preventDefault();
      if($("#languages").val()==='')
       {
@@ -177,7 +201,8 @@ $("#languages").blur(function (e) {
       success:function(response){
         $("#responds-languages").append(response);
         $("#languages").val('');
-       
+        //$('#languageimportant').prop('checked', true); // checks it
+        
       },
       error:function (xhr, ajaxOptions, thrownError){
         alert(thrownError);
@@ -203,7 +228,7 @@ $("#languages").blur(function (e) {
         $("#responds-languages").append(response);
         $('#languageselection_'+DbNumberID).prop('checked', false); // Unchecks it
         $('#item_'+DbNumberID).fadeOut("slow");
-       
+        
       },
       error:function (xhr, ajaxOptions, thrownError){
         
@@ -227,13 +252,24 @@ $("#languages").blur(function (e) {
   });
   </script>
 
- <script>
+
+
+  <script>
   $(function() {
     $( "#languages" ).autocomplete({
       source: 'search-language.php'
     });
   });
   </script>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -269,93 +305,64 @@ $("#languages").blur(function (e) {
     <!-- Main -->
 
 
+ <div id="dashboardSurveyProcessMenu">
+    
 
-<!--
-<div id="white-container">
-      <div id="dashboardSurveyTargetingContainerLogic">
+    <div class="dashboardProcessMenu audienceDashboard audience">
 
+  <div class="row">
+    <div class="col-md-4">
+<div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
+      <span class="fa-stack fa-md">
+        <i class="fa fa-circle-thin fa-stack-2x"></i>
+         <i class="fa fa-male fa-stack-1x"></i>
+      </span>
+    </div>
 
+      <div class="dashboardProcessMenuText">
+      <div class="processmenu-active"><span class="number"></span> TARGET AUDIENCE (<a href="step1.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>)</div></div></div>
+    <div class="col-md-4 processmenu-inactive">
+<div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
+      <span class="fa-stack fa-md">
+        <i class="fa fa-circle-thin fa-stack-2x"></i>
+        <i class="fa fa-lightbulb-o fa-stack-1x"></i>
+      </span>
+    </div>
+      <div class="dashboardProcessMenuText"><span class="number"></span> PROBLEM SETTINGS (<a href="step2.php?id=<?php echo $_GET['id']; ?>" class="edit-link">Edit</a>) </div></div>
+   
+   <!-- <div class="col-sm-4 processmenu-inactive">
+<div class="onboarding-trigger-menu" ng-click="initTour()" ng-show="!user.isDeveloper" role="button" tabindex="0" aria-hidden="false">
+      <span class="fa-stack fa-md">
+        <i class="fa fa-circle-thin fa-stack-2x"></i>
+        <i class="fa fa-lock fa-stack-1x"></i>
+      </span>
+    </div>
 
+      <div class="dashboardProcessMenuText"><span class="number"></span> CONFIRM</div></div>-->
+  </div>
 
-
- <div class="survey-info">
-
-   <div class="reach-people">
-              <h2>Do you want to require to sign an NDA?</h2>
-          
-           <div class="input-inline first">
-            <div class="wrapper">
-             
-              <div class="in-person">
-               <input id="yesnda" name="nda[]" type="checkbox" value="Yes" <?php if(in_array('Yes',$nda)){echo "checked";}?> />
-               <label for="yesnda">Yes</label>
-             </div>
-            </div>
-          </div>
-
-          <div class="input-inline">
-            <div class="wrapper">
-              <h3>Select survey language:</h3>
-             <div class="in-person">
-               <input id="nonda" name="nda[]" type="checkbox" value="No" <?php if(in_array('No',$nda) || in_array('',$nda)){echo "checked";}?> />
-               <label for="nonda">No, not necessary</label>
-             </div>
-            </div>
-          </div>
-
-          
-
-<?php if(isset($rownda['ProjectID'])){ ?>
-
- <div id="back">
-  
-              <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/edit/?id=<?php echo $_SESSION['projectid']; ?>">Edit Non-Disclosure Agreement</a>
-
-               </div>
-
-              <div style="float:left; width:100%; text-align:right"><a href="<?php echo BASE_PATH; ?>/startup/idea/nda/drafted-nda">Drafted NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/pending-nda">Pending NDA</a> | <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/signed-nda">Signed NDA</a>  </div>
-
-<?php  }else{ ?>
-   <div id="back">
- <a href="<?php echo BASE_PATH; ?>/startup/idea/nda/create/?id=<?php echo $_SESSION['projectid']; ?>">Create a Non-Disclosure Agreement</a>
- </div>
-<?php } ?>
-
-           
+    
+  </div>
+</div>
 
 
-            </div>
-
-         
-          <div class="clearer"></div>
-
-
- </div>
- </div>
- </div>
-
-
-
-<p>&nbsp;</p>
-
--->
     <div id="white-container">
       <div id="dashboardSurveyTargetingContainerLogic">
 
- <div id="back">
-              <a href="<?php echo BASE_PATH; ?>/entrepreneur/">< Back</a>
 
-            </div>
+
 
 
 
  <div class="survey-info">
 
            <div class="reach-people">
-              <h2>The Problem</h2>
+              <h2>What is the Problem you might think is a problem to your target market?</h2>
             <div class="separator"></div>
-
-        
+<div class="space"></div>
+             <div class="screening-description">
+                  Provide an overall subject line of your idea or your product. Be short and precise with your problem statement as possible.
+                </div>
 
             </div>
 
@@ -364,7 +371,11 @@ $("#languages").blur(function (e) {
               <!--<h3>In Person</h3>-->
                <div class="form-group">
               <div class="in-person">
-               <input class="form-control" name="projectname" type="text" value="<?php echo $rowproject['Problem'];?>" placeholder="e.g  Service that helps people nearby to eat together"/>
+          
+
+                <textarea rows="3" tabindex="0" placeholder="Example: While you are shopping, have you ever wondered whether you can get the same item that you want to buy for a cheaper price somewhere else?" name="projectname" id="projectname"><?php echo $rowproject['Problem'];?></textarea>
+
+
               </div>
                
              </div>
@@ -384,36 +395,95 @@ $("#languages").blur(function (e) {
             </div>
 
  <div class="wrapper">
- <div class="space"></div>
+<div class="space"></div>
+<div class="screening-description">
+                  Below are the possible choice of answers given to your potential customers. They will choose only one of them. For each choice, please explain your specific question you have for each person who will participate.
+                </div>
+
+<div class="thebox">
+
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Yes, I have that problem</h3>
-   <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem. Tell me why, how often you experience it and whether you are already know a service that solves this problem already or not." name="possibleanswertext1" id="possibleanswertext1"><?php echo $rowproject['Problem'];?></textarea>
+     
+     Question #1
+     <input class="form-control" type="text" name="possibleanswer1_question1" id="possibleanswer1_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem." value="<?php echo $rowproject['PossibleAnswer1_Question1'];?>" />
+<br>
+     Question #2
+     <input class="form-control" type="text" name="possibleanswer1_question2" id="possibleanswer1_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowproject['PossibleAnswer1_Question2'];?>" />
+<br>
+     Question #3
+     <input class="form-control" type="text" name="possibleanswer1_question3" id="possibleanswer1_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowproject['PossibleAnswer1_Question3'];?>" />
+<br>
+     Question #4
+     <input class="form-control" type="text" name="possibleanswer1_question4" id="possibleanswer1_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowproject['PossibleAnswer1_Question4'];?>" />
+
   
 </div>
 
+</div>
 
+<div class="space"></div>
+
+<div class="thebox">
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>No, I don't have that problem</h3>
-    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you don't have that problem. Tell me why you don't have that problem." name="possibleanswertext2" id="possibleanswertext2"><?php echo $rowproject['Problem'];?></textarea>
+
+     Question #1
+     <input class="form-control" type="text" name="possibleanswer2_question1" id="possibleanswer2_question1" placeholder="Example: Please explain in further details why you don't have the same problem." value="<?php echo $rowproject['PossibleAnswer2_Question1'];?>" />
+<br>
+     Question #2
+     <input class="form-control" type="text" name="possibleanswer2_question2" id="possibleanswer2_question2" placeholder="Example: Tell me more why you are not experiencing it" value="<?php echo $rowproject['PossibleAnswer2_Question2'];?>" />
+
+
+</div>
 </div>
 
+<div class="space"></div>
+<div class="thebox">
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
- <h3>Sometimes</h3>
-    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why you have that problem only occassionally. Tell me what in what type of occasions you are experience that problem." name="possibleanswertext3" id="possibleanswertext3"><?php echo $rowproject['Problem'];?></textarea>
+  <h3>Sometimes</h3>
+
+      Question #1
+     <input class="form-control" type="text" name="possibleanswer3_question1" id="possibleanswer3_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem occasionally." value="<?php echo $rowproject['PossibleAnswer3_Question1'];?>" />
+<br>
+     Question #2
+     <input class="form-control" type="text" name="possibleanswer3_question2" id="possibleanswer3_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowproject['PossibleAnswer3_Question2'];?>" />
+<br>
+     Question #3
+     <input class="form-control" type="text" name="possibleanswer3_question3" id="possibleanswer3_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowproject['PossibleAnswer3_Question3'];?>" />
+<br>
+     Question #4
+     <input class="form-control" type="text" name="possibleanswer3_question4" id="possibleanswer3_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowproject['PossibleAnswer3_Question4'];?>" />
   
 </div>
+</div>
 
+
+<div class="space"></div>
+
+<div class="thebox">
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Very rare</h3>
-    <textarea rows="3" tabindex="0" placeholder="Example: Please explain in further details why barely experience this problem. Tell me more why you experience this problem rarely." name="possibleanswertext4" id="possibleanswertext4"><?php echo $rowproject['Problem'];?></textarea>
+
+   Question #1
+     <input class="form-control" type="text" name="possibleanswer4_question1" id="possibleanswer4_question1" placeholder="Example: Please explain in further details why you agree that you are experiencing the same problem." value="<?php echo $rowproject['PossibleAnswer4_Question1'];?>" />
+<br>
+     Question #2
+     <input class="form-control" type="text" name="possibleanswer4_question2" id="possibleanswer4_question2" placeholder="Example: Tell me more why you experiencing it" value="<?php echo $rowproject['PossibleAnswer4_Question2'];?>" />
+<br>
+     Question #3
+     <input class="form-control" type="text" name="possibleanswer4_question3" id="possibleanswer4_question3" placeholder="Example: How often do you experience it?" value="<?php echo $rowproject['PossibleAnswer4_Question3'];?>" />
+<br>
+     Question #4
+     <input class="form-control" type="text" name="possibleanswer4_question4" id="possibleanswer4_question4" placeholder="Example: Do you already know a service that solves this problem already or not?" value="<?php echo $rowproject['PossibleAnswer4_Question4'];?>" />
   
 </div>
 
+
+
 </div>
 </div>
 
-
-<div class="clearer"></div>
 
 <!--
 <div class="survey-info">
@@ -443,6 +513,10 @@ $("#languages").blur(function (e) {
 
         </div>
 
+-->
+
+
+<!--
         <div class="survey-info">
 
            <div class="reach-people">
@@ -452,8 +526,8 @@ $("#languages").blur(function (e) {
 
           <div class="input-inline first">
             <div class="wrapper">
-             
-              <div class="in-person">
+              <!--<h3>In Person</h3>-->
+       <!--       <div class="in-person">
                <input id="in-person" name="meetupselection[]" type="checkbox" value="In Person" <?php if(in_array('In Person',$meetupchoice)){echo "checked";}?> />
                <label for="in-person">In Person</label>
              </div>
@@ -462,8 +536,8 @@ $("#languages").blur(function (e) {
 
           <div class="input-inline">
             <div class="wrapper">
-             
-              <div class="google-hangout">
+              <!--<h3>Select survey language:</h3>-->
+        <!--      <div class="google-hangout">
                <input id="google-hangout" name="meetupselection[]" type="checkbox" value="Google Hangout" <?php if(in_array('Google Hangout',$meetupchoice)){echo "checked";}?> />
                <label for="google-hangout">Google Hangout</label>
              </div>
@@ -472,8 +546,8 @@ $("#languages").blur(function (e) {
 
           <div class="input-inline numberSurveys">
             <div class="wrapper">
-              
-              <div class="over-the-phone">
+              <!--<h3>Number of completed surveys</h3>-->
+         <!--     <div class="over-the-phone">
                <input id="over-the-phone" name="meetupselection[]" type="checkbox" value="Over the Phone" <?php if(in_array('Over the Phone',$meetupchoice)){echo "checked";}?> />
                <label for="over-the-phone">Over the Phone</label>
               </div>
@@ -483,16 +557,14 @@ $("#languages").blur(function (e) {
           <div class="clearer"></div>
 
         </div>
-
-
 -->
 
 
-
-    <div class="survey-info">
+<div class="clearer"></div>
+        <div class="survey-info">
 
            <div class="reach-people">
-              <h2>Chosen Category for the stated Problem:</h2>
+              <h2>Choose Category for the stated Problem:</h2>
             <div class="separator"></div>
             </div>
   <div class="input-full">
@@ -500,26 +572,22 @@ $("#languages").blur(function (e) {
          <div class="styled-select">
 <select name="category" id="category">
 
-
-
-
-<option value="arts-and-entertainment" <?php if($rowproject['Category'] == 'arts-and-entertainment'){echo "selected";}?>>Arts & Entertainment</option>
-<option value="business-and-career" <?php if($rowproject['Category'] == 'business-and-career'){echo "selected";}?>>Business and Career</option>
-<option value="communities-and-lifestyles" <?php if($rowproject['Category'] == 'communities-and-lifestyles'){echo "selected";}?>>Communities & Lifestyles</option>
-<option value="cultures-and-languages" <?php if($rowproject['Category'] == 'cultures-and-languages'){echo "selected";}?>>Cultures & Languages</option>
-<option value="health-and-support" <?php if($rowproject['Category'] == 'health-and-support'){echo "selected";}?>>Health & Support</option>
-<option value="hobbies" <?php if($rowproject['Category'] == 'hobbies'){echo "selected";}?>>Hobbies</option>
-<option value="internet-and-technology" <?php if($rowproject['Category'] == 'internet-and-technology'){echo "selected";}?>>Internet & Technology</option>
-<option value="parenting-and-family" <?php if($rowproject['Category'] == 'parenting-and-family'){echo "selected";}?>>Parenting & Family</option>
-<option value="pets-and-animals" <?php if($rowproject['Category'] == 'pets-and-animals'){echo "selected";}?>>Pets & Animals</option>
-<option value="politics-and-activism" <?php if($rowproject['Category'] == 'politics-and-activism'){echo "selected";}?>>Politics & Activism</option>
-<option value="religion-and-beliefs" <?php if($rowproject['Category'] == 'religion-and-beliefs'){echo "selected";}?>>Religion & Beliefs</option>
-<option value="science" <?php if($rowproject['Category'] == 'science'){echo "selected";}?>>Science</option>
-<option value="social" <?php if($rowproject['Category'] == 'social'){echo "selected";}?>>Social</option>
-<option value="sports-and-recreation" <?php if($rowproject['Category'] == 'sports-and-recreation'){echo "selected";}?>>Sports & Recreation</option>
-<option value="education" <?php if($rowproject['Category'] == 'education'){echo "selected";}?>>Education</option>
-<option value="other" <?php if($rowproject['Category'] == 'other'){echo "selected";}?>>Other</option>
-
+<option value="arts-and-entertainment" <?php if(in_array('arts-and-entertainment',$category)){echo "selected";}?>>Arts & Entertainment</option>
+<option value="business-and-career" <?php if(in_array('business-and-career',$category)){echo "selected";}?>>Business and Career</option>
+<option value="communities-and-lifestyles" <?php if(in_array('communities-and-lifestyles',$category)){echo "selected";}?>>Communities & Lifestyles</option>
+<option value="cultures-and-languages" <?php if(in_array('cultures-and-languages',$category)){echo "selected";}?>>Cultures & Languages</option>
+<option value="health-and-support" <?php if(in_array('health-and-support',$category)){echo "selected";}?>>Health & Support</option>
+<option value="hobbies" <?php if(in_array('hobbies',$category)){echo "selected";}?>>Hobbies</option>
+<option value="internet-and-technology" <?php if(in_array('internet-and-technology',$category)){echo "selected";}?>>Internet & Technology</option>
+<option value="parenting-and-family" <?php if(in_array('parenting-and-family',$category)){echo "selected";}?>>Parenting & Family</option>
+<option value="pets-and-animals" <?php if(in_array('pets-and-animals',$category)){echo "selected";}?>>Pets & Animals</option>
+<option value="politics-and-activism" <?php if(in_array('politics-and-activism',$category)){echo "selected";}?>>Politics & Activism</option>
+<option value="religion-and-beliefs" <?php if(in_array('religion-and-beliefs',$category)){echo "selected";}?>>Religion & Beliefs</option>
+<option value="science" <?php if(in_array('science',$category)){echo "selected";}?>>Science</option>
+<option value="social" <?php if(in_array('social',$category)){echo "selected";}?>>Social</option>
+<option value="sports-and-recreation" <?php if(in_array('sports-and-recreation',$category)){echo "selected";}?>>Sports & Recreation</option>
+<option value="education" <?php if(in_array('education',$category)){echo "selected";}?>>Education</option>
+<option value="other" <?php if(in_array('other',$category)){echo "selected";}?>>Other</option>
 
 
 </select>
@@ -540,7 +608,8 @@ $("#languages").blur(function (e) {
 
           <div class="wrapper">
 
-            <h2>I want to reach people by:</h2>
+            <h2>I want to reach people by:<br><br></h2>
+             <h3>(Mark minimum 3 as required)</h3>
             <div class="separator"></div>
 
 
@@ -554,7 +623,7 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="age">
-              <input id="age" type="checkbox" value="" <?php if($rowproject['Age'] != 'NULL' && $rowproject['Age'] != '') {echo "checked";}?>/>
+               <input id="age" type="checkbox" value="" <?php if($rowproject['Age'] != 'NULL' && $rowproject['Age'] != '') {echo "checked";}?>/>
                <label for="age">Age</label>
           </div>
 
@@ -562,12 +631,14 @@ $("#languages").blur(function (e) {
         </div>  
 
  
-  <div id="age-options" <?php if($rowproject['Age'] != 'NULL' && $rowproject['Age'] != '') {echo "style='display:block'";}?>>    
+ <div id="age-options" <?php if($rowproject['Age'] != 'NULL' && $rowproject['Age'] != '') {echo "style='display:block'";}?>>   
 <div class="selectall">
+
 <input id="ageimportant" name="minreq[]" type="checkbox"  value="Age" <?php if(in_array("Age",$minreq) && $rowproject['Age'] != 'NULL'){echo "checked";}?>/>
   <label for="ageimportant">Required</label>
+
    <input id="selectallages" type="checkbox" onClick="selectAllages(this,'ages')" />
-  <label for="selectallages">select all</label>
+  <label for="selectallages">Select all</label>
 </div>
 
 
@@ -629,18 +700,23 @@ $("#languages").blur(function (e) {
 <div class="genders">
                <div class="containertitle">
                   <div class="gender">
-               <input id="gender" name="gender" type="checkbox" <?php if($rowproject['Gender'] != 'NULL') {echo "checked";}?>/>
+               <input id="gender" name="gender" type="checkbox" <?php if($rowproject['Gender'] != 'NULL' && $rowproject['Gender'] != '') {echo "checked";}?>/>
                <label for="gender">gender</label>
           </div>
         </div>  
 
-<div id="gender-options" <?php if($rowproject['Gender'] != 'NULL') {echo "style='display:block'";}?>>               
+
+
+ <div id="gender-options" <?php if($rowproject['Gender'] != 'NULL' && $rowproject['Gender'] != '') {echo "style='display:block'";}?>>  
+
 
 <div class="selectall">
+
 <input id="genderimportant" name="minreq[]" type="checkbox"  value="Gender" <?php if(in_array("Gender",$minreq) && $rowproject['Gender'] != 'NULL'){echo "checked";}?>/>
   <label for="ageimportant">Required</label>
+
    <input id="selectallgender" type="checkbox" onClick="selectAllgender(this,'gender')" />
-  <label for="selectallgender">select all</label>
+  <label for="selectallgender">Select all</label>
 </div>
 
 <div class="dashboardSurveyTargetingContainerAgeInputContainer first">
@@ -681,13 +757,11 @@ $("#languages").blur(function (e) {
 <div class="heights">
                <div class="containertitle">
                   <div class="height">
-               <input id="height" name="height" type="checkbox" <?php if($rowproject['MinHeight'] != 'NULL') {echo "checked";}?>/>
+               <input id="height" name="height" type="checkbox" <?php if($rowproject['MinHeight'] != 'NULL' && $rowproject['MinHeight'] != '') {echo "checked";}?>/>
                <label for="height">height</label>
           </div>
         </div>  
-
-<div id="height-options" <?php if($rowproject['MinHeight'] != 'NULL') {echo "style='display:block'";}?>>   
-
+<div id="height-options" <?php if($rowproject['MinHeight'] != 'NULL' && $rowproject['MinHeight'] != '') {echo "style='display:block'";}?>>  
 
  <div class="row">
     <div class="col-md-12">
@@ -778,7 +852,7 @@ $("#languages").blur(function (e) {
                  <div class="containertitle">
                   <div class="age">
                <input id="location" type="checkbox" <?php if($rowproject['Location'] != 'NULL') {echo "checked";}?>/>
-               <label for="location">Location</label>
+               <label for="location">Borough (the area you are able to meet the participant)</label>
           </div>
         </div>  
 
@@ -838,6 +912,7 @@ $("#languages").blur(function (e) {
 <div class="clearer"></div>
 
 -->
+
  <!--Location Ends--> 
 
 
@@ -852,22 +927,23 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="status">
-               <input id="status" type="checkbox" <?php if($rowproject['Status'] != 'NULL') {echo "checked";}?>/>
+               <input id="status" name="gender" type="checkbox" <?php if($rowproject['Status'] != 'NULL' && $rowproject['Status'] != '') {echo "checked";}?>/>
                <label for="status">Marital Status</label>
           </div>
         </div>  
 
- 
- <div id="status-options" <?php if($rowproject['Status'] != 'NULL') {echo "style='display:block'";}?>>             
+ <div id="status-options" <?php if($rowproject['Status'] != 'NULL' && $rowproject['Status'] != '') {echo "style='display:block'";}?>>   
   
 <div class="selectall">
-  
-  <input id="statusimportant" name="minreq[]" type="checkbox"  value="Status" <?php if(in_array("Status",$minreq) && $rowproject['Status'] != 'NULL'){echo "checked";}?>/>
+
+<input id="statusimportant" name="minreq[]" type="checkbox"  value="Status" <?php if(in_array("Status",$minreq) && $rowproject['Status'] != 'NULL'){echo "checked";}?>/>
   <label for="statusimportant">Required</label>
 
    <input id="selectallstatus" type="checkbox" onClick="selectAllstatus(this,'status')" />
-  <label for="selectallstatus">select all</label>
+  <label for="selectallstatus">Select all</label>
 </div>  
+
+<p>&nbsp;</p>
 
   <div class="dashboardSurveyTargetingContainerLocationInputContainer first">
                  
@@ -924,22 +1000,23 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="ethnicity">
-               <input id="ethnicity" type="checkbox" <?php if($rowproject['Ethnicity'] != 'NULL') {echo "checked";}?> />
+               <input id="ethnicity" name="ethnicity" type="checkbox" <?php if($rowproject['Ethnicity'] != 'NULL' && $rowproject['Ethnicity'] != '') {echo "checked";}?>/>     
                <label for="ethnicity">Ethnicity</label>
           </div>
         </div>  
 
- 
- <div id="ethnicity-options" <?php if($rowproject['Ethnicity'] != 'NULL') {echo "style='display:block'";}?>>             
+  <div id="ethnicity-options" <?php if($rowproject['Ethnicity'] != 'NULL' && $rowproject['Ethnicity'] != '') {echo "style='display:block'";}?>>   
   
   <div class="selectall">
 
-  <input id="ethnicityimportant" name="minreq[]" type="checkbox"  value="Ethnicity" <?php if(in_array("Ethnicity",$minreq) && $rowproject['Ethnicity'] != 'NULL'){echo "checked";}?>/>
+<input id="ethnicityimportant" name="minreq[]" type="checkbox"  value="Ethnicity" <?php if(in_array("Ethnicity",$minreq) && $rowproject['Ethnicity'] != 'NULL'){echo "checked";}?>/>
   <label for="ethnicityimportant">Required</label>
 
    <input id="selectallethnicity" type="checkbox" onClick="selectAllethnicity(this,'status')" />
-  <label for="selectallethnicity">select all</label>
+  <label for="selectallethnicity">Select all</label>
 </div>  
+
+<p>&nbsp;</p>
 
   <div class="dashboardSurveyTargetingContainerLocationInputContainer first">
                  
@@ -1019,23 +1096,25 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="smoke">
-               <input id="smoke" type="checkbox" <?php if($rowproject['Smoke'] != 'NULL') {echo "checked";}?>/>
+               <input id="smoke" name="smoke" type="checkbox" <?php if($rowproject['Smoke'] != 'NULL' && $rowproject['Smoke'] != '') {echo "checked";}?>/>         
                <label for="smoke">Smoke</label>
           </div>
         </div>  
 
- 
- <div id="smoke-options" <?php if($rowproject['Smoke'] != 'NULL') {echo "style='display:block'";}?>>             
+<div id="smoke-options" <?php if($rowproject['Smoke'] != 'NULL' && $rowproject['Smoke'] != '') {echo "style='display:block'";}?>>   
+
  
  <div class="selectall">
 
- <input id="smokeimportant" name="minreq[]" type="checkbox"  value="Smoke" <?php if(in_array("Smoke",$minreq) && $rowproject['Smoke'] != 'NULL'){echo "checked";}?>/>
+<input id="smokeimportant" name="minreq[]" type="checkbox"  value="Smoke" <?php if(in_array("Smoke",$minreq) && $rowproject['Smoke'] != 'NULL'){echo "checked";}?>/>
   <label for="smokeimportant">Required</label>
 
+
    <input id="selectallsmoke" type="checkbox" onClick="selectAllsmoke(this,'smoke')" />
-  <label for="selectallsmoke">select all</label>
+  <label for="selectallsmoke">Select all</label>
 </div>   
 
+<p>&nbsp;</p>
   
   <div class="dashboardSurveyTargetingContainerLocationInputContainer first">
                  
@@ -1100,22 +1179,25 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="drinks">
-               <input id="drinks" type="checkbox" <?php if($rowproject['Drink'] != 'NULL') {echo "checked";}?>/>
+                <input id="drinks" name="drinks" type="checkbox" <?php if($rowproject['Drink'] != 'NULL' && $rowproject['Drink'] != '') {echo "checked";}?>/>  
                <label for="drinks">Drinks</label>
           </div>
         </div>  
 
- 
- <div id="drinks-options" <?php if($rowproject['Drink'] != 'NULL') {echo "style='display:block'";}?>>             
+ <div id="drinks-options" <?php if($rowproject['Drink'] != 'NULL' && $rowproject['Drink'] != '') {echo "style='display:block'";}?>>   
   
  <div class="selectall">
 
- <input id="drinkimportant" name="minreq[]" type="checkbox"  value="Drink" <?php if(in_array("Drink",$minreq) && $rowproject['Drink'] != 'NULL'){echo "checked";}?>/>
+<input id="drinkimportant" name="minreq[]" type="checkbox"  value="Drink" <?php if(in_array("Drink",$minreq) && $rowproject['Drink'] != 'NULL'){echo "checked";}?>/>
   <label for="drinkimportant">Required</label>
 
+
    <input id="selectalldrinks" type="checkbox" onClick="selectAlldrinks(this,'drinks')" />
-  <label for="selectalldrinks">select all</label>
+  <label for="selectalldrinks">Select all</label>
 </div>  
+
+
+<p>&nbsp;</p>
 
   <div class="dashboardSurveyTargetingContainerLocationInputContainer first">
                  
@@ -1182,23 +1264,26 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="diet">
-               <input id="diet" type="checkbox" <?php if($rowproject['Diet'] != 'NULL') {echo "checked";}?>/>
+    <input id="diet" name="diet" type="checkbox" <?php if($rowproject['Diet'] != 'NULL' && $rowproject['Diet'] != '') {echo "checked";}?>/>  
+   
                <label for="diet">Diet</label>
           </div>
         </div>  
 
- 
- <div id="diet-options" <?php if($rowproject['Diet'] != 'NULL') {echo "style='display:block'";}?>>     
+  <div id="diet-options" <?php if($rowproject['Diet'] != 'NULL' && $rowproject['Diet'] != '') {echo "style='display:block'";}?>>   
+
 
   <div class="selectall">
 
-  <input id="dietimportant" name="minreq[]" type="checkbox"  value="Diet" <?php if(in_array("Diet",$minreq) && $rowproject['Diet'] != 'NULL'){echo "checked";}?>/>
+<input id="dietimportant" name="minreq[]" type="checkbox"  value="Diet" <?php if(in_array("Diet",$minreq) && $rowproject['Diet'] != 'NULL'){echo "checked";}?>/>
   <label for="dietimportant">Required</label>
 
 
    <input id="selectalldiet" type="checkbox" onClick="selectAlldiet(this,'diet')" />
-  <label for="selectalldiet">select all</label>
-</div>          
+  <label for="selectalldiet">Select all</label>
+</div>       
+
+<p>&nbsp;</p>   
   
   <div class="dashboardSurveyTargetingContainerLocationInputContainer first">
                  
@@ -1222,6 +1307,11 @@ $("#languages").blur(function (e) {
 <div class="dashboardSurveyTargetingContainerLocationInputContainer">
    <input id="halal" name="dietselection[]" type="checkbox" value="Halal" <?php if(in_array('Halal',$diet)){echo "checked";}?>/>
   <label for="halal">Halal</label>
+</div>
+
+<div class="dashboardSurveyTargetingContainerLocationInputContainer">
+   <input id="eat-everything" name="dietselection[]" type="checkbox" value="Eat everything" <?php if(in_array('Eat everything',$diet)){echo "checked";}?>/>
+  <label for="eat-everything">Halal</label>
 </div>
 
 
@@ -1255,25 +1345,27 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="religion">
-               <input id="religion" type="checkbox" <?php if($rowproject['Religion'] != 'NULL') {echo "checked";}?>/>
+     <input id="religion" name="religion" type="checkbox" <?php if($rowproject['Religion'] != 'NULL' && $rowproject['Religion'] != '') {echo "checked";}?>/>  
+                 
                <label for="religion">Religion</label>
           </div>
         </div>  
 
  
- <div id="religion-options" <?php if($rowproject['Religion'] != 'NULL') {echo "style='display:block'";}?>>             
-  
+   <div id="religion-options" <?php if($rowproject['Religion'] != 'NULL' && $rowproject['Religion'] != '') {echo "style='display:block'";}?>>   
+ 
 
 <div class="selectall">
+
 
 <input id="religionimportant" name="minreq[]" type="checkbox"  value="Religion" <?php if(in_array("Religion",$minreq) && $rowproject['Religion'] != 'NULL'){echo "checked";}?>/>
   <label for="religionimportant">Required</label>
 
    <input id="selectallreligion" type="checkbox" onClick="selectAllreligion(this,'diet')" />
-  <label for="selectallreligion">select all</label>
+  <label for="selectallreligion">Select all</label>
 </div>   
 
-
+<p>&nbsp;</p>
 
   <div class="dashboardSurveyTargetingContainerLocationInputContainer first">
                  
@@ -1363,24 +1455,29 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="education">
-               <input id="education" type="checkbox" <?php if($rowproject['Education'] != 'NULL') {echo "checked";}?>/>
+     <input id="education" name="education" type="checkbox" <?php if($rowproject['Education'] != 'NULL' && $rowproject['Education'] != '') {echo "checked";}?>/>  
+
                <label for="education">Education</label>
           </div>
         </div>  
 
- 
- <div id="education-options" <?php if($rowproject['Education'] != 'NULL') {echo "style='display:block'";}?>> 
+    <div id="education-options" <?php if($rowproject['Education'] != 'NULL' && $rowproject['Education'] != '') {echo "style='display:block'";}?>>   
+
 
  <div class="selectall">
 
 <input id="educationimportant" name="minreq[]" type="checkbox"  value="Education" <?php if(in_array("Education",$minreq) && $rowproject['Education'] != 'NULL'){echo "checked";}?>/>
   <label for="educationimportant">Required</label>
 
+
    <input id="selectalleducation" type="checkbox" onClick="selectAlleducation(this,'education')" />
   <label for="selectalleducation">select all</label>
 </div>   
             
   
+<p>&nbsp;</p>
+
+
   <div class="dashboardSurveyTargetingContainerLocationInputContainer first">
                  
      
@@ -1440,13 +1537,15 @@ $("#languages").blur(function (e) {
 
                  <div class="containertitle">
                   <div class="job">
-               <input id="job" type="checkbox" <?php if($rowproject['Job'] != 'NULL') {echo "checked";}?>/>
+       <input id="job" name="job" type="checkbox" <?php if($rowproject['Job'] != 'NULL' && $rowproject['Job'] != '') {echo "checked";}?>/>  
+                
                <label for="job">Occupation</label>
           </div>
         </div>  
 
  
- <div id="job-options" <?php if($rowproject['Job'] != 'NULL') {echo "style='display:block'";}?>>      
+ <div id="job-options" <?php if($rowproject['Job'] != 'NULL' && $rowproject['Job'] != '') {echo "style='display:block'";}?>>   
+
 
   <div class="selectall">
 
@@ -1454,10 +1553,14 @@ $("#languages").blur(function (e) {
   <label for="jobimportant">Required</label>
 
 
-
    <input id="selectalljob" type="checkbox" onClick="selectAlljob(this,'job')" />
   <label for="selectalljob">select all</label>
-</div>         
+</div>      
+
+
+<p>&nbsp;</p>
+
+
   
   <div class="dashboardSurveyTargetingContainerLocationInputContainer first">
                  
@@ -1582,19 +1685,21 @@ $("#languages").blur(function (e) {
 <!--Interests Starts--> 
 
 <div class="interests">
-              <h3>are interested in:</h3>
+              <h3>Are Interested In:</h3>
              
 <div class="screening-description">
-                  Please enter the interest your potential customer should have before you interview them about your project
+                  Please enter the interest your potential customer should have before you meet for a feedback session about your idea.
                 </div>
 
 
 <div class="form-group">
               <div class="in-person">
                <input class="form-control"  name="interests" id="interests" type="text" placeholder="Enter here the interest (e.g Social Media)"/>
+
               </div>
                
              </div>
+
 
   <input id="interestimportant" name="minreq[]" type="checkbox" value="Interests" <?php if(in_array('Interests',$minreq)){echo "checked";}?>/>
    <label for="Interest">Make Interest as required</label>
@@ -1610,14 +1715,14 @@ $("#languages").blur(function (e) {
 <?php
 //include db configuration file
 
-if(!empty($_SESSION['projectid'])){
+if(!empty($_GET['id'])){
 
-echo '<input type="hidden" name="projectid" id="projectid" value="'.$_SESSION['projectid'].'">';
+echo '<input type="hidden" name="projectid" id="projectid" value="'.$_GET['id'].'">';
 echo '<input type="hidden" name="userid" id="userid" value="'.$row["userID"].'">';
 
 
 //MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_SESSION['projectid']."'");
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE ProjectID = '".$_GET['id']."'");
 
 
 //get all records from add_delete_record table
@@ -1630,7 +1735,10 @@ $ctop = $row2['Interests'];
 $ctop = explode(',',$ctop); 
 
 
-if($row2['Interests'] != 'NULL' ){
+
+if($row2['Interests'] != '' && $row2['Interests'] != 'NULL' ){
+
+
 
 foreach($ctop as $interest)  
 { 
@@ -1653,6 +1761,7 @@ echo '<img src="../../../images/icon_del.gif" border="0" class="icon_del" />';
 echo '</a></div>';
 //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
 echo '</li>';
+
 } 
 
 
@@ -1670,6 +1779,8 @@ echo '</li>';
 
 </div>
 
+
+ 
 <div class="clearer"></div>
 
 <!--Interests Ends--> 
@@ -1693,8 +1804,10 @@ echo '</li>';
                
              </div>
 
- <input id="languageimportant" name="minreq[]" type="checkbox" value="Languages" <?php if(in_array('Languages',$minreq)){echo "checked";}?>/>
+
+  <input id="languageimportant" name="minreq[]" type="checkbox" value="Languages" <?php if(in_array('Languages',$minreq)){echo "checked";}?>/>
    <label for="Languages">Make Languages as required</label>
+
                    
 <div class="content_wrapper">
 
@@ -1725,7 +1838,7 @@ $row2 = mysqli_fetch_array($Result);
 $ctop_language = $row2['Languages']; 
 $ctop_language = explode(',',$ctop_language); 
 
-if($row2['Languages'] != 'NULL' ){
+if($row2['Languages'] != '' && $row2['Languages'] != 'NULL' ){
 
 foreach($ctop_language as $language)  
 { 
@@ -1775,16 +1888,33 @@ echo '</li>';
 
 
 
-  <div class="clearer"></div>
+              
+               
+
+
+
+
+
+              
+              
+              <div class="clearer"></div>
             </div>
 
           </div>
+
+
+
+
+
+
+
+
           
 
 
         <div class="screeningWrapper step6">
 
-          
+
           <div class="filter">
              <input id="screening" name="screening[]" type="checkbox" value="Enabled" <?php if($screening != 'NULL' && $screening == 'Enabled') {echo "checked";}?>/>
                <label for="screening">
@@ -1801,12 +1931,12 @@ echo '</li>';
               <div id="dashboardSurveyTargetingContainerScreeningQuestion">
                 <div class="screening-description">
                   Ask a screening question to qualify or disqualify a participant, based upon the answer they select.<br>
-                  If a user does not select one of the qualifying answers, they will not take part.
+                  If a user does not select one of the qualifying answers, they will not take part with your feedback session.
                 </div>
                 <h3>Screening question</h3>
                 
 
-  <textarea rows="3" tabindex="0" placeholder="Add your screening question here" name="screeningquestion" id="screeningquestion"><?php if($rowpotentialanswers['ScreeningQuestion'] != 'NULL'){echo $rowpotentialanswers['ScreeningQuestion'];}?></textarea>
+ <textarea rows="3" tabindex="0" placeholder="Add your screening question here" name="screeningquestion" id="screeningquestion" disabled><?php if($rowpotentialanswers['ScreeningQuestion'] != 'NULL'){echo $rowpotentialanswers['ScreeningQuestion'];}?></textarea>
                
               </div>
 
@@ -1816,11 +1946,14 @@ echo '</li>';
                 <div class="answerContainerDashboardScreening">
                   <div class="answerDashboardScreening">
 
+
  <div id="potential-answers" <?php if($screening == 'Enabled') {echo "style='display:block'";}?>> 
+
+
 
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Potential Answer 1</h3>
-    <input class="form-control" type="text" name="potentialanswertext1" id="potentialanswertext1" value="<?php if($rowpotentialanswers['PotentialAnswer1'] != 'NULL'){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer1']); } ?>" />
+    <input class="form-control" type="text" name="potentialanswertext1" id="potentialanswertext1" value="<?php echo $rowpotentialanswers['PotentialAnswer1'];?>" />
    <input id="potentialanswer1" name="potentialansweraccepted[]" type="radio" value="Potential Answer 1" <?php if(in_array('Potential Answer 1',$potentialanswers)){echo "checked";}?>/>
   <label for="potentialanswer1">Accept this</label>
 </div>
@@ -1828,14 +1961,14 @@ echo '</li>';
 
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Potential Answer 2</h3>
-    <input class="form-control" type="text" name="potentialanswertext2" id="potentialanswertext2" value="<?php if($rowpotentialanswers['PotentialAnswer2'] != 'NULL'){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer2']); } ?>" />
+    <input class="form-control" type="text" name="potentialanswertext2" id="potentialanswertext2" value="<?php echo $rowpotentialanswers['PotentialAnswer2'];?>" />
    <input id="potentialanswer2" name="potentialansweraccepted[]" type="radio" value="Potential Answer 2" <?php if(in_array('Potential Answer 2',$potentialanswers)){echo "checked";}?>/>
   <label for="potentialanswer2">Accept this</label>
 </div>
 
 <div class="dashboardSurveyTargetingContainerPotentialAnswersInputContainer">
   <h3>Potential Answer 3</h3>
-    <input class="form-control" type="text" name="potentialanswertext3" id="potentialanswertext3" value="<?php if($rowpotentialanswers['PotentialAnswer3'] != 'NULL'){echo $str = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $rowpotentialanswers['PotentialAnswer3']); } ?>" />
+    <input class="form-control" type="text" name="potentialanswertext3" id="potentialanswertext3" value="<?php echo $rowpotentialanswers['PotentialAnswer3'];?>" />
    <input id="potentialanswer3" name="potentialansweraccepted[]" type="radio" value="Potential Answer 3" <?php if(in_array('Potential Answer 3',$potentialanswers)){echo "checked";}?>/>
   <label for="potentialanswer3">Accept this</label>
 </div>
@@ -1869,60 +2002,59 @@ echo '</li>';
             </div><!-- end ngIf: screeningEnabled -->
           </div>
 
-       
+  
 
         
 
-     
 
- 
-
-     
-
-      <p>&nbsp;</p>
-
+  <input type="hidden" id="projectid" name="projectid" value="<?php echo $_GET['id']; ?>">
 
   
-    <!--
+
+<p>&nbsp;</p>
+
+
+<!--
 <div id="savetargetaudience">
               <input type="submit" value="Save"/>
 
             </div>
 -->
+
       <div id="savetargetaudience">
-            
+              
         <input type="submit" value="Save"/>
 
+      
+ </div>     
+
+  </div>
+  <div class="clearer"></div>
+ <p>&nbsp;</p>
+ <div id="result"></div>
+  </div>
+
             </div>
+                    
 
-
-             
-                    <div class="clearer"></div>
-
-<p>&nbsp;</p>
-           <div id="result"></div>  
- </div>
- </div>
-
-   <div class="container">
 <!--Footer-->
 <?php include("../../../footer.php"); ?>
 <!--Footer-->
-      </div>
-      
+            
+
+
           </div>
 
-     
+      <div class="clearer"></div>
 
 
-   
-
+  
 
       
 
     </div>
 
- 
+    <div class="clearer"></div>
 
 
 

@@ -741,12 +741,12 @@ jq(document).ready(function(){
            <div class="reach-people">
               <h2>Public or Private</h2>
             <div class="separator"></div>
-         <div style="float:left; width:100%">
+         <div class="space"></div>
             <div class="screening-description">
                   If you like to make the problem visible to everyone mark it as <strong>"Public"</strong>. <br><br>Choose <strong>Private</strong>
                   If you like to keep the problem hidden to everyone, then mark is as <strong>"Private"</strong>. <br>When set to Private, only you can see the problem. In Private mode you can still share the problem with people you choose.
                 </div>
-</div>
+
             </div>
 
 
@@ -789,16 +789,16 @@ jq(document).ready(function(){
            <div class="reach-people">
               <h2>Upload Image</h2>
             <div class="separator"></div>
-           
+           <div class="space"></div>
 
               <div id='preview'>
    
    <?php if($rowproject['project_image'] != ''){ ?>
-          <img src="<?php echo BASE_PATH; ?>/ideas/uploads/<?PHP echo $rowproject['project_image']; ?>" class="preview">
+          <img src="<?php echo BASE_PATH; ?>/problem/uploads/<?PHP echo $rowproject['project_image']; ?>" class="preview">
        
   <?php }else{ ?>
 
- <img src="<?php echo BASE_PATH; ?>/ideas/uploads/thumbnail.jpg" class="preview">
+ <img src="<?php echo BASE_PATH; ?>/problem/uploads/thumbnail.jpg" class="preview">
 
   <?php } ?>
 
@@ -830,7 +830,7 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
            <div class="reach-people">
               <h2>Pay Out</h2>
             <div class="separator"></div>
-          
+          <div class="space"></div>
             <div class="screening-description">
                   Choose the amount you are willing to <strong>Pay</strong> for the person you who will participate to provide you feedback. 
                 </div>
@@ -1016,7 +1016,9 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
            
               </div>
 
- <div id="back">
+
+
+ <div id="back" style="padding-right:20px;">
               <a href="<?php echo BASE_PATH; ?>/entrepreneur/problem/create/step1.php?id=<?php echo $_SESSION['projectid']; ?>">< Back</a>
 
             </div>
