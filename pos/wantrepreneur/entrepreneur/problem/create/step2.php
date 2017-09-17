@@ -39,7 +39,7 @@ $rowproject = mysqli_fetch_array($Project);
 
 
 if($_SESSION['projectid'] != $rowproject['ProjectID']){
-  //header("Location:../../index.php");
+  header("Location:../../index.php");
 }
 
 
@@ -233,11 +233,12 @@ jq(document).ready(function(){
                <label for="in-person"><h3 class="grey">If This Answer Is Chosen: Yes, I have that problem</h3></label>
 
                <div class="in-person">
-               <label for="in-person">
-
-            <?php echo $rowproject['PossibleAnswer1'];?>
-
-                </label>
+               <label for="in-person">Question#1: <?php echo $rowproject['PossibleAnswer1_Question1'];?></label><br>
+               <label for="in-person">Question#2: <?php echo $rowproject['PossibleAnswer1_Question2'];?></label><br>
+               <label for="in-person">Question#3: <?php echo $rowproject['PossibleAnswer1_Question3'];?></label><br>
+               <label for="in-person">Question#4: <?php echo $rowproject['PossibleAnswer1_Question4'];?></label>
+            
+                
              </div>
             
               
@@ -245,33 +246,32 @@ jq(document).ready(function(){
                <label for="in-person"><h3 class="grey">If This Answer Is Chosen: No, I don't have that problem</h3></label>
 
                <div class="in-person">
-               <label for="in-person">
-
-            <?php echo $rowproject['PossibleAnswer2'];?>
-
-                </label>
+               <label for="in-person">Question#1: <?php echo $rowproject['PossibleAnswer2_Question1'];?></label><br>
+               <label for="in-person">Question#2: <?php echo $rowproject['PossibleAnswer2_Question2'];?></label>
              </div>             
 
                
                 <label for="in-person"><h3 class="grey">If This Answer Is Chosen: Sometimes</h3></label>
 
                <div class="in-person">
-               <label for="in-person">
-
-            <?php echo $rowproject['PossibleAnswer3'];?>
-
-                </label>
+               <label for="in-person">Question#1: <?php echo $rowproject['PossibleAnswer3_Question1'];?></label><br>
+               <label for="in-person">Question#2: <?php echo $rowproject['PossibleAnswer3_Question2'];?></label><br>
+               <label for="in-person">Question#3: <?php echo $rowproject['PossibleAnswer3_Question3'];?></label><br>
+               <label for="in-person">Question#4: <?php echo $rowproject['PossibleAnswer3_Question4'];?></label>
              </div>  
 
 
                <label for="in-person"><h3 class="grey">If This Answer Is Chosen: Very rare</h3></label>
 
                <div class="in-person">
-               <label for="in-person">
+              
 
-            <?php echo $rowproject['PossibleAnswer4'];?>
+               <label for="in-person">Question#1: <?php echo $rowproject['PossibleAnswer4_Question1'];?></label><br>
+               <label for="in-person">Question#2: <?php echo $rowproject['PossibleAnswer4_Question2'];?></label><br>
+               <label for="in-person">Question#3: <?php echo $rowproject['PossibleAnswer4_Question3'];?></label><br>
+               <label for="in-person">Question#4: <?php echo $rowproject['PossibleAnswer4_Question4'];?></label>
 
-                </label>
+               
              </div>  
               
              
