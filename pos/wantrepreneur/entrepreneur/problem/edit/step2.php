@@ -32,6 +32,14 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //echo $_SESSION['startupSession'];
 //echo $_SESSION['projectid'];
 
+//include db configuration file
+
+if(!empty($_GET['id'])){
+
+echo '<input type="hidden" name="projectid" id="projectid" value="'.$_GET['id'].'">';
+
+}
+
 
 $Project = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project WHERE startupID='".$_SESSION['startupSession']."'
   AND ProjectID= '".$_SESSION['projectid']."'");
@@ -194,14 +202,18 @@ jq(document).ready(function(){
   </div>
 </div>
 
-
+<div id="publish-result"></div>
 
 
   <div id="white-container">
       <div id="dashboardSurveyTargetingContainerLogic">
 
 
- 
+ <?php if($rowproject['FinishedProcess'] == 'N'){ ?>
+
+<div id="publish-btn">Publish Problem</div>
+
+<?php } ?>
 
 
 <!--

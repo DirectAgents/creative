@@ -346,11 +346,18 @@ $(document).ready(function() {
 </div>
 
 
+<div id="publish-result"></div>
+
+
     <div id="white-container">
       <div id="dashboardSurveyTargetingContainerLogic">
 
 
+<?php if($rowproject['FinishedProcess'] == 'N'){ ?>
 
+<div id="publish-btn">Publish Problem</div>
+
+<?php } ?>
 
 
 
