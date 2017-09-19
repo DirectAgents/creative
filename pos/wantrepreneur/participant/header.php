@@ -1,7 +1,32 @@
-
- <title>Valify</title>
+ <title>Mr.Pao</title>
 
          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <link rel="icon" href="<?php echo BASE_PATH; ?>/favicon.ico" type="image/x-icon"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="One platform to help wantrepreneurs and entrepreneurs to validate a problem." />
+
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta itemprop="name" content="Mr.Pao Launch">
+    <meta itemprop="image" content="/public/img/logo.png">
+
+    <meta name="twitter:site" content="@mymisterpao">
+    <meta name="twitter:title" content="Mr.Pao Launch">
+    <meta name="twitter:description" content="One platform to help wantrepreneurs and entrepreneurs to validate a problem.">
+    <meta name="twitter:creator" content="@mymisterpao">
+
+    <meta property="og:url" content="https://misterpao.com">
+    <meta property="og:title" content="Mr.Pao Launch">
+    <meta property="og:image" content="https://misterpao.com/images/logo/email-logo-large.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:description" content="One platform to help wantrepreneurs and entrepreneurs to validate a problem.">
+    <meta property="og:site_name" content="Mr.Pao Launch">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="https://www.facebook.com/MrPao-1960306184214766/">
+    <meta property="article:section" content="Technology">
+
 
         <!-- Bootstrap -->
         <link href="<?php echo BASE_PATH; ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">

@@ -243,7 +243,7 @@ if(mysqli_num_rows($sql4) == false)
 */
 
 
-$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_meeting_participated WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_participant WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') AND userID NOT IN (SELECT userID FROM tbl_meeting_archived_startup WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND userID = '".$_SESSION['participantSession']."' ORDER BY userID DESC LIMIT $position, $item_per_page");
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID NOT IN (SELECT userID FROM tbl_participant_feedback_participated WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_request WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_upcoming WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_meeting_recent WHERE ProjectID = '".$row['ProjectID']."') AND userID NOT IN (SELECT userID FROM tbl_feedback_archived_participant WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') AND userID NOT IN (SELECT userID FROM tbl_feedback_archived_startup WHERE ProjectID = '".$row['ProjectID']."' AND Met != 'yes') $theage $thegender $theheight $thecity $thestatus $theethnicity $thesmoke $thedrink $thediet $thereligion $theeducation $thejob $interests $languages AND userID = '".$_SESSION['participantSession']."' ORDER BY userID DESC LIMIT $position, $item_per_page");
 
 
 
@@ -269,18 +269,18 @@ echo '
 
   if($row['project_image'] != ''){
   
-  echo '<img src="'.BASE_PATH.'/ideas/uploads/'.$row['project_image'].'" class="img-circle-profile"/>';
+  echo '<img src="'.BASE_PATH.'/problem/uploads/'.$row['project_image'].'" class="img-circle-profile"/>';
 
 }else{
 
- echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" class="img-circle-profile"/>';
+ echo '<img src="'.BASE_PATH.'/problem/uploads/thumbnail.jpg" class="img-circle-profile"/>';
 }
   echo '</div>
-  <div class="col-lg-7"><p><h4>'.$row['Name'].'</h4></p><p>'.$row['Details'].'</p>
-  <p>Payout: $'.$row['Pay'].' for '.$row['Minutes'].' minutes </p></div>
+  <div class="col-lg-7"><p><h4>'.$row['Problem'].'</h4></p>
+  <p>Payout: $'.$row['Pay'].'</p></div>
    <div class="col-lg-3">
 <div style="margin-top:30px">
-   <a href="../../../ideas/p/'.$row['Category'].'/?id='.$row['ProjectID'].'"><button type="button" class="btn-request">View Idea</button></a> </div></div>
+   <a href="'.BASE_PATH.'/problem/p/'.$row['Category'].'/?id='.$row['ProjectID'].'"><button type="button" class="btn-request">View Problem</button></a> </div></div>
 </div>
 </div>
 

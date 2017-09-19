@@ -34,7 +34,7 @@ if($row['login_session'] == $_COOKIE['RememberMe']){
 
 $_SESSION['participantSession'] = $row['userID'];
 
-header("Location:../meetings/");
+header("Location:../feedback/");
 exit();
 }
 }
@@ -51,7 +51,7 @@ $user_login = new PARTICIPANT();
 
 if($user_login->is_logged_in()!="")
 {
-  $user_login->redirect('../meetings/');
+  $user_login->redirect('../feedback/');
 }
 
 if(isset($_POST['btn-login']))
@@ -63,7 +63,7 @@ if(isset($_POST['btn-login']))
 
   if($user_login->login($email,$upass,$rememberme))
   {
-    $user_login->redirect('../meetings/');
+    $user_login->redirect('../feedback/');
   }
 }
 
@@ -644,7 +644,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['participantSession'] = $row['userID'];
-        header("Location: ../meetings/");
+        header("Location: ../feedback/");
         exit();
     }
   else //else greeting text "Thanks for registering"
@@ -803,7 +803,7 @@ echo 'id: ' . $user['id'];
 
         $_SESSION['participantSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
-        header("Location: ../meetings/");
+        header("Location: ../feedback/");
         exit();
     }
   else //else greeting text "Thanks for registering"

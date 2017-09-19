@@ -302,7 +302,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
       </ul>-->
       <ul class="external-logged-in">
 
-        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/idea/browse/">BROWSE IDEAS</a></li>
+        <li class="create-new-project"><a href="<?php echo BASE_PATH; ?>/participant/problem/browse/">BROWSE PROBLEMS</a></li>
 
 <a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $_SESSION['participantSession'];?>">
 <?php if($rownav['google_picture_link'] != ''){ ?>
