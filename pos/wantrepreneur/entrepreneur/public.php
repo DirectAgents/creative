@@ -531,7 +531,7 @@ echo '<img src="../problem/uploads/thumbnail.jpg" width="100">';
 <?php
 
 
-$result_count = mysqli_query($connecDB,"SELECT ProjectID,userID, COUNT(DISTINCT userID) AS count FROM tbl_meeting_upcoming WHERE ProjectID = '".$row2['ProjectID']."'  GROUP BY ProjectID");
+$result_count = mysqli_query($connecDB,"SELECT ProjectID,userID, COUNT(DISTINCT userID) AS count FROM tbl_feedback_upcoming WHERE ProjectID = '".$row2['ProjectID']."'  GROUP BY ProjectID");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -568,7 +568,7 @@ echo "</a>";
                       
                   <div class="action" tabindex="0" aria-hidden="false">
                         <div class="btn-browse">
-                        <a href="<?php echo BASE_PATH; ?>/problem/s/browse/participants/new/?id=<?php echo $row2['ProjectID']; ?>">Browse New Participants</a>
+                        <a href="<?php echo BASE_PATH; ?>/entrepreneur/problem/browse/participants/new/?id=<?php echo $row2['ProjectID']; ?>">Browse New Participants</a>
                         </div>
                       </div>
 

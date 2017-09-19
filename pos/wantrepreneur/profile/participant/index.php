@@ -205,7 +205,7 @@ if($row['profile_image'] != ''){
       <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Meetings Participated</th>
+        <th>Feedbacks</th>
  
 
         <th>Rating</th>
@@ -220,7 +220,7 @@ if($row['profile_image'] != ''){
 <?php
 
 
-$result_count = mysqli_query($connecDB,"SELECT userID, COUNT(DISTINCT userID) AS count FROM tbl_participant_meeting_participated WHERE userID = '".$_GET['id']."'");
+$result_count = mysqli_query($connecDB,"SELECT userID, COUNT(DISTINCT userID) AS count FROM tbl_participant_feedback_participated WHERE userID = '".$_GET['id']."'");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -549,17 +549,17 @@ while($row2 = mysqli_fetch_array($listproject))
 
 $sqlparticipated = mysqli_query($connecDB,"SELECT * 
 from (
-    select userID, ProjectID, Met from tbl_meeting_request
+    select userID, ProjectID, Met from tbl_feedback_request
     union all
-    select userID, ProjectID, Met from tbl_meeting_upcoming
+    select userID, ProjectID, Met from tbl_feedback_upcoming
     union all
-    select userID, ProjectID, Met from tbl_meeting_recent
+    select userID, ProjectID, Met from tbl_feedback_recent
     union all
-    select userID, ProjectID, Met from tbl_meeting_archived_startup
+    select userID, ProjectID, Met from tbl_feedback_archived_startup
     union all
-    select userID, ProjectID, Met from tbl_meeting_archived_participant
+    select userID, ProjectID, Met from tbl_feedback_archived_participant
     union all
-    select userID, ProjectID, Met from tbl_participant_meeting_participated
+    select userID, ProjectID, Met from tbl_participant_feedback_participated
    
 ) tbl_participant
 where userID = '".$_GET['id']."' AND ProjectID = '".$row2['ProjectID']."' AND Met = 'yes' ");
@@ -620,9 +620,9 @@ $rowprojectimage = mysqli_fetch_array($ProjectImage);
 
 
 if($rowprojectimage['project_image'] != '') {
-echo '<img src="'.BASE_PATH.'/ideas/uploads/'.$rowprojectimage['project_image'].'" width="70">'; 
+echo '<img src="'.BASE_PATH.'/problem/uploads/'.$rowprojectimage['project_image'].'" width="70">'; 
 }else{
-echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">'; 
+echo '<img src="'.BASE_PATH.'/problem/uploads/thumbnail.jpg" width="70">'; 
 }
 
 
@@ -672,9 +672,9 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
                           
 <?php if($participant_home->is_logged_in()){ ?>
 
-<a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+<a href="<?php echo BASE_PATH; ?>/problem/p/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
 
-    Set up a meeting
+    Request for feedback
 </a>    
 
 <?php } ?>
@@ -682,11 +682,11 @@ echo '<img src="'.BASE_PATH.'/ideas/uploads/thumbnail.jpg" width="70">';
 
 <?php if($startup_home->is_logged_in()){ ?>
 
-<a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
+<a href="<?php echo BASE_PATH; ?>/problem/s/<?php echo $row2['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $_GET['id']; ?>">
 
 
 
-                          Set up a meeting
+                          Request for feedback
 </a>
 
 <?php } ?>

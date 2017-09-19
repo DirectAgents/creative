@@ -58,7 +58,7 @@ $rowstartup = mysqli_fetch_array($startup);
 
 
 if($rowstartup == false ){
-  //header("Location:".BASE_PATH."/participant/meetings/");
+  //header("Location:".BASE_PATH."/participant/feedbacks/");
   header("Location:".BASE_PATH."/404.php");
   exit();
 }else{
@@ -81,12 +81,12 @@ $sqlparticipantanswer = mysqli_query($connecDB,"SELECT * FROM tbl_participant_po
 $rowparticipantanswer=mysqli_fetch_array($sqlparticipantanswer);
 
 
-$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_archived_startup WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."' AND Met = 'Yes'");
+$sqlarchived = mysqli_query($connecDB,"SELECT * FROM tbl_feedback_archived_startup WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."' AND Met = 'Yes'");
 //$result=mysql_query($sql);
 $rowarchived=mysqli_fetch_array($sqlarchived);
 
 
-$sqlparticipated = mysqli_query($connecDB,"SELECT * FROM tbl_participant_meeting_participated WHERE ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."'");
+$sqlparticipated = mysqli_query($connecDB,"SELECT * FROM tbl_participant_feedback_participated WHERE ProjectID = '".$_GET['id']."' AND userID = '".$_GET['p']."'");
 //$result=mysql_query($sql);
 $rowparticipated=mysqli_fetch_array($sqlparticipated);
 
@@ -94,33 +94,33 @@ $rowparticipated=mysqli_fetch_array($sqlparticipated);
 
 
 if(isset($_GET['p'])){
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_feedback_request WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
-$rowmeetingrequest=mysqli_fetch_array($sql);
+$rowfeedbackrequest=mysqli_fetch_array($sql);
 }
 
 if(isset($_GET['p'])){
-$sqlupcoming = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_upcoming WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
+$sqlupcoming = mysqli_query($connecDB,"SELECT * FROM tbl_feedback_upcoming WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
-$rowmeetingupcoming=mysqli_fetch_array($sqlupcoming);
+$rowfeedbackupcoming=mysqli_fetch_array($sqlupcoming);
 }
 
 
 if(isset($_GET['p'])){
-$sqlrecent = mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
+$sqlrecent = mysqli_query($connecDB,"SELECT * FROM tbl_feedback_recent WHERE startupID='".$_SESSION['startupSession']."' AND userID='".$_GET['p']."' AND ProjectID = '".$_GET['id']."'");
 //$result=mysql_query($sql);
-$rowmeetingrecent=mysqli_fetch_array($sqlrecent);
+$rowfeedbackrecent=mysqli_fetch_array($sqlrecent);
 }
 
 
 
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Startup='Yes'
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_feedback_request SET Viewed_by_Startup='Yes'
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_upcoming SET Viewed_by_Startup='Yes'
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_feedback_upcoming SET Viewed_by_Startup='Yes'
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 
-  $update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_recent SET Viewed_by_Startup='Yes'
+  $update_sql = mysqli_query($connecDB,"UPDATE tbl_feedback_recent SET Viewed_by_Startup='Yes'
   WHERE startupID='".$_SESSION['startupSession']."' AND ProjectID = '".$_GET['id']."' ");
 
 
@@ -337,7 +337,7 @@ if($startup_home->is_logged_in())
 
 if(isset($_GET['p'])){
 
-if($rowmeetingrequest['startupID'] == $_SESSION['startupSession'] && $rowmeetingrequest['ProjectID'] == $_GET['id'] && $rowmeetingrequest['ScreeningQuestion'] != 'Not Passed' ){
+if($rowfeedbackrequest['startupID'] == $_SESSION['startupSession'] && $rowfeedbackrequest['ProjectID'] == $_GET['id'] && $rowfeedbackrequest['ScreeningQuestion'] != 'Not Passed' ){
 
 //echo $rowrequest['ProjectID'];
 
@@ -349,10 +349,10 @@ if($rowmeetingrequest['startupID'] == $_SESSION['startupSession'] && $rowmeeting
 <div class="request-sent">  
 
 
-<?php if($rowmeetingrequest['Status'] == 'Waiting for Participant to Accept or Decline'){ ?>
+<?php if($rowfeedbackrequest['Status'] == 'Waiting for Participant to Accept or Decline'){ ?>
   Already Request sent to Participate. Waiting for <strong><?php echo $rowparticipant['FirstName']; ?></strong> to respond.
 <?php } ?>
-<?php if($rowmeetingrequest['Status'] == 'Waiting for Startup to Accept or Decline'){ ?>
+<?php if($rowfeedbackrequest['Status'] == 'Waiting for Startup to Accept or Decline'){ ?>
   Already received a request to meet. Waiting for you to accept or decline. 
 <?php } ?>
 
@@ -392,7 +392,7 @@ if(mysqli_num_rows($results) == 0) { ?>
 <?php if(mysqli_num_rows($sql) == 1) { ?>
 
 
-<?php if($rowmeetingrequest['Requested_By'] == 'Startup'){ ?>
+<?php if($rowfeedbackrequest['Requested_By'] == 'Startup'){ ?>
 
 <div class="col-lg-11" style="padding:0px; margin-bottom:30px;">
  <div class="success2">
@@ -413,8 +413,8 @@ You have sent <?php echo $rowparticipant['FirstName']; ?> a request to meet.
 
 <div class="col-lg-11" style="padding:0px;">
  <div class="success2">
-You will meet <?php echo $rowparticipant['FirstName']; ?> on  <?php echo date('F j, Y',strtotime($rowmeetingupcoming['Date_of_Meeting'])); ?> 
-at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
+You will meet <?php echo $rowparticipant['FirstName']; ?> on  <?php echo date('F j, Y',strtotime($rowfeedbackupcoming['Date_of_feedback'])); ?> 
+at <?php echo $rowfeedbackupcoming['Final_Time']; ?><br>
 
 </div>
 <p>&nbsp;</p>
@@ -461,8 +461,8 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
   && mysqli_num_rows($sqlparticipated) == 0 && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
 
 <div class="col-lg-3">
-  <div class="btn-setup-a-meeting">
-<a href="#select-dates">Set up a meeting</a>
+  <div class="btn-setup-a-feedback">
+<a href="#select-dates">Set up a feedback</a>
 
 </div>
 
@@ -493,26 +493,7 @@ at <?php echo $rowmeetingupcoming['Final_Time']; ?><br>
 
 
 
-       <div class="col-lg-12">
-      <p>&nbsp;</p>
-      <h4>To participate, please choose one of the following:</h4>
-
-       <div class="problem">
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer1" value="Yes, I have that problem">Yes, I have that problem</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer2" value="No, I don't have that problem">No, I don't have that problem</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer3" value="Sometimes">Sometimes</p>
-      <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer4" value="Very rare">Very rare</p>
-    
-
-  </div>
-
-<input type="hidden" name="problemid" id="problemid" value="<?php echo $_GET['id']; ?>"/>  
-
-
-<div class="space"></div>
-  <div class="col-lg-12">
-<div id="participate-btn">Submit Answer</div>
-</div>
+     
 
 
 
@@ -533,15 +514,13 @@ asdfasdf
 
 
 
-<div class="col-lg-12" style="width:95%; margin-top:20px; background:#eee"> 
 
 
-<div id="select-dates">
+
 
  <div class="col-lg-12">
 
    
-<h3>Set up a meeting with <?php echo $rowparticipant['FirstName']; ?></h3>
 
 
 <?php 
@@ -569,33 +548,9 @@ if($rowstartupprofile['credit_card_id'] == '' && $rowparticipant['Payment_Method
 
 
 
-<?php 
-
-if($startup_home->is_logged_in())
-{
-
-if($rowstartupprofile['Phone'] == ''){ ?>
 
 
 
-<div class="col-lg-11" style="margin-top:20px;">
-
-<div class="request-sent">  
-  Please add your <strong><u>Phone Number</u></strong> to your account. This is required to request to meet. Click <a href="<?php echo BASE_PATH; ?>/startup/account/settings/">here</a> to add you number.
-</div>
-<p>&nbsp;</p>
-
-</div>
-
-<?php
-}
-}
-
-?>
-
-
-
-<!--<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>-->
 
 
 <?php
@@ -621,220 +576,23 @@ if($rowparticipant['profile_image'] != ''){
       ?>
 
 
+<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>
 
 
 
-<div class="row-day">
-<div class="the-day">
-<h4>Meeting Date Option #1:</h4> 
-
-<div class="select-row">
-<div style="float:left; margin-left:3px;">
-<input type="text" name="date_option_one" id="date_option_one" placeholder="Pick a date" class="validate">
-</div>
-<div style="float:left; margin-left:15px;">
-<select name="time_suggested_one" id="time_suggested_one">
-  <option value="" selected disabled="disabled">Select a time</option>
-  <option value="06:00 am">06:00 AM</option>
-  <option value="07:00 am">07:00 AM</option>
-  <option value="08:00 am">08:00 AM</option>
-  <option value="09:00 am">09:00 AM</option>
-  <option value="10:00 am">10:00 AM</option>
-  <option value="11:00 am">11:00 AM</option>
-  <option value="12:00 pm">12:00 PM</option>
-  <option value="01:00 pm">01:00 PM</option>
-  <option value="02:00 pm">02:00 PM</option>
-  <option value="03:00 pm">03:00 PM</option>
-  <option value="04:00 pm">04:00 PM</option>
-  <option value="05:00 pm">05:00 PM</option>
-  <option value="06:00 pm">06:00 PM</option>
-  <option value="07:00 pm">07:00 PM</option>
-  <option value="08:00 pm">08:00 PM</option>
-  <option value="09:00 pm">09:00 PM</option>
-  <option value="10:00 pm">10:00 PM</option>
-  <option value="11:00 pm">11:00 PM</option>
-  <option value="12:00 am">12:00 AM</option>
-               </select>
-
-    </div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
- <div class="col-lg-12">
-
-<div class="row-day">
-<div class="the-day">
-<h4>Meeting Date Option #2:</h4> 
-
-<div class="select-row">
-<div style="float:left; margin-left:0px;">
-<input type="text" name="date_option_two" id="date_option_two" placeholder="Pick a date" class="validate">
-</div>
-
-<div style="float:left; margin-left:15px;">
-<select name="time_suggested_two" id="time_suggested_two">
-  <option value="" selected disabled="disabled">Select a time</option>
-  <option value="06:00 am">06:00 AM</option>
-  <option value="07:00 am">07:00 AM</option>
-  <option value="08:00 am">08:00 AM</option>
-  <option value="09:00 am">09:00 AM</option>
-  <option value="10:00 am">10:00 AM</option>
-  <option value="11:00 am">11:00 AM</option>
-  <option value="12:00 pm">12:00 PM</option>
-  <option value="01:00 pm">01:00 PM</option>
-  <option value="02:00 pm">02:00 PM</option>
-  <option value="03:00 pm">03:00 PM</option>
-  <option value="04:00 pm">04:00 PM</option>
-  <option value="05:00 pm">05:00 PM</option>
-  <option value="06:00 pm">06:00 PM</option>
-  <option value="07:00 pm">07:00 PM</option>
-  <option value="08:00 pm">08:00 PM</option>
-  <option value="09:00 pm">09:00 PM</option>
-  <option value="10:00 pm">10:00 PM</option>
-  <option value="11:00 pm">11:00 PM</option>
-  <option value="12:00 am">12:00 AM</option>
-               </select>
-
-    </div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
- <div class="col-lg-12">
-
-<div class="row-day">
-<div class="the-day">
-<h4>Meeting Date Option #3:</h4> 
-
-<div class="select-row">
-<div style="float:left; margin-left:0px;">
-<input type="text" name="date_option_three" id="date_option_three" placeholder="Pick a date" class="validate">
-</div>
-
-<div style="float:left; margin-left:15px;">
-<select name="time_suggested_three" id="time_suggested_three">
-  <option value="" selected disabled="disabled">Select a time</option>
-  <option value="06:00 am">06:00 AM</option>
-  <option value="07:00 am">07:00 AM</option>
-  <option value="08:00 am">08:00 AM</option>
-  <option value="09:00 am">09:00 AM</option>
-  <option value="10:00 am">10:00 AM</option>
-  <option value="11:00 am">11:00 AM</option>
-  <option value="12:00 pm">12:00 PM</option>
-  <option value="01:00 pm">01:00 PM</option>
-  <option value="02:00 pm">02:00 PM</option>
-  <option value="03:00 pm">03:00 PM</option>
-  <option value="04:00 pm">04:00 PM</option>
-  <option value="05:00 pm">05:00 PM</option>
-  <option value="06:00 pm">06:00 PM</option>
-  <option value="07:00 pm">07:00 PM</option>
-  <option value="08:00 pm">08:00 PM</option>
-  <option value="09:00 pm">09:00 PM</option>
-  <option value="10:00 pm">10:00 PM</option>
-  <option value="11:00 pm">11:00 PM</option>
-  <option value="12:00 am">12:00 AM</option>
-               </select>
-
-    </div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </div>
 
 
 
 
-<div id="wheretomeet">
-<div class="therow">
-    <div class="col-lg-12" style="padding-left:10px; padding-right:15px;">
-      <h4>Location to meet:</h4>
-      <h5>(We suggest to enter a name and location of a venue to meet)</h5>
+<input type="hidden" name="problemid" id="problemid" value="<?php echo $_GET['id']; ?>"/>  
 
 
-
-
-      
-  
-<div id="location_option1">   
-    <input id="pac-input" name="location" class="controls" type="text" placeholder="e.g Starbucks, Astor Place, New York, NY, United States">
-  
-    <div id="map"></div>
-
+<div class="space"></div>
+  <div class="col-lg-12">
+<div id="participate-btn">Submit Answer</div>
 </div>
-
-<!--
-<div id="location_option2">   
-<input type="hidden" name="location_option2" id="location_option2" value="<?php echo $row['Location_Option2'];?>" />
-<iframe width="100%" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php echo $row['Location_Option2'];?>&key=AIzaSyDWVAsb7TmD-8_yRqe7jBIMrAcGFwHg06M"></iframe> 
-
-</div>
-
-<div id="location_option3">   
-<input type="hidden" name="location_option3" id="location_option3" value="<?php echo $row['Location_Option3'];?>" />  
-<iframe width="100%" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php echo $row['Location_Option3'];?>&key=AIzaSyDWVAsb7TmD-8_yRqe7jBIMrAcGFwHg06M"></iframe> 
-
-</div>
--->
-
-
-
-</div>
-
-
-<p>&nbsp;</p>
-
-
-
-<div class="col-lg-12" style="padding-right:15px; padding-left:0px">
-
-<?php if($rowparticipant['Payment_Method'] == 'Bank') { ?>
-
-<?php if($rowstartupprofile['credit_card_id'] == '' || $rowstartupprofile['Phone'] == '') { ?>
-
-    <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
-
-<?php }else{ ?>
-
-    <input type="submit" class="btn-request" value="Request to Meet"/>
-
-<?php } ?>
-
-<?php } ?>
-
-
-<?php if($rowparticipant['Payment_Method'] == 'Cash') { ?>
-
-<?php if($rowstartupprofile['Phone'] == '') { ?>
-
-    <input type="submit" class="btn-request" value="Request to Meet" disabled="disabled"/>
-
-<?php }else{ ?>
-
-    <input type="submit" class="btn-request" value="Request to Meet"/>
-
-<?php } ?>
-
-<?php } ?>
-
 
 
 
@@ -860,13 +618,9 @@ if($rowparticipant['profile_image'] != ''){
 
 
 
- </div>
-
- </div>
 
 
 
-</div>
     </div>
  </div>
 
