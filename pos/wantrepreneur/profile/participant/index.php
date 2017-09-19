@@ -622,7 +622,7 @@ $rowprojectimage = mysqli_fetch_array($ProjectImage);
 if($rowprojectimage['project_image'] != '') {
 echo '<img src="'.BASE_PATH.'/problem/uploads/'.$rowprojectimage['project_image'].'" width="70">'; 
 }else{
-echo '<img src="'.BASE_PATH.'/problem/uploads/thumbnail.jpg" width="70">'; 
+echo '<img src="'.BASE_PATH.'/problem/uploads/thumbnail.jpg" class="problem-img-thumbnail"/>'; 
 }
 
 

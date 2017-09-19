@@ -1063,6 +1063,22 @@ img {
 .img-rounded {
 	border-radius: 6px
 }
+
+.problem-img-thumbnail {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	padding: 4px;
+	width:100px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 0px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out
+}
+
 .img-thumbnail {
 	display: inline-block;
 	max-width: 100%;
@@ -1070,7 +1086,7 @@ img {
 	padding: 4px;
 	line-height: 1.42857143;
 	background-color: #fff;
-	border: 1px solid #ddd;
+	border: 0px solid #ddd;
 	border-radius: 4px;
 	-webkit-transition: all .2s ease-in-out;
 	-o-transition: all .2s ease-in-out;
@@ -1079,13 +1095,13 @@ img {
 .img-circle {
 	border-radius: 50%;
 	width:100px;
-	border:1px solid #eee;
+	border:0px solid #eee;
 	padding:5px;
 }
 .img-circle-profile {
 	/*border-radius: 50%;*/
 	width:120px;
-	border:1px solid #bfbebe;
+	border:0px solid #bfbebe;
 	padding:5px;
 }
 
@@ -1093,7 +1109,7 @@ img {
 .img-circle-profile-image {
 	/*border-radius: 50%;*/
 	width:150px;
-	border:1px solid #eee;
+	border:0px solid #eee;
 	padding:5px;
 }
 

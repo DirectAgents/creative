@@ -335,6 +335,12 @@ if($startup_home->is_logged_in())
 {
 
 
+echo '<div class="col-lg-11"><div class="request-sent"> <center><h3>';
+echo $rowparticipant['FirstName']; 
+echo 'qualifies for this idea to provide feedback</h3></center></div><p>&nbsp;</p</div>';
+
+
+
 if(isset($_GET['p'])){
 
 if($rowfeedbackrequest['startupID'] == $_SESSION['startupSession'] && $rowfeedbackrequest['ProjectID'] == $_GET['id'] && $rowfeedbackrequest['ScreeningQuestion'] != 'Not Passed' ){
@@ -449,39 +455,11 @@ at <?php echo $rowfeedbackupcoming['Final_Time']; ?><br>
 
     </div>
 
-    <?php if($rowstartup['startupID'] == $_SESSION['startupSession']){ ?>
     
 <div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span></h3></div>
 
 
 
-<?php if(isset($_GET['p'])){ ?>
-
-<?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
-  && mysqli_num_rows($sqlparticipated) == 0 && mysqli_num_rows($sqlrecent) == 0 && mysqli_num_rows($results) == 1) { ?>
-
-<div class="col-lg-3">
-  <div class="btn-setup-a-feedback">
-<a href="#select-dates">Set up a feedback</a>
-
-</div>
-
-</div>
-<?php } ?>
-<?php } ?>
-
-<?php }else{ ?>
-
-
-<div class="col-lg-5"><h2>Payout</h2><h3><span class="details-box">$<?php echo $rowproject['Pay']; ?></span></h3></div>
-
-
-<?php } ?>
-
-
-
-
- 
 
 
     <div class="col-lg-12">
@@ -501,7 +479,7 @@ at <?php echo $rowfeedbackupcoming['Final_Time']; ?><br>
 
 <?php if(isset($_GET['p'])){ ?>
 
-asdfasdf
+
 
 
   <?php if(mysqli_num_rows($sql) == 0 && mysqli_num_rows($sqlupcoming) == 0 && mysqli_num_rows($sqlarchived) == 0
@@ -509,12 +487,6 @@ asdfasdf
 
 
 <input id="participantid" name="participantid" type="hidden" value="<?php echo $_GET['p']; ?>">
-
-
-
-
-
-
 
 
 
@@ -549,7 +521,7 @@ if($rowstartupprofile['credit_card_id'] == '' && $rowparticipant['Payment_Method
 
 
 
-
+<p>&nbsp;</p>
 
 
 
@@ -576,8 +548,118 @@ if($rowparticipant['profile_image'] != ''){
       ?>
 
 
-<center><h3><?php echo $rowparticipant['FirstName']; ?> qualifies for this idea to provide feedback</h3></center>
 
+
+
+
+<?php if(isset($_GET['p'])){ ?>
+
+      <p>
+      <?php 
+
+
+
+
+
+
+$rowparticipant = mysqli_fetch_array($results);
+
+if(mysqli_num_rows($results) == 1)
+{
+
+
+echo'<p><h4>Based on your requirement '.$rowparticipant['FirstName'].' met the following criteria(s):</h4></p>';
+
+echo '<div class="grey">';
+
+if (strpos($Min_Req, 'Age') !== false) {  
+echo 'Age: '.$rowparticipant['Age'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Gender') !== false) {
+echo 'Gender: '.$rowparticipant['Gender'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Height') !== false) {
+echo 'Height: '.$rowparticipant['Height'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'City') !== false) {
+echo 'City: '.$rowparticipant['City'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Status') !== false) {
+echo 'Status: '.$rowparticipant['Status'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Ethnicity') !== false) {
+echo 'Ethnicity: '.$rowparticipant['Ethnicity'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Smoke') !== false) {
+echo 'Smoke: '.$rowparticipant['Smoke'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Drink') !== false) {
+echo 'Drink: '.$rowparticipant['Drink'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Diet') !== false) {
+echo 'Diet: '.$rowparticipant['Diet'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Religion') !== false) {
+echo 'Religion: '.$rowparticipant['Religion'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Education') !== false) {
+echo 'Education: '.$rowparticipant['Education'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Job') !== false) {
+echo 'Job: '.$rowparticipant['Job'];
+echo '<br>';
+}
+
+
+if (strpos($Min_Req, 'Interest') !== false) {
+echo 'Interests: '.$rowparticipant['Interest'];
+echo '<br>';
+}
+
+if (strpos($Min_Req, 'Languages') !== false) {
+echo 'Languages: '.$rowparticipant['Language'];
+echo '<br>';
+}
+
+echo '</div>';
+
+
+}
+
+      ?>
+      </p>
+
+      <?php } ?>
 
 
 
@@ -591,7 +673,7 @@ if($rowparticipant['profile_image'] != ''){
 
 <div class="space"></div>
   <div class="col-lg-12">
-<div id="participate-btn">Submit Answer</div>
+<div id="participate-btn">Request to Participate</div>
 </div>
 
 

@@ -727,8 +727,8 @@ label{font-weight:normal !important;}
 }
 
 .survey-actions div {
-    display: inline-block;
-    padding-right:10px;
+    /*display: inline-block;*/
+    padding-right:0px;
     margin-left: 0px;
     text-transform: uppercase;
     color: #2d313c;
