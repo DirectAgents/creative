@@ -108,7 +108,7 @@ $( "#open-feedback" ).load( "open-feedback.php" );
     <li><a href="#open-feedback" class="open-feedback">Open Feedback</a>
    <?php
 
-$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_meeting_request WHERE Viewed_by_Participant = 'No' AND userID = '".$_SESSION['participantSession']."' GROUP BY id");
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_feedback_request WHERE Viewed_by_Participant = 'No' AND userID = '".$_SESSION['participantSession']."' GROUP BY id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -124,7 +124,7 @@ echo '</div>';
     <li><a href="#feedback-request" class="feedback-request">Feedback Request</a>
  <?php
 
-$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_meeting_upcoming WHERE Viewed_by_Participant = 'No' AND userID = '".$_SESSION['participantSession']."' GROUP BY id");
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_feedback_upcoming WHERE Viewed_by_Participant = 'No' AND userID = '".$_SESSION['participantSession']."' GROUP BY id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -142,7 +142,7 @@ echo '</div>';
 
  <?php
 
-$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_meeting_recent WHERE Viewed_by_Participant = 'No' AND userID = '".$_SESSION['participantSession']."' GROUP BY id");
+$result_count = mysqli_query($connecDB,"SELECT Viewed_by_Participant,userID,id,Meeting_Status, COUNT(DISTINCT id) AS count FROM tbl_feedback_recent WHERE Viewed_by_Participant = 'No' AND userID = '".$_SESSION['participantSession']."' GROUP BY id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 

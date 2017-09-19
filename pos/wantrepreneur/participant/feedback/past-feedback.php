@@ -48,7 +48,7 @@ if(!$participant_home->is_logged_in())
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE userID = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_feedback_recent WHERE userID = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -60,7 +60,7 @@ if(mysqli_num_rows($sql) == 0)
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Recent Meetings</div>
+<div class="empty-projects">No Recent feedbacks</div>
   <div class="create-one-here-box">
       
       <br><br>
@@ -93,7 +93,7 @@ $row4 = mysqli_fetch_array($sql4);
 date_default_timezone_set('America/New_York');
 
 
-$date2 = date_create($row2['Date_of_Meeting']);
+$date2 = date_create($row2['Date_of_feedback']);
 
 $random = rand(5, 20000);
 
@@ -109,7 +109,7 @@ $date = date('Y-m-d h:m A');
 
 
 $dtA = new DateTime($date);
-$dtB = new DateTime($row2['Date_of_Meeting'].' '.$row2['Final_Time']);
+$dtB = new DateTime($row2['Date_of_feedback'].' '.$row2['Final_Time']);
 
 
 
@@ -223,7 +223,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
             post_data = {'projectid':projectid,'userid':userid,'startupid':startupid};
             
             //Ajax post data to server
-            $.post('confirmmeeting.php', post_data, function(response){  
+            $.post('confirmfeedback.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -423,7 +423,7 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No show up' && $startup_home->is_lo
              
 
           <?php if($row2['Met'] == '' && $row2['Met'] != 'No show up'){ ?>         
-                 <i class="icon-trash"></i>Did the meeting happen? Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm  
+                 <i class="icon-trash"></i>Did the feedback happen? Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm  
 
                  <?php } ?>
 
@@ -436,10 +436,10 @@ if($row2['Met'] == 'Yes' && $row2['Met'] != 'No show up' && $startup_home->is_lo
 <?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></a></div>
                   <div class="survey-metadata">
                     <div class="item ">
-                      <div class="label">Date of meeting:</div>
+                      <div class="label">Date of feedback:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                       
-                       <?php echo date('F j, Y',strtotime($row2['Date_of_Meeting']));?>
+                       <?php echo date('F j, Y',strtotime($row2['Date_of_feedback']));?>
 
                       </div>
                     </div>
@@ -509,7 +509,7 @@ You met with <?php echo $row3['FirstName']; ?>.
 
               <?php if($row2['Met'] == 'No show up'){ ?>         
                  
-                 <i class="icon-trash"></i>No show up. Meeting didn't happen
+                 <i class="icon-trash"></i>No show up. feedback didn't happen
 
                  <?php } ?>                    
 
@@ -604,7 +604,7 @@ if(mysqli_num_rows($sqlnda) == 1) {
 
   echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Recent Meetings</div>
+<div class="empty-projects">No Recent feedbacks</div>
   <div class="create-one-here-box">
       
       <br><br>

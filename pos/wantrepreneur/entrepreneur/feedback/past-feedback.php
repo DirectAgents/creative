@@ -50,7 +50,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_recent WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_feedback_recent WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 //$result=mysql_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -62,7 +62,7 @@ if(mysqli_num_rows($sql) == 0)
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Recent Meetings<br><br></div>
+<div class="empty-projects">No Recent feedbacks<br><br></div>
   <div class="create-one-here-box">
       <div class="create-one">
      <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
@@ -220,7 +220,7 @@ $("#slide-delete-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
             post_data = {'projectid':projectid,'startupid':startupid,'userid':userid};
             
             //Ajax post data to server
-            $.post('confirmmeeting.php', post_data, function(response){  
+            $.post('confirmfeedback.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -416,7 +416,7 @@ if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Met'] != 'No show u
 
 
 
-   <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><strong>Rate and Review your meeting with <?php echo $row3['FirstName']; ?> </strong></a>
+   <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><strong>Rate and Review your feedback with <?php echo $row3['FirstName']; ?> </strong></a>
                  
 
                  <?php } ?>
@@ -428,7 +428,7 @@ if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Met'] != 'No show u
 
 
 
-   <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><strong>Rate and Review your meeting with <?php echo $row3['FirstName']; ?> </strong></a>
+   <i class="icon-trash"></i><a href="<?php echo BASE_PATH; ?>/profile/participant/rating/?id=<?php echo $row3['userID']; ?>"><strong>Rate and Review your feedback with <?php echo $row3['FirstName']; ?> </strong></a>
                  
 
                  <?php } ?>           
@@ -440,7 +440,7 @@ if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Met'] != 'No show u
              
 
           <?php if($row2['Met'] == '' && $row2['Met'] != 'No show up'){ ?>         
-                 <i class="icon-trash"></i>Did the meeting happen? Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm  
+                 <i class="icon-trash"></i>Did the feedback happen? Click  <a href="#" role="button" class="slide-delete-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open"><strong>here</strong></a> to confirm  
 
                  <?php } ?>
 
@@ -459,7 +459,7 @@ if($row2['Met'] == 'Yes' && $row2['Payment'] != '' && $row2['Met'] != 'No show u
                   <div class="survey-metadata">
                     <div class="item ">
                     
-                      <div class="label">Date of meeting:</div>
+                      <div class="label">Date of feedback:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
                         <?php echo date('F j, Y',strtotime($row2['Date_of_Meeting']));?>
                       </div>
@@ -544,7 +544,7 @@ You met with <?php echo $row3['FirstName']; ?>.
 
               <?php if($row2['Met'] == 'No show up'){ ?>         
                  
-                 <i class="icon-trash"></i>No show up. Meeting didn't happen
+                 <i class="icon-trash"></i>No show up. feedback didn't happen
 
                  <?php } ?>               
 

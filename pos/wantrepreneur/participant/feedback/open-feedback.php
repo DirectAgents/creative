@@ -47,7 +47,7 @@ $rowparticipant = mysqli_fetch_array($sqlparticipant);
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_meeting_request WHERE userID = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_feedback_request WHERE userID = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
 //$result=mysqli_query($sql);
 //$row=mysql_fetch_array($result);
 
@@ -58,7 +58,7 @@ if(mysqli_num_rows($sql) == 0)
 
 echo '<div class="row">
     <div class="col-md-12">
-<div class="empty-projects">No Meeting Requests<br><br></div>
+<div class="empty-projects">No feedback Requests<br><br></div>
   <div class="create-one-here-box">
       <div class="create-one">
       <a href="'.BASE_PATH.'/participant/idea/browse/" class="slide_open create-one-btn">
@@ -109,7 +109,7 @@ $sqlndasigned = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed  WHERE user
 $rowndasigned = mysqli_fetch_array($sqlndasigned);
 
 
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_meeting_request SET Viewed_by_Participant='Yes'
+$update_sql = mysqli_query($connecDB,"UPDATE tbl_feedback_request SET Viewed_by_Participant='Yes'
 WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'");
 
 
@@ -172,7 +172,7 @@ $date = date('Y-m-d h:m A');
 
 
 
-<h4>Set up a Meeting</h4>
+<h4>Set up a feedback</h4>
 <p>&nbsp;</p>
 
 
@@ -183,7 +183,7 @@ $date = date('Y-m-d h:m A');
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
 
-<input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="Meeting Set"/>
+<input type="hidden" name="status<?php echo $row2['ProjectID']; ?>" id="status" value="feedback Set"/>
 <input type="hidden" name="accepted_to_participate<?php echo $row2['ProjectID']; ?>" id="accepted_to_participate" value="Accepted"/>
 
 
@@ -205,17 +205,17 @@ Select a day to meet:
       <tr>
         <td><?php echo date('F j, Y',strtotime($row2['Date_Option_One'])); ?></td>
         <td><?php echo $row2['Time_Option_One']; ?></td>
-        <td><input name="selected_meeting[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
+        <td><input name="selected_feedback[]" type="radio" style="display:block; margin: 0 auto;" value="option_one"/></td>
       </tr>
       <tr>
         <td><?php echo date('F j, Y',strtotime($row2['Date_Option_Two'])); ?></td>
         <td><?php echo $row2['Time_Option_Two']; ?></td>
-        <td><input type="radio"  name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_two"/></td>
+        <td><input type="radio"  name="selected_feedback[]" style="display:block; margin: 0 auto;" value="option_two"/></td>
       </tr>
       <tr>
         <td><?php echo date('F j, Y',strtotime($row2['Date_Option_Three'])); ?></td>
         <td><?php echo $row2['Time_Option_Three']; ?></td>
-        <td><input type="radio" name="selected_meeting[]" style="display:block; margin: 0 auto;" value="option_three"/></td>
+        <td><input type="radio" name="selected_feedback[]" style="display:block; margin: 0 auto;" value="option_three"/></td>
       </tr>
     </tbody>
   </table>
@@ -236,56 +236,56 @@ $(document).ready(function() {
 
   
   $("#day").change(function() { 
-  var day_of_meeting = $( "#day option:selected" ).text();
-  //alert(day_of_meeting);
+  var day_of_feedback = $( "#day option:selected" ).text();
+  //alert(day_of_feedback);
 
 
 $('#select-the-day').html('Select the date to meet:');
 
-$( "#meeting_date" ).datepicker("destroy");
+$( "#feedback_date" ).datepicker("destroy");
 
-$( "#meeting_date" ).datepicker({
+$( "#feedback_date" ).datepicker({
 
     beforeShowDay: function(date) {
 
         var day = date.getDay();
-        //var day_of_meeting="<?php echo $row2['Day']; ?>";
+        //var day_of_feedback="<?php echo $row2['Day']; ?>";
         //var day = $( "#day option:selected" ).text();
         
-        if(day_of_meeting == 'Monday'){
+        if(day_of_feedback == 'Monday'){
         return [(day != 2 && day != 3 && day != 4 && day != 5 && day != 6 && day != 0), ''];    
         }
 
-        if(day_of_meeting == 'Tuesday'){
+        if(day_of_feedback == 'Tuesday'){
         return [(day != 3 && day != 4 && day != 5 && day != 6 && day != 0 && day != 1), ''];
         }
 
-        if(day_of_meeting == 'Wednesday'){
+        if(day_of_feedback == 'Wednesday'){
         return [(day != 4 && day != 5 && day != 6 && day != 0 && day != 1 && day != 2), ''];
         }
 
-        if(day_of_meeting == 'Thursday'){
+        if(day_of_feedback == 'Thursday'){
         return [(day != 5 && day != 6 && day != 0 && day != 1 && day != 2 && day != 3), ''];
         }
 
-        if(day_of_meeting == 'Friday'){
+        if(day_of_feedback == 'Friday'){
         return [(day != 6 && day != 0 && day != 1 && day != 2 && day != 3 && day != 4), ''];
         }
 
-        if(day_of_meeting == 'Saturday'){
+        if(day_of_feedback == 'Saturday'){
         return [(day != 0 && day != 1 && day != 2 && day != 3 && day != 4 && day != 5), ''];
         }
 
-        if(day_of_meeting == 'Sunday'){
+        if(day_of_feedback == 'Sunday'){
         return [(day != 1 && day != 2 && day != 3 && day != 4 && day != 5 && day != 6), ''];
         }
         
 
-      if(day_of_meeting == 'Select a day'){
+      if(day_of_feedback == 'Select a day'){
         $('#select-the-day').hide();
       }
 
-$( "#meeting_date" ).datepicker("refresh");
+$( "#feedback_date" ).datepicker("refresh");
         
 
 
@@ -299,7 +299,7 @@ $( "#meeting_date" ).datepicker("refresh");
 
 
 
-$(document).on("change", "#meeting_date", function () {
+$(document).on("change", "#feedback_date", function () {
          date = $(this).val();
         //alert(date);
         $("#the_date").val(date);
@@ -318,7 +318,7 @@ $(document).on("change", "#meeting_date", function () {
   </script>
 
 <div id="select-the-day"></div>
-<div id="meeting_date"></div>
+<div id="feedback_date"></div>
 -->
 
 
@@ -402,7 +402,7 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
   <div class="result-decline">
   <div id="result-decline-<?php echo $row2['ProjectID']; ?>">Successfully Declined!</div>
   </div>
-<h4>Are you sure you want to decline the meeting request?</h4>
+<h4>Are you sure you want to decline the feedback request?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
@@ -431,7 +431,7 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
   <div class="result-cancel">
   <div id="result-cancel-<?php echo $row2['ProjectID']; ?>">Successfully Canceled!</div>
   </div>
-<h4>Are you sure you want to cancel the meeting request?</h4>
+<h4>Are you sure you want to cancel the feedback request?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
 <input type="hidden" name="userid<?php echo $row2['userID']; ?>" id="userid" value="<?php echo $row2['userID']; ?>"/>
 
@@ -498,16 +498,16 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
         var proceed = true;
 
-        var selected_meeting = $('input[name="selected_meeting[]"]:checked').map(function () {return this.value;}).get().join(",");
+        var selected_feedback = $('input[name="selected_feedback[]"]:checked').map(function () {return this.value;}).get().join(",");
 
         
 
 
-        var selected_meeting_checkedstatus = $('input[name="selected_meeting[]"]:checked').size();
+        var selected_feedback_checkedstatus = $('input[name="selected_feedback[]"]:checked').size();
 
         //alert(userid);
         
-        if(selected_meeting_checkedstatus <1){ 
+        if(selected_feedback_checkedstatus <1){ 
           $(".result-no-date").show();
           proceed = false;
          }else{
@@ -516,7 +516,7 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         };
           
 
-        //alert(selected_meeting);  
+        //alert(selected_feedback);  
    
       
         var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
@@ -584,10 +584,10 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
           $( ".processing" ).show();
             //data to be sent to server
 
-            post_data = {'projectid':projectid,'userid':userid,'selected_meeting':selected_meeting,'potentialanswergiven':potentialanswergiven};
+            post_data = {'projectid':projectid,'userid':userid,'selected_feedback':selected_feedback,'potentialanswergiven':potentialanswergiven};
             
             //Ajax post data to server
-            $.post('acceptmeeting.php', post_data, function(response){  
+            $.post('acceptfeedback.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -689,7 +689,7 @@ $("#slide-decline-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random;
             post_data = {'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
-            $.post('decline-meeting-request.php', post_data, function(response){  
+            $.post('decline-feedback-request.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -797,7 +797,7 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
             post_data = {'projectid':projectid,'userid':userid};
             
             //Ajax post data to server
-            $.post('cancel-meeting-request.php', post_data, function(response){  
+            $.post('cancel-feedback-request.php', post_data, function(response){  
               //alert("yes"); 
 
                 //load json data from server and output message     
@@ -922,7 +922,7 @@ $row3 = mysqli_fetch_array($sql3);
 <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed') { ?>
 
                  <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Cancel Meeting Request</strong></a></a>
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Cancel feedback Request</strong></a></a>
                  </div>
 
            <?php } ?>      
@@ -941,7 +941,7 @@ $row3 = mysqli_fetch_array($sql3);
                      
 
                   
-                     <div class="label">Meeting Date Options:</div>
+                     <div class="label">feedback Date Options:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
 
 
@@ -1019,7 +1019,7 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Cat
                   <?php if($row2['Status'] == 'Waiting to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting to Accept or Decline';} ?>
                   <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for '.$row3['FirstName'].' to Accept or Decline';} ?>
                   <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for you to Accept or Decline';} ?>
-                   <?php if($row2['ScreeningQuestion'] == 'Not Passed'){echo 'Waiting for '.$row3['FirstName'].' to confirm meeting';} ?>
+                   <?php if($row2['ScreeningQuestion'] == 'Not Passed'){echo 'Waiting for '.$row3['FirstName'].' to confirm feedback';} ?>
 
            
 

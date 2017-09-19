@@ -333,7 +333,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $_SESSION['participantSession'];?>">Profile</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/participant/account/settings/">Settings</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/participant/payment/">Payment</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/participant/meetings/">My Meetings</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/participant/feedback/">Feedback</a></li>
               <li class='separator'></li>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['participantSession'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 
@@ -696,7 +696,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/profile/entrepreneur/?id=<?php echo $_SESSION['startupSession'];?>">Profile</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/entrepreneur/account/settings/">Settings</a></li>
               <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/entrepreneur/payment/">Payment</a></li>
-              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/entrepreneur/meetings/">My Meetings</a></li>
+              <li> <a tabindex="-1" href="<?php echo BASE_PATH; ?>/entrepreneur/feedback/">Feedback</a></li>
               <li class='separator'></li>
               <li><a tabindex="-1" href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['startupSession'];?>"><i class="fa fa-power-off fa-lg"></i> Logout</a></li>
 

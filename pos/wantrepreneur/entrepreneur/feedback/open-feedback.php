@@ -1,8 +1,6 @@
 <?php
 
 session_start();
-
-
 require_once '../../base_path.php';
 
 include("../../config.php"); //include config file
@@ -11,28 +9,30 @@ require_once '../../class.participant.php';
 
 
 
-$startup_home = new STARTUP();
-
-if($startup_home->is_logged_in())
-{
-  $startup_home->logout();
-}
-
-
-
 $participant_home = new PARTICIPANT();
 
-if(!$participant_home->is_logged_in())
+if($participant_home->is_logged_in())
 {
-  $participant_home->redirect('../login/');
+  $participant_home->logout();
 }
 
 
-$sqlparticipant = mysqli_query($connecDB,"SELECT * FROM tbl_participant  WHERE userID = '".$_SESSION['participantSession']."' ");
-$rowparticipant = mysqli_fetch_array($sqlparticipant);
+
+$startup_home = new STARTUP();
+
+if(!$startup_home->is_logged_in())
+{
+  $startup_home->redirect('../../login');
+}
+
+
+
 
 
 ?>
+
+
+
 
 
 
@@ -47,8 +47,9 @@ $rowparticipant = mysqli_fetch_array($sqlparticipant);
 //MySQL query
 //$Result = mysql_query("SELECT * FROM tbl_startup_project WHERE startupID = '".$_SESSION['startupSession']."' ORDER BY id DESC ");
 
-$sql=mysqli_query($connecDB,"SELECT * FROM tbl_feedback_request WHERE userID = '".$_SESSION['participantSession']."' ORDER BY id DESC ");
-//$result=mysqli_query($sql);
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_feedback_request WHERE startupID = '".$_SESSION['startupSession']."' AND ScreeningQuestion != 'Not Passed' ORDER BY id DESC ");
+//$result=mysql_query($sql);
+
 //$row=mysql_fetch_array($result);
 
   //if username exists
@@ -56,13 +57,14 @@ if(mysqli_num_rows($sql) == 0)
 {
   //echo "asdf";
 
+
 echo '<div class="row">
     <div class="col-md-12">
 <div class="empty-projects">No feedback Requests<br><br></div>
   <div class="create-one-here-box">
       <div class="create-one">
-      <a href="'.BASE_PATH.'/participant/idea/browse/" class="slide_open create-one-btn">
-        Browse here for new Ideas</a>
+     <a href="'.BASE_PATH.'/startup/idea/create/step1.php?id='.rand(100, 100000).'" class="slide_open create-one-btn">
+        List a new idea</a>
        </div> 
   </div>
 </div>
@@ -74,43 +76,9 @@ echo '<div class="row">
 }else{ 
 
 
-if($rowparticipant['Phone'] == ''){
-
-echo'
-
-<div class="col-lg-12" style="padding:0px; margin-bottom:30px;">
- <div class="errorXYZ" style="font-size:16px;">
-Please add a Phone Number to your account. <a href="'.BASE_PATH.'/participant/account/settings/" style="color:#fff; text-decoration:underline">Click here</a>
-
-</div>
-</div>';
-
-}
-
-if($rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == ''){
-
-echo'
-
-<div class="col-lg-12" style="padding:0px; margin-bottom:30px;">
- <div class="errorXYZ" style="font-size:16px;">Before you can accept to meet, please set up a bank account to receive payments.<br> <a href="'.BASE_PATH.'/participant/payment/" style="color:#fff; text-decoration:underline">Click here</a> to add one.
-
-</div>
-</div>';
-
-}
-
-
 //get all records from add_delete_record table
 while($row2 = mysqli_fetch_array($sql))
 { 
-
-
-$sqlndasigned = mysqli_query($connecDB,"SELECT * FROM tbl_nda_signed  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
-$rowndasigned = mysqli_fetch_array($sqlndasigned);
-
-
-$update_sql = mysqli_query($connecDB,"UPDATE tbl_feedback_request SET Viewed_by_Participant='Yes'
-WHERE userID='".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'");
 
 
 
@@ -118,22 +86,21 @@ $sql4 = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE Project
 $row4 = mysqli_fetch_array($sql4);
 
 
+
 $date_option_one = date_create($row2['Date_Option_One']);
 $date_option_two = date_create($row2['Date_Option_Two']);
 $date_option_three = date_create($row2['Date_Option_Three']);
-
-date_default_timezone_set('America/New_York');
-
-
-
-
 
 $random = rand(5, 20000);
 
 
 
+date_default_timezone_set('America/New_York');
 
 $date = date('Y-m-d h:m A');
+
+
+
 
 //echo $row2['id'];
 
@@ -159,16 +126,9 @@ $date = date('Y-m-d h:m A');
   </div>
 
 
-  <div class="result-no-potentialanswer">
-<div style="text-align:center;font-size:18px; padding:10px; width:100%; background:#c31e23; color:#fff; margin-bottom:15px;">
-    <div id="result-accept-<?php echo $row2['ProjectID']; ?>">Please choose an answer!</div>
-    </div>
-  </div>
 
 
-
-
-<?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?> 
+<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?> 
 
 
 
@@ -322,49 +282,16 @@ $(document).on("change", "#feedback_date", function () {
 -->
 
 
+<?php } ?>
 
 
 
-<?php 
-
-$sqlscreening = mysqli_query($connecDB,"SELECT * FROM tbl_startup_screeningquestion  WHERE ProjectID = '".$row2['ProjectID']."' ");
-$rowscreening = mysqli_fetch_array($sqlscreening);
-
-if($rowscreening['EnabledorDisabled'] == 'Enabled'){
-
-  echo '<input type="hidden" name="screeningquestionrequired'.$row2['ProjectID'].'" id="screeningquestionrequired'.$row2['ProjectID'].'" value="Required" />';
 
 
-  echo '<br>';
-  echo 'Please answer the following question:';
-  echo '<br>';
-  echo '<br>';
-  echo $rowscreening['ScreeningQuestion'];
-  echo '<br>';
-  if($rowscreening['PotentialAnswer1'] != '' && $rowscreening['PotentialAnswer1'] != 'NULL' ){
-  echo '<input type="radio" style="display:block; float:left" name="PotentialAnswer[]" id="PotentialAnswer1" value="Potential Answer 1" />';
-  echo '<label>'.$rowscreening['PotentialAnswer1'].'</label>';
-  echo '<br>';
-  }
-  if($rowscreening['PotentialAnswer2'] != '' && $rowscreening['PotentialAnswer2'] != 'NULL'){
-  echo '<input type="radio" style="display:block; float:left" name="PotentialAnswer[]" id="PotentialAnswer2" value="Potential Answer 2" />';
-  echo '<label>'.$rowscreening['PotentialAnswer2'].'</label>';
-  echo '<br>';
-  }
-  if($rowscreening['PotentialAnswer3'] != '' && $rowscreening['PotentialAnswer3'] != 'NULL'){
-  echo '<input type="radio" style="display:block; float:left" name="PotentialAnswer[]" id="PotentialAnswer3" value="Potential Answer 3" />';
-  echo '<label>'.$rowscreening['PotentialAnswer3'].'</label>';
-  }
-}
-
-if($rowscreening['EnabledorDisabled'] == 'Disabled'){
-
-  echo '<input type="radio" style="display:none; float:left" name="PotentialAnswer[]" id="PotentialAnswer3" value="Not Required" />';
-
-}
 
 
-?>
+
+
 
 
 
@@ -386,15 +313,10 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 </div>
 </div>
 
-
-
 <!-- End Accept -->
 
-<?php } ?>
 
 
-
-</div>
 
 <!-- Start Decline -->
 
@@ -429,7 +351,7 @@ if($rowscreening['EnabledorDisabled'] == 'Disabled'){
 
 <div id="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>" class="well slide-cancel">
   <div class="result-cancel">
-  <div id="result-cancel-<?php echo $row2['ProjectID']; ?>">Successfully Canceled!</div>
+  <div id="result-cancel-<?php echo $row2['ProjectID']; ?>">Successfully Cancelled!</div>
   </div>
 <h4>Are you sure you want to cancel the feedback request?</h4>
 <input type="hidden" name="projectid<?php echo $row2['ProjectID']; ?>" id="projectid" value="<?php echo $row2['ProjectID']; ?>"/>
@@ -486,82 +408,65 @@ $(".slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_wrapper").hide();
 $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; ?>+"_background").hide();
 });
-    
 
+ 
 
     
     $(".result-no-date").hide();
-    $(".result-no-potentialanswer").hide();  
+
 
     $(".accept"+<?php echo $row2['ProjectID']; ?>).click(function() {  
-      //alert("delete"+<?php echo $row2['ProjectID']; ?>);
+      //alert("delete"+<?php echo $row2['ProjectID']; ?>); 
 
-        var proceed = true;
+      var proceed = true;
 
-        var selected_feedback = $('input[name="selected_feedback[]"]:checked').map(function () {return this.value;}).get().join(",");
+
+      //var input = date;
+        //var the_date = $('input[name=the_date]').val();
 
         
+     
+      $("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
+
+
+      //$("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
+      
+
+ //get input field values
+        
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        //var date = $('select[name=date'+<?php echo $row2['ProjectID']; ?>+']').val();
+        //var finaltime = $('input[name=the_time'+<?php echo $row2['ProjectID']; ?>+']').val();
+        var selected_feedback = $('input[name="selected_feedback[]"]:checked').map(function () {return this.value;}).get().join(",");
 
 
         var selected_feedback_checkedstatus = $('input[name="selected_feedback[]"]:checked').size();
 
         //alert(userid);
         
-        if(selected_feedback_checkedstatus <1){ 
+        if(selected_feedback_checkedstatus <1 ){ 
           $(".result-no-date").show();
           proceed = false;
-         }else{
+        }else{
           $(".result-no-date").hide();
                 //proceed = true; //set do not proceed flag       
         };
-          
 
-        //alert(selected_feedback);  
-   
-      
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
-        var status = $('input[name=status'+<?php echo $row2['ProjectID']; ?>+']').val();
-        var accepted_to_participate = $('input[name=accepted_to_participate'+<?php echo $row2['ProjectID']; ?>+']').val();
 
-        //alert(finaltime);
-
-        var screeningquestionrequired = $('input[name=screeningquestionrequired'+<?php echo $row2['ProjectID']; ?>+']').val();
-      
-        
-
+        /*if(the_date == '' ){
+            $(".result-no-date").show(); 
+            proceed = false;
+            }
+        */    
+        /*
+        if(date == '' ){
+            $(".result-no-date").show(); 
+            proceed = false;
+        }*/
 
        
-
-       //alert(screeningquestionrequired);
-      
-
-      if (screeningquestionrequired == 'Required'){
-
-        var potentialanswergiven = $('input[name="PotentialAnswer[]"]:checked').map(function () {return this.value;}).get().join(",");
-        var potentialanswergiven_checkedstatus = $('input[name="PotentialAnswer[]"]:checked').size();
-
-        if (potentialanswergiven_checkedstatus < 1) {
-          //alert("asdfads");
-
-          $(".result-no-potentialanswer").show(); 
-          proceed = false;
-         }else{
-          $(".result-no-potentialanswer").hide();
-                //proceed = true; //set do not proceed flag       
-        };
-
-      }
-      
-
-
-      //$("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
-      
-        //alert(potentialanswergiven);
- //get input field values
-        
-       
-        
+        //alert(date);
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -571,20 +476,16 @@ $("#slide-accept-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
         if(proceed) 
         {
 
-
-      $(".result-accept").show();
+      $(".result-no-date").hide(); 
+      $(".result-accept").show().slideDown();
       $(".cancel-accept").hide();
       $(".close-accept").show();
 
-      $(".result-no-potentialanswer").hide();
-
-      $("#result-accept-"+<?php echo $row2['ProjectID']; ?>).hide().slideDown();
 
 
           $( ".processing" ).show();
             //data to be sent to server
-
-            post_data = {'projectid':projectid,'userid':userid,'selected_feedback':selected_feedback,'potentialanswergiven':potentialanswergiven};
+            post_data = {'projectid':projectid,'userid':userid,'selected_feedback':selected_feedback};
             
             //Ajax post data to server
             $.post('acceptfeedback.php', post_data, function(response){  
@@ -669,8 +570,8 @@ $("#slide-decline-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random;
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
        
        
         
@@ -775,12 +676,10 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 
  //get input field values
         
-        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>+']').val();
-        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>+']').val();
+        var projectid = $('input[name=projectid'+<?php echo $row2['ProjectID']; ?>).val();
+        var userid = $('input[name=userid'+<?php echo $row2['userID']; ?>).val();
        
-
-        
-
+       
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
@@ -848,14 +747,12 @@ $("#slide-cancel-two"+<?php echo $row2['ProjectID']; ?>+"_"+<?php echo $random; 
 <div class="row">
     <div class="col-md-2">
 
-<a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>">
+<a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>">
 
 <?php 
 
 
-
-
-$ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID='".$row2['startupID']."'");
+$ProfileImage = mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID='".$row2['userID']."'");
 $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 
@@ -871,7 +768,7 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
       
 <?php if($rowprofileimage['profile_image'] != ''){  ?>
-        <img src="<?php echo BASE_PATH; ?>/images/profile/startup/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
+        <img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rowprofileimage['profile_image'];?>" class="thumbnail-profile"/>
 <?php }else{ ?>
         <img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="thumbnail-profile"/>
 <?php } ?>
@@ -883,6 +780,7 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 </a>
 
 
+
 </div>
 
 
@@ -890,7 +788,8 @@ $rowprofileimage = mysqli_fetch_array($ProfileImage);
 
 <?php
 
-$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID = '".$row2['startupID']."'");
+$sql3=mysqli_query($connecDB,"SELECT * FROM tbl_participant WHERE userID = '".$row2['userID']."'");
+//$result3=mysql_query($sql3);
 
 $row3 = mysqli_fetch_array($sql3);
 
@@ -905,24 +804,27 @@ $row3 = mysqli_fetch_array($sql3);
 
                   <div class="survey-header">
                     <!--<div class="account-project-name">
-                      Requested By
+                      PERSON NAME
                     </div>-->
                     <div class="edit-delete">
-   
+                      
             
-      <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed') { ?>
+      <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline') { ?>
       
-                <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn" <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['Phone'] == '' || $row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed' && $rowparticipant['account_id'] == '' && $rowparticipant['bank_account'] == ''){?> id="disabled" <?php } ?>><strong>Accept</strong></a> <a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn" ><strong>Decline</strong></a>
-
+                 <div class="cancel-request-<?php echo $row2['ProjectID']; ?>">        
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Cancel feedback Request</strong></a></a>
                  </div>
+
 
          <?php } ?>           
 
-<?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed') { ?>
 
-                 <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
-                 <i class="icon-trash"></i><a href="#" role="button" class="slide-cancel-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Cancel feedback Request</strong></a></a>
+
+           <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline') { ?>
+
+             
+                  <div class="accept-decline-<?php echo $row2['ProjectID']; ?>">        
+                 <i class="icon-trash"></i><a href="#" role="button" class="slide-accept-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open accept-btn"><strong>Accept</strong></a>&nbsp;&nbsp;<a href="#" role="button" class="slide-decline-two<?php echo $row2['ProjectID']; ?>_<?php echo $random; ?>_open decline-btn"><strong>Decline</strong></a>
                  </div>
 
            <?php } ?>      
@@ -934,49 +836,45 @@ $row3 = mysqli_fetch_array($sql3);
                    
                   </div>
                   <div class="survey-name" ng-bind="(survey.name)">
-<a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>">
+<a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>">
 <?php echo $row3['FirstName']; ?> <?php echo $row3['LastName']; ?></a></div>
                   <div class="survey-metadata">
                     <div class="item">
-                     
-
-                  
-                     <div class="label">feedback Date Options:</div>
+                      <div class="label">feedback Date Options:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
+                      
+                       
 
 
                       <?php echo date('F j, Y',strtotime($row2['Date_Option_One']));?><br>
                       <?php echo date('F j, Y',strtotime($row2['Date_Option_Two']));?><br>
                       <?php echo date('F j, Y',strtotime($row2['Date_Option_Three']));?>
+                      
 
-                      <!--
-                      <?php echo date_format($date_option_one, 'm/d/Y'); ?><br>
-                      <?php echo date_format($date_option_two, 'm/d/Y'); ?><br>
-                      <?php echo date_format($date_option_three, 'm/d/Y'); ?>-->
+                      
+                        
 
                       </div>
-                    </div> 
-                    
-
-
-
-                   
+                    </div>
 
                     <div class="item">
                       <div class="label">Time:</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">
-                      
-                      <?php echo $row2['Time_Option_One']; ?><br>
+                     
+                     
+            
+                     <?php echo $row2['Time_Option_One']; ?><br>
                       <?php echo $row2['Time_Option_Two']; ?><br>
                       <?php echo $row2['Time_Option_Three']; ?> 
-                      
-                      
+
+                    
+
 
                       </div>
-                    
                     </div>
 
-                      <div class="item">
+
+                   <div class="item">
                       <div class="label">Duration</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')"><?php echo $row4['Minutes']; ?> minutes </div>
                     </div>
@@ -985,9 +883,6 @@ $row3 = mysqli_fetch_array($sql3);
                       <div class="label">Payout</div>
                       <div class="value" ng-bind="(survey.date | date:'MM/dd/yyyy')">$<?php echo $row4['Pay']; ?></div>
                     </div>
-
-
-
                  
                     <div class="clearer"></div>
                   </div>
@@ -1007,32 +902,25 @@ $row3 = mysqli_fetch_array($sql3);
 </div>
 
 
-      <div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
-Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"><?php echo $row4['Name']; ?></a>
+                        <div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
+Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"><?php echo $row4['Name']; ?></a>
  </div>
-                  
+
 
                   <div class="theline"></div>
 
                   <div class="status_request">Status: 
 
-                  <?php if($row2['Status'] == 'Waiting to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting to Accept or Decline';} ?>
-                  <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for '.$row3['FirstName'].' to Accept or Decline';} ?>
-                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline' && $row2['ScreeningQuestion'] != 'Not Passed'){echo 'Waiting for you to Accept or Decline';} ?>
-                   <?php if($row2['ScreeningQuestion'] == 'Not Passed'){echo 'Waiting for '.$row3['FirstName'].' to confirm feedback';} ?>
-
-           
-
+                  <?php if($row2['Status'] == 'Waiting for Startup to Accept or Decline'){echo 'Waiting for you to Accept or Decline';} ?>
+                  <?php if($row2['Status'] == 'Waiting for Participant to Accept or Decline'){echo 'Waiting for '.$row3['FirstName'].' to accept or decline';} ?>
 
                   </div>
-
-
 
                   <div class="survey-actions">
                    
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Details</a>
+                        <a href="<?php echo BASE_PATH; ?>/ideas/s/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"> View Details</a>
 
 
                       </div>
@@ -1041,55 +929,15 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Cat
 
                       <div class="action" ng-click="triggerPreview(survey)" ng-show="survey.surveyLength > 0" role="button" tabindex="0" aria-hidden="false">
                         
-                       <a href="<?php echo BASE_PATH; ?>/profile/startup/?id=<?php echo $row2['startupID']; ?>"> View Profile </a>
+                       <a href="<?php echo BASE_PATH; ?>/profile/participant/?id=<?php echo $row2['userID']; ?>"> View Profile </a>
 
                       </div>
-                   
-
+                    
 
                     </div>
-
-                    <?php if($row4['NDA'] == 'Yes') { ?>
-
-
-                     
-                   
-                   <?php 
-$sqlndapending = mysqli_query($connecDB,"SELECT * FROM tbl_nda_pending  WHERE userID = '".$_SESSION['participantSession']."' AND ProjectID = '".$row2['ProjectID']."'  ");
-$rowndapending = mysqli_fetch_array($sqlndapending);
-
-if(mysqli_num_rows($sqlndapending) == 1 && mysqli_num_rows($sqlndasigned) == 0) {
-                   
-                   ?>
-                   <div class="col-md-12" style="padding-left:0px;">
-
-                  <br>Important Note.: <?php echo $row3['FirstName']; ?> requires you to sign an NDA before you both meet. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/sign/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to sign.
-                     
-</div>
-
-                 
-
-                   <? } ?>         
-
-                <? } ?>             
+                  </div>
                
 
-
-  <?php 
-
-
-if(mysqli_num_rows($sqlndasigned) == 1) {
-                   
-                   ?>
-                   <div class="col-md-12" style="padding-left:0px;">
-
-                  <br>Note: You signed an NDA for this idea. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/view/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to view.
-                     
-</div>
-
-                  </div>
-
-                   <? } ?>    
 
   
     
@@ -1099,18 +947,18 @@ if(mysqli_num_rows($sqlndasigned) == 1) {
 
 <?php 
 
-
-}
-
 }
 
 
 
-?>
+}
 
 
 
 
+
+
+  ?>
 
 
 
