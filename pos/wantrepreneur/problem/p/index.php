@@ -475,6 +475,45 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 <input type="hidden" name="problemid" id="problemid" value="<?php echo $_GET['id']; ?>"/>  
 
 
+<!-- begin video recorder code -->
+<script type="text/javascript">
+var size = {width:640,height:510};
+var flashvars = {qualityurl: "avq/480p.xml",accountHash:"806aaf1fee6d34f6268b141febc7cba3", eid:1, showMenu:"true", mrt:120,sis:0,asv:1,mv:0};
+(function() {var pipe = document.createElement('script'); pipe.type = 'text/javascript'; pipe.async = true;pipe.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's1.addpipe.com/1.3/pipe.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pipe, s);})();
+</script>
+<div id="hdfvr-content" ></div>
+<!-- end video recorder code -->
+
+
+<?php
+
+$post = ['userid' => '1'];
+
+
+
+  $url = "https://misterpao.com/pipe/getvideo.php";
+  $client = curl_init($url);
+  curl_setopt($client, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($client, CURLOPT_POSTFIELDS, $post);
+  $response = curl_exec($client);
+  $result = json_decode($response);
+  if( empty($result) ) {
+    //var_dump($response);
+        echo $response;
+        //$videoname = $response;
+  } else {
+    //var_dump($response);
+        //echo $response;
+  }
+
+
+?>
+
+
+
+
+
+
 
 <div class="space"></div>
   <div class="col-lg-12">

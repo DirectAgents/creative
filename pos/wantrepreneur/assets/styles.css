@@ -8,9 +8,10 @@
 }
 
 
+#profile-browse{margin-right:65px; margin-bottom:0px; padding:10px 0 10px 0;}
 
 
-
+#profile-browse table th, table td{padding:0px !important;}
 
 .viewed-bubble{
  position:absolute;
@@ -4344,7 +4345,7 @@ img.center{display: block; margin:0 auto; width:100%; max-width: 264px}
 
 
 .thumbnail-profile-browse {
-    /* border-radius: 50%; */
+    border-radius: 50%;
     width: 150px;
     height: 150px;
     max-width: 150px;
@@ -4923,7 +4924,7 @@ float:left;
 
 .processmenu-active{padding:10px; padding-left:0px; color:#000 !important; width:96%;}
 
-
+#profile-browse {margin-bottom:0px;}
 
     table {
       border: 0;
@@ -4941,7 +4942,7 @@ float:left;
 
     table td {
       display: block;
-      text-align: left;
+      text-align: center;
       font-size: 13px;
       border-bottom: 1px dotted #ccc;
     }

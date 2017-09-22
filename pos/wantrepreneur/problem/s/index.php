@@ -337,7 +337,7 @@ if($startup_home->is_logged_in())
 
 echo '<div class="col-lg-11"><div class="request-sent"> <center><h3>';
 echo $rowparticipant['FirstName']; 
-echo 'qualifies for this idea to provide feedback</h3></center></div><p>&nbsp;</p</div>';
+echo ' qualifies for this idea to provide feedback</h3></center></div><p>&nbsp;</p</div>';
 
 
 
@@ -568,7 +568,7 @@ if(mysqli_num_rows($results) == 1)
 {
 
 
-echo'<p><h4>Based on your requirement '.$rowparticipant['FirstName'].' met the following criteria(s):</h4></p>';
+echo'<p><h4>Based on your requirements, '.$rowparticipant['FirstName'].' met the following criteria(s):</h4></p>';
 
 echo '<div class="grey">';
 

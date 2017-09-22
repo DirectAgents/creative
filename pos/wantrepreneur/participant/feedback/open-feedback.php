@@ -61,8 +61,8 @@ echo '<div class="row">
 <div class="empty-projects">No feedback Requests<br><br></div>
   <div class="create-one-here-box">
       <div class="create-one">
-      <a href="'.BASE_PATH.'/participant/idea/browse/" class="slide_open create-one-btn">
-        Browse here for new Ideas</a>
+      <a href="'.BASE_PATH.'/participant/problem/browse/" class="slide_open create-one-btn">
+        Browse Problems</a>
        </div> 
   </div>
 </div>
@@ -1008,7 +1008,7 @@ $row3 = mysqli_fetch_array($sql3);
 
 
       <div style="float:left; width:100%; margin: 15px 0 0 0; color:#666">
-Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"><?php echo $row4['Name']; ?></a>
+Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/problem/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>&p=<?php echo $row3['userID']; ?>"><?php echo $row4['Name']; ?></a>
  </div>
                   
 
@@ -1032,7 +1032,7 @@ Feeback for:<br> <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Cat
                    
                   <div class="action" tabindex="0" aria-hidden="false">
                         
-                        <a href="<?php echo BASE_PATH; ?>/ideas/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Details</a>
+                        <a href="<?php echo BASE_PATH; ?>/problem/p/<?php echo $row4['Category']; ?>/?id=<?php echo $row2['ProjectID']; ?>"> View Details</a>
 
 
                       </div>
@@ -1063,7 +1063,7 @@ if(mysqli_num_rows($sqlndapending) == 1 && mysqli_num_rows($sqlndasigned) == 0) 
                    ?>
                    <div class="col-md-12" style="padding-left:0px;">
 
-                  <br>Important Note.: <?php echo $row3['FirstName']; ?> requires you to sign an NDA before you both meet. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/sign/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to sign.
+                  <br>Important Note.: <?php echo $row3['FirstName']; ?> requires you to sign an NDA before you both meet. Click <a href="<?php echo BASE_PATH; ?>/participant/problem/nda/sign/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to sign.
                      
 </div>
 
@@ -1083,7 +1083,7 @@ if(mysqli_num_rows($sqlndasigned) == 1) {
                    ?>
                    <div class="col-md-12" style="padding-left:0px;">
 
-                  <br>Note: You signed an NDA for this idea. Click <a href="<?php echo BASE_PATH; ?>/participant/idea/nda/view/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to view.
+                  <br>Note: You signed an NDA for this idea. Click <a href="<?php echo BASE_PATH; ?>/participant/problem/nda/view/?id=<?php echo $row2['ProjectID']; ?>"><strong>here</strong></a> to view.
                      
 </div>
 

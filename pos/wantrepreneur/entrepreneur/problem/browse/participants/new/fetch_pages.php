@@ -194,7 +194,7 @@ echo "</div>";
 echo '<ul class="page_result">';
 
 
-echo '<div class="col-lg-12" style="margin-bottom:50px; margin-top:30px;">';
+echo '<div class="col-lg-12" style=" margin-left:30px; margin-bottom:50px; margin-top:30px;">';
 
 
 //while($results->fetch()){ //fetch values
@@ -226,7 +226,7 @@ echo '
 
 
 
-  <div class="col-lg-3" style="background:#eee; margin-right:65px; margin-bottom:40px; padding:10px 0 10px 0;">';
+  <div class="col-lg-2" id="profile-browse">';
 
 echo '
 <table class="table-no-border">

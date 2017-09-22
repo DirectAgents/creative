@@ -1099,7 +1099,7 @@ img {
 	padding:5px;
 }
 .img-circle-profile {
-	/*border-radius: 50%;*/
+	border-radius: 50%;
 	width:120px;
 	border:0px solid #bfbebe;
 	padding:5px;
