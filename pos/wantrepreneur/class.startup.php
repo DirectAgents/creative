@@ -44,7 +44,7 @@ class STARTUP
 
 
 			$stmt = $this->conn->prepare("INSERT INTO tbl_startup(FirstName,LastName,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, 'Participant requests to meet you,Email reminder about an upcoming meeting', '".$the_date."')");
+			                                             VALUES(:first_name, :last_name,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, 'Potential Customer posted an Answer,Potential Customer qualifies to participate for a feedback session to your stated Problem', '".$the_date."')");
 			$stmt->bindparam(":first_name",$firstname);
 			$stmt->bindparam(":last_name",$lastname);
 			$stmt->bindparam(":user_zip",$zip);

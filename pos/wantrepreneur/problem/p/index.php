@@ -461,7 +461,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 
       <div class="col-lg-12">
       <p>&nbsp;</p>
-      <h4>To participate, please choose one of the following:</h4>
+      <h4>To participate, please choose one of the following answers:</h4>
 
        <div class="problem">
       <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer1" value="Yes, I have that problem">Yes, I have that problem</p>
@@ -469,10 +469,21 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
       <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer3" value="Sometimes">Sometimes</p>
       <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer4" value="Very rare">Very rare</p>
     
+     
 
   </div>
 
 <input type="hidden" name="problemid" id="problemid" value="<?php echo $_GET['id']; ?>"/>  
+
+
+
+<div class="space"></div>
+  <div class="col-lg-12">
+<div id="participate-btn">Submit Answer</div>
+</div>
+
+
+<div id="publish-answer-chosen"></div>
 
 
 <!--Max recording is set to 5 minutes -->
@@ -521,11 +532,6 @@ $post = ['userid' => $_SESSION['participantSession']];
 
 
 
-
-<div class="space"></div>
-  <div class="col-lg-12">
-<div id="participate-btn">Submit Answer</div>
-</div>
 
 
 

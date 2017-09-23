@@ -854,14 +854,14 @@ Update your image <input type="file" name="photoimg" id="photoimg" />
         
 <h2 class="no-mobile">Email notifications:</h2>
          
-        <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Participant requests to meet you" <?php if(in_array('Participant requests to meet you',$emailnotifications)){echo "checked";}?>/>
-  <label for="New-participant-requests-to-participate">Participant requests to meet you</label>
-<a href="#" alt="If a participant sents you a request to meet you for a feedback session, you will get notified per email" class="tooltiptext">(?)</a>
+        <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Potential Customer posted an Answer" <?php if(in_array('Potential Customer posted an Answer',$emailnotifications)){echo "checked";}?>/>
+  <label for="New-participant-requests-to-participate">Potential Customer posted an Answer</label>
+<a href="#" alt="You will get notified per email when a potential customer posted an Answer to your stated Problem" class="tooltiptext">(?)</a>
   <br>
 
-  <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Email reminder about an upcoming meeting" <?php if(in_array('Email reminder about an upcoming meeting',$emailnotifications)){echo "checked";}?>/>
-  <label for="New-participant-requests-to-participate">Email reminder about an upcoming meeting</label>
-<a href="#" alt="We will send you an email reminder once a meeting approaches" class="tooltiptext">(?)</a>
+  <input id="New-participant-requests-to-participate" name="emailnotifications[]" type="checkbox"  value="Potential Customer qualifies to participate for a feedback session to your stated Problem" <?php if(in_array('Potential Customer qualifies to participate for a feedback session to your stated Problem',$emailnotifications)){echo "checked";}?>/>
+  <label for="New-participant-requests-to-participate">Potential Customer qualifies to participate for a feedback session to your stated Problem</label>
+<a href="#" alt="We will send you an email reminder once a potential customer qualifies to participate for a feedback session to your stated Problem" class="tooltiptext">(?)</a>
   <br>
 
 
