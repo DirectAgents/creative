@@ -494,7 +494,7 @@ var flashvars = {qualityurl: "avq/300p.xml",accountHash:"806aaf1fee6d34f6268b141
 
 <?php
 
-$post = ['userid' => '1'];
+$post = ['userid' => $_SESSION['participantSession']];
 
 
 
