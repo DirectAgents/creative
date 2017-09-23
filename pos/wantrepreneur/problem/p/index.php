@@ -302,6 +302,10 @@ $job=explode(',',$rowproject['Job']);
     
     <body>
 
+
+
+
+
 <!--TopNav-->
          <header id="main-header" class='transparent'>
   <div class="inner-col">
@@ -469,12 +473,13 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
       <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer3" value="Sometimes">Sometimes</p>
       <p class="grey"><input type="radio" name="possibleanswers[]" id="possibleanswer4" value="Very rare">Very rare</p>
     
-     
+
 
   </div>
 
 <input type="hidden" name="problemid" id="problemid" value="<?php echo $_GET['id']; ?>"/>  
 
+<input type="hidden" name="projectid" id="projectid" value="<?php echo $rowproject['ProjectID']; ?>"/>  
 
 
 <div class="space"></div>
@@ -491,15 +496,11 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 <!-- begin video recorder code -->
 <script type="text/javascript">
 var size = {width:400,height:330};
-var flashvars = {qualityurl: "avq/300p.xml",accountHash:"806aaf1fee6d34f6268b141febc7cba3", eid:1, showMenu:"true", mrt:300,sis:0,asv:1,mv:0};
+var flashvars = {qualityurl: "avq/300p.xml",accountHash:"806aaf1fee6d34f6268b141febc7cba3", eid:1, showMenu:"true", mrt:300,sis:0,asv:1,mv:0, payload:"{\"userID\":\"<?php echo $_SESSION['participantSession']; ?>\",\"Answer\":\"PossibleAnswer1_Question1\"}"};
 (function() {var pipe = document.createElement('script'); pipe.type = 'text/javascript'; pipe.async = true;pipe.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's1.addpipe.com/1.3/pipe.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pipe, s);})();
 </script>
 <div id="hdfvr-content" ></div>
 <!-- end video recorder code -->
-
-
-
-
 
 
 
@@ -692,6 +693,10 @@ if($participant_home->is_logged_in())
         <!--/.fluid-container-->
         <script src="<?php echo BASE_PATH; ?>/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo BASE_PATH; ?>/assets/scripts.js"></script>
+
+
+
+
 
 
 

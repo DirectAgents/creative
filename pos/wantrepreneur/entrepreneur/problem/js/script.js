@@ -1616,7 +1616,8 @@ var btn= $(this).find("input[type=submit]:focus").val();
         var projectid       = $('input[name=projectid]').val();
         var possibleanswerschosen = $('input[name="possibleanswers[]"]:checked').map(function () {return this.value;}).get().join(",");
         
-        
+        alert(projectid);
+        //alert(possibleanswerschosen);
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
         var proceed = true;
@@ -1633,7 +1634,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
             post_data = {'projectid':projectid,'possibleanswerschosen':possibleanswerschosen};
           
             //Ajax post data to server
-            $.post('answer_chosen.php', post_data, function(response){  
+            $.post('../answer_chosen.php', post_data, function(response){  
              
 
                 //load json data from server and output message     
@@ -1642,21 +1643,24 @@ var btn= $(this).find("input[type=submit]:focus").val();
           output = '<div class="errorXYZ">'+response.text+'</div>';
         }else{
           
-         
+            
             output = '<div class="success">'+response.text+'</div>';
             //window.location.href = "../index.php";
           
+            
           
           //reset values in all input fields
           $('#contact_form input').val(''); 
           $('#contact_form textarea').val(''); 
         }
         
-        var output = '<div class="success" style="float:left; width:100%; padding-top:10px;">Successfully Published!</div>';
+        
+
         $("#publish-answer-chosen").hide().html(output).slideDown();
-            });
+            }, 'json');
+        }    
       
-        }
+       
     });
 
 

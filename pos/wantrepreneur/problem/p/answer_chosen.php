@@ -97,7 +97,7 @@ if($screening_passed != 'Not Passed'){
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_feedback_request(userID, startupID, ProjectID, ScreeningQuestion, Meeting_Status, Date_Option_One,Date_Option_Two,Date_Option_Three, Time_Option_One,Time_Option_Two,Time_Option_Three, Location, Accepted_to_Participate, Status, Requested_By, Date_Posted, Time_Posted) 
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_feedbacks(userID, startupID, ProjectID, ScreeningQuestion, videoID, ) 
 VALUES('".$_SESSION['participantSession']."', '".$_POST['startupid']."','".$_POST['projectid']."', '".$screening_passed."' , 'Meeting Request' , '".$date_option_one."','".$date_option_two."','".$date_option_three."', '".$_POST['time_suggested_one']."','".$_POST['time_suggested_two']."','".$_POST['time_suggested_three']."', '".$_POST['location']."' , 'Pending', 'Waiting for Startup to Accept or Decline', 'Participant' , '".$the_date."','".$the_time."')");
 
 
@@ -135,8 +135,7 @@ $row5 = mysqli_fetch_array($sql5);
 $emailnotifications=explode(',',$row5['EmailNotifications']);
 
 
-if(in_array('Participant requests to meet you',$emailnotifications)){
-
+if(in_array('Potential Customer posted an Answer',$emailnotifications)){
 
 
 
@@ -146,8 +145,8 @@ if(in_array('Participant requests to meet you',$emailnotifications)){
 require '../../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Meeting Request at Valify", 'support@valifyit.com');
-$subject = "Meeting Request";
+$from = new SendGrid\Email("Answer Provided", 'support@misterpao.com');
+$subject = "Answer Provided";
 $to = new SendGrid\Email($row5['FirstName'], $row5['userEmail']);
 $content = new SendGrid\Content("text/html", '
 
@@ -170,8 +169,9 @@ $content = new SendGrid\Content("text/html", '
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
-                        <a href="http://valifyit.com/" target="_blank">
-                            <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <a href="https://misterpao.com/" target="_blank">
+                             <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="79" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                    
                         </a>
                     </td>
                 </tr>
@@ -214,7 +214,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                              <tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/person.jpg" alt="who" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height: 55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/person.jpg" alt="who" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height: 55px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -269,7 +269,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/calendar.jpg" alt="when" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/calendar.jpg" alt="when" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -336,7 +336,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/location.jpg" alt="where" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/location.jpg" alt="where" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -395,7 +395,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/lightbulb.jpg" alt="idea" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/lightbulb.jpg" alt="idea" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -462,7 +462,7 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="115">
                                             <tbody><tr>
-                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="http://valifyit.com/" target="_blank"><img src="http://valifyit.com/images/email/money.jpg" alt="idea" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
+                                                <td valign="top" style="padding: 40px 0 0 0;" class="mobile-hide"><a href="https://misterpao.com/" target="_blank"><img src="https://misterpao.com/images/email/money.jpg" alt="idea" width="60" height="55" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px; width: 60px; height:55px;"></a></td>
                                             </tr>
                                         </tbody></table>
                                     </div>
@@ -570,7 +570,7 @@ $content = new SendGrid\Content("text/html", '
                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <img alt="Logo" src="http://valifyit.com/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                         <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="150" height="45" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 
@@ -580,6 +580,36 @@ $content = new SendGrid\Content("text/html", '
 
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+
+            <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                       &nbsp;
+                           </td>
+                     </tr>
+
+                <tr>
+
+
+                <tr>
+                   <td align="center">
+                      <a href="https://twitter.com/mymisterpao" target="_blank">
+                      <img src="https://misterpao.com/images/email/twitter-icon.png" width="33" height="33"/></a>
+                          <a href="https://www.facebook.com/MrPao-1960306184214766/" target="_blank">
+                           <img src="https://misterpao.com/images/email/facebook-icon.png" alt="" width="33" height="33"/></a>
+                    <a href="https://instagram.com/mymrpao" target="_blank">
+                           <img src="https://misterpao.com/images/email/instagram-icon.png" alt="" width="33" height="33"/>
+                        </a>
+                    </td>       
+                  
+              </tr>
+
+              <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                       &nbsp;
+                           </td>
+                     </tr>
+
+
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
                         245 5th Ave Suite 201, New York, NY 10001
@@ -588,7 +618,7 @@ $content = new SendGrid\Content("text/html", '
 
                       <tr>
                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
+                        <a href="https://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="https://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="https://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a> </td>
                        
                         
  
@@ -651,10 +681,10 @@ die($output);
 
 }
 
-	
+    
 
 
 
 
-	
+    
 ?>
