@@ -1646,9 +1646,9 @@ var btn= $(this).find("input[type=submit]:focus").val();
         }else{
           
             
-            output = '<div class="success">'+response.text+'</div>';
+            //output = '<div class="success">'+response.text+'</div>';
             //window.location.href = "../index.php";
-          
+            $( "#publish-answer-chosen" ).load( "../questions_answer1.php?projectid="+projectid).slideDown();
             
           
           //reset values in all input fields
@@ -1658,7 +1658,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
         
         
 
-        $("#publish-answer-chosen").hide().html(output).slideDown();
+        //$("#publish-answer-chosen").hide().html(output).slideDown();
             }, 'json');
         }    
       

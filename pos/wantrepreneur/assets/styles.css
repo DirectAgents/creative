@@ -73,6 +73,9 @@ a:hover{text-decoration: none !important}
 
 .file-upload{float:left; width:100%;}
 
+
+
+
 #transactions tr td:nth-child(1){
     width:0%;
 }
@@ -6007,4 +6010,7 @@ FORM.ff .note.notforheader {
 
 
 
+#questions table td {
+    padding:10px !important;
+}
 

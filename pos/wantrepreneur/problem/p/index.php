@@ -464,6 +464,9 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 
 
       <div class="col-lg-12">
+
+<div id="publish-answer-chosen">
+
       <p>&nbsp;</p>
       <h4>To participate, please choose one of the following answers:</h4>
 
@@ -488,7 +491,7 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 </div>
 
 
-<div id="publish-answer-chosen"></div>
+</div>
 
 
 <!--Max recording is set to 5 minutes -->
