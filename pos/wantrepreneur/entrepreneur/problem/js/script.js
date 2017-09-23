@@ -1615,8 +1615,10 @@ var btn= $(this).find("input[type=submit]:focus").val();
        
         var projectid       = $('input[name=projectid]').val();
         var possibleanswerschosen = $('input[name="possibleanswers[]"]:checked').map(function () {return this.value;}).get().join(",");
-        
-        alert(projectid);
+       
+
+
+        //alert(projectid);
         //alert(possibleanswerschosen);
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
