@@ -494,6 +494,17 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 </div>
 
 
+
+
+<!-- Delete a Project -->
+
+<div id="slide" class="well slide">
+ 
+
+<div id="PossibleAnswer1_Question1">
+1
+<p>
+
 <!--Max recording is set to 5 minutes -->
 
 <!-- begin video recorder code -->
@@ -504,6 +515,50 @@ var flashvars = {qualityurl: "avq/300p.xml",accountHash:"806aaf1fee6d34f6268b141
 </script>
 <div id="hdfvr-content" ></div>
 <!-- end video recorder code -->
+
+</p>
+</div>
+
+
+<div id="PossibleAnswer1_Question2">
+<br><br><br>
+2
+<p>
+
+<!--Max recording is set to 5 minutes -->
+
+<!-- begin video recorder code -->
+<script type="text/javascript">
+var size = {width:400,height:330};
+var flashvars = {qualityurl: "avq/300p.xml",accountHash:"806aaf1fee6d34f6268b141febc7cba3", eid:1, showMenu:"true", mrt:300,sis:0,asv:1,mv:0, payload:"{\"userID\":\"<?php echo $_SESSION['participantSession']; ?>\",\"Answer\":\"PossibleAnswer1_Question2\"}"};
+(function() {var pipe = document.createElement('script'); pipe.type = 'text/javascript'; pipe.async = true;pipe.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's1.addpipe.com/1.3/pipe.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pipe, s);})();
+</script>
+<div id="hdfvr-content" ></div>
+<!-- end video recorder code -->
+
+</p>
+</div>
+
+
+<input type="hidden" name="projectid" id="projectid" value="<?php echo $rowproject['ProjectID']; ?>"/>
+<div class="popupoverlay-btn">
+  <div class="cancel-delete">
+    <button class="slide_close cancel">Close</button>
+</div>
+
+<div class="popupoverlay-btn">
+  <div class="close-delete">
+    <button class="slide_close cancel">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- End Delete a Project -->
+
+
+
 
 
 
@@ -783,6 +838,47 @@ if($participant_home->is_logged_in())
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-lNejAuVNUDCwo2UxOAT_N_lQZb7qiQY&libraries=places&callback=initMap"
         async defer></script>
+
+
+
+<script>
+$(document).ready(function () {
+
+
+$(document).on("click", ".slide_open", function () {
+
+  
+
+     var selected = $(this).data('id');
+
+     //alert(selected);
+     
+     if(selected == 'PossibleAnswer1_Question1'){
+      alert(selected);
+     $("#PossibleAnswer1_Question2").hide();
+     $("#PossibleAnswer1_Question1").show();
+     return false;
+     }
+
+     if(selected == 'PossibleAnswer1_Question2'){
+     $("#PossibleAnswer1_Question2").show();
+     $("#PossibleAnswer1_Question1").hide();
+     return false;
+     }
+     // As pointed out in comments, 
+     // it is superfluous to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
+
+
+    $('#slide').popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+});
+</script>
 
 
         

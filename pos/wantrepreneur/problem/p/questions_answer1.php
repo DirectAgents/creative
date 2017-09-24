@@ -11,11 +11,11 @@ if($_GET['projectid'] != ''){
 $sqlproject = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$_GET['projectid']."' ");
 $rowproject = mysqli_fetch_array($sqlproject);	
 
-echo "<h3>Thank you!</h3>";
+//echo "<h3>Thank you!</h3>";
 
 echo '<div class="space"></div>';
 
-echo "You answered: <strong>Yes, I have that problem</strong>";
+echo "<h3>You answered: <strong>Yes, I have that problem</strong></h3>";
 
 echo '<div class="space"></div>';
 
@@ -40,8 +40,10 @@ echo '<table class="table table-striped">
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-8">'.$rowproject['PossibleAnswer1_Question1'].'</td>
-        <td style="text-align:left;" class="col-lg-4">Feedback</td>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10">'.$rowproject['PossibleAnswer1_Question1'].'</td>
+        <td style="text-align:left;" class="col-lg-2">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide_open btn-primary" href="#">Record Feedback</a>
+       </td>
     </tr>
 </table>';
 echo '</div>'; 
@@ -59,8 +61,13 @@ echo '<table class="table table-striped">
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-8">'.$rowproject['PossibleAnswer1_Question2'].'</td>
-        <td style="text-align:left;" class="col-lg-4">Feedback</td>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10">'.$rowproject['PossibleAnswer1_Question2'].'</td>
+       <td style="text-align:left;" class="col-lg-2">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question2" title="Add this item" class="slide_open btn-primary" href="#">Record Feedback</a>
+       
+
+
+       </td>
     </tr>
 </table>';
 echo '</div>'; 
@@ -78,8 +85,8 @@ echo '<table class="table table-striped">
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-8">'.$rowproject['PossibleAnswer1_Question3'].'</td>
-        <td style="text-align:left;" class="col-lg-4">Feedback</td>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10">'.$rowproject['PossibleAnswer1_Question3'].'</td>
+        <td style="text-align:left;" class="col-lg-2">Feedback</td>
     </tr>
 </table>';
 echo '</div>'; 
@@ -97,8 +104,8 @@ echo '<table class="table table-striped">
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-8">'.$rowproject['PossibleAnswer1_Question3'].'</td>
-        <td style="text-align:left;" class="col-lg-4">Feedback</td>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10">'.$rowproject['PossibleAnswer1_Question4'].'</td>
+        <td style="text-align:left;" class="col-lg-2">Feedback</td>
     </tr>
 </table>';
 echo '</div>'; 
