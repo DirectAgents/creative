@@ -11,28 +11,30 @@ if($_GET['projectid'] != ''){
 $sqlproject = mysqli_query($connecDB,"SELECT * FROM tbl_startup_project  WHERE ProjectID = '".$_GET['projectid']."' ");
 $rowproject = mysqli_fetch_array($sqlproject);	
 
-//echo "<h3>Thank you!</h3>";
+?>
 
-echo '<div class="space"></div>';
+<!--<h3>Thank you!</h3>-->
 
-echo "<h3>You answered: <strong>Yes, I have that problem</strong></h3>";
+<div class="space"></div>
 
-echo '<div class="space"></div>';
+<h3>You answered: <strong>Yes, I have that problem</strong></h3>
 
-echo '<div class="col-lg-12">';
+<div class="space"></div>
 
-echo '<div class="col-lg-12">';
-echo "<h4>Please provide your feedback for the following questions:</h4>";
-echo '</div>';
+<div class="col-lg-12">
 
-echo '<div class="space"></div>';
+<div class="col-lg-12">
+<h4>Please provide your feedback for the following questions:</h4>
+</div>
 
-echo '</div>';
+<div class="space"></div>
+
+</div>
 
 
-echo '<div class="col-lg-11">';
-echo '<div id="questions">';
-echo '<table class="table table-striped">
+<div class="col-lg-11">
+<div id="questions">
+<table class="table table-striped">
     <tbody>
       <tr>
         <td style="text-align:left;"><strong>Question 1</strong></td>
@@ -40,20 +42,23 @@ echo '<table class="table table-striped">
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10">'.$rowproject['PossibleAnswer1_Question1'].'</td>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10"><?php echo $rowproject['PossibleAnswer1_Question1']; ?></td>
         <td style="text-align:left;" class="col-lg-2">
-<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide_open btn-primary" href="#">Record Feedback</a>
+<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide-video-feedback_open btn-primary" href="#">Record Feedback</a>
        </td>
     </tr>
-</table>';
-echo '</div>'; 
-echo '</div>';   
+</table>
+</div>
+</div>
 
 
 
-echo '<div class="col-lg-11">';
-echo '<div id="questions">';
-echo '<table class="table table-striped">
+
+    
+
+<div class="col-lg-11">
+<div id="questions">
+<table class="table table-striped">
     <tbody>
       <tr>
         <td style="text-align:left;"><strong>Question 2</strong></td>
@@ -61,23 +66,19 @@ echo '<table class="table table-striped">
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10">'.$rowproject['PossibleAnswer1_Question2'].'</td>
-       <td style="text-align:left;" class="col-lg-2">
-<a data-toggle="modal" data-id="PossibleAnswer1_Question2" title="Add this item" class="slide_open btn-primary" href="#">Record Feedback</a>
-       
-
-
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10"><?php echo $rowproject['PossibleAnswer1_Question2']; ?></td>
+        <td style="text-align:left;" class="col-lg-2">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question2" title="Add this item" class="slide-video-feedback_open btn-primary" href="#">Record Feedback</a>
        </td>
     </tr>
-</table>';
-echo '</div>'; 
-echo '</div>';        
-    
+</table>
+</div>
+</div>
 
 
-echo '<div class="col-lg-11">';
-echo '<div id="questions">';
-echo '<table class="table table-striped">
+<div class="col-lg-11">
+<div id="questions">
+<table class="table table-striped">
     <tbody>
       <tr>
         <td style="text-align:left;"><strong>Question 3</strong></td>
@@ -85,18 +86,19 @@ echo '<table class="table table-striped">
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10">'.$rowproject['PossibleAnswer1_Question3'].'</td>
-        <td style="text-align:left;" class="col-lg-2">Feedback</td>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10"><?php echo $rowproject['PossibleAnswer1_Question3']; ?></td>
+        <td style="text-align:left;" class="col-lg-2">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide1_open btn-primary" href="#">Record Feedback</a>
+       </td>
     </tr>
-</table>';
-echo '</div>'; 
-echo '</div>';   
+</table>
+</div>
+</div>
 
 
-
-echo '<div class="col-lg-11">';
-echo '<div id="questions">';
-echo '<table class="table table-striped">
+<div class="col-lg-11">
+<div id="questions">
+<table class="table table-striped">
     <tbody>
       <tr>
         <td style="text-align:left;"><strong>Question 4</strong></td>
@@ -104,14 +106,18 @@ echo '<table class="table table-striped">
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10">'.$rowproject['PossibleAnswer1_Question4'].'</td>
-        <td style="text-align:left;" class="col-lg-2">Feedback</td>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10"><?php echo $rowproject['PossibleAnswer1_Question1']; ?></td>
+        <td style="text-align:left;" class="col-lg-2">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide1_open btn-primary" href="#">Record Feedback</a>
+       </td>
     </tr>
-</table>';
-echo '</div>'; 
-echo '</div>';   
+</table>
+</div>
+</div>
 
 
+
+<?php 
 
 
 }
