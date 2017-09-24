@@ -1469,7 +1469,10 @@ pre code {
 @media (min-width:1200px) {
 .container {
 	width: 1024px;
-	padding-bottom:30px;
+	padding-top:10px;
+	padding-left:25px;
+	padding-right:0px;
+	padding-bottom:0px;
 }
 }
 .container-fluid {

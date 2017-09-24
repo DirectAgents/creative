@@ -6107,16 +6107,14 @@ FORM.ff .note.notforheader {
 }
 
 
-.video-loading{
+.video-loading img{
   position: absolute; 
-  background:#f6f6f6;
-  padding:15px; 
   top:40%;
   left: 0; 
   right: 0; 
   margin-left: auto; 
   margin-right: auto; 
-  width: 50%; /* Need a specific value to work */
+  
   z-index:-9999;
   font-family: 'Roboto', helvetica;
   }

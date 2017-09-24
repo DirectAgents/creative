@@ -8,7 +8,7 @@ require_once '../../../base_path.php';
  </head>
  <body>
 
-<div class="video-loading">Video Recorder is loading...</div>
+<div class="video-loading"><img src="<?php echo BASE_PATH; ?>/img/loading.gif"/></div>
 
  <!--Max recording is set to 5 minutes -->
 

@@ -1480,63 +1480,7 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
 
 
-/**Submit Answer to participate**/
 
-
- $("#participate-btn").click(function() {  
-//alert($('input[type=file').val()); 
-var btn= $(this).find("input[type=submit]:focus").val();
-
-
-
-        //get input field values
-
-       
-        var problemid  = $('input[name=problemid]').val();
-        var possibleanswers = $('input[name="possibleanswers[]"]:checked').map(function () {return this.value;}).get().join(",");
-        
-        //alert(possibleanswers);
-        //simple validation at client's end
-        //we simply change border color to red if empty field using .css()
-        var proceed = true;
-      
-
-        //everything looks good! proceed...
-        if(proceed) 
-        {
-
-          $( ".processing" ).show();
-            //data to be sent to server
-         
-       
-            post_data = {'problemid':problemid,'possibleanswers':possibleanswers};
-          
-            //Ajax post data to server
-            $.post('../submit-answer.php', post_data, function(response){  
-             
-
-                //load json data from server and output message     
-        if(response.type == 'error')
-        {
-          output = '<div class="errorXYZ">'+response.text+'</div>';
-        }else{
-          
-         
-            //output = '<div class="success">'+response.text+'</div>';
-            window.location.href = "index.php/?id=50134&p=1";
-          
-          
-          //reset values in all input fields
-          $('#contact_form input').val(''); 
-          $('#contact_form textarea').val(''); 
-        }
-        
-        var output = '<div class="success" style="float:left; width:100%; padding-top:10px;">Successfully Published!</div>';
-        $("#publish-result").hide().html(output).slideDown();
-            });
-      
-        }
-    });
 
 
 
@@ -1601,6 +1545,67 @@ var btn= $(this).find("input[type=submit]:focus").val();
 
 
 
+
+/**Submit Answer to participate**/
+
+/*
+ $("#participate-btn").click(function() {  
+//alert($('input[type=file').val()); 
+var btn= $(this).find("input[type=submit]:focus").val();
+
+
+
+        //get input field values
+
+       
+        var problemid  = $('input[name=problemid]').val();
+        var possibleanswers = $('input[name="possibleanswers[]"]:checked').map(function () {return this.value;}).get().join(",");
+        
+        //alert(possibleanswers);
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        var proceed = true;
+      
+
+        //everything looks good! proceed...
+        if(proceed) 
+        {
+
+          $( ".processing" ).show();
+            //data to be sent to server
+         
+       
+            post_data = {'problemid':problemid,'possibleanswers':possibleanswers};
+          
+            //Ajax post data to server
+            $.post('../submit-answer.php', post_data, function(response){  
+             
+
+                //load json data from server and output message     
+        if(response.type == 'error')
+        {
+          output = '<div class="errorXYZ">'+response.text+'</div>';
+        }else{
+          
+         
+            //output = '<div class="success">'+response.text+'</div>';
+            window.location.href = "index.php/?id=50134&p=1";
+          
+          
+          //reset values in all input fields
+          $('#contact_form input').val(''); 
+          $('#contact_form textarea').val(''); 
+        }
+        
+        var output = '<div class="success" style="float:left; width:100%; padding-top:10px;">Successfully Published!</div>';
+        $("#publish-result").hide().html(output).slideDown();
+            });
+      
+        }
+    });
+
+*/
+
  /**Answer Chosen for the Problem**/
 
 
@@ -1648,8 +1653,21 @@ var btn= $(this).find("input[type=submit]:focus").val();
             
             //output = '<div class="success">'+response.text+'</div>';
             //window.location.href = "../index.php";
-            $( "#publish-answer-chosen" ).load( "../questions_answer1.php?projectid="+projectid).slideDown();
-            
+            if(possibleanswerschosen == 'Yes, I have that problem'){
+            $( "#publish-answer-chosen" ).load( "../questions_answer1.php?id="+projectid).slideDown();
+            }
+
+            if(possibleanswerschosen == 'No, I don\'t have that problem'){
+            $( "#publish-answer-chosen" ).load( "../questions_answer2.php?id="+projectid).slideDown();
+            }
+
+            if(possibleanswerschosen == 'Sometimes'){
+            $( "#publish-answer-chosen" ).load( "../questions_answer3.php?id="+projectid).slideDown();
+            }
+
+            if(possibleanswerschosen == 'Very rare'){
+            $( "#publish-answer-chosen" ).load( "../questions_answer4.php?id="+projectid).slideDown();
+            }
           
           //reset values in all input fields
           $('#contact_form input').val(''); 

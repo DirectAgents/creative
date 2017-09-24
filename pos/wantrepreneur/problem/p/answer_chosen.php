@@ -45,6 +45,12 @@ if(mysqli_num_rows($sql)== 0)
 if($_POST['possibleanswerschosen'] == ''){$possibleanswerschosen = 'NULL';}else{$possibleanswerschosen = $_POST['possibleanswerschosen'];}
 
 
+if($possibleanswerschosen == "No, I don't have that problem"){
+
+$possibleanswerschosen = "No, I don\'t have that problem";
+
+}
+
 
 date_default_timezone_set('America/New_York');
 $the_date = date('Y-m-d'); 

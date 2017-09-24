@@ -52,13 +52,13 @@ $startup = new startup();
 
 if(!$startup->is_logged_in())
 {
-	$startup->redirect('startup/login/');
+	$startup->redirect('entrepreneur/login/');
 }
 
 if($startup->is_logged_in()!="")
 {	
 	$startup->logout();	
-	$startup->redirect('startup/login/');
+	$startup->redirect('entrepreneur/login/');
 }
 
 }

@@ -465,6 +465,17 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 
       <div class="col-lg-12">
 
+<?php
+
+$feedback = mysqli_query($connecDB,"SELECT * FROM tbl_feedbacks WHERE ProjectID='".$_GET['id']."' AND userID='".$_SESSION['participantSession']."'");
+$rowfeedback = mysqli_fetch_array($feedback);
+
+if(mysqli_num_rows($feedback)== 0)
+{
+
+
+?>   
+
 <div id="publish-answer-chosen">
 
       <p>&nbsp;</p>
@@ -494,7 +505,18 @@ if($rowrequest['userID'] == $_SESSION['participantSession'] && $rowrequest['Proj
 </div>
 
 
+<?php }else{ ?>
 
+<?php 
+
+if($rowfeedback['Answer'] == 'Yes, I have that problem'){ include 'questions_answer1.php';}
+if($rowfeedback['Answer'] == 'No, I don\'t have that problem'){ include 'questions_answer2.php';}
+if($rowfeedback['Answer'] == 'Sometimes'){ include 'questions_answer3.php';}
+if($rowfeedback['Answer'] == 'Very rare'){ include 'questions_answer4.php';}
+
+?>
+
+<?php } ?>
 
 <!-- Possible Answer Question 1 -->
 
@@ -824,20 +846,79 @@ $(document).on("click", ".slide-video-feedback_open", function () {
 
      //alert(selected);
      
+     //PossibleAnswer1 = Yes, I have that problem
+
      if(selected == 'PossibleAnswer1_Question1'){
-     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video1.php");
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video1.php?id=<?php echo $_GET['id'];?>");
      }
 
      if(selected == 'PossibleAnswer1_Question2'){
-     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video2.php");
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video2.php?id=<?php echo $_GET['id'];?>");
      }
 
      if(selected == 'PossibleAnswer1_Question3'){
-     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video3.php");
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video3.php?id=<?php echo $_GET['id'];?>");
      }
 
      if(selected == 'PossibleAnswer1_Question4'){
-     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video4.php");
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video4.php?id=<?php echo $_GET['id'];?>");
+     }
+
+
+      //PossibleAnswer2 = No, I don't have that problem
+
+     if(selected == 'PossibleAnswer2_Question1'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer2/video1.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer2_Question2'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer2/video2.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer2_Question3'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer2/video3.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer2_Question4'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer2/video4.php?id=<?php echo $_GET['id'];?>");
+     }
+
+
+      //PossibleAnswer3 = Sometimes
+
+     if(selected == 'PossibleAnswer3_Question1'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer3/video1.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer3_Question2'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer3/video2.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer3_Question3'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer3/video3.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer3_Question4'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer3/video4.php?id=<?php echo $_GET['id'];?>");
+     }
+
+
+      //PossibleAnswer4 = Very rare
+
+     if(selected == 'PossibleAnswer4_Question1'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer4/video1.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer4_Question2'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer4/video2.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer4_Question3'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer4/video3.php?id=<?php echo $_GET['id'];?>");
+     }
+
+     if(selected == 'PossibleAnswer4_Question4'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer4/video4.php?id=<?php echo $_GET['id'];?>");
      }
     
 });
