@@ -819,22 +819,27 @@ $(document).ready(function () {
 
 $(document).on("click", ".slide-video-feedback_open", function () {
 
-  
 
      var selected = $(this).data('id');
 
      //alert(selected);
      
      if(selected == 'PossibleAnswer1_Question1'){
-     $("#frame-video-feedback").attr("src", "../video1.php");
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video1.php");
      }
 
      if(selected == 'PossibleAnswer1_Question2'){
-    $("#frame-video-feedback").attr("src", "../video2.php");
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video2.php");
      }
-     // As pointed out in comments, 
-     // it is superfluous to have to manually call the modal.
-     // $('#addBookDialog').modal('show');
+
+     if(selected == 'PossibleAnswer1_Question3'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video3.php");
+     }
+
+     if(selected == 'PossibleAnswer1_Question4'){
+     $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video4.php");
+     }
+    
 });
 
 

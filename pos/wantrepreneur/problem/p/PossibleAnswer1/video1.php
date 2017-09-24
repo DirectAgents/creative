@@ -1,7 +1,16 @@
+<?php 
+session_start(); 
+require_once '../../../base_path.php';
+?>
+<html>
+ <head>
+ <link href="<?php echo BASE_PATH; ?>/assets/styles.css" rel="stylesheet" media="screen"> 
+ </head>
+ <body>
 
-<?php session_start(); ?>
+<div class="video-loading">Video Recorder is loading...</div>
 
-<!--Max recording is set to 5 minutes -->
+ <!--Max recording is set to 5 minutes -->
 
 <!-- begin video recorder code -->
 <script type="text/javascript">
@@ -11,3 +20,7 @@ var flashvars = {qualityurl: "avq/300p.xml",accountHash:"806aaf1fee6d34f6268b141
 </script>
 <div id="hdfvr-content" ></div>
 <!-- end video recorder code -->
+
+ </body>
+
+</html>

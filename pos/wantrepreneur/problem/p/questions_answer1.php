@@ -42,9 +42,11 @@ $rowproject = mysqli_fetch_array($sqlproject);
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10"><?php echo $rowproject['PossibleAnswer1_Question1']; ?></td>
-        <td style="text-align:left;" class="col-lg-2">
-<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide-video-feedback_open btn-primary" href="#">Record Feedback</a>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-9"><?php echo $rowproject['PossibleAnswer1_Question1']; ?></td>
+        <td class="col-lg-3">
+        <div class="btn-setup-a-meeting">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide-video-feedback_open" href="#">Record Feedback</a>
+</div>
        </td>
     </tr>
 </table>
@@ -66,9 +68,11 @@ $rowproject = mysqli_fetch_array($sqlproject);
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10"><?php echo $rowproject['PossibleAnswer1_Question2']; ?></td>
-        <td style="text-align:left;" class="col-lg-2">
-<a data-toggle="modal" data-id="PossibleAnswer1_Question2" title="Add this item" class="slide-video-feedback_open btn-primary" href="#">Record Feedback</a>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-9"><?php echo $rowproject['PossibleAnswer1_Question2']; ?></td>
+        <td class="col-lg-3">
+        <div class="btn-setup-a-meeting">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question2" title="Add this item" class="slide-video-feedback_open" href="#">Record Feedback</a>
+</div>
        </td>
     </tr>
 </table>
@@ -86,9 +90,11 @@ $rowproject = mysqli_fetch_array($sqlproject);
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10"><?php echo $rowproject['PossibleAnswer1_Question3']; ?></td>
-        <td style="text-align:left;" class="col-lg-2">
-<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide1_open btn-primary" href="#">Record Feedback</a>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-9"><?php echo $rowproject['PossibleAnswer1_Question3']; ?></td>
+        <td class="col-lg-3">
+        <div class="btn-setup-a-meeting">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question3" title="Add this item" class="slide-video-feedback_open" href="#">Record Feedback</a>
+</div>
        </td>
     </tr>
 </table>
@@ -106,9 +112,11 @@ $rowproject = mysqli_fetch_array($sqlproject);
     </tr>
 
    <tr>
-        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-10"><?php echo $rowproject['PossibleAnswer1_Question1']; ?></td>
-        <td style="text-align:left;" class="col-lg-2">
-<a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide1_open btn-primary" href="#">Record Feedback</a>
+        <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-9"><?php echo $rowproject['PossibleAnswer1_Question4']; ?></td>
+        <td class="col-lg-3">
+        <div class="btn-setup-a-meeting">
+<a data-toggle="modal" data-id="PossibleAnswer1_Question4" title="Add this item" class="slide-video-feedback_open" href="#">Record Feedback</a>
+</div>
        </td>
     </tr>
 </table>
