@@ -518,23 +518,19 @@ if($rowfeedback['Answer'] == 'Very rare'){ include 'questions_answer4.php';}
 
 <?php } ?>
 
-<!-- Possible Answer Question 1 -->
+<!-- Feedback Recording -->
 
 <div id="slide-video-feedback" class="well slide-video-feedback">
- 
 
-
-<p>
-
- <iframe id="frame-video-feedback" src="" scrolling="no"></iframe>
-
-</p>
-
+<p><iframe id="frame-video-feedback" src="" scrolling="no"></iframe></p>
 
 <input type="hidden" name="projectid" id="projectid" value="<?php echo $rowproject['ProjectID']; ?>"/>
+<input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['participantSession']; ?>"/>
+
+
 <div class="popupoverlay-btn">
   <div class="cancel-delete">
-    <button class="slide-video-feedback_close cancel">Close</button>
+    <button class="slide-video-feedback_close refresh-video cancel">Close</button>
 </div>
 
 <div class="popupoverlay-btn">
@@ -546,40 +542,48 @@ if($rowfeedback['Answer'] == 'Very rare'){ include 'questions_answer4.php';}
 </div>
 </div>
 
-<!-- End Possible Answer Question 1 -->
+<!-- End Feedback Recording-->
 
 
 
 
 
+<!-- Feedback Recording -->
+
+<div id="slide-video-feedback-recorded" class="well slide-video-feedback-recorded">
+
+
+
+<input type="hidden" name="projectid" id="projectid" value="<?php echo $rowproject['ProjectID']; ?>"/>
+<input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['participantSession']; ?>"/>
+
+
+<p>
+
+
+<p><iframe id="frame-video-feedback-recording" src="" scrolling="no"></iframe></p>
 
 
 
 
-<?php
-
-$post = ['userid' => $_SESSION['participantSession']];
+</p>
 
 
+<div class="popupoverlay-btn">
+  <div class="cancel-delete">
+    <button class="slide-video-feedback-recorded_close refresh-video cancel">Close</button>
+</div>
 
-  $url = "https://misterpao.com/pipe/getvideo.php";
-  $client = curl_init($url);
-  curl_setopt($client, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($client, CURLOPT_POSTFIELDS, $post);
-  $response = curl_exec($client);
-  $result = json_decode($response);
-  if( empty($result) ) {
-    //var_dump($response);
-        echo $response;
-        //$videoname = $response;
-  } else {
-    //var_dump($response);
-        //echo $response;
-  }
+<div class="popupoverlay-btn">
+  <div class="close-delete">
+    <button class="slide-video-feedback-recorded_close cancel">Close</button>
+</div>
+</div>
 
+</div>
+</div>
 
-?>
-
+<!-- End Feedback Recording-->
 
 
 
@@ -839,6 +843,18 @@ if($participant_home->is_logged_in())
 $(document).ready(function () {
 
 
+$(document).on("click", ".slide-video-feedback-recorded_open", function () {
+
+var videoid = $(this).data('video');
+
+//alert(videoid);
+
+ $("#frame-video-feedback-recording").attr("src", "../get-recording.php?videoid="+videoid);
+
+});
+
+
+
 $(document).on("click", ".slide-video-feedback_open", function () {
 
 
@@ -863,6 +879,8 @@ $(document).on("click", ".slide-video-feedback_open", function () {
      if(selected == 'PossibleAnswer1_Question4'){
      $("#frame-video-feedback").attr("src", "../PossibleAnswer1/video4.php?id=<?php echo $_GET['id'];?>");
      }
+
+
 
 
       //PossibleAnswer2 = No, I don't have that problem
@@ -929,6 +947,15 @@ $(document).on("click", ".slide-video-feedback_open", function () {
         outline: true,
         vertical: 'top'
     });
+
+
+     $('#slide-video-feedback-recorded').popup({
+        focusdelay: 400,
+        outline: true,
+        vertical: 'top'
+    });
+
+
 
     
 

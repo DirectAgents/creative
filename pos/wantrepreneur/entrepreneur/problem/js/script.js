@@ -1684,9 +1684,20 @@ var btn= $(this).find("input[type=submit]:focus").val();
     });
 
 
- 
+ $(".refresh-video").click(function() {  
 
 
+
+var projectid = $('input[name=projectid]').val();
+var userid = $('input[name=userid]').val();
+
+//alert(projectid);
+
+$( "#PossibleAnswer1_Question1" ).load( "../check_answer1_question1.php?projectid="+projectid+"&userid="+userid).slideDown();
+
+
+
+});
 
 
 

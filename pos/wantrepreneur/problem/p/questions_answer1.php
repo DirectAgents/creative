@@ -48,7 +48,9 @@ $rowproject = mysqli_fetch_array($sqlproject);
         <td style="text-align:left; border-right:1px solid #eee"" class="col-lg-9"><?php echo $rowproject['PossibleAnswer1_Question1']; ?></td>
         <td class="col-lg-3">
         <div class="btn-setup-a-meeting">
+        <div id="PossibleAnswer1_Question1">
 <a data-toggle="modal" data-id="PossibleAnswer1_Question1" title="Add this item" class="slide-video-feedback_open" href="#">Record Feedback</a>
+</div>
 </div>
        </td>
     </tr>
