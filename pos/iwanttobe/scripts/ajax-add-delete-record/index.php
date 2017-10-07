@@ -73,6 +73,7 @@ $(document).ready(function() {
 			success:function(response){
 				$("#respondsbook").append(response);
 				$("#contentBook").val(''); //empty text field on successful
+				$("#contentBookLink").val(''); //empty text field on successful
 				$("#SubmitBook").show(); //show submit button
 				$("#LoadingImage").hide(); //hide loading image
 
@@ -199,8 +200,14 @@ while($row = $results_book->fetch_assoc())
   echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
   echo '<img src="images/icon_del.gif" border="0" />';
   echo '</a></div>';
+  if(!empty($row["Book_Link"])){
   echo '<a href="'.$row["Book_Link"].'" target="_blank">';
-  echo $row["Book"].'</a></li>';
+  echo $row["Book"].'</a>';
+  }else{
+  echo $row["Book"];
+  }
+  echo '</li>';
+		  
 }
 
 

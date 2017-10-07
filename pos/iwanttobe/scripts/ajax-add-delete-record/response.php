@@ -35,8 +35,13 @@ include_once("config.php");
 		  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
 		  echo '<img src="images/icon_del.gif" border="0" />';
 		  echo '</a></div>';
+		  if(!empty($contentToSave_BookLink)){
 		  echo '<a href="'.$contentToSave_BookLink.'" target="_blank">';
-		  echo $contentToSave.'</a></li>';
+		  echo $contentToSave.'</a>';
+		  }else{
+		  echo $contentToSave;
+		  }
+		  echo '</li>';
 		  $mysqli->close(); //close db connection
 
 	}else{
