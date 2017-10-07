@@ -64,7 +64,7 @@ $(document).ready(function() {
 			$("#SubmitBook").hide(); //hide submit button
 			$("#LoadingImage").show(); //show loading image
 			
-		 	var myData = 'content_book='+ $("#contentBook").val(); //build a post data structure
+		 	var myData = 'content_book='+ $("#contentBook").val()+'&content_book_link='+ $("#contentBookLink").val(); //build a post data structure
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
 			url: "response.php", //Where to make Ajax calls
@@ -187,7 +187,7 @@ $(document).ready(function() {
 include_once("config.php");
 
 //MySQL query
-$results_book = $mysqli->query("SELECT id,Book FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Book != '' ORDER BY page_order ASC ");
+$results_book = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Book != '' ORDER BY page_order ASC ");
 //get all records from add_delete_record table
 
 
@@ -199,7 +199,8 @@ while($row = $results_book->fetch_assoc())
   echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
   echo '<img src="images/icon_del.gif" border="0" />';
   echo '</a></div>';
-  echo $row["Book"].'</li>';
+  echo '<a href="'.$row["Book_Link"].'" target="_blank">';
+  echo $row["Book"].'</a></li>';
 }
 
 
@@ -217,7 +218,7 @@ while($row = $results_book->fetch_assoc())
     </div>
 
     <div class="col_right">
-    <input type="text" name="content_book" id="contentBook" placeholder="Link to the Book (optional)"/>
+    <input type="text" name="content_book_link" id="contentBookLink" placeholder="Link to the Book (optional)"/>
     </div>
     
 

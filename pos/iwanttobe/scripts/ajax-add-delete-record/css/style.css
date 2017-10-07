@@ -44,7 +44,7 @@ body
 .form_style .col_left{float:left;}
 .form_style .col_right{float:left;}
 
-.form_style #contentBook {
+.form_style input[type="text"] {
 	border: 1px solid #CCCCCC;
 	border-radius: 5px;
 	width:200px; 

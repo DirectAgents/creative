@@ -10,6 +10,7 @@ include_once("config.php");
 
 	//sanitize post value, PHP filter FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH Strip tags, encode special characters.
 	$contentToSave = filter_var($_POST["content_book"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+	$contentToSave_BookLink = filter_var($_POST["content_book_link"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
 	
 	
 	// Insert sanitize string in record
@@ -22,8 +23,8 @@ include_once("config.php");
 
 	// Insert sanitize string in record
 
-	$insert_row = $mysqli->query("INSERT INTO i_want_to_be_an_entrepreneur(userID,Book,page_order) VALUES('".$_SESSION['userID']."','".$contentToSave."',
-		'".$page_order."')");
+	$insert_row = $mysqli->query("INSERT INTO i_want_to_be_an_entrepreneur(userID,Book,Book_Link,page_order) VALUES('".$_SESSION['userID']."','".$contentToSave."',
+		'".$contentToSave_BookLink."','".$page_order."')");
 
 	if($insert_row)
 	{
@@ -34,7 +35,8 @@ include_once("config.php");
 		  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
 		  echo '<img src="images/icon_del.gif" border="0" />';
 		  echo '</a></div>';
-		  echo $contentToSave.'</li>';
+		  echo '<a href="'.$contentToSave_BookLink.'" target="_blank">';
+		  echo $contentToSave.'</a></li>';
 		  $mysqli->close(); //close db connection
 
 	}else{
