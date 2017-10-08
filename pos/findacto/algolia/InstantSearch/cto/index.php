@@ -15,7 +15,6 @@ $index->setSettings(array(
     
     "name",
     "location",
-    "position",
     "lookingfor",
     "asa",
     "skills"
@@ -61,7 +60,7 @@ $index->setSettings(array(
     <!-- Bootstrap -->
 
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/style.min.css" rel="stylesheet">
+    <link href="style.min.css" rel="stylesheet">
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/reset.min.css" rel="stylesheet">
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.offcanvas.min.css" rel="stylesheet">
     
@@ -100,17 +99,7 @@ $index->setSettings(array(
 
   <body>
 
-    <header>
-    <div>
-       <input type="text" id="search-input" />
-       <!-- We use a specific placeholder in the input to guides users in their search. -->
-    </div>
-  </header>
 
-  <div id="categories"></div>
-  <div id="positions"></div>
-  <div id="lookingfor"></div>
-  <div id="skills"></div>
 
 
 
@@ -128,15 +117,23 @@ $index->setSettings(array(
 
             <div class="navbar-header">
                 <div class="nav-search-container">
-                    <input type="text" class="algolia-autocomplete light" id="search_input" placeholder="Search Startups">
+	
+	  
+  
+       <input type="text" class="algolia-autocomplete light" id="search-input" placeholder="Search Skills or Name" />
+       <!-- We use a specific placeholder in the input to guides users in their search. -->
+   
+
+
+
+
                 </div>
             </div>
 
+
             <div class="navbar-offcanvas navbar-offcanvas-right navbar-menubuilder" id="js-bootstrap-offcanvas">
 
-                <ul class="nav navbar-nav navbar-left" id='submit-button'>
-                    <li ><a href="submit-startup.html"><button type="button" data-toggle="tooltip" data-placement="bottom" title="Submit startup" class="button-empty"><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/plus-dark.svg" class="center-block button-empty-image"></button></a></li>
-                </ul>
+                
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.html" class="navbar-text">Home</a></li>
                     <li><a href="regions.html" class="navbar-text">Regions</a></li>
@@ -160,6 +157,9 @@ $index->setSettings(array(
 
     <div class="container-fluid">
 
+
+
+
         
 
     <div class="container">
@@ -171,6 +171,13 @@ $index->setSettings(array(
         <div class="title-info-card">
             <div class="row" id="myTabs" role="tablist">
                 <div class="container">
+
+
+  <div id="categories"></div>
+  <div id="lookingfor"></div>
+  <div id="skills"></div>
+
+
                     <a href="index.html#home" aria-controls="#home" role="tab" data-toggle="tab" class="title-info-tag active text-left pull-left">
                         <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/discover_icon.svg" class="title-info-icon"></object>
                         Recently Published
@@ -197,24 +204,29 @@ $index->setSettings(array(
 
 <div id="hits"></div>
 
+
+
 <script type="text/html" id="hit-template">
 <div class="col-md-4">  
   <div class="hit">
    
     <div class="hit-content">
+    <a href="profile.php?id={{objectID}}">
+    <div class="search-column-box">
+    <div class="left-column-search"><img src="photo/{{{image_path}}}"/></div>
+    <div class="right-column-search">
       <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
       <div class="hit-location">{{{_highlightResult.location.value}}}</div>
       <div class="hit-position">Position: {{{_highlightResult.position.value}}}</div>
-      <div class="hit-lookingfor">Looking for a {{{_highlightResult.lookingfor.value}}} as a {{{_highlightResult.asa.value}}}</div>
+      <div class="hit-lookingfor">Available as a {{{_highlightResult.lookingfor.value}}}</div>
       <div class="hit-skills-title">Skills:</div>
+    
+     
+   </a>   
 
-
-
-      
-	  <div class="hit-skills">{{{_highlightResult.skills.value}}}</div>
-		
-
-
+		  {{#skills}}<div class="hit-skills">{{.}}</div>{{/skills}} 
+   </div> 
+</div>  
 
 
 
@@ -228,61 +240,10 @@ $index->setSettings(array(
 
 
                     
-                    <div class="col-md-4">
-                        <div onclick="location.href='/startups/juicero';" class="startup-card">
-                            <a href="startups/juicero.html">
-                                <img src="https://d3tr6q264l867m.cloudfront.net/media/media/images/startup/logo/Webp.net-resizeimage.png" class="startup-card-image">
-                                <h3 class="startup-card-name bold">
-
-
-
-
-                                    <a href="regions/united-states-of-america.html"><span class="pull-right"><img src="https://d3tr6q264l867m.cloudfront.net/static/flags/us.gif" data-toggle="tooltip" data-placement="bottom" title="United States of America"> </span></a></h3>
-                                <p class="startup-card-description">
-                                    First home cold-pressed juicing system
-                                </p>
-                                <div class="startup-tags-container">
-                                    
-                                        <a href="markets/food-and-beverage.html"><button type="button" class="startup-card-tag" style="background:#356459;">Food and Beverage</button></a>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                   
+                   
                     
-                    <div class="col-md-4">
-                        <div onclick="location.href='/startups/shuddle';" class="startup-card">
-                            <a href="startups/shuddle.html">
-                                <img src="https://d3tr6q264l867m.cloudfront.net/media/media/images/startup/logo/shuddle-logo.png" class="startup-card-image">
-                                <h3 class="startup-card-name bold">Shuddle    <a href="regions/united-states-of-america.html"><span class="pull-right"><img src="https://d3tr6q264l867m.cloudfront.net/static/flags/us.gif" data-toggle="tooltip" data-placement="bottom" title="United States of America"> </span></a></h3>
-                                <p class="startup-card-description">
-                                    An uber for kids
-                                </p>
-                                <div class="startup-tags-container">
-                                    
-                                        <a href="markets/transportation.html"><button type="button" class="startup-card-tag" style="background:#681b99;">Transportation</button></a>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div onclick="location.href='/startups/color-labs';" class="startup-card">
-                            <a href="startups/color-labs.html">
-                                <img src="https://d3tr6q264l867m.cloudfront.net/media/media/images/startup/logo/3211215_300x300.jpg" class="startup-card-image">
-                                <h3 class="startup-card-name bold">Color Labs    <a href="regions/united-states-of-america.html"><span class="pull-right"><img src="https://d3tr6q264l867m.cloudfront.net/static/flags/us.gif" data-toggle="tooltip" data-placement="bottom" title="United States of America"> </span></a></h3>
-                                <p class="startup-card-description">
-                                    Social application for photos
-                                </p>
-                                <div class="startup-tags-container">
-                                    
-                                        <a href="markets/photography.html"><button type="button" class="startup-card-tag" style="background:#0c845a;">Photography</button></a>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                 
                     
                 </div>
                 
@@ -303,10 +264,6 @@ $index->setSettings(array(
             <div role="tabpanel" class="tab-pane fadein" id="recently_closed">
                 <div class="row endless_page_template">
                     
-
-
-
-
                         
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
                         <script src="https://d3tr6q264l867m.cloudfront.net/static/el-pagination/js/el-pagination.min.js"></script>

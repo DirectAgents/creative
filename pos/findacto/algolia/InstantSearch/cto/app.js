@@ -5,6 +5,13 @@ var search = instantsearch({
   urlSync: true
 });
 
+
+
+
+
+
+
+
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#search-input',
@@ -38,17 +45,6 @@ search.addWidget(
 );
 
 
-search.addWidget(
-  instantsearch.widgets.refinementList({
-    container: '#positions',
-    attributeName: 'position',
-    operator: 'or',
-    limit: 10,
-    templates: {
-      header: 'I am a:'
-    }
-  })
-);
 
 
 
@@ -69,13 +65,23 @@ search.addWidget(
   instantsearch.widgets.refinementList({
     container: '#skills',
     attributeName: 'skills',
-    operator: 'or',
+    operator: 'and',
     limit: 10,
     templates: {
-      header: 'Skills Required:'
+      header: 'Skills Required:',
     }
   })
 );
+
+
+
+
+
+
+
+
+
+
 
 
 

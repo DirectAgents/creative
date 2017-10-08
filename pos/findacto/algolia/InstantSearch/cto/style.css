@@ -22,6 +22,22 @@ main {
   margin-left: 26%;
 }
 
+.left-column-search {
+  float: left;
+  width: 30%;
+  padding-top:20px;
+}
+
+.left-column-search img{
+  max-width:80px;
+}
+
+
+.right-column-search {
+  float:left;
+  width: 70%;
+}
+
 .clear:after {
   content: '';
   display: table;
@@ -164,6 +180,9 @@ h2.hit-name {
     color: rgba(0,0,0,.7)!important;
 }
 
+#lookingfor{float:left; width:100%; padding:20px;}
+#skills{float:left; width:100%; padding:20px;}
+
 .hit-lookingfor {
     font-size: .9em;
     margin-top: 5px;
@@ -206,6 +225,7 @@ h2.hit-name {
     border: 0;
     font-size: .8em;
     margin-top: 15px;
+    margin-right:5px;
 }
 
 .hit-content em {
@@ -388,7 +408,22 @@ h2.hit-name {
 .ais-price-ranges--item {
   cursor: pointer;
   line-height: 1.5em;
+
+transition: background .15s ease;
+    background: #e6e6e6;
+    padding: 10px 10px 6px;
+    border: 0;
+    max-width: 200px;
+    font-size: .75em;
+    border-radius: 2px;
+    margin-right: 10px;
+    float:left;
+
 }
+
+
+
+
 .ais-hierarchical-menu--list .ais-hierarchical-menu--item {
   margin: 3px 0;
 }
@@ -595,6 +630,11 @@ a.clear-all:hover {
 
 .ais-show-more__active:before {
   content: "\f146";
+}
+
+.ais-refinement-list--checkbox{
+  /*position:absolute;
+  left:-999px;*/
 }
 
 /* Active filters */

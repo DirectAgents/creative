@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Sun Yue",
+    "skills": ["PHP","Ajax"],
+    "points": 6
+  },
+  {
+    "name": "Arron Afflalo",
+    "skills": ["Web"],
+    "points": 724
+  },
+  {
+    "name": "Alexis Ajinca",
+    "skills": ["IOS"],
+    "points": 10
+  }
+]
