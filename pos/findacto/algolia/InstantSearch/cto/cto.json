@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Catherine Missal",
+    "location": "New York, NY",
+    "about": "I am etc...",
+    "skills": "Swift, PHP",
+    "workexamples": "testing app",
+    "interestedindustries": "Finance",
+    "position": "CEO",
+    "lookingfor": "IOS Developer",
+    "asa": "CTO",
+    "for": "Equity",
+    "rating": 4875,
+    "image_path": "/g3fsRgEoMxaqPayIMtGDWERqJ6A.jpg",
+    "alternative_name": null,
+    "objectID": "551486300"
+  },
+   {
+    "name": "Jim Doe",
+    "location": "New York, NY",
+    "about": "I am etc...",
+    "skills": "Ruby on Rails",
+    "workexamples": "testing app",
+    "interestedindustries": "Fashion",
+    "position": "CEO",
+    "lookingfor": "Android Developer",
+    "asa": "CTO",
+    "for": "Equity",
+    "rating": 4875,
+    "image_path": "/g3fsRgEoMxaqPayIMtGDWERqJ6A.jpg",
+    "alternative_name": null,
+    "objectID": "551486301"
+  },
+   {
+    "name": "Peter Hans",
+    "location": "New York, NY",
+    "about": "I am etc...",
+    "skills": "Python",
+    "workexamples": "testing app",
+    "interestedindustries": "Entertainment",
+    "position": "CEO",
+    "lookingfor": "Python Developer",
+    "asa": "CTO",
+    "for": "Equity",
+    "rating": 4875,
+    "image_path": "/g3fsRgEoMxaqPayIMtGDWERqJ6A.jpg",
+    "alternative_name": null,
+    "objectID": "551486302"
+  }
+
+]

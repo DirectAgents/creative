@@ -1,22 +1,20 @@
 <?php
 
 // if you are not using composer
-require_once('../algoliasearch-client-php-master/algoliasearch.php');
+require_once('../../algoliasearch-client-php-master/algoliasearch.php');
 
 
 $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
 
-$index = $client->initIndex('your_index_name');
+$index = $client->initIndex('cto2');
 
 
 
 $index->setSettings(array(
   "searchableAttributes" => [
     
-    "name"
-  ],
-  "customRanking" => [
-    "desc(popularity)"
+    "name",
+    "category"
   ]
 ));
 
@@ -42,16 +40,15 @@ $index->setSettings(array(
   <main>
 
 
-
+<div id="categories"></div>
 <div id="hits"></div>
-<div id="hits-container"></div>
 
 <script type="text/html" id="hit-template">
   <div class="hit">
    
     <div class="hit-content">
     
-      <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
+      <h2 class="hit-name"><a href="#">{{{_highlightResult.name.value}}}</a></h2>
     
     </div>
   </div>
