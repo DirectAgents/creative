@@ -74,6 +74,11 @@ search.addWidget(
 );
 
 
+search.addWidget(
+  instantsearch.widgets.pagination({
+    container: '#pagination'
+  })
+);
 
 
 

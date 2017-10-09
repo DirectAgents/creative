@@ -120,7 +120,7 @@ $index->setSettings(array(
 	
 	  
   
-       <input type="text" class="algolia-autocomplete light" id="search-input" placeholder="Search Skills or Name" />
+       <input type="text" class="algolia-autocomplete light" id="search-input" placeholder="Search by Skills or Name" />
        <!-- We use a specific placeholder in the input to guides users in their search. -->
    
 
@@ -135,20 +135,13 @@ $index->setSettings(array(
 
                 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html" class="navbar-text">Home</a></li>
-                    <li><a href="regions.html" class="navbar-text">Regions</a></li>
-                    <li><a href="markets.html" class="navbar-text">Markets</a></li>
-                    <li>
-                        <div class="btn-group">
-                              <button type="button" class="dropdown-toggle center-block text-center elipsis-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-option-horizontal"> </i></button>
-                              <ul class="dropdown-menu dropdown-menu-nav dropdown-mobile">
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="mailto:contact@collapsed.co">Email Us</a></li>
-                              </ul>
-                        </div>
-                    </li>
+                    <li><a href="index.html" class="navbar-text">FAQ</a></li>
+                    <li><a href="regions.html" class="navbar-text">About</a></li>
+                     <li><a href="regions.html" class="navbar-text">Contact</a></li>
+                   
                     
                         <li><a><button class="button-filled"  data-toggle="modal" data-target="#signin">Sign In</button></a></li>
+                        <li><a><button class="button-filled"  data-toggle="modal" data-target="#signin">Sign Up</button></a></li>
                     
                 </ul>
             </div>
@@ -164,7 +157,7 @@ $index->setSettings(array(
 
     <div class="container">
         <div class="title-card text-center light" id="startchange">
-            <span class="bold">Welcome to Collapsed</span>,  the best place to learn lessons from failed startups
+            <span class="bold">Welcome to Collapsed</span>,  where technical and non-technical cofounders collide
         </div>
 
         <!-- Tab panes -->
@@ -239,7 +232,7 @@ $index->setSettings(array(
 </main>
 
 
-                    
+    <div id="pagination"></div>                
                    
                    
                     
@@ -247,35 +240,9 @@ $index->setSettings(array(
                     
                 </div>
                 
-                <div class="row endless_page_template">
-                    
-
-
-    <div class="endless_container">
-        <a class="endless_more" href="index-page=2.html"
-            rel="page">Show More</a>
-        <div class="endless_loading" style="display: none;">Loading</div>
-    </div>
-
-
-
-                </div>
+              
             </div>
-            <div role="tabpanel" class="tab-pane fadein" id="recently_closed">
-                <div class="row endless_page_template">
-                    
-                        
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                        <script src="https://d3tr6q264l867m.cloudfront.net/static/el-pagination/js/el-pagination.min.js"></script>
-                        <script>
-                            $.endlessPaginate({
-                                paginateOnScroll: true,
-                                paginateOnScrollMargin: 40
-                            });
-                        </script>
-                    
-                </div>
-            </div>
+          
         </div>
 
     </div>
@@ -284,35 +251,13 @@ $index->setSettings(array(
     </div>
 
 
-    <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="container center-block">
-            <div class="signup-container center-block">
-                <button type="button" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
-
-                <div class="signup-card center-block">
-                    <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
-                    <h2 class="signup-card-title bold text-center">Sign in to become an Early Adopter!</h2>
-                    <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
-                    <div class="container-fluid">
-                        <div class="row">
-                        <div class="col-md-6">
-                            <a href="https://collapsed.co/accounts/facebook/login/"><button type="button" class="center-block signup-brand-card facebook">Sign In With Facebook</button></a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="https://collapsed.co/accounts/twitter/login/"><button type="button" class="center-block signup-brand-card twitter">Sign In With Twitter</button></a>
-                        </div>
-                        </div>
-
-                    </div>
-                    <p class="signup-light text-center">We won't ever post anything on Facebook or Twitter without your permission.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <footer class="footer-container">
         <div class="container">
+         <p class="footer-content pull-left"> &copy Collapsed 2017</p>
+            <a href="/privacy-policy" target="_blank" class="footer-content2 pull-right">Terms & Privacy Policy</a>
+            <a href="/cookie-policy" target="_blank" class="footer-content2 pull-right">Cookie Policy</a>
         </div>
     </footer>
 
