@@ -61,6 +61,70 @@ $(document).ready(function(){
 <script type="text/javascript">
 $(document).ready(function() {
 
+
+	//##### send add record Ajax request to response.php #########
+	$("#SubmitSuggestCategory").click(function (e) {
+			e.preventDefault();
+			if($("#contentSuggestcategory").val()==='')
+			{
+				alert("Please enter some text!");
+				return false;
+			}
+			
+			$("#SubmitSuggestCategory").hide(); //hide submit button
+			$("#LoadingImage").show(); //show loading image
+			
+		 	var myData = 'content_suggestcategory='+ $("#contentSuggestcategory").val()+'&content_suggestcategory_source='+ $("#content_suggestcategory_source").val(); //build a post data structure
+			jQuery.ajax({
+			type: "POST", // HTTP method POST or GET
+			url: "response.php", //Where to make Ajax calls
+			dataType:"text", // Data type, HTML, json etc.
+			data:myData, //Form variables
+			success:function(response){
+				$("#respondssuggestcategory").append(response);
+				$("#contentSuggestcategory").val(''); //empty text field on successful
+				//$("#contentBookLink").val(''); //empty text field on successful
+				$("#SubmitBook").show(); //show submit button
+				$("#LoadingImage").hide(); //hide loading image
+
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				$("#SubmitSuggestCategory").show(); //show submit button
+				$("#LoadingImage").hide(); //hide loading image
+				alert(thrownError);
+			}
+			});
+	});
+
+	//##### Send delete Ajax request to response.php #########
+	$("body").on("click", "#respondssuggestcategory .del_button", function(e) {
+		 e.preventDefault();
+		 var clickedID = this.id.split('-'); //Split ID string (Split works as PHP explode)
+		 var DbNumberID = clickedID[1]; //and get number from array
+		 //alert(DbNumberID);
+		 var myData = 'recordToDelete='+ DbNumberID; //build a post data structure
+		 
+		$("#"+DbNumberID).addClass( "sel" ); //change background of this element by adding class
+		$("#"+DbNumberID).hide(); //hide currently clicked delete button
+		 
+			jQuery.ajax({
+			type: "POST", // HTTP method POST or GET
+			url: "response.php", //Where to make Ajax calls
+			dataType:"text", // Data type, HTML, json etc.
+			data:myData, //Form variables
+			success:function(response){
+				//on success, hide  element user wants to delete.
+				$(DbNumberID).fadeOut();
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				//On error, we alert user
+				alert(thrownError);
+			}
+			});
+	});
+
+
+
 	//##### send add record Ajax request to response.php #########
 	$("#SubmitBook").click(function (e) {
 			e.preventDefault();
@@ -252,18 +316,146 @@ $(document).ready(function() {
 
 
 
-$(".books").click(function (e) { $(".box").addClass("hide"); $("#books").removeClass("hide"); });
-$(".meetupgroups").click(function (e) { $(".box").addClass("hide"); $("#meetupgroups").removeClass("hide");});	
-$(".startuplawyers").click(function (e) { $(".box").addClass("hide"); $("#startuplawyers").removeClass("hide");});	
-$(".bootstrap").click(function (e) { $(".box").addClass("hide"); $("#bootstrap").removeClass("hide");});	
-$(".wisetips").click(function (e) { $(".box").addClass("hide"); $("#wisetips").removeClass("hide");});	
-$(".onlinecourses").click(function (e) { $(".box").addClass("hide"); $("#onlinecourses").removeClass("hide");});	
-$(".offlinecourses").click(function (e) { $(".box").addClass("hide"); $("#offlinecourses").removeClass("hide");});	
-$(".youtube_entrepreneurs").click(function (e) { $(".box").addClass("hide"); $("#youtube_entrepreneurs").removeClass("hide");});	
-$(".apps").click(function (e) { $(".box").addClass("hide"); $("#apps").removeClass("hide");});	
-$(".accelerators").click(function (e) { $(".box").addClass("hide"); $("#accelerators").removeClass("hide");});	
-$(".incubators").click(function (e) { $(".box").addClass("hide"); $("#incubators").removeClass("hide");});	
-$(".chromeextension").click(function (e) { $(".box").addClass("hide"); $("#chromeextension").removeClass("hide");});	
+	//##### send add record Ajax request to response.php #########
+	$("#SubmitBootstrap").click(function (e) {
+			e.preventDefault();
+			if($("#contentBootstrap").val()==='')
+			{
+				alert("Please enter some text!");
+				return false;
+			}
+			
+			$("#SubmitBootstrap").hide(); //hide submit button
+			$("#LoadingImage").show(); //show loading image
+			
+		 	var myData = 'content_bootstrap='+ $("#contentBootstrap").val()+'&content_bootstrap_link='+ $("#contentBootstrapLink").val(); //build a post data structure
+			jQuery.ajax({
+			type: "POST", // HTTP method POST or GET
+			url: "response.php", //Where to make Ajax calls
+			dataType:"text", // Data type, HTML, json etc.
+			data:myData, //Form variables
+			success:function(response){
+				$("#respondsbootstrap").append(response);
+				$("#contentBootstrap").val(''); //empty text field on successful
+				$("#contentBootstrapLink").val(''); //empty text field on successful
+				$("#SubmitBootstrap").show(); //show submit button
+				$("#LoadingImage").hide(); //hide loading image
+
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				$("#SubmitStartuplawyers").show(); //show submit button
+				$("#LoadingImage").hide(); //hide loading image
+				alert(thrownError);
+			}
+			});
+	});
+
+	//##### Send delete Ajax request to response.php #########
+	$("body").on("click", "#respondsbootstrap .del_button", function(e) {
+		 e.preventDefault();
+		 var clickedID = this.id.split('-'); //Split ID string (Split works as PHP explode)
+		 var DbNumberID = clickedID[1]; //and get number from array
+		 //alert(DbNumberID);
+		 var myData = 'recordToDelete='+ DbNumberID; //build a post data structure
+		 
+		$("#"+DbNumberID).addClass( "sel" ); //change background of this element by adding class
+		$("#"+DbNumberID).hide(); //hide currently clicked delete button
+		 
+			jQuery.ajax({
+			type: "POST", // HTTP method POST or GET
+			url: "response.php", //Where to make Ajax calls
+			dataType:"text", // Data type, HTML, json etc.
+			data:myData, //Form variables
+			success:function(response){
+				//on success, hide  element user wants to delete.
+				$(DbNumberID).fadeOut();
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				//On error, we alert user
+				alert(thrownError);
+			}
+			});
+	});
+
+
+
+
+	//##### send add record Ajax request to response.php #########
+	$("#SubmitEvents").click(function (e) {
+			e.preventDefault();
+			if($("#contentEvents").val()==='')
+			{
+				alert("Please enter some text!");
+				return false;
+			}
+			
+			$("#SubmitEvents").hide(); //hide submit button
+			$("#LoadingImage").show(); //show loading image
+			
+		 	var myData = 'content_events='+ $("#contentEvents").val()+'&content_events_link='+ $("#contentEventsLink").val(); //build a post data structure
+			jQuery.ajax({
+			type: "POST", // HTTP method POST or GET
+			url: "response.php", //Where to make Ajax calls
+			dataType:"text", // Data type, HTML, json etc.
+			data:myData, //Form variables
+			success:function(response){
+				$("#respondsevents").append(response);
+				$("#contentEvents").val(''); //empty text field on successful
+				$("#contentEventsLink").val(''); //empty text field on successful
+				$("#SubmitEvents").show(); //show submit button
+				$("#LoadingImage").hide(); //hide loading image
+
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				$("#SubmitEvents").show(); //show submit button
+				$("#LoadingImage").hide(); //hide loading image
+				alert(thrownError);
+			}
+			});
+	});
+
+	//##### Send delete Ajax request to response.php #########
+	$("body").on("click", "#respondsevents .del_button", function(e) {
+		 e.preventDefault();
+		 var clickedID = this.id.split('-'); //Split ID string (Split works as PHP explode)
+		 var DbNumberID = clickedID[1]; //and get number from array
+		 //alert(DbNumberID);
+		 var myData = 'recordToDelete='+ DbNumberID; //build a post data structure
+		 
+		$("#"+DbNumberID).addClass( "sel" ); //change background of this element by adding class
+		$("#"+DbNumberID).hide(); //hide currently clicked delete button
+		 
+			jQuery.ajax({
+			type: "POST", // HTTP method POST or GET
+			url: "response.php", //Where to make Ajax calls
+			dataType:"text", // Data type, HTML, json etc.
+			data:myData, //Form variables
+			success:function(response){
+				//on success, hide  element user wants to delete.
+				$(DbNumberID).fadeOut();
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				//On error, we alert user
+				alert(thrownError);
+			}
+			});
+	});
+
+
+
+$(".books").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#books").removeClass("hide"); });
+$(".meetupgroups").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#meetupgroups").removeClass("hide");});	
+$(".startuplawyers").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#startuplawyers").removeClass("hide");});	
+$(".bootstrap").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#bootstrap").removeClass("hide");});	
+$(".wisetips").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#wisetips").removeClass("hide");});	
+$(".onlinecourses").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#onlinecourses").removeClass("hide");});	
+$(".offlinecourses").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#offlinecourses").removeClass("hide");});	
+$(".youtube_entrepreneurs").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#youtube_entrepreneurs").removeClass("hide");});	
+$(".apps").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#apps").removeClass("hide");});	
+$(".accelerators").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#accelerators").removeClass("hide");});	
+$(".incubators").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#incubators").removeClass("hide");});	
+$(".chromeextension").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#chromeextension").removeClass("hide");});	
+$(".events").click(function (e) { e.preventDefault(); $(".box").addClass("hide"); $("#events").removeClass("hide");});	
 
 
 
@@ -280,6 +472,20 @@ $(".chromeextension").click(function (e) { $(".box").addClass("hide"); $("#chrom
 
 <div class="note">Note.: The one at the top is your #1 favorite. Enter each based in order of your own recommendation</div>
 
+<div class="note">
+Suggest a new category:
+
+ <div class="col_left">
+    <input type="text" name="content_suggestcategory" id="contentSuggestcategory" placeholder="Enter a Category you like to add your recommendations to"/>
+    <input type="hidden" name="content_suggestcategory_source" id="content_suggestcategory_source" value="I want to be an entrepreneur"/>
+    
+    </div>
+<button id="SubmitSuggestCategory" class="btn">+</button>
+
+</div>
+
+
+
 <div class="tags"><a href="#" class="books">Books</a></div>
 <div class="tags"><a href="#" class="meetupgroups">Meetup Groups</a></div>
 <div class="tags"><a href="#" class="startuplawyers">Startup Lawyers</a></div>
@@ -292,6 +498,7 @@ $(".chromeextension").click(function (e) { $(".box").addClass("hide"); $("#chrom
 <div class="tags"><a href="#" class="accelerators">Accelerators</a></div>
 <div class="tags"><a href="#" class="incubators">Incubators</a></div>
 <div class="tags"><a href="#" class="chromeextension">Chrome Extensions</a></div>
+<div class="tags"><a href="#" class="events">Events to attend</a></div>
 
 
 <div class="outter-box">
@@ -489,6 +696,9 @@ while($row = $results_meetupgroup->fetch_assoc())
 </div>
 
 
+
+
+
 <div class="outter-box">
 
 <div class="box hide" id="bootstrap">
@@ -498,16 +708,16 @@ while($row = $results_meetupgroup->fetch_assoc())
     
  <div class="col">   
     <div class="col_left">
-   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Enter here"/>
+   <input type="text" name="content_bootstrap" id="contentBootstrap" placeholder="Enter here"/>
 	</div>
 
 	 <div class="col_right">
-    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    <input type="text" name="content_bootstrap_link" id="contentBootstrapLink" placeholder="URL"/>
     </div>
  
     
 
-    <button id="SubmitMeetup" class="btn">+</button>
+    <button id="SubmitBootstrap" class="btn">+</button>
     <img src="images/loading.gif" id="LoadingImage" style="display:none" />
 
 	</div>
@@ -517,13 +727,13 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 
 
-<ul id="respondsmeetup" class="the-list">
+<ul id="respondsbootstrap" class="the-list">
 <?php
 //include db configuration file
 //include_once("config.php");
 
 //MySQL query
-$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Bootstrap != '' ORDER BY page_order ASC");
 //get all records from add_delete_record table
 
 if(mysqli_num_rows($results_meetupgroup) != 0) {
@@ -536,11 +746,11 @@ while($row = $results_meetupgroup->fetch_assoc())
   echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
   echo '<img src="images/icon_del.gif" border="0" />';
   echo '</a></div>';
-  if(!empty($row["Meetup_Group_Link"])){
-  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
-  echo $row["Meetup_Group"].'</a>';
+  if(!empty($row["Bootstrap_Link"])){
+  echo '<a href="'.$row["Bootstrap_Link"].'" target="_blank">';
+  echo $row["Bootstrap"].'</a>';
   }else{
-  echo $row["Meetup_Group"];
+  echo $row["Bootstrap"];
   }
   echo '</li>';
 }
@@ -1052,6 +1262,69 @@ while($row = $results_meetupgroup->fetch_assoc())
   echo $row["Meetup_Group"].'</a>';
   }else{
   echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+<div class="box hide" id="events">
+
+ <div class="form_style">
+    <h3>Recommended <span class="blue">Events</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_events" id="contentEvents" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_events_link" id="contentEventsLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitEvents" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsevents" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Events != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Events_Link"])){
+  echo '<a href="'.$row["Events_Link"].'" target="_blank">';
+  echo $row["Events"].'</a>';
+  }else{
+  echo $row["Events"];
   }
   echo '</li>';
 }
