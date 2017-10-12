@@ -13,25 +13,39 @@ h3{font-size:15px;}
 
 .outter-box{float:left; width:100%;}
 
+.hide{display:none;}
+
 .box
    {
     float:left;
     border:1px dotted #ccc;
     padding:0px 10px 10px 10px;
-    margin:0px 20px 20px 0;
-    width:400px;
-	min-width: 400px;
-	max-width: 400px;
+    margin-top:30px;
+    margin-bottom:150px;
+    width:100%;
+	min-width: 650px;
+	max-width: 650px;
    }
+
+
+.tags{
+	float:left;
+    transition: background .15s ease;
+    background: #e6e6e6;
+    padding: 10px;
+    border: 0;
+    max-width: 350px;
+    margin-right: 10px;
+    margin-top:10px;
+    }  
 
   
 
 .del_wrapper{float:right;}
 .content_wrapper {
-	/*max-width: 400px;
+	max-width: 1024px;
 	margin-right: auto;
-	margin-left: auto;*/
-	float:left;
+	margin-left: auto;
 	width:100%;
 }
 
@@ -44,7 +58,7 @@ h3{font-size:15px;}
 
 .form_style input[type="text"] {
 	border: 1px solid #CCCCCC;
-	width:auto; 
+	width:250px; 
 	padding:10px;
 	margin-right:5px;
 }
@@ -89,6 +103,38 @@ h3{font-size:15px;}
 }
 
 
+
+@media screen and (min-width: 481px) and (max-width: 780px) {
+
+.box
+   {
+    float:left;
+    border:1px dotted #ccc;
+    padding:0px 10px 10px 10px;
+    margin-top:30px;
+    width:100%;
+	min-width: 450px;
+	max-width: 450px;
+   }
+
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+.box
+   {
+    float:left;
+    border:1px dotted #ccc;
+    padding:0px 10px 10px 10px;
+    margin-top:30px;
+    width:100%;
+	min-width: 350px;
+	max-width: 350px;
+   }
+
+}
 
 
 

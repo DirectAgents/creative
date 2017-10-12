@@ -24,18 +24,24 @@ $_SESSION['userID'] = 1;
 
 <script>
 $(document).ready(function(){
- $( "#respondsbook" ).sortable({
+
+
+
+
+
+
+ $( ".the-list" ).sortable({
   placeholder : "ui-state-highlight",
   update  : function(event, ui)
   {
    var page_id_array = new Array();
-   $('#respondsbook li').each(function(){
+   $('.the-list li').each(function(){
     page_id_array.push($(this).attr("id"));
    });
    $.ajax({
     url:"update.php",
     method:"POST",
-    data:{page_id_array:page_id_array,category:'Book'},
+    data:{page_id_array:page_id_array},
     success:function(data)
     {
      //alert(data);
@@ -45,25 +51,6 @@ $(document).ready(function(){
  });
 
 
- $( "#respondsmeetup" ).sortable({
-  placeholder : "ui-state-highlight",
-  update  : function(event, ui)
-  {
-   var page_id_array = new Array();
-   $('#respondsmeetup li').each(function(){
-    page_id_array.push($(this).attr("id"));
-   });
-   $.ajax({
-    url:"update.php",
-    method:"POST",
-    data:{page_id_array:page_id_array,category:'Meetup_Group'},
-    success:function(data)
-    {
-     //alert(data);
-    }
-   });
-  }
- });
 
 });
 </script>
@@ -200,6 +187,87 @@ $(document).ready(function() {
 			});
 	});
 
+
+
+	//##### send add record Ajax request to response.php #########
+	$("#SubmitStartuplawyers").click(function (e) {
+			e.preventDefault();
+			if($("#contentStartuplawyers").val()==='')
+			{
+				alert("Please enter some text!");
+				return false;
+			}
+			
+			$("#SubmitStartuplawyers").hide(); //hide submit button
+			$("#LoadingImage").show(); //show loading image
+			
+		 	var myData = 'content_startuplawyers='+ $("#contentStartuplawyers").val()+'&content_startuplawyers_link='+ $("#contentStartuplawyersLink").val(); //build a post data structure
+			jQuery.ajax({
+			type: "POST", // HTTP method POST or GET
+			url: "response.php", //Where to make Ajax calls
+			dataType:"text", // Data type, HTML, json etc.
+			data:myData, //Form variables
+			success:function(response){
+				$("#respondsstartuplawyers").append(response);
+				$("#contentStartuplawyers").val(''); //empty text field on successful
+				$("#contentStartuplawyersLink").val(''); //empty text field on successful
+				$("#SubmitStartuplawyers").show(); //show submit button
+				$("#LoadingImage").hide(); //hide loading image
+
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				$("#SubmitStartuplawyers").show(); //show submit button
+				$("#LoadingImage").hide(); //hide loading image
+				alert(thrownError);
+			}
+			});
+	});
+
+	//##### Send delete Ajax request to response.php #########
+	$("body").on("click", "#respondsstartuplawyers .del_button", function(e) {
+		 e.preventDefault();
+		 var clickedID = this.id.split('-'); //Split ID string (Split works as PHP explode)
+		 var DbNumberID = clickedID[1]; //and get number from array
+		 //alert(DbNumberID);
+		 var myData = 'recordToDelete='+ DbNumberID; //build a post data structure
+		 
+		$("#"+DbNumberID).addClass( "sel" ); //change background of this element by adding class
+		$("#"+DbNumberID).hide(); //hide currently clicked delete button
+		 
+			jQuery.ajax({
+			type: "POST", // HTTP method POST or GET
+			url: "response.php", //Where to make Ajax calls
+			dataType:"text", // Data type, HTML, json etc.
+			data:myData, //Form variables
+			success:function(response){
+				//on success, hide  element user wants to delete.
+				$(DbNumberID).fadeOut();
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				//On error, we alert user
+				alert(thrownError);
+			}
+			});
+	});
+
+
+
+$(".books").click(function (e) { $(".box").addClass("hide"); $("#books").removeClass("hide"); });
+$(".meetupgroups").click(function (e) { $(".box").addClass("hide"); $("#meetupgroups").removeClass("hide");});	
+$(".startuplawyers").click(function (e) { $(".box").addClass("hide"); $("#startuplawyers").removeClass("hide");});	
+$(".bootstrap").click(function (e) { $(".box").addClass("hide"); $("#bootstrap").removeClass("hide");});	
+$(".wisetips").click(function (e) { $(".box").addClass("hide"); $("#wisetips").removeClass("hide");});	
+$(".onlinecourses").click(function (e) { $(".box").addClass("hide"); $("#onlinecourses").removeClass("hide");});	
+$(".offlinecourses").click(function (e) { $(".box").addClass("hide"); $("#offlinecourses").removeClass("hide");});	
+$(".youtube_entrepreneurs").click(function (e) { $(".box").addClass("hide"); $("#youtube_entrepreneurs").removeClass("hide");});	
+$(".apps").click(function (e) { $(".box").addClass("hide"); $("#apps").removeClass("hide");});	
+$(".accelerators").click(function (e) { $(".box").addClass("hide"); $("#accelerators").removeClass("hide");});	
+$(".incubators").click(function (e) { $(".box").addClass("hide"); $("#incubators").removeClass("hide");});	
+$(".chromeextension").click(function (e) { $(".box").addClass("hide"); $("#chromeextension").removeClass("hide");});	
+
+
+
+
 });
 </script>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -211,11 +279,24 @@ $(document).ready(function() {
  <h2>Things you recommend to someone who wants to be an <strong>Entrepreneur</strong></h2>
 
 <div class="note">Note.: The one at the top is your #1 favorite. Enter each based in order of your own recommendation</div>
-    
+
+<div class="tags"><a href="#" class="books">Books</a></div>
+<div class="tags"><a href="#" class="meetupgroups">Meetup Groups</a></div>
+<div class="tags"><a href="#" class="startuplawyers">Startup Lawyers</a></div>
+<div class="tags"><a href="#" class="bootstrap">Top 5 tips on how to Bootstrap</a></div>
+<div class="tags"><a href="#" class="wisetips">Wise Tips to become an entrepreneur</a></div>
+<div class="tags"><a href="#" class="onlinecourses">Online Courses</a></div>
+<div class="tags"><a href="#" class="offlinecourses">Offline Courses</a></div>
+<div class="tags"><a href="#" class="youtube_entrepreneurs">Entrepreneurs to follow on YouTube</a></div>
+<div class="tags"><a href="#" class="apps">Apps for aspiring Entrepreneurs</a></div>
+<div class="tags"><a href="#" class="accelerators">Accelerators</a></div>
+<div class="tags"><a href="#" class="incubators">Incubators</a></div>
+<div class="tags"><a href="#" class="chromeextension">Chrome Extensions</a></div>
+
 
 <div class="outter-box">
 
-<div class="box">
+<div class="box hide" id="books">
 
  <div class="form_style">
     <h3>Recommended <span class="blue">Books</span></h3>
@@ -277,7 +358,7 @@ while($row = $results_book->fetch_assoc())
 
 
 
-<div class="box">
+<div class="box hide" id="meetupgroups">
 
  <div class="form_style">
     <h3>Recommended <a href="https://www.meetup.com/" target="_blank">Meetup.com</a> Groups</h3>
@@ -344,23 +425,23 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 
 
-<div class="box">
+<div class="box hide" id="startuplawyers">
 
  <div class="form_style">
     <h3>Recommended <span class="blue">Startup Lawyers</span></h3>
     
  <div class="col">   
     <div class="col_left">
-   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+   <input type="text" name="content_startuplawyers" id="contentStartuplawyers" placeholder="Name"/>
 	</div>
 
 	 <div class="col_right">
-    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    <input type="text" name="content_startuplawyers_link" id="contentStartuplawyersLink" placeholder="URL"/>
     </div>
  
     
 
-    <button id="SubmitMeetup" class="btn">+</button>
+    <button id="SubmitStartuplawyers" class="btn">+</button>
     <img src="images/loading.gif" id="LoadingImage" style="display:none" />
 
 	</div>
@@ -369,13 +450,13 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 
 
-<ul id="respondsmeetup" class="the-list">
+<ul id="respondsstartuplawyers" class="the-list">
 <?php
 //include db configuration file
 //include_once("config.php");
 
 //MySQL query
-$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Startuplawyers != '' ORDER BY page_order ASC");
 //get all records from add_delete_record table
 
 if(mysqli_num_rows($results_meetupgroup) != 0) {
@@ -388,11 +469,11 @@ while($row = $results_meetupgroup->fetch_assoc())
   echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
   echo '<img src="images/icon_del.gif" border="0" />';
   echo '</a></div>';
-  if(!empty($row["Meetup_Group_Link"])){
-  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
-  echo $row["Meetup_Group"].'</a>';
+  if(!empty($row["Startuplawyers_Link"])){
+  echo '<a href="'.$row["Startuplawyers_Link"].'" target="_blank">';
+  echo $row["Startuplawyers"].'</a>';
   }else{
-  echo $row["Meetup_Group"];
+  echo $row["Startuplawyers"];
   }
   echo '</li>';
 }
@@ -410,14 +491,14 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 <div class="outter-box">
 
-<div class="box">
+<div class="box hide" id="bootstrap">
 
  <div class="form_style">
     <h3>Top 5 tips on how to <span class="blue">Bootstrap</span></h3>
     
  <div class="col">   
     <div class="col_left">
-   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Enter here"/>
 	</div>
 
 	 <div class="col_right">
@@ -476,14 +557,14 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 
 
-<div class="box">
+<div class="box hide" id="wisetips">
 
  <div class="form_style">
     <h3>Wise Tips <span class="blue">to become an entrepreneur</span></h3>
     
  <div class="col">   
     <div class="col_left">
-   <input type="text" name="content_meetup" id="contentMeetup"/>
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="ex. Never Give Up!" />
 	</div>
 
 	
@@ -538,10 +619,10 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 
 
-<div class="box">
+<div class="box hide" id="onlinecourses">
 
  <div class="form_style">
-    <h3>Recommended <span class="blue">online courses</span></h3>
+    <h3>Recommended <span class="blue">Online Courses</span></h3>
     
  <div class="col">   
     <div class="col_left">
@@ -604,10 +685,10 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 <div class="outter-box">
 
-<div class="box">
+<div class="box hide" id="offlinecourses">
 
  <div class="form_style">
-    <h3>Recommended <span class="blue">offline courses</span></h3>
+    <h3>Recommended <span class="blue">Offline Courses</span></h3>
     
  <div class="col">   
     <div class="col_left">
@@ -668,10 +749,10 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 
 
-<div class="box">
+<div class="box hide" id="youtube_entrepreneurs">
 
  <div class="form_style">
-    <h3>Recommended entrepreneurs to follow on <span class="blue"><a href="https://www.youtube.com/" target="_blank">YouTube</a></span></h3>
+    <h3>Recommended <span class="blue">Entrepreneurs to follow on <a href="https://www.youtube.com/" target="_blank">YouTube</a></span></h3>
     
  <div class="col">   
     <div class="col_left">
@@ -732,10 +813,200 @@ while($row = $results_meetupgroup->fetch_assoc())
 
 
 
-<div class="box">
+<div class="box hide" id="apps">
 
  <div class="form_style">
-    <h3>Recommended entrepreneurs to follow on <span class="blue"><a href="https://www.youtube.com/" target="_blank">YouTube</a></span></h3>
+    <h3>Recommended <span class="blue">Apps for aspiring Entrepreneurs</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+
+<div class="box hide" id="accelerators">
+
+ <div class="form_style">
+    <h3>Recommended <span class="blue">Accelerator Programs</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+<div class="box hide" id="incubators">
+
+ <div class="form_style">
+    <h3>Recommended <span class="blue">Incubator Programs</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+<div class="box hide" id="chromeextension">
+
+ <div class="form_style">
+    <h3>Recommended <span class="blue">Chrome Extensions</span></h3>
     
  <div class="col">   
     <div class="col_left">
