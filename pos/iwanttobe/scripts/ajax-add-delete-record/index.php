@@ -4,7 +4,7 @@ session_start();
 
 $_SESSION['userID'] = 1;
 
-echo $_SESSION['userID'];
+//echo $_SESSION['userID'];
 
 ?>
 
@@ -12,6 +12,7 @@ echo $_SESSION['userID'];
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Ajax Add/Delete a Record with jQuery Fade In/Fade Out</title>
+
 
 
 
@@ -34,7 +35,28 @@ $(document).ready(function(){
    $.ajax({
     url:"update.php",
     method:"POST",
-    data:{page_id_array:page_id_array},
+    data:{page_id_array:page_id_array,category:'Book'},
+    success:function(data)
+    {
+     //alert(data);
+    }
+   });
+  }
+ });
+
+
+ $( "#respondsmeetup" ).sortable({
+  placeholder : "ui-state-highlight",
+  update  : function(event, ui)
+  {
+   var page_id_array = new Array();
+   $('#respondsmeetup li').each(function(){
+    page_id_array.push($(this).attr("id"));
+   });
+   $.ajax({
+    url:"update.php",
+    method:"POST",
+    data:{page_id_array:page_id_array,category:'Meetup_Group'},
     success:function(data)
     {
      //alert(data);
@@ -129,7 +151,7 @@ $(document).ready(function() {
 			$("#SubmitMeetup").hide(); //hide submit button
 			$("#LoadingImage").show(); //show loading image
 			
-		 	var myData = 'content_meetup='+ $("#contentMeetup").val(); //build a post data structure
+		 	var myData = 'content_meetup='+ $("#contentMeetup").val()+'&content_meetup_link='+ $("#contentMeetupLink").val(); //build a post data structure
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
 			url: "response.php", //Where to make Ajax calls
@@ -138,6 +160,7 @@ $(document).ready(function() {
 			success:function(response){
 				$("#respondsmeetup").append(response);
 				$("#contentMeetup").val(''); //empty text field on successful
+				$("#contentMeetupLink").val(''); //empty text field on successful
 				$("#SubmitMeetup").show(); //show submit button
 				$("#LoadingImage").hide(); //hide loading image
 
@@ -155,10 +178,11 @@ $(document).ready(function() {
 		 e.preventDefault();
 		 var clickedID = this.id.split('-'); //Split ID string (Split works as PHP explode)
 		 var DbNumberID = clickedID[1]; //and get number from array
+		 //alert(DbNumberID);
 		 var myData = 'recordToDelete='+ DbNumberID; //build a post data structure
 		 
-		$(DbNumberID).addClass( "sel" ); //change background of this element by adding class
-		$(this).hide(); //hide currently clicked delete button
+		$("#"+DbNumberID).addClass( "sel" ); //change background of this element by adding class
+		$("#"+DbNumberID).hide(); //hide currently clicked delete button
 		 
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
@@ -181,8 +205,40 @@ $(document).ready(function() {
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+
 <div class="content_wrapper">
-<ul id="respondsbook">
+
+ <h2>Things you recommend to someone who wants to be an <strong>Entrepreneur</strong></h2>
+
+<div class="note">Note.: The one at the top is your #1 favorite. Enter each based in order of your own recommendation</div>
+    
+
+<div class="outter-box">
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Recommended <span class="blue">Books</span></h3>
+     <div class="col">  
+    <div class="col_left">
+    <input type="text" name="content_book" id="contentBook" placeholder="Enter name of Book"/>
+    </div>
+
+    <div class="col_right">
+    <input type="text" name="content_book_link" id="contentBookLink" placeholder="Link to the Book (optional)"/>
+    </div>
+    
+
+    <button id="SubmitBook" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+
+	</div>
+
+</div>
+
+
+<ul id="respondsbook" class="the-list">
 <?php
 //include db configuration file
 include_once("config.php");
@@ -216,56 +272,532 @@ while($row = $results_book->fetch_assoc())
 ?>
 </ul>
 
-<input type="hidden" name="page_order_list" id="page_order_list" />
+</div>
 
-    <div class="form_style">
-    <h3>Your Favorite Books</h3>
+
+
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Recommended <a href="https://www.meetup.com/" target="_blank">Meetup.com</a> Groups</h3>
+    
+ <div class="col">   
     <div class="col_left">
-    <input type="text" name="content_book" id="contentBook" placeholder="Enter name of Book"/>
-    </div>
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
 
-    <div class="col_right">
-    <input type="text" name="content_book_link" id="contentBookLink" placeholder="Link to the Book (optional)"/>
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
     </div>
+ 
     
 
-    <button id="SubmitBook">Add Your Favorite Books</button>
+    <button id="SubmitMeetup" class="btn">+</button>
     <img src="images/loading.gif" id="LoadingImage" style="display:none" />
 
-    </div>
+	</div>
+
+</div>
 
 
-<ul id="respondsmeetup">
+
+
+<ul id="respondsmeetup" class="the-list">
 <?php
 //include db configuration file
 //include_once("config.php");
 
 //MySQL query
-$results_meetupgroup = $mysqli->query("SELECT id,Meetup_Group FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != ''");
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
 //get all records from add_delete_record table
 
 if(mysqli_num_rows($results_meetupgroup) != 0) {
 
 while($row = $results_meetupgroup->fetch_assoc())
 {
+ 
+
   echo '<li id="'.$row["id"].'">';
   echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
   echo '<img src="images/icon_del.gif" border="0" />';
   echo '</a></div>';
-  echo $row["Meetup_Group"].'</li>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
 }
 }
 
 //close db connection
-$mysqli->close();
+//$mysqli->close();
 ?>
 </ul>
-    <div class="form_style">
-    <input type="text" name="content_meetup" id="contentMeetup" placeholder="Enter name of Meetup Group"/>
-    <button id="SubmitMeetup">Add Your Favorite Meetup Groups</button>
-    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
-    </div>
 
+</div>
+
+
+
+
+
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Recommended <span class="blue">Startup Lawyers</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="outter-box">
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Top 5 tips on how to <span class="blue">Bootstrap</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Wise Tips <span class="blue">to become an entrepreneur</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup"/>
+	</div>
+
+	
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Recommended <span class="blue">online courses</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="outter-box">
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Recommended <span class="blue">offline courses</span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Recommended entrepreneurs to follow on <span class="blue"><a href="https://www.youtube.com/" target="_blank">YouTube</a></span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+
+<div class="box">
+
+ <div class="form_style">
+    <h3>Recommended entrepreneurs to follow on <span class="blue"><a href="https://www.youtube.com/" target="_blank">YouTube</a></span></h3>
+    
+ <div class="col">   
+    <div class="col_left">
+   <input type="text" name="content_meetup" id="contentMeetup" placeholder="Name"/>
+	</div>
+
+	 <div class="col_right">
+    <input type="text" name="content_meetup_link" id="contentMeetupLink" placeholder="URL"/>
+    </div>
+ 
+    
+
+    <button id="SubmitMeetup" class="btn">+</button>
+    <img src="images/loading.gif" id="LoadingImage" style="display:none" />
+
+	</div>
+
+</div>
+
+
+
+<ul id="respondsmeetup" class="the-list">
+<?php
+//include db configuration file
+//include_once("config.php");
+
+//MySQL query
+$results_meetupgroup = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order ASC");
+//get all records from add_delete_record table
+
+if(mysqli_num_rows($results_meetupgroup) != 0) {
+
+while($row = $results_meetupgroup->fetch_assoc())
+{
+ 
+
+  echo '<li id="'.$row["id"].'">';
+  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row["id"].'">';
+  echo '<img src="images/icon_del.gif" border="0" />';
+  echo '</a></div>';
+  if(!empty($row["Meetup_Group_Link"])){
+  echo '<a href="'.$row["Meetup_Group_Link"].'" target="_blank">';
+  echo $row["Meetup_Group"].'</a>';
+  }else{
+  echo $row["Meetup_Group"];
+  }
+  echo '</li>';
+}
+}
+
+//close db connection
+//$mysqli->close();
+?>
+</ul>
+
+</div>
+
+
+
+
+</div>
+  
 
 </div>
 

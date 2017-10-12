@@ -26,7 +26,7 @@ $(document).ready(function(){
     data:{page_id_array:page_id_array},
     success:function(data)
     {
-     alert(data);
+     //alert(data);
     }
    });
   }

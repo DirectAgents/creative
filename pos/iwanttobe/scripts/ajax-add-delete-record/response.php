@@ -14,7 +14,7 @@ include_once("config.php");
 	
 	
 	// Insert sanitize string in record
-	$select_row = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' ORDER BY page_order DESC ");
+	$select_row = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Book != '' ORDER BY page_order DESC ");
 	$row = mysqli_fetch_array($select_row);
 
 	$page_order = $row['page_order'] + 1; 
@@ -97,11 +97,25 @@ if(isset($_POST["content_meetup"]) && strlen($_POST["content_meetup"])>0) {	//ch
 
 	//sanitize post value, PHP filter FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH Strip tags, encode special characters.
 	$contentToSave = filter_var($_POST["content_meetup"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
+	$contentToSave_MeetupLink = filter_var($_POST["content_meetup_link"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); 
 	
+
+	if(strpos($contentToSave_MeetupLink, "http://") !== false){
+
+		$contentToSave_MeetupLink = $contentToSave_MeetupLink;
+	
+	}else{
+		$contentToSave_MeetupLink = 'http://'.$contentToSave_MeetupLink;
+	}
 	
 	// Insert sanitize string in record
 	//$select_row = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' ");
 
+	// Insert sanitize string in record
+	$select_row = $mysqli->query("SELECT * FROM i_want_to_be_an_entrepreneur WHERE userID = '".$_SESSION['userID']."' AND Meetup_Group != '' ORDER BY page_order DESC ");
+	$row = mysqli_fetch_array($select_row);
+
+	$page_order = $row['page_order'] + 1; 
 	
 	
 	//if(mysqli_num_rows($select_row) == 0) {
@@ -109,7 +123,8 @@ if(isset($_POST["content_meetup"]) && strlen($_POST["content_meetup"])>0) {	//ch
 
 	// Insert sanitize string in record
 
-	$insert_row = $mysqli->query("INSERT INTO i_want_to_be_an_entrepreneur(userID,Meetup_Group) VALUES('".$_SESSION['userID']."','".$contentToSave."')");
+	$insert_row = $mysqli->query("INSERT INTO i_want_to_be_an_entrepreneur(userID,Meetup_Group,Meetup_Group_Link,page_order) VALUES('".$_SESSION['userID']."','".$contentToSave."', '".$contentToSave_MeetupLink."','".$page_order."')");
+
 
 	if($insert_row)
 	{
@@ -120,7 +135,13 @@ if(isset($_POST["content_meetup"]) && strlen($_POST["content_meetup"])>0) {	//ch
 		  echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$my_id.'">';
 		  echo '<img src="images/icon_del.gif" border="0" />';
 		  echo '</a></div>';
-		  echo $contentToSave.'</li>';
+		  if(!empty($contentToSave_MeetupLink)){
+		  echo '<a href="'.$contentToSave_MeetupLink.'" target="_blank">';
+		  echo $contentToSave.'</a>';
+		  }else{
+		  echo $contentToSave;
+		  }
+		  echo '</li>';
 		  $mysqli->close(); //close db connection
 
 	}else{
