@@ -479,22 +479,14 @@ Provide and Receive recommendations to and from your fellow members.
 </div>
 
 
-<div class="note">I 
+<div class="note">I am a <input type="text" name="content_events" id="contentEvents" placeholder="ex. Bookkeeper, Entrepreneur"/>
 
-<select>
-<option>want to be</option>
-<option>am</option>
-</select> 
+<input type="submit" value="Sign up"/>
 
-<select>
-<option>an Entrepreneur</option>
-<option>a Doctor</option>
-<option>a Lawyer</option>
-<option>a Software Engineer</option>
-</select>
+</div>
 
-</a></div>
 
+Sign up then show google login, facebook and linkedin sign up option
 
 
 <div class="outter-box">
