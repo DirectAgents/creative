@@ -1,0 +1,140 @@
+body
+   {
+    margin:0;
+    padding:30px;
+    background-color:#fff;
+   }
+
+h2{font-size:20px;}
+h3{font-size:15px;}
+
+
+.blue{color:#1c77b9;}
+
+.outter-box{float:left; width:100%;}
+
+.hide{display:none;}
+
+.box
+   {
+    float:left;
+    border:1px dotted #ccc;
+    padding:0px 10px 10px 10px;
+    margin-top:30px;
+    margin-bottom:150px;
+    width:100%;
+	min-width: 650px;
+	max-width: 650px;
+   }
+
+
+.tags{
+	float:left;
+    transition: background .15s ease;
+    background: #e6e6e6;
+    padding: 10px;
+    border: 0;
+    max-width: 350px;
+    margin-right: 10px;
+    margin-top:10px;
+    }  
+
+  
+
+.del_wrapper{float:right;}
+.content_wrapper {
+	max-width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	width:100%;
+}
+
+.note{float:left; padding:10px 0 30px 0; width:100%; }
+
+.form_style{float:left; width:100%;}
+.form_style .col{float:left; width:100%;}
+.form_style .col_left{float:left;}
+.form_style .col_right{float:left;}
+
+.form_style input[type="text"] {
+	border: 1px solid #CCCCCC;
+	width:250px; 
+	padding:10px;
+	margin-right:5px;
+}
+.form_style button.btn {
+	display: block;
+	border-radius: 0px;
+	background: #6C93AD;
+	border: 1px solid #4B6170;
+	color: #FFFFFF;
+	margin-top: 5px;
+	padding: 6px 9px 6px 9px;
+	float:left;
+}
+.the-list{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+
+ .the-list li
+   {
+    padding:16px;
+    background-color:#f9f9f9;
+    border:1px dotted #ccc;
+    cursor:move;
+    margin-top:12px;
+    float:left;
+    width:100%;
+   }
+ .the-list li.ui-state-highlight
+   {
+    padding:24px;
+    background-color:#ffffcc;
+    border:1px dotted #ccc;
+    cursor:move;
+    margin-top:12px;
+   }
+
+.the-list li.sel {
+	background: rgb(255, 221, 221);
+}
+
+
+
+@media screen and (min-width: 481px) and (max-width: 780px) {
+
+.box
+   {
+    float:left;
+    border:1px dotted #ccc;
+    padding:0px 10px 10px 10px;
+    margin-top:30px;
+    width:100%;
+	min-width: 450px;
+	max-width: 450px;
+   }
+
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+.box
+   {
+    float:left;
+    border:1px dotted #ccc;
+    padding:0px 10px 10px 10px;
+    margin-top:30px;
+    width:100%;
+	min-width: 350px;
+	max-width: 350px;
+   }
+
+}
+
+
+
