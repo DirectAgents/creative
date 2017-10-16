@@ -1,10 +1,6 @@
-body { font-family: Helvetica, Arial, sans-serif; color: #333; margin: 10px; width: 960px }
 #posterframe { position: absolute; right: 10px; top: 10px; }
-h1 { color: #0e2953; font-size: 18px; }
-h2 { color: #666; font-size: 16px; }
-p { font-size: 14px; line-height: 18px; }
 #logo { height: 51px; width: 241px; }
-a { color: #0b63b6 }
+
 
 .upload_link { display: block; color: #000; border: 1px solid #aaa; background-color: #e0e0e0; 
 	font-size: 18px; padding: 5px 10px; width: 150px; margin: 10px 0 20px 0; 
@@ -22,8 +18,7 @@ a { color: #0b63b6 }
 .inline { display: inline-block; }
 td { vertical-align: top; padding-right: 5px; }
 
-#backend_upload, #direct_upload { padding: 20px 20px; margin: 20px 0; 
-	border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
+#backend_upload, #direct_upload { padding: 20px 20px; margin: 20px 0;  }
 	
 #backend_upload h1, #direct_upload h1 { margin: 0 0 15px 0; }	
 
@@ -32,18 +27,18 @@ td { vertical-align: top; padding-right: 5px; }
 .status { position: absolute; top: 20px; left: 500px; text-align: center; border: 1px solid #aaa; 
 	padding: 10px; width: 200px } 
 
-.uploaded_info { margin: 10px}
+.uploaded_info { float:left; margin-top:20px;}
 .uploaded_info .image { margin: 5px 0 }
 .uploaded_info td { padding-right: 10px }
 
 
 
  .drag_area{
-	width: 421px;
-    height: 55px;
+	width: 461px;
+    height: 85px;
     border: 4px dashed #ccc;
     margin-top: 8px;
-    padding:20px 20px 0px 20px;
+    padding:20px 20px 20px 20px;
 
 }
 
@@ -69,4 +64,4 @@ td { vertical-align: top; padding-right: 5px; }
 }
 
 
-input.cloudinary-fileupload{float:left; max-width:200px; padding-top:6px;}
+input.cloudinary-fileupload{float:left; max-width:200px; padding-top:4px;}

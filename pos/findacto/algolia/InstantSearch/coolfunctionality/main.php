@@ -1,13 +1,14 @@
 <?php
-namespace PhotoAlbum {
+  namespace PhotoAlbum {
   require 'lib/rb.php';
-  require '../../src/Cloudinary.php';
-  require '../../src/Uploader.php';
-  require '../../src/Api.php'; // Only required for creating upload presets on the fly
+  require 'src/Cloudinary.php';
+  require 'src/Uploader.php';
+  require 'src/Api.php'; // Only required for creating upload presets on the fly
   error_reporting(E_ALL | E_STRICT);
 
   // Sets up Cloudinary's parameters and RB's DB
   include 'settings.php';
+
 
   // Global settings
   if (array_key_exists('REQUEST_SCHEME', $_SERVER)) {
@@ -44,13 +45,18 @@ namespace PhotoAlbum {
     error_reporting($saved_error_reporting);
   }
 
+
+
   function create_photo_model($options = array()) {
+
+
     $photo = \R::dispense('photo');
 
     foreach ( $options as $key => $value ) {
       if ($key != 'tags') {
         $photo->{$key} = $value;
-        $photo->userID = 'testing';
+        $photo->userID = '911';
+        $photo->submissionID = $_SESSION['submissionID'] ;
       }
     }
 

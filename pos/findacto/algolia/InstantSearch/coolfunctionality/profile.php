@@ -1,4 +1,10 @@
+<?php
+header("Access-Control-Allow-Origin: *");
+session_start();
+require 'main.php';
+require 'config.php';
 
+?>
 <!DOCTYPE html>
 
 
@@ -59,7 +65,40 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-      
+
+    <link href="style2.css" media="all" rel="stylesheet" />
+
+    <link rel="shortcut icon"
+     href="<?php echo cloudinary_url("http://cloudinary.com/favicon.png",
+           array("type" => "fetch")); ?>" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.12.5/js/vendor/jquery.ui.widget.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.12.5/js/jquery.iframe-transport.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.12.5/js/jquery.fileupload.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-jquery-file-upload/2.1.2/cloudinary-jquery-file-upload.js"></script>
+    <?php echo cloudinary_js_config(); ?>
+
+
+ 
+
+ <!--<script type="text/javascript">
+    $(document).ready(function(){
+        $("#count-submissions").click(function(){
+
+            $.ajax({
+                type: 'POST',
+                url: 'count-submission.php',
+                success: function(data) {
+                    //alert(data);
+                    $("#count_submission").text(data);
+
+                }
+            });
+   });
+});
+</script>
+-->
 
   </head>
 
@@ -153,24 +192,20 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            
-                <div class="profile-content-container">
-                    <div class="profile-content-header-container">
-                        <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/icons/globe-icon.png" class="pull-left profile-content-header-image"></object>
-                        <h4 class="profile-content-header-title bold">Introduction</h4>
-                    </div>
-                    <div class="profile-content-description">
-                        Please enter your description
-                    </div>
-                </div>
-            
-        </div>
-        <div class="col-md-6">
+      
+        <div class="col-md-9">
             <div class="profile-tabs-container over_scroll-wrapper" id="myTabs" role="tablist">
-                <a href="#submissions" aria-controls="#submissions" role="tab" data-toggle="tab">
-                    Submissions - 0
+                <a href="#submissions" id="count-submissions" aria-controls="#submissions" role="tab" data-toggle="tab">
+                    Submissions -
+
+                    <?php
+                    $query = "SELECT COUNT(*) FROM submission WHERE userID = '911' GROUP BY userID";
+$result = mysqli_query($connecDB,$query);
+$rows = mysqli_fetch_row($result);
+echo $rows[0];
+                    ?>
                 </a>
+
                
                 <a href="#following" id='following_button' aria-controls="#following" role="tab" data-toggle="tab">
                     Following - 0
@@ -178,12 +213,33 @@
                 <a href="#followers" id='followers_button' aria-controls="#followers" role="tab" data-toggle="tab">
                     Followers - 0
                 </a>
+
+                <a href="#submit-functionality" id='followers_button' aria-controls="#submit-functionality" role="tab" data-toggle="tab">
+                    Submit New
+                </a>
+
             </div>
             <div class="tab-content">
+
+            <div role="tabpanel" class="tab-pane fade in" id="submit-functionality">
+
+
+
+<iframe src="upload_backend.php" width="100%" height="600"></iframe>
+
+
+
+            </div>
 
                 <div role="tabpanel" class="tab-pane fade in" id="submissions">
                     
                         <p class="text-center no-contributions"> This user hasn't contributed anything yet. </p>
+
+
+
+ 
+
+
                     
                 </div>
                 
@@ -273,38 +329,58 @@
         </div>
     </footer>
 
+     <script>
+      function prettydump(obj) {
+        ret = "";
+        $.each(obj, function(key, value) {
+          ret += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+        });
+        return ret;
+      }
+      
+      $(function() {
+        $('.cloudinary-fileupload')
+        .cloudinary_fileupload({
+          dropZone: '#direct_upload',
+          start: function () {
+            $('.status_value').text('Starting direct upload...');
+          },
+          progress: function () {
+            $('.status_value').text('Uploading...');
+          }
+        })
+        .on('cloudinarydone', function (e, data) {
+            $('.status_value').text('Idle');
+            $.post('upload_complete.php', data.result);
+            var info = $('<div class="uploaded_info"/>');
+            //$(info).append($('<div class="data"/>').append(prettydump(data.result)));
+            $(info).append($('<div class="image"/>').append(
+              $.cloudinary.image(data.result.public_id, {
+                  format: data.result.format, width: 150, height: 150, crop: "fill"
+              })
+            ));
+            $('.uploaded_info_holder').append(info);
+        });
+      });
+    </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+
+
+    
 
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/bootstrap.min.js"></script>
     <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/bootstrap.offcanvas.min.js"></script>
-    <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/mainapp_sdk.min.js"></script>
     <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/script.min.js"></script>
-    <script>
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+
     
      
-    <script src="https://d3tr6q264l867m.cloudfront.net/static/trumbowyg/dist/trumbowyg.min.js"></script>
-    <script src="https://d3tr6q264l867m.cloudfront.net/static/selectize/js/standalone/selectize.min.js"></script>
-    <script>
-        var question_slug = "";
-        var username = "alper-dilmen";
+ 
 
-        $('.view_answer').trumbowyg({
-            btns: [],
-            disabled: true,
-            resetCss: true,
-            removeformatPasted: true
-        });
-    </script>
+   
 
 
   </body>

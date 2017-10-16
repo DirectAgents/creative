@@ -42,32 +42,24 @@ require 'main.php';
       ?>
     </div>
 
-    
+    <!-- A standard form for sending the image data to your server -->
+    <div id='backend_upload'>
+      <h1>Upload through your server</h1>
+      <form action="upload_backend.php" method="post" enctype="multipart/form-data">
+        <input id="fileupload" type="file" name="files[]" multiple accept="image/gif, image/jpeg, image/png">
+        <input type="submit" value="Upload">
+      </form>
+    </div>
 
     
     <!-- A form for direct uploading using a jQuery plug-in. 
           The cl_image_upload_tag PHP function generates the required HTML and JavaScript to
           allow uploading directly from the browser to your Cloudinary account -->
     <?php
-      $unsigned = "1";
+      $unsigned = isset($_GET["unsigned"]) && $_GET["unsigned"] == "1";
     ?>
-
-
     <div id='direct_upload'>
       <h1>Direct <?php if ($unsigned) echo "unsigned "; ?>upload from the browser</h1>
-
-      
-<div class="main_upload_holder">
-<div class="drag_area main_drag_area">
-<div class="drag_inner">
-<span>
-Drop files here
-<span class="small">or</span>
-</span>
-<div class="upload_button_holder">
-<div class="upload_button_inner_holder">
-
-
       <form>
       <?php
         if ($unsigned) {
@@ -89,19 +81,8 @@ Drop files here
           echo cl_image_upload_tag('test', array("tags" => "direct_photo_album", "callback" => $cors_location, "html" => array("multiple" => true)));
         }
       ?>
-      
+      <a href="?unsigned=<?php echo !$unsigned; ?>"><?php echo $unsigned ? "Use signed upload" : "Use unsigned upload"; ?></a>
       </form>
-
-
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-
-
     <!-- status box -->
     <div class="status">
       <h2>Status</h2>
@@ -138,7 +119,7 @@ Drop files here
             $('.status_value').text('Idle');
             $.post('upload_complete.php', data.result);
             var info = $('<div class="uploaded_info"/>');
-            //$(info).append($('<div class="data"/>').append(prettydump(data.result)));
+            $(info).append($('<div class="data"/>').append(prettydump(data.result)));
             $(info).append($('<div class="image"/>').append(
           	  $.cloudinary.image(data.result.public_id, {
             	  format: data.result.format, width: 150, height: 150, crop: "fill"
