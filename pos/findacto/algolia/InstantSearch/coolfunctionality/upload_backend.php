@@ -106,13 +106,18 @@ while($row2 = mysqli_fetch_array($sql2))
 
 <div style="float:left; width:100%; margin-top:20px;">
 
-<div style="float:left">
-<img src="<?php echo $row2['url'];?>" width="200"/>
+<div style="float:left; width:100%;">
+
+
+<img src="hhttp://res.cloudinary.com/dgml9ji66/image/upload/v1508209556/w_100,h_150,c_fit/Screen%20Shot%202017-06-18%20at%209.31.43%20PM.png"/>
+
+
+
 </div>
 
-<div style="float:left">
+<div style="float:left; width:100%;">
 <input type="hidden" name="version" id="version" value="<?php echo $row2['version']; ?>"/>
-<textarea style="width:100%; height:100px;" name="description" id="description"><?php echo $row2['description']; ?></textarea>
+<textarea style="width:100px; height:100px;" name="description" id="description"><?php echo $row2['description']; ?></textarea>
 
 <div style="float:left; width:100%; margin-top:20px;">
 
