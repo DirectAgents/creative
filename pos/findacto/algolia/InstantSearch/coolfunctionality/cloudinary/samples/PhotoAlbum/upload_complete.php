@@ -9,7 +9,6 @@ $existing_signature = \Cloudinary::option_consume($_POST, "signature");
 $to_sign = array(
     'public_id' => $_POST['public_id'],
     'version' => $_POST['version'],
-    
 );
 $calculated_signature = \Cloudinary::api_sign_request($to_sign, $api_secret);
 

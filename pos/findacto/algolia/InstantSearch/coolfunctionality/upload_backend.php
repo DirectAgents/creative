@@ -90,6 +90,20 @@ if(mysqli_num_rows($sql) == 0)
       </form>
     </div>
 
+
+
+
+<?php echo cl_image_tag("FS-FLEX185-300x300.jpg.jpg", 
+                        array("width" => 200, "height" => 150, "crop" => "fill")); ?>
+
+
+
+
+<img src='http://res.cloudinary.com/dgml9ji66/image/upload//c_fill,h_150,w_150/v1/c_fill,h_150,w_150/v1/v1508370902/FS-FLEX185-300x300.jpg.jpg' height='75' width='50'/>
+
+
+<img height="150" width="150" src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_150,w_150/v1/screenshots/kmgikwqrondxdfdmid6s.png">
+
  <?php }else{ ?>
 
 

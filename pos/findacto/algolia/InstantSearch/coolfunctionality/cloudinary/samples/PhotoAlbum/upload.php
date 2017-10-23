@@ -8,7 +8,7 @@ require 'main.php';
     <meta charset="utf-8">
     <title>PhotoAlbum - Upload page2</title>
 
-	<link href="style.css" media="all" rel="stylesheet" />
+  <link href="style.css" media="all" rel="stylesheet" />
 
     <link rel="shortcut icon"
      href="<?php echo cloudinary_url("http://cloudinary.com/favicon.png",
@@ -23,7 +23,7 @@ require 'main.php';
   </head>
   
   <body>
-  	
+    
     <div id="logo">
       <!-- This will render the image fetched from a remote HTTP URL using Cloudinary -->
       <?php echo fetch_image_tag("http://cloudinary.com/images/logo.png") ?>
@@ -42,39 +42,30 @@ require 'main.php';
       ?>
     </div>
 
-    
+    <!-- A standard form for sending the image data to your server -->
+    <div id='backend_upload'>
+      <h1>Upload through your server</h1>
+      <form action="upload_backend.php" method="post" enctype="multipart/form-data">
+        <input id="fileupload" type="file" name="files[]" multiple accept="image/gif, image/jpeg, image/png">
+        <input type="submit" value="Upload">
+      </form>
+    </div>
 
     
     <!-- A form for direct uploading using a jQuery plug-in. 
           The cl_image_upload_tag PHP function generates the required HTML and JavaScript to
           allow uploading directly from the browser to your Cloudinary account -->
     <?php
-      $unsigned = "1";
+      $unsigned = isset($_GET["unsigned"]) && $_GET["unsigned"] == "1";
     ?>
-
-
     <div id='direct_upload'>
       <h1>Direct <?php if ($unsigned) echo "unsigned "; ?>upload from the browser</h1>
-
-      
-<div class="main_upload_holder">
-<div class="drag_area main_drag_area">
-<div class="drag_inner">
-<span>
-Drop files here
-<span class="small">or</span>
-</span>
-<div class="upload_button_holder">
-<div class="upload_button_inner_holder">
-
-
       <form>
       <?php
         if ($unsigned) {
           # For the sake of simplicity of the sample site, we generate the preset on the fly. It only needs to be created once, in advance.
           $api = new \Cloudinary\Api();
-          //$upload_preset = "sample_" . substr(sha1(Cloudinary::config_get("api_key") . Cloudinary::config_get("api_secret")), 0, 10);
-          $upload_preset = "scnk5xom";
+          $upload_preset = "sample_" . substr(sha1(Cloudinary::config_get("api_key") . Cloudinary::config_get("api_secret")), 0, 10);
           try {
               $api->upload_preset($upload_preset);
           } catch (\Cloudinary\Api\NotFound $e) {
@@ -89,19 +80,8 @@ Drop files here
           echo cl_image_upload_tag('test', array("tags" => "direct_photo_album", "callback" => $cors_location, "html" => array("multiple" => true)));
         }
       ?>
-      
+      <a href="?unsigned=<?php echo !$unsigned; ?>"><?php echo $unsigned ? "Use signed upload" : "Use unsigned upload"; ?></a>
       </form>
-
-
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-
-
     <!-- status box -->
     <div class="status">
       <h2>Status</h2>
@@ -138,11 +118,11 @@ Drop files here
             $('.status_value').text('Idle');
             $.post('upload_complete.php', data.result);
             var info = $('<div class="uploaded_info"/>');
-            //$(info).append($('<div class="data"/>').append(prettydump(data.result)));
+            $(info).append($('<div class="data"/>').append(prettydump(data.result)));
             $(info).append($('<div class="image"/>').append(
-          	  $.cloudinary.image(data.result.public_id, {
-            	  format: data.result.format, width: 150, height: 150, crop: "fill"
-          	  })
+              $.cloudinary.image(data.result.public_id, {
+                format: data.result.format, width: 150, height: 150, crop: "fill"
+              })
             ));
             $('.uploaded_info_holder').append(info);
         });
@@ -150,4 +130,3 @@ Drop files here
     </script>
   </body> 
 </html>
-

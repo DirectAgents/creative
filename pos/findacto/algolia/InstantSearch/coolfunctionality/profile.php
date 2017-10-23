@@ -353,10 +353,10 @@ echo $rows[0];
             $('.status_value').text('Idle');
             $.post('upload_complete.php', data.result);
             var info = $('<div class="uploaded_info"/>');
-            //$(info).append($('<div class="data"/>').append(prettydump(data.result)));
+            $(info).append($('<div class="data"/>').append(prettydump(data.result)));
             $(info).append($('<div class="image"/>').append(
               $.cloudinary.image(data.result.public_id, {
-                  format: data.result.format, width: 150, height: 150, crop: "fill"
+                format: data.result.format, width: 150, height: 150, crop: "fill"
               })
             ));
             $('.uploaded_info_holder').append(info);

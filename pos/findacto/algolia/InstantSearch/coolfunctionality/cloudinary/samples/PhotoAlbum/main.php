@@ -50,7 +50,6 @@ namespace PhotoAlbum {
     foreach ( $options as $key => $value ) {
       if ($key != 'tags') {
         $photo->{$key} = $value;
-        $photo->userID = 'testing';
       }
     }
 

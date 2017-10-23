@@ -1,14 +1,12 @@
 <?php
 require 'main.php';
 
-
 function create_photo( $file_path, $orig_name )
 {
     # Upload the received image file to Cloudinary
     $result = \Cloudinary\Uploader::upload($file_path, array(
             "tags" => "backend_photo_album",
             "public_id" => $orig_name,
-            
     ));
 
     unlink($file_path);
