@@ -34,11 +34,35 @@ require_once('../../algoliasearch-client-php-master/algoliasearch.php');
 </div>
 
 <div id="hits"></div>
-      <div id="pagination"></div>
+
+
+
+<script type="text/html" id="hit-template">
+<div class="col-md-4">  
+  <div class="hit">
+   
+    <div class="hit-content">
+   
+   
+      <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
+    
+  
+
+   </div> 
+</div>  
+
+
+
+    </div>
+  </div>
+ </div>  
+</script>
+
 
 <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
 <script src="app.js"></script>
 
 

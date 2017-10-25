@@ -180,8 +180,10 @@ h2.hit-name {
     color: rgba(0,0,0,.7)!important;
 }
 
-#lookingfor{float:left; width:100%; padding:20px;}
-#skills{float:left; width:100%; padding:20px;}
+#lookingfor{float:left; width:100%;}
+#skills{float:left; width:100%;}
+
+.ais-header {float:left; width:100%; padding:10px 0 10px 0;}
 
 .hit-lookingfor {
     font-size: .9em;

@@ -120,7 +120,7 @@ $index->setSettings(array(
 	
 	  
   
-       <input type="text" class="algolia-autocomplete light" id="search-input" placeholder="Search by Skills or Name" />
+       <input type="text" class="algolia-autocomplete light" id="search-input" placeholder="Search by Programming Skills or Name" />
        <!-- We use a specific placeholder in the input to guides users in their search. -->
    
 
@@ -171,7 +171,7 @@ $index->setSettings(array(
   <div id="skills"></div>
 
 
-                    <a href="index.html#home" aria-controls="#home" role="tab" data-toggle="tab" class="title-info-tag active text-left pull-left">
+                  <!--  <a href="index.html#home" aria-controls="#home" role="tab" data-toggle="tab" class="title-info-tag active text-left pull-left">
                         <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/discover_icon.svg" class="title-info-icon"></object>
                         Recently Published
                     </a>
@@ -179,6 +179,7 @@ $index->setSettings(array(
                         <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/recently_pub.svg" class="title-info-icon"></object>
                         Recently Closed
                     </a>
+                    -->
                 </div>
             </div>
         </div>
@@ -210,7 +211,7 @@ $index->setSettings(array(
     <div class="right-column-search">
       <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
       <div class="hit-location">{{{_highlightResult.location.value}}}</div>
-      <div class="hit-position">Position: {{{_highlightResult.position.value}}}</div>
+      <!--<div class="hit-position">Position: {{{_highlightResult.position.value}}}</div>-->
       <div class="hit-lookingfor">Available as a {{{_highlightResult.lookingfor.value}}}</div>
       <div class="hit-skills-title">Skills:</div>
     
