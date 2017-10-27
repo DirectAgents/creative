@@ -1,7 +1,7 @@
 <?php
 
 // if you are not using composer
-require_once('../../algoliasearch-client-php-master/algoliasearch.php');
+require_once('../algoliasearch-client-php-master/algoliasearch.php');
 
 
 
@@ -34,16 +34,11 @@ require_once('../../algoliasearch-client-php-master/algoliasearch.php');
 </div>
 
 <div id="hits"></div>
-
-
-
-
-
+      <div id="pagination"></div>
 
 <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-
 <script src="app.js"></script>
 
 

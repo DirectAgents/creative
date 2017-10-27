@@ -1,8 +1,27 @@
 [
+
+  {
+    "name": "Alper22 Dilmen",
+    "profileid": "alper-dilmen",
+    "profileimage": "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_40,w_40/sample.jpg",
+    "location": "New York, NY",
+    "about": "I am etc...",
+    "skills": ["Python"],
+    "workexamples": "testing app",
+    "interestedindustries": "Entertainment",
+    "position": "CEO",
+    "lookingfor": "222Technical Co-Founder",
+    "asa": "CTO",
+    "for": "Equity",
+    "rating": 4875,
+    "alternative_name": null,
+    "objectID": "551486302"
+  },
+
   {
     "name": "Catherine Missal",
     "profileid": "catherine-missal",
-    "profileimage": "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_40,r_60,w_40/sample.jpg",
+    "profileimage": "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_40,w_40/sample.jpg",
     "location": "New York, NY",
     "about": "I am etc...",
     "skills": ["Swift", "PHP"],
@@ -19,7 +38,7 @@
    {
     "name": "Jim Doe",
     "profileid": "jim-doe",
-    "profileimage": "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_40,r_60,w_40/sample.jpg",
+    "profileimage": "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_40,w_40/sample.jpg",
     "location": "New York, NY",
     "about": "I am etc...",
     "skills": ["Swift", "PHP", "Ajax"],
@@ -32,23 +51,7 @@
     "rating": 4875,
     "alternative_name": null,
     "objectID": "551486301"
-  },
-   {
-    "name": "Alper Dilmen",
-    "profileid": "alper-dilmen",
-    "profileimage": "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_40,r_60,w_40/sample.jpg",
-    "location": "New York, NY",
-    "about": "I am etc...",
-    "skills": ["Python"],
-    "workexamples": "testing app",
-    "interestedindustries": "Entertainment",
-    "position": "CEO",
-    "lookingfor": "Technical Co-Founder",
-    "asa": "CTO",
-    "for": "Equity",
-    "rating": 4875,
-    "alternative_name": null,
-    "objectID": "551486302"
   }
+  
 
 ]

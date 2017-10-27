@@ -1,6 +1,6 @@
 var client = algoliasearch('F3O2TAOV5W', '5d10153d5309d83a8ac03981d28f2a56');
-var developers = client.initIndex('developers');
-var skills = client.initIndex('skills');
+var players = client.initIndex('nba-players');
+var teams = client.initIndex('nba-teams');
 
 autocomplete(
   '#aa-search-input',
@@ -14,53 +14,39 @@ autocomplete(
   },
   [
     {
-      source: autocomplete.sources.hits(developers, {hitsPerPage: 7}),
+      source: autocomplete.sources.hits(players, {hitsPerPage: 7}),
       displayKey: 'name',
-      name: 'developer',
+      name: 'player',
       templates: {
-        header: '<div class="aa-suggestions-category">Person</div>',
+        header: '<div class="aa-suggestions-category">Players</div>',
         suggestion: function(suggestion) {
-
-          var str = '<span>' +
-          
-            '</span>';
-        for (var i = 0, len = suggestion._highlightResult.skills.length; i < len; i++) {
-          str = str +
-            
-             suggestion._highlightResult.skills[i].value + ' '
-            
-          ;
-        }
-        
-        return str;
-
-        
-
-          
-
-          
+          return (
+            '<span>' +
+            suggestion._highlightResult.name.value +
+            '</span><span>' +
+            suggestion._highlightResult.team.value +
+            '</span>'
+          );
         },
-        empty: '<div class="aa-empty">No matching person found</div>',
+        empty: '<div class="aa-empty">No matching players</div>',
       },
     },
     {
-      source: autocomplete.sources.hits(skills, {hitsPerPage: 5}),
+      source: autocomplete.sources.hits(teams, {hitsPerPage: 5}),
       displayKey: 'name',
-      name: 'name',
+      name: 'team',
       templates: {
-        header: '<div class="aa-suggestions-category">Skills</div>',
+        header: '<div class="aa-suggestions-category">Teams</div>',
         suggestion: function(suggestion) {
-
-
-
-
           return (
             '<img src="' +
             suggestion.logoUrl +
             '">' +
             '<div><span>' +
             suggestion._highlightResult.name.value +
-            '</span><span>' 
+            '</span><span>' +
+            suggestion._highlightResult.location.value +
+            '</span></div>'
           );
         },
         empty: '<div class="aa-empty">No matching teams</div>',

@@ -54,13 +54,7 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
-
-.aa-dropdown-menu a {
-  font-family: "Montserrat", sans-serif;
-}
-
-
-.aa-suggestion a {
+.aa-suggestion {
   padding: 6px 12px;
   cursor: pointer;
   -webkit-transition: .2s;
@@ -70,25 +64,18 @@
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-  /*justify-content: space-between;*/
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
-  /*align-items: center;*/
-  text-decoration: none; 
+          align-items: center;
 }
-
-.aa-suggestion-name{padding:10px 0 0 10px; color:#000; float:left; width:100%; font-size font-family: "Montserrat", sans-serif;}
-.aa-suggestion-location{padding:10px 0 0 10px; float:left; width:100%;}
-
-
-.aa-suggestion a:hover, .aa-suggestion.aa-cursor {
+.aa-suggestion:hover, .aa-suggestion.aa-cursor {
   background-color: rgba(241, 241, 241, 0.35);
 }
-.aa-suggestion a > span:first-child {
+.aa-suggestion > span:first-child {
     color: #333;
-    text-decoration: none; 
     }
-.aa-suggestion a > span:last-child {
+.aa-suggestion > span:last-child {
     text-transform: uppercase;
     color: #a9a9a9;
 }
@@ -99,7 +86,7 @@
   padding: 6px 12px;
   color: #a9a9a9;
 }
-.aa-suggestion a > span:first-child em, .aa-suggestion a > span:last-child em {
+.aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
   font-weight: 700;
   font-style: normal;
   background-color: rgba(58, 150, 207, 0.1);

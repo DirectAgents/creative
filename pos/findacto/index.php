@@ -2,6 +2,7 @@
 
 session_start();
 require_once 'base_path.php';
+require_once 'class.participant.php';
 
 // if you are not using composer
 require_once('algoliasearch-client-php-master/algoliasearch.php');
@@ -9,20 +10,9 @@ require_once('algoliasearch-client-php-master/algoliasearch.php');
 
 $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
 
-$index = $client->initIndex('cto');
+$index = $client->initIndex('developers');
 
 
-
-$index->setSettings(array(
-  "searchableAttributes" => [
-    
-    "name",
-    "location",
-    "lookingfor",
-    "asa",
-    "skills"
-  ]
-));
 
 
 //$batch = json_decode(file_get_contents('actors.json'), true);
@@ -106,50 +96,8 @@ $index->setSettings(array(
 
 
 
-    <nav id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="index.html" class="svg"><object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="navbar-logo"></object>  </a><h2 class="logo-title">Collapsed</h2>
-                <button type="button" class="navbar-toggle offcanvas-toggle" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
+   <?php include 'nav.php'; ?>
 
-            <div class="navbar-header">
-                <div class="nav-search-container">
-	
-	  
-  
-       <input type="text" class="algolia-autocomplete light" id="search-input" placeholder="Search by Programming Skills or Name" />
-       <!-- We use a specific placeholder in the input to guides users in their search. -->
-   
-
-
-
-
-                </div>
-            </div>
-
-
-            <div class="navbar-offcanvas navbar-offcanvas-right navbar-menubuilder" id="js-bootstrap-offcanvas">
-
-                
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html" class="navbar-text">FAQ</a></li>
-                    <li><a href="regions.html" class="navbar-text">About</a></li>
-                     <li><a href="regions.html" class="navbar-text">Contact</a></li>
-                   
-                    
-                        <li><a><button class="button-filled"  data-toggle="modal" data-target="#signin">Sign In</button></a></li>
-                        <li><a><button class="button-filled"  data-toggle="modal" data-target="#signin">Sign Up</button></a></li>
-                    
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     <div class="container-fluid">
 
@@ -170,7 +118,6 @@ $index->setSettings(array(
 
 
   <div id="categories"></div>
-  <div id="lookingfor"></div>
   <div id="skills"></div>
 
 
@@ -210,7 +157,7 @@ $index->setSettings(array(
     <div class="hit-content">
     <a href="profile/{{profileid}}">
     <div class="search-column-box">
-    <div class="left-column-search">{{#image_path}}<img src="photo/{{.}}"/>{{/image_path}}</div>
+    <div class="left-column-search"><img src="{{{_highlightResult.profileimage.value}}}"/></div>
     <div class="right-column-search">
       <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
       <div class="hit-location">{{{_highlightResult.location.value}}}</div>
@@ -220,7 +167,6 @@ $index->setSettings(array(
     
      
    </a>   
-
 		  {{#skills}}<div class="hit-skills">{{.}}</div>{{/skills}} 
 
 		   

@@ -3,30 +3,30 @@
   display: inline-block;
   position: relative;
 }
-.aa-input-search {
-  width: 300px;
-  padding: 12px 28px 12px 12px;
-  border: 2px solid #e4e4e4;
-  border-radius: 4px;
-  -webkit-transition: .2s;
-  transition: .2s;
-  font-family: "Montserrat", sans-serif;
-  box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
-  font-size: 11px;
-  box-sizing: border-box;
-  color: #333;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+.algolia-autocomplete {
+  
+
+    width: 100%;
+    height: 100px;
+    margin-top: 2px;
+    border: 0;
+    padding-left: 30px;
+    background: url(https://cofounderslab.com/img/search/algolia.png) -10px -5px no-repeat #f7f7f7;
+    background-position: center right 2em;
+    border-radius: 2px;
+    outline: 0;
+    -webkit-background-size: 100px;
+    background-size: 100px;
+
 }
-.aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button,
-.aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
+.algolia-autocomplete::-webkit-search-decoration, .algolia-autocomplete::-webkit-search-cancel-button,
+.algolia-autocomplete::-webkit-search-results-button, .algolia-autocomplete::-webkit-search-results-decoration {
   display: none;
 }
-.aa-input-search:focus {
+.algolia-autocomplete:focus {
   outline: 0;
-  border-color: #3a96cf;
-  box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);
+  /*border-color: #3a96cf;
+  box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);*/
   }
 .aa-input-icon {
   height: 16px;
@@ -48,7 +48,7 @@
   border-top-width: 0;
   font-family: "Montserrat", sans-serif;
   width: 300px;
-  margin-top: 10px;
+  margin-top: 0px;
   box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
   font-size: 11px;
   border-radius: 4px;
@@ -105,3 +105,5 @@
   background-color: rgba(58, 150, 207, 0.1);
   padding: 2px 0 2px 2px;
 }
+
+.aa-empty{padding:20px;}

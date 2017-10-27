@@ -1,17 +1,22 @@
 [
   {
-    "name": "rrrSun Yue",
+    "name": "Sun Yue",
+    "profileid": "sun-yue",
+    "location": "New York, NY",
+    "profileimage": "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_40,r_60,w_40/sample.jpg",
     "skills": ["PHP","Ajax"],
-    "points": 6
+    "points": 6,
+    "objectID": 1
   },
+
   {
-    "name": "Arron Afflalo",
-    "skills": ["Web"],
-    "points": 724
-  },
-  {
-    "name": "Alexis Ajinca",
-    "skills": ["IOS"],
-    "points": 10
+    "name": "Franz Peter",
+    "profileid": "franz-peter",
+    "location": "New York, NY",
+    "profileimage": "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_40,r_60,w_40/sample.jpg",
+    "skills": ["PHP","Ajax"],
+    "points": 6,
+    "objectID": 2
   }
+
 ]

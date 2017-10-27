@@ -22,7 +22,7 @@ autocomplete(
         suggestion: function(suggestion) {
 
           var str = '<span>' +
-          
+           suggestion._highlightResult.name.value +
             '</span>';
         for (var i = 0, len = suggestion._highlightResult.skills.length; i < len; i++) {
           str = str +

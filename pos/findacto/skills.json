@@ -1,0 +1,21 @@
+[
+  
+  {
+    "name": "PHP",
+    "location": "New York",
+    "logoUrl": "Knicks_New_York.gif",
+    "score": 418.65
+  },
+  {
+    "name": "IOS",
+    "location": "New York",
+    "logoUrl": "Nets_New_York.gif",
+    "score": 445.5882352941176
+  },
+  {
+    "name": "Ajax",
+    "location": "Oklahoma City",
+    "logoUrl": "Thunder_Oklahoma_City.gif",
+    "score": 462.3333333333333
+  }
+]
