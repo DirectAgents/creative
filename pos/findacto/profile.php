@@ -261,8 +261,12 @@ echo '</div>';
     </div>
 
 
+  
     <footer class="footer-container">
         <div class="container">
+         <p class="footer-content pull-left"> &copy Collapsed 2017</p>
+            <a href="/privacy-policy" target="_blank" class="footer-content2 pull-right">Terms & Privacy Policy</a>
+            <a href="/cookie-policy" target="_blank" class="footer-content2 pull-right">Cookie Policy</a>
         </div>
     </footer>
 
