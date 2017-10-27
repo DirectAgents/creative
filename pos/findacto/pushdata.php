@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../algoliasearch-client-php-master/algoliasearch.php');
+require_once('algoliasearch-client-php-master/algoliasearch.php');
 
 
 $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");

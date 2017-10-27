@@ -12,7 +12,12 @@ var search = instantsearch({
 
 
 
-
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-input',
+    placeholder: 'Search for actors'
+  })
+);
 
 
 search.addWidget(

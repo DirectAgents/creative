@@ -1,7 +1,10 @@
 <?php
 
+session_start();
+require_once 'base_path.php';
+
 // if you are not using composer
-require_once('../../algoliasearch-client-php-master/algoliasearch.php');
+require_once('algoliasearch-client-php-master/algoliasearch.php');
 
 
 $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
@@ -51,7 +54,7 @@ $index->setSettings(array(
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title> Collapsed - Learn Lessons From Failed Startups </title>
-
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
 
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -60,7 +63,7 @@ $index->setSettings(array(
     <!-- Bootstrap -->
 
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_PATH; ?>/style.min.css" rel="stylesheet">
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/reset.min.css" rel="stylesheet">
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.offcanvas.min.css" rel="stylesheet">
     
@@ -205,7 +208,7 @@ $index->setSettings(array(
   <div class="hit">
    
     <div class="hit-content">
-    <a href="profile.php?id={{objectID}}">
+    <a href="profile/{{profileid}}">
     <div class="search-column-box">
     <div class="left-column-search">{{#image_path}}<img src="photo/{{.}}"/>{{/image_path}}</div>
     <div class="right-column-search">

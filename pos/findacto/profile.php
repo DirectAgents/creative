@@ -1,12 +1,26 @@
+<?php
+session_start();
+require_once 'base_path.php';
+include_once("config.php");
+include("config.inc.php");
+
+$firstname = explode("-", $_GET['name'])[0];
+$lastname = explode("-", $_GET['name'])[1];
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Firstname ='".ucfirst($firstname)."' AND Lastname ='".ucfirst($lastname)."'");
+$row = mysqli_fetch_array($sql);
+
+
+
+?>
+
 
 <!DOCTYPE html>
 
 
 <html lang="en">
   <head>
-    
-    
-    
     
     
 
@@ -24,7 +38,7 @@
     <!-- Bootstrap -->
 
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/style.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_PATH; ?>/css/style.min.css" rel="stylesheet">
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/reset.min.css" rel="stylesheet">
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.offcanvas.min.css" rel="stylesheet">
    
@@ -78,15 +92,13 @@
 
             <div class="navbar-header">
                 <div class="nav-search-container">
-                    <input type="text" class="algolia-autocomplete light" id="search_input" placeholder="Search Startups">
+                     <input type="text" class="algolia-autocomplete light" id="search-input" placeholder="Search by Programming Skills or Name" />
                 </div>
             </div>
 
             <div class="navbar-offcanvas navbar-offcanvas-right navbar-menubuilder" id="js-bootstrap-offcanvas">
 
-                <ul class="nav navbar-nav navbar-left" id='submit-button'>
-                    <li ><a href="/submit-startup"><button type="button" data-toggle="tooltip" data-placement="bottom" title="Submit startup" class="button-empty"><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/plus-dark.svg" class="center-block button-empty-image"></button></a></li>
-                </ul>
+               
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/" class="navbar-text">Home</a></li>
                     <li><a href="/regions" class="navbar-text">Regions</a></li>
@@ -140,6 +152,7 @@
                 <img src="https://graph.facebook.com/v2.4/10158571058230062/picture?type=square&amp;height=600&amp;width=600&amp;return_ssl_resources=1"
                      class="profile-container-image pull-left">
                 <h3 class="profile-text bold" id="startchange">Alper Dilmen</h3>
+                <h4 class="profile-text-city-state bold" id="startchange"><?php echo $row['City'].', '.$row['State']?></h4>
                 <a href='' name="following_button"  class="profile-text-small-fix profile-text-small push-right-mid pull-left"><p>Following: <span class="bold">0</span></p></a>
                 <a href='' name="followers_button"  class="profile-text-small push-right-mid pull-left"><p>Followers: <span class="bold">0</span></p></a>
             </div>
@@ -153,7 +166,7 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             
                 <div class="profile-content-container">
                     <div class="profile-content-header-container">
@@ -161,42 +174,76 @@
                         <h4 class="profile-content-header-title bold">Introduction</h4>
                     </div>
                     <div class="profile-content-description">
-                        Please enter your description
+                        video here
                     </div>
                 </div>
             
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="profile-tabs-container over_scroll-wrapper" id="myTabs" role="tablist">
+                
+                <a href="#about" aria-controls="#about" role="tab" data-toggle="tab">
+                    About
+                </a>
+
                 <a href="#submissions" aria-controls="#submissions" role="tab" data-toggle="tab">
-                    Submissions - 0
+                    Skills - 0
                 </a>
                
                 <a href="#following" id='following_button' aria-controls="#following" role="tab" data-toggle="tab">
-                    Following - 0
+                    Apps - 0
                 </a>
                 <a href="#followers" id='followers_button' aria-controls="#followers" role="tab" data-toggle="tab">
                     Followers - 0
                 </a>
             </div>
+            
             <div class="tab-content">
+
+             <div role="tabpanel" class="tab-pane fade in active" id="about">
+                    
+                        <p class="text-center no-contributions"> 
+
+            <?php echo $row['About'];?>
+
+
+                         </p>
+                    
+                </div>
+
+
+              <div role="tabpanel" class="tab-pane fade in" id="submissions">
+                    
+                        <div class="text-center no-contributions"> 
+
+            <?php
+
+$skills = explode(',',$row['Skills']); 
+foreach($skills as $theskills)  
+{ 
+echo '<div class="hit-skills">';
+echo $theskills;
+echo '</div>';
+}
+            ?>
+
+                        </div>
+                    
+                </div>
+
                 <div role="tabpanel" class="tab-pane fade in" id="overview">
                     
                         <p class="text-center no-contributions"> This user hasn't contributed anything yet. </p>
                     
                 </div>
 
-                <div role="tabpanel" class="tab-pane fade in active" id="answers">
+                <div role="tabpanel" class="tab-pane fade in" id="answers">
                     
                         <p class="text-center no-contributions"> This user hasn't written anything yet. </p>
                     
                 </div>
 
-                <div role="tabpanel" class="tab-pane fade in" id="submissions">
-                    
-                        <p class="text-center no-contributions"> This user hasn't contributed anything yet. </p>
-                    
-                </div>
+              
                 <div role="tabpanel" class="tab-pane fade in" id="followers">
                     
                         <p class="text-center no-contributions"> This user has no followers yet. </p>
@@ -210,7 +257,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <!--<div class="col-md-3">
             <div class="profile-content-container">
                 <div class="profile-content-header-container">
                     <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/icons/user-id-icon.png" class="pull-left profile-content-header-image"></object>
@@ -235,7 +282,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 
