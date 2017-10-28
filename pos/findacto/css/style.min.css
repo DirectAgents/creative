@@ -1052,7 +1052,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a2d3', endCo
 	background: #F4F4F4;
 	border: #e6e6e6;
 	padding: 10px 15px;
-	text-align: center;
 	float:left;
 	width:100%;
 }
@@ -2413,3 +2412,15 @@ display:none
     border-color: initial;
     border-image: initial;
 }
+
+
+#save-about, #cancel-about, #save-skills, #cancel-skills, #save-email, #cancel-email, #save-phone, #cancel-phone {
+  display: none;
+}
+
+table.edit-profile>tbody>tr>td{border-top: 0px !important}
+table.edit-profile textarea{float:left; width:100%;}
+
+table.edit-profile .btn{font-size:10px; padding:5px;}
+
+table.edit-profile .col-md-2{width:auto;}

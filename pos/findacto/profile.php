@@ -38,6 +38,9 @@ $row = mysqli_fetch_array($sql);
     <!-- Include stylesheet -->
     <link href="<?php echo BASE_PATH; ?>/css/app.css" rel=stylesheet />
 
+
+    <script src="//code.jquery.com/jquery.js"></script>
+
     <!-- Bootstrap -->
 
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.min.css" rel="stylesheet">
@@ -110,20 +113,8 @@ $row = mysqli_fetch_array($sql);
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            
-                <div class="profile-content-container">
-                    <div class="profile-content-header-container">
-                        <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/icons/globe-icon.png" class="pull-left profile-content-header-image"></object>
-                        <h4 class="profile-content-header-title bold">Introduction</h4>
-                    </div>
-                    <div class="profile-content-description">
-                        video here
-                    </div>
-                </div>
-            
-        </div>
-        <div class="col-md-8">
+        
+        <div class="col-md-9">
             <div class="profile-tabs-container over_scroll-wrapper" id="myTabs" role="tablist">
                 
                 <a href="#about" aria-controls="#about" role="tab" data-toggle="tab">
@@ -146,12 +137,40 @@ $row = mysqli_fetch_array($sql);
 
              <div role="tabpanel" class="tab-pane fade in active" id="about">
                     
-                        <p class="text-center no-contributions"> 
+            <div class="col-md-6" style="padding-left:0px;">
+           <div class="no-contributions"> 
+
+
+ <table class="table edit-profile">
+    <tbody>
+      <tr>
+        <td class="about"><?php echo $row['About'];?></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-info" id="edit-about"><span class="glyphicon glyphicon-edit"></span> edit</button>
+  <button class="btn btn-success" id="save-about"><span class="glyphicon glyphicon-ok"></span> save</button>
+  <button class="btn btn-cancel" id="cancel-about"><span class="glyphicon glyphicon-remove"></span> cancel</button>
+
+
+
+            
+
+
+                         </div>
+            </div>
+
+
+             <div class="col-md-6">
+           <p class="text-center no-contributions"> 
 
             <?php echo $row['About'];?>
 
-
+asdfaaf
                          </p>
+            </div>
+
+                       
                     
                 </div>
 
@@ -201,32 +220,45 @@ echo '</div>';
                 </div>
             </div>
         </div>
-        <!--<div class="col-md-3">
+        <div class="col-md-3">
             <div class="profile-content-container">
                 <div class="profile-content-header-container">
                     <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/icons/user-id-icon.png" class="pull-left profile-content-header-image"></object>
                     
-                        <h4 class="profile-content-header-title bold">Share Your Profile</h4>
+                        <h4 class="profile-content-header-title bold">Get in Touch</h4>
                     
                 </div>
                 <div class="profile-content-description">
-                    <a class="tweet">
-                        <p id="tweet-message" class="hidden">Check out @alper on @CollapsedHQ!  https://collapsed.co/@alper-dilmen </p>
-                        <button type="button" class="profile-content-button twitter bold">
-                        <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/brands/twitter-icon.gif" class="center-block profile-content-button-image"></object>
-                    </button>
-                    </a>
-                    <div class="invisible-separator-small"></div>
-                    <a class="share">
-                        <p id="facebook-link" class="hidden">https://collapsed.co/@/alper-dilmen</p>
-                        <p id="facebook-description" class="hidden">Check out Aaron Kazah's on Collapsed!</p>
-                        <button type="button" class="profile-content-button facebook bold">
-                            <object data="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/brands/facebook-icon.png" class="center-block profile-content-button-image"></object>
-                        </button>
-                    </a>
+                   
+<table class="table edit-profile">
+    <tbody>
+      <tr>
+        <td class="email col-md-2"><?php echo $row['Email'];?></td>
+        <td class="col-md-4"><button class="btn btn-info" id="edit-email"><span class="glyphicon glyphicon-edit"></span></button>
+  <button class="btn btn-success" id="save-email"><span class="glyphicon glyphicon-ok"></span></button>
+  <button class="btn btn-cancel" id="cancel-email"><span class="glyphicon glyphicon-remove"></span></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table class="table edit-profile">
+    <tbody>
+      <tr>
+        <td class="phone col-md-2"><?php echo $row['Phone'];?></td>
+        <td class="col-md-4"><button class="btn btn-info" id="edit-phone"><span class="glyphicon glyphicon-edit"></span></button>
+  <button class="btn btn-success" id="save-phone"><span class="glyphicon glyphicon-ok"></span></button>
+  <button class="btn btn-cancel" id="cancel-phone"><span class="glyphicon glyphicon-remove"></span></button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+
+                    
+                  
                 </div>
             </div>
-        </div>-->
+        </div>
     </div>
 </div>
 
@@ -270,6 +302,7 @@ echo '</div>';
         </div>
     </footer>
 
+<script  src="<?php echo BASE_PATH; ?>/js/profile.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -280,7 +313,7 @@ echo '</div>';
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 
-<script src="<?php echo BASE_PATH; ?>/autocomplete.js"></script>
+<script src="<?php echo BASE_PATH; ?>/js/autocomplete.js"></script>
 
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -295,7 +328,6 @@ echo '</div>';
     </script>
     
      
-
 
 
   </body>
