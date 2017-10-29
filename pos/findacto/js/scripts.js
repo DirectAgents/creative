@@ -24,7 +24,7 @@ $("#about").removeClass('active');
 
 
 
-$("#addskills").click(function (e) {
+$("#add-skills").click(function (e) {
        e.preventDefault();
      if($("#interests").val()==='')
       {
@@ -91,6 +91,6 @@ $("#addskills").click(function (e) {
 
 
 
-   
+
 
 });  

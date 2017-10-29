@@ -142,7 +142,7 @@ $row = mysqli_fetch_array($sql);
                     Skills - 0
                 </a>
                
-                <a href="#following" id='following_button' aria-controls="#following" role="tab" data-toggle="tab">
+                <a href="#apps" id='following_button' aria-controls="#apps" role="tab" data-toggle="tab">
                     Apps - 0
                 </a>
                 <a href="#followers" id='followers_button' aria-controls="#followers" role="tab" data-toggle="tab">
@@ -185,7 +185,7 @@ $row = mysqli_fetch_array($sql);
 
             <?php echo $row['About'];?>
 
-asdfaaf
+
                          </p>
             </div>
 
@@ -208,7 +208,7 @@ asdfaaf
       <tr>
    <td class="col-md-6"><input class="form-control"  name="interests" id="interests" type="text" placeholder="Enter here your skills (e.g Social Media)"/>
 </td>
-<td class="col-md-6"><button class="btn btn-add" id="addskills"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
+<td class="col-md-6"><button class="btn btn-add" id="add-apps"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
 
 <td><button class="btn btn-success" id="save-skills"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
 
@@ -223,8 +223,6 @@ asdfaaf
 <div id="responds">
 <?php
 //include db configuration file
-
-
 
 echo '<input type="hidden" name="userid" id="userid" value="1">';
 
@@ -293,9 +291,38 @@ echo '</div>';
                     
                 </div>
 
-                <div role="tabpanel" class="tab-pane fade in" id="overview">
+                <div role="tabpanel" class="tab-pane fade in" id="apps">
                     
-                        <p class="text-center no-contributions"> This user hasn't contributed anything yet. </p>
+                        <div class="text-center no-contributions"> 
+
+
+
+ <div class="col-md-12">
+
+<table class="table">
+    <tbody>
+      <tr>
+<td class="col-md-6"><button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
+
+<?php 
+$sql = mysqli_query($connecDB,"SELECT * FROM apps WHERE userID ='1'");
+
+while($row2 = mysqli_fetch_array($sql))
+{ 
+
+?>
+
+<td class="col-md-6"><button class="btn btn-success" id="save-skills"><span class="glyphicon glyphicon-ok"></span> 1</button></td>
+
+<?php } ?>
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+                         </div>
                     
                 </div>
 
