@@ -206,11 +206,11 @@ asdfaaf
 <table class="table skills">
     <tbody>
       <tr>
-   <td class="col-md-6"><input class="form-control"  name="interests" id="interests" type="text" placeholder="Enter here the interest (e.g Social Media)"/>
+   <td class="col-md-6"><input class="form-control"  name="interests" id="interests" type="text" placeholder="Enter here your skills (e.g Social Media)"/>
 </td>
 <td class="col-md-6"><button class="btn btn-add" id="addskills"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
 
-<td><button class="btn btn-success" id="addskills"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
+<td><button class="btn btn-success" id="save-skills"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
 
 
       </tr>
@@ -258,8 +258,9 @@ foreach($ctop as $interest)
 $sqlinterest = mysqli_query($connecDB,"SELECT * FROM interests WHERE interest = '".$interest."' ");
 $row3 = mysqli_fetch_array($sqlinterest);
 
-echo '<div class="skillsdiv">';
+
 echo '<div id="item_'.$row3['id'].'">';
+echo '<div class="skillsdiv">';
 if(in_array($interest,$ctop)){
 echo '<input id="interestselection_'.$row3['id'].'" name="interestselection[]" type="checkbox"  value="'.$interest.'" style="display:none" checked/>';
 }

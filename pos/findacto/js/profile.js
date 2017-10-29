@@ -99,54 +99,33 @@ $('textarea').each(function(){
 
 //Skills
 
-$('#edit-skills').click(function(){
-  $('#edit-skills').hide();
-  $('td.skills').each(function(){
-    var content = $(this).html();
-    $(this).html('<textarea>' + content + '</textarea>');
-  });  
-  
-  $('#save-skills').show();
-  $('#cancel-skills').show();
-  
-});
+
 
 $('#save-skills').click(function(){
-  $('#save-skills').hide();
-  $('textarea').each(function(){
-    var content = $(this).val();//.replace(/\n/g,"<br>");
-    $(this).html(content);
-    $(this).contents().unwrap();    
+  
+ 
+    //var content = $(this).val();//.replace(/\n/g,"<br>");
+    var interest = $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
+    //alert(interest);
+    //$(this).html("adfasd").delay(3000).hide();
+    var submit = $(this).html("<span class='glyphicon glyphicon-repeat gly-spin'></span> Saving"); //
+    setTimeout(function() { $(submit).html("<span class='glyphicon glyphicon-ok'></span> Save") }, 2000);
      $.ajax({  
-                url:"edit.php",  
+                url:"../edit.php",  
                 method:"POST",  
-                data:{content:content,column_name:'Skills'},  
+                data:{content:interest,column_name:'Skills'},  
                 dataType:"text",  
                 success:function(data){  
                      //alert(data);  
                 }  
-           });  
-  }); 
+       });  
+ });
 
-  $('#edit-skills').show(); 
-  $('#cancel-skills').hide();
+
   
-});
 
 
-$('#cancel-skills').click(function(){  
 
-$('textarea').each(function(){
-    var content = $(this).val();//.replace(/\n/g,"<br>");
-    $(this).html(content);
-    $(this).contents().unwrap();  
-
-    $('#save-skills').hide();
-    $('#cancel-skills').hide();
-    $('#edit-skills').show();
-
- }); 
-}); 
 
 
 ////////////////Email//////////////////////
