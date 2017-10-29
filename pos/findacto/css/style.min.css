@@ -2418,9 +2418,31 @@ display:none
   display: none;
 }
 
+
 table.edit-profile>tbody>tr>td{border-top: 0px !important}
 table.edit-profile textarea{float:left; width:100%;}
 
 table.edit-profile .btn{font-size:10px; padding:5px;}
 
 table.edit-profile .col-md-2{width:auto;}
+
+
+table.skills{background:#333;}
+table.skills>tbody>tr>td{ border-top: 0px !important; text-align: left;}
+
+.skillsdiv{
+    padding: 10px;
+    background: rgb(182, 232, 255);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    max-width: 400px;
+    font-family: arial;
+    font-size: 13px;
+    float: left;
+    margin: 10px;}
+
+.btn-save{color: #fff; background-color: #5cb85c; border-color: #4cae4c;}
+.btn-add{color: #fff; background-color: #666; border-color: #4cae4c;}
+
+.del_wrapper{float: right;}
+.icon_del{margin-left:10px;}

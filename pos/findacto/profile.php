@@ -39,7 +39,24 @@ $row = mysqli_fetch_array($sql);
     <link href="<?php echo BASE_PATH; ?>/css/app.css" rel=stylesheet />
 
 
-    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  
+ <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="<?php echo BASE_PATH; ?>/js/bootstrap.min.js"></script>
+    <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/bootstrap.offcanvas.min.js"></script>
+    <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/script.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <script src="<?php echo BASE_PATH; ?>/js/scripts.js"></script>
+
 
     <!-- Bootstrap -->
 
@@ -121,7 +138,7 @@ $row = mysqli_fetch_array($sql);
                     About
                 </a>
 
-                <a href="#submissions" aria-controls="#submissions" role="tab" data-toggle="tab">
+                <a href="#skills" aria-controls="#skills" role="tab" data-toggle="tab">
                     Skills - 0
                 </a>
                
@@ -164,6 +181,8 @@ $row = mysqli_fetch_array($sql);
              <div class="col-md-6">
            <p class="text-center no-contributions"> 
 
+
+
             <?php echo $row['About'];?>
 
 asdfaaf
@@ -175,20 +194,99 @@ asdfaaf
                 </div>
 
 
-              <div role="tabpanel" class="tab-pane fade in" id="submissions">
+              <div role="tabpanel" class="tab-pane fade in" id="skills">
                     
                         <div class="text-center no-contributions"> 
 
-            <?php
 
-$skills = explode(',',$row['Skills']); 
-foreach($skills as $theskills)  
+
+
+ <div class="col-md-12">
+
+<table class="table skills">
+    <tbody>
+      <tr>
+   <td class="col-md-6"><input class="form-control"  name="interests" id="interests" type="text" placeholder="Enter here the interest (e.g Social Media)"/>
+</td>
+<td class="col-md-6"><button class="btn btn-add" id="addskills"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
+
+<td><button class="btn btn-success" id="addskills"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
+
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<div id="responds">
+<?php
+//include db configuration file
+
+
+
+echo '<input type="hidden" name="userid" id="userid" value="1">';
+
+
+//MySQL query
+$Result = mysqli_query($connecDB,"SELECT * FROM profile ");
+
+
+//get all records from add_delete_record table
+$row2 = mysqli_fetch_array($Result);
+
+
+
+
+$ctop = $row2['Skills']; 
+$ctop = explode(',',$ctop); 
+
+
+
+if($row2['Skills'] != '' && $row2['Skills'] != 'NULL' ){
+
+
+
+foreach($ctop as $interest)  
 { 
-echo '<div class="hit-skills">';
-echo $theskills;
-echo '</div>';
+    //Uncomment the last commented line if single quotes are showing up  
+    //otherwise delete these 3 commented lines 
+    
+
+//MySQL query
+$sqlinterest = mysqli_query($connecDB,"SELECT * FROM interests WHERE interest = '".$interest."' ");
+$row3 = mysqli_fetch_array($sqlinterest);
+
+echo '<div class="skillsdiv">';
+echo '<div id="item_'.$row3['id'].'">';
+if(in_array($interest,$ctop)){
+echo '<input id="interestselection_'.$row3['id'].'" name="interestselection[]" type="checkbox"  value="'.$interest.'" style="display:none" checked/>';
 }
-            ?>
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row3['id'].'">';
+echo $interest;
+echo '<img src="../images/icon_del.gif" border="0" class="icon_del" />';
+echo '</a></div>';
+//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
+echo '</div>';
+echo '</div>';
+} 
+
+
+
+}
+
+
+
+
+
+?>
+</div>
+
+
+
+
+
 
                         </div>
                     
@@ -304,9 +402,8 @@ echo '</div>';
 
 <script  src="<?php echo BASE_PATH; ?>/js/profile.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+
 
 
     <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
@@ -316,16 +413,7 @@ echo '</div>';
 <script src="<?php echo BASE_PATH; ?>/js/autocomplete.js"></script>
 
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/bootstrap.min.js"></script>
-    <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/bootstrap.offcanvas.min.js"></script>
-    <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/mainapp_sdk.min.js"></script>
-    <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/script.min.js"></script>
-    <script>
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+   
     
      
 
