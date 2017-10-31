@@ -362,14 +362,14 @@ echo '</div>';
 
 <script type="text/javascript">  
   document.getElementById("upload_widget_opener").addEventListener("click", function() {
-    cloudinary.openUploadWidget({ cloud_name: 'dgml9ji66', upload_preset: 'scnk5xom', folder: 'screenshots', public_id: "1234"}, 
+    cloudinary.openUploadWidget({ cloud_name: 'dgml9ji66', upload_preset: 'scnk5xom', folder: 'screenshots', public_id: "<?php echo rand(1000, 1000000); ?>"}, 
       function(error, result) { console.log(error, result) });
 
 
 $(document).on('cloudinarywidgetfileuploadsuccess', function(e, data) {
   alert(data.public_id);
   //alert(data.public_id);
-  //$("#theimage").html("<img src=http://res.cloudinary.com/dgml9ji66/image/upload/v1509418343/screenshots/"+data+"/>");
+  $("#theimage").html("<img src='http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_150,w_150/v1509418343/"+data.public_id+"'/>");
 });
 
 
