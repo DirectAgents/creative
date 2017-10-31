@@ -2538,4 +2538,6 @@ table.skills>tbody>tr>td{ border-top: 0px !important; text-align: left;}
 fieldset { margin: 0; xmin-width: 0; position: relative;}	
 fieldset input[type="text"]{width:100%; padding:10px;}
 fieldset textarea {width:100%; padding:10px; height:100px;}
+
+#preview li{list-style: none; float:left;}
 	

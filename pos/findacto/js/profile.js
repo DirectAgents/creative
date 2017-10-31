@@ -10,12 +10,12 @@ $('#edit-about').click(function(){
 
     if(!content) {
 
-    $(this).html('<textarea></textarea>');
+    $(this).html('<textarea class="about-textarea"></textarea>');
     
     
     }else{
 
-    $(this).html('<textarea>' + content + '</textarea>');
+    $(this).html('<textarea class="about-textarea">' + content + '</textarea>');
     
     }
 
@@ -50,7 +50,7 @@ $('#save-about').click(function(){
                 data:{content:content,column_name:'About'},  
                 dataType:"text",  
                 success:function(data){  
-                     //alert(data);  
+                     alert(data);  
                 }  
            });  
   
@@ -78,12 +78,12 @@ $('textarea').each(function(){
      $.ajax({  
                 url:"../select.php",  
                 method:"POST",  
-                data:{column_name:'Email'}, 
+                data:{column_name:'About'}, 
                 dataType:"text",  
                 success:function(data){  
-  
-                    $('textarea').html(data);
-                    $('textarea').contents().unwrap();  
+ 
+                    $('.about-textarea').html(data);
+                    $('.about-textarea').contents().unwrap();  
                 }  
            });  
 

@@ -98,6 +98,42 @@ $row = mysqli_fetch_array($sql);
     <![endif]-->
       
 
+ <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+
+
+      <script type="text/javascript" src="https://res.cloudinary.com/demo/raw/upload/v1425809551/jquery.cloudinary_t0p9km.js"></script>
+      <script type="text/javascript" src="https://widget.cloudinary.com/global/all.js"></script>
+
+
+         <script type="text/javascript">
+
+    //<![CDATA[
+        $(window).load(function(){
+          var cloud_name = 'dgml9ji66';
+var preset_name = 'scnk5xom';
+if (cloud_name != '' && preset_name != '') $('#message').remove();
+
+
+$.cloudinary.config({ cloud_name: cloud_name});
+cloudinary.setCloudName(cloud_name);
+$('#upload_widget_multiple').click(function() {
+  cloudinary.openUploadWidget({ upload_preset: preset_name }, 
+    function(error, result) {
+      console.log(error, result);
+      ids_and_ratios = {};
+      $.each(result, function(i, v){
+        $('#preview').append('<li><img src=\"' + $.cloudinary.url(v["public_id"], {format: 'jpg', resource_type: v["resource_type"]  ,transformation: [{width: 200, crop: "fill"}]}) + '\" />')
+        $('#url_preview').append('<input type="checkbox" name="checkbox[]" value="'+$.cloudinary.url(v["public_id"])+'" checked/>')
+      });
+    });
+});
+
+        });
+    //]]>
+
+</script>
+
   </head>
 
   <body>
@@ -355,31 +391,13 @@ echo '</div>';
             
             <fieldset class="col-md-12">     
             <p>
-              
-              <a href="#" id="upload_widget_opener">Upload multiple images</a>
+  <br>            
+<a href="#apps" class="cloudinary-button" id="upload_widget_multiple">Upload Screenshots</a>
 
-<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
+<br><br>
+<ul id="preview"></ul>
+<div id="url_preview"></div>
 
-<script type="text/javascript">  
-  document.getElementById("upload_widget_opener").addEventListener("click", function() {
-    cloudinary.openUploadWidget({ cloud_name: 'dgml9ji66', upload_preset: 'scnk5xom', folder: 'screenshots', public_id: "<?php echo rand(1000, 1000000); ?>"}, 
-      function(error, result) { console.log(error, result) });
-
-
-$(document).on('cloudinarywidgetfileuploadsuccess', function(e, data) {
-  alert(data.public_id);
-  //alert(data.public_id);
-  $("#theimage").html("<img src='http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_150,w_150/v1509418343/"+data.public_id+"'/>");
-});
-
-go here https://cloudinary.com/documentation/upload_widget
-
-
-
-  }, false);
-</script>
-
-<div id="theimage"></div>
 
             </p>
             </fieldset>     
