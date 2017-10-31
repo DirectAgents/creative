@@ -208,7 +208,7 @@ $row = mysqli_fetch_array($sql);
       <tr>
    <td class="col-md-6"><input class="form-control"  name="interests" id="interests" type="text" placeholder="Enter here your skills (e.g Social Media)"/>
 </td>
-<td class="col-md-6"><button class="btn btn-add" id="add-apps"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
+<td class="col-md-6"><button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
 
 <td><button class="btn btn-success" id="save-skills"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
 
@@ -293,7 +293,102 @@ echo '</div>';
 
                 <div role="tabpanel" class="tab-pane fade in" id="apps">
                     
-                        <div class="text-center no-contributions"> 
+                    <button class="btn btn-add-app" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button><br><br>
+
+                        <div class="no-contributions"> 
+
+
+
+
+
+
+<div class="panel panel-default">
+      
+      <div class="panel-heading">Name</div>
+      <div class="panel-body">
+            
+            <fieldset class="col-md-12">     
+            <p><input type="text" name=""/></p>
+            </fieldset>     
+        
+        <div class="clearfix"></div>
+            </div>
+                
+</div>
+
+
+<div class="panel panel-default">
+      
+      <div class="panel-heading">Link</div>
+      <div class="panel-body">
+            
+            <fieldset class="col-md-12">     
+            <p><input type="text" name=""/></p>
+            </fieldset>     
+        
+        <div class="clearfix"></div>
+            </div>
+                
+</div>
+
+
+<div class="panel panel-default">
+      
+      <div class="panel-heading">Description</div>
+      <div class="panel-body">
+            
+            <fieldset class="col-md-12">     
+            <p><textarea placeholder="asdf"></textarea></p>
+            </fieldset>     
+        
+        <div class="clearfix"></div>
+            </div>
+                
+</div>
+
+
+
+<div class="panel panel-default">
+      
+      <div class="panel-heading">Screenshots</div>
+      <div class="panel-body">
+            
+            <fieldset class="col-md-12">     
+            <p>
+              
+              <a href="#" id="upload_widget_opener">Upload multiple images</a>
+
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
+
+<script type="text/javascript">  
+  document.getElementById("upload_widget_opener").addEventListener("click", function() {
+    cloudinary.openUploadWidget({ cloud_name: 'dgml9ji66', upload_preset: 'scnk5xom', folder: 'screenshots', public_id: "1234"}, 
+      function(error, result) { console.log(error, result) });
+
+
+$(document).on('cloudinarywidgetfileuploadsuccess', function(e, data) {
+  alert(data.public_id);
+  //alert(data.public_id);
+  //$("#theimage").html("<img src=http://res.cloudinary.com/dgml9ji66/image/upload/v1509418343/screenshots/"+data+"/>");
+});
+
+
+
+  }, false);
+</script>
+
+<div id="theimage"></div>
+
+            </p>
+            </fieldset>     
+        
+        <div class="clearfix"></div>
+            </div>
+                
+</div>
+
+
+
 
 
 
@@ -302,7 +397,6 @@ echo '</div>';
 <table class="table">
     <tbody>
       <tr>
-<td class="col-md-6"><button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
 
 <?php 
 $sql = mysqli_query($connecDB,"SELECT * FROM apps WHERE userID ='1'");
