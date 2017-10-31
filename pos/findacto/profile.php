@@ -372,6 +372,8 @@ $(document).on('cloudinarywidgetfileuploadsuccess', function(e, data) {
   $("#theimage").html("<img src='http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_150,w_150/v1509418343/"+data.public_id+"'/>");
 });
 
+go here https://cloudinary.com/documentation/upload_widget
+
 
 
   }, false);
