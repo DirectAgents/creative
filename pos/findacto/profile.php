@@ -8,6 +8,7 @@ $firstname = explode("-", $_GET['name'])[0];
 $lastname = explode("-", $_GET['name'])[1];
 
 
+
 $sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Firstname ='".ucfirst($firstname)."' AND Lastname ='".ucfirst($lastname)."'");
 $row = mysqli_fetch_array($sql);
 
@@ -108,23 +109,23 @@ $row = mysqli_fetch_array($sql);
 
          <script type="text/javascript">
 
-//<![CDATA[
-$(window).load(function(){
-var cloud_name = 'dgml9ji66';
+    //<![CDATA[
+        $(window).load(function(){
+          var cloud_name = 'dgml9ji66';
 var preset_name = 'scnk5xom';
 if (cloud_name != '' && preset_name != '') $('#message').remove();
 
 
 $.cloudinary.config({ cloud_name: cloud_name});
 cloudinary.setCloudName(cloud_name);
-$('.btn_upload_widget').click(function() {
-  cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search'] }, 
+$('#upload_widget_multiple').click(function() {
+  cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search']  }, 
     function(error, result) {
       console.log(error, result);
       ids_and_ratios = {};
       $.each(result, function(i, v){
         $('#preview').append('<li><img src=\"' + $.cloudinary.url(v["public_id"], {format: 'jpg', resource_type: v["resource_type"]  ,transformation: [{width: 200, crop: "fill"}]}) + '\" />')
-        $('#url_preview').append('<input type="checkbox" name="checkbox[]" value="'+$.cloudinary.url(v["public_id"])+'" checked/>')
+        $('#url_preview').append('<input type="checkbox" name="screenshots[]" value="'+$.cloudinary.url(v["public_id"])+'" checked/>')
       });
     });
 });
@@ -171,7 +172,7 @@ $('.btn_upload_widget').click(function() {
             <div class="profile-tabs-container over_scroll-wrapper" id="myTabs" role="tablist">
                 
                 <a href="#about" aria-controls="#about" role="tab" data-toggle="tab">
-                    About
+                   About
                 </a>
 
                 <a href="#skills" aria-controls="#skills" role="tab" data-toggle="tab">
@@ -329,14 +330,30 @@ echo '</div>';
 
                 <div role="tabpanel" class="tab-pane fade in" id="work">
                     
-                    <button class="btn btn-add-app" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button><br><br>
+                    <button class="btn btn-add-work" id="add-work"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                    <button class="btn btn-list-work" id="list-of-work"><span class="glyphicon glyphicon-plus"></span> List of Work</button>
 
                         <div class="no-contributions"> 
 
 
 
+<div class="list-work-box">
+<?php 
+
+$sql=mysqli_query($connecDB,"SELECT * FROM work ORDER BY id DESC ");
+
+while($row = mysqli_fetch_array($sql))
+{ 
+ ?>
+
+<?php echo $row['name']; ?>
+
+ <?php } ?>
+
+</div>
 
 
+<div class="add-work-box">
 
 <div class="panel panel-default">
       
@@ -344,7 +361,7 @@ echo '</div>';
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
-            <p><input type="text" name=""/></p>
+            <p><input type="text" name="work-name"/></p>
             </fieldset>     
         
         <div class="clearfix"></div>
@@ -359,7 +376,7 @@ echo '</div>';
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
-            <p><input type="text" name=""/></p>
+            <p><input type="text" name="work-link"/></p>
             </fieldset>     
         
         <div class="clearfix"></div>
@@ -374,7 +391,7 @@ echo '</div>';
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
-            <p><textarea placeholder="asdf"></textarea></p>
+            <p><textarea placeholder="asdf" name="work-description"></textarea></p>
             </fieldset>     
         
         <div class="clearfix"></div>
@@ -391,10 +408,8 @@ echo '</div>';
             
             <fieldset class="col-md-12">     
             <p>
-  <br>    
-
- <button class="btn btn_upload_widget"><span class="glyphicon glyphicon-ok"></span> Upload Screenshots</button>
-
+  <br>            
+<a href="#work" class="cloudinary-button" id="upload_widget_multiple">Upload Screenshots</a>
 
 <br><br>
 <ul id="preview"></ul>
@@ -420,17 +435,11 @@ echo '</div>';
     <tbody>
       <tr>
 
-<?php 
-$sql = mysqli_query($connecDB,"SELECT * FROM work WHERE userID ='1'");
 
-while($row2 = mysqli_fetch_array($sql))
-{ 
 
-?>
+<td class="col-md-6"><button class="btn btn-success" id="save-work"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
 
-<td class="col-md-6"><button class="btn btn-success" id="save-skills"><span class="glyphicon glyphicon-ok"></span> 1</button></td>
 
-<?php } ?>
 
       </tr>
     </tbody>
@@ -438,13 +447,7 @@ while($row2 = mysqli_fetch_array($sql))
 
 </div>
 
-
- <div class="col-md-12" style="padding-left:0px;">
-
-<button class="btn btn-success" id="save-work"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
-
 </div>
-
 
                          </div>
                     

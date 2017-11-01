@@ -307,38 +307,46 @@ $('.phone input[type=text]').each(function(){
 
 
 
+////////////////Work//////////////////////
+
+$('.btn-add-work').click(function(){
+$('.list-work-box').hide();
+
+$('.btn-add-work').hide();
+$('.btn-list-work').fadeIn("fast");
+$('.add-work-box').fadeIn("fast");
+
+});  
+
+$('.btn-list-work').click(function(){
+$('.list-work-box').show();
+
+$('.btn-add-work').fadeIn("fast");
+$('.btn-list-work').hide();
+$('.add-work-box').hide();
+
+});  
 
 $('#save-work').click(function(){
+  //alert("asdfasd");
   $('#save-phone').hide();
  
-    var content = $(this).val();//.replace(/\n/g,"<br>");
+    var name  = $("input[name=work-name]").val();
+    var link  = $("input[name=work-link]").val();
+    var description = $("textarea[name='work-description']").val();
+    var screenshots = $('input[name="screenshots[]"]:checked').map(function () {return this.value;}).get().join(",");
     
-    if(!content) {   
-
-      $('#save-phone').show();  
-      $(this).css('border-color','red'); 
-
-    }else{
-
-    $(this).html(content);
-    $(this).contents().unwrap();
      
      $.ajax({  
-                url:"../edit.php",  
+                url:"../insert.php",  
                 method:"POST",  
-                data:{content:content,column_name:'Phone'},  
+                data:{name:name,link:link,description:description,screenshots:screenshots},  
                 dataType:"text",  
                 success:function(data){  
                      //alert(data);  
                 }  
            });  
 
-  $('#edit-phone').show(); 
-  $('#cancel-phone').hide();
-
-      }
-   
- 
 
  
   
