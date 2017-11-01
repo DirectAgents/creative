@@ -108,16 +108,16 @@ $row = mysqli_fetch_array($sql);
 
          <script type="text/javascript">
 
-    //<![CDATA[
-        $(window).load(function(){
-          var cloud_name = 'dgml9ji66';
+//<![CDATA[
+$(window).load(function(){
+var cloud_name = 'dgml9ji66';
 var preset_name = 'scnk5xom';
 if (cloud_name != '' && preset_name != '') $('#message').remove();
 
 
 $.cloudinary.config({ cloud_name: cloud_name});
 cloudinary.setCloudName(cloud_name);
-$('#upload_widget_multiple').click(function() {
+$('.btn_upload_widget').click(function() {
   cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search'] }, 
     function(error, result) {
       console.log(error, result);
@@ -391,8 +391,10 @@ echo '</div>';
             
             <fieldset class="col-md-12">     
             <p>
-  <br>            
-<a href="#work" class="cloudinary-button" id="upload_widget_multiple">Upload Screenshots</a>
+  <br>    
+
+ <button class="btn btn_upload_widget"><span class="glyphicon glyphicon-ok"></span> Upload Screenshots</button>
+
 
 <br><br>
 <ul id="preview"></ul>

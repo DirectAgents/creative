@@ -7,17 +7,17 @@ var currentValue = window.location.hash.substr(1)
 if(currentValue == "skills") {
 $("#skills").addClass('active');
 $("#about").removeClass('active');
-$("#apps").removeClass('active');
+$("#work").removeClass('active');
 }
 
 if(currentValue == "about") {
 $("#about").addClass('active');
 $("#skills").removeClass('active');
-$("#apps").removeClass('active');
+$("#work").removeClass('active');
 }
 
-if(currentValue == "apps") {
-$("#apps").addClass('active');
+if(currentValue == "work") {
+$("#work").addClass('active');
 $("#skills").removeClass('active');
 $("#about").removeClass('active');
 }

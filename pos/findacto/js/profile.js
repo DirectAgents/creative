@@ -307,4 +307,45 @@ $('.phone input[type=text]').each(function(){
 
 
 
+
+$('#save-work').click(function(){
+  $('#save-phone').hide();
+ 
+    var content = $(this).val();//.replace(/\n/g,"<br>");
+    
+    if(!content) {   
+
+      $('#save-phone').show();  
+      $(this).css('border-color','red'); 
+
+    }else{
+
+    $(this).html(content);
+    $(this).contents().unwrap();
+     
+     $.ajax({  
+                url:"../edit.php",  
+                method:"POST",  
+                data:{content:content,column_name:'Phone'},  
+                dataType:"text",  
+                success:function(data){  
+                     //alert(data);  
+                }  
+           });  
+
+  $('#edit-phone').show(); 
+  $('#cancel-phone').hide();
+
+      }
+   
+ 
+
+ 
+  
+});
+
+
+
+
+
 });
