@@ -2545,4 +2545,14 @@ fieldset textarea {width:100%; padding:10px; height:100px;}
 #preview li{list-style: none; float:left;}
 
 
+#saved {
+	display:none;
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    padding:20px;
+    background:#5cb85c;
+    color:#fff;
+  }
+
 

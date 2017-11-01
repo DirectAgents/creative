@@ -346,7 +346,17 @@ while($row = mysqli_fetch_array($sql))
 { 
  ?>
 
-<?php echo $row['name']; ?>
+
+<div class="col-md-4">
+<table class="table">
+    <tbody>
+      <tr>
+        <td class="about"><?php echo $row['name']; ?></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
  <?php } ?>
 
@@ -518,7 +528,6 @@ while($row = mysqli_fetch_array($sql))
 
     </div>
 
-
     <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="container center-block">
             <div class="signup-container center-block">
@@ -546,6 +555,8 @@ while($row = mysqli_fetch_array($sql))
     </div>
 
 
+
+
   
     <footer class="footer-container">
         <div class="container">
@@ -554,6 +565,10 @@ while($row = mysqli_fetch_array($sql))
             <a href="/cookie-policy" target="_blank" class="footer-content2 pull-right">Cookie Policy</a>
         </div>
     </footer>
+
+<div id="saved">Saved Successfully</div>
+
+
 
 <script  src="<?php echo BASE_PATH; ?>/js/profile.js"></script>
 

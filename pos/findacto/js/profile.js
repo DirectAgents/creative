@@ -316,6 +316,8 @@ $('.btn-add-work').hide();
 $('.btn-list-work').fadeIn("fast");
 $('.add-work-box').fadeIn("fast");
 
+$(".add-work-box")[0].reset();
+
 });  
 
 $('.btn-list-work').click(function(){
@@ -324,6 +326,18 @@ $('.list-work-box').show();
 $('.btn-add-work').fadeIn("fast");
 $('.btn-list-work').hide();
 $('.add-work-box').hide();
+
+$.ajax({  
+                url:"../select-work.php",  
+                method:"POST",  
+                //data:{name:name}, 
+                dataType:"text",  
+                success:function(data){  
+  
+                    $('.list-work-box').html(data);
+                    
+                }  
+           });  
 
 });  
 
@@ -344,6 +358,9 @@ $('#save-work').click(function(){
                 dataType:"text",  
                 success:function(data){  
                      //alert(data);  
+                     $('#saved').fadeIn("fast");
+                     $('#saved').delay(2000).fadeOut("slow");
+                     
                 }  
            });  
 
