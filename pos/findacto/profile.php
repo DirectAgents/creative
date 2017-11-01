@@ -118,7 +118,7 @@ if (cloud_name != '' && preset_name != '') $('#message').remove();
 $.cloudinary.config({ cloud_name: cloud_name});
 cloudinary.setCloudName(cloud_name);
 $('#upload_widget_multiple').click(function() {
-  cloudinary.openUploadWidget({ upload_preset: preset_name }, 
+  cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search'] }, 
     function(error, result) {
       console.log(error, result);
       ids_and_ratios = {};
@@ -178,8 +178,8 @@ $('#upload_widget_multiple').click(function() {
                     Skills - 0
                 </a>
                
-                <a href="#apps" id='following_button' aria-controls="#apps" role="tab" data-toggle="tab">
-                    Apps - 0
+                <a href="#work" id='following_button' aria-controls="#work" role="tab" data-toggle="tab">
+                    Work - 0
                 </a>
                 <a href="#followers" id='followers_button' aria-controls="#followers" role="tab" data-toggle="tab">
                     Followers - 0
@@ -327,7 +327,7 @@ echo '</div>';
                     
                 </div>
 
-                <div role="tabpanel" class="tab-pane fade in" id="apps">
+                <div role="tabpanel" class="tab-pane fade in" id="work">
                     
                     <button class="btn btn-add-app" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button><br><br>
 
@@ -392,7 +392,7 @@ echo '</div>';
             <fieldset class="col-md-12">     
             <p>
   <br>            
-<a href="#apps" class="cloudinary-button" id="upload_widget_multiple">Upload Screenshots</a>
+<a href="#work" class="cloudinary-button" id="upload_widget_multiple">Upload Screenshots</a>
 
 <br><br>
 <ul id="preview"></ul>
@@ -419,7 +419,7 @@ echo '</div>';
       <tr>
 
 <?php 
-$sql = mysqli_query($connecDB,"SELECT * FROM apps WHERE userID ='1'");
+$sql = mysqli_query($connecDB,"SELECT * FROM work WHERE userID ='1'");
 
 while($row2 = mysqli_fetch_array($sql))
 { 
@@ -435,6 +435,14 @@ while($row2 = mysqli_fetch_array($sql))
   </table>
 
 </div>
+
+
+ <div class="col-md-12" style="padding-left:0px;">
+
+<button class="btn btn-success" id="save-work"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
+
+</div>
+
 
                          </div>
                     

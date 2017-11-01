@@ -50,7 +50,7 @@ $('#save-about').click(function(){
                 data:{content:content,column_name:'About'},  
                 dataType:"text",  
                 success:function(data){  
-                     alert(data);  
+                     //alert(data);  
                 }  
            });  
   
