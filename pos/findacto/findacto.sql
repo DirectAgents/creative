@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.4.15.7
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Oct 31, 2017 at 04:13 AM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Host: 127.0.0.1
+-- Generation Time: Nov 01, 2017 at 09:30 PM
+-- Server version: 5.6.31
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,20 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `findacto`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `apps`
---
-
-CREATE TABLE IF NOT EXISTS `apps` (
-  `id` int(11) NOT NULL,
-  `userID` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `description` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -256,17 +242,34 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`id`, `Firstname`, `Lastname`, `Email`, `Phone`, `Age`, `About`, `Skills`, `City`, `State`, `Zip`) VALUES
-(1, 'Alper', 'Dilmen', 'qqqqqqqeeee222', 'eeee333', '29', 'dd111', 'Bilingual Spanish/English', 'New York', 'NY', '');
+(1, 'Alper', 'Dilmen', 'qqqqqqqeeee222', 'eeee333', '29', 'dd111444444', 'Bilingual Spanish/English', 'New York', 'NY', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `work`
+--
+
+CREATE TABLE IF NOT EXISTS `work` (
+  `id` int(11) NOT NULL,
+  `userID` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `screenshots` longtext NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `work`
+--
+
+INSERT INTO `work` (`id`, `userID`, `name`, `link`, `description`, `screenshots`) VALUES
+(1, '1', 'dasdfasfd', '', '', ''),
+(2, '', 'thename', 'www.google.com', 'hello', 'http://res.cloudinary.com/dgml9ji66/image/upload/v1/screenshots/c9k5ll2hstacoxmljsz0,http://res.cloudinary.com/dgml9ji66/image/upload/v1/screenshots/w5j9inxrghbc3cqni4by');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `apps`
---
-ALTER TABLE `apps`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `interests`
@@ -281,14 +284,15 @@ ALTER TABLE `profile`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `work`
+--
+ALTER TABLE `work`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `apps`
---
-ALTER TABLE `apps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `interests`
 --
@@ -299,6 +303,11 @@ ALTER TABLE `interests`
 --
 ALTER TABLE `profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `work`
+--
+ALTER TABLE `work`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
