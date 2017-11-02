@@ -198,7 +198,7 @@ $('#upload_widget_multiple').click(function() {
 
              <div role="tabpanel" class="tab-pane fade in active" id="about">
                     
-            <div class="col-md-6" style="padding-left:0px;">
+            <div class="col-md-6 about-box">
            <div class="no-contributions"> 
 
 
@@ -222,7 +222,7 @@ $('#upload_widget_multiple').click(function() {
             </div>
 
 
-             <div class="col-md-6">
+             <div class="col-md-5 about-box">
            <p class="text-center no-contributions"> 
 
 
