@@ -1049,9 +1049,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a2d3', endCo
 }
 .no-contributions {
 	color: #6e6e6e;
-	background: #F4F4F4;
 	border: #e6e6e6;
-	padding: 10px 15px;
 	float:left;
 	width:100%;
 }
@@ -2501,6 +2499,13 @@ display:none
 }
 
 
+
+table.work-table {float:left; border: solid rgba(0,0,0,.1) 1px !important; box-shadow: 0 1px 6px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.15); border-radius: 2px;}
+table.work-table >tbody>tr>td{padding:0px !important;}
+table.work-table >tbody>tr>td.work-name{padding:20px !important; color:#000; font-size:18px; font-weight:bold;}
+
+
+
 table.edit-profile>tbody>tr>td{border-top: 0px !important}
 table.edit-profile textarea{float:left; width:100%;}
 
@@ -2509,7 +2514,7 @@ table.edit-profile .btn{font-size:10px; padding:5px;}
 table.edit-profile .col-md-2{width:auto;}
 
 
-table.skills{background:#333;}
+table.skills{background:#eee;}
 table.skills>tbody>tr>td{ border-top: 0px !important; text-align: left;}
 
 .skillsdiv{
@@ -2526,7 +2531,7 @@ table.skills>tbody>tr>td{ border-top: 0px !important; text-align: left;}
 
 .btn-save{color: #fff; background-color: #5cb85c; border-color: #4cae4c;}
 .btn-add{color: #fff; background-color: #666; border-color: #4cae4c;}
-.btn-add-app{color: #fff; border-color: #4cae4c;}
+.btn-add-work{float:left; margin-bottom:15px; color: #fff; border-color: #4cae4c;}
 .upload_widget{color: #fff; background-color: #5cb85c; border-color: #4cae4c;}
 
 
@@ -2535,7 +2540,7 @@ table.skills>tbody>tr>td{ border-top: 0px !important; text-align: left;}
 
 
 .add-work-box{display:none;}
-.btn-list-work{display:none;}
+.btn-list-work{display:none; float:left; margin-bottom:15px; color: #fff; border-color: #4cae4c;}
 
 
 fieldset { margin: 0; xmin-width: 0; position: relative;}	
@@ -2545,14 +2550,8 @@ fieldset textarea {width:100%; padding:10px; height:100px;}
 #preview li{list-style: none; float:left;}
 
 
-#saved {
-	display:none;
-    position: fixed;
-    bottom: 0;
-    right: 10px;
-    padding:20px;
-    background:#5cb85c;
-    color:#fff;
-  }
+#saved {display:none; position: fixed; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
 
-
+.error-message{float:left; color:#000; text-align: left; left:0 !important; top:2px !important;}
+.error-message-content{float:left; color:#000; text-align: left}
+.popover-content{float:left; color:red; text-align: left; padding:0; margin-top:15px; background:none;}

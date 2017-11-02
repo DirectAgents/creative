@@ -51,17 +51,12 @@ $row = mysqli_fetch_array($sql);
 
 
 
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-
-    <script src="<?php echo BASE_PATH; ?>/js/scripts.js"></script>
+   
 
 
     <!-- Bootstrap -->
 
-    <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_PATH; ?>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo BASE_PATH; ?>/css/style.min.css" rel="stylesheet">
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/reset.min.css" rel="stylesheet">
     <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.offcanvas.min.css" rel="stylesheet">
@@ -101,7 +96,8 @@ $row = mysqli_fetch_array($sql);
 
  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 
-
+ <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
 
       <script type="text/javascript" src="https://res.cloudinary.com/demo/raw/upload/v1425809551/jquery.cloudinary_t0p9km.js"></script>
       <script type="text/javascript" src="https://widget.cloudinary.com/global/all.js"></script>
@@ -125,7 +121,8 @@ $('#upload_widget_multiple').click(function() {
       ids_and_ratios = {};
       $.each(result, function(i, v){
         $('#preview').append('<li><img src=\"' + $.cloudinary.url(v["public_id"], {format: 'jpg', resource_type: v["resource_type"]  ,transformation: [{width: 200, crop: "fill"}]}) + '\" />')
-        $('#url_preview').append('<input type="checkbox" name="screenshots[]" value="'+$.cloudinary.url(v["public_id"])+'" checked/>')
+        $('#testing').append(v["public_id"])
+        $('#url_preview').append('<input type="checkbox" name="screenshots[]" value="'+v["public_id"]+'" checked/>')
       });
     });
 });
@@ -134,6 +131,16 @@ $('#upload_widget_multiple').click(function() {
     //]]>
 
 </script>
+
+
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <script src="<?php echo BASE_PATH; ?>/js/scripts.js"></script>
+
 
   </head>
 
@@ -238,7 +245,7 @@ $('#upload_widget_multiple').click(function() {
 
 
 
- <div class="col-md-12">
+ <div class="col-md-12" style="padding-left:0px">
 
 <table class="table skills">
     <tbody>
@@ -337,22 +344,38 @@ echo '</div>';
 
 
 
+<form id="add-work-form">
+
 <div class="list-work-box">
 <?php 
 
 $sql=mysqli_query($connecDB,"SELECT * FROM work ORDER BY id DESC ");
 
-while($row = mysqli_fetch_array($sql))
+while($row_work = mysqli_fetch_array($sql))
 { 
+
+
+if($row_work['screenshots'] != ''){
+$screenshot = explode(",", $row_work['screenshots'], 2);
+$screenshot = $screenshot[0];
+}else{
+  $screenshot = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Basketball.jpeg/220px-Basketball.jpeg";
+}
+
+
  ?>
 
 
-<div class="col-md-4">
-<table class="table">
+<div class="col-md-4" style="padding-left:0px">
+<table class="table work-table">
     <tbody>
-      <tr>
-        <td class="about"><?php echo $row['name']; ?></td>
-      </tr>
+      <tr><td><img src="<?php 
+      if($row_work['screenshots'] != ''){ 
+        echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_260/v1/'.$screenshot;
+        }else{
+          echo $screenshot;} ?>"/></td></tr>
+      <tr><td class="work-name"><?php echo $row_work['name']; ?></td></tr>
+      <tr><td class="work-name">By: <?php echo $row['Firstname']; ?></td></tr>
     </tbody>
   </table>
 </div>
@@ -363,6 +386,7 @@ while($row = mysqli_fetch_array($sql))
 </div>
 
 
+
 <div class="add-work-box">
 
 <div class="panel panel-default">
@@ -371,13 +395,14 @@ while($row = mysqli_fetch_array($sql))
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
-            <p><input type="text" name="work-name"/></p>
+            <p><input type="text" name="work-name" id="work-name" data-rule-required="true" data-msg-required="Please enter a name."></p>
             </fieldset>     
         
         <div class="clearfix"></div>
             </div>
                 
 </div>
+
 
 
 <div class="panel panel-default">
@@ -386,7 +411,7 @@ while($row = mysqli_fetch_array($sql))
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
-            <p><input type="text" name="work-link"/></p>
+            <p><input type="text" name="work-link" id="work-link" data-rule-required="true" data-msg-required="Please enter a link."/></p>
             </fieldset>     
         
         <div class="clearfix"></div>
@@ -397,11 +422,11 @@ while($row = mysqli_fetch_array($sql))
 
 <div class="panel panel-default">
       
-      <div class="panel-heading">Description</div>
+      <div class="panel-heading">Describe your work</div>
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
-            <p><textarea placeholder="asdf" name="work-description"></textarea></p>
+            <p><textarea placeholder="asdf" name="work-description" data-rule-required="false"></textarea></p>
             </fieldset>     
         
         <div class="clearfix"></div>
@@ -425,6 +450,7 @@ while($row = mysqli_fetch_array($sql))
 <ul id="preview"></ul>
 <div id="url_preview"></div>
 
+<div id="testing"></div>
 
             </p>
             </fieldset>     
@@ -446,8 +472,7 @@ while($row = mysqli_fetch_array($sql))
       <tr>
 
 
-
-<td class="col-md-6"><button class="btn btn-success" id="save-work"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
+<td class="col-md-6"><button type="submit" class="btn btn-success" id="save-work"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
 
 
 
@@ -458,6 +483,9 @@ while($row = mysqli_fetch_array($sql))
 </div>
 
 </div>
+
+
+</form> 
 
                          </div>
                     
@@ -556,7 +584,7 @@ while($row = mysqli_fetch_array($sql))
 
 
 
-
+<div id="saved">Saved Successfully</div>
   
     <footer class="footer-container">
         <div class="container">
@@ -566,7 +594,7 @@ while($row = mysqli_fetch_array($sql))
         </div>
     </footer>
 
-<div id="saved">Saved Successfully</div>
+
 
 
 

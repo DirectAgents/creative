@@ -10,9 +10,10 @@ $row2 = $query->fetch_assoc();
 
 
 
-if (strpos($row2['Skills'], $searchTerm) !== false){ //Found
 
-$sql = "SELECT DISTINCT interest FROM interests WHERE interest NOT LIKE '%".$searchTerm."%'  ORDER BY interest ASC";
+if (stripos($row2['Skills'], $searchTerm) !== false) {
+
+$sql = "SELECT DISTINCT interest FROM interests WHERE interest NOT LIKE '%".$searchTerm."%' ORDER BY interest ASC";
 $query  = $mysqli->query($sql) or die(mysqli_error($connection)); 
 
 }else{

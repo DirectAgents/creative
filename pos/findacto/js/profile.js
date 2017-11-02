@@ -316,7 +316,6 @@ $('.btn-add-work').hide();
 $('.btn-list-work').fadeIn("fast");
 $('.add-work-box').fadeIn("fast");
 
-$(".add-work-box")[0].reset();
 
 });  
 
@@ -330,7 +329,7 @@ $('.add-work-box').hide();
 $.ajax({  
                 url:"../select-work.php",  
                 method:"POST",  
-                //data:{name:name}, 
+                data:{userid:'1'}, 
                 dataType:"text",  
                 success:function(data){  
   
@@ -344,14 +343,17 @@ $.ajax({
 $('#save-work').click(function(){
   //alert("asdfasd");
   $('#save-phone').hide();
+
+    $("#add-work-form").validate({
  
+  submitHandler: function(validator, form, submitButton) {
+
     var name  = $("input[name=work-name]").val();
     var link  = $("input[name=work-link]").val();
     var description = $("textarea[name='work-description']").val();
     var screenshots = $('input[name="screenshots[]"]:checked').map(function () {return this.value;}).get().join(",");
-    
-     
-     $.ajax({  
+        
+            $.ajax({  
                 url:"../insert.php",  
                 method:"POST",  
                 data:{name:name,link:link,description:description,screenshots:screenshots},  
@@ -364,7 +366,40 @@ $('#save-work').click(function(){
                 }  
            });  
 
+           $("#add-work-form")[0].reset();
+        //validator.defaultSubmit();
+    },
+  showErrors: function(errorMap, errorList) {
+    $.each(this.successList, function(index, value) {
+      $(value).css('border','1px solid #cccccc');
+      return $(value).popover("hide");
+      proceed = true;
+    });
+    return $.each(errorList, function(index, value) {
+      $(value.element).css('border-color','red');
+      var _popover;
+      console.log(value.message);
+      _popover = $(value.element).popover({
+        trigger: "manual",
+        placement: "bottom",
+        content: value.message,
+        //template: "<div class=\"popover\"><div class=\"arrow\"></div><div class=\"popover-inner\"><div class=\"popover-content\"><p></p></div></div></div>"
+        template: "<div class=\"error-message\"><div class=\"popover-content\"></div></div>"
 
+      });
+      _popover.data("popover").options.content = value.message;
+      return $(value.element).popover("show");
+    });
+  }
+});
+      
+
+
+  
+     
+
+ 
+  
  
   
 });
