@@ -189,8 +189,8 @@ $('#upload_widget_multiple').click(function() {
                 <a href="#work" id='following_button' aria-controls="#work" role="tab" data-toggle="tab">
                     Work - 0
                 </a>
-                <a href="#followers" id='followers_button' aria-controls="#followers" role="tab" data-toggle="tab">
-                    Followers - 0
+                <a href="#connections" id='followers_button' aria-controls="#connections" role="tab" data-toggle="tab">
+                    Connections - 0
                 </a>
             </div>
             
@@ -498,9 +498,9 @@ $screenshot = $screenshot[0];
                 </div>
 
               
-                <div role="tabpanel" class="tab-pane fade in" id="followers">
+                <div role="tabpanel" class="tab-pane fade in" id="connections">
                     
-                        <p class="text-center no-contributions"> This user has no followers yet. </p>
+                        <p class="text-center no-contributions"> This user has no connections yet. </p>
                     
                 </div>
 
