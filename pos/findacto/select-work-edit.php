@@ -26,7 +26,7 @@ $row_work = mysqli_fetch_array($sql);
 	?>  
 
 
-  
+
 
 
 
@@ -80,4 +80,38 @@ $row_work = mysqli_fetch_array($sql);
             </div>
                 
 </div>
+
+
+<div class="panel panel-default">
+      
+      <div class="panel-heading">Screenshots</div>
+      <div class="panel-body">
+            
+            <fieldset class="col-md-12">     
+            <p>
+              
+ <?php 
+
+
+$sql=mysqli_query($connecDB,"SELECT * FROM work WHERE id='".$_POST['id']."' ORDER BY id DESC ");
+$row_work = mysqli_fetch_array($sql); 
+
+$test = implode(",", $row_work['screenshots']);
+
+foreach ($test as $stuff) {
+echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_200/v1/'.$stuff;
+}
+
+?>               
+
+
+            </p>
+            </fieldset>     
+        
+        <div class="clearfix"></div>
+            </div>
+                
+</div>
+
+
 
