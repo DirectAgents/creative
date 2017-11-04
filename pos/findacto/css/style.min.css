@@ -2503,6 +2503,9 @@ display:none
 table.work-table {float:left; border: solid rgba(0,0,0,.1) 1px !important; box-shadow: 0 1px 6px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.15); border-radius: 2px;}
 table.work-table >tbody>tr>td{padding:0px !important;}
 table.work-table >tbody>tr>td.work-name{padding:20px !important; color:#000; font-size:18px; font-weight:bold;}
+table.work-table >tbody>tr>td.work-btns{padding:20px 0 10px 15px !important; color:#000; font-size:18px; font-weight:bold;}
+
+
 
 
 
@@ -2535,11 +2538,15 @@ table.skills>tbody>tr>td{ border-top: 0px !important; text-align: left;}
 .upload_widget{color: #fff; background-color: #5cb85c; border-color: #4cae4c;}
 
 
+.btn-edit-work{color: #fff; background-color: #5cb85c; border-color: #4cae4c;}
+.btn-delete-work{color: #fff; background-color: #666; }
+
+
 .del_wrapper{float: right;}
 .icon_del{margin-left:10px;}
 
 
-.add-work-box{display:none;}
+.add-work-box,.edit-work-box{display:none;}
 .btn-list-work{display:none; float:left; margin-bottom:15px; color: #fff; border-color: #4cae4c;}
 
 
@@ -2558,3 +2565,4 @@ fieldset textarea {width:100%; padding:10px; height:100px;}
 
 
 .about-box{background:#eee; padding:20px; margin:10px;}
+

@@ -315,6 +315,30 @@ $('.list-work-box').hide();
 $('.btn-add-work').hide();
 $('.btn-list-work').fadeIn("fast");
 $('.add-work-box').fadeIn("fast");
+});
+
+
+$('.btn-edit-work').click(function(){
+$('.list-work-box').hide();
+
+$('.btn-add-work').hide();
+$('.btn-list-work').fadeIn("fast");
+$('.edit-work-box').fadeIn("fast");
+
+var data = $.parseJSON($(this).attr('data-button'));
+//alert(data.id);
+
+$.ajax({  
+                url:"../select-work-edit.php",  
+                method:"POST",  
+                data:{id:data.id}, 
+                dataType:"text",  
+                success:function(data){  
+  
+                    $('.edit-work-box-inner').html(data);
+                    
+                }  
+           });  
 
 
 });  
@@ -325,6 +349,7 @@ $('.list-work-box').show();
 $('.btn-add-work').fadeIn("fast");
 $('.btn-list-work').hide();
 $('.add-work-box').hide();
+$('.edit-work-box').hide();
 
 $.ajax({  
                 url:"../select-work.php",  
@@ -354,7 +379,7 @@ $('#save-work').click(function(){
     var screenshots = $('input[name="screenshots[]"]:checked').map(function () {return this.value;}).get().join(",");
         
             $.ajax({  
-                url:"../insert.php",  
+                url:"../insert-work.php",  
                 method:"POST",  
                 data:{name:name,link:link,description:description,screenshots:screenshots},  
                 dataType:"text",  
@@ -391,17 +416,69 @@ $('#save-work').click(function(){
       return $(value.element).popover("show");
     });
   }
+  });
+   
 });
-      
 
 
-  
-     
 
+
+$('#save-edit-work').click(function(){
+  //alert("234");
+  $('#save-phone').hide();
+
+    $("#edit-work-form").validate({
  
-  
- 
-  
+  submitHandler: function(validator, form, submitButton) {
+
+    var id  = $("input[name=id]").val();
+    var name  = $("input[name=work-name-edit]").val();
+    var link  = $("input[name=work-link-edit]").val();
+    var description = $("textarea[name='work-description-edit']").val();
+    var screenshots = $('input[name="screenshots[]"]:checked').map(function () {return this.value;}).get().join(",");
+        
+        //alert(id);
+
+            $.ajax({  
+                url:"../edit-work.php",  
+                method:"POST",  
+                data:{id:id,name:name,link:link,description:description,screenshots:screenshots},  
+                dataType:"text",  
+                success:function(data){  
+                     //alert(data);  
+                     $('#saved').fadeIn("fast");
+                     $('#saved').delay(2000).fadeOut("slow");
+                     
+                }  
+           });  
+
+           //$("#add-work-form")[0].reset();
+        //validator.defaultSubmit();
+    },
+  showErrors: function(errorMap, errorList) {
+    $.each(this.successList, function(index, value) {
+      $(value).css('border','1px solid #cccccc');
+      return $(value).popover("hide");
+      proceed = true;
+    });
+    return $.each(errorList, function(index, value) {
+      $(value.element).css('border-color','red');
+      var _popover;
+      console.log(value.message);
+      _popover = $(value.element).popover({
+        trigger: "manual",
+        placement: "bottom",
+        content: value.message,
+        //template: "<div class=\"popover\"><div class=\"arrow\"></div><div class=\"popover-inner\"><div class=\"popover-content\"><p></p></div></div></div>"
+        template: "<div class=\"error-message\"><div class=\"popover-content\"></div></div>"
+
+      });
+      _popover.data("popover").options.content = value.message;
+      return $(value.element).popover("show");
+    });
+  }
+  });
+   
 });
 
 

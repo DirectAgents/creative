@@ -1,5 +1,7 @@
 <?php  
- include_once("config.php"); 
+ session_start();
+ include_once("config.php");
+ require_once 'base_path.php'; 
 
  $id = '1';  
 
@@ -7,6 +9,12 @@
 
 $sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='".$_POST['userid']."' ");
 $row = mysqli_fetch_array($sql);
+
+?>
+
+<script  src="<?php echo BASE_PATH; ?>/js/profile.js"></script>
+
+<?php 
 
 
 $sql=mysqli_query($connecDB,"SELECT * FROM work ORDER BY id DESC ");
@@ -30,11 +38,16 @@ $screenshot = $screenshot[0];
     <tbody>
       <tr><td><img src="<?php 
       if($row_work['screenshots'] != ''){ 
-        echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_260/v1/'.$screenshot;
+        echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_200/v1/'.$screenshot;
         }else{
           echo $screenshot;} ?>"/></td></tr>
       <tr><td class="work-name"><?php echo $row_work['name']; ?></td></tr>
       <tr><td class="work-name">By: <?php echo $row['Firstname']; ?></td></tr>
+      <tr><td class="work-btns">
+      <button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>"}' class="btn btn-edit-work" id="edit-work"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+      <button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>"}' class="btn btn-delete-work" id="edit-delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+      </td>
+     </tr>
     </tbody>
   </table>
 </div>

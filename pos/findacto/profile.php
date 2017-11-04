@@ -99,7 +99,7 @@ $row = mysqli_fetch_array($sql);
  <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
 
-      <script type="text/javascript" src="https://res.cloudinary.com/demo/raw/upload/v1425809551/jquery.cloudinary_t0p9km.js"></script>
+    <script type="text/javascript" src="https://res.cloudinary.com/demo/raw/upload/v1425809551/jquery.cloudinary_t0p9km.js"></script>
       <script type="text/javascript" src="https://widget.cloudinary.com/global/all.js"></script>
 
 
@@ -115,6 +115,7 @@ if (cloud_name != '' && preset_name != '') $('#message').remove();
 $.cloudinary.config({ cloud_name: cloud_name});
 cloudinary.setCloudName(cloud_name);
 $('#upload_widget_multiple').click(function() {
+  //alert("add");
   cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search']  }, 
     function(error, result) {
       console.log(error, result);
@@ -123,6 +124,21 @@ $('#upload_widget_multiple').click(function() {
         $('#preview').append('<li><img src=\"' + $.cloudinary.url(v["public_id"], {format: 'jpg', resource_type: v["resource_type"]  ,transformation: [{width: 200, crop: "fill"}]}) + '\" />')
         $('#testing').append(v["public_id"])
         $('#url_preview').append('<input type="checkbox" name="screenshots[]" value="'+v["public_id"]+'" checked/>')
+      });
+    });
+});
+
+
+$('#upload_widget_multiple_edit').click(function() {
+  //alert("edit");
+  cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search']  }, 
+    function(error, result) {
+      console.log(error, result);
+      ids_and_ratios = {};
+      $.each(result, function(i, v){
+        $('#preview_edit').append('<li><img src=\"' + $.cloudinary.url(v["public_id"], {format: 'jpg', resource_type: v["resource_type"]  ,transformation: [{width: 200, crop: "fill"}]}) + '\" />')
+        $('#testing_edit').append(v["public_id"])
+        $('#url_preview_edit').append('<input type="checkbox" name="screenshots[]" value="'+v["public_id"]+'" checked/>')
       });
     });
 });
@@ -344,7 +360,7 @@ echo '</div>';
 
 
 
-<form id="add-work-form">
+
 
 <div class="list-work-box">
 <?php 
@@ -371,11 +387,16 @@ $screenshot = $screenshot[0];
     <tbody>
       <tr><td><img src="<?php 
       if($row_work['screenshots'] != ''){ 
-        echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_260/v1/'.$screenshot;
+        echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_200/v1/'.$screenshot;
         }else{
           echo $screenshot;} ?>"/></td></tr>
       <tr><td class="work-name"><?php echo $row_work['name']; ?></td></tr>
       <tr><td class="work-name">By: <?php echo $row['Firstname']; ?></td></tr>
+      <tr><td class="work-btns">
+      <button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>"}' class="btn btn-edit-work" id="edit-work"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+      <button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>"}' class="btn btn-delete-work" id="edit-delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+      </td>
+     </tr>
     </tbody>
   </table>
 </div>
@@ -387,7 +408,11 @@ $screenshot = $screenshot[0];
 
 
 
+<!--Add Work-->
+
 <div class="add-work-box">
+
+<form id="add-work-form">
 
 <div class="panel panel-default">
       
@@ -482,12 +507,91 @@ $screenshot = $screenshot[0];
 
 </div>
 
-</div>
+
 
 
 </form> 
 
                          </div>
+
+
+
+
+<!--Edit Work-->
+
+<div class="edit-work-box">
+  
+<form id="edit-work-form">
+
+<div class="edit-work-box-inner"></div>
+
+
+
+<div class="panel panel-default">
+      
+      <div class="panel-heading">Screenshots</div>
+      <div class="panel-body">
+            
+            <fieldset class="col-md-12">     
+            <p>
+  <br>            
+<a href="#work" class="cloudinary-button" id="upload_widget_multiple_edit">Upload Screenshots</a>
+
+<br><br>
+<ul id="preview_edit"></ul>
+<div id="url_preview_edit"></div>
+
+<div id="testing_edit"></div>
+
+<p>
+  
+
+
+</p>
+
+
+            </p>
+            </fieldset>     
+        
+        <div class="clearfix"></div>
+            </div>
+                
+</div>
+
+
+
+
+
+
+ <div class="col-md-12">
+
+<table class="table">
+    <tbody>
+      <tr>
+
+
+<td class="col-md-6"><button type="submit" class="btn btn-success" id="save-edit-work"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
+
+
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+</form> 
+
+
+
+
+
+</div>
+
+
+                   </div>
                     
                 </div>
 
