@@ -82,36 +82,60 @@ $row_work = mysqli_fetch_array($sql);
 </div>
 
 
+<?php
+
+$sql=mysqli_query($connecDB,"SELECT * FROM work WHERE id='".$_POST['id']."' ORDER BY id DESC ");
+$row_work = mysqli_fetch_array($sql); 
+
+if ($row_work['screenshots'] != ''){
+
+?>
+
 <div class="panel panel-default">
       
       <div class="panel-heading">Screenshots</div>
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
-            <p>
+           
               
  <?php 
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM work WHERE id='".$_POST['id']."' ORDER BY id DESC ");
-$row_work = mysqli_fetch_array($sql); 
+$ctop = $row_work['screenshots']; 
+$ctop = explode(',',$ctop);
 
-$test = implode(",", $row_work['screenshots']);
 
-foreach ($test as $stuff) {
-echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_200/v1/'.$stuff;
+echo '<ul class="screenshots">';
+foreach($ctop as $interest)  
+{ 
+
+if(in_array($interest,$ctop)){
+
+  echo "<li class='col-md-4'>";
+  echo '<img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_200/v1/'.$interest.'"/>';
+  echo "</li>";
 }
+
+}
+echo "</ul>";
+
+
+
 
 ?>               
 
 
-            </p>
+           
             </fieldset>     
         
         <div class="clearfix"></div>
             </div>
                 
 </div>
+
+<?php } ?>
+
 
 
 

@@ -529,7 +529,7 @@ $screenshot = $screenshot[0];
 
 <div class="panel panel-default">
       
-      <div class="panel-heading">Screenshots</div>
+     
       <div class="panel-body">
             
             <fieldset class="col-md-12">     

@@ -2566,3 +2566,5 @@ fieldset textarea {width:100%; padding:10px; height:100px;}
 
 .about-box{background:#eee; padding:20px; margin:10px;}
 
+ul.screenshots li{float:left; list-style-type: none}
+
