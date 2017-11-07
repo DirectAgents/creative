@@ -12,9 +12,9 @@
     "api_secret" => "BRddFY0iBJQwAwohhJIrsd0VaP8"
 ));
 
-R::setup('mysql:host=localhost;dbname=coolfunctionality', 'root', '123');
+R::setup('mysql:host=localhost;dbname=findacto', 'root', '123');
 
-$result = \Cloudinary\Uploader::destroy('gximdnhsyf28qo7s6doi', $options = array());
+$result = \Cloudinary\Uploader::destroy('ahlz4rsvtig8rqikpnyf', $options = array());
 
 
 ?>

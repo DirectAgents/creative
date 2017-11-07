@@ -28,7 +28,7 @@ $row_work = mysqli_fetch_array($sql);
 
 
 
-
+<script  src="<?php echo BASE_PATH; ?>/js/profile.js"></script>
 
 
 
@@ -107,15 +107,19 @@ $ctop = explode(',',$ctop);
 
 
 echo '<ul class="screenshots">';
-foreach($ctop as $interest)  
+foreach($ctop as $screenshot)  
 { 
 
-if(in_array($interest,$ctop)){
+$random = rand(10000, 1000000);  
 
-  echo "<li class='col-md-4'>";
-  echo '<img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_200/v1/'.$interest.'"/>';
-  echo "</li>";
-}
+if(in_array($screenshot,$ctop)){ ?>
+
+  <li class='col-md-4' id="<?php echo $random; ?>">
+  <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_200/v1/<?php echo $screenshot; ?>"/>
+  <a href="#work" data-button='{"screenshot": "<?php echo $screenshot; ?>", "random": "<?php echo $random; ?>"}' class="delete-screenshot">delete</a>
+  </li>
+
+<?php }
 
 }
 echo "</ul>";

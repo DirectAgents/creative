@@ -484,5 +484,28 @@ $('#save-edit-work').click(function(){
 
 
 
+$('.delete-screenshot').click(function(e){
+
+var data = $.parseJSON($(this).attr('data-button')); 
+alert(data.random);
+
+$.ajax({  
+                url:"../delete-screenshot.php",  
+                method:"POST",  
+                data:{userid:'1',screenshot:data.screenshot, random:data.random}, 
+                dataType:"text",  
+                success:function(data){  
+                    //alert(data);
+                    $("#"+data).delay(1000).fadeOut("slow");
+                    
+                }  
+           });  
+
+e.preventDefault();
+
+}); 
+
+
+
 
 });
