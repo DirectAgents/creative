@@ -5,17 +5,36 @@
 $sql=mysqli_query($connecDB,"SELECT * FROM work WHERE id='".$_POST['id']."' ORDER BY id DESC ");
 $row_work = mysqli_fetch_array($sql); 
 
- $screenshots = $_POST['screenshots'];
+$_POST['screenshots'];
+
+ if ($_POST['screenshots'] != ''){
 
  $sql = "UPDATE work SET 
  name = '".$_POST['name']."',  
  link = '".$_POST['link']."',
  description = '".$_POST['description']."',
- screenshots = '".$screenshots."'
+ screenshots = '".$_POST['screenshots']."'
  
  WHERE id='".$_POST['id']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
       echo 'Data Updated';  
  }  
+
+ }
+
+  if ($_POST['screenshots'] == ''){
+
+ $sql = "UPDATE work SET 
+ name = '".$_POST['name']."',  
+ link = '".$_POST['link']."',
+ description = '".$_POST['description']."'
+ 
+ WHERE id='".$_POST['id']."'";  
+ if(mysqli_query($connecDB, $sql))  
+ {  
+      echo 'Data Updated';  
+ }  
+
+ }
  ?>

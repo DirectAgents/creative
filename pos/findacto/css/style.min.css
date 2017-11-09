@@ -2588,4 +2588,4 @@ ul.screenshots li{float:left; list-style-type: none}
   cursor: pointer;
 }
 
-#work-count{display:inline;}
+#work-count, #skills-count{display:inline;}

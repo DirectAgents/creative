@@ -7,6 +7,7 @@ $('#edit-about').click(function(){
   $('td.about').each(function(){
     var content = $(this).html();
     
+    //alert(content);
 
     if(!content) {
 
@@ -49,7 +50,7 @@ $('#save-about').click(function(){
                 method:"POST",  
                 data:{content:content,column_name:'About'},  
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
                      //alert(data);  
                 }  
            });  
@@ -80,9 +81,9 @@ $('textarea').each(function(){
                 method:"POST",  
                 data:{column_name:'About'}, 
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
  
-                    $('.about-textarea').html(data);
+                    $('.about-textarea').html(response);
                     $('.about-textarea').contents().unwrap();  
                 }  
            });  
@@ -97,7 +98,7 @@ $('textarea').each(function(){
 
 
 
-//Skills
+///////Skills/////////
 
 
 
@@ -115,8 +116,12 @@ $('#save-skills').click(function(){
                 method:"POST",  
                 data:{content:interest,column_name:'Skills'},  
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
                      //alert(data);  
+                     var skills_count = $(response).filter('#theskills').text();  
+                     $('#skills-count').html(skills_count);
+                     //alert(skills_count);  
+                     
                 }  
        });  
  });
@@ -172,7 +177,7 @@ $('#save-email').click(function(){
                 method:"POST",  
                 data:{content:content,column_name:'Email'},  
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
                      //alert(data);  
                 }  
            });  
@@ -200,9 +205,9 @@ $('.email input[type=text]').each(function(){
                 method:"POST",  
                 data:{column_name:'Email'}, 
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
   
-                    $('.email input[type=text]').html(data);
+                    $('.email input[type=text]').html(response);
                     $('.email input[type=text]').contents().unwrap();  
                 }  
            });  
@@ -261,7 +266,7 @@ $('#save-phone').click(function(){
                 method:"POST",  
                 data:{content:content,column_name:'Phone'},  
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
                      //alert(data);  
                 }  
            });  
@@ -289,9 +294,9 @@ $('.phone input[type=text]').each(function(){
                 method:"POST",  
                 data:{column_name:'Phone'}, 
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
   
-                    $('.phone input[type=text]').html(data);
+                    $('.phone input[type=text]').html(response);
                     $('.phone input[type=text]').contents().unwrap();  
                 }  
            });  
@@ -360,9 +365,9 @@ $.ajax({
                 method:"POST",  
                 data:{userid:'1'}, 
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
   
-                    $('.list-work-box').html(data);
+                    $('.list-work-box').html(response);
                     
                 }  
            });  
@@ -387,12 +392,12 @@ $('#save-work').click(function(){
                 method:"POST",  
                 data:{name:name,link:link,description:description,screenshots:screenshots},  
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
                      //alert(data);  
                      $('#saved').fadeIn("fast");
                      $('#saved').delay(2000).fadeOut("slow");
 
-                     $('#work-count').html(data);
+                     $('#work-count').html(response);
                      
                 }  
            });  
@@ -450,7 +455,7 @@ $('#save-edit-work').click(function(){
                 method:"POST",  
                 data:{id:id,name:name,link:link,description:description,screenshots:screenshots},  
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
                      //alert(data);  
                      $('#saved').fadeIn("fast");
                      $('#saved').delay(2000).fadeOut("slow");
@@ -568,9 +573,9 @@ $.ajax({
                 method:"POST",  
                 data:{userid:'1', id:data.id, screenshot:data.screenshot, random:data.random}, 
                 dataType:"text",  
-                success:function(data){  
+                success:function(response){  
                     //alert(data);
-                    $("#"+data).delay(1000).fadeOut("slow");
+                    $("#"+response).delay(1000).fadeOut("slow");
                     $("#the-screenshots").fadeOut("fast");
                     $(".upload-screenshot").delay(1000).fadeIn("slow");
                     //$('.upload-screenshot').css("display", "block");

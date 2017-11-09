@@ -4,13 +4,16 @@ require_once 'base_path.php';
 include_once("config.php");
 include("config.inc.php");
 
-$firstname = explode("-", $_GET['name'])[0];
-$lastname = explode("-", $_GET['name'])[1];
+//$firstname = explode("-", $_GET['name'])[0];
+//$lastname = explode("-", $_GET['name'])[1];
 
+//$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Firstname ='".ucfirst($firstname)."' AND Lastname ='".ucfirst($lastname)."'");
+//$row = mysqli_fetch_array($sql);
 
-
-$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Firstname ='".ucfirst($firstname)."' AND Lastname ='".ucfirst($lastname)."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='1'");
 $row = mysqli_fetch_array($sql);
+
+$skills_array = explode(",", $row['Skills']);
 
 
 $result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '1' GROUP BY userID");
@@ -203,7 +206,7 @@ $('#upload_widget_multiple_edit').click(function() {
                 </a>
 
                 <a href="#skills" aria-controls="#skills" role="tab" data-toggle="tab">
-                    Skills - 0
+                    Skills - <div id="skills-count"><?php echo count($skills_array);?></div>
                 </a>
                
                 <a href="#work" id='following_button' aria-controls="#work" role="tab" data-toggle="tab">
@@ -216,6 +219,8 @@ $('#upload_widget_multiple_edit').click(function() {
             
             <div class="tab-content">
 
+
+<!--ABOUT-->
              <div role="tabpanel" class="tab-pane fade in active" id="about">
                     
             <div class="col-md-6 about-box">
@@ -257,6 +262,8 @@ $('#upload_widget_multiple_edit').click(function() {
                     
                 </div>
 
+
+<!--SKILS-->
 
               <div role="tabpanel" class="tab-pane fade in" id="skills">
                     
