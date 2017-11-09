@@ -2502,7 +2502,8 @@ display:none
 
 table.work-table {float:left; border: solid rgba(0,0,0,.1) 1px !important; box-shadow: 0 1px 6px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.15); border-radius: 2px;}
 table.work-table >tbody>tr>td{padding:0px !important;}
-table.work-table >tbody>tr>td.work-name{padding:20px !important; color:#000; font-size:18px; font-weight:bold;}
+table.work-table >tbody>tr>td.work-name{padding:10px 20px 10px 20px !important; color:#000; font-size:18px; font-weight:bold;}
+table.work-table >tbody>tr>td.person-name{padding:10px 20px 10px 20px !important; color:#000; font-size:14px; font-weight:bold;}
 table.work-table >tbody>tr>td.work-btns{padding:20px 0 10px 15px !important; color:#000; font-size:18px; font-weight:bold;}
 
 
@@ -2558,6 +2559,8 @@ fieldset textarea {width:100%; padding:10px; height:100px;}
 
 
 #saved {display:none; position: fixed; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
+#deleted {display:none; position: fixed; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
+
 
 .error-message{float:left; color:#000; text-align: left; left:0 !important; top:2px !important;}
 .error-message-content{float:left; color:#000; text-align: left}
@@ -2568,3 +2571,21 @@ fieldset textarea {width:100%; padding:10px; height:100px;}
 
 ul.screenshots li{float:left; list-style-type: none}
 
+.upload-screenshot{display:none;}
+
+.wrappertest {
+  position: relative;
+  display: inline-block;
+}
+
+.delete-screenshot:before {
+  content: '✕';
+}
+.delete-screenshot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+#work-count{display:inline;}

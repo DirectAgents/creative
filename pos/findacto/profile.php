@@ -13,6 +13,10 @@ $sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Firstname ='".ucfirst
 $row = mysqli_fetch_array($sql);
 
 
+$result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '1' GROUP BY userID");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
 
 ?>
 
@@ -116,7 +120,7 @@ $.cloudinary.config({ cloud_name: cloud_name});
 cloudinary.setCloudName(cloud_name);
 $('#upload_widget_multiple').click(function() {
   //alert("add");
-  cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search']  }, 
+  cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search'], multiple : false  }, 
     function(error, result) {
       console.log(error, result);
       ids_and_ratios = {};
@@ -131,7 +135,7 @@ $('#upload_widget_multiple').click(function() {
 
 $('#upload_widget_multiple_edit').click(function() {
   //alert("edit");
-  cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search']  }, 
+  cloudinary.openUploadWidget({ upload_preset: preset_name, sources: [ 'local', 'url', 'image_search'], multiple : false  }, 
     function(error, result) {
       console.log(error, result);
       ids_and_ratios = {};
@@ -203,7 +207,7 @@ $('#upload_widget_multiple_edit').click(function() {
                 </a>
                
                 <a href="#work" id='following_button' aria-controls="#work" role="tab" data-toggle="tab">
-                    Work - 0
+                    Work - <div id="work-count"><?php if($count > 0 ){echo $count;}else{echo '0';} ?></div>
                 </a>
                 <a href="#connections" id='followers_button' aria-controls="#connections" role="tab" data-toggle="tab">
                     Connections - 0
@@ -370,6 +374,7 @@ $sql=mysqli_query($connecDB,"SELECT * FROM work ORDER BY id DESC ");
 while($row_work = mysqli_fetch_array($sql))
 { 
 
+$random = rand(10000, 1000000);  
 
 if($row_work['screenshots'] != ''){
 $screenshot = explode(",", $row_work['screenshots'], 2);
@@ -382,19 +387,19 @@ $screenshot = $screenshot[0];
  ?>
 
 
-<div class="col-md-4" style="padding-left:0px">
+<div class="col-md-4" style="padding-left:0px" id="<?php echo $random; ?>">
 <table class="table work-table">
     <tbody>
-      <tr><td><img src="<?php 
+      <tr><td><center><img src="<?php 
       if($row_work['screenshots'] != ''){ 
-        echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_200/v1/'.$screenshot;
+        echo 'http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/'.$screenshot;
         }else{
-          echo $screenshot;} ?>"/></td></tr>
+          echo $screenshot;} ?>"/></center></td></tr>
       <tr><td class="work-name"><?php echo $row_work['name']; ?></td></tr>
-      <tr><td class="work-name">By: <?php echo $row['Firstname']; ?></td></tr>
+      <tr><td class="person-name">By: <?php echo $row['Firstname']; ?></td></tr>
       <tr><td class="work-btns">
       <button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>"}' class="btn btn-edit-work" id="edit-work"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-      <button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>"}' class="btn btn-delete-work" id="edit-delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+      <button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>", "random": "<?php echo $random; ?>"}' class="btn btn-delete-work" id="edit-delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
       </td>
      </tr>
     </tbody>
@@ -451,7 +456,7 @@ $screenshot = $screenshot[0];
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
-            <p><textarea placeholder="asdf" name="work-description" data-rule-required="false"></textarea></p>
+            <p><textarea placeholder="Describe here what your responsibilites were and what the application does" name="work-description" data-rule-required="false"></textarea></p>
             </fieldset>     
         
         <div class="clearfix"></div>
@@ -463,13 +468,13 @@ $screenshot = $screenshot[0];
 
 <div class="panel panel-default">
       
-      <div class="panel-heading">Screenshots</div>
+      <div class="panel-heading">Screenshot</div>
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
             <p>
   <br>            
-<a href="#work" class="cloudinary-button" id="upload_widget_multiple">Upload Screenshots</a>
+<a href="#work" class="cloudinary-button" id="upload_widget_multiple">Upload Screenshot</a>
 
 <br><br>
 <ul id="preview"></ul>
@@ -519,6 +524,7 @@ $screenshot = $screenshot[0];
 
 <!--Edit Work-->
 
+
 <div class="edit-work-box">
   
 <form id="edit-work-form">
@@ -527,15 +533,23 @@ $screenshot = $screenshot[0];
 
 
 
+<div class="upload-screenshot">
+
+<div class="col-md-6" style="padding-left:0px;">
 <div class="panel panel-default">
       
-     
+      <div class="panel-heading">Screenshot</div>
       <div class="panel-body">
             
             <fieldset class="col-md-12">     
             <p>
-  <br>            
-<a href="#work" class="cloudinary-button" id="upload_widget_multiple_edit">Upload Screenshots</a>
+  <br>  
+
+
+
+<a href="#work" class="cloudinary-button" id="upload_widget_multiple_edit">Upload Screenshot</a>
+
+
 
 <br><br>
 <ul id="preview_edit"></ul>
@@ -557,20 +571,23 @@ $screenshot = $screenshot[0];
             </div>
                 
 </div>
+</div>
+</div>
 
 
 
 
-
-
- <div class="col-md-12">
+ <div class="col-md-12" style="padding-left:0px">
 
 <table class="table">
     <tbody>
       <tr>
 
 
-<td class="col-md-6"><button type="submit" class="btn btn-success" id="save-edit-work"><span class="glyphicon glyphicon-ok"></span> Save</button></td>
+<td class="col-md-6"><button type="submit" class="btn btn-success" id="save-edit-work"><span class="glyphicon glyphicon-ok"></span> Save</button>
+<button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>"}' class="btn btn-delete-work" id="edit-delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+</td>
+
 
 
 
@@ -689,6 +706,7 @@ $screenshot = $screenshot[0];
 
 
 <div id="saved">Saved Successfully</div>
+<div id="deleted">Deleted Successfully</div>
   
     <footer class="footer-container">
         <div class="container">

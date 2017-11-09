@@ -14,6 +14,7 @@
   $row_work = mysqli_fetch_array($sql); 
 
 
+if($row_work['screenshots'] != '') {
 
 \Cloudinary::config(array(
     "cloud_name" => "dgml9ji66",
@@ -23,23 +24,31 @@
 
 //R::setup('mysql:host=localhost;dbname=findacto', 'root', '123');
 
-$result = \Cloudinary\Uploader::destroy($_POST['screenshot'], $options = array());
+$result = \Cloudinary\Uploader::destroy($row_work['screenshots'], $options = array());
 
 
-//$sql=mysqli_query($connecDB,"DELETE FROM work WHERE userid = '".$_POST['id']."' AND ProjectID = '".$_POST['projectid']."' AND startupID = '".$_POST['startupid']."'");
+}
+
+$sql=mysqli_query($connecDB,"DELETE FROM work WHERE userID = '".$_POST['userid']."' AND id = '".$_POST['id']."'");
 
 
- $sql = "UPDATE work SET 
- screenshots = ''
- WHERE userID='".$_POST['userid']."' AND id = '".$_POST['id']."' ";  
- if(mysqli_query($connecDB, $sql))  
- {  
-      echo $_POST['random'];
- }  
+$result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '1' GROUP BY userID");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
 
+if($count > 0 ){
+echo '<div id="thecount">';
+echo $count;
+echo '</div>';
+}else{
+echo '<div id="thecount">';
+echo '0';
+echo '</div>';
+}
 
-
-
+echo '<div id="random">';
+echo $_POST['random'];
+echo '</div>';
 
 ?>
 

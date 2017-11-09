@@ -5,7 +5,7 @@
 $sql=mysqli_query($connecDB,"SELECT * FROM work WHERE id='".$_POST['id']."' ORDER BY id DESC ");
 $row_work = mysqli_fetch_array($sql); 
 
- $screenshots = $row_work['screenshots'].','.$_POST['screenshots'];
+ $screenshots = $_POST['screenshots'];
 
  $sql = "UPDATE work SET 
  name = '".$_POST['name']."',  

@@ -319,6 +319,7 @@ $('.add-work-box').fadeIn("fast");
 
 
 $('.btn-edit-work').click(function(){
+
 $('.list-work-box').hide();
 
 $('.btn-add-work').hide();
@@ -333,10 +334,13 @@ $.ajax({
                 method:"POST",  
                 data:{id:data.id}, 
                 dataType:"text",  
-                success:function(data){  
-  
-                    $('.edit-work-box-inner').html(data);
+                cache: false,
+                success:function(response){  
+ 
+                    $('.edit-work-box-inner').html(response);
+                    $('.upload-screenshot').css("display", "none");
                     
+
                 }  
            });  
 
@@ -387,6 +391,8 @@ $('#save-work').click(function(){
                      //alert(data);  
                      $('#saved').fadeIn("fast");
                      $('#saved').delay(2000).fadeOut("slow");
+
+                     $('#work-count').html(data);
                      
                 }  
            });  
@@ -483,21 +489,93 @@ $('#save-edit-work').click(function(){
 
 
 
+//////Delete Work/////////
+
+$('.btn-delete-work').click(function(e){
+
+var data = $.parseJSON($(this).attr('data-button')); 
+//alert(data.screenshot);
+
+
+ConfirmDialog('Are you sure');
+
+function ConfirmDialog(message){
+    $('<div></div>').appendTo('body')
+                    .html('<div><h6>'+message+'?</h6></div>')
+                    .dialog({
+                        modal: true, zIndex: 10000, autoOpen: true,
+                        width: 'auto', resizable: false,
+                        buttons: {
+                            Yes: function () {
+                                // $(obj).removeAttr('onclick');                                
+                                // $(obj).parents('.Parent').remove();
+                                
+                                //$('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
+                                
+                                $(this).dialog("close");
+
+                                $.ajax({  
+                url:"../delete-work.php",  
+                method:"POST",  
+                data:{userid:'1', id:data.id, random:data.random}, 
+                dataType:"text",  
+                success:function(response){  
+                    //alert(data);
+                    $('#deleted').fadeIn("fast");
+                    $('#deleted').delay(2000).fadeOut("slow");
+
+                    var random = $(response).filter('#random').text();
+                    $("#"+random).delay(1000).fadeOut("slow");
+
+                    var work_count = $(response).filter('#thecount').text();  
+                    $('#work-count').html(work_count);
+
+
+                }  
+           });  
+
+e.preventDefault();
+                            },
+                            No: function () {     
+
+                              //$('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
+                            
+                              $(this).dialog("close");
+                            }
+                        },
+                        close: function (event, ui) {
+                            $(this).remove();
+                        }
+                    });
+    };
+
+
+
+
+
+
+}); 
+
+
 
 $('.delete-screenshot').click(function(e){
 
 var data = $.parseJSON($(this).attr('data-button')); 
-alert(data.random);
+//alert(data.screenshot);
 
 $.ajax({  
                 url:"../delete-screenshot.php",  
                 method:"POST",  
-                data:{userid:'1',screenshot:data.screenshot, random:data.random}, 
+                data:{userid:'1', id:data.id, screenshot:data.screenshot, random:data.random}, 
                 dataType:"text",  
                 success:function(data){  
                     //alert(data);
                     $("#"+data).delay(1000).fadeOut("slow");
-                    
+                    $("#the-screenshots").fadeOut("fast");
+                    $(".upload-screenshot").delay(1000).fadeIn("slow");
+                    //$('.upload-screenshot').css("display", "block");
+
+
                 }  
            });  
 
