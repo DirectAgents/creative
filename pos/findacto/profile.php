@@ -13,8 +13,13 @@ include("config.inc.php");
 $sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='1'");
 $row = mysqli_fetch_array($sql);
 
-$skills_array = explode(",", $row['Skills']);
+if($row['Skills'] != ''){
 
+$skills_array = explode(",", $row['Skills']);
+$skills_array =  count($skills_array);
+}else{
+$skills_array = '0';
+}
 
 $result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '1' GROUP BY userID");
 $row_count = mysqli_fetch_assoc($result_count);
@@ -155,7 +160,7 @@ $count = $row_count['count'];
                    About
                 </a>
                             <a href="#skills" aria-controls="#skills" role="tab" data-toggle="tab">
-                    Skills - <div id="skills-count"><?php echo count($skills_array);?></div>
+                    Skills - <div id="skills-count"><?php echo $skills_array; ?></div>
                 </a>
                             <a href="#work" id='following_button' aria-controls="#work" role="tab" data-toggle="tab">
                     Work - <div id="work-count"><?php if($count > 0 ){echo $count;}else{echo '0';} ?></div>

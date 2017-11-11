@@ -45,14 +45,14 @@ autocomplete(
       },
     },
     {
-      source: autocomplete.sources.hits(skills, {hitsPerPage: 5}),
-      displayKey: 'name',
-      name: 'name',
+      source: autocomplete.sources.hits(developers, {hitsPerPage: 5}),
+      displayKey: 'skills',
+      name: 'skills',
       templates: {
         header: '<div class="aa-suggestions-category">Skills</div>',
         suggestion: function(suggestion) {
 
-         /* var str = '<span>' +
+          var str = '<span>' +
           
             '</span>';
 
@@ -64,10 +64,9 @@ autocomplete(
           ;
         }
 
-         return str;*/
-
-          var str = '<a href="http://localhost/creative/pos/findacto/?q='+ suggestion._highlightResult.name.value + '">' 
-          +  '<span class="aa-suggestion-name">' + suggestion._highlightResult.name.value + '</span>' + '</a>';
+         //return str;
+          //var str = '<a href="http://localhost/creative/pos/findacto/?q='+ suggestion._highlightResult.skills.value + '">' 
+          //+  '<span class="aa-suggestion-name">' + suggestion._highlightResult.skills.value  + '</span>' + '</a>';
           
        
         var em = str.replace("<em>",'');

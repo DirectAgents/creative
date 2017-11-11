@@ -1,33 +1,24 @@
-<?php  
- include_once("config.php");  
- require_once('algoliasearch-client-php-master/algoliasearch.php');
+<?php
+
+ session_start();
+ include_once("config.php");
+ require_once 'base_path.php'; 
 
 
- $id = '1';  
- $content = $_POST["content"]; 
- $column_name = $_POST["column_name"]; 
- 
- $sql = "UPDATE profile SET ".$column_name."='".$content."' WHERE id='".$id."'";  
- if(mysqli_query($connecDB, $sql))  
- {  
-      //echo 'Data Updated';  
-
- }  
-
+require_once('algoliasearch-client-php-master/algoliasearch.php');
 
 
 $response = array();
 //$posts = array();
-$sql=mysqli_query($connecDB,"SELECT * FROM profile WHERE id='".$id."' limit 20 ");
-$row=mysqli_fetch_array($sql); 
-
+$sql=mysqli_query($connecDB,"SELECT * FROM profile limit 20 ");
+while($row=mysqli_fetch_array($sql)) 
+{ 
 
 
 
 $response[] = array(
 	'objectID'=> $row['id'],
 	'name'=> $row['Firstname'].' '.$row['Lastname'], 
-	'profileid'=> $row['id'],
 	'profileimage'=> $row['ProfileImage'],
 	'about'=> 'I am etc...', 
 	'skills'=> explode(',', $row['Skills']),
@@ -43,7 +34,7 @@ $response[] = array(
 	
 	 );
 
-
+} 
 
 
 $fp = fopen('results.json', 'w');
@@ -65,12 +56,4 @@ foreach ($chunks as $batch) {
 }
 
 
-$skills_array = explode(",", $row['Skills']);
-
-echo '<div id="theskills">';
-echo count($skills_array);
-echo '</div>';
-
-
-
- ?>
+?>
