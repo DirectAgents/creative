@@ -4,5 +4,6 @@ RewriteEngine on
 
 RewriteRule ^profile/([A-Za-z0-9-]+)/?$ profile.php?name=$1    [NC,L]    # Handle product requests
 RewriteRule ^faq/?$ faq.php    [NC,L]    # Handle product requests
+RewriteRule ^signup/?$ signup.php    [NC,L]    # Handle product requests
 
 
