@@ -24,6 +24,173 @@ $index = $client->initIndex('developers');
 
 
 
+///////////////GOOGLE LOGIN/////////////////
+
+require_once ('libraries/Google/autoload.php');
+
+//Insert your cient ID and secret 
+//You can get it from : https://console.developers.google.com/
+$client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
+$client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
+$redirect_uri = ''.BASE_PATH.'';
+
+//database
+$db_username = "root"; //Database Username
+$db_password = "123"; //Database Password
+$host_name = "localhost"; //Mysql Hostname
+$db_name = 'findacto'; //Database Name
+
+
+//incase of logout request, just unset the session var
+if (isset($_GET['logout'])) {
+  unset($_SESSION['access_token']);
+  unset($_SESSION['participantSession']);
+}
+
+/************************************************
+  Make an API request on behalf of a user. In
+  this case we need to have a valid OAuth 2.0
+  token for the user, so we need to send them
+  through a login flow. To do this we need some
+  information from our API console project.
+ ************************************************/
+$client = new Google_Client();
+$client->setClientId($client_id);
+$client->setClientSecret($client_secret);
+$client->setRedirectUri($redirect_uri);
+$client->addScope("email");
+$client->addScope("profile");
+
+/************************************************
+  When we create the service here, we pass the
+  client to it. The client then queries the service
+  for the required scopes, and uses that when
+  generating the authentication URL later.
+ ************************************************/
+$service = new Google_Service_Oauth2($client);
+
+/************************************************
+  If we have a code back from the OAuth 2.0 flow,
+  we need to exchange that with the authenticate()
+  function. We store the resultant access token
+  bundle in the session, and redirect to ourself.
+*/
+  //echo $_GET['code'];
+if (isset($_GET['code'])) {
+  $client->authenticate($_GET['code']);
+  $_SESSION['access_token'] = $client->getAccessToken();
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+  exit;
+}
+
+/************************************************
+  If we have an access token, we can make
+  requests, else we generate an authentication URL.
+ ************************************************/
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+  $client->setAccessToken($_SESSION['access_token']);
+} else {
+  $authUrl = $client->createAuthUrl();
+}
+
+
+
+
+
+ if (!isset($authUrl)){ 
+ 
+  
+  $user = $service->userinfo->get(); //get user info 
+  
+  // connect to database
+  $mysqli = new mysqli($host_name, $db_username, $db_password, $db_name);
+    if ($mysqli->connect_error) {
+        die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+    }
+  
+  //echo $user->id;
+
+   
+
+
+  //check if user exist in database using COUNT
+  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM profile WHERE google_id=$user->id ");
+  $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
+
+  $sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Email = '".$user->email."'");
+  $row = mysqli_fetch_array($sql);
+
+
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($user_count) //if user already exist change greeting text to "Welcome Back"
+    {
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['participantSession'] = $row['id'];
+        header('Location: '.BASE_PATH.'');
+        exit();
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO profile (google_id, FirstName, LastName, userEmail, google_picture_link, Date_Created) 
+      VALUES ('".$user->id."',  '".$user->givenName."', '".$user->familyName."', '".$user->email."', '".$user->picture."' , '".$date."')");
+    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
+    //$statement->execute();
+    //echo $mysqli->error;
+
+    mysqli_query($insert_sql);  
+
+
+
+    $update_sql = mysqli_query($connecDB,"UPDATE profile SET 
+    google_id = '".$user->id."',
+    FirstName = '".$user->givenName."',
+    LastName = '".$user->familyName."',
+    google_picture_link = '".$user->picture."' 
+    
+    WHERE Email='".$user->email."'");
+   
+    mysqli_query($update_sql);
+
+    //echo $user->id;
+
+    if($mysqli->error == "Duplicate entry '".$user->email."' for key 'Email'"){
+    
+      //exit(header("Location: ../index.php"));
+
+    }else{
+
+        $_SESSION['participantSession'] = $row['userID'];
+        header('Location: '.BASE_PATH.'');
+        exit();
+
+    }
+
+    }
+  
+  //print user details
+  //echo '<pre>';
+  //print_r($user);
+  //echo '</pre>';
+}
+//echo '</div>';
+
+
+
+
+
+
+
+
+///////////////FACEBOOK LOGIN/////////////////
+
 $fb = new Facebook\Facebook([
   'app_id' => '1797081013903216',
   'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
@@ -128,7 +295,7 @@ echo 'id: ' . $user['id'];
 
 
 
-    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
+    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'Email'"){
     
       //exit(header("Location: ../index.php"));
 
@@ -136,16 +303,12 @@ echo 'id: ' . $user['id'];
 
         $_SESSION['participantSession'] = $user['id'];
         $_SESSION['facebook_photo'] = $user['id'];
-        header("Location: ../index.php");
+        header('Location: '.BASE_PATH.'');
         exit();
 
     }
 
   }
-
- 
-
-
 
 
 }
@@ -370,7 +533,7 @@ echo 'id: ' . $user['id'];
                              </div>   
                                 <div class="col-md-12">
                                     <div class="login-buttons">
-                                    <a href="/accounts/twitter/login/">
+                                    <a href="<?php echo $authUrl; ?>">
                                        <div class="google-connect connect-background" id="google-connect-button" data-track="home:google-connect">
             <span class="fa fa-google-plus"></span>
             <span class="google-connect-text connect-text">Connect with Google</span>
