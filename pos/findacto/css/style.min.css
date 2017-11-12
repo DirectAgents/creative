@@ -2494,9 +2494,11 @@ display:none
 }
 
 
-#save-about, #cancel-about, #save-email, #cancel-email, #save-phone, #cancel-phone {
+#save-about, #cancel-about, #save-email, #cancel-email, #save-phone, #cancel-phone, #save-zip, #cancel-zip {
   display: none;
 }
+
+.textinput{float:left;}
 
 
 
@@ -2589,3 +2591,27 @@ ul.screenshots li{float:left; list-style-type: none}
 }
 
 #work-count, #skills-count{display:inline;}
+
+.btn{
+
+	display: inline-block;
+    padding: 0px;
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 400;
+    /* line-height: 1.42857143; */
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 0px solid transparent;
+    border-radius: 4px;
+}
+

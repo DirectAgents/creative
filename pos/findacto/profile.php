@@ -10,7 +10,7 @@ include("config.inc.php");
 //$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Firstname ='".ucfirst($firstname)."' AND Lastname ='".ucfirst($lastname)."'");
 //$row = mysqli_fetch_array($sql);
 
-$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='1'");
+$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='".$_SESSION['participantSession']."'");
 $row = mysqli_fetch_array($sql);
 
 if($row['Skills'] != ''){
@@ -40,17 +40,26 @@ $count = $row_count['count'];
         <meta name="author" content="Collapsed">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title> Alper Dilmen's profile on Collapsed</title>
+
+       
+
         <!-- Include stylesheet -->
         <link href="<?php echo BASE_PATH; ?>/css/app.css" rel=stylesheet />
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_PATH; ?>/css/style.css">
+
+         <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="<?php echo BASE_PATH; ?>/js/bootstrap.min.js"></script>
         <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/bootstrap.offcanvas.min.js"></script>
         <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/script.min.js"></script>
+        
+  
         <!-- Bootstrap -->
-        <link href="<?php echo BASE_PATH; ?>/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.min.css" rel="stylesheet">
         <link href="<?php echo BASE_PATH; ?>/css/style.min.css" rel="stylesheet">
         <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/reset.min.css" rel="stylesheet">
         <link href="https://d3tr6q264l867m.cloudfront.net/static/mainapp/css/bootstrap.offcanvas.min.css" rel="stylesheet">
@@ -142,14 +151,31 @@ $count = $row_count['count'];
                     <div class="row">
                         <div class="col-md-6 profile-card" id="myTabs" role="tablist">
                             <img src="https://graph.facebook.com/v2.4/10158571058230062/picture?type=square&amp;height=600&amp;width=600&amp;return_ssl_resources=1" class="profile-container-image pull-left">
-                            <h3 class="profile-text bold" id="startchange">Alper Dilmen</h3>
+                            <h3 class="profile-text bold" id="startchange"><?php echo $row['Firstname'].' '.$row['Lastname']; ?></h3>
+                            
+                            <?php if ($row['Zip'] != '') { ?>
                             <h4 class="profile-text-city-state bold" id="startchange"><?php echo $row['City'].', '.$row['State']?></h4>
+                            <?php }else{ ?>
+                         <div class="col-md-6" style="padding-left:0px;">   
+                            <div class="col-md-12" style="padding-left:0px;">
+                            
+                             <div class="zip textinput"><?php echo $row['City'].', '.$row['State']?></div>
+                            
+                             <button class="btn btn-info" id="edit-zip"><span class="glyphicon glyphicon-edit"></span></button>
+                             <button class="btn btn-success" id="save-zip"><span class="glyphicon glyphicon-ok"></span></button>
+                             <button class="btn btn-cancel" id="cancel-zip"><span class="glyphicon glyphicon-remove"></span></button>
+                            
+                             </div>   
+                         </div>      
+                            <?php } ?>
+                         <div class="col-md-6" style="padding-left:0px;">
                             <a href='' name="following_button" class="profile-text-small-fix profile-text-small push-right-mid pull-left">
                                 <p>Following: <span class="bold">0</span></p>
                             </a>
                             <a href='' name="followers_button" class="profile-text-small push-right-mid pull-left">
                                 <p>Followers: <span class="bold">0</span></p>
                             </a>
+                          </div>    
                         </div>
                         <div class="col-md-6">
                         </div>
@@ -226,7 +252,7 @@ echo '<input type="hidden" name="userid" id="userid" value="1">';
 
 
 //MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM profile ");
+$Result = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='".$_SESSION['participantSession']."' ");
 
 
 //get all records from add_delete_record table
@@ -288,7 +314,7 @@ echo '</div>';
                                     <div class="list-work-box">
                                         <?php 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM work ORDER BY id DESC ");
+$sql=mysqli_query($connecDB,"SELECT * FROM work WHERE userID ='".$_SESSION['participantSession']."' ORDER BY id DESC ");
 
 while($row_work = mysqli_fetch_array($sql))
 { 

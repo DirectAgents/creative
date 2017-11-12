@@ -194,7 +194,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 $fb = new Facebook\Facebook([
   'app_id' => '1797081013903216',
   'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
-  'default_graph_version' => 'v2.2',
+  'default_graph_version' => 'v2.11',
   ]);
 
 $helper = $fb->getRedirectLoginHelper();
@@ -208,7 +208,7 @@ if(isset($_SESSION['fb_access_token_participant'])){
 
 try {
   // Returns a `Facebook\FacebookResponse` object
-  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_participant']);
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender,location', $_SESSION['fb_access_token_participant']);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
@@ -218,13 +218,17 @@ try {
 }
 
 $user = $response->getGraphUser();
+
 /*
-echo 'Name: ' . $user['name'];
+echo 'Name: ' . $user['first_name'];
 echo "<br>";
 echo 'Email: ' . $user['email'];
 echo "<br>";
 echo 'id: ' . $user['id'];
+echo "<br>";
+echo 'city: ' . $user['location'];
 */
+//exit();
 
 
 //check if user exist in database using COUNT
@@ -273,8 +277,8 @@ echo 'id: ' . $user['id'];
     $gender = ucfirst($user['gender']);
 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO profile (facebook_id, FirstName, LastName, Email, Gender, Date_Created) 
-      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' , '".$date."')");
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO profile (facebook_id, FirstName, LastName, Email, Gender,City, Date_Created) 
+      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' ,'".$user['location']['name']."', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;

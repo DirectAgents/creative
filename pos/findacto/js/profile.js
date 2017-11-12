@@ -594,4 +594,102 @@ $(document).ready(function() {
 
 
 
+
+
+////////////////Enter Zip Code to retrieve City and State//////////////////////
+
+    $('#edit-zip').click(function() {
+        //alert("123");
+        $('#edit-zip').hide();
+        $('.zip').each(function() {
+            var content = $(this).text();
+
+            if (!content) {
+                //alert(content+'123');
+                $(this).html('<input type="text" value="">');
+
+
+            } else {
+                //alert(content);
+
+                $(this).html('<input type="text" value="" placeholder="Enter Zip Code">');
+
+            }
+        });
+
+        $('#save-zip').show();
+        $('#cancel-zip').show();
+
+    });
+
+    $('#save-zip').click(function() {
+        $('#save-zip').hide();
+        $('.zip input[type=text]').each(function() {
+            var content = $(this).val(); //.replace(/\n/g,"<br>");
+
+            if (!content) {
+
+                $('#save-zip').show();
+                $(this).css('border-color', 'red');
+
+            } else {
+
+               
+
+                $.ajax({
+                    url: "../edit.php",
+                    method: "POST",
+                    data: { content: content, column_name: 'Zip' },
+                    dataType: "text",
+                    success: function(response) {
+
+                        var zip = $(response).filter('#zip').text();
+                        $('.zip').html(zip);
+                        
+                    }
+                });
+
+                $('#edit-zip').show();
+                $('#cancel-zip').hide();
+
+            }
+
+        });
+
+
+
+    });
+
+
+    $('#cancel-zip').click(function() {
+
+        $('.zip input[type=text]').each(function() {
+
+            var content = $('.zip').val(); //.replace(/\n/g,"<br>");
+
+            $.ajax({
+                url: "../select.php",
+                method: "POST",
+                data: { column_name: 'Zip' },
+                dataType: "text",
+                success: function(response) {   
+
+                    var zip = $(response).filter('#zip').text();
+
+                    $('.zip input[type=text]').html(zip);
+                    $('.zip input[type=text]').contents().unwrap();
+                }
+            });
+
+
+            $('#save-zip').hide();
+            $('#cancel-zip').hide();
+            $('#edit-zip').show();
+
+        });
+    });
+
+
+
+
 });

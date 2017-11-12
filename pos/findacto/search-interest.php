@@ -1,10 +1,11 @@
 <?php
+session_start();
 include("config.inc.php"); //include config file
 //get search term
 $searchTerm = $_GET['term'];
 //get matched data from skills table
 
-$sql = "SELECT * FROM profile WHERE id='1'";
+$sql = "SELECT * FROM profile WHERE id='".$_SESSION['participantSession']."'";
 $query  = $mysqli->query($sql) or die(mysqli_error($connection)); 
 $row2 = $query->fetch_assoc();
 

@@ -1,27 +1,56 @@
 <?php  
+ session_start();	
  include_once("config.php");  
  require_once('algoliasearch-client-php-master/algoliasearch.php');
 
 
- $id = '1';  
+ 
  $content = $_POST["content"]; 
  $column_name = $_POST["column_name"]; 
  
- $sql = "UPDATE profile SET ".$column_name."='".$content."' WHERE id='".$id."'";  
+
+
+ if($column_name == 'Zip') {
+
+ $sql=mysqli_query($connecDB,"SELECT * FROM zip_state WHERE zip='".$content."'");
+ $row=mysqli_fetch_array($sql); 	
+
+ $sql = "UPDATE profile SET City='".$row['city']."', State='".$row['state']."' WHERE id='".$_SESSION['participantSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
-      //echo 'Data Updated';  
+      
+  echo '<div id="zip">'.$row['city'].', '.$row['state'].'</div>';
+ 
+ }  
+
+ }
+
+
+
+if($column_name == 'Skills') {
+
+	
+
+ $sql = "UPDATE profile SET Skills='".$content."' WHERE id='".$_SESSION['participantSession']."'";  
+ if(mysqli_query($connecDB, $sql))  
+ {  
+
+      
 
  }  
+
+ }
+
+
 
 
 
 $response = array();
 //$posts = array();
-$sql=mysqli_query($connecDB,"SELECT * FROM profile WHERE id='".$id."' limit 20 ");
+
+
+$sql=mysqli_query($connecDB,"SELECT * FROM profile WHERE id='".$_SESSION['participantSession']."' limit 20 ");
 $row=mysqli_fetch_array($sql); 
-
-
 
 
 $response[] = array(
@@ -65,11 +94,25 @@ foreach ($chunks as $batch) {
 }
 
 
+
 $skills_array = explode(",", $row['Skills']);
+
+
+if($row['Skills'] != ''){
 
 echo '<div id="theskills">';
 echo count($skills_array);
 echo '</div>';
+
+}else{
+
+echo '<div id="theskills">';
+echo '0';
+echo '</div>';
+
+}
+ 
+
 
 
 
