@@ -4,6 +4,10 @@ session_start();
 require_once 'base_path.php';
 require_once 'class.participant.php';
 
+include_once("config.php");
+
+require_once 'facebook-sdk-v5/autoload.php';
+
 // if you are not using composer
 require_once('algoliasearch-client-php-master/algoliasearch.php');
 
@@ -20,8 +24,136 @@ $index = $client->initIndex('developers');
 
 
 
-?>
+$fb = new Facebook\Facebook([
+  'app_id' => '1797081013903216',
+  'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
+  'default_graph_version' => 'v2.2',
+  ]);
 
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup-callback.php', $permissions);
+
+
+
+if(isset($_SESSION['fb_access_token_participant'])){
+
+try {
+  // Returns a `Facebook\FacebookResponse` object
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_participant']);
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
+
+$user = $response->getGraphUser();
+/*
+echo 'Name: ' . $user['name'];
+echo "<br>";
+echo 'Email: ' . $user['email'];
+echo "<br>";
+echo 'id: ' . $user['id'];
+*/
+
+
+//check if user exist in database using COUNT
+
+
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM profile WHERE facebook_id='".$user['id']."' ");
+  $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
+
+  $sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Email = '".$user['email']."'");
+  $row = mysqli_fetch_array($sql);
+
+
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($user_count_facebook) //if user already exist change greeting text to "Welcome Back"
+    {
+
+    $update_sql = mysqli_query($connecDB,"UPDATE profile SET 
+    facebook_id = '".$user['id']."', 
+    Profile_Image = '',
+    google_picture_link = ''
+
+    WHERE Email='".$user['email']."'");
+
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['participantSession'] = $row['id'];
+        $_SESSION['facebook_photo'] = $user['id'];
+        //header('Location: '.BASE_PATH.'');
+        //echo $user['email'];
+        //exit();
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+
+
+
+  
+
+
+   date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+
+    $gender = ucfirst($user['gender']);
+
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO profile (facebook_id, FirstName, LastName, Email, Gender, Date_Created) 
+      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' , '".$date."')");
+    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
+    //$statement->execute();
+    //echo $mysqli->error;
+
+    //mysqli_query($insert_sql);  
+
+    $_SESSION['participantSession'] = $row['id'];
+    header('Location: '.BASE_PATH.'');
+    exit(); 
+
+
+
+
+    //echo $user->id;
+
+
+
+
+
+
+    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
+    
+      //exit(header("Location: ../index.php"));
+
+    }else{
+
+        $_SESSION['participantSession'] = $user['id'];
+        $_SESSION['facebook_photo'] = $user['id'];
+        header("Location: ../index.php");
+        exit();
+
+    }
+
+  }
+
+ 
+
+
+
+
+}
+
+
+
+
+?>
 
 <!DOCTYPE html>
 
@@ -47,7 +179,11 @@ $index = $client->initIndex('developers');
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_PATH; ?>/css/style.css">
+    
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 
 
     <!-- Bootstrap -->
@@ -85,6 +221,9 @@ $index = $client->initIndex('developers');
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+ 
       
     
 
@@ -203,6 +342,49 @@ $index = $client->initIndex('developers');
 
     </div>
 
+
+
+
+
+ <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="container center-block">
+                <div class="signup-container center-block">
+                    <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
+                    <div class="signup-card center-block">
+                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
+                        <h2 class="signup-card-title bold text-center">Sign in to become an Early Adopter!</h2>
+                        <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                 <div class="login-buttons">
+                                    <a href="<?php echo htmlspecialchars($loginUrl); ?>">
+<div class="fb-connect connect-background" data-track="home:facebook-connect">
+            <span class="fa fa-facebook"></span>
+            <span class="connect-text">Connect with Facebook</span>
+        </div>
+
+                                       
+                                    </a>
+                                </div>
+                             </div>   
+                                <div class="col-md-12">
+                                    <div class="login-buttons">
+                                    <a href="/accounts/twitter/login/">
+                                       <div class="google-connect connect-background" id="google-connect-button" data-track="home:google-connect">
+            <span class="fa fa-google-plus"></span>
+            <span class="google-connect-text connect-text">Connect with Google</span>
+        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            </div> 
+                        </div>
+                        <p class="signup-light text-center">We won't ever post anything on Facebook without your permission.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

@@ -42,6 +42,7 @@ $count = $row_count['count'];
         <title> Alper Dilmen's profile on Collapsed</title>
         <!-- Include stylesheet -->
         <link href="<?php echo BASE_PATH; ?>/css/app.css" rel=stylesheet />
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_PATH; ?>/css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -132,6 +133,9 @@ $count = $row_count['count'];
 
     <body>
         <?php include 'nav.php'; ?>
+
+
+
         <div class="container-fluid">
             <div class="container">
                 <div class="profile-container">

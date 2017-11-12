@@ -1,5 +1,19 @@
 
-<?php if(empty($_SESSION['customerSession'])){ ?>
+<?php if(isset($_SESSION['participantSession'])){?>
+
+
+<?php 
+
+$stmt = mysqli_query($connecDB, "SELECT * FROM profile WHERE id='".$_SESSION['participantSession']."'");
+$rownav = mysqli_fetch_array($stmt);
+
+
+$_SESSION['profileimage'] = $rownav['ProfileImage'];
+$_SESSION['google_picture_link'] = $rownav['google_picture_link'];
+
+
+?>
+
 
 <nav id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -42,18 +56,41 @@
                          <p class="navbar-profile-name bold">Alper</p>
                          <div class="btn-group" id="navbar-avatar">
                               <button type="button" class="navbar-profile-avatar dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class='navbar-profile-icon' src="https://graph.facebook.com/v2.4/10158571058230062/picture?type=square&amp;height=600&amp;width=600&amp;return_ssl_resources=1" />
+
+
+<?php if($rownav['google_picture_link'] != ''){ ?>
+        <li><img src="<?php echo $_SESSION['google_picture_link']; ?>" class="navbar-profile-icon"/></li>
+<?php } ?>
+
+<?php if(isset($_SESSION['fb_access_token_participant'])){ ?>
+        <li><img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture" class="navbar-profile-icon"/></li>
+<?php } ?>
+       
+<?php if(!isset($_SESSION['access_token']) && (!isset($_SESSION['fb_access_token_participant']))){ ?>
+
+      
+<?php if($rownav['profile_image'] != ''){  ?>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/participant/<?php echo $rownav['profile_image'];?>" class="navbar-profile-icon"/></li>
+<?php }else{ ?>
+        <li><img src="<?php echo BASE_PATH; ?>/images/profile/thumbnail.jpg" class="navbar-profile-icon"/></li>
+<?php } ?>
+
+<?php } ?>
+
+
+
+                                
                               </button>
                               <ul class="dropdown-menu dropdown-menu-nav dropdown-mobile">
                                 <li><a href="/dashboard">Dashboard</a></li>
                                 <li><a href="/@alper-dilmen">Profile</a></li>
                                 <li>
-                                    <a>
-                                        <form method="post" action="/accounts/logout/" style="width:100%;">
-                                          <input type='hidden' name='csrfmiddlewaretoken' value='4ev7aHWL8AAXKIj60UvjisxYwAsao6DUsQeWrSUgmRI6Pvy3jGagM1wI4KOV6eu0' />
+                                    <a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['participantSession'];?>">
+                                       
+                                      
                                           
                                           <button style="border:0px; background:0px; padding:0px;" type="submit">Sign Out</button>
-                                        </form>
+                                       
                                     </a>
                                 </li>
                               </ul>
@@ -105,7 +142,8 @@
                    
                     
                         <li><a><button class="button-filled"  data-toggle="modal" data-target="#signin">Sign In</button></a></li>
-                        <li><a><button class="button-filled"  data-toggle="modal" data-target="#signin">Sign Up</button></a></li>
+
+
                     
                 </ul>
             </div>
