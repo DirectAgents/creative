@@ -10,7 +10,7 @@
   require 'cloudinary/src/Api.php'; // Only required for creating upload presets on the fly
 
 
-  $sql=mysqli_query($connecDB,"SELECT * FROM work WHERE userID='".$_POST['userid']."' ORDER BY id DESC ");
+  $sql=mysqli_query($connecDB,"SELECT * FROM work WHERE userID='".$_SESSION['participantSession']."' ORDER BY id DESC ");
   $row_work = mysqli_fetch_array($sql); 
 
 
@@ -29,10 +29,10 @@ $result = \Cloudinary\Uploader::destroy($row_work['screenshots'], $options = arr
 
 }
 
-$sql=mysqli_query($connecDB,"DELETE FROM work WHERE userID = '".$_POST['userid']."' AND id = '".$_POST['id']."'");
+$sql=mysqli_query($connecDB,"DELETE FROM work WHERE userID = '".$_SESSION['participantSession']."' AND id = '".$_POST['id']."'");
 
 
-$result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '1' GROUP BY userID");
+$result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '".$_SESSION['participantSession']."' GROUP BY userID");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 

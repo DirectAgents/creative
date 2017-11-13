@@ -21,7 +21,7 @@ $skills_array =  count($skills_array);
 $skills_array = '0';
 }
 
-$result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '1' GROUP BY userID");
+$result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '".$_SESSION['participantSession']."' GROUP BY userID");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -248,7 +248,7 @@ $count = $row_count['count'];
                                         <?php
 //include db configuration file
 
-echo '<input type="hidden" name="userid" id="userid" value="1">';
+echo '<input type="hidden" name="userid" id="userid" value="'.$_SESSION['participantSession'].'">';
 
 
 //MySQL query
@@ -355,7 +355,7 @@ $screenshot = $screenshot[0];
                                                     <tr>
                                                         <td class="work-btns">
                                                             <button type="button" data-button='{"id": "<?php echo $row_work[' id ']; ?>"}' class="btn btn-edit-work" id="edit-work"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-                                                            <button type="button" data-button='{"id": "<?php echo $row_work[' id ']; ?>", "random": "<?php echo $random; ?>"}' class="btn btn-delete-work" id="edit-delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                                            <button type="button" data-button='{"id": "<?php echo $row_work['id']; ?>", "random": "<?php echo $random; ?>"}' class="btn btn-delete-work" id="edit-delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
                                                         </td>
                                                     </tr>
                                                 </tbody>

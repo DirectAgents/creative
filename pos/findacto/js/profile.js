@@ -497,9 +497,11 @@ $(document).ready(function() {
     //////Delete Work/////////
 
     $('.btn-delete-work').click(function(e) {
+        
 
         var data = $.parseJSON($(this).attr('data-button'));
-        //alert(data.screenshot);
+        //var userid = $("input[name=userid]").val();
+        //alert(data.id);
 
 
         ConfirmDialog('Are you sure');
@@ -525,7 +527,7 @@ $(document).ready(function() {
                             $.ajax({
                                 url: "../delete-work.php",
                                 method: "POST",
-                                data: { userid: '1', id: data.id, random: data.random },
+                                data: {id: data.id, random: data.random },
                                 dataType: "text",
                                 success: function(response) {
                                     //alert(data);
