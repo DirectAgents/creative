@@ -10,7 +10,11 @@
  $row = mysqli_fetch_array($result);
 
  if( $column_name == 'About'){
+ if($row['About'] != ''){
  echo $row[$column_name];
+ }else{
+ echo "No Info ";	
+ }
  }
 
  if( $column_name == 'Zip'){
@@ -18,11 +22,19 @@
  }
 
  if( $column_name == 'Email'){
-  echo $row[$column_name];
+ if($row['Email'] != ''){
+ echo $row[$column_name];
+ }else{
+ echo "Add your Email Address";	
+ }
  }
 
  if( $column_name == 'Phone'){
-  echo $row[$column_name];
+ if($row['Phone'] != ''){
+ echo $row[$column_name];
+ }else{
+ echo "Add your Phone Number";	
+ } 
  }
  
 

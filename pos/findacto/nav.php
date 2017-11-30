@@ -53,7 +53,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                     </li>
                     
                      <li>
-                         <p class="navbar-profile-name bold">Alper</p>
+                         <p class="navbar-profile-name bold"><?php echo $rownav['Firstname'];?></p>
                          <div class="btn-group" id="navbar-avatar">
                               <button type="button" class="navbar-profile-avatar dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -83,7 +83,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                               </button>
                               <ul class="dropdown-menu dropdown-menu-nav dropdown-mobile">
                                 <li><a href="/dashboard">Dashboard</a></li>
-                                <li><a href="/@alper-dilmen">Profile</a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $_SESSION['participantSession']; ?>">Profile</a></li>
                                 <li>
                                     <a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['participantSession'];?>">
                                        

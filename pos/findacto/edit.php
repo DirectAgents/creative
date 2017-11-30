@@ -52,7 +52,7 @@ if($column_name == 'Email') {
  $sql=mysqli_query($connecDB,"SELECT * FROM zip_state WHERE zip='".$content."'");
  $row=mysqli_fetch_array($sql); 	
 
- $sql = "UPDATE profile SET City='".$row['city']."', State='".$row['state']."' WHERE id='".$_SESSION['participantSession']."'";  
+ $sql = "UPDATE profile SET City='".$row['city']."', State='".$row['state']."', ZipCode='".$row['zip']."' WHERE id='".$_SESSION['participantSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
       
@@ -90,11 +90,27 @@ $sql=mysqli_query($connecDB,"SELECT * FROM profile WHERE id='".$_SESSION['partic
 $row=mysqli_fetch_array($sql); 
 
 
+if($rownav['google_picture_link'] != ''){ 
+       
+       $profileimage = $_SESSION['google_picture_link'];
+ } 
+
+if(isset($_SESSION['fb_access_token_participant'])){ 
+       $profileimage = 'https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture';
+ }
+       
+if(!isset($_SESSION['access_token']) && (!isset($_SESSION['fb_access_token_participant']))){
+
+     $profileimage =  $row['ProfileImage'];
+ }    
+
+  
+
 $response[] = array(
 	'objectID'=> $row['id'],
 	'name'=> $row['Firstname'].' '.$row['Lastname'], 
 	'profileid'=> $row['id'],
-	'profileimage'=> $row['ProfileImage'],
+	'profileimage'=> $profileimage,
 	'about'=> 'I am etc...', 
 	'skills'=> explode(',', $row['Skills']),
 	'workexamples'=> 'testing app',

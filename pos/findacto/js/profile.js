@@ -153,7 +153,7 @@ $(document).ready(function() {
 
             } else {
                 
-                $(this).html('<input type="text" value="' + content + '">');
+                $(this).html('<input type="text" value="" placeholder="Enter your email">');
 
             }
         });
@@ -237,12 +237,12 @@ $(document).ready(function() {
 
             if (!content) {
 
-                $(this).html('<input type="text" value="">');
+                $(this).html('<input type="text" value="" placeholder="Enter your number">');
 
 
             } else {
 
-                $(this).html('<input type="text" value="' + content + '">');
+                $(this).html('<input type="text" value="" placeholder="Enter your number">');
 
             }
         });

@@ -10,7 +10,7 @@ include("config.inc.php");
 //$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Firstname ='".ucfirst($firstname)."' AND Lastname ='".ucfirst($lastname)."'");
 //$row = mysqli_fetch_array($sql);
 
-$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='".$_SESSION['participantSession']."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='".$_GET['id']."'");
 $row = mysqli_fetch_array($sql);
 
 if($row['Skills'] != ''){
@@ -150,7 +150,18 @@ $count = $row_count['count'];
                 <div class="profile-container">
                     <div class="row">
                         <div class="col-md-6 profile-card" id="myTabs" role="tablist">
-                            <img src="https://graph.facebook.com/v2.4/10158571058230062/picture?type=square&amp;height=600&amp;width=600&amp;return_ssl_resources=1" class="profile-container-image pull-left">
+                           
+        
+        <?php if($rownav['google_picture_link'] != ''){ ?>
+        <img src="<?php echo $_SESSION['google_picture_link']; ?>" class="profile-container-image pull-left">
+<?php } ?>
+
+<?php if(isset($_SESSION['fb_access_token_participant'])){ ?>
+         <img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture" class="profile-container-image pull-left">
+<?php } ?>
+       
+
+
                             <h3 class="profile-text bold" id="startchange"><?php echo $row['Firstname'].' '.$row['Lastname']; ?></h3>
                             
                             <?php if ($row['Zip'] != '') { ?>
@@ -159,7 +170,10 @@ $count = $row_count['count'];
                          <div class="col-md-8" style="padding-left:0px;">   
                             <div class="col-md-12" style="padding-left:0px;">
                             
-                             <div class="zip textinput"><?php echo $row['City'].', '.$row['State']?></div>
+                             <div class="zip textinput"><?php if ($row['City'] != '' && $row['State'] != '' ) { echo $row['City'].', '.$row['State']; ?></div>  
+                                <?php }else{
+                                    echo "Enter location";
+                                }?>
                             
                              <button class="btn btn-info" id="edit-zip"><span class="glyphicon glyphicon-edit"></span></button>
                              <button class="btn btn-success" id="save-zip"><span class="glyphicon glyphicon-ok"></span></button>
@@ -505,7 +519,15 @@ $screenshot = $screenshot[0];
                                     <tbody>
                                         <tr>
                                             <td class="email col-md-2">
-                                                <?php echo $row['Email'];?>
+                                                       <?php 
+                                                       
+                                                       if($row['Email'] != ''){
+                                                        
+                                                        echo $row['Email'];
+                                                        
+                                                        }else{
+                                                         echo "Add your Email Address";    
+                                                        }?>
                                             </td>
                                             <td class="col-md-4">
                                                 <button class="btn btn-info" id="edit-email"><span class="glyphicon glyphicon-edit"></span></button>
@@ -519,7 +541,15 @@ $screenshot = $screenshot[0];
                                     <tbody>
                                         <tr>
                                             <td class="phone col-md-2">
-                                                <?php echo $row['Phone'];?>
+                                                <?php 
+                                                       
+                                                       if($row['Phone'] != ''){
+                                                        
+                                                        echo $row['Phone'];
+                                                        
+                                                        }else{
+                                                         echo "Add your Phone Number";    
+                                                        }?>
                                             </td>
                                             <td class="col-md-4">
                                                 <button class="btn btn-info" id="edit-phone"><span class="glyphicon glyphicon-edit"></span></button>
