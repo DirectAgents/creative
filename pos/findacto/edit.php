@@ -90,13 +90,13 @@ $sql=mysqli_query($connecDB,"SELECT * FROM profile WHERE id='".$_SESSION['partic
 $row=mysqli_fetch_array($sql); 
 
 
-if($rownav['google_picture_link'] != ''){ 
+if($row['google_picture_link'] != ''){ 
        
        $profileimage = $_SESSION['google_picture_link'];
  } 
 
 if(isset($_SESSION['fb_access_token_participant'])){ 
-       $profileimage = 'https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture';
+       $profileimage = 'https://graph.facebook.com/'.$_SESSION['facebook_photo'].'/picture?type=large';
  }
        
 if(!isset($_SESSION['access_token']) && (!isset($_SESSION['fb_access_token_participant']))){

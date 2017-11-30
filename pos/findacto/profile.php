@@ -152,12 +152,12 @@ $count = $row_count['count'];
                         <div class="col-md-6 profile-card" id="myTabs" role="tablist">
                            
         
-        <?php if($rownav['google_picture_link'] != ''){ ?>
+<?php if($row['google_picture_link'] != ''){ ?>
         <img src="<?php echo $_SESSION['google_picture_link']; ?>" class="profile-container-image pull-left">
 <?php } ?>
 
-<?php if(isset($_SESSION['fb_access_token_participant'])){ ?>
-         <img src="https://graph.facebook.com/<?php echo $_SESSION['facebook_photo']; ?>/picture" class="profile-container-image pull-left">
+<?php if($row['facebook_id'] != ''){ ?>
+         <img src="https://graph.facebook.com/<?php echo $row['facebook_id']; ?>/picture?type=large" class="profile-container-image pull-left">
 <?php } ?>
        
 
