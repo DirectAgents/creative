@@ -156,7 +156,7 @@ $count = $row_count['count'];
                             <?php if ($row['Zip'] != '') { ?>
                             <h4 class="profile-text-city-state bold" id="startchange"><?php echo $row['City'].', '.$row['State']?></h4>
                             <?php }else{ ?>
-                         <div class="col-md-6" style="padding-left:0px;">   
+                         <div class="col-md-8" style="padding-left:0px;">   
                             <div class="col-md-12" style="padding-left:0px;">
                             
                              <div class="zip textinput"><?php echo $row['City'].', '.$row['State']?></div>
@@ -208,14 +208,25 @@ $count = $row_count['count'];
                                             <tbody>
                                                 <tr>
                                                     <td class="about">
-                                                        <?php echo $row['About'];?>
+                                                       <?php 
+                                                       
+                                                       if($row['About'] != ''){
+                                                        
+                                                        echo $row['About'];
+                                                        
+                                                        }else{
+                                                         echo "No Info";    
+                                                        }?>
+                                                    
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <div class="col-md-6" style="padding-left:7px;">
                                         <button class="btn btn-info" id="edit-about"><span class="glyphicon glyphicon-edit"></span> edit</button>
                                         <button class="btn btn-success" id="save-about"><span class="glyphicon glyphicon-ok"></span> save</button>
                                         <button class="btn btn-cancel" id="cancel-about"><span class="glyphicon glyphicon-remove"></span> cancel</button>
+                                      </div>
                                     </div>
                                 </div>
                                 <div class="col-md-5 about-box">

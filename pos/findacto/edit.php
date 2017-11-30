@@ -10,6 +10,43 @@
  
 
 
+ if($column_name == 'About') {
+
+ $sql = "UPDATE profile SET About='".$content."' WHERE id='".$_SESSION['participantSession']."'";  
+ if(mysqli_query($connecDB, $sql))  
+ {  
+      
+ echo $row[$column_name];
+
+ }  
+
+ }
+
+
+if($column_name == 'Email') {
+
+ $sql = "UPDATE profile SET Email='".$content."' WHERE id='".$_SESSION['participantSession']."'";  
+ if(mysqli_query($connecDB, $sql))  
+ {  
+
+
+ }  
+
+ }
+
+
+ if($column_name == 'Phone') {
+
+ $sql = "UPDATE profile SET Phone='".$content."' WHERE id='".$_SESSION['participantSession']."'";  
+ if(mysqli_query($connecDB, $sql))  
+ {  
+
+
+ }  
+
+ }
+
+
  if($column_name == 'Zip') {
 
  $sql=mysqli_query($connecDB,"SELECT * FROM zip_state WHERE zip='".$content."'");

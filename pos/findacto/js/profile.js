@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('#edit-about').click(function() {
         $('#edit-about').hide();
         $('td.about').each(function() {
-            var content = $(this).html();
+            var content = $(this).html().replace(/ /g,'');
 
             //alert(content);
 
@@ -16,6 +16,7 @@ $(document).ready(function() {
 
             } else {
 
+               
                 $(this).html('<textarea class="about-textarea">' + content + '</textarea>');
 
             }
@@ -32,7 +33,8 @@ $(document).ready(function() {
         //alert("afasdfas");
         $('#save-about').hide();
         $('textarea').each(function() {
-            var content = $(this).val(); //.replace(/\n/g,"<br>");
+            var content = $(this).val().replace(/\n/g,"<br>");
+
 
             if (!content) {
 
@@ -52,11 +54,13 @@ $(document).ready(function() {
                     dataType: "text",
                     success: function(response) {
                         //alert(data);  
+                        $('#save-about').hide();
                     }
                 });
 
                 $('#edit-about').show();
                 $('#cancel-about').hide();
+                
 
             }
 
@@ -74,7 +78,8 @@ $(document).ready(function() {
 
         $('textarea').each(function() {
 
-            var content = $(this).val(); //.replace(/\n/g,"<br>");
+            var content = $(this).val().replace(/\n/g,"<br>");
+
 
             $.ajax({
                 url: "../select.php",
@@ -85,6 +90,7 @@ $(document).ready(function() {
 
                     $('.about-textarea').html(response);
                     $('.about-textarea').contents().unwrap();
+                    //$('.about').html('hello');
                 }
             });
 
@@ -138,7 +144,7 @@ $(document).ready(function() {
     $('#edit-email').click(function() {
         $('#edit-email').hide();
         $('td.email').each(function() {
-            var content = $(this).html();
+            var content = $(this).html().replace(/ /g,'');
 
             if (!content) {
 
@@ -146,7 +152,7 @@ $(document).ready(function() {
 
 
             } else {
-
+                
                 $(this).html('<input type="text" value="' + content + '">');
 
             }
@@ -160,7 +166,7 @@ $(document).ready(function() {
     $('#save-email').click(function() {
         $('#save-email').hide();
         $('.email input[type=text]').each(function() {
-            var content = $(this).val(); //.replace(/\n/g,"<br>");
+            var content = $(this).val().replace(/ /g,''); //.replace(/\n/g,"<br>");
 
             if (!content) {
 
@@ -198,7 +204,7 @@ $(document).ready(function() {
 
         $('.email input[type=text]').each(function() {
 
-            var content = $(this).val(); //.replace(/\n/g,"<br>");
+            var content = $(this).val().replace(/ /g,''); //.replace(/\n/g,"<br>");
 
             $.ajax({
                 url: "../select.php",
@@ -227,7 +233,7 @@ $(document).ready(function() {
     $('#edit-phone').click(function() {
         $('#edit-phone').hide();
         $('td.phone').each(function() {
-            var content = $(this).html();
+            var content = $(this).html().replace(/ /g,'');
 
             if (!content) {
 
@@ -249,7 +255,7 @@ $(document).ready(function() {
     $('#save-phone').click(function() {
         $('#save-phone').hide();
         $('.phone input[type=text]').each(function() {
-            var content = $(this).val(); //.replace(/\n/g,"<br>");
+            var content = $(this).val().replace(/ /g,''); //.replace(/\n/g,"<br>");
 
             if (!content) {
 
@@ -287,7 +293,7 @@ $(document).ready(function() {
 
         $('.phone input[type=text]').each(function() {
 
-            var content = $(this).val(); //.replace(/\n/g,"<br>");
+            var content = $(this).val().replace(/ /g,''); //.replace(/\n/g,"<br>");
 
             $.ajax({
                 url: "../select.php",
