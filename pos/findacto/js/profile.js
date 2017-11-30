@@ -329,36 +329,10 @@ $(document).ready(function() {
     });
 
 
-    $('.btn-edit-work').click(function() {
-
-        $('.list-work-box').hide();
-
-        $('.btn-add-work').hide();
-        $('.btn-list-work').fadeIn("fast");
-        $('.edit-work-box').fadeIn("fast");
-
-        var data = $.parseJSON($(this).attr('data-button'));
-        //alert(data.id);
-
-        $.ajax({
-            url: "../select-work-edit.php",
-            method: "POST",
-            data: { id: data.id },
-            dataType: "text",
-            cache: false,
-            success: function(response) {
-
-                $('.edit-work-box-inner').html(response);
-                $('.upload-screenshot').css("display", "none");
-
-
-            }
-        });
-
-
-    });
+    
 
     $('.btn-list-work').click(function() {
+        //alert("adsfasd");
         $('.list-work-box').show();
 
         $('.btn-add-work').fadeIn("fast");
@@ -370,10 +344,13 @@ $(document).ready(function() {
             url: "../select-work.php",
             method: "POST",
             data: { userid: '1' },
-            dataType: "text",
+            dataType: "html",
             success: function(response) {
 
                 $('.list-work-box').html(response);
+                //window.location.reload(false); 
+                //$(".list-work-box").fadeIn('fast');
+                //$(".list-work-box").show().html(response).fadeIn('fast');
 
             }
         });
@@ -500,78 +477,7 @@ $(document).ready(function() {
 
 
 
-    //////Delete Work/////////
-
-    $('.btn-delete-work').click(function(e) {
-        
-
-        var data = $.parseJSON($(this).attr('data-button'));
-        //var userid = $("input[name=userid]").val();
-        //alert(data.id);
-
-
-        ConfirmDialog('Are you sure');
-
-        function ConfirmDialog(message) {
-            $('<div></div>').appendTo('body')
-                .html('<div><h6>' + message + '?</h6></div>')
-                .dialog({
-                    modal: true,
-                    zIndex: 10000,
-                    autoOpen: true,
-                    width: 'auto',
-                    resizable: false,
-                    buttons: {
-                        Yes: function() {
-                            // $(obj).removeAttr('onclick');                                
-                            // $(obj).parents('.Parent').remove();
-
-                            //$('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
-
-                            $(this).dialog("close");
-
-                            $.ajax({
-                                url: "../delete-work.php",
-                                method: "POST",
-                                data: {id: data.id, random: data.random },
-                                dataType: "text",
-                                success: function(response) {
-                                    //alert(data);
-                                    $('#deleted').fadeIn("fast");
-                                    $('#deleted').delay(2000).fadeOut("slow");
-
-                                    var random = $(response).filter('#random').text();
-                                    $("#" + random).delay(1000).fadeOut("slow");
-
-                                    var work_count = $(response).filter('#thecount').text();
-                                    $('#work-count').html(work_count);
-
-
-                                }
-                            });
-
-                            e.preventDefault();
-                        },
-                        No: function() {
-
-                            //$('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
-
-                            $(this).dialog("close");
-                        }
-                    },
-                    close: function(event, ui) {
-                        $(this).remove();
-                    }
-                });
-        };
-
-
-
-
-
-
-    });
-
+    
 
 
     $('.delete-screenshot').click(function(e) {
