@@ -2515,7 +2515,14 @@ table.work-table >tbody>tr>td.work-btns{padding:20px 0 10px 15px !important; col
 table.edit-profile>tbody>tr>td{border-top: 0px !important}
 table.edit-profile textarea{float:left; width:100%;}
 
-table.edit-profile .btn{font-size:10px; padding:5px;}
+
+
+table.edit-profile .btn{font-size:13px; padding:5px;}
+
+table.edit-profile .btn.about{font-size:16px; padding:7px;}
+
+table.edit-profile textarea{padding:7px;}
+
 
 table.edit-profile .col-md-2{width:auto;}
 
@@ -2613,12 +2620,15 @@ ul.screenshots li{float:left; list-style-type: none}
     background-image: none;
     border: 0px solid transparent;
     border-radius: 4px;
+
 }
 
-button#edit-zip{
+#edit-zip{
 	font-size: 18px;
     background: none;
-    color: #333;}
+    color: #333;
+
+}
 
 button#save-zip{
 	font-size: 18px;
@@ -2629,3 +2639,18 @@ button.btn-add-work{background:#eee; color:#000; margin-right:15px; margin-botto
 button.btn-list-work{background:#eee; color:#000; margin-bottom:15px;}   
 
 .zip{float:left; margin-top:10px;}
+
+
+.hidden{display:none;}
+
+
+.zip-textinput{width:150px;}
+
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+	padding: 0px;
+	/*line-height: 1.42857143;*/
+	vertical-align: middle !important;
+}
+
+#add-zip, #edit-zip, #add-about, #edit-about, #edit-email, #add-email, #edit-phone, #add-phone {display:none;}

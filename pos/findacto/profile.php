@@ -164,25 +164,34 @@ $count = $row_count['count'];
 
                             <h3 class="profile-text bold" id="startchange"><?php echo $row['Firstname'].' '.$row['Lastname']; ?></h3>
                             
-                            <?php if ($row['Zip'] != '') { ?>
-                            <h4 class="profile-text-city-state bold" id="startchange"><?php echo $row['City'].', '.$row['State']?></h4>
-                            <?php }else{ ?>
-                         <div class="col-md-8" style="padding-left:0px;">   
-                            <div class="col-md-12" style="padding-left:0px;">
+                          <div class="col-md-6" style="padding-left:0px;">
+                             <table class="table edit-profile" style="margin-bottom:0px">
+                                    <tbody>
+                                        <tr>
+                                        <td class="edit-zip">
+                                        <button class="btn btn-info" id="edit-zip" style="padding-left:0px;"><span class="glyphicon glyphicon-edit"></span></button>
+                                        </td>
+                                            <td class="zip col-md-11 profile-text-city-state bold" style="padding-left:0px;">
+                                            
+                                           <input type="text" class="zip-textinput hidden" value="" placeholder="Enter your Zip">
+                                            
+                                            <button class="btn btn-info" id="add-zip"><span class="glyphicon glyphicon-edit"></span>Add zip</button>
+
+                                            </td>
+                                            <td class="col-md-5" style="padding-left:5px;">
+                                            
+                                            <button class="btn btn-success" id="save-zip" style="padding-top:10px;"><span class="glyphicon glyphicon-ok"></span></button>
+                                            <button class="btn btn-cancel" id="cancel-zip" style="padding-top:10px;"><span class="glyphicon glyphicon-remove"></span></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                       
                             
-                             <div class="zip textinput"><?php if ($row['City'] != '' && $row['State'] != '' ) { echo $row['City'].', '.$row['State']; ?></div>  
-                                <?php }else{
-                                    echo "Enter location";
-                                }?>
-                            
-                             <button class="btn btn-info" id="edit-zip"><span class="glyphicon glyphicon-edit"></span></button>
-                             <button class="btn btn-success" id="save-zip"><span class="glyphicon glyphicon-ok"></span></button>
-                             <button class="btn btn-cancel" id="cancel-zip"><span class="glyphicon glyphicon-remove"></span></button>
-                            
-                             </div>   
-                         </div>      
-                            <?php } ?>
-                         <div class="col-md-6" style="padding-left:0px;">
+                           
+     
+                           
+                         <div class="col-md-12" style="padding-left:0px;">
                             <a href='' name="following_button" class="profile-text-small-fix profile-text-small push-right-mid pull-left">
                                 <p>Following: <span class="bold">0</span></p>
                             </a>
@@ -191,6 +200,8 @@ $count = $row_count['count'];
                             </a>
                           </div>    
                         </div>
+                         </div>
+
                         <div class="col-md-6">
                         </div>
                     </div>
@@ -222,21 +233,15 @@ $count = $row_count['count'];
                                             <tbody>
                                                 <tr>
                                                     <td class="about">
-                                                       <?php 
-                                                       
-                                                       if($row['About'] != ''){
-                                                        
-                                                        echo $row['About'];
-                                                        
-                                                        }else{
-                                                         echo "No Info";    
-                                                        }?>
-                                                    
+
+                                                     <textarea class="about-textarea hidden" placeholder="Tell a little about yourself"></textarea>
+
+                                                     <button class="btn btn-info about" id="add-about"><span class="glyphicon glyphicon-edit"></span> Click here to tell a little about yourself</button>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div class="col-md-6" style="padding-left:7px;">
+                                        <div class="col-md-6" style="padding-left:0px;">
                                         <button class="btn btn-info" id="edit-about"><span class="glyphicon glyphicon-edit"></span> edit</button>
                                         <button class="btn btn-success" id="save-about"><span class="glyphicon glyphicon-ok"></span> save</button>
                                         <button class="btn btn-cancel" id="cancel-about"><span class="glyphicon glyphicon-remove"></span> cancel</button>
@@ -519,18 +524,14 @@ $screenshot = $screenshot[0];
                                     <tbody>
                                         <tr>
                                             <td class="email col-md-2">
-                                                       <?php 
-                                                       
-                                                       if($row['Email'] != ''){
-                                                        
-                                                        echo $row['Email'];
-                                                        
-                                                        }else{
-                                                         echo "Add your Email Address";    
-                                                        }?>
+                                            
+                                            <input type="text" class="email-textinput hidden" value="" placeholder="Enter your Email">
+                                            
+                                            <button class="btn btn-info" id="add-email"><span class="glyphicon glyphicon-edit"></span> Add your Email Address</button>
+
                                             </td>
-                                            <td class="col-md-4">
-                                                <button class="btn btn-info" id="edit-email"><span class="glyphicon glyphicon-edit"></span></button>
+                                            <td class="col-md-5" style="padding-left:10px;">
+                                                <button class="btn btn-info" id="edit-email"><span class="glyphicon glyphicon-edit"></span>Edit</button>
                                                 <button class="btn btn-success" id="save-email"><span class="glyphicon glyphicon-ok"></span></button>
                                                 <button class="btn btn-cancel" id="cancel-email"><span class="glyphicon glyphicon-remove"></span></button>
                                             </td>
@@ -541,20 +542,19 @@ $screenshot = $screenshot[0];
                                     <tbody>
                                         <tr>
                                             <td class="phone col-md-2">
-                                                <?php 
-                                                       
-                                                       if($row['Phone'] != ''){
-                                                        
-                                                        echo $row['Phone'];
-                                                        
-                                                        }else{
-                                                         echo "Add your Phone Number";    
-                                                        }?>
+
+                                            <input type="text" class="phone-textinput hidden" value="" placeholder="Enter your number">
+
+                                            <button class="btn btn-info" id="add-phone"><span class="glyphicon glyphicon-edit"></span> Add your Phone Number</button>
+                                              
+                                                      
                                             </td>
-                                            <td class="col-md-4">
-                                                <button class="btn btn-info" id="edit-phone"><span class="glyphicon glyphicon-edit"></span></button>
+                                            <td class="col-md-5" style="padding-left:10px;">
+                              
+                                               <button class="btn btn-info" id="edit-phone"><span class="glyphicon glyphicon-edit"></span> Edit</button>
                                                 <button class="btn btn-success" id="save-phone"><span class="glyphicon glyphicon-ok"></span></button>
                                                 <button class="btn btn-cancel" id="cancel-phone"><span class="glyphicon glyphicon-remove"></span></button>
+                                               
                                             </td>
                                         </tr>
                                     </tbody>

@@ -8,6 +8,7 @@
  $content = $_POST["content"]; 
  $column_name = $_POST["column_name"]; 
  
+	
 
 
  if($column_name == 'About') {
@@ -41,6 +42,12 @@ if($column_name == 'Email') {
  if(mysqli_query($connecDB, $sql))  
  {  
 
+ $sql=mysqli_query($connecDB,"SELECT * FROM profile WHERE id='".$_SESSION['participantSession']."'");
+ $row=mysqli_fetch_array($sql);  	
+ 
+ echo '<div id="phone">'; 
+ echo $row['Phone'];
+ echo '</div>';
 
  }  
 

@@ -1,40 +1,152 @@
 $(document).ready(function() {
 
-    //About
 
-    $('#edit-about').click(function() {
+   $.ajax({
+                url: "../select.php",
+                method: "POST",
+                //data: { column_name: 'Phone' },
+                dataType: "html",
+                success: function(response) {
+
+                   var zip = $(response).filter('#zip').html();
+                   var about = $(response).filter('#about').html();
+                   var phone = $(response).filter('#phone').html(); 
+                   var email = $(response).filter('#email').html(); 
+                   //alert(zip);
+                   
+                   if (zip != ''){
+                        $('.zip-textinput').removeClass('hidden');
+                        $('.zip').html(zip);
+                        $('.zip-textinput').contents().unwrap();
+                        $('#edit-zip').show();
+                        $('#add-zip').hide();
+
+                    }else{
+                        $('.zip-textinput').addClass('hidden');
+                        $('#add-zip').show();
+                    } 
+
+                   if (about != ''){
+                        $('.about-textarea').removeClass('hidden');
+                        $('.about').html(about);
+                        $('.about-textarea').contents().unwrap();
+                        $('#edit-about').show();
+                        $('#add-about').hide();
+
+                    }else{
+                        $('.about-textarea').addClass('hidden');
+                        $('#add-about').show();
+                    } 
+
+                   if (phone != ''){
+                        $('.phone-textinput').removeClass('hidden');
+                        $('.phone').html(phone);
+                        $('.phone-textinput').contents().unwrap();
+                        $('#edit-phone').show();
+                        $('#add-phone').hide();
+
+                    }else{
+                        $('.phone-textinput').addClass('hidden');
+                        $('#add-phone').show();
+                    }
+                   
+                   
+                   if (email != ''){
+                        $('.email-textinput').removeClass('hidden');
+                        $('.email').html(email);
+                        $('.email-textinput').contents().unwrap();
+                        $('#edit-email').show();
+                        $('#add-email').hide();
+                    }else{
+                        $('.email-textinput').addClass('hidden');
+                        $('#add-email').show();
+
+                        
+                    }
+                   
+
+                   
+
+                }
+                
+            });
+
+
+
+
+
+
+
+    ////////////////////About///////////////////////
+
+   $('#add-about').click(function() {
+    //alert("111");
+        $('.about-textarea').removeClass('hidden');
+        $('#add-about').hide();
         $('#edit-about').hide();
-        $('td.about').each(function() {
-            var content = $(this).html().replace(/^\s*|\s*$/g,'');
-
-            //alert(content);
-
-            if (!content) {
-
-                $(this).html('<textarea class="about-textarea"></textarea>');
-
-
-            } else {
-
-               
-                $(this).html('<textarea class="about-textarea">'+content+'</textarea>');
-
-            }
-
-
-        });
-
+        $('.about-textarea').show();
         $('#save-about').show();
         $('#cancel-about').show();
 
     });
+     
+    
+ $('#edit-about').click(function() {
+    //alert("www113rddttteee444333");
+        
+
+
+
+           $.ajax({
+                url: "../select.php",
+                method: "POST",
+                //data: { column_name: 'Phone' },
+                dataType: "html",
+                success: function(response) {
+
+                   var about = $(response).filter('#about').html();
+                   
+                   if (about != ''){
+                    //$('.about input[type=text]').html(about);
+                    //$('td.about').contents().wrapInner('<input type="text" class="about-textinput" value="'+about+'" placeholder="Enter your number">');
+                    //alert(about);
+                        $('.about-textarea').removeClass('hidden');
+                        $('.about').addClass('show');
+                        //$('.about-textinput').show();
+                        $('.about').html('<textarea class="about-textarea" placeholder="Tell a little about yourself">'+about+'</textarea>');
+                        $('#save-about').show();
+                        $('#cancel-about').show();
+                        //$('.about-textinput').show();
+                        //$('.about-textinput').contents().wrap('<input type="text" class="about-textinput" value="'+about+'" placeholder="Enter your number">');
+                        //$('td.about').html('<input type="text" class="about-textinput" value="'+about+'" placeholder="Enter your number">');
+                        $('#edit-about').hide();
+                        $('#add-about').hide();
+
+                    }else{
+                        //$(".phone").css("display", "none");
+                        //$('.phone').html(phone);
+                        $('.about-textinput').addClass('hidden');
+                        $('.about-textinput').hide();
+                        $('#edit-about').hide();
+                        $('#add-about').show();
+                    }
+                   
+                   
+
+                }
+                
+            });
+
+
+
+    });
+
+   
 
     $('#save-about').click(function() {
-        //alert("afasdfas");
         $('#save-about').hide();
-        $('textarea').each(function() {
-            var content = $(this).val().replace(/^\s*|\s*$/g,'');
-
+        $('.about textarea').each(function() {
+            var content = $(this).val().replace(/^\s*|\s*$/g,''); //.replace(/\n/g,"<br>");
 
             if (!content) {
 
@@ -43,7 +155,6 @@ $(document).ready(function() {
 
             } else {
 
-
                 $(this).html(content);
                 $(this).contents().unwrap();
 
@@ -51,16 +162,18 @@ $(document).ready(function() {
                     url: "../edit.php",
                     method: "POST",
                     data: { content: content, column_name: 'About' },
-                    dataType: "text",
+                    dataType: "html",
                     success: function(response) {
                         //alert(data);  
-                        $('#save-about').hide();
+                        //$('.phone').html(response);
+                        var about = $(response).filter('#about').html();
+                        $('.about').html(about);
+                        $('#edit-about').show();
                     }
                 });
 
                 $('#edit-about').show();
                 $('#cancel-about').hide();
-                
 
             }
 
@@ -71,35 +184,42 @@ $(document).ready(function() {
     });
 
 
+$('#cancel-about').click(function() {
 
 
-
-    $('#cancel-about').click(function() {
-
-        $('textarea').each(function() {
-
-            var content = $(this).val().replace(/^\s*|\s*$/g,'');
-
-
-            $.ajax({
+        $.ajax({
                 url: "../select.php",
                 method: "POST",
-                data: { column_name: 'About' },
-                dataType: "text",
+                //data: { column_name: 'Phone' },
+                dataType: "html",
                 success: function(response) {
 
-                    $('.about-textarea').html(response);
-                    $('.about-textarea').contents().unwrap();
-                    //$('.about').html('hello');
+                   var about = $(response).filter('#about').html(); 
+                   //alert(phone);
+                   if (about != ''){
+                        $('.about').html(about);
+                        $('.about-textarea').contents().unwrap();
+                        $('#edit-about').show();
+                        $('#add-about').hide();
+
+                    }else{
+                        //$(".phone").css("display", "none");
+                        //$('.phone').html(phone);
+                        $('.about-textarea').hide();
+                        $('#edit-about').hide();
+                        $('#add-about').show();
+                    }
+                   
+                   
+
                 }
+                
             });
 
-
+           
             $('#save-about').hide();
             $('#cancel-about').hide();
-            $('#edit-about').show();
-
-        });
+         
     });
 
 
@@ -139,29 +259,72 @@ $(document).ready(function() {
 
 
 
-    ////////////////Email//////////////////////
+   ////////////////Email//////////////////////
 
-    $('#edit-email').click(function() {
+    
+$('#add-email').click(function() {
+    //alert("111");
+        $('.email-textinput').removeClass('hidden');
+        $('#add-email').hide();
         $('#edit-email').hide();
-        $('td.email').each(function() {
-            var content = $(this).html().replace(/^\s*|\s*$/g,'');
-
-            if (!content) {
-
-                $(this).html('<input type="text" value="">');
-
-
-            } else {
-                
-                $(this).html('<input type="text" value="" placeholder="Enter your email">');
-
-            }
-        });
-
+        $('.email-textinput').show();
         $('#save-email').show();
         $('#cancel-email').show();
 
     });
+     
+    
+ $('#edit-email').click(function() {
+    //alert("www113rddttteee444333");
+        
+
+
+
+           $.ajax({
+                url: "../select.php",
+                method: "POST",
+                //data: { column_name: 'Phone' },
+                dataType: "html",
+                success: function(response) {
+
+                   var email = $(response).filter('#email').html();
+                   
+                   if (email != ''){
+                    //$('.email input[type=text]').html(email);
+                    //$('td.email').contents().wrapInner('<input type="text" class="email-textinput" value="'+email+'" placeholder="Enter your number">');
+                    //alert(email);
+                        $('.email-textinput').removeClass('hidden');
+                        $('.email').addClass('show');
+                        //$('.email-textinput').show();
+                        $('.email').html('<input type="text" class="email-textinput" value="'+email+'" placeholder="Enter your number">');
+                        $('#save-email').show();
+                        $('#cancel-email').show();
+                        //$('.email-textinput').show();
+                        //$('.email-textinput').contents().wrap('<input type="text" class="email-textinput" value="'+email+'" placeholder="Enter your number">');
+                        //$('td.email').html('<input type="text" class="email-textinput" value="'+email+'" placeholder="Enter your number">');
+                        $('#edit-email').hide();
+                        $('#add-email').hide();
+
+                    }else{
+                        //$(".phone").css("display", "none");
+                        //$('.phone').html(phone);
+                        $('.email-textinput').addClass('hidden');
+                        $('.email-textinput').hide();
+                        $('#edit-email').hide();
+                        $('#add-email').show();
+                    }
+                   
+                   
+
+                }
+                
+            });
+
+
+
+    });
+
+   
 
     $('#save-email').click(function() {
         $('#save-email').hide();
@@ -182,9 +345,13 @@ $(document).ready(function() {
                     url: "../edit.php",
                     method: "POST",
                     data: { content: content, column_name: 'Email' },
-                    dataType: "text",
+                    dataType: "html",
                     success: function(response) {
                         //alert(data);  
+                        //$('.phone').html(response);
+                        var email = $(response).filter('#email').html();
+                        $('.email').html(email);
+                        $('#edit-email').show();
                     }
                 });
 
@@ -200,57 +367,114 @@ $(document).ready(function() {
     });
 
 
-    $('#cancel-email').click(function() {
+$('#cancel-email').click(function() {
 
-        $('.email input[type=text]').each(function() {
 
-            var content = $(this).val().replace(/^\s*|\s*$/g,''); //.replace(/\n/g,"<br>");
-
-            $.ajax({
+        $.ajax({
                 url: "../select.php",
                 method: "POST",
-                data: { column_name: 'Email' },
-                dataType: "text",
+                //data: { column_name: 'Phone' },
+                dataType: "html",
                 success: function(response) {
 
-                    $('.email input[type=text]').html(response);
-                    $('.email input[type=text]').contents().unwrap();
+                   var email = $(response).filter('#email').html(); 
+                   //alert(phone);
+                   if (email != ''){
+                        $('.email').html(email);
+                        $('.email-textinput').contents().unwrap();
+                        $('#edit-email').show();
+                        $('#add-email').hide();
+
+                    }else{
+                        //$(".phone").css("display", "none");
+                        //$('.phone').html(phone);
+                        $('.email-textinput').hide();
+                        $('#edit-email').hide();
+                        $('#add-email').show();
+                    }
+                   
+                   
+
                 }
+                
             });
 
-
+           
             $('#save-email').hide();
             $('#cancel-email').hide();
-            $('#edit-email').show();
-
-        });
+         
     });
+
+
 
 
 
     ////////////////Phone//////////////////////
 
-    $('#edit-phone').click(function() {
+    
+$('#add-phone').click(function() {
+    //alert("111");
+        $('.phone-textinput').removeClass('hidden');
+        $('#add-phone').hide();
         $('#edit-phone').hide();
-        $('td.phone').each(function() {
-            var content = $(this).html().replace(/^\s*|\s*$/g,'');
-
-            if (!content) {
-
-                $(this).html('<input type="text" value="" placeholder="Enter your number">');
-
-
-            } else {
-
-                $(this).html('<input type="text" value="" placeholder="Enter your number">');
-
-            }
-        });
-
+        $('.phone-textinput').show();
         $('#save-phone').show();
         $('#cancel-phone').show();
 
     });
+     
+    
+ $('#edit-phone').click(function() {
+    //alert("www113rddttteee444333");
+        
+
+
+
+           $.ajax({
+                url: "../select.php",
+                method: "POST",
+                //data: { column_name: 'Phone' },
+                dataType: "html",
+                success: function(response) {
+
+                   var phone = $(response).filter('#phone').html();
+                   
+                   if (phone != ''){
+                    //$('.phone input[type=text]').html(phone);
+                    //$('td.phone').contents().wrapInner('<input type="text" class="phone-textinput" value="'+phone+'" placeholder="Enter your number">');
+                    //alert(phone);
+                        $('.phone-textinput').removeClass('hidden');
+                        $('.phone').addClass('show');
+                        //$('.phone-textinput').show();
+                        $('.phone').html('<input type="text" class="phone-textinput" value="'+phone+'" placeholder="Enter your number">');
+                        $('#save-phone').show();
+                        $('#cancel-phone').show();
+                        //$('.phone-textinput').show();
+                        //$('.phone-textinput').contents().wrap('<input type="text" class="phone-textinput" value="'+phone+'" placeholder="Enter your number">');
+                        //$('td.phone').html('<input type="text" class="phone-textinput" value="'+phone+'" placeholder="Enter your number">');
+                        $('#edit-phone').hide();
+                        $('#add-phone').hide();
+
+                    }else{
+                        //$(".phone").css("display", "none");
+                        //$('.phone').html(phone);
+                        $('.phone-textinput').addClass('hidden');
+                        $('.phone-textinput').hide();
+                        $('#edit-phone').hide();
+                        $('#add-phone').show();
+                    }
+                   
+                   
+
+                }
+                
+            });
+
+
+
+    });
+
+   
 
     $('#save-phone').click(function() {
         $('#save-phone').hide();
@@ -271,9 +495,13 @@ $(document).ready(function() {
                     url: "../edit.php",
                     method: "POST",
                     data: { content: content, column_name: 'Phone' },
-                    dataType: "text",
+                    dataType: "html",
                     success: function(response) {
                         //alert(data);  
+                        //$('.phone').html(response);
+                        var phone = $(response).filter('#phone').html();
+                        $('.phone').html(phone);
+                        $('#edit-phone').show();
                     }
                 });
 
@@ -289,32 +517,45 @@ $(document).ready(function() {
     });
 
 
-    $('#cancel-phone').click(function() {
+$('#cancel-phone').click(function() {
 
-        $('.phone input[type=text]').each(function() {
 
-            var content = $(this).val().replace(/^\s*|\s*$/g,''); //.replace(/\n/g,"<br>");
-
-            $.ajax({
+        $.ajax({
                 url: "../select.php",
                 method: "POST",
-                data: { column_name: 'Phone' },
-                dataType: "text",
+                //data: { column_name: 'Phone' },
+                dataType: "html",
                 success: function(response) {
 
-                    $('.phone input[type=text]').html(response);
-                    $('.phone input[type=text]').contents().unwrap();
+                   var phone = $(response).filter('#phone').html(); 
+                   //alert(phone);
+                   if (phone != ''){
+                        $('.phone').html(phone);
+                        $('.phone-textinput').contents().unwrap();
+                        $('#edit-phone').show();
+                        $('#add-phone').hide();
+
+                    }else{
+                        //$(".phone").css("display", "none");
+                        //$('.phone').html(phone);
+                        $('.phone-textinput').hide();
+                        $('#edit-phone').hide();
+                        $('#add-phone').show();
+                    }
+                   
+                   
+
                 }
+                
             });
 
-
+           
             $('#save-phone').hide();
             $('#cancel-phone').hide();
-            $('#edit-phone').show();
-
-        });
+         
     });
 
+    
 
 
 
@@ -512,34 +753,73 @@ $(document).ready(function() {
 
 ////////////////Enter Zip Code to retrieve City and State//////////////////////
 
-    $('#edit-zip').click(function() {
-        //alert("123");
+      
+$('#add-zip').click(function() {
+    //alert("111");
+        $('.zip-textinput').removeClass('hidden');
+        $('#add-zip').hide();
         $('#edit-zip').hide();
-        $('.zip').each(function() {
-            var content = $(this).text();
-
-            if (!content) {
-                //alert(content+'123');
-                $(this).html('<input type="text" value="">');
-
-
-            } else {
-                //alert(content);
-
-                $(this).html('<input type="text" value="" placeholder="Enter Zip Code">');
-
-            }
-        });
-
+        $('.zip-textinput').show();
         $('#save-zip').show();
         $('#cancel-zip').show();
 
     });
+     
+    
+ $('#edit-zip').click(function() {
+    //alert("www113rddttteee444333");
+        
+           $.ajax({
+                url: "../select.php",
+                method: "POST",
+                //data: { column_name: 'Phone' },
+                dataType: "html",
+                success: function(response) {
+
+                   var zip = $(response).filter('#zip').html();
+                   
+                   if (zip != ''){
+                    //$('.zip input[type=text]').html(zip);
+                    //$('td.zip').contents().wrapInner('<input type="text" class="zip-textinput" value="'+zip+'" placeholder="Enter your number">');
+                    //alert(zip);
+                        $('.zip-textinput').removeClass('hidden');
+                        $('.zip').addClass('show');
+                        //$('.zip-textinput').show();
+                        $('.zip').html('<input type="text" class="zip-textinput" value="" placeholder="Enter your Zip Code">');
+                        $('#save-zip').show();
+                        $('#cancel-zip').show();
+                        //$('.zip-textinput').show();
+                        //$('.zip-textinput').contents().wrap('<input type="text" class="zip-textinput" value="'+zip+'" placeholder="Enter your number">');
+                        //$('td.zip').html('<input type="text" class="zip-textinput" value="'+zip+'" placeholder="Enter your number">');
+                        $('#edit-zip').hide();
+                        $('#add-zip').hide();
+                        $('td.edit-zip').hide();
+
+                    }else{
+                        //$(".phone").css("display", "none");
+                        //$('.phone').html(phone);
+                        $('.zip-textinput').addClass('hidden');
+                        $('.zip-textinput').hide();
+                        $('#edit-zip').hide();
+                        $('#add-zip').show();
+                    }
+                   
+                   
+
+                }
+                
+            });
+
+
+
+    });
+
+   
 
     $('#save-zip').click(function() {
         $('#save-zip').hide();
         $('.zip input[type=text]').each(function() {
-            var content = $(this).val(); //.replace(/\n/g,"<br>");
+            var content = $(this).val().replace(/^\s*|\s*$/g,''); //.replace(/\n/g,"<br>");
 
             if (!content) {
 
@@ -548,18 +828,21 @@ $(document).ready(function() {
 
             } else {
 
-               
+                $(this).html(content);
+                $(this).contents().unwrap();
 
                 $.ajax({
                     url: "../edit.php",
                     method: "POST",
                     data: { content: content, column_name: 'Zip' },
-                    dataType: "text",
+                    dataType: "html",
                     success: function(response) {
-
-                        var zip = $(response).filter('#zip').text();
+                        //alert(data);  
+                        //$('.phone').html(response);
+                        var zip = $(response).filter('#zip').html();
                         $('.zip').html(zip);
-                        
+                        $('#edit-zip').show();
+                        $('td.edit-zip').show();
                     }
                 });
 
@@ -575,32 +858,44 @@ $(document).ready(function() {
     });
 
 
-    $('#cancel-zip').click(function() {
+$('#cancel-zip').click(function() {
 
-        $('.zip input[type=text]').each(function() {
 
-            var content = $('.zip').val(); //.replace(/\n/g,"<br>");
-
-            $.ajax({
+        $.ajax({
                 url: "../select.php",
                 method: "POST",
-                data: { column_name: 'Zip' },
-                dataType: "text",
-                success: function(response) {   
+                //data: { column_name: 'Phone' },
+                dataType: "html",
+                success: function(response) {
 
-                    var zip = $(response).filter('#zip').text();
+                   var zip = $(response).filter('#zip').html(); 
+                   //alert(phone);
+                   if (zip != ''){
+                        $('.zip').html(zip);
+                        $('.zip-textinput').contents().unwrap();
+                        $('#edit-zip').show();
+                        $('#add-zip').hide();
+                        $('td.edit-zip').show();
 
-                    $('.zip input[type=text]').html(zip);
-                    $('.zip input[type=text]').contents().unwrap();
+                    }else{
+                        //$(".phone").css("display", "none");
+                        //$('.phone').html(phone);
+                        $('.zip-textinput').hide();
+                        $('#edit-zip').hide();
+                        $('#add-zip').show();
+                        $('td.edit-zip').hide();
+                    }
+                   
+                   
+
                 }
+                
             });
 
-
+           
             $('#save-zip').hide();
             $('#cancel-zip').hide();
-            $('#edit-zip').show();
-
-        });
+         
     });
 
 
