@@ -847,7 +847,7 @@ $(document).on("click", ".slide-video-feedback-recorded_open", function () {
 
 var videoid = $(this).data('video');
 
-//alert(videoid);
+alert(videoid);
 
  $("#frame-video-feedback-recording").attr("src", "../get-recording.php?videoid="+videoid);
 

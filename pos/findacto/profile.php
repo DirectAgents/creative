@@ -250,7 +250,27 @@ $count = $row_count['count'];
                                 </div>
                                 <div class="col-md-5 about-box">
                                     <p class="text-center no-contributions">
-                                        <?php echo $row['About'];?>
+
+
+<!-- begin video recorder code -->
+<script type="text/javascript">
+var size = {width:400,height:330};
+var flashvars = {qualityurl: "avq/300p.xml",accountHash:"75d89fbb678367bccfbca6c23dfd6434", eid:1, showMenu:"true", mrt:300,sis:0,asv:1,mv:0, payload:"{\"userID\":\"<?php echo $_SESSION['participantSession']; ?>\"}"};
+(function() {var pipe = document.createElement('script'); pipe.type = 'text/javascript'; pipe.async = true;pipe.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's1.addpipe.com/1.3/pipe.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pipe, s);})();
+</script>
+<div id="hdfvr-content" ></div>
+<!-- end video recorder code -->
+
+
+
+<?php
+
+
+echo '<video poster="https://addpipevideos.s3.amazonaws.com/75d89fbb678367bccfbca6c23dfd6434/697042.jpg" width="400" height="330" controls><source src="https://addpipevideos.s3.amazonaws.com/75d89fbb678367bccfbca6c23dfd6434/697042.mp4" type="video/mp4">Your browser does not support the video tag.</video>';
+
+
+?>
+
                                     </p>
                                 </div>
                             </div>
