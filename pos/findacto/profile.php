@@ -21,9 +21,11 @@ $skills_array =  count($skills_array);
 $skills_array = '0';
 }
 
-$result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '".$_SESSION['participantSession']."' GROUP BY userID");
+$result_count = mysqli_query($connecDB,"SELECT userID,id, COUNT(DISTINCT id) AS count FROM work WHERE userID = '".$_GET['id']."' GROUP BY userID");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
+
+//exit();
 
 
 ?>
@@ -165,6 +167,9 @@ $count = $row_count['count'];
                             <h3 class="profile-text bold" id="startchange"><?php echo $row['Firstname'].' '.$row['Lastname']; ?></h3>
                             
                           <div class="col-md-6" style="padding-left:0px;">
+
+                          <?php if(isset($_SESSION['participantSession'])) { ?>
+
                              <table class="table edit-profile" style="margin-bottom:0px">
                                     <tbody>
                                         <tr>
@@ -187,8 +192,14 @@ $count = $row_count['count'];
                                     </tbody>
                                 </table>
                        
-                            
+                            <?php }else{ ?>
+
+
+                            <?php if($row['Zip'] != ''){echo $row['Zip']; }else{echo "n/a";} ?> 
                            
+
+
+                           <?php } ?>
      
                            
                          <div class="col-md-12" style="padding-left:0px;">
@@ -227,8 +238,13 @@ $count = $row_count['count'];
                         <div class="tab-content">
                             <!--ABOUT-->
                             <div role="tabpanel" class="tab-pane fade in active" id="about">
-                                <div class="col-md-6 about-box">
+                        <div class="col-md-7">
+                            <div class="col-md-5"  style="padding-left:0px;"><h3><strong>About Yourself</strong></h3></div>
+                        </div>
+                                <div class="col-md-5 about-box" style="margin-top:20px">
+
                                     <div class="no-contributions">
+
                                         <table class="table edit-profile">
                                             <tbody>
                                                 <tr>
@@ -241,21 +257,27 @@ $count = $row_count['count'];
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div class="col-md-6" style="padding-left:0px;">
+                                        <div class="col-md-12" style="padding-left:0px;">
                                         <button class="btn btn-info" id="edit-about"><span class="glyphicon glyphicon-edit"></span> edit</button>
                                         <button class="btn btn-success" id="save-about"><span class="glyphicon glyphicon-ok"></span> save</button>
                                         <button class="btn btn-cancel" id="cancel-about"><span class="glyphicon glyphicon-remove"></span> cancel</button>
                                       </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5 about-box">
+
+                                 <div class="col-md-6" style="margin-top:-20px">
+                            <div class="col-md-6" style="padding-left:0px;"><h3><strong>Record Yourself</strong></h3></div>
+                        </div>
+
+
+                                <div class="col-md-6">
                                     <p class="text-center no-contributions">
 
 
 <!-- begin video recorder code -->
 <script type="text/javascript">
-var size = {width:400,height:330};
-var flashvars = {qualityurl: "avq/300p.xml",accountHash:"75d89fbb678367bccfbca6c23dfd6434", eid:1, showMenu:"true", mrt:300,sis:0,asv:1,mv:0, payload:"{\"userID\":\"<?php echo $_SESSION['participantSession']; ?>\"}"};
+var size = {width:380,height:330};
+var flashvars = {qualityurl: "avq/300p.xml",accountHash:"75d89fbb678367bccfbca6c23dfd6434", eid:1, showMenu:"true", mrt:120,sis:0,asv:1,mv:0, dpv:0, ao:0, payload:"{\"userID\":\"<?php echo $_SESSION['participantSession']; ?>\"}"};
 (function() {var pipe = document.createElement('script'); pipe.type = 'text/javascript'; pipe.async = true;pipe.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's1.addpipe.com/1.3/pipe.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pipe, s);})();
 </script>
 <div id="hdfvr-content" ></div>
@@ -263,13 +285,7 @@ var flashvars = {qualityurl: "avq/300p.xml",accountHash:"75d89fbb678367bccfbca6c
 
 
 
-<?php
 
-
-echo '<video poster="https://addpipevideos.s3.amazonaws.com/75d89fbb678367bccfbca6c23dfd6434/697042.jpg" width="400" height="330" controls><source src="https://addpipevideos.s3.amazonaws.com/75d89fbb678367bccfbca6c23dfd6434/697042.mp4" type="video/mp4">Your browser does not support the video tag.</video>';
-
-
-?>
 
                                     </p>
                                 </div>
