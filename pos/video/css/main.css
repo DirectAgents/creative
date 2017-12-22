@@ -1655,7 +1655,7 @@ padding:5px
 	right: 0;
 	margin: auto
 }
-.calculator__result {
+.book-a-session-form__result {
 	border: 2px solid #d9dee1;
 	border-radius: 7px;
 	padding-top: 20px;
@@ -1663,7 +1663,7 @@ padding:5px
 	text-align: center;
 	margin-bottom: 20px
 }
-.calculator__result input {
+.book-a-session-form__result input {
 	display: block;
 	line-height: 1;
 	font-size: 48px;
@@ -1671,30 +1671,30 @@ padding:5px
 	width: 100%;
 	padding: 0
 }
-.calculator__result input, .calculator__result small {
+.book-a-session-form__result input, .book-a-session-form__result small {
 	font-family: proxima-nova-soft, Helvetica Neue, Helvetica, Arial, sans-serif;
 	color: #00a8e2;
 	font-weight: 600
 }
-.calculator__result small {
+.book-a-session-form__result small {
 	font-size: 18px
 }
-.calculator__input {
+.book-a-session-form__input {
 	position: relative;
 	margin-bottom: 20px
 }
-.calculator__input input, .calculator__input select {
+.book-a-session-form__input input, .book-a-session-form__input select {
 	border: 2px solid #d9dee1;
 	border-radius: 7px;
 	width: 100%;
 	font-size: 22px;
 	transition: all .3s ease-in-out
 }
-.calculator__input input.has-error, .calculator__input select.has-error {
+.book-a-session-form__input input.has-error, .book-a-session-form__input select.has-error {
 	background-color: #ffd2d2;
 	border-color: #ffa3a3
 }
-.calculator__input select {
+.book-a-session-form__input select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -1702,7 +1702,7 @@ padding:5px
 	background-repeat: no-repeat;
 	background-position: 95%
 }
-.calculator__input label {
+.book-a-session-form__input label {
 	font-family: proxima-nova, Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-weight: 500;
 	line-height: 1;
@@ -2977,30 +2977,30 @@ text-align:center
 	margin-left: 30px;
 	margin-top: 0
 }
-.calculator {
+.book-a-session-form {
 	max-width: 800px;
 	margin: 0 auto
 }
-.calculator__result {
+.book-a-session-form__result {
 	margin-bottom: 100px
 }
-.calculator__result input {
+.book-a-session-form__result input {
 	font-size: 60px
 }
-.calculator__input {
+.book-a-session-form__input {
 	margin-bottom: 60px
 }
-.calculator__input:last-child {
+.book-a-session-form__input:last-child {
 	margin-bottom: 0
 }
-.calculator__input label {
+.book-a-session-form__input label {
 	position: absolute;
 	-webkit-transform: translateY(-40px);
 	-ms-transform: translateY(-40px);
 	transform: translateY(-40px);
 	font-size: 20px
 }
-.calculator__input label[for=sign-up] {
+.book-a-session-form__input label[for=sign-up] {
 	-webkit-transform: translateY(-60px);
 	-ms-transform: translateY(-60px);
 	transform: translateY(-60px)

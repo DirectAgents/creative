@@ -138,8 +138,7 @@ $( document ).ready(function() {
                     <div class="hero__cta--mobile u-hide--md-up">
                     </div>
 
-                </div>
-                </div>
+               
             </div>
         <div class="hero__pattern"></div>
         </section>
@@ -269,7 +268,7 @@ $( document ).ready(function() {
 
 <section class="section--calculator book-a-session">
   <div class="wrapper">
-    <div class="calculator">
+    <div class="book-a-session-form">
       <div class="grid grid--section">
           <span class="space"></span>
           <h2 class="heading--internal u-text-center u-mb4">Book a session for a video session!</h2>
@@ -277,20 +276,20 @@ $( document ).ready(function() {
         <span class="space"></span>
        
         <div class="grid__column u-size-1of2--md">
-          <div class="calculator__input">
+          <div class="book-a-session-form__input">
             <label for="revenue">What's your Startup name?</label>
             <input id="revenue" type="text" class="js-calculator-input">
           </div>
          
             
-          <div class="calculator__input">
+          <div class="book-a-session-form__input">
             <label for="ticket">First Name</label>
             <input id="ticket" type="text" class="js-calculator-input">
           </div>
             
-            <div class="calculator__input">
+            <div class="book-a-session-form__input">
             <label for="ticket">Your Email</label>
-            <input id="ticket" type="text" class="js-calculator-input">
+            <input type="text" class="js-calculator-input">
           </div>
              
           
@@ -299,7 +298,7 @@ $( document ).ready(function() {
         <div class="grid__column u-size-1of2--md">
             
             
-            <div class="calculator__input calculator__input--last">
+            <div class="book-a-session-form__input calculator__input--last">
             <label for="industry">What's your industry?</label>
             <select id="industry" class="js-calculator-input">
 			  <option selected="" value="arts">Arts and Entertainment</option>
@@ -315,22 +314,22 @@ $( document ).ready(function() {
             </select>
           </div>
             
-          <div class="calculator__input">
+          <div class="book-a-session-form__input">
             <label for="ticket">Last Name</label>
-            <input id="sign-up" type="text" value="30" class="js-calculator-input">
+            <input type="text" class="js-calculator-input">
           </div>
           
-          <div class="calculator__input">
+          <div class="book-a-session-form__input">
             <label for="ticket">Phone</label>
-            <input id="sign-up" type="text" value="30" class="js-calculator-input">
+            <input type="text" class="js-calculator-input">
           </div>
          
         </div>
 
           <span class="space"></span>
-        <div class="grid__column u-size-1of1--md u-text-center">
+        <div class="grid__column u-size-1of1--md">
           
-        <button type="button" class="btn findoutmoreButton">FIND OUT MORE</button>
+        <button type="button" class="btn findoutmoreButton">Request Booking</button>
         
         </div>
 
