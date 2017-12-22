@@ -13,6 +13,7 @@ include("config.inc.php");
 $sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='".$_GET['id']."'");
 $row = mysqli_fetch_array($sql);
 
+
 if($row['Skills'] != ''){
 
 $skills_array = explode(",", $row['Skills']);

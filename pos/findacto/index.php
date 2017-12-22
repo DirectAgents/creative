@@ -189,6 +189,187 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
 
+////////////Facebook Login///////////////
+
+
+$fb = new Facebook\Facebook([
+  'app_id' => '1797081013903216',
+  'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
+  'default_graph_version' => 'v2.2',
+  ]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup-callback.php', $permissions);
+
+
+
+
+
+
+
+
+if(!isset($_SESSION['fb_access_token_participant'])){
+//echo '<a href="' . htmlspecialchars($loginUrl) . '">Sign up with Facebook!</a>';
+echo '<div style="float:left; width:100%;">';
+
+echo '<div style="margin:0 auto; width: 82%;">';
+
+echo '<a class="social-signin__btn btn_google btn_default-bis" href="' . $authUrl . '"> <span class="icon icon_google"></span> Google </a>';
+
+echo '<a class="social-signin__btn btn_facebook btn_default-bis" href="' . htmlspecialchars($loginUrl) . '"> <span class="icon icon_facebook"></span> Facebook </a>';
+
+echo '<div class="fb-connect connect-background" data-track="home:facebook-connect">
+            <span class="fa fa-facebook"></span>
+            <span class="connect-text">Connect with Facebook</span>
+        </div>';
+
+
+echo '</div>';
+echo '</div>';
+
+echo "<p>&nbsp;</p>";
+
+}else{
+
+echo '<div style="float:left; width:100%;">';
+
+echo '<div style="margin:0 auto; width: 82%;">';
+
+echo '<a class="social-signin__btn btn_google btn_default-bis" href="' . $authUrl . '"> <span class="icon icon_google"></span> Google </a>';
+
+echo '<a class="social-signin__btn btn_facebook btn_default-bis"  href="../../logout.php"> <span class="icon icon_facebook"></span> Logout from Facebook! </a>';
+
+echo '</div>';
+echo '</div>';
+
+echo "<p>&nbsp;</p>";
+
+
+}
+
+
+
+
+//echo $_SESSION['fb_access_token_startup'];
+
+
+if(isset($_SESSION['fb_access_token_participant'])){
+
+try {
+  // Returns a `Facebook\FacebookResponse` object
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_participant']);
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
+
+$user = $response->getGraphUser();
+/*
+echo 'Name: ' . $user['name'];
+echo "<br>";
+echo 'Email: ' . $user['email'];
+echo "<br>";
+echo 'id: ' . $user['id'];
+*/
+
+
+//check if user exist in database using COUNT
+
+
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM profile WHERE facebook_id='".$user['id']."' ");
+  $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
+
+  $sql = mysqli_query($connecDB,"SELECT * FROM profile WHERE Email = '".$user['email']."'");
+  $row = mysqli_fetch_array($sql);
+
+
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($user_count_facebook) //if user already exist change greeting text to "Welcome Back"
+    {
+
+    $update_sql = mysqli_query($connecDB,"UPDATE profile SET 
+    facebook_id = '".$user['id']."', 
+    ProfileImage = '',
+    google_picture_link = ''
+
+    WHERE Email='".$user['email']."'");
+
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['participantSession'] = $row['id'];
+        $_SESSION['facebook_photo'] = $user['id'];
+        //header('Location: '.BASE_PATH.'');
+        //exit();
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+
+
+
+  
+
+
+   date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+
+    $gender = ucfirst($user['gender']);
+
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO profile (facebook_id, Firstname, Lastname, Email, Gender, Date_Created) 
+      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' , '".$date."')");
+    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
+    //$statement->execute();
+    //echo $mysqli->error;
+
+    //mysqli_query($insert_sql);  
+
+    $_SESSION['participantSession'] = $row['id'];
+    header('Location: '.BASE_PATH.'');
+    exit(); 
+
+
+
+
+    //echo $user->id;
+
+
+
+
+
+
+    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'Email'"){
+    
+      //exit(header("Location: ../index.php"));
+
+    }else{
+
+        $_SESSION['participantSession'] = $user['id'];
+        $_SESSION['facebook_photo'] = $user['id'];
+        header('Location: '.BASE_PATH.'');
+        exit();
+
+    }
+
+  }
+
+ 
+
+
+
+
+}
+
+
+
+
 
 
 
