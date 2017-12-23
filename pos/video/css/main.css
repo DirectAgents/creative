@@ -3699,3 +3699,32 @@ to {
 /******Custom******/
 
 .space{float:left; width:100%; margin:15px 0 15px 0}
+
+
+form .error {
+	border:2px solid #dd2e1d!important
+}
+form .error[type='radio'], form .error[type='checkbox'], form .error[aria-invalid='false'] {
+	border:none!important
+}
+form .tooltip-inner {
+	background-color:#dd2e1d;
+	padding:10px;
+	font-family:Gotham-Book;
+	font-size:12pt;
+	-moz-border-radius:0;
+	-webkit-border-radius:0;
+	border-radius:0
+}
+form .tooltip.bottom .tooltip-arrow {
+	border-bottom-color:#dd2e1d!important
+}
+form .tooltip.right .tooltip-arrow {
+	border-right-color:#dd2e1d!important
+}
+form .tooltip.top .tooltip-arrow {
+	border-top-color:#dd2e1d!important
+}
+form .tooltip.left .tooltip-arrow {
+	border-left-color:#dd2e1d!important
+}

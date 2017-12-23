@@ -54,7 +54,10 @@
         <meta name="msapplication-config" content="/wp-content/uploads/fbrfg/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    
+    <script src="js/pyh_external_js-v=uN_DBNmZ1XZv0CCjSQ0FwwOJuRgjgQuhhe44tzI3abA1.js"></script>
+    
 
         <script>
 $( document ).ready(function() {
@@ -265,20 +268,24 @@ $( document ).ready(function() {
     
 </section>
 
-
 <section class="section--calculator book-a-session">
   <div class="wrapper">
+<form action="form.php" id="CustomerRegisterForm" method="post" data-gtm-event="leadGenSubmit" data-script-success-event="FireScriptsLeadGenSuccess" data-script-error-event="FireScriptsLeadGenError">
     <div class="book-a-session-form">
       <div class="grid grid--section">
           <span class="space"></span>
           <h2 class="heading--internal u-text-center u-mb4">Book a session for a video session!</h2>
         
         <span class="space"></span>
-       
+          
+ 
+     
+
+     
         <div class="grid__column u-size-1of2--md">
           <div class="book-a-session-form__input">
             <label for="revenue">What's your Startup name?</label>
-            <input id="revenue" type="text" class="js-calculator-input">
+            <input id="revenue" type="text" class="js-calculator-input" required data-placement="bottom" >
           </div>
          
             
@@ -329,12 +336,18 @@ $( document ).ready(function() {
           <span class="space"></span>
         <div class="grid__column u-size-1of1--md">
           
-        <button type="button" class="btn findoutmoreButton">Request Booking</button>
+        <button type="submit" class="btn">Request Booking</button>
+            
+    
         
         </div>
+     
+          
 
       </div>
+        
     </div>
+    </form>
  
 </div>
 </section>
@@ -404,10 +417,12 @@ $( document ).ready(function() {
 <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
-<script type='text/javascript' defer src='//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
 <script type='text/javascript' defer src='//app-ab19.marketo.com/js/forms2/js/forms2.min.js?ver=4.9.1'></script>
 <script type='text/javascript' defer src='https://www.fivestars.com/wp-content/themes/_fivestars/library/js/min/06_progressive.js?ver=v2.8'></script>
 <script type='text/javascript' defer src='https://www.fivestars.com/wp-content/themes/_fivestars/library/js/min/scripts.js?ver=v2.8'></script>
+        
+<script src="js/pyh_main_js-v=IYSNC0cAO_B-_TUsyGCiemgQo0mfVgmz1oShNb7ny1Q1.js"></script>
+
 
 </body>
 </html>
