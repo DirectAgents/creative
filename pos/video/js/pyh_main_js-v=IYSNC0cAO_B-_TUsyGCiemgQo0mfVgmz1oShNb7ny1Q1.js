@@ -86,21 +86,44 @@ $(function() {
         $(this).validate({
             submitHandler: function(n) {
                 var r, t, i;
-                $(n).data("ajax-submit") == !1 ? (r = $(n), t = r.find("button[type='submit']").first(), $(t).length && ($(t).addClass("disabled"), $(t).attr("disabled", "disabled"), i = $(t).html(), $(t).html("Please Wait..."), n.submit())) : ($gtmEvent = $(n).data("gtm-event"), $successDynamicEvent = $(n).data("script-success-event"), $errorDynamicEvent = $(n).data("script-error-event"), i = "", $.ajax({
-                    url: n.action,
+                $(n).data("ajax-submit") == !1 ? (r = $(n), t = r.find("button[type='submit']").first(), $(t).length && ($(t).addClass("disabled"), $(t).attr("disabled", "disabled"), i = $(t).html(), $(t).html("Request Booking"), n.submit())) : ($gtmEvent = $(n).data("gtm-event"), $successDynamicEvent = $(n).data("script-success-event"), $errorDynamicEvent = $(n).data("script-error-event"), i = "", 
+                
+                
+                $.ajax({
+                    //url: n.action,
+                    url: "booking.php",
                     type: "post",
                     data: $(n).serialize(),
                     beforeSend: function() {
                         var t = $(n).find("button[type='submit']").first();
-                        $(t).length && ($(t).addClass("disabled"), $(t).attr("disabled", "disabled"), i = $(t).html(), $(t).html("Please Wait..."));
+                        $(t).length && ($(t).addClass("disabled"), $(t).attr("disabled", "disabled"), i = $(t).html(), $(t).html("Request Booking "));
+                        
+                        //setTimeout(function() { $(t).html('Please Wait...') }, 0);
+                        
+                        //setTimeout(function() { $("#success").animate('hello') }, 2000);
+                        
+                        //$("#success").html("hello was geht").delay(4000).fadeIn('slow');
+                        
+                        $('#success').fadeOut(300, function() {
+                            $('#success').html("<div class='success'>Thank you! We'll get back to you soon.</div>").fadeIn('slow');
+                        });
+                        
+                        
+                        //$('#div_with_text').delay(2000).fadeIn('slow');
+                        
+                        //setTimeout(function() { $(t).html('Request Booking') }, 5000);
+                        
+                        
                         //timeoutID != null && clearTimeout(timeoutID);
-                       alert(data)
-                        // window.setTimeout(function(){
+                       //alert(data)
+                         //window.setTimeout(function(){
+                             
+                           //  $("#success").html('hello');
 
                      // Move to a new location or you can do something else
                     //window.location.href = "http://www.directagents.com/preview/ADT/form.php";
 
-                    //}, 2000)
+                    //}, 5000)
                     },
                     success: function(n) {
                         
