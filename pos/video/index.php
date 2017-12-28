@@ -63,12 +63,19 @@
             $( document ).ready(function() {
                 $(".findoutmoreButton").click(function() {
                     $('html, body').animate({
-                        scrollTop: $(".what-we-do").offset().top - 1
+                        scrollTop: $(".find-out-more").offset().top - 1
                     }, 1000);
                 });
-                $("#how-it-works").click(function() {
+                $("#what-we-do").click(function() {
                     $('html, body').animate({
-                        scrollTop: $(".how-it-works").offset().top - 100
+                        scrollTop: $(".what-we-do").offset().top - 100
+                    }, 1000);
+
+                });
+                
+                 $("#pricing").click(function() {
+                    $('html, body').animate({
+                        scrollTop: $(".pricing").offset().top - 100
                     }, 1000);
 
                 });
@@ -88,14 +95,14 @@
     </head>
 
     <body class="page-template page-template-page-loyalty page-template-page-loyalty-php page page-id-21 page-child parent-pageid-17 optimizely-21">
-       
+
         <header class="js-header header">
             <div class="wrapper">
                 <nav class="nav--main">
                     <ul>
 
-                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a target="_blank" href="https://www.fivestars.com/locations">For Startups</a></li>
-                        <li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51"><a target="_blank" href="https://www.fivestars.com/accounts/login/">For Investors</a></li>
+                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a target="_blank" href="https://www.fivestars.com/locations">For Investors</a></li>
+                        <li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51"><a target="_blank" href="https://www.fivestars.com/accounts/login/">Login</a></li>
                     </ul>      </nav>
                 <button class="hamburger hamburger--squeeze js-hamburger u-hide--md-up" type="button">
                     <span class="hamburger-box">
@@ -119,7 +126,7 @@
         <main class="main">
             <!--  hero START -->
             <section class="hero">
-                <div class="hero__bg lazyImg lazyImg--notloaded" style="background-image: url(https://www.fivestars.com/wp-content/uploads/2017/02/Highrez-100x56.jpg)" data-image="https://www.fivestars.com/wp-content/uploads/2017/02/Highrez.jpg"></div>
+                <div class="hero__bg lazyImg lazyImg--notloaded" style="background-image: url(assets/AdobeStock_2836132-darker.jpg)" data-image="assets/AdobeStock_2836132-darker.jpg"></div>
                 <noscript><div class="hero__bg" style="background-image: url(https://www.fivestars.com/wp-content/uploads/2017/02/Highrez.jpg)"></div></noscript>
                 <div class="wrapper">
                     <div class="hero__content">
@@ -145,12 +152,13 @@
                 </div>
                 <div class="hero__pattern"></div>
             </section>
-            <div class="what-we-do"></div>
+            <div class="find-out-more"></div>
             <!--  hero END -->
             <nav id="nav-internal" class="nav--internal"><ul>
                 <li id="menu-item-199" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-199">
-                    <a href="#" id="how-it-works">How It Works</a></li>
-                <li id="menu-item-199" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-199"><a href="https://www.fivestars.com/businesses/how-it-works/">Pricing</a></li>
+                    <a href="#" id="what-we-do">What we do!</a></li>
+                <li id="menu-item-199" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-199">
+                    <a href="#" id="pricing">Pricing</a></li>
                 <li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198">
                     <a href="#" id="book-a-session">Book a Session</a></li>
                 </ul></nav>
@@ -158,17 +166,17 @@
 
             <section class="section">
                 <div class="wrapper">
-                    <h2 class="heading--internal u-text-center u-mb2">What we do!</h2>
+                    <h2 class="heading--internal u-text-center u-mb2">Did you know?</h2>
                     <figure class="illustration--60">
-                        <figcaption>60% of customers don't return after their first visit</figcaption>
-                        <img src="https://www.fivestars.com/wp-content/uploads/2017/02/benefits-5.svg" alt="icon"/>
+                        <figcaption>Only 0.91 percent of startups are funded by angel investors, while a measly 0.05 percent are funded by VCs</figcaption>
+                        <img src="images/money-bag.svg" alt="icon"/>
                     </figure>
 
                 </div>
 
 
 
-                <div class="section__arrow how-it-works">
+                <div class="section__arrow what-we-do">
                     <div class="wrapper">
                         <div class="grid center">
                             <div class="grid__column u-size-1of2--md"></div>
@@ -195,14 +203,14 @@
                     <span class="space"></span>
                     <span class="space"></span>
 
-                    <h2 class="heading--internal u-text-center u-mb4">How it works!</h2>
+                    <h2 class="heading--internal u-text-center u-mb4">What we do!</h2>
 
                     <div class="grid grid--section grid--loyalty u-text-center--md-down has-image-left">
 
                         <!--  image START -->
                         <div class="grid__column u-size-1of2--md">
                             <figure class="section__illustration  section__illustration--icon">
-                                <img src="https://www.fivestars.com/wp-content/uploads/2017/02/Skyline.svg" class="u-img-responsive u-border-radius" />
+                                <img src="assets/camera.svg" class="u-img-responsive u-border-radius" />
                             </figure>
                         </div>
                         <!--  image END -->
@@ -247,7 +255,7 @@
                         <!--  image START -->
                         <div class="grid__column u-size-1of2--md">
                             <figure class="section__illustration  section__illustration--icon">
-                                <img src="https://www.fivestars.com/wp-content/uploads/2017/02/icon-outlet.svg" class="u-img-responsive u-border-radius" />
+                                <img src="assets/chairs.svg" class="u-img-responsive u-border-radius" />
                             </figure>
                         </div>
                         <!--  image END -->
@@ -255,6 +263,60 @@
 
 
                 </div>
+
+                <div class="section__arrow pricing">
+                    <div class="wrapper">
+                        <div class="grid center">
+                            <div class="grid__column u-size-1of2--md"></div>
+                            <div class="grid__column u-size-1of2--md has-arrow"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+
+
+
+            <section class="section">
+                <div class="wrapper">
+                    <div class="grid grid--section">
+                        <div class="grid__column">
+                            <h2 class="heading--internal u-text-center">Choose a plan that works best for your startup</h2>
+                        </div>
+                    </div>
+
+                    <div class="grid grid--program u-text-center--md-down">
+                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
+                            <a href="#starter" id="starter" class="js-program">
+                                <div class="section__feature section__feature--program">
+                                    <h3 class="heading--section heading--pricing">Bronze</h3>
+                                    <p class="u-text-small">Basic Video Footage (incl. basic Animation Graphics)</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
+                            <a href="#growth" id="growth" class="js-program">
+                                <div class="section__feature section__feature--program">
+                                    <h3 class="heading--section heading--pricing">Silver</h3>
+                                    <p class="u-text-small">Basic Video Footage + Office Space Shooting (incl. basic Animation Graphics)</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
+                            <a href="#pro" id="pro" class="js-program">
+                                <div class="section__feature section__feature--program">
+                                    <h3 class="heading--section heading--pricing">Gold</h3>
+                                    <p class="u-text-small">Basic Video Footage + Office Space Shooting (incl. advanced Animation Graphics)</p>
+                                </div>
+                            </a>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
 
                 <div class="section__arrow book-a-session">
                     <div class="wrapper">
@@ -265,8 +327,13 @@
                     </div>
                 </div>
 
-
             </section>
+
+
+
+
+
+
 
             <section class="section--calculator book-a-session">
                 <div class="wrapper">
@@ -326,7 +393,8 @@
                                             <option value="Food and Beverage">Food and Beverage</option>
                                             <option value="Art and Design">Art and Design</option>
                                             <option value="Health, Fitness and Wellness">Health, Fitness and Wellness</option>
-                                            <option value="Human Resources">Human Resources</option>    
+                                            <option value="Human Resources">Human Resources</option>  
+                                            <option value="Other">Other</option>  
                                         </select>
                                     </div>
 
@@ -337,7 +405,7 @@
 
                                     <div class="book-a-session-form__input">
                                         <label for="ticket">Phone</label>
-                                        <input type="tel" data-mask="1-000-000-0000" required name="Phone" placeholder="Phone Number" data-placement="bottom" />
+                                        <input type="tel" data-mask="1-000-000-0000" required name="Phone" data-placement="bottom" />
                                     </div>
 
                                 </div>
@@ -349,9 +417,9 @@
 
 
                                     <div id="success"></div>
-                                    
+
                                 </div>
-                                
+
 
 
 
@@ -359,7 +427,7 @@
 
                         </div>
                     </form>
-                    
+
 
                 </div>
             </section>
@@ -374,7 +442,7 @@
             <div class="footer__pattern"></div>
             <div class="footer__cta">
                 <div class="wrapper">
-                    <h5 class="heading--section--lg u-text-white u-mb2 u-text-center">Start bringing customers back</h5>
+                    <h5 class="heading--section--lg u-text-white u-mb2 u-text-center">Start to impress your potential investors</h5>
                     <p class="u-text-intro u-text-white u-text-normal u-text-center u-mb1">We incentivized more than 20 million customers to make 54 million visits last year to local stores like yours. Try FiveStars today.</p>
                     <div class="footer__form">
 
@@ -390,7 +458,7 @@
 
                         <div class="nav__menus">
                             <ul><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-55"><a href="https://www.fivestars.com/businesses/">For Startups</a></li>
-                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57"><a href="https://www.fivestars.com/businesses/how-it-works/">How It Works</a></li>
+                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57"><a href="https://www.fivestars.com/businesses/how-it-works/">What we do!</a></li>
                                 <li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58"><a href="https://www.fivestars.com/businesses/pricing/">Pricing</a></li>
                                 <li id="menu-item-443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-443"><a target="_blank" href="http://blog.fivestars.com">Marketing Tips</a></li>
                                 <li id="menu-item-360" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-360"><a target="_blank" href="https://dashboard.fivestars.com">Dashboard</a></li>

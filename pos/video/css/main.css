@@ -1108,7 +1108,7 @@ color:#4c5e5e
 	height: 50px
 }
 .footer__cta {
-	background-color: #00a8e2;
+	background-color: #1a4267;
 	padding: 50px 0
 }
 .home .footer__cta {
@@ -1121,7 +1121,7 @@ color:#4c5e5e
 .footer__pattern {
 	height: 100px;
 	width: 100%;
-	background-image: url(../images/footer-pattern-blue.svg);
+	background-image: url(../images/city-skyline.svg);
 	background-size: auto 100px;
 	background-repeat: repeat-x;
 	background-position: 20%;
@@ -1149,7 +1149,7 @@ color:#4c5e5e
 	width: 100%;
 	position: relative;
 	overflow: hidden;
-	background-color: #00a8e2
+	background-color: #1a4266
 }
 .home .hero {
 	background-color: #9648b5
@@ -1610,7 +1610,7 @@ padding:5px
 	font-size: 20px;
 	line-height: 1;
 	margin-top: 20px;
-	color: #00a8e2;
+	color: #4c5e5e;
 	margin: 20px 0
 }
 .illustration--benefits {
@@ -2643,7 +2643,8 @@ img.mfp-img {
 }
 .heading--internal {
 	font-size: 42px;
-	margin-bottom: 40px
+	margin-bottom: 40px;
+    margin-top: 40px
 }
 .heading--page {
 	font-size: 60px
@@ -2668,10 +2669,14 @@ img.mfp-img {
 	font-size: 18px;
 	display: inline-block;
 	transition: all .3s ease-in-out;
-	text-shadow: 0 1px 1px rgba(0,0,0,.7)
+	text-shadow: 0 1px 1px rgba(0,0,0,.7);
+    /*background-color:#00a8e2;
+    border-radius: 12px;
+    padding:10px;*/
 }
 .nav--main a:hover {
-	color: #fff
+	color: #fff;
+    /*background:#048dbc;*/
 }
 .nav--main li {
 	display: inline-block;
@@ -2970,7 +2975,7 @@ text-align:center
 	left: 500px
 }
 .illustration--60 figcaption {
-	font-size: 42px;
+	font-size: 41px;
 	margin: 40px 0
 }
 .illustration--benefits-2 {
