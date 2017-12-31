@@ -1,0 +1,94 @@
+/* ==============================================================
+						RESPONSIVE CSS
+================================================================= */
+
+
+/* Portfolio Masonry Items
+-----------------------------------------------------------------*/
+
+@media only screen and (min-width: 641px) {
+
+	.folioMasonry-3 .gallery-item {
+		width: 48.7%;
+	}
+
+	.portfolioFull .folioMasonry-3 .gallery-item {
+		width: 50%;
+	}
+
+	.folioMasonry-mixed .gallery-item.wide {
+		width: 100%;
+	}
+
+	.folioMasonry-mixed .gallery-item {
+		width: 50%;
+	}
+
+}
+
+@media only screen and (min-width: 960px) {
+	
+	.folioMasonry-3 .gallery-item {
+		width: 32.2%;
+	}
+
+	.portfolioFull .folioMasonry-3 .gallery-item {
+		width: 33.3333%;
+	}
+
+}
+
+@media only screen and (min-width: 1024px) {
+	
+
+	.folioMasonry-mixed .gallery-item.wide {
+		width: 50%;
+	}
+
+	.folioMasonry-mixed .gallery-item {
+		width: 25%;
+	}
+
+}
+
+@media only screen and (min-width: 1288px) {
+	
+
+	.folioMasonry-3 .gallery-item {
+		width: 32.5%;
+	}
+
+}
+
+/* Blog Masonry Items
+-----------------------------------------------------------------*/
+
+@media only screen and (min-width: 760px) {
+	
+	.blogMasonry.blogMasonry-3 .blogItem,
+	.blogMasonry.blogMasonry-4 .blogItem {
+		width: 50%;
+	}
+
+}
+
+@media only screen and (min-width: 880px) {
+	
+	.blogMasonry.blogMasonry-4 .blogItem {
+		width: 33.333%;
+	}
+
+}
+
+@media only screen and (min-width: 990px) {
+	
+	.blogMasonry.blogMasonry-3 .blogItem {
+		width: 33.333%;
+	}
+
+	.blogMasonry.blogMasonry-4 .blogItem {
+		width: 25%;
+	}
+
+}
+

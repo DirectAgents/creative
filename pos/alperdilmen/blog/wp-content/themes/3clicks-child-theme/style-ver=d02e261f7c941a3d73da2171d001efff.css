@@ -1,0 +1,65 @@
+/*
+Theme Name:     3clicks Child Theme
+Theme URI:      http://3clicks.bringthepixel.com
+Description:    Got questions? Visit our <a href="http://bringthepixel.com/support/">support forum</a>.
+Author:         bring the pixel
+Author URI:     http://www.bringthepixel.com/
+Template:       3clicks
+Version:        1.0
+Tags:           flexible-width, custom-colors, custom-menu, featured-images, post-formats, theme-options, threaded-comments, translation-ready
+*/
+
+/* Place all your CSS modifications below */
+div.g1-submenus ul {background-color: #393939!important;}
+
+.g1-header .g1-nav--collapsed #g1-primary-nav-menu > li > a .g1-nav-item__arrow {border-color: #393939;}
+
+.g1-prefooter input[type="button"]:hover, .g1-prefooter input[type="submit"]:hover, .g1-prefooter button:hover, .g1-prefooter .g1-button:hover, .g1-prefooter a.button:hover, .g1-prefooter .g1-simple-slider .g1-fullscreen > a:hover {
+    border-color: #009692;
+}
+.g1-prefooter mark, .g1-prefooter input[type="button"]:hover, .g1-prefooter input[type="submit"]:hover, .g1-prefooter button:hover, .g1-prefooter .g1-button:hover, .g1-prefooter a.button:hover, .g1-prefooter .g1-simple-slider .g1-fullscreen > a:hover {
+    background-color: #009692;
+}
+
+input[type="button"], input[type="submit"], button, .g1-button {padding: 8px 18px;}
+
+.g1-prefooter section, .g1-prefooter aside, .g1-prefooter article, .g1-prefooter header, .g1-prefooter nav, .g1-prefooter div, .g1-prefooter p, .g1-prefooter span, .g1-prefooter figure, .g1-prefooter blockquote, .g1-prefooter ul, .g1-prefooter ol, .g1-prefooter dl, .g1-prefooter li, .g1-prefooter a, .g1-prefooter table, .g1-prefooter td, .g1-prefooter th, .g1-prefooter hr, .g1-prefooter form, .g1-prefooter select, .g1-prefooter input, .g1-prefooter textarea, .g1-prefooter .g1-button--divider:before, .g1-prefooter .g1-button--divider:after, .g1-prefooter .g1-tabs--simple .g1-tabs-nav-item, .g1-prefooter .entry-header:after, .g1-prefooter .archive-header:after, .g1-prefooter .g1-nav--expanded #g1-primary-nav-menu:after, .g1-prefooter .g1-cartbox__switch .g1-cartbox__arrow {border: none;}
+
+.g1-mailchimp .g1-form-row {margin-right: 0;}
+
+.g1-mailchimp .g1-form-row:before {display: inline-block;}
+
+.g1-divider--simple:before {width: 60px;}
+
+.g1-social-icons--32 > ul > li {padding-left: 10px;}
+
+.widgettitle {font-family: "Source Sans Pro", sans-serif; color: #ddd; font-size: 20px; text-transform: uppercase;}
+
+#g1-precontent > header.entry-header, #g1-precontent > header.page-header, #g1-precontent > header.archive-header {padding-top: 3rem; padding-bottom: 1.5rem;}
+
+h1, .g1-h1 {font-size: 36px;}
+
+a.mailLink {padding: 5px; width: 100%; display: block;}
+a.mailLink:first-child {border-bottom: 1px solid #424242;}
+a.mailLink img {margin-right: 5px;}
+
+input, select, textarea, pre code, input[type=button], input[type=submit], button, .g1-button, a.button, .g1-message, .woocommerce-message, .woocommerce-info, .woocommerce-error, .bbp-template-notice, .g1-placeholder, .g1-frame--inherit > .g1-decorator, .g1-quote--solid > .g1-inner, .g1-box:before, .g1-box__inner, .g1-toggle__switch, .g1-table--solid, .shop_table:before, .woocommerce .images .zoom, .g1-tabs--simple, .g1-tabs--simple > div, .g1-chat-row, .g1-side-nav, .gallery-icon, .g1-countdown i, .countdown_section span, .g1-banda img, .g1-nav--mobile #g1-secondary-nav-menu, #lang_sel ul ul, .g1-twitter--simple .g1-twitter__items, .g1-gmap__box > .g1-inner, .g1gmap-marker-bubble-inner, .g1-isotope-filters, .g1-isotope-filters > div, .g1-mediabox--featured-media .g1-mediabox__item, .g1-mediabox--list .g1-mediabox__item, .g1-mediabox--slider .g1-carousel, .g1-slide__title > .g1-background, .g1-slide__description > .g1-background, .g1-simple-slider .g1-fullscreen a, .tp-caption, .g1-nav--expanded #g1-primary-nav-menu:before, .g1-nav--expanded #g1-primary-nav-menu:after, .g1-nav--simple #g1-primary-nav-menu > .current_page_ancestor > a, .g1-nav--simple #g1-primary-nav-menu > .current_page_parent > a, .g1-nav--simple #g1-primary-nav-menu > .current_page_item > a, #g1-primary-nav-menu > .g1-type-tile .g1-submenus, #g1-primary-nav-menu > .g1-type-column .g1-submenus, #g1-primary-nav-menu > .g1-type-drops ul, .g1-searchbox #searchform, .g1-cartbox .g1-cartbox__box, .entry-featured-media, #payment, #payment .payment_box, .bbp-logged-in {border-radius: 2px;}
+
+.g1-content input[type=button]:hover, .g1-content input[type=submit]:hover, .g1-content button:hover, .g1-content .g1-button:hover, .g1-content a.button:hover, .g1-content .g1-simple-slider .g1-fullscreen > a:hover { border-color: #009393;}
+
+.g1-content mark, .g1-content input[type=button]:hover, .g1-content input[type=submit]:hover, .g1-content button:hover, .g1-content .g1-button:hover, .g1-content a.button:hover, .g1-content .g1-simple-slider .g1-fullscreen > a:hover { background-color: #009393;}
+
+code {
+  padding: 2px 10px;
+  border: 1px solid #ddd;
+  font-size: 0.875rem;
+  background: #eee;
+}
+
+.g1-indicator:before, .g1-quote figcaption img, .g1-quote__image, .g1-banda__handle span, .g1-twitter .g1-nav-direction__next, .g1-html-rotator .g1-nav-direction__next, #wp-calendar #next a, #wp-calendar #next span, .g1-mediabox--slider .g1-nav-direction__next, .tp-rightarrow.default, .g1-simple-slider-simple .g1-nav-direction__next, .g1-simple-slider-kenburns .g1-nav-direction__next, .g1-simple-slider-standout .g1-nav-direction__next, .g1-simple-slider-relay .g1-nav-direction__next, #g1-back-to-top, .galleria-exit-button, .entry-featured-media .g1-nav-direction__next, .g1-pagination a.next, .widget_rss .widgettitle a.rsswidget:first-child {
+	border-radius: 0;
+}
+
+input, select, textarea, pre code, input[type=button], input[type=submit], button, .g1-button, a.button, .g1-message, .woocommerce-message, .woocommerce-info, .woocommerce-error, .bbp-template-notice, .g1-placeholder, .g1-frame--inherit > .g1-decorator, .g1-quote--solid > .g1-inner, .g1-box:before, .g1-box__inner, .g1-toggle__switch, .g1-table--solid, .shop_table:before, .woocommerce .images .zoom, .g1-tabs--simple, .g1-tabs--simple > div, .g1-chat-row, .g1-side-nav, .gallery-icon, .g1-countdown i, .countdown_section span, .g1-banda img, .g1-nav--mobile #g1-secondary-nav-menu, #lang_sel ul ul, .g1-twitter--simple .g1-twitter__items, .g1-gmap__box > .g1-inner, .g1gmap-marker-bubble-inner, .g1-isotope-filters, .g1-isotope-filters > div, .g1-mediabox--featured-media .g1-mediabox__item, .g1-mediabox--list .g1-mediabox__item, .g1-mediabox--slider .g1-carousel, .g1-slide__title > .g1-background, .g1-slide__description > .g1-background, .g1-simple-slider .g1-fullscreen a, .tp-caption, .g1-nav--expanded #g1-primary-nav-menu:before, .g1-nav--expanded #g1-primary-nav-menu:after, .g1-nav--simple #g1-primary-nav-menu > .current_page_ancestor > a, .g1-nav--simple #g1-primary-nav-menu > .current_page_parent > a, .g1-nav--simple #g1-primary-nav-menu > .current_page_item > a, #g1-primary-nav-menu > .g1-type-tile .g1-submenus, #g1-primary-nav-menu > .g1-type-column .g1-submenus, #g1-primary-nav-menu > .g1-type-drops ul, .g1-searchbox #searchform, .g1-cartbox .g1-cartbox__box, .entry-featured-media, #payment, #payment .payment_box, .bbp-logged-in {
+	border-radius: 0;
+}
