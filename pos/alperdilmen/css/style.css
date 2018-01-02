@@ -1,0 +1,24 @@
+/*****Custom CSS*******/
+
+
+* {box-sizing: border-box}
+
+.container-skills {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.skills {
+  text-align: right;
+  padding-top:3px;
+  padding-right: 20px;
+  line-height: 15px;
+  color: white;
+}
+
+.skill-set p{height:12px;}
+
+.html-skills {width: 90%; font-size:12px; background-color: #4CAF50;}
+.css-skills {width: 80%; font-size:12px; background-color: #2196F3;}
+.js-skills {width: 65%; font-size:12px;background-color: #f44336;}
+.php-skills {width: 60%; font-size:12px; background-color: #808080;}
