@@ -33,7 +33,10 @@
     
     <link href="css/materialdesignicons.min.css"  rel="stylesheet">
     
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  rel="stylesheet">
+    <link href="../css/font-awesome.min.css"  rel="stylesheet">
+
+      <!-- Popup CSS -->
+    <link href="../css/magnific-popup.css" rel="stylesheet">
     
     
 
@@ -303,24 +306,28 @@
                 <!-- ============================================================== -->
                 <p>&nbsp;</p>
                 <div class="row">
-                    <div class="col-md-6 col-lg-4 col-xs-12 col-sm-6"> <!--<img class="img-responsive" alt="user" src="images/img1.jpg">-->
+                    <div class="col-md-4 col-lg-4 col-xs-12 col-sm-6"> 
                         <div class="white-box">
+                            <a class="popup-youtube" href="www.youtube.com/watch?v=sK7riqg2mr4">
+                            <img class="img-responsive" alt="user" src="images/img1.jpg"></a><br>
                             <div class="text-muted"><span class="m-r-10"><i class="icon-calender"></i> May 16</span> <a class="text-muted m-l-10" href="#"><i class="fa fa-heart-o"></i> 38</a></div>
                             <h3 class="m-t-20 m-b-20">Top 20 Models are on the ramp</h3>
                             <p>Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
                             <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-xs-12 col-sm-6"> 
+                    <div class="col-md-4 col-lg-4 col-xs-12 col-sm-6">
                         <div class="white-box">
+                            <img class="img-responsive" alt="user" src="images/img1.jpg"><br>
                             <div class="text-muted"><span class="m-r-10"><i class="icon-calender"></i> May 16</span> <a class="text-muted m-l-10" href="#"><i class="fa fa-heart-o"></i> 38</a></div>
                             <h3 class="m-t-20 m-b-20">Top 20 Models are on the ramp</h3>
                             <p>Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
                             <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-xs-12 col-sm-6"> 
+                    <div class="col-md-4 col-lg-4 col-xs-12 col-sm-6">
                         <div class="white-box">
+                            <img class="img-responsive" alt="user" src="images/img1.jpg"><br>
                             <div class="text-muted"><span class="m-r-10"><i class="icon-calender"></i> May 16</span> <a class="text-muted m-l-10" href="#"><i class="fa fa-heart-o"></i> 38</a></div>
                             <h3 class="m-t-20 m-b-20">Top 20 Models are on the ramp</h3>
                             <p>Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
@@ -410,6 +417,13 @@
     })();
     </script>
     <script src="js/jquery.toast.js"></script>
+
+
+     <!-- Magnific popup JavaScript -->
+    <script src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+    <script src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+
+
     <!--Style Switcher -->
     <script src="js/jQuery.style.switcher.js"></script>
 </body>

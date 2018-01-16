@@ -467,7 +467,7 @@ echo 'id: ' . $user['id'];
 
     <div class="container">
         <div class="title-card text-center light" id="startchange">
-            <span class="bold">Welcome to Collapsed</span>,  where technical and non-technical cofounders collide
+            <span class="bold">11qq33Welcome to Collapsed</span>,  where technical and non-technical cofounders collide
         </div>
 
         <!-- Tab panes -->
