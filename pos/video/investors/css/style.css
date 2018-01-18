@@ -20083,3 +20083,14 @@ ul.pro-amenities li span i {
 
 /************CUSTOM***************/
 
+.skillsdiv {
+    padding: 10px;
+    background: rgb(182, 232, 255);
+    margin-bottom: 5px;
+    margin-left: 15px;
+    border-radius: 5px;
+    max-width: 400px;
+    font-family: arial;
+    font-size: 13px;
+    float: left;
+}

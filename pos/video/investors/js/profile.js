@@ -1,7 +1,127 @@
 $(document).ready(function() {
 
-////////////////Enter Zip Code to retrieve City and State//////////////////////
+////////////////Update Profile//////////////////////
 
+
+$( "form" ).on( "submit", function(e) {
+//alert("asdf");
+e.preventDefault();
+
+            $.ajax({
+                url: "update.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "html",
+                success: function(response) {
+                    
+            var submit = $(".btn-update-profile").html("<span class='glyphicon glyphicon-repeat gly-spin'></span> Saving"); //
+            setTimeout(function() { $(submit).html("Update Profile") }, 2000);
+               
+               }
+                
+            });
+
+
+        var skill = $('input[name="skillselection[]"]:checked').map(function() { return this.value; }).get().join(",");
+        var skill_level_percentage = $('input[name=skill_level]').val();
+        alert(skill);
+      
+        $.ajax({
+            url: "edit.php",
+            method: "POST",
+            data: { content: skill, skill_level_percentage: skill_level_percentage, column_name: 'Skills' },
+            dataType: "html",
+            success: function(response) {
+                //alert(data);  
+                //var skills_count = $(response).filter('#theskills').text();
+                //$('#skills-count').html(skills_count);
+                //alert(skills_count);  
+
+            }
+        });
+
+
+
+ });
+
+////////////////Skills//////////////////////
+
+$("#add-skills").click(function (e) {
+    //alert("adsf");
+       e.preventDefault();
+     if($("#fm_skills").val()==='')
+      {
+        //alert("Please enter a job position!");
+        return false;
+      }
+      var myData = 'skills='+ $("#fm_skills").val()+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
+      //alert(myData);
+      jQuery.ajax({
+      type: "POST", 
+      url: "skills.php", 
+      dataType:"text", 
+      data:myData,
+      success:function(response){
+        $("#responds").append(response);
+        $("#fm_skills").val('');
+        //$('#interestimportant').prop('checked', true); // checks it
+       
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        alert(thrownError);
+      }
+      });
+  });
+
+
+
+$("body").on("click", "#responds .del_button", function(e) {
+     e.preventDefault();
+     var clickedID = this.id.split('-'); 
+     //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
+     var DbNumberID = clickedID[1]; 
+     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
+     
+     //alert(DbNumberID);
+
+
+      jQuery.ajax({
+      type: "POST", 
+      url: "skills.php", 
+      dataType:"text", 
+      data:myData, 
+      success:function(response){
+        $("#responds").append(response);
+        $('#skillselection_'+DbNumberID).prop('checked', false); // Unchecks it
+        
+        $('#item_'+DbNumberID).fadeOut("slow");
+
+        
+        //alert(response);
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        
+        alert(thrownError);
+      }
+      });
+  });
+
+
+
+
+
+
+
+
+ $(function() {
+    $( "#fm_skills" ).autocomplete({
+      source: 'search-skills.php'
+    });
+  });
+
+
+////////////////Enter Zip Code to retrieve City and State//////////////////////
 
 
         $.ajax({
@@ -33,6 +153,7 @@ $(document).ready(function() {
 $('.zip-textinput').keyup(function(){
     var zip_input = $(this).val();
     if(zip_input.length == 5){
+        //alert("asdf");
 
      $.ajax({
                 url: "edit.php",
@@ -41,8 +162,8 @@ $('.zip-textinput').keyup(function(){
                 dataType: "html",
                 success: function(response) {
                    var zip = $(response).filter('#zip').html(); 
-        
-                   $(".zip-textinput").hide();
+                   //alert(zip);
+                   $(".zip-textinput").show();
                    $(".city-state-textinput").val(zip);
                    
                 }
@@ -72,11 +193,12 @@ $('.city-state-textinput').focus(function(){
 $('.zip-textinput').blur(function(){
 //alert("asdf");
 
+var zip_input = $(this).val();
 
 $.ajax({
-                url: "select.php",
+                url: "edit.php",
                 method: "POST",
-                data: { column_name: 'Zip' },
+                data: { content: zip_input, column_name: 'Zip' },
                 dataType: "html",
                 success: function(response) {
                    
@@ -105,152 +227,5 @@ $.ajax({
 
 
 
-      
-$('#add-zip').click(function() {
-    //alert("111");
-        $('.zip-textinput').removeClass('hidden');
-        $('#add-zip').hide();
-        $('#edit-zip').hide();
-        $('.zip-textinput').show();
-        $('#save-zip').show();
-        $('#cancel-zip').show();
-
-    });
-     
-    
- $('#edit-zip').click(function() {
-    //alert("www113rddttteee444333");
-        
-           $.ajax({
-                url: "select.php",
-                method: "POST",
-                //data: { column_name: 'Phone' },
-                dataType: "html",
-                success: function(response) {
-
-                   var zip = $(response).filter('#zip').html();
-                   
-                   if (zip != ''){
-                    //$('.zip input[type=text]').html(zip);
-                    //$('td.zip').contents().wrapInner('<input type="text" class="zip-textinput" value="'+zip+'" placeholder="Enter your number">');
-                    //alert(zip);
-                        $('.zip-textinput').removeClass('hidden');
-                        $('.zip').addClass('show');
-                        //$('.zip-textinput').show();
-                        $('.zip').html('<input type="text" class="zip-textinput" value="" placeholder="Enter your Zip Code">');
-                        $('#save-zip').show();
-                        $('#cancel-zip').show();
-                        //$('.zip-textinput').show();
-                        //$('.zip-textinput').contents().wrap('<input type="text" class="zip-textinput" value="'+zip+'" placeholder="Enter your number">');
-                        //$('td.zip').html('<input type="text" class="zip-textinput" value="'+zip+'" placeholder="Enter your number">');
-                        $('#edit-zip').hide();
-                        $('#add-zip').hide();
-                        $('td.edit-zip').hide();
-
-                    }else{
-                        //$(".phone").css("display", "none");
-                        //$('.phone').html(phone);
-                        $('.zip-textinput').addClass('hidden');
-                        $('.zip-textinput').hide();
-                        $('#edit-zip').hide();
-                        $('#add-zip').show();
-                    }
-                   
-                  
-
-                }
-
-
-                
-            });
- 
-      return false;
-
-
-    });
-
-   
-
-    $('#save-zip').click(function() {
-        $('#save-zip').hide();
-        $('.zip input[type=text]').each(function() {
-            var content = $(this).val().replace(/^\s*|\s*$/g,''); //.replace(/\n/g,"<br>");
-
-            if (!content) {
-
-                $('#save-zip').show();
-                $(this).css('border-color', 'red');
-
-            } else {
-
-                $(this).html(content);
-                $(this).contents().unwrap();
-
-                $.ajax({
-                    url: "../edit.php",
-                    method: "POST",
-                    data: { content: content, column_name: 'Zip' },
-                    dataType: "html",
-                    success: function(response) {
-                        //alert(data);  
-                        //$('.phone').html(response);
-                        var zip = $(response).filter('#zip').html();
-                        $('.zip').html(zip);
-                        $('#edit-zip').show();
-                        $('td.edit-zip').show();
-                    }
-                });
-
-                $('#edit-zip').show();
-                $('#cancel-zip').hide();
-
-            }
-
-        });
-
-
-
-    });
-
-
-$('#cancel-zip').click(function() {
-
-
-        $.ajax({
-                url: "../select.php",
-                method: "POST",
-                //data: { column_name: 'Phone' },
-                dataType: "html",
-                success: function(response) {
-
-                   var zip = $(response).filter('#zip').html(); 
-                   //alert(phone);
-                   if (zip != ''){
-                        $('.zip').html(zip);
-                        $('.zip-textinput').contents().unwrap();
-                        $('#edit-zip').show();
-                        $('#add-zip').hide();
-                        $('td.edit-zip').show();
-
-                    }else{
-                        //$(".phone").css("display", "none");
-                        //$('.phone').html(phone);
-                        $('.zip-textinput').hide();
-                        $('#edit-zip').hide();
-                        $('#add-zip').show();
-                        $('td.edit-zip').hide();
-                    }
-                   
-                   
-
-                }
-                
-            });
-
-           
-            $('#save-zip').hide();
-            $('#cancel-zip').hide();
-         
-    });
 
 });

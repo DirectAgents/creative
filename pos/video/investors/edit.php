@@ -7,6 +7,12 @@
  
  $content = $_POST["content"]; 
  $column_name = $_POST["column_name"]; 
+
+
+
+ $sql = "SELECT * FROM profile WHERE id='15'";  
+ $result = mysqli_query($connecDB, $sql);  
+ $row_user = mysqli_fetch_array($result);
  
 	
 
@@ -59,9 +65,16 @@ if($column_name == 'Email') {
  $sql=mysqli_query($connecDB,"SELECT * FROM zip_state WHERE zip='".$content."'");
  $row=mysqli_fetch_array($sql); 	
 
- $sql = "UPDATE profile SET City='".$row['city']."', State='".$row['state']."', ZipCode='".$row['zip']."' WHERE id='15'";  
- if(mysqli_query($connecDB, $sql))  
- {  
+ //$sql = "UPDATE profile SET City='".$row['city']."', State='".$row['state']."', ZipCode='".$row['zip']."' WHERE id='15'";  
+ 
+ //if(mysqli_query($connecDB, $sql))  
+ //{  
+ if(mysqli_num_rows($sql)<=0) {
+ 
+
+ echo '<div id="zip">'.$row_user['City'].', '.$row_user['State'].'</div>';
+ 
+ }else{
       
   echo '<div id="zip">'.$row['city'].', '.$row['state'].'</div>';
  
@@ -73,14 +86,19 @@ if($column_name == 'Email') {
 
 if($column_name == 'Skills') {
 
-	
 
- $sql = "UPDATE profile SET Skills='".$content."' WHERE id='".$_SESSION['participantSession']."'";  
+$skill_level = $content;
+$values = explode(',', $skill_level);
+foreach ($values as $value)
+{
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO skills_level(userid,skill,skill_level) VALUES('15','".$value."','".$_POST['skill_level_percentage']."')");
+}
+
+ $sql = "UPDATE profile SET Skills='".$content."' WHERE id='15'";  
  if(mysqli_query($connecDB, $sql))  
  {  
 
-      
-
+     
  }  
 
  }

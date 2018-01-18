@@ -47,7 +47,8 @@
     
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  rel="stylesheet">
     
-
+    
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -322,13 +323,13 @@
                             </div>
                             <div class="user-btm-box">
                                 <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-purple"><i class="ti-facebook"></i></p>
+                                    <p class="text-purple"><a href="<?php echo $row['Facebook'];?>"><i class="ti-facebook"></i></a></p>
                                      </div>
                                 <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-blue"><i class="ti-twitter"></i></p>
+                                    <p class="text-blue"><a href="<?php echo $row['Twitter'];?>"><i class="ti-twitter"></i></a></p>
                                     </div>
                                 <div class="col-md-4 col-sm-4 text-center">
-                                   <p class="text-danger"><img src="../images/angel-list-icon.jpg"/></p>
+                                   <p class="text-danger"><a href="<?php echo $row['AngelList'];?>"><img src="../images/angel-list-icon.jpg"/></a></p>
                                     </div>
                             </div>
                         </div>
@@ -661,22 +662,18 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Full Name</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
+                                                <input type="text" id="fm_fullname" name="fm_fullname" value="<?php echo $row['Fullname'];?>" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Email</label>
                                             <div class="col-md-12">
-                                                <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email"> </div>
+                                                <input type="email" id="fm_email" name="fm_email" value="<?php echo $row['Email'];?>" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email"> </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-md-12">Password</label>
-                                            <div class="col-md-12">
-                                                <input type="password" value="password" class="form-control form-control-line"> </div>
-                                        </div>
+                                    
                                         <div class="form-group">
                                             <label class="col-md-12">Phone No</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line"> 
+                                                <input type="text" id="fm_phone" name="fm_phone" placeholder="Phone Number" value="<?php echo $row['Phone'];?>" class="form-control form-control-line"> 
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -687,7 +684,7 @@
                                                 
                                                 <input type="text" maxlength="5" placeholder="Type your zip code" class="form-control form-control-line zip-textinput"> 
 
-                                                 <input type="text" maxlength="5" placeholder="123 456 7890" class="form-control form-control-line city-state-textinput"> 
+                                                 <input type="text" id="fm_location" name="fm_location" maxlength="5" placeholder="123 456 7890" class="form-control form-control-line city-state-textinput"> 
 
 
                                                
@@ -698,9 +695,104 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-12">Skills Set</label>
-                                            <div class="col-md-12">
-                                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line"> </div>
+                                            
+                                            <div class="col-md-3">
+                                                <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line"> 
+                                            </div>
+
+                                            <div class="col-md-3">
+                                               
+                                                <select id="fm_skills_level" name="fm_skills_level">
+                                                <option value="">Select your skill level</option>
+                                                <option value="10">10%</option>
+                                                <option value="20">20%</option>
+                                                <option value="30">30%</option>
+                                                <option value="40">40%</option>
+                                                <option value="50">50%</option>
+                                                <option value="60">60%</option>
+                                                <option value="70">70%</option>
+                                                <option value="80">80%</option>
+                                                <option value="90">90%</option>
+                                                <option value="100">100%</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                                            </div>
+
+ <div class="col-md-12" style="padding:15px 0 0 0;">
+<div id="responds">
+                                        <?php
+//include db configuration file
+
+echo '<input type="hidden" name="userid" id="userid" value="15">';
+
+
+//MySQL query
+$Result = mysqli_query($connecDB,"SELECT * FROM profile WHERE id ='15' ");
+
+
+//get all records from add_delete_record table
+$row2 = mysqli_fetch_array($Result);
+
+
+
+
+$ctop = $row2['Skills']; 
+$ctop = explode(',',$ctop); 
+
+
+
+if($row2['Skills'] != '' && $row2['Skills'] != 'NULL' ){
+
+
+
+foreach($ctop as $skill)  
+{ 
+    //Uncomment the last commented line if single quotes are showing up  
+    //otherwise delete these 3 commented lines 
+    
+
+//MySQL query
+$sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill."' ");
+$row3 = mysqli_fetch_array($sqlskill);
+
+
+echo '<div id="item_'.$row3['id'].'">';
+echo '<div class="skillsdiv">';
+if(in_array($skill,$ctop)){
+echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
+}
+echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row3['id'].'">';
+echo $skill;
+echo '<img src="../images/icon_del.gif" border="0" class="icon_del" />';
+echo '</a></div>';
+//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
+echo '</div>';
+echo '</div>';
+} 
+
+
+
+}
+
+
+
+
+
+?>
+       </div>
+ </div>                             
+
+
+
+
+                                               
                                         </div>
+
+
+                                        
                                         
                                         
 
@@ -709,18 +801,18 @@
                                             <div class="col-md-3">
                                                 <div class="form-group" style="padding-left:15px;">
                                                 <label class="col-md-3" style="padding-left:0px;">Facebook</label>
-                                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line"> </div>
+                                                <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
                                              </div>   
 
                                                  <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
                                                      <label class="col-md-3" style="padding-left:0px;">Twitter</label>
-                                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line"> </div></div>
+                                                <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter'];?>" class="form-control form-control-line"> </div></div>
 
                                                  <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
                                                      <label class="col-md-3" style="padding-left:0px;">AngelList</label>
-                                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line"> </div></div>
+                                                <input type="text" id="fm_angellist" name="fm_angellist" value="<?php echo $row['AngelList'];?>" class="form-control form-control-line"> </div></div>
 
                                         </div>
                                        
@@ -728,13 +820,13 @@
                                         <div class="form-group">
                                             <label class="col-md-12">About Me</label>
                                             <div class="col-md-12">
-                                                <textarea rows="5" class="form-control form-control-line"></textarea>
+                                                <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line"><?php echo $row['About'] ;?></textarea>
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <button class="btn btn-success">Update Profile</button>
+                                                <button class="btn btn-success btn-update-profile">Update Profile</button>
                                             </div>
                                         </div>
                                     </form>
@@ -855,6 +947,9 @@
     })();
     </script>
     <script src="js/jquery.toast.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <script src="js/profile.js"></script>
     <!--Style Switcher -->
