@@ -91,7 +91,7 @@ $skill_level = $content;
 $values = explode(',', $skill_level);
 foreach ($values as $value)
 {
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO skills_level(userid,skill,skill_level) VALUES('15','".$value."','".$_POST['skill_level_percentage']."')");
+    //$insert_sql = mysqli_query($connecDB,"INSERT INTO skills_level(userid,skill,skill_level) VALUES('15','".$value."','".$_POST['skill_level_percentage']."')");
 }
 
  $sql = "UPDATE profile SET Skills='".$content."' WHERE id='15'";  

@@ -30,10 +30,12 @@ if(isset($_POST["skills"]) && strlen($_POST["skills"])>0)
         
         echo '<div id="item_'.$my_id.'">';
         echo '<div class="skillsdiv">';
-        echo '<input id="skillselection_'.$my_id.'" name="skillselection[]" type="checkbox"  value="'.$my_skill .'" style="display:none" checked/>';
+        echo '<input id="skillselection_'.$my_id.'" name="skillselection[]" type="checkbox"  value="'.$my_skill.' ('.$skills_level.'%)" style="display:none" checked/>';
         echo '<input id="skill_level_'.$my_id.'" name="skill_level" type="text"  value="'.$skills_level.'" style="display:none" checked/>';
         echo '<div class="del_wrapper">';
+        echo '<div class="the-skill">';
         echo $my_skill.' '.'('.$skills_level.'%)';
+        echo '</div>';
         echo '<a href="#" class="del_button" id="del-'.$my_id.'">';
         echo '<img src="../images/icon_del.gif" border="0" class="icon_del" />';
         echo '</a></div>';

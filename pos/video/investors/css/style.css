@@ -20085,7 +20085,8 @@ ul.pro-amenities li span i {
 
 .skillsdiv {
     padding: 10px;
-    background: rgb(182, 232, 255);
+    background: #eee;
+    /*background: rgb(182, 232, 255);*/
     margin-bottom: 5px;
     margin-left: 15px;
     border-radius: 5px;
@@ -20094,3 +20095,7 @@ ul.pro-amenities li span i {
     font-size: 13px;
     float: left;
 }
+
+.the-skill{float:left;}
+
+.icon_del{float:left; margin:4px 0 0 10px;}

@@ -1,5 +1,32 @@
 $(document).ready(function() {
 
+
+////////////////Load Stuff//////////////////////
+
+$("#profile-tab").click(function (e) {
+    //alert("adsf");
+       e.preventDefault();
+
+    var userid = 15;
+
+     $.ajax({
+            url: "profile-tab.php",
+            method: "POST",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(data);  
+                //var skills = $(response).filter('#the-skill-set').text();
+                $('#profile-tab-data').html(response);
+                //alert(skills_count);  
+
+            }
+        });
+
+});
+
+
+
 ////////////////Update Profile//////////////////////
 
 
@@ -24,7 +51,7 @@ e.preventDefault();
 
         var skill = $('input[name="skillselection[]"]:checked').map(function() { return this.value; }).get().join(",");
         var skill_level_percentage = $('input[name=skill_level]').val();
-        alert(skill);
+        //alert(skill_level_percentage);
       
         $.ajax({
             url: "edit.php",

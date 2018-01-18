@@ -339,7 +339,7 @@
                             <ul class="nav nav-tabs tabs customtab">
                                
                                 <li class="tab active">
-                                    <a href="#profile" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profile</span> </a>
+                                    <a href="#profile" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profile</span> </a>
                                 </li>
                                 <li class="tab">
                                     <a href="#new" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
@@ -352,42 +352,95 @@
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                
+                      
+
+        <!---Profile Starts-->             
                                 <div class="tab-pane" id="profile">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
-                                            <br>
-                                            <p class="text-muted">Jon Snow</p>
-                                        </div>
-                                        
-                                        
-                                        <div class="col-md-3 col-xs-6"> <strong>Location</strong>
-                                            <br>
-                                            <p class="text-muted">London</p>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                  
+
+                          <div id="profile-tab-data">
+                              
+
+<div class="row">
+        <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
+           <br>
+              <p class="text-muted">Jon Snow</p>
+                                        </div>               
+                   <div class="col-md-3 col-xs-6"> <strong>Location</strong>
+                      <br>
+                    <p class="text-muted">London</p>
+                            </div>
+ </div>
+                    <hr>
+                    <?php if($row['About'] != '') { ?>
+                    <p class="m-t-30"><?php echo $row['About']; ?></p>
+                    <?php } ?>
                                     
-                                    <h4 class="font-bold m-t-30">Skill Set</h4>
-                                    <hr>
-                                    <h5>Wordpress <span class="pull-right">80%</span></h5>
+                    <h4 class="font-bold m-t-30">Skill Set</h4>
+                    <hr>
+<?php
+
+
+$values = explode(',',  $row['Skills']);
+foreach ($values as $value)
+{
+
+//get skill string
+$ret = explode('(', $value);
+$skill =  $ret[0];
+
+//get value between parantheses;
+preg_match('#\((.*?)\)#', $value, $match);
+$percentage = $match[1];
+
+//get rid off percentage sign
+$arr = explode("%", $percentage, 2);
+
+
+switch ($arr[0]){
+    case '10':
+    $bar = 'progress-bar-danger';
+    break;
+    case '20':
+    $bar = 'progress-bar-primary';
+    break;
+    case '30':
+    $bar = 'progress-bar-custom';
+    break;
+    case '30':
+    $bar = 'progress-bar-success';
+    break;
+
+    default:
+    $bar = 'progress-bar-success';
+
+}
+
+
+
+echo '
+
+<h5>'.$skill.' <span class="pull-right">'.$arr[0].'%</span></h5>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%;"> <span class="sr-only">50% Complete</span> </div>
+                                        <div class="progress-bar '.$bar.'" role="progressbar" aria-valuenow="'.$arr[0].'" aria-valuemin="0" aria-valuemax="100" style="width:'.$arr[0].'%;"> <span class="sr-only">'.$arr[0].'% Complete</span> </div>
                                     </div>
-                                    <h5>HTML 5 <span class="pull-right">90%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5>jQuery <span class="pull-right">50%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5>Photoshop <span class="pull-right">70%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
+
+';
+
+
+}
+
+
+
+
+?>
+
+                          </div>
+
+
                                 </div>
+
+<!---Profile Ends-->  
                                 <div class="tab-pane" id="new">
                                     <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny footable-loaded footable tablet breakpoint">
                                         <thead>
@@ -696,13 +749,13 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Skills Set</label>
                                             
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line"> 
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                
-                                                <select id="fm_skills_level" name="fm_skills_level">
+                                                <select class="form-control" id="fm_skills_level" name="fm_skills_level">
                                                 <option value="">Select your skill level</option>
                                                 <option value="10">10%</option>
                                                 <option value="20">20%</option>
@@ -717,7 +770,7 @@
                                                 </select>
                                             </div>
                                             
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button>
                                             </div>
 
@@ -752,10 +805,15 @@ foreach($ctop as $skill)
 { 
     //Uncomment the last commented line if single quotes are showing up  
     //otherwise delete these 3 commented lines 
+
+
+//get skill string
+$ret = explode('(', $skill);
+$skill_string =  $ret[0];
     
 
 //MySQL query
-$sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill."' ");
+$sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill_string."' ");
 $row3 = mysqli_fetch_array($sqlskill);
 
 
@@ -764,8 +822,11 @@ echo '<div class="skillsdiv">';
 if(in_array($skill,$ctop)){
 echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
 }
-echo '<div class="del_wrapper"><a href="#" class="del_button" id="del-'.$row3['id'].'">';
+echo '<div class="del_wrapper">';
+echo '<div class="the-skill">';
 echo $skill;
+echo '</div>';
+echo '<a href="#" class="del_button" id="del-'.$row3['id'].'">';
 echo '<img src="../images/icon_del.gif" border="0" class="icon_del" />';
 echo '</a></div>';
 //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
