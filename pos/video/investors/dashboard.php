@@ -33,7 +33,8 @@
     
     <link href="css/materialdesignicons.min.css"  rel="stylesheet">
     
-    <link href="../css/font-awesome.min.css"  rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  rel="stylesheet">
+
 
       <!-- Popup CSS -->
     <link href="../css/magnific-popup.css" rel="stylesheet">

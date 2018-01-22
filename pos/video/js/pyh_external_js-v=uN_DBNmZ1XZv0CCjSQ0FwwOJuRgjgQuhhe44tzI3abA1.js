@@ -4841,12 +4841,12 @@ if (! function(n, t) {
         this.scrollbarWidth = this.measureScrollbar()
     };
     t.prototype.setScrollbar = function() {
-        var n = parseInt(this.$body.css("padding-right") || 0, 10);
+        var n = parseInt(this.$body.css("") || 0, 10);
         this.originalBodyPad = document.body.style.paddingRight || "";
-        this.bodyIsOverflowing && this.$body.css("padding-right", n + this.scrollbarWidth)
+        this.bodyIsOverflowing && this.$body.css("", n + this.scrollbarWidth)
     };
     t.prototype.resetScrollbar = function() {
-        this.$body.css("padding-right", this.originalBodyPad)
+        this.$body.css("", this.originalBodyPad)
     };
     t.prototype.measureScrollbar = function() {
         var n = document.createElement("div"),

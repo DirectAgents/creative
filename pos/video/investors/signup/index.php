@@ -118,7 +118,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_investor WHERE google_id=$user->id ");
   $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_investor WHERE userEmail = '".$user->email."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_investor WHERE Email = '".$user->email."'");
   $row = mysqli_fetch_array($sql);
 
 
@@ -140,8 +140,11 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     date_default_timezone_set('America/New_York');
     $date = date('Y-m-d'); 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_investor (google_id, FirstName, LastName, userEmail, google_picture_link, Date_Created, account_verified) 
-      VALUES ('".$user->id."',  '".$user->givenName."', '".$user->familyName."', '".$user->email."', '".$user->picture."' , '".$date."','1')");
+    
+    $fullname = $user->givenName.' '.$user->familyName;
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_investor (google_id, Fullname, Email, google_picture_link, Date_Created, account_verified) 
+      VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , '".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
@@ -152,18 +155,17 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
     $update_sql = mysqli_query($connecDB,"UPDATE tbl_investor SET 
     google_id = '".$user->id."',
-    FirstName = '".$user->givenName."',
-    LastName = '".$user->familyName."',
+    Fullname = '".$fullname."',
     google_picture_link = '".$user->picture."',
     account_verified = '1'  
     
-    WHERE userEmail='".$user->email."'");
+    WHERE Email='".$user->email."'");
    
     mysqli_query($update_sql);
 
     //echo $user->id;
 
-    if($mysqli->error == "Duplicate entry '".$user->email."' for key 'userEmail'"){
+    if($mysqli->error == "Duplicate entry '".$user->email."' for key 'Email'"){
     
       //exit(header("Location: ../index.php"));
 
@@ -309,7 +311,7 @@ if($_POST['passwordpass'] == 'good'){
 
 
   
-  $stmt = $reg_user->runQuery("SELECT * FROM tbl_investor WHERE userEmail=:email_id");
+  $stmt = $reg_user->runQuery("SELECT * FROM tbl_investor WHERE Email=:email_id");
   $stmt->execute(array(":email_id"=>$email));
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
   
@@ -853,7 +855,7 @@ echo 'id: ' . $user['id'];
   $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_investor WHERE facebook_id='".$user['id']."' ");
   $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
 
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_investor WHERE userEmail = '".$user['email']."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_investor WHERE Email = '".$user['email']."'");
   $row = mysqli_fetch_array($sql);
 
 
@@ -871,7 +873,7 @@ echo 'id: ' . $user['id'];
     google_picture_link = '',
     account_verified = '1'  
 
-    WHERE userEmail='".$user['email']."'");
+    WHERE Email='".$user['email']."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['startupSession'] = $row['userID'];
@@ -893,8 +895,10 @@ echo 'id: ' . $user['id'];
     $gender = ucfirst($user['gender']);
 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_investor (facebook_id, FirstName, LastName, userEmail, Gender, Date_Created, account_verified) 
-      VALUES ('".$user['id']."',  '".$user['first_name']."', '".$user['last_name']."', '".$user['email']."', '".$gender."' , '".$date."','1')");
+    $fullname = $user['first_name'].' '.$user['last_name'];
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_investor (facebook_id, Fullname, Email, Gender, Date_Created, account_verified) 
+      VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , '".$date."','1')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
@@ -915,7 +919,7 @@ echo 'id: ' . $user['id'];
 
 
 
-    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'userEmail'"){
+    if($mysqli->error == "Duplicate entry '".$user['email']."' for key 'Email'"){
     
       //exit(header("Location: ../index.php"));
 

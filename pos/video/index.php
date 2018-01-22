@@ -1,3 +1,327 @@
+<?php
+session_start();
+
+ob_start();
+
+require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
+
+
+require_once 'base_path.php';
+
+require_once 'class.startup.php';
+
+include_once("config.php");
+
+$reg_user = new STARTUP();
+
+if($reg_user->is_logged_in()!="")
+{
+  //$reg_user->redirect('../index.php');
+}
+
+
+
+
+//session_start(); //session start
+
+//echo $_SESSION['access_token'];
+
+
+require_once ('libraries/Google/autoload.php');
+
+//Insert your cient ID and secret 
+//You can get it from : https://console.developers.google.com/
+$client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
+$client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
+$redirect_uri = 'http://localhost/creative/pos/video/';
+
+//database
+$db_username = "root"; //Database Username
+$db_password = "123"; //Database Password
+$host_name = "localhost"; //Mysql Hostname
+$db_name = 'video'; //Database Name
+
+
+//incase of logout request, just unset the session var
+if (isset($_GET['logout'])) {
+  unset($_SESSION['access_token']);
+  unset($_SESSION['investorSession']);
+}
+
+/************************************************
+  Make an API request on behalf of a user. In
+  this case we need to have a valid OAuth 2.0
+  token for the user, so we need to send them
+  through a login flow. To do this we need some
+  information from our API console project.
+ ************************************************/
+$client = new Google_Client();
+$client->setClientId($client_id);
+$client->setClientSecret($client_secret);
+$client->setRedirectUri($redirect_uri);
+$client->addScope("email");
+$client->addScope("profile");
+
+/************************************************
+  When we create the service here, we pass the
+  client to it. The client then queries the service
+  for the required scopes, and uses that when
+  generating the authentication URL later.
+ ************************************************/
+$service = new Google_Service_Oauth2($client);
+
+/************************************************
+  If we have a code back from the OAuth 2.0 flow,
+  we need to exchange that with the authenticate()
+  function. We store the resultant access token
+  bundle in the session, and redirect to ourself.
+*/
+  //echo $_GET['code'];
+if (isset($_GET['code'])) {
+  $client->authenticate($_GET['code']);
+  $_SESSION['access_token'] = $client->getAccessToken();
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+  exit;
+}
+
+/************************************************
+  If we have an access token, we can make
+  requests, else we generate an authentication URL.
+ ************************************************/
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+  $client->setAccessToken($_SESSION['access_token']);
+} else {
+  $authUrl = $client->createAuthUrl();
+}
+
+
+
+
+
+ if (!isset($authUrl)){ 
+ 
+  
+  $user = $service->userinfo->get(); //get user info 
+  
+  // connect to database
+  $mysqli = new mysqli($host_name, $db_username, $db_password, $db_name);
+    if ($mysqli->connect_error) {
+        die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+    }
+  
+  //echo $user->id;
+
+   
+
+
+  //check if user exist in database using COUNT
+  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_startup WHERE google_id=$user->id ");
+  $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
+
+  
+
+
+  $fullname = $user->givenName.' '.$user->familyName;
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($user->email) //if user already exist change greeting text to "Welcome Back"
+    {   
+
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE Email = '".$user->email."'");
+        $row = mysqli_fetch_array($sql);
+
+        $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
+        google_id = '".$user->id."',
+        Fullname = '".$fullname."',
+        google_picture_link = '".$user->picture."'
+    
+        WHERE Email='".$user->email."'");
+
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['startupSession'] = $row['userID'];
+        //echo $_SESSION['startupSession'];
+        header('Location: '.BASE_PATH.'/startups/profile/'.$_SESSION['startupSession'].'/');
+        //header('Location: '.BASE_PATH.'');
+        exit();
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    
+    
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup (google_id, Fullname, Email, google_picture_link, Date_Created) 
+      VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , '".$date."')");
+    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
+    //$statement->execute();
+    //echo $mysqli->error;
+
+    //mysqli_query($insert_sql);  
+
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE Email = '".$user->email."'");
+        $row = mysqli_fetch_array($sql);
+
+        $_SESSION['startupSession'] = $row['userID'];
+        echo $_SESSION['startupSession'];
+        //echo "asdfasfd";
+        header('Location: '.BASE_PATH.'/startups/profile/'.$_SESSION['startupSession'].'/');
+        exit();
+
+
+    
+    //echo $user->id;
+
+   
+    }
+  
+  //print user details
+  //echo '<pre>';
+  //print_r($user);
+  //echo '</pre>';
+}
+//echo '</div>';
+
+
+
+
+////////////Facebook Login///////////////
+
+
+$fb = new Facebook\Facebook([
+  'app_id' => '1797081013903216',
+  'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
+  'default_graph_version' => 'v2.2',
+  ]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup-callback-startup.php', $permissions);
+
+
+
+
+
+//echo $_SESSION['fb_access_token_startup'];
+
+
+if(isset($_SESSION['fb_access_token_startup'])){
+
+try {
+  // Returns a `Facebook\FacebookResponse` object
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_startup']);
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
+
+$user = $response->getGraphUser();
+/*
+echo 'Name: ' . $user['name'];
+echo "<br>";
+echo 'Email: ' . $user['email'];
+echo "<br>";
+echo 'id: ' . $user['id'];
+*/
+
+
+//check if user exist in database using COUNT
+
+
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_startup WHERE facebook_id='".$user['id']."' ");
+  $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
+
+  
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE Email = '".$user['email']."'");
+  $row = mysqli_fetch_array($sql);
+
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($row['userID']) //if user already exist change greeting text to "Welcome Back"
+    {
+
+    
+
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
+    facebook_id = '".$user['id']."', 
+    profile_image = '',
+    google_picture_link = ''
+
+    WHERE Email='".$user['email']."'");
+
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['startupSession'] = $row['userID'];
+        $_SESSION['facebook_photo'] = $user['id'];
+        //header("Location: ../index.php");
+        //echo $_SESSION['startupSession'];
+        //echo "asdfasdf";
+        //echo $row['userID'];
+        //echo $user['email'];
+        header('Location: '.BASE_PATH.'/startups/profile/'.$_SESSION['startupSession'].'/');
+        exit();
+        
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+
+
+   date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+
+    $gender = ucfirst($user['gender']);
+
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    $fullname = $user['first_name'].' '.$user['last_name'];
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup (facebook_id, Fullname, Email, Gender, Date_Created) 
+      VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , '".$date."')");
+    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
+    //$statement->execute();
+    //echo $mysqli->error;
+
+    //mysqli_query($insert_sql);  
+    
+    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE Email = '".$user['email']."'");
+    $row = mysqli_fetch_array($sql);
+
+    $_SESSION['startupSession'] = $row['userID'];
+    //header("Location: ../index.php");
+    //echo $row['userID'];
+    //echo "123";
+    header('Location: '.BASE_PATH.'/startups/profile/'.$_SESSION['startupSession'].'/');
+    exit(); 
+
+
+
+
+    //echo $user->id;
+
+
+
+  }
+
+ 
+
+
+
+
+}
+
+
+?>
+
 
 <!DOCTYPE html>
 <!--[if (IE 8)&!(IEMobile)]><html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js lt-ie9"><![endif]-->
@@ -54,6 +378,15 @@
         <meta name="msapplication-config" content="/wp-content/uploads/fbrfg/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
 
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  rel="stylesheet">
+
+
+        <!--Modal-->
+        <link href="css/bootsrap.min.css" rel="stylesheet">
+        <link href="css/style.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/bootstrap.min.js"></script>
+
 
 
         <script src="js/pyh_external_js-v=uN_DBNmZ1XZv0CCjSQ0FwwOJuRgjgQuhhe44tzI3abA1.js"></script>
@@ -92,17 +425,26 @@
             });
         </script>
 
+
+
+
+
+
     </head>
 
     <body class="page-template page-template-page-loyalty page-template-page-loyalty-php page page-id-21 page-child parent-pageid-17 optimizely-21">
+
+
+
 
         <header class="js-header header">
             <div class="wrapper">
                 <nav class="nav--main">
                     <ul>
 
-                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a target="_blank" href="https://www.fivestars.com/locations">For Investors</a></li>
-                        <li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51"><a target="_blank" href="https://www.fivestars.com/accounts/login/">Login</a></li>
+                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a href="investors"/>For Investors</a></li>
+                        <li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51">
+                        <a href="" data-toggle="modal" data-target="#signin">Login</a></li>
                     </ul>      </nav>
                 <button class="hamburger hamburger--squeeze js-hamburger u-hide--md-up" type="button">
                     <span class="hamburger-box">
@@ -435,6 +777,50 @@
 
 
 
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="container center-block">
+                <div class="signup-container center-block">
+                    <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
+                    <div class="signup-card center-block">
+                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
+                        <h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>
+                        <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                 <div class="login-buttons">
+                                    <a href="<?php echo htmlspecialchars($loginUrl); ?>">
+                                        <div class="fb-connect connect-background" data-track="home:facebook-connect">
+                                            <span class="fa fa-facebook"></span>
+                                            <span class="connect-text">Connect with Facebook</span>
+                                        </div>  
+                                    </a>
+                                </div>
+                             </div>   
+                                <div class="col-md-12">
+                                    <div class="login-buttons">
+                                    <a href="<?php echo $authUrl; ?>">
+                                       <div class="google-connect connect-background" id="google-connect-button" data-track="home:google-connect">
+                         <span class="fa fa-google-plus"></span>
+                         <a href="<?php echo $authUrl; ?>">
+                         <span class="google-connect-text connect-text">Connect with Google</span>
+                         </a>
+                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                            </div> 
+                        </div>
+                        <p class="signup-light text-center">We won't ever post anything on Facebook without your permission.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
             <!--  section_image END -->
         </main>
         <span class="space"></span>
@@ -502,6 +888,10 @@
         <script type='text/javascript' defer src='https://www.fivestars.com/wp-content/themes/_fivestars/library/js/min/scripts.js?ver=v2.8'></script>
 
         <script src="js/pyh_main_js-v=IYSNC0cAO_B-_TUsyGCiemgQo0mfVgmz1oShNb7ny1Q1.js"></script>
+
+        
+
+
 
 
     </body>

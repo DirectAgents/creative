@@ -10,7 +10,7 @@
 
 
 
- $sql = "SELECT * FROM profile WHERE id='15'";  
+ $sql = "SELECT * FROM tbl_investor WHERE id='".$_SESSION['investorSession']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_user = mysqli_fetch_array($result);
  
@@ -19,7 +19,7 @@
 
  if($column_name == 'About') {
 
- $sql = "UPDATE profile SET About='".$content."' WHERE id='".$_SESSION['participantSession']."'";  
+ $sql = "UPDATE tbl_investor SET About='".$content."' WHERE id='".$_SESSION['investorSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
       
@@ -32,7 +32,7 @@
 
 if($column_name == 'Email') {
 
- $sql = "UPDATE profile SET Email='".$content."' WHERE id='".$_SESSION['participantSession']."'";  
+ $sql = "UPDATE tbl_investor SET Email='".$content."' WHERE id='".$_SESSION['investorSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
 
@@ -44,11 +44,11 @@ if($column_name == 'Email') {
 
  if($column_name == 'Phone') {
 
- $sql = "UPDATE profile SET Phone='".$content."' WHERE id='".$_SESSION['participantSession']."'";  
+ $sql = "UPDATE tbl_investor SET Phone='".$content."' WHERE id='".$_SESSION['investorSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
 
- $sql=mysqli_query($connecDB,"SELECT * FROM profile WHERE id='".$_SESSION['participantSession']."'");
+ $sql=mysqli_query($connecDB,"SELECT * FROM tbl_investor WHERE id='".$_SESSION['investorSession']."'");
  $row=mysqli_fetch_array($sql);  	
  
  echo '<div id="phone">'; 
@@ -94,7 +94,7 @@ foreach ($values as $value)
     //$insert_sql = mysqli_query($connecDB,"INSERT INTO skills_level(userid,skill,skill_level) VALUES('15','".$value."','".$_POST['skill_level_percentage']."')");
 }
 
- $sql = "UPDATE profile SET Skills='".$content."' WHERE id='15'";  
+ $sql = "UPDATE tbl_investor SET Skills='".$content."' WHERE id='".$_SESSION['investorSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
 
@@ -111,7 +111,7 @@ $response = array();
 //$posts = array();
 
 
-$sql=mysqli_query($connecDB,"SELECT * FROM profile WHERE id='".$_SESSION['participantSession']."' limit 20 ");
+$sql=mysqli_query($connecDB,"SELECT * FROM tbl_investor WHERE id='".$_SESSION['investorSession']."' limit 20 ");
 $row=mysqli_fetch_array($sql); 
 
 

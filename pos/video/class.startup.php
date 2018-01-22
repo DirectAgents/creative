@@ -28,7 +28,7 @@ class STARTUP
 		return $stmt;
 	}
 	
-	public function register($firstname,$lastname,$zip,$email,$upass,$code)
+	public function register($fullname,$zip,$email,$upass,$code)
 	{
 		try
 		{		
@@ -43,10 +43,9 @@ class STARTUP
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 
-			$stmt = $this->conn->prepare("INSERT INTO tbl_investor(FirstName,LastName,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
-			                                             VALUES(:first_name, :last_name,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, 'Participant requests to meet you,Email reminder about an upcoming meeting', '".$the_date."')");
-			$stmt->bindparam(":first_name",$firstname);
-			$stmt->bindparam(":last_name",$lastname);
+			$stmt = $this->conn->prepare("INSERT INTO tbl_startup(Fullname,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
+			                                             VALUES(:fullname,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, 'Participant requests to meet you,Email reminder about an upcoming meeting', '".$the_date."')");
+			$stmt->bindparam(":fullname",$fullname);
 			$stmt->bindparam(":user_zip",$zip);
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
@@ -64,7 +63,7 @@ class STARTUP
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT * FROM tbl_investor WHERE userEmail=:email_id");
+			$stmt = $this->conn->prepare("SELECT * FROM tbl_startup WHERE userEmail=:email_id");
 			$stmt->execute(array(":email_id"=>$email));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			
@@ -90,14 +89,14 @@ class STARTUP
 
 
 						
-						$stmt = $this->conn->prepare("UPDATE tbl_investor SET login_session='".$cookiehash."' WHERE userID='".$userRow['userID']."'");
+						$stmt = $this->conn->prepare("UPDATE tbl_startup SET login_session='".$cookiehash."' WHERE userID='".$userRow['userID']."'");
 			
 						$stmt->execute();	
 						return $stmt;
 					  
 					  }else{
 
-					  	$stmt = $this->conn->prepare("UPDATE tbl_investor SET login_session='' WHERE userID='".$userRow['userID']."'");
+					  	$stmt = $this->conn->prepare("UPDATE tbl_startup SET login_session='' WHERE userID='".$userRow['userID']."'");
 					  	$stmt->execute();	
 						return $stmt;
 					  }

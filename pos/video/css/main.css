@@ -3717,3 +3717,71 @@ form .tooltip-inner {
 }
 
 .success{float:left; width:100%; margin-top:15px; background-color:lightgreen; padding:15px; color:#fff; text-align:center}
+
+
+
+/*Facebook Button & Google Button*/
+
+.fb-connect {
+    background-image: url(https://nb9-stumbleupon.netdna-ssl.com/O5AlhkxLOIVr3-WfINichw);
+}
+
+.connect-text {
+    font-family: "proxima_nova_rgbold", sans-serif;
+    font-size: 20px;
+    color: #fff;
+    float: left;
+    line-height: 60px;
+    vertical-align: middle;
+    width: 220px;
+}
+
+.connect-text {
+    font-size: 18px !important;
+}
+
+
+.connect-background {
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    text-align: center;
+    height: 60px;
+    width: 282px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.connect-background .fa {
+    font-size: 29px;
+    line-height: 60px;
+    float: left;
+    width: 57px;
+    color:#fff;
+}
+
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-family: 'FontAwesome' !important;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.fa-facebook-f:before, .fa-facebook:before {
+    content: "\f09a";
+}
+
+
+.google-connect {
+    background-image: url(https://nb9-stumbleupon.netdna-ssl.com/90BbLG63FGX9Fn-_v-gzuA);
+}
+
+.login-buttons{margin-top:20px;}
+
+

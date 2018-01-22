@@ -3,7 +3,7 @@
  session_start();
  include_once("../config.php"); 
 
- $sql = "SELECT * FROM profile WHERE id='15'";  
+ $sql = "SELECT * FROM tbl_investor WHERE userID ='".$_SESSION['investorSession']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row = mysqli_fetch_array($result);
 
@@ -16,11 +16,12 @@
   <div class="row">
         <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
            <br>
-              <p class="text-muted">Jon Snow</p>
+              <p class="text-muted"><?php echo $row['Fullname']; ?></p>
                                         </div>               
                    <div class="col-md-3 col-xs-6"> <strong>Location</strong>
                       <br>
-                    <p class="text-muted">London</p>
+                    <p class="text-muted"><?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
+.', '.$row['State']; ?></p>
                             </div>
  </div>
                     <hr>
