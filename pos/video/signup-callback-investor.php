@@ -86,7 +86,7 @@ $_SESSION['fb_access_token_investor'] = (string) $accessToken;
 //echo $_SESSION['fb_access_token_startup'];
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
-header('Location: '.BASE_PATH.'/investors/');
+header('Location: '.BASE_PATH.'/investor/');
 
 
 

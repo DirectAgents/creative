@@ -143,7 +143,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['startupSession'] = $row['userID'];
         //echo $_SESSION['startupSession'];
-        header('Location: '.BASE_PATH.'/startups/profile/'.$_SESSION['startupSession'].'/');
+        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['startupSession'].'/');
         //header('Location: '.BASE_PATH.'');
         exit();
     }
@@ -170,7 +170,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         $_SESSION['startupSession'] = $row['userID'];
         echo $_SESSION['startupSession'];
         //echo "asdfasfd";
-        header('Location: '.BASE_PATH.'/startups/profile/'.$_SESSION['startupSession'].'/');
+        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['startupSession'].'/');
         exit();
 
 
@@ -269,7 +269,7 @@ echo 'id: ' . $user['id'];
         //echo "asdfasdf";
         //echo $row['userID'];
         //echo $user['email'];
-        header('Location: '.BASE_PATH.'/startups/profile/'.$_SESSION['startupSession'].'/');
+        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['startupSession'].'/');
         exit();
         
     }
@@ -300,7 +300,7 @@ echo 'id: ' . $user['id'];
     //header("Location: ../index.php");
     //echo $row['userID'];
     //echo "123";
-    header('Location: '.BASE_PATH.'/startups/profile/'.$_SESSION['startupSession'].'/');
+    header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['startupSession'].'/');
     exit(); 
 
 
