@@ -3,6 +3,12 @@
  session_start();
  require_once '../base_path.php';
  include '../config.php';
+ require_once('../algoliasearch-client-php-master/algoliasearch.php');
+
+ $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
+
+ $index = $client->initIndex('developers');
+
 ?>
 
 
@@ -364,6 +370,10 @@
 
     <!--Style Switcher -->
     <script src="<?php echo BASE_PATH; ?>/js/jQuery.style.switcher.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+    <script src="app.js"></script>
+
 </body>
 
 </html>
