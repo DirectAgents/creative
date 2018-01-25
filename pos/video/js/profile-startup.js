@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-var url_link = 'http://localhost/creative/pos/video/startups/';
+var url_link = 'http://localhost/creative/pos/video/startup/';
 
 ////////////////Load Profile//////////////////////
 
@@ -270,6 +270,28 @@ $.ajax({
 
 
 
+////////////////Team Members//////////////////////
 
+$(".add-team-member").click(function (e) {
+    e.preventDefault();
+
+    var userid = $('input[name=userid]').val();
+    //alert(userid);
+    $.ajax({
+            url: url_link+"add-new-member.php", 
+            method: "POST",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(data);  
+                //var skills = $(response).filter('#the-skill-set').text();
+                $("#existing-team-members").html(response);
+                //alert(skills_count);  
+
+            }
+        });
+
+
+});
 
 });

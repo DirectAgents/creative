@@ -76,6 +76,10 @@ if(!$startup_home->is_logged_in())
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
+
+
     </head>
 
     <body class="fix-header">
@@ -296,17 +300,23 @@ if(!$startup_home->is_logged_in())
                         <div class="col-md-8 col-xs-12">
                             <div class="white-box">
                                 <ul class="nav nav-tabs tabs customtab">
-                                    <li class="tab active">
+                                    <li class="tab">
                                         <a href="#profile" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">About</span> </a>
                                     </li>
+                                    <?php //if(!isset($_SESSION['startupSession'])){ ?>
+                                    <li class="tab active">
+                                        <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Meet the Team</span> </a>
+                                    </li>
+                                   <?php //} ?>
                                     <?php if(isset($_SESSION['startupSession'])){ ?>
                                     <li class="tab">
-                                        <a href="#new" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
+                                        <a href="#connections" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
                                     </li>
-                                    
+                                    <!--
                                     <li class="tab">
                                         <a href="#messages" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Messages</span> </a>
                                     </li>
+                                        -->
 
                                     <li class="tab">
                                         <a href="#video" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Video</span> </a>
@@ -317,9 +327,12 @@ if(!$startup_home->is_logged_in())
                                     </li>
                                     <?php } ?>
                                 </ul>
+
+
                                 <div class="tab-content">
+
                                     <!---Profile Starts-->
-                                    <div class="tab-pane active" id="profile">
+                                    <div class="tab-pane" id="profile">
                                         <div id="profile-tab-data">
                                             <div class="row">
                                                 <div class="col-md-3 col-xs-6 b-r"> <strong>Startup</strong>
@@ -328,7 +341,7 @@ if(!$startup_home->is_logged_in())
                                                         <?php echo $row['Fullname']; ?>
                                                     </p>
                                                 </div>
-                                                <div class="col-md-3 col-xs-6 b-r""> <strong>Location</strong>
+                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Location</strong>
                                                     <br>
                                                     <p class="text-muted">
                                                         <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
@@ -355,7 +368,111 @@ if(!$startup_home->is_logged_in())
                                         </div>
                                     </div>
                                     <!---Profile Ends-->
-                                    <div class="tab-pane" id="new">
+
+
+                                    <!---Meet the Team Starts-->
+                                    <div class="tab-pane active" id="team">
+
+                                        
+                                 <div id="existing-team-members">
+
+                                    <div class="col-sm-12">
+                                            <button class="btn btn-default btn-outline add-team-member pull-right">Add a Team Member</button>
+                                        </div>
+                                        <p>&nbsp;</p>
+
+                                        <div id="team-tab-data">
+                                            <div class="pull-right">
+                                            <a href="#" id="edit-member"><i class="ti-pencil"><label class="edit-member">Edit</label> </i></a>
+                                            <a href="#" id="delete-member"><i class="ti-trash"><label class="delete-member">Delete</label> </i></a>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
+                                                    <br>
+                                                    <p class="text-muted">
+                                                        <?php echo $row['Fullname']; ?>
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-3 col-xs-6"> <strong>Position</strong>
+                                                    <br>
+                                                    <p class="text-muted">
+                                    <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
+.', '.$row['State']; ?>
+                                                    </p>
+                                                </div>
+
+                                                <div class="col-md-3 col-xs-6"> 
+                                                    <br>
+                                                    <p class="text-muted">
+                                   image
+                                                    </p>
+                                                </div>
+
+                                                
+                                            </div>
+                                            <hr>
+                                            <strong>Skills</strong>
+                                            <?php if($row_startup['About'] != '') { ?>
+                                            <p class="m-t-30">
+                                                <?php echo $row_startup['About']; ?>
+                                            </p>
+                                            <?php } ?>
+                                           <hr>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="add_team_member_box" style="display:none">
+                                        
+                                         <div id="team-tab-data">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xs-6 b-r"> <strong>1111Full Name</strong>
+                                                    <br>
+                                                    <p class="text-muted">
+                                                        <?php echo $row['Fullname']; ?>
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-3 col-xs-6"> <strong>Position</strong>
+                                                    <br>
+                                                    <p class="text-muted">
+                                    <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
+.', '.$row['State']; ?>
+                                                    </p>
+                                                </div>
+
+                                                <div class="col-md-3 col-xs-6"> 
+                                                    <br>
+                                                    <p class="text-muted">
+                                   image
+                                                    </p>
+                                                </div>
+
+                                                
+                                            </div>
+                                            <hr>
+                                            <strong>Skills</strong>
+                                            <?php if($row_startup['About'] != '') { ?>
+                                            <p class="m-t-30">
+                                                <?php echo $row_startup['About']; ?>
+                                            </p>
+                                            <?php } ?>
+                                           <hr>
+                                             
+
+                                            <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member">Save</button>
+                                            <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-team-member">Cancel</button>
+
+                                        </div>                               
+
+                                    </div>
+
+
+
+                                    </div>
+                                    <!---Meet the Team Ends-->
+
+                                    <!---Connections Starts-->
+                                    <div class="tab-pane" id="connections">
                                         <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny footable-loaded footable tablet breakpoint">
                                             <thead>
                                                 <tr>
@@ -377,53 +494,11 @@ if(!$startup_home->is_logged_in())
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="tab-pane" id="messages">
-                                        <div class="steamline">
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle"> </div>
-                                                <div class="sl-right">
-                                                    <div class="m-l-40"> <a href="#" class="text-info">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                        <div class="m-t-20 row">
-                                                            <div class="col-md-2 col-xs-12"><img src="../plugins/images/img1.jpg" alt="user" class="img-responsive"></div>
-                                                            <div class="col-md-9 col-xs-12">
-                                                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa</p> <a href="#" class="btn btn-success"> Design weblayout</a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle"> </div>
-                                                <div class="sl-right">
-                                                    <div class="m-l-40"><a href="#" class="text-info">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                        <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                                        <div class="m-t-20 row"><img src="../plugins/images/img1.jpg" alt="user" class="col-md-3 col-xs-12"> <img src="../plugins/images/img2.jpg" alt="user" class="col-md-3 col-xs-12"> <img src="../plugins/images/img3.jpg" alt="user" class="col-md-3 col-xs-12"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="../plugins/images/users/ritesh.jpg" alt="user" class="img-circle"> </div>
-                                                <div class="sl-right">
-                                                    <div class="m-l-40"><a href="#" class="text-info">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                        <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="../plugins/images/users/govinda.jpg" alt="user" class="img-circle"> </div>
-                                                <div class="sl-right">
-                                                    <div class="m-l-40"><a href="#" class="text-info">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                        <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!---Connections Ends-->
+                                   
                                     
 
-
+                                    <!---Videos Starts-->
 
                                     <div class="tab-pane" id="video">
                                         <form class="form-horizontal form-material">
@@ -441,9 +516,10 @@ if(!$startup_home->is_logged_in())
                                         </form>
                                     </div>
 
+                                    <!---Videos Ends-->
 
 
-
+                                    <!---Settings Starts-->
                                     <div class="tab-pane" id="settings">
                                         <form class="form-horizontal form-material">
                                             <div class="form-group">
@@ -497,72 +573,72 @@ if(!$startup_home->is_logged_in())
                                                 <div class="col-md-12" style="padding:15px 0 0 0;">
                                                     <div id="responds">
                                                         <?php
-//include db configuration file
+                                                        //include db configuration file
 
-echo '<input type="hidden" name="userid" id="userid" value="15">';
-
-
-//MySQL query
-$Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID ='15' ");
+                                                        echo '<input type="hidden" name="userid" id="userid" value="'.$_GET['id'].'">';
 
 
-//get all records from add_delete_record table
-$row2 = mysqli_fetch_array($Result);
+                                                        //MySQL query
+                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID ='".$_GET['id']."' ");
 
 
-
-
-$ctop = $row2['Skills']; 
-$ctop = explode(',',$ctop); 
-
-
-
-if($row2['Skills'] != '' && $row2['Skills'] != 'NULL' ){
-
-
-
-foreach($ctop as $skill)  
-{ 
-    //Uncomment the last commented line if single quotes are showing up  
-    //otherwise delete these 3 commented lines 
-
-
-//get skill string
-$ret = explode('(', $skill);
-$skill_string =  $ret[0];
-    
-
-//MySQL query
-$sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill_string."' ");
-$row3 = mysqli_fetch_array($sqlskill);
-
-
-echo '<div id="item_'.$row3['id'].'">';
-echo '<div class="skillsdiv">';
-if(in_array($skill,$ctop)){
-echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
-}
-echo '<div class="del_wrapper">';
-echo '<div class="the-skill">';
-echo $skill;
-echo '</div>';
-echo '<a href="#" class="del_button" id="del-'.$row3['id'].'">';
-echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
-echo '</a></div>';
-//echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-echo '</div>';
-echo '</div>';
-} 
-
-
-
-}
+                                                        //get all records from add_delete_record table
+                                                        $row2 = mysqli_fetch_array($Result);
 
 
 
 
+                                                        $ctop = $row2['Skills']; 
+                                                        $ctop = explode(',',$ctop); 
 
-?>
+
+
+                                                        if($row2['Skills'] != '' && $row2['Skills'] != 'NULL' ){
+
+
+
+                                                        foreach($ctop as $skill)  
+                                                        { 
+                                                            //Uncomment the last commented line if single quotes are showing up  
+                                                            //otherwise delete these 3 commented lines 
+
+
+                                                        //get skill string
+                                                        $ret = explode('(', $skill);
+                                                        $skill_string =  $ret[0];
+                                                            
+
+                                                        //MySQL query
+                                                        $sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill_string."' ");
+                                                        $row3 = mysqli_fetch_array($sqlskill);
+
+
+                                                        echo '<div id="item_'.$row3['id'].'">';
+                                                        echo '<div class="skillsdiv">';
+                                                        if(in_array($skill,$ctop)){
+                                                        echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
+                                                        }
+                                                        echo '<div class="del_wrapper">';
+                                                        echo '<div class="the-skill">';
+                                                        echo $skill;
+                                                        echo '</div>';
+                                                        echo '<a href="#" class="del_button" id="del-'.$row3['id'].'">';
+                                                        echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
+                                                        echo '</a></div>';
+                                                        //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
+                                                        echo '</div>';
+                                                        echo '</div>';
+                                                        } 
+
+
+
+                                                        }
+
+
+
+
+
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -598,76 +674,13 @@ echo '</div>';
                                             </div>
                                         </form>
                                     </div>
+                                     <!---Settings Ends-->
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- /.row -->
-                    <!-- ============================================================== -->
-                    <!-- Right sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- .right-sidebar -->
-                    <div class="right-sidebar">
-                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
-                            <div class="slimscrollright" style="overflow: hidden; width: auto; height: 100%;">
-                                <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
-                                <div class="r-panel-body">
-                                    <ul id="themecolors" class="m-t-20">
-                                        <li><b>With Light sidebar</b></li>
-                                        <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="gray" class="yellow-theme">3</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme">4</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
-                                        <li><b>With Dark sidebar</b></li>
-                                        <br>
-                                        <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="gray-dark" class="yellow-dark-theme">9</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme working">10</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
-                                        <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme">12</a></li>
-                                    </ul>
-                                    <ul class="m-t-20 all-demos">
-                                        <li><b>Choose other demos</b></li>
-                                    </ul>
-                                    <ul class="m-t-20 chatonline">
-                                        <li><b>Chat option</b></li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/john.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)"><img src="../plugins/images/users/pawandeep.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="slimScrollBar" style="background: rgb(220, 220, 220); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div>
-                            <div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- End Right sidebar -->
-                    <!-- ============================================================== -->
+                  
                 </div>
                 <!-- /.container-fluid -->
                 <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>

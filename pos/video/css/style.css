@@ -9904,6 +9904,7 @@ ul.select-row-icon li a:hover i.whn-hov {
 
 [class*=" ti-"],
 [class^=ti-] {
+    font-size:18px;
     font-family: themify;
     speak: none;
     font-style: normal;
@@ -20122,6 +20123,7 @@ ul.pro-amenities li span i {
 }
 
 
+label.edit-member,label.delete-member{font-family: Rubik, sans-serif; font-size:14px;}
 
 
 
