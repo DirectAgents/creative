@@ -10,6 +10,10 @@
  $result = mysqli_query($connecDB, $sql);  
  $row = mysqli_fetch_array($result);
 
+ $sql = "SELECT * FROM startups WHERE userID ='".$_GET['id']."'";  
+ $result = mysqli_query($connecDB, $sql);  
+ $row_startup = mysqli_fetch_array($result);
+
 /*
 
 $investor_home = new INVESTOR();
@@ -293,7 +297,7 @@ if(!$startup_home->is_logged_in())
                             <div class="white-box">
                                 <ul class="nav nav-tabs tabs customtab">
                                     <li class="tab active">
-                                        <a href="#profile" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profile</span> </a>
+                                        <a href="#profile" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">About</span> </a>
                                     </li>
                                     <?php if(isset($_SESSION['startupSession'])){ ?>
                                     <li class="tab">
@@ -318,85 +322,36 @@ if(!$startup_home->is_logged_in())
                                     <div class="tab-pane active" id="profile">
                                         <div id="profile-tab-data">
                                             <div class="row">
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
+                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Startup</strong>
                                                     <br>
                                                     <p class="text-muted">
                                                         <?php echo $row['Fullname']; ?>
                                                     </p>
                                                 </div>
-                                                <div class="col-md-3 col-xs-6"> <strong>Location</strong>
+                                                <div class="col-md-3 col-xs-6 b-r""> <strong>Location</strong>
                                                     <br>
                                                     <p class="text-muted">
                                                         <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
 .', '.$row['State']; ?>
                                                     </p>
                                                 </div>
+
+                                                 <div class="col-md-3 col-xs-6"> <strong>Industry</strong>
+                                                    <br>
+                                                    <p class="text-muted">
+                                                        <?php echo $row_startup['Industry']; ?>
+                                                    </p>
+                                                </div>
                                             </div>
                                             <hr>
-                                            <?php if($row['About'] != '') { ?>
+                                            <?php if($row_startup['About'] != '') { ?>
                                             <p class="m-t-30">
-                                                <?php echo $row['About']; ?>
+                                                <?php echo $row_startup['About']; ?>
                                             </p>
                                             <?php } ?>
-                                            <?php if($row['Skills'] != ''){ ?>
-                                            <h4 class="font-bold m-t-30">Skill Set</h4>
                                             <hr>
-                                            <?php
+                                            <iframe width="100%" height="500" src="https://www.youtube.com/embed/sK7riqg2mr4" frameborder="0" allowfullscreen=""></iframe>
 
-
-$values = explode(',',  $row['Skills']);
-foreach ($values as $value)
-{
-
-//get skill string
-$ret = explode('(', $value);
-$skill =  $ret[0];
-
-//get value between parantheses;
-preg_match('#\((.*?)\)#', $value, $match);
-$percentage = $match[1];
-
-//get rid off percentage sign
-$arr = explode("%", $percentage, 2);
-
-
-switch ($arr[0]){
-    case '10':
-    $bar = 'progress-bar-danger';
-    break;
-    case '20':
-    $bar = 'progress-bar-primary';
-    break;
-    case '30':
-    $bar = 'progress-bar-custom';
-    break;
-    case '30':
-    $bar = 'progress-bar-success';
-    break;
-
-    default:
-    $bar = 'progress-bar-success';
-
-}
-
-
-
-echo '
-
-<h5>'.$skill.' <span class="pull-right">'.$arr[0].'%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar '.$bar.'" role="progressbar" aria-valuenow="'.$arr[0].'" aria-valuemin="0" aria-valuemax="100" style="width:'.$arr[0].'%;"> <span class="sr-only">'.$arr[0].'% Complete</span> </div>
-                                    </div>
-
-';
-
-
-}
-
-
-
-?>
-                                                <?php } ?>
                                         </div>
                                     </div>
                                     <!---Profile Ends-->

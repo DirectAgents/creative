@@ -1,7 +1,7 @@
 var search = instantsearch({
   appId: "F3O2TAOV5W",
   apiKey: '5d10153d5309d83a8ac03981d28f2a56',
-  indexName: 'developers',
+  indexName: 'startups',
   urlSync: true
 });
 

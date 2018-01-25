@@ -7,7 +7,7 @@
 
  $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
 
- $index = $client->initIndex('developers');
+ $index = $client->initIndex('startups');
 
 ?>
 
@@ -49,9 +49,14 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  rel="stylesheet">
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+
+
       <!-- Popup CSS -->
     <link href="<?php echo BASE_PATH; ?>/css/magnific-popup.css" rel="stylesheet">
     
+
+
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -75,151 +80,9 @@
     <!-- Wrapper -->
     <!-- ============================================================== -->
     <div id="wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <nav class="navbar navbar-default navbar-static-top m-b-0">
-            <div class="navbar-header">
-                <div class="top-left-part">
-                    <!-- Logo -->
-                    <a class="logo" href="index.html">
-                        <!-- Logo icon image, you can use font-icon also --><b>
-                        <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="images/admin-logo-dark.png" alt="home" class="light-logo" />
-                     </b>
-                        <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="images/admin-text-dark.png" alt="home" class="light-logo" />
-                     </span> </a>
-                </div>
-                <!-- /Logo -->
-                <!-- Search input and Toggle icon -->
-                <ul class="nav navbar-top-links navbar-left">
-                    <li><a href="javascript:void(0)" class="open-close waves-effect waves-light visible-xs"><i class="ti-close ti-menu"></i></a></li>
-                    <!--<li class="dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> <i class="mdi mdi-gmail"></i>
-                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                        </a>
-                        <ul class="dropdown-menu mailbox animated bounceInDown">
-                            <li>
-                                <div class="drop-title">You have 4 new messages</div>
-                            </li>
-                            <li>
-                                <div class="message-center">
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/sonu.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/arijit.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="text-center" href="javascript:void(0);"> <strong>See all notifications</strong> <i class="fa fa-angle-right"></i> </a>
-                            </li>
-                        </ul>
-                       
-                    </li>-->
-                    <!-- /.dropdown-messages -->
-                 
-                    <!-- .Megamenu -->
-                    <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Top 5 Startups</span> <i class="icon-options-vertical"></i></a>
-                        <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Technology</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Mobile</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                   <li class="dropdown-header">Finance</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                 
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                   <li class="dropdown-header">Ecommerce</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                 
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- /.Megamenu -->
-                </ul>
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="<?php echo BASE_PATH; ?>/images/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> </a>
-                        <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li>
-                                <div class="dw-user-box">
-                                    <div class="u-img"><img src="<?php echo BASE_PATH; ?>/images/varun.jpg" alt="user" /></div>
-                                    <div class="u-text">
-                                        <h4>Steave Jobs</h4>
-                                        <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-                                </div>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                        </ul>
-                        <!-- /.dropdown-user -->
-                    </li>
-                    <!-- /.dropdown -->
-                </ul>
-            </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
-        <!-- End Top Navigation -->
+        
+
+        <?php include '../nav.php'; ?>
         
 
         <?php include '../left-sidebar.php'; ?>
@@ -240,17 +103,89 @@
 
                 <div class="row">
 
+
+
+            <main>
+
+
+<div id="hits"></div>
+
+
+
+<script type="text/html" id="hit-template">
+
+  <div class="hit">
+   
+    <div class="hit-content">
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                            <div class="product-img">
+                                <img src="{{{_highlightResult.profileimage.value}}}"/>
+                                <div class="pro-img-overlay">
+
+                                    <a href="#img1" class="popup-youtube bg-info"><i class="ti-eye"></i></a> 
+                                    <a href="javascript:void(0)" class="bg-danger"><i class="ti-bookmark"></i></a>
+                                    <a href="javascript:void(0)" class="bg-danger"><i class="ti-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-text">
+                                <span class="pro-price bg-danger">$15</span>
+                                <h3 class="box-title m-b-0"><a href="profile/{{profileid}}">{{{_highlightResult.name.value}}}</a></h3>
+                                <small class="text-muted db">
+                                <br>
+                                <span class="m-r-10"><i class="icon-calender"></i> May 16</span> 
+                                <span class="m-r-10"><i class="fa fa-heart-o"></i> 38</a></span>  
+                                    <i class="fa fa-industry"></i> {{{_highlightResult.industry.value}}}</small>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+<!-- lightbox container hidden with CSS -->
+<a href="#_" class="lightbox" id="img1">
+<div id="videoModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
+  <div class="modal-header">
+    <button type="button" class="close full-height" data-dismiss="modal" aria-hidden="true">X</button>
+    <h3>Donna Galletta- Showreel</h3>
+  </div>
+  <div class="modal-body"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/sK7riqg2mr4" frameborder="0" allowfullscreen=""></iframe></div>
+  <div class="modal-footer"></div>
+</div>
+</a>
+
+
+
+   </div> 
+</div>  
+
+
+
+    </div>
+  </div>
+ 
+</script>
+
+
+</main>
+
+
+   
+
+
+
                     <?php 
                     
-                    $sql = mysqli_query($connecDB,"SELECT * FROM startups ORDER BY id DESC");                    
-                    while($row = mysqli_fetch_array($sql)){
+                   // $sql = mysqli_query($connecDB,"SELECT * FROM startups ORDER BY id DESC");                    
+                   // while($row = mysqli_fetch_array($sql)){
 
                     ?>
 
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <!--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="white-box">
                             <div class="product-img">
-                                <img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/chair.jpg">
+                                <img src="{{{_highlightResult.profileimage.value}}}"/>
                                 <div class="pro-img-overlay">
 
                                     <a href="www.youtube.com/watch?v=sK7riqg2mr4" class="popup-youtube bg-info"><i class="ti-eye"></i></a> 
@@ -260,7 +195,7 @@
                             </div>
                             <div class="product-text">
                                 <span class="pro-price bg-danger">$15</span>
-                                <h3 class="box-title m-b-0"><?php echo $row['Name'];?></h3>
+                                <h3 class="box-title m-b-0">{{{_highlightResult.name.value}}}</h3>
                                 <small class="text-muted db">
                                 <br>
                                 <span class="m-r-10"><i class="icon-calender"></i> May 16</span> 
@@ -270,12 +205,12 @@
                         </div>
                     </div>
                   
-                   <?php } ?>
+                   <?php //} ?>
                    
-                </div>
+                </div>-->
 
-                <!--
-                <div class="row">
+                
+                <!--<div class="row">
 
                     <div class="main-screen">
                     
@@ -314,6 +249,9 @@
              
                
             </div>
+
+             <div id="pagination"></div>     
+             
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>
         </div>
@@ -364,15 +302,20 @@
 
 
      <!-- Magnific popup JavaScript -->
-    <script src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
-    <script src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/jquery.magnific-popup.min.js"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/jquery.magnific-popup-init.js"></script>
 
 
     <!--Style Switcher -->
     <script src="<?php echo BASE_PATH; ?>/js/jQuery.style.switcher.js"></script>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
-    <script src="app.js"></script>
+    <script src="<?php echo BASE_PATH; ?>/app.js"></script>
 
 </body>
 
