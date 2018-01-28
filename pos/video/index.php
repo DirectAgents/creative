@@ -8,11 +8,11 @@ require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
 require_once 'base_path.php';
 
-require_once 'class.startup.php';
+require_once 'class.entrepreneur.php';
 
 include_once("config.php");
 
-$reg_user = new STARTUP();
+$reg_user = new ENTREPRENEUR();
 
 if($reg_user->is_logged_in()!="")
 {
@@ -115,7 +115,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
   //check if user exist in database using COUNT
-  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_startup WHERE google_id=$user->id ");
+  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_entrepreneur WHERE google_id=$user->id ");
   $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
   
@@ -130,10 +130,10 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   if($user->email) //if user already exist change greeting text to "Welcome Back"
     {   
 
-        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE Email = '".$user->email."'");
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user->email."'");
         $row = mysqli_fetch_array($sql);
 
-        $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
+        $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
         google_id = '".$user->id."',
         Fullname = '".$fullname."',
         google_picture_link = '".$user->picture."'
@@ -141,9 +141,9 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         WHERE Email='".$user->email."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['startupSession'] = $row['userID'];
+        $_SESSION['entrepreneurSession'] = $row['userID'];
         //echo $_SESSION['startupSession'];
-        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['startupSession'].'/');
+        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
         //header('Location: '.BASE_PATH.'');
         exit();
     }
@@ -156,7 +156,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     
     
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup (google_id, Fullname, Email, google_picture_link, Date_Created) 
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (google_id, Fullname, Email, google_picture_link, Date_Created) 
       VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
@@ -164,13 +164,13 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
     //mysqli_query($insert_sql);  
 
-        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE Email = '".$user->email."'");
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user->email."'");
         $row = mysqli_fetch_array($sql);
 
-        $_SESSION['startupSession'] = $row['userID'];
+        $_SESSION['entrepreneurSession'] = $row['userID'];
         echo $_SESSION['startupSession'];
         //echo "asdfasfd";
-        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['startupSession'].'/');
+        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
         exit();
 
 
@@ -202,7 +202,7 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 
 $permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup-callback-startup.php', $permissions);
+$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup-callback-entrepreneur.php', $permissions);
 
 
 
@@ -211,11 +211,11 @@ $loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup-callback-startup.php', $p
 //echo $_SESSION['fb_access_token_startup'];
 
 
-if(isset($_SESSION['fb_access_token_startup'])){
+if(isset($_SESSION['fb_access_token_entrepreneur'])){
 
 try {
   // Returns a `Facebook\FacebookResponse` object
-  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_startup']);
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_entrepreneur']);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
@@ -237,11 +237,11 @@ echo 'id: ' . $user['id'];
 //check if user exist in database using COUNT
 
 
-  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_startup WHERE facebook_id='".$user['id']."' ");
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_entrepreneur WHERE facebook_id='".$user['id']."' ");
   $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
 
   
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE Email = '".$user['email']."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user['email']."'");
   $row = mysqli_fetch_array($sql);
 
 
@@ -254,7 +254,7 @@ echo 'id: ' . $user['id'];
 
     
 
-    $update_sql = mysqli_query($connecDB,"UPDATE tbl_startup SET 
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
     facebook_id = '".$user['id']."', 
     profile_image = '',
     google_picture_link = ''
@@ -262,14 +262,14 @@ echo 'id: ' . $user['id'];
     WHERE Email='".$user['email']."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['startupSession'] = $row['userID'];
+        $_SESSION['entrepreneurSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
         //header("Location: ../index.php");
         //echo $_SESSION['startupSession'];
         //echo "asdfasdf";
         //echo $row['userID'];
         //echo $user['email'];
-        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['startupSession'].'/');
+        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
         exit();
         
     }
@@ -285,7 +285,7 @@ echo 'id: ' . $user['id'];
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $fullname = $user['first_name'].' '.$user['last_name'];
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_startup (facebook_id, Fullname, Email, Gender, Date_Created) 
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (facebook_id, Fullname, Email, Gender, Date_Created) 
       VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
@@ -293,14 +293,14 @@ echo 'id: ' . $user['id'];
 
     //mysqli_query($insert_sql);  
     
-    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE Email = '".$user['email']."'");
+    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user['email']."'");
     $row = mysqli_fetch_array($sql);
 
-    $_SESSION['startupSession'] = $row['userID'];
+    $_SESSION['entrepreneurSession'] = $row['userID'];
     //header("Location: ../index.php");
     //echo $row['userID'];
     //echo "123";
-    header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['startupSession'].'/');
+    header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
     exit(); 
 
 

@@ -5,7 +5,7 @@ include("../config.inc.php"); //include config file
 $searchTerm = $_GET['term'];
 //get matched data from skills table
 
-$sql = "SELECT * FROM tbl_startup WHERE userID = '15'";
+$sql = "SELECT * FROM tbl_entrepreneur WHERE userID = '".$_SESSION['entrepreneurSession']."'";
 $query  = $mysqli->query($sql) or die(mysqli_error($connection)); 
 $row2 = $query->fetch_assoc();
 

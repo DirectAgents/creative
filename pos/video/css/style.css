@@ -1741,6 +1741,11 @@ table.dataTable thead .sorting:after {
     font-size: 40px
 }
 
+
+.border{border:1px solid #eee;}
+
+
+
 .white-box {
     background: #fff;
     padding: 25px;
@@ -3387,8 +3392,31 @@ ul.common li a:hover {
     margin-top: 30px
 }
 
+
+.user-bg .overlay-box-grey {
+    background: #eee;
+    opacity: .9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    text-align: center
+}
+
+.user-bg .overlay-box-grey .user-content {
+    padding: 15px;
+    margin-top: 30px
+}
+
 .user-btm-box {
     padding: 40px 0 10px;
+    clear: both;
+    overflow: hidden
+}
+
+.user-btm-box-team {
+    padding: 0px 0 10px;
     clear: both;
     overflow: hidden
 }
@@ -20092,9 +20120,21 @@ ul.pro-amenities li span i {
     margin-left: 15px;
     border-radius: 5px;
     max-width: 400px;
-    font-family: arial;
     font-size: 13px;
     float: left;
+}
+
+.skillsdiv_teammember {
+    padding: 10px;
+    background: #fff;
+    /*background: rgb(182, 232, 255);*/
+    margin-bottom: 5px;
+    margin-left: 15px;
+    border-radius: 5px;
+    max-width: 400px;
+    font-size: 13px;
+    float: left;
+    border:1px solid #eee;
 }
 
 .the-skill{float:left;}
@@ -20123,7 +20163,7 @@ ul.pro-amenities li span i {
 }
 
 
-label.edit-member,label.delete-member{font-family: Rubik, sans-serif; font-size:14px;}
+label.edit-team-member,label.delete-team-member{font-family: Rubik, sans-serif; font-size:14px;}
 
 
 
@@ -20149,6 +20189,10 @@ label.edit-member,label.delete-member{font-family: Rubik, sans-serif; font-size:
     /** Unhide lightbox **/
     display: block;
 }
+
+
+.the-skills{ border:1px solid #eee; padding:15px; }
+
 
 /** videoModal **/
 

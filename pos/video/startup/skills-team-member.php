@@ -11,7 +11,7 @@ if(isset($_POST["skills"]) && strlen($_POST["skills"])>0)
 
     //sanitize post value, PHP filter FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH
     $contentToSave = filter_var($_POST["skills"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-    //$skills_level = filter_var($_POST["skills_level"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    $skills_level = filter_var($_POST["skills_level"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
     $userID = filter_var($_POST["userid"],FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 
 
@@ -30,7 +30,7 @@ if(isset($_POST["skills"]) && strlen($_POST["skills"])>0)
         
         echo '<div id="item_'.$my_id.'">';
         echo '<div class="skillsdiv">';
-        echo '<input id="skillselection_'.$my_id.'" name="skillselection[]" type="checkbox"  value="'.$my_skill.'" style="display:none" checked/>';
+        echo '<input id="skillselectionteammember_'.$my_id.'" name="skillselectionteammember[]" type="checkbox"  value="'.$my_skill.'" style="display:none" checked/>';
         //echo '<input id="skill_level_'.$my_id.'" name="skill_level" type="text"  value="'.$skills_level.'" style="display:none" checked/>';
         echo '<div class="del_wrapper">';
         echo '<div class="the-skill">';

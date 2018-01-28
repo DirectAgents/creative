@@ -1,18 +1,18 @@
 <?php
 session_start();
-require_once 'class.startup.php';
+require_once 'class.entrepreneur.php';
 require_once 'class.investor.php';
 require_once 'base_path.php';
 
 
 
 
-//if(isset($_GET['t'], $_SESSION['startupSession'])){
+//if(isset($_GET['t'], $_SESSION['entrepreneurSession'])){
 $_SESSION['cookie_deleted'] = '1';
 unset($_SESSION['access_token']);
-unset($_SESSION['startupSession']);
+unset($_SESSION['entrepreneurSession']);
 unset($_SESSION['investorSession']);
-unset($_SESSION['fb_access_token_startup']);
+unset($_SESSION['fb_access_token_entrepreneur']);
 unset($_SESSION['fb_access_token_investor']);
 header('Location: '.BASE_PATH.'');
 exit();
@@ -20,7 +20,7 @@ exit();
 
 
 
-if(isset($_SESSION['startupSession'])){
+if(isset($_SESSION['entrepreneurSession'])){
 
 $user = new STARTUP();
 
@@ -33,7 +33,7 @@ if($user->is_logged_in()!="")
 {
 	$user->logout();
 	//unset($_SESSION['access_token']);
-	unset($_SESSION['startupSession']);	
+	unset($_SESSION['entrepreneurSession']);	
 	$user->redirect(''.BASE_PATH.'');
 }
 
@@ -63,8 +63,8 @@ if($user->is_logged_in()!="")
 
 
 
-if(isset($_SESSION['fb_access_token_startup'], $_SESSION['startupSession'])){
-	unset($_SESSION['fb_access_token_startup']);	
+if(isset($_SESSION['fb_access_token_entrepreneur'], $_SESSION['entrepreneurSession'])){
+	unset($_SESSION['fb_access_token_entrepreneur']);	
 	header('Location:'.BASE_PATH.'');
 }
 

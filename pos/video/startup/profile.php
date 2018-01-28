@@ -1,14 +1,17 @@
 <?php
 
  session_start();
- require_once '../class.startup.php';
+ require_once '../class.entrepreneur.php';
  require_once '../class.investor.php';
  require_once '../base_path.php';
  include_once("../config.php"); 
 
- $sql = "SELECT * FROM tbl_startup WHERE userID ='".$_GET['id']."'";  
+ $sql = "SELECT * FROM tbl_entrepreneur WHERE userID ='".$_GET['id']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row = mysqli_fetch_array($result);
+
+
+
 
  $sql = "SELECT * FROM startups WHERE userID ='".$_GET['id']."'";  
  $result = mysqli_query($connecDB, $sql);  
@@ -223,7 +226,7 @@ if(!$startup_home->is_logged_in())
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['startupSession'];?>"><i class="fa fa-power-off"></i> Logout</a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                             <!-- /.dropdown-user -->
                         </li>
@@ -248,9 +251,7 @@ if(!$startup_home->is_logged_in())
                     <div class="row bg-title">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                             <h4 class="page-title">Profile page</h4> </div>
-                        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                            <a href="javascript: void(0);" target="_blank" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
-                        </div>
+                       
                     </div>
                     <!-- /.row -->
                     <!-- .row -->
@@ -289,11 +290,16 @@ if(!$startup_home->is_logged_in())
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-danger">
-                                            <div id="angellist">
-                                                <a href="<?php echo $row['AngelList'];?>"><img src="<?php echo BASE_PATH; ?>/images/angel-list-icon.jpg"/></a>
+                                            <div id="linkedin">
+                                                <a href="<?php echo $row['Linkedin'];?>"><i class="ti-linkedin"></i></a>
                                             </div>
                                         </p>
                                     </div>
+                                    <p>&nbsp;</p>
+                                 <div class="col-md-12 col-sm-12 text-center">
+                                    <a href="javascript: void(0);" target="_blank" class="btn btn-danger hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
+                                 </div>   
+
                                 </div>
                             </div>
                         </div>
@@ -301,14 +307,14 @@ if(!$startup_home->is_logged_in())
                             <div class="white-box">
                                 <ul class="nav nav-tabs tabs customtab">
                                     <li class="tab">
-                                        <a href="#profile" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">About</span> </a>
+                                        <a href="#company" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Company</span> </a>
                                     </li>
-                                    <?php //if(!isset($_SESSION['startupSession'])){ ?>
+                                    <?php //if(!isset($_SESSION['entrepreneurSession'])){ ?>
                                     <li class="tab active">
                                         <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Meet the Team</span> </a>
                                     </li>
                                    <?php //} ?>
-                                    <?php if(isset($_SESSION['startupSession'])){ ?>
+                                    <?php if(isset($_SESSION['entrepreneurSession'])){ ?>
                                     <li class="tab">
                                         <a href="#connections" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
                                     </li>
@@ -331,30 +337,75 @@ if(!$startup_home->is_logged_in())
 
                                 <div class="tab-content">
 
-                                    <!---Profile Starts-->
-                                    <div class="tab-pane" id="profile">
+            <!-- ============================================================== -->
+            <!-- Company Tab Starts -->
+            <!-- ============================================================== -->
+                                    <div class="tab-pane active" id="company">
                                         <div id="profile-tab-data">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Startup</strong>
+                                          
+                                          <div class="row">
+                                             <div class="col-md-2 col-xs-6"> 
                                                     <br>
                                                     <p class="text-muted">
-                                                        <?php echo $row['Fullname']; ?>
+                                                        Logo
                                                     </p>
                                                 </div>
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Location</strong>
+
+                                               <div class="col-md-10 col-xs-6"> 
                                                     <br>
                                                     <p class="text-muted">
-                                                        <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
+                                                        <h3><strong><?php echo $row['Fullname']; ?></strong></h3>
+                                                    </p>
+                                                </div>  
+                                          </div>
+                                          <p>&nbsp;</p>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-2 col-xs-6 b-r"> <strong>Location</strong>
+                                                    <br>
+                                                    <p class="text-muted">
+                            <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
 .', '.$row['State']; ?>
                                                     </p>
                                                 </div>
 
-                                                 <div class="col-md-3 col-xs-6"> <strong>Industry</strong>
+                                                 <div class="col-md-2 col-xs-6"> <strong>Industry</strong>
                                                     <br>
                                                     <p class="text-muted">
                                                         <?php echo $row_startup['Industry']; ?>
                                                     </p>
                                                 </div>
+
+                                                <div class="col-md-3 col-xs-6 ">
+                                                   
+                                                    <p class="text-muted">
+                                                    
+                                            <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-purple">
+                                            <div id="facebook">
+                                                <a href="<?php echo $row['Facebook'];?>"><i class="ti-facebook"></i></a>
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-blue">
+                                            <div id="twitter">
+                                                <a href="<?php echo $row['Twitter'];?>"><i class="ti-twitter"></i></a>
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-danger">
+                                            <div id="angellist">
+                                                <a href="<?php echo $row['AngelList'];?>"><img src="<?php echo BASE_PATH; ?>/images/angel-list-icon.jpg"/></a>
+                                            </div>
+                                        </p>
+                                    </div>
+
+
+                                                    </p>
+                                                </div>
+
                                             </div>
                                             <hr>
                                             <?php if($row_startup['About'] != '') { ?>
@@ -367,111 +418,167 @@ if(!$startup_home->is_logged_in())
 
                                         </div>
                                     </div>
-                                    <!---Profile Ends-->
+            <!-- ============================================================== -->
+            <!-- Company Tab Ends -->
+            <!-- ============================================================== -->
 
 
-                                    <!---Meet the Team Starts-->
-                                    <div class="tab-pane active" id="team">
+            <!-- ============================================================== -->
+            <!-- Meet the Team Tab Starts -->
+            <!-- ============================================================== -->
+                            <div class="tab-pane" id="team">
 
-                                        
                                  <div id="existing-team-members">
-
-                                    <div class="col-sm-12">
-                                            <button class="btn btn-default btn-outline add-team-member pull-right">Add a Team Member</button>
+                                   
+                                    <div class="col-sm-12" style="padding-left:15px">
+                                         <div class="row"> 
+                                            <button class="btn btn-default btn-outline add-team-member pull-left">Add a Team Member</button>
                                         </div>
-                                        <p>&nbsp;</p>
+                                     </div>  
 
-                                        <div id="team-tab-data">
-                                            <div class="pull-right">
-                                            <a href="#" id="edit-member"><i class="ti-pencil"><label class="edit-member">Edit</label> </i></a>
-                                            <a href="#" id="delete-member"><i class="ti-trash"><label class="delete-member">Delete</label> </i></a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
-                                                    <br>
-                                                    <p class="text-muted">
-                                                        <?php echo $row['Fullname']; ?>
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6"> <strong>Position</strong>
-                                                    <br>
-                                                    <p class="text-muted">
-                                    <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
-.', '.$row['State']; ?>
-                                                    </p>
-                                                </div>
+                                     <p>&nbsp;</p> 
 
-                                                <div class="col-md-3 col-xs-6"> 
-                                                    <br>
-                                                    <p class="text-muted">
-                                   image
-                                                    </p>
-                                                </div>
+                        <div class="row">              
 
-                                                
-                                            </div>
-                                            <hr>
-                                            <strong>Skills</strong>
-                                            <?php if($row_startup['About'] != '') { ?>
-                                            <p class="m-t-30">
-                                                <?php echo $row_startup['About']; ?>
-                                            </p>
-                                            <?php } ?>
-                                           <hr>
-                                        </div>
-                                    </div>
-
-
-                                    <div id="add_team_member_box" style="display:none">
+                                        <?php
+                                $sql = mysqli_query($connecDB,"SELECT * FROM tbl_team WHERE userID = '".$_GET['id']."' ORDER BY id DESC");
+                                while($row_team = mysqli_fetch_array($sql)){  
+                                        ?>
                                         
-                                         <div id="team-tab-data">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>1111Full Name</strong>
-                                                    <br>
-                                                    <p class="text-muted">
-                                                        <?php echo $row['Fullname']; ?>
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6"> <strong>Position</strong>
-                                                    <br>
-                                                    <p class="text-muted">
-                                    <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
-.', '.$row['State']; ?>
-                                                    </p>
-                                                </div>
+                                        <div id="team-tab-data">
+                                            
 
-                                                <div class="col-md-3 col-xs-6"> 
-                                                    <br>
-                                                    <p class="text-muted">
-                                   image
-                                                    </p>
-                                                </div>
-
-                                                
+               
+                        <div class="col-md-6 col-xs-12">
+                            <div class="user-btm-box-team">
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-purple">
+                                            <div id="facebook">
+                                                <a href="<?php echo $row['Facebook'];?>"><i class="ti-facebook"></i></a>
                                             </div>
-                                            <hr>
-                                            <strong>Skills</strong>
-                                            <?php if($row_startup['About'] != '') { ?>
-                                            <p class="m-t-30">
-                                                <?php echo $row_startup['About']; ?>
-                                            </p>
-                                            <?php } ?>
-                                           <hr>
-                                             
-
-                                            <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member">Save</button>
-                                            <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-team-member">Cancel</button>
-
-                                        </div>                               
-
+                                        </p>
                                     </div>
-
-
-
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-blue">
+                                            <div id="twitter">
+                                                <a href="<?php echo $row['Twitter'];?>"><i class="ti-twitter"></i></a>
+                                            </div>
+                                        </p>
                                     </div>
-                                    <!---Meet the Team Ends-->
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-danger">
+                                            <div id="linkedin">
+                                                <a href="<?php echo $row['Linkedin'];?>"><i class="ti-linkedin"></i></a>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            <div class="white-box border">
+                                <div class="user-bg">
+                                    <div class="overlay-box-grey">
+                                        <div class="user-content">
+                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                                            <div id="fullname">
+                                                <h4 class="text-black"><?php echo $row_team['Fullname']; ?></h4>
+                                            </div>
+                                            <div id="city-state">
+                                                <?php if($row['City'] != ''){ ?>
+                                                <h5 class="text-black"><?php echo $row_team['Position']; ?></h5>
+                                                <?php } ?>
+                                            </div>
 
-                                    <!---Connections Starts-->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div class="user-btm-box">
+                                    
+                                    
+
+                                        <?php 
+                                        $ctop = $row_team['Skills']; 
+                                        $ctop = explode(',',$ctop); 
+
+                                        if($row_team['Skills'] != '' && $row_team['Skills'] != 'NULL' ){
+
+                                        foreach($ctop as $skill)   { 
+                                                       
+                                        ?>
+                                        <div class="skillsdiv_teammember"><?php echo $skill; ?></div>
+
+                                        <?php } } ?>
+
+                                        
+                                        
+                                </div>
+                                
+                                <hr>
+                                           
+                                            <div class="pull-right" style="padding-right:15px;">
+                                            <a href="#" id="edit-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-pencil"><label class="edit-team-member">Edit</i></a>&nbsp;&nbsp;&nbsp;
+                                            <a href="#" id="delete-member"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
+                                            </div>
+                                            <br>
+                                            
+                            </div>
+                          
+                                           
+
+<script>
+ 
+
+ $("#edit-member-"+<?php echo $row_team['id']; ?>).click(function (e) {
+    e.preventDefault();
+
+    var url_link = 'http://localhost/creative/pos/video/startup/';
+
+    var data_id = $("#edit-member-"+<?php echo $row_team['id']; ?>).attr("data-id");
+    //alert(data_id);
+
+    //alert(userid);
+    $.ajax({
+            url: url_link+"edit-member.php", 
+            method: "POST",
+            data: {id: data_id},
+            dataType: "html",
+            success: function(response) {
+                //alert(data);  
+                //var skills = $(response).filter('#the-skill-set').text();
+                $("#existing-team-members").html(response);
+                //alert(skills_count);  
+
+            }
+        });
+
+
+});
+
+
+</script>   
+
+
+                                        </div>
+
+
+                                          
+                                          
+                                           
+                                        </div>
+
+                                        <?php } ?>
+                                        </div>  
+                                    </div>
+                            </div>
+            <!-- ============================================================== -->
+            <!-- Meet the Team Tab Ends -->
+            <!-- ============================================================== -->
+            
+
+            <!-- ============================================================== -->
+            <!-- Connections Tab Starts -->
+            <!-- ============================================================== -->
+
                                     <div class="tab-pane" id="connections">
                                         <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny footable-loaded footable tablet breakpoint">
                                             <thead>
@@ -494,12 +601,14 @@ if(!$startup_home->is_logged_in())
                                             </tbody>
                                         </table>
                                     </div>
-                                    <!---Connections Ends-->
+            <!-- ============================================================== -->
+            <!-- Connections Tab Ends -->
+            <!-- ============================================================== -->
                                    
                                     
-
-                                    <!---Videos Starts-->
-
+            <!-- ============================================================== -->
+            <!-- Videos Tab Starts -->
+            <!-- ============================================================== -->
                                     <div class="tab-pane" id="video">
                                         <form class="form-horizontal form-material">
                                             <div class="form-group">
@@ -516,16 +625,26 @@ if(!$startup_home->is_logged_in())
                                         </form>
                                     </div>
 
-                                    <!---Videos Ends-->
+            <!-- ============================================================== -->
+            <!-- Videos Tab Ends -->
+            <!-- ============================================================== -->
 
 
-                                    <!---Settings Starts-->
+            <!-- ============================================================== -->
+            <!-- Settings Tab Starts -->
+            <!-- ============================================================== -->
                                     <div class="tab-pane" id="settings">
-                                        <form class="form-horizontal form-material">
+                                        <form class="form-horizontal form-material" id="update-profile">
                                             <div class="form-group">
                                                 <label class="col-md-12">Full Name</label>
                                                 <div class="col-md-12">
                                                     <input type="text" id="fm_fullname" name="fm_fullname" value="<?php echo $row['Fullname'];?>" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Position</label>
+                                                <div class="col-md-12">
+                                                    <input type="text" id="fm_position" name="fm_position" placeholder="eg. CEO" value="<?php echo $row['Position'];?>" class="form-control form-control-line">
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Email</label>
@@ -552,22 +671,8 @@ if(!$startup_home->is_logged_in())
                                                 <div class="col-md-4">
                                                     <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line">
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <select class="form-control" id="fm_skills_level" name="fm_skills_level">
-                                                        <option value="">Select your skill level</option>
-                                                        <option value="10">10%</option>
-                                                        <option value="20">20%</option>
-                                                        <option value="30">30%</option>
-                                                        <option value="40">40%</option>
-                                                        <option value="50">50%</option>
-                                                        <option value="60">60%</option>
-                                                        <option value="70">70%</option>
-                                                        <option value="80">80%</option>
-                                                        <option value="90">90%</option>
-                                                        <option value="100">100%</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
+                                               
+                                                <div class="col-md-8">
                                                     <button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button>
                                                 </div>
                                                 <div class="col-md-12" style="padding:15px 0 0 0;">
@@ -579,7 +684,7 @@ if(!$startup_home->is_logged_in())
 
 
                                                         //MySQL query
-                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_startup WHERE userID ='".$_GET['id']."' ");
+                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE userID ='".$_GET['id']."' ");
 
 
                                                         //get all records from add_delete_record table
@@ -655,10 +760,11 @@ if(!$startup_home->is_logged_in())
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
-                                                        <label class="col-md-3" style="padding-left:0px;">AngelList</label>
-                                                        <input type="text" id="fm_angellist" name="fm_angellist" value="<?php echo $row['AngelList'];?>" class="form-control form-control-line"> </div>
+                                                        <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
+                                                        <input type="text" id="fm_linkedin" name="fm_linkedin" value="<?php echo $row['Linkedin'];?>" class="form-control form-control-line"> </div>
                                                 </div>
                                             </div>
+                                            <!--
                                             <div class="form-group">
                                                 <label class="col-md-12">About Me</label>
                                                 <div class="col-md-12">
@@ -666,7 +772,7 @@ if(!$startup_home->is_logged_in())
                                                         <?php echo $row['About'] ;?>
                                                     </textarea>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <div class="form-group">
                                                 <div class="col-sm-12">
                                                     <button class="btn btn-success btn-update-profile">Update Profile</button>
@@ -674,7 +780,9 @@ if(!$startup_home->is_logged_in())
                                             </div>
                                         </form>
                                     </div>
-                                     <!---Settings Ends-->
+            <!-- ============================================================== -->
+            <!-- Settings Tab Ends -->
+            <!-- ============================================================== -->
                                 </div>
                             </div>
                         </div>
@@ -731,7 +839,7 @@ if(!$startup_home->is_logged_in())
         <script src="<?php echo BASE_PATH; ?>/js/jquery.toast.js"></script>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/js/profile-startup.js"></script>
+        <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
         <!--Style Switcher -->
         <script src="<?php echo BASE_PATH; ?>/js/jQuery.style.switcher.js"></script>
     </body>

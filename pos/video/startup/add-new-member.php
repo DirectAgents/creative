@@ -1,59 +1,76 @@
 <?php
 
  session_start();
- require_once '../class.startup.php';
+ require_once '../class.entrepreneur.php';
  require_once '../class.investor.php';
  require_once '../base_path.php';
  include_once("../config.php"); 
 
 
-$sql = "SELECT * FROM tbl_startup WHERE userID ='".$_POST['userid']."'";  
-$result = mysqli_query($connecDB, $sql);  
-$row = mysqli_fetch_array($result);
+if($_POST){
+
+
+
 
  ?>
 
-
-
                                         
                                          <div id="team-tab-data">
-                                            <div class="row">
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>1111Full Name</strong>
-                                                    <br>
-                                                    <p class="text-muted">
-                                                        <?php echo $row['Fullname']; ?>
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6"> <strong>Position</strong>
-                                                    <br>
-                                                    <p class="text-muted">
-                                    <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
-.', '.$row['State']; ?>
-                                                    </p>
-                                                </div>
+                                            <form class="form-horizontal form-material" id="save-team-member">
 
-                                                <div class="col-md-3 col-xs-6"> 
-                                                    <br>
-                                                    <p class="text-muted">
-                                   image
-                                                    </p>
-                                                </div>
+                                                <input type="hidden" name="userid" id="userid" value="<?php echo $_POST['userid']; ?>">
 
-                                                
+                                            <div class="form-group">
+                                                <label class="col-md-12">Full Name</label>
+                                                <div class="col-md-12">
+                                                    <input type="text" id="fm_fullname" name="fm_fullname" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
                                             </div>
-                                            <hr>
-                                            <strong>Skills</strong>
-                                            <?php if($row_startup['About'] != '') { ?>
-                                            <p class="m-t-30">
-                                                <?php echo $row_startup['About']; ?>
-                                            </p>
-                                            <?php } ?>
-                                           <hr>
+                                            
+                                            <div class="form-group">
+                                                <label class="col-md-12">Position</label>
+                                                <div class="col-md-12">
+                                                    <input type="text" id="fm_position" name="fm_position" placeholder="eg. CEO"  class="form-control form-control-line">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label class="col-md-12">Skills Set</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line">
+                                                </div>
+                                              
+                                                <div class="col-md-8">
+                                                    <button class="btn btn-add" id="add-skills-team-member"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                                                </div>
+                                                <div class="col-md-12" style="padding:15px 0 0 0;">
+                                                    <div id="responds">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           <!--
+                                            <div class="form-group">
+                                                <label class="col-md-12">About the member</label>
+                                                <div class="col-md-12">
+                                                    <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line"></textarea>
+                                                    
+                                                </div>
+                                            </div>-->
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member">Save</button>
+                                            <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-team-member">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                              
 
-                                            <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member">Save</button>
-                                            <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-team-member">Cancel</button>
+                                           
 
-                                        </div>                               
+                                        </div>     
 
-                                   
+    <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
+                                                              
+
+  
+ <?php } ?>                                  

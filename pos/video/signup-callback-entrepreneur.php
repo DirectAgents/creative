@@ -78,7 +78,7 @@ if (! $accessToken->isLongLived()) {
   var_dump($accessToken->getValue());
 }
 
-$_SESSION['fb_access_token_startup'] = (string) $accessToken;
+$_SESSION['fb_access_token_entrepreneur'] = (string) $accessToken;
 
 
 

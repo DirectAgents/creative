@@ -4,7 +4,7 @@ require_once 'dbconfig.php';
 
 date_default_timezone_set('America/New_York');
 
-class STARTUP
+class ENTREPRENEUR
 {	
 
 	private $conn;
@@ -43,7 +43,7 @@ class STARTUP
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 
-			$stmt = $this->conn->prepare("INSERT INTO tbl_startup(Fullname,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
+			$stmt = $this->conn->prepare("INSERT INTO tbl_entrepreneur(Fullname,Zip,City,State,userEmail,userPass,tokenCode, EmailNotifications, Date_Created) 
 			                                             VALUES(:fullname,:user_zip,'".$userRow['city']."','".$userRow['state']."',:user_mail, :user_pass, :active_code, 'Participant requests to meet you,Email reminder about an upcoming meeting', '".$the_date."')");
 			$stmt->bindparam(":fullname",$fullname);
 			$stmt->bindparam(":user_zip",$zip);
@@ -73,7 +73,7 @@ class STARTUP
 				{
 					if($userRow['userPass']==md5($upass))
 					{
-						$_SESSION['startupSession'] = $userRow['userID'];
+						$_SESSION['entrepreneurSession'] = $userRow['userID'];
 						
 						//Remember me
 						
@@ -131,7 +131,7 @@ class STARTUP
 	
 	public function is_logged_in()
 	{
-		if(isset($_SESSION['startupSession']))
+		if(isset($_SESSION['entrepreneurSession']))
 		{
 			return true;
 		}
@@ -145,7 +145,7 @@ class STARTUP
 	public function logout()
 	{
 		session_destroy();
-		$_SESSION['startupSession'] = false;
+		$_SESSION['entrepreneurSession'] = false;
 	}
 	
 	function send_mail($email,$message,$subject)
