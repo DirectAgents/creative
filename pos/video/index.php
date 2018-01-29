@@ -431,7 +431,6 @@ echo 'id: ' . $user['id'];
 
 
 
-<!-- 1. Include the LinkedIn JavaScript API and define a onLoad callback function -->
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
   api_key: 78x2ye1ktvzj7d
   onLoad: onLinkedInLoad
@@ -439,13 +438,11 @@ echo 'id: ' . $user['id'];
 </script>
 
 <script type="text/javascript">
-  // 2. Runs when the JavaScript framework is loaded
   function onLinkedInLoad() {
     IN.Event.on(IN, "auth", onLinkedInAuth);
   }
 
  function logout() {
-  //alert("asdfa");
   IN.User.logout();
   alert("loggedout");
 
@@ -455,14 +452,12 @@ function login() {
   IN.User.authorize();
  }
   
-  // 2. Runs when the viewer has authenticated
   function onLinkedInAuth() {
 
     IN.API.Profile("me").fields("id","first-name", "last-name", "email-address", "picture-url").result(displayProfiles);
     alert("loggedin");
   }
 
-  // 2. Runs when the Profile() API call returns successfully
   function displayProfiles(profiles) {
     member = profiles.values[0];
 
@@ -479,11 +474,6 @@ function login() {
                 //alert(skills_count);  
             }
         });
-
-
-
-    document.getElementById("profiles").innerHTML = 
-      "<p>"+member.id+"<br> " +  member.firstName + "<br> " + member.lastName + "<br>"+member.emailAddress+"</p>";
   }
 </script>   
 
