@@ -16,10 +16,15 @@ $row = mysqli_fetch_array($result);
 
 
  ?>
+
+
+
+
+
     <div id="team-tab-data">
-        <form class="form-horizontal form-material" id="save-team-member">
-            <input type="text" name="userid" id="userid" value="<?php echo $_SESSION['entrepreneurSession']; ?>">
-            <input type="text" name="id" id="id" value="<?php echo $_POST['id']; ?>">
+       
+            <input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['entrepreneurSession']; ?>">
+            <input type="hidden" name="id" id="id" value="<?php echo $_POST['id']; ?>">
             <div class="form-group">
                 <label class="col-md-12">Full Name</label>
                 <div class="col-md-12">
@@ -90,7 +95,7 @@ $row = mysqli_fetch_array($result);
                                                         echo '<div class="the-skill">';
                                                         echo $skill;
                                                         echo '</div>';
-                                                        echo '<a href="#" class="del_button_teammmember_skills" id="del-'.$row3['id'].'">';
+                                                        echo '<a href="#" class="del_button" id="del-'.$row3['id'].'">';
                                                         echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
                                                         echo '</a></div>';
                                                         //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
@@ -125,19 +130,29 @@ $row = mysqli_fetch_array($result);
                                                 </div>
                                             </div>
 
+
+                                       <div class="form-group">
+                                                <div class="col-md-3">   
+                                             <a href="javascript:void(0)">
+                                                <?php if($row['ProfileImage'] != '') { ?>
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['ProfileImage'];?>" class="thumb-lg img-circle" alt="img">  
+                                            <?php }else{ ?>
+                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <?php } ?>
+                                            </a>
+                                                </div>
+                                       </div>           
+
             <!--<div class="form-group">
                 <label class="col-md-12">About the member</label>
                 <div class="col-md-12">
                     <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line"></textarea>
                 </div>
             </div>-->
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member">Save</button>
-                    <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-team-member">Cancel</button>
-                </div>
-            </div>
-        </form>
+
+             
+
+          
+        
     </div>
-    <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
     <?php } ?>

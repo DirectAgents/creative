@@ -14,9 +14,8 @@ if($_POST){
 
  ?>
 
-                                        
+      
                                          <div id="team-tab-data">
-                                            <form class="form-horizontal form-material" id="save-team-member">
 
                                                 <input type="hidden" name="userid" id="userid" value="<?php echo $_POST['userid']; ?>">
 
@@ -56,20 +55,16 @@ if($_POST){
                                                     
                                                 </div>
                                             </div>-->
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member">Save</button>
-                                            <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-team-member">Cancel</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                             
+
+
+                                          
                                              
 
                                            
 
                                         </div>     
 
-    <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
                                                               
 
   

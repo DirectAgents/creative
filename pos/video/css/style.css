@@ -20129,7 +20129,7 @@ ul.pro-amenities li span i {
     background: #fff;
     /*background: rgb(182, 232, 255);*/
     margin-bottom: 5px;
-    margin-left: 15px;
+    margin-left: 3px;
     border-radius: 5px;
     max-width: 400px;
     font-size: 13px;
@@ -20141,6 +20141,9 @@ ul.pro-amenities li span i {
 
 .icon_del{float:left; margin:4px 0 0 10px;}
 
+ul#preview {list-style-type: none; padding:0px;}
+
+#upload-headshot{display:none;}
 
 
 #pagination li {

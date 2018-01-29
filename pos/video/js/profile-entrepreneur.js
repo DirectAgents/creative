@@ -323,6 +323,7 @@ $.ajax({
 
 ////////////////Team Members//////////////////////
 
+
 $(".add-team-member").click(function (e) {
     e.preventDefault();
 
@@ -337,6 +338,8 @@ $(".add-team-member").click(function (e) {
                 //alert(data);  
                 //var skills = $(response).filter('#the-skill-set').text();
                 $("#existing-team-members").html(response);
+
+                $("#upload-headshot").show();
                 //alert(skills_count);  
 
             }
@@ -351,8 +354,7 @@ $(".add-team-member").click(function (e) {
 
 
 
-
-$(".cancel-team-member").click(function (e) {
+$(".cancel-team-member, #team-tab").click(function (e) {
     e.preventDefault();
 
     var userid = $('input[name=userid]').val();
@@ -383,11 +385,12 @@ $( "#save-team-member" ).on( "submit", function(e) {
     var fm_about = $("textarea[name='fm_about']").val();
     var fm_fullname = $("input[name='fm_fullname']").val();
     var fm_position = $("input[name='fm_position']").val();
+    var headshot = $('input[name="team_member_headshot[]"]:checked').map(function() { return this.value; }).get().join(",");
     var fm_facebook = $("input[name='fm_facebook']").val();
     var fm_twitter = $("input[name='fm_twitter']").val();
     var fm_linkedin = $("input[name='fm_linkedin']").val();
     var skills = $('input[name="skillselectionteammember[]"]:checked').map(function() { return this.value; }).get().join(",");
-    alert(skills);
+    //alert(skills);
     
     if (fm_fullname == '') {
         $('input[name=fm_fullname]').css('border-bottom','1px solid red'); 
@@ -411,7 +414,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
     $.ajax({
             url: url_link+"save-team-members.php", 
             method: "POST",
-            data: { id: id, userid: userid, fullname : fm_fullname, position : fm_position, skills : skills, about : fm_about },
+            data: { id: id, userid: userid, fullname : fm_fullname, position : fm_position, skills : skills, about : fm_about, headshot : headshot, facebook : fm_facebook, twitter : fm_twitter, linkedin : fm_linkedin },
             dataType: "html",
             success: function(response) {
                 //alert(data);  
@@ -425,6 +428,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
       }
 });
+
 
 
 $("#add-skills-team-member").click(function (e) {
@@ -453,6 +457,8 @@ $("#add-skills-team-member").click(function (e) {
       }
       });
   });
+
+
 
 
 

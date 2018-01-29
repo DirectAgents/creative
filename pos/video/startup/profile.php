@@ -81,6 +81,41 @@ if(!$startup_home->is_logged_in())
 <![endif]-->
 
 
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://res.cloudinary.com/demo/raw/upload/v1425809551/jquery.cloudinary_t0p9km.js"></script>
+        <script type="text/javascript" src="https://widget.cloudinary.com/global/all.js"></script>
+
+         <script type="text/javascript">
+        //<![CDATA[
+        $(window).load(function() {
+            var cloud_name = 'dgml9ji66';
+            var preset_name = 'scnk5xom';
+            if (cloud_name != '' && preset_name != '') $('#message').remove();
+
+
+            $.cloudinary.config({ cloud_name: cloud_name });
+            cloudinary.setCloudName(cloud_name);
+            $('#upload_widget_multiple').click(function() {
+                //alert("add");
+                $("#preview").show();
+                cloudinary.openUploadWidget({ upload_preset: preset_name, sources: ['local', 'url', 'image_search'], multiple: false },
+                    function(error, result) {
+                        console.log(error, result);
+                        ids_and_ratios = {};
+                        $.each(result, function(i, v) {
+                            $('#preview').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
+                            $('#headshot_id').html(v["public_id"])
+                            $('#url_preview').html('<input type="checkbox" style="display:none" name="team_member_headshot[]" value="' + v["public_id"] + '" checked/>')
+                        });
+                    });
+            });
+
+        });
+        //]]>
+        </script>
+
+
 
 
     </head>
@@ -251,6 +286,7 @@ if(!$startup_home->is_logged_in())
                     <div class="row bg-title">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                             <h4 class="page-title">Profile page</h4> </div>
+
                        
                     </div>
                     <!-- /.row -->
@@ -408,6 +444,7 @@ if(!$startup_home->is_logged_in())
 
                                             </div>
                                             <hr>
+                                            <strong>About</strong>
                                             <?php if($row_startup['About'] != '') { ?>
                                             <p class="m-t-30">
                                                 <?php echo $row_startup['About']; ?>
@@ -426,9 +463,11 @@ if(!$startup_home->is_logged_in())
             <!-- ============================================================== -->
             <!-- Meet the Team Tab Starts -->
             <!-- ============================================================== -->
-                            <div class="tab-pane" id="team">
+             <div class="tab-pane" id="team">
 
-                                 <div id="existing-team-members">
+                <form class="form-horizontal form-material" id="save-team-member">
+                
+                        <div id="existing-team-members">
                                    
                                     <div class="col-sm-12" style="padding-left:15px">
                                          <div class="row"> 
@@ -445,30 +484,28 @@ if(!$startup_home->is_logged_in())
                                 while($row_team = mysqli_fetch_array($sql)){  
                                         ?>
                                         
-                                        <div id="team-tab-data">
-                                            
-
-               
+                    <div id="team-tab-data">
+                                
                         <div class="col-md-6 col-xs-12">
                             <div class="user-btm-box-team">
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-purple">
                                             <div id="facebook">
-                                                <a href="<?php echo $row['Facebook'];?>"><i class="ti-facebook"></i></a>
+                                                <a href="<?php echo $row_team['Facebook'];?>"><i class="ti-facebook"></i></a>
                                             </div>
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-blue">
                                             <div id="twitter">
-                                                <a href="<?php echo $row['Twitter'];?>"><i class="ti-twitter"></i></a>
+                                                <a href="<?php echo $row_team['Twitter'];?>"><i class="ti-twitter"></i></a>
                                             </div>
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-danger">
                                             <div id="linkedin">
-                                                <a href="<?php echo $row['Linkedin'];?>"><i class="ti-linkedin"></i></a>
+                                                <a href="<?php echo $row_team['Linkedin'];?>"><i class="ti-linkedin"></i></a>
                                             </div>
                                         </p>
                                     </div>
@@ -477,7 +514,14 @@ if(!$startup_home->is_logged_in())
                                 <div class="user-bg">
                                     <div class="overlay-box-grey">
                                         <div class="user-content">
-                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                                            <a href="javascript:void(0)">
+                                            <?php if($row_team['ProfileImage'] != '') { ?>
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_team['ProfileImage'];?>" class="thumb-lg img-circle" alt="img">  
+                                            <?php }else{ ?>
+                                           <img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <?php } ?>
+                                              
+                                            </a>
                                             <div id="fullname">
                                                 <h4 class="text-black"><?php echo $row_team['Fullname']; ?></h4>
                                             </div>
@@ -546,7 +590,10 @@ if(!$startup_home->is_logged_in())
                 //alert(data);  
                 //var skills = $(response).filter('#the-skill-set').text();
                 $("#existing-team-members").html(response);
-                //alert(skills_count);  
+
+                $("#upload-headshot").show();
+                $("#preview").hide();
+                
 
             }
         });
@@ -569,6 +616,33 @@ if(!$startup_home->is_logged_in())
                                         <?php } ?>
                                         </div>  
                                     </div>
+
+
+                                <div id="upload-headshot">
+                                    <div class="form-group">
+                                                <div class="col-sm-12">
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple">Upload Headshot</a>
+                                                            <br>
+                                                            <br>
+                                                            <ul id="preview"></ul>
+                                                            <div id="url_preview"><input type="checkbox" style="display:none" name="team_member_headshot[]" value="$row_team['ProfileImage']" checked/></div>
+                                                            <!--<div id="headshot_id"></div>-->
+                                                </div>
+                                            </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-team-member">Cancel</button>
+                                    </div>
+                                </div>
+
+                             </form>   
+
+
+
                             </div>
             <!-- ============================================================== -->
             <!-- Meet the Team Tab Ends -->
@@ -803,7 +877,6 @@ if(!$startup_home->is_logged_in())
         <!-- ============================================================== -->
         <!-- All Jquery -->
         <!-- ============================================================== -->
-        <script src="<?php echo BASE_PATH; ?>/js/jquery.min.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="<?php echo BASE_PATH; ?>/js/bootstrap.min.js"></script>
         <!-- Menu Plugin JavaScript -->

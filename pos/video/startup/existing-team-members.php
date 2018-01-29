@@ -42,21 +42,21 @@ $row = mysqli_fetch_array($result);
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-purple">
                                             <div id="facebook">
-                                                <a href="<?php echo $row['Facebook'];?>"><i class="ti-facebook"></i></a>
+                                                <a href="<?php echo $row_team['Facebook'];?>"><i class="ti-facebook"></i></a>
                                             </div>
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-blue">
                                             <div id="twitter">
-                                                <a href="<?php echo $row['Twitter'];?>"><i class="ti-twitter"></i></a>
+                                                <a href="<?php echo $row_team['Twitter'];?>"><i class="ti-twitter"></i></a>
                                             </div>
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-danger">
                                             <div id="linkedin">
-                                                <a href="<?php echo $row['Linkedin'];?>"><i class="ti-linkedin"></i></a>
+                                                <a href="<?php echo $row_team['Linkedin'];?>"><i class="ti-linkedin"></i></a>
                                             </div>
                                         </p>
                                     </div>
@@ -65,7 +65,13 @@ $row = mysqli_fetch_array($result);
                                 <div class="user-bg">
                                     <div class="overlay-box-grey">
                                         <div class="user-content">
-                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                                            <a href="javascript:void(0)">
+                                                <?php if($row_team['ProfileImage'] != '') { ?>
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_team['ProfileImage'];?>" class="thumb-lg img-circle" alt="img">  
+                                            <?php }else{ ?>
+                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <?php } ?>
+                                            </a>
                                             <div id="fullname">
                                                 <h4 class="text-black"><?php echo $row_team['Fullname']; ?></h4>
                                             </div>
@@ -133,6 +139,9 @@ $row = mysqli_fetch_array($result);
                 //alert(data);  
                 //var skills = $(response).filter('#the-skill-set').text();
                 $("#existing-team-members").html(response);
+
+                $("#upload-headshot").show();
+                $("#preview").hide();
                 //alert(skills_count);  
 
             }
@@ -158,7 +167,6 @@ $row = mysqli_fetch_array($result);
 
                                   
 
-  <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
-
+<script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
 
  <?php } ?>                                  
