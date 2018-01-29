@@ -18,13 +18,7 @@ $row = mysqli_fetch_array($result);
  ?>
 
 
-                            <div class="col-sm-12" style="padding-left:15px">
-                                         <div class="row"> 
-                                            <button class="btn btn-default btn-outline add-team-member pull-left">Add a Team Member</button>
-                                        </div>
-                                     </div>  
-
-                                     <p>&nbsp;</p> 
+                           
 
                         <div class="row">              
 
@@ -110,7 +104,7 @@ $row = mysqli_fetch_array($result);
                                            
                                             <div class="pull-right" style="padding-right:15px;">
                                             <a href="#" id="edit-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-pencil"><label class="edit-team-member">Edit</i></a>&nbsp;&nbsp;&nbsp;
-                                            <a href="#" id="delete-member"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
+                                            <a href="#" id="delete-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
                                             </div>
                                             <br>
                                             
@@ -141,7 +135,10 @@ $row = mysqli_fetch_array($result);
                 $("#existing-team-members").html(response);
 
                 $("#upload-headshot").show();
+                $("#save-cancel").show();
                 $("#preview").hide();
+                $("#add-a-team-member").hide();
+
                 //alert(skills_count);  
 
             }
@@ -149,6 +146,71 @@ $row = mysqli_fetch_array($result);
 
 
 });
+
+
+
+//////Delete Team Member/////////
+
+    $('#delete-member-'+<?php echo $row_team['id']; ?>).click(function(e) {
+        e.preventDefault();
+        
+        var url_link = 'http://localhost/creative/pos/video/startup/';
+        
+        var data_id = $("#edit-member-"+<?php echo $row_team['id']; ?>).attr("data-id");
+        //var userid = $("input[name=userid]").val();
+        //alert(data.id);
+
+
+        ConfirmDialog('Are you sure');
+
+        function ConfirmDialog(message) {
+            $('<div></div>').appendTo('body')
+                .html('<div><h6>' + message + '?</h6></div>')
+                .dialog({
+                    modal: true,
+                    zIndex: 10000,
+                    autoOpen: true,
+                    width: 'auto',
+                    resizable: false,
+                    buttons: {
+                        Yes: function() {
+                            // $(obj).removeAttr('onclick');                                
+                            // $(obj).parents('.Parent').remove();
+
+                            //$('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
+
+                            $(this).dialog("close");
+
+                            $.ajax({
+                                url: url_link+"delete-team-member.php",
+                                method: "POST",
+                                data: {id: data_id},
+                                dataType: "html",
+                                success: function(response) {
+                                    //alert(data);
+                                    $('#deleted').fadeIn("fast");
+                                    $('#deleted').delay(2000).fadeOut("slow");
+
+                                }
+                            });
+
+                            e.preventDefault();
+                        },
+                        No: function() {
+
+                            //$('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
+
+                            $(this).dialog("close");
+                        }
+                    },
+                    close: function(event, ui) {
+                        $(this).remove();
+                    }
+                });
+        };
+
+
+    }); 
 
 
 </script>  
@@ -167,6 +229,5 @@ $row = mysqli_fetch_array($result);
 
                                   
 
-<script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
 
  <?php } ?>                                  

@@ -340,6 +340,8 @@ $(".add-team-member").click(function (e) {
                 $("#existing-team-members").html(response);
 
                 $("#upload-headshot").show();
+                $("#save-cancel").show();
+                $("#add-a-team-member").hide();
                 //alert(skills_count);  
 
             }
@@ -368,6 +370,9 @@ $(".cancel-team-member, #team-tab").click(function (e) {
                 //alert(data);  
                 //var skills = $(response).filter('#the-skill-set').text();
                 $("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid);
+                $("#add-a-team-member").show();
+                $("#upload-headshot").hide();
+                $("#save-cancel").hide();
                 //alert(skills_count);  
 
             }
@@ -420,6 +425,12 @@ $( "#save-team-member" ).on( "submit", function(e) {
                 //alert(data);  
                 //var skills = $(response).filter('#the-skill-set').text();
                 $("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid);
+
+                $("#upload-headshot").hide();
+                $("#save-cancel").hide();
+
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
                 //alert(skills_count);  
 
             }
@@ -457,6 +468,11 @@ $("#add-skills-team-member").click(function (e) {
       }
       });
   });
+
+
+
+
+
 
 
 
