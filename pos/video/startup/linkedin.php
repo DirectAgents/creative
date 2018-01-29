@@ -27,6 +27,8 @@ $row = mysqli_fetch_array($sql);
 
 $_SESSION['entrepreneurSession'] = $row['userID'];
 
+echo $_SESSION['entrepreneurSession'];
+exit();
 
 }else{
 
@@ -37,10 +39,18 @@ Email='".$_POST['email']."',
 linkedin_picture_link='".$_POST['picture']."'
 
 
-WHERE id='".$_SESSION['entrepreneurSession']."'";
+WHERE linkedin_id='".$_POST['userid']."'";
 
 mysqli_query($connecDB, $sql);
 
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE linkedin_id = '".$_POST['userid']."' ");
+$row = mysqli_fetch_array($sql);
+
+$_SESSION['entrepreneurSession'] = $row['userID'];
+
+echo $_SESSION['entrepreneurSession'];
+exit();
 
 }
 

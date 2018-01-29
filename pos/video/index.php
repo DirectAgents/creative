@@ -444,8 +444,8 @@ echo 'id: ' . $user['id'];
 
  function logout() {
   IN.User.logout();
-  alert("loggedout");
-
+  //alert("loggedout");
+  window.location.href = "logout.php";
   }
 
 function login() {
@@ -461,7 +461,7 @@ function login() {
   function displayProfiles(profiles) {
     member = profiles.values[0];
 
-
+     var url_link = 'http://localhost/creative/pos/video/startup/';
      $.ajax({
             url:"startup/linkedin.php",
             method: "POST",
@@ -472,6 +472,7 @@ function login() {
                 //var skills = $(response).filter('#the-skill-set').text();
                 //$('#profile-tab-data').html(response);
                 //alert(skills_count);  
+                //window.location.href = url_link+"profile/"+response;
             }
         });
   }
