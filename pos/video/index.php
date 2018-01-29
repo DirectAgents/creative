@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+echo $_SESSION['entrepreneurSession'];
+
 ob_start();
 
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
@@ -429,6 +431,65 @@ echo 'id: ' . $user['id'];
 
 
 
+<!-- 1. Include the LinkedIn JavaScript API and define a onLoad callback function -->
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
+  api_key: 78x2ye1ktvzj7d
+  onLoad: onLinkedInLoad
+  authorize: true
+</script>
+
+<script type="text/javascript">
+  // 2. Runs when the JavaScript framework is loaded
+  function onLinkedInLoad() {
+    IN.Event.on(IN, "auth", onLinkedInAuth);
+  }
+
+ function logout() {
+  //alert("asdfa");
+  IN.User.logout();
+  alert("loggedout");
+
+  }
+
+function login() {
+  IN.User.authorize();
+ }
+  
+  // 2. Runs when the viewer has authenticated
+  function onLinkedInAuth() {
+
+    IN.API.Profile("me").fields("id","first-name", "last-name", "email-address", "picture-url").result(displayProfiles);
+    alert("loggedin");
+  }
+
+  // 2. Runs when the Profile() API call returns successfully
+  function displayProfiles(profiles) {
+    member = profiles.values[0];
+
+
+     $.ajax({
+            url:"startup/linkedin.php",
+            method: "POST",
+            data: {userid: member.id, firstname: member.firstName, lastname: member.lastName, email: member.emailAddress, picture: member.pictureUrl },
+            dataType: "html",
+            success: function(response) {
+                //alert(data);  
+                //var skills = $(response).filter('#the-skill-set').text();
+                //$('#profile-tab-data').html(response);
+                //alert(skills_count);  
+            }
+        });
+
+
+
+    document.getElementById("profiles").innerHTML = 
+      "<p>"+member.id+"<br> " +  member.firstName + "<br> " + member.lastName + "<br>"+member.emailAddress+"</p>";
+  }
+</script>   
+
+
+
+
 
     </head>
 
@@ -809,6 +870,22 @@ echo 'id: ' . $user['id'];
                                     </a>
                                 </div>
                             </div>
+
+                              <div class="col-md-12">
+                                    <div class="login-buttons">
+                                    <a href="<?php echo $authUrl; ?>">
+                                      <div class="li-connect connect-background" data-track="home:facebook-connect">
+                         <span class="fa fa-linkedin"></span>
+                         <a href="#" onclick="login();">
+                         <span class="connect-text">Connect with Linkedin</span>
+                         </a>
+                         <a href="#" onclick="logout();">logout</a>
+                    </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
                             </div> 
                         </div>
                         <p class="signup-light text-center">We won't ever post anything on Facebook without your permission.</p>

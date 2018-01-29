@@ -3720,14 +3720,17 @@ form .tooltip-inner {
 
 
 
-/*Facebook Button & Google Button*/
+/*Facebook Button & Google Button & Linkedin Button*/
 
 .fb-connect {
     background-image: url(https://nb9-stumbleupon.netdna-ssl.com/O5AlhkxLOIVr3-WfINichw);
 }
 
+.li-connect {
+    background-image: url(../images/linkedin-btn.png);
+}
+
 .connect-text {
-    font-family: "proxima_nova_rgbold", sans-serif;
     font-size: 20px;
     color: #fff;
     float: left;
