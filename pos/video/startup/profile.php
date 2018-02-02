@@ -181,9 +181,12 @@ if(!$startup_home->is_logged_in())
                                             <div id="fullname">
                                                 <h4 class="text-white"><?php echo $row['Fullname'];?></h4>
                                             </div>
-                                            <div id="city-state">
-                                                <?php if($row['City'] != ''){ ?>
-                                                <h5 class="text-white"><?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];?></h5>
+                                            <div id="position">
+                                                <?php if($row['Position'] != ''){ ?>
+                                                <h5 class="text-white"><?php 
+                                                //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
+                                                echo $row['Position'];
+                                                ?></h5>
                                                 <?php } ?>
                                             </div>
                                         </div>

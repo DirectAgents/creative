@@ -27,8 +27,8 @@ e.preventDefault();
                 var fullname = $(response).filter('#fullname').html();
                 $('#fullname').html(fullname);
 
-                var city_state = $(response).filter('#city-state').html();
-                $('#city-state').html(city_state);
+                var position = $(response).filter('#position').html();
+                $('#position').html(position);
 
                 var facebook = $(response).filter('#facebook').html();
                 if (facebook.indexOf("http://") == 0 || facebook.indexOf("https://") == 0) {

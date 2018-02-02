@@ -62,9 +62,10 @@ echo '</h4>';
 echo '</div>';
 
 
-echo '<div id="city-state">';
+echo '<div id="position">';
 echo '<h5 class="text-white">';
-echo $city.', '.$state_final;
+//echo $city.', '.$state_final;
+echo $_POST['fm_position'];
 echo '</h5>';
 echo '</div>';
 

@@ -56,7 +56,11 @@ $row = mysqli_fetch_array($result);
                                              <div class="col-md-2 col-xs-6"> 
                                                     <br>
                                                     <p class="text-muted">
-                                                        <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo'];?>" class="thumb-lg img-circle" alt="img">  
+                                                         <?php if($row['Logo'] != '') { ?>
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo'];?>" class="thumb-lg img-circle" alt="img">  
+                                            <?php }else{ ?>
+                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <?php } ?>
                                                     </p>
                                                 </div>
                                                <div class="col-md-10 col-xs-6"> 

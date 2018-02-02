@@ -69,7 +69,7 @@ if($_POST){
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
-                                                        <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
+                                                        <label class="col-md-3" style="padding-left:0px;">AngelList</label>
                                                         <input type="text" id="fm_angellist" name="fm_angellist" class="form-control form-control-line"> </div>
                                                 </div>
                                             </div>
