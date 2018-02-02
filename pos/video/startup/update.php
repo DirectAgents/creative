@@ -47,7 +47,8 @@ ZipCode='".$row_zip['zip']."',
 Facebook = '".$facebook."',
 Twitter = '".$twitter."',
 Linkedin = '".$linkedin."',
-About = '".$_POST['fm_about']."'
+About = '".$_POST['fm_about']."',
+Position = '".$_POST['fm_position']."'
 
 WHERE userID='".$_SESSION['entrepreneurSession']."'";
 

@@ -3,7 +3,7 @@
  session_start();
  include_once("../config.php"); 
 
- $sql = "SELECT * FROM startups WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
+ $sql = "SELECT * FROM startups WHERE userID ='".$_POST['userid']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row = mysqli_fetch_array($result);
 

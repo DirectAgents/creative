@@ -82,7 +82,7 @@ if(!$startup_home->is_logged_in())
 
 
         <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+        <!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>-->
         <script type="text/javascript" src="https://res.cloudinary.com/demo/raw/upload/v1425809551/jquery.cloudinary_t0p9km.js"></script>
         <script type="text/javascript" src="https://widget.cloudinary.com/global/all.js"></script>
 
@@ -98,15 +98,30 @@ if(!$startup_home->is_logged_in())
             cloudinary.setCloudName(cloud_name);
             $('#upload_widget_multiple').click(function() {
                 //alert("add");
-                $("#preview").show();
                 cloudinary.openUploadWidget({ upload_preset: preset_name, sources: ['local', 'url', 'image_search'], multiple: false },
                     function(error, result) {
                         console.log(error, result);
                         ids_and_ratios = {};
                         $.each(result, function(i, v) {
+                            $("#preview").show();
                             $('#preview').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
                             $('#headshot_id').html(v["public_id"])
                             $('#url_preview').html('<input type="checkbox" style="display:none" name="team_member_headshot[]" value="' + v["public_id"] + '" checked/>')
+                        });
+                    });
+            });
+
+            $('#upload_widget_multiple_company').click(function() {
+                //alert("add");
+                cloudinary.openUploadWidget({ upload_preset: preset_name, sources: ['local', 'url', 'image_search'], multiple: false },
+                    function(error, result) {
+                        console.log(error, result);
+                        ids_and_ratios = {};
+                        $.each(result, function(i, v) {
+                            $("#preview").show();
+                            $('#preview').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
+                            $('#headshot_id').html(v["public_id"])
+                            $('#url_preview').html('<input type="checkbox" style="display:none" name="company_logo[]" value="' + v["public_id"] + '" checked/>')
                         });
                     });
             });
@@ -133,145 +148,10 @@ if(!$startup_home->is_logged_in())
         <!-- Wrapper -->
         <!-- ============================================================== -->
         <div id="wrapper">
-            <!-- ============================================================== -->
-            <!-- Topbar header - style you can find in pages.scss -->
-            <!-- ============================================================== -->
-            <nav class="navbar navbar-default navbar-static-top m-b-0">
-                <div class="navbar-header">
-                    <div class="top-left-part">
-                        <!-- Logo -->
-                        <a class="logo" href="index.html">
-                            <!-- Logo icon image, you can use font-icon also --><b>
-                        <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="images/admin-logo-dark.png" alt="home" class="light-logo" />
-                     </b>
-                            <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="images/admin-text-dark.png" alt="home" class="light-logo" />
-                     </span> </a>
-                    </div>
-                    <!-- /Logo -->
-                    <!-- Search input and Toggle icon -->
-                    <ul class="nav navbar-top-links navbar-left">
-                        <li><a href="javascript:void(0)" class="open-close waves-effect waves-light visible-xs"><i class="ti-close ti-menu"></i></a></li>
-                        <!--<li class="dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> <i class="mdi mdi-gmail"></i>
-                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                        </a>
-                        <ul class="dropdown-menu mailbox animated bounceInDown">
-                            <li>
-                                <div class="drop-title">You have 4 new messages</div>
-                            </li>
-                            <li>
-                                <div class="message-center">
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/sonu.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/arijit.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="text-center" href="javascript:void(0);"> <strong>See all notifications</strong> <i class="fa fa-angle-right"></i> </a>
-                            </li>
-                        </ul>
-                       
-                    </li>-->
-                        <!-- /.dropdown-messages -->
-                        <!-- .Megamenu -->
-                        <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Top 5 Startups</span> <i class="icon-options-vertical"></i></a>
-                            <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Technology</li>
-                                        <li><a href="form-basic.html">1</a></li>
-                                        <li><a href="form-layout.html">2</a></li>
-                                        <li><a href="form-advanced.html">3</a></li>
-                                        <li><a href="form-material-elements.html">4</a></li>
-                                        <li><a href="form-float-input.html">5</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Mobile</li>
-                                        <li><a href="form-basic.html">1</a></li>
-                                        <li><a href="form-layout.html">2</a></li>
-                                        <li><a href="form-advanced.html">3</a></li>
-                                        <li><a href="form-material-elements.html">4</a></li>
-                                        <li><a href="form-float-input.html">5</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Finance</li>
-                                        <li><a href="form-basic.html">1</a></li>
-                                        <li><a href="form-layout.html">2</a></li>
-                                        <li><a href="form-advanced.html">3</a></li>
-                                        <li><a href="form-material-elements.html">4</a></li>
-                                        <li><a href="form-float-input.html">5</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Ecommerce</li>
-                                        <li><a href="form-basic.html">1</a></li>
-                                        <li><a href="form-layout.html">2</a></li>
-                                        <li><a href="form-advanced.html">3</a></li>
-                                        <li><a href="form-material-elements.html">4</a></li>
-                                        <li><a href="form-float-input.html">5</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- /.Megamenu -->
-                    </ul>
-                    <ul class="nav navbar-top-links navbar-right pull-right">
-                        <li>
-                            <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                                <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="<?php echo BASE_PATH; ?>/images/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> </a>
-                            <ul class="dropdown-menu dropdown-user animated flipInY">
-                                <li>
-                                    <div class="dw-user-box">
-                                        <div class="u-img"><img src="<?php echo BASE_PATH; ?>/images/varun.jpg" alt="user" /></div>
-                                        <div class="u-text">
-                                            <h4>Steave Jobs</h4>
-                                            <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-                                    </div>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                                <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> Logout</a></li>
-                            </ul>
-                            <!-- /.dropdown-user -->
-                        </li>
-                        <!-- /.dropdown -->
-                    </ul>
-                </div>
-                <!-- /.navbar-header -->
-                <!-- /.navbar-top-links -->
-                <!-- /.navbar-static-side -->
-            </nav>
+          
+
+        <?php include '../nav.php'; ?>
+
             <!-- End Top Navigation -->
             
 
@@ -342,15 +222,15 @@ if(!$startup_home->is_logged_in())
                         <div class="col-md-8 col-xs-12">
                             <div class="white-box">
                                 <ul class="nav nav-tabs tabs customtab">
-                                    <li class="tab">
-                                        <a href="#company" id="profile-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Company</span> </a>
+                                    <li class="tab active">
+                                        <a href="#company" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Company</span> </a>
                                     </li>
                                     <?php //if(!isset($_SESSION['entrepreneurSession'])){ ?>
-                                    <li class="tab active">
+                                    <li class="tab">
                                         <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Meet the Team</span> </a>
                                     </li>
                                    <?php //} ?>
-                                    <?php if(isset($_SESSION['entrepreneurSession'])){ ?>
+                                    <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['id']) { ?>
                                     <li class="tab">
                                         <a href="#connections" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
                                     </li>
@@ -376,84 +256,57 @@ if(!$startup_home->is_logged_in())
             <!-- ============================================================== -->
             <!-- Company Tab Starts -->
             <!-- ============================================================== -->
-                                    <div class="tab-pane active" id="company">
-                                        <div id="profile-tab-data">
+                    <div class="tab-pane active" id="company">
+                            
+                     <form class="form-horizontal form-material" id="save-company">
+                            
+                       
+
+                       
+                        
+                      
+                        
+                         
+                      
+                        
+                              
+                                
+                             <div id="thecompany"></div>
+                    
+                               
+                                        
+
+                                
+
+
+                            <div id="upload-logo">
+                                    <div class="form-group">
+                                                <div class="col-sm-12">
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Logo</a>
+                                                            <br>
+                                                            <br>
+                                                            <ul id="preview"></ul>
+                                                            <div id="url_preview"><input type="checkbox" style="display:none" name="company_logo[]" value="<?php echo $row_startup['Logo']; ?>" checked/></div>
+                                                            <!--<div id="headshot_id"></div>-->
+                                                </div>
+                                            </div>
+                                </div>
+
+
+                        <div id="save-cancel">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-company" style="margin-right:10px;">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-company">Cancel</button>
+                                    </div>
+                                </div>
+                         </div>       
+
+
+
+                             </form>   
+
                                           
-                                          <div class="row">
-                                             <div class="col-md-2 col-xs-6"> 
-                                                    <br>
-                                                    <p class="text-muted">
-                                                        Logo
-                                                    </p>
-                                                </div>
-
-                                               <div class="col-md-10 col-xs-6"> 
-                                                    <br>
-                                                    <p class="text-muted">
-                                                        <h3><strong><?php echo $row['Fullname']; ?></strong></h3>
-                                                    </p>
-                                                </div>  
-                                          </div>
-                                          <p>&nbsp;</p>
-                                            <div class="row">
-                                                
-                                                <div class="col-md-2 col-xs-6 b-r"> <strong>Location</strong>
-                                                    <br>
-                                                    <p class="text-muted">
-                            <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
-.', '.$row['State']; ?>
-                                                    </p>
-                                                </div>
-
-                                                 <div class="col-md-2 col-xs-6"> <strong>Industry</strong>
-                                                    <br>
-                                                    <p class="text-muted">
-                                                        <?php echo $row_startup['Industry']; ?>
-                                                    </p>
-                                                </div>
-
-                                                <div class="col-md-3 col-xs-6 ">
-                                                   
-                                                    <p class="text-muted">
-                                                    
-                                            <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-purple">
-                                            <div id="facebook">
-                                                <a href="<?php echo $row['Facebook'];?>"><i class="ti-facebook"></i></a>
-                                            </div>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-blue">
-                                            <div id="twitter">
-                                                <a href="<?php echo $row['Twitter'];?>"><i class="ti-twitter"></i></a>
-                                            </div>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-danger">
-                                            <div id="angellist">
-                                                <a href="<?php echo $row['AngelList'];?>"><img src="<?php echo BASE_PATH; ?>/images/angel-list-icon.jpg"/></a>
-                                            </div>
-                                        </p>
-                                    </div>
-
-
-                                                    </p>
-                                                </div>
-
-                                            </div>
-                                            <hr>
-                                            <strong>About</strong>
-                                            <?php if($row_startup['About'] != '') { ?>
-                                            <p class="m-t-30">
-                                                <?php echo $row_startup['About']; ?>
-                                            </p>
-                                            <?php } ?>
-                                            <hr>
-                                            <iframe width="100%" height="500" src="https://www.youtube.com/embed/sK7riqg2mr4" frameborder="0" allowfullscreen=""></iframe>
-
-                                        </div>
                                     </div>
             <!-- ============================================================== -->
             <!-- Company Tab Ends -->
@@ -466,7 +319,7 @@ if(!$startup_home->is_logged_in())
              <div class="tab-pane" id="team">
 
                 <form class="form-horizontal form-material" id="save-team-member">
-                        
+                        <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['id']) { ?>
                         <div id="add-a-team-member">
                              <div class="col-sm-12" style="padding-left:15px">
                                          <div class="row"> 
@@ -474,7 +327,8 @@ if(!$startup_home->is_logged_in())
                                         </div>
                             </div> 
                              <p>&nbsp;</p>  
-                         </div>   
+                         </div>  
+                        <?php } ?>  
                 
                         <div id="existing-team-members">
                                   
@@ -560,6 +414,8 @@ if(!$startup_home->is_logged_in())
                                         
                                 </div>
                                 
+                                <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['id']) { ?>
+
                                 <hr>
                                            
                                             <div class="pull-right" style="padding-right:15px;">
@@ -567,6 +423,7 @@ if(!$startup_home->is_logged_in())
                                             <a href="#" id="delete-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
                                             </div>
                                             <br>
+                                <?php } ?>
                                             
                             </div>
                           
@@ -697,25 +554,28 @@ if(!$startup_home->is_logged_in())
                                                             <br>
                                                             <br>
                                                             <ul id="preview"></ul>
-                                                            <div id="url_preview"><input type="checkbox" style="display:none" name="team_member_headshot[]" value="$row_team['ProfileImage']" checked/></div>
+                                                            <div id="url_preview"><input type="checkbox" style="display:none" name="team_member_headshot[]" value="<?php echo $row_team['ProfileImage']; ?>" checked/></div>
                                                             <!--<div id="headshot_id"></div>-->
                                                 </div>
                                             </div>
-                                </div>
 
-                        <div id="save-cancel">
+                       
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member">Save</button>
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-team-member" style="margin-right:10px;">Save</button>
                                         <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-team-member">Cancel</button>
                                     </div>
                                 </div>
-                         </div>       
+                        
+
+                                </div>
+
+                           
 
                              </form>   
 
 
-
+                            
                             </div>
             <!-- ============================================================== -->
             <!-- Meet the Team Tab Ends -->

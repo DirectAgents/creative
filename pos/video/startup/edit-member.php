@@ -95,7 +95,7 @@ $row = mysqli_fetch_array($result);
                                                         echo '<div class="the-skill">';
                                                         echo $skill;
                                                         echo '</div>';
-                                                        echo '<a href="#" class="del_button" id="del-'.$row3['id'].'">';
+                                                        echo '<a href="#" class="del_button_teammmember_skills" id="del-'.$row3['id'].'">';
                                                         echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
                                                         echo '</a></div>';
                                                         //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
@@ -150,9 +150,96 @@ $row = mysqli_fetch_array($result);
                 </div>
             </div>-->
 
-             
-
           
         
     </div>
+
+
+<script>
+
+$(document).ready(function() {
+
+//$("#preview").hide();
+
+var url_link = 'http://localhost/creative/pos/video/startup/';
+
+
+////////////////Skills//////////////////////
+
+$("#add-skills-team-member").click(function (e) {
+    //alert("adsf");
+       e.preventDefault();
+     if($("#fm_skills").val()==='')
+      {
+        //alert("Please enter a job position!");
+        return false;
+      }
+      var myData = 'skills='+ $("#fm_skills").val()+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
+      //alert(myData);
+      jQuery.ajax({
+      type: "POST", 
+      url: url_link+"skills-team-member.php", 
+      dataType:"text", 
+      data:myData,
+      success:function(response){
+        $("#responds").append(response);
+        $("#fm_skills").val('');
+        //$('#interestimportant').prop('checked', true); // checks it
+       
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        alert(thrownError);
+      }
+      });
+  });
+
+
+
+$("body").on("click", "#responds .del_button_teammmember_skills", function(e) {
+    //alert("ads");
+     e.preventDefault();
+     var clickedID = this.id.split('-'); 
+     //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
+     var DbNumberID = clickedID[1]; 
+     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
+     
+     //alert(DbNumberID);
+
+
+      jQuery.ajax({
+      type: "POST", 
+      url: url_link+"skills.php", 
+      dataType:"text", 
+      data:myData, 
+      success:function(response){
+        $("#responds").append(response);
+        $('#skillselectionteammember_'+DbNumberID).prop('checked', false); // Unchecks it
+        
+        $('#item_'+DbNumberID).fadeOut("slow");
+
+        
+        //alert(response);
+      
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+        
+        alert(thrownError);
+      }
+      });
+  });
+
+
+
+ $(function() {
+    $( "#fm_skills" ).autocomplete({
+      source: url_link+'search-skills.php'
+    });
+  });
+
+
+
+});
+
+  </script>
+
     <?php } ?>

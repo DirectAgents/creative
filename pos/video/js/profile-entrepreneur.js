@@ -7,32 +7,6 @@ var image_link = 'http://localhost/creative/pos/video/';
 
 
 
-////////////////Load Profile//////////////////////
-
-$("#profile-tab").click(function (e) {
-    //alert("adsf");
-       e.preventDefault();
-
-    var userid = $('input[name=userid]').val();
-
-     $.ajax({
-            url: url_link+"profile-tab.php",
-            method: "POST",
-            data: {userid: userid},
-            dataType: "html",
-            success: function(response) {
-                //alert(data);  
-                //var skills = $(response).filter('#the-skill-set').text();
-                $('#profile-tab-data').html(response);
-                //alert(skills_count);  
-
-            }
-        });
-
-});
-
-
-
 ////////////////Update Profile//////////////////////
 
 
@@ -98,6 +72,8 @@ e.preventDefault();
                 //var skills_count = $(response).filter('#theskills').text();
                 //$('#skills-count').html(skills_count);
                 //alert(skills_count);  
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
 
             }
         });
@@ -244,7 +220,6 @@ $("body").on("click", "#responds .del_button_teammmember_skills", function(e) {
                 
             });
 
-
 $('.zip-textinput').keyup(function(){
     var zip_input = $(this).val();
     if(zip_input.length == 5){
@@ -318,6 +293,132 @@ $.ajax({
 
    
 });
+
+
+
+////////////////Company//////////////////////
+
+
+    var userid = $('input[name=userid]').val();
+    //alert(userid);
+     $.ajax({
+            url: url_link+"company.php",
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                
+                $("#thecompany").html(response);
+
+
+            }
+        });
+
+
+
+
+$(".cancel-company, #company-tab").click(function (e) {
+    e.preventDefault();
+
+    var userid = $('input[name=userid]').val();
+    //alert(userid);
+    $.ajax({
+            url: url_link+"company.php", 
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                //var skills = $(response).filter('#the-skill-set').text();
+                //$("#thecompany").html(response);
+                $("#thecompany").load(url_link+"company.php?userid="+userid);
+
+                var content = $(response).filter('#company-tab-data').html();
+
+                if (content.trim().length === 0) {
+                  $("#edit-a-company").hide();
+                  $("#add-a-company").show();
+                }else{
+                  $("#edit-a-company").show();
+                  $("#add-a-company").hide();
+                }
+
+                $("#upload-logo").hide();
+                $("#save-cancel").hide();
+
+                //alert(skills_count);  
+
+            }
+        });
+});
+
+
+
+$( "#save-company" ).on( "submit", function(e) {  
+    e.preventDefault();
+    var proceed = true;
+
+    var id = $("input[name='id']").val();
+    var userid = $("input[name='userid']").val();
+    var fm_about = $("textarea[name='fm_about']").val();
+    var fm_name = $("input[name='fm_name']").val();
+    var fm_industry = $("select[name='fm_industry']").val();
+    var fm_location = $("input[name='fm_location']").val();
+    var logo = $('input[name="company_logo[]"]:checked').map(function() { return this.value; }).get().join(",");
+    var fm_facebook = $("input[name='fm_facebook']").val();
+    var fm_twitter = $("input[name='fm_twitter']").val();
+    var fm_angellist = $("input[name='fm_angellist']").val();
+    //var skills = $('input[name="skillselectionteammember[]"]:checked').map(function() { return this.value; }).get().join(",");
+    //alert(fm_location);
+    
+    if (fm_name == '') {
+        $('input[name=fm_name]').css('border-bottom','1px solid red'); 
+        proceed = false;
+    }else{
+      $('input[name=fm_name]').css('border-bottom','1px solid green'); 
+    }
+
+    if (fm_industry == '') {
+        $('input[name=fm_industry]').css('border-bottom','1px solid red'); 
+        proceed = false;
+    }else{
+      $('input[name=fm_industry]').css('border-bottom','1px solid green'); 
+    }
+
+     if(proceed) 
+        {   
+
+    
+
+    $.ajax({
+            url: url_link+"save-company.php", 
+            method: "POST",
+            data: { id: id, userid: userid, name : fm_name, industry : fm_industry, location : fm_location, about : fm_about, logo : logo, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
+            dataType: "html",
+            success: function(response) {
+                //alert(id);  
+                //var skills = $(response).filter('#the-skill-set').text();
+                $("#thecompany").load(url_link+"company.php?userid="+userid);
+                //$("#thecompany").html(response);
+
+                $("#add-a-company").hide();
+                $("#edit-a-company").show();
+                $("#upload-logo").hide();
+                $("#save-cancel").hide();
+
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
+                //alert(skills_count);  
+
+            }
+        });
+
+
+      }
+});
+
+
 
 
 
@@ -395,7 +496,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
     var fm_twitter = $("input[name='fm_twitter']").val();
     var fm_linkedin = $("input[name='fm_linkedin']").val();
     var skills = $('input[name="skillselectionteammember[]"]:checked').map(function() { return this.value; }).get().join(",");
-    //alert(skills);
+    //alert(headshot);
     
     if (fm_fullname == '') {
         $('input[name=fm_fullname]').css('border-bottom','1px solid red'); 
@@ -442,32 +543,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
-$("#add-skills-team-member").click(function (e) {
-    //alert("adsf");
-       e.preventDefault();
-     if($("#fm_skills").val()==='')
-      {
-        //alert("Please enter a job position!");
-        return false;
-      }
-      var myData = 'skills='+ $("#fm_skills").val()+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
-      //alert(myData);
-      jQuery.ajax({
-      type: "POST", 
-      url: url_link+"skills-team-member.php", 
-      dataType:"text", 
-      data:myData,
-      success:function(response){
-        $("#responds").append(response);
-        $("#fm_skills").val('');
-        //$('#interestimportant').prop('checked', true); // checks it
-       
-      },
-      error:function (xhr, ajaxOptions, thrownError){
-        alert(thrownError);
-      }
-      });
-  });
+
 
 
 

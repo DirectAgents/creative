@@ -84,6 +84,38 @@ if($column_name == 'Email') {
 
 
 
+
+ if($column_name == 'Zip_Company') {
+
+ $sql=mysqli_query($connecDB,"SELECT * FROM zip_state WHERE zip='".$content."'");
+ $row=mysqli_fetch_array($sql); 	
+
+ //$sql = "UPDATE profile SET City='".$row['city']."', State='".$row['state']."', ZipCode='".$row['zip']."' WHERE id='15'";  
+ 
+ //if(mysqli_query($connecDB, $sql))  
+ //{  
+ if(mysqli_num_rows($sql)<=0) {
+ 
+ $sql = "SELECT * FROM startups WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $result = mysqli_query($connecDB, $sql);  
+ $row_company = mysqli_fetch_array($result);
+
+ if($row_company != ''){
+ echo '<div id="zip">'.$row_company['City'].'1111 '.$row_company['State'].'</div>';
+ }else{
+ echo '<div id="zip">Type your zip code</div>';
+ }
+
+ }else{
+      
+  echo '<div id="zip">'.$row['city'].', '.$row['state'].'</div>';
+ 
+ }  
+
+ }
+
+
+
 if($column_name == 'Skills') {
 
 /*

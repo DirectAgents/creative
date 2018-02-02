@@ -20143,10 +20143,10 @@ ul.pro-amenities li span i {
 
 ul#preview {list-style-type: none; padding:0px;}
 
-#upload-headshot, #save-cancel{display:none;}
+#upload-headshot, #upload-logo, #save-cancel{display:none;}
 
-#saved {display:none; position: fixed; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
-#deleted {display:none; position: fixed; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
+#saved {display:none; position: fixed; z-index:99999; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
+#deleted {display:none; position: fixed; z-index:99999; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
 
 
 #pagination li {

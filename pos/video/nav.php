@@ -1,7 +1,32 @@
-<!-- ============================================================== -->
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
+  api_key: 78x2ye1ktvzj7d
+  //onLoad: onLinkedInLoad
+  authorize: true
+</script>
+
+<script type="text/javascript">
+ 
+
+ function logout() {
+  IN.User.logout();
+  alert("111loggedout");
+  
+    var xhr = new XMLHttpRequest();
+    
+    xhr.open('GET', '../../logout.php', true);
+    xhr.send();
+
+  }
+
+
+</script>   
+
+
+        <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <?php //echo $_SESSION['entrepreneurSession']; ?>
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
@@ -135,7 +160,8 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> Logout</a></li>
+
                         </ul>
                         <!-- /.dropdown-user -->
                     </li>

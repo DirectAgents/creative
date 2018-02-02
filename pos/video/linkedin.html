@@ -30,6 +30,7 @@ function login() {
   function onLinkedInAuth() {
 
     IN.API.Profile("me").fields("id","first-name", "last-name", "email-address").result(displayProfiles);
+    //alert("loggedin");
   }
 
   // 2. Runs when the Profile() API call returns successfully

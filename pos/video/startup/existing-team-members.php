@@ -78,9 +78,9 @@ $row = mysqli_fetch_array($result);
                                         </div>
                                     </div>
                                 </div>
+                            <?php if ($row_team['Skills'] != ''){ ?>
 
                                 <div class="user-btm-box">
-                                    
                                     
 
                                         <?php 
@@ -99,6 +99,10 @@ $row = mysqli_fetch_array($result);
                                        
                                         
                                 </div>
+
+                            <?php } ?>    
+
+                            <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['userid']) { ?>
                                 
                                 <hr>
                                            
@@ -107,6 +111,7 @@ $row = mysqli_fetch_array($result);
                                             <a href="#" id="delete-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
                                             </div>
                                             <br>
+                             <?php } ?>                
                                             
                             </div>
                           

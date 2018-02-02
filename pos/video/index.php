@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-echo $_SESSION['entrepreneurSession'];
+//echo $_SESSION['entrepreneurSession'];
 
 ob_start();
 
@@ -430,58 +430,6 @@ echo 'id: ' . $user['id'];
 
 
 
-
-<script type="text/javascript" src="https://platform.linkedin.com/in.js">
-  api_key: 78x2ye1ktvzj7d
-  onLoad: onLinkedInLoad
-  authorize: true
-</script>
-
-<script type="text/javascript">
-  function onLinkedInLoad() {
-    IN.Event.on(IN, "auth", onLinkedInAuth);
-  }
-
- function logout() {
-  IN.User.logout();
-  //alert("loggedout");
-  window.location.href = "logout.php";
-  }
-
-function login() {
-  IN.User.authorize();
- }
-  
-  function onLinkedInAuth() {
-
-    IN.API.Profile("me").fields("id","first-name", "last-name", "email-address", "picture-url").result(displayProfiles);
-    alert("loggedin");
-  }
-
-  function displayProfiles(profiles) {
-    member = profiles.values[0];
-
-     var url_link = 'http://localhost/creative/pos/video/startup/';
-     $.ajax({
-            url:"startup/linkedin.php",
-            method: "POST",
-            data: {userid: member.id, firstname: member.firstName, lastname: member.lastName, email: member.emailAddress, picture: member.pictureUrl },
-            dataType: "html",
-            success: function(response) {
-                //alert(data);  
-                //var skills = $(response).filter('#the-skill-set').text();
-                //$('#profile-tab-data').html(response);
-                //alert(skills_count);  
-                //window.location.href = url_link+"profile/"+response;
-            }
-        });
-  }
-</script>   
-
-
-
-
-
     </head>
 
     <body class="page-template page-template-page-loyalty page-template-page-loyalty-php page page-id-21 page-child parent-pageid-17 optimizely-21">
@@ -867,10 +815,10 @@ function login() {
                                     <a href="<?php echo $authUrl; ?>">
                                       <div class="li-connect connect-background" data-track="home:facebook-connect">
                          <span class="fa fa-linkedin"></span>
-                         <a href="#" onclick="login();">
+                         <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x2ye1ktvzj7d&redirect_uri=<?php echo BASE_PATH; ?>/linkedin/&state=987654321&scope=r_basicprofile,r_emailaddress">
                          <span class="connect-text">Connect with Linkedin</span>
                          </a>
-                         <a href="#" onclick="logout();">logout</a>
+                         
                     </div>
                                     </a>
                                 </div>
@@ -925,7 +873,7 @@ function login() {
                             <li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60"><a href="https://www.fivestars.com/careers/">Careers</a></li>
                             <li id="menu-item-361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361"><a href="https://www.fivestars.com/legal/">Terms</a></li>
                             <li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62"><a target="_blank" href="https://partners.fivestars.com">Partners</a></li>
-                            </ul>					</div>
+                            </ul>                   </div>
 
                         <aside class="nav--social">
                             <h6 class="heading--md u-hide--md-down">We're social. Join us!</h6>
