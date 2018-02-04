@@ -100,7 +100,8 @@ if(mysqli_num_rows($sql)>0)
         $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
         linkedin_id = '".$user->id."',
         Fullname = '".$fullname."',
-        linkedin_picture_link = '".$user->pictureUrl."'
+        linkedin_picture_link = '".$user->pictureUrl."',
+        ProfileImage = 'Linkedin'
     
         WHERE Email='".$user->emailAddress."'");
 
@@ -121,8 +122,8 @@ if(mysqli_num_rows($sql)>0)
     
     $fullname = $user->firstName.' '.$user->lastName;
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (linkedin_id, Fullname, Email, linkedin_picture_link, Date_Created) 
-      VALUES ('".$user->id."',  '".$fullname."', '".$user->emailAddress."', '".$user->pictureUrl."' , '".$date."')");
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (linkedin_id, Fullname, Email, linkedin_picture_link, ProfileImage, Date_Created) 
+      VALUES ('".$user->id."',  '".$fullname."', '".$user->emailAddress."', '".$user->pictureUrl."' , 'Linkedin', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;

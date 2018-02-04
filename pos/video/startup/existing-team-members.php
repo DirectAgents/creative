@@ -18,6 +18,14 @@ $row = mysqli_fetch_array($result);
  ?>
 
 
+
+<?php if($_GET['userid'] != isset($_SESSION['entrepreneurSession']) && $row['userID'] != $_GET['userid']) { ?>
+
+No Team Members added so far!
+
+ <?php } ?>
+
+
                            
 
                         <div class="row">              
@@ -108,7 +116,10 @@ $row = mysqli_fetch_array($result);
                                            
                                             <div class="pull-right" style="padding-right:15px;">
                                             <a href="#" id="edit-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-pencil"><label class="edit-team-member">Edit</i></a>&nbsp;&nbsp;&nbsp;
-                                            <a href="#" id="delete-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
+                                            <a href="#" id="sa-warning-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>" data-userid="<?php echo $_GET['userid']; ?>" data-thumb="<?php if($row_team['ProfileImage'] != '') { echo "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/".$row_team['ProfileImage'];}else{ echo "https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg";}?>"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
+
+                                        
+
                                             </div>
                                             <br>
                              <?php } ?>                
@@ -141,7 +152,8 @@ $row = mysqli_fetch_array($result);
 
                 $("#upload-headshot").show();
                 $("#save-cancel").show();
-                $("#preview").hide();
+                $("#preview_company").hide();
+                $("#preview_team").hide();
                 $("#add-a-team-member").hide();
 
                 //alert(skills_count);  
@@ -154,68 +166,53 @@ $row = mysqli_fetch_array($result);
 
 
 
+
 //////Delete Team Member/////////
 
-    $('#delete-member-'+<?php echo $row_team['id']; ?>).click(function(e) {
-        e.preventDefault();
+    $('#sa-warning-'+<?php echo $row_team['id']; ?>).click(function(){
         
-        var url_link = 'http://localhost/creative/pos/video/startup/';
-        
-        var data_id = $("#edit-member-"+<?php echo $row_team['id']; ?>).attr("data-id");
-        //var userid = $("input[name=userid]").val();
-        //alert(data.id);
+        var data_thumb = $("#sa-warning-"+<?php echo $row_team['id']; ?>).attr("data-thumb");
+        //alert(data_thumb);
 
+        swal({   
+            title: "Are you sure?",   
+            text: "You will not be able to recover this team member!",   
+            //type: "warning",
+            imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, delete it!",   
+            closeOnConfirm: false 
+        }, function(){   
 
-        ConfirmDialog('Are you sure');
+           var url_link = 'http://localhost/creative/pos/video/startup/';
 
-        function ConfirmDialog(message) {
-            $('<div></div>').appendTo('body')
-                .html('<div><h6>' + message + '?</h6></div>')
-                .dialog({
-                    modal: true,
-                    zIndex: 10000,
-                    autoOpen: true,
-                    width: 'auto',
-                    resizable: false,
-                    buttons: {
-                        Yes: function() {
-                            // $(obj).removeAttr('onclick');                                
-                            // $(obj).parents('.Parent').remove();
+           var data_id = $("#sa-warning-"+<?php echo $row_team['id']; ?>).attr("data-id");
+           var userid = $("#sa-warning-"+<?php echo $row_team['id']; ?>).attr("data-userid");
+            //alert(data_id);
 
-                            //$('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
-
-                            $(this).dialog("close");
-
-                            $.ajax({
+                        $.ajax({
                                 url: url_link+"delete-team-member.php",
                                 method: "POST",
                                 data: {id: data_id},
                                 dataType: "html",
                                 success: function(response) {
                                     //alert(data);
-                                    $('#deleted').fadeIn("fast");
-                                    $('#deleted').delay(2000).fadeOut("slow");
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                $("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
+                                $("#add-a-team-member").show();
+                                swal("Deleted!", "Your Team Member has been deleted.", "success");  
 
                                 }
                             });
-
-                            e.preventDefault();
-                        },
-                        No: function() {
-
-                            //$('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
-
-                            $(this).dialog("close");
-                        }
-                    },
-                    close: function(event, ui) {
-                        $(this).remove();
-                    }
-                });
-        };
+                      
+             
+        });
+    });
 
 
-    }); 
+
 
 
 </script>  
@@ -234,5 +231,8 @@ $row = mysqli_fetch_array($result);
 
                                   
 
+<!-- Sweet-Alert  -->
+<script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
+<!--<script src="<?php echo BASE_PATH; ?>/js/jquery.sweet-alert.custom.js"></script>-->
 
  <?php } ?>                                  

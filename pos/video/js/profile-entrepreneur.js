@@ -440,9 +440,12 @@ $(".add-team-member").click(function (e) {
                 //var skills = $(response).filter('#the-skill-set').text();
                 $("#existing-team-members").html(response);
 
+
                 $("#upload-headshot").show();
                 $("#save-cancel").show();
                 $("#add-a-team-member").hide();
+                $("#preview_team").hide();
+                $('#url_preview_team').html('<input type="checkbox" style="display:none" name="team_member_headshot[]" value="" checked/>');
                 //alert(skills_count);  
 
             }
@@ -450,10 +453,6 @@ $(".add-team-member").click(function (e) {
 
 
 });
-
-
-
-
 
 
 
@@ -529,6 +528,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
                 $("#upload-headshot").hide();
                 $("#save-cancel").hide();
+                $("#add-a-team-member").show();
 
                 $('#saved').fadeIn("fast");
                 $('#saved').delay(2000).fadeOut("slow");
@@ -544,6 +544,102 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
+   ////////////////Connect//////////////////////
+
+   //Basic
+    $('#sa-basic').click(function(){
+        swal("Login to connect!");
+    });
+
+    $('#sa-connect').click(function(){
+        
+        var data_thumb = $("#sa-connect").attr("data-thumb");
+        //alert(data_thumb);
+
+        swal({   
+            title: "Connect!",   
+            text: "Send a request to connect!",   
+            //type: "warning",
+            imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, connect!",   
+            closeOnConfirm: false 
+        }, function(){   
+
+           var url_link = 'http://localhost/creative/pos/video/startup/';
+
+           var requested_id = $("#sa-connect").attr("data-id");
+           var requester_id = $("#sa-connect").attr("data-userid");
+            //alert(data_id);
+
+                        $.ajax({
+                                url: url_link+"connect-request.php",
+                                method: "POST",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                    //alert(data);
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
+                                //$("#add-a-team-member").show();
+                                $('.sa-connect-btn').hide();
+                                $('.sa-connect-sent').show();
+                                swal("Success!", "Your request has been sent.", "success");  
+
+                                }
+                            });
+                      
+             
+        });
+    });
+
+
+
+    $('#sa-connect-cancel').click(function(){
+        
+        //var data_thumb = $("#sa-connect").attr("data-thumb");
+        //alert(data_thumb);
+
+        swal({   
+            title: "Cancel!",   
+            text: "Cancel Connect Request!",   
+            //type: "warning",
+            //imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, cancel!",   
+            closeOnConfirm: false 
+        }, function(){   
+
+           var url_link = 'http://localhost/creative/pos/video/startup/';
+
+           var requested_id = $("#sa-connect").attr("data-id");
+           var requester_id = $("#sa-connect").attr("data-userid");
+            //alert(data_id);
+
+                        $.ajax({
+                                url: url_link+"connect-cancel.php",
+                                method: "POST",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                    //alert(data);
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
+                                //$("#add-a-team-member").show();
+                                $('.sa-connect-btn').show();
+                                $('.sa-connect-sent').hide();
+                                swal("Success!", "You canceled your request.", "success");  
+
+                                }
+                            });
+                      
+             
+        });
+    });
 
 
 

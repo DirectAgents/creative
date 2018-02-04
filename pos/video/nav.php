@@ -1,32 +1,22 @@
-<script type="text/javascript" src="https://platform.linkedin.com/in.js">
-  api_key: 78x2ye1ktvzj7d
-  //onLoad: onLinkedInLoad
-  authorize: true
-</script>
-
-<script type="text/javascript">
- 
-
- function logout() {
-  IN.User.logout();
-  alert("111loggedout");
-  
-    var xhr = new XMLHttpRequest();
-    
-    xhr.open('GET', '../../logout.php', true);
-    xhr.send();
-
-  }
-
-
-</script>   
-
-
         <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- Topbar header -->
         <!-- ============================================================== -->
+        
+       <?php if(isset($_SESSION['entrepreneurSession'])) {?>
+
+
+       <?php 
+
+$stmt = mysqli_query($connecDB, "SELECT * FROM tbl_entrepreneur WHERE userID='".$_SESSION['entrepreneurSession']."'");
+$rownav = mysqli_fetch_array($stmt);
+
+
+$_SESSION['google_picture_link'] = $rownav['google_picture_link'];
+
+       ?>
+
         <nav class="navbar navbar-default navbar-static-top m-b-0">
-        <?php //echo $_SESSION['entrepreneurSession']; ?>
+            <?php //echo $_SESSION['entrepreneurSession']; ?>
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
@@ -143,20 +133,29 @@
 
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="<?php echo BASE_PATH; ?>/images/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> 
+
+                           
+
+
+<?php if($rownav['ProfileImage'] == 'Google'){ ?>
+         <img src="<?php echo $rownav['google_picture_link']; ?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> 
+<?php } ?>
+
+<?php if($rownav['ProfileImage'] == 'Facebook'){ ?>
+         <img src="https://graph.facebook.com/<?php echo $rownav['facebook_id']; ?>/picture" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> 
+<?php } ?>
+
+<?php if($rownav['ProfileImage'] == 'Linkedin'){ ?>
+         <img src="<?php echo $rownav['linkedin_picture_link']; ?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> 
+<?php } ?>
+
+
+                        </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li>
-                                <div class="dw-user-box">
-                                    <div class="u-img"><img src="<?php echo BASE_PATH; ?>/images/varun.jpg" alt="user" /></div>
-                                    <div class="u-text">
-                                        <h4>Steave Jobs</h4>
-                                        <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-                                </div>
-                            </li>
-                            <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                            <li><a href="#"><i class="ti-wallet"></i> My Team</a></li>
+                            <li><a href="#"><i class="ti-email"></i> Connections</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
@@ -173,3 +172,106 @@
             <!-- /.navbar-static-side -->
         </nav>
         <!-- End Top Navigation -->
+
+        <?php }else{ ?>
+
+        
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header">
+                <div class="top-left-part">
+                    <!-- Logo -->
+                    <a class="logo" href="index.html">
+                        <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="images/admin-logo-dark.png" alt="home" class="light-logo" />
+                     </b>
+                        <!-- Logo text image you can use text also --><span class="hidden-xs">
+                        <!--This is dark logo text--><img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="images/admin-text-dark.png" alt="home" class="light-logo" />
+                     </span> </a>
+                </div>
+                <!-- /Logo -->
+                <!-- Search input and Toggle icon -->
+                <ul class="nav navbar-top-links navbar-left">
+                    <li><a href="javascript:void(0)" class="open-close waves-effect waves-light visible-xs"><i class="ti-close ti-menu"></i></a></li>
+                    
+                   
+                 
+                    <!-- .Megamenu -->
+                    <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Top 5 Startups</span> <i class="icon-options-vertical"></i></a>
+                        <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">Technology</li>
+                                    <li><a href="form-basic.html">1</a></li>
+                                    <li><a href="form-layout.html">2</a></li>
+                                    <li><a href="form-advanced.html">3</a></li>
+                                    <li><a href="form-material-elements.html">4</a></li>
+                                    <li><a href="form-float-input.html">5</a></li>
+                                
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">Mobile</li>
+                                    <li><a href="form-basic.html">1</a></li>
+                                    <li><a href="form-layout.html">2</a></li>
+                                    <li><a href="form-advanced.html">3</a></li>
+                                    <li><a href="form-material-elements.html">4</a></li>
+                                    <li><a href="form-float-input.html">5</a></li>
+                                
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                   <li class="dropdown-header">Finance</li>
+                                    <li><a href="form-basic.html">1</a></li>
+                                    <li><a href="form-layout.html">2</a></li>
+                                    <li><a href="form-advanced.html">3</a></li>
+                                    <li><a href="form-material-elements.html">4</a></li>
+                                    <li><a href="form-float-input.html">5</a></li>
+                                 
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                   <li class="dropdown-header">Ecommerce</li>
+                                    <li><a href="form-basic.html">1</a></li>
+                                    <li><a href="form-layout.html">2</a></li>
+                                    <li><a href="form-advanced.html">3</a></li>
+                                    <li><a href="form-material-elements.html">4</a></li>
+                                    <li><a href="form-float-input.html">5</a></li>
+                                 
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /.Megamenu -->
+                </ul>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li>
+                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                          
+
+                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Programming Skills or Name" /><a href=""><i class="fa fa-search"></i></a>
+                         </form>
+
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle profile-pic" data-toggle="modal" data-target="#signin" href="#"> <b class="hidden-xs">Login</b></a>
+                        
+                    </li>
+                     <li class="dropdown">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <b class="hidden-xs">Signup</b></a>
+                        
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- End Top Navigation -->
+
+
+
+        <?php } ?>

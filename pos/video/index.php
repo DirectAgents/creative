@@ -92,6 +92,8 @@ if (isset($_GET['code'])) {
  ************************************************/
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $client->setAccessToken($_SESSION['access_token']);
+  $client->refreshToken(json_decode($_SESSION['access_token'])->access_token);
+  //$client->setAccessToken(json_decode($_SESSION['access_token'])->access_token);
 } else {
   $authUrl = $client->createAuthUrl();
 }
@@ -138,7 +140,9 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
         google_id = '".$user->id."',
         Fullname = '".$fullname."',
-        google_picture_link = '".$user->picture."'
+        google_picture_link = '".$user->picture."',
+        google_token = '".json_decode($_SESSION['access_token'])->access_token."',
+        ProfileImage = 'Google'
     
         WHERE Email='".$user->email."'");
 
@@ -158,8 +162,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     
     
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (google_id, Fullname, Email, google_picture_link, Date_Created) 
-      VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , '".$date."')");
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (google_id, Fullname, Email, google_picture_link, ProfileImage, Date_Created) 
+      VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , 'Google' , '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
@@ -258,8 +262,7 @@ echo 'id: ' . $user['id'];
 
     $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
     facebook_id = '".$user['id']."', 
-    profile_image = '',
-    google_picture_link = ''
+    ProfileImage = 'Facebook'
 
     WHERE Email='".$user['email']."'");
 
@@ -287,8 +290,8 @@ echo 'id: ' . $user['id'];
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $fullname = $user['first_name'].' '.$user['last_name'];
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (facebook_id, Fullname, Email, Gender, Date_Created) 
-      VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , '".$date."')");
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
+      VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
@@ -315,9 +318,6 @@ echo 'id: ' . $user['id'];
   }
 
  
-
-
-
 
 }
 

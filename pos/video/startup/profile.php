@@ -5,17 +5,17 @@
  require_once '../class.investor.php';
  require_once '../base_path.php';
  include_once("../config.php"); 
+ require_once '../facebook-sdk-v5/autoload.php';
+
 
  $sql = "SELECT * FROM tbl_entrepreneur WHERE userID ='".$_GET['id']."'";  
  $result = mysqli_query($connecDB, $sql);  
- $row = mysqli_fetch_array($result);
+ $row_entrepreneur = mysqli_fetch_array($result);
 
 
-
-
- $sql = "SELECT * FROM startups WHERE userID ='".$_GET['id']."'";  
+ $sql = "SELECT * FROM tbl_entrepreneur WHERE userID ='".$_GET['id']."'";  
  $result = mysqli_query($connecDB, $sql);  
- $row_startup = mysqli_fetch_array($result);
+ $row_entrepreneur = mysqli_fetch_array($result);
 
 /*
 
@@ -36,6 +36,307 @@ if(!$startup_home->is_logged_in())
 }
 
 */
+
+
+
+//session_start(); //session start
+
+//echo $_SESSION['access_token'];
+
+
+require_once ('../libraries/Google/autoload.php');
+
+//Insert your cient ID and secret 
+//You can get it from : https://console.developers.google.com/
+$client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
+$client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
+$redirect_uri = 'http://localhost/creative/pos/video/';
+
+//database
+$db_username = "root"; //Database Username
+$db_password = "123"; //Database Password
+$host_name = "localhost"; //Mysql Hostname
+$db_name = 'video'; //Database Name
+
+
+//incase of logout request, just unset the session var
+if (isset($_GET['logout'])) {
+  unset($_SESSION['access_token']);
+  unset($_SESSION['entrepreneurSession']);
+}
+
+/************************************************
+  Make an API request on behalf of a user. In
+  this case we need to have a valid OAuth 2.0
+  token for the user, so we need to send them
+  through a login flow. To do this we need some
+  information from our API console project.
+ ************************************************/
+$client = new Google_Client();
+$client->setClientId($client_id);
+$client->setClientSecret($client_secret);
+$client->setRedirectUri($redirect_uri);
+$client->addScope("email");
+$client->addScope("profile");
+
+/************************************************
+  When we create the service here, we pass the
+  client to it. The client then queries the service
+  for the required scopes, and uses that when
+  generating the authentication URL later.
+ ************************************************/
+$service = new Google_Service_Oauth2($client);
+
+/************************************************
+  If we have a code back from the OAuth 2.0 flow,
+  we need to exchange that with the authenticate()
+  function. We store the resultant access token
+  bundle in the session, and redirect to ourself.
+*/
+  //echo $_GET['code'];
+if (isset($_GET['code'])) {
+  $client->authenticate($_GET['code']);
+  $_SESSION['access_token'] = $client->getAccessToken();
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+  exit;
+}
+
+/************************************************
+  If we have an access token, we can make
+  requests, else we generate an authentication URL.
+ ************************************************/
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+  $client->setAccessToken($_SESSION['access_token']);
+  $client->refreshToken(json_decode($_SESSION['access_token'])->access_token);
+} else {
+  $authUrl = $client->createAuthUrl();
+}
+
+
+
+
+
+
+
+ if (!isset($authUrl)){ 
+ 
+  
+  $user = $service->userinfo->get(); //get user info 
+  
+  // connect to database
+  $mysqli = new mysqli($host_name, $db_username, $db_password, $db_name);
+    if ($mysqli->connect_error) {
+        die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+    }
+  
+  //echo $user->id;
+
+   
+
+
+  //check if user exist in database using COUNT
+  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_entrepreneur WHERE google_id=$user->id ");
+  $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
+
+  
+
+
+  $fullname = $user->givenName.' '.$user->familyName;
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($user->email) //if user already exist change greeting text to "Welcome Back"
+    {   
+
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user->email."'");
+        $row = mysqli_fetch_array($sql);
+
+        $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
+        google_id = '".$user->id."',
+        Fullname = '".$fullname."',
+        google_picture_link = '".$user->picture."',
+        google_token = '".json_decode($_SESSION['access_token'])->access_token."',
+        ProfileImage = 'Google'
+    
+        WHERE Email='".$user->email."'");
+
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['entrepreneurSession'] = $row['userID'];
+        //echo $_SESSION['startupSession'];
+        //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        //header('Location: '.BASE_PATH.'');
+        //exit();
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    
+    
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (google_id, Fullname, Email, google_picture_link, ProfileImage, Date_Created) 
+      VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , 'Google' , '".$date."')");
+    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
+    //$statement->execute();
+    //echo $mysqli->error;
+
+    //mysqli_query($insert_sql);  
+
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user->email."'");
+        $row = mysqli_fetch_array($sql);
+
+        $_SESSION['entrepreneurSession'] = $row['userID'];
+        echo $_SESSION['startupSession'];
+        //echo "asdfasfd";
+        //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        //exit();
+
+
+    
+    //echo $user->id;
+
+   
+    }
+  
+  //print user details
+  //echo '<pre>';
+  //print_r($user);
+  //echo '</pre>';
+}
+//echo '</div>';
+
+
+
+
+////////////Facebook Login///////////////
+
+
+$fb = new Facebook\Facebook([
+  'app_id' => '1797081013903216',
+  'app_secret' => 'f30f4c99e31c934f65b515c1f777940f',
+  'default_graph_version' => 'v2.2',
+  ]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup-callback-entrepreneur.php', $permissions);
+
+
+
+
+
+//echo $_SESSION['fb_access_token_startup'];
+
+
+if(isset($_SESSION['fb_access_token_entrepreneur'])){
+
+try {
+  // Returns a `Facebook\FacebookResponse` object
+  $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_entrepreneur']);
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
+
+$user = $response->getGraphUser();
+/*
+echo 'Name: ' . $user['name'];
+echo "<br>";
+echo 'Email: ' . $user['email'];
+echo "<br>";
+echo 'id: ' . $user['id'];
+*/
+
+
+//check if user exist in database using COUNT
+
+
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_entrepreneur WHERE facebook_id='".$user['id']."' ");
+  $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
+
+  
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user['email']."'");
+  $row = mysqli_fetch_array($sql);
+
+
+  //show user picture
+  //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
+  //echo $user_count;
+  //echo $user->email;
+  if($row['userID']) //if user already exist change greeting text to "Welcome Back"
+    {
+
+    
+
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
+    facebook_id = '".$user['id']."', 
+    ProfileImage = 'Facebook'
+
+    WHERE Email='".$user['email']."'");
+
+        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+        $_SESSION['entrepreneurSession'] = $row['userID'];
+        $_SESSION['facebook_photo'] = $user['id'];
+        //header("Location: ../index.php");
+        //echo $_SESSION['startupSession'];
+        //echo "asdfasdf";
+        //echo $row['userID'];
+        //echo $user['email'];
+        //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        //exit();
+        
+    }
+  else //else greeting text "Thanks for registering"
+  { 
+
+
+   date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d'); 
+
+    $gender = ucfirst($user['gender']);
+
+        //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+    $fullname = $user['first_name'].' '.$user['last_name'];
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
+      VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
+    //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
+    //$statement->execute();
+    //echo $mysqli->error;
+
+    //mysqli_query($insert_sql);  
+    
+    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user['email']."'");
+    $row = mysqli_fetch_array($sql);
+
+    $_SESSION['entrepreneurSession'] = $row['userID'];
+    //header("Location: ../index.php");
+    //echo $row['userID'];
+    //echo "123";
+    //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+    //exit(); 
+
+
+
+
+    //echo $user->id;
+
+
+
+  }
+
+ 
+
+}
+
 
 
 ?>
@@ -64,6 +365,8 @@ if(!$startup_home->is_logged_in())
         <link href="<?php echo BASE_PATH; ?>/css/chartist-plugin-tooltip.css" rel="stylesheet">
         <!-- Calendar CSS -->
         <link href="<?php echo BASE_PATH; ?>/css/fullcalendar.css" rel="stylesheet" />
+        <!--alerts CSS -->
+        <link href="<?php echo BASE_PATH; ?>/css/sweetalert.css" rel="stylesheet" type="text/css">
         <!-- animation CSS -->
         <link href="<?php echo BASE_PATH; ?>/css/animate.css" rel="stylesheet">
         <!-- Custom CSS -->
@@ -73,6 +376,9 @@ if(!$startup_home->is_logged_in())
         <link href="<?php echo BASE_PATH; ?>/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+        
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -96,17 +402,17 @@ if(!$startup_home->is_logged_in())
 
             $.cloudinary.config({ cloud_name: cloud_name });
             cloudinary.setCloudName(cloud_name);
-            $('#upload_widget_multiple').click(function() {
+            $('#upload_widget_multiple_team').click(function() {
                 //alert("add");
                 cloudinary.openUploadWidget({ upload_preset: preset_name, sources: ['local', 'url', 'image_search'], multiple: false },
                     function(error, result) {
                         console.log(error, result);
                         ids_and_ratios = {};
                         $.each(result, function(i, v) {
-                            $("#preview").show();
-                            $('#preview').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
+                            $("#preview_team").show();
+                            $('#preview_team').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
                             $('#headshot_id').html(v["public_id"])
-                            $('#url_preview').html('<input type="checkbox" style="display:none" name="team_member_headshot[]" value="' + v["public_id"] + '" checked/>')
+                            $('#url_preview_team').html('<input type="checkbox" style="display:none" name="team_member_headshot[]" value="' + v["public_id"] + '" checked/>')
                         });
                     });
             });
@@ -118,10 +424,10 @@ if(!$startup_home->is_logged_in())
                         console.log(error, result);
                         ids_and_ratios = {};
                         $.each(result, function(i, v) {
-                            $("#preview").show();
-                            $('#preview').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
+                            $("#preview_company").show();
+                            $('#preview_company').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
                             $('#headshot_id').html(v["public_id"])
-                            $('#url_preview').html('<input type="checkbox" style="display:none" name="company_logo[]" value="' + v["public_id"] + '" checked/>')
+                            $('#url_preview_company').html('<input type="checkbox" style="display:none" name="company_logo[]" value="' + v["public_id"] + '" checked/>')
                         });
                     });
             });
@@ -177,15 +483,32 @@ if(!$startup_home->is_logged_in())
                                 <div class="user-bg">
                                     <div class="overlay-box">
                                         <div class="user-content">
-                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                                            <a href="javascript:void(0)">
+                                    
+<?php if($row_entrepreneur['ProfileImage'] == 'Google'){ ?>
+         <img src="<?php echo $row_entrepreneur['google_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
+<?php } ?>
+
+<?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){ ?>
+         <img src="https://graph.facebook.com/<?php echo $row_entrepreneur['facebook_id']; ?>/picture" class="thumb-lg img-circle" alt="img">
+<?php } ?>
+
+<?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){ ?>
+        <img src="<?php echo $row_entrepreneur['linkedin_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
+       
+<?php } ?>
+
+</a>
+
+
                                             <div id="fullname">
-                                                <h4 class="text-white"><?php echo $row['Fullname'];?></h4>
+                                                <h4 class="text-white"><?php echo $row_entrepreneur['Fullname'];?></h4>
                                             </div>
                                             <div id="position">
-                                                <?php if($row['Position'] != ''){ ?>
+                                                <?php if($row_entrepreneur['Position'] != ''){ ?>
                                                 <h5 class="text-white"><?php 
                                                 //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
-                                                echo $row['Position'];
+                                                echo $row_entrepreneur['Position'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
@@ -214,10 +537,41 @@ if(!$startup_home->is_logged_in())
                                             </div>
                                         </p>
                                     </div>
+                             
+                             <?php if(isset($_SESSION['entrepreneurSession'])) { ?>    
+                               <?php if($_GET['id'] != $_SESSION['entrepreneurSession']) { ?>    
+
+<?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
+<?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/'".$row_entrepreneur['facebook_id']."'/picture"; } ?>
+<?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
+
+                                 <p>&nbsp;</p>
+
+        <?php 
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connect_requests WHERE requested_id ='".$_GET['id']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+                ?>                 
+                                 
+                
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if(mysqli_num_rows($sql_connect)<=0) { ?> style="display:block" 
+        <?php }else{ ?> style="display:none" <?php } ?> >
+                                   <a href="javascript: void(0);" id="sa-connect" data-userid="<?php echo $_SESSION['entrepreneurSession']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
+                                 </div> 
+               
+    <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
+                                    <a href="javascript: void(0);" id="sa-connect-cancel" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
+                                  </div>
+                
+                               <?php } ?>  
+
+                            <?php }else{ ?>   
+                            
+                              
                                     <p>&nbsp;</p>
                                  <div class="col-md-12 col-sm-12 text-center">
-                                    <a href="javascript: void(0);" target="_blank" class="btn btn-danger hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
-                                 </div>   
+                                    <a href="javascript: void(0);" id="sa-basic" class="btn btn-danger hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
+                                 </div> 
+                               
+                            <?php } ?>    
 
                                 </div>
                             </div>
@@ -264,32 +618,17 @@ if(!$startup_home->is_logged_in())
                      <form class="form-horizontal form-material" id="save-company">
                             
                        
-
-                       
-                        
-                      
-                        
-                         
-                      
-                        
-                              
-                                
                              <div id="thecompany"></div>
                     
                                
-                                        
-
-                                
-
-
                             <div id="upload-logo">
                                     <div class="form-group">
                                                 <div class="col-sm-12">
                                                             <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Logo</a>
                                                             <br>
                                                             <br>
-                                                            <ul id="preview"></ul>
-                                                            <div id="url_preview"><input type="checkbox" style="display:none" name="company_logo[]" value="<?php echo $row_startup['Logo']; ?>" checked/></div>
+                                                            <ul id="preview_company"></ul>
+                                                            <div id="url_preview_company"><input type="checkbox" style="display:none" name="company_logo[]" value="<?php echo $row_startup['Logo']; ?>" checked/></div>
                                                             <!--<div id="headshot_id"></div>-->
                                                 </div>
                                             </div>
@@ -326,238 +665,26 @@ if(!$startup_home->is_logged_in())
                         <div id="add-a-team-member">
                              <div class="col-sm-12" style="padding-left:15px">
                                          <div class="row"> 
-                                            <button class="btn btn-default btn-outline add-team-member pull-left">Add a Team Member</button>
+                                             <ul class="side-icon-text pull-left">
+                                                    <li><a href="#" class="add-team-member"><span class="circle circle-sm bg-success di"><i class="ti-plus"></i></span><span>Add a Team Member</span></a></li>
+                                             </ul>
                                         </div>
                             </div> 
                              <p>&nbsp;</p>  
                          </div>  
                         <?php } ?>  
                 
-                        <div id="existing-team-members">
+                        <div id="existing-team-members"></div>
                                   
                                     
-
-                        <div class="row">              
-
-                                        <?php
-                                $sql = mysqli_query($connecDB,"SELECT * FROM tbl_team WHERE userID = '".$_GET['id']."' ORDER BY id DESC");
-                                while($row_team = mysqli_fetch_array($sql)){  
-                                        ?>
-                                        
-                    <div id="team-tab-data">
-                                
-                        <div class="col-md-6 col-xs-12">
-                            <div class="user-btm-box-team">
-                                    <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-purple">
-                                            <div id="facebook">
-                                                <a href="<?php echo $row_team['Facebook'];?>"><i class="ti-facebook"></i></a>
-                                            </div>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-blue">
-                                            <div id="twitter">
-                                                <a href="<?php echo $row_team['Twitter'];?>"><i class="ti-twitter"></i></a>
-                                            </div>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-danger">
-                                            <div id="linkedin">
-                                                <a href="<?php echo $row_team['Linkedin'];?>"><i class="ti-linkedin"></i></a>
-                                            </div>
-                                        </p>
-                                    </div>
-                                </div>
-                            <div class="white-box border">
-                                <div class="user-bg">
-                                    <div class="overlay-box-grey">
-                                        <div class="user-content">
-                                            <a href="javascript:void(0)">
-                                            <?php if($row_team['ProfileImage'] != '') { ?>
-                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_team['ProfileImage'];?>" class="thumb-lg img-circle" alt="img">  
-                                            <?php }else{ ?>
-                                           <img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
-                                            <?php } ?>
-                                              
-                                            </a>
-                                            <div id="fullname">
-                                                <h4 class="text-black"><?php echo $row_team['Fullname']; ?></h4>
-                                            </div>
-                                            <div id="city-state">
-                                                <?php if($row['City'] != ''){ ?>
-                                                <h5 class="text-black"><?php echo $row_team['Position']; ?></h5>
-                                                <?php } ?>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                 <div class="user-btm-box">
-                                    
-                                    
-
-                                        <?php 
-                                        $ctop = $row_team['Skills']; 
-                                        $ctop = explode(',',$ctop); 
-
-                                        if($row_team['Skills'] != '' && $row_team['Skills'] != 'NULL' ){
-
-                                        foreach($ctop as $skill)   { 
-                                                       
-                                        ?>
-                                        <div class="skillsdiv_teammember"><?php echo $skill; ?></div>
-
-                                        <?php } } ?>
-
-                                        
-                                        
-                                </div>
-                                
-                                <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['id']) { ?>
-
-                                <hr>
-                                           
-                                            <div class="pull-right" style="padding-right:15px;">
-                                            <a href="#" id="edit-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-pencil"><label class="edit-team-member">Edit</i></a>&nbsp;&nbsp;&nbsp;
-                                            <a href="#" id="delete-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
-                                            </div>
-                                            <br>
-                                <?php } ?>
-                                            
-                            </div>
-                          
-                                           
-
-<script>
- 
-
- $("#edit-member-"+<?php echo $row_team['id']; ?>).click(function (e) {
-    e.preventDefault();
-
-    var url_link = 'http://localhost/creative/pos/video/startup/';
-
-    var data_id = $("#edit-member-"+<?php echo $row_team['id']; ?>).attr("data-id");
-    //alert(data_id);
-
-    //alert(userid);
-    $.ajax({
-            url: url_link+"edit-member.php", 
-            method: "POST",
-            data: {id: data_id},
-            dataType: "html",
-            success: function(response) {
-                //alert(data);  
-                //var skills = $(response).filter('#the-skill-set').text();
-                $("#existing-team-members").html(response);
-
-                $("#upload-headshot").show();
-                $("#save-cancel").show();
-                $("#preview").hide();
-                
-
-            }
-        });
-
-
-});
-
-
-//////Delete Team Member/////////
-
-    $('#delete-member-'+<?php echo $row_team['id']; ?>).click(function(e) {
-        e.preventDefault();
-        
-        var url_link = 'http://localhost/creative/pos/video/startup/';
-
-        var data_id = $("#edit-member-"+<?php echo $row_team['id']; ?>).attr("data-id");
-        //var userid = $("input[name=userid]").val();
-        //alert(data.id);
-
-
-        ConfirmDialog('Are you sure');
-
-        function ConfirmDialog(message) {
-            $('<div></div>').appendTo('body')
-                .html('<div><h6>' + message + '?</h6></div>')
-                .dialog({
-                    modal: true,
-                    zIndex: 10000,
-                    autoOpen: true,
-                    width: 'auto',
-                    resizable: false,
-                    buttons: {
-                        Yes: function() {
-                            // $(obj).removeAttr('onclick');                                
-                            // $(obj).parents('.Parent').remove();
-
-                            //$('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
-
-                            $(this).dialog("close");
-
-                            $.ajax({
-                                url: url_link+"delete-team-member.php",
-                                method: "POST",
-                                data: {id: data_id},
-                                dataType: "html",
-                                success: function(response) {
-                                    //alert(data);
-                                    $('#deleted').fadeIn("fast");
-                                    $('#deleted').delay(2000).fadeOut("slow");
-
-                                }
-                            });
-
-                            e.preventDefault();
-                        },
-                        No: function() {
-
-                            //$('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
-
-                            $(this).dialog("close");
-                        }
-                    },
-                    close: function(event, ui) {
-                        $(this).remove();
-                    }
-                });
-        };
-
-
-    });
-
-
-
-
-
-
-</script>   
-
-
-                                        </div>
-
-
-                                          
-                                          
-                                           
-                                        </div>
-
-                                        <?php } ?>
-                                        </div>  
-                                    </div>
-
-
                                 <div id="upload-headshot">
                                     <div class="form-group">
                                                 <div class="col-sm-12">
-                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple">Upload Headshot</a>
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_team">Upload Headshot</a>
                                                             <br>
                                                             <br>
-                                                            <ul id="preview"></ul>
-                                                            <div id="url_preview"><input type="checkbox" style="display:none" name="team_member_headshot[]" value="<?php echo $row_team['ProfileImage']; ?>" checked/></div>
+                                                            <ul id="preview_team"></ul>
+                                                            <div id="url_preview_team"><input type="checkbox" style="display:none" name="team_member_headshot[]" value="" checked/></div>
                                                             <!--<div id="headshot_id"></div>-->
                                                 </div>
                                             </div>
@@ -589,28 +716,87 @@ if(!$startup_home->is_logged_in())
             <!-- Connections Tab Starts -->
             <!-- ============================================================== -->
 
-                                    <div class="tab-pane" id="connections">
-                                        <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny footable-loaded footable tablet breakpoint">
-                                            <thead>
-                                                <tr>
-                                                    <th data-toggle="true" class="footable-sortable footable-visible footable-first-column"> Investor <span class="footable-sort-indicator"></span></th>
-                                                    <th data-hide="phone" class="footable-sortable footable-visible footable-last-column"> Link <span class="footable-sort-indicator"></span></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                    
                                                 <?php 
                     
                                         //$sql = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE startupID = '".$."' ORDER BY id DESC");                    
                                         //while($row = mysqli_fetch_array($sql)){
                                         ?>
-                                                <tr class="footable-even" style="display: table-row;">
-                                                    <td class="footable-visible footable-first-column"><span class="footable-toggle"></span>Isidra</td>
-                                                    <td class="footable-visible footable-last-column"><span class="label label-table label-success">Profile</span></td>
-                                                </tr>
+                                              
                                                 <?php //} ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                           
+
+                                        <div class="table-responsive manage-table tab-pane" id="connections">
+                                            <table class="table" cellspacing="14">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th>NAME</th>
+                                                        <th>TYPE</th>
+                                                        <th>EMAIL</th>
+                                                        <th>PHONE</th>
+                                                        <th>MANAGE</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="advance-table-row">
+                                                        <td width="10"></td>
+                                                        <td><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/varun.jpg" class="img-circle" width="30"></td>
+                                                        <td>Andrew Simons</td>
+                                                        <td><span class="label label-warning label-rouded">Investor</span></td>
+                                                        <td>test@test.com</td>
+                                                        <td>917.276.2878</td>
+                                                        <td><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button></td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="7" class="sm-pd"></td>
+                                                    </tr>
+                                                    <tr class="advance-table-row">
+                                                        <td></td>
+                                                       
+                                                        <td><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/varun.jpg" class="img-circle" width="30"></td>
+                                                        <td>Hanna Gover</td>
+                                                        <td><span class="label label-warning label-rouded">Investor</span></td>
+                                                        <td>test@test.com</td>
+                                                        <td>917.276.2878</td>
+                                                        <td><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button></td>
+                                                      
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="7" class="sm-pd"></td>
+                                                    </tr>
+                                                    <tr class="advance-table-row">
+                                                        <td></td>
+                                                       
+                                                        <td><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/varun.jpg" class="img-circle" width="30"></td>
+                                                        <td>Joshi Nirav</td>
+                                                        <td><span class="label label-warning label-rouded">Investor</span></td>
+                                                        <td>test@test.com</td>
+                                                        <td>917.276.2878</td>
+                                                        <td><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button></td>
+                                                       
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="7" class="sm-pd"></td>
+                                                    </tr>
+                                                    <tr class="advance-table-row">
+                                                        <td></td>
+                                                       
+                                                        <td><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/varun.jpg" class="img-circle" width="30"></td>
+                                                        <td>Joshi Sunil</td>
+                                                        <td><span class="label label-info label-rouded">Investor</span></td>
+                                                        <td>test@test.com</td>
+                                                        <td>917.276.2878</td>
+                                                        <td><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button></td>
+                                                       
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                  
             <!-- ============================================================== -->
             <!-- Connections Tab Ends -->
             <!-- ============================================================== -->
@@ -804,7 +990,70 @@ if(!$startup_home->is_logged_in())
                   
                 </div>
                 <!-- /.container-fluid -->
-                <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>
+             <footer class="footer text-center"> 
+
+
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="container center-block">
+                <div class="signup-container center-block">
+                    <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
+                    <div class="signup-card center-block">
+                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
+                        <h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>
+                        <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                 <div class="login-buttons">
+                                    <a href="<?php echo htmlspecialchars($loginUrl); ?>">
+                                        <div class="fb-connect connect-background" data-track="home:facebook-connect">
+                                            <span class="fa fa-facebook"></span>
+                                            <span class="connect-text">Connect with Facebook</span>
+                                        </div>  
+                                    </a>
+                                </div>
+                             </div>   
+                                <div class="col-md-12">
+                                    <div class="login-buttons">
+                                    <a href="<?php echo $authUrl; ?>">
+                                       <div class="google-connect connect-background" id="google-connect-button" data-track="home:google-connect">
+                         <span class="fa fa-google-plus"></span>
+                         <a href="<?php echo $authUrl; ?>">
+                         <span class="google-connect-text connect-text">Connect with Google</span>
+                         </a>
+                    </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                              <div class="col-md-12">
+                                    <div class="login-buttons">
+                                    <a href="<?php echo $authUrl; ?>">
+                                      <div class="li-connect connect-background" data-track="home:facebook-connect">
+                         <span class="fa fa-linkedin"></span>
+                         <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x2ye1ktvzj7d&redirect_uri=<?php echo BASE_PATH; ?>/linkedin/&state=987654321&scope=r_basicprofile,r_emailaddress">
+                         <span class="connect-text">Connect with Linkedin</span>
+                         </a>
+                         
+                    </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            </div> 
+                        </div>
+                        <p class="signup-light text-center">We won't ever post anything on Facebook without your permission.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+                2017 &copy; Ample Admin brought to you by themedesigner.in 
+
+            </footer>
             </div>
             <!-- ============================================================== -->
             <!-- End Page Content -->
@@ -833,6 +1082,9 @@ if(!$startup_home->is_logged_in())
         <!-- chartist chart -->
         <script src="<?php echo BASE_PATH; ?>/js/chartist.min.js"></script>
         <script src="<?php echo BASE_PATH; ?>/js/chartist-plugin-tooltip.min.js"></script>
+        <!-- Sweet-Alert  -->
+        <script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
+        <script src="<?php echo BASE_PATH; ?>/js/jquery.sweet-alert.custom.js"></script>
         <!-- Calendar JavaScript -->
         <script src="<?php echo BASE_PATH; ?>/js/moment.js"></script>
         <script src='<?php echo BASE_PATH; ?>/js/fullcalendar.min.js'></script>

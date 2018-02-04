@@ -23,7 +23,7 @@
 
 body {
     background: #2f323e;
-    font-family: Rubik, sans-serif;
+    font-family: proxima-nova, Helvetica Neue, Helvetica, Arial, sans-serif;
     margin: 0;
     overflow-x: hidden;
     color: #313131;
@@ -2974,7 +2974,7 @@ ul.common li a:hover {
 
 .circle-sm {
     width: 40px;
-    padding-top: 12px;
+    padding-top: 10px;
     height: 40px;
     font-size: 14px!important
 }
@@ -6265,10 +6265,11 @@ ul.side-icon-text>li a span {
 }
 
 .manage-table {
-    border-top: 1px solid rgba(120, 130, 140, .13);
+     /* border-top: 1px solid rgba(120, 130, 140, .13); */
     margin: 10px -25px 0;
-    background: #f7fafc;
-    padding: 30px
+    /* background: #f7fafc; */
+    padding: 0px 20px;
+}
 }
 
 .table tbody tr.advance-table-row {
@@ -20141,9 +20142,9 @@ ul.pro-amenities li span i {
 
 .icon_del{float:left; margin:4px 0 0 10px;}
 
-ul#preview {list-style-type: none; padding:0px;}
+ul#preview_company, ul#preview_team {list-style-type: none; padding:0px;}
 
-#upload-headshot, #upload-logo, #save-cancel{display:none;}
+#upload-headshot, #upload-logo, #save-cancel {display:none;}
 
 #saved {display:none; position: fixed; z-index:99999; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
 #deleted {display:none; position: fixed; z-index:99999; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
@@ -20312,3 +20313,156 @@ label.edit-team-member,label.delete-team-member{font-family: Rubik, sans-serif; 
     top: 0;
     width: 34px; }
 
+
+/*****Modal Login/Signup****/
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.fade.in {
+    opacity: 1;
+}
+.fade {
+    background: rgba(255,255,255,.9);
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity .07s linear;
+    -o-transition: opacity .07s linear;
+    transition: opacity .07s linear;
+}
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.signup-container {
+    margin-top: 40px;
+}
+
+.exit-button {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50px;
+    background: #666;
+}
+
+button {
+    outline: 0;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.signup-card {
+    width: 500px;
+    margin-top: 20px;
+    height: 300px;
+    border: 0 solid #e6e6e6;
+}
+
+.signup-card-image {
+    width: 80px;
+}
+
+.signup-card-title {
+    /*font-size: 1.2em;*/
+    margin-top: 10px;
+    color:inherit;
+}
+
+.signup-description {
+    margin-top: 25px;
+    margin-top: 25px;
+    font-size: 18px;
+    color: inherit;
+}
+
+
+
+.signup-light {
+    margin-top: 30px;
+    font-size: .9em;
+    color: #8B8B8B;
+}
+
+
+.connect-text {
+    font-size: 18px !important;
+}
+.connect-text {
+    font-size: 20px;
+    color: #fff;
+    float: left;
+    line-height: 60px;
+    vertical-align: middle;
+    width: 220px;
+}
+
+
+.connect-background {
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    text-align: center;
+    height: 60px;
+    width: 282px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.fb-connect {
+    background-image: url(https://nb9-stumbleupon.netdna-ssl.com/O5AlhkxLOIVr3-WfINichw);
+}
+
+
+.google-connect {
+    background-image: url(https://nb9-stumbleupon.netdna-ssl.com/90BbLG63FGX9Fn-_v-gzuA);
+}
+
+.li-connect {
+    background-image: url(../images/linkedin-btn.png);
+}
+
+.connect-background .fa {
+    font-size: 29px;
+    line-height: 60px;
+    float: left;
+    width: 57px;
+    color: #fff;
+}
+
+.exit-icon {
+    width: 20px;
+}
+
+.login-buttons {
+    margin-top: 20px;
+}

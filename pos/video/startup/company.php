@@ -10,21 +10,31 @@
 if($_GET){
 
 
-$sql = "SELECT * FROM startups WHERE userID ='".$_GET['userid']."'";  
-$result = mysqli_query($connecDB, $sql);  
-$row = mysqli_fetch_array($result);
+$sql = mysqli_query($connecDB,"SELECT * FROM startups WHERE userID ='".$_GET['userid']."'");
+$row = mysqli_fetch_array($sql);
 
 
  ?>
 
 
+ <?php if($_GET['userid'] != isset($_SESSION['entrepreneurSession']) && $row['userID'] != $_GET['userid']) { ?>
 
-                <?php if(isset($_SESSION['entrepreneurSession']) && $row['id'] != '') { ?>
+No Company added so far!
+
+ <?php } ?>
+
+
+                <?php if(isset($_SESSION['entrepreneurSession']) && $_GET['userid'] == $_SESSION['entrepreneurSession'] && $row['userID'] != '') { ?>
                         <div id="edit-a-company">
                              <div class="col-sm-12" style="padding-left:15px">
                                          <div class="row"> 
-                                            <button class="btn btn-default btn-outline edit-company pull-left" data-id="<?php echo $row['id']; ?>" style="margin-right:10px;"><i class="ti-pencil"><label class="edit-team-member">Edit</i></button>
-                                            <button class="btn btn-default btn-outline delete-company pull-left" data-id="<?php echo $row['id']; ?>"><i class="ti-trash"><label class="edit-team-member">Delete</i></button>
+                                           
+                                                <ul class="side-icon-text pull-left">
+                                                    <li><a href="#" class="edit-company" data-id="<?php echo $row['id']; ?>"><span class="circle circle-sm bg-success di"><i class="ti-pencil-alt"></i></span><span>Edit</span></a></li>
+                                                    <li><a href="#" id="sa-warning" data-userid="<?php echo $_GET['userid']; ?>" data-id="<?php echo $row['id']; ?>"><span class="circle circle-sm bg-danger di"><i class="ti-trash"></i></span><span>Delete</span></a></li>
+                                                </ul>
+
+
                                         </div>
                             </div> 
                              <p>&nbsp;</p>  
@@ -32,12 +42,16 @@ $row = mysqli_fetch_array($result);
 
                 <?php } ?>
                 
-                <?php if(isset($_SESSION['entrepreneurSession']) && $row['id'] == '') { ?>
+
+
+                <?php if(isset($_SESSION['entrepreneurSession']) && $_GET['userid'] == $_SESSION['entrepreneurSession'] && $row['userID'] == '') { ?>
 
                         <div id="add-a-company">
                              <div class="col-sm-12" style="padding-left:15px">
                                          <div class="row"> 
-                                            <button class="btn btn-default btn-outline add-company pull-left">Add a Company</button>
+                                             <ul class="side-icon-text pull-left">
+                                                    <li><a href="#" class="add-company"><span class="circle circle-sm bg-success di"><i class="ti-plus"></i></span><span>Add a Company</span></a></li>
+                                             </ul>
                                         </div>
                             </div> 
                              <p>&nbsp;</p>  
@@ -155,6 +169,7 @@ $(".add-company").click(function (e) {
                 $("#upload-logo").show();
                 $("#save-cancel").show();
                 $("#add-a-company").hide();
+                $('#url_preview_company').html('<input type="checkbox" style="display:none" name="team_member_headshot[]" value="" checked/>');
                 //alert(skills_count);  
 
             }
@@ -189,7 +204,7 @@ $(".edit-company").click(function (e) {
                 $("#edit-a-company").hide();
                 $("#upload-logo").show();
                 $("#save-cancel").show();
-                $("#preview").hide();
+                $("#preview_company").hide();
                 
 
             }
@@ -200,70 +215,53 @@ $(".edit-company").click(function (e) {
 
 
 
+//Warning Message
+    $('#sa-warning').click(function(){
+        swal({   
+            title: "Are you sure?",   
+            text: "You will not be able to recover this company information!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, delete it!",   
+            closeOnConfirm: false 
+        }, function(){   
 
-$('.delete-company').click(function(e) {
-        e.preventDefault();
+            var url_link = 'http://localhost/creative/pos/video/startup/';
 
-        var data_id = $(".delete-company").attr("data-id");
-        //var userid = $("input[name=userid]").val();
-        //alert(data_id);
+            var data_id = $("#sa-warning").attr("data-id");
+            var userid = $("#sa-warning").attr("data-userid");
+            //alert(data_id);
 
-
-        ConfirmDialog('Are you sure');
-
-        function ConfirmDialog(message) {
-            $('<div></div>').appendTo('body')
-                .html('<div><h6>' + message + '?</h6></div>')
-                .dialog({
-                    modal: true,
-                    zIndex: 10000,
-                    autoOpen: true,
-                    width: 'auto',
-                    resizable: false,
-                    buttons: {
-                        Yes: function() {
-                            // $(obj).removeAttr('onclick');                                
-                            // $(obj).parents('.Parent').remove();
-
-                            //$('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
-
-                            $(this).dialog("close");
-
-                            $.ajax({
+                        $.ajax({
                                 url: url_link+"delete-company.php",
                                 method: "POST",
                                 data: {id: data_id},
                                 dataType: "html",
                                 success: function(response) {
                                     //alert(data);
-                                    $('#deleted').fadeIn("fast");
-                                    $('#deleted').delay(2000).fadeOut("slow");
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                $("#thecompany").load(url_link+"company.php?userid="+userid); 
+                                swal("Deleted!", "Your Company has been deleted.", "success");  
 
                                 }
                             });
-
-                            e.preventDefault();
-                        },
-                        No: function() {
-
-                            //$('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
-
-                            $(this).dialog("close");
-                        }
-                    },
-                    close: function(event, ui) {
-                        $(this).remove();
-                    }
-                });
-        };
-
-
+                      
+             
+        });
     });
+
+
 
 
 });
 
 </script>
                                   
+
+<!-- Sweet-Alert  -->
+<script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
+
 
  <?php } ?>                                  
