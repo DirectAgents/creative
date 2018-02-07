@@ -644,6 +644,100 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
+$('#sa-connect-accept').click(function(){
+        
+        //var data_thumb = $("#sa-connect").attr("data-thumb");
+        //alert(data_thumb);
+
+        swal({   
+            title: "Accept!",   
+            text: "Accept Connection Request!",   
+            //type: "warning",
+            //imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, accept!",   
+            closeOnConfirm: false 
+        }, function(){   
+
+           var url_link = 'http://localhost/creative/pos/video/startup/';
+
+           var requested_id = $("#sa-connect-accept").attr("data-id");
+           var requester_id = $("#sa-connect-accept").attr("data-userid");
+            //alert(requested_id);
+
+                        $.ajax({
+                                url: url_link+"connect-accept.php",
+                                method: "POST",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                    //alert(data);
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
+                                //$("#add-a-team-member").show();
+                                $('.sa-connect-pending').hide();
+                                $('.sa-connect-accepted').show();
+                                swal("Success!", "You are now connected.", "success");  
+
+                                }
+                            });
+                      
+             
+        });
+    });
+
+
+
+$('#sa-connect-deny').click(function(){
+        
+        //var data_thumb = $("#sa-connect").attr("data-thumb");
+        //alert(data_thumb);
+
+        swal({   
+            title: "Deny!",   
+            text: "Deny Connection Request!",   
+            //type: "warning",
+            //imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, deny!",   
+            closeOnConfirm: false 
+        }, function(){   
+
+           var url_link = 'http://localhost/creative/pos/video/startup/';
+
+           var requested_id = $("#sa-connect-deny").attr("data-id");
+           var requester_id = $("#sa-connect-deny").attr("data-userid");
+            //alert(requested_id);
+
+                        $.ajax({
+                                url: url_link+"connect-deny.php",
+                                method: "POST",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                    //alert(data);
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
+                                //$("#add-a-team-member").show();
+                                $('.connections-tab-inside').hide();
+                                $('.connections-header').hide();
+                                $('.no-connections').show();
+                                swal("Success!", "You have denied the request.", "success");  
+
+                                }
+                            });
+                      
+             
+        });
+    });
+
+
+
+
 
 
 

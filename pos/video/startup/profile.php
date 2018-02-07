@@ -73,11 +73,13 @@ if (isset($_GET['logout'])) {
   information from our API console project.
  ************************************************/
 $client = new Google_Client();
+$client->setAccessType('offline');
 $client->setClientId($client_id);
 $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
 $client->addScope("email");
 $client->addScope("profile");
+
 
 /************************************************
   When we create the service here, we pass the
@@ -101,18 +103,26 @@ if (isset($_GET['code'])) {
   exit;
 }
 
+
+
+// If the access token is expired, ask the user to login again
+if($client->isAccessTokenExpired()) {
+    $authUrl = $client->createAuthUrl();
+    //header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
+}
+
+
+
 /************************************************
   If we have an access token, we can make
   requests, else we generate an authentication URL.
  ************************************************/
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $client->setAccessToken($_SESSION['access_token']);
-  $client->refreshToken(json_decode($_SESSION['access_token'])->access_token);
+  //$client->refreshToken(json_decode($_SESSION['access_token'])->access_token);
 } else {
   $authUrl = $client->createAuthUrl();
 }
-
-
 
 
 
@@ -157,7 +167,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         google_id = '".$user->id."',
         Fullname = '".$fullname."',
         google_picture_link = '".$user->picture."',
-        google_token = '".json_decode($_SESSION['access_token'])->access_token."',
+        google_token = '".$_SESSION['access_token']."',
         ProfileImage = 'Google'
     
         WHERE Email='".$user->email."'");
@@ -168,6 +178,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
         //header('Location: '.BASE_PATH.'');
         //exit();
+        //'".json_decode($_SESSION['access_token'])->access_token."',
     }
   else //else greeting text "Thanks for registering"
   { 
@@ -548,7 +559,7 @@ echo 'id: ' . $user['id'];
                                  <p>&nbsp;</p>
 
         <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connect_requests WHERE requested_id ='".$_GET['id']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$_GET['id']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
                 ?>                 
                                  
                 
@@ -716,18 +727,22 @@ echo 'id: ' . $user['id'];
             <!-- Connections Tab Starts -->
             <!-- ============================================================== -->
 
-                                    
-                                                <?php 
-                    
-                                        //$sql = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE startupID = '".$."' ORDER BY id DESC");                    
-                                        //while($row = mysqli_fetch_array($sql)){
-                                        ?>
-                                              
-                                                <?php //} ?>
-                                           
-
-                                        <div class="table-responsive manage-table tab-pane" id="connections">
+                            <div class="table-responsive manage-table tab-pane" id="connections">
                                             <table class="table" cellspacing="14">
+                                                
+
+                                <?php 
+                    
+                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' ORDER BY id DESC");                    
+                                        
+                                        if( ! mysqli_num_rows($sql_connections) ) {
+                                            echo "<div class='no-connections text-center'>No Connections!</div>"; 
+                                        }else{
+
+
+                                  ?>      
+
+                                            <div class="connections-header">
                                                 <thead>
                                                     <tr>
                                                         <th></th>
@@ -739,58 +754,70 @@ echo 'id: ' . $user['id'];
                                                         <th>MANAGE</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr class="advance-table-row">
+                                            </div>    
+                                               
+
+                                                  
+
+                                         <tbody>
+
+                                      <?php   
+
+                                      while($row_connections = mysqli_fetch_array($sql_connections)){
+
+                                        ?>
+
+                                        
+
+                                        <?php 
+
+                                         $sql_entrepreneur = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE userID ='".$row_connections['requester_id']."'");
+                                         $row_entrepreneur= mysqli_fetch_array($sql_entrepreneur);
+
+
+                                        ?>
+
+
+
+<?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
+<?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){ $profileimage = "https://graph.facebook.com/'".$row_entrepreneur['facebook_id']."'/picture"; } ?>
+<?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
+                                                    <tr class="advance-table-row connections-tab-inside">
                                                         <td width="10"></td>
-                                                        <td><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/varun.jpg" class="img-circle" width="30"></td>
-                                                        <td>Andrew Simons</td>
-                                                        <td><span class="label label-warning label-rouded">Investor</span></td>
-                                                        <td>test@test.com</td>
-                                                        <td>917.276.2878</td>
-                                                        <td><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button></td>
+                                                        <td> 
+                                                        <img src="<?php echo $profileimage; ?>" class="img-circle" width="30">
+                                                        </td>
+                                                        <td><?php echo $row_entrepreneur['Fullname']; ?></td>
+                                                        <td><span class="label label-warning label-rouded"><?php echo $row_connections['type']; ?></span></td>
+                                                        <td><?php echo $row_entrepreneur['Email']; ?></td>
+                                                        <td><?php echo $row_entrepreneur['Phone']; ?></td>
+                                                        <td>
+                                                       
+        <div class="sa-connect-pending" <?php if($row_connections['status'] == 'pending') { ?> style="display:block" 
+        <?php }else{ ?> style="display:none" <?php } ?>>
+                                                            <button type="button" id="sa-connect-deny" data-userid="<?php echo $row_entrepreneur['userID']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-close"></i></button>
+                                                            <button type="button" id="sa-connect-accept" data-userid="<?php echo $row_entrepreneur['userID']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-check"></i></button>
+                                                        
+                                                     </div>   
+        <div class="sa-connect-accepted" <?php if($row_connections['status'] == 'accepted') { ?> style="display:block" 
+        <?php }else{ ?> style="display:none" <?php } ?>>
+                                                            <!--<button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button>-->
+                                                            <span class="label label-success label-rouded">Connected</span>
+                                                        
+                                                    </div>   
+
+         <div class="sa-connect-denied" <?php if($row_connections['status'] == 'denied') { ?> style="display:block" 
+        <?php }else{ ?> style="display:none" <?php } ?>>
+                                                            <button type="button" id="sa-connect-deny" data-userid="<?php echo $row_entrepreneur['userID']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
+                                                     </div>                                                 
+                                                        </td>
                                                         
                                                     </tr>
                                                     <tr>
                                                         <td colspan="7" class="sm-pd"></td>
-                                                    </tr>
-                                                    <tr class="advance-table-row">
-                                                        <td></td>
-                                                       
-                                                        <td><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/varun.jpg" class="img-circle" width="30"></td>
-                                                        <td>Hanna Gover</td>
-                                                        <td><span class="label label-warning label-rouded">Investor</span></td>
-                                                        <td>test@test.com</td>
-                                                        <td>917.276.2878</td>
-                                                        <td><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button></td>
-                                                      
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="7" class="sm-pd"></td>
-                                                    </tr>
-                                                    <tr class="advance-table-row">
-                                                        <td></td>
-                                                       
-                                                        <td><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/varun.jpg" class="img-circle" width="30"></td>
-                                                        <td>Joshi Nirav</td>
-                                                        <td><span class="label label-warning label-rouded">Investor</span></td>
-                                                        <td>test@test.com</td>
-                                                        <td>917.276.2878</td>
-                                                        <td><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button></td>
-                                                       
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="7" class="sm-pd"></td>
-                                                    </tr>
-                                                    <tr class="advance-table-row">
-                                                        <td></td>
-                                                       
-                                                        <td><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/varun.jpg" class="img-circle" width="30"></td>
-                                                        <td>Joshi Sunil</td>
-                                                        <td><span class="label label-info label-rouded">Investor</span></td>
-                                                        <td>test@test.com</td>
-                                                        <td>917.276.2878</td>
-                                                        <td><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button><button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button></td>
-                                                       
+                                                        </tr>
+                                                <?php } ?> 
+                                        <?php } ?>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -845,7 +872,7 @@ echo 'id: ' . $user['id'];
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Email</label>
                                                 <div class="col-md-12">
-                                                    <input type="email" id="fm_email" name="fm_email" value="<?php echo $row['Email'];?>" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email"> </div>
+                                                    <input type="email" id="fm_email" name="fm_email" value="<?php echo $row['Email'];?>" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email" disabled> </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-12">Phone No</label>
@@ -990,16 +1017,14 @@ echo 'id: ' . $user['id'];
                   
                 </div>
                 <!-- /.container-fluid -->
-             <footer class="footer text-center"> 
 
-
-<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade text-center" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="container center-block">
                 <div class="signup-container center-block">
                     <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
                     <div class="signup-card center-block">
                         <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
-                        <h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>
+                        <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
                         <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
                         <div class="container-fluid">
                             <div class="row">
@@ -1051,7 +1076,7 @@ echo 'id: ' . $user['id'];
 
 
 
-                2017 &copy; Ample Admin brought to you by themedesigner.in 
+             <footer class="footer text-center">2017 &copy; Ample Admin brought to you by themedesigner.in 
 
             </footer>
             </div>

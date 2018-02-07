@@ -32,8 +32,8 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                 <!-- Search input and Toggle icon -->
                 <ul class="nav navbar-top-links navbar-left">
                     <li><a href="javascript:void(0)" class="open-close waves-effect waves-light visible-xs"><i class="ti-close ti-menu"></i></a></li>
-                    <!--<li class="dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> <i class="mdi mdi-gmail"></i>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> <i class="mdi mdi-check-circle"></i>
                             <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                         </a>
                         <ul class="dropdown-menu mailbox animated bounceInDown">
@@ -69,7 +69,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                             </li>
                         </ul>
                        
-                    </li>-->
+                    </li>
                     <!-- /.dropdown-messages -->
                  
                     <!-- .Megamenu -->

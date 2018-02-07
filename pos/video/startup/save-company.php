@@ -4,6 +4,7 @@
  require_once '../class.entrepreneur.php';
  require_once '../base_path.php';
  include_once("../config.php"); 
+ require_once('../algoliasearch-client-php-master/algoliasearch.php');
 
 
 if($_POST){
@@ -77,6 +78,48 @@ mysqli_query($connecDB, $sql);
 
 
 }
+
+
+
+
+
+
+
+$sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur LEFT JOIN startups ON startups.userID=tbl_entrepreneur.userID WHERE tbl_entrepreneur.userID='".$_POST['userid']."'");
+$row_startup = mysqli_fetch_array($sql_startup);
+
+
+$response = array();
+
+$response[] = array(
+	'objectID'=> $row_startup['id'],
+	'name'=> $_POST['name'], 
+	'industry'=> $_POST['industry'],
+	'location'=> $city.', '.$state_final, 
+	'logo'=> $_POST['logo'],
+	'fullname'=> $row_startup['Fullname'],
+	'position'=> $row_startup['Position']
+	 );
+
+$fp = fopen('startups.json', 'w');
+fwrite($fp, json_encode($response));
+fclose($fp);
+
+//echo var_dump($response);
+
+//Upload to algolia
+$client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
+$index = $client->initIndex('startups');
+
+$records = json_decode(file_get_contents('startups.json'), true);
+
+$chunks = array_chunk($records, 1000);
+
+foreach ($chunks as $batch) {
+  $index->addObjects($batch);
+}
+
+
 
 
 }

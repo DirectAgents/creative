@@ -9,8 +9,8 @@
 if($_POST){
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connect_requests(requester_id, requested_id) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requested_id']."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(requester_id, requested_id, type) 
+	VALUES('".$_POST['requester_id']."','".$_POST['requested_id']."', 'Startup')");
 
 }
 
