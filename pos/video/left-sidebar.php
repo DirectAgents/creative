@@ -8,17 +8,36 @@
                     </div>
                     <ul class="nav" id="side-menu">
                         <li class="user-pro">
-                            <a href="#" class="waves-effect"><img src="<?php echo BASE_PATH; ?>/images/varun.jpg" alt="user-img" class="img-circle"> <span class="hide-menu"> Steve Gection<span class="fa arrow"></span></span>
+                            <a href="#" class="waves-effect">
+                                
+
+<?php if($rownav['ProfileImage'] == 'Google'){ ?>
+         <img src="<?php echo $rownav['google_picture_link']; ?>" alt="user-img" class="img-circle"> 
+<?php } ?>
+
+<?php if($rownav['ProfileImage'] == 'Facebook'){ ?>
+          <img src="https://graph.facebook.com/<?php echo $rownav['facebook_id']; ?>/picture" alt="user-img" class="img-circle">
+<?php } ?>
+
+<?php if($rownav['ProfileImage'] == 'Linkedin'){ ?>
+          <img src="<?php echo $rownav['linkedin_picture_link']; ?>" alt="user-img" class="img-circle">
+<?php } ?>
+
+                                
+
+
+
+                                <span class="hide-menu"> <?php echo $rownav['Fullname']; ?><span class="fa arrow"></span></span>
                         </a>
                             <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
                                 <li><a href="javascript:void(0)"><i class="ti-user"></i> <span class="hide-menu">My Profile</span></a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-wallet"></i> <span class="hide-menu">My Balance</span></a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-email"></i> <span class="hide-menu">Inbox</span></a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-settings"></i> <span class="hide-menu">Account Setting</span></a></li>
-                                <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a></li>
                             </ul>
                         </li>
-                        <li><a href="<?php echo BASE_PATH; ?>/startups/" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Startups<span class="fa arrow"></span></span></a>
+                        <li><a href="<?php echo BASE_PATH; ?>" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Startups<span class="fa arrow"></span></span></a>
                         </li>
                         <li> <a href="javascript:void(0)" class="waves-effect"><i class="mdi mdi-checkbox-multiple-marked-outline fa-fw"></i> <span class="hide-menu">Industry<span class="fa arrow"></span></span></a>
                             <ul class="nav nav-second-level">
@@ -51,8 +70,10 @@
                             </li>-->
                             </ul>
                         </li>
+                         <li><a href="<?php echo BASE_PATH; ?>/startups/" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">For Startups<span class="fa arrow"></span></span></a>
+                            <li><a href="<?php echo BASE_PATH; ?>/investors/" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">For Investors<span class="fa arrow"></span></span></a>
                         <li class="devider"></li>
-                        <li><a href="login.html" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
+                        <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
                     </ul>
                 </div>
             </div>

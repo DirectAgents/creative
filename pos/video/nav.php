@@ -7,8 +7,12 @@
 
        <?php 
 
-$stmt = mysqli_query($connecDB, "SELECT * FROM tbl_entrepreneur WHERE userID='".$_SESSION['entrepreneurSession']."'");
+$stmt = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'");
 $rownav = mysqli_fetch_array($stmt);
+
+$words = explode(" ", $rownav['Fullname']);
+
+$firstname = $words[0];
 
 
 $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
@@ -20,7 +24,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
-                    <a class="logo" href="index.html">
+                    <a class="logo" href="<?php echo BASE_PATH; ?>">
                         <!-- Logo icon image, you can use font-icon also --><b>
                         <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="images/admin-logo-dark.png" alt="home" class="light-logo" />
                      </b>
@@ -139,21 +143,21 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
 
 <?php if($rownav['ProfileImage'] == 'Google'){ ?>
-         <img src="<?php echo $rownav['google_picture_link']; ?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> 
+         <img src="<?php echo $rownav['google_picture_link']; ?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $firstname; ?></b><span class="caret"></span> 
 <?php } ?>
 
 <?php if($rownav['ProfileImage'] == 'Facebook'){ ?>
-         <img src="https://graph.facebook.com/<?php echo $rownav['facebook_id']; ?>/picture" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> 
+         <img src="https://graph.facebook.com/<?php echo $rownav['facebook_id']; ?>/picture" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $firstname; ?></b><span class="caret"></span> 
 <?php } ?>
 
 <?php if($rownav['ProfileImage'] == 'Linkedin'){ ?>
-         <img src="<?php echo $rownav['linkedin_picture_link']; ?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> 
+         <img src="<?php echo $rownav['linkedin_picture_link']; ?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $firstname; ?></b><span class="caret"></span> 
 <?php } ?>
 
 
                         </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-user"></i> My Profile</a></li>
                             <li><a href="#"><i class="ti-wallet"></i> My Team</a></li>
                             <li><a href="#"><i class="ti-email"></i> Connections</a></li>
                             <li role="separator" class="divider"></li>

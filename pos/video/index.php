@@ -128,7 +128,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
   //check if user exist in database using COUNT
-  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_entrepreneur WHERE google_id=$user->id AND Type != '' ");
+  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_users WHERE google_id=$user->id AND Type != '' ");
   $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
   $fullname = $user->givenName.' '.$user->familyName;
@@ -156,10 +156,10 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   if($user_count != 0) //if user already exist change greeting text to "Welcome Back"
     {   
 
-        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user->email."'");
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user->email."'");
         $row = mysqli_fetch_array($sql);
 
-        $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
+        $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
         google_id = '".$user->id."',
         Fullname = '".$fullname."',
         google_picture_link = '".$user->picture."',
@@ -184,7 +184,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     
     
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (google_id, Fullname, Email, google_picture_link, ProfileImage, Date_Created) 
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (google_id, Fullname, Email, google_picture_link, ProfileImage, Date_Created) 
       VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , 'Google' , '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
@@ -192,7 +192,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
     //mysqli_query($insert_sql);  
 
-        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user->email."'");
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user->email."'");
         $row = mysqli_fetch_array($sql);
 
         $_SESSION['entrepreneurSession'] = $row['userID'];
@@ -272,11 +272,11 @@ echo 'id: ' . $user['id'];
 //check if user exist in database using COUNT
 
 
-  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_entrepreneur WHERE facebook_id='".$user['id']."' ");
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_users WHERE facebook_id='".$user['id']."' ");
   $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
 
   
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user['email']."' AND Type != '' ");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user['email']."' AND Type != '' ");
   $row = mysqli_fetch_array($sql);
 
 
@@ -313,7 +313,7 @@ echo 'id: ' . $user['id'];
 
     
 
-    $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
     facebook_id = '".$user['id']."', 
     Fullname =  '".$fullname."',
     Gender =  '".$gender."',
@@ -339,7 +339,7 @@ echo 'id: ' . $user['id'];
 
     
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
       VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
@@ -347,7 +347,7 @@ echo 'id: ' . $user['id'];
 
     //mysqli_query($insert_sql);  
     
-    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user['email']."'");
+    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user['email']."'");
     $row = mysqli_fetch_array($sql);
 
     $_SESSION['entrepreneurSession'] = $row['userID'];

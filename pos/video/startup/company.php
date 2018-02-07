@@ -86,42 +86,42 @@ No Company added so far!
                                           </div>
                                           <p>&nbsp;</p>
                                             <div class="row">
-                                                <div class="col-md-2 col-xs-6 b-r"> <strong>Location</strong>
+                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Location</strong>
                                                     <br>
                                                     <p class="text-muted">
                             <?php echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City']))))
 .', '.$row['State']; ?>
                                                     </p>
                                                 </div>
-                                                 <div class="col-md-2 col-xs-6"> <strong>Industry</strong>
+                                                 <div class="col-md-3 col-xs-6"> <strong>Industry</strong>
                                                     <br>
                                                     <p class="text-muted">
                                                         <?php echo $row['Industry']; ?>
                                                     </p>
                                                 </div>
-                                                <div class="col-md-3 col-xs-6 ">
+                                                <div class="col-md-5 col-xs-6 ">
                                                     <p class="text-muted">
-                                            <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-purple">
+                                           
+                                       <ul class="socials-list">
+                                         <li>
                                             <div id="facebook">
                                                 <a href="<?php echo $row['Facebook'];?>"><i class="ti-facebook"></i></a>
                                             </div>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-blue">
+                                        </li>
+                                        <li>
                                             <div id="twitter">
                                                 <a href="<?php echo $row['Twitter'];?>"><i class="ti-twitter"></i></a>
                                             </div>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 text-center">
-                                        <p class="text-danger">
+                                        </li>
+                                        <li>
                                             <div id="angellist">
                                                 <a href="<?php echo $row['AngelList'];?>"><img src="<?php echo BASE_PATH; ?>/images/angel-list-icon.jpg"/></a>
                                             </div>
-                                        </p>
-                                    </div>
+                                        </li>
+                                       </ul> 
+                                    
+                                   
+                                  
                                                     </p>
                                                 </div>
                                             </div>

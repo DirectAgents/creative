@@ -88,12 +88,26 @@ if ($err) {
   echo $user->firstName;
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE linkedin_id = '".$user->id."' AND Email = '".$user->emailAddress."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE linkedin_id = '".$user->id."' AND Email = '".$user->emailAddress."' AND Type != ''");
 $row = mysqli_fetch_array($sql);
 
 
-if(mysqli_num_rows($sql)>0)
-{
+if(!$row['userID']) //if user does not exist
+    { 
+
+        $_SESSION['linkedin_id'] = $user->id;
+        $_SESSION['email'] = $user->emailAddress;
+        $_SESSION['fullname'] = $user->firstName.' '.$user->lastName;
+        $_SESSION['linkedin_picture_link'] = $user->pictureUrl;
+        header('Location: '.BASE_PATH.'/choose/');
+        exit();
+
+}else{
+
+
+
+if($row['userID']) //if user already exist change greeting text to "Welcome Back"
+    {
 
         $fullname = $user->firstName.' '.$user->lastName;
 
@@ -108,7 +122,7 @@ if(mysqli_num_rows($sql)>0)
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['entrepreneurSession'] = $row['userID'];
         //echo $_SESSION['startupSession'];
-        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        header('Location: '.BASE_PATH.'');
         //header('Location: '.BASE_PATH.'');
         exit();
 
@@ -136,7 +150,7 @@ if(mysqli_num_rows($sql)>0)
         $_SESSION['entrepreneurSession'] = $row2['userID'];
         //echo $_SESSION['startupSession'];
         //echo "asdfasfd";
-        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        header('Location: '.BASE_PATH.'');
         exit();
 
 
@@ -152,5 +166,8 @@ if(mysqli_num_rows($sql)>0)
 
 
 }
+
+}
+ 
 
 ?>

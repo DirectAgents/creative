@@ -14,6 +14,10 @@ unset($_SESSION['entrepreneurSession']);
 unset($_SESSION['investorSession']);
 unset($_SESSION['fb_access_token_entrepreneur']);
 unset($_SESSION['fb_access_token_investor']);
+unset($_SESSION['linkedin_id']);
+unset($_SESSION['google_id']);
+unset($_SESSION['facebook_id']);
+
 header('Location: '.BASE_PATH.'');
 exit();
 //}
