@@ -133,7 +133,7 @@ No Company added so far!
                                             </p>
                                             <?php } ?>
                                             <hr>
-                                            <iframe width="100%" height="500" src="https://www.youtube.com/embed/sK7riqg2mr4" frameborder="0" allowfullscreen=""></iframe>
+                                            <iframe width="100%" height="315" src="<?php echo $row['Video'];?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                         
 <?php } ?>  
 
@@ -167,8 +167,11 @@ $(".add-company").click(function (e) {
                 $("#thecompany").html(response);
 
                 $("#upload-logo").show();
+                $("#upload-screenshot").show();
                 $("#save-cancel").show();
                 $("#add-a-company").hide();
+                $("#preview_company").hide();
+                $("#preview_screenshot").hide();
                 $('#url_preview_company').html('<input type="checkbox" style="display:none" name="team_member_headshot[]" value="" checked/>');
                 //alert(skills_count);  
 
@@ -203,8 +206,10 @@ $(".edit-company").click(function (e) {
                 $("#add-a-company").hide();
                 $("#edit-a-company").hide();
                 $("#upload-logo").show();
+                $("#upload-screenshot").show();
                 $("#save-cancel").show();
                 $("#preview_company").hide();
+                $("#preview_screenshot").hide();
                 
 
             }

@@ -11,6 +11,8 @@
  $index = $client->initIndex('startups');
 
 
+$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
 
 
 require_once 'facebook-sdk-v5/autoload.php';
@@ -400,6 +402,8 @@ echo 'id: ' . $user['id'];
     <link href="<?php echo BASE_PATH; ?>/css/jquery.toast.css" rel="stylesheet">
     <!-- morris CSS -->
     <link href="<?php echo BASE_PATH; ?>/css/morris.css" rel="stylesheet">
+    <!--alerts CSS -->
+    <link href="<?php echo BASE_PATH; ?>/css/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- chartist CSS -->
     <link href="<?php echo BASE_PATH; ?>/css/chartist.min.css" rel="stylesheet">
     <link href="<?php echo BASE_PATH; ?>/css/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -469,7 +473,10 @@ echo 'id: ' . $user['id'];
                 <p>&nbsp;</p>
 
 
-                <div class="row">
+
+                <div class="row testing">
+
+
 
 
 
@@ -485,25 +492,28 @@ echo 'id: ' . $user['id'];
   <div class="hit">
    
     <div class="hit-content">
+      
+     
 
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
                         <div class="white-box">
                             <div class="product-img">
-                                <img src="{{{_highlightResult.profileimage.value}}}"/>
+                                <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_340/v1/{{{_highlightResult.screenshot.value}}}"/>
                                 <div class="pro-img-overlay">
-
-                                    <a href="#img1" class="popup-youtube bg-info"><i class="ti-eye"></i></a> 
-                                    <a href="javascript:void(0)" class="bg-danger"><i class="ti-bookmark"></i></a>
+                                    
+                                    <a href="<?php echo BASE_PATH; ?>/?v={{{_highlightResult.startupID.value}}}" class="popup-youtube bg-info"><i class="ti-eye"></i></a> 
+                                    <a href="<?php echo BASE_PATH; ?>/?b={{{_highlightResult.startupID.value}}}" class="popup-youtube bg-danger" data-id="{{{_highlightResult.startupID.value}}}"><i class="ti-bookmark"></i></a>
                                     <a href="javascript:void(0)" class="bg-danger"><i class="ti-heart"></i></a>
                                 </div>
                             </div>
                             <div class="product-text">
-                                <span class="pro-price bg-danger">$15</span>
-                                <h3 class="box-title m-b-0"><a href="profile/{{profileid}}">{{{_highlightResult.name.value}}}</a></h3>
+                                <span class="pro-price"><img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></span>
+                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/profile/{{objectID}}">{{{_highlightResult.name.value}}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
-                                <span class="m-r-10"><i class="icon-calender"></i> May 16</span> 
-                                <span class="m-r-10"><i class="fa fa-heart-o"></i> 38</a></span>  
+                                <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 
+                                <span class="m-r-10"><i class="fa fa-heart-o"></i> {{{_highlightResult.likes.value}}}</a></span>  
                                     <i class="fa fa-industry"></i> {{{_highlightResult.industry.value}}}</small>
                             </div>
                         </div>
@@ -511,17 +521,8 @@ echo 'id: ' . $user['id'];
 
 
 
-<!-- lightbox container hidden with CSS -->
-<a href="#_" class="lightbox" id="img1">
-<div id="videoModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
-  <div class="modal-header">
-    <button type="button" class="close full-height" data-dismiss="modal" aria-hidden="true">X</button>
-    <h3>Donna Galletta- Showreel</h3>
-  </div>
-  <div class="modal-body"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/sK7riqg2mr4" frameborder="0" allowfullscreen=""></iframe></div>
-  <div class="modal-footer"></div>
-</div>
-</a>
+
+
 
 
 
@@ -532,83 +533,92 @@ echo 'id: ' . $user['id'];
 
     </div>
   </div>
+
+
+
+
+
  
 </script>
+
+
+
 
 
 </main>
 
 
-   
+
+<?php if(isset($_GET['v'])){ ?>
+
+<?php 
+$sql_startups = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$_GET['v']."'");      
+$row_startups = mysqli_fetch_array($sql_startups);
+?>
+
+<!-- lightbox container hidden with CSS -->
+<a href="#_" class="lightbox" style="display:block">
+<div id="videoModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
+  <div class="modal-header">
+    <button type="button" class="close full-height close-video" data-dismiss="modal" aria-hidden="true">X</button>
+    <h3>Donna Galletta- Showreel</h3>
+  </div>
+  <div class="modal-body"><iframe width="560" height="315" src="<?php echo $row_startups['Video']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+  <div class="modal-footer"></div>
+</div>
+</a>
+<?php } ?> 
 
 
 
-                    <?php 
-                    
-                   // $sql = mysqli_query($connecDB,"SELECT * FROM startups ORDER BY id DESC");                    
-                   // while($row = mysqli_fetch_array($sql)){
 
-                    ?>
+<!-- lightbox container hidden with CSS -->
+<?php if(isset($_GET['b'])){ ?>
+<a href="#_" class="lightbox" id="img2" style="display:block">
+<div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true" data-animation="pop" data-timer="null" style="display: block; margin-top: -184px;"><div class="sa-icon sa-error" style="display: none;">
+      <span class="sa-x-mark">
+        <span class="sa-line sa-left"></span>
+        <span class="sa-line sa-right"></span>
+      </span>
+    </div><div class="sa-icon sa-warning pulseWarning" style="display: block;">
+      <span class="sa-body pulseWarningIns"></span>
+      <span class="sa-dot pulseWarningIns"></span>
+    </div><div class="sa-icon sa-info" style="display: none;"></div><div class="sa-icon sa-success" style="display: none;">
+      <span class="sa-line sa-tip"></span>
+      <span class="sa-line sa-long"></span>
 
-                    <!--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="white-box">
-                            <div class="product-img">
-                                <img src="{{{_highlightResult.profileimage.value}}}"/>
-                                <div class="pro-img-overlay">
+      <div class="sa-placeholder"></div>
+      <div class="sa-fix"></div>
+    </div><div class="sa-icon sa-custom" style="display: none;"></div><h2>Are you sure?</h2>
+    <!--<p style="display: block;">You will not be able to recover this company information!</p>-->
+    <fieldset>
+      <input type="text" tabindex="3" placeholder="">
+      <div class="sa-input-error"></div>
+    </fieldset><div class="sa-error-container">
+      <div class="icon">!</div>
+      <p>Not valid!</p>
+    </div><div class="sa-button-container">
+      <button class="cancel_bookmark" tabindex="2" style="display: inline-block;">Cancel</button>
+      <div class="sa-confirm-button-container">
 
-                                    <a href="www.youtube.com/watch?v=sK7riqg2mr4" class="popup-youtube bg-info"><i class="ti-eye"></i></a> 
-                                    <a href="javascript:void(0)" class="bg-danger"><i class="ti-bookmark"></i></a>
-                                    <a href="javascript:void(0)" class="bg-danger"><i class="ti-heart"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <span class="pro-price bg-danger">$15</span>
-                                <h3 class="box-title m-b-0">{{{_highlightResult.name.value}}}</h3>
-                                <small class="text-muted db">
-                                <br>
-                                <span class="m-r-10"><i class="icon-calender"></i> May 16</span> 
-                                <span class="m-r-10"><i class="fa fa-heart-o"></i> 38</a></span>  
-                                    <i class="fa fa-industry"></i> <?php echo $row['Industry'];?></small>
-                            </div>
-                        </div>
-                    </div>
-                  
-                   <?php //} ?>
+        <button class="ok" tabindex="1" style="display: none; background-color: rgb(140, 212, 245); box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">OK</button>
+
+        <button class="confirm_bookmark" id="bookmark" data-id="<?php echo $_GET['b']; ?>" tabindex="1" style="display: inline-block; background-color: rgb(221, 107, 85); box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">Yes, bookmark it!</button><div class="la-ball-fall">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div></div>
+</a>
+<?php } ?> 
+
+
+
                    
-                </div>-->
+                </div>
 
                 
-                <!--<div class="row">
-
-                    <div class="main-screen">
-                    
-                    <?php 
-                    
-                    $sql = mysqli_query($connecDB,"SELECT * FROM startups ORDER BY id DESC");                    
-                    while($row = mysqli_fetch_array($sql)){
-
-                    ?>
-                    <div class="col-md-4 col-lg-4 col-xs-12 col-sm-6"> 
-                        <div class="white-box">
-                            <a class="popup-youtube" href="www.youtube.com/watch?v=sK7riqg2mr4">
-                            <img class="img-responsive" alt="user" src="<?php echo BASE_PATH; ?>/images/img1.jpg"></a><br>
-                            <div class="text-muted">
-                                <span class="m-r-10"><i class="icon-calender"></i> May 16</span> 
-                            <span class="m-r-10"><i class="fa fa-heart-o"></i> 38</a></span>  
-                            <i class="fa fa-heart-o"></i> <?php echo $row['Industry'];?></div>
-                            <h3 class="m-t-20 m-b-20"><?php echo $row['Name'];?></h3>
-                            
-                            <a href="<?php echo BASE_PATH; ?>/startups/profile/<?php echo $row['userID']; ?>/" class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Visit Profile</a>
-
-                        </div>
-                    </div>
-
-                    <?php } ?>
-
-                    </div>
-                    
-                </div>-->
-
                  <!-- ============================================================== -->
                 <!-- Main Screen End -->
                 <!-- ============================================================== -->
@@ -705,6 +715,9 @@ echo 'id: ' . $user['id'];
     <!--Counter js -->
     <script src="<?php echo BASE_PATH; ?>/js/jquery.waypoints.js"></script>
     <script src="<?php echo BASE_PATH; ?>/js/jquery.counterup.min.js"></script>
+     <!-- Sweet-Alert  -->
+    <script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/jquery.sweet-alert.custom.js"></script>
     <!--Morris JavaScript -->
     <script src="<?php echo BASE_PATH; ?>/js/raphael-min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/js/morris.js"></script>
@@ -744,6 +757,7 @@ echo 'id: ' . $user['id'];
 
     <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/app.js"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
 
 </body>
 

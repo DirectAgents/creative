@@ -436,9 +436,26 @@ echo 'id: ' . $user['id'];
                         ids_and_ratios = {};
                         $.each(result, function(i, v) {
                             $("#preview_company").show();
-                            $('#preview_company').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
+                            $("#preview_edit_company").hide();
+                            $('#preview_company').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" class="thumb-lg img-circle" />')
                             $('#headshot_id').html(v["public_id"])
                             $('#url_preview_company').html('<input type="checkbox" style="display:none" name="company_logo[]" value="' + v["public_id"] + '" checked/>')
+                        });
+                    });
+            });
+
+            $('#upload_widget_multiple_screenshot').click(function() {
+                //alert("add");
+                cloudinary.openUploadWidget({ upload_preset: preset_name, sources: ['local', 'url', 'image_search'], multiple: false },
+                    function(error, result) {
+                        console.log(error, result);
+                        ids_and_ratios = {};
+                        $.each(result, function(i, v) {
+                            $("#preview_screenshot").show();
+                            $("#preview_edit_screenshot").hide();
+                            $('#preview_screenshot').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\"/>')
+                            $('#headshot_id').html(v["public_id"])
+                            $('#url_preview_screenshot').html('<input type="checkbox" style="display:none" name="video_screenshot[]" value="' + v["public_id"] + '" checked/>')
                         });
                     });
             });
@@ -609,7 +626,7 @@ echo 'id: ' . $user['id'];
                                         -->
 
                                     <li class="tab">
-                                        <a href="#video" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Video</span> </a>
+                                        <a href="#bookmarks" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Bookmarks</span> </a>
                                     </li>
 
                                     <li class="tab">
@@ -627,15 +644,12 @@ echo 'id: ' . $user['id'];
                     <div class="tab-pane active" id="company">
                             
                      <form class="form-horizontal form-material" id="save-company">
-                            
-                       
-                             <div id="thecompany"></div>
-                    
-                               
-                            <div id="upload-logo">
+
+
+                         <div id="upload-logo">
                                     <div class="form-group">
                                                 <div class="col-sm-12">
-                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Logo</a>
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Company Logo</a>
                                                             <br>
                                                             <br>
                                                             <ul id="preview_company"></ul>
@@ -644,6 +658,30 @@ echo 'id: ' . $user['id'];
                                                 </div>
                                             </div>
                                 </div>
+                            
+                       
+                             <div id="thecompany"></div>
+                    
+                               
+                            
+                              <div id="upload-screenshot">
+                                    <div class="form-group">
+                                                <div class="col-sm-12">
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_screenshot">Upload Screenshot</a>
+                                                            <br>
+                                                            <br>
+                                                            <ul id="preview_screenshot"></ul>
+                                                            <div id="url_preview_screenshot"><input type="checkbox" style="display:none" name="video_screenshot[]" value="<?php echo $row_startup['Screenshot']; ?>" checked/></div>
+                                                            <!--<div id="headshot_id"></div>-->
+                                                            <p>Note.: The screenshot of the video clip has to have a minimum dimension of 340px in width.</p> 
+                                                </div>
+
+                                            </div>
+
+                                </div>
+
+
+                           
 
 
                         <div id="save-cancel">
@@ -733,7 +771,7 @@ echo 'id: ' . $user['id'];
 
                                 <?php 
                     
-                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' ORDER BY id DESC");                    
+                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' ORDER BY id DESC");                    
                                         
                                         if( ! mysqli_num_rows($sql_connections) ) {
                                             echo "<div class='no-connections text-center'>No Connections!</div>"; 
@@ -771,7 +809,7 @@ echo 'id: ' . $user['id'];
 
                                         <?php 
 
-                                         $sql_entrepreneur = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_connections['requester_id']."'");
+                                         $sql_entrepreneur = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_connections['requested_id']."'");
                                          $row_entrepreneur= mysqli_fetch_array($sql_entrepreneur);
 
 
@@ -830,26 +868,91 @@ echo 'id: ' . $user['id'];
                                    
                                     
             <!-- ============================================================== -->
-            <!-- Videos Tab Starts -->
+            <!-- Bookmarks Tab Starts -->
             <!-- ============================================================== -->
-                                    <div class="tab-pane" id="video">
-                                        <form class="form-horizontal form-material">
-                                            <div class="form-group">
-                                                <label class="col-md-12">Full Name</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" id="fm_fullname" name="fm_fullname" value="<?php echo $row['Fullname'];?>" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
-                                            </div>
-                                          
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <button class="btn btn-success btn-update-profile">Update Profile</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+
+
+                                    <div class="table-responsive manage-table tab-pane" id="bookmarks">
+                                            <table class="table" cellspacing="14">
+                                                
+
+                                <?php 
+                    
+                                        $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' ORDER BY id DESC");                    
+                                        
+                                        if( ! mysqli_num_rows($sql_bookmarks) ) {
+                                            echo "<div class='no-connections text-center'>No Connections!</div>"; 
+                                        }else{
+
+
+                                  ?>      
+
+                                            <div class="connections-header">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th>STARTUP</th>
+                                                        <th>LOCATION</th>
+                                                        <th>INDUSTRY</th>
+                                                        <th>MANAGE</th>
+                                                    </tr>
+                                                </thead>
+                                            </div>    
+                                               
+
+                                                  
+
+                                         <tbody>
+
+                                      <?php   
+
+                                      while($row_bookmarks = mysqli_fetch_array($sql_bookmarks)){
+
+                                        ?>
+
+                                        
+
+                                        <?php 
+
+                                         $sql_startup = mysqli_query($connecDB,"SELECT * FROM startups WHERE userID ='".$row_bookmarks['requested_id']."'");
+                                         $row_startup= mysqli_fetch_array($sql_startup);
+
+
+                                        ?>
+
+                                                    <tr class="advance-table-row connections-tab-inside">
+                                                        <td width="10"></td>
+                                                        <td> 
+                                                        <a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $row_startup['userID']; ?>">
+                                                        <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30"></a>
+                                                        </td>
+                                                        <td><a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $row_startup['userID']; ?>"><?php echo $row_startup['Name']; ?></a></td>
+                                                        <td><?php echo $row_startup['City'].', '.$row_startup['State'] ?></td>
+                                                        <td><?php echo $row_startup['Industry']; ?></td>
+                                                        <td>
+                                                       
+                                                           
+                                                            <button type="button" id="sa-connect-accept" data-userid="<?php echo $row_startup['userID']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
+                                                        
+    
+
+                                                       
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="7" class="sm-pd"></td>
+                                                        </tr>
+                                                <?php } ?> 
+                                        <?php } ?>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
 
             <!-- ============================================================== -->
-            <!-- Videos Tab Ends -->
+            <!-- Bookmarks Tab Ends -->
             <!-- ============================================================== -->
 
 

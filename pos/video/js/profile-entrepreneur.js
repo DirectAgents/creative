@@ -345,6 +345,7 @@ $(".cancel-company, #company-tab").click(function (e) {
                 }
 
                 $("#upload-logo").hide();
+                $("#upload-screenshot").hide();
                 $("#save-cancel").hide();
 
                 //alert(skills_count);  
@@ -366,9 +367,11 @@ $( "#save-company" ).on( "submit", function(e) {
     var fm_industry = $("select[name='fm_industry']").val();
     var fm_location = $("input[name='fm_location']").val();
     var logo = $('input[name="company_logo[]"]:checked').map(function() { return this.value; }).get().join(",");
+    var screenshot = $('input[name="video_screenshot[]"]:checked').map(function() { return this.value; }).get().join(",");
     var fm_facebook = $("input[name='fm_facebook']").val();
     var fm_twitter = $("input[name='fm_twitter']").val();
     var fm_angellist = $("input[name='fm_angellist']").val();
+    var fm_video = $("input[name='fm_video']").val();
     //var skills = $('input[name="skillselectionteammember[]"]:checked').map(function() { return this.value; }).get().join(",");
     //alert(fm_location);
     
@@ -394,7 +397,7 @@ $( "#save-company" ).on( "submit", function(e) {
     $.ajax({
             url: url_link+"save-company.php", 
             method: "POST",
-            data: { id: id, userid: userid, name : fm_name, industry : fm_industry, location : fm_location, about : fm_about, logo : logo, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
+            data: { id: id, userid: userid, name : fm_name, industry : fm_industry, video : fm_video, location : fm_location, about : fm_about, logo : logo, screenshot : screenshot, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
             dataType: "html",
             success: function(response) {
                 //alert(id);  
@@ -405,6 +408,7 @@ $( "#save-company" ).on( "submit", function(e) {
                 $("#add-a-company").hide();
                 $("#edit-a-company").show();
                 $("#upload-logo").hide();
+                $("#upload-screenshot").hide();
                 $("#save-cancel").hide();
 
                 $('#saved').fadeIn("fast");
@@ -544,7 +548,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
-   ////////////////Connect//////////////////////
+////////////////Connect//////////////////////
 
    //Basic
     $('#sa-basic').click(function(){
@@ -736,6 +740,67 @@ $('#sa-connect-deny').click(function(){
     });
 
 
+
+////////////////Bookmark//////////////////////
+
+
+    //Success Message
+    $('.confirm_bookmark').click(function(e){
+      e.preventDefault();
+      
+
+      var requested_id = $("#bookmark").attr("data-id");
+
+      //alert(requested_id);
+    
+      
+      $('.confirm_bookmark').hide();
+      $('.cancel_bookmark').hide();
+      
+      $('.ok').css("display", "inline-block");
+      $('.sweet-alert').css("display", "block !important");
+      $('.showSweetAlert').css("display", "block !important");
+      
+      
+        swal("Success!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.", "success")
+    });
+
+
+    $('.ok,.close-video,.cancel_bookmark').click(function(e){
+      e.preventDefault();
+
+
+
+      var pattern_v = /[?&]v=/;
+      var v = location.search;
+      var pattern_b = /[?&]b=/;
+      var b = location.search;
+      var url = window.location.href;
+
+      if(pattern_v.test(v)){
+      window.location = 'http://localhost/creative/pos/video/';
+      }
+
+      if(pattern_b.test(b)){
+        //alert("hello");
+      window.location = 'http://localhost/creative/pos/video/';
+      }
+
+      if(!pattern_v.test(v) && !pattern_b.test(b) ){
+      window.location = url;
+      }
+
+    
+      //history.pushState(stateObj, "", "?parameter1=DEF&parameter2=XYZ");
+
+      //var new_url="http://localhost/creative/pos/video/";
+      //window.history.pushState(stateObj, "",new_url);
+      //document.title='';
+
+      //location.hash = "parameter1=DEF&parameter2=XYZ";
+      //$(".testing").html('yo'); 
+     
+    });
 
 
 

@@ -26,6 +26,20 @@ $row = mysqli_fetch_array($result);
                                           <input type="hidden" name="id" id="id" value="<?php echo $row['id']; ?>">
                                           <input type="hidden" name="userid" id="userid" value="<?php echo $row['userID']; ?>">
 
+                                          <div id="preview_edit_company">
+                                           <div class="form-group">
+                                                <div class="col-md-3">   
+                                             <a href="javascript:void(0)">
+                                                <?php if($row['Logo'] != '') { ?>
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo'];?>" class="thumb-lg img-circle" alt="img">  
+                                            <?php }else{ ?>
+                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <?php } ?>
+                                            </a>
+                                                </div>
+                                            </div>     
+                                         </div>       
+
                                             <div class="form-group">
                                                 <label class="col-md-12">Company Name</label>
                                                 <div class="col-md-12">
@@ -93,19 +107,31 @@ $row = mysqli_fetch_array($result);
                                                         <input type="text" id="fm_angellist" name="fm_angellist" value="<?php echo $row['AngelList']; ?>" class="form-control form-control-line"> </div>
                                                 </div>
                                             </div>
-                                             
 
-                                             <div class="form-group">
+
+                                            <div class="form-group">
+                                                <label class="col-md-12">Video</label>
+                                                <div class="col-md-12">
+                                                   <input type="text" id="fm_video" name="fm_video" placeholder="e.g ( https://www.youtube.com/embed/Hf_Y6KrFW )" value="<?php echo $row['Video']; ?>" class="form-control form-control-line">
+                                                    
+                                                </div>
+                                            </div>
+
+                                          <div id="preview_edit_screenshot">
+                                            <div class="form-group">
                                                 <div class="col-md-3">   
                                              <a href="javascript:void(0)">
-                                                <?php if($row['Logo'] != '') { ?>
-                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo'];?>" class="thumb-lg img-circle" alt="img">  
+                                                <?php if($row['Screenshot'] != '') { ?>
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Screenshot'];?>" alt="img">  
                                             <?php }else{ ?>
                                             <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
                                             <?php } ?>
                                             </a>
                                                 </div>
-                                       </div>     
+                                            </div>     
+                                         </div>       
+
+                                            
 
 
                                         </div>     

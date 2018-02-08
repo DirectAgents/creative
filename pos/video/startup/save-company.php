@@ -36,6 +36,9 @@ $angellist = '';
 $sql = mysqli_query($connecDB,"SELECT * FROM startups WHERE id='".$_POST['id']."'");
 $row = mysqli_fetch_array($sql);
 
+if($_POST['logo'] == ''){$logo = $row['Logo'];}else{$logo = $_POST['logo'];}
+if($_POST['screenshot'] == ''){$screenshot = $row['Screenshot'];}else{$screenshot = $_POST['screenshot'];}
+
 
 $arr = explode(",", $_POST['location'], 2);
 $city = $arr[0];
@@ -46,13 +49,17 @@ $sql_zip = "SELECT * FROM zip_state WHERE city='".$city."' AND state = '".$state
 $result = mysqli_query($connecDB, $sql_zip);  
 $row_zip = mysqli_fetch_array($result);
 
+date_default_timezone_set('America/New_York');
+$date = date('Y-m-d'); 
+
 
 if(mysqli_num_rows($sql)<=0) {
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO startups(userID, Name, Industry, City, State, Zip, About, Logo, Facebook, Twitter, AngelList) VALUES('".$_POST['userid']."','".$_POST['name']."',
-  '".$_POST['industry']."', '".$city."' , '".$state_final."', '".$row_zip['zip']."', '".$_POST['about']."', '".$_POST['logo']."' , '".$facebook."', '".$twitter."', '".$angellist."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO startups(userID, Name, Industry, City, State, Zip, About, Logo, Video, Screenshot, Facebook, Twitter, AngelList, Date_Posted) VALUES('".$_POST['userid']."','".$_POST['name']."',
+  '".$_POST['industry']."', '".$city."' , '".$state_final."', '".$row_zip['zip']."', '".$_POST['about']."', '".$logo."' ,
+  '".$_POST['video']."', '".$screenshot."', '".$facebook."', '".$twitter."', '".$angellist."', '".$date."')");
 
 
 }else{
@@ -69,7 +76,10 @@ Zip='".$row_zip['zip']."',
 Facebook='".$facebook."',
 Twitter='".$twitter."',
 AngelList='".$angellist."',
-Logo='".$_POST['logo']."'
+Logo='".$logo."',
+Video='".$_POST['video']."',
+Screenshot='".$screenshot."',
+Date_Posted='".$date."'
 
 
 WHERE id='".$_POST['id']."'";
@@ -80,25 +90,33 @@ mysqli_query($connecDB, $sql);
 }
 
 
+ 
+
+$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
 
 
-
-
-
-$sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur LEFT JOIN startups ON startups.userID=tbl_entrepreneur.userID WHERE tbl_entrepreneur.userID='".$_POST['userid']."'");
+$sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_users LEFT JOIN startups ON startups.userID=tbl_users.userID WHERE tbl_users.userID='".$_POST['userid']."'");
 $row_startup = mysqli_fetch_array($sql_startup);
+
+
+$startupID = rand(5, 1000000);
 
 
 $response = array();
 
 $response[] = array(
-	'objectID'=> $row_startup['id'],
+	'objectID'=> $row_startup['userID'],
+	'startupID'=> $startupID,
 	'name'=> $_POST['name'], 
 	'industry'=> $_POST['industry'],
 	'location'=> $city.', '.$state_final, 
-	'logo'=> $_POST['logo'],
+	'logo'=> $logo,
+	'video'=> $_POST['video'],
+	'screenshot'=> $screenshot,
 	'fullname'=> $row_startup['Fullname'],
-	'position'=> $row_startup['Position']
+	'position'=> $row_startup['Position'],
+	'likes'=> '0',
+	'date'=> $date_algolia
 	 );
 
 $fp = fopen('startups.json', 'w');

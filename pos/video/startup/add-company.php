@@ -73,6 +73,15 @@ if($_POST){
                                                         <input type="text" id="fm_angellist" name="fm_angellist" class="form-control form-control-line"> </div>
                                                 </div>
                                             </div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-md-12">Video</label>
+                                                <div class="col-md-12">
+                                                   <input type="text" id="fm_video" name="fm_video" placeholder="e.g ( https://www.youtube.com/embed/Hf_Y6KrFW )" class="form-control form-control-line">
+                                                    
+                                                </div>
+                                            </div>
                                              
 
 
