@@ -42,7 +42,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                         </a>
                         <ul class="dropdown-menu mailbox animated bounceInDown">
                             <li>
-                                <div class="drop-title">You have 4 new messages</div>
+                                <div class="drop-title">You have 4 new notifications</div>
                             </li>
                             <li>
                                 <div class="message-center">

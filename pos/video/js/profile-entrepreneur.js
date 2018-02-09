@@ -742,6 +742,19 @@ $('#sa-connect-deny').click(function(){
 
 
 ////////////////Bookmark//////////////////////
+
+
+//Warning Message
+    $('.sa-warning').click(function(e){
+      e.preventDefault();
+      var requested_id = $(".sa-warning").attr("data-id");
+
+      alert(requested_id);
+
+      $('#bookmarked', window.parent.document).css("display", "block");
+
+       
+    });
     
 
     //Success Message
@@ -768,9 +781,13 @@ $('#sa-connect-deny').click(function(){
     });
 
 
-    $('.ok_bookmark').click(function(){
-      $('#iframe', window.parent.document).hide();
-      $('.bookmark_popup', window.parent.document).hide();
+    $('.ok_bookmark, .cancel_bookmark').click(function(){
+      
+      
+      $('.bookmark_popup').css("display", "none");
+      $('#iframe', window.parent.document).css("display", "none");
+      $('#iframe', window.parent.document).detach(true);
+      
       
     });  
 
@@ -778,10 +795,16 @@ $('#sa-connect-deny').click(function(){
 
     $('.bookmark').click(function(){
 
-      $('#iframe', window.parent.document).show();
-      $('.bookmark_popup', window.parent.document).show();
-      $('#iframe', window.parent.document).reload(true);
+       var requested_id = $(".bookmark").attr("data-id");
+
+      alert(requested_id);
+
+      
+      
+      
     });  
+
+
 
 
 

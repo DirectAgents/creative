@@ -486,7 +486,7 @@ echo 'id: ' . $user['id'];
 <div id="hits"></div>
 
 
-<script type="text/html" id="hit-template" data-jsassets="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js">
+<script type="text/html" id="hit-template" data-jsassets="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js, http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js ,<?php echo BASE_PATH; ?>/js/sweetalert.min.js, <?php echo BASE_PATH; ?>/js/sweetalert.min.js">
 
 
   <div class="hit">
@@ -503,9 +503,7 @@ echo 'id: ' . $user['id'];
 
                                 <div class="pro-img-overlay">
                                     
-                                    <a href="#{{{_highlightResult.video.value}}}" class="popup-youtube bg-info"><i class="ti-eye"></i></a> 
-                                    <a href="#bookmark{{{_highlightResult.startupID.value}}}" class="bg-danger bookmark" data-id="{{{_highlightResult.startupID.value}}}"><i class="ti-bookmark"></i></a>
-                                    <a href="javascript:void(0)" class="bg-danger"><i class="ti-heart"></i></a>
+                                    <iframe width="400" height="300" src="testing.php?id={{{_highlightResult.startupID.value}}}" frameborder="0" scrolling="no"></iframe> 
                                 </div>
                             </div>
 
@@ -523,21 +521,12 @@ echo 'id: ' . $user['id'];
 
 
 
-<!-- lightbox container hidden with CSS -->
-<a href="#_" class="lightbox" id="{{{_highlightResult.video.value}}}">
-<div id="videoModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
-  <div class="modal-header">
-    <button type="button" class="close full-height close-video" data-dismiss="modal" aria-hidden="true">X</button>
-    <h3>Donna Galletta- Showreel</h3>
-  </div>
-  <div class="modal-body"><iframe width="560" height="315" src="{{{_highlightResult.video.value}}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-  <div class="modal-footer"></div>
-</div>
-</a>
+
 
 
 <!-- lightbox container hidden with CSS -->
 <a href="#_" class="bookmark_popup" id="bookmark{{{_highlightResult.startupID.value}}}">
+
 
     <iframe width="100%" height="515" id="iframe" src="testing.php?id={{{_highlightResult.startupID.value}}}" frameborder="0"></iframe>
    
@@ -578,49 +567,18 @@ echo 'id: ' . $user['id'];
 
 
 
-
-
-
 <!-- lightbox container hidden with CSS -->
-<?php if(isset($_GET['b'])){ ?>
-<a href="#_" class="lightbox" id="img2" style="display:block">
-<div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true" data-animation="pop" data-timer="null" style="display: block; margin-top: -184px;"><div class="sa-icon sa-error" style="display: none;">
-      <span class="sa-x-mark">
-        <span class="sa-line sa-left"></span>
-        <span class="sa-line sa-right"></span>
-      </span>
-    </div><div class="sa-icon sa-warning pulseWarning" style="display: block;">
-      <span class="sa-body pulseWarningIns"></span>
-      <span class="sa-dot pulseWarningIns"></span>
-    </div><div class="sa-icon sa-info" style="display: none;"></div><div class="sa-icon sa-success" style="display: none;">
-      <span class="sa-line sa-tip"></span>
-      <span class="sa-line sa-long"></span>
-
-      <div class="sa-placeholder"></div>
-      <div class="sa-fix"></div>
-    </div><div class="sa-icon sa-custom" style="display: none;"></div><h2>Are you sure?</h2>
-    <!--<p style="display: block;">You will not be able to recover this company information!</p>-->
-    <fieldset>
-      <input type="text" tabindex="3" placeholder="">
-      <div class="sa-input-error"></div>
-    </fieldset><div class="sa-error-container">
-      <div class="icon">!</div>
-      <p>Not valid!</p>
-    </div><div class="sa-button-container">
-      <button class="cancel_bookmark" tabindex="2" style="display: inline-block;">Cancel</button>
-      <div class="sa-confirm-button-container">
-
-        <button class="ok" tabindex="1" style="display: none; background-color: rgb(140, 212, 245); box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">OK</button>
-
-        <button class="confirm_bookmark" id="bookmark" data-id="<?php echo $_GET['b']; ?>" tabindex="1" style="display: inline-block; background-color: rgb(221, 107, 85); box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">Yes, bookmark it!</button><div class="la-ball-fall">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </div></div>
+<a href="#_" class="lightbox" id="1234">
+<div id="videoModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
+  <div class="modal-header">
+    <button type="button" class="close full-height close-video" data-dismiss="modal" aria-hidden="true">X</button>
+    <h3>Donna Galletta- Showreel</h3>
+  </div>
+  <div class="modal-body"><iframe width="560" height="315" src="sdfasdf" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+  <div class="modal-footer"></div>
+</div>
 </a>
-<?php } ?> 
+
 
 
 
@@ -785,6 +743,9 @@ for(i = 0, l = jsassets.length; i < l; i++){
 
 }
 </script>
+
+
+
   
 
 </body>
