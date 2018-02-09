@@ -20180,6 +20180,34 @@ label.edit-team-member,label.delete-team-member{font-family: Rubik, sans-serif; 
 
 
 
+.bookmark_popup {
+    /** Default lightbox to hidden */
+    display: none;
+
+    /** Position and style */
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+}
+.bookmark_popup:target {
+    /** Remove default browser outline */
+    outline: none;
+
+    /** Unhide lightbox **/
+    display: block;
+}
+
+
+
+.the-skills{ border:1px solid #eee; padding:15px; }
+
+
+/** videoModal **/
 
 .lightbox {
     /** Default lightbox to hidden */
@@ -20204,10 +20232,7 @@ label.edit-team-member,label.delete-team-member{font-family: Rubik, sans-serif; 
 }
 
 
-.the-skills{ border:1px solid #eee; padding:15px; }
 
-
-/** videoModal **/
 
 @media (max-width:479px){
 
@@ -20304,7 +20329,8 @@ label.edit-team-member,label.delete-team-member{font-family: Rubik, sans-serif; 
     height: auto;
     padding: 0;
     max-height: none;
-    overflow: hidden; }
+    overflow: hidden;
+    border: 0; }
   #videoModal .modal-footer:empty {
     display: none !important; }
   #videoModal .close {
@@ -20478,3 +20504,4 @@ ul.socials-list{list-style-type: none}
 ul.socials-list li{float:left; display:inline; padding-right:15px;}
 
 .sweet-alert button.cancel_bookmark{background-color: #C1C1C1;}
+

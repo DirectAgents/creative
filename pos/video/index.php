@@ -429,7 +429,7 @@ echo 'id: ' . $user['id'];
     
 
 
-    
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -474,7 +474,7 @@ echo 'id: ' . $user['id'];
 
 
 
-                <div class="row testing">
+                <div class="row">
 
 
 
@@ -486,8 +486,8 @@ echo 'id: ' . $user['id'];
 <div id="hits"></div>
 
 
+<script type="text/html" id="hit-template" data-jsassets="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js">
 
-<script type="text/html" id="hit-template">
 
   <div class="hit">
    
@@ -500,13 +500,15 @@ echo 'id: ' . $user['id'];
                         <div class="white-box">
                             <div class="product-img">
                                 <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_340/v1/{{{_highlightResult.screenshot.value}}}"/>
+
                                 <div class="pro-img-overlay">
                                     
-                                    <a href="<?php echo BASE_PATH; ?>/?v={{{_highlightResult.startupID.value}}}" class="popup-youtube bg-info"><i class="ti-eye"></i></a> 
-                                    <a href="<?php echo BASE_PATH; ?>/?b={{{_highlightResult.startupID.value}}}" class="popup-youtube bg-danger" data-id="{{{_highlightResult.startupID.value}}}"><i class="ti-bookmark"></i></a>
+                                    <a href="#{{{_highlightResult.video.value}}}" class="popup-youtube bg-info"><i class="ti-eye"></i></a> 
+                                    <a href="#bookmark{{{_highlightResult.startupID.value}}}" class="bg-danger bookmark" data-id="{{{_highlightResult.startupID.value}}}"><i class="ti-bookmark"></i></a>
                                     <a href="javascript:void(0)" class="bg-danger"><i class="ti-heart"></i></a>
                                 </div>
                             </div>
+
                             <div class="product-text">
                                 <span class="pro-price"><img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></span>
                                 <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/profile/{{objectID}}">{{{_highlightResult.name.value}}}</a></h3>
@@ -521,7 +523,27 @@ echo 'id: ' . $user['id'];
 
 
 
+<!-- lightbox container hidden with CSS -->
+<a href="#_" class="lightbox" id="{{{_highlightResult.video.value}}}">
+<div id="videoModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
+  <div class="modal-header">
+    <button type="button" class="close full-height close-video" data-dismiss="modal" aria-hidden="true">X</button>
+    <h3>Donna Galletta- Showreel</h3>
+  </div>
+  <div class="modal-body"><iframe width="560" height="315" src="{{{_highlightResult.video.value}}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+  <div class="modal-footer"></div>
+</div>
+</a>
 
+
+<!-- lightbox container hidden with CSS -->
+<a href="#_" class="bookmark_popup" id="bookmark{{{_highlightResult.startupID.value}}}">
+
+    <iframe width="100%" height="515" id="iframe" src="testing.php?id={{{_highlightResult.startupID.value}}}" frameborder="0"></iframe>
+   
+    
+
+</a>
 
 
 
@@ -538,6 +560,11 @@ echo 'id: ' . $user['id'];
 
 
 
+
+  
+
+
+
  
 </script>
 
@@ -549,25 +576,7 @@ echo 'id: ' . $user['id'];
 
 
 
-<?php if(isset($_GET['v'])){ ?>
 
-<?php 
-$sql_startups = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$_GET['v']."'");      
-$row_startups = mysqli_fetch_array($sql_startups);
-?>
-
-<!-- lightbox container hidden with CSS -->
-<a href="#_" class="lightbox" style="display:block">
-<div id="videoModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
-  <div class="modal-header">
-    <button type="button" class="close full-height close-video" data-dismiss="modal" aria-hidden="true">X</button>
-    <h3>Donna Galletta- Showreel</h3>
-  </div>
-  <div class="modal-body"><iframe width="560" height="315" src="<?php echo $row_startups['Video']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-  <div class="modal-footer"></div>
-</div>
-</a>
-<?php } ?> 
 
 
 
@@ -758,6 +767,25 @@ $row_startups = mysqli_fetch_array($sql_startups);
     <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/app.js"></script>
     <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
+
+<script>
+window.onload = function() {
+    var tpl, jsassets, tag, i,l;
+tpl = document.getElementById('hit-template');
+// At this point, ensure your template has been rendered and attached to the page
+// by your template processor
+jsassets = (tpl.getAttribute('data-jsassets') || '').split(',');
+for(i = 0, l = jsassets.length; i < l; i++){
+  tag = document.createElement('script');
+  tag.type = "text/javascript";
+  tag.src = jsassets[i];
+  document.head.appendChild(tag);
+}
+
+
+}
+</script>
+  
 
 </body>
 

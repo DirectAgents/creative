@@ -742,14 +742,16 @@ $('#sa-connect-deny').click(function(){
 
 
 ////////////////Bookmark//////////////////////
-
+    
 
     //Success Message
     $('.confirm_bookmark').click(function(e){
       e.preventDefault();
+
+      
       
 
-      var requested_id = $("#bookmark").attr("data-id");
+      var requested_id = $(".confirm_bookmark").attr("data-id");
 
       //alert(requested_id);
     
@@ -757,54 +759,29 @@ $('#sa-connect-deny').click(function(){
       $('.confirm_bookmark').hide();
       $('.cancel_bookmark').hide();
       
-      $('.ok').css("display", "inline-block");
-      $('.sweet-alert').css("display", "block !important");
-      $('.showSweetAlert').css("display", "block !important");
-      
-      
-        swal("Success!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.", "success")
+      $('.ok_bookmark').css("display", "inline-block");
+      $('.sa-warning').css("display", "none");
+      $('.sa-success').css("display", "block");
+
+      $( ".h2" ).replaceWith( "<h2>Success!</h2>" );
+    
     });
 
 
-    $('.ok,.close-video,.cancel_bookmark').click(function(e){
-      e.preventDefault();
-
-
-
-      var pattern_v = /[?&]v=/;
-      var v = location.search;
-      var pattern_b = /[?&]b=/;
-      var b = location.search;
-      var url = window.location.href;
-
-      if(pattern_v.test(v)){
-      window.location = 'http://localhost/creative/pos/video/';
-      }
-
-      if(pattern_b.test(b)){
-        //alert("hello");
-      window.location = 'http://localhost/creative/pos/video/';
-      }
-
-      if(!pattern_v.test(v) && !pattern_b.test(b) ){
-      window.location = url;
-      }
+    $('.ok_bookmark').click(function(){
+      $('#iframe', window.parent.document).hide();
+      $('.bookmark_popup', window.parent.document).hide();
+      
+    });  
 
     
-      //history.pushState(stateObj, "", "?parameter1=DEF&parameter2=XYZ");
 
-      //var new_url="http://localhost/creative/pos/video/";
-      //window.history.pushState(stateObj, "",new_url);
-      //document.title='';
+    $('.bookmark').click(function(){
 
-      //location.hash = "parameter1=DEF&parameter2=XYZ";
-      //$(".testing").html('yo'); 
-     
-    });
-
-
-
-
+      $('#iframe', window.parent.document).show();
+      $('.bookmark_popup', window.parent.document).show();
+      $('#iframe', window.parent.document).reload(true);
+    });  
 
 
 
