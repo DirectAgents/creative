@@ -426,7 +426,30 @@ echo 'id: ' . $user['id'];
 
       <!-- Popup CSS -->
     <link href="<?php echo BASE_PATH; ?>/css/magnific-popup.css" rel="stylesheet">
-    
+
+
+
+<!-- Add jQuery library -->
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+    <!-- Add fancyBox main JS and CSS files -->
+    <script type="text/javascript" src="source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+    <!-- Add Button helper (this is optional) -->
+    <link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+    <script type="text/javascript" src="source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+    <!-- Add Thumbnail helper (this is optional) -->
+    <link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+    <script type="text/javascript" src="source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+    <!-- Add Media helper (this is optional) -->
+    <script type="text/javascript" src="source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+
+
+
 
 
 
@@ -494,7 +517,6 @@ echo 'id: ' . $user['id'];
     <div class="hit-content">
       
      
-
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 
                         <div class="white-box">
@@ -502,8 +524,11 @@ echo 'id: ' . $user['id'];
                                 <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_340/v1/{{{_highlightResult.screenshot.value}}}"/>
 
                                 <div class="pro-img-overlay">
-                                    
-                                    <iframe width="400" height="300" src="testing.php?id={{{_highlightResult.startupID.value}}}" frameborder="0" scrolling="no"></iframe> 
+   
+ 
+                                     <iframe id="iframe02" src="p.php?id={{{_highlightResult.startupID.value}}}"></iframe>
+
+
                                 </div>
                             </div>
 
@@ -522,21 +547,6 @@ echo 'id: ' . $user['id'];
 
 
 
-
-
-<!-- lightbox container hidden with CSS -->
-<a href="#_" class="bookmark_popup" id="bookmark{{{_highlightResult.startupID.value}}}">
-
-
-    <iframe width="100%" height="515" id="iframe" src="testing.php?id={{{_highlightResult.startupID.value}}}" frameborder="0"></iframe>
-   
-    
-
-</a>
-
-
-
-
    </div> 
 </div>  
 
@@ -548,13 +558,6 @@ echo 'id: ' . $user['id'];
 
 
 
-
-
-  
-
-
-
- 
 </script>
 
 
@@ -562,24 +565,6 @@ echo 'id: ' . $user['id'];
 
 
 </main>
-
-
-
-
-
-<!-- lightbox container hidden with CSS -->
-<a href="#_" class="lightbox" id="1234">
-<div id="videoModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
-  <div class="modal-header">
-    <button type="button" class="close full-height close-video" data-dismiss="modal" aria-hidden="true">X</button>
-    <h3>Donna Galletta- Showreel</h3>
-  </div>
-  <div class="modal-body"><iframe width="560" height="315" src="sdfasdf" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-  <div class="modal-footer"></div>
-</div>
-</a>
-
-
 
 
                    
@@ -670,7 +655,7 @@ echo 'id: ' . $user['id'];
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="<?php echo BASE_PATH; ?>/js/jquery.min.js"></script>
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo BASE_PATH; ?>/js/bootstrap.min.js"></script>
     <!-- Menu Plugin JavaScript -->
@@ -726,6 +711,7 @@ echo 'id: ' . $user['id'];
     <script src="<?php echo BASE_PATH; ?>/app.js"></script>
     <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
 
+<!--
 <script>
 window.onload = function() {
     var tpl, jsassets, tag, i,l;
@@ -743,7 +729,7 @@ for(i = 0, l = jsassets.length; i < l; i++){
 
 }
 </script>
-
+-->
 
 
   

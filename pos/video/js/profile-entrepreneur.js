@@ -744,65 +744,101 @@ $('#sa-connect-deny').click(function(){
 ////////////////Bookmark//////////////////////
 
 
-//Warning Message
-    $('.sa-warning').click(function(e){
-      e.preventDefault();
-      var requested_id = $(".sa-warning").attr("data-id");
+  $('.bookmark').click(function(){
 
-      alert(requested_id);
-
-      $('#bookmarked', window.parent.document).css("display", "block");
-
-       
-    });
-    
-
-    //Success Message
-    $('.confirm_bookmark').click(function(e){
-      e.preventDefault();
-
-      
-      
-
-      var requested_id = $(".confirm_bookmark").attr("data-id");
-
+      var requested_id = $(".bookmark").attr("data-requested-id");
+      var requester_id = $(".bookmark").attr("data-requester-id");
       //alert(requested_id);
-    
-      
-      $('.confirm_bookmark').hide();
-      $('.cancel_bookmark').hide();
-      
-      $('.ok_bookmark').css("display", "inline-block");
-      $('.sa-warning').css("display", "none");
-      $('.sa-success').css("display", "block");
+      $.ajax({
+            url: url_link+"bookmark.php",
+            method: "POST",
+            data: {requested_id: requested_id, requester_id: requester_id},
+            dataType: "html",
+            success: function(response) {
 
-      $( ".h2" ).replaceWith( "<h2>Success!</h2>" );
-    
-    });
+             if(response == 'good'){ 
+             
+            parent.swal("Success!", "You have it bookmarked.", "success");  
 
+              }else{
 
-    $('.ok_bookmark, .cancel_bookmark').click(function(){
-      
-      
-      $('.bookmark_popup').css("display", "none");
-      $('#iframe', window.parent.document).css("display", "none");
-      $('#iframe', window.parent.document).detach(true);
-      
-      
+        parent.swal({   
+            title: "You already have it bookmarked.",   
+            type: "warning",   
+            confirmButtonColor: "#DD6B55",   
+        });
+
+              }
+
+                }
+             });                   
     });  
 
-    
 
-    $('.bookmark').click(function(){
+////////////////Likes//////////////////////
 
-       var requested_id = $(".bookmark").attr("data-id");
+$('.like').click(function(){
 
-      alert(requested_id);
+      var requested_id = $(".like").attr("data-requested-id");
+      var requester_id = $(".like").attr("data-requester-id");
+      //alert(requested_id);
+      $.ajax({
+            url: url_link+"like.php",
+            method: "POST",
+            data: {requested_id: requested_id, requester_id: requester_id},
+            dataType: "html",
+            success: function(response) {
 
-      
-      
-      
-    });  
+             if(response == 'good'){ 
+             
+            parent.swal("Success!", "You liked it.", "success");  
+
+              }else{
+
+        parent.swal({   
+            title: "You already liked it.",   
+            type: "warning",   
+            confirmButtonColor: "#DD6B55",   
+        });
+
+
+        parent.swal({   
+            title: "You already liked it!",   
+            text: "Want to take it back?",   
+            type: "warning",
+            //imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes",   
+            closeOnConfirm: false 
+        }, function(){   
+
+
+                        $.ajax({
+                                url: url_link+"dislike.php",
+                                method: "POST",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                   
+                                  if(response == 'good'){  
+                                parent.swal("Success!", "", "success");
+                                }else{
+                                  parent.swal("Something went wrong!");
+                                } 
+
+                                }
+                            });
+                      
+             
+        });
+
+
+              }
+
+                }
+             });                   
+    }); 
 
 
 

@@ -106,7 +106,7 @@ $response = array();
 
 $response[] = array(
 	'objectID'=> $row_startup['userID'],
-	'startupID'=> $startupID,
+	'startupID'=> $row_startup['userID'],
 	'name'=> $_POST['name'], 
 	'industry'=> $_POST['industry'],
 	'location'=> $city.', '.$state_final, 

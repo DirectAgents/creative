@@ -7,20 +7,31 @@
                         <h3><span class="fa-fw open-close"><i class="ti-menu hidden-xs"></i><i class="ti-close visible-xs"></i></span> <span class="hide-menu"></span></h3>
                     </div>
                     <ul class="nav" id="side-menu">
+                        
+
+<?php if(isset($_SESSION['entrepreneurSession'])) { ?>
+
+<?php 
+
+$stmt = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'");
+$row = mysqli_fetch_array($stmt);
+
+?>
+
                         <li class="user-pro">
                             <a href="#" class="waves-effect">
                                 
 
-<?php if($rownav['ProfileImage'] == 'Google'){ ?>
-         <img src="<?php echo $rownav['google_picture_link']; ?>" alt="user-img" class="img-circle"> 
+<?php if($row['ProfileImage'] == 'Google'){ ?>
+         <img src="<?php echo $row['google_picture_link']; ?>" alt="user-img" class="img-circle"> 
 <?php } ?>
 
-<?php if($rownav['ProfileImage'] == 'Facebook'){ ?>
-          <img src="https://graph.facebook.com/<?php echo $rownav['facebook_id']; ?>/picture" alt="user-img" class="img-circle">
+<?php if($row['ProfileImage'] == 'Facebook'){ ?>
+          <img src="https://graph.facebook.com/<?php echo $row['facebook_id']; ?>/picture" alt="user-img" class="img-circle">
 <?php } ?>
 
-<?php if($rownav['ProfileImage'] == 'Linkedin'){ ?>
-          <img src="<?php echo $rownav['linkedin_picture_link']; ?>" alt="user-img" class="img-circle">
+<?php if($row['ProfileImage'] == 'Linkedin'){ ?>
+          <img src="<?php echo $row['linkedin_picture_link']; ?>" alt="user-img" class="img-circle">
 <?php } ?>
 
                                 
@@ -37,6 +48,8 @@
                                 <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a></li>
                             </ul>
                         </li>
+
+ <?php } ?>                       
                         <li><a href="<?php echo BASE_PATH; ?>" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Startups<span class="fa arrow"></span></span></a>
                         </li>
                         <li> <a href="javascript:void(0)" class="waves-effect"><i class="mdi mdi-checkbox-multiple-marked-outline fa-fw"></i> <span class="hide-menu">Industry<span class="fa arrow"></span></span></a>
