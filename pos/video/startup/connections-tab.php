@@ -19,7 +19,7 @@ if($_GET || $_SESSION['entrepreneurSession'] == $_GET['userid']){
 <table class="table" cellspacing="14">
         <?php 
                     
-                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections WHERE requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' || requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' ORDER BY id DESC");                    
+                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE my_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' ORDER BY id DESC");                    
                                         
                                         if( ! mysqli_num_rows($sql_connections) ) {
                                             echo "<div class='no-connections text-center'>No Connections!</div>"; 

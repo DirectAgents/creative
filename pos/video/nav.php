@@ -20,7 +20,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
        ?>
 
         <nav class="navbar navbar-default navbar-static-top m-b-0">
-            <?php //echo $_SESSION['entrepreneurSession']; ?>
+            <?php echo $_SESSION['entrepreneurSession']; echo $_SESSION['usernameSession']; ?>
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
@@ -157,7 +157,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
                         </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $_SESSION['usernameSession']; ?>"><i class="ti-user"></i> My Profile</a></li>
                             <li><a href="#"><i class="ti-wallet"></i> My Team</a></li>
                             <li><a href="#"><i class="ti-email"></i> Connections</a></li>
                             <li role="separator" class="divider"></li>

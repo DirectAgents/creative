@@ -305,7 +305,7 @@ echo 'id: ' . $user['id'];
 
     
   
-
+  $username = strtolower(str_replace(' ','-',$fullname));
   //show user picture
   //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
   //echo $user_count;
@@ -315,7 +315,8 @@ echo 'id: ' . $user['id'];
 
     
 
-    $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET
+    username =  '".$username."',
     facebook_id = '".$user['id']."', 
     Fullname =  '".$fullname."',
     Gender =  '".$gender."',
@@ -325,6 +326,7 @@ echo 'id: ' . $user['id'];
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['entrepreneurSession'] = $row['userID'];
+        $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$row['Fullname']));
         $_SESSION['facebook_photo'] = $user['id'];
         //header("Location: ../index.php");
         //echo $_SESSION['startupSession'];
@@ -341,8 +343,8 @@ echo 'id: ' . $user['id'];
 
     
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
-      VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (username, facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
+      VALUES ('".$username."','".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
@@ -353,6 +355,7 @@ echo 'id: ' . $user['id'];
     $row = mysqli_fetch_array($sql);
 
     $_SESSION['entrepreneurSession'] = $row['userID'];
+    $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$row['Fullname']));
     //header("Location: ../index.php");
     //echo $row['userID'];
     //echo "123";

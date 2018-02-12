@@ -8,14 +8,10 @@
  require_once '../facebook-sdk-v5/autoload.php';
 
 
- $sql = "SELECT * FROM tbl_users WHERE userID ='".$_GET['id']."'";  
+ $sql = "SELECT * FROM tbl_users WHERE username ='".$_GET['username']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_entrepreneur = mysqli_fetch_array($result);
 
-
- $sql = "SELECT * FROM tbl_users WHERE userID ='".$_GET['id']."'";  
- $result = mysqli_query($connecDB, $sql);  
- $row_entrepreneur = mysqli_fetch_array($result);
 
 /*
 
@@ -577,7 +573,7 @@ echo 'id: ' . $user['id'];
                                  <p>&nbsp;</p>
 
         <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections WHERE requested_id ='".$_GET['id']."' AND requested_id = '".$_SESSION['entrepreneurSession']."'");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$_GET['id']."' AND requested_id = '".$_SESSION['entrepreneurSession']."'");
                 ?>                 
                                  
                 
