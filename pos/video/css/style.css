@@ -20156,6 +20156,10 @@ ul#preview_company, ul#preview_team, ul#preview_screenshot {list-style-type: non
 
 a:hover.cloudinary-button{color:#fefeff !important}
 
+
+#pagination{margin-top:50px; text-align:center; background:none !important;}
+
+
 #pagination li {
     font-size: 14px;
     display: inline;
@@ -20163,8 +20167,8 @@ a:hover.cloudinary-button{color:#fefeff !important}
 
 #pagination li.ais-pagination--item__active a {
     color: white;
-    border-color: #ed5565;
-    background: #ed5565;
+    border-color: #00aae7;
+    background: #00aae7;
 }
 
 
@@ -20335,4 +20339,7 @@ ul.socials-list{list-style-type: none}
 ul.socials-list li{float:left; display:inline; padding-right:15px;}
 
 .sweet-alert button.cancel_bookmark{background-color: #C1C1C1;}
+
+#likes{display:inline;}
+
 

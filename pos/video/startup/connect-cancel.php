@@ -6,11 +6,12 @@
  include_once("../config.php"); 
 
 
-if($_POST){
+if($_GET){
 
 
-$sql=mysqli_query($connecDB,"DELETE FROM tbl_connections_startup WHERE requester_id = '".$_POST['requester_id']."' AND requested_id = '".$_POST['requested_id']."'");
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_connections WHERE requester_id = '".$_GET['requester_id']."' AND requested_id = '".$_GET['requested_id']."'");
 
+echo "good";
 
 }
 

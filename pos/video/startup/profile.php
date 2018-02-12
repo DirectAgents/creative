@@ -518,7 +518,7 @@ echo 'id: ' . $user['id'];
 <?php } ?>
 
 <?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){ ?>
-         <img src="https://graph.facebook.com/<?php echo $row_entrepreneur['facebook_id']; ?>/picture?type=large" class="thumb-lg img-circle" alt="img">
+<img src="https://graph.facebook.com/<?php echo $row_entrepreneur['facebook_id']; ?>/picture?type=large" class="thumb-lg img-circle" alt="img">
 <?php } ?>
 
 <?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){ ?>
@@ -534,7 +534,8 @@ echo 'id: ' . $user['id'];
                                             </div>
                                             <div id="position">
                                                 <?php if($row_entrepreneur['Position'] != ''){ ?>
-                                                <h5 class="text-white"><?php 
+                                                <h5 class="text-white">
+                                                    <?php 
                                                 //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
                                                 echo $row_entrepreneur['Position'];
                                                 ?></h5>
@@ -570,13 +571,13 @@ echo 'id: ' . $user['id'];
                                <?php if($_GET['id'] != $_SESSION['entrepreneurSession']) { ?>    
 
 <?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
-<?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/'".$row_entrepreneur['facebook_id']."'/picture"; } ?>
+<?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture"; } ?>
 <?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
 
                                  <p>&nbsp;</p>
 
         <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$_GET['id']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections WHERE requested_id ='".$_GET['id']."' AND requested_id = '".$_SESSION['entrepreneurSession']."'");
                 ?>                 
                                  
                 
@@ -617,7 +618,7 @@ echo 'id: ' . $user['id'];
                                    <?php //} ?>
                                     <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['id']) { ?>
                                     <li class="tab">
-                                        <a href="#connections" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
+                                        <a href="#connections" id="connections-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
                                     </li>
                                     <!--
                                     <li class="tab">
@@ -626,7 +627,7 @@ echo 'id: ' . $user['id'];
                                         -->
 
                                     <li class="tab">
-                                        <a href="#bookmarks" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Bookmarks</span> </a>
+                                        <a href="#bookmarks" id="bookmark-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Bookmarks</span> </a>
                                     </li>
 
                                     <li class="tab">
@@ -765,100 +766,8 @@ echo 'id: ' . $user['id'];
             <!-- Connections Tab Starts -->
             <!-- ============================================================== -->
 
-                            <div class="table-responsive manage-table tab-pane" id="connections">
-                                            <table class="table" cellspacing="14">
-                                                
-
-                                <?php 
-                    
-                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' ORDER BY id DESC");                    
-                                        
-                                        if( ! mysqli_num_rows($sql_connections) ) {
-                                            echo "<div class='no-connections text-center'>No Connections!</div>"; 
-                                        }else{
-
-
-                                  ?>      
-
-                                            <div class="connections-header">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>NAME</th>
-                                                        <th>TYPE</th>
-                                                        <th>EMAIL</th>
-                                                        <th>PHONE</th>
-                                                        <th>MANAGE</th>
-                                                    </tr>
-                                                </thead>
-                                            </div>    
-                                               
-
-                                                  
-
-                                         <tbody>
-
-                                      <?php   
-
-                                      while($row_connections = mysqli_fetch_array($sql_connections)){
-
-                                        ?>
-
-                                        
-
-                                        <?php 
-
-                                         $sql_entrepreneur = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_connections['requested_id']."'");
-                                         $row_entrepreneur= mysqli_fetch_array($sql_entrepreneur);
-
-
-                                        ?>
-
-
-
-<?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
-<?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){ $profileimage = "https://graph.facebook.com/'".$row_entrepreneur['facebook_id']."'/picture"; } ?>
-<?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
-                                                    <tr class="advance-table-row connections-tab-inside">
-                                                        <td width="10"></td>
-                                                        <td> 
-                                                        <img src="<?php echo $profileimage; ?>" class="img-circle" width="30">
-                                                        </td>
-                                                        <td><?php echo $row_entrepreneur['Fullname']; ?></td>
-                                                        <td><span class="label label-warning label-rouded"><?php echo $row_connections['type']; ?></span></td>
-                                                        <td><?php echo $row_entrepreneur['Email']; ?></td>
-                                                        <td><?php echo $row_entrepreneur['Phone']; ?></td>
-                                                        <td>
-                                                       
-        <div class="sa-connect-pending" <?php if($row_connections['status'] == 'pending') { ?> style="display:block" 
-        <?php }else{ ?> style="display:none" <?php } ?>>
-                                                            <button type="button" id="sa-connect-deny" data-userid="<?php echo $row_entrepreneur['userID']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-close"></i></button>
-                                                            <button type="button" id="sa-connect-accept" data-userid="<?php echo $row_entrepreneur['userID']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-check"></i></button>
-                                                        
-                                                     </div>   
-        <div class="sa-connect-accepted" <?php if($row_connections['status'] == 'accepted') { ?> style="display:block" 
-        <?php }else{ ?> style="display:none" <?php } ?>>
-                                                            <!--<button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button>-->
-                                                            <span class="label label-success label-rouded">Connected</span>
-                                                        
-                                                    </div>   
-
-         <div class="sa-connect-denied" <?php if($row_connections['status'] == 'denied') { ?> style="display:block" 
-        <?php }else{ ?> style="display:none" <?php } ?>>
-                                                            <button type="button" id="sa-connect-deny" data-userid="<?php echo $row_entrepreneur['userID']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
-                                                     </div>                                                 
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="7" class="sm-pd"></td>
-                                                        </tr>
-                                                <?php } ?> 
-                                        <?php } ?>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                        <div class="table-responsive manage-table tab-pane" id="connections">
+                                            <div id="connections-tab-content"></div>     
                                         </div>
 
                                   
@@ -873,84 +782,9 @@ echo 'id: ' . $user['id'];
 
 
                                     <div class="table-responsive manage-table tab-pane" id="bookmarks">
-                                            <table class="table" cellspacing="14">
-                                                
-
-                                <?php 
-                    
-                                        $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' ORDER BY id DESC");                    
-                                        
-                                        if( ! mysqli_num_rows($sql_bookmarks) ) {
-                                            echo "<div class='no-connections text-center'>No Connections!</div>"; 
-                                        }else{
-
-
-                                  ?>      
-
-                                            <div class="connections-header">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>STARTUP</th>
-                                                        <th>LOCATION</th>
-                                                        <th>INDUSTRY</th>
-                                                        <th>MANAGE</th>
-                                                    </tr>
-                                                </thead>
-                                            </div>    
-                                               
-
-                                                  
-
-                                         <tbody>
-
-                                      <?php   
-
-                                      while($row_bookmarks = mysqli_fetch_array($sql_bookmarks)){
-
-                                        ?>
-
-                                        
-
-                                        <?php 
-
-                                         $sql_startup = mysqli_query($connecDB,"SELECT * FROM startups WHERE userID ='".$row_bookmarks['requested_id']."'");
-                                         $row_startup= mysqli_fetch_array($sql_startup);
-
-
-                                        ?>
-
-                                                    <tr class="advance-table-row connections-tab-inside">
-                                                        <td width="10"></td>
-                                                        <td> 
-                                                        <a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $row_startup['userID']; ?>">
-                                                        <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30"></a>
-                                                        </td>
-                                                        <td><a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $row_startup['userID']; ?>"><?php echo $row_startup['Name']; ?></a></td>
-                                                        <td><?php echo $row_startup['City'].', '.$row_startup['State'] ?></td>
-                                                        <td><?php echo $row_startup['Industry']; ?></td>
-                                                        <td>
-                                                       
-                                                           
-                                                            <button type="button" id="sa-connect-accept" data-userid="<?php echo $row_startup['userID']; ?>" data-id="<?php echo $_GET['id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
-                                                        
-    
-
-                                                       
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="7" class="sm-pd"></td>
-                                                        </tr>
-                                                <?php } ?> 
-                                        <?php } ?>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
+                                         <div id="bookmark-tab-content"></div>     
+                                    </div>
+                           
             <!-- ============================================================== -->
             <!-- Bookmarks Tab Ends -->
             <!-- ============================================================== -->

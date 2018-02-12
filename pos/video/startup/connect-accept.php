@@ -6,15 +6,17 @@
  include_once("../config.php"); 
 
 
-if($_POST){
+if($_GET){
 
 
-$sql = "UPDATE tbl_connections_startup SET 
+$sql = "UPDATE tbl_connections SET 
 status='accepted'
 
-WHERE requester_id = '".$_POST['requester_id']."' AND requested_id = '".$_POST['requested_id']."'";
+WHERE requester_id = '".$_GET['requester_id']."' AND requested_id = '".$_GET['requested_id']."'";
 
 mysqli_query($connecDB, $sql);
+
+echo "good";
 
 
 }

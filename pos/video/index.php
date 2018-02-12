@@ -538,7 +538,7 @@ echo 'id: ' . $user['id'];
                                 <small class="text-muted db">
                                 <br>
                                 <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 
-                                <span class="m-r-10"><i class="fa fa-heart-o"></i> {{{_highlightResult.likes.value}}}</a></span>  
+                                <span class="m-r-10"><i class="fa fa-heart-o"></i> <div id="likes">{{{_highlightResult.likes.value}}}</div></span>  
                                     <i class="fa fa-industry"></i> {{{_highlightResult.industry.value}}}</small>
                             </div>
                         </div>
@@ -574,13 +574,13 @@ echo 'id: ' . $user['id'];
                  <!-- ============================================================== -->
                 <!-- Main Screen End -->
                 <!-- ============================================================== -->
-
+               
+                <div id="pagination"></div>
 
              
-               
             </div>
 
-             <div id="pagination"></div>     
+              
 
 
  <div class="modal fade text-center" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -639,7 +639,8 @@ echo 'id: ' . $user['id'];
         </div>
 
 
-           
+               
+               
 
              
             <!-- /.container-fluid -->

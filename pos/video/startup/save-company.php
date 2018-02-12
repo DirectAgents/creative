@@ -99,7 +99,7 @@ $sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_users LEFT JOIN startup
 $row_startup = mysqli_fetch_array($sql_startup);
 
 
-$startupID = rand(5, 1000000);
+//$startupID = rand(5, 1000000);
 
 
 $response = array();

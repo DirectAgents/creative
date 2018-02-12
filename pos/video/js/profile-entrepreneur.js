@@ -550,6 +550,28 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 ////////////////Connect//////////////////////
 
+
+ $('#connections-tab').click(function(){
+
+  var userid = $('input[name=userid]').val();
+
+  //alert(userid);
+ 
+     $.ajax({
+            url: url_link+"connections-tab.php",
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                $("#connections-tab-content").html(response);
+
+            }
+        });
+
+ });
+
+
    //Basic
     $('#sa-basic').click(function(){
         swal("Login to connect!");
@@ -571,7 +593,6 @@ $( "#save-team-member" ).on( "submit", function(e) {
             closeOnConfirm: false 
         }, function(){   
 
-           var url_link = 'http://localhost/creative/pos/video/startup/';
 
            var requested_id = $("#sa-connect").attr("data-id");
            var requester_id = $("#sa-connect").attr("data-userid");
@@ -601,147 +622,41 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
-    $('#sa-connect-cancel').click(function(){
-        
-        //var data_thumb = $("#sa-connect").attr("data-thumb");
-        //alert(data_thumb);
-
-        swal({   
-            title: "Cancel!",   
-            text: "Cancel Connect Request!",   
-            //type: "warning",
-            //imageUrl: data_thumb,   
-            showCancelButton: true,   
-            confirmButtonColor: "#DD6B55",   
-            confirmButtonText: "Yes, cancel!",   
-            closeOnConfirm: false 
-        }, function(){   
-
-           var url_link = 'http://localhost/creative/pos/video/startup/';
-
-           var requested_id = $("#sa-connect").attr("data-id");
-           var requester_id = $("#sa-connect").attr("data-userid");
-            //alert(data_id);
-
-                        $.ajax({
-                                url: url_link+"connect-cancel.php",
-                                method: "POST",
-                                data: {requested_id: requested_id, requester_id: requester_id},
-                                dataType: "html",
-                                success: function(response) {
-                                    //alert(data);
-                                    //$('#deleted').fadeIn("fast");
-                                    //$('#deleted').delay(2000).fadeOut("slow");
-                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
-                                //$("#add-a-team-member").show();
-                                $('.sa-connect-btn').show();
-                                $('.sa-connect-sent').hide();
-                                swal("Success!", "You canceled your request.", "success");  
-
-                                }
-                            });
-                      
-             
-        });
-    });
+    
 
 
 
 
-$('#sa-connect-accept').click(function(){
-        
-        //var data_thumb = $("#sa-connect").attr("data-thumb");
-        //alert(data_thumb);
-
-        swal({   
-            title: "Accept!",   
-            text: "Accept Connection Request!",   
-            //type: "warning",
-            //imageUrl: data_thumb,   
-            showCancelButton: true,   
-            confirmButtonColor: "#DD6B55",   
-            confirmButtonText: "Yes, accept!",   
-            closeOnConfirm: false 
-        }, function(){   
-
-           var url_link = 'http://localhost/creative/pos/video/startup/';
-
-           var requested_id = $("#sa-connect-accept").attr("data-id");
-           var requester_id = $("#sa-connect-accept").attr("data-userid");
-            //alert(requested_id);
-
-                        $.ajax({
-                                url: url_link+"connect-accept.php",
-                                method: "POST",
-                                data: {requested_id: requested_id, requester_id: requester_id},
-                                dataType: "html",
-                                success: function(response) {
-                                    //alert(data);
-                                    //$('#deleted').fadeIn("fast");
-                                    //$('#deleted').delay(2000).fadeOut("slow");
-                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
-                                //$("#add-a-team-member").show();
-                                $('.sa-connect-pending').hide();
-                                $('.sa-connect-accepted').show();
-                                swal("Success!", "You are now connected.", "success");  
-
-                                }
-                            });
-                      
-             
-        });
-    });
 
 
 
-$('#sa-connect-deny').click(function(){
-        
-        //var data_thumb = $("#sa-connect").attr("data-thumb");
-        //alert(data_thumb);
 
-        swal({   
-            title: "Deny!",   
-            text: "Deny Connection Request!",   
-            //type: "warning",
-            //imageUrl: data_thumb,   
-            showCancelButton: true,   
-            confirmButtonColor: "#DD6B55",   
-            confirmButtonText: "Yes, deny!",   
-            closeOnConfirm: false 
-        }, function(){   
 
-           var url_link = 'http://localhost/creative/pos/video/startup/';
-
-           var requested_id = $("#sa-connect-deny").attr("data-id");
-           var requester_id = $("#sa-connect-deny").attr("data-userid");
-            //alert(requested_id);
-
-                        $.ajax({
-                                url: url_link+"connect-deny.php",
-                                method: "POST",
-                                data: {requested_id: requested_id, requester_id: requester_id},
-                                dataType: "html",
-                                success: function(response) {
-                                    //alert(data);
-                                    //$('#deleted').fadeIn("fast");
-                                    //$('#deleted').delay(2000).fadeOut("slow");
-                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
-                                //$("#add-a-team-member").show();
-                                $('.connections-tab-inside').hide();
-                                $('.connections-header').hide();
-                                $('.no-connections').show();
-                                swal("Success!", "You have denied the request.", "success");  
-
-                                }
-                            });
-                      
-             
-        });
-    });
 
 
 
 ////////////////Bookmark//////////////////////
+
+ $('#bookmark-tab').click(function(){
+
+  var userid = $('input[name=userid]').val();
+
+  //alert(userid);
+ 
+     $.ajax({
+            url: url_link+"bookmark-tab.php",
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                $("#bookmark-tab-content").html(response);
+
+            }
+        });
+
+ });
+
 
 
   $('.bookmark').click(function(){
@@ -775,6 +690,10 @@ $('#sa-connect-deny').click(function(){
     });  
 
 
+
+  
+
+
 ////////////////Likes//////////////////////
 
 $('.like').click(function(){
@@ -789,11 +708,14 @@ $('.like').click(function(){
             dataType: "html",
             success: function(response) {
 
-             if(response == 'good'){ 
+             if(response != 'no good'){ 
              
             parent.swal("Success!", "You liked it.", "success");  
+            parent.$('#likes').html(response);
 
-              }else{
+              }
+        
+        if(response == 'no good'){ 
 
         parent.swal({   
             title: "You already liked it.",   
@@ -821,9 +743,13 @@ $('.like').click(function(){
                                 dataType: "html",
                                 success: function(response) {
                                    
-                                  if(response == 'good'){  
+                                if(response != 'good'){  
                                 parent.swal("Success!", "", "success");
-                                }else{
+                                parent.$('#likes').html(response);
+                                //alert(response);
+                                }
+
+                                if(response == 'no good'){ 
                                   parent.swal("Something went wrong!");
                                 } 
 
