@@ -20,7 +20,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
        ?>
 
         <nav class="navbar navbar-default navbar-static-top m-b-0">
-            <?php echo $_SESSION['entrepreneurSession']; echo $_SESSION['usernameSession']; ?>
+            <?php //echo $_SESSION['entrepreneurSession']; echo $_SESSION['usernameSession']; ?>
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->

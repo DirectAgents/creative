@@ -10,7 +10,7 @@
 
 
 
- $sql = "SELECT * FROM tbl_entrepreneur WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $sql = "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_user = mysqli_fetch_array($result);
  
@@ -19,7 +19,7 @@
 
  if($column_name == 'About') {
 
- $sql = "UPDATE tbl_entrepreneur SET About='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $sql = "UPDATE tbl_users SET About='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
       
@@ -32,7 +32,7 @@
 
 if($column_name == 'Email') {
 
- $sql = "UPDATE tbl_entrepreneur SET Email='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $sql = "UPDATE tbl_users SET Email='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
 
@@ -44,7 +44,7 @@ if($column_name == 'Email') {
 
  if($column_name == 'Phone') {
 
- $sql = "UPDATE tbl_startup SET Phone='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $sql = "UPDATE startups SET Phone='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  if(mysqli_query($connecDB, $sql))  
  {  
 
@@ -127,7 +127,7 @@ foreach ($values as $value)
 }
 */
 
- $sql = "UPDATE tbl_entrepreneur SET Skills='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $sql = "UPDATE tbl_users SET Skills='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  mysqli_query($connecDB, $sql); 
 
  }

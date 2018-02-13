@@ -62,6 +62,15 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO startups(userID, Name, Industr
   '".$_POST['video']."', '".$screenshot."', '".$facebook."', '".$twitter."', '".$angellist."', '".$date."')");
 
 
+$sql = "UPDATE tbl_users SET 
+Position='".$_POST['position']."'
+
+WHERE userID='".$_POST['userid']."'";
+
+mysqli_query($connecDB, $sql);
+
+
+
 }else{
 
 
@@ -87,8 +96,23 @@ WHERE id='".$_POST['id']."'";
 mysqli_query($connecDB, $sql);
 
 
+$sql = "UPDATE tbl_users SET 
+Position='".$_POST['position']."'
+
+WHERE userID='".$_POST['userid']."'";
+
+mysqli_query($connecDB, $sql);
+
+
 }
 
+
+echo '<div id="position">';
+echo '<h5 class="text-white">';
+//echo $city.', '.$state_final;
+echo $_POST['position'];
+echo '</h5>';
+echo '</div>';
 
  
 

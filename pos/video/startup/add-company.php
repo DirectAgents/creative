@@ -26,6 +26,12 @@ if($_POST){
                                                 <div class="col-md-12">
                                                     <input type="text" id="fm_name" name="fm_name" class="form-control form-control-line"> </div>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-12">Your Role</label>
+                                                <div class="col-md-12">
+                                                    <input type="text" id="fm_position" name="fm_position" placeholder="e.g CEO" class="form-control form-control-line"> </div>
+                                            </div>
                                             
                                             <div class="form-group">
                                                 <label class="col-md-12">Industry</label>
@@ -48,7 +54,7 @@ if($_POST){
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label class="col-md-12">About the company</label>
+                                                <label class="col-md-12">Describe your startup's product</label>
                                                 <div class="col-md-12">
                                                     <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line"></textarea>
                                                     

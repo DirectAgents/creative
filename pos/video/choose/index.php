@@ -25,8 +25,7 @@ if(isset($_SESSION['google_id'])){
         WHERE Email='".$_SESSION['email']."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['entrepreneurSession'] = $row['userID'];	
-        $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$_SESSION['fullname']));
+       
 
         header('Location: '.BASE_PATH.'');
         exit();
@@ -54,8 +53,7 @@ if(isset($_SESSION['facebook_id'])){
         WHERE Email='".$_SESSION['email']."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['entrepreneurSession'] = $row['userID'];	
-        $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$_SESSION['fullname'])); 
+       
 
         header('Location: '.BASE_PATH.'');
         exit();
@@ -84,8 +82,7 @@ if(isset($_SESSION['linkedin_id'])){
         WHERE Email='".$_SESSION['email']."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-        $_SESSION['entrepreneurSession'] = $row['userID'];	
-        $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$_SESSION['fullname'])); 
+       
 
         header('Location: '.BASE_PATH.'');
         exit();
@@ -111,8 +108,7 @@ if(isset($_SESSION['google_id'])){
  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
  $row2 = mysqli_fetch_array($sql);
 
- $_SESSION['entrepreneurSession'] = $row2['userID'];
- $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$_SESSION['fullname']));
+
 
 
 }
@@ -126,8 +122,7 @@ if(isset($_SESSION['facebook_id'])){
  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
  $row2 = mysqli_fetch_array($sql);
 
- $_SESSION['entrepreneurSession'] = $row2['userID'];
- $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$_SESSION['fullname']));
+
 
 
 }
@@ -142,14 +137,13 @@ if(isset($_SESSION['linkedin_id'])){
  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
  $row2 = mysqli_fetch_array($sql);
 
- $_SESSION['entrepreneurSession'] = $row2['userID'];
- $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$_SESSION['fullname']));
+
 
 
 }
  //echo  $_SESSION['entrepreneurSession'];
  //echo  $_SESSION['usernameSession'];
- header("Location:http://localhost/creative/pos/video/?test=".$_SESSION['usernameSession']);
+ header("Location:http://localhost/creative/pos/video/");
  exit();
 
 

@@ -37,37 +37,22 @@ $sql = "SELECT * FROM zip_state WHERE city='".$city."' AND state = '".$state_fin
 $result = mysqli_query($connecDB, $sql);  
 $row_zip = mysqli_fetch_array($result);
 
-$sql = "UPDATE tbl_entrepreneur SET 
-Fullname='".$_POST['fm_fullname']."',
-Email='".$_POST['fm_email']."',
+$sql = "UPDATE tbl_users SET 
 Phone='".$_POST['fm_phone']."',
 City='".$city."',
 State='".$state_final."',
 ZipCode='".$row_zip['zip']."',
 Facebook = '".$facebook."',
 Twitter = '".$twitter."',
-Linkedin = '".$linkedin."',
-About = '".$_POST['fm_about']."',
-Position = '".$_POST['fm_position']."'
+Linkedin = '".$linkedin."'
 
 WHERE userID='".$_SESSION['entrepreneurSession']."'";
 
 mysqli_query($connecDB, $sql);
 
 
-echo '<div id="fullname">';
-echo '<h4 class="text-white">';
-echo $_POST['fm_fullname'];
-echo '</h4>';
-echo '</div>';
 
 
-echo '<div id="position">';
-echo '<h5 class="text-white">';
-//echo $city.', '.$state_final;
-echo $_POST['fm_position'];
-echo '</h5>';
-echo '</div>';
 
 echo '<div id="facebook">';
 echo $facebook;

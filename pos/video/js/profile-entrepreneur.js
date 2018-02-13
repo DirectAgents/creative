@@ -24,11 +24,10 @@ e.preventDefault();
                 var submit = $(".btn-update-profile").html("<span class='glyphicon glyphicon-repeat gly-spin'></span> Saving"); //
                 setTimeout(function() { $(submit).html("Update Profile") }, 2000);
 
-                var fullname = $(response).filter('#fullname').html();
-                $('#fullname').html(fullname);
+              
 
-                var position = $(response).filter('#position').html();
-                $('#position').html(position);
+                //var position = $(response).filter('#position').html();
+                //$('#position').html(position);
 
                 var facebook = $(response).filter('#facebook').html();
                 if (facebook.indexOf("http://") == 0 || facebook.indexOf("https://") == 0) {
@@ -362,6 +361,7 @@ $( "#save-company" ).on( "submit", function(e) {
 
     var id = $("input[name='id']").val();
     var userid = $("input[name='userid']").val();
+    var fm_position = $("input[name='fm_position']").val();
     var fm_about = $("textarea[name='fm_about']").val();
     var fm_name = $("input[name='fm_name']").val();
     var fm_industry = $("select[name='fm_industry']").val();
@@ -397,13 +397,16 @@ $( "#save-company" ).on( "submit", function(e) {
     $.ajax({
             url: url_link+"save-company.php", 
             method: "POST",
-            data: { id: id, userid: userid, name : fm_name, industry : fm_industry, video : fm_video, location : fm_location, about : fm_about, logo : logo, screenshot : screenshot, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
+            data: { id: id, userid: userid, name : fm_name, position : fm_position, industry : fm_industry, video : fm_video, location : fm_location, about : fm_about, logo : logo, screenshot : screenshot, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
             dataType: "html",
             success: function(response) {
                 //alert(id);  
                 //var skills = $(response).filter('#the-skill-set').text();
                 $("#thecompany").load(url_link+"company.php?userid="+userid);
                 //$("#thecompany").html(response);
+
+                var position = $(response).filter('#position').html();
+                $('#position').html(position);
 
                 $("#add-a-company").hide();
                 $("#edit-a-company").show();

@@ -14,6 +14,10 @@ $sql = "SELECT * FROM tbl_team WHERE userID ='".$_GET['userid']."'";
 $result = mysqli_query($connecDB, $sql);  
 $row = mysqli_fetch_array($result);
 
+$sql_user = "SELECT * FROM tbl_users WHERE userID ='".$_GET['userid']."'";  
+$result_user = mysqli_query($connecDB, $sql_user);  
+$row_user = mysqli_fetch_array($result_user);
+
 
  ?>
 
@@ -28,14 +32,106 @@ No Team Members added so far!
 
                            
 
-                        <div class="row">              
+                        <div class="row">     
+
+<?php if($_GET['userid'] != isset($_SESSION['entrepreneurSession'])) { ?>
+
+        <div id="team-tab-data">
+                    
+                    <div class="col-md-6 col-xs-12">
+                            <div class="user-btm-box-team">
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-purple">
+                                            <div id="facebook">
+                                                <a href="<?php echo $row_user['Facebook'];?>"><i class="ti-facebook"></i></a>
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-blue">
+                                            <div id="twitter">
+                                                <a href="<?php echo $row_user['Twitter'];?>"><i class="ti-twitter"></i></a>
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 text-center">
+                                        <p class="text-danger">
+                                            <div id="linkedin">
+                                                <a href="<?php echo $row_user['Linkedin'];?>"><i class="ti-linkedin"></i></a>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            <div class="white-box border">
+                                <div class="user-bg">
+                                    <div class="overlay-box-grey">
+                                        <div class="user-content">
+                                            <a href="javascript:void(0)">
+                                               <?php if($row_user['ProfileImage'] == 'Google'){ ?>
+         <img src="<?php echo $row_user['google_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
+<?php } ?>
+
+<?php if($row_user['ProfileImage'] == 'Facebook'){ ?>
+<img src="https://graph.facebook.com/<?php echo $row_user['facebook_id']; ?>/picture?type=large" class="thumb-lg img-circle" alt="img">
+<?php } ?>
+
+<?php if($row_user['ProfileImage'] == 'Linkedin'){ ?>
+        <img src="<?php echo $row_user['linkedin_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
+       
+<?php } ?>
+                                            </a>
+                                            <div id="fullname">
+                                                <h4 class="text-black"><?php echo $row_user['Fullname']; ?></h4>
+                                            </div>
+                                            <div id="city-state">
+                                                
+                                                <h5 class="text-black"><?php echo $row_user['Position']; ?></h5>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php if ($row_user['Skills'] != ''){ ?>
+
+                                <div class="user-btm-box">
+                                    
+
+                                        <?php 
+                                        $ctop = $row_user['Skills']; 
+                                        $ctop = explode(',',$ctop); 
+
+                                        if($row_user['Skills'] != '' && $row_user['Skills'] != 'NULL' ){
+
+                                        foreach($ctop as $skill)   { 
+                                                       
+                                        ?>
+                                        <div class="skillsdiv_teammember"><?php echo $skill; ?></div>
+
+                                        <?php } } ?>
+
+                                       
+                                        
+                                </div>
+
+                            <?php } ?>    
+
+                            
+                                            
+                            </div>
+
+                        </div>    
+
+
+<?php } ?>
+
 
                                         <?php
                                 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_team WHERE userID = '".$_GET['userid']."' ORDER BY id DESC");
                                 while($row_team = mysqli_fetch_array($sql)){  
                                         ?>
                                         
-                                        <div id="team-tab-data">
+                <div id="team-tab-data">
                                             
 
                

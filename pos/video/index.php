@@ -326,7 +326,7 @@ echo 'id: ' . $user['id'];
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['entrepreneurSession'] = $row['userID'];
-        $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$row['Fullname']));
+        $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$fullname));
         $_SESSION['facebook_photo'] = $user['id'];
         //header("Location: ../index.php");
         //echo $_SESSION['startupSession'];
@@ -355,7 +355,7 @@ echo 'id: ' . $user['id'];
     $row = mysqli_fetch_array($sql);
 
     $_SESSION['entrepreneurSession'] = $row['userID'];
-    $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$row['Fullname']));
+    $_SESSION['usernameSession'] = strtolower(str_replace(' ','-',$fullname));
     //header("Location: ../index.php");
     //echo $row['userID'];
     //echo "123";

@@ -278,7 +278,7 @@ echo 'id: ' . $user['id'];
   //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
   //echo $user_count;
   //echo $user->email;
-  if($row['userID']) //if user already exist change greeting text to "Welcome Back"
+  if($row['userID'] != '') //if user already exist change greeting text to "Welcome Back"
     {
 
     
@@ -564,7 +564,7 @@ echo 'id: ' . $user['id'];
                                     </div>
                              
                              <?php if(isset($_SESSION['entrepreneurSession'])) { ?>    
-                               <?php if($_GET['id'] != $_SESSION['entrepreneurSession']) { ?>    
+                               <?php if($_GET['username'] != $_SESSION['usernameSession']) { ?>    
 
 <?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
 <?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture"; } ?>
@@ -612,7 +612,7 @@ echo 'id: ' . $user['id'];
                                         <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Meet the Team</span> </a>
                                     </li>
                                    <?php //} ?>
-                                    <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['id']) { ?>
+                                    <?php if(isset($_SESSION['usernameSession']) && $_SESSION['usernameSession'] == $_GET['username']) { ?>
                                     <li class="tab">
                                         <a href="#connections" id="connections-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
                                     </li>
@@ -707,7 +707,7 @@ echo 'id: ' . $user['id'];
              <div class="tab-pane" id="team">
 
                 <form class="form-horizontal form-material" id="save-team-member">
-                        <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['id']) { ?>
+                        <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $row_entrepreneur['userID']) { ?>
                         <div id="add-a-team-member">
                              <div class="col-sm-12" style="padding-left:15px">
                                          <div class="row"> 
@@ -791,22 +791,7 @@ echo 'id: ' . $user['id'];
             <!-- ============================================================== -->
                                     <div class="tab-pane" id="settings">
                                         <form class="form-horizontal form-material" id="update-profile">
-                                            <div class="form-group">
-                                                <label class="col-md-12">Full Name</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" id="fm_fullname" name="fm_fullname" value="<?php echo $row['Fullname'];?>" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Position</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" id="fm_position" name="fm_position" placeholder="eg. CEO" value="<?php echo $row['Position'];?>" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Email</label>
-                                                <div class="col-md-12">
-                                                    <input type="email" id="fm_email" name="fm_email" value="<?php echo $row['Email'];?>" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email" disabled> </div>
-                                            </div>
+                                           
                                             <div class="form-group">
                                                 <label class="col-md-12">Phone No</label>
                                                 <div class="col-md-12">
@@ -836,11 +821,11 @@ echo 'id: ' . $user['id'];
                                                         <?php
                                                         //include db configuration file
 
-                                                        echo '<input type="hidden" name="userid" id="userid" value="'.$_GET['id'].'">';
+                                                        echo '<input type="hidden" name="userid" id="userid" value="'.$row_entrepreneur['userID'].'">';
 
 
                                                         //MySQL query
-                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$_GET['id']."' ");
+                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_entrepreneur['userID']."' ");
 
 
                                                         //get all records from add_delete_record table
