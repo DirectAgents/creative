@@ -334,6 +334,8 @@ echo 'id: ' . $user['id'];
         //echo $row['userID'];
         //echo $user['email'];
         //header('Location: '.BASE_PATH.'');
+        //echo $_SESSION['entrepreneurSession'];
+        //echo $_SESSION['usernameSession'];
         //exit();
         
     }

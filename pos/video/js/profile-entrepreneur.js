@@ -597,9 +597,55 @@ $( "#save-team-member" ).on( "submit", function(e) {
         }, function(){   
 
 
-           var requested_id = $("#sa-connect").attr("data-id");
-           var requester_id = $("#sa-connect").attr("data-userid");
-            //alert(data_id);
+           var requested_id = $("#sa-connect").attr("data-requested-id");
+           var requester_id = $("#sa-connect").attr("data-requester-id");
+           alert(requested_id);
+
+                        $.ajax({
+                                url: url_link+"connect-request.php",
+                                method: "POST",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                    //alert(data);
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
+                                //$("#add-a-team-member").show();
+                                $('.sa-connect-btn').hide();
+                                $('.sa-connect-sent').show();
+                                swal("Success!", "Your request has been sent.", "success");  
+
+                                }
+                            });
+                      
+             
+        });
+    });
+
+
+
+
+$('#sa-connect-cancel').click(function(){
+        
+        var data_thumb = $("#sa-connect").attr("data-thumb");
+        //alert(data_thumb);
+
+        swal({   
+            title: "Connect!",   
+            text: "Send a request to connect!",   
+            //type: "warning",
+            imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, connect!",   
+            closeOnConfirm: false 
+        }, function(){   
+
+
+           var requested_id = $("#sa-connect").attr("data-requested-id");
+           var requester_id = $("#sa-connect").attr("data-requester-id");
+           alert(requested_id);
 
                         $.ajax({
                                 url: url_link+"connect-request.php",

@@ -23,7 +23,7 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id,
 	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."')");
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id) 
-	VALUES('".$_POST['requested_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."')");
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."')");
 
 }
 
@@ -34,10 +34,10 @@ echo $row['Type'];
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id) 
-	VALUES('".$_POST['requested_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."')");
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."')");
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id) 
-	VALUES('".$row['userID']."','".$_POST['requester_id']."','".$_POST['requested_id']."')");
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."')");
 
 }
 
