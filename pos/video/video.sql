@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.7
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 12, 2018 at 11:13 PM
--- Server version: 5.6.31
--- PHP Version: 5.6.25
+-- Host: localhost
+-- Generation Time: Feb 26, 2018 at 03:59 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,7 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `booking`
 --
 
-CREATE TABLE IF NOT EXISTS `booking` (
+CREATE TABLE `booking` (
   `id` int(11) NOT NULL,
   `Firstname` varchar(255) NOT NULL,
   `Lastname` varchar(255) NOT NULL,
@@ -36,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `Industry` varchar(255) NOT NULL,
   `Date` date NOT NULL,
   `Time` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `booking`
@@ -53,10 +55,10 @@ INSERT INTO `booking` (`id`, `Firstname`, `Lastname`, `Email`, `Phone`, `Startup
 -- Table structure for table `skills`
 --
 
-CREATE TABLE IF NOT EXISTS `skills` (
+CREATE TABLE `skills` (
   `id` int(11) NOT NULL,
   `skill` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=189 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `skills`
@@ -110,7 +112,7 @@ INSERT INTO `skills` (`id`, `skill`) VALUES
 (51, 'Small Business Owners'),
 (52, 'Software Development'),
 (53, 'Startup Businesses'),
-(54, 'Women''s Business Networking'),
+(54, 'Women\'s Business Networking'),
 (55, 'Woman Entrepreneurs'),
 (56, 'Young Professionals'),
 (57, 'Adventure Travel'),
@@ -250,7 +252,7 @@ INSERT INTO `skills` (`id`, `skill`) VALUES
 -- Table structure for table `skills_level`
 --
 
-CREATE TABLE IF NOT EXISTS `skills_level` (
+CREATE TABLE `skills_level` (
   `id` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `skill` varchar(255) NOT NULL,
@@ -263,11 +265,13 @@ CREATE TABLE IF NOT EXISTS `skills_level` (
 -- Table structure for table `startups`
 --
 
-CREATE TABLE IF NOT EXISTS `startups` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE `startups` (
+  `id` int(11) UNSIGNED NOT NULL,
   `startupID` int(11) NOT NULL,
   `userID` int(11) DEFAULT NULL,
+  `Position` varchar(255) NOT NULL,
   `Name` varchar(255) DEFAULT NULL,
+  `Description` longtext NOT NULL,
   `About` longtext NOT NULL,
   `City` varchar(255) NOT NULL,
   `State` varchar(255) NOT NULL,
@@ -280,16 +284,14 @@ CREATE TABLE IF NOT EXISTS `startups` (
   `Twitter` varchar(255) NOT NULL,
   `AngelList` varchar(255) NOT NULL,
   `Date_Posted` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `startups`
 --
 
-INSERT INTO `startups` (`id`, `startupID`, `userID`, `Name`, `About`, `City`, `State`, `Zip`, `Industry`, `Logo`, `Video`, `Screenshot`, `Facebook`, `Twitter`, `AngelList`, `Date_Posted`) VALUES
-(134, 1234528, 106, 'Google', '', 'NEW YORK', 'NY', '10001', 'Technology', 'screenshots/suc6lezxgdtz6gu2hyxq', 'https://www.youtube.com/embed/MZbYyltusWo', 'screenshots/sokfn9ksmti2ytbogo8h', '', '', '', '2018-02-07'),
-(136, 1234511, 105, 'Google', '', 'NEW YORK', 'NY', '10001', 'Technology', 'screenshots/suc6lezxgdtz6gu2hyxq', 'https://www.youtube.com/embed/MZbYyltusWo', 'screenshots/sokfn9ksmti2ytbogo8h', '', '', '', '2018-02-07'),
-(137, 1234522, 104, 'Facebook', '', 'NEW YORK', 'NY', '10001', 'Technology', 'screenshots/aahiz8gliphergp51cwd', 'https://www.youtube.com/embed/4D6KvYVXYj8', 'screenshots/rkxzbo2sosh442zjunzb', '', '', '', '2018-02-07');
+INSERT INTO `startups` (`id`, `startupID`, `userID`, `Position`, `Name`, `Description`, `About`, `City`, `State`, `Zip`, `Industry`, `Logo`, `Video`, `Screenshot`, `Facebook`, `Twitter`, `AngelList`, `Date_Posted`) VALUES
+(151, 105, 105, 'CEO', 'abc', 'this is the description', 'this is about', 'NEW YORK', 'NY', '10001', 'Technology', '', '', 'screenshots/rjmw2juad4nqr99mdkus', '', '', '', '2018-02-17');
 
 -- --------------------------------------------------------
 
@@ -297,11 +299,26 @@ INSERT INTO `startups` (`id`, `startupID`, `userID`, `Name`, `About`, `City`, `S
 -- Table structure for table `tbl_bookmarks`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_bookmarks` (
+CREATE TABLE `tbl_bookmarks` (
   `id` int(11) NOT NULL,
   `requester_id` int(11) NOT NULL,
   `requested_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_connections_entrepreneur`
+--
+
+CREATE TABLE `tbl_connections_entrepreneur` (
+  `id` int(11) NOT NULL,
+  `my_id` int(11) NOT NULL,
+  `requester_id` int(11) NOT NULL,
+  `requested_id` int(11) NOT NULL,
+  `status` enum('pending','accepted','denied') NOT NULL DEFAULT 'pending',
+  `archived` enum('Yes','No') NOT NULL DEFAULT 'No'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -309,29 +326,29 @@ CREATE TABLE IF NOT EXISTS `tbl_bookmarks` (
 -- Table structure for table `tbl_connections_investor`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_connections_investor` (
+CREATE TABLE `tbl_connections_investor` (
   `id` int(11) NOT NULL,
   `my_id` int(11) NOT NULL,
   `requester_id` int(11) NOT NULL,
   `requested_id` int(11) NOT NULL,
   `status` enum('pending','accepted','denied') NOT NULL DEFAULT 'pending',
   `archived` enum('Yes','No') NOT NULL DEFAULT 'No'
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_connections_startup`
+-- Table structure for table `tbl_education`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_connections_startup` (
+CREATE TABLE `tbl_education` (
   `id` int(11) NOT NULL,
-  `my_id` int(11) NOT NULL,
-  `requester_id` int(11) NOT NULL,
-  `requested_id` int(11) NOT NULL,
-  `status` enum('pending','accepted','denied') NOT NULL DEFAULT 'pending',
-  `archived` enum('Yes','No') NOT NULL DEFAULT 'No'
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+  `userID` int(11) NOT NULL,
+  `University` varchar(255) NOT NULL,
+  `Degree` varchar(255) NOT NULL,
+  `Time Started` varchar(25) NOT NULL,
+  `Time Ended` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -339,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `tbl_connections_startup` (
 -- Table structure for table `tbl_investor`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_investor` (
+CREATE TABLE `tbl_investor` (
   `userID` int(11) NOT NULL,
   `facebook_id` decimal(21,0) NOT NULL,
   `google_id` decimal(21,0) NOT NULL,
@@ -381,17 +398,17 @@ CREATE TABLE IF NOT EXISTS `tbl_investor` (
   `cc_name` varchar(255) NOT NULL,
   `Date_Created` date NOT NULL,
   `account_verified` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_investor`
 --
 
 INSERT INTO `tbl_investor` (`userID`, `facebook_id`, `google_id`, `google_picture_link`, `Fullname`, `Email`, `Phone`, `Age`, `Gender`, `Zip`, `ZipCode`, `City`, `State`, `Skills`, `Timezone`, `About`, `Linkedin`, `AngelList`, `Twitter`, `Facebook`, `EmailNotifications`, `profile_image`, `userPass`, `login_session`, `userStatus`, `tokenCode`, `account_id`, `owner_user_id`, `access_token`, `code`, `billing_address_one`, `billing_address_two`, `billing_city`, `billing_state`, `billing_zip`, `billing_country`, `credit_card_id`, `cc_last_four`, `cc_name`, `Date_Created`, `account_verified`) VALUES
-(17, 0, 0, '', 'Peter', 'wepaystage4@gmail.com', '625-425-6272', '', '', '10001', '', 'NEW YORK', 'NY', '', '', '', '', '', '', '', 'NULL', 'thumb_1489090347b3.jpg', '97285088ab6d156b8e6697796dbc3c02', '', 'Y', 'e865cb186694c63bee213056dc12efd8', '878147701', '27090090', 'STAGE_cfbf9d5b0380d98f0b6c2c7d5aaff0881781978ffa47db5d855adb5134f4816d', '723e8cdc84a555d30ff3f51deb973f85e15ce04fce2e4e0d6f', '123 Street Address', '', 'New York', 'CT', '10001', 'US', '2837716121', '4018', 'Visa xxxxxx4018', '2017-03-05', ''),
-(18, 0, 0, '', 'Gloria', 'wepaystage7@gmail.com', '917-287-8274', '', '', '10001', '', 'NEW YORK', 'NY', '', '', 'I am like this and that', 'http://www.google.com', '', 'http://www.cnn.com', 'http://www.tagesschau.com', 'Participant requests to meet you,Email reminder about an upcoming meeting', 'thumb_1490494782).jpg', '97285088ab6d156b8e6697796dbc3c02', '', 'Y', '8120934196ee93afc23a65db4ccf6568', '1155508772', '62926880', 'STAGE_909bfa242b2342e49952b03b4c513a4eda28c52cdf7571afb0c8272886813690', 'c3ca28a159a6229c0ee0d802998f29eaa57339842fd9253c35', '123 Street Address', '', 'New York', 'CT', '10001', 'US', '150880731', '4018', 'Visa xxxxxx4018', '2017-03-25', ''),
-(21, 0, 115286940811097904022, 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', 'Hanna', 'wepaystage11@gmail.com', '917-827-6272', '', '', '11103', '', 'ASTORIA', 'NY', '', '', '', '', '', '', '', 'Participant requests to meet you,Email reminder about an upcoming meeting', '', '97285088ab6d156b8e6697796dbc3c02', '', 'Y', '87c5b2654f6b203d91e5b920c775b1db', '1263049195', '188707848', 'STAGE_5d6e2cd9b88291557b07820d9293633a12db325ce3497f8c7a53333578b9efab', 'd9c998e2efd3a4181585c2e98d91c5bcab5ac84c142c7cde0a', '123 Street Address', '', 'New York', 'CT', '10001', 'US', '955399463', '0011', 'MasterCard xxxxxx0011', '2017-05-12', '1'),
-(25, 10157632974310062, 109442174676931086073, 'https://lh6.googleusercontent.com/-WOs5SAUi9zY/AAAAAAAAAAI/AAAAAAAAOSY/eb_RgNvHCgQ/photo.jpg', 'Alper Hansi', 'ald183s@gmail.com', '', '', 'Male', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'N', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2018-01-21', '');
+(17, '0', '0', '', 'Peter', 'wepaystage4@gmail.com', '625-425-6272', '', '', '10001', '', 'NEW YORK', 'NY', '', '', '', '', '', '', '', 'NULL', 'thumb_1489090347b3.jpg', '97285088ab6d156b8e6697796dbc3c02', '', 'Y', 'e865cb186694c63bee213056dc12efd8', '878147701', '27090090', 'STAGE_cfbf9d5b0380d98f0b6c2c7d5aaff0881781978ffa47db5d855adb5134f4816d', '723e8cdc84a555d30ff3f51deb973f85e15ce04fce2e4e0d6f', '123 Street Address', '', 'New York', 'CT', '10001', 'US', '2837716121', '4018', 'Visa xxxxxx4018', '2017-03-05', ''),
+(18, '0', '0', '', 'Gloria', 'wepaystage7@gmail.com', '917-287-8274', '', '', '10001', '', 'NEW YORK', 'NY', '', '', 'I am like this and that', 'http://www.google.com', '', 'http://www.cnn.com', 'http://www.tagesschau.com', 'Participant requests to meet you,Email reminder about an upcoming meeting', 'thumb_1490494782).jpg', '97285088ab6d156b8e6697796dbc3c02', '', 'Y', '8120934196ee93afc23a65db4ccf6568', '1155508772', '62926880', 'STAGE_909bfa242b2342e49952b03b4c513a4eda28c52cdf7571afb0c8272886813690', 'c3ca28a159a6229c0ee0d802998f29eaa57339842fd9253c35', '123 Street Address', '', 'New York', 'CT', '10001', 'US', '150880731', '4018', 'Visa xxxxxx4018', '2017-03-25', ''),
+(21, '0', '115286940811097904022', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', 'Hanna', 'wepaystage11@gmail.com', '917-827-6272', '', '', '11103', '', 'ASTORIA', 'NY', '', '', '', '', '', '', '', 'Participant requests to meet you,Email reminder about an upcoming meeting', '', '97285088ab6d156b8e6697796dbc3c02', '', 'Y', '87c5b2654f6b203d91e5b920c775b1db', '1263049195', '188707848', 'STAGE_5d6e2cd9b88291557b07820d9293633a12db325ce3497f8c7a53333578b9efab', 'd9c998e2efd3a4181585c2e98d91c5bcab5ac84c142c7cde0a', '123 Street Address', '', 'New York', 'CT', '10001', 'US', '955399463', '0011', 'MasterCard xxxxxx0011', '2017-05-12', '1'),
+(25, '10157632974310062', '109442174676931086073', 'https://lh6.googleusercontent.com/-WOs5SAUi9zY/AAAAAAAAAAI/AAAAAAAAOSY/eb_RgNvHCgQ/photo.jpg', 'Alper Hansi', 'ald183s@gmail.com', '', '', 'Male', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'N', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2018-01-21', '');
 
 -- --------------------------------------------------------
 
@@ -399,11 +416,11 @@ INSERT INTO `tbl_investor` (`userID`, `facebook_id`, `google_id`, `google_pictur
 -- Table structure for table `tbl_likes`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_likes` (
+CREATE TABLE `tbl_likes` (
   `id` int(11) NOT NULL,
   `requester_id` int(11) NOT NULL,
   `requested_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_likes`
@@ -415,43 +432,10 @@ INSERT INTO `tbl_likes` (`id`, `requester_id`, `requested_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_startup`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_startup` (
-  `id` int(11) NOT NULL,
-  `userID` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Url` varchar(255) NOT NULL,
-  `City` varchar(255) NOT NULL,
-  `State` varchar(255) NOT NULL,
-  `Zip` varchar(255) NOT NULL,
-  `ZipCode` varchar(255) NOT NULL,
-  `ProfileImage` varchar(255) NOT NULL,
-  `Facebook` varchar(255) NOT NULL,
-  `Twitter` varchar(255) NOT NULL,
-  `AngelList` varchar(255) NOT NULL,
-  `Date_Created` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_startup`
---
-
-INSERT INTO `tbl_startup` (`id`, `userID`, `Name`, `Url`, `City`, `State`, `Zip`, `ZipCode`, `ProfileImage`, `Facebook`, `Twitter`, `AngelList`, `Date_Created`) VALUES
-(3, '0', 'Franz', '', '', '', '', '', '', '', '', '', '0000-00-00'),
-(15, '0', 'Hanne Boss', '', 'PORTSMOUTH', 'NH', '', '00210', '', 'facebook12345678.com', 'twitter1114444.com', 'angel2222.com', '2017-11-30'),
-(28, '0', 'Paul Jared', '', '', '', '', '', '', '', '', '', '2018-01-21'),
-(36, '0', 'Alper Bauer', '', 'NEW YORK', 'NY', '', '10001', '', '', '', '', '2018-01-21'),
-(38, 'iiZlGUFpdB', '', '', '', '', '', '', '', '', '', '', '0000-00-00');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_team`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_team` (
+CREATE TABLE `tbl_team` (
   `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `startupID` int(11) NOT NULL,
@@ -475,13 +459,20 @@ CREATE TABLE IF NOT EXISTS `tbl_team` (
   `Date_Created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_team`
+--
+
+INSERT INTO `tbl_team` (`id`, `userID`, `startupID`, `Fullname`, `Position`, `Gender`, `Email`, `Phone`, `Age`, `About`, `Positions`, `Skills`, `City`, `State`, `Zip`, `ZipCode`, `ProfileImage`, `Facebook`, `Twitter`, `Linkedin`, `Date_Created`) VALUES
+(1, 149, 0, 'Jon Snow', 'CFO', '', '', '', '', '', '', 'Android Development', '', '', '', '', '', '', '', '', '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_users`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_users` (
+CREATE TABLE `tbl_users` (
   `userID` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `Type` varchar(255) NOT NULL,
@@ -499,6 +490,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `Phone` varchar(255) NOT NULL,
   `Age` varchar(255) NOT NULL,
   `About` longtext NOT NULL,
+  `Resume` varchar(255) NOT NULL,
   `Skills` longtext NOT NULL,
   `City` varchar(255) NOT NULL,
   `State` varchar(255) NOT NULL,
@@ -508,15 +500,15 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `Twitter` varchar(255) NOT NULL,
   `Linkedin` varchar(255) NOT NULL,
   `Date_Created` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`userID`, `username`, `Type`, `ProfileImage`, `facebook_id`, `google_id`, `google_picture_link`, `google_token`, `linkedin_id`, `linkedin_picture_link`, `Fullname`, `Position`, `Gender`, `Email`, `Phone`, `Age`, `About`, `Skills`, `City`, `State`, `Zip`, `ZipCode`, `Facebook`, `Twitter`, `Linkedin`, `Date_Created`) VALUES
-(105, '', 'Investor', 'Facebook', 292916221198167, 0, '', '', '', '', 'Paul Jared', '', 'Male', 'wepaystage@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
-(127, 'alper-dilmen', 'Investor', 'Facebook', 10157632974310062, 0, '', '', '', '', 'Alper Dilmen', '', 'Male', 'ald183s@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00');
+INSERT INTO `tbl_users` (`userID`, `username`, `Type`, `ProfileImage`, `facebook_id`, `google_id`, `google_picture_link`, `google_token`, `linkedin_id`, `linkedin_picture_link`, `Fullname`, `Position`, `Gender`, `Email`, `Phone`, `Age`, `About`, `Resume`, `Skills`, `City`, `State`, `Zip`, `ZipCode`, `Facebook`, `Twitter`, `Linkedin`, `Date_Created`) VALUES
+(105, 'paul-jared', 'Entrepreneur', 'Facebook', '292916221198167', '0', '', '', '', '', 'Paul Jared', 'CEO', 'Male', 'wepaystage@gmail.com', '', '', 'Hello', 'screenshots/nbxoyrd7aeyidrqadtu0', 'Creative Writing,Sport', '', '', '', '', '', '', '', '0000-00-00'),
+(149, 'alper-dilmen', 'Investor', 'Facebook', '10157632974310062', '0', '', '', '', '', 'Alper Dilmen', '', 'Male', 'ald183s@gmail.com', '9191911', '', '', '', 'Creative Writing', '', '', '', '', 'http://facebook.com', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -524,12 +516,12 @@ INSERT INTO `tbl_users` (`userID`, `username`, `Type`, `ProfileImage`, `facebook
 -- Table structure for table `zip_state`
 --
 
-CREATE TABLE IF NOT EXISTS `zip_state` (
+CREATE TABLE `zip_state` (
   `id` int(11) NOT NULL,
   `zip` varchar(8) NOT NULL,
   `city` varchar(16) NOT NULL,
   `state` varchar(8) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=42193 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `zip_state`
@@ -27978,7 +27970,7 @@ INSERT INTO `zip_state` (`id`, `zip`, `city`, `state`) VALUES
 (27422, '62651', 'JACKSONVILLE', 'IL'),
 (27423, '62655', 'KILBOURNE', 'IL'),
 (27424, '62656', 'LINCOLN', 'IL'),
-(27425, '62659', 'LINCOLN''S NEW SA', 'IL'),
+(27425, '62659', 'LINCOLN\'S NEW SA', 'IL'),
 (27426, '62660', 'LITERBERRY', 'IL'),
 (27427, '62661', 'LOAMI', 'IL'),
 (27428, '62662', 'LOWDER', 'IL'),
@@ -42792,15 +42784,21 @@ ALTER TABLE `tbl_bookmarks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_connections_entrepreneur`
+--
+ALTER TABLE `tbl_connections_entrepreneur`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_connections_investor`
 --
 ALTER TABLE `tbl_connections_investor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_connections_startup`
+-- Indexes for table `tbl_education`
 --
-ALTER TABLE `tbl_connections_startup`
+ALTER TABLE `tbl_education`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -42814,12 +42812,6 @@ ALTER TABLE `tbl_investor`
 -- Indexes for table `tbl_likes`
 --
 ALTER TABLE `tbl_likes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_startup`
---
-ALTER TABLE `tbl_startup`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -42848,67 +42840,81 @@ ALTER TABLE `zip_state`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=189;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
+
 --
 -- AUTO_INCREMENT for table `skills_level`
 --
 ALTER TABLE `skills_level`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `startups`
 --
 ALTER TABLE `startups`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=138;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+
 --
 -- AUTO_INCREMENT for table `tbl_bookmarks`
 --
 ALTER TABLE `tbl_bookmarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_connections_entrepreneur`
+--
+ALTER TABLE `tbl_connections_entrepreneur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
 --
 -- AUTO_INCREMENT for table `tbl_connections_investor`
 --
 ALTER TABLE `tbl_connections_investor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
 --
--- AUTO_INCREMENT for table `tbl_connections_startup`
+-- AUTO_INCREMENT for table `tbl_education`
 --
-ALTER TABLE `tbl_connections_startup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+ALTER TABLE `tbl_education`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tbl_investor`
 --
 ALTER TABLE `tbl_investor`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT for table `tbl_likes`
 --
 ALTER TABLE `tbl_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
---
--- AUTO_INCREMENT for table `tbl_startup`
---
-ALTER TABLE `tbl_startup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
 --
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=128;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+
 --
 -- AUTO_INCREMENT for table `zip_state`
 --
 ALTER TABLE `zip_state`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42193;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42193;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
