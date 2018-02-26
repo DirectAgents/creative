@@ -6,10 +6,6 @@
  $row_entrepreneur = mysqli_fetch_array($result);
 
 
- $sql = "SELECT * FROM tbl_education WHERE userID ='".$row_entrepreneur ['userID']."'";
- $result = mysqli_query($connecDB, $sql);  
- $row_education = mysqli_fetch_array($result);
-
  $sql_startup = "SELECT * FROM startups WHERE userID ='".$row_entrepreneur ['userID']."'";  
  $result = mysqli_query($connecDB, $sql_startup);  
  $row_startup = mysqli_fetch_array($result);
@@ -172,13 +168,8 @@
                                     <?php //if(!isset($_SESSION['entrepreneurSession'])){ ?>
                                     
                                     <?php if($row_entrepreneur['About'] != ''){ ?>
-                                    <li class="tab">
+                                    <li class="tab active">
                                         <a href="#background" id="background-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Background</span> </a>
-                                    </li>
-                                    <?php } ?>
-                                    <?php if($row_education['userID'] != ''){ ?>
-                                     <li class="tab">
-                                        <a href="#education" id="education-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Education</span> </a>
                                     </li>
                                     <?php } ?>
                                     <?php if($row_entrepreneur['Skills'] != ''){ ?>
@@ -213,7 +204,7 @@
             <!-- ============================================================== -->
             <!-- Company Tab Starts -->
             <!-- ============================================================== -->
-                    <div class="tab-pane active" id="company">
+                    <div class="tab-pane" id="company">
                             
                      <form class="form-horizontal form-material" id="save-company">
 
@@ -339,8 +330,12 @@
             <!-- ============================================================== -->
             <!-- Background Tab Starts -->
             <!-- ============================================================== -->
-                                       <div class="tab-pane" id="background">
+                                       <div class="tab-pane active" id="background">
+
+                                       
+
                                             <div id="background-tab-content"></div>     
+                                        
                                         </div>
             <!-- ============================================================== -->
             <!-- Background Tab Ends -->

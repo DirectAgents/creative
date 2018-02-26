@@ -99,8 +99,7 @@
         })();
         </script>
         <script src="<?php echo BASE_PATH; ?>/js/jquery.toast.js"></script>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+       
 
     <!-- Magnific popup JavaScript -->
     <script src="<?php echo BASE_PATH; ?>/js/jquery.magnific-popup.min.js"></script>
@@ -115,7 +114,12 @@
     <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/app.js"></script>
 
-        <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>s
+
+
+    <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
        
 
 

@@ -664,6 +664,23 @@ $( "#save-team-member" ).on( "submit", function(e) {
 ////////////////Background//////////////////////
 
 
+  var userid = $('input[name=userid]').val();
+    //alert(userid);
+     $.ajax({
+            url: url_link+"background-tab.php",
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                
+                 $("#background-tab-content").html(response);
+
+
+            }
+        });
+
+
  $('#background-tab').click(function(){
 
   var userid = $('input[name=userid]').val();

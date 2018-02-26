@@ -51,11 +51,14 @@ $firstname = $words[0];
 
 <?php } ?>    
 
+<?php if($row['Resume'] != ''){ ?>
 
 <strong>About <?php echo $firstname; ?></strong>
 
 <p><?php echo $row['About']; ?></p>
 <p>&nbsp;</p>
+
+<?php } ?>   
 
   
 <?php if($row['Resume'] != ''){ ?>
@@ -65,7 +68,14 @@ View Resume
 </a>
 
 
- <?php } ?>                                             
+ <?php } ?>    
+
+<?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $row['userID']) { ?>
+<a href="<?php echo BASE_PATH; ?>/settings/">Edit your Account</a>
+<?php } ?>
+
+
+ <?php if($row['About'] == '' && $row['Skills'] == '' && $row['Resume'] == '' && $_SESSION['entrepreneurSession'] != $row['userID']) {echo "Profile is empty";}   ?>                                     
                                            
 
 
