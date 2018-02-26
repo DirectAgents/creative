@@ -1,6 +1,5 @@
-        <!-- ============================================================== -->
-        <!-- Topbar header -->
-        <!-- ============================================================== -->
+
+        
         
        <?php if(isset($_SESSION['entrepreneurSession'])) {?>
 
@@ -131,8 +130,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
                           
-
-                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Programming Skills or Name" /><a href=""><i class="fa fa-search"></i></a>
+                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Programming Skills or Name" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
                          </form>
 
                     </li>
@@ -157,11 +155,11 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
                         </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $_SESSION['usernameSession']; ?>"><i class="ti-user"></i> My Profile</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Team</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Connections</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $rownav['username']; ?>"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="ti-email"></i> Connections</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/bookmarks/"><i class="ti-email"></i> Bookmarks</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/settings/"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> Logout</a></li>
 
@@ -255,7 +253,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
                           
 
-                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Programming Skills or Name" /><a href=""><i class="fa fa-search"></i></a>
+                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Programming Skills or Name" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
                          </form>
 
                     </li>

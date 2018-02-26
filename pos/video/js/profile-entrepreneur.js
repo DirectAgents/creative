@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-var url_link = 'http://localhost/creative/pos/video/startup/';
+var url_link = 'http://localhost/creative/pos/video/profile/';
 
 var image_link = 'http://localhost/creative/pos/video/';
 
@@ -51,6 +51,9 @@ e.preventDefault();
                   $('#linkedin').html("<a href=http://"+linkedin+" target='_blank'><i class='ti-linkedin'></i></a>"); 
                 }
 
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
+
                
                }
                 
@@ -71,11 +74,32 @@ e.preventDefault();
                 //var skills_count = $(response).filter('#theskills').text();
                 //$('#skills-count').html(skills_count);
                 //alert(skills_count);  
-                $('#saved').fadeIn("fast");
-                $('#saved').delay(2000).fadeOut("slow");
+                
 
             }
         });
+
+
+        var resume = $('input[name="resume[]"]:checked').map(function() { return this.value; }).get().join(",");
+        //var skill_level_percentage = $('input[name=skill_level]').val();
+        //alert(skill);
+      if(resume != ''){
+        $.ajax({
+            url: url_link+"edit.php",
+            method: "POST",
+            data: { content: resume, column_name: 'Resume' },
+            dataType: "html",
+            success: function(response) {
+                //alert(data);  
+                //var skills_count = $(response).filter('#theskills').text();
+                //$('#skills-count').html(skills_count);
+                //alert(skills_count);  
+                $(".view-resume").hide();
+
+               
+            }
+        });
+      }
 
 
 
@@ -301,14 +325,31 @@ $.ajax({
     var userid = $('input[name=userid]').val();
     //alert(userid);
      $.ajax({
-            url: url_link+"company.php",
+            url: url_link+"company-entrepreneur.php",
             method: "GET",
             data: {userid: userid},
             dataType: "html",
             success: function(response) {
                 //alert(response);  
                 
-                $("#thecompany").html(response);
+                $("#thecompany-entrepreneur").html(response);
+
+
+            }
+        });
+
+
+      var userid = $('input[name=userid]').val();
+    //alert(userid);
+     $.ajax({
+            url: url_link+"company-startup.php",
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                
+                $("#thecompany-startup").html(response);
 
 
             }
@@ -363,8 +404,10 @@ $( "#save-company" ).on( "submit", function(e) {
     var userid = $("input[name='userid']").val();
     var fm_position = $("input[name='fm_position']").val();
     var fm_about = $("textarea[name='fm_about']").val();
+    var fm_description = $("input[name='fm_description']").val();
     var fm_name = $("input[name='fm_name']").val();
     var fm_industry = $("select[name='fm_industry']").val();
+    var fm_zip = $("input[name='fm_zip']").val();
     var fm_location = $("input[name='fm_location']").val();
     var logo = $('input[name="company_logo[]"]:checked').map(function() { return this.value; }).get().join(",");
     var screenshot = $('input[name="video_screenshot[]"]:checked').map(function() { return this.value; }).get().join(",");
@@ -374,20 +417,88 @@ $( "#save-company" ).on( "submit", function(e) {
     var fm_video = $("input[name='fm_video']").val();
     //var skills = $('input[name="skillselectionteammember[]"]:checked').map(function() { return this.value; }).get().join(",");
     //alert(fm_location);
-    
+
+  /*
+  if (screenshot == '') {
+        //$("#upload-logo").css('border-bottom','1px solid red'); 
+        swal({   
+            title: "Please upload a screenshot of your video clip",   
+            type: "warning"
+        })
+        proceed = false;
+    }
+
+    if (fm_video == '') {
+        $('input[name=fm_video]').css('border-bottom','1px solid red'); 
+        swal({   
+            title: "Enter a link to your video",   
+            type: "warning"
+        })
+        proceed = false;
+    }else{
+      $('input[name=fm_video]').css('border-bottom','1px solid green'); 
+    }
+
+    if (fm_description == '') {
+        $('input[name=fm_description]').css('border-bottom','1px solid red'); 
+        swal({   
+            title: "Describe your startup in one sentence",   
+            type: "warning"
+        })
+        proceed = false;
+    }else{
+      $('input[name=fm_description]').css('border-bottom','1px solid green'); 
+    }
+
+
+    if (fm_zip == '') {
+        $('input[name=fm_zip]').css('border-bottom','1px solid red'); 
+        swal({   
+            title: "Enter the location of the startup",   
+            type: "warning"
+        })
+        proceed = false;
+    }else{
+      $('input[name=fm_zip]').css('border-bottom','1px solid green'); 
+    }
+
+
+    if (fm_position == '') {
+        $('input[name=fm_position]').css('border-bottom','1px solid red'); 
+        swal({   
+            title: "Enter your role",   
+            type: "warning"
+        })
+        proceed = false;
+    }else{
+      $('input[name=fm_position]').css('border-bottom','1px solid green'); 
+    }
+
+
+
     if (fm_name == '') {
         $('input[name=fm_name]').css('border-bottom','1px solid red'); 
+        swal({   
+            title: "Enter your startup name",   
+            type: "warning"
+        })
         proceed = false;
     }else{
       $('input[name=fm_name]').css('border-bottom','1px solid green'); 
     }
 
-    if (fm_industry == '') {
-        $('input[name=fm_industry]').css('border-bottom','1px solid red'); 
+    if (logo == '') {
+        //$("#upload-logo").css('border-bottom','1px solid red'); 
+        swal({   
+            title: "Please upload a logo",   
+            type: "warning"
+        })
         proceed = false;
-    }else{
-      $('input[name=fm_industry]').css('border-bottom','1px solid green'); 
     }
+   */
+
+
+    
 
      if(proceed) 
         {   
@@ -397,7 +508,7 @@ $( "#save-company" ).on( "submit", function(e) {
     $.ajax({
             url: url_link+"save-company.php", 
             method: "POST",
-            data: { id: id, userid: userid, name : fm_name, position : fm_position, industry : fm_industry, video : fm_video, location : fm_location, about : fm_about, logo : logo, screenshot : screenshot, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
+            data: { id: id, userid: userid, name : fm_name, position : fm_position, industry : fm_industry, video : fm_video, location : fm_location, about : fm_about, description : fm_description, logo : logo, screenshot : screenshot, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
             dataType: "html",
             success: function(response) {
                 //alert(id);  
@@ -550,6 +661,91 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
+////////////////Background//////////////////////
+
+
+ $('#background-tab').click(function(){
+
+  var userid = $('input[name=userid]').val();
+
+  //alert(userid);
+ 
+     $.ajax({
+            url: url_link+"background-tab.php",
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                $("#background-tab-content").html(response);
+
+            }
+        });
+
+ });
+
+
+ $( "#save-resume" ).on( "submit", function(e) {  
+  //alert("hello");
+    e.preventDefault();
+    var proceed = true;
+
+    var userid = $("input[name='userid']").val();
+    var resume = $('input[name="resume[]"]:checked').map(function() { return this.value; }).get().join(",");
+   
+
+     if(proceed) 
+        {   
+
+    
+
+    $.ajax({
+            url: url_link+"save-resume.php", 
+            method: "POST",
+            data: { userid: userid, resume : resume},
+            dataType: "html",
+            success: function(response) {
+                
+                $(".save-resume").hide();
+
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
+                //alert(skills_count);  
+
+            }
+        });
+
+
+      }
+});
+
+
+
+
+ ////////////////Education//////////////////////
+
+
+ $('#education-tab').click(function(){
+
+  var userid = $('input[name=userid]').val();
+
+  //alert(userid);
+ 
+     $.ajax({
+            url: url_link+"education-tab.php",
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                $("#education-tab-content").html(response);
+
+            }
+        });
+
+ });
+
+
 
 ////////////////Connect//////////////////////
 
@@ -575,10 +771,14 @@ $( "#save-team-member" ).on( "submit", function(e) {
  });
 
 
-   //Basic
-    $('#sa-basic').click(function(){
+    $('#connect-member').click(function(){
         swal("Login to connect!");
     });
+
+   //Basic
+    //$('#sa-basic').click(function(){
+        //swal("Login to connect!");
+    //});
 
     $('#sa-connect').click(function(){
         

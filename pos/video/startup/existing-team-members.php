@@ -1,10 +1,10 @@
 <?php
 
  session_start();
- require_once '../class.entrepreneur.php';
- require_once '../class.investor.php';
- require_once '../base_path.php';
- include_once("../config.php"); 
+ require_once '../../class.entrepreneur.php';
+ require_once '../../class.investor.php';
+ require_once '../../base_path.php';
+ include_once("../../config.php"); 
 
 
 if($_GET){
@@ -18,12 +18,17 @@ $sql_user = "SELECT * FROM tbl_users WHERE userID ='".$_GET['userid']."'";
 $result_user = mysqli_query($connecDB, $sql_user);  
 $row_user = mysqli_fetch_array($result_user);
 
+$sql_startup = "SELECT * FROM startups WHERE userID ='".$_GET['userid']."'";  
+$result_startup = mysqli_query($connecDB, $sql_startup);  
+$row_startup = mysqli_fetch_array($result_startup);
+
 
  ?>
 
 
 
-<?php if($_GET['userid'] != isset($_SESSION['entrepreneurSession']) && $row['userID'] != $_GET['userid']) { ?>
+
+<?php if($row_startup['userID'] == '' && $row['userID'] == '') { ?>
 
 No Team Members added so far!
 
@@ -34,7 +39,7 @@ No Team Members added so far!
 
                         <div class="row">     
 
-<?php if($_GET['userid'] != isset($_SESSION['entrepreneurSession'])) { ?>
+<?php if($row_startup['userID'] != '') { ?>
 
         <div id="team-tab-data">
                     
@@ -120,10 +125,51 @@ No Team Members added so far!
                                             
                             </div>
 
+
+
+                             <?php if(isset($_SESSION['entrepreneurSession'])) { ?>    
+                               <?php if($_GET['username'] != $_SESSION['usernameSession']) { ?>   
+
+
+                               <?php if($row_user['ProfileImage'] == 'Google'){  $profileimage = $row_user['google_picture_link']; } ?>
+<?php if($row_user['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/".$row_user['facebook_id']."/picture?type=large"; } ?>
+<?php if($row_user['ProfileImage'] == 'Linkedin'){  $profileimage = $row_user['linkedin_picture_link'];  } ?>
+
+
+                             <?php 
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requester_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+                ?>                 
+                                 
+                
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if(mysqli_num_rows($sql_connect)<=0) { ?> style="display:block" 
+        <?php }else{ ?> style="display:none" <?php } ?> >
+                                   <a href="javascript: void(0);" id="sa-connect" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
+                                 </div> 
+               
+    <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
+                                    <a href="javascript: void(0);" id="sa-connect-cancel" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
+                                  </div>
+                
+                               <?php } ?>  
+
+                            <?php }else{ ?>   
+                            
+                              
+                                   
+                                 <div class="col-md-12 col-sm-12 text-center">
+                                    <a href="javascript: void(0);" id="connect-member" class="btn btn-danger hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
+                                 </div> 
+                               
+                            <?php } ?>    
+
+
                         </div>    
 
 
 <?php } ?>
+
+
+
 
 
                                         <?php
@@ -167,7 +213,7 @@ No Team Members added so far!
                                                 <?php if($row_team['ProfileImage'] != '') { ?>
                                             <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_team['ProfileImage'];?>" class="thumb-lg img-circle" alt="img">  
                                             <?php }else{ ?>
-                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <a href="javascript:void(0)"><img src="<?php echo BASE_PATH; ?>/images/no-profile-picture.jpg" class="thumb-lg img-circle" alt="img">
                                             <?php } ?>
                                             </a>
                                             <div id="fullname">
@@ -227,10 +273,12 @@ No Team Members added so far!
 <script>
  
 
+
+
  $("#edit-member-"+<?php echo $row_team['id']; ?>).click(function (e) {
     e.preventDefault();
 
-    var url_link = 'http://localhost/creative/pos/video/startup/';
+    var url_link = 'http://localhost/creative/pos/video/startup/startup/';
 
     var data_id = $("#edit-member-"+<?php echo $row_team['id']; ?>).attr("data-id");
     //alert(data_id);
@@ -281,7 +329,7 @@ No Team Members added so far!
             closeOnConfirm: false 
         }, function(){   
 
-           var url_link = 'http://localhost/creative/pos/video/startup/';
+           var url_link = 'http://localhost/creative/pos/video/startup/startup/';
 
            var data_id = $("#sa-warning-"+<?php echo $row_team['id']; ?>).attr("data-id");
            var userid = $("#sa-warning-"+<?php echo $row_team['id']; ?>).attr("data-userid");
@@ -329,6 +377,7 @@ No Team Members added so far!
 
 <!-- Sweet-Alert  -->
 <script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
+<script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
 <!--<script src="<?php echo BASE_PATH; ?>/js/jquery.sweet-alert.custom.js"></script>-->
 
  <?php } ?>                                  

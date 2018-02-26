@@ -1182,7 +1182,7 @@ pre {
     margin: 0
 }
 
-.app-search a {
+.app-search .algolia {
     position: absolute;
     top: 20px;
     right: 10px;
@@ -1195,12 +1195,12 @@ pre {
     font-size: 13px;
     color: #4c5667;
     padding-left: 20px;
-    padding-right: 40px;
+    padding-right: 140px;
     background: rgba(255, 255, 255, .9);
     box-shadow: none;
     height: 30px;
     font-weight: 600;
-    width: 180px;
+    width: 420px;
     display: inline-block;
     line-height: 30px;
     margin-top: 15px;
@@ -19812,7 +19812,7 @@ ul.pro-amenities li span i {
 
 @media (min-width:1024px) {
     .app-search .form-control:focus {
-        width: 300px
+        width: 420px
     }
 }
 
@@ -20144,7 +20144,7 @@ ul.pro-amenities li span i {
 
 .icon_del{float:left; margin:4px 0 0 10px;}
 
-ul#preview_company, ul#preview_team, ul#preview_screenshot {list-style-type: none; padding:0px;}
+ul#preview_company, ul#preview_team, ul#preview_screenshot, ul#preview_resume {list-style-type: none; padding:0px;}
 
 #upload-headshot, #upload-logo, #upload-screenshot, #save-cancel {display:none;}
 
@@ -20210,6 +20210,8 @@ label.edit-team-member,label.delete-team-member{font-family: Rubik, sans-serif; 
 
 .the-skills{ border:1px solid #eee; padding:15px; }
 
+.skills-background{float:left; width:100%;  padding:0 0 30px 0; margin-left:-3px !important; margin-right:5px}
+
 
 #iframe02 {
 width: 100%;
@@ -20217,6 +20219,10 @@ height: 100%;
 border:none;
 float: left;
 }
+
+.save-resume{display:none;}
+
+.video-link{display: none}
 
 
 

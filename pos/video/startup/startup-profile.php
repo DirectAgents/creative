@@ -1,17 +1,16 @@
 <?php
 
- session_start();
- require_once '../class.entrepreneur.php';
- require_once '../class.investor.php';
- require_once '../base_path.php';
- include_once("../config.php"); 
  require_once '../facebook-sdk-v5/autoload.php';
 
 
- $sql = "SELECT * FROM tbl_users WHERE username ='".$_GET['username']."'";  
+ $sql_startup = "SELECT * FROM startups WHERE name ='".$_GET['name']."'";  
+ $result = mysqli_query($connecDB, $sql_startup);  
+ $row_startup = mysqli_fetch_array($result);
+
+
+ $sql = "SELECT * FROM tbl_users WHERE userID ='".$row_startup['userID']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_entrepreneur = mysqli_fetch_array($result);
-
 
 /*
 
@@ -508,35 +507,37 @@ echo 'id: ' . $user['id'];
                                     <div class="overlay-box">
                                         <div class="user-content">
                                             <a href="javascript:void(0)">
-                                    
-<?php if($row_entrepreneur['ProfileImage'] == 'Google'){ ?>
-         <img src="<?php echo $row_entrepreneur['google_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
-<?php } ?>
 
-<?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){ ?>
-<img src="https://graph.facebook.com/<?php echo $row_entrepreneur['facebook_id']; ?>/picture?type=large" class="thumb-lg img-circle" alt="img">
-<?php } ?>
+                                            <?php if($row['Logo'] != '') { ?>
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo'];?>" class="thumb-lg img-circle" alt="img">  
+                                            <?php }else{ ?>
+                                            <img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <?php } ?>
 
-<?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){ ?>
-        <img src="<?php echo $row_entrepreneur['linkedin_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
-       
-<?php } ?>
-
-</a>
-
+                                              </a>
 
                                             <div id="fullname">
-                                                <h4 class="text-white"><?php echo $row_entrepreneur['Fullname'];?></h4>
+                                                <h4 class="text-white"><?php echo $row_startup['Name'];?></h4>
                                             </div>
+
                                             <div id="position">
-                                                <?php if($row_entrepreneur['Position'] != ''){ ?>
+                                                <?php if($row_startup['Zip'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
-                                                //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
-                                                echo $row_entrepreneur['Position'];
+                                                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_startup['City'])))).', '.$row_startup['State'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
+
+                                             <div id="position">
+                                                <?php if($row_startup['Industry'] != ''){ ?>
+                                                <h5 class="text-white">
+                                                    <?php 
+                                                echo $row_startup['Industry'];
+                                                ?></h5>
+                                                <?php } ?>
+                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -563,40 +564,6 @@ echo 'id: ' . $user['id'];
                                         </p>
                                     </div>
                              
-                             <?php if(isset($_SESSION['entrepreneurSession'])) { ?>    
-                               <?php if($_GET['username'] != $_SESSION['usernameSession']) { ?>    
-
-<?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
-<?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture?type=large"; } ?>
-<?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
-
-                                 <p>&nbsp;</p>
-
-        <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requester_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
-                ?>                 
-                                 
-                
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if(mysqli_num_rows($sql_connect)<=0) { ?> style="display:block" 
-        <?php }else{ ?> style="display:none" <?php } ?> >
-                                   <a href="javascript: void(0);" id="sa-connect" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
-                                 </div> 
-               
-    <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
-                                    <a href="javascript: void(0);" id="sa-connect-cancel" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
-                                  </div>
-                
-                               <?php } ?>  
-
-                            <?php }else{ ?>   
-                            
-                              
-                                    <p>&nbsp;</p>
-                                 <div class="col-md-12 col-sm-12 text-center">
-                                    <a href="javascript: void(0);" id="sa-basic" class="btn btn-danger hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
-                                 </div> 
-                               
-                            <?php } ?>    
 
                                 </div>
                             </div>
@@ -605,7 +572,7 @@ echo 'id: ' . $user['id'];
                             <div class="white-box">
                                 <ul class="nav nav-tabs tabs customtab">
                                     <li class="tab active">
-                                        <a href="#company" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Company</span> </a>
+                                        <a href="#company" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Startup</span> </a>
                                     </li>
                                     <?php //if(!isset($_SESSION['entrepreneurSession'])){ ?>
                                     <li class="tab">
@@ -636,7 +603,7 @@ echo 'id: ' . $user['id'];
                                 <div class="tab-content">
 
             <!-- ============================================================== -->
-            <!-- Company Tab Starts -->
+            <!-- Startup Tab Starts -->
             <!-- ============================================================== -->
                     <div class="tab-pane active" id="company">
                             
@@ -646,7 +613,7 @@ echo 'id: ' . $user['id'];
                          <div id="upload-logo">
                                     <div class="form-group">
                                                 <div class="col-sm-12">
-                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Company Logo</a>
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Startup Logo</a>
                                                             <br>
                                                             <br>
                                                             <ul id="preview_company"></ul>
@@ -657,7 +624,10 @@ echo 'id: ' . $user['id'];
                                 </div>
                             
                        
-                             <div id="thecompany"></div>
+                             <div id="thecompany-startup"></div>
+
+                           
+                            
                     
                                
                             
@@ -684,8 +654,8 @@ echo 'id: ' . $user['id'];
                         <div id="save-cancel">
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-company" style="margin-right:10px;">Save</button>
-                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-company">Cancel</button>
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-company" tabindex="11" style="margin-right:10px;">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-company" tabindex="12">Cancel</button>
                                     </div>
                                 </div>
                          </div>       
@@ -697,7 +667,7 @@ echo 'id: ' . $user['id'];
                                           
                                     </div>
             <!-- ============================================================== -->
-            <!-- Company Tab Ends -->
+            <!-- Startup Tab Ends -->
             <!-- ============================================================== -->
 
 

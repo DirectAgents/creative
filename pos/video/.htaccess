@@ -2,6 +2,10 @@ RewriteEngine on
 
 #URL Rewriting
 
-RewriteRule ^profile/([A-Za-z0-9-]+)/?$ profile.php?username=$1    [NC,L]    # Handle product requests
+RewriteRule ^profile/([A-Za-z0-9-]+)/?$ profile/index.php?username=$1    [NC,L]    # Handle product requests
+RewriteRule ^startup/([A-Za-z0-9-]+)/?$ startup/index.php?name=$1    [NC,L]    # Handle product requests
+RewriteRule ^connections/?$ connections.php    [NC,L]    # Handle product requests
+RewriteRule ^bookmarks/?$ bookmarks.php    [NC,L]    # Handle product requests
+RewriteRule ^settings/?$ settings.php    [NC,L]    # Handle product requests
 RewriteRule ^/startups/?$ index.php    [NC,L]    # Handle product requests
 RewriteRule ^signup/?$ signup.php    [NC,L]    # Handle product requestfullname
