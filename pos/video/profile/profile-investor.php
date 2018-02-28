@@ -11,6 +11,8 @@
  $row_startup = mysqli_fetch_array($result);
 
 
+$words = explode(" ", $row_entrepreneur['Fullname']);
+$thefirstname = $words[0];
 
 
 
@@ -161,41 +163,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8 col-xs-12">
+                            <div class="col-md-8 col-xs-12">
                             <div class="white-box">
                                 <ul class="nav nav-tabs tabs customtab">
-                                    
+                                   
                                     <?php //if(!isset($_SESSION['entrepreneurSession'])){ ?>
-                                    
-                                    <?php if($row_entrepreneur['About'] != ''){ ?>
+                                   
+                                    <?php //if($row_entrepreneur['About'] != ''){ ?>
                                     <li class="tab active">
-                                        <a href="#background" id="background-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Background</span> </a>
+                                        <a href="#background" id="background-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">About <?php echo $thefirstname; ?></span> </a>
                                     </li>
-                                    <?php } ?>
-                                    <?php if($row_entrepreneur['Skills'] != ''){ ?>
-                                     <li class="tab">
-                                        <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Skills</span> </a>
-                                    </li>
-                                    <?php } ?>
+                                    <?php //} ?>
+                                   
+                                    
                                    <?php //} ?>
-                                    <?php if(isset($_SESSION['usernameSession']) && $_SESSION['usernameSession'] == $_GET['username']) { ?>
-                                    <li class="tab">
-                                        <a href="#connections" id="connections-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Connections</span> </a>
-                                    </li>
-                                    <!--
-                                    <li class="tab">
-                                        <a href="#messages" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Messages</span> </a>
-                                    </li>
-                                        -->
-
-                                    <li class="tab">
-                                        <a href="#bookmarks" id="bookmark-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Bookmarks</span> </a>
-                                    </li>
-
-                                    <li class="tab">
-                                        <a href="#settings" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Settings</span> </a>
-                                    </li>
-                                    <?php } ?>
+                                    
                                 </ul>
 
 
