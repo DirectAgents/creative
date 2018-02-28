@@ -320,7 +320,7 @@ $("body").on("click", "#responds .del_button", function(e) {
      var clickedID = this.id.split('-'); 
      //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
      var DbNumberID = clickedID[1]; 
-     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
+     var myData = 'recordToDelete='+ DbNumberID; 
      
      //alert(DbNumberID);
 
@@ -365,7 +365,7 @@ $("body").on("click", "#responds .del_button_teammmember_skills", function(e) {
       data:myData, 
       success:function(response){
         $("#responds").append(response);
-        $('#skillselectionteammember_'+DbNumberID).prop('checked', false); // Unchecks it
+        $('#skillselection_'+DbNumberID).prop('checked', false); // Unchecks it
         
         $('#item_'+DbNumberID).fadeOut("slow");
 
@@ -421,6 +421,8 @@ $('.save-skills').click(function() {
 });
 
 </script>
+
+
 
 
 

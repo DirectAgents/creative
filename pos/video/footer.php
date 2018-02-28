@@ -117,7 +117,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-        <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
        
 
 

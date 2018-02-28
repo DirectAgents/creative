@@ -560,9 +560,7 @@ $thefirstname = $words[0];
 
 
 
-             <footer class="footer text-center">2017 &copy; Ample Admin brought to you by themedesigner.in 
-
-            </footer>
+            
             </div>
             <!-- ============================================================== -->
             <!-- End Page Content -->
@@ -571,50 +569,7 @@ $thefirstname = $words[0];
         <!-- ============================================================== -->
         <!-- End Wrapper -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- All Jquery -->
-        <!-- ============================================================== -->
-        <!-- Bootstrap Core JavaScript -->
-        <script src="<?php echo BASE_PATH; ?>/js/bootstrap.min.js"></script>
-        <!-- Menu Plugin JavaScript -->
-        <script src="<?php echo BASE_PATH; ?>/js/sidebar-nav.min.js"></script>
-        <!--slimscroll JavaScript -->
-        <script src="<?php echo BASE_PATH; ?>/js/jquery.slimscroll.js"></script>
-        <!--Wave Effects -->
-        <script src="<?php echo BASE_PATH; ?>/js/waves.js"></script>
-        <!--Counter js -->
-        <script src="<?php echo BASE_PATH; ?>/js/jquery.waypoints.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/js/jquery.counterup.min.js"></script>
-        <!--Morris JavaScript -->
-        <script src="<?php echo BASE_PATH; ?>/js/raphael-min.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/js/morris.js"></script>
-        <!-- chartist chart -->
-        <script src="<?php echo BASE_PATH; ?>/js/chartist.min.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/js/chartist-plugin-tooltip.min.js"></script>
-        <!-- Sweet-Alert  -->
-        <script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/js/jquery.sweet-alert.custom.js"></script>
-        <!-- Calendar JavaScript -->
-        <script src="<?php echo BASE_PATH; ?>/js/moment.js"></script>
-        <script src='<?php echo BASE_PATH; ?>/js/fullcalendar.min.js'></script>
-        <script src="<?php echo BASE_PATH; ?>/js/cal-init.js"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="<?php echo BASE_PATH; ?>/js/custom.min.js"></script>
-        <!-- Custom tab JavaScript -->
-        <script src="<?php echo BASE_PATH; ?>/js/cbpFWTabs.js"></script>
-        <script type="text/javascript">
-        (function() {
-            [].slice.call(document.querySelectorAll('.sttabs')).forEach(function(el) {
-                new CBPFWTabs(el);
-            });
-        })();
-        </script>
-        <script src="<?php echo BASE_PATH; ?>/js/jquery.toast.js"></script>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
-        <!--Style Switcher -->
-        <script src="<?php echo BASE_PATH; ?>/js/jQuery.style.switcher.js"></script>
+        <?php include '../footer.php'; ?>
     </body>
 
     </html>
