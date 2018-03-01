@@ -34,7 +34,7 @@ $firstname = $words[0];
 <!--About Start-->
   <div class="col-sm-12" style="padding-left: 0px;">   
      <div class="col-sm-3"><strong>About <?php echo $firstname; ?></strong><br><br></div>
-     <div class="col-sm-3"><a href="#" id="edit-about"><i class="ti-pencil"></i></a></div>
+     <div class="col-sm-3"><a href="#/" id="edit-about"><i class="ti-pencil"></i></a></div>
   </div>   
    <div class="col-sm-12"> 
    	 <div class="show-about"><?php if($row['About'] != ''){ ?><?php echo $row['About']; ?><?php } ?></div>
@@ -42,8 +42,8 @@ $firstname = $words[0];
 	 <div class="error-about"></div>
    </div>
    <div class="col-sm-12">
-                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-about hidden" tabindex="11" style="margin-right:10px;">Save</button>
-                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-about hidden" tabindex="12">Cancel</button>
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-about <?php if($row['About'] != ''){ ?> hidden <?php } ?>" tabindex="11" style="margin-right:10px;">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-about <?php if($row['About'] != ''){ ?> hidden <?php } ?>" tabindex="12">Cancel</button>
                                     </div>
                                 </div>
    <p>&nbsp;</p>
@@ -52,7 +52,7 @@ $firstname = $words[0];
 <!--Skills Start-->
     <div class="col-sm-12" style="padding-left: 0px;"> 
         <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Skills</strong></div>
-        <div class="col-sm-3"><a href="#" id="edit-skills"><i class="ti-pencil"></i></a></div>
+        <div class="col-sm-3"><a href="#/" id="edit-skills"><i class="ti-pencil"></i></a></div>
         <br><br>
     </div>
      <div class="col-sm-12"> 
@@ -74,7 +74,7 @@ $firstname = $words[0];
     </div>
 
 
-<div class="edit-skills-box hidden">
+<div class="edit-skills-box <?php if($row['Skills'] != ''){ ?> hidden <?php } ?>">
 
  <div class="col-md-4">
        <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line">
@@ -160,8 +160,9 @@ $firstname = $words[0];
 
  <div class="col-sm-12">
 <br>
-                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-skills hidden" tabindex="11" style="margin-right:10px;">Save</button>
-                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-skills hidden" tabindex="12">Cancel</button>
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-skills <?php if($row['Skills'] != ''){ ?> hidden <?php } ?>" tabindex="11" style="margin-right:10px;">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-skills <?php if($row['Skills'] != ''){ ?> hidden <?php } ?>" tabindex="12">Cancel</button>
+                                        <br><br>
                                     </div>
                                 </div>                                                
 
@@ -173,13 +174,15 @@ $firstname = $words[0];
 
 <!--Resume Starts--> 
 
-   <?php if($row['Resume'] != ''){ ?>
-
  <div class="col-sm-12" style="padding-left: 0px;"> 
         <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Resume</strong></div>
-        <div class="col-sm-3"><a href="#" id="edit-resume"><i class="ti-pencil"></i></a></div>
+        <div class="col-sm-3"><a href="#/" id="edit-resume"><i class="ti-pencil"></i></a></div>
         <br><br>
     </div>
+
+   <?php if($row['Resume'] != ''){ ?>
+
+
 
 <div class="col-sm-12 view-resume-box"> 
     <a href="http://res.cloudinary.com/dgml9ji66/image/upload/v1519605264/<?php echo $row['Resume']; ?>.pdf" target="_blank">
@@ -462,6 +465,8 @@ $('.save-skills').click(function() {
         //var skill_level_percentage = $('input[name=skill_level]').val();
         //alert(skill);
       
+      if(skill != ''){
+
         $.ajax({
             url: url_link+"edit.php",
             method: "POST",
@@ -485,6 +490,8 @@ $('.save-skills').click(function() {
 
             }
         });
+
+       }
 
 
  });
