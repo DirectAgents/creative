@@ -141,10 +141,12 @@ foreach ($values as $value)
 
 
 
- if($column_name == 'Resume') {
+if($column_name == 'Resume') {
 
- if($content != ''){
+if($content != ''){
 
+if($row_user['Resume'] != ''){
+	
 \Cloudinary::config(array(
     "cloud_name" => "dgml9ji66",
     "api_key" => "341921643963213",
@@ -154,7 +156,7 @@ foreach ($values as $value)
 //R::setup('mysql:host=localhost;dbname=findacto', 'root', '123');
 
 $result = \Cloudinary\Uploader::destroy($row_user['Resume'], $options = array());
-
+}
 
  $sql = "UPDATE tbl_users SET Resume='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  mysqli_query($connecDB, $sql); 

@@ -466,11 +466,13 @@ echo 'id: ' . $user['id'];
 
             $('#upload_widget_multiple_resume').click(function() {
                 //alert("add");
-                cloudinary.openUploadWidget({ upload_preset: preset_name, sources: ['local', 'url', 'image_search'], multiple: false, client_allowed_formats : ['pdf'] },
+                cloudinary.openUploadWidget({ upload_preset: 'bzg3asb5', sources: ['local', 'url', 'image_search'], multiple: false, client_allowed_formats : ['pdf'] },
                     function(error, result) {
                         console.log(error, result);
                         ids_and_ratios = {};
                         $.each(result, function(i, v) {
+                            $( ".save-resume" ).removeClass( "hidden" );
+                            $( ".cancel-resume" ).removeClass( "hidden" ); 
                             $(".save-resume").show();
                             $("#preview_resume").show();
                             $("#preview_edit_resume").hide();
@@ -484,8 +486,6 @@ echo 'id: ' . $user['id'];
         });
         //]]>
         </script>
-
-        
 
 
 

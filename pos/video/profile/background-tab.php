@@ -132,7 +132,7 @@ $firstname = $words[0];
                                                         echo '<div id="item_'.$row3['id'].'">';
                                                         echo '<div class="skillsdiv">';
                                                         if(in_array($skill,$ctop)){
-                                                        echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:block" checked/>';
+                                                        echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
                                                         }
                                                         echo '<div class="del_wrapper">';
                                                         echo '<div class="the-skill">';
@@ -166,10 +166,90 @@ $firstname = $words[0];
                                 </div>                                                
 
   
-</div>
+
 
 
    <!--Skills End--> 
+
+<!--Resume Starts--> 
+
+   <?php if($row['Resume'] != ''){ ?>
+
+ <div class="col-sm-12" style="padding-left: 0px;"> 
+        <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Resume</strong></div>
+        <div class="col-sm-3"><a href="#" id="edit-resume"><i class="ti-pencil"></i></a></div>
+        <br><br>
+    </div>
+
+<div class="col-sm-12 view-resume-box"> 
+    <a href="http://res.cloudinary.com/dgml9ji66/image/upload/v1519605264/<?php echo $row['Resume']; ?>.pdf" target="_blank">
+View Resume
+</a>
+</div>
+
+<div class="edit-resume-box hidden">
+
+<div class="form-group">
+                                            <div class="col-sm-12">
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_resume">Upload Resume</a>
+                                                           <br>
+                                                            <br>
+                                                            (Note.: only .pdf file is allowed)
+                                                            <br>
+                                                            <br>
+                                                            <ul id="preview_resume"></ul>
+                                                            <div id="url_preview_resume"><input type="checkbox" style="display:none" name="resume[]" value="" checked/></div>
+                                                            <!--<div id="headshot_id"></div>-->
+                                                            
+
+                                                </div>
+                                           </div>
+
+                <div class="col-sm-12">
+<br>
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-resume hidden" tabindex="11" style="margin-right:10px;">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-resume hidden" tabindex="12">Cancel</button>
+                                    </div>                              
+
+
+
+</div>
+
+
+
+
+
+    <?php }else{ ?>
+
+
+	 <div class="form-group">
+                                            <div class="col-sm-12">
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_resume">Upload Resume</a>
+                                                           <br>
+                                                            <br>
+                                                            (Note.: only .pdf file is allowed)
+                                                            <br>
+                                                            <br>
+                                                            <ul id="preview_resume"></ul>
+                                                            <div id="url_preview_resume"><input type="checkbox" style="display:none" name="resume[]" value="" checked/></div>
+                                                            <!--<div id="headshot_id"></div>-->
+                                                             <?php if($row['Resume'] != '') { ?>
+                                                             <a href="http://res.cloudinary.com/dgml9ji66/image/upload/v1519605264/<?php echo $row['Resume']; ?>.pdf" target="_blank" class="view-resume">View Resume</a>
+                                                            <?php } ?>
+
+                                                </div>
+                                           </div>
+
+                <div class="col-sm-12">
+<br>
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-resume hidden" tabindex="11" style="margin-right:10px;">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-resume hidden" tabindex="12">Cancel</button>
+                                    </div>                              
+
+  
+  <?php } ?>  
+
+<!--Resume Ends-->     
 
 
     <?php } ?>
@@ -179,17 +259,11 @@ $firstname = $words[0];
     <?php } ?>
 
 
-     <?php if($row['Resume'] != ''){ ?>
-    <a href="http://res.cloudinary.com/dgml9ji66/image/upload/v1519605264/<?php echo $row['Resume']; ?>.pdf" target="_blank">
-View Resume
-</a>
-    <?php } ?>
+     
 
 
 
- <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 
 <script>
 
@@ -382,10 +456,11 @@ $("body").on("click", "#responds .del_button_teammmember_skills", function(e) {
 
 
 $('.save-skills').click(function() {
-
+ 
+ var userid = $('input[name=userid]').val();
  var skill = $('input[name="skillselection[]"]:checked').map(function() { return this.value; }).get().join(",");
         //var skill_level_percentage = $('input[name=skill_level]').val();
-        alert(skill);
+        //alert(skill);
       
         $.ajax({
             url: url_link+"edit.php",
@@ -398,7 +473,11 @@ $('.save-skills').click(function() {
                 //$('#skills-count').html(skills_count);
                 //alert(skills_count);  
 
-                $( ".skills-background" ).removeClass( "hidden" );
+
+
+                $(".skills-background" ).removeClass( "hidden" );
+                $(".skills-background").load(url_link+"display-skills.php?userid="+userid);
+
 				$( ".edit-skills-box" ).addClass( "hidden" );
 				$( ".save-skills" ).addClass( "hidden" );
 				$( ".cancel-skills" ).addClass( "hidden" );	
@@ -416,6 +495,58 @@ $('.save-skills').click(function() {
       source: url_link+'search-skills.php'
     });
   });
+
+
+////////////////Resume////////////////////// 
+
+
+
+
+$('#edit-resume').click(function() {
+
+$( ".edit-resume-box" ).removeClass( "hidden" );
+$( ".cancel-resume" ).removeClass( "hidden" );
+$( ".view-resume-box" ).addClass( "hidden" );
+
+});
+
+$('.cancel-resume').click(function() {
+
+$( ".edit-resume-box" ).addClass( "hidden" );
+$( ".cancel-resume" ).addClass( "hidden" );
+$( ".view-resume-box" ).removeClass( "hidden" );
+
+});
+
+
+$('.save-resume').click(function() {
+ 
+ var resume = $('input[name="resume[]"]:checked').map(function() { return this.value; }).get().join(",");
+        //var skill_level_percentage = $('input[name=skill_level]').val();
+        //alert(resume);
+      if(resume != ''){
+        $.ajax({
+            url: url_link+"edit.php",
+            method: "POST",
+            data: { content: resume, column_name: 'Resume' },
+            dataType: "html",
+            success: function(response) {
+                //alert(data);  
+                //var skills_count = $(response).filter('#theskills').text();
+                //$('#skills-count').html(skills_count);
+                //alert(skills_count);  
+
+               $( ".edit-resume-box" ).addClass( "hidden" );
+			   $( ".cancel-resume" ).addClass( "hidden" );
+			   $( ".view-resume-box" ).removeClass( "hidden" );
+			   $(".view-resume-box").load(url_link+"view-resume.php");
+               
+            }
+        });
+      }
+
+
+ });
 
 
 });
