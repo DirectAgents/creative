@@ -258,8 +258,59 @@ View Resume
     <?php } ?>
 	<!--User Logged in Ends-->
 
-    <?php if($row['About'] == '' && $row['Skills'] == '' && $row['Resume'] == '' && $_SESSION['entrepreneurSession'] != $row['userID']) {echo "Profile is empty";}   ?>
-    <?php } ?>
+
+
+
+
+<!--Visitor Starts-->
+
+<?php if(isset($_SESSION['entrepreneurSession']) != $row['userID'] || !isset($_SESSION['entrepreneurSession'])) { ?>
+<!--About Start-->
+  <div class="col-sm-12" style="padding-left: 0px;">   
+     <div class="col-sm-3"><strong>About <?php echo $firstname; ?></strong><br><br></div>
+  </div> 
+  <div class="col-sm-12"> 
+   	 <?php echo $row['About']; ?>
+   	 <br><br><br>
+  </div>
+<!--About Ends-->  
+
+<!--Skills Start-->
+  <div class="col-sm-12" style="padding-left: 0px;">   
+     <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Skills</strong><br><br></div>
+  </div> 
+  <div class="col-sm-12"> 
+   	 <?php 
+                                        $ctop = $row['Skills']; 
+                                        $ctop = explode(',',$ctop); 
+
+                                        if($row['Skills'] != '' && $row['Skills'] != 'NULL' ){
+
+                                        foreach($ctop as $skill)   { 
+                                                       
+                                        ?>
+        <div class="skillsdiv_teammember">
+            <?php echo $skill; ?>
+        </div>
+        <?php } } ?>
+  </div>
+<!--Skills Ends-->  
+
+<!--Skills Resume-->
+ <div class="col-sm-12" style="padding-left: 0px;">  
+ <br><br> 
+     <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Resume</strong><br><br></div>
+  </div> 
+  <div class="col-sm-12"> 
+    <a href="http://res.cloudinary.com/dgml9ji66/image/upload/v1519605264/<?php echo $row['Resume']; ?>.pdf" target="_blank">
+View Resume
+</a>
+</div>
+
+<!--Skills Ends-->
+<?php } ?>
+
+<!--Visitor Ends-->
 
 
      
@@ -561,6 +612,6 @@ $('.save-resume').click(function() {
 </script>
 
 
-
+<?php } ?>
 
 
