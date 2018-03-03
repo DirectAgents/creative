@@ -24,7 +24,7 @@ $row = mysqli_fetch_array($result);
     <div id="team-tab-data">
        
             <input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['entrepreneurSession']; ?>">
-            <input type="hidden" name="id" id="id" value="<?php echo $_POST['id']; ?>">
+            <input type="hidden" name="id-team-member" id="id-team-member" value="<?php echo $_POST['id']; ?>">
             <div class="form-group">
                 <label class="col-md-12">Full Name</label>
                 <div class="col-md-12">
@@ -33,7 +33,7 @@ $row = mysqli_fetch_array($result);
             <div class="form-group">
                 <label class="col-md-12">Position</label>
                 <div class="col-md-12">
-                    <input type="text" id="fm_position" name="fm_position" placeholder="eg. CEO" value="<?php echo $row['Position']; ?>" class="form-control form-control-line">
+                    <input type="text" id="fm_role" name="fm_role" placeholder="eg. CEO" value="<?php echo $row['Position']; ?>" class="form-control form-control-line">
                 </div>
             </div>
             <div class="form-group">
@@ -116,17 +116,17 @@ $row = mysqli_fetch_array($result);
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Facebook</label>
-                                                        <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
+                                                        <input type="text" id="fm_facebook_link" name="fm_facebook_link" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Twitter</label>
-                                                        <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter'];?>" class="form-control form-control-line"> </div>
+                                                        <input type="text" id="fm_twitter_link" name="fm_twitter_link" value="<?php echo $row['Twitter'];?>" class="form-control form-control-line"> </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
-                                                        <input type="text" id="fm_linkedin" name="fm_linkedin" value="<?php echo $row['Linkedin'];?>" class="form-control form-control-line"> </div>
+                                                        <input type="text" id="fm_linkedin_link" name="fm_linkedin_link" value="<?php echo $row['Linkedin'];?>" class="form-control form-control-line"> </div>
                                                 </div>
                                             </div>
 
@@ -137,7 +137,7 @@ $row = mysqli_fetch_array($result);
                                                 <?php if($row['ProfileImage'] != '') { ?>
                                             <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['ProfileImage'];?>" class="thumb-lg img-circle" alt="img">  
                                             <?php }else{ ?>
-                                            <a href="javascript:void(0)"><img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <a href="javascript:void(0)"><img src="<?php echo BASE_PATH."/images/no-profile-picture.jpg";?>" class="thumb-lg img-circle" alt="img">
                                             <?php } ?>
                                             </a>
                                                 </div>

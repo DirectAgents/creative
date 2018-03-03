@@ -3374,6 +3374,50 @@ ul.common li a:hover {
     margin-bottom: 10px!important
 }
 
+
+
+.user-2-bg {
+    margin: -25px;
+    height: 200px;
+    overflow: hidden;
+    position: relative
+}
+
+.user-2-bg .overlay-box {
+    background: #707cd2;
+    opacity: .9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    text-align: center
+}
+
+.user-2-bg .overlay-box .user-content {
+    padding: 15px;
+    margin-top: 30px
+}
+
+
+.user-2-bg .overlay-box-grey {
+    background: #eee;
+    opacity: .9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    text-align: center
+}
+
+.user-2-bg .overlay-box-grey .user-content {
+    padding: 15px;
+    margin-top: 30px
+}
+
+
+
 .user-bg {
     margin: -25px;
     height: 230px;
@@ -20148,9 +20192,9 @@ ul.pro-amenities li span i {
 
 .icon_del{float:left; margin:4px 0 0 10px;}
 
-ul#preview_company, ul#preview_team, ul#preview_screenshot, ul#preview_resume {list-style-type: none; padding:0px;}
+ul#preview_logo, ul#preview_team, ul#preview_screenshot, ul#preview_resume {list-style-type: none; padding:0px;}
 
-#upload-headshot, #upload-logo, #upload-screenshot, #save-cancel {display:none;}
+#upload-headshot, #click-image-to-upload-logo, .upload_widget_multiple_logo_link{display:none;}
 
 #saved {display:none; position: fixed; z-index:99999; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}
 #deleted {display:none; position: fixed; z-index:99999; bottom: 0; right: 10px; padding:20px; background:#5cb85c; color:#fff;}

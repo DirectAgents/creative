@@ -205,87 +205,7 @@ exit();
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Skills Set</label>
-                                                <div class="col-md-4">
-                                                    <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line">
-                                                </div>
-                                               
-                                                <div class="col-md-8">
-                                                    <button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button>
-                                                </div>
-                                                <div class="col-md-12" style="padding:15px 0 0 0;">
-                                                    <div id="responds">
-                                                        <?php
-                                                        //include db configuration file
-
-                                                        echo '<input type="hidden" name="userid" id="userid" value="'.$row_entrepreneur['userID'].'">';
-
-
-                                                        //MySQL query
-                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_entrepreneur['userID']."' ");
-
-
-                                                        //get all records from add_delete_record table
-                                                        $row2 = mysqli_fetch_array($Result);
-
-
-
-
-                                                        $ctop = $row2['Skills']; 
-                                                        $ctop = explode(',',$ctop); 
-
-
-
-                                                        if($row2['Skills'] != '' && $row2['Skills'] != 'NULL' ){
-
-
-
-                                                        foreach($ctop as $skill)  
-                                                        { 
-                                                            //Uncomment the last commented line if single quotes are showing up  
-                                                            //otherwise delete these 3 commented lines 
-
-
-                                                        //get skill string
-                                                        $ret = explode('(', $skill);
-                                                        $skill_string =  $ret[0];
-                                                            
-
-                                                        //MySQL query
-                                                        $sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill_string."' ");
-                                                        $row3 = mysqli_fetch_array($sqlskill);
-
-
-                                                        echo '<div id="item_'.$row3['id'].'">';
-                                                        echo '<div class="skillsdiv">';
-                                                        if(in_array($skill,$ctop)){
-                                                        echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
-                                                        }
-                                                        echo '<div class="del_wrapper">';
-                                                        echo '<div class="the-skill">';
-                                                        echo $skill;
-                                                        echo '</div>';
-                                                        echo '<a href="#" class="del_button" id="del-'.$row3['id'].'">';
-                                                        echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
-                                                        echo '</a></div>';
-                                                        //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-                                                        echo '</div>';
-                                                        echo '</div>';
-                                                        } 
-
-
-
-                                                        }
-
-
-
-
-
-                                                        ?>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                          
                                             <div class="form-group">
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
@@ -313,24 +233,7 @@ exit();
                                                 </div>
                                             </div>-->
 
-                                         <div class="form-group">
-                                            <div class="col-sm-12">
-                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_resume">Upload Resume</a>
-                                                           <br>
-                                                            <br>
-                                                            (Note.: only .pdf file is allowed)
-                                                            <br>
-                                                            <br>
-                                                            <ul id="preview_resume"></ul>
-                                                            <div id="url_preview_resume"><input type="checkbox" style="display:none" name="resume[]" value="" checked/></div>
-                                                            <!--<div id="headshot_id"></div>-->
-                                                             <?php if($row['Resume'] != '') { ?>
-                                                             <a href="http://res.cloudinary.com/dgml9ji66/image/upload/v1519605264/<?php echo $row['Resume']; ?>.pdf" target="_blank" class="view-resume">View Resume</a>
-                                                            <?php } ?>
-
-                                                </div>
-                                           </div>     
-
+                                      
 
                                             <div class="form-group">
                                                 <div class="col-sm-12">

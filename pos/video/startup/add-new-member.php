@@ -28,7 +28,7 @@ if($_POST){
                                             <div class="form-group">
                                                 <label class="col-md-12">Position</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_position" name="fm_position" placeholder="eg. CEO"  class="form-control form-control-line">
+                                                    <input type="text" id="fm_role" name="fm_role" placeholder="eg. CEO"  class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             
@@ -55,6 +55,24 @@ if($_POST){
                                                     
                                                 </div>
                                             </div>-->
+
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <div class="form-group" style="padding-left:15px;">
+                                                        <label class="col-md-3" style="padding-left:0px;">Facebook</label>
+                                                        <input type="text" id="fm_facebook_link" name="fm_facebook_link" class="form-control form-control-line"> </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group" style="padding-left:15px;">
+                                                        <label class="col-md-3" style="padding-left:0px;">Twitter</label>
+                                                        <input type="text" id="fm_twitter_link" name="fm_twitter_link" class="form-control form-control-line"> </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group" style="padding-left:15px;">
+                                                        <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
+                                                        <input type="text" id="fm_linkedin_link" name="fm_linkedin_link" class="form-control form-control-line"> </div>
+                                                </div>
+                                            </div>
                                              
 
 

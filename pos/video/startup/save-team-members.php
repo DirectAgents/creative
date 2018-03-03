@@ -24,7 +24,7 @@ if(strpos($_POST['twitter'], "http://") !== false || strpos($_POST['twitter'], "
 $twitter = '';	
 }
 
-if($_POST['fm_linkedin'] != ''){
+if($_POST['linkedin'] != ''){
 if(strpos($_POST['linkedin'], "http://") !== false || strpos($_POST['linkedin'], "https://" !== false) ){ $linkedin = $_POST['linkedin']; 
 }else{$linkedin = "http://".$_POST['linkedin'];}
 }else{
@@ -41,7 +41,7 @@ if(mysqli_num_rows($sql)<=0) {
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_team(userID, startupID, Fullname, Position, About, ProfileImage, Skills, Facebook, Twitter, Linkedin) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['fullname']."',
-  '".$_POST['position']."', '".$_POST['about']."', '".$_POST['headshot']."' ,'".$_POST['skills']."', '".$facebook."', '".$twitter."', '".$linkedin."')");
+  '".$_POST['role']."', '".$_POST['about']."', '".$_POST['headshot']."' ,'".$_POST['skills']."', '".$facebook."', '".$twitter."', '".$linkedin."')");
 
 
 }else{
@@ -50,7 +50,7 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_team(userID, startupID, Fu
 
 $sql = "UPDATE tbl_team SET 
 Fullname='".$_POST['fullname']."',
-Position='".$_POST['position']."',
+Position='".$_POST['role']."',
 About='".$_POST['about']."',
 Skills='".$_POST['skills']."',
 Facebook='".$facebook."',

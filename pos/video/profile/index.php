@@ -14,6 +14,8 @@
 
  $username = $_GET['username'];
 
+include 'profile.php';
+/*
 if($row['Type'] == 'Entrepreneur'){
   include 'profile-entrepreneur.php';
   exit();
@@ -24,5 +26,5 @@ if($row['Type'] == 'Investor'){
   include 'profile-investor.php';
   exit();
 }
-
+*/
 ?>

@@ -431,18 +431,18 @@ echo 'id: ' . $user['id'];
                     });
             });
 
-            $('#upload_widget_multiple_company').click(function() {
+            $('#upload_widget_multiple_logo').click(function() {
                 //alert("add");
                 cloudinary.openUploadWidget({ upload_preset: preset_name, sources: ['local', 'url', 'image_search'], multiple: false },
                     function(error, result) {
                         console.log(error, result);
                         ids_and_ratios = {};
                         $.each(result, function(i, v) {
-                            $("#preview_company").show();
-                            $("#preview_edit_company").hide();
-                            $('#preview_company').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" class="thumb-lg img-circle" />')
+                            $("#preview_logo").show();
+                            $("#preview_edit_logo").hide();
+                            $('#preview_logo').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" class="thumb-lg img-circle" />')
                             $('#headshot_id').html(v["public_id"])
-                            $('#url_preview_company').html('<input type="checkbox" style="display:none" name="company_logo[]" value="' + v["public_id"] + '" checked/>')
+                            $('#url_preview_logo').html('<input type="checkbox" style="display:none" name="company_logo[]" value="' + v["public_id"] + '" checked/>')
                         });
                     });
             });

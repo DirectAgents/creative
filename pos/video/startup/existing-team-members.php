@@ -1,10 +1,10 @@
 <?php
 
  session_start();
- require_once '../../class.entrepreneur.php';
- require_once '../../class.investor.php';
- require_once '../../base_path.php';
- include_once("../../config.php"); 
+ require_once '../class.entrepreneur.php';
+ require_once '../class.investor.php';
+ require_once '../base_path.php';
+ include_once("../config.php"); 
 
 
 if($_GET){
@@ -28,7 +28,7 @@ $row_startup = mysqli_fetch_array($result_startup);
 
 
 
-<?php if($row_startup['userID'] == '' && $row['userID'] == '') { ?>
+<?php if($row_startup['userID'] == '' && $row['userID'] == '' && $_GET['userid'] != $_SESSION['entrepreneurSession'] ) { ?>
 
 No Team Members added so far!
 
@@ -72,7 +72,7 @@ No Team Members added so far!
                                     <div class="overlay-box-grey">
                                         <div class="user-content">
                                             <a href="javascript:void(0)">
-                                               <?php if($row_user['ProfileImage'] == 'Google'){ ?>
+<?php echo $row_user['ProfileImage']; if($row_user['ProfileImage'] == 'Google'){ ?>
          <img src="<?php echo $row_user['google_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
 <?php } ?>
 
@@ -128,16 +128,16 @@ No Team Members added so far!
 
 
                              <?php if(isset($_SESSION['entrepreneurSession'])) { ?>    
-                               <?php if($_GET['username'] != $_SESSION['usernameSession']) { ?>   
+                               <?php if($_GET['userid'] != $_SESSION['entrepreneurSession']) { ?>   
 
 
-                               <?php if($row_user['ProfileImage'] == 'Google'){  $profileimage = $row_user['google_picture_link']; } ?>
+<?php if($row_user['ProfileImage'] == 'Google'){  $profileimage = $row_user['google_picture_link']; } ?>
 <?php if($row_user['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/".$row_user['facebook_id']."/picture?type=large"; } ?>
 <?php if($row_user['ProfileImage'] == 'Linkedin'){  $profileimage = $row_user['linkedin_picture_link'];  } ?>
 
 
                              <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requester_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE requester_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
                 ?>                 
                                  
                 
@@ -258,7 +258,7 @@ No Team Members added so far!
                                            
                                             <div class="pull-right" style="padding-right:15px;">
                                             <a href="#" id="edit-member-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>"><i class="ti-pencil"><label class="edit-team-member">Edit</i></a>&nbsp;&nbsp;&nbsp;
-                                            <a href="#" id="sa-warning-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>" data-userid="<?php echo $_GET['userid']; ?>" data-thumb="<?php if($row_team['ProfileImage'] != '') { echo "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/".$row_team['ProfileImage'];}else{ echo "https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg";}?>"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
+                                            <a href="#" id="sa-delete-<?php echo $row_team['id']; ?>" data-id="<?php echo $row_team['id']; ?>" data-userid="<?php echo $_GET['userid']; ?>" data-thumb="<?php if($row_team['ProfileImage'] != '') { echo "http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/".$row_team['ProfileImage'];}else{ echo BASE_PATH."/images/no-profile-picture.jpg";}?>"><i class="ti-trash"><label class="delete-team-member">Delete</label> </i></a>
 
                                         
 
@@ -273,12 +273,11 @@ No Team Members added so far!
 <script>
  
 
-
+ var url_link = 'http://localhost/creative/pos/video/startup/';
 
  $("#edit-member-"+<?php echo $row_team['id']; ?>).click(function (e) {
     e.preventDefault();
 
-    var url_link = 'http://localhost/creative/pos/video/startup/startup/';
 
     var data_id = $("#edit-member-"+<?php echo $row_team['id']; ?>).attr("data-id");
     //alert(data_id);
@@ -296,9 +295,9 @@ No Team Members added so far!
 
                 $("#upload-headshot").show();
                 $("#save-cancel").show();
-                $("#preview_company").hide();
                 $("#preview_team").hide();
                 $("#add-a-team-member").hide();
+                
 
                 //alert(skills_count);  
 
@@ -313,9 +312,9 @@ No Team Members added so far!
 
 //////Delete Team Member/////////
 
-    $('#sa-warning-'+<?php echo $row_team['id']; ?>).click(function(){
+    $('#sa-delete-'+<?php echo $row_team['id']; ?>).click(function(){
         
-        var data_thumb = $("#sa-warning-"+<?php echo $row_team['id']; ?>).attr("data-thumb");
+        var data_thumb = $("#sa-delete-"+<?php echo $row_team['id']; ?>).attr("data-thumb");
         //alert(data_thumb);
 
         swal({   
@@ -329,10 +328,10 @@ No Team Members added so far!
             closeOnConfirm: false 
         }, function(){   
 
-           var url_link = 'http://localhost/creative/pos/video/startup/startup/';
+           
 
-           var data_id = $("#sa-warning-"+<?php echo $row_team['id']; ?>).attr("data-id");
-           var userid = $("#sa-warning-"+<?php echo $row_team['id']; ?>).attr("data-userid");
+           var data_id = $("#sa-delete-"+<?php echo $row_team['id']; ?>).attr("data-id");
+           var userid = $("#sa-delete-"+<?php echo $row_team['id']; ?>).attr("data-userid");
             //alert(data_id);
 
                         $.ajax({
@@ -377,7 +376,7 @@ No Team Members added so far!
 
 <!-- Sweet-Alert  -->
 <script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
-<script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
+<!--<script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>-->
 <!--<script src="<?php echo BASE_PATH; ?>/js/jquery.sweet-alert.custom.js"></script>-->
 
  <?php } ?>                                  

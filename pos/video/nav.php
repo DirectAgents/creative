@@ -9,6 +9,10 @@
 $stmt = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'");
 $rownav = mysqli_fetch_array($stmt);
 
+$sql_startup = "SELECT * FROM startups WHERE userID ='".$rownav['userID']."'";  
+$result = mysqli_query($connecDB, $sql_startup);  
+$row_startup = mysqli_fetch_array($result);
+
 $words = explode(" ", $rownav['Fullname']);
 
 $firstname = $words[0];
@@ -156,6 +160,9 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                         </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
                             <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $rownav['username']; ?>"><i class="ti-user"></i> My Profile</a></li>
+                            <?php if($row_startup['Name'] != ''){ ?>
+                             <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>"><i class="ti-user"></i> My Startup</a></li>
+                            <?php } ?>
                             <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="ti-email"></i> Connections</a></li>
                             <li><a href="<?php echo BASE_PATH; ?>/bookmarks/"><i class="ti-email"></i> Bookmarks</a></li>
                             <li role="separator" class="divider"></li>

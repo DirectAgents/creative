@@ -5,7 +5,6 @@
  require_once '../class.investor.php';
  require_once '../base_path.php';
  include_once("../config.php"); 
- require_once '../facebook-sdk-v5/autoload.php';
 
 
  $sql = "SELECT * FROM startups WHERE Name ='".$_GET['name']."'";  
@@ -13,8 +12,15 @@
  $row = mysqli_fetch_array($result);
 
 
-  include 'startup-profile.php';
+if($row_startup['Name'] == ''){
+  header("Location: ".BASE_PATH."/404/");
   exit();
+}else{
+include 'profile.php';
+exit();	
+}
+
+
 
 
 ?>

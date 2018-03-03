@@ -1,10 +1,10 @@
 <?php
 
  session_start();
- require_once '../../class.entrepreneur.php';
- require_once '../../class.investor.php';
- require_once '../../base_path.php';
- include_once("../../config.php"); 
+ require_once '../class.entrepreneur.php';
+ require_once '../class.investor.php';
+ require_once '../base_path.php';
+ include_once("../config.php"); 
 
 
 if($_GET){
@@ -79,8 +79,8 @@ $row = mysqli_fetch_array($sql);
                                          <div class="row"> 
                                            
                                                 <ul class="side-icon-text pull-left">
-                                                    <li><a href="#" class="edit-company" data-id="<?php echo $row['id']; ?>"><span class="circle circle-sm bg-success di"><i class="ti-pencil-alt"></i></span><span>Edit</span></a></li>
-                                                    <li><a href="#" id="delete-company" data-userid="<?php echo $_GET['userid']; ?>" data-id="<?php echo $row['id']; ?>"><span class="circle circle-sm bg-danger di"><i class="ti-trash"></i></span><span>Delete</span></a></li>
+                                                    <li><a href="#/" class="edit-company" data-id="<?php echo $row['id']; ?>"><span class="circle circle-sm bg-success di"><i class="ti-pencil-alt"></i></span><span>Edit</span></a></li>
+                                                    <li><a href="#/" id="delete-company" data-userid="<?php echo $_GET['userid']; ?>" data-id="<?php echo $row['id']; ?>"><span class="circle circle-sm bg-danger di"><i class="ti-trash"></i></span><span>Delete</span></a></li>
                                                 </ul>
 
 
@@ -158,7 +158,7 @@ $row = mysqli_fetch_array($sql);
 $(document).ready(function() {
 
 
-var url_link = 'http://localhost/creative/pos/video/startup/';
+var url_link_startup = 'http://localhost/creative/pos/video/startup/';
 
 
 
@@ -169,7 +169,7 @@ $(".add-company").click(function (e) {
     var userid = $('input[name=userid]').val();
     //alert(userid);
     $.ajax({
-            url: url_link+"add-company.php", 
+            url: url_link_startup+"add-company.php", 
             method: "POST",
             data: {userid: userid},
             dataType: "html",
@@ -206,15 +206,17 @@ $(".edit-company").click(function (e) {
 
     //alert(userid);
     $.ajax({
-            url: url_link+"edit-company.php", 
+            url: url_link_startup+"edit-company.php", 
             method: "POST",
             data: {id: data_id},
             dataType: "html",
             success: function(response) {
                 //alert(data);  
                 //var skills = $(response).filter('#the-skill-set').text();
-                $("#thecompany").html(response);
+                $("#thecompany-startup").html(response);
 
+                
+                $("#profile-startup-tab-data").show();
                 $("#add-a-company").hide();
                 $("#edit-a-company").hide();
                 $("#upload-logo").show();
@@ -222,6 +224,14 @@ $(".edit-company").click(function (e) {
                 $("#save-cancel").show();
                 $("#preview_company").hide();
                 $("#preview_screenshot").hide();
+
+                
+                $("#startups-socials").hide();
+                $("#click-image-to-upload-logo").show();
+                $("#company-logo-public").hide();
+                $("#upload_widget_multiple_logo").show();
+                
+
                 
 
             }
@@ -250,7 +260,7 @@ $(".edit-company").click(function (e) {
             //alert(data_id);
 
                         $.ajax({
-                                url: url_link+"delete-company.php",
+                                url: url_link_startup+"delete-company.php",
                                 method: "POST",
                                 data: {id: data_id},
                                 dataType: "html",
@@ -258,8 +268,9 @@ $(".edit-company").click(function (e) {
                                     //alert(data);
                                     //$('#deleted').fadeIn("fast");
                                     //$('#deleted').delay(2000).fadeOut("slow");
-                                $("#thecompany").load(url_link+"company.php?userid="+userid); 
-                                swal("Deleted!", "Your Company has been deleted.", "success");  
+                                window.location.href = url_link_startup+'create';
+                                //$("#thecompany-startup").load(url_link+"company.php?userid="+userid); 
+                                //swal("Deleted!", "Your Company has been deleted.", "success");  
 
                                 }
                             });
