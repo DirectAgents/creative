@@ -166,6 +166,10 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                             <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="ti-email"></i> Connections</a></li>
                             <li><a href="<?php echo BASE_PATH; ?>/bookmarks/"><i class="ti-email"></i> Bookmarks</a></li>
                             <li role="separator" class="divider"></li>
+                             <?php if($row_startup['Name'] == ''){ ?>
+                             <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="ti-user"></i> Add a Startup</a></li>
+                            <?php } ?>
+                             <li role="separator" class="divider"></li>
                             <li><a href="<?php echo BASE_PATH; ?>/settings/"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> Logout</a></li>

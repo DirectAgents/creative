@@ -287,7 +287,7 @@ exit();
                                                         <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30"></a>
             </td>
             <td>
-                <a href="<?php echo BASE_PATH; ?>/startup/profile/<?php echo $row_startup['userID']; ?>">
+                <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>">
                     <?php echo $row_startup['Name']; ?>
                 </a>
             </td>
