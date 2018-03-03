@@ -20394,6 +20394,6 @@ ul.socials-list li{float:left; display:inline; padding-right:15px;}
 
 .sweet-alert button.cancel_bookmark{background-color: #C1C1C1;}
 
-#likes{display:inline;}
+.likes{display:inline-block;}
 
 

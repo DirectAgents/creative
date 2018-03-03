@@ -30,7 +30,7 @@ $sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_users LEFT JOIN startup
 $row_startup = mysqli_fetch_array($sql_startup);
 
 
-if($count > 0 ){
+if($count >= 0 ){
 echo $count;
 
 

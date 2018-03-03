@@ -885,7 +885,7 @@ $('.like').click(function(){
              if(response != 'no good'){ 
              
             parent.swal("Success!", "You liked it.", "success");  
-            parent.$('#likes').html(response);
+            parent.$('#likes'+requested_id).html(response);
 
               }
         
@@ -919,7 +919,7 @@ $('.like').click(function(){
                                    
                                 if(response != 'good'){  
                                 parent.swal("Success!", "", "success");
-                                parent.$('#likes').html(response);
+                                parent.$('#likes'+requested_id).html(response);
                                 //alert(response);
                                 }
 

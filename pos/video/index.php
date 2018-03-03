@@ -86,11 +86,11 @@ include_once("config.php");
 
                             <div class="product-text">
                                 <span class="pro-price"><img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></span>
-                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/profile/{{objectID}}">{{{_highlightResult.name.value}}}</a></h3>
+                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/{{name}}">{{{_highlightResult.name.value}}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
                                 <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 
-                                <span class="m-r-10"><i class="fa fa-heart-o"></i> <div id="likes">{{{_highlightResult.likes.value}}}</div></span>  
+                                <span class="m-r-10"><i class="fa fa-heart-o"></i> <div class="likes"><div id="likes{{objectID}}">{{{_highlightResult.likes.value}}}</div></div></span>  
                                     <i class="fa fa-industry"></i> {{{_highlightResult.industry.value}}}</small>
                             </div>
                         </div>
