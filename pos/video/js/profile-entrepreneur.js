@@ -572,7 +572,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
   var userid = $('input[name=userid]').val();
     //alert(userid);
      $.ajax({
-            url: url_link+"background-tab.php",
+            url: url_link_startup+"background-tab.php",
             method: "GET",
             data: {userid: userid},
             dataType: "html",
@@ -593,7 +593,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
   //alert(userid);
  
      $.ajax({
-            url: url_link+"background-tab.php",
+            url: url_link_startup+"background-tab.php",
             method: "GET",
             data: {userid: userid},
             dataType: "html",
@@ -625,7 +625,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
     
 
     $.ajax({
-            url: url_link+"save-resume.php", 
+            url: url_link_startup+"save-resume.php", 
             method: "POST",
             data: { userid: userid, resume : resume},
             dataType: "html",
@@ -647,28 +647,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
- ////////////////Education//////////////////////
 
-
- $('#education-tab').click(function(){
-
-  var userid = $('input[name=userid]').val();
-
-  //alert(userid);
- 
-     $.ajax({
-            url: url_link+"education-tab.php",
-            method: "GET",
-            data: {userid: userid},
-            dataType: "html",
-            success: function(response) {
-                //alert(response);  
-                $("#education-tab-content").html(response);
-
-            }
-        });
-
- });
 
 
 
@@ -818,7 +797,7 @@ $('#sa-connect-cancel').click(function(){
   //alert(userid);
  
      $.ajax({
-            url: url_link+"bookmark-tab.php",
+            url: url_link_startup+"bookmark-tab.php",
             method: "GET",
             data: {userid: userid},
             dataType: "html",
@@ -839,7 +818,7 @@ $('#sa-connect-cancel').click(function(){
       var requester_id = $(".bookmark").attr("data-requester-id");
       //alert(requested_id);
       $.ajax({
-            url: url_link+"bookmark.php",
+            url: url_link_startup+"bookmark.php",
             method: "POST",
             data: {requested_id: requested_id, requester_id: requester_id},
             dataType: "html",
@@ -876,7 +855,7 @@ $('.like').click(function(){
       var requester_id = $(".like").attr("data-requester-id");
       //alert(requested_id);
       $.ajax({
-            url: url_link+"like.php",
+            url: url_link_startup+"like.php",
             method: "POST",
             data: {requested_id: requested_id, requester_id: requester_id},
             dataType: "html",
@@ -911,7 +890,7 @@ $('.like').click(function(){
 
 
                         $.ajax({
-                                url: url_link+"dislike.php",
+                                url: url_link_startup+"dislike.php",
                                 method: "POST",
                                 data: {requested_id: requested_id, requester_id: requester_id},
                                 dataType: "html",

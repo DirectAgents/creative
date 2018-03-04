@@ -78,18 +78,100 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                        
                     </li>
                     <!-- /.dropdown-messages -->
+
+
+
+<?php
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+//echo $row[$keys[0]]; // 20
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[0]]."'");
+$row2 = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."'");
+//$row = mysqli_fetch_array($sql);
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+
+arsort($row);
+$keys = array_keys($row);
+
+
+if(isset($row[$keys[0]])){
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$row3 = mysqli_fetch_array($sql3);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
+$row4 = mysqli_fetch_array($sql4);
+}
+
+if(isset($row[$keys[1]])){
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$row5 = mysqli_fetch_array($sql5);
+$sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
+$row6 = mysqli_fetch_array($sql6);
+}
+
+if(isset($row[$keys[2]])){
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$row7 = mysqli_fetch_array($sql7);
+$sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row8 = mysqli_fetch_array($sql8);
+}
+
+if(isset($row[$keys[3]])){
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$row9 = mysqli_fetch_array($sql9);
+$sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row10 = mysqli_fetch_array($sql10);
+}
+
+if(isset($row[$keys[4]])){
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$row11 = mysqli_fetch_array($sql11);
+$sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row13 = mysqli_fetch_array($sql13);
+}
+
+//echo $row4['Name'];
+
+
+
+?>
+
                  
                     <!-- .Megamenu -->
-                    <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Top 5 Startups</span> <i class="icon-options-vertical"></i></a>
+                    <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Popular Startups</span> <i class="icon-options-vertical"></i></a>
                         <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
                             <li class="col-sm-3">
                                 <ul>
-                                    <li class="dropdown-header">Technology</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
+                                    <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
+                                    <li><a href="form-basic.html"><?php if(isset($row[$keys[0]])){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="form-layout.html"><?php if(isset($row[$keys[1]])){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="form-advanced.html"><?php if(isset($row[$keys[2]])){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="form-material-elements.html"><?php if(isset($row[$keys[3]])){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="form-float-input.html"><?php if(isset($row[$keys[4]])){ echo $row12['Name'];} ?></a></li>
                                 
                                 </ul>
                             </li>
@@ -134,7 +216,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
                           
-                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Programming Skills or Name" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
+                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Startup Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
                          </form>
 
                     </li>
@@ -264,7 +346,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
                           
 
-                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Programming Skills or Name" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
+                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Startup Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
                          </form>
 
                     </li>

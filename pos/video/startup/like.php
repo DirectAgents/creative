@@ -30,7 +30,23 @@ $sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_users LEFT JOIN startup
 $row_startup = mysqli_fetch_array($sql_startup);
 
 
+
+
+
+
+
 if($count > 0 ){
+
+
+//Update Popular Startups
+$sql_update = "UPDATE tbl_top_rated_startups SET 
+Likes='1'
+
+WHERE Industry='Technology'";
+
+mysqli_query($connecDB, $sql_update);
+
+
 echo $count;
 
 
