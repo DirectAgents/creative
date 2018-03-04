@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2018 at 03:59 AM
+-- Generation Time: Mar 05, 2018 at 12:00 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -291,7 +291,10 @@ CREATE TABLE `startups` (
 --
 
 INSERT INTO `startups` (`id`, `startupID`, `userID`, `Position`, `Name`, `Description`, `About`, `City`, `State`, `Zip`, `Industry`, `Logo`, `Video`, `Screenshot`, `Facebook`, `Twitter`, `AngelList`, `Date_Posted`) VALUES
-(151, 105, 105, 'CEO', 'abc', 'this is the description', 'this is about', 'NEW YORK', 'NY', '10001', 'Technology', '', '', 'screenshots/rjmw2juad4nqr99mdkus', '', '', '', '2018-02-17');
+(164, 149, 149, 'CTO', 'Facebook', 'hello', 'was geht', 'NEW YORK', 'NY', '10001', 'Technology', 'screenshots/ijgdr401fmk6zplns0q9', 'www.abc.com', 'screenshots/bblhrrtkgi846pw3jrel', '', '', '', '2018-03-02'),
+(167, 105, 105, 'CEO', 'Google', 'bla bla', 'hello', 'NEW YORK', 'NY', '10001', 'Ecommerce', 'screenshots/ep1ipfkjhgxxrcqlxxfg', '', 'screenshots/sxitfykbdakvsddc8cfh', '', '', '', '2018-03-02'),
+(168, 106, 106, '', 'Fisher', '', '', '', '', '', 'Ecommerce', '', '', '', '', '', '', '0000-00-00'),
+(169, 107, 107, '', 'Joga', '', '', '', '', '', 'Ecommerce', '', '', '', '', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -304,6 +307,16 @@ CREATE TABLE `tbl_bookmarks` (
   `requester_id` int(11) NOT NULL,
   `requested_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_bookmarks`
+--
+
+INSERT INTO `tbl_bookmarks` (`id`, `requester_id`, `requested_id`) VALUES
+(1, 105, 149),
+(2, 149, 105),
+(3, 105, 106),
+(4, 149, 106);
 
 -- --------------------------------------------------------
 
@@ -419,15 +432,19 @@ INSERT INTO `tbl_investor` (`userID`, `facebook_id`, `google_id`, `google_pictur
 CREATE TABLE `tbl_likes` (
   `id` int(11) NOT NULL,
   `requester_id` int(11) NOT NULL,
-  `requested_id` int(11) NOT NULL
+  `requested_id` int(11) NOT NULL,
+  `Industry` varchar(255) NOT NULL,
+  `Likes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_likes`
 --
 
-INSERT INTO `tbl_likes` (`id`, `requester_id`, `requested_id`) VALUES
-(43, 104, 105);
+INSERT INTO `tbl_likes` (`id`, `requester_id`, `requested_id`, `Industry`, `Likes`) VALUES
+(66, 149, 107, 'Ecommerce', 12),
+(67, 105, 106, 'Ecommerce', 5),
+(68, 149, 105, 'Ecommerce', 2);
 
 -- --------------------------------------------------------
 
@@ -459,12 +476,41 @@ CREATE TABLE `tbl_team` (
   `Date_Created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tbl_team`
+-- Table structure for table `tbl_top_rated_startups`
 --
 
-INSERT INTO `tbl_team` (`id`, `userID`, `startupID`, `Fullname`, `Position`, `Gender`, `Email`, `Phone`, `Age`, `About`, `Positions`, `Skills`, `City`, `State`, `Zip`, `ZipCode`, `ProfileImage`, `Facebook`, `Twitter`, `Linkedin`, `Date_Created`) VALUES
-(1, 149, 0, 'Jon Snow', 'CFO', '', '', '', '', '', '', 'Android Development', '', '', '', '', '', '', '', '', '0000-00-00');
+CREATE TABLE `tbl_top_rated_startups` (
+  `id` int(11) NOT NULL,
+  `Industry` varchar(255) NOT NULL,
+  `Likes` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_top_rated_startups`
+--
+
+INSERT INTO `tbl_top_rated_startups` (`id`, `Industry`, `Likes`) VALUES
+(1, 'Technology', 10),
+(2, 'Mobile', 5),
+(3, 'Finance', 8),
+(4, 'Ecommerce', 23),
+(5, 'B2B Services', 2),
+(6, 'Consumer Products', 2),
+(7, 'Consulting', 1),
+(8, 'Big Data', 4),
+(9, 'Education', 0),
+(10, 'Travel', 0),
+(11, 'Entertainment', 0),
+(12, 'Fashion', 0),
+(13, 'Healthcare', 0),
+(14, 'Real Estate', 0),
+(15, 'Art and Design', 0),
+(16, 'Health, Fitness and Wellness', 0),
+(17, 'Human Resources', 0),
+(18, 'Other', 0);
 
 -- --------------------------------------------------------
 
@@ -508,7 +554,7 @@ CREATE TABLE `tbl_users` (
 
 INSERT INTO `tbl_users` (`userID`, `username`, `Type`, `ProfileImage`, `facebook_id`, `google_id`, `google_picture_link`, `google_token`, `linkedin_id`, `linkedin_picture_link`, `Fullname`, `Position`, `Gender`, `Email`, `Phone`, `Age`, `About`, `Resume`, `Skills`, `City`, `State`, `Zip`, `ZipCode`, `Facebook`, `Twitter`, `Linkedin`, `Date_Created`) VALUES
 (105, 'paul-jared', 'Entrepreneur', 'Facebook', '292916221198167', '0', '', '', '', '', 'Paul Jared', 'CEO', 'Male', 'wepaystage@gmail.com', '', '', 'Hello', 'screenshots/nbxoyrd7aeyidrqadtu0', 'Creative Writing,Sport', '', '', '', '', '', '', '', '0000-00-00'),
-(149, 'alper-dilmen', 'Investor', 'Facebook', '10157632974310062', '0', '', '', '', '', 'Alper Dilmen', '', 'Male', 'ald183s@gmail.com', '9191911', '', '', '', 'Creative Writing', '', '', '', '', 'http://facebook.com', '', '', '0000-00-00');
+(149, 'alper-dilmen', 'Entrepreneur', 'Facebook', '10157632974310062', '0', '', '', '', '', 'Alper Dilmen', 'CTO', 'Male', 'ald183s@gmail.com', '9191911', '', '', '', 'Animal Welfare,Adventure Travel,Board Games', '', '', '', '', 'http://facebook.com', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -42821,6 +42867,12 @@ ALTER TABLE `tbl_team`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_top_rated_startups`
+--
+ALTER TABLE `tbl_top_rated_startups`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
@@ -42858,13 +42910,13 @@ ALTER TABLE `skills_level`
 -- AUTO_INCREMENT for table `startups`
 --
 ALTER TABLE `startups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `tbl_bookmarks`
 --
 ALTER TABLE `tbl_bookmarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_connections_entrepreneur`
@@ -42894,13 +42946,19 @@ ALTER TABLE `tbl_investor`
 -- AUTO_INCREMENT for table `tbl_likes`
 --
 ALTER TABLE `tbl_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tbl_top_rated_startups`
+--
+ALTER TABLE `tbl_top_rated_startups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
