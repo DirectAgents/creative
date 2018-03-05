@@ -2,33 +2,65 @@
 
 include_once("config.php"); 
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
-//$row = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE requested_id='149' ");
+$row = mysqli_fetch_array($sql);
 
 
 
-$row = array();
-while($data = mysqli_fetch_assoc($sql)){
-        $row[] = $data['Likes'];
+$myString = $row['requester_id'];
+$myArray = explode(',', $myString);
+//print_r($myArray);
 
-    }
-//print_r($row);
-//echo max($row);
 
-arsort($row);
-$keys = array_keys($row);
 
-if(array_key_exists(0, $row[$keys[20]])) {echo "hello"; }else{}
 
-//echo $keys[1]; // chocolate
-//echo $row[$keys[20]]; // 20
+
+
+
+$index = array_search('111',$myArray);
+//Found
+if($index !== FALSE){
+unset($myArray[$index]); //Delete userid
+print_r($myArray);
+$likes_userid = implode(',', $myArray);
+
+print_r($likes_userid);
+
+$sql_update = "UPDATE tbl_likes SET 
+requester_id='".$likes_userid."',
+Likes = Likes + 1   
+
+WHERE requested_id='149'";
+
+mysqli_query($connecDB, $sql_update);
+  
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 ?>
+
+
 
 
 

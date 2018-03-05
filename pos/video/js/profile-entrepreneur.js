@@ -853,22 +853,31 @@ $('.like').click(function(){
 
       var requested_id = $(".like").attr("data-requested-id");
       var requester_id = $(".like").attr("data-requester-id");
-      //alert(requested_id);
+      var industry = $(".like").attr("data-industry");
+      var like = $('input[name="likeselection[]"]:checked').map(function() { return this.value; }).get().join(",");
+      alert(requested_id);
       $.ajax({
             url: url_link_startup+"like.php",
             method: "POST",
-            data: {requested_id: requested_id, requester_id: requester_id},
+            data: {requested_id: requested_id, requester_id: requester_id, industry: industry, like: like},
             dataType: "html",
             success: function(response) {
 
-             if(response != 'no good'){ 
+             if(response == 'like'){ 
              
             parent.swal("Success!", "You liked it.", "success");  
             parent.$('#likes'+requested_id).html(response);
 
               }
+
+              if(response == 'dislike'){ 
+             
+            parent.swal("Success!", "You dis liked it.", "success");  
+            parent.$('#likes'+requested_id).html(response);
+
+              } 
         
-        if(response == 'no good'){ 
+        /*if(response == 'dislike'){ 
 
         parent.swal({   
             title: "You already liked it.",   
@@ -913,16 +922,16 @@ $('.like').click(function(){
         });
 
 
-              }
+              }*/
 
                 }
              });                   
-    }); 
+    
 
 
 
 
-
+   });
 
 
 });

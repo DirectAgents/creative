@@ -134,67 +134,6 @@ include_once("config.php");
 
               
 
-
- <div class="modal fade text-center" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="container center-block">
-                <div class="signup-container center-block">
-                    <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
-                    <div class="signup-card center-block">
-                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
-                        <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
-                        <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                 <div class="login-buttons">
-                                    <a href="<?php echo htmlspecialchars($loginUrl); ?>">
-                                        <div class="fb-connect connect-background" data-track="home:facebook-connect">
-                                            <span class="fa fa-facebook"></span>
-                                            <span class="connect-text">Connect with Facebook</span>
-                                        </div>  
-                                    </a>
-                                </div>
-                             </div>   
-                                <div class="col-md-12">
-                                    <div class="login-buttons">
-                                    <a href="<?php echo $authUrl; ?>">
-                                       <div class="google-connect connect-background" id="google-connect-button" data-track="home:google-connect">
-                         <span class="fa fa-google-plus"></span>
-                         <span class="google-connect-text connect-text">Connect with Google</span>
-                    </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                              <div class="col-md-12">
-                                    <div class="login-buttons">
-                            <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x2ye1ktvzj7d&redirect_uri=<?php echo BASE_PATH; ?>/linkedin/&state=987654321&scope=r_basicprofile,r_emailaddress">
-                                      <div class="li-connect connect-background" data-track="home:facebook-connect">
-                         <span class="fa fa-linkedin"></span>
-                        
-                         <span class="connect-text">Connect with Linkedin</span>
-                         
-                        </div>
-                    
-                    </a>
-                                   
-                                </div>
-                            </div>
-
-
-                            </div> 
-                        </div>
-                        <p class="signup-light text-center">We won't ever post anything on Facebook without your permission.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-               
-               
-
-             
             <!-- /.container-fluid -->
             
         </div>

@@ -97,9 +97,57 @@ $row = mysqli_fetch_array($sql);
 <?php if(isset($_SESSION['entrepreneurSession']) && $_GET['id'] != $_SESSION['entrepreneurSession'] ) { ?> 
  <a href="#" class="bg-danger bookmark" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-bookmark"></i></a>
 
- <a href="#" class="bg-danger like" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-heart"></i></a>
+ <a href="#" class="bg-danger like" data-industry="<?php echo $row['Industry']; ?>" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="105"><i class="ti-heart"></i></a>
 
    
+
+<?php 
+
+
+ //MySQL query
+$Result = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE requested_id ='".$_GET['id']."' ");
+
+
+//get all records from add_delete_record table
+$row2 = mysqli_fetch_array($Result);
+
+
+$ctop = $row2['requester_id']; 
+$ctop = explode(',',$ctop); 
+
+
+if($row2['requester_id'] != '' && $row2['requester_id'] != 'NULL' ){
+
+//echo "111asdfasdf";
+
+foreach($ctop as $like_userid)  
+       { 
+  echo $like_userid;
+
+      if(in_array($like_userid,$ctop)){
+        
+       //echo '<input id="skillselection_'.$like_userid.'" name="likeselection[]" type="checkbox"  value="'.$row2['requester_id'].'" style="display:block" checked/>';
+       echo '<input id="skillselection_107" name="likeselection[]" type="checkbox"  value="'.$row2['requester_id'].',108" style="display:block"/ checked>';
+            
+       //echo $skill;
+      }
+
+      }
+
+}else{
+
+echo '<input id="skillselection_107" name="likeselection[]" type="checkbox"  value="107" style="display:block" checked/>';
+
+}
+
+
+
+?>
+
+
+
+
+
  <?php } ?>
 
 
