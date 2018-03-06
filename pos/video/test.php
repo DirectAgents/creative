@@ -24,22 +24,47 @@ $myArray = explode(',', $myString);
 
 
 $index = array_search('111',$myArray);
-//Found
-if($index !== FALSE){
-unset($myArray[$index]); //Delete userid
-print_r($myArray);
-$likes_userid = implode(',', $myArray);
 
-print_r($likes_userid);
+
+
+
+//if Found
+if($index !== FALSE){
+
+//print_r($myArray);
+
+echo "found";
+
+unset($myArray[$index]); //Delete userid
+
+$likes_userid = implode(',', $myArray);
 
 $sql_update = "UPDATE tbl_likes SET 
 requester_id='".$likes_userid."',
-Likes = Likes + 1   
+Likes = Likes - 1   
 
 WHERE requested_id='149'";
 
 mysqli_query($connecDB, $sql_update);
   
+
+}else{
+
+
+//unset($myArray[$index]); //Delete userid
+
+
+
+echo "not found";
+
+$sql_update = "UPDATE tbl_likes SET 
+requester_id='111',
+Likes = Likes + 1   
+
+WHERE requested_id='149'";
+
+mysqli_query($connecDB, $sql_update);
+
 
 }
 

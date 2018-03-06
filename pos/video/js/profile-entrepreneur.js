@@ -855,7 +855,7 @@ $('.like').click(function(){
       var requester_id = $(".like").attr("data-requester-id");
       var industry = $(".like").attr("data-industry");
       var like = $('input[name="likeselection[]"]:checked').map(function() { return this.value; }).get().join(",");
-      alert(requested_id);
+      //alert(requester_id);
       $.ajax({
             url: url_link_startup+"like.php",
             method: "POST",
@@ -863,19 +863,14 @@ $('.like').click(function(){
             dataType: "html",
             success: function(response) {
 
-             if(response == 'like'){ 
+             //if(response == 'like'){ 
              
-            parent.swal("Success!", "You liked it.", "success");  
+            //parent.swal("Success!", "You liked it.", "success");  
             parent.$('#likes'+requested_id).html(response);
 
-              }
+              //}
 
-              if(response == 'dislike'){ 
-             
-            parent.swal("Success!", "You dis liked it.", "success");  
-            parent.$('#likes'+requested_id).html(response);
-
-              } 
+            
         
         /*if(response == 'dislike'){ 
 
