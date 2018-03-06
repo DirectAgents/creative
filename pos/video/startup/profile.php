@@ -79,9 +79,8 @@
 
                                             <?php if($row_startup['Logo'] != '') { ?>
                                           <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
-                                            <?php }else{ ?>
-                                            <img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
-                                            <?php } ?>
+                                            <?php }?>
+                                           
 
                                               </div>
 

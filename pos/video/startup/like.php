@@ -46,11 +46,15 @@ mysqli_query($connecDB, $sql_update);
 
 $sql1 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE requested_id='".$_POST['requested_id']."' ");
 $row1 = mysqli_fetch_array($sql1);
+
+
+$sql_update = "UPDATE tbl_top_rated_startups SET 
+Likes = Likes - 1   
+WHERE Industry='".$row1['Industry']."'";
+mysqli_query($connecDB, $sql_update);
+
 //echo "dislike";
-
 echo $row1['Likes'];
-
-
 
 
 
@@ -79,6 +83,11 @@ $sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE requested_id='".$_
 $row2 = mysqli_fetch_array($sql2);
 
 
+$sql_update = "UPDATE tbl_top_rated_startups SET 
+Likes = Likes + 1   
+WHERE Industry='".$row2['Industry']."'";
+mysqli_query($connecDB, $sql_update);
+
 //echo "like";
 echo $row2['Likes'];
 
@@ -103,6 +112,12 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_likes(requester_id, reques
 
 $sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE requested_id='".$_POST['requested_id']."' ");
 $row3 = mysqli_fetch_array($sql3);
+
+
+$sql_update = "UPDATE tbl_top_rated_startups SET 
+Likes = Likes + 1   
+WHERE Industry='".$row3['Industry']."'";
+mysqli_query($connecDB, $sql_update);
 
 
 echo $row3['Likes'];

@@ -80,6 +80,35 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                     <!-- /.dropdown-messages -->
 
 
+<?php 
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+if($row[$keys[0]] > 0){ // 20
+
+
+?>
+
+
+                    <!-- .Megamenu -->
+                    <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Popular Startups</span> <i class="icon-options-vertical"></i></a>
+                        <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
+                           
 
 <?php
 
@@ -101,6 +130,10 @@ $keys = array_keys($row);
 
 //echo $keys[1]; // chocolate
 //echo $row[$keys[0]]; // 20
+
+
+///////////// 1# Highest liked Industry/////////////////
+
 
 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[0]]."'");
 $row2 = mysqli_fetch_array($sql);
@@ -155,64 +188,332 @@ $sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$ro
 $row13 = mysqli_fetch_array($sql13);
 }
 
-//echo $row4['Name'];
 
+?>
+
+                           <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                </ul>
+                            </li>
+
+
+
+
+<?php
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+//echo $row[$keys[0]]; // 20
+
+
+if($row[$keys[1]] > 0 && $row[$keys[1]] < $row[$keys[0]] ){ // 20
+
+///////////// 2# Highest liked Industry/////////////////
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[1]]."'");
+$row2 = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."'");
+//$row = mysqli_fetch_array($sql);
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+
+arsort($row);
+$keys = array_keys($row);
+
+
+
+
+if(array_key_exists(0, $row) == 1){
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$row3 = mysqli_fetch_array($sql3);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
+$row4 = mysqli_fetch_array($sql4);
+}
+
+if(array_key_exists(1, $row) == 1){
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$row5 = mysqli_fetch_array($sql5);
+$sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
+$row6 = mysqli_fetch_array($sql6);
+}
+
+if(array_key_exists(2, $row) == 1){
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$row7 = mysqli_fetch_array($sql7);
+$sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row8 = mysqli_fetch_array($sql8);
+}
+
+if(array_key_exists(3, $row) == 1){
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$row9 = mysqli_fetch_array($sql9);
+$sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row10 = mysqli_fetch_array($sql10);
+}
+
+if(array_key_exists(4, $row) == 1){
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$row11 = mysqli_fetch_array($sql11);
+$sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row13 = mysqli_fetch_array($sql13);
+}
 
 
 ?>
 
-                 
-                    <!-- .Megamenu -->
-                    <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Popular Startups</span> <i class="icon-options-vertical"></i></a>
-                        <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
+
+
+
                             <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="form-basic.html"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="form-layout.html"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="form-advanced.html"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="form-material-elements.html"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="form-float-input.html"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
-                                
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
                                 </ul>
                             </li>
+
+
+<?php } ?>
+
+<?php
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+//echo $row[$keys[0]]; // 20
+
+
+if($row[$keys[2]] > 0 && $row[$keys[2]] < $row[$keys[1]] ){ // 20
+
+
+///////////// 3# Highest liked Industry/////////////////
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[2]]."'");
+$row2 = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."'");
+//$row = mysqli_fetch_array($sql);
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+
+arsort($row);
+$keys = array_keys($row);
+
+
+
+if(array_key_exists(0, $row) == 1){
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$row3 = mysqli_fetch_array($sql3);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
+$row4 = mysqli_fetch_array($sql4);
+}
+
+if(array_key_exists(1, $row) == 1){
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$row5 = mysqli_fetch_array($sql5);
+$sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
+$row6 = mysqli_fetch_array($sql6);
+}
+
+if(array_key_exists(2, $row) == 1){
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$row7 = mysqli_fetch_array($sql7);
+$sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row8 = mysqli_fetch_array($sql8);
+}
+
+if(array_key_exists(3, $row) == 1){
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$row9 = mysqli_fetch_array($sql9);
+$sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row10 = mysqli_fetch_array($sql10);
+}
+
+if(array_key_exists(4, $row) == 1){
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$row11 = mysqli_fetch_array($sql11);
+$sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row13 = mysqli_fetch_array($sql13);
+}
+
+
+?>
+
+
+
                             <li class="col-sm-3">
                                 <ul>
-                                    <li class="dropdown-header">Mobile</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                
+                                    <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
                                 </ul>
                             </li>
+
+<?php } ?>
+
+<?php
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+//echo $row[$keys[0]]; // 20
+
+
+if($row[$keys[3]] > 0 && $row[$keys[3]] < $row[$keys[2]] ){ // 20
+
+///////////// 4# Highest liked Industry/////////////////
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[3]]."'");
+$row2 = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."'");
+//$row = mysqli_fetch_array($sql);
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+
+arsort($row);
+$keys = array_keys($row);
+
+
+
+if(array_key_exists(0, $row) == 1){
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$row3 = mysqli_fetch_array($sql3);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
+$row4 = mysqli_fetch_array($sql4);
+}
+
+if(array_key_exists(1, $row) == 1){
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$row5 = mysqli_fetch_array($sql5);
+$sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
+$row6 = mysqli_fetch_array($sql6);
+}
+
+if(array_key_exists(2, $row) == 1){
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$row7 = mysqli_fetch_array($sql7);
+$sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row8 = mysqli_fetch_array($sql8);
+}
+
+if(array_key_exists(3, $row) == 1){
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$row9 = mysqli_fetch_array($sql9);
+$sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row10 = mysqli_fetch_array($sql10);
+}
+
+if(array_key_exists(4, $row) == 1){
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$row11 = mysqli_fetch_array($sql11);
+$sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row13 = mysqli_fetch_array($sql13);
+}
+
+
+?>
+
+
+
+
+
                             <li class="col-sm-3">
                                 <ul>
-                                   <li class="dropdown-header">Finance</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                 
+                                    <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
                                 </ul>
                             </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                   <li class="dropdown-header">Ecommerce</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                 
-                                </ul>
-                            </li>
+
+<?php } ?>
+
                         </ul>
                     </li>
                     <!-- /.Megamenu -->
+
+                    <?php } ?>
                 </ul>
+
+
+
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
@@ -248,8 +549,8 @@ $row13 = mysqli_fetch_array($sql13);
                             <?php } ?>
                             <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="ti-email"></i> Connections</a></li>
                             <li><a href="<?php echo BASE_PATH; ?>/bookmarks/"><i class="ti-email"></i> Bookmarks</a></li>
-                            <li role="separator" class="divider"></li>
                              <?php if($row_startup['Name'] == ''){ ?>
+                             <li role="separator" class="divider"></li>
                              <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="ti-user"></i> Add a Startup</a></li>
                             <?php } ?>
                              <li role="separator" class="divider"></li>
@@ -269,6 +570,7 @@ $row13 = mysqli_fetch_array($sql13);
         </nav>
         <!-- End Top Navigation -->
 
+        
         <?php }else{ ?>
 
         
@@ -291,56 +593,441 @@ $row13 = mysqli_fetch_array($sql13);
                     
                    
                  
+                <?php 
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+if($row[$keys[0]] > 0){ // 20
+
+
+?>
+
+
                     <!-- .Megamenu -->
-                    <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Top 5 Startups</span> <i class="icon-options-vertical"></i></a>
+                    <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Popular Startups</span> <i class="icon-options-vertical"></i></a>
                         <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
-                            <li class="col-sm-3">
+                           
+
+<?php
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+//echo $row[$keys[0]]; // 20
+
+
+///////////// 1# Highest liked Industry/////////////////
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[0]]."'");
+$row2 = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."'");
+//$row = mysqli_fetch_array($sql);
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+
+arsort($row);
+$keys = array_keys($row);
+
+
+
+if(array_key_exists(0, $row) == 1){
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$row3 = mysqli_fetch_array($sql3);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
+$row4 = mysqli_fetch_array($sql4);
+}
+
+if(array_key_exists(1, $row) == 1){
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$row5 = mysqli_fetch_array($sql5);
+$sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
+$row6 = mysqli_fetch_array($sql6);
+}
+
+if(array_key_exists(2, $row) == 1){
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$row7 = mysqli_fetch_array($sql7);
+$sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row8 = mysqli_fetch_array($sql8);
+}
+
+if(array_key_exists(3, $row) == 1){
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$row9 = mysqli_fetch_array($sql9);
+$sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row10 = mysqli_fetch_array($sql10);
+}
+
+if(array_key_exists(4, $row) == 1){
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$row11 = mysqli_fetch_array($sql11);
+$sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row13 = mysqli_fetch_array($sql13);
+}
+
+
+?>
+
+                           <li class="col-sm-3">
                                 <ul>
-                                    <li class="dropdown-header">Technology</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                
+                                    <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
                                 </ul>
                             </li>
+
+
+
+
+<?php
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+//echo $row[$keys[0]]; // 20
+
+
+if($row[$keys[1]] > 0 && $row[$keys[1]] < $row[$keys[0]] ){ // 20
+
+///////////// 2# Highest liked Industry/////////////////
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[1]]."'");
+$row2 = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."'");
+//$row = mysqli_fetch_array($sql);
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+
+arsort($row);
+$keys = array_keys($row);
+
+
+
+
+if(array_key_exists(0, $row) == 1){
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$row3 = mysqli_fetch_array($sql3);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
+$row4 = mysqli_fetch_array($sql4);
+}
+
+if(array_key_exists(1, $row) == 1){
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$row5 = mysqli_fetch_array($sql5);
+$sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
+$row6 = mysqli_fetch_array($sql6);
+}
+
+if(array_key_exists(2, $row) == 1){
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$row7 = mysqli_fetch_array($sql7);
+$sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row8 = mysqli_fetch_array($sql8);
+}
+
+if(array_key_exists(3, $row) == 1){
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$row9 = mysqli_fetch_array($sql9);
+$sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row10 = mysqli_fetch_array($sql10);
+}
+
+if(array_key_exists(4, $row) == 1){
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$row11 = mysqli_fetch_array($sql11);
+$sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row13 = mysqli_fetch_array($sql13);
+}
+
+
+?>
+
+
+
+
                             <li class="col-sm-3">
                                 <ul>
-                                    <li class="dropdown-header">Mobile</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                
+                                    <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
                                 </ul>
                             </li>
+
+
+<?php } ?>
+
+<?php
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+//echo $row[$keys[0]]; // 20
+
+
+if($row[$keys[2]] > 0 && $row[$keys[2]] < $row[$keys[1]] ){ // 20
+
+
+///////////// 3# Highest liked Industry/////////////////
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[2]]."'");
+$row2 = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."'");
+//$row = mysqli_fetch_array($sql);
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+
+arsort($row);
+$keys = array_keys($row);
+
+
+
+if(array_key_exists(0, $row) == 1){
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$row3 = mysqli_fetch_array($sql3);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
+$row4 = mysqli_fetch_array($sql4);
+}
+
+if(array_key_exists(1, $row) == 1){
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$row5 = mysqli_fetch_array($sql5);
+$sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
+$row6 = mysqli_fetch_array($sql6);
+}
+
+if(array_key_exists(2, $row) == 1){
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$row7 = mysqli_fetch_array($sql7);
+$sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row8 = mysqli_fetch_array($sql8);
+}
+
+if(array_key_exists(3, $row) == 1){
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$row9 = mysqli_fetch_array($sql9);
+$sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row10 = mysqli_fetch_array($sql10);
+}
+
+if(array_key_exists(4, $row) == 1){
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$row11 = mysqli_fetch_array($sql11);
+$sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row13 = mysqli_fetch_array($sql13);
+}
+
+
+?>
+
+
+
                             <li class="col-sm-3">
                                 <ul>
-                                   <li class="dropdown-header">Finance</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                 
+                                    <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
                                 </ul>
                             </li>
+
+<?php } ?>
+
+<?php
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups");
+//$row = mysqli_fetch_array($sql);
+
+
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+//print_r($row);
+//echo max($row);
+
+arsort($row);
+$keys = array_keys($row);
+
+//echo $keys[1]; // chocolate
+//echo $row[$keys[0]]; // 20
+
+
+if($row[$keys[3]] > 0 && $row[$keys[3]] < $row[$keys[2]] ){ // 20
+
+///////////// 4# Highest liked Industry/////////////////
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[3]]."'");
+$row2 = mysqli_fetch_array($sql);
+
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."'");
+//$row = mysqli_fetch_array($sql);
+
+$row = array();
+while($data = mysqli_fetch_assoc($sql)){
+        $row[] = $data['Likes'];
+
+    }
+
+arsort($row);
+$keys = array_keys($row);
+
+
+
+if(array_key_exists(0, $row) == 1){
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$row3 = mysqli_fetch_array($sql3);
+$sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
+$row4 = mysqli_fetch_array($sql4);
+}
+
+if(array_key_exists(1, $row) == 1){
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$row5 = mysqli_fetch_array($sql5);
+$sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
+$row6 = mysqli_fetch_array($sql6);
+}
+
+if(array_key_exists(2, $row) == 1){
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$row7 = mysqli_fetch_array($sql7);
+$sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row8 = mysqli_fetch_array($sql8);
+}
+
+if(array_key_exists(3, $row) == 1){
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$row9 = mysqli_fetch_array($sql9);
+$sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row10 = mysqli_fetch_array($sql10);
+}
+
+if(array_key_exists(4, $row) == 1){
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$row11 = mysqli_fetch_array($sql11);
+$sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
+$row13 = mysqli_fetch_array($sql13);
+}
+
+
+?>
+
+
+
+
+
                             <li class="col-sm-3">
                                 <ul>
-                                   <li class="dropdown-header">Ecommerce</li>
-                                    <li><a href="form-basic.html">1</a></li>
-                                    <li><a href="form-layout.html">2</a></li>
-                                    <li><a href="form-advanced.html">3</a></li>
-                                    <li><a href="form-material-elements.html">4</a></li>
-                                    <li><a href="form-float-input.html">5</a></li>
-                                 
+                                    <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
                                 </ul>
                             </li>
+
+<?php } ?>
+
                         </ul>
                     </li>
                     <!-- /.Megamenu -->
+
+                    <?php } ?>
+
+
+
+
+
                 </ul>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>

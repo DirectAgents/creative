@@ -71,8 +71,8 @@ No Team Members added so far!
                                 <div class="user-bg">
                                     <div class="overlay-box-grey">
                                         <div class="user-content">
-                                            <a href="javascript:void(0)">
-<?php echo $row_user['ProfileImage']; if($row_user['ProfileImage'] == 'Google'){ ?>
+                                            <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_user['username']; ?>">
+<?php if($row_user['ProfileImage'] == 'Google'){ ?>
          <img src="<?php echo $row_user['google_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
 <?php } ?>
 
@@ -86,7 +86,7 @@ No Team Members added so far!
 <?php } ?>
                                             </a>
                                             <div id="fullname">
-                                                <h4 class="text-black"><?php echo $row_user['Fullname']; ?></h4>
+                                                <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_user['username']; ?>"><h4 class="text-black"><?php echo $row_user['Fullname']; ?></h4></a>
                                             </div>
                                             <div id="city-state">
                                                 
@@ -143,7 +143,7 @@ No Team Members added so far!
                 
     <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if(mysqli_num_rows($sql_connect)<=0) { ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
-                                   <a href="javascript: void(0);" id="sa-connect" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
+                                   <a href="javascript: void(0);" id="sa-connect-<?php echo $row_user['userID']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">123Connect +</a>
                                  </div> 
                
     <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
@@ -272,6 +272,7 @@ No Team Members added so far!
 
 <script>
  
+ $(document).ready(function() {
 
  var url_link = 'http://localhost/creative/pos/video/startup/';
 
@@ -355,8 +356,54 @@ No Team Members added so far!
     });
 
 
+////////Connect//////////
+
+$('#sa-connect-'+<?php echo $row_user['userID']; ?>).click(function(){
+        alert("111asdfasfd");
+        
+        var data_thumb = $("#sa-connect-"+<?php echo $row_user['userID']; ?>).attr("data-thumb");
+        //alert(data_thumb);
+
+        swal({   
+            title: "Connect!",   
+            text: "Send a request to connect!",   
+            //type: "warning",
+            imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, connect!",   
+            closeOnConfirm: false 
+        }, function(){   
 
 
+           var requested_id = $("#sa-connect-"+<?php echo $row_user['userID']; ?>).attr("data-requested-id");
+           var requester_id = $("#sa-connect-"+<?php echo $row_user['userID']; ?>).attr("data-requester-id");
+           alert(requested_id);
+
+                        $.ajax({
+                                url: url_link+"connect-request.php",
+                                method: "POST",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                    //alert(data);
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
+                                //$("#add-a-team-member").show();
+                                $('.sa-connect-btn').hide();
+                                $('.sa-connect-sent').show();
+                                swal("Success!", "Your request has been sent.", "success");  
+
+                                }
+                            });
+                      
+             
+        });
+    });
+
+
+});
 
 </script>  
 

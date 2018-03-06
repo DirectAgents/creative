@@ -54,24 +54,24 @@ $row = mysqli_fetch_array($stmt);
                         </li>
                         <li> <a href="javascript:void(0)" class="waves-effect"><i class="mdi mdi-checkbox-multiple-marked-outline fa-fw"></i> <span class="hide-menu">Industry<span class="fa arrow"></span></span></a>
                             <ul class="nav nav-second-level">
-                                <li> <a href="javascript:void(0)"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Technology</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Mobile</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Finance</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Ecommerce</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">B2B Services</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Consumer Products</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Consulting</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Big Data</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Education</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Travel</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Entertainment</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Fashion</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Healthcare</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Real Estate</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Food and Beverages</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Art and Design</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Health, Fitness and Wellness</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Human Resources</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Technology"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Technology</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Mobile"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Mobile</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Finance"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Finance</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Ecommerce"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Ecommerce</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=MobileB2B Services"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">B2B Services</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Consumer Products"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Consumer Products</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Consulting"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Consulting</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Big Data"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Big Data</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Education"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Education</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Travel"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Travel</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Entertainment"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Entertainment</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Fashion"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Fashion</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Healthcare"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Healthcare</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Real Estate"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Real Estate</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Food and Beverages"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Food and Beverages</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Art and Design"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Art and Design</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Health, Fitness and Wellness"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Health, Fitness and Wellness</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Humarn Resources"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Human Resources</span></a> </li>
                                 <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Other</span></a> </li>
                                 <!--<li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Third Level </span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">

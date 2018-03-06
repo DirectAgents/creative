@@ -69,9 +69,9 @@ include_once("config.php");
     <div class="hit-content">
       
      
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
-                        <div class="white-box">
+                        <div class="white-box-index">
                             <div class="product-img">
                                 <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_340/v1/{{{_highlightResult.screenshot.value}}}"/>
 

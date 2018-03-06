@@ -685,6 +685,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
     //});
 
     $('#sa-connect').click(function(){
+        alert("asdfasfd");
         
         var data_thumb = $("#sa-connect").attr("data-thumb");
         //alert(data_thumb);

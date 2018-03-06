@@ -1764,6 +1764,22 @@ table.dataTable thead .sorting:after {
     font-size: 16px
 }
 
+
+.white-box-index {
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 30px;
+    float:left;
+    width:auto;
+}
+
+.white-box-index .box-title {
+    margin: 0 0 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 16px
+}
+
 .panel {
     border-radius: 0;
     margin-bottom: 30px;
