@@ -49,8 +49,10 @@ $sql_zip = "SELECT * FROM zip_state WHERE city='".$city."' AND state = '".$state
 $result = mysqli_query($connecDB, $sql_zip);  
 $row_zip = mysqli_fetch_array($result);
 
+
 date_default_timezone_set('America/New_York');
-$date = date('Y-m-d'); 
+$date = date("Y-m-d");
+$time = date('h:i:s A');  
 
 
 if(mysqli_num_rows($sql)<=0) {

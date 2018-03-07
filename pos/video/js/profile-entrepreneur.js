@@ -572,7 +572,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
   var userid = $('input[name=userid]').val();
     //alert(userid);
      $.ajax({
-            url: url_link_startup+"background-tab.php",
+            url: url_link+"background-tab.php",
             method: "GET",
             data: {userid: userid},
             dataType: "html",

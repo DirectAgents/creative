@@ -20282,6 +20282,7 @@ width: 100%;
 height: 100%;
 border:none;
 float: left;
+overflow: hidden !important;
 }
 
 .save-resume{display:none;}

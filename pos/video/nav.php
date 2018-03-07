@@ -18,6 +18,21 @@ $words = explode(" ", $rownav['Fullname']);
 $firstname = $words[0];
 
 
+////////////////Notifications for Connect Requests///////////////////////////
+
+if($rownav['Type'] == 'Entrepreneur'){$table = 'tbl_connections_entrepreneur';}
+if($rownav['Type'] == 'Investor'){$table = 'tbl_connections_investor';}
+
+$result_count = mysqli_query($connecDB,"SELECT requested_id, requester_id, Date, Time, COUNT(DISTINCT requested_id) AS count FROM ".$table." WHERE requested_id = '".$rownav['userID']."' GROUP BY requested_id");
+$row_count = mysqli_fetch_assoc($result_count);
+$count = $row_count['count'];
+
+
+$stmt_user = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$row_count['requester_id']."'");
+$row_connect = mysqli_fetch_array($stmt_user);
+
+
+
 $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
 
        ?>
@@ -39,45 +54,71 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                 <!-- Search input and Toggle icon -->
                 <ul class="nav navbar-top-links navbar-left">
                     <li><a href="javascript:void(0)" class="open-close waves-effect waves-light visible-xs"><i class="ti-close ti-menu"></i></a></li>
+                
+<?php if ($count > 0) { ?>
+
                     <li class="dropdown">
                         <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> <i class="mdi mdi-check-circle"></i>
                             <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                         </a>
+
+
+
+
+
                         <ul class="dropdown-menu mailbox animated bounceInDown">
                             <li>
-                                <div class="drop-title">You have 4 new notifications</div>
+                                <div class="drop-title">You have <?php echo $count; ?> new request</div>
                             </li>
                             <li>
                                 <div class="message-center">
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+
+
+<?php 
+
+$sql = mysqli_query($connecDB,"SELECT * FROM ".$table." WHERE requested_id = '".$rownav['userID']."' ORDER BY id DESC");
+while($row_connect_request = mysqli_fetch_array($sql)){  
+
+?>
+
+
+                                    <a href="<?php echo BASE_PATH; ?>/connections/">
+                                        <div class="user-img"> 
+                                            
+
+<?php if($rownav['ProfileImage'] == 'Google'){ ?>
+         <img src="<?php echo $row_connect['google_picture_link']; ?>" alt="user" class="img-circle">
+<?php } ?>
+
+<?php if($rownav['ProfileImage'] == 'Facebook'){ ?>
+         <img src="https://graph.facebook.com/<?php echo $row_connect['facebook_id']; ?>/picture" alt="user" class="img-circle">
+<?php } ?>
+
+<?php if($rownav['ProfileImage'] == 'Linkedin'){ ?>
+         <img src="<?php echo $row_connect['linkedin_picture_link']; ?>" alt="user" class="img-circle">
+<?php } ?>
+
+
+                                            <span class="profile-status online pull-right"></span> </div>
                                         <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
+                                            <h5><?php echo $row_connect['Fullname']; ?></h5> <span class="mail-desc">Wants to connect with you!</span> <span class="time"><?php echo $row_count['Date']; ?>, <?php echo $row_count['Time']; ?></span> </div>
                                     </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/sonu.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/arijit.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="user-img"> <img src="images/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-                                    </a>
+
+
+  <?php } ?>                                  
+                                   
+                                  
                                 </div>
                             </li>
                             <li>
-                                <a class="text-center" href="javascript:void(0);"> <strong>See all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                <a class="text-center" href="<?php echo BASE_PATH; ?>/connections/"> <strong>See all connections</strong> <i class="fa fa-angle-right"></i> </a>
                             </li>
                         </ul>
+                     
                        
                     </li>
                     <!-- /.dropdown-messages -->
+           <?php } ?>            
 
 
 <?php 

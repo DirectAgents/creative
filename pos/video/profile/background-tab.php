@@ -26,7 +26,7 @@ $firstname = $words[0];
    
 
     <!--User Logged in Starts-->
-    <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $row['userID']) { ?>
+<?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $row['userID']) { ?>
 
     <input type="hidden" name="userid" id="userid" value="<?php echo $_GET['userid']; ?>"/>
    
@@ -256,6 +256,8 @@ View Resume
 
 
     <?php } ?>
+
+
 	<!--User Logged in Ends-->
 
 
@@ -264,7 +266,7 @@ View Resume
 
 <!--Visitor Starts-->
 
-<?php if(isset($_SESSION['entrepreneurSession']) != $row['userID'] || !isset($_SESSION['entrepreneurSession'])) { ?>
+<?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] != $row['userID'] || !isset($_SESSION['entrepreneurSession'])) { ?>
 <!--About Start-->
   <div class="col-sm-12" style="padding-left: 0px;">   
      <div class="col-sm-3"><strong>About <?php echo $firstname; ?></strong><br><br></div>

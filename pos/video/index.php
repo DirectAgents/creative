@@ -78,7 +78,7 @@ include_once("config.php");
                                 <div class="pro-img-overlay">
    
  
-                                     <iframe id="iframe02" src="p.php?id={{{_highlightResult.startupID.value}}}"></iframe>
+                                     <iframe id="iframe02" src="p.php?id={{{_highlightResult.startupID.value}}}" scrolling="no"></iframe>
 
 
                                 </div>

@@ -479,6 +479,9 @@ $('#sa-connect-cancel').click(function(){
     });
 
 
+$('#connect-member').click(function(){
+        swal("Login to connect!");
+    });
 
 
 </script>    

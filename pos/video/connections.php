@@ -131,8 +131,8 @@ exit();
                                         </p>
                                     </div>
                              
-                             <?php if(isset($_SESSION['entrepreneurSession'])) { ?>    
-                              
+                              <?php if(isset($_SESSION['entrepreneurSession'])) { ?>    
+                               <?php if($_SESSION['entrepreneurSession'] != $row_entrepreneur['userID']) { ?>    
 
 <?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
 <?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture?type=large"; } ?>
@@ -141,7 +141,11 @@ exit();
                                  <p>&nbsp;</p>
 
         <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE requester_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+
+    if($row_entrepreneur['Type'] == 'Entrepreneur'){$type = 'entrepreneur';}
+    if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
+
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
                 ?>                 
                                  
                 
@@ -154,7 +158,7 @@ exit();
                                     <a href="javascript: void(0);" id="sa-connect-cancel" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
-                               
+                               <?php } ?>  
 
                             <?php }else{ ?>   
                             
@@ -164,8 +168,7 @@ exit();
                                     <a href="javascript: void(0);" id="sa-basic" class="btn btn-danger hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
                                  </div> 
                                
-                            <?php } ?>    
-
+                            <?php } ?>   
                                 </div>
                             </div>
                         </div>
@@ -468,10 +471,10 @@ $('#sa-connect-delete-'+<?php echo $row_connections['requester_id']; ?>).click(f
             <tr class="advance-table-row connections-tab-inside text-center">
                 <td width="10"></td>
                 <td>
-                    <img src="<?php echo $profileimage; ?>" class="img-circle" width="30">
+                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['username'];?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
                 </td>
                 <td>
-                    <?php echo $row_entrepreneur['Fullname']; ?>
+                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['username'];?>"><?php echo $row_entrepreneur['Fullname']; ?></a>
                 </td>
                 <td><span class="label label-warning label-rouded"><?php echo $row_entrepreneur['Type']; ?></span></td>
                 <td>
@@ -558,61 +561,7 @@ $('#sa-connect-delete-'+<?php echo $row_connections['requester_id']; ?>).click(f
                 </div>
                 <!-- /.container-fluid -->
 
-<div class="modal fade text-center" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="container center-block">
-                <div class="signup-container center-block">
-                    <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
-                    <div class="signup-card center-block">
-                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
-                        <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
-                        <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                 <div class="login-buttons">
-                                    <a href="<?php echo htmlspecialchars($loginUrl); ?>">
-                                        <div class="fb-connect connect-background" data-track="home:facebook-connect">
-                                            <span class="fa fa-facebook"></span>
-                                            <span class="connect-text">Connect with Facebook</span>
-                                        </div>  
-                                    </a>
-                                </div>
-                             </div>   
-                                <div class="col-md-12">
-                                    <div class="login-buttons">
-                                    <a href="<?php echo $authUrl; ?>">
-                                       <div class="google-connect connect-background" id="google-connect-button" data-track="home:google-connect">
-                         <span class="fa fa-google-plus"></span>
-                         <a href="<?php echo $authUrl; ?>">
-                         <span class="google-connect-text connect-text">Connect with Google</span>
-                         </a>
-                    </div>
-                                    </a>
-                                </div>
-                            </div>
 
-                              <div class="col-md-12">
-                                    <div class="login-buttons">
-                                    <a href="<?php echo $authUrl; ?>">
-                                      <div class="li-connect connect-background" data-track="home:facebook-connect">
-                         <span class="fa fa-linkedin"></span>
-                         <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x2ye1ktvzj7d&redirect_uri=<?php echo BASE_PATH; ?>/linkedin/&state=987654321&scope=r_basicprofile,r_emailaddress">
-                         <span class="connect-text">Connect with Linkedin</span>
-                         </a>
-                         
-                    </div>
-                                    </a>
-                                </div>
-                            </div>
-
-
-                            </div> 
-                        </div>
-                        <p class="signup-light text-center">We won't ever post anything on Facebook without your permission.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 

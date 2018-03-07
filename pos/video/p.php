@@ -15,9 +15,8 @@ $row = mysqli_fetch_array($sql);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="author" content="Jose Francisco Diaz / picssel.com" />
-<title>this should be an iframed page</title>
+
+
 
 
 </head>
