@@ -11,7 +11,7 @@ if($_POST){
 	
 
 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$_POST['requester_id']."'");
-if(mysqli_num_rows($sql) ) {
+if(mysqli_num_rows($sql) > 0 ) {
 $row= mysqli_fetch_array($sql);
 
 

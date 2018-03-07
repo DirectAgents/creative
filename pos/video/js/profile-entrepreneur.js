@@ -733,27 +733,28 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 $('#sa-connect-cancel').click(function(){
         
-        var data_thumb = $("#sa-connect").attr("data-thumb");
+        var data_thumb = $("#sa-connect-cancel").attr("data-thumb");
         //alert(data_thumb);
+        //var data_name = $("#sa-connect").attr("data-name");
 
         swal({   
             title: "Connect!",   
-            text: "Send a request to connect!",   
+            text: "Cancel request to connect with "+data_name+" !",  
             //type: "warning",
             imageUrl: data_thumb,   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   
-            confirmButtonText: "Yes, connect!",   
+            confirmButtonText: "Yes, cancel!",   
             closeOnConfirm: false 
         }, function(){   
 
 
-           var requested_id = $("#sa-connect").attr("data-requested-id");
-           var requester_id = $("#sa-connect").attr("data-requester-id");
-           alert(requested_id);
+           var requested_id = $("#sa-connect-cancel").attr("data-requested-id");
+           var requester_id = $("#sa-connect-cancel").attr("data-requester-id");
+           //alert(requested_id);
 
                         $.ajax({
-                                url: url_link+"connect-request.php",
+                                url: url_link+"connect-cancel.php",
                                 method: "POST",
                                 data: {requested_id: requested_id, requester_id: requester_id},
                                 dataType: "html",
@@ -763,9 +764,9 @@ $('#sa-connect-cancel').click(function(){
                                     //$('#deleted').delay(2000).fadeOut("slow");
                                 //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
                                 //$("#add-a-team-member").show();
-                                $('.sa-connect-btn').hide();
-                                $('.sa-connect-sent').show();
-                                swal("Success!", "Your request has been sent.", "success");  
+                                $('.sa-connect-btn').show();
+                                $('.sa-connect-sent').hide();
+                                swal("Success!", "Your request to connect has been canceled.", "success");  
 
                                 }
                             });
@@ -773,7 +774,6 @@ $('#sa-connect-cancel').click(function(){
              
         });
     });
-
 
 
     

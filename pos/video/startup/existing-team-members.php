@@ -23,6 +23,9 @@ $result_startup = mysqli_query($connecDB, $sql_startup);
 $row_startup = mysqli_fetch_array($result_startup);
 
 
+$words = explode(" ", $row_user['Fullname']);
+$thefirstname = $words[0];
+
  ?>
 
 
@@ -137,17 +140,17 @@ No Team Members added so far!
 
 
                              <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE requester_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
                 ?>                 
                                  
                 
     <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if(mysqli_num_rows($sql_connect)<=0) { ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
-                                   <a href="javascript: void(0);" id="sa-connect-<?php echo $row_user['userID']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">123Connect +</a>
+                                   <a href="javascript: void(0);" id="sa-connect" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
                                  </div> 
                
     <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
-                                    <a href="javascript: void(0);" id="sa-connect-cancel" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
+                                    <a href="javascript: void(0);" id="sa-connect-cancel" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
                                <?php } ?>  
@@ -356,17 +359,44 @@ No Team Members added so far!
     });
 
 
+
+
+});
+
+</script>  
+
+
+                                        </div>
+
+
+                                          
+                                          
+                                           
+                                        </div>
+
+                                        <?php } ?>
+                                        </div>  
+
+                                  
+
+
+<script>
+
+
+var url_link = 'http://localhost/creative/pos/video/startup/';
+
 ////////Connect//////////
 
-$('#sa-connect-'+<?php echo $row_user['userID']; ?>).click(function(){
-        alert("111asdfasfd");
+$('#sa-connect').click(function(){
+        //alert("111asdfasfd");
         
-        var data_thumb = $("#sa-connect-"+<?php echo $row_user['userID']; ?>).attr("data-thumb");
+        var data_thumb = $("#sa-connect").attr("data-thumb");
         //alert(data_thumb);
+        var data_name = $("#sa-connect").attr("data-name");
 
         swal({   
             title: "Connect!",   
-            text: "Send a request to connect!",   
+            text: "Send a request to connect with "+data_name+" !",   
             //type: "warning",
             imageUrl: data_thumb,   
             showCancelButton: true,   
@@ -376,9 +406,9 @@ $('#sa-connect-'+<?php echo $row_user['userID']; ?>).click(function(){
         }, function(){   
 
 
-           var requested_id = $("#sa-connect-"+<?php echo $row_user['userID']; ?>).attr("data-requested-id");
-           var requester_id = $("#sa-connect-"+<?php echo $row_user['userID']; ?>).attr("data-requester-id");
-           alert(requested_id);
+           var requested_id = $("#sa-connect").attr("data-requested-id");
+           var requester_id = $("#sa-connect").attr("data-requester-id");
+           //alert(requester_id);
 
                         $.ajax({
                                 url: url_link+"connect-request.php",
@@ -403,23 +433,56 @@ $('#sa-connect-'+<?php echo $row_user['userID']; ?>).click(function(){
     });
 
 
-});
 
-</script>  
+$('#sa-connect-cancel').click(function(){
+        
+        var data_thumb = $("#sa-connect-cancel").attr("data-thumb");
+        //alert(data_thumb);
+        var data_name = $("#sa-connect").attr("data-name");
+
+        swal({   
+            title: "Connect!",   
+            text: "Cancel request to connect with "+data_name+" !",  
+            //type: "warning",
+            imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, cancel!",   
+            closeOnConfirm: false 
+        }, function(){   
 
 
-                                        </div>
+           var requested_id = $("#sa-connect-cancel").attr("data-requested-id");
+           var requester_id = $("#sa-connect-cancel").attr("data-requester-id");
+           //alert(requested_id);
+
+                        $.ajax({
+                                url: url_link+"connect-cancel.php",
+                                method: "POST",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                    //alert(data);
+                                    //$('#deleted').fadeIn("fast");
+                                    //$('#deleted').delay(2000).fadeOut("slow");
+                                //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
+                                //$("#add-a-team-member").show();
+                                $('.sa-connect-btn').show();
+                                $('.sa-connect-sent').hide();
+                                swal("Success!", "Your request to connect has been canceled.", "success");  
+
+                                }
+                            });
+                      
+             
+        });
+    });
 
 
-                                          
-                                          
-                                           
-                                        </div>
 
-                                        <?php } ?>
-                                        </div>  
 
-                                  
+</script>    
+
 
 <!-- Sweet-Alert  -->
 <script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
