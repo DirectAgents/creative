@@ -9,6 +9,13 @@
 $stmt = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'");
 $rownav = mysqli_fetch_array($stmt);
 
+
+ if($rownav['Type'] == ''){
+
+      header('Location: '.BASE_PATH.'/choose/');
+      exit();
+}
+
 $sql_startup = "SELECT * FROM startups WHERE userID ='".$rownav['userID']."'";  
 $result = mysqli_query($connecDB, $sql_startup);  
 $row_startup = mysqli_fetch_array($result);

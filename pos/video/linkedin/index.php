@@ -148,9 +148,10 @@ if($row['userID']) //if user already exist change greeting text to "Welcome Back
         $row2 = mysqli_fetch_array($sql);
 
         $_SESSION['entrepreneurSession'] = $row2['userID'];
+        $_SESSION['google_id'] = $user->id;
         //echo $_SESSION['startupSession'];
         //echo "asdfasfd";
-        header('Location: '.BASE_PATH.'');
+        header('Location: '.BASE_PATH.'/choose/');
         exit();
 
 

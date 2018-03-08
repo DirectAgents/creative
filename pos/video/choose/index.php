@@ -4,7 +4,7 @@
  require_once '../base_path.php';
  include '../config.php';
 
-
+if($_POST){
 
 if(isset($_SESSION['google_id'])){
 
@@ -37,18 +37,19 @@ if(isset($_SESSION['google_id'])){
 
 if(isset($_SESSION['facebook_id'])){
 
+  
+
 
 	    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
-        $row = mysqli_fetch_array($sql);
+      $row = mysqli_fetch_array($sql);
+
+      
 
           if($row['userID']) //if user already exist change greeting text to "Welcome Back"
    			 {   
 
         $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
-        facebook_id = '".$_SESSION['facebook_id']."',
-        Fullname = '".$_SESSION['fullname']."',
-        Gender = '".$_SESSION['gender']."',
-        ProfileImage = 'Facebook'
+        Type = '".$_POST['type']."'
     
         WHERE Email='".$_SESSION['email']."'");
 
@@ -56,6 +57,8 @@ if(isset($_SESSION['facebook_id'])){
        
 
         header('Location: '.BASE_PATH.'');
+        //echo "asdfsaf";
+        //echo $_SESSION['email'];
         exit();
 
        } 
@@ -150,11 +153,14 @@ if(isset($_SESSION['linkedin_id'])){
 
 }
 
+}
+
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 
 
+<input type="text" name="type" id="type" value="Investor">
 
 <input type="submit" value="submit">
 

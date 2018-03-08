@@ -11,6 +11,22 @@
 $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 
+if(isset($_SESSION['entrepreneurSession'])){
+
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID = '".$_SESSION['entrepreneurSession']."'");
+$row = mysqli_fetch_array($sql);
+
+ if($row['Type'] == ''){
+
+      //header('Location: '.BASE_PATH.'/choose/');
+      echo "asdfasdf";
+      exit();
+
+  }
+
+}
+
+
 
 
 if(!isset($_SESSION['linkedin_id'])){
@@ -174,10 +190,14 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         $row = mysqli_fetch_array($sql);
 
         $_SESSION['entrepreneurSession'] = $row['userID'];
-        echo $_SESSION['startupSession'];
+        $_SESSION['google_id'] = $user->id;
+        //echo $_SESSION['startupSession'];
         //echo "asdfasfd";
         //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
         //exit();
+
+        header('Location: '.BASE_PATH.'/choose/');
+        exit();
 
 
     
@@ -251,6 +271,8 @@ echo 'id: ' . $user['id'];
   $row = mysqli_fetch_array($sql);
 
 
+
+
   //show user picture
   //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
   //echo $user_count;
@@ -258,6 +280,8 @@ echo 'id: ' . $user['id'];
   if($row['userID'] != '') //if user already exist change greeting text to "Welcome Back"
     {
 
+
+     
     
 
     $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
@@ -269,6 +293,7 @@ echo 'id: ' . $user['id'];
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['entrepreneurSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
+
         //header("Location: ../index.php");
         //echo $_SESSION['startupSession'];
         //echo "asdfasdf";
@@ -276,6 +301,15 @@ echo 'id: ' . $user['id'];
         //echo $user['email'];
         //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
         //exit();
+
+     //if($row['Type'] == ''){
+
+      //header('Location: '.BASE_PATH.'');
+      //exit();
+
+     //}
+
+        
         
     }
   else //else greeting text "Thanks for registering"
@@ -290,8 +324,16 @@ echo 'id: ' . $user['id'];
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $fullname = $user['first_name'].' '.$user['last_name'];
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
-      VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
+
+    $words = explode(" ", $fullname);
+    $firstname = $words[0];
+    $lastname = $words[1];
+
+    $theusername = strtolower($firstname.'-'.$lastname);
+
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (username, facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
+      VALUES ('".$theusername."', '".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
@@ -302,11 +344,16 @@ echo 'id: ' . $user['id'];
     $row = mysqli_fetch_array($sql);
 
     $_SESSION['entrepreneurSession'] = $row['userID'];
+    $_SESSION['facebook_id'] = $user['id'];
+    $_SESSION['email'] = $user['email'];
     //header("Location: ../index.php");
     //echo $row['userID'];
     //echo "123";
     //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
     //exit(); 
+
+    header('Location: '.BASE_PATH.'/choose/');
+    exit();
 
 
 

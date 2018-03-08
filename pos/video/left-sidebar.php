@@ -41,10 +41,17 @@ $row = mysqli_fetch_array($stmt);
                                 <span class="hide-menu"> <?php echo $rownav['Fullname']; ?><span class="fa arrow"></span></span>
                         </a>
                             <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
-                                <li><a href="javascript:void(0)"><i class="ti-user"></i> <span class="hide-menu">My Profile</span></a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-wallet"></i> <span class="hide-menu">My Balance</span></a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-email"></i> <span class="hide-menu">Inbox</span></a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-settings"></i> <span class="hide-menu">Account Setting</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $rownav['username']; ?>"><i class="ti-user"></i> <span class="hide-menu">My Profile</span></a></li>
+                                <?php if($row_startup['Name'] != ''){ ?>
+                                <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>"><i class="ti-wallet"></i> <span class="hide-menu">My Startup</span></a></li>
+                                <?php } ?>
+                                <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="ti-email"></i> <span class="hide-menu">Connections</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/bookmarks/"><i class="ti-email"></i> <span class="hide-menu">Bookmarks</span></a></li>
+
+                                <?php if($row_startup['Name'] == ''){ ?>
+                                <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="ti-email"></i> <span class="hide-menu">Add a Startup</span></a></li>
+                                <?php } ?>
+                                <li><a href="<?php echo BASE_PATH; ?>/settings/"><i class="ti-settings"></i> <span class="hide-menu">Account Setting</span></a></li>
                                 <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a></li>
                             </ul>
                         </li>
@@ -85,8 +92,8 @@ $row = mysqli_fetch_array($stmt);
                         </li>
                          <li><a href="<?php echo BASE_PATH; ?>/startups/" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">For Startups<span class="fa arrow"></span></span></a>
                             <li><a href="<?php echo BASE_PATH; ?>/investors/" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">For Investors<span class="fa arrow"></span></span></a>
-                        <li class="devider"></li>
-                        <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
+                        <!--<li class="devider"></li>
+                        <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>-->
                     </ul>
                 </div>
             </div>

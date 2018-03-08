@@ -119,7 +119,12 @@ echo $_POST['position'];
 echo '</h5>';
 echo '</div>';
 
- 
+/*
+$dateTime = "2017-03-05";
+$dateTimeSplit = explode(" ",$dateTime);
+$date = $dateTimeSplit[0];
+echo date('M d, Y',strtotime($date));
+*/ 
 
 $date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
 

@@ -96,7 +96,7 @@ $row = mysqli_fetch_array($sql);
 <?php if(isset($_SESSION['entrepreneurSession']) && $_GET['id'] != $_SESSION['entrepreneurSession'] ) { ?> 
  <a href="#" class="bg-danger bookmark" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-bookmark"></i></a>
 
- <a href="#" class="bg-danger like" data-industry="<?php echo $row['Industry']; ?>" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="105"><i class="ti-heart"></i></a>
+ <a href="#" class="bg-danger like" data-industry="<?php echo $row['Industry']; ?>" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-heart"></i></a>
 
 
 
