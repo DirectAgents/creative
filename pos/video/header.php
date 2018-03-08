@@ -16,10 +16,12 @@ if(isset($_SESSION['entrepreneurSession'])){
 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID = '".$_SESSION['entrepreneurSession']."'");
 $row = mysqli_fetch_array($sql);
 
- if($row['Type'] == ''){
 
-      //header('Location: '.BASE_PATH.'/choose/');
-      echo "asdfasdf";
+ if(empty($row['Type'])){
+
+      header('Location: '.BASE_PATH.'/choose/');
+      //echo $_SESSION['entrepreneurSession'];
+      //echo "asdasdf";
       exit();
 
   }
@@ -246,7 +248,8 @@ try {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
 } catch(Facebook\Exceptions\FacebookSDKException $e) {
-  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  //echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  header("Location: ".BASE_PATH."/404/");
   exit;
 }
 

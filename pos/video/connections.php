@@ -63,7 +63,7 @@ exit();
                 <div class="container-fluid">
                     <div class="row bg-title">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Profile page</h4> </div>
+                            <h4 class="page-title">Connections</h4> </div>
 
                        
                     </div>
@@ -287,7 +287,7 @@ $('#sa-connect-accept-'+<?php echo $row_connections['requester_id']; ?>).click(f
                                 data: {requested_id: requested_id, requester_id: requester_id},
                                 dataType: "html",
                                 success: function(response) {
-                                    alert(response);
+                                    //alert(response);
                                     //$('#deleted').fadeIn("fast");
                                     //$('#deleted').delay(2000).fadeOut("slow");
                                 //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
@@ -439,7 +439,7 @@ $('#sa-connect-delete-'+<?php echo $row_connections['requester_id']; ?>).click(f
                                 $("#connections-tab-content").load(url_link+"connections-tab.php?userid="+requester_id);
 
                                 if (response != 'no good') {
-                                swal("Success!", "You have denied the request.", "success"); 
+                                swal("Success!", "You have deleted the connection.", "success"); 
                                  }
 
                                

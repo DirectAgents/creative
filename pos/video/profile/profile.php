@@ -5,6 +5,11 @@
  $result = mysqli_query($connecDB, $sql);  
  $row_entrepreneur = mysqli_fetch_array($result);
 
+ if($row_entrepreneur['username'] == ''){
+  header("Location: ".BASE_PATH."/404/");
+  exit();
+ }
+
 
  $sql_startup = "SELECT * FROM startups WHERE userID ='".$row_entrepreneur ['userID']."'";  
  $result = mysqli_query($connecDB, $sql_startup);  

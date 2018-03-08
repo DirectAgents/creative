@@ -275,12 +275,12 @@ $keys = array_keys($row);
 //echo $row[$keys[0]]; // 20
 
 
-if($row[$keys[1]] > 0 && $row[$keys[1]] < $row[$keys[0]] ){ // 20
+if($row[$keys[1]] > 0 && $row[$keys[1]] < $row[$keys[0]] || $row[$keys[1]] == $row[$keys[0]] && $row[$keys[1]] > 0 ){ // 20
 
 ///////////// 2# Highest liked Industry/////////////////
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[1]]."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[1]]."' AND Industry != '".$row2['Industry']."'");
 $row2 = mysqli_fetch_array($sql);
 
 
@@ -376,13 +376,13 @@ $keys = array_keys($row);
 //echo $row[$keys[0]]; // 20
 
 
-if($row[$keys[2]] > 0 && $row[$keys[2]] < $row[$keys[1]] ){ // 20
+if($row[$keys[2]] > 0 && $row[$keys[2]] < $row[$keys[1]] || $row[$keys[2]] == $row[$keys[1]] && $row[$keys[2]] > 0 ){ // 20
 
 
 ///////////// 3# Highest liked Industry/////////////////
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[2]]."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[2]]."' AND Industry != '".$row2['Industry']."'");
 $row2 = mysqli_fetch_array($sql);
 
 
@@ -475,12 +475,12 @@ $keys = array_keys($row);
 //echo $row[$keys[0]]; // 20
 
 
-if($row[$keys[3]] > 0 && $row[$keys[3]] < $row[$keys[2]] ){ // 20
+if($row[$keys[3]] > 0 && $row[$keys[3]] < $row[$keys[2]] || $row[$keys[3]] == $row[$keys[2]] && $row[$keys[3]] > 0){ // 20
 
 ///////////// 4# Highest liked Industry/////////////////
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[3]]."'");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Likes = '".$row[$keys[3]]."' AND Industry != '".$row2['Industry']."'");
 $row2 = mysqli_fetch_array($sql);
 
 

@@ -112,10 +112,6 @@
                      <form class="form-horizontal form-material" id="save-company">
 
 
-                        
-                            
-                       
-                             
 
                              <div id="profile-tab-data">
 
@@ -141,6 +137,8 @@
                                                     <select id="fm_industry" name="fm_industry" tabindex="3" class="form-control form-control-line">
                                                         <option value="Technology">Technology</option>
                                                         <option value="Mobile">Mobile</option>
+                                                        <option value="Finance">Finance</option>
+                                                        <option value="Finance">B2B Services</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -149,8 +147,8 @@
                                                 <label class="col-md-12">Location</label>
                                                 <div class="col-md-12">
                                                     <div class="zip">
-                                                        <input type="text"  id="fm_zip" name="fm_zip" maxlength="5" tabindex="4" placeholder="Type your zip code" class="form-control form-control-line zip-textinput">
-                                                        <input type="text" tabindex="3" id="fm_location" name="fm_location" maxlength="5" placeholder="Type your zip code" class="form-control form-control-line city-state-textinput">
+                                                        <input type="text"  id="fm_zip" name="fm_zip" maxlength="5" tabindex="4" placeholder="Type your zip code" class="form-control form-control-line zip-textinput-company">
+                                                        <input type="text" tabindex="3" id="fm_location" name="fm_location" maxlength="5" placeholder="Type your zip code" class="form-control form-control-line city-state-textinput-company">
                                                     </div>
                                                 </div>
                                             </div>
@@ -158,7 +156,8 @@
                                             <div class="form-group">
                                                 <label class="col-md-12">Describe your startup in one sentence</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_description" tabindex="5" name="fm_description" placeholder="e.g The best restaurants in Europe delivered to your door" class="form-control form-control-line"> </div>
+                                                    <input type="text" id="fm_description" tabindex="5" name="fm_description" placeholder="e.g The best restaurants in Europe delivered to your door" class="form-control form-control-line"> 
+                                                </div>
                                             </div>
                                             
                                             <div class="form-group">
@@ -203,11 +202,6 @@
 
 
 
-
-                           
-                            
-                    
-                               
                             
                               <div id="upload-screenshot-create">
                                     <div class="form-group">
@@ -306,173 +300,11 @@
             <!-- Meet the Team Tab Ends -->
             <!-- ============================================================== -->
             
-
-            <!-- ============================================================== -->
-            <!-- Connections Tab Starts -->
-            <!-- ============================================================== -->
-
-                                        <div class="table-responsive manage-table tab-pane" id="connections">
-                                            <div id="connections-tab-content"></div>     
-                                        </div>
-
-                                  
-            <!-- ============================================================== -->
-            <!-- Connections Tab Ends -->
-            <!-- ============================================================== -->
-                                   
-                                    
-            <!-- ============================================================== -->
-            <!-- Bookmarks Tab Starts -->
-            <!-- ============================================================== -->
+  
+          
 
 
-                                    <div class="table-responsive manage-table tab-pane" id="bookmarks">
-                                         <div id="bookmark-tab-content"></div>     
-                                    </div>
-                           
-            <!-- ============================================================== -->
-            <!-- Bookmarks Tab Ends -->
-            <!-- ============================================================== -->
-
-
-            <!-- ============================================================== -->
-            <!-- Settings Tab Starts -->
-            <!-- ============================================================== -->
-                                    <div class="tab-pane" id="settings">
-                                        <form class="form-horizontal form-material" id="update-profile">
-                                           
-                                            <div class="form-group">
-                                                <label class="col-md-12">Phone No</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" id="fm_phone" name="fm_phone" placeholder="Phone Number" value="<?php echo $row['Phone'];?>" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Location</label>
-                                                <div class="col-md-12">
-                                                    <div class="zip">
-                                                        <input type="text" maxlength="5" placeholder="Type your zip code" class="form-control form-control-line zip-textinput">
-                                                        <input type="text" id="fm_location" name="fm_location" maxlength="5" placeholder="123 456 7890" class="form-control form-control-line city-state-textinput">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Skills Set</label>
-                                                <div class="col-md-4">
-                                                    <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line">
-                                                </div>
-                                               
-                                                <div class="col-md-8">
-                                                    <button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button>
-                                                </div>
-                                                <div class="col-md-12" style="padding:15px 0 0 0;">
-                                                    <div id="responds">
-                                                        <?php
-                                                        //include db configuration file
-
-                                                        echo '<input type="hidden" name="userid" id="userid" value="'.$row_entrepreneur['userID'].'">';
-
-
-                                                        //MySQL query
-                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_entrepreneur['userID']."' ");
-
-
-                                                        //get all records from add_delete_record table
-                                                        $row2 = mysqli_fetch_array($Result);
-
-
-
-
-                                                        $ctop = $row2['Skills']; 
-                                                        $ctop = explode(',',$ctop); 
-
-
-
-                                                        if($row2['Skills'] != '' && $row2['Skills'] != 'NULL' ){
-
-
-
-                                                        foreach($ctop as $skill)  
-                                                        { 
-                                                            //Uncomment the last commented line if single quotes are showing up  
-                                                            //otherwise delete these 3 commented lines 
-
-
-                                                        //get skill string
-                                                        $ret = explode('(', $skill);
-                                                        $skill_string =  $ret[0];
-                                                            
-
-                                                        //MySQL query
-                                                        $sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill_string."' ");
-                                                        $row3 = mysqli_fetch_array($sqlskill);
-
-
-                                                        echo '<div id="item_'.$row3['id'].'">';
-                                                        echo '<div class="skillsdiv">';
-                                                        if(in_array($skill,$ctop)){
-                                                        echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
-                                                        }
-                                                        echo '<div class="del_wrapper">';
-                                                        echo '<div class="the-skill">';
-                                                        echo $skill;
-                                                        echo '</div>';
-                                                        echo '<a href="#" class="del_button" id="del-'.$row3['id'].'">';
-                                                        echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
-                                                        echo '</a></div>';
-                                                        //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-                                                        echo '</div>';
-                                                        echo '</div>';
-                                                        } 
-
-
-
-                                                        }
-
-
-
-
-
-                                                        ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-3">
-                                                    <div class="form-group" style="padding-left:15px;">
-                                                        <label class="col-md-3" style="padding-left:0px;">Facebook</label>
-                                                        <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group" style="padding-left:15px;">
-                                                        <label class="col-md-3" style="padding-left:0px;">Twitter</label>
-                                                        <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter'];?>" class="form-control form-control-line"> </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group" style="padding-left:15px;">
-                                                        <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
-                                                        <input type="text" id="fm_linkedin" name="fm_linkedin" value="<?php echo $row['Linkedin'];?>" class="form-control form-control-line"> </div>
-                                                </div>
-                                            </div>
-                                            <!--
-                                            <div class="form-group">
-                                                <label class="col-md-12">About Me</label>
-                                                <div class="col-md-12">
-                                                    <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line">
-                                                        <?php echo $row['About'] ;?>
-                                                    </textarea>
-                                                </div>
-                                            </div>-->
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <button class="btn btn-success btn-update-profile">Update Profile</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-            <!-- ============================================================== -->
-            <!-- Settings Tab Ends -->
-            <!-- ============================================================== -->
+            
                                 </div>
                             </div>
                         </div>

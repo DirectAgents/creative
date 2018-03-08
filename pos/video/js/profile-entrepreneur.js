@@ -109,7 +109,7 @@ e.preventDefault();
 
 
 
-////////////////Enter Zip Code to retrieve City and State//////////////////////
+////////////////Enter Zip Code to retrieve City and State PROFILE//////////////////////
 
 
         $.ajax({
@@ -201,6 +201,109 @@ $.ajax({
                    $(".zip-textinput").show();
                    $(".zip-textinput").attr("placeholder", "Type your zip code").val("").focus();
                    $(".city-state-textinput").hide();
+                   
+                  }
+                   
+                }
+                
+            });
+
+   
+});
+
+
+////////////////Enter Zip Code to retrieve City and State COMPANY//////////////////////
+
+
+ $.ajax({
+                url: url_link_startup+"select.php",
+                method: "POST",
+                data: { column_name: 'Zip' },
+                dataType: "html",
+                success: function(response) {
+                   var zip = $(response).filter('#zip').html(); 
+                    
+                if (zip != ''){  
+                   $(".zip-textinput-company").hide();
+                   $(".city-state-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
+
+                  }else{
+
+                   $(".zip-textinput-company").show();
+                   $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
+                   $(".city-state-textinput-company").hide();
+                   
+                }
+               
+               }
+                
+            });
+
+$('.zip-textinput-company').keyup(function(){
+    var zip_input = $(this).val();
+    if(zip_input.length == 5){
+        //alert("asdf");
+
+     $.ajax({
+                url: url_link_startup+"edit.php",
+                method: "POST",
+                data: { content: zip_input, column_name: 'Zip' },
+                dataType: "html",
+                success: function(response) {
+                   var zip = $(response).filter('#zip').html(); 
+                   //alert(zip);
+                   $(".zip-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
+                   
+                }
+                
+            });
+
+
+    };
+});
+
+
+
+
+$('.city-state-textinput-company').focus(function(){
+
+    $(".city-state-textinput-company").hide();
+    $(".zip-textinput-company").show();
+    $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
+    
+   
+});
+
+
+
+
+
+$('.zip-textinput-company').blur(function(){
+//alert("asdf");
+
+var zip_input = $(this).val();
+
+$.ajax({
+                url: url_link_startup+"edit.php",
+                method: "POST",
+                data: { content: zip_input, column_name: 'Zip_Company' },
+                dataType: "html",
+                success: function(response) {
+                   
+                   var zip = $(response).filter('#zip').html(); 
+        
+                   if (zip != ''){  
+                   $(".zip-textinput-company").hide();
+                   $(".city-state-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
+
+                  }else{
+
+                   $(".zip-textinput-company").show();
+                   $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
+                   $(".city-state-textinput-company").hide();
                    
                   }
                    

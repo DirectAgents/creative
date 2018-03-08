@@ -8,19 +8,21 @@
 
 
 
- $sql_startup = "SELECT * FROM startups WHERE Name ='".$_GET['name']."'";  
- $result = mysqli_query($connecDB, $sql_startup);  
- $row_startup = mysqli_fetch_array($result);
+ $sql = "SELECT * FROM startups WHERE Name ='".$_GET['name']."'";  
+ $result = mysqli_query($connecDB, $sql);  
+ $row_the_startup = mysqli_fetch_array($result);
+
+
 
  
- if($row_startup['Name'] == ''){
+ if($row_the_startup['Name'] == ''){
   header("Location: ".BASE_PATH."/404/");
   exit();
  }
 
 
 
- $sql = "SELECT * FROM tbl_users WHERE userID ='".$row_startup['userID']."'";  
+ $sql = "SELECT * FROM tbl_users WHERE userID ='".$row_the_startup['userID']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_entrepreneur = mysqli_fetch_array($result);
 
@@ -77,22 +79,22 @@
                                         <div class="user-content">
                                             <div id="company-logo-public">
 
-                                            <?php if($row_startup['Logo'] != '') { ?>
-                                          <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
+                                            <?php if($row_the_startup['Logo'] != '') { ?>
+                                          <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_the_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
                                             <?php }?>
                                            
 
                                               </div>
 
-                                             <?php if(isset($_SESSION['entrepreneurSession']) && $row_startup['userID'] == $_SESSION['entrepreneurSession']) { ?>
+                                             <?php if(isset($_SESSION['entrepreneurSession']) && $row_the_startup['userID'] == $_SESSION['entrepreneurSession']) { ?>
 
                                              <a href="#" id="upload_widget_multiple_logo" class="upload_widget_multiple_logo_link">
 
-                                            <?php if($row_startup['Logo'] != '') { ?>
+                                            <?php if($row_the_startup['Logo'] != '') { ?>
                                              <ul id="preview_logo">
-                                          <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
+                                          <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_the_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
                                              </ul>
-                                               <div id="url_preview_logo"><input type="checkbox" style="display:none" value="<?php echo $row_startup['Logo'];?>" name="company_logo[]"  checked/></div>
+                                               <div id="url_preview_logo"><input type="checkbox" style="display:none" value="<?php echo $row_the_startup['Logo'];?>" name="company_logo[]"  checked/></div>
                                             <?php }else{ ?>
                                             <ul id="preview_logo">
                                             <img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
@@ -106,23 +108,23 @@
                                              <?php } ?>
 
                                             <div id="fullname">
-                                                <h4 class="text-white"><?php echo $row_startup['Name'];?></h4>
+                                                <h4 class="text-white"><?php echo $row_the_startup['Name'];?></h4>
                                             </div>
 
                                             <div id="position">
-                                                <?php if($row_startup['Zip'] != ''){ ?>
+                                                <?php if($row_the_startup['Zip'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
-                                                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_startup['City'])))).', '.$row_startup['State'];
+                                                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_the_startup['City'])))).', '.$row_the_startup['State'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
 
                                              <div id="position">
-                                                <?php if($row_startup['Industry'] != ''){ ?>
+                                                <?php if($row_the_startup['Industry'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
-                                                echo $row_startup['Industry'];
+                                                echo $row_the_startup['Industry'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
@@ -136,21 +138,21 @@
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-purple">
                                             <div id="facebook">
-                                                <a href="<?php echo $row_startup['Facebook'];?>"><i class="ti-facebook"></i></a>
+                                                <a href="<?php echo $row_the_startup['Facebook'];?>"><i class="ti-facebook"></i></a>
                                             </div>
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-blue">
                                             <div id="twitter">
-                                                <a href="<?php echo $row_startup['Twitter'];?>"><i class="ti-twitter"></i></a>
+                                                <a href="<?php echo $row_the_startup['Twitter'];?>"><i class="ti-twitter"></i></a>
                                             </div>
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-danger">
                                             <div id="linkedin">
-                                                <a href="<?php echo $row_startup['AngelList'];?>"><i class="ti-linkedin"></i></a>
+                                                <a href="<?php echo $row_the_startup['AngelList'];?>"><i class="ti-linkedin"></i></a>
                                             </div>
                                         </p>
                                     </div>
@@ -158,7 +160,7 @@
                                 </div>
 
           
-               <?php if(isset($_SESSION['entrepreneurSession']) && $row_startup['userID'] == $_SESSION['entrepreneurSession']) { ?>
+               <?php if(isset($_SESSION['entrepreneurSession']) && $row_the_startup['userID'] == $_SESSION['entrepreneurSession']) { ?>
 
                <div id="click-image-to-upload-logo">  
                            <div class="user-btm-box">
@@ -238,7 +240,7 @@
                                                             <br>
                                                             <br>
                                                             <ul id="preview_screenshot"></ul>
-                                                            <div id="url_preview_screenshot"><input type="checkbox" style="display:none" name="video_screenshot[]" value="<?php echo $row_startup['Screenshot']; ?>" checked/></div>
+                                                            <div id="url_preview_screenshot"><input type="checkbox" style="display:none" name="video_screenshot[]" value="<?php echo $row_the_startup['Screenshot']; ?>" checked/></div>
                                                             <!--<div id="headshot_id"></div>-->
                                                             <p>Note.: The screenshot of the video clip has to have a minimum dimension of 340px in width.</p> 
                                                 </div>

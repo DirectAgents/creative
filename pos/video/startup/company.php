@@ -86,7 +86,8 @@ $row = mysqli_fetch_array($sql);
 
                                         </div>
                             </div> 
-                             <p>&nbsp;</p>  
+                            <p>&nbsp;</p>
+                             
                          </div>  
 
                 <?php } ?>
@@ -125,7 +126,7 @@ $row = mysqli_fetch_array($sql);
                                           <div class="row">
                                             
                                                <div class="col-md-12 col-xs-6"> 
-                                                    <br>
+                                                   
                                                     <p class="text-muted">
                                                         <h4><strong><?php echo $row['Description']; ?></strong></h4>
                                                     </p>

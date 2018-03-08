@@ -19,7 +19,7 @@ if($_GET || $_SESSION['entrepreneurSession'] == $_GET['userid']){
 <table class="table" cellspacing="14">
         <?php 
                     
-                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE my_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' ORDER BY id DESC");                    
+                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE my_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied'  ORDER BY id DESC");                    
                                         
                                         if( ! mysqli_num_rows($sql_connections) ) {
                                             echo "<div class='no-connections text-center'>No Connections!</div>"; 
@@ -50,7 +50,7 @@ if($_GET || $_SESSION['entrepreneurSession'] == $_GET['userid']){
 
             <?php        
 
-            echo $row_connections[ 'requester_id'];
+            //echo $row_connections[ 'requester_id'];
 
             if($row_connections[ 'requester_id'] == $_SESSION['entrepreneurSession'] && $row_connections[ 'status']=='pending' ||
             $row_connections[ 'requester_id'] == $_SESSION['entrepreneurSession'] && $row_connections[ 'status']=='accepted' ) {
@@ -239,10 +239,10 @@ $('#sa-connect-deny-'+<?php echo $row_connections['requester_id']; ?>).click(fun
             <tr class="advance-table-row connections-tab-inside text-center">
                 <td width="10"></td>
                 <td>
-                    <img src="<?php echo $profileimage; ?>" class="img-circle" width="30">
+                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['Fullname']; ?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
                 </td>
                 <td>
-                    <?php echo $row_entrepreneur['Fullname']; ?>
+                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['Fullname']; ?>"><?php echo $row_entrepreneur['Fullname']; ?></a>
                 </td>
                 <td><span class="label label-warning label-rouded"><?php echo $row_entrepreneur['Type']; ?></span></td>
                 <td>

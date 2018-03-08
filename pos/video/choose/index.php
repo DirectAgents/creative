@@ -1,169 +1,126 @@
 <?php
 
  session_start();
+ require_once '../class.entrepreneur.php';
+ require_once '../class.investor.php';
  require_once '../base_path.php';
- include '../config.php';
-
-if($_POST){
-
-if(isset($_SESSION['google_id'])){
+ include_once("../config.php"); 
 
 
-	    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
-        $row = mysqli_fetch_array($sql);
 
-          if($row['userID']) //if user already exist change greeting text to "Welcome Back"
-   			 {   
-
-        $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
-        google_id = '".$_SESSION['google_id']."',
-        Fullname = '".$_SESSION['fullname']."',
-        google_picture_link = '".$_SESSION['google_picture_link']."',
-        google_token = '".$_SESSION['access_token']."',
-        ProfileImage = 'Google'
-    
-        WHERE Email='".$_SESSION['email']."'");
-
-        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-       
-
-        header('Location: '.BASE_PATH.'');
-        exit();
-
-       } 
+if(!isset($_SESSION['entrepreneurSession'])){
+ 
+header('Location: '.BASE_PATH.'');
+//echo "yo";
+exit();
 
 }
 
+if(isset($_SESSION['entrepreneurSession'])){
 
-if(isset($_SESSION['facebook_id'])){
+$sql = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'");
+$row = mysqli_fetch_array($sql); 
 
-  
-
-
-	    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
-      $row = mysqli_fetch_array($sql);
-
-      
-
-          if($row['userID']) //if user already exist change greeting text to "Welcome Back"
-   			 {   
-
-        $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
-        Type = '".$_POST['type']."'
-    
-        WHERE Email='".$_SESSION['email']."'");
-
-        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-       
-
-        header('Location: '.BASE_PATH.'');
-        //echo "asdfsaf";
-        //echo $_SESSION['email'];
-        exit();
-
-       } 
-
+if(!empty($row['Type'])){
+  header('Location: '.BASE_PATH.'');
+  exit();
 }
 
 
+if(empty($row['Type'])){
 
-if(isset($_SESSION['linkedin_id'])){
-
-
-	    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
-        $row = mysqli_fetch_array($sql);
-
-          if($row['userID']) //if user already exist change greeting text to "Welcome Back"
-   			 {   
-
-        $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
-        linkedin_id = '".$_SESSION['facebook_id']."',
-        Fullname = '".$_SESSION['fullname']."',
-        linkedin_picture_link = '".$_SESSION['linkedin_picture_link']."',
-        ProfileImage = 'Linkedin'
-    
-        WHERE Email='".$_SESSION['email']."'");
-
-        //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-       
-
-        header('Location: '.BASE_PATH.'');
-        exit();
-
-       } 
-
-}
-
-
-
-////POST//////
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
-if(isset($_SESSION['google_id'])){
-
- $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (google_id, Email, Fullname, google_picture_link, google_token, ProfileImage, Type) 
-      VALUES ('".$_SESSION['google_id']."', '".$_SESSION['email']."', '".$_SESSION['fullname']."', '".$_SESSION['google_picture_link']."', 
-      '".$_SESSION['access_token']."', 'Google' ,'Investor')");
-
-
- $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
- $row2 = mysqli_fetch_array($sql);
-
-
-
-
-}
-
-if(isset($_SESSION['facebook_id'])){
-
- $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (facebook_id, Email, Type) 
-      VALUES ('".$_SESSION['facebook_id']."', '".$_SESSION['email']."', 'Investor')");
-
-
- $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
- $row2 = mysqli_fetch_array($sql);
-
-
-
-
-}
-
-
-if(isset($_SESSION['linkedin_id'])){
-
- $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (linkedin_id, Email, Fullname, linkedin_picture_link, ProfileImage, Type) 
-      VALUES ('".$_SESSION['linkedin_id']."', '".$_SESSION['email']."' , '".$_SESSION['fullname']."', 
-      '".$_SESSION['linkedin_picture_link']."', 'Linkedin', 'Investor')");
-
- $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
- $row2 = mysqli_fetch_array($sql);
-
-
-
-
-}
- //echo  $_SESSION['entrepreneurSession'];
- //echo  $_SESSION['usernameSession'];
- header("Location:http://localhost/creative/pos/video/");
- exit();
-
-
-
-}
-
-}
+ 
 
 ?>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 
 
-<input type="text" name="type" id="type" value="Investor">
 
-<input type="submit" value="submit">
+<!DOCTYPE html>
+<html lang="en">
 
-</form>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>2 Col Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo BASE_PATH; ?>/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="<?php echo BASE_PATH; ?>/css/2-col-portfolio.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    
+
+    <!-- Page Content -->
+    <div class="container">
+
+
+
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Choose Who You Are
+      </h1>
+
+      <div class="row">
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Entrepreneur"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Entrepreneur">Startup</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Investor"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Investor">Investor</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
+            </div>
+          </div>
+        </div>
+       
+       
+       
+       
+      </div>
+      <!-- /.row -->
+
+    
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+
+
+  </body>
+
+</html>
+
+
+<?php } } ?>
+
 
 

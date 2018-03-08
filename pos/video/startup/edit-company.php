@@ -46,20 +46,20 @@ $row = mysqli_fetch_array($result);
                                                     <select id="fm_industry" name="fm_industry" class="form-control form-control-line">
                                                         <option value="Technology" <?php if($row['Industry'] == 'Technology'){echo "selected";} ?>>Technology</option>
                                                         <option value="Mobile" <?php if($row['Industry'] == 'Mobile'){echo "selected";} ?>>Mobile</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Finance'){echo "selected";} ?>>Finance</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Ecommerce'){echo "selected";} ?>>Ecommerce</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'B2B Services'){echo "selected";} ?>>B2B Services</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Consumer Products'){echo "selected";} ?>>Consumer Products</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Consulting'){echo "selected";} ?>>Consulting</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Big Data'){echo "selected";} ?>>Big Data</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Travel'){echo "selected";} ?>>Travel</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Entertainment'){echo "selected";} ?>>Entertainment</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Fashion'){echo "selected";} ?>>Fashion</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Healthcare'){echo "selected";} ?>>Healthcare</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Real Estate'){echo "selected";} ?>>Real Estate</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Food and Beverages'){echo "selected";} ?>>Food and Beverages</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Human Resources'){echo "selected";} ?>>Human Resources</option>
-                                                        <option value="Mobile" <?php if($row['Industry'] == 'Other'){echo "selected";} ?>>Other</option>
+                                                        <option value="Finance" <?php if($row['Industry'] == 'Finance'){echo "selected";} ?>>Finance</option>
+                                                        <option value="Ecommerce" <?php if($row['Industry'] == 'Ecommerce'){echo "selected";} ?>>Ecommerce</option>
+                                                        <option value="B2B Services" <?php if($row['Industry'] == 'B2B Services'){echo "selected";} ?>>B2B Services</option>
+                                                        <option value="Consumer Products" <?php if($row['Industry'] == 'Consumer Products'){echo "selected";} ?>>Consumer Products</option>
+                                                        <option value="Consulting" <?php if($row['Industry'] == 'Consulting'){echo "selected";} ?>>Consulting</option>
+                                                        <option value="Big Data" <?php if($row['Industry'] == 'Big Data'){echo "selected";} ?>>Big Data</option>
+                                                        <option value="Travel" <?php if($row['Industry'] == 'Travel'){echo "selected";} ?>>Travel</option>
+                                                        <option value="Entertainment" <?php if($row['Industry'] == 'Entertainment'){echo "selected";} ?>>Entertainment</option>
+                                                        <option value="Fashion" <?php if($row['Industry'] == 'Fashion'){echo "selected";} ?>>Fashion</option>
+                                                        <option value="Healthcare" <?php if($row['Industry'] == 'Healthcare'){echo "selected";} ?>>Healthcare</option>
+                                                        <option value="Real Estate" <?php if($row['Industry'] == 'Real Estate'){echo "selected";} ?>>Real Estate</option>
+                                                        <option value="Food and Beverages" <?php if($row['Industry'] == 'Food and Beverages'){echo "selected";} ?>>Food and Beverages</option>
+                                                        <option value="Human Resources" <?php if($row['Industry'] == 'Human Resources'){echo "selected";} ?>>Human Resources</option>
+                                                        <option value="Other" <?php if($row['Industry'] == 'Other'){echo "selected";} ?>>Other</option>
 
                                                     </select>
                                                 </div>
@@ -76,9 +76,18 @@ $row = mysqli_fetch_array($result);
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label class="col-md-12">About the company</label>
+                                                <label class="col-md-12">Describe your startup in one sentence</label>
                                                 <div class="col-md-12">
-                                <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line"><?php echo $row['About']; ?></textarea>
+                               <input type="text" id="fm_description" tabindex="5" name="fm_description" value="<?php echo $row['Description']; ?>" placeholder="e.g The best restaurants in Europe delivered to your door" class="form-control form-control-line"> 
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-md-12">Describe your startup's product</label>
+                                                <div class="col-md-12">
+                                                    <textarea id="fm_about" name="fm_about" tabindex="6" rows="5" class="form-control form-control-line"><?php echo $row['About']; ?></textarea>
                                                     
                                                 </div>
                                             </div>
