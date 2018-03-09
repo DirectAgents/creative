@@ -7,16 +7,28 @@
  include_once("../config.php"); 
 
 
+ if(!isset($_SESSION['entrepreneurSession'])){
+   header("Location: ".BASE_PATH."");
+   exit();
+ }
+
+
  $sql = "SELECT * FROM tbl_users WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_entrepreneur = mysqli_fetch_array($result);
 
 
+ if ($result->num_rows == 1 && $row_entrepreneur['Type'] != 'Startup' ){
+  header("Location: ".BASE_PATH."");
+  exit();
+}  
+
+
  $sql = "SELECT * FROM startups WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
- $result = mysqli_query($connecDB, $sql);  
- $row_startup = mysqli_fetch_array($result);
+ $result_startup = mysqli_query($connecDB, $sql);  
+ $row_startup = mysqli_fetch_array($result_startup);
  
-if ($result->num_rows == 1 && $row_entrepreneur['Type'] == 'Startup' ){
+if ($result_startup->num_rows == 1){
   header("Location: ".BASE_PATH."");
   exit();
 }  

@@ -176,7 +176,7 @@ $firstname = $words[0];
 
  <div class="col-sm-12" style="padding-left: 0px;"> 
         <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Resume</strong></div>
-        <div class="col-sm-3"><a href="#/" id="edit-resume"><i class="ti-pencil"></i></a></div>
+        <?php if($row['Resume'] != ''){ ?><div class="col-sm-3"><a href="#/" id="edit-resume"><i class="ti-pencil"></i></a></div><?php } ?>
         <br><br>
     </div>
 
@@ -298,6 +298,8 @@ View Resume
   </div>
 <!--Skills Ends-->  
 
+<?php if($row['Resume'] != ''){ ?>
+
 <!--Skills Resume-->
  <div class="col-sm-12" style="padding-left: 0px;">  
  <br><br> 
@@ -308,6 +310,8 @@ View Resume
 View Resume
 </a>
 </div>
+
+<?php } ?>
 
 <!--Skills Ends-->
 <?php } ?>
@@ -434,7 +438,7 @@ $("#add-skills").click(function (e) {
       dataType:"text", 
       data:myData,
       success:function(response){
-        alert(response);
+        //alert(response);
         $("#responds").append(response);
         $("#fm_skills").val('');
         //$('#interestimportant').prop('checked', true); // checks it
@@ -599,9 +603,9 @@ $('.save-resume').click(function() {
                 //$('#skills-count').html(skills_count);
                 //alert(skills_count);  
 
-               $( ".edit-resume-box" ).addClass( "hidden" );
-			   $( ".cancel-resume" ).addClass( "hidden" );
-			   $( ".view-resume-box" ).removeClass( "hidden" );
+         $(".edit-resume-box" ).addClass( "hidden" );
+			   $(".cancel-resume" ).addClass( "hidden" );
+			   $(".view-resume-box" ).removeClass( "hidden" );
 			   $(".view-resume-box").load(url_link+"view-resume.php");
                
             }
