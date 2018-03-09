@@ -17,14 +17,7 @@ $row = mysqli_fetch_array($sql);
 <head>
 
 
-
-
-</head>
-<body>
-
-
-   
-        <!-- Bootstrap Core CSS -->
+     <!-- Bootstrap Core CSS -->
         <link href="http://localhost/creative/pos/video/bootstrap/bootstrap.min.css" rel="stylesheet">
         <link href="http://localhost/creative/pos/video/bootstrap/bootstrap.css" rel="stylesheet">
     
@@ -87,6 +80,16 @@ $row = mysqli_fetch_array($sql);
 
         });
     </script>
+
+
+
+
+</head>
+<body>
+
+
+   
+       
    
 
  <div class="product-img">
