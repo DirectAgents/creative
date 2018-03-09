@@ -55,8 +55,7 @@ $index = $client->initIndex('startups');
 $index->deleteObject($row['startupID']);
 
 
-//Delete Company
-$sql=mysqli_query($connecDB,"DELETE FROM startups WHERE userID = '".$_SESSION['entrepreneurSession']."' AND id = '".$_POST['id']."'");
+
 
 
 //Delete Team Members
@@ -67,8 +66,26 @@ $sql=mysqli_query($connecDB,"DELETE FROM tbl_team WHERE userID = '".$_SESSION['e
 
 }
 
+//Likes of Company
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_likes WHERE requested_id = '".$_SESSION['entrepreneurSession']."'");
+
+$sql_likes = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row['Industry']."'");
+$row_likes = mysqli_fetch_array($sql_likes); 
 
 
+//Top rated startups
+$sql_top = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Industry = '".$row['Industry']."'");
+$row_top = mysqli_fetch_array($sql_top); 
+
+$sql = "UPDATE tbl_top_rated_startups SET 
+Likes='".$row_top."' - '".$row_likes."'  
+
+WHERE Industry='".$row['Industry']."'";
+mysqli_query($connecDB, $sql);
+
+
+//Delete Company
+$sql=mysqli_query($connecDB,"DELETE FROM startups WHERE userID = '".$_SESSION['entrepreneurSession']."' AND id = '".$_POST['id']."'");
 
 }
 

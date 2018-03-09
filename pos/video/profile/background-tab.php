@@ -424,7 +424,9 @@ $("#add-skills").click(function (e) {
         //alert("Please enter a job position!");
         return false;
       }
-      var myData = 'skills='+ $("#fm_skills").val()+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
+      //alert($("#fm_skills").val());
+
+      var myData = 'skills='+ encodeURIComponent($("#fm_skills").val())+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
       //alert(myData);
       jQuery.ajax({
       type: "POST", 
@@ -432,6 +434,7 @@ $("#add-skills").click(function (e) {
       dataType:"text", 
       data:myData,
       success:function(response){
+        alert(response);
         $("#responds").append(response);
         $("#fm_skills").val('');
         //$('#interestimportant').prop('checked', true); // checks it

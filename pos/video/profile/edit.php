@@ -67,7 +67,7 @@ if($column_name == 'Email') {
  }
 
 
- if($column_name == 'Zip') {
+if($column_name == 'Zip') {
 
  $sql=mysqli_query($connecDB,"SELECT * FROM zip_state WHERE zip='".$content."'");
  $row=mysqli_fetch_array($sql); 	
@@ -76,11 +76,18 @@ if($column_name == 'Email') {
  
  //if(mysqli_query($connecDB, $sql))  
  //{  
- if(mysqli_num_rows($sql)<=0) {
+if ($sql->num_rows == 0){
  
+ $sql = "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $result_user = mysqli_query($connecDB, $sql);  
+ $row_user = mysqli_fetch_array($result_user);
 
+ if ($row_user['ZipCode'] != ''){
  echo '<div id="zip">'.$row_user['City'].', '.$row_user['State'].'</div>';
- 
+ }else{
+ echo '<div id="zip">Type your zip code</div>';
+ }
+
  }else{
       
   echo '<div id="zip">'.$row['city'].', '.$row['state'].'</div>';
@@ -101,7 +108,7 @@ if($column_name == 'Email') {
  
  //if(mysqli_query($connecDB, $sql))  
  //{  
- if(mysqli_num_rows($sql)<=0) {
+if ($sql->num_rows == 0){
  
  $sql = "SELECT * FROM startups WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  $result = mysqli_query($connecDB, $sql);  

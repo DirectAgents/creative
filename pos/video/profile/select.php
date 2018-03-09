@@ -6,7 +6,7 @@
   $column_name = $_POST["column_name"]; 
 
 
- $sql = "SELECT * FROM tbl_startup WHERE userID ='15'";  
+ $sql = "SELECT * FROM tbl_users WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row = mysqli_fetch_array($result);
 

@@ -7,10 +7,22 @@
  include_once("../config.php"); 
 
 
-
  $sql = "SELECT * FROM tbl_users WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_entrepreneur = mysqli_fetch_array($result);
+
+
+ $sql = "SELECT * FROM startups WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
+ $result = mysqli_query($connecDB, $sql);  
+ $row_startup = mysqli_fetch_array($result);
+ 
+if ($result->num_rows == 1 && $row_entrepreneur['Type'] == 'Startup' ){
+  header("Location: ".BASE_PATH."");
+  exit();
+}  
+ 
+
+
 
 ?>
 

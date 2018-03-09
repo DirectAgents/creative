@@ -31,19 +31,19 @@ $row = mysqli_fetch_array($result);
                                             <div class="form-group">
                                                 <label class="col-md-12">Company Name</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_name" name="fm_name" value="<?php echo $row['Name']; ?>" class="form-control form-control-line"> </div>
+                                                    <input type="text" id="fm_name" name="fm_name" value="<?php echo $row['Name']; ?>" class="form-control form-control-line" tabindex="1"> </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-12">Your Role</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_position" name="fm_position" value="<?php echo $row['Position']; ?>" placeholder="e.g CEO" class="form-control form-control-line"> </div>
+                                                    <input type="text" id="fm_position" name="fm_position" value="<?php echo $row['Position']; ?>" placeholder="e.g CEO" class="form-control form-control-line" tabindex="2"> </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label class="col-md-12">Industry</label>
                                                 <div class="col-md-12">
-                                                    <select id="fm_industry" name="fm_industry" class="form-control form-control-line">
+                                                    <select id="fm_industry" name="fm_industry" class="form-control form-control-line" tabindex="3">
                                                         <option value="Technology" <?php if($row['Industry'] == 'Technology'){echo "selected";} ?>>Technology</option>
                                                         <option value="Mobile" <?php if($row['Industry'] == 'Mobile'){echo "selected";} ?>>Mobile</option>
                                                         <option value="Finance" <?php if($row['Industry'] == 'Finance'){echo "selected";} ?>>Finance</option>
@@ -69,8 +69,8 @@ $row = mysqli_fetch_array($result);
                                                 <label class="col-md-12">Location</label>
                                                 <div class="col-md-12">
                                                     <div class="zip">
-                                                        <input type="text" maxlength="5" value="<?php echo $row['City']; ?>, <?php echo $row['State']; ?>" placeholder="Type your zip code" class="form-control form-control-line zip-textinput">
-                                                        <input type="text" id="fm_location" name="fm_location" maxlength="5" value="<?php echo $row['City']; ?>, <?php echo $row['State']; ?>"class="form-control form-control-line city-state-textinput">
+                                                        <input type="text" maxlength="5" value="<?php echo $row['City']; ?>, <?php echo $row['State']; ?>" placeholder="Type your zip code" class="form-control form-control-line zip-textinput-company" tabindex="4">
+                                                        <input type="text" id="fm_location" name="fm_location" maxlength="5" value="<?php echo $row['City']; ?>, <?php echo $row['State']; ?>" class="form-control form-control-line city-state-textinput-company" tabindex="4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@ $row = mysqli_fetch_array($result);
                                             <div class="form-group">
                                                 <label class="col-md-12">Describe your startup in one sentence</label>
                                                 <div class="col-md-12">
-                               <input type="text" id="fm_description" tabindex="5" name="fm_description" value="<?php echo $row['Description']; ?>" placeholder="e.g The best restaurants in Europe delivered to your door" class="form-control form-control-line"> 
+                               <input type="text" id="fm_description" name="fm_description" value="<?php echo $row['Description']; ?>" placeholder="e.g The best restaurants in Europe delivered to your door" class="form-control form-control-line" tabindex="5"> 
                                                     
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@ $row = mysqli_fetch_array($result);
                                             <div class="form-group">
                                                 <label class="col-md-12">Describe your startup's product</label>
                                                 <div class="col-md-12">
-                                                    <textarea id="fm_about" name="fm_about" tabindex="6" rows="5" class="form-control form-control-line"><?php echo $row['About']; ?></textarea>
+                                                    <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line" tabindex="6"><?php echo $row['About']; ?></textarea>
                                                     
                                                 </div>
                                             </div>
@@ -97,17 +97,17 @@ $row = mysqli_fetch_array($result);
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Facebook</label>
-                                                        <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook']; ?>" class="form-control form-control-line"> </div>
+                                                        <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook']; ?>" class="form-control form-control-line" tabindex="7"> </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Twitter</label>
-                                                        <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter']; ?>"  class="form-control form-control-line"> </div>
+                                                        <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter']; ?>"  class="form-control form-control-line" tabindex="8"> </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group" style="padding-left:15px;">
                                                         <label class="col-md-3" style="padding-left:0px;">AngelList</label>
-                                                        <input type="text" id="fm_angellist" name="fm_angellist" value="<?php echo $row['AngelList']; ?>" class="form-control form-control-line"> </div>
+                                                        <input type="text" id="fm_angellist" name="fm_angellist" value="<?php echo $row['AngelList']; ?>" class="form-control form-control-line" tabindex="9"> </div>
                                                 </div>
                                             </div>
 
@@ -115,7 +115,7 @@ $row = mysqli_fetch_array($result);
                                             <div class="form-group">
                                                 <label class="col-md-12">Video</label>
                                                 <div class="col-md-12">
-                                                   <input type="text" id="fm_video" name="fm_video" placeholder="e.g ( https://www.youtube.com/embed/Hf_Y6KrFW )" value="<?php echo $row['Video']; ?>" class="form-control form-control-line">
+                                                   <input type="text" id="fm_video" name="fm_video" placeholder="e.g ( https://www.youtube.com/embed/Hf_Y6KrFW )" value="<?php echo $row['Video']; ?>" class="form-control form-control-line" tabindex="10">
                                                     
                                                 </div>
                                             </div>
@@ -150,26 +150,27 @@ $(document).ready(function() {
 ////////////////Enter Zip Code to retrieve City and State//////////////////////
 
 
-var url_link = 'http://localhost/creative/pos/video/startup/';
+var url_link_startup = 'http://localhost/creative/pos/video/startup/';
 
+        
         $.ajax({
-                url: url_link+"select.php",
+                url: url_link_startup+"select.php",
                 method: "POST",
-                data: { column_name: 'Zip' },
+                data: { column_name: 'Zip_Company' },
                 dataType: "html",
                 success: function(response) {
                    var zip = $(response).filter('#zip').html(); 
                     
                 if (zip != ''){  
-                   $(".zip-textinput").hide();
-                   $(".city-state-textinput").show();
-                   $(".city-state-textinput").val(zip);
+                   $(".zip-textinput-company").hide();
+                   $(".city-state-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
 
                   }else{
 
-                   $(".zip-textinput").show();
-                   //$(".zip-textinput").attr("placeholder", "Type your zip code").val("").focus();
-                   $(".city-state-textinput").hide();
+                   $(".zip-textinput-company").show();
+                   $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
+                   $(".city-state-textinput-company").hide();
                    
                 }
                
@@ -177,21 +178,21 @@ var url_link = 'http://localhost/creative/pos/video/startup/';
                 
             });
 
-$('.zip-textinput').keyup(function(){
+$('.zip-textinput-company').keyup(function(){
     var zip_input = $(this).val();
     if(zip_input.length == 5){
         //alert("asdf");
 
      $.ajax({
-                url: url_link+"edit.php",
+                url: url_link_startup+"edit.php",
                 method: "POST",
-                data: { content: zip_input, column_name: 'Zip' },
+                data: { content: zip_input, column_name: 'Zip_Company' },
                 dataType: "html",
                 success: function(response) {
                    var zip = $(response).filter('#zip').html(); 
                    //alert(zip);
-                   $(".zip-textinput").show();
-                   $(".city-state-textinput").val(zip);
+                   $(".zip-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
                    
                 }
                 
@@ -204,21 +205,11 @@ $('.zip-textinput').keyup(function(){
 
 
 
-$('.zip-textinput').focus(function(){
-//alert("hallo");
-    $(".city-state-textinput").hide();
-    $(".zip-textinput").show();
-    $(".zip-textinput").attr("placeholder", "Type your zip code").val("").focus();
-    
-   
-});
+$('.city-state-textinput-company').focus(function(){
 
-
-$('.city-state-textinput').focus(function(){
-//alert("hallo");
-    $(".city-state-textinput").hide();
-    $(".zip-textinput").show();
-    $(".zip-textinput").attr("placeholder", "Type your zip code").val("").focus();
+    $(".city-state-textinput-company").hide();
+    $(".zip-textinput-company").show();
+    $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
     
    
 });
@@ -227,13 +218,14 @@ $('.city-state-textinput').focus(function(){
 
 
 
-$('.zip-textinput').blur(function(){
-//alert("asdf");
+$('.zip-textinput-company').blur(function(){
+//alert("123asdf");
 
 var zip_input = $(this).val();
+//alert(zip_input);
 
 $.ajax({
-                url: url_link+"edit.php",
+                url: url_link_startup+"edit.php",
                 method: "POST",
                 data: { content: zip_input, column_name: 'Zip_Company' },
                 dataType: "html",
@@ -242,15 +234,15 @@ $.ajax({
                    var zip = $(response).filter('#zip').html(); 
         
                    if (zip != ''){  
-                   $(".zip-textinput").hide();
-                   $(".city-state-textinput").show();
-                   $(".city-state-textinput").val();
+                   $(".zip-textinput-company").hide();
+                   $(".city-state-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
 
                   }else{
 
-                   $(".zip-textinput").show();
-                   $(".zip-textinput").attr("placeholder", "Type your zip code").val("").focus();
-                   $(".city-state-textinput").hide();
+                   $(".zip-textinput-company").show();
+                   $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
+                   $(".city-state-textinput-company").hide();
                    
                   }
                    
@@ -259,7 +251,7 @@ $.ajax({
             });
 
    
-});
+   });
 
 
 });

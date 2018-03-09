@@ -73,10 +73,10 @@ if(empty($row['Type'])){
       <div class="row">
         <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
-            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Entrepreneur"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Entrepreneur">Startup</a>
+                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup">Startup</a>
               </h4>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>

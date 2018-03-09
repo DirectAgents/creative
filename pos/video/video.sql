@@ -321,10 +321,10 @@ INSERT INTO `tbl_bookmarks` (`id`, `requester_id`, `requested_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_connections_entrepreneur`
+-- Table structure for table `tbl_connections_startup`
 --
 
-CREATE TABLE `tbl_connections_entrepreneur` (
+CREATE TABLE `tbl_connections_startup` (
   `id` int(11) NOT NULL,
   `my_id` int(11) NOT NULL,
   `requester_id` int(11) NOT NULL,
@@ -42830,9 +42830,9 @@ ALTER TABLE `tbl_bookmarks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_connections_entrepreneur`
+-- Indexes for table `tbl_connections_startup`
 --
-ALTER TABLE `tbl_connections_entrepreneur`
+ALTER TABLE `tbl_connections_startup`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -42919,9 +42919,9 @@ ALTER TABLE `tbl_bookmarks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tbl_connections_entrepreneur`
+-- AUTO_INCREMENT for table `tbl_connections_startup`
 --
-ALTER TABLE `tbl_connections_entrepreneur`
+ALTER TABLE `tbl_connections_startup`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --

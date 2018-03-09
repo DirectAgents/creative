@@ -133,8 +133,7 @@ $thefirstname = $words[0];
                                         </p>
                                     </div>
                              
-                             <?php if(isset($_SESSION['entrepreneurSession'])) { ?>    
-                               <?php if($_SESSION['entrepreneurSession'] != $row_entrepreneur['userID']) { ?>    
+                             <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] != $row_entrepreneur['userID']) { ?>
 
 <?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
 <?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture?type=large"; } ?>
@@ -151,26 +150,26 @@ $thefirstname = $words[0];
                 ?>                 
                                  
                 
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if(mysqli_num_rows($sql_connect)<=0) { ?> style="display:block" 
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
                                    <a href="javascript: void(0);" id="sa-connect" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
                                  </div> 
                
-    <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
+    <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
                                     <a href="javascript: void(0);" id="sa-connect-cancel" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
-                               <?php } ?>  
-
-                            <?php }else{ ?>   
+                              
+                            <?php }//else{ ?>   
                             
                               
+                                   <!--
                                     <p>&nbsp;</p>
                                  <div class="col-md-12 col-sm-12 text-center">
                                     <a href="javascript: void(0);" id="sa-basic" class="btn btn-danger hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
-                                 </div> 
+                                 </div> -->
                                
-                            <?php } ?>    
+                            <?php //} ?>    
 
                                 </div>
                             </div>
@@ -336,32 +335,9 @@ $thefirstname = $words[0];
             <!-- ============================================================== -->
             
 
-            <!-- ============================================================== -->
-            <!-- Connections Tab Starts -->
-            <!-- ============================================================== -->
-
-                                        <div class="table-responsive manage-table tab-pane" id="connections">
-                                            <div id="connections-tab-content"></div>     
-                                        </div>
-
-                                  
-            <!-- ============================================================== -->
-            <!-- Connections Tab Ends -->
-            <!-- ============================================================== -->
+          
                                    
-                                    
-            <!-- ============================================================== -->
-            <!-- Bookmarks Tab Starts -->
-            <!-- ============================================================== -->
-
-
-                                    <div class="table-responsive manage-table tab-pane" id="bookmarks">
-                                         <div id="bookmark-tab-content"></div>     
-                                    </div>
-                           
-            <!-- ============================================================== -->
-            <!-- Bookmarks Tab Ends -->
-            <!-- ============================================================== -->
+        
 
 
             

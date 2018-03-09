@@ -142,7 +142,7 @@ No Team Members added so far!
 
 
                  <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending' ");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending' ");
                 ?>                 
                                  
                 
@@ -153,7 +153,7 @@ No Team Members added so far!
 
 
                      <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' ");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' ");
                 ?>                 
                                  
                 
@@ -166,7 +166,7 @@ No Team Members added so far!
 
 
                              <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'accepted' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'accepted'");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'accepted' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'accepted'");
                 ?>                 
                                 
     <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connected" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" 
@@ -176,7 +176,7 @@ No Team Members added so far!
  
 
     <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_entrepreneur WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'denied' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'denied'");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'denied' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'denied'");
                 ?>                                          
                
     <div class="col-md-12 col-sm-12 text-center sa-connect-pending" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>

@@ -60,27 +60,7 @@ if($column_name == 'Email') {
  }
 
 
- if($column_name == 'Zip') {
-
- $sql=mysqli_query($connecDB,"SELECT * FROM zip_state WHERE zip='".$content."'");
- $row=mysqli_fetch_array($sql); 	
-
- //$sql = "UPDATE profile SET City='".$row['city']."', State='".$row['state']."', ZipCode='".$row['zip']."' WHERE id='15'";  
  
- //if(mysqli_query($connecDB, $sql))  
- //{  
- if(mysqli_num_rows($sql)<=0) {
- 
-
- echo '<div id="zip">'.$row_user['City'].', '.$row_user['State'].'</div>';
- 
- }else{
-      
-  echo '<div id="zip">'.$row['city'].', '.$row['state'].'</div>';
- 
- }  
-
- }
 
 
 
@@ -94,13 +74,13 @@ if($column_name == 'Email') {
  
  //if(mysqli_query($connecDB, $sql))  
  //{  
- if(mysqli_num_rows($sql)<=0) {
+if ($sql->num_rows == 0){
  
  $sql = "SELECT * FROM startups WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_company = mysqli_fetch_array($result);
 
- if($row_company != ''){
+ if ($row_company['ZipCode'] != ''){
  echo '<div id="zip">'.$row_company['City'].', '.$row_company['State'].'</div>';
  }else{
  echo '<div id="zip">Type your zip code</div>';

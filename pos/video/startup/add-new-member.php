@@ -104,7 +104,7 @@ $("#add-skills-team-member").click(function (e) {
         //alert("Please enter a job position!");
         return false;
       }
-      var myData = 'skills='+ $("#fm_skills").val()+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
+      var myData = 'skills='+ encodeURIComponent($("#fm_skills").val())+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
       //alert(myData);
       jQuery.ajax({
       type: "POST", 

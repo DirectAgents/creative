@@ -22,7 +22,7 @@ $time = date('h:i:s A');
 if($row['Type'] == 'Entrepreneur'){
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_entrepreneur(my_id, requester_id, requested_id, Date, Time) 
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Date, Time) 
 	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$date."', '".$time."' )");
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Date, Time) 
@@ -36,7 +36,7 @@ if($row['Type'] == 'Investor'){
 //echo $row['Type'];
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_entrepreneur(my_id, requester_id, requested_id, Date, Time) 
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Date, Time) 
 	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$date."', '".$time."' )");
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Date, Time)

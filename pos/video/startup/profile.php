@@ -8,7 +8,7 @@
 
 
 
- $sql = "SELECT * FROM startups WHERE Name ='".$_GET['name']."'";  
+ $sql = "SELECT * FROM startups WHERE Url ='".$_GET['name']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row_the_startup = mysqli_fetch_array($result);
 
@@ -112,7 +112,7 @@
                                             </div>
 
                                             <div id="position">
-                                                <?php if($row_the_startup['Zip'] != ''){ ?>
+                                                <?php if($row_the_startup['ZipCode'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
                                                 echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_the_startup['City'])))).', '.$row_the_startup['State'];

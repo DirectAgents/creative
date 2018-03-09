@@ -6,14 +6,14 @@
   $column_name = $_POST["column_name"]; 
 
 
- $sql = "SELECT * FROM tbl_startup WHERE userID ='15'";  
+ $sql = "SELECT * FROM startups WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
  $result = mysqli_query($connecDB, $sql);  
  $row = mysqli_fetch_array($result);
 
 
 
 
- if($column_name == 'Zip') {
+ if($column_name == 'Zip_Company') {
  echo '<div id="zip">';	
  if($row['ZipCode'] != '') {
  echo $row['City'].', '.$row['State'];

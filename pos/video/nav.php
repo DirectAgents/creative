@@ -27,7 +27,7 @@ $firstname = $words[0];
 
 ////////////////Notifications for Connect Requests///////////////////////////
 
-if($rownav['Type'] == 'Entrepreneur'){$table = 'tbl_connections_entrepreneur';}
+if($rownav['Type'] == 'Startup'){$table = 'tbl_connections_startup';}
 if($rownav['Type'] == 'Investor'){$table = 'tbl_connections_investor';}
 
 $result_count = mysqli_query($connecDB,"SELECT requested_id, requester_id, Date, Time, COUNT(DISTINCT requested_id) AS count FROM ".$table." WHERE requested_id = '".$rownav['userID']."' GROUP BY requested_id");
@@ -593,11 +593,11 @@ $row13 = mysqli_fetch_array($sql13);
                         <ul class="dropdown-menu dropdown-user animated flipInY">
                             <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $rownav['username']; ?>"><i class="ti-user"></i> My Profile</a></li>
                             <?php if($row_startup['Name'] != ''){ ?>
-                             <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>"><i class="ti-user"></i> My Startup</a></li>
+                             <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Url']; ?>"><i class="ti-user"></i> My Startup</a></li>
                             <?php } ?>
                             <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="ti-email"></i> Connections</a></li>
                             <li><a href="<?php echo BASE_PATH; ?>/bookmarks/"><i class="ti-email"></i> Bookmarks</a></li>
-                             <?php if($row_startup['Name'] == ''){ ?>
+                             <?php if($row_startup['Name'] == '' && $rownav['Type'] == 'Startup'){ ?>
                              <li role="separator" class="divider"></li>
                              <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="ti-user"></i> Add a Startup</a></li>
                             <?php } ?>

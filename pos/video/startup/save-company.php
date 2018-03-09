@@ -55,13 +55,32 @@ $date = date("Y-m-d");
 $time = date('h:i:s A');  
 
 
-if(mysqli_num_rows($sql)<=0) {
+function seoUrl($string) {
+    //Lower case everything
+    $string = strtolower($string);
+    //Make alphanumeric (removes all other characters)
+    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+    //Clean up multiple dashes or whitespaces
+    $string = preg_replace("/[\s-]+/", " ", $string);
+    //Convert whitespaces and underscore to dash
+    $string = preg_replace("/[\s_]/", "-", $string);
+    return $string;
+}
+
+
+if ($sql->num_rows == 0){
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO startups(userID, startupID, Name, Position, Industry, City, State, Zip, About, Description, Logo, Video, Screenshot, Facebook, Twitter, AngelList, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['name']."', '".$_POST['position']."' ,
+
+
+$insert_sql = mysqli_query($connecDB,"INSERT INTO startups(userID, startupID, Name, Url, Position, Industry, City, State, ZipCode, About, Description, Logo, Video, Screenshot, Facebook, Twitter, AngelList, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['name']."', '".seoUrl($_POST['name'])."' , '".$_POST['position']."' ,
   '".$_POST['industry']."', '".$city."' , '".$state_final."', '".$row_zip['zip']."', '".$_POST['about']."', '".$_POST['description']."' , '".$logo."' ,
   '".$_POST['video']."', '".$screenshot."', '".$facebook."', '".$twitter."', '".$angellist."', '".$date."')");
+
+echo "<div id='startup-link'>";
+echo seoUrl($_POST['name']);
+echo "</div>";
 
 
 
@@ -80,13 +99,14 @@ mysqli_query($connecDB, $sql);
 
 $sql = "UPDATE startups SET 
 Name='".$_POST['name']."',
+Url='".seoUrl($_POST['name'])."',
 Position='".$_POST['position']."',
 Industry='".$_POST['industry']."',
 About='".$_POST['about']."',
 Description='".$_POST['description']."',
 City='".$city."',
 State='".$state_final."',
-Zip='".$row_zip['zip']."',
+ZipCode='".$row_zip['zip']."',
 Facebook='".$facebook."',
 Twitter='".$twitter."',
 AngelList='".$angellist."',
@@ -119,6 +139,10 @@ echo $_POST['position'];
 echo '</h5>';
 echo '</div>';
 
+echo "<div id='startup-link'>";
+echo seoUrl($_POST['name']);
+echo "</div>";
+
 /*
 $dateTime = "2017-03-05";
 $dateTimeSplit = explode(" ",$dateTime);
@@ -141,7 +165,8 @@ $response = array();
 $response[] = array(
 	'objectID'=> $row_startup['userID'],
 	'startupID'=> $row_startup['userID'],
-	'name'=> $_POST['name'], 
+	'name'=> $_POST['name'],
+	'url'=> seoUrl($_POST['name']), 
 	'industry'=> $_POST['industry'],
 	'description'=> $row_startup['Description'],
 	'location'=> $city.', '.$state_final, 
