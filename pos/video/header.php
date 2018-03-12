@@ -43,6 +43,7 @@ $client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleuserconte
 $client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
 $redirect_uri = 'http://localhost/creative/pos/video/';
 
+
 //database
 $db_username = "root"; //Database Username
 $db_password = "123"; //Database Password
@@ -70,6 +71,9 @@ $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
 $client->addScope("email");
 $client->addScope("profile");
+$client->setIncludeGrantedScopes(true);   // incremental auth
+$client->setApprovalPrompt('force');
+//$client->setApprovalPrompt('consent');
 
 
 /************************************************
@@ -97,10 +101,11 @@ if (isset($_GET['code'])) {
 
 
 // If the access token is expired, ask the user to login again
-if($client->isAccessTokenExpired()) {
+/*if($client->isAccessTokenExpired()) {
     $authUrl = $client->createAuthUrl();
-    //header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
-}
+    header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
+    exit();
+}*/
 
 
 
@@ -110,14 +115,14 @@ if($client->isAccessTokenExpired()) {
  ************************************************/
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $client->setAccessToken($_SESSION['access_token']);
-  //$client->refreshToken(json_decode($_SESSION['access_token'])->access_token);
 } else {
   $authUrl = $client->createAuthUrl();
 }
 
 
 
-
+//echo $authUrl;
+//exit();
 
  if (!isset($authUrl)){ 
  
@@ -136,23 +141,26 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
   //check if user exist in database using COUNT
-  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_users WHERE google_id=$user->id ");
-  $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
+  //$result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_users WHERE google_id=$user->id ");
+  //$user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
   
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user->email."'");
+  $row = mysqli_fetch_array($sql);
 
 
   $fullname = $user->givenName.' '.$user->familyName;
+
+
 
   //show user picture
   //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
   //echo $user_count;
   //echo $user->email;
-  if($user->email) //if user already exist change greeting text to "Welcome Back"
+  if ($sql->num_rows == 1) //if user already exist change greeting text to "Welcome Back"
     {   
 
-        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user->email."'");
-        $row = mysqli_fetch_array($sql);
+      
 
         $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
         google_id = '".$user->id."',
@@ -280,9 +288,8 @@ echo 'id: ' . $user['id'];
   //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
   //echo $user_count;
   //echo $user->email;
-  if($row['userID'] != '') //if user already exist change greeting text to "Welcome Back"
+  if ($resultfacebook->num_rows == 1) //if user already exist change greeting text to "Welcome Back"
     {
-
 
      
     
@@ -411,8 +418,16 @@ echo 'id: ' . $user['id'];
         <!-- color CSS -->
         <link href="<?php echo BASE_PATH; ?>/css/blue-dark.css" id="theme" rel="stylesheet">
         <link href="<?php echo BASE_PATH; ?>/css/materialdesignicons.min.css" rel="stylesheet">
+        <!-- Fontawesome -->
+        <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        
+
         <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+
+
+
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
