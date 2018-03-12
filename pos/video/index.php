@@ -40,7 +40,7 @@ include_once("config.php");
         <div id="page-wrapper">
             <div class="container-fluid">
                
-              
+              <?php //echo $_SESSION['entrepreneurSession']; ?>
                        
                 <!-- ============================================================== -->
                 <!-- Main Screen Start -->

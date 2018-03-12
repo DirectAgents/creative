@@ -146,7 +146,7 @@ No Team Members added so far!
                 ?>                 
                                  
                 
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connect" <?php if(mysqli_num_rows($sql_connect)<=0) { ?> style="display:block" 
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connect" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
                                   <a href="javascript: void(0);" id="sa-connect" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
                                  </div> 
@@ -157,7 +157,7 @@ No Team Members added so far!
                 ?>                 
                                  
                 
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-cancel" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" 
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-cancel" <?php if ($sql_connect->num_rows == 1) {  ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
                                    <a href="javascript: void(0);" id="sa-connect-cancel" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                  </div> 
@@ -169,7 +169,7 @@ No Team Members added so far!
     $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'accepted' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'accepted'");
                 ?>                 
                                 
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connected" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" 
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connected" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
                                    <a href="javascript: void(0);" id="sa-connect" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connected +</a>
                                  </div> 
@@ -179,7 +179,7 @@ No Team Members added so far!
     $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'denied' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'denied'");
                 ?>                                          
                
-    <div class="col-md-12 col-sm-12 text-center sa-connect-pending" <?php if(mysqli_num_rows($sql_connect)>0) { ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
+    <div class="col-md-12 col-sm-12 text-center sa-connect-pending" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
                                     <a href="javascript: void(0);" id="sa-connect-cancel-d" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Request Pending</a>
                                   </div>
                 

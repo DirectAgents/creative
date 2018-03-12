@@ -104,11 +104,7 @@ if(isset($_SESSION['linkedin_id'])){
    			 {   
 
         $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
-        Type = '".$_GET['type']."',
-        linkedin_id = '".$_SESSION['facebook_id']."',
-        Fullname = '".$_SESSION['fullname']."',
-        linkedin_picture_link = '".$_SESSION['linkedin_picture_link']."',
-        ProfileImage = 'Linkedin'
+        Type = '".$_GET['type']."'
     
         WHERE Email='".$_SESSION['email']."'");
 

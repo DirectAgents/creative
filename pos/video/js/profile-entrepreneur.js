@@ -9,6 +9,14 @@ var image_link = 'http://localhost/creative/pos/video/';
 
 
 
+////////Search Form//////////
+
+$( "#search-input-form" ).on( "submit", function(e) { 
+   $(this).attr('action',$(this).attr('action')+$('#search-input').val());
+});
+
+
+
 ////////////////Update Profile//////////////////////
 
 
@@ -293,6 +301,7 @@ $(".cancel-company").click(function (e) {
             }
         });
 });
+
 
 
 
@@ -933,6 +942,8 @@ $('.like').click(function(){
 
 
    });
+
+
 
 
 });

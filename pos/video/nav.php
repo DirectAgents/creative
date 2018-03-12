@@ -564,9 +564,9 @@ $row13 = mysqli_fetch_array($sql13);
 
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                        <form method="POST" action="<?php echo BASE_PATH; ?>/?q=" id="search-input-form" role="search" class="app-search hidden-sm hidden-xs m-r-10">
                           
-                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Startup Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
+                        <input type="text" class="algolia-autocomplete light form-control" name="search-input" id="search-input" placeholder="123Search by Startup Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
                          </form>
 
                     </li>
@@ -1091,7 +1091,7 @@ $row13 = mysqli_fetch_array($sql13);
                         
                     </li>
                      <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <b class="hidden-xs">Signup</b></a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="modal" data-target="#signin" href="#"> <b class="hidden-xs">Signup</b></a>
                         
                     </li>
                     <!-- /.dropdown -->

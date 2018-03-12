@@ -194,7 +194,7 @@ exit();
         <?php 
 
 
-        if($row_entrepreneur['Type'] == 'Entrepreneur'){$type = 'entrepreneur';}
+        if($row_entrepreneur['Type'] == 'Startup'){$type = 'startup';}
         if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
                     
                                         $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' ORDER BY id DESC");                    
@@ -468,7 +468,7 @@ $('#sa-connect-delete-'+<?php echo $row_connections['requester_id']; ?>).click(f
             <?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
             <?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){ $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture"; } ?>
             <?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
-            <tr class="advance-table-row connections-tab-inside text-center">
+            <tr class="advance-table-row connections-tab-inside">
                 <td width="10"></td>
                 <td>
                     <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['username'];?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
