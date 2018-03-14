@@ -24,6 +24,20 @@ $( "#update-profile" ).on( "submit", function(e) {
 //alert("asdf");
 e.preventDefault();
 
+var proceed = true;
+
+var phone = $("input[name='fm_phone']").val();
+
+if(phone.length < 14){
+    $("#fm_phone").css('border-bottom','1px solid red');
+    proceed = false;
+}else{
+    $("#fm_phone").css('border-bottom','0px');
+    proceed = true;
+}
+
+
+if (proceed){
             $.ajax({
                 url: url_link+"update.php",
                 method: "POST",
@@ -68,6 +82,8 @@ e.preventDefault();
                }
                 
             });
+
+        }    
 
 
         var skill = $('input[name="skillselection[]"]:checked').map(function() { return this.value; }).get().join(",");
@@ -199,6 +215,8 @@ $.ajax({
                 success: function(response) {
                    
                    var zip = $(response).filter('#zip').html(); 
+                   //alert(zip);
+                   $("#thezipcode").replaceWith('<div id="thezipcode"><h5 class="text-white">'+zip+'</h5></div>');
 
                    if (zip != ''){  
                     

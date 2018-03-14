@@ -441,6 +441,10 @@ echo 'id: ' . $user['id'];
 <!-- Add jQuery library -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
+
+
+
+
     <!-- Add fancyBox main JS and CSS files -->
     <script type="text/javascript" src="source/jquery.fancybox.pack.js?v=2.1.5"></script>
     <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
@@ -551,7 +555,6 @@ echo 'id: ' . $user['id'];
         });
         //]]>
         </script>
-
 
 
 

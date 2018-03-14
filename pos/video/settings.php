@@ -93,12 +93,11 @@ exit();
                                             <div id="fullname">
                                                 <h4 class="text-white"><?php echo $row_entrepreneur['Fullname'];?></h4>
                                             </div>
-                                            <div id="position">
-                                                <?php if($row_entrepreneur['Position'] != ''){ ?>
+                                           <div id="thezipcode">
+                                                <?php if($row_entrepreneur['ZipCode'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
-                                                //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
-                                                echo $row_entrepreneur['Position'];
+                                                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_entrepreneur['City'])))).', '.$row_entrepreneur['State'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
@@ -193,7 +192,7 @@ exit();
                                             <div class="form-group">
                                                 <label class="col-md-12">Phone No</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_phone" name="fm_phone" placeholder="Phone Number" value="<?php echo $row['Phone'];?>" class="form-control form-control-line">
+                                                    <input type="tel" id="fm_phone" name="fm_phone" placeholder="Phone Number" value="<?php echo $row['Phone'];?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
