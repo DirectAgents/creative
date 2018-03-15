@@ -142,7 +142,8 @@ $row = mysqli_fetch_array($sql);
                                             <?php } ?>
                                             <hr>
                                             <a href="<?php echo $row['Video'];?>" class="fancybox-media_button bg-info">
-                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Screenshot']; ?>">
+                                            <div class="play-button"></div>
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_365/v1/<?php echo $row['Screenshot']; ?>">
                                             </a>
 
 

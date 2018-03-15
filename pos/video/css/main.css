@@ -884,7 +884,7 @@ color:#4c5e5e
 	padding-left: 12px
 }
 .nav--footer.nav--two .nav__menus ul {
-	width: 50%;
+	width: 33%;
 	min-width: 0
 }
 .nav--footer.nav--four .nav--social, .nav--footer.nav--four .nav__menus, .nav--footer.nav--three .nav--social, .nav--footer.nav--three .nav__menus {
@@ -1484,13 +1484,13 @@ p.hero__text--cta a {
 }
 
 
-.book-a-session button {
+.book-a-session button, #contact-us button {
     background-color: #00a8e2;
 	border: 1px solid #d1d1d1;
     color: #fff;
 }
 
-.book-a-session button:hover {
+.book-a-session button:hover, #contact-us button:hover {
     background-color: #0882ac;
 	border: 1px solid #d1d1d1;
     color: #fff;
@@ -2802,15 +2802,15 @@ img.mfp-img {
 	flex-basis: 25%
 }
 .nav--footer.nav--two {
-	padding: 0 20px
+	/*padding: 0 20px*/
 }
 .nav--footer.nav--two .nav__menus {
-	-webkit-flex-basis: 60%;
-	-ms-flex-preferred-size: 60%;
-	flex-basis: 60%
+	-webkit-flex-basis: 100%;
+	-ms-flex-preferred-size: 100%;
+	flex-basis: 100%
 }
 .nav--footer.nav--two .nav__menus ul {
-	min-width: 50%
+	min-width: 0%
 }
 .nav--footer.nav--two .nav--social {
 	-webkit-flex-basis: 30%;
@@ -3174,10 +3174,10 @@ a:hover {
 	flex-wrap: nowrap
 }
 .nav--footer.nav--two {
-	padding: 0 80px
+	/*padding: 0 80px*/
 }
 .nav--footer.nav--two .nav__menus ul {
-	min-width: 200px
+	min-width: 180px
 }
 .nav--footer.nav--three {
 	padding: 0 20px
@@ -3344,7 +3344,9 @@ a:hover {
 	font-size: 32px
 }
 .heading--internal {
-	font-size: 48px
+	font-size: 48px;
+	float:left;
+	width:100%;
 }
 .footer__form {
 	width: 50%
@@ -3605,6 +3607,12 @@ a:hover {
 }
 }
 @media screen and (max-width:499px) {
+
+.nav--footer.nav--two .nav__menus ul {
+	width: 100%;
+	min-width: 0
+}
+
 .u-hide--sm-down {
 	display: none!important
 }

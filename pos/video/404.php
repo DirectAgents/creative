@@ -61,6 +61,7 @@
                 <div class="error-details">
                     Sorry, an error has occured, Requested page not found!
                 </div>
+                <p>&nbsp;</p>
                 <div class="error-actions">
                     <a href="<?php echo BASE_PATH; ?>" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
                         Take Me Home </a>&nbsp;&nbsp;&nbsp;<a href="mailto:contact@test.com" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>

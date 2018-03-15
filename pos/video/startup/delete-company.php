@@ -83,6 +83,14 @@ Likes='".$row_top."' - '".$row_likes."'
 WHERE Industry='".$row['Industry']."'";
 mysqli_query($connecDB, $sql);
 
+//Delete Bookmarks
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requested_id = '".$_SESSION['entrepreneurSession']."'");
+while($row_team = mysqli_fetch_array($sql)){  
+
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_bookmarks WHERE requested_id = '".$_SESSION['entrepreneurSession']."'");
+
+}
+
 
 //Delete Company
 $sql=mysqli_query($connecDB,"DELETE FROM startups WHERE userID = '".$_SESSION['entrepreneurSession']."' AND id = '".$_POST['id']."'");

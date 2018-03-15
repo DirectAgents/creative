@@ -79,25 +79,26 @@
                                         <div class="user-content">
                                             <div id="company-logo-public">
 
-                                            <?php if($row_the_startup['Logo'] != '') { ?>
+                                            <?php if($row_the_startup['Logo'] != '' && $row_the_startup['Logo'] != 'on') { ?>
                                           <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_the_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
-                                            <?php }?>
-                                           
+                                            <?php }else{ ?>
+                                                 <img src="<?php echo BASE_PATH; ?>/images/rocket.jpg" class="thumb-lg img-circle" alt="img">
+                                           <?php } ?>
 
                                               </div>
 
                                              <?php if(isset($_SESSION['entrepreneurSession']) && $row_the_startup['userID'] == $_SESSION['entrepreneurSession']) { ?>
 
-                                             <a href="#" id="upload_widget_multiple_logo" class="upload_widget_multiple_logo_link">
+                                             <a href="#/" id="upload_widget_multiple_logo" class="upload_widget_multiple_logo_link">
 
-                                            <?php if($row_the_startup['Logo'] != '') { ?>
+                                            <?php if($row_the_startup['Logo'] != '' && $row_the_startup['Logo'] != 'on' ) { ?>
                                              <ul id="preview_logo">
-                                          <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_the_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
+                                          <img src="http://123res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_the_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
                                              </ul>
                                                <div id="url_preview_logo"><input type="checkbox" style="display:none" value="<?php echo $row_the_startup['Logo'];?>" name="company_logo[]"  checked/></div>
                                             <?php }else{ ?>
                                             <ul id="preview_logo">
-                                            <img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <img src="<?php echo BASE_PATH; ?>/images/rocket.jpg" class="thumb-lg img-circle" alt="img">
                                              </ul>
                                                <div id="url_preview_logo"><input type="checkbox" style="display:none" name="company_logo[]"  checked/></div>
                                             <?php } ?>
@@ -185,11 +186,11 @@
                             <div class="white-box">
                                 <ul class="nav nav-tabs tabs customtab">
                                     <li class="tab active">
-                                        <a href="#company" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Startup</span> </a>
+                                        <a href="#company" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fas fa-rocket"></i></span> <span class="hidden-xs">Startup</span> </a>
                                     </li>
                                     <?php //if(!isset($_SESSION['entrepreneurSession'])){ ?>
                                     <li class="tab">
-                                        <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">111Meet the Team</span> </a>
+                                        <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fas fa-users"></i></span> <span class="hidden-xs">Meet the Team</span> </a>
                                     </li>
                                    <?php //} ?>
                                     <?php if(isset($_SESSION['usernameSession']) && $_SESSION['usernameSession'] == $_GET['username']) { ?>

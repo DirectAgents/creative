@@ -543,11 +543,12 @@ a.svg:after {
 	border: 0
 }
 .exit-button {
-	width: auto;
+	width: 40px;
 	height: 40px;
 	border: 0;
 	border-radius: 50px;
-	background:#333;
+	background:#666;
+	padding:0px;
 }
 .exit-button:hover {
 	background: #00D3AA
@@ -559,10 +560,10 @@ a.svg:after {
 	margin-top: 40px
 }
 .signup-card {
-	width: 500px;
-	margin-top: 70px;
-	height: 300px;
-	border: 0 solid #e6e6e6
+    width: 500px;
+    margin-top: 70px;
+    height: 300px;
+    border: 0 solid #e6e6e6;
 }
 .signup-card-image {
 	width: 80px

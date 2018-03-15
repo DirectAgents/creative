@@ -99,7 +99,7 @@ if ($sql->num_rows == 0){
 
 
 
- if($column_name == 'Zip_Company') {
+ if($column_name == 'Zip Company') {
 
  $sql=mysqli_query($connecDB,"SELECT * FROM zip_state WHERE zip='".$content."'");
  $row=mysqli_fetch_array($sql); 	
@@ -115,7 +115,7 @@ if ($sql->num_rows == 0){
  $row_company = mysqli_fetch_array($result);
 
  if($row_company != ''){
- echo '<div id="zip">'.$row_company['City'].'1111 '.$row_company['State'].'</div>';
+ echo '<div id="zip">'.$row_company['City'].', '.$row_company['State'].'</div>';
  }else{
  echo '<div id="zip">Type your zip code</div>';
  }

@@ -5,14 +5,14 @@ session_start();
 
 ob_start();
 
-require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
+require_once '../facebook-sdk-v5/autoload.php';
 
 
-require_once 'base_path.php';
+require_once '../base_path.php';
 
-require_once 'class.entrepreneur.php';
+require_once '../class.entrepreneur.php';
 
-include_once("config.php");
+include_once("../config.php");
 
 $reg_user = new ENTREPRENEUR();
 
@@ -22,20 +22,25 @@ if($reg_user->is_logged_in()!="")
 }
 
 
+if(isset($_SESSION['entrepreneurSession'])){
+ $sql = "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $result = mysqli_query($connecDB, $sql);  
+ $row_entrepreneur = mysqli_fetch_array($result);
+}
 
 
-//session_start(); //session start
+if(!isset($_SESSION['linkedin_id'])){
 
-//echo $_SESSION['access_token'];
+require_once '../facebook-sdk-v5/autoload.php';
 
-
-require_once ('libraries/Google/autoload.php');
+require_once ('../libraries/Google/autoload.php');
 
 //Insert your cient ID and secret 
 //You can get it from : https://console.developers.google.com/
 $client_id = '762314707749-fpgm9cgcutqdr6pehug9khqal9diajaq.apps.googleusercontent.com'; 
 $client_secret = 'SkjeNM0N02slGKfpNc7vwFiX';
 $redirect_uri = 'http://localhost/creative/pos/video/';
+
 
 //database
 $db_username = "root"; //Database Username
@@ -47,7 +52,7 @@ $db_name = 'video'; //Database Name
 //incase of logout request, just unset the session var
 if (isset($_GET['logout'])) {
   unset($_SESSION['access_token']);
-  unset($_SESSION['investorSession']);
+  unset($_SESSION['entrepreneurSession']);
 }
 
 /************************************************
@@ -64,6 +69,10 @@ $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
 $client->addScope("email");
 $client->addScope("profile");
+$client->setIncludeGrantedScopes(true);   // incremental auth
+$client->setApprovalPrompt('force');
+//$client->setApprovalPrompt('consent');
+
 
 /************************************************
   When we create the service here, we pass the
@@ -88,11 +97,15 @@ if (isset($_GET['code'])) {
 }
 
 
+
 // If the access token is expired, ask the user to login again
-//if($client->isAccessTokenExpired()) {
-    //$authUrl = $client->createAuthUrl();
-    //header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
-//}
+/*if($client->isAccessTokenExpired()) {
+    $authUrl = $client->createAuthUrl();
+    header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
+    exit();
+}*/
+
+
 
 /************************************************
   If we have an access token, we can make
@@ -100,15 +113,14 @@ if (isset($_GET['code'])) {
  ************************************************/
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $client->setAccessToken($_SESSION['access_token']);
-  //$client->refreshToken(json_decode($_SESSION['access_token'])->access_token);
-  //$client->setAccessToken(json_decode($_SESSION['access_token'])->access_token);
 } else {
   $authUrl = $client->createAuthUrl();
 }
 
 
 
-
+//echo $authUrl;
+//exit();
 
  if (!isset($authUrl)){ 
  
@@ -127,25 +139,28 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
   //check if user exist in database using COUNT
-  $result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_entrepreneur WHERE google_id=$user->id ");
-  $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
+  //$result = mysqli_query($connecDB,"SELECT COUNT(google_id) as usercount FROM tbl_users WHERE google_id=$user->id ");
+  //$user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
   
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user->email."'");
+  $row = mysqli_fetch_array($sql);
 
 
   $fullname = $user->givenName.' '.$user->familyName;
+
+
 
   //show user picture
   //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
   //echo $user_count;
   //echo $user->email;
-  if($user->email) //if user already exist change greeting text to "Welcome Back"
+  if ($sql->num_rows == 1) //if user already exist change greeting text to "Welcome Back"
     {   
 
-        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user->email."'");
-        $row = mysqli_fetch_array($sql);
+      
 
-        $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
+        $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
         google_id = '".$user->id."',
         Fullname = '".$fullname."',
         google_picture_link = '".$user->picture."',
@@ -157,9 +172,10 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['entrepreneurSession'] = $row['userID'];
         //echo $_SESSION['startupSession'];
-        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
         //header('Location: '.BASE_PATH.'');
-        exit();
+        //exit();
+        //'".json_decode($_SESSION['access_token'])->access_token."',
     }
   else //else greeting text "Thanks for registering"
   { 
@@ -170,7 +186,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     
     
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (google_id, Fullname, Email, google_picture_link, ProfileImage, Date_Created) 
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (google_id, Fullname, Email, google_picture_link, ProfileImage, Date_Created) 
       VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , 'Google' , '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
@@ -178,13 +194,17 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
     //mysqli_query($insert_sql);  
 
-        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user->email."'");
+        $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user->email."'");
         $row = mysqli_fetch_array($sql);
 
         $_SESSION['entrepreneurSession'] = $row['userID'];
-        echo $_SESSION['startupSession'];
+        $_SESSION['google_id'] = $user->id;
+        //echo $_SESSION['startupSession'];
         //echo "asdfasfd";
-        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        //exit();
+
+        header('Location: '.BASE_PATH.'/choose/');
         exit();
 
 
@@ -234,7 +254,8 @@ try {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
 } catch(Facebook\Exceptions\FacebookSDKException $e) {
-  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  //echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  header("Location: ".BASE_PATH."/404/");
   exit;
 }
 
@@ -251,24 +272,27 @@ echo 'id: ' . $user['id'];
 //check if user exist in database using COUNT
 
 
-  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_entrepreneur WHERE facebook_id='".$user['id']."' ");
+  $resultfacebook = mysqli_query($connecDB,"SELECT COUNT(facebook_id) as usercountfacebook FROM tbl_users WHERE facebook_id='".$user['id']."' ");
   $user_count_facebook = $resultfacebook->fetch_object()->usercountfacebook; //will return 0 if user doesn't exist
 
   
-  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user['email']."'");
+  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user['email']."'");
   $row = mysqli_fetch_array($sql);
+
+
 
 
   //show user picture
   //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
   //echo $user_count;
   //echo $user->email;
-  if($row['userID']) //if user already exist change greeting text to "Welcome Back"
+  if ($resultfacebook->num_rows == 1) //if user already exist change greeting text to "Welcome Back"
     {
 
+     
     
 
-    $update_sql = mysqli_query($connecDB,"UPDATE tbl_entrepreneur SET 
+    $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
     facebook_id = '".$user['id']."', 
     ProfileImage = 'Facebook'
 
@@ -277,13 +301,23 @@ echo 'id: ' . $user['id'];
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
         $_SESSION['entrepreneurSession'] = $row['userID'];
         $_SESSION['facebook_photo'] = $user['id'];
+
         //header("Location: ../index.php");
         //echo $_SESSION['startupSession'];
         //echo "asdfasdf";
         //echo $row['userID'];
         //echo $user['email'];
-        header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
-        exit();
+        //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+        //exit();
+
+     //if($row['Type'] == ''){
+
+      //header('Location: '.BASE_PATH.'');
+      //exit();
+
+     //}
+
+        
         
     }
   else //else greeting text "Thanks for registering"
@@ -298,23 +332,36 @@ echo 'id: ' . $user['id'];
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     $fullname = $user['first_name'].' '.$user['last_name'];
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_entrepreneur (facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
-      VALUES ('".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
+
+    $words = explode(" ", $fullname);
+    $firstname = $words[0];
+    $lastname = $words[1];
+
+    $theusername = strtolower($firstname.'-'.$lastname);
+
+
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (username, facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
+      VALUES ('".$theusername."', '".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
 
     //mysqli_query($insert_sql);  
     
-    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_entrepreneur WHERE Email = '".$user['email']."'");
+    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$user['email']."'");
     $row = mysqli_fetch_array($sql);
 
     $_SESSION['entrepreneurSession'] = $row['userID'];
+    $_SESSION['facebook_id'] = $user['id'];
+    $_SESSION['email'] = $user['email'];
     //header("Location: ../index.php");
     //echo $row['userID'];
     //echo "123";
-    header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
-    exit(); 
+    //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
+    //exit(); 
+
+    header('Location: '.BASE_PATH.'/choose/');
+    exit();
 
 
 
@@ -323,9 +370,9 @@ echo 'id: ' . $user['id'];
 
 
 
-  }
+    } 
 
- 
+  }
 
 }
 
@@ -371,7 +418,7 @@ echo 'id: ' . $user['id'];
         <link rel='dns-prefetch' href='//maps.googleapis.com' />
         <link rel='dns-prefetch' href='//www.fivestars.com' />
         <link rel='dns-prefetch' href='//s.w.org' />
-        <link rel='stylesheet' id='mg_custom-css'  href='css/main.css?ver=v2.8' type='text/css' media='all' />
+        <link rel='stylesheet' id='mg_custom-css'  href='<?php echo BASE_PATH; ?>/css/main.css?ver=v2.8' type='text/css' media='all' />
         <script type='text/javascript' async src='//cdn.polyfill.io/v2/polyfill.min.js'></script>
         <link rel='https://api.w.org/' href='https://www.fivestars.com/wp-json/' />
         <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.fivestars.com/xmlrpc.php?rsd" />
@@ -392,14 +439,14 @@ echo 'id: ' . $user['id'];
 
 
         <!--Modal-->
-        <link href="css/bootsrap.min.css" rel="stylesheet">
-        <link href="css/style.min.css" rel="stylesheet">
+        <link href="<?php echo BASE_PATH; ?>/css/bootsrap.min.css" rel="stylesheet">
+        <link href="<?php echo BASE_PATH; ?>/css/style.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/js/bootstrap.min.js"></script>
 
 
 
-        <script src="js/pyh_external_js-v=uN_DBNmZ1XZv0CCjSQ0FwwOJuRgjgQuhhe44tzI3abA1.js"></script>
+        <script src="<?php echo BASE_PATH; ?>/js/pyh_external_js-v=uN_DBNmZ1XZv0CCjSQ0FwwOJuRgjgQuhhe44tzI3abA1.js"></script>
 
 
         <script>
@@ -409,21 +456,22 @@ echo 'id: ' . $user['id'];
                         scrollTop: $(".find-out-more").offset().top - 1
                     }, 1000);
                 });
-                $("#what-we-do").click(function() {
+                $("#what-we-offer, #what-we-offer-footer").click(function() {
+                  
                     $('html, body').animate({
-                        scrollTop: $(".what-we-do").offset().top - 100
+                        scrollTop: $(".what-we-offer").offset().top - 100
                     }, 1000);
 
                 });
                 
-                 $("#pricing").click(function() {
+                 $("#pricing, #pricing-footer").click(function() {
                     $('html, body').animate({
                         scrollTop: $(".pricing").offset().top - 100
                     }, 1000);
 
                 });
 
-                $("#book-a-session").click(function() {
+                $("#book-a-session, #book-a-session-footer").click(function() {
                     $('html, body').animate({
                         scrollTop: $(".book-a-session").offset().top - 100
                     }, 1000);
@@ -451,15 +499,27 @@ echo 'id: ' . $user['id'];
                     <ul>
 
                         <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a href="investors"/>For Investors</a></li>
+                        
+                        
+                        <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $row_entrepreneur['userID']) { ?>
                         <li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51">
-                        <a href="" data-toggle="modal" data-target="#signin">Login</a></li>
+                        <a href="<?php echo BASE_PATH; ?>" data-toggle="modal" data-target="#signin">Dashboard</a></li>
+                         
+                        <?php }else{ ?>
+                       <li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51">
+                       <a href="" data-toggle="modal" data-target="#signin">Login</a></li>
+                         <li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51">
+                        <a href="" data-toggle="modal" data-target="#signin">Signup</a></li>
+
+                        <?php } ?>
+                    
                     </ul>      </nav>
                 <button class="hamburger hamburger--squeeze js-hamburger u-hide--md-up" type="button">
                     <span class="hamburger-box">
                         <span class="hamburger-inner"></span>
                     </span>
                 </button>
-                <a href="https://www.fivestars.com" class="logo--header">
+                <a href="<?php echo BASE_PATH; ?>" class="logo--header">
                     <svg width="160" height="30" viewBox="0 0 1242 237" xmlns="http://www.w3.org/2000/svg"><title>logo</title><g fill-rule="nonzero" fill="#FFF"><path d="M-.003 178.09h21.491v-49.3h61.709v-19.36H21.488V76.373h69.55V57.006H-.003zM111.514 57.014h21.492V178.09h-21.492zM211.497 150.04l-36.892-93.034H150.83l50.883 121.925h18.867l50.833-121.925H248.18zM309.522 126.556h61.358v-19.017h-61.358V76.022h69.25V57.006h-90.75v121.083h91.591v-19.017h-70.091zM446.222 110.956c-26.909-5.717-33.209-12.067-33.209-23.484v-.35c0-10.916 10.125-19.558 26.009-19.558 12.608 0 23.983 3.975 35.35 13.158l7.991-10.575c-12.358-9.833-25.166-14.841-42.991-14.841-23.234 0-40.159 13.991-40.159 33.008v.35c0 19.858 12.909 28.892 41.05 34.95 25.667 5.358 31.825 11.767 31.825 22.983v.35c0 11.917-10.825 20.6-27.258 20.6-16.975 0-29.183-5.708-41.942-17.125l-8.591 10.025c14.691 12.959 30.575 19.359 49.991 19.359 24.275 0 41.8-13.5 41.8-34.25v-.35c0-18.517-12.608-28.35-39.866-34.25M590.238 57.03H494.13v12.61h41.058v108.416h14V69.639h41.05zM606.463 133.79l28-61.71 27.8 61.71h-55.8zm21.7-77.643l-55.758 121.917h14.15l14.5-31.967h66.616l14.342 31.967h14.85l-55.75-121.917h-12.95zM726.03 118.764v-49.15h37.775c19.758 0 31.275 9.042 31.275 23.883v.342c0 15.592-13.1 24.925-31.467 24.925H726.03zm83-25.417v-.35c0-9.533-3.475-18.016-9.384-23.883-7.741-7.592-19.758-12.108-34.791-12.108H712.23v121.083h13.8v-47.067h34.95l35.491 47.067h16.975l-37.575-49.5c19.209-3.425 33.159-15.192 33.159-35.242zM878.121 110.956c-26.95-5.717-33.208-12.067-33.208-23.484v-.35c0-10.916 10.125-19.558 26.008-19.558 12.609 0 23.984 3.975 35.3 13.158l8.042-10.575c-12.408-9.833-25.167-14.841-42.992-14.841-23.233 0-40.208 13.991-40.208 33.008v.35c0 19.858 12.958 28.892 41.1 34.95 25.667 5.358 31.825 11.767 31.825 22.983v.35c0 11.917-10.875 20.6-27.3 20.6-16.933 0-29.142-5.708-41.95-17.125l-8.542 10.025c14.692 12.959 30.575 19.359 49.992 19.359 24.275 0 41.75-13.5 41.75-34.25v-.35c0-18.517-12.558-28.35-39.817-34.25M1122.58 144.097c-1.684-1.191-3.867-1.841-6.109-1.841-2.183 0-4.416.65-6.1 1.841l-32.65 23.459h-.025l12.575-38.267c1.292-3.925-.4-9.083-3.775-11.517l-32.108-23.116h39.633c4.117 0 8.592-3.275 9.825-7.242l12.484-38.55h.125l12.741 38.658c1.292 3.925 5.759 7.1 9.925 7.1h39.9v.05l-32.225 23.175c-3.375 2.434-5.066 7.6-3.825 11.517l12.575 38.192h-.308l-32.658-23.459zm115.108-9.616c3.375-2.434 5.067-7.592 3.783-11.517l-17.133-52.125c-.842-2.533-2.733-3.925-4.867-3.925-1.141 0-2.383.4-3.566 1.242l-18.05 12.975h-.034L1173.43 7.106c-1.292-3.925-5.767-7.108-9.934-7.108h-55.6c-4.166 0-6.5 3.183-5.208 7.108l6.683 20.267h-6.25v.025h-72.7c-4.166 0-8.583 3.225-9.875 7.191l-17.075 52.825c-1.291 3.967 1.042 7.242 5.217 7.242h22.483l-24.3 74.05c-1.291 3.916.4 9.083 3.767 11.516l44.783 32.167c1.184.842 2.384 1.242 3.525 1.242 2.175 0 4.067-1.392 4.909-3.917l6.95-21.158h.016l-.066.216 63.941 46.017c1.684 1.192 3.917 1.792 6.109 1.792 2.233 0 4.458-.6 6.15-1.792l44.775-32.217c3.383-2.425 3.383-6.35 0-8.783l-18.267-13.125v-.025l64.225-46.158z"/></g></svg>
                 </a>
             </div>
@@ -476,7 +536,7 @@ echo 'id: ' . $user['id'];
         <main class="main">
             <!--  hero START -->
             <section class="hero">
-                <div class="hero__bg lazyImg lazyImg--notloaded" style="background-image: url(assets/AdobeStock_2836132-darker.jpg)" data-image="assets/AdobeStock_2836132-darker.jpg"></div>
+                <div class="hero__bg lazyImg lazyImg--notloaded" style="background-image: url(<?php echo BASE_PATH; ?>/assets/AdobeStock_2836132-darker.jpg)" data-image="<?php echo BASE_PATH; ?>/assets/AdobeStock_2836132-darker.jpg"></div>
                 <noscript><div class="hero__bg" style="background-image: url(https://www.fivestars.com/wp-content/uploads/2017/02/Highrez.jpg)"></div></noscript>
                 <div class="wrapper">
                     <div class="hero__content">
@@ -506,11 +566,11 @@ echo 'id: ' . $user['id'];
             <!--  hero END -->
             <nav id="nav-internal" class="nav--internal"><ul>
                 <li id="menu-item-199" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-199">
-                    <a href="#" id="what-we-do">What we offer!</a></li>
+                    <a href="#/" id="what-we-offer">What we offer!</a></li>
                 <li id="menu-item-199" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-199">
-                    <a href="#" id="pricing">Pricing</a></li>
+                    <a href="#/" id="pricing">Pricing</a></li>
                 <li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198">
-                    <a href="#" id="book-a-session">Book a Session</a></li>
+                    <a href="#/" id="book-a-session">Book a Session</a></li>
                 </ul></nav>
 
 
@@ -519,14 +579,14 @@ echo 'id: ' . $user['id'];
                     <h2 class="heading--internal u-text-center u-mb2">Did you know?</h2>
                     <figure class="illustration--60">
                         <figcaption>Only 0.91 percent of startups are funded by angel investors, while a measly 0.05 percent are funded by VCs</figcaption>
-                        <img src="images/money-bag.svg" alt="icon"/>
+                        <img src="<?php echo BASE_PATH; ?>/images/money-bag.svg" alt="icon"/>
                     </figure>
 
                 </div>
 
 
 
-                <div class="section__arrow what-we-do">
+                <div class="section__arrow what-we-offer">
                     <div class="wrapper">
                         <div class="grid center">
                             <div class="grid__column u-size-1of2--md"></div>
@@ -560,7 +620,7 @@ echo 'id: ' . $user['id'];
                         <!--  image START -->
                         <div class="grid__column u-size-1of2--md">
                             <figure class="section__illustration  section__illustration--icon">
-                                <img src="assets/camera.svg" class="u-img-responsive u-border-radius" />
+                                <img src="<?php echo BASE_PATH; ?>/assets/camera.svg" class="u-img-responsive u-border-radius" />
                             </figure>
                         </div>
                         <!--  image END -->
@@ -605,7 +665,7 @@ echo 'id: ' . $user['id'];
                         <!--  image START -->
                         <div class="grid__column u-size-1of2--md">
                             <figure class="section__illustration  section__illustration--icon">
-                                <img src="assets/chairs.svg" class="u-img-responsive u-border-radius" />
+                                <img src="<?php echo BASE_PATH; ?>/assets/chairs.svg" class="u-img-responsive u-border-radius" />
                             </figure>
                         </div>
                         <!--  image END -->
@@ -668,7 +728,7 @@ echo 'id: ' . $user['id'];
                 </div>
 
 
-                <div class="section__arrow book-a-session">
+                <div class="section__arrow">
                     <div class="wrapper">
                         <div class="grid">
                             <div class="grid__column u-size-1of2--md has-arrow"></div>
@@ -691,7 +751,7 @@ echo 'id: ' . $user['id'];
                         <div class="book-a-session-form">
                             <div class="grid grid--section">
                                 <span class="space"></span>
-                                <h2 class="heading--internal u-text-center u-mb4">Book a session for a video session!</h2>
+                                <h2 class="heading--internal u-mb4">Book a session for a video session!</h2>
 
                                 <span class="space"></span>
 
@@ -785,13 +845,92 @@ echo 'id: ' . $user['id'];
 
 
 
-<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <!--  section_image END -->
+        </main>
+        <span class="space"></span>
+        <footer class="footer">
+            <div class="footer__pattern"></div>
+            <div class="footer__cta">
+                <div class="wrapper">
+                    <h5 class="heading--section--lg u-text-white u-mb2 u-text-center">Start to impress your potential investors</h5>
+                    <p class="u-text-intro u-text-white u-text-normal u-text-center u-mb1">We incentivized more than 20 million customers to make 54 million visits last year to local stores like yours. Try FiveStars today.</p>
+                    <div class="footer__form">
+
+                    </div>
+                </div>
+            </div>
+            <span class="space"></span>
+            <div class="footer__bottom">
+                <div class="wrapper">
+
+
+                    <nav class="nav--footer nav--two">
+
+                        <div class="nav__menus">
+                            <ul><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-55"><a href="https://www.fivestars.com/businesses/">For Startups</a></li>
+
+
+
+
+                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57"> <a href="#/" id="what-we-offer-footer">What we offer!</a></li>
+                                <li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58"><a href="#/" id="pricing-footer">Pricing</a></li>
+                                <li id="menu-item-443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-443"><a href="#/" id="book-a-session-footer">Book a Session</a></li>
+                               
+                               
+                            </ul>
+
+
+                            <ul><li id="menu-item-445" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-445"><a href="https://www.fivestars.com/">For Investors</a></li>
+                            <li id="menu-item-446" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-446"><a target="_blank" href="https://www.fivestars.com/accounts/login/">Sign In</a></li>
+                            <li id="menu-item-447" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-447"><a target="_blank" href="https://fivestars.app.link/H5xo4xAVWB">Find Locations</a></li>
+                            <li id="menu-item-623" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-623"><a href="https://www.fivestars.com/business/">Rewards &#038; Deals</a></li>
+                            <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59"><a href="https://www.fivestars.com/about-us/">About Us</a></li>
+                            <li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60"><a href="https://www.fivestars.com/careers/">Careers</a></li>
+                            <li id="menu-item-361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361"><a href="https://www.fivestars.com/legal/">Terms</a></li>
+                            <li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62"><a target="_blank" href="https://partners.fivestars.com">Partners</a></li>
+                            </ul>                 
+
+
+                            <ul><li id="menu-item-445" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-445"><a href="https://www.fivestars.com/">About Us</a></li>
+                            <li id="menu-item-446" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-446"><a target="_blank" href="https://www.fivestars.com/accounts/login/">What we do</a></li>
+                            <li id="menu-item-447" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-447"><a target="_blank" href="https://fivestars.app.link/H5xo4xAVWB">Terms & Conditions</a></li>
+                            <li id="menu-item-623" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-623"><a href="https://www.fivestars.com/business/">Privacy Policy</a></li>
+                            <li id="menu-item-623" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-623"><a href="" data-toggle="modal" data-target="#contact-us">Contact Us</a></li>
+                            
+                            </ul>                  
+
+
+                             </div>
+
+                        <aside class="nav--social">
+                            <h6 class="heading--md u-hide--md-down">We're social. Join us!</h6>
+                            <ul>
+                                <li class="u-hide--md-up"><span>We're social. Follow us!</span></li>
+                                <li><a href="https://www.instagram.com/fivestars/" target="_blank"><svg width="30" height="30" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M24 0c6.518 0 7.335.028 9.895.144 2.555.117 4.3.523 5.826 1.116 1.578.613 2.917 1.434 4.25 2.768 1.335 1.334 2.156 2.673 2.77 4.251.592 1.527.998 3.271 1.115 5.826.116 2.56.144 3.377.144 9.895s-.028 7.335-.144 9.895c-.117 2.555-.523 4.3-1.116 5.826-.613 1.578-1.434 2.917-2.768 4.25-1.334 1.335-2.673 2.156-4.251 2.77-1.527.592-3.271.998-5.826 1.115-2.56.116-3.377.144-9.895.144s-7.335-.028-9.895-.144c-2.555-.117-4.3-.523-5.826-1.116-1.578-.613-2.917-1.434-4.25-2.768-1.335-1.334-2.156-2.673-2.769-4.251-.593-1.527-1-3.271-1.116-5.826C.028 31.335 0 30.518 0 24s.028-7.335.144-9.895c.117-2.555.523-4.3 1.116-5.826.613-1.578 1.434-2.917 2.768-4.25C5.362 2.693 6.701 1.872 8.28 1.26 9.806.667 11.55.26 14.105.144 16.665.028 17.482 0 24 0zm0 4.324c-6.408 0-7.167.025-9.698.14-2.34.107-3.61.498-4.457.827-1.12.435-1.92.955-2.759 1.795-.84.84-1.36 1.64-1.795 2.76-.33.845-.72 2.116-.827 4.456-.115 2.53-.14 3.29-.14 9.698s.025 7.167.14 9.698c.107 2.34.498 3.61.827 4.457.435 1.12.955 1.92 1.795 2.76.84.839 1.64 1.359 2.76 1.794.845.33 2.116.72 4.456.827 2.53.115 3.29.14 9.698.14 6.409 0 7.168-.025 9.698-.14 2.34-.107 3.61-.498 4.457-.827 1.12-.435 1.92-.955 2.759-1.795.84-.84 1.36-1.64 1.795-2.76.33-.845.72-2.116.827-4.456.115-2.53.14-3.29.14-9.698s-.025-7.167-.14-9.698c-.107-2.34-.498-3.61-.827-4.457-.435-1.12-.955-1.92-1.795-2.76-.84-.839-1.64-1.359-2.76-1.794-.845-.33-2.116-.72-4.456-.827-2.53-.115-3.29-.14-9.698-.14zm0 7.352c6.807 0 12.324 5.517 12.324 12.324 0 6.807-5.517 12.324-12.324 12.324-6.807 0-12.324-5.517-12.324-12.324 0-6.807 5.517-12.324 12.324-12.324zM24 32a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm15.691-20.811a2.88 2.88 0 1 1-5.76 0 2.88 2.88 0 0 1 5.76 0z" fill="#333" fill-rule="evenodd"/></svg>
+                                    </a></li>
+                                <li><a href="https://www.facebook.com/FiveStarsCard/" target="_blank"><svg width="30" height="30" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M25.638 48H2.65A2.65 2.65 0 0 1 0 45.35V2.65A2.649 2.649 0 0 1 2.65 0H45.35A2.649 2.649 0 0 1 48 2.65v42.7A2.65 2.65 0 0 1 45.351 48H33.119V29.412h6.24l.934-7.244h-7.174v-4.625c0-2.098.583-3.527 3.59-3.527l3.836-.002V7.535c-.663-.088-2.94-.285-5.59-.285-5.53 0-9.317 3.376-9.317 9.575v5.343h-6.255v7.244h6.255V48z" fill="#333" fill-rule="evenodd"/></svg>
+                                    </a></li>
+                                <li><a href="https://twitter.com/FiveStars" target="_blank"><svg width="30" height="30" viewBox="0 0 48 40" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M48 4.735a19.235 19.235 0 0 1-5.655 1.59A10.076 10.076 0 0 0 46.675.74a19.395 19.395 0 0 1-6.257 2.447C38.627 1.225 36.066 0 33.231 0c-5.435 0-9.844 4.521-9.844 10.098 0 .791.085 1.56.254 2.3C15.456 11.974 8.2 7.96 3.34 1.842A10.281 10.281 0 0 0 2.01 6.925c0 3.502 1.738 6.593 4.38 8.405a9.668 9.668 0 0 1-4.462-1.26v.124c0 4.894 3.395 8.977 7.903 9.901a9.39 9.39 0 0 1-2.595.356c-.634 0-1.254-.061-1.854-.18 1.254 4.01 4.888 6.932 9.199 7.01-3.37 2.71-7.618 4.325-12.23 4.325-.795 0-1.58-.047-2.35-.139C4.359 38.327 9.537 40 15.096 40c18.115 0 28.019-15.385 28.019-28.73 0-.439-.009-.878-.026-1.308A20.211 20.211 0 0 0 48 4.735" fill="#333" fill-rule="evenodd"/></svg>
+                                    </a></li>
+                            </ul>
+                        </aside>
+
+                    </nav>
+
+
+
+                </div>
+            </div>
+
+
+<!-- Login & Signup -->
+<div class="modal fade text-center" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="container center-block">
                 <div class="signup-container center-block">
                     <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
                     <div class="signup-card center-block">
                         <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
-                        <h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>
+                        <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
                         <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
                         <div class="container-fluid">
                             <div class="row">
@@ -843,65 +982,94 @@ echo 'id: ' . $user['id'];
 
 
 
+<!-- Contact -->
+<div class="modal fade text-center" id="contact-us" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="container center-block">
+                <div class="signup-container center-block">
+                    <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
+                    <div class="signup-card center-block">
+                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
+                        <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
+                       
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                  <form id="CustomerRegisterForm" method="post" data-gtm-event="leadGenSubmit" data-script-success-event="FireScriptsLeadGenSuccess" data-script-error-event="FireScriptsLeadGenError">
+                        <div class="book-a-session-form">
+                            <div class="grid">
+                                <h2 class="heading--internal u-text-center u-mb4">Contact Us</h2>
+
+                                <span class="space"></span>
 
 
-            <!--  section_image END -->
-        </main>
-        <span class="space"></span>
-        <footer class="footer">
-            <div class="footer__pattern"></div>
-            <div class="footer__cta">
-                <div class="wrapper">
-                    <h5 class="heading--section--lg u-text-white u-mb2 u-text-center">Start to impress your potential investors</h5>
-                    <p class="u-text-intro u-text-white u-text-normal u-text-center u-mb1">We incentivized more than 20 million customers to make 54 million visits last year to local stores like yours. Try FiveStars today.</p>
-                    <div class="footer__form">
+                                <div class="grid__column u-size-1of2--md">
+                                    <div class="book-a-session-form__input">
+                                        <label for="revenue">First Name</label>
+                                        <input id="startup-name" name="startup-name" type="text" required>
+                                    </div>
 
+
+                                    <div class="book-a-session-form__input">
+                                        <label for="firstname">Email</label>
+                                        <input id="firstname" name="firstname" type="email" required>
+                                    </div>
+
+                                 
+
+
+                                </div>
+
+                                <div class="grid__column u-size-1of2--md">
+
+
+                                    <div class="book-a-session-form__input calculator__input--last">
+                                        <label for="firstname">Last Name</label>
+                                        <input id="firstname" name="firstname" type="text" required>
+                                    </div>
+
+                                    <div class="book-a-session-form__input">
+                                        <label for="ticket">Phone</label>
+                                        <input type="tel" data-mask="1-000-000-0000" name="Phone" data-placement="bottom" />
+                                    </div>
+
+
+                                </div>
+
+                                <span class="space"></span>
+                                <div class="grid__column u-size-1of1--md">
+
+                                    <button type="submit" id="submit" class="btn">Send</button>
+
+
+                                    <div id="success"></div>
+
+                                </div>
+
+
+
+
+                            </div>
+
+                        </div>
+                    </form>
+                               
+                             </div>   
+                              
+
+
+
+                            </div> 
+                        </div>
                     </div>
                 </div>
             </div>
-            <span class="space"></span>
-            <div class="footer__bottom">
-                <div class="wrapper">
-
-
-                    <nav class="nav--footer nav--two">
-
-                        <div class="nav__menus">
-                            <ul><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-55"><a href="https://www.fivestars.com/businesses/">For Startups</a></li>
-                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57"><a href="https://www.fivestars.com/businesses/how-it-works/">What we offer!</a></li>
-                                <li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58"><a href="https://www.fivestars.com/businesses/pricing/">Pricing</a></li>
-                                <li id="menu-item-443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-443"><a target="_blank" href="http://blog.fivestars.com">Marketing Tips</a></li>
-                                <li id="menu-item-360" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-360"><a target="_blank" href="https://dashboard.fivestars.com">Dashboard</a></li>
-                                <li id="menu-item-444" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-444"><a target="_blank" href="http://support.fivestars.com">Support</a></li>
-                            </ul><ul><li id="menu-item-445" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-445"><a href="https://www.fivestars.com/">For Investors</a></li>
-                            <li id="menu-item-446" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-446"><a target="_blank" href="https://www.fivestars.com/accounts/login/">Sign In</a></li>
-                            <li id="menu-item-447" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-447"><a target="_blank" href="https://fivestars.app.link/H5xo4xAVWB">Find Locations</a></li>
-                            <li id="menu-item-623" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-623"><a href="https://www.fivestars.com/business/">Rewards &#038; Deals</a></li>
-                            <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59"><a href="https://www.fivestars.com/about-us/">About Us</a></li>
-                            <li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60"><a href="https://www.fivestars.com/careers/">Careers</a></li>
-                            <li id="menu-item-361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361"><a href="https://www.fivestars.com/legal/">Terms</a></li>
-                            <li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62"><a target="_blank" href="https://partners.fivestars.com">Partners</a></li>
-                            </ul>                   </div>
-
-                        <aside class="nav--social">
-                            <h6 class="heading--md u-hide--md-down">We're social. Join us!</h6>
-                            <ul>
-                                <li class="u-hide--md-up"><span>We're social. Follow us!</span></li>
-                                <li><a href="https://www.instagram.com/fivestars/" target="_blank"><svg width="30" height="30" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M24 0c6.518 0 7.335.028 9.895.144 2.555.117 4.3.523 5.826 1.116 1.578.613 2.917 1.434 4.25 2.768 1.335 1.334 2.156 2.673 2.77 4.251.592 1.527.998 3.271 1.115 5.826.116 2.56.144 3.377.144 9.895s-.028 7.335-.144 9.895c-.117 2.555-.523 4.3-1.116 5.826-.613 1.578-1.434 2.917-2.768 4.25-1.334 1.335-2.673 2.156-4.251 2.77-1.527.592-3.271.998-5.826 1.115-2.56.116-3.377.144-9.895.144s-7.335-.028-9.895-.144c-2.555-.117-4.3-.523-5.826-1.116-1.578-.613-2.917-1.434-4.25-2.768-1.335-1.334-2.156-2.673-2.769-4.251-.593-1.527-1-3.271-1.116-5.826C.028 31.335 0 30.518 0 24s.028-7.335.144-9.895c.117-2.555.523-4.3 1.116-5.826.613-1.578 1.434-2.917 2.768-4.25C5.362 2.693 6.701 1.872 8.28 1.26 9.806.667 11.55.26 14.105.144 16.665.028 17.482 0 24 0zm0 4.324c-6.408 0-7.167.025-9.698.14-2.34.107-3.61.498-4.457.827-1.12.435-1.92.955-2.759 1.795-.84.84-1.36 1.64-1.795 2.76-.33.845-.72 2.116-.827 4.456-.115 2.53-.14 3.29-.14 9.698s.025 7.167.14 9.698c.107 2.34.498 3.61.827 4.457.435 1.12.955 1.92 1.795 2.76.84.839 1.64 1.359 2.76 1.794.845.33 2.116.72 4.456.827 2.53.115 3.29.14 9.698.14 6.409 0 7.168-.025 9.698-.14 2.34-.107 3.61-.498 4.457-.827 1.12-.435 1.92-.955 2.759-1.795.84-.84 1.36-1.64 1.795-2.76.33-.845.72-2.116.827-4.456.115-2.53.14-3.29.14-9.698s-.025-7.167-.14-9.698c-.107-2.34-.498-3.61-.827-4.457-.435-1.12-.955-1.92-1.795-2.76-.84-.839-1.64-1.359-2.76-1.794-.845-.33-2.116-.72-4.456-.827-2.53-.115-3.29-.14-9.698-.14zm0 7.352c6.807 0 12.324 5.517 12.324 12.324 0 6.807-5.517 12.324-12.324 12.324-6.807 0-12.324-5.517-12.324-12.324 0-6.807 5.517-12.324 12.324-12.324zM24 32a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm15.691-20.811a2.88 2.88 0 1 1-5.76 0 2.88 2.88 0 0 1 5.76 0z" fill="#333" fill-rule="evenodd"/></svg>
-                                    </a></li>
-                                <li><a href="https://www.facebook.com/FiveStarsCard/" target="_blank"><svg width="30" height="30" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M25.638 48H2.65A2.65 2.65 0 0 1 0 45.35V2.65A2.649 2.649 0 0 1 2.65 0H45.35A2.649 2.649 0 0 1 48 2.65v42.7A2.65 2.65 0 0 1 45.351 48H33.119V29.412h6.24l.934-7.244h-7.174v-4.625c0-2.098.583-3.527 3.59-3.527l3.836-.002V7.535c-.663-.088-2.94-.285-5.59-.285-5.53 0-9.317 3.376-9.317 9.575v5.343h-6.255v7.244h6.255V48z" fill="#333" fill-rule="evenodd"/></svg>
-                                    </a></li>
-                                <li><a href="https://twitter.com/FiveStars" target="_blank"><svg width="30" height="30" viewBox="0 0 48 40" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M48 4.735a19.235 19.235 0 0 1-5.655 1.59A10.076 10.076 0 0 0 46.675.74a19.395 19.395 0 0 1-6.257 2.447C38.627 1.225 36.066 0 33.231 0c-5.435 0-9.844 4.521-9.844 10.098 0 .791.085 1.56.254 2.3C15.456 11.974 8.2 7.96 3.34 1.842A10.281 10.281 0 0 0 2.01 6.925c0 3.502 1.738 6.593 4.38 8.405a9.668 9.668 0 0 1-4.462-1.26v.124c0 4.894 3.395 8.977 7.903 9.901a9.39 9.39 0 0 1-2.595.356c-.634 0-1.254-.061-1.854-.18 1.254 4.01 4.888 6.932 9.199 7.01-3.37 2.71-7.618 4.325-12.23 4.325-.795 0-1.58-.047-2.35-.139C4.359 38.327 9.537 40 15.096 40c18.115 0 28.019-15.385 28.019-28.73 0-.439-.009-.878-.026-1.308A20.211 20.211 0 0 0 48 4.735" fill="#333" fill-rule="evenodd"/></svg>
-                                    </a></li>
-                            </ul>
-                        </aside>
-
-                    </nav>
+        </div>
 
 
 
-                </div>
-            </div>
+
+
         </footer>
         <!--[if lt IE 7 ]>
 <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
@@ -911,7 +1079,7 @@ echo 'id: ' . $user['id'];
         <script type='text/javascript' defer src='https://www.fivestars.com/wp-content/themes/_fivestars/library/js/min/06_progressive.js?ver=v2.8'></script>
         <script type='text/javascript' defer src='https://www.fivestars.com/wp-content/themes/_fivestars/library/js/min/scripts.js?ver=v2.8'></script>
 
-        <script src="js/pyh_main_js-v=IYSNC0cAO_B-_TUsyGCiemgQo0mfVgmz1oShNb7ny1Q1.js"></script>
+        <script src="<?php echo BASE_PATH; ?>/js/pyh_main_js-v=IYSNC0cAO_B-_TUsyGCiemgQo0mfVgmz1oShNb7ny1Q1.js"></script>
 
         
 

@@ -134,12 +134,13 @@ if (proceed){
 
 
 ////////////////Enter Zip Code to retrieve City and State PROFILE//////////////////////
-
-
+ 
+var zip_select = $('input[name=zip_select]').val();
+//alert(zip_select);
  $.ajax({
                 url: url_link+"select.php",
                 method: "POST",
-                data: { column_name: 'Zip' },
+                data: { column_name: zip_select },
                 dataType: "html",
                 success: function(response) {
                    var zip = $(response).filter('#zip').html(); 
@@ -149,11 +150,19 @@ if (proceed){
                    $(".city-state-textinput").show();
                    $(".city-state-textinput").val(zip);
 
+                   $(".zip-textinput-company").hide();
+                   $(".city-state-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
+
                   }else{
 
                    $(".zip-textinput").show();
                    $(".zip-textinput").attr("placeholder", "Type your zip code").val("").focus();
                    $(".city-state-textinput").hide();
+
+                   $(".zip-textinput-company").show();
+                   $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
+                   $(".city-state-textinput-company").hide();
                    
                 }
                
@@ -161,21 +170,25 @@ if (proceed){
                 
             });
 
-$('.zip-textinput').keyup(function(){
+$('.zip-textinput, .zip-textinput-company').keyup(function(){
     var zip_input = $(this).val();
+    var zip_select = $('input[name=zip_select]').val();
     if(zip_input.length == 5){
         //alert("asdf");
 
      $.ajax({
                 url: url_link+"edit.php",
                 method: "POST",
-                data: { content: zip_input, column_name: 'Zip' },
+                data: { content: zip_input, column_name: zip_select },
                 dataType: "html",
                 success: function(response) {
                    var zip = $(response).filter('#zip').html(); 
                    //alert(zip);
                    $(".zip-textinput").show();
                    $(".city-state-textinput").val(zip);
+
+                   $(".zip-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
                    
                 }
                 
@@ -188,11 +201,15 @@ $('.zip-textinput').keyup(function(){
 
 
 
-$('.city-state-textinput').focus(function(){
+$('.city-state-textinput, .city-state-textinput-company').focus(function(){
 
     $(".city-state-textinput").hide();
     $(".zip-textinput").show();
     $(".zip-textinput").attr("placeholder", "Type your zip code").val("").focus();
+
+    $(".city-state-textinput-company").hide();
+    $(".zip-textinput-company").show();
+    $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
     
    
 });
@@ -201,16 +218,17 @@ $('.city-state-textinput').focus(function(){
 
 
 
-$('.zip-textinput').blur(function(){
-//alert("asdf");
+$('.zip-textinput, .zip-textinput-company').blur(function(){
+//alert("333123asdf");
 
 var zip_input = $(this).val();
+var zip_select = $('input[name=zip_select]').val();
 //alert(zip_input);
 
 $.ajax({
                 url: url_link+"edit.php",
                 method: "POST",
-                data: { content: zip_input, column_name: 'Zip' },
+                data: { content: zip_input, column_name: zip_select },
                 dataType: "html",
                 success: function(response) {
                    
@@ -224,11 +242,19 @@ $.ajax({
                    $(".city-state-textinput").show();
                    $(".city-state-textinput").val(zip);
 
+                   $(".zip-textinput-company").hide();
+                   $(".city-state-textinput-company").show();
+                   $(".city-state-textinput-company").val(zip);
+
                   }else{
 
                    $(".zip-textinput").show();
                    $(".zip-textinput").attr("placeholder", "Type your zip code").val("").focus();
                    $(".city-state-textinput").hide();
+
+                   $(".zip-textinput-company").show();
+                   $(".zip-textinput-company").attr("placeholder", "Type your zip code").val("").focus();
+                   $(".city-state-textinput-company").hide();
                    
                   }
                    

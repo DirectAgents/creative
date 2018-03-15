@@ -199,6 +199,8 @@ exit();
                                                 <label class="col-md-12">Location</label>
                                                 <div class="col-md-12">
                                                     <div class="zip">
+                                                        <input type="hidden" id="zip_select" name="zip_select" tabindex="4" value="Zip" class="form-control form-control-line">
+
                                                         <input type="text" id="fm_zip" name="fm_zip" maxlength="5" placeholder="Type your zip code" class="form-control form-control-line zip-textinput">
                                                         <input type="text" id="fm_location" name="fm_location" maxlength="5" placeholder="Type your zip code" class="form-control form-control-line city-state-textinput">
                                                     </div>

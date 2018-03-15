@@ -566,7 +566,7 @@ $row13 = mysqli_fetch_array($sql13);
                     <li>
                         <form method="POST" action="<?php echo BASE_PATH; ?>/?q=" id="search-input-form" role="search" class="app-search hidden-sm hidden-xs m-r-10">
                           
-                        <input type="text" class="algolia-autocomplete light form-control" name="search-input" id="search-input" placeholder="123Search by Startup Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
+                        <input type="text" class="algolia-autocomplete light form-control" name="search-input" id="search-input" placeholder="Search by Startup Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
                          </form>
 
                     </li>
@@ -591,20 +591,20 @@ $row13 = mysqli_fetch_array($sql13);
 
                         </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $rownav['username']; ?>"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $rownav['username']; ?>"><i class="fas fa-user"></i>&nbsp;&nbsp;My Profile</a></li>
                             <?php if($row_startup['Name'] != ''){ ?>
-                             <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Url']; ?>"><i class="ti-user"></i> My Startup</a></li>
+                             <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Url']; ?>"><i class="fas fa-building"></i>&nbsp;&nbsp;My Startup</a></li>
                             <?php } ?>
-                            <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="ti-email"></i> Connections</a></li>
-                            <li><a href="<?php echo BASE_PATH; ?>/bookmarks/"><i class="ti-email"></i> Bookmarks</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="fas fa-users"></i> Connections</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/bookmarks/">&nbsp;<i class="fas fa-bookmark"></i>&nbsp;&nbsp;Bookmarks</a></li>
                              <?php if($row_startup['Name'] == '' && $rownav['Type'] == 'Startup'){ ?>
                              <li role="separator" class="divider"></li>
-                             <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="ti-user"></i> Add a Startup</a></li>
+                             <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="fas fa-rocket"></i>&nbsp;&nbsp;Add a Startup</a></li>
                             <?php } ?>
                              <li role="separator" class="divider"></li>
-                            <li><a href="<?php echo BASE_PATH; ?>/settings/"><i class="ti-settings"></i> Account Setting</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/settings/"><i class="fas fa-cog"></i>&nbsp;&nbsp;Account Setting</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a href="<?php echo BASE_PATH; ?>/logout/"><i class="fa fa-power-off"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
 
                         </ul>
                         <!-- /.dropdown-user -->

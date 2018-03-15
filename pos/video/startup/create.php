@@ -75,7 +75,7 @@ if ($result_startup->num_rows == 1){
                 <div class="container-fluid">
                     <div class="row bg-title">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Profile page</h4> </div>
+                            <h4 class="page-title">Add a Startup</h4> </div>
 
                        
                     </div>
@@ -87,10 +87,10 @@ if ($result_startup->num_rows == 1){
                                 <div class="user-2-bg">
                                     <div class="overlay-box">
                                         <div class="user-content">
-                                            <a href="#" id="upload_widget_multiple_logo">
+                                            <a href="#/" id="upload_widget_multiple_logo">
 
                                             <ul id="preview_logo">
-                                            <img src="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img">
+                                            <img src="<?php echo BASE_PATH; ?>/images/rocket.jpg" class="thumb-lg img-circle" alt="img">
                                             </ul>
                                                             <div id="url_preview_logo"><input type="checkbox" style="display:none" name="company_logo[]"  checked/></div>
                                            
@@ -117,10 +117,10 @@ if ($result_startup->num_rows == 1){
                             <div class="white-box">
                                 <ul class="nav nav-tabs tabs customtab">
                                     <li class="tab active">
-                                        <a href="#company" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Startup</span> </a>
+                                        <a href="#company" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fas fa-rocket"></i></span> <span class="hidden-xs">Startup</span> </a>
                                     </li>
                                     <li class="tab">
-                                        <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Team</span> </a>
+                                        <a href="#team" id="team-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fas fa-users"></i></span> <span class="hidden-xs">Team</span> </a>
                                     </li>
                                    
                                 </ul>
@@ -146,7 +146,7 @@ if ($result_startup->num_rows == 1){
                                             <div class="form-group">
                                                 <label class="col-md-12">Startup Name</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_name" name="fm_name" tabindex="1" class="form-control form-control-line"> </div>
+                                                    <input type="text" id="fm_name" name="fm_name" tabindex="1" placeholder="Enter your Startup name here" class="form-control form-control-line"> </div>
                                             </div>
 
                                             <div class="form-group">
@@ -160,9 +160,28 @@ if ($result_startup->num_rows == 1){
                                                 <div class="col-md-12">
                                                     <select id="fm_industry" name="fm_industry" tabindex="3" class="form-control form-control-line">
                                                         <option value="Technology">Technology</option>
+                                                        <option value="Augmented Reality">Augmented Reality</option>
                                                         <option value="Mobile">Mobile</option>
                                                         <option value="Finance">Finance</option>
-                                                        <option value="Finance">B2B Services</option>
+                                                        <option value="Ecommerce">Ecommerce</option>
+                                                        <option value="B2B Services">B2B Services</option>
+                                                        <option value="Consumer Products">Consumer Products</option>
+                                                        <option value="Consulting">Consulting</option>
+                                                        <option value="Big Data">Big Data</option>
+                                                        <option value="Education">Education</option>
+                                                        <option value="Travel">Travel</option>
+                                                        <option value="Entertainment">Entertainment</option>
+                                                        <option value="Fashion">Fashion</option>
+                                                        <option value="Healthcare">Healthcare</option>
+                                                        <option value="Real Estate">Real Estate</option>
+                                                        <option value="Food and Beverages">Food and Beverages</option>
+                                                        <option value="Art and Design">Art and Design</option>
+                                                        <option value="Health & Wellness">Health & Wellness</option>
+                                                        <option value="Human Resources">Human Resources</option>
+                                                        <option value="Other">Other</option>
+                                                        <option value="Ecommerce">Ecommerce</option>
+                                                        <option value="Ecommerce">Ecommerce</option>
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -171,7 +190,10 @@ if ($result_startup->num_rows == 1){
                                                 <label class="col-md-12">Location</label>
                                                 <div class="col-md-12">
                                                     <div class="zip">
-                                                        <input type="text"  id="fm_zip" name="fm_zip" maxlength="5" tabindex="4" placeholder="Type your zip code" class="form-control form-control-line zip-textinput-company">
+                                                        <input type="hidden" id="zip_select" name="zip_select" value="Zip Company" class="form-control form-control-line">
+
+                                                        <input type="text"  id="fm_zip" name="fm_zip" maxlength="5" tabindex="3" tabindex="4" placeholder="Type your zip code" class="form-control form-control-line zip-textinput-company">
+
                                                         <input type="text" tabindex="3" id="fm_location" name="fm_location" maxlength="5" placeholder="Type your zip code" class="form-control form-control-line city-state-textinput-company">
                                                     </div>
                                                 </div>
