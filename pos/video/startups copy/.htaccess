@@ -1,9 +1,0 @@
-RewriteEngine on
-
-#URL Rewriting
-
-RewriteRule ^profile/([A-Za-z0-9-]+)/?$ profile.php?id=$1    [NC,L]    # Handle product requests
-RewriteRule ^faq/?$ faq.php    [NC,L]    # Handle product requests
-RewriteRule ^/signup/?$ index.php    [NC,L]    # Handle product requests
-
-

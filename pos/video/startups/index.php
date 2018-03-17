@@ -987,15 +987,16 @@ echo 'id: ' . $user['id'];
             <div class="container center-block">
                 <div class="signup-container center-block">
                     <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
-                    <div class="signup-card center-block">
-                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
-                        <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
+                    <div class="center-block">
                        
+                        <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
+                      
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
 
-                                  <form id="CustomerRegisterForm" method="post" data-gtm-event="leadGenSubmit" data-script-success-event="FireScriptsLeadGenSuccess" data-script-error-event="FireScriptsLeadGenError">
+                                  <form id="contact-us-form" name="contact-us-form" method="post" data-gtm-event="leadGenSubmit" data-script-success-event="FireScriptsLeadGenSuccess" data-script-error-event="FireScriptsLeadGenError">
+
                         <div class="book-a-session-form">
                             <div class="grid">
                                 <h2 class="heading--internal u-text-center u-mb4">Contact Us</h2>
@@ -1006,13 +1007,13 @@ echo 'id: ' . $user['id'];
                                 <div class="grid__column u-size-1of2--md">
                                     <div class="book-a-session-form__input">
                                         <label for="revenue">First Name</label>
-                                        <input id="startup-name" name="startup-name" type="text" required>
+                                        <input id="firstname" name="firstname" type="text" tabindex="1" required>
                                     </div>
 
 
                                     <div class="book-a-session-form__input">
                                         <label for="firstname">Email</label>
-                                        <input id="firstname" name="firstname" type="email" required>
+                                        <input id="email" name="email" type="email" tabindex="3" required>
                                     </div>
 
                                  
@@ -1025,13 +1026,29 @@ echo 'id: ' . $user['id'];
 
                                     <div class="book-a-session-form__input calculator__input--last">
                                         <label for="firstname">Last Name</label>
-                                        <input id="firstname" name="firstname" type="text" required>
+                                        <input id="lastname" name="lastname" type="text" tabindex="2" required>
                                     </div>
 
                                     <div class="book-a-session-form__input">
-                                        <label for="ticket">Phone</label>
-                                        <input type="tel" data-mask="1-000-000-0000" name="Phone" data-placement="bottom" />
+                                        <label for="ticket">Phone (optional)</label>
+                                        <input type="tel" data-mask="1-000-000-0000" name="phone" id="phone" tabindex="4" data-placement="bottom" />
                                     </div>
+
+
+                                </div>
+
+<span class="space"></span>
+<span class="space"></span>
+
+                                <div class="grid__column u-size-1of1--md">
+
+
+                                    <div class="book-a-session-form__input calculator__input--last">
+                                        <label for="firstname">Message (optional)</label>
+                                       <textarea name="message" id="message"></textarea>
+                                    </div>
+
+                                   
 
 
                                 </div>
@@ -1042,7 +1059,7 @@ echo 'id: ' . $user['id'];
                                     <button type="submit" id="submit" class="btn">Send</button>
 
 
-                                    <div id="success"></div>
+                                    <div id="success-contact"></div>
 
                                 </div>
 

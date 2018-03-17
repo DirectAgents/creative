@@ -1,3 +1,46 @@
+$(document).ready(function() {
+
+//$("#thesuccess").css("display:", "block");
+
+
+$( "#contact-us-form" ).on( "submit", function(e) {
+
+e.preventDefault();
+
+
+var proceed = true;
+
+var phone = $("input[name='contact-firstname']").val();
+
+alert(phone);
+
+if (proceed){
+            $.ajax({
+                url: "contact-form.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "html",
+                success: function(response) {
+                    
+                $("#success-contact").html("success");
+
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
+
+               
+               }
+                
+            });
+
+        }    
+
+
+
+});
+
+});
+
+
 function onYouTubeIframeAPIReady() {
     $(".youtube-video").each(function(n, t) {
         var i = $(t);

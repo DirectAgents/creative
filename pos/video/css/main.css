@@ -1683,14 +1683,14 @@ padding:5px
 	position: relative;
 	margin-bottom: 20px
 }
-.book-a-session-form__input input, .book-a-session-form__input select {
+.book-a-session-form__input input, .book-a-session-form__input select, .book-a-session-form__input textarea {
 	border: 2px solid #d9dee1;
 	border-radius: 7px;
 	width: 100%;
 	font-size: 22px;
 	transition: all .3s ease-in-out
 }
-.book-a-session-form__input input.has-error, .book-a-session-form__input select.has-error {
+.book-a-session-form__input input.has-error, .book-a-session-form__input select.has-error, .book-a-session-form__input textarea.has-error {
 	background-color: #ffd2d2;
 	border-color: #ffa3a3
 }
