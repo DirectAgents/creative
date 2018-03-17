@@ -94,7 +94,7 @@ $content = new SendGrid\Content("text/html", '
 
                                              <tr>
                                                  <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                          aaa                      '.$_POST['message'].'
+                                                '.$_POST['message'].'
                                                 </td>
                                             </tr>
                                             
