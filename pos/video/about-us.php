@@ -1,4 +1,4 @@
-<?php include '../header2.php'; ?>
+<?php include 'header2.php'; ?>
 
     <body class="page-template page-template-page-loyalty page-template-page-loyalty-php page page-id-21 page-child parent-pageid-17 optimizely-21">
 
@@ -52,21 +52,8 @@
                 <noscript><div class="hero__bg" style="background-image: url(https://www.fivestars.com/wp-content/uploads/2017/02/Highrez.jpg)"></div></noscript>
                 <div class="wrapper">
                     <div class="hero__content">
-                        <h1 class="heading--hero">Get Investment</h1>
-                        <h2 class="hero__text">A customer loyalty program can double customer return visits</h2>
-
-                        <div class="hero__cta--desktop">
-
-                            <button type="button" class="btn findoutmoreButton">FIND OUT MORE</button>
-
-
-
-                            <div class="hero__cta--desktop u-hide--md-down">
-                                <div class="hero__text--cta"><p style="font-size:16px;">
-                                    Have a question? Call (855) 769-8136</div></p>
-                        </div>
-                    </div>
-
+                        <h1 class="heading--hero">About Us</h1>
+                       
                     <div class="hero__cta--mobile u-hide--md-up">
                     </div>
 
@@ -74,91 +61,11 @@
                 </div>
                 <div class="hero__pattern"></div>
             </section>
-            <div class="find-out-more"></div>
+         
             <!--  hero END -->
-            <nav id="nav-internal" class="nav--internal"><ul>
-                <li id="menu-item-199" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-199">
-                    <a href="#/" id="what-we-offer">What we offer!</a></li>
-                <li id="menu-item-199" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-199">
-                    <a href="#/" id="pricing">Pricing</a></li>
-                <li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198">
-                    <a href="#/" id="book-a-session">Book a Session</a></li>
-                </ul></nav>
+          
 
-
-            <section class="section">
-                <div class="wrapper">
-                    <h2 class="heading--internal u-text-center u-mb2">Did you know?</h2>
-                    <figure class="illustration--60">
-                        <figcaption>Only 0.91 percent of startups are funded by angel investors, while a measly 0.05 percent are funded by VCs</figcaption>
-                        <img src="<?php echo BASE_PATH; ?>/images/money-bag.svg" alt="icon"/>
-                    </figure>
-
-                </div>
-
-
-
-                <div class="section__arrow what-we-offer">
-                    <div class="wrapper">
-                        <div class="grid center">
-                            <div class="grid__column u-size-1of2--md"></div>
-                            <div class="grid__column u-size-1of2--md has-arrow"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-
-
-
-
-
-
-
-
-            <!--  section_image END -->
-            <!-- section_image START -->
-            <section class="section">
-                <div class="wrapper">
-
-                    <span class="space"></span>
-                    <span class="space"></span>
-
-                    <h2 class="heading--internal u-text-center u-mb4">What we offer!</h2>
-
-                    <div class="grid grid--section grid--loyalty u-text-center--md-down has-image-left">
-
-                        <!--  image START -->
-                        <div class="grid__column u-size-1of2--md">
-                            <figure class="section__illustration  section__illustration--icon">
-                                <img src="<?php echo BASE_PATH; ?>/assets/camera.svg" class="u-img-responsive u-border-radius" />
-                            </figure>
-                        </div>
-                        <!--  image END -->
-
-                        <!--  content START-->
-                        <div class="grid__column u-size-1of2--md section__text--middle">
-                            <div class="section__content u-text-center--md-down">
-                                <h3 class="heading--section heading--normal ">Fortune 500 companies use rewards programs to keep customers</h3>
-                                <p class="section__text ">Starbucks, Walgreens and many other successful companies keep customers coming back by investing in a powerful rewards program</p>
-                            </div>
-                        </div>
-                        <!-- content END -->
-                    </div>
-
-
-
-                </div>
-                <div class="section__arrow">
-                    <div class="wrapper">
-                        <div class="grid">
-                            <div class="grid__column u-size-1of2--md "></div>
-                            <div class="grid__column u-size-1of2--md has-arrow"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+           
             <!--  section_image END -->
             <!-- section_image START -->
             <section class="section">
@@ -200,56 +107,166 @@
 
 
 
-            <section class="section">
-                <div class="wrapper">
-                    <div class="grid grid--section">
-                        <div class="grid__column">
-                            <h2 class="heading--internal u-text-center">Choose a plan that works best for your startup</h2>
-                        </div>
+<section class="section">
+  <div class="wrapper">
+    <div class="grid grid--section grid--leadership">
+      <div class="grid__column">
+                <h2 class="heading--internal u-text-center">Our Team</h2>
+              </div>
+
+      <div class="grid__column">
+                          <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2017/02/VictorHo-1-400x447.png" alt="Victor Ho">
                     </div>
-
-                    <div class="grid grid--program u-text-center--md-down">
-                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
-                            <a href="#starter" id="starter" class="js-program">
-                                <div class="section__feature section__feature--program">
-                                    <h3 class="heading--section heading--pricing">Bronze</h3>
-                                    <p class="u-text-small">Basic Video Footage (incl. basic Animation Graphics)</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
-                            <a href="#growth" id="growth" class="js-program">
-                                <div class="section__feature section__feature--program">
-                                    <h3 class="heading--section heading--pricing">Silver</h3>
-                                    <p class="u-text-small">Basic Video Footage + Office Space Shooting (incl. basic Animation Graphics)</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
-                            <a href="#pro" id="pro" class="js-program">
-                                <div class="section__feature section__feature--program">
-                                    <h3 class="heading--section heading--pricing">Gold</h3>
-                                    <p class="u-text-small">Basic Video Footage + Office Space Shooting (incl. advanced Animation Graphics)</p>
-                                </div>
-                            </a>
-                        </div>
-
-
-
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Victor Ho</h4>
+            <h5 class="leadership__position">Co-Founder and CEO</h5>
+            <p class="leadership__bio">Victor co-founded Fivestars following his work at McKinsey &amp; Company, 
+where he helped build out cutting edge loyalty and customer engagement 
+strategies for premiere Fortune 500 brands. He started his career as an 
+investment banker at Goldman Sachs, and holds three degrees from the 
+University of California, Berkeley, where he triple majored in 
+Industrial Engineering, Rhetoric, and Business Administration. Victor has an 
+insatiable love for sour candy, and can’t resist those tasty green apple things. </p>
+          </div>
+        </section>
+                <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2017/02/MattDoka-400x447.png" alt="Matt Doka">
                     </div>
-                </div>
-
-
-                <div class="section__arrow">
-                    <div class="wrapper">
-                        <div class="grid">
-                            <div class="grid__column u-size-1of2--md has-arrow"></div>
-                            <div class="grid__column u-size-1of2--md"></div>
-                        </div>
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Matt Doka</h4>
+            <h5 class="leadership__position">Co-Founder and CTO</h5>
+            <p class="leadership__bio">Matt has led technology at Fivestars since its founding. Before Fivestars, 
+he was a consultant at TechnoServe in Uganda, a strategy consultant at McKinsey, 
+and an analyst at AVM, a 32-year old global macro hedge fund. Matt graduated 
+from UPenn's Management and Technology program as a Ben Franklin and 
+Joseph Wharton scholar, where he earned dual degrees in Engineering 
+and Finance. He loves skiing and backpacking, and he grills a killer steak. </p>
+          </div>
+        </section>
+                <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2017/02/Chris_lesssmily-400x447.png" alt="Chris Luo">
                     </div>
-                </div>
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Chris Luo</h4>
+            <h5 class="leadership__position">Marketing</h5>
+            <p class="leadership__bio">Chris has more than 15 years of experience in marketing, inside sales, and strategy.
+Previously, he was the Global Head of SMB Marketing at Facebook, where he
+drove small business adoption for Facebook Ads and Pages and built a team of
+over 20 marketers and 200 inside sales reps. Chris’ tech career began at
+Vonage, where he grew an inside sales team to over 500 reps by IPO. He went
+on to lead Acquisition Marketing for Google in Asia-Paciﬁc. In his spare time,
+you’ll ﬁnd him training for marathons, exploring the city with his wife, Lynn, and
+serving as a Community Group leader at Reality San Francisco.</p>
+          </div>
+        </section>
+                <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2017/02/SamOdio-400x447.png" alt="Sam Odio">
+                    </div>
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Sam Odio</h4>
+            <h5 class="leadership__position">Product</h5>
+            <p class="leadership__bio">Sam has 10 years of experience creating and scaling products. 
+Early in his career, he built one of the first photo sharing mobile applications, 
+sold it to Facebook, and became the product manager of Facebook Photos. 
+He scaled Facebook photos to 100 billion photos uploaded by re-launching 
+the photo viewer, photo upload interface, album interface, and launching 
+facial recognition. After Facebook Photos, Sam left to start a 
+machine learning startup, Freshplum, which was purchased by TellApart, 
+and later Twitter. In his spare time, you’ll find Sam studying wine.
+</p>
+          </div>
+        </section>
+                <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2017/02/ZachSh-400x447.png" alt="Zach Shubert">
+                    </div>
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Zach Shubert</h4>
+            <h5 class="leadership__position">Engineering</h5>
+            <p class="leadership__bio">Zach Shubert is an experienced engineering leader and serial entrepreneur 
+with a diverse background in academia, digital music, gaming, and now 
+SMB SaaS. An alum of Brown University, he was the first engineering hire 
+at Songza, where he eventually became CTO. From Songza, he moved 
+to Zynga, where he led the team responsible for scaling the API infrastructure 
+to handle 20 billion calls a day. Zach's hobbies include skiing, hiking, and 
+prognosticating changes in federal monetary policy. </p>
+          </div>
+        </section>
+                <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2017/02/JimTransparent-400x400.png" alt="Jim Lipuma">
+                    </div>
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Jim Lipuma</h4>
+            <h5 class="leadership__position">Sales &amp; Operations</h5>
+            <p class="leadership__bio">Jim has been leading Sales and Operations teams for over 30 years. Jim has worked in Fortune 500, startup, scaling, and turnaround environments and owned his own small business. Prior to joining Fivestars, Jim co-founded Rewards21, a consumer rewards platform and led teams at Kapow, AOL/Patch, Restaurant.com, Monster.com, and R.H. Donnelley. Jim lives in Downers Grove, IL, married to his wife Diane, his two daughters Alyssa and Carly, and dog Winston. In his spare time, Jim likes to read and write, and has published two books on leadership: Lead From The Front and Pulling Levers.</p>
+          </div>
+        </section>
+                <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2017/02/MattCurl-400x447.png" alt="Matt Curl">
+                    </div>
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Matt Curl</h4>
+            <h5 class="leadership__position">Analytics</h5>
+            <p class="leadership__bio">Prior to joining Fivestars, "Curl" spent six years advising Fortune 500 companies 
+at KPMG and Crane Co. His specialties are strategy, risk, and program 
+management, with a focus on building data infrastructure to drive business 
+decisions. As a graduate from Texas A&amp;M University, he enjoys watching 
+Fightin’ Texas Aggie football games, as well as spending time with his 
+wonderful wife, Melissa Curl, and his crazy dog, Berkeley (the office terrorizer). 
+</p>
+          </div>
+        </section>
+                <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2018/01/ClaudiaFry-400x447.png" alt="Claudia Fulga">
+                    </div>
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Claudia Fulga</h4>
+            <h5 class="leadership__position">People Operations</h5>
+            <p class="leadership__bio">Claudia leads People Operations at Fivestars where she focuses on 
+creating and fostering programs to give employees an enriching and 
+memorable experience. She’s an SFSU adjunct instructor and 
+co-founder of HR 2.0. Before Fivestars, she helped numerous startups 
+with their employee experience and spent over ten years in HR for 
+architecture and interior design firms. Claudia’s first loves are traveling, 
+playing with dogs, and anything motorcycle-related, so you can imagine 
+what happens when she’s able to do all three at once. Mind. Blown. </p>
+          </div>
+        </section>
+                <section class="leadership">
+          <div class="leadership__photo">
+                                <img class="illustration--profile" src="https://www.fivestars.com/wp-content/uploads/2017/02/BernardKo-400x447.png" alt="Bernard Koh">
+                    </div>
+          <div class="leadership__content u-text-center--md-down">
+            <h4 class="leadership__name">Bernard Koh</h4>
+            <h5 class="leadership__position">Finance</h5>
+            <p class="leadership__bio">Bernard has more than 20 years of finance and technology management 
+experience. As an early employee at Blue Jeans Network, he helped 
+grow the company to be the leader in cloud-based video collaboration, 
+with market share in North America, EMEA, and APAC. He has an MBA 
+from the J.L. Kellogg School of Management at Northwestern University, 
+and in his spare time, Bernard enjoys searching for the perfect cheesesteak. 
+He doesn’t think he’ll ever find that perfect mix of provolone and bell peppers, 
+but he sure as hell is gonna try! </p>
+          </div>
+        </section>
+                  </div>
 
-            </section>
+
+    </div>
+  </div>
+</section>
+
+
+
+           
 
 
 
@@ -257,103 +274,7 @@
 
 
 
-            <section class="section--calculator book-a-session">
-                <div class="wrapper">
-                    <form id="CustomerRegisterForm" method="post" data-gtm-event="leadGenSubmit" data-script-success-event="FireScriptsLeadGenSuccess" data-script-error-event="FireScriptsLeadGenError">
-                        <div class="book-a-session-form">
-                            <div class="grid grid--section">
-                                <span class="space"></span>
-                                <h2 class="heading--internal u-mb4">Book a session for a video session!</h2>
-
-                                <span class="space"></span>
-
-
-
-
-
-                                <div class="grid__column u-size-1of2--md">
-                                    <div class="book-a-session-form__input">
-                                        <label for="revenue">What's your Startup name?</label>
-                                        <input id="startup-name" name="startup-name" type="text" required>
-                                    </div>
-
-
-                                    <div class="book-a-session-form__input">
-                                        <label for="firstname">First Name</label>
-                                        <input id="firstname" name="firstname" type="text" required>
-                                    </div>
-
-                                    <div class="book-a-session-form__input">
-                                        <label for="email">Your Email</label>
-                                        <input type="email" id="email" name="email" required>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="grid__column u-size-1of2--md">
-
-
-                                    <div class="book-a-session-form__input calculator__input--last">
-                                        <label for="industry">What's your industry?</label>
-                                        <select id="industry" name="industry" class="js-calculator-input" required>
-                                            <option selected="" value="Technology">Technology</option>
-                                            <option value="Mobile">Mobile</option>
-                                            <option value="Finance">Finance</option>
-                                            <option value="Ecommerce">Ecommerce</option>
-                                            <option value="Media">Media</option>
-                                            <option value="B2B Services">B2B Services</option>
-                                            <option value="Consumer Products">Consumer Products</option>
-                                            <option value="Consulting">Consulting</option>
-                                            <option value="Big Data">Big Data</option>
-                                            <option value="Education">Education</option>
-                                            <option value="Travel">Travel</option>
-                                            <option value="Entertainment">Entertainment</option>
-                                            <option value="Fashion">Fashion</option>
-                                            <option value="Healthcare">Healthcare</option>
-                                            <option value="Real Estate">Real Estate</option>
-                                            <option value="Food and Beverage">Food and Beverage</option>
-                                            <option value="Art and Design">Art and Design</option>
-                                            <option value="Health, Fitness and Wellness">Health, Fitness and Wellness</option>
-                                            <option value="Human Resources">Human Resources</option>  
-                                            <option value="Other">Other</option>  
-                                        </select>
-                                    </div>
-
-                                    <div class="book-a-session-form__input">
-                                        <label for="ticket">Last Name</label>
-                                        <input type="text" name="lastname" required>
-                                    </div>
-
-                                    <div class="book-a-session-form__input">
-                                        <label for="ticket">Phone</label>
-                                        <input type="tel" data-mask="1-000-000-0000" required name="Phone" data-placement="bottom" />
-                                    </div>
-
-                                </div>
-
-                                <span class="space"></span>
-                                <div class="grid__column u-size-1of1--md">
-
-                                    <button type="submit" id="submit" class="btn">Request Booking</button>
-
-
-                                    <div id="success"></div>
-
-                                </div>
-
-
-
-
-                            </div>
-
-                        </div>
-                    </form>
-
-
-                </div>
-            </section>
-
+           
 
 
 

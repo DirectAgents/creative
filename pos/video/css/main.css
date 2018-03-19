@@ -884,7 +884,7 @@ color:#4c5e5e
 	padding-left: 12px
 }
 .nav--footer.nav--two .nav__menus ul {
-	width: 33%;
+	width: 30%;
 	min-width: 0
 }
 .nav--footer.nav--four .nav--social, .nav--footer.nav--four .nav__menus, .nav--footer.nav--three .nav--social, .nav--footer.nav--three .nav__menus {
@@ -1225,7 +1225,7 @@ p.hero__text--cta a {
 	left: 0;
 	height: 100px;
 	width: 100%;
-	background-image: url(../../img/hero-pattern.svg);
+	background-image: url(../images/hero-pattern.svg);
 	background-size: auto 100px;
 	background-repeat: repeat-x;
 	background-position: 50%;
@@ -1484,13 +1484,13 @@ p.hero__text--cta a {
 }
 
 
-.book-a-session button, #contact-us button {
+.book-a-session button, #contact-us [type=submit] {
     background-color: #00a8e2;
 	border: 1px solid #d1d1d1;
     color: #fff;
 }
 
-.book-a-session button:hover, #contact-us button:hover {
+.book-a-session button:hover {
     background-color: #0882ac;
 	border: 1px solid #d1d1d1;
     color: #fff;
@@ -2810,7 +2810,7 @@ img.mfp-img {
 	flex-basis: 100%
 }
 .nav--footer.nav--two .nav__menus ul {
-	min-width: 0%
+	min-width: 30%
 }
 .nav--footer.nav--two .nav--social {
 	-webkit-flex-basis: 30%;
@@ -3177,7 +3177,7 @@ a:hover {
 	/*padding: 0 80px*/
 }
 .nav--footer.nav--two .nav__menus ul {
-	min-width: 180px
+	min-width: 200px
 }
 .nav--footer.nav--three {
 	padding: 0 20px
@@ -3344,9 +3344,7 @@ a:hover {
 	font-size: 32px
 }
 .heading--internal {
-	font-size: 48px;
-	float:left;
-	width:100%;
+	font-size: 48px
 }
 .footer__form {
 	width: 50%
@@ -3518,6 +3516,11 @@ a:hover {
 }
 }
 @media screen and (max-width:699px) {
+
+.nav--footer.nav--two .nav__menus ul{
+	width:100%;
+}
+
 .grid--col-reverse--md-down {
 	-webkit-flex-direction: column-reverse;
 	-ms-flex-direction: column-reverse;
@@ -3607,12 +3610,6 @@ a:hover {
 }
 }
 @media screen and (max-width:499px) {
-
-.nav--footer.nav--two .nav__menus ul {
-	width: 100%;
-	min-width: 0
-}
-
 .u-hide--sm-down {
 	display: none!important
 }
@@ -3795,4 +3792,5 @@ form .tooltip-inner {
 
 .login-buttons{margin-top:20px;}
 
+#success-contact{background:#;}
 

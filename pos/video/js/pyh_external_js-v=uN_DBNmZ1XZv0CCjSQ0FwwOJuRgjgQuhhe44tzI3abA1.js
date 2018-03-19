@@ -22,7 +22,7 @@ if (proceed){
                 dataType: "html",
                 success: function(response) {
                     
-                $("#success-contact").html("success");
+                $("#success-contact").html("Thank You! We'll be in touch soon.");
 
                 $('#saved').fadeIn("fast");
                 $('#saved').delay(2000).fadeOut("slow");
