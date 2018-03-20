@@ -21,8 +21,8 @@ try {
   $accessToken = $helper->getAccessToken();
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   // When Graph returns an error
-  //echo 'Graph returned an error: ' . $e->getMessage();
-  header('Location: '.BASE_PATH.'');
+  echo 'Graph returned an error: ' . $e->getMessage();
+  //header('Location: '.BASE_PATH.'');
   exit;
 } catch(Facebook\Exceptions\FacebookSDKException $e) {
   // When validation fails or other local issues
