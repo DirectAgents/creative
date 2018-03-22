@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2017 Facebook, Inc.
+ * Copyright 2014 Facebook, Inc.
  *
  * You are hereby granted a non-exclusive, worldwide, royalty-free license to
  * use, copy, modify, and distribute this software in source code or binary
@@ -21,28 +21,35 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
-namespace Facebook\PseudoRandomString;
+namespace Facebook\PersistentData;
 
 use Facebook\Exceptions\FacebookSDKException;
 
-class McryptPseudoRandomStringGenerator implements PseudoRandomStringGeneratorInterface
+/**
+ * Class FacebookSessionPersistentDataHandler
+ *
+ * @package Facebook
+ */
+class FacebookSessionPersistentDataHandler implements PersistentDataInterface
 {
-    use PseudoRandomStringGeneratorTrait;
-
     /**
-     * @const string The error message when generating the string fails.
+     * @var string Prefix to use for session variables.
      */
-    const ERROR_MESSAGE = 'Unable to generate a cryptographically secure pseudo-random string from mcrypt_create_iv(). ';
+    protected $sessionPrefix = 'FBRLH_';
 
     /**
+     * Init the session handler.
+     *
+     * @param boolean $enableSessionCheck
+     *
      * @throws FacebookSDKException
      */
-    public function __construct()
+    public function __construct($enableSessionCheck = true)
     {
-        if (!function_exists('mcrypt_create_iv')) {
+        if ($enableSessionCheck && session_status() !== PHP_SESSION_ACTIVE) {
             throw new FacebookSDKException(
-                static::ERROR_MESSAGE .
-                'The function mcrypt_create_iv() does not exist.'
+                'Sessions are not active. Please make sure session_start() is at the top of your script.',
+                720
             );
         }
     }
@@ -50,19 +57,20 @@ class McryptPseudoRandomStringGenerator implements PseudoRandomStringGeneratorIn
     /**
      * @inheritdoc
      */
-    public function getPseudoRandomString($length)
+    public function get($key)
     {
-        $this->validateLength($length);
-
-        $binaryString = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
-
-        if ($binaryString === false) {
-            throw new FacebookSDKException(
-                static::ERROR_MESSAGE .
-                'mcrypt_create_iv() returned an error.'
-            );
+        if (isset($_SESSION[$this->sessionPrefix . $key])) {
+            return $_SESSION[$this->sessionPrefix . $key];
         }
 
-        return $this->binToHex($binaryString, $length);
+        return null;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function set($key, $value)
+    {
+        $_SESSION[$this->sessionPrefix . $key] = $value;
     }
 }

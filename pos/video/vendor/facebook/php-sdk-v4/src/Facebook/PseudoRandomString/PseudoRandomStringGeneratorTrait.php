@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2017 Facebook, Inc.
+ * Copyright 2014 Facebook, Inc.
  *
  * You are hereby granted a non-exclusive, worldwide, royalty-free license to
  * use, copy, modify, and distribute this software in source code or binary
@@ -23,46 +23,36 @@
  */
 namespace Facebook\PseudoRandomString;
 
-use Facebook\Exceptions\FacebookSDKException;
-
-class McryptPseudoRandomStringGenerator implements PseudoRandomStringGeneratorInterface
+trait PseudoRandomStringGeneratorTrait
 {
-    use PseudoRandomStringGeneratorTrait;
-
     /**
-     * @const string The error message when generating the string fails.
+     * Validates the length argument of a random string.
+     *
+     * @param int $length The length to validate.
+     *
+     * @throws \InvalidArgumentException
      */
-    const ERROR_MESSAGE = 'Unable to generate a cryptographically secure pseudo-random string from mcrypt_create_iv(). ';
-
-    /**
-     * @throws FacebookSDKException
-     */
-    public function __construct()
+    public function validateLength($length)
     {
-        if (!function_exists('mcrypt_create_iv')) {
-            throw new FacebookSDKException(
-                static::ERROR_MESSAGE .
-                'The function mcrypt_create_iv() does not exist.'
-            );
+        if (!is_int($length)) {
+            throw new \InvalidArgumentException('getPseudoRandomString() expects an integer for the string length');
+        }
+
+        if ($length < 1) {
+            throw new \InvalidArgumentException('getPseudoRandomString() expects a length greater than 1');
         }
     }
 
     /**
-     * @inheritdoc
+     * Converts binary data to hexadecimal of arbitrary length.
+     *
+     * @param string $binaryData The binary data to convert to hex.
+     * @param int    $length     The length of the string to return.
+     *
+     * @return string
      */
-    public function getPseudoRandomString($length)
+    public function binToHex($binaryData, $length)
     {
-        $this->validateLength($length);
-
-        $binaryString = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
-
-        if ($binaryString === false) {
-            throw new FacebookSDKException(
-                static::ERROR_MESSAGE .
-                'mcrypt_create_iv() returned an error.'
-            );
-        }
-
-        return $this->binToHex($binaryString, $length);
+        return mb_substr(bin2hex($binaryData), 0, $length);
     }
 }

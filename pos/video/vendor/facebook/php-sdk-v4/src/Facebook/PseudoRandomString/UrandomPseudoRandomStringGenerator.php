@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2017 Facebook, Inc.
+ * Copyright 2014 Facebook, Inc.
  *
  * You are hereby granted a non-exclusive, worldwide, royalty-free license to
  * use, copy, modify, and distribute this software in source code or binary
@@ -25,24 +25,32 @@ namespace Facebook\PseudoRandomString;
 
 use Facebook\Exceptions\FacebookSDKException;
 
-class McryptPseudoRandomStringGenerator implements PseudoRandomStringGeneratorInterface
+class UrandomPseudoRandomStringGenerator implements PseudoRandomStringGeneratorInterface
 {
+
     use PseudoRandomStringGeneratorTrait;
 
     /**
      * @const string The error message when generating the string fails.
      */
-    const ERROR_MESSAGE = 'Unable to generate a cryptographically secure pseudo-random string from mcrypt_create_iv(). ';
+    const ERROR_MESSAGE = 'Unable to generate a cryptographically secure pseudo-random string from /dev/urandom. ';
 
     /**
      * @throws FacebookSDKException
      */
     public function __construct()
     {
-        if (!function_exists('mcrypt_create_iv')) {
+        if (ini_get('open_basedir')) {
             throw new FacebookSDKException(
                 static::ERROR_MESSAGE .
-                'The function mcrypt_create_iv() does not exist.'
+                'There is an open_basedir constraint that prevents access to /dev/urandom.'
+            );
+        }
+
+        if (!is_readable('/dev/urandom')) {
+            throw new FacebookSDKException(
+                static::ERROR_MESSAGE .
+                'Unable to read from /dev/urandom.'
             );
         }
     }
@@ -54,12 +62,25 @@ class McryptPseudoRandomStringGenerator implements PseudoRandomStringGeneratorIn
     {
         $this->validateLength($length);
 
-        $binaryString = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
-
-        if ($binaryString === false) {
+        $stream = fopen('/dev/urandom', 'rb');
+        if (!is_resource($stream)) {
             throw new FacebookSDKException(
                 static::ERROR_MESSAGE .
-                'mcrypt_create_iv() returned an error.'
+                'Unable to open stream to /dev/urandom.'
+            );
+        }
+
+        if (!defined('HHVM_VERSION')) {
+            stream_set_read_buffer($stream, 0);
+        }
+
+        $binaryString = fread($stream, $length);
+        fclose($stream);
+
+        if (!$binaryString) {
+            throw new FacebookSDKException(
+                static::ERROR_MESSAGE .
+                'Stream to /dev/urandom returned no data.'
             );
         }
 
