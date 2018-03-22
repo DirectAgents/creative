@@ -10,7 +10,7 @@
                 <nav class="nav--main">
                     <ul>
 
-                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a href="<?php echo BASE_PATH; ?>/investors"/>For Investors</a></li>
+                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a href="<?php echo BASE_PATH; ?>/startups"/>For Startups</a></li>
                         
                         
                         <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $row_entrepreneur['userID']) { ?>
@@ -186,70 +186,14 @@
 
                 </div>
 
-                <div class="section__arrow pricing">
-                    <div class="wrapper">
-                        <div class="grid center">
-                            <div class="grid__column u-size-1of2--md"></div>
-                            <div class="grid__column u-size-1of2--md has-arrow"></div>
-                        </div>
-                    </div>
-                </div>
+               
 
 
             </section>
 
 
 
-            <section class="section">
-                <div class="wrapper">
-                    <div class="grid grid--section">
-                        <div class="grid__column">
-                            <h2 class="heading--internal u-text-center">Choose a plan that works best for your startup</h2>
-                        </div>
-                    </div>
-
-                    <div class="grid grid--program u-text-center--md-down">
-                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
-                            <a href="#starter" id="starter" class="js-program">
-                                <div class="section__feature section__feature--program">
-                                    <h3 class="heading--section heading--pricing">Bronze</h3>
-                                    <p class="u-text-small">Basic Video Footage (incl. basic Animation Graphics)</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
-                            <a href="#growth" id="growth" class="js-program">
-                                <div class="section__feature section__feature--program">
-                                    <h3 class="heading--section heading--pricing">Silver</h3>
-                                    <p class="u-text-small">Basic Video Footage + Office Space Shooting (incl. basic Animation Graphics)</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="grid__column grid__column--program u-flex u-size-1of3--md u-text-center">
-                            <a href="#pro" id="pro" class="js-program">
-                                <div class="section__feature section__feature--program">
-                                    <h3 class="heading--section heading--pricing">Gold</h3>
-                                    <p class="u-text-small">Basic Video Footage + Office Space Shooting (incl. advanced Animation Graphics)</p>
-                                </div>
-                            </a>
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-
-                <div class="section__arrow">
-                    <div class="wrapper">
-                        <div class="grid">
-                            <div class="grid__column u-size-1of2--md has-arrow"></div>
-                            <div class="grid__column u-size-1of2--md"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
+            
 
 
 
@@ -257,102 +201,7 @@
 
 
 
-            <section class="section--calculator book-a-session">
-                <div class="wrapper">
-                    <form id="CustomerRegisterForm" method="post" data-gtm-event="leadGenSubmit" data-script-success-event="FireScriptsLeadGenSuccess" data-script-error-event="FireScriptsLeadGenError">
-                        <div class="book-a-session-form">
-                            <div class="grid grid--section">
-                                <span class="space"></span>
-                                <h2 class="heading--internal u-mb4">Book a session for a video session!</h2>
-
-                                <span class="space"></span>
-
-
-
-
-
-                                <div class="grid__column u-size-1of2--md">
-                                    <div class="book-a-session-form__input">
-                                        <label for="revenue">What's your Startup name?</label>
-                                        <input id="startup-name" name="startup-name" type="text" required>
-                                    </div>
-
-
-                                    <div class="book-a-session-form__input">
-                                        <label for="firstname">First Name</label>
-                                        <input id="firstname" name="firstname" type="text" required>
-                                    </div>
-
-                                    <div class="book-a-session-form__input">
-                                        <label for="email">Your Email</label>
-                                        <input type="email" id="email" name="email" required>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="grid__column u-size-1of2--md">
-
-
-                                    <div class="book-a-session-form__input calculator__input--last">
-                                        <label for="industry">What's your industry?</label>
-                                        <select id="industry" name="industry" class="js-calculator-input" required>
-                                            <option selected="" value="Technology">Technology</option>
-                                            <option value="Mobile">Mobile</option>
-                                            <option value="Finance">Finance</option>
-                                            <option value="Ecommerce">Ecommerce</option>
-                                            <option value="Media">Media</option>
-                                            <option value="B2B Services">B2B Services</option>
-                                            <option value="Consumer Products">Consumer Products</option>
-                                            <option value="Consulting">Consulting</option>
-                                            <option value="Big Data">Big Data</option>
-                                            <option value="Education">Education</option>
-                                            <option value="Travel">Travel</option>
-                                            <option value="Entertainment">Entertainment</option>
-                                            <option value="Fashion">Fashion</option>
-                                            <option value="Healthcare">Healthcare</option>
-                                            <option value="Real Estate">Real Estate</option>
-                                            <option value="Food and Beverage">Food and Beverage</option>
-                                            <option value="Art and Design">Art and Design</option>
-                                            <option value="Health, Fitness and Wellness">Health, Fitness and Wellness</option>
-                                            <option value="Human Resources">Human Resources</option>  
-                                            <option value="Other">Other</option>  
-                                        </select>
-                                    </div>
-
-                                    <div class="book-a-session-form__input">
-                                        <label for="ticket">Last Name</label>
-                                        <input type="text" name="lastname" required>
-                                    </div>
-
-                                    <div class="book-a-session-form__input">
-                                        <label for="ticket">Phone</label>
-                                        <input type="tel" data-mask="1-000-000-0000" required name="Phone" data-placement="bottom" />
-                                    </div>
-
-                                </div>
-
-                                <span class="space"></span>
-                                <div class="grid__column u-size-1of1--md">
-
-                                    <button type="submit" id="submit" class="btn">Request Booking</button>
-
-
-                                    <div id="success"></div>
-
-                                </div>
-
-
-
-
-                            </div>
-
-                        </div>
-                    </form>
-
-
-                </div>
-            </section>
+            
 
 
 
@@ -360,7 +209,6 @@
             <!--  section_image END -->
         </main>
         <span class="space"></span>
-        
 
         <?php include '../footer2.php'; ?>
 
