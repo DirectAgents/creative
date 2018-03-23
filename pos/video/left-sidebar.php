@@ -56,7 +56,9 @@ $row = mysqli_fetch_array($stmt);
                         </li>
 
  <?php } ?>                       
-                        <li><a href="<?php echo BASE_PATH; ?>" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Startups<span class="fa arrow"></span></span></a>
+                        <li><a href="<?php echo BASE_PATH; ?>/startups" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Startups<span class="fa arrow"></span></span></a>
+                        </li>
+                        <li><a href="<?php echo BASE_PATH; ?>/investors" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Investors<span class="fa arrow"></span></span></a>
                         </li>
                         <li> <a href="javascript:void(0)" class="waves-effect"><i class="mdi mdi-checkbox-multiple-marked-outline fa-fw"></i> <span class="hide-menu">Industry<span class="fa arrow"></span></span></a>
                             <ul class="nav nav-second-level">
@@ -90,8 +92,8 @@ $row = mysqli_fetch_array($stmt);
                             </li>-->
                             </ul>
                         </li>
-                         <li><a href="<?php echo BASE_PATH; ?>/startups/" class="waves-effect"><i class="mdi mdi-rocket fa-fw"></i> <span class="hide-menu">For Startups<span class="fa arrow"></span></span></a>
-                            <li><a href="<?php echo BASE_PATH; ?>/investors/" class="waves-effect"><i class="mdi mdi-emoticon-cool fa-fw"></i> <span class="hide-menu">For Investors<span class="fa arrow"></span></span></a>
+                         <li><a href="<?php echo BASE_PATH; ?>/for/startups/" class="waves-effect"><i class="mdi mdi-rocket fa-fw"></i> <span class="hide-menu">For Startups<span class="fa arrow"></span></span></a>
+                            <li><a href="<?php echo BASE_PATH; ?>/for/investors/" class="waves-effect"><i class="mdi mdi-emoticon-cool fa-fw"></i> <span class="hide-menu">For Investors<span class="fa arrow"></span></span></a>
                         <!--<li class="devider"></li>
                         <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>-->
                     </ul>

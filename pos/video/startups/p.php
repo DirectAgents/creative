@@ -1,8 +1,8 @@
 <?php  
 
 session_start();
-include 'config.php';
-require_once 'base_path.php'; 
+include '../config.php';
+require_once '../base_path.php'; 
 
 
 if(isset($_GET['id'])){

@@ -6,6 +6,8 @@ require_once 'class.investor.php';
 require_once 'base_path.php';
 include_once("config.php"); 
 
+$cloudinary_section = 'startups';
+
 ?>
 
 <?php include 'header.php'; ?>

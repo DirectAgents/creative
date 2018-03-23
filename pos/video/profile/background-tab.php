@@ -268,9 +268,9 @@ View Resume
 
 <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] != $row['userID'] || !isset($_SESSION['entrepreneurSession'])) { ?>
 <!--About Start-->
-  <div class="col-sm-12" style="padding-left: 0px;">   
+ <!-- <div class="col-sm-12" style="padding-left: 0px;">   
      <div class="col-sm-3"><strong>About <?php echo $firstname; ?></strong><br><br></div>
-  </div> 
+  </div> -->
   <div class="col-sm-12"> 
    	 <?php echo $row['About']; ?>
    	 <br><br><br>

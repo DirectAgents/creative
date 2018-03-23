@@ -5,7 +5,8 @@
 
  $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
 
- $index = $client->initIndex('startups');
+ //$index = $client->initIndex('startups');
+ $index = $client->initIndex($cloudinary_section);
 
 
 $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -249,6 +250,8 @@ $loginUrl = $helper->getLoginUrl(''.BASE_PATH.'/signup-callback-entrepreneur.php
 
 if(isset($_SESSION['fb_access_token_entrepreneur'])){
 
+
+
 try {
   // Returns a `Facebook\FacebookResponse` object
   $response = $fb->get('/me?fields=id,first_name, last_name,email,gender', $_SESSION['fb_access_token_entrepreneur']);
@@ -270,6 +273,7 @@ echo "<br>";
 echo 'id: ' . $user['id'];
 */
 
+  
 
 //check if user exist in database using COUNT
 
@@ -288,10 +292,10 @@ echo 'id: ' . $user['id'];
   //echo '<img src="'.$user->picture.'" style="float: right;margin-top: 33px;" />';
   //echo $user_count;
   //echo $user->email;
-  if ($resultfacebook->num_rows == 1) //if user already exist change greeting text to "Welcome Back"
+  if ($sql->num_rows == 1) //if user already exist change greeting text to "Welcome Back"
     {
 
-     
+    
     
 
     $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
@@ -446,19 +450,19 @@ echo 'id: ' . $user['id'];
 
 
     <!-- Add fancyBox main JS and CSS files -->
-    <script type="text/javascript" src="source/jquery.fancybox.pack.js?v=2.1.5"></script>
-    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <script type="text/javascript" src="<?php echo BASE_PATH; ?>/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_PATH; ?>/source/jquery.fancybox.css?v=2.1.5" media="screen" />
 
     <!-- Add Button helper (this is optional) -->
-    <link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
-    <script type="text/javascript" src="source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_PATH; ?>/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+    <script type="text/javascript" src="<?php echo BASE_PATH; ?>/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
 
     <!-- Add Thumbnail helper (this is optional) -->
-    <link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
-    <script type="text/javascript" src="source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_PATH; ?>/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+    <script type="text/javascript" src="<?php echo BASE_PATH; ?>/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 
     <!-- Add Media helper (this is optional) -->
-    <script type="text/javascript" src="source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+    <script type="text/javascript" src="<?php echo BASE_PATH; ?>/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 
         
 

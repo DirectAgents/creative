@@ -20,6 +20,7 @@ $words = explode(" ", $row_entrepreneur['Fullname']);
 $thefirstname = $words[0];
 
 
+$cloudinary_section = 'startups';
 
 ?>
 

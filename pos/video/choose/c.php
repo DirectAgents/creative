@@ -5,7 +5,24 @@
  require_once '../class.investor.php';
  require_once '../base_path.php';
  include_once("../config.php"); 
+ require_once('../algoliasearch-client-php-master/algoliasearch.php');
+ require '../cloudinary/lib/rb.php';
+ require '../cloudinary/src/Cloudinary.php';
+ require '../cloudinary/src/Uploader.php';
+ require '../cloudinary/src/Api.php'; // Only required for creating upload presets on the fly
 
+
+function seoUrl($string) {
+    //Lower case everything
+    $string = strtolower($string);
+    //Make alphanumeric (removes all other characters)
+    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+    //Clean up multiple dashes or whitespaces
+    $string = preg_replace("/[\s-]+/", " ", $string);
+    //Convert whitespaces and underscore to dash
+    $string = preg_replace("/[\s_]/", "-", $string);
+    return $string;
+}
 
 
 if(!isset($_SESSION['entrepreneurSession'])){
@@ -52,7 +69,80 @@ if(isset($_SESSION['google_id'])){
         WHERE Email='".$_SESSION['email']."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
-       
+ 
+
+
+//If Investor save in Algolia
+if($_GET['type'] == 'Investor') {
+
+date_default_timezone_set('America/New_York');
+$date = date("Y-m-d");
+$time = date('h:i:s A');  
+
+$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
+
+
+if($row['ProfileImage'] == 'Google'){$profileimage = $row['google_picture_link'];}
+if($row['ProfileImage'] == 'Facebook'){$profileimage = "https://graph.facebook.com/".$row['facebook_id']."/picture?type=large";}
+if($row['ProfileImage'] == 'Google'){$profileimage = $row['linkedin_picture_link'];}
+
+$response = array();
+
+$response[] = array(
+  'objectID'=> $row['userID'],
+  'investorID'=> $row['userID'],
+  'url'=> seoUrl($row['Fullname']), 
+  'fullname'=> $row['Fullname'],
+  'profileimage'=> $profileimage,
+  'likes'=> '0',
+  'date'=> $date_algolia
+   );
+
+$fp = fopen('investors.json', 'w');
+fwrite($fp, json_encode($response));
+fclose($fp);
+
+//echo var_dump($response);
+
+//Upload to algolia
+$client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
+$index = $client->initIndex('investors');
+
+$records = json_decode(file_get_contents('investors.json'), true);
+
+$chunks = array_chunk($records, 1000);
+
+foreach ($chunks as $batch) {
+  $index->addObjects($batch);
+}
+
+//Upload to Cloudinary
+\Cloudinary::config(array(
+    "cloud_name" => "dgml9ji66",
+    "api_key" => "341921643963213",
+    "api_secret" => "BRddFY0iBJQwAwohhJIrsd0VaP8"
+));
+
+//R::setup('mysql:host=localhost;dbname=findacto', 'root', '123');
+
+if($row['ProfileImage'] == 'Google'){ 
+$result = \Cloudinary\Uploader::upload($row['google_picture_link'], $options = array("upload_preset" => "h0hyscue"));
+}
+
+if($row['ProfileImage'] == 'Facebook'){ 
+$result = \Cloudinary\Uploader::upload("https://graph.facebook.com/".$row['facebook_id']."/picture?width=9999", $options = array("upload_preset" => "h0hyscue"));
+}
+
+if($row['ProfileImage'] == 'Linkedin'){ 
+$result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options = array("upload_preset" => "h0hyscue"));
+}
+
+
+}
+
+
+
+
 
         header('Location: '.BASE_PATH.'');
         exit();
@@ -81,6 +171,75 @@ if(isset($_SESSION['facebook_id'])){
         WHERE Email='".$_SESSION['email']."'");
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
+
+
+//If Investor save in Algolia
+if($_GET['type'] == 'Investor') {
+
+date_default_timezone_set('America/New_York');
+$date = date("Y-m-d");
+$time = date('h:i:s A');  
+
+$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
+
+
+if($row['ProfileImage'] == 'Google'){$profileimage = $row['google_picture_link'];}
+if($row['ProfileImage'] == 'Facebook'){$profileimage = "https://graph.facebook.com/".$row['facebook_id']."/picture?type=large";}
+if($row['ProfileImage'] == 'Google'){$profileimage = $row['linkedin_picture_link'];}
+
+$response = array();
+
+$response[] = array(
+  'objectID'=> $row['userID'],
+  'investorID'=> $row['userID'],
+  'url'=> seoUrl($row['Fullname']), 
+  'fullname'=> $row['Fullname'],
+  'profileimage'=> $profileimage,
+  'likes'=> '0',
+  'date'=> $date_algolia
+   );
+
+$fp = fopen('investors.json', 'w');
+fwrite($fp, json_encode($response));
+fclose($fp);
+
+//echo var_dump($response);
+
+//Upload to algolia
+$client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
+$index = $client->initIndex('investors');
+
+$records = json_decode(file_get_contents('investors.json'), true);
+
+$chunks = array_chunk($records, 1000);
+
+foreach ($chunks as $batch) {
+  $index->addObjects($batch);
+}
+
+//Upload to Cloudinary
+\Cloudinary::config(array(
+    "cloud_name" => "dgml9ji66",
+    "api_key" => "341921643963213",
+    "api_secret" => "BRddFY0iBJQwAwohhJIrsd0VaP8"
+));
+
+//R::setup('mysql:host=localhost;dbname=findacto', 'root', '123');
+
+if($row['ProfileImage'] == 'Google'){ 
+$result = \Cloudinary\Uploader::upload($row['google_picture_link'], $options = array("upload_preset" => "h0hyscue"));
+}
+
+if($row['ProfileImage'] == 'Facebook'){ 
+$result = \Cloudinary\Uploader::upload("https://graph.facebook.com/".$row['facebook_id']."/picture?width=9999", $options = array("upload_preset" => "h0hyscue"));
+}
+
+if($row['ProfileImage'] == 'Linkedin'){ 
+$result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options = array("upload_preset" => "h0hyscue"));
+}
+
+
+}
        
 
         header('Location: '.BASE_PATH.'');
@@ -110,6 +269,78 @@ if(isset($_SESSION['linkedin_id'])){
 
         //echo 'Welcome back '.$user->name.'! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
        
+
+//If Investor save in Algolia
+if($_GET['type'] == 'Investor') {
+
+date_default_timezone_set('America/New_York');
+$date = date("Y-m-d");
+$time = date('h:i:s A');  
+
+$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
+
+
+if($row['ProfileImage'] == 'Google'){$profileimage = $row['google_picture_link'];}
+if($row['ProfileImage'] == 'Facebook'){$profileimage = "https://graph.facebook.com/".$row['facebook_id']."/picture?type=large";}
+if($row['ProfileImage'] == 'Google'){$profileimage = $row['linkedin_picture_link'];}
+
+$response = array();
+
+$response[] = array(
+  'objectID'=> $row['userID'],
+  'investorID'=> $row['userID'],
+  'url'=> seoUrl($row['Fullname']), 
+  'fullname'=> $row['Fullname'],
+  'profileimage'=> $profileimage,
+  'likes'=> '0',
+  'date'=> $date_algolia
+   );
+
+$fp = fopen('investors.json', 'w');
+fwrite($fp, json_encode($response));
+fclose($fp);
+
+//echo var_dump($response);
+
+//Upload to algolia
+$client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
+$index = $client->initIndex('investors');
+
+$records = json_decode(file_get_contents('investors.json'), true);
+
+$chunks = array_chunk($records, 1000);
+
+foreach ($chunks as $batch) {
+  $index->addObjects($batch);
+}
+
+//Upload to Cloudinary
+\Cloudinary::config(array(
+    "cloud_name" => "dgml9ji66",
+    "api_key" => "341921643963213",
+    "api_secret" => "BRddFY0iBJQwAwohhJIrsd0VaP8"
+));
+
+//R::setup('mysql:host=localhost;dbname=findacto', 'root', '123');
+
+if($row['ProfileImage'] == 'Google'){ 
+$result = \Cloudinary\Uploader::upload($row['google_picture_link'], $options = array("upload_preset" => "h0hyscue"));
+}
+
+if($row['ProfileImage'] == 'Facebook'){ 
+$result = \Cloudinary\Uploader::upload("https://graph.facebook.com/".$row['facebook_id']."/picture?width=9999", $options = array("upload_preset" => "h0hyscue"));
+}
+
+if($row['ProfileImage'] == 'Linkedin'){ 
+$result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options = array("upload_preset" => "h0hyscue"));
+}
+
+
+}
+
+
+
+
 
         header('Location: '.BASE_PATH.'');
         exit();

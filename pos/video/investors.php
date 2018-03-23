@@ -1,16 +1,16 @@
 <?php
 
 session_start();
-require_once '../class.entrepreneur.php';
-require_once '../class.investor.php';
-require_once '../base_path.php';
-include_once("../config.php"); 
+require_once 'class.entrepreneur.php';
+require_once 'class.investor.php';
+require_once 'base_path.php';
+include_once("config.php"); 
 
-$cloudinary_section = 'startups';
+$cloudinary_section = 'investors';
 
 ?>
 
-<?php include '../header.php'; ?>
+<?php include 'header.php'; ?>
 
 <!-- ============================================================== -->
 <!-- Topbar header -->
@@ -31,10 +31,10 @@ $cloudinary_section = 'startups';
     <div id="wrapper">
         
 
-        <?php include '../nav.php'; ?>
+        <?php include 'nav.php'; ?>
         
 
-        <?php include '../left-sidebar.php'; ?>
+        <?php include 'left-sidebar.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Page Content -->
@@ -75,20 +75,14 @@ $cloudinary_section = 'startups';
 
                         <div class="white-box-index">
                             <div class="product-img">
-                                <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_340/v1/{{{_highlightResult.screenshot.value}}}"/>
+                                <img src="{{{_highlightResult.profileimage.value}}}"/>
 
-                                <div class="pro-img-overlay">
-   
- 
-                                     <iframe id="iframe02" src="p.php?id={{{_highlightResult.startupID.value}}}" scrolling="no"></iframe>
-
-
-                                </div>
+                                
                             </div>
 
                             <div class="product-text">
-                                <span class="pro-price"><img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></span>
-                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/{{url}}">{{{_highlightResult.name.value}}}</a></h3>
+                                <!--<span class="pro-price"><img src="https://graph.facebook.com/{{{_highlightResult.profileimage.value}}}/picture" class="thumb-md img-circle"/></span>-->
+                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/profile/{{url}}">{{{_highlightResult.fullname.value}}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
                                 <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 
@@ -148,7 +142,7 @@ $cloudinary_section = 'startups';
     <!-- ============================================================== -->
 
 
-<?php include '../footer.php'; ?>
+<?php include 'footer.php'; ?>
 
 
   
