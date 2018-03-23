@@ -34,7 +34,7 @@ $cloudinary_section = 'investors';
         <?php include 'nav.php'; ?>
         
 
-        <?php include 'left-sidebar.php'; ?>
+        <?php include 'left-sidebar-investor.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Page Content -->

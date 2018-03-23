@@ -34,7 +34,7 @@ $cloudinary_section = 'startups';
         <?php include 'nav.php'; ?>
         
 
-        <?php include 'left-sidebar.php'; ?>
+        <?php include 'left-sidebar-startup.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Page Content -->
