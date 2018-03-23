@@ -1,16 +1,16 @@
 <?php
 
 session_start();
-require_once '../class.entrepreneur.php';
-require_once '../class.investor.php';
-require_once '../base_path.php';
-include_once("../config.php"); 
+require_once 'class.entrepreneur.php';
+require_once 'class.investor.php';
+require_once 'base_path.php';
+include_once("config.php"); 
 
 $cloudinary_section = 'startups';
 
 ?>
 
-<?php include '../header.php'; ?>
+<?php include 'header.php'; ?>
 
 <!-- ============================================================== -->
 <!-- Topbar header -->
@@ -31,10 +31,10 @@ $cloudinary_section = 'startups';
     <div id="wrapper">
         
 
-        <?php include '../nav.php'; ?>
+        <?php include 'nav.php'; ?>
         
 
-        <?php include '../left-sidebar.php'; ?>
+        <?php include 'left-sidebar.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Page Content -->
@@ -148,7 +148,7 @@ $cloudinary_section = 'startups';
     <!-- ============================================================== -->
 
 
-<?php include '../footer.php'; ?>
+<?php include 'footer.php'; ?>
 
 
   

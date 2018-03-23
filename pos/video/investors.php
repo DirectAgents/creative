@@ -75,7 +75,7 @@ $cloudinary_section = 'investors';
 
                         <div class="white-box-index">
                             <div class="product-img">
-                                <img src="{{{_highlightResult.profileimage.value}}}"/>
+                                <a href="<?php echo BASE_PATH; ?>/profile/{{url}}"><img src="{{{_highlightResult.profileimage.value}}}"/></a>
 
                                 
                             </div>

@@ -47,7 +47,7 @@ $row = mysqli_fetch_array($stmt);
                                 <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="fas fa-users"></i>&nbsp;&nbsp;<span class="hide-menu">Connections</span></a></li>
                                 <li><a href="<?php echo BASE_PATH; ?>/bookmarks/">&nbsp;<i class="fas fa-bookmark"></i> <span class="hide-menu">&nbsp;&nbsp;Bookmarks</span></a></li>
 
-                                <?php if($row_startup['Name'] == ''){ ?>
+                                <?php if($row_startup['Name'] == '' && $rownav['Type'] == 'Startup'){ ?>
                                 <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="fas fa-rocket"></i><span class="hide-menu">&nbsp;&nbsp;Add a Startup</span></a></li>
                                 <?php } ?>
                                 <li><a href="<?php echo BASE_PATH; ?>/settings/"><i class="fas fa-cog"></i><span class="hide-menu">&nbsp;&nbsp;Account Setting</span></a></li>
