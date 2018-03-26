@@ -34,6 +34,8 @@ if ($result_startup->num_rows == 1){
 }  
  
 
+$cloudinary_section = 'startups'; 
+
 
 
 ?>
@@ -65,7 +67,10 @@ if ($result_startup->num_rows == 1){
             <!-- End Top Navigation -->
             
 
-        <?php include '../left-sidebar.php'; ?>
+         <?php 
+        if($row_entrepreneur['Type'] == 'Startup'){ include '../left-sidebar-startup.php';} 
+        if($row_entrepreneur['Type'] == 'Investor'){ include '../left-sidebar-investor.php';}
+        ?>
         
 
             <!-- ============================================================== -->

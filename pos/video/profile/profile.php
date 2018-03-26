@@ -102,12 +102,11 @@ $cloudinary_section = 'startups';
                                             <div id="fullname">
                                                 <h4 class="text-white"><?php echo $row_entrepreneur['Fullname'];?></h4>
                                             </div>
-                                            <div id="position">
-                                                <?php if($row_entrepreneur['Position'] != ''){ ?>
+                                            <div id="thezipcode">
+                                                <?php if($row_entrepreneur['ZipCode'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
-                                                //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
-                                                echo $row_entrepreneur['Position'];
+                                                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_entrepreneur['City'])))).', '.$row_entrepreneur['State'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
@@ -189,6 +188,12 @@ $cloudinary_section = 'startups';
                                         <a href="#background" id="background-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">About <?php echo $thefirstname; ?></span> </a>
                                     </li>
                                     <?php //} ?>
+
+                                      <?php if($row_entrepreneur['Type'] == 'Investor'){ ?>
+                                    <li class="tab">
+                                        <a href="#company-investor" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">111Company</span> </a>
+                                    </li>
+                                    <?php } ?>
                                    
                                     
                                    <?php //} ?>
@@ -198,10 +203,11 @@ $cloudinary_section = 'startups';
 
                                 <div class="tab-content">
 
+
             <!-- ============================================================== -->
-            <!-- Company Tab Starts -->
+            <!-- Company Investor Tab Starts -->
             <!-- ============================================================== -->
-                    <div class="tab-pane" id="company">
+                    <div class="tab-pane" id="company-investor">
                             
                      <form class="form-horizontal form-material" id="save-company">
 
@@ -219,13 +225,11 @@ $cloudinary_section = 'startups';
                                             </div>
                                 </div>
                             
+
                        
-                             <div id="thecompany"></div>
+                             <div id="thecompany-investor"></div>
 
                            
-                            
-                    
-                               
                             
                               <div id="upload-screenshot">
                                     <div class="form-group">
@@ -263,7 +267,75 @@ $cloudinary_section = 'startups';
                                           
                                     </div>
             <!-- ============================================================== -->
-            <!-- Company Tab Ends -->
+            <!-- Company Investor Tab Ends -->
+            <!-- ============================================================== -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Company Startup Tab Starts -->
+            <!-- ============================================================== -->
+                    <div class="tab-pane" id="company">
+                            
+                     <form class="form-horizontal form-material" id="save-company">
+
+
+                         <div id="upload-logo">
+                                    <div class="form-group">
+                                                <div class="col-sm-12">
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Startup Logo</a>
+                                                            <br>
+                                                            <br>
+                                                            <ul id="preview_company"></ul>
+                                                            <div id="url_preview_company"><input type="checkbox" style="display:none" name="company_logo[]" value="<?php echo $row_startup['Logo']; ?>" checked/></div>
+                                                            <!--<div id="headshot_id"></div>-->
+                                                </div>
+                                            </div>
+                                </div>
+                            
+
+                       
+                             <div id="thecompany-startup"></div>
+
+                           
+                            
+                              <div id="upload-screenshot">
+                                    <div class="form-group">
+                                                <div class="col-sm-12">
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_screenshot">Upload Screenshot</a>
+                                                            <br>
+                                                            <br>
+                                                            <ul id="preview_screenshot"></ul>
+                                                            <div id="url_preview_screenshot"><input type="checkbox" style="display:none" name="video_screenshot[]" value="<?php echo $row_startup['Screenshot']; ?>" checked/></div>
+                                                            <!--<div id="headshot_id"></div>-->
+                                                            <p>Note.: The screenshot of the video clip has to have a minimum dimension of 340px in width.</p> 
+                                                </div>
+
+                                            </div>
+
+                                </div>
+
+
+                           
+
+
+                        <div id="save-cancel">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-company" tabindex="11" style="margin-right:10px;">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-company" tabindex="12">Cancel</button>
+                                    </div>
+                                </div>
+                         </div>       
+
+
+
+                             </form>   
+
+                                          
+                                    </div>
+            <!-- ============================================================== -->
+            <!-- Company Startup Tab Ends -->
             <!-- ============================================================== -->
 
 

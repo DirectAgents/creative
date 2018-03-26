@@ -8,6 +8,8 @@ include_once("config.php");
 
 $cloudinary_section = 'investors';
 
+$left_sidebar_industry = 'investors';
+
 ?>
 
 <?php include 'header.php'; ?>

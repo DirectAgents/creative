@@ -5,6 +5,8 @@ var url_link = 'http://localhost/creative/pos/video/profile/';
 
 var url_link_startup = 'http://localhost/creative/pos/video/startup/';
 
+var url_link_investor = 'http://localhost/creative/pos/video/investor/';
+
 var image_link = 'http://localhost/creative/pos/video/';
 
 
@@ -223,7 +225,7 @@ $('.zip-textinput, .zip-textinput-company').blur(function(){
 
 var zip_input = $(this).val();
 var zip_select = $('input[name=zip_select]').val();
-//alert(zip_input);
+//alert(zip_select);
 
 $.ajax({
                 url: url_link+"edit.php",
@@ -234,7 +236,9 @@ $.ajax({
                    
                    var zip = $(response).filter('#zip').html(); 
                    //alert(zip);
+                   if(zip != 'Type your zip code'){
                    $("#thezipcode").replaceWith('<div id="thezipcode"><h5 class="text-white">'+zip+'</h5></div>');
+                   }
 
                    if (zip != ''){  
                     
@@ -283,6 +287,28 @@ $.ajax({
                 //alert(response);  
                 
                 $("#thecompany-startup").load(url_link_startup+"company.php?userid="+userid);
+
+                $("#upload-screenshot").hide();
+                $("#save-cancel").hide();
+
+
+
+            }
+        });
+
+
+
+     var userid = $('input[name=userid]').val();
+    //alert(userid);
+     $.ajax({
+            url: url_link_investor+"company.php",
+            method: "GET",
+            data: {userid: userid},
+            dataType: "html",
+            success: function(response) {
+                //alert(response);  
+                
+                $("#thecompany-investor").load(url_link_startup+"company.php?userid="+userid);
 
                 $("#upload-screenshot").hide();
                 $("#save-cancel").hide();

@@ -60,28 +60,31 @@ $row = mysqli_fetch_array($stmt);
                         </li>
                         <li><a href="<?php echo BASE_PATH; ?>/investors" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Investors<span class="fa arrow"></span></span></a>
                         </li>
+
+                        <?php if(isset($left_sidebar_industry)){ ?>
+
                         <li> <a href="javascript:void(0)" class="waves-effect"><i class="mdi mdi-checkbox-multiple-marked-outline fa-fw"></i> <span class="hide-menu">Industry<span class="fa arrow"></span></span></a>
                             <ul class="nav nav-second-level">
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Technology"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Technology</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Augmented Reality"><i class="fas fa-eye"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Augmented Reality</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Mobile"><i class="fas fa-mobile-alt font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Mobile</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Finance"><i class="fas fa-dollar-sign font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Finance</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Ecommerce"><i class="fas far fa-shopping-bag font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Ecommerce</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=B2B Services"><i class="fas far fa-building font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;B2B Services</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Consumer Products"><i class="fas fa-users font-awesome-icon"></i><span class="hide-menu">&nbsp;Consumer Products</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Consulting"><i class="fas fa-comment font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;Consulting</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Big Data"><i class="fas fa-database font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Big Data</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Education"><i class="fas fa-graduation-cap font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;Education</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Travel"><i class="fas fa-plane font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;Travel</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Entertainment"><i class="fas fa-microphone font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Entertainment</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Fashion"><i class="fab fa-black-tie font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Fashion</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Healthcare"><i class="fas fa-heartbeat font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Healthcare</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Real Estate"><i class="fas fa-home font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Real Estate</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Food and Beverages"><i class="fas fa-utensils font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Food and Beverages</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Art and Design"><i class="fas fa-paint-brush font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Art and Design</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Health & Wellness"><i class="fab fa-gratipay font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Health and Wellness</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/?q=Human Resources"><i class="fas fa-male font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Human Resources</span></a> </li>
-                                <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Other</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Technology"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Technology</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Augmented Reality"><i class="fas fa-eye"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Augmented Reality</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Mobile"><i class="fas fa-mobile-alt font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Mobile</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Finance"><i class="fas fa-dollar-sign font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Finance</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Ecommerce"><i class="fas far fa-shopping-bag font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Ecommerce</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=B2B Services"><i class="fas far fa-building font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;B2B Services</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Consumer Products"><i class="fas fa-users font-awesome-icon"></i><span class="hide-menu">&nbsp;Consumer Products</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Consulting"><i class="fas fa-comment font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;Consulting</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Big Data"><i class="fas fa-database font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Big Data</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Education"><i class="fas fa-graduation-cap font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;Education</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Travel"><i class="fas fa-plane font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;Travel</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Entertainment"><i class="fas fa-microphone font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Entertainment</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Fashion"><i class="fab fa-black-tie font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Fashion</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Healthcare"><i class="fas fa-heartbeat font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Healthcare</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Real Estate"><i class="fas fa-home font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Real Estate</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Food and Beverages"><i class="fas fa-utensils font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Food and Beverages</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Art and Design"><i class="fas fa-paint-brush font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Art and Design</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Health & Wellness"><i class="fab fa-gratipay font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Health and Wellness</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Human Resources"><i class="fas fa-male font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Human Resources</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Other"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Other</span></a> </li>
                                 <!--<li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Third Level </span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li> <a href="javascript:void(0)"><i class=" fa-fw">T</i><span class="hide-menu">Third Level Item</span></a> </li>
@@ -92,6 +95,7 @@ $row = mysqli_fetch_array($stmt);
                             </li>-->
                             </ul>
                         </li>
+                        <?php } ?>
                          <li><a href="<?php echo BASE_PATH; ?>/for/startups/" class="waves-effect"><i class="mdi mdi-rocket fa-fw"></i> <span class="hide-menu">For Startups<span class="fa arrow"></span></span></a>
                             <li><a href="<?php echo BASE_PATH; ?>/for/investors/" class="waves-effect"><i class="mdi mdi-emoticon-cool fa-fw"></i> <span class="hide-menu">For Investors<span class="fa arrow"></span></span></a>
                         <!--<li class="devider"></li>

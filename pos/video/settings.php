@@ -21,6 +21,8 @@ exit();
  $row_entrepreneur = mysqli_fetch_array($result);
 
 
+$cloudinary_section = 'startups';
+
 ?>
 
 
@@ -50,7 +52,10 @@ exit();
             <!-- End Top Navigation -->
             
 
-        <?php include 'left-sidebar.php'; ?>
+         <?php 
+        if($row_entrepreneur['Type'] == 'Startup'){ include 'left-sidebar-startup.php';} 
+        if($row_entrepreneur['Type'] == 'Investor'){ include 'left-sidebar-investor.php';}
+        ?>
         
 
             <!-- ============================================================== -->

@@ -76,9 +76,9 @@ if(empty($row['Type'])){
             <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup">Startup</a>
+                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup">I'm a Startup</a>
               </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+              <p class="card-text">I have a startup or small business.</p>
             </div>
           </div>
         </div>
@@ -87,9 +87,9 @@ if(empty($row['Type'])){
             <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Investor"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Investor">Investor</a>
+                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Investor">I'm an Accredited Investor</a>
               </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
+              <p class="card-text">I invest in startup or small businesses.</p>
             </div>
           </div>
         </div>

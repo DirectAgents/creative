@@ -8,6 +8,8 @@ include_once("config.php");
 
 $cloudinary_section = 'startups';
 
+$left_sidebar_industry = 'startups';
+
 ?>
 
 <?php include 'header.php'; ?>
@@ -34,7 +36,7 @@ $cloudinary_section = 'startups';
         <?php include 'nav.php'; ?>
         
 
-        <?php include 'left-sidebar.php'; ?>
+        <?php include 'left-sidebar-startup.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Page Content -->
