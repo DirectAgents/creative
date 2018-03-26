@@ -215,7 +215,7 @@ $cloudinary_section = 'startups';
                          <div id="upload-logo">
                                     <div class="form-group">
                                                 <div class="col-sm-12">
-                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Startup Logo</a>
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Company Logo</a>
                                                             <br>
                                                             <br>
                                                             <ul id="preview_company"></ul>
@@ -231,26 +231,6 @@ $cloudinary_section = 'startups';
 
                            
                             
-                              <div id="upload-screenshot">
-                                    <div class="form-group">
-                                                <div class="col-sm-12">
-                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_screenshot">Upload Screenshot</a>
-                                                            <br>
-                                                            <br>
-                                                            <ul id="preview_screenshot"></ul>
-                                                            <div id="url_preview_screenshot"><input type="checkbox" style="display:none" name="video_screenshot[]" value="<?php echo $row_startup['Screenshot']; ?>" checked/></div>
-                                                            <!--<div id="headshot_id"></div>-->
-                                                            <p>Note.: The screenshot of the video clip has to have a minimum dimension of 340px in width.</p> 
-                                                </div>
-
-                                            </div>
-
-                                </div>
-
-
-                           
-
-
                         <div id="save-cancel">
                                 <div class="form-group">
                                     <div class="col-sm-12">

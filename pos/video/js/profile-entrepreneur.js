@@ -308,7 +308,7 @@ $.ajax({
             success: function(response) {
                 //alert(response);  
                 
-                $("#thecompany-investor").load(url_link_startup+"company.php?userid="+userid);
+                $("#thecompany-investor").load(url_link_investor+"company.php?userid="+userid);
 
                 $("#upload-screenshot").hide();
                 $("#save-cancel").hide();

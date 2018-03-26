@@ -77,14 +77,14 @@ $left_sidebar_industry = 'investors';
 
                         <div class="white-box-index">
                             <div class="product-img">
-                                <a href="<?php echo BASE_PATH; ?>/profile/{{url}}"><img src="{{{_highlightResult.profileimage.value}}}"/></a>
+                                <a href="<?php echo BASE_PATH; ?>/profile/{{url}}"><!--<img src="{{{_highlightResult.profileimage.value}}}"/>--></a>
 
                                 
                             </div>
 
                             <div class="product-text">
                                 <!--<span class="pro-price"><img src="https://graph.facebook.com/{{{_highlightResult.profileimage.value}}}/picture" class="thumb-md img-circle"/></span>-->
-                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/profile/{{url}}">{{{_highlightResult.fullname.value}}}</a></h3>
+                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/profile/{{url}}"><!--{{{_highlightResult.fullname.value}}}--></a></h3>
                                 <small class="text-muted db">
                                 <br>
                                 <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 
