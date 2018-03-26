@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2018 at 12:00 AM
+-- Generation Time: Mar 26, 2018 at 03:01 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -65,131 +65,131 @@ CREATE TABLE `skills` (
 --
 
 INSERT INTO `skills` (`id`, `skill`) VALUES
-(1, 'Entrepreneur Networking'),
-(2, 'Startups'),
-(3, 'Social Media Marketing'),
-(4, 'Social-Media'),
-(5, 'Fiction'),
-(7, 'Dancing'),
-(8, 'Public Speaking'),
-(9, 'Internet Professionals'),
-(10, 'Investing'),
-(13, 'Sci-Fi/Fantasy'),
-(14, 'Product Management'),
-(15, 'Movie Nights'),
-(16, 'Salsa'),
-(17, 'Lean Startup'),
-(18, 'Marketing'),
-(19, 'Photography Classes'),
-(20, 'Music'),
-(21, 'Online Marketing'),
-(22, 'Live Music'),
-(23, 'Latin Dance'),
-(24, 'Writing'),
-(25, 'Professional Networking'),
-(29, 'Public Speaking'),
-(30, 'Real Estate'),
-(31, 'Musicians'),
-(32, 'Theater'),
-(33, 'Real Estate Investing'),
-(34, 'Business Referral Networking'),
-(35, 'Photography'),
-(36, 'Portrait Photography'),
-(37, 'Writing'),
-(38, 'Watching Movies'),
-(39, 'Entrepreneurship'),
-(40, 'Photography'),
-(41, 'Sci-Fi and Games'),
-(42, 'Book Club'),
-(43, 'Art'),
-(44, 'Literature'),
-(45, 'Pets'),
-(46, 'Painting'),
-(47, 'Social'),
-(48, 'Film'),
-(49, 'Small Business'),
-(50, 'Small Business Marketing'),
-(51, 'Small Business Owners'),
-(52, 'Software Development'),
-(53, 'Startup Businesses'),
-(54, 'Women\'s Business Networking'),
-(55, 'Woman Entrepreneurs'),
-(56, 'Young Professionals'),
-(57, 'Adventure Travel'),
+(1, 'Product Management'),
+(2, 'Strategy'),
+(3, 'User Experience'),
+(4, 'Design'),
+(5, 'Recruiting'),
+(7, 'Sales'),
+(8, 'Legal'),
+(9, 'Marketing'),
+(10, 'Growth'),
+(13, 'Business Development'),
+(14, 'Fundraising'),
+(15, 'Software Development'),
+(16, 'Entrepreneur'),
+(17, 'Innovation Development'),
+(18, 'Machine Learning'),
+(19, 'Technological Innovation'),
+(20, 'Innovation'),
+(21, 'Programming'),
+(22, 'Public Relations'),
+(23, 'Operations'),
+(24, 'Branding & Identity'),
+(25, 'Fashion Writing'),
+(29, 'Fashion Design'),
+(30, 'Fashion Consulting'),
+(31, 'Fashion Blogging'),
+(32, 'Strategy'),
+(33, 'U.S Food and Drug Administration (FDA)'),
+(34, 'Project Management'),
+(35, 'Augmented Reality'),
+(36, 'Market Testing'),
+(37, 'Business Development'),
+(38, 'Emerging Technologies'),
+(39, 'Quality of Service (QoS)'),
+(40, 'Environmental Applications'),
+(41, 'Leadership in Energy and Environmental Design (LEED)'),
+(42, 'Energy Engineering'),
+(43, 'Sustainable Engineering'),
+(44, 'Technological Innovation'),
+(45, 'Research'),
+(46, 'Analytics'),
+(47, 'Front-End Web Development'),
+(48, 'Back-End Web Development'),
+(49, 'Machine Learning'),
+(50, 'Laravel'),
+(51, 'PHP development'),
+(52, 'RESTful WebServices'),
+(53, 'Java APIs'),
+(54, 'Java'),
+(55, 'C++'),
+(56, 'Advertising'),
+(57, 'Operations'),
 (58, 'African Americans'),
-(59, 'Baby Bloomers'),
-(60, 'Black Women'),
-(61, 'Community Organizations'),
-(62, 'Creative Circle'),
-(63, 'Ethics'),
-(64, 'Farmers Market'),
-(65, 'Gay'),
-(66, 'Gay Couples'),
-(67, 'Gay Men'),
-(68, 'Geeks and Nerds'),
-(69, 'International and Exchange'),
-(70, 'Lesbian'),
-(71, 'New Urbanism'),
-(72, 'Permaculture'),
-(73, 'Philanthropy'),
-(74, 'Seniors'),
-(75, 'Vegan'),
-(76, 'Vegetarian'),
-(77, 'Bilingual Spanish/English'),
-(78, 'English as a Second Language'),
-(79, 'English Language'),
-(80, 'Expat'),
-(81, 'Expat French'),
-(82, 'French Culture'),
-(83, 'French Language'),
-(84, 'Geek Culture'),
-(85, 'Languages'),
-(86, 'Depression'),
-(87, 'Divorce Support'),
-(88, 'Energy Healing'),
-(89, 'Fitness'),
-(90, 'Group Fitness Training'),
-(91, 'Guided Meditation'),
-(92, 'Healing'),
-(93, 'Healthy Eating'),
-(94, 'Holistic Health'),
-(95, 'Life Transformation'),
-(96, 'Meditation'),
-(97, 'Natural Health'),
-(98, 'Nutrition'),
-(99, 'Reiki'),
-(100, 'Self-Improvement'),
-(101, 'Weight Loss'),
-(102, 'Weight Loss Support'),
-(103, 'Wellness'),
-(104, 'Whole Food Nutrition'),
-(105, 'Yoga'),
-(106, 'Beer'),
-(107, 'Board Games'),
-(108, 'Card Games'),
-(109, 'Cashflow'),
-(110, 'Coffee'),
-(111, 'Crafts'),
-(112, 'Creative Writing'),
-(113, 'Dining Out'),
-(114, 'Drinking'),
+(59, 'Back-end Programming'),
+(60, 'Front End Developer'),
+(61, 'Full Stack'),
+(62, 'Cryptocurrency'),
+(63, 'Excel'),
+(64, 'SQL'),
+(65, 'Crypto'),
+(66, 'Finance'),
+(67, 'FinTech'),
+(68, 'Customer Retention'),
+(69, 'Customer Management'),
+(70, 'Partnership Management'),
+(71, 'Partner Relations'),
+(72, 'Partner Relationship Management'),
+(73, 'Operations'),
+(74, 'SEM'),
+(75, 'SEO'),
+(76, 'Data Science'),
+(77, 'NLP'),
+(78, 'SAS/SQL'),
+(79, 'Base SAS Certified'),
+(80, 'SAS Programming'),
+(81, 'SAS Certified Base Programmer'),
+(82, 'SAS'),
+(83, 'Python'),
+(84, 'Developer'),
+(85, 'CTO'),
+(86, 'Software Engineering'),
+(87, 'Application Programming Interfaces'),
+(88, 'Programming Languages'),
+(89, 'Software Coding'),
+(90, 'Software Business'),
+(91, 'Software Architectural Design'),
+(92, 'Software as a Service (SaaS)'),
+(93, 'Software Build'),
+(94, 'Business Process'),
+(95, 'Business Strategy'),
+(96, 'Software Architectural Design'),
+(97, 'Capitalk Markets'),
+(98, 'Branding & Identity'),
+(99, 'Customer Satisfaction'),
+(100, 'Merchandising'),
+(101, 'Brand Activation'),
+(102, 'Campaign Development'),
+(103, 'Project Management'),
+(104, 'React.js'),
+(105, 'Mean Stack'),
+(106, 'Web & Mobile'),
+(107, 'Building Strong Relationships'),
+(108, 'Advertising'),
+(109, 'Account Management'),
+(110, 'Data Visualization'),
+(111, 'Data Management'),
+(112, 'Data Science'),
+(113, 'Data Stewardship'),
+(114, 'Data Standards'),
 (115, 'Foodie'),
-(116, 'Games'),
-(117, 'Gaming'),
-(118, 'International Travel'),
-(119, 'Reading'),
-(120, 'Strategy Games'),
-(121, 'Travel'),
-(122, 'Wine'),
-(123, 'Wine and Food Pairing'),
-(124, 'Wine Tasting'),
-(125, 'Agile Project Management'),
-(126, 'Android Development'),
-(127, 'Business Intelligence'),
-(128, 'Cloud Computing'),
-(129, 'Digital Photography'),
-(130, 'Hacking'),
-(133, 'Linux'),
+(116, 'Data Solutions'),
+(117, 'Data Segmentation'),
+(118, 'Data Services'),
+(119, 'Data Quality Control'),
+(120, 'Data Quality Assurance'),
+(121, 'Data Quality'),
+(122, 'Data Processing'),
+(123, 'Data Monetization'),
+(124, 'Data Models'),
+(125, 'Data Modeling'),
+(126, 'Data Mining'),
+(127, 'Data Migration'),
+(128, 'Data Masking'),
+(129, 'Data Marts'),
+(130, 'Data Mapping'),
+(133, 'Data Manipulation'),
 (134, 'Mobile Development'),
 (135, 'Mobile Technology'),
 (136, 'New Technology'),
@@ -201,32 +201,32 @@ INSERT INTO `skills` (`id`, `skill`) VALUES
 (142, 'Web Design'),
 (143, 'Web Development'),
 (144, 'Web Technology'),
-(145, 'Babies'),
-(146, 'Dads'),
-(147, 'Divorced Parents'),
-(148, 'Family Friendly'),
-(149, 'First-Time Pregnant Moms'),
-(150, 'Kids'),
-(151, 'Married Couples'),
-(152, 'Moms'),
-(153, 'New Moms'),
-(154, 'Parents'),
-(155, 'Single Dads'),
-(156, 'Single Moms'),
-(157, 'Stay-at-Home Moms'),
-(158, 'Stay at Home Parents'),
-(159, 'Toddlers'),
-(160, 'Working Moms'),
-(161, 'Dogs'),
-(162, 'Cats'),
-(163, 'Birds'),
-(164, 'Horses'),
-(165, 'Puppies'),
-(166, 'Toys'),
-(167, 'Animal Rights'),
-(168, 'Animal Welfare'),
-(169, 'Environment'),
-(170, 'Human Rights'),
+(145, 'Data Loading'),
+(146, 'Data Handling'),
+(147, 'Data Governance'),
+(148, 'Data Flow'),
+(149, 'Data Feeds'),
+(150, 'Data Engineering'),
+(151, 'Data Driven Testing'),
+(152, 'Data Destruction'),
+(153, 'Data Curation'),
+(154, 'Data Cubes'),
+(155, 'Data Coordination'),
+(156, 'Data Conversion'),
+(157, 'Data Control'),
+(158, 'Data Coding'),
+(159, 'Data Collection'),
+(160, 'Data Center'),
+(161, 'Data Assessment'),
+(162, 'Data Aggregation'),
+(163, 'Data Architects'),
+(164, 'Data Analysis'),
+(165, 'Data Analytics'),
+(166, 'Data'),
+(167, 'Media Advisory'),
+(168, 'Multimedia'),
+(169, 'News Production'),
+(170, 'Technological Innovation'),
 (171, 'Social Movements'),
 (172, 'Volunteering'),
 (173, 'Women in Technology'),
@@ -271,11 +271,12 @@ CREATE TABLE `startups` (
   `userID` int(11) DEFAULT NULL,
   `Position` varchar(255) NOT NULL,
   `Name` varchar(255) DEFAULT NULL,
+  `Url` varchar(255) DEFAULT NULL,
   `Description` longtext NOT NULL,
   `About` longtext NOT NULL,
   `City` varchar(255) NOT NULL,
   `State` varchar(255) NOT NULL,
-  `Zip` varchar(255) NOT NULL,
+  `ZipCode` varchar(255) NOT NULL DEFAULT '',
   `Industry` varchar(255) DEFAULT NULL,
   `Logo` varchar(255) NOT NULL,
   `Video` varchar(255) NOT NULL,
@@ -285,16 +286,6 @@ CREATE TABLE `startups` (
   `AngelList` varchar(255) NOT NULL,
   `Date_Posted` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `startups`
---
-
-INSERT INTO `startups` (`id`, `startupID`, `userID`, `Position`, `Name`, `Description`, `About`, `City`, `State`, `Zip`, `Industry`, `Logo`, `Video`, `Screenshot`, `Facebook`, `Twitter`, `AngelList`, `Date_Posted`) VALUES
-(164, 149, 149, 'CTO', 'Facebook', 'hello', 'was geht', 'NEW YORK', 'NY', '10001', 'Technology', 'screenshots/ijgdr401fmk6zplns0q9', 'www.abc.com', 'screenshots/bblhrrtkgi846pw3jrel', '', '', '', '2018-03-02'),
-(167, 105, 105, 'CEO', 'Google', 'bla bla', 'hello', 'NEW YORK', 'NY', '10001', 'Ecommerce', 'screenshots/ep1ipfkjhgxxrcqlxxfg', '', 'screenshots/sxitfykbdakvsddc8cfh', '', '', '', '2018-03-02'),
-(168, 106, 106, '', 'Fisher', '', '', '', '', '', 'Ecommerce', '', '', '', '', '', '', '0000-00-00'),
-(169, 107, 107, '', 'Joga', '', '', '', '', '', 'Ecommerce', '', '', '', '', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -306,31 +297,6 @@ CREATE TABLE `tbl_bookmarks` (
   `id` int(11) NOT NULL,
   `requester_id` int(11) NOT NULL,
   `requested_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_bookmarks`
---
-
-INSERT INTO `tbl_bookmarks` (`id`, `requester_id`, `requested_id`) VALUES
-(1, 105, 149),
-(2, 149, 105),
-(3, 105, 106),
-(4, 149, 106);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_connections_startup`
---
-
-CREATE TABLE `tbl_connections_startup` (
-  `id` int(11) NOT NULL,
-  `my_id` int(11) NOT NULL,
-  `requester_id` int(11) NOT NULL,
-  `requested_id` int(11) NOT NULL,
-  `status` enum('pending','accepted','denied') NOT NULL DEFAULT 'pending',
-  `archived` enum('Yes','No') NOT NULL DEFAULT 'No'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -345,7 +311,26 @@ CREATE TABLE `tbl_connections_investor` (
   `requester_id` int(11) NOT NULL,
   `requested_id` int(11) NOT NULL,
   `status` enum('pending','accepted','denied') NOT NULL DEFAULT 'pending',
-  `archived` enum('Yes','No') NOT NULL DEFAULT 'No'
+  `archived` enum('Yes','No') NOT NULL DEFAULT 'No',
+  `Time` varchar(255) NOT NULL,
+  `Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_connections_startup`
+--
+
+CREATE TABLE `tbl_connections_startup` (
+  `id` int(11) NOT NULL,
+  `my_id` int(11) NOT NULL,
+  `requester_id` int(11) NOT NULL,
+  `requested_id` int(11) NOT NULL,
+  `status` enum('pending','accepted','denied') NOT NULL DEFAULT 'pending',
+  `archived` enum('Yes','No') NOT NULL DEFAULT 'No',
+  `Time` varchar(255) NOT NULL,
+  `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -431,20 +416,11 @@ INSERT INTO `tbl_investor` (`userID`, `facebook_id`, `google_id`, `google_pictur
 
 CREATE TABLE `tbl_likes` (
   `id` int(11) NOT NULL,
-  `requester_id` int(11) NOT NULL,
+  `requester_id` longtext NOT NULL,
   `requested_id` int(11) NOT NULL,
   `Industry` varchar(255) NOT NULL,
   `Likes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_likes`
---
-
-INSERT INTO `tbl_likes` (`id`, `requester_id`, `requested_id`, `Industry`, `Likes`) VALUES
-(66, 149, 107, 'Ecommerce', 12),
-(67, 105, 106, 'Ecommerce', 5),
-(68, 149, 105, 'Ecommerce', 2);
 
 -- --------------------------------------------------------
 
@@ -476,6 +452,13 @@ CREATE TABLE `tbl_team` (
   `Date_Created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_team`
+--
+
+INSERT INTO `tbl_team` (`id`, `userID`, `startupID`, `Fullname`, `Position`, `Gender`, `Email`, `Phone`, `Age`, `About`, `Positions`, `Skills`, `City`, `State`, `Zip`, `ZipCode`, `ProfileImage`, `Facebook`, `Twitter`, `Linkedin`, `Date_Created`) VALUES
+(1, 174, 174, 'Jon Snow', 'CFO', '', '', '', '', '', '', 'B-notes', '', '', '', '', '', '', '', '', '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
@@ -493,14 +476,14 @@ CREATE TABLE `tbl_top_rated_startups` (
 --
 
 INSERT INTO `tbl_top_rated_startups` (`id`, `Industry`, `Likes`) VALUES
-(1, 'Technology', 10),
-(2, 'Mobile', 5),
-(3, 'Finance', 8),
-(4, 'Ecommerce', 23),
-(5, 'B2B Services', 2),
-(6, 'Consumer Products', 2),
-(7, 'Consulting', 1),
-(8, 'Big Data', 4),
+(1, 'Technology', 0),
+(2, 'Mobile', 0),
+(3, 'Finance', 0),
+(4, 'Ecommerce', 0),
+(5, 'B2B Services', 0),
+(6, 'Consumer Products', 0),
+(7, 'Consulting', 0),
+(8, 'Big Data', 0),
 (9, 'Education', 0),
 (10, 'Travel', 0),
 (11, 'Entertainment', 0),
@@ -510,7 +493,8 @@ INSERT INTO `tbl_top_rated_startups` (`id`, `Industry`, `Likes`) VALUES
 (15, 'Art and Design', 0),
 (16, 'Health, Fitness and Wellness', 0),
 (17, 'Human Resources', 0),
-(18, 'Other', 0);
+(18, 'Other', 0),
+(19, 'Augmented Reality', 0);
 
 -- --------------------------------------------------------
 
@@ -540,7 +524,6 @@ CREATE TABLE `tbl_users` (
   `Skills` longtext NOT NULL,
   `City` varchar(255) NOT NULL,
   `State` varchar(255) NOT NULL,
-  `Zip` varchar(255) NOT NULL,
   `ZipCode` varchar(255) NOT NULL,
   `Facebook` varchar(255) NOT NULL,
   `Twitter` varchar(255) NOT NULL,
@@ -552,9 +535,10 @@ CREATE TABLE `tbl_users` (
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`userID`, `username`, `Type`, `ProfileImage`, `facebook_id`, `google_id`, `google_picture_link`, `google_token`, `linkedin_id`, `linkedin_picture_link`, `Fullname`, `Position`, `Gender`, `Email`, `Phone`, `Age`, `About`, `Resume`, `Skills`, `City`, `State`, `Zip`, `ZipCode`, `Facebook`, `Twitter`, `Linkedin`, `Date_Created`) VALUES
-(105, 'paul-jared', 'Entrepreneur', 'Facebook', '292916221198167', '0', '', '', '', '', 'Paul Jared', 'CEO', 'Male', 'wepaystage@gmail.com', '', '', 'Hello', 'screenshots/nbxoyrd7aeyidrqadtu0', 'Creative Writing,Sport', '', '', '', '', '', '', '', '0000-00-00'),
-(149, 'alper-dilmen', 'Entrepreneur', 'Facebook', '10157632974310062', '0', '', '', '', '', 'Alper Dilmen', 'CTO', 'Male', 'ald183s@gmail.com', '9191911', '', '', '', 'Animal Welfare,Adventure Travel,Board Games', '', '', '', '', 'http://facebook.com', '', '', '0000-00-00');
+INSERT INTO `tbl_users` (`userID`, `username`, `Type`, `ProfileImage`, `facebook_id`, `google_id`, `google_picture_link`, `google_token`, `linkedin_id`, `linkedin_picture_link`, `Fullname`, `Position`, `Gender`, `Email`, `Phone`, `Age`, `About`, `Resume`, `Skills`, `City`, `State`, `ZipCode`, `Facebook`, `Twitter`, `Linkedin`, `Date_Created`) VALUES
+(105, 'paul-jared', 'Startup', 'Facebook', '292916221198167', '0', '', '', '', '', 'Paul Jared', 'CFO', 'Male', 'wepaystage@gmail.com', '', '', 'Hello', 'screenshots/nbxoyrd7aeyidrqadtu0', 'Creative Writing,Sport', '', '', '', '', '', '', '0000-00-00'),
+(194, 'brendan-imak', 'Startup', 'Facebook', '106708906832693', '0', '', '', '', '', 'Brendan Imak', 'CEO', 'Male', 'brendanimak@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '2018-03-08'),
+(206, 'alper-dilmen', 'Investor', 'Facebook', '10157632974310062', '0', '', '', '', '', 'Alper Dilmen', '', 'Male', 'ald183s@gmail.com', '(646) 466-4664', '', 'testing', '', '', 'ASTORIA', 'NY', '11102', '', '', '', '2018-03-23');
 
 -- --------------------------------------------------------
 
@@ -42830,15 +42814,15 @@ ALTER TABLE `tbl_bookmarks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_connections_startup`
---
-ALTER TABLE `tbl_connections_startup`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tbl_connections_investor`
 --
 ALTER TABLE `tbl_connections_investor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_connections_startup`
+--
+ALTER TABLE `tbl_connections_startup`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -42910,25 +42894,25 @@ ALTER TABLE `skills_level`
 -- AUTO_INCREMENT for table `startups`
 --
 ALTER TABLE `startups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_bookmarks`
 --
 ALTER TABLE `tbl_bookmarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_connections_startup`
---
-ALTER TABLE `tbl_connections_startup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_connections_investor`
 --
 ALTER TABLE `tbl_connections_investor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_connections_startup`
+--
+ALTER TABLE `tbl_connections_startup`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_education`
@@ -42946,25 +42930,25 @@ ALTER TABLE `tbl_investor`
 -- AUTO_INCREMENT for table `tbl_likes`
 --
 ALTER TABLE `tbl_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_top_rated_startups`
 --
 ALTER TABLE `tbl_top_rated_startups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT for table `zip_state`
