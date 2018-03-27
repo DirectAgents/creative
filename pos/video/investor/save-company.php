@@ -34,8 +34,8 @@ if ($sql->num_rows == 0){
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO investor_company(userID, companyID, Name, Title, Type, Country, City, State, ZipCode, Logo, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['company']."', '".$_POST['title']."' ,
-  '".$_POST['type']."', '".$_POST['country']."', '".$_POST['city']."' , '".$_POST['state']."', '".$_POST['zip']."', '".$logo."' ,'".$date."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO investor_company(userID, companyID, Name, Title, Type, Minimum, Maximum, Country, City, State, ZipCode, Logo, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['company']."', '".$_POST['title']."' ,
+  '".$_POST['type']."', '".$_POST['minimum']."', '".$_POST['maximum']."' , '".$_POST['country']."', '".$_POST['city']."' , '".$_POST['state']."', '".$_POST['zip']."', '".$logo."' ,'".$date."')");
 
 echo "<div id='startup-link'>";
 echo seoUrl($_POST['name']);
@@ -57,6 +57,8 @@ City='".$_POST['city']."',
 State='".$_POST['state']."',
 ZipCode='".$_POST['zip']."',
 Logo='".$logo."',
+Minimum='".$_POST['minimum']."',
+Maximum='".$_POST['maximum']."',
 Date_Posted='".$date."'
 
 
