@@ -511,6 +511,21 @@ $( "#save-company" ).on( "submit", function(e) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////////////////Team Members//////////////////////
 
 
@@ -671,6 +686,11 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
  $('#background-tab').click(function(){
+
+  $( ".edit-background" ).removeClass( "hidden" );
+  $( ".edit-company" ).addClass( "hidden" );
+
+  
 
   var userid = $('input[name=userid]').val();
 

@@ -15,6 +15,10 @@
  $result = mysqli_query($connecDB, $sql_startup);  
  $row_startup = mysqli_fetch_array($result);
 
+ $sql_company = "SELECT * FROM investor_company WHERE userID ='".$row_entrepreneur ['userID']."'";  
+ $result = mysqli_query($connecDB, $sql_company);  
+ $row_company = mysqli_fetch_array($result);
+
 
 $words = explode(" ", $row_entrepreneur['Fullname']);
 $thefirstname = $words[0];
@@ -187,12 +191,16 @@ $cloudinary_section = 'startups';
                                     <li class="tab active">
                                         <a href="#background" id="background-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">About <?php echo $thefirstname; ?></span> </a>
                                     </li>
+                                    
                                     <?php //} ?>
 
                                       <?php if($row_entrepreneur['Type'] == 'Investor'){ ?>
                                     <li class="tab">
-                                        <a href="#company-investor" id="company-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">111Company</span> </a>
+                                        <a href="#company-investor" id="company-investor-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Company </span> </a>
+
+
                                     </li>
+                                    
                                     <?php } ?>
                                    
                                     
@@ -219,7 +227,7 @@ $cloudinary_section = 'startups';
                                                             <br>
                                                             <br>
                                                             <ul id="preview_company"></ul>
-                                                            <div id="url_preview_company"><input type="checkbox" style="display:none" name="company_logo[]" value="<?php echo $row_startup['Logo']; ?>" checked/></div>
+                                                            <div id="url_preview_company"><input type="checkbox" style="display:none" name="company_logo[]" value="<?php echo $row_company['Logo']; ?>" checked/></div>
                                                             <!--<div id="headshot_id"></div>-->
                                                 </div>
                                             </div>
@@ -231,14 +239,7 @@ $cloudinary_section = 'startups';
 
                            
                             
-                        <div id="save-cancel">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-company" tabindex="11" style="margin-right:10px;">Save</button>
-                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-company" tabindex="12">Cancel</button>
-                                    </div>
-                                </div>
-                         </div>       
+                      
 
 
 
