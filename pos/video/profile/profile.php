@@ -196,7 +196,7 @@ $cloudinary_section = 'startups';
 
                                       <?php if($row_entrepreneur['Type'] == 'Investor'){ ?>
                                     <li class="tab">
-                                        <a href="#company-investor" id="company-investor-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Company </span> </a>
+                                        <a href="#company-investor" id="company-investor-tab" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fas far fa-building font-awesome-icon"></i></span> <span class="hidden-xs">Company </span> </a>
 
 
                                     </li>
@@ -219,29 +219,26 @@ $cloudinary_section = 'startups';
                             
                      <form class="form-horizontal form-material" id="save-company">
 
+                        <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $row_entrepreneur['userID']) { ?>
 
                          <div id="upload-logo">
                                     <div class="form-group">
                                                 <div class="col-sm-12">
-                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_company">Upload Company Logo</a>
+                                                            <a href="#" class="cloudinary-button" id="upload_widget_multiple_logo">Upload Company Logo</a>
                                                             <br>
                                                             <br>
-                                                            <ul id="preview_company"></ul>
-                                                            <div id="url_preview_company"><input type="checkbox" style="display:none" name="company_logo[]" value="<?php echo $row_company['Logo']; ?>" checked/></div>
+                                                            <ul id="preview_logo"></ul>
+                                                            <div id="url_preview_logo"><input type="checkbox" style="display:none" name="company_logo[]" value="<?php echo $row_company['Logo']; ?>" checked/></div>
                                                             <!--<div id="headshot_id"></div>-->
                                                 </div>
                                             </div>
                                 </div>
-                            
+                            <?php } ?>
 
                        
                              <div id="thecompany-investor"></div>
 
                            
-                            
-                      
-
-
 
                              </form>   
 

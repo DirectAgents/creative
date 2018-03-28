@@ -38,8 +38,17 @@ $row = mysqli_fetch_array($sql);
                    <form class="form-horizontal form-material" id="update-profile">
 
                      <input type="hidden" name="userid" id="userid" value="<?php echo $_GET['userid']; ?>"/>
+
+                   
                                            
                                             <div class="form-group">
+
+  <div class="col-md-12" style="padding-left:10px; padding-bottom:20px;" id="preview_edit_logo">
+                        
+                        <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo']; ?>" class="thumb-lg img-circle" />
+
+                     </div>
+
                                               
                                                 <div class="col-md-6">
                                                       <label class="col-md-6" style="padding-left:0px;">Company</label>
@@ -234,9 +243,10 @@ $row = mysqli_fetch_array($sql);
 
 
                                                 <div class="col-md-6">
-                                                     <div class="col-md-5">
+                                                     <div class="col-md-5" style="padding-left:0px;">
                                                          <label class="col-md-3" style="padding-left:0px;">State</label>
  <select id="fm_state" name="fm_state" class="form-control form-control-line">
+    <option value="">--State--</option>
 <option value="AL" <?php if($row['State'] == 'AL'){ echo "selected"; } ?>>Alabama</option>
     <option value="AK" <?php if($row['State'] == 'AK'){ echo "selected"; } ?>>Alaska</option>
     <option value="AZ" <?php if($row['State'] == 'AZ'){ echo "selected"; } ?>>Arizona</option>
@@ -352,6 +362,67 @@ $row = mysqli_fetch_array($sql);
 
 
 </div>
+
+
+
+
+<div class="form-group">   
+
+<?php 
+
+$industry = explode(', ', $row['Industry']);
+
+?>
+
+
+  <div class="col-md-6">
+                    <label class="col-md-12" style="padding-left:0px;">What Industries do you Invest in?</label>
+  <select data-placeholder="Choose a Country..." id="fm_industry" name="fm_industry" class="form-control form-control-line chosen-select" multiple>
+
+<?php 
+
+$sql_industry = mysqli_query($connecDB,"SELECT * FROM industry ORDER BY id ASC");  
+while($row_industry = mysqli_fetch_array($sql_industry)){
+
+?>
+            
+                <option value="<?php echo $row_industry['id'];?>" <?php if (in_array($row_industry['id'],$industry)){ echo "selected"; } ?>>
+                    <?php echo $row_industry['industry'];?></option>
+              
+       
+
+
+<?php } ?>
+
+
+ </select>
+
+
+                                                </div>
+
+
+
+                                                 <div class="col-md-6">
+                                                    <label class="col-md-6" style="padding-left:0px;">Maximum Investment</label>
+ <select id="fm_maximum" name="fm_maximum" class="form-control form-control-line">
+<option value="1" <?php if($row['Maximum'] == '1'){ echo "selected"; } ?>>Below $10k</option>
+<option value="10000" <?php if($row['Maximum'] == '10000'){ echo "selected"; } ?>>$10k</option>
+<option value="25000" <?php if($row['Maximum'] == '25000'){ echo "selected"; } ?>>$25k</option>
+<option value="50000" <?php if($row['Maximum'] == '50000'){ echo "selected"; } ?>>$50k</option>
+<option value="75000" <?php if($row['Maximum'] == '75000'){ echo "selected"; } ?>>$75k</option>
+<option value="100000" <?php if($row['Maximum'] == '100000'){ echo "selected"; } ?>>$100k</option>
+<option value="500000" <?php if($row['Maximum'] == '500000'){ echo "selected"; } ?>>$500k</option>
+<option value="1000000" <?php if($row['Maximum'] == '1000000'){ echo "selected"; } ?>>$1 Mil</option>
+<option value="2000000" <?php if($row['Maximum'] == '2000000'){ echo "selected"; } ?>>$2 Mil</option>
+<option value="5000000" <?php if($row['Maximum'] == '5000000'){ echo "selected"; } ?>>$5 Mil</option>
+<option value="10000000" <?php if($row['Maximum'] == '10000000'){ echo "selected"; } ?>>$10 Mil</option>
+<option value="100000000" <?php if($row['Maximum'] == '100000000'){ echo "selected"; } ?>>Above $10 Mil</option>
+</select>
+
+                                                </div>
+
+
+</div>
                                           
                                         
                                             <!--
@@ -378,13 +449,115 @@ $row = mysqli_fetch_array($sql);
 
                                           
                                         
-<?php } ?>  
+<?php }else{ ?>  
 
 
-<?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $_GET['userid']) { ?>
+
+                   
+                                           
+                                            <div class="form-group">
+
+  <div class="col-md-12" style="padding-left:10px; padding-bottom:20px;" id="preview_edit_logo">
+                        
+                        <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo']; ?>" class="thumb-lg img-circle" />
+
+                     </div>
+
+                                              
+                                                <div class="col-md-6">
+                                                      <label class="col-md-12" style="padding-left:0px;">Company</label>
+                                                   <?php echo $row['Name']; ?>
+                                                </div>
+                                                 <div class="col-md-6">
+                                                    <label class="col-md-12" style="padding-left:0px;">Country</label>
+                                                     <?php echo $row['Country']; ?>
+
+                                                </div>
+                                            </div>
+                                           
+
+                                           <div class="form-group">
+                                                
+                                              
+                                                 <div class="col-md-6">
+                                                    <label class="col-md-12" style="padding-left:0px;">Title</label>
+<?php echo $row['Title']; ?>
+
+                                                </div>
 
 
-    No Startup added so far!
+                                                 <div class="col-md-6">
+                                                    <label class="col-md-12" style="padding-left:0px;">City</label>
+ <?php echo $row['City']; ?> 
+</div>
+                                                </div>
+
+                                            </div>  
+                                            
+                                         <div class="form-group">   
+
+
+  <div class="col-md-6">
+                                                    <label class="col-md-12" style="padding-left:0px;">Investor Type</label>
+<?php echo $row['Type']; ?>
+
+                                                </div>
+
+
+
+                                                <div class="col-md-6">
+                                                    <?php if($row['State'] != ''){ ?>
+                                                     <div class="col-md-5" style="padding-left:0px;">
+                                                         <label class="col-md-3" style="padding-left:0px;">State</label>
+ <?php echo $row['State']; ?>
+
+                                                </div>
+
+                                                <?php } ?>
+
+                                                <div class="col-md-5" style="padding-left:0px;">
+                                                    <label class="col-md-12" style="padding-left:0px;">Postal Code</label>
+                                          <?php echo $row['ZipCode']; ?>
+                                                  </div>
+
+                                                </div>
+
+                                              </div>   
+
+
+                                            </div>
+
+
+ <div class="form-group">   
+
+
+  <div class="col-md-6">
+                                                    <label class="col-md-12" style="padding-left:0px;">Minimum Investment</label>
+ <?php echo $row['Minimum']; ?>
+
+                                                </div>
+
+
+
+                                                 <div class="col-md-6">
+                                                    <label class="col-md-12" style="padding-left:0px;">Maximum Investment</label>
+ <?php echo $row['Maximum']; ?>
+
+                                                </div>
+
+
+</div>
+                                          
+                                        
+                                         
+
+                                      
+
+                                  
+
+
+
+
 
 <?php } ?>
 
@@ -423,9 +596,10 @@ $(".save-company-investor").click(function (e) {
     var fm_state = $("select[name='fm_state']").val();
     var fm_minimum = $("select[name='fm_minimum']").val();
     var fm_maximum = $("select[name='fm_maximum']").val();
+    var fm_industry = $("select[name='fm_industry']").val();
     var logo = $('input[name="company_logo[]"]:checked').map(function() { return this.value; }).get().join(",");
    
-    
+    //alert(fm_industry);
 
   /*
   if (screenshot == '' || screenshot == 'on') {
@@ -516,17 +690,13 @@ $(".save-company-investor").click(function (e) {
     $.ajax({
             url: url_link_investor+"save-company.php", 
             method: "POST",
-            data: { userid: userid, company : fm_company, country : fm_country, title : fm_title, type : fm_type, city : fm_city, zip : fm_zip, state : fm_state, minimum : fm_minimum, maximum : fm_maximum, logo : logo},
+            data: { userid: userid, company : fm_company, country : fm_country, title : fm_title, type : fm_type, city : fm_city, zip : fm_zip, state : fm_state, minimum : fm_minimum, maximum : fm_maximum, industry : fm_industry, logo : logo},
             dataType: "html",
             success: function(response) {
                 //alert(id);  
                 
-                //var url_startup_link = $(response).filter('#startup-link').html();
-
-                //window.location.href = url_link_startup+url_startup_link;
-
-               
-                //alert(skills_count);  
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
 
             }
         });
@@ -554,7 +724,22 @@ $('.cancel-company-investor').click(function() {
 
 
 
+$('#fm_country').on('change', function() {
 
+var country = $( "#fm_country option:selected" ).text();
+
+if(country == 'United States'){
+    
+    $('#fm_state').prop('disabled', false);
+    
+}else{
+
+    $("#fm_state option:first").attr('selected','selected');
+    $('#fm_state').prop('disabled', 'disabled');
+}
+
+
+});
 
 
 
@@ -571,6 +756,13 @@ $('.cancel-company-investor').click(function() {
 
 <!-- Sweet-Alert  -->
 <script src="<?php echo BASE_PATH; ?>/js/sweetalert.min.js"></script>
+
+
+<!--Multiple Selection-->
+    <script src="<?php echo BASE_PATH; ?>/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/chosen.jquery.js" type="text/javascript"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/prism.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/init.js" type="text/javascript" charset="utf-8"></script>
 
 
  <?php } ?>                                  

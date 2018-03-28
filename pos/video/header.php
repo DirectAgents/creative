@@ -426,6 +426,8 @@ echo 'id: ' . $user['id'];
         <!-- Fontawesome -->
         <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Multiple Selection -->
+        <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/css/chosen.css">
         
 
         <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>

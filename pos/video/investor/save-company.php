@@ -17,8 +17,7 @@ if($_POST){
 $sql = mysqli_query($connecDB,"SELECT * FROM investor_company WHERE userID='".$_POST['userid']."'");
 $row = mysqli_fetch_array($sql);
 
-if($_POST['logo'] == ''){$logo = $row['Logo'];}else{$logo = $_POST['logo'];}
-
+if($_POST['logo'] == ''){$logo = $row['Logo'];}else{$logo = str_replace(",","",$_POST['logo']);}
 
 
 date_default_timezone_set('America/New_York');
@@ -47,7 +46,6 @@ echo "</div>";
 }else{
 
 
-
 $sql = "UPDATE investor_company SET 
 Name='".$_POST['company']."',
 Title='".$_POST['title']."',
@@ -59,6 +57,7 @@ ZipCode='".$_POST['zip']."',
 Logo='".$logo."',
 Minimum='".$_POST['minimum']."',
 Maximum='".$_POST['maximum']."',
+Industry='".implode(', ',$_POST['industry'])."',
 Date_Posted='".$date."'
 
 
