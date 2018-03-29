@@ -132,19 +132,45 @@ if ($sql->num_rows == 0){
 
 if($column_name == 'Skills') {
 
-/*
-$skill_level = $content;
-$values = explode(',', $skill_level);
-foreach ($values as $value)
-{
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO skills_level(userid,skill,skill_level) VALUES('15','".$value."','".$_POST['skill_level_percentage']."')");
-}
-*/
-
- $sql = "UPDATE tbl_users SET Skills='".$content."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $sql = "UPDATE tbl_users SET Skills='".implode(', ',$content)."' WHERE userID='".$_SESSION['entrepreneurSession']."'";  
  mysqli_query($connecDB, $sql); 
 
  }
+
+
+if($column_name == 'Social') {
+
+if($_POST['facebook'] != ''){
+if(strpos($_POST['facebook'], "http://") !== false || strpos($_POST['facebook'], "https://" !== false) ){ $facebook = $_POST['facebook']; 
+}else{$facebook = "http://".$_POST['facebook'];}
+}else{
+$facebook = '';	
+}
+
+if($_POST['twitter'] != ''){
+if(strpos($_POST['twitter'], "http://") !== false || strpos($_POST['witter'], "https://" !== false) ){ $twitter = $_POST['twitter']; 
+}else{$twitter = "http://".$_POST['twitter'];}
+}else{
+$twitter = '';	
+}
+
+if($_POST['linkedin'] != ''){
+if(strpos($_POST['linkedin'], "http://") !== false || strpos($_POST['linkedin'], "https://" !== false) ){ $linkedin = $_POST['linkedin']; 
+}else{$linkedin = "http://".$_POST['linkedin'];}
+}else{
+$linkedin = '';	
+}
+
+
+ $sql = "UPDATE tbl_users SET 
+ Facebook='".$facebook."',
+ Twitter='".$twitter."',
+ Linkedin='".$linkedin."'
+
+ WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ mysqli_query($connecDB, $sql); 
+
+ } 
 
 
 

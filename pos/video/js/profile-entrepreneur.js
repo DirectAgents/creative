@@ -88,24 +88,7 @@ if (proceed){
         }    
 
 
-        var skill = $('input[name="skillselection[]"]:checked').map(function() { return this.value; }).get().join(",");
-        //var skill_level_percentage = $('input[name=skill_level]').val();
-        //alert(skill);
-      
-        $.ajax({
-            url: url_link+"edit.php",
-            method: "POST",
-            data: { content: skill, column_name: 'Skills' },
-            dataType: "html",
-            success: function(response) {
-                //alert(data);  
-                //var skills_count = $(response).filter('#theskills').text();
-                //$('#skills-count').html(skills_count);
-                //alert(skills_count);  
-                
-
-            }
-        });
+       
 
 
         var resume = $('input[name="resume[]"]:checked').map(function() { return this.value; }).get().join(",");

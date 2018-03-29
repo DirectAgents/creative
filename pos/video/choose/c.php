@@ -53,7 +53,7 @@ if(isset($_SESSION['google_id'])){
 
 
 	    $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
-        $row = mysqli_fetch_array($sql);
+      $row = mysqli_fetch_array($sql);
 
           if($row['userID']) //if user already exist change greeting text to "Welcome Back"
    			 {   
@@ -86,6 +86,8 @@ if($row['ProfileImage'] == 'Google'){$profileimage = $row['google_picture_link']
 if($row['ProfileImage'] == 'Facebook'){$profileimage = "https://graph.facebook.com/".$row['facebook_id']."/picture?type=large";}
 if($row['ProfileImage'] == 'Google'){$profileimage = $row['linkedin_picture_link'];}
 
+
+//Upload to algolia
 $response = array();
 
 $response[] = array(
@@ -104,7 +106,7 @@ fclose($fp);
 
 //echo var_dump($response);
 
-//Upload to algolia
+
 $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
 $index = $client->initIndex('investors');
 

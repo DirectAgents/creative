@@ -24,15 +24,6 @@ $countries = explode(', ', $row['Countries']);
 
 
 
-                
-
-
-
-
-                
-            
-
-
                         <div id="company-tab-data">
 
      <!--User Logged in Starts-->                                           
@@ -54,11 +45,11 @@ $countries = explode(', ', $row['Countries']);
 
                                               
                                                 <div class="col-md-6" style="padding-bottom:20px;">
-                                                      <label class="col-md-6" style="padding-left:0px;">Company</label>
+                                                      <label class="col-md-6" style="padding-left:0px;"><strong>Company</strong></label>
                                                     <input type="text" id="fm_company" name="fm_company" value="<?php echo $row['Name']; ?>" placeholder="Company" class="form-control form-control-line">
                                                 </div>
                                                  <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">Country</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>Country</strong></label>
                                                     
 <select id="fm_country" name="fm_country" class="form-control form-control-line">
 <option value="">--Country--</option>
@@ -204,7 +195,7 @@ $countries = explode(', ', $row['Countries']);
                                                 
                                               
                                                  <div class="col-md-6" style="padding-bottom:20px;">
-                                                    <label class="col-md-6" style="padding-left:0px;">Title</label>
+                                                    <label class="col-md-6" style="padding-left:0px;"><strong>Title</strong></label>
  <select id="fm_title" name="fm_title" class="form-control form-control-line">
  <option value="">--Select Title--</option>
 <option value="Associate/Staff" <?php if($row['Title'] == 'Associate/Staff'){ echo "selected"; }?>>Associate/Staff</option>
@@ -219,7 +210,7 @@ $countries = explode(', ', $row['Countries']);
 
 
                                                  <div class="col-md-6">
-                                                    <label class="col-md-6" style="padding-left:0px;">City</label>
+                                                    <label class="col-md-6" style="padding-left:0px;"><strong>City</strong></label>
   <input type="text" id="fm_city" name="fm_city" value="<?php echo $row['City'];?>" class="form-control form-control-line"> </div>
                                                 </div>
 
@@ -229,7 +220,7 @@ $countries = explode(', ', $row['Countries']);
 
 
   <div class="col-md-6" style="padding-bottom:20px;">
-                                                    <label class="col-md-6" style="padding-left:0px;">Investor Type</label>
+                                                    <label class="col-md-6" style="padding-left:0px;"><strong>Investor Type</strong></label>
  <select id="fm_type" name="fm_type" class="form-control form-control-line">
  <option value="">--Select Title--</option>
 <option value="Angel" <?php if($row['Type'] == 'Angel'){ echo "selected"; }?>>Angel</option>
@@ -247,7 +238,7 @@ $countries = explode(', ', $row['Countries']);
 
                                                 <div class="col-md-6">
                                                      <div class="col-md-5" style="padding-left:0px; padding-bottom:20px;">
-                                                         <label class="col-md-3" style="padding-left:0px;">State</label>
+                                                         <label class="col-md-3" style="padding-left:0px;"><strong>State</strong></label>
  <select id="fm_state" name="fm_state" class="form-control form-control-line">
     <option value="">--State--</option>
 <option value="AL" <?php if($row['State'] == 'AL'){ echo "selected"; } ?>>Alabama</option>
@@ -307,7 +298,7 @@ $countries = explode(', ', $row['Countries']);
                                                 </div>
 
                                                 <div class="col-md-6" style="padding-left:0px;">
-                                                    <label class="col-md-12" style="padding-left:0px;">Postal Code</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>Postal Code</strong></label>
                                             <input type="text" id="fm_zip" name="fm_zip" value="<?php echo $row['ZipCode'];?>" class="form-control form-control-line"> 
                                                   </div>
 
@@ -323,7 +314,7 @@ $countries = explode(', ', $row['Countries']);
 
 
   <div class="col-md-6" style="padding-bottom:20px;"> 
-                                                    <label class="col-md-6" style="padding-left:0px;">Minimum Investment</label>
+                                                    <label class="col-md-6" style="padding-left:0px;"><strong>Minimum Investment</strong></label>
  <select id="fm_minimum" name="fm_minimum" class="form-control form-control-line">
 <option value="1" <?php if($row['Minimum'] == '1'){ echo "selected"; } ?>>Below $10k</option>
 <option value="10000" <?php if($row['Minimum'] == '10000'){ echo "selected"; } ?>>$10k</option>
@@ -345,7 +336,7 @@ $countries = explode(', ', $row['Countries']);
 
 
                                                  <div class="col-md-6">
-                                                    <label class="col-md-6" style="padding-left:0px;">Maximum Investment</label>
+                                                    <label class="col-md-6" style="padding-left:0px;"><strong>Maximum Investment</strong></label>
  <select id="fm_maximum" name="fm_maximum" class="form-control form-control-line">
 <option value="1" <?php if($row['Maximum'] == '1'){ echo "selected"; } ?>>Below $10k</option>
 <option value="10000" <?php if($row['Maximum'] == '10000'){ echo "selected"; } ?>>$10k</option>
@@ -375,7 +366,7 @@ $countries = explode(', ', $row['Countries']);
 
 
   <div class="col-md-6" style="padding-bottom:20px;">
-                    <label class="col-md-12" style="padding-left:0px;">What Industries do you Invest in?</label>
+                    <label class="col-md-12" style="padding-left:0px;"><strong>What Industries do you Invest in?</strong></label>
   <select data-placeholder="Choose a Country..." id="fm_industry" name="fm_industry" class="form-control form-control-line chosen-select" multiple>
 
 <?php 
@@ -399,7 +390,7 @@ while($row_industry = mysqli_fetch_array($sql_industry)){
 
 
                                                <div class="col-md-6">
-                    <label class="col-md-12" style="padding-left:0px;">What Countries do you Invest in?</label>
+                    <label class="col-md-12" style="padding-left:0px;"><strong>What Countries do you Invest in?</strong></label>
   <select data-placeholder="Choose a Country..." id="fm_countries" name="fm_countries" class="form-control form-control-line chosen-select" multiple>
 
 <?php 
@@ -427,7 +418,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
  <div class="form-group">
 <div class="col-md-12">
-<label class="col-md-12" style="padding-left:0px;">Briefly describe the type(s) of companies that you like to fund:</label>
+<label class="col-md-12" style="padding-left:0px;"><strong>Briefly describe the type(s) of companies that you like to fund:</strong></label>
  <textarea id="fm_fund_description" name="fm_fund_description" rows="4" cols="50" class="form-control form-control-line"><?php echo $row['Fund_Description']; ?></textarea>
 
         </div>
@@ -468,11 +459,11 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
                                               
                                                 <div class="col-md-6">
-                                                      <label class="col-md-12" style="padding-left:0px;">Company</label>
+                                                      <label class="col-md-12" style="padding-left:0px;"><strong>Company</strong></label>
                                                    <?php echo $row['Name']; ?>
                                                 </div>
                                                  <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">Country</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>Country</strong></label>
                                                      <?php echo $row['Country']; ?>
 
                                                 </div>
@@ -483,14 +474,14 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
                                                 
                                               
                                                  <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">Title</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>Title</strong></label>
 <?php echo $row['Title']; ?>
 
                                                 </div>
 
 
                                                  <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">City</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>City</strong></label>
  <?php echo $row['City']; ?> 
 </div>
                                                 </div>
@@ -501,7 +492,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
 
   <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">Investor Type</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>Investor Type</strong></label>
 <?php echo $row['Type']; ?>
 
                                                 </div>
@@ -511,7 +502,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
                                                 <div class="col-md-6">
                                                     <?php if($row['State'] != ''){ ?>
                                                      <div class="col-md-5" style="padding-left:0px;">
-                                                         <label class="col-md-3" style="padding-left:0px;">State</label>
+                                                         <label class="col-md-3" style="padding-left:0px;"><strong>State</strong></label>
  <?php echo $row['State']; ?>
 
                                                 </div>
@@ -519,7 +510,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
                                                 <?php } ?>
 
                                                 <div class="col-md-5" style="padding-left:0px;">
-                                                    <label class="col-md-12" style="padding-left:0px;">Postal Code</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>Postal Code</strong></label>
                                           <?php echo $row['ZipCode']; ?>
                                                   </div>
 
@@ -535,7 +526,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
 
   <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">Minimum Investment</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>Minimum Investment</strong></label>
  <?php echo $row['Minimum']; ?>
 
                                                 </div>
@@ -543,7 +534,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
 
                                                  <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">Maximum Investment</label>
+                                                    <label class="col-md-12" style="padding-left:0px;"><strong>Maximum Investment</strong></label>
  <?php echo $row['Maximum']; ?>
 
                                                 </div>
@@ -557,7 +548,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
 
   <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">Interested in Industries to Invest in?</label>
+                        <label class="col-md-12" style="padding-left:0px;"><strong>Interested in Industries to Invest in?</strong></label>
 
 
 <?php 
@@ -584,7 +575,7 @@ echo '</div>';
 
 
                                                  <div class="col-md-6">
-                                                    <label class="col-md-12" style="padding-left:0px;">Interested Countries to Invest in?</label>
+                    <label class="col-md-12" style="padding-left:0px;"><strong>Interested Countries to Invest in?</strong></label>
 <?php 
 
 $sql_countries = mysqli_query($connecDB,"SELECT * FROM countries ORDER BY id ASC");  
@@ -612,7 +603,7 @@ echo '</div>';
 
 
   <div class="col-md-12">
-                <label class="col-md-12" style="padding-left:0px;">Type(s) of companies like to fund:</label>
+                <label class="col-md-12" style="padding-left:0px;"><strong>Type(s) of companies like to fund:</strong></label>
  <?php echo $row['Fund_Description']; ?>
 
     </div>
@@ -830,7 +821,6 @@ if(country == 'United States'){
 
 
 <!--Multiple Selection-->
-    <script src="<?php echo BASE_PATH; ?>/js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="<?php echo BASE_PATH; ?>/js/chosen.jquery.js" type="text/javascript"></script>
     <script src="<?php echo BASE_PATH; ?>/js/prism.js" type="text/javascript" charset="utf-8"></script>
     <script src="<?php echo BASE_PATH; ?>/js/init.js" type="text/javascript" charset="utf-8"></script>

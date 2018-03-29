@@ -13,6 +13,8 @@
 $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$_GET['userid']."'");
 $row = mysqli_fetch_array($sql);
 
+$skills = explode(', ', $row['Skills']);
+
 
 $words = explode(" ", $row['Fullname']);
 $firstname = $words[0];
@@ -33,7 +35,7 @@ $firstname = $words[0];
     
 <!--About Start-->
   <div class="col-sm-12" style="padding-left: 0px;">   
-     <div class="col-sm-3"><strong>About <?php echo $firstname; ?></strong><br><br></div>
+     <div class="col-sm-5"><strong>Brief description about yourself</strong><br><br></div>
      <div class="col-sm-3"><a href="#/" id="edit-about"><i class="ti-pencil"></i></a></div>
   </div>   
    <div class="col-sm-12"> 
@@ -51,117 +53,43 @@ $firstname = $words[0];
 
 <!--Skills Start-->
     <div class="col-sm-12" style="padding-left: 0px;"> 
-        <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Skills</strong></div>
-        <div class="col-sm-3"><a href="#/" id="edit-skills"><i class="ti-pencil"></i></a></div>
+        <div class="col-sm-3"><strong>Skills</strong></div>
+        <!--<div class="col-sm-3"><a href="#/" id="edit-skills"><i class="ti-pencil"></i></a></div>-->
         <br><br>
     </div>
-     <div class="col-sm-12"> 
-    <div class="skills-background">
-        <?php 
-                                        $ctop = $row['Skills']; 
-                                        $ctop = explode(',',$ctop); 
-
-                                        if($row['Skills'] != '' && $row['Skills'] != 'NULL' ){
-
-                                        foreach($ctop as $skill)   { 
-                                                       
-                                        ?>
-        <div class="skillsdiv_teammember">
-            <?php echo $skill; ?>
-        </div>
-        <?php } } ?>
-    </div>
-    </div>
+   
 
 
-<div class="edit-skills-box <?php if($row['Skills'] != ''){ ?> hidden <?php } ?>">
+<div class="col-md-9" style="padding-bottom:20px;">
+  <select data-placeholder="Select your skills..." id="fm_skills" name="fm_skills" class="form-control form-control-line chosen-select" multiple>
 
- <div class="col-md-4">
-       <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line">
- </div>
+<?php 
 
-  <div class="col-md-8">
-      <button class="btn btn-add" id="add-skills"><span class="glyphicon glyphicon-plus"></span> Add</button>
-  </div>
+$sql_skills = mysqli_query($connecDB,"SELECT * FROM skills ORDER BY id ASC");  
+while($row_skills = mysqli_fetch_array($sql_skills)){
 
-
-
-     <div class="col-md-12" style="padding:15px 0 0 0;">
-                                                    <div id="responds">
-                                                        <?php
-                                                        //include db configuration file
-
-                                                        echo '<input type="hidden" name="userid" id="userid" value="'.$row['userID'].'">';
+?>
+                <option value="<?php echo $row_skills['id'];?>" <?php if (in_array($row_skills['id'],$skills)){ echo "selected"; } ?>>
+                    <?php echo $row_skills['skill'];?></option>
+              
+       
+<?php } ?>
 
 
-                                                        //MySQL query
-                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row['userID']."' ");
+ </select>
 
 
-                                                        //get all records from add_delete_record table
-                                                        $row2 = mysqli_fetch_array($Result);
-
-
-
-
-                                                        $ctop = $row2['Skills']; 
-                                                        $ctop = explode(',',$ctop); 
-
-
-
-                                                        if($row2['Skills'] != '' && $row2['Skills'] != 'NULL' ){
-
-
-
-                                                        foreach($ctop as $skill)  
-                                                        { 
-                                                            //Uncomment the last commented line if single quotes are showing up  
-                                                            //otherwise delete these 3 commented lines 
-
-
-                                                        //get skill string
-                                                        $ret = explode('(', $skill);
-                                                        $skill_string =  $ret[0];
-                                                            
-
-                                                        //MySQL query
-                                                        $sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill_string."' ");
-                                                        $row3 = mysqli_fetch_array($sqlskill);
-
-
-                                                        echo '<div id="item_'.$row3['id'].'">';
-                                                        echo '<div class="skillsdiv">';
-                                                        if(in_array($skill,$ctop)){
-                                                        echo '<input id="skillselection_'.$row3['id'].'" name="skillselection[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
-                                                        }
-                                                        echo '<div class="del_wrapper">';
-                                                        echo '<div class="the-skill">';
-                                                        echo $skill;
-                                                        echo '</div>';
-                                                        echo '<a href="#" class="del_button" id="del-'.$row3['id'].'">';
-                                                        echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
-                                                        echo '</a></div>';
-                                                        //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-                                                        echo '</div>';
-                                                        echo '</div>';
-                                                        } 
-
-
-
-                                                        }
-
-
-
-
-
-                                                        ?>
-                                                    </div>
                                                 </div>
 
+ 
+
+
+
+
  <div class="col-sm-12">
-<br>
-                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-skills <?php if($row['Skills'] != ''){ ?> hidden <?php } ?>" tabindex="11" style="margin-right:10px;">Save</button>
-                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-skills <?php if($row['Skills'] != ''){ ?> hidden <?php } ?>" tabindex="12">Cancel</button>
+
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-skills hidden" tabindex="11" style="margin-right:10px;">Save</button>
+                                        <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-skills hidden" tabindex="12">Cancel</button>
                                         <br><br>
                                     </div>
                                 </div>                                                
@@ -175,7 +103,7 @@ $firstname = $words[0];
 <!--Resume Starts--> 
 
  <div class="col-sm-12" style="padding-left: 0px;"> 
-        <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Resume</strong></div>
+        <div class="col-sm-3"><strong>Resume</strong></div>
         <?php if($row['Resume'] != ''){ ?><div class="col-sm-3"><a href="#/" id="edit-resume"><i class="ti-pencil"></i></a></div><?php } ?>
         <br><br>
     </div>
@@ -263,23 +191,23 @@ View Resume
 <!--Social Starts-->
 
  <div class="col-sm-12" style="padding-left: 0px;"> 
-        <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Social</strong></div>
+        <div class="col-sm-3"><strong>Social</strong></div>
         <?php if($row['Resume'] != ''){ ?><div class="col-sm-3"><a href="#/" id="edit-resume"><i class="ti-pencil"></i></a></div><?php } ?>
         <br><br>
     </div>
 
     <div class="form-group">
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group" style="padding-left:0px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Facebook</label>
                                                         <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group" style="padding-left:0px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Twitter</label>
                                                         <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter'];?>" class="form-control form-control-line"> </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group" style="padding-left:0px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
                                                         <input type="text" id="fm_linkedin" name="fm_linkedin" value="<?php echo $row['Linkedin'];?>" class="form-control form-control-line"> </div>
@@ -307,36 +235,45 @@ View Resume
  <!-- <div class="col-sm-12" style="padding-left: 0px;">   
      <div class="col-sm-3"><strong>About <?php echo $firstname; ?></strong><br><br></div>
   </div> -->
+<?php if($row['About'] != ''){ ?>  
   <div class="col-sm-12"> 
+     <div class="col-sm-12" style="padding-left: 0px;">   
+     <div class="col-sm-3" style="padding-left: 0px;"><strong>About <?php echo $firstname; ?></strong><br><br></div>
+  </div> 
    	 <?php echo $row['About']; ?>
    	 <br><br><br>
   </div>
+<?php } ?>  
 <!--About Ends-->  
 
 <!--Skills Start-->
+<?php if($row['Skills'] != ''){ ?>  
   <div class="col-sm-12" style="padding-left: 0px;">   
      <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Skills</strong><br><br></div>
   </div> 
   <div class="col-sm-12"> 
-   	 <?php 
-                                        $ctop = $row['Skills']; 
-                                        $ctop = explode(',',$ctop); 
+   <?php 
 
-                                        if($row['Skills'] != '' && $row['Skills'] != 'NULL' ){
+$sql_skills = mysqli_query($connecDB,"SELECT * FROM skills ORDER BY id ASC");  
+while($row_skills = mysqli_fetch_array($sql_skills)){
 
-                                        foreach($ctop as $skill)   { 
-                                                       
-                                        ?>
-        <div class="skillsdiv_teammember">
-            <?php echo $skill; ?>
-        </div>
-        <?php } } ?>
+if (in_array($row_skills['id'],$skills)){
+echo '<div class="skillsdiv_teammember">';
+echo $row_skills['skill'];
+echo '</div>';
+
+}
+
+}
+
+ ?>
   </div>
+<?php } ?>  
 <!--Skills Ends-->  
 
 <?php if($row['Resume'] != ''){ ?>
 
-<!--Skills Resume-->
+<!--Resume-->
  <div class="col-sm-12" style="padding-left: 0px;">  
  <br><br> 
      <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Resume</strong><br><br></div>
@@ -349,7 +286,7 @@ View Resume
 
 <?php } ?>
 
-<!--Skills Ends-->
+<!--Resume Ends-->
 <?php } ?>
 
 <!--Visitor Ends-->
@@ -392,13 +329,15 @@ $.ajax({
                 //alert(data);  
                 //var skills = $(response).filter('#the-skill-set').text();
 
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
                 
                 $(".show-about").html(response);
                 
                 $( ".about-textarea" ).addClass( "hidden" );
-				$( ".show-about" ).removeClass( "hidden" );
+				        $( ".show-about" ).removeClass( "hidden" );
                 $( ".save-about" ).addClass( "hidden" );
-				$( ".cancel-about" ).addClass( "hidden" );
+				        $( ".cancel-about" ).addClass( "hidden" );
                 
                
 
@@ -554,14 +493,18 @@ $("body").on("click", "#responds .del_button_teammmember_skills", function(e) {
   });
 
 
+
+
+
+
 $('.save-skills').click(function() {
  
  var userid = $('input[name=userid]').val();
- var skill = $('input[name="skillselection[]"]:checked').map(function() { return this.value; }).get().join(",");
+ var skill = $("select[name='fm_skills']").val();
         //var skill_level_percentage = $('input[name=skill_level]').val();
         //alert(skill);
       
-      if(skill != ''){
+      
 
         $.ajax({
             url: url_link+"edit.php",
@@ -575,29 +518,47 @@ $('.save-skills').click(function() {
                 //alert(skills_count);  
 
 
+                $('#saved').fadeIn("fast");
+                $('#saved').delay(2000).fadeOut("slow");
 
-                $(".skills-background" ).removeClass( "hidden" );
-                $(".skills-background").load(url_link+"display-skills.php?userid="+userid);
-
-				$( ".edit-skills-box" ).addClass( "hidden" );
-				$( ".save-skills" ).addClass( "hidden" );
-				$( ".cancel-skills" ).addClass( "hidden" );	
+				
                 
-
             }
+            
         });
 
-       }
+       
 
 
  });
 
 
- $(function() {
-    $( "#fm_skills" ).autocomplete({
-      source: url_link+'search-skills.php'
-    });
-  });
+////////////////Social////////////////////// 
+
+
+$('#fm_facebook, #fm_twitter, #fm_linkedin').blur(function(){
+
+  var userid = $('input[name=userid]').val();
+  var facebook = $('input[name=fm_facebook]').val();
+  var twitter = $('input[name=fm_twitter]').val();
+  var linkedin = $('input[name=fm_linkedin]').val();
+
+      $.ajax({
+            url: url_link+"edit.php",
+            method: "POST",
+            data: { facebook: facebook, twitter: twitter, linkedin: linkedin, column_name: 'Social' },
+            dataType: "html",
+            success: function(response) {
+                //alert(data);  
+                //var skills_count = $(response).filter('#theskills').text();
+                //$('#skills-count').html(skills_count);
+                //alert(skills_count);  
+
+            }
+            
+        });
+
+});
 
 
 ////////////////Resume////////////////////// 
