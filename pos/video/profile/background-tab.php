@@ -275,12 +275,12 @@ View Resume
                                                         <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="form-group" style="padding-left:15px;">
+                                                    <div class="form-group" style="padding-left:0px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Twitter</label>
                                                         <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter'];?>" class="form-control form-control-line"> </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="form-group" style="padding-left:15px;">
+                                                    <div class="form-group" style="padding-left:0px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
                                                         <input type="text" id="fm_linkedin" name="fm_linkedin" value="<?php echo $row['Linkedin'];?>" class="form-control form-control-line"> </div>
                                                 </div>

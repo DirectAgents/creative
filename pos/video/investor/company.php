@@ -53,7 +53,7 @@ $countries = explode(', ', $row['Countries']);
                      </div>
 
                                               
-                                                <div class="col-md-6">
+                                                <div class="col-md-6" style="padding-bottom:20px;">
                                                       <label class="col-md-6" style="padding-left:0px;">Company</label>
                                                     <input type="text" id="fm_company" name="fm_company" value="<?php echo $row['Name']; ?>" placeholder="Company" class="form-control form-control-line">
                                                 </div>
@@ -203,7 +203,7 @@ $countries = explode(', ', $row['Countries']);
                                            <div class="form-group">
                                                 
                                               
-                                                 <div class="col-md-6">
+                                                 <div class="col-md-6" style="padding-bottom:20px;">
                                                     <label class="col-md-6" style="padding-left:0px;">Title</label>
  <select id="fm_title" name="fm_title" class="form-control form-control-line">
  <option value="">--Select Title--</option>
@@ -228,7 +228,7 @@ $countries = explode(', ', $row['Countries']);
                                          <div class="form-group">   
 
 
-  <div class="col-md-6">
+  <div class="col-md-6" style="padding-bottom:20px;">
                                                     <label class="col-md-6" style="padding-left:0px;">Investor Type</label>
  <select id="fm_type" name="fm_type" class="form-control form-control-line">
  <option value="">--Select Title--</option>
@@ -246,7 +246,7 @@ $countries = explode(', ', $row['Countries']);
 
 
                                                 <div class="col-md-6">
-                                                     <div class="col-md-5" style="padding-left:0px;">
+                                                     <div class="col-md-5" style="padding-left:0px; padding-bottom:20px;">
                                                          <label class="col-md-3" style="padding-left:0px;">State</label>
  <select id="fm_state" name="fm_state" class="form-control form-control-line">
     <option value="">--State--</option>
@@ -306,7 +306,7 @@ $countries = explode(', ', $row['Countries']);
 
                                                 </div>
 
-                                                <div class="col-md-5">
+                                                <div class="col-md-6" style="padding-left:0px;">
                                                     <label class="col-md-12" style="padding-left:0px;">Postal Code</label>
                                             <input type="text" id="fm_zip" name="fm_zip" value="<?php echo $row['ZipCode'];?>" class="form-control form-control-line"> 
                                                   </div>
@@ -322,7 +322,7 @@ $countries = explode(', ', $row['Countries']);
  <div class="form-group">   
 
 
-  <div class="col-md-6">
+  <div class="col-md-6" style="padding-bottom:20px;"> 
                                                     <label class="col-md-6" style="padding-left:0px;">Minimum Investment</label>
  <select id="fm_minimum" name="fm_minimum" class="form-control form-control-line">
 <option value="1" <?php if($row['Minimum'] == '1'){ echo "selected"; } ?>>Below $10k</option>
@@ -374,7 +374,7 @@ $countries = explode(', ', $row['Countries']);
 
 
 
-  <div class="col-md-6">
+  <div class="col-md-6" style="padding-bottom:20px;">
                     <label class="col-md-12" style="padding-left:0px;">What Industries do you Invest in?</label>
   <select data-placeholder="Choose a Country..." id="fm_industry" name="fm_industry" class="form-control form-control-line chosen-select" multiple>
 
