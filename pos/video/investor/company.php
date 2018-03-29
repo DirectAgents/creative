@@ -13,6 +13,9 @@ if($_GET){
 $sql = mysqli_query($connecDB,"SELECT * FROM investor_company WHERE userID ='".$_GET['userid']."'");
 $row = mysqli_fetch_array($sql);
 
+$industry = explode(', ', $row['Industry']);
+$countries = explode(', ', $row['Countries']);
+
 //echo $_GET['userid'];
 //echo $row['id'];
  ?>
@@ -368,11 +371,7 @@ $row = mysqli_fetch_array($sql);
 
 <div class="form-group">   
 
-<?php 
 
-$industry = explode(', ', $row['Industry']);
-
-?>
 
 
   <div class="col-md-6">
@@ -385,13 +384,10 @@ $sql_industry = mysqli_query($connecDB,"SELECT * FROM industry ORDER BY id ASC")
 while($row_industry = mysqli_fetch_array($sql_industry)){
 
 ?>
-            
                 <option value="<?php echo $row_industry['id'];?>" <?php if (in_array($row_industry['id'],$industry)){ echo "selected"; } ?>>
                     <?php echo $row_industry['industry'];?></option>
               
        
-
-
 <?php } ?>
 
 
@@ -402,39 +398,46 @@ while($row_industry = mysqli_fetch_array($sql_industry)){
 
 
 
-                                                 <div class="col-md-6">
-                                                    <label class="col-md-6" style="padding-left:0px;">Maximum Investment</label>
- <select id="fm_maximum" name="fm_maximum" class="form-control form-control-line">
-<option value="1" <?php if($row['Maximum'] == '1'){ echo "selected"; } ?>>Below $10k</option>
-<option value="10000" <?php if($row['Maximum'] == '10000'){ echo "selected"; } ?>>$10k</option>
-<option value="25000" <?php if($row['Maximum'] == '25000'){ echo "selected"; } ?>>$25k</option>
-<option value="50000" <?php if($row['Maximum'] == '50000'){ echo "selected"; } ?>>$50k</option>
-<option value="75000" <?php if($row['Maximum'] == '75000'){ echo "selected"; } ?>>$75k</option>
-<option value="100000" <?php if($row['Maximum'] == '100000'){ echo "selected"; } ?>>$100k</option>
-<option value="500000" <?php if($row['Maximum'] == '500000'){ echo "selected"; } ?>>$500k</option>
-<option value="1000000" <?php if($row['Maximum'] == '1000000'){ echo "selected"; } ?>>$1 Mil</option>
-<option value="2000000" <?php if($row['Maximum'] == '2000000'){ echo "selected"; } ?>>$2 Mil</option>
-<option value="5000000" <?php if($row['Maximum'] == '5000000'){ echo "selected"; } ?>>$5 Mil</option>
-<option value="10000000" <?php if($row['Maximum'] == '10000000'){ echo "selected"; } ?>>$10 Mil</option>
-<option value="100000000" <?php if($row['Maximum'] == '100000000'){ echo "selected"; } ?>>Above $10 Mil</option>
-</select>
+                                               <div class="col-md-6">
+                    <label class="col-md-12" style="padding-left:0px;">What Countries do you Invest in?</label>
+  <select data-placeholder="Choose a Country..." id="fm_countries" name="fm_countries" class="form-control form-control-line chosen-select" multiple>
+
+<?php 
+
+$sql_countries = mysqli_query($connecDB,"SELECT * FROM countries ORDER BY id ASC");  
+while($row_countries = mysqli_fetch_array($sql_countries)){
+
+?>
+                <option value="<?php echo $row_countries['id'];?>" <?php if (in_array($row_countries['id'],$countries)){ echo "selected"; } ?>>
+                    <?php echo $row_countries['countries'];?></option>
+              
+       
+<?php } ?>
+
+
+ </select>
+
 
                                                 </div>
 
 
 </div>
+
+
+
+ <div class="form-group">
+<div class="col-md-12">
+<label class="col-md-12" style="padding-left:0px;">Briefly describe the type(s) of companies that you like to fund:</label>
+ <textarea id="fm_fund_description" name="fm_fund_description" rows="4" cols="50" class="form-control form-control-line"><?php echo $row['Fund_Description']; ?></textarea>
+
+        </div>
+
+
+</div>
+</div>
                                           
                                         
-                                            <!--
-                                            <div class="form-group">
-                                                <label class="col-md-12">About Me</label>
-                                                <div class="col-md-12">
-                                                    <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line">
-                                                        <?php echo $row['About'] ;?>
-                                                    </textarea>
-                                                </div>
-                                            </div>-->
-
+                                           
                                       
 
                                     <div class="form-group">
@@ -453,9 +456,9 @@ while($row_industry = mysqli_fetch_array($sql_industry)){
 
 
 
-                   
+   <!--Visitor Starts-->                
                                            
-                                            <div class="form-group">
+  <div class="form-group">
 
   <div class="col-md-12" style="padding-left:10px; padding-bottom:20px;" id="preview_edit_logo">
                         
@@ -547,9 +550,75 @@ while($row_industry = mysqli_fetch_array($sql_industry)){
 
 
 </div>
+
+
+
+ <div class="form-group">   
+
+
+  <div class="col-md-6">
+                                                    <label class="col-md-12" style="padding-left:0px;">Interested in Industries to Invest in?</label>
+
+
+<?php 
+
+$sql_industry = mysqli_query($connecDB,"SELECT * FROM industry ORDER BY id ASC");  
+while($row_industry = mysqli_fetch_array($sql_industry)){
+
+if (in_array($row_industry['id'],$industry)){
+echo '<div class="skillsdiv_teammember">';
+echo $row_industry['industry'];
+echo '</div>';
+
+}
+
+}
+
+ ?>
+               
+
+
+
+                                                </div>
+
+
+
+                                                 <div class="col-md-6">
+                                                    <label class="col-md-12" style="padding-left:0px;">Interested Countries to Invest in?</label>
+<?php 
+
+$sql_countries = mysqli_query($connecDB,"SELECT * FROM countries ORDER BY id ASC");  
+while($row_countries = mysqli_fetch_array($sql_countries)){
+
+if (in_array($row_countries['id'],$countries)){
+echo '<div class="skillsdiv_teammember">';
+echo $row_countries['countries'];
+echo '</div>';
+
+}
+
+}
+
+ ?>
+
+                                                </div>
+
+
+</div>
                                           
                                         
-                                         
+
+ <div class="form-group">   
+
+
+  <div class="col-md-12">
+                <label class="col-md-12" style="padding-left:0px;">Type(s) of companies like to fund:</label>
+ <?php echo $row['Fund_Description']; ?>
+
+    </div>
+
+                        
+</div>                                      
 
                                       
 
@@ -562,7 +631,7 @@ while($row_industry = mysqli_fetch_array($sql_industry)){
 <?php } ?>
 
 
-<!--Visitor Starts-->
+
 
 
 
@@ -597,6 +666,8 @@ $(".save-company-investor").click(function (e) {
     var fm_minimum = $("select[name='fm_minimum']").val();
     var fm_maximum = $("select[name='fm_maximum']").val();
     var fm_industry = $("select[name='fm_industry']").val();
+    var fm_countries = $("select[name='fm_countries']").val();
+    var fm_fund_description = $("textarea[name='fm_fund_description']").val();
     var logo = $('input[name="company_logo[]"]:checked').map(function() { return this.value; }).get().join(",");
    
     //alert(fm_industry);
@@ -690,7 +761,7 @@ $(".save-company-investor").click(function (e) {
     $.ajax({
             url: url_link_investor+"save-company.php", 
             method: "POST",
-            data: { userid: userid, company : fm_company, country : fm_country, title : fm_title, type : fm_type, city : fm_city, zip : fm_zip, state : fm_state, minimum : fm_minimum, maximum : fm_maximum, industry : fm_industry, logo : logo},
+            data: { userid: userid, company : fm_company, country : fm_country, title : fm_title, type : fm_type, city : fm_city, zip : fm_zip, state : fm_state, minimum : fm_minimum, maximum : fm_maximum, industry : fm_industry, countries : fm_countries, fund_description : fm_fund_description, logo : logo},
             dataType: "html",
             success: function(response) {
                 //alert(id);  

@@ -33,8 +33,8 @@ if ($sql->num_rows == 0){
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO investor_company(userID, companyID, Name, Title, Type, Minimum, Maximum, Country, City, State, ZipCode, Logo, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['company']."', '".$_POST['title']."' ,
-  '".$_POST['type']."', '".$_POST['minimum']."', '".$_POST['maximum']."' , '".$_POST['country']."', '".$_POST['city']."' , '".$_POST['state']."', '".$_POST['zip']."', '".$logo."' ,'".$date."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO investor_company(userID, companyID, Name, Title, Type, Minimum, Maximum, Industry, Countries, Country, Fund_Description, City, State, ZipCode, Logo, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['company']."', '".$_POST['title']."' ,
+  '".$_POST['type']."', '".$_POST['minimum']."', '".$_POST['maximum']."', '".implode(', ',$_POST['industry'])."', '".implode(', ',$_POST['countries'])."' , '".$_POST['country']."','".$_POST['fund_description']."', '".$_POST['city']."' , '".$_POST['state']."', '".$_POST['zip']."', '".$logo."' ,'".$date."')");
 
 echo "<div id='startup-link'>";
 echo seoUrl($_POST['name']);
@@ -58,7 +58,10 @@ Logo='".$logo."',
 Minimum='".$_POST['minimum']."',
 Maximum='".$_POST['maximum']."',
 Industry='".implode(', ',$_POST['industry'])."',
+Countries='".implode(', ',$_POST['countries'])."',
+Fund_Description='".$_POST['fund_description']."',
 Date_Posted='".$date."'
+
 
 
 WHERE companyID='".$_POST['userid']."'";

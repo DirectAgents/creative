@@ -270,7 +270,7 @@ View Resume
 
     <div class="form-group">
                                                 <div class="col-md-3">
-                                                    <div class="form-group" style="padding-left:15px;">
+                                                    <div class="form-group" style="padding-left:0px;">
                                                         <label class="col-md-3" style="padding-left:0px;">Facebook</label>
                                                         <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
                                                 </div>
