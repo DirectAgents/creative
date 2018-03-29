@@ -77,6 +77,9 @@ if($row['ProfileImage'] == 'Google'){$profileimage = $row['linkedin_picture_link
 
 $date_algolia = date('F j',strtotime($row['Date_Created']));  // January 30, 2015, for example.
 
+
+$city_state = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($city)))).', '.$state_final;
+
 $response = array();
 
 $response[] = array(
@@ -86,7 +89,7 @@ $response[] = array(
   'fullname'=> $row['Fullname'],
   'profileimage'=> $profileimage,
   'likes'=> '0', 
-  'location'=> $city.', '.$state_final,
+  'location'=> $city_state,
   'date'=> $date_algolia
    );
 
