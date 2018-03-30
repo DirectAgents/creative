@@ -76,8 +76,78 @@ WHERE userID='".$_POST['userid']."'";
 
 mysqli_query($connecDB, $sql);
 
-
 }
+
+
+
+$sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID = '".$_SESSION['entrepreneurSession']."'");
+$row2 = mysqli_fetch_array($sql2);
+
+//Upload to algolia
+
+
+function seoUrl($string) {
+    //Lower case everything
+    $string = strtolower($string);
+    //Make alphanumeric (removes all other characters)
+    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+    //Clean up multiple dashes or whitespaces
+    $string = preg_replace("/[\s-]+/", " ", $string);
+    //Convert whitespaces and underscore to dash
+    $string = preg_replace("/[\s_]/", "-", $string);
+    return $string;
+}
+
+if($row2['ProfileImage'] == 'Google'){$profileimage = $row2['google_picture_link'];}
+if($row2['ProfileImage'] == 'Facebook'){$profileimage = "https://graph.facebook.com/".$row2['facebook_id']."/picture?type=large";}
+if($row2['ProfileImage'] == 'Google'){$profileimage = $row2['linkedin_picture_link'];}
+
+
+
+$date_algolia = date('F j',strtotime($row2['Date_Created']));  // January 30, 2015, for example.
+
+
+$city_state = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row2['City'])))).', '.$row2['State'];
+
+$response = array();
+
+
+
+$response[] = array(
+  'objectID'=> $_SESSION['entrepreneurSession'],
+  'investorID'=> $_SESSION['entrepreneurSession'],
+  'url'=> seoUrl($row2['Fullname']),
+  'fullname'=> $row2['Fullname'],
+  'profileimage'=> $profileimage,
+  'likes'=> '0', 
+  'location'=> $city_state,
+  'industry'=> explode(',', $row['Industry']),
+  'date'=> $date_algolia
+   );
+
+$fp = fopen('../choose/investors.json', 'w');
+fwrite($fp, json_encode($response));
+fclose($fp);
+
+//echo var_dump($response);
+
+
+$client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
+$index = $client->initIndex('investors');
+
+$records = json_decode(file_get_contents('../choose/investors.json'), true);
+
+$chunks = array_chunk($records, 1000);
+
+foreach ($chunks as $batch) {
+  $index->addObjects($batch);
+}
+
+
+
+
+
+
 
 
 echo '<div id="position">';

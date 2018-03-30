@@ -222,7 +222,7 @@ $countries = explode(', ', $row['Countries']);
   <div class="col-md-6" style="padding-bottom:20px;">
                                                     <label class="col-md-6" style="padding-left:0px;"><strong>Investor Type</strong></label>
  <select id="fm_type" name="fm_type" class="form-control form-control-line">
- <option value="">--Select Title--</option>
+ <option value="">--Select Type--</option>
 <option value="Angel" <?php if($row['Type'] == 'Angel'){ echo "selected"; }?>>Angel</option>
 <option value="Investment Banker" <?php if($row['Type'] == 'Investment Banker'){ echo "selected"; }?>>Investment Banker</option>
 <option value="Private Equity" <?php if($row['Type'] == 'Private Equity'){ echo "selected"; }?>>Private Equity</option>
@@ -375,7 +375,7 @@ $sql_industry = mysqli_query($connecDB,"SELECT * FROM industry ORDER BY id ASC")
 while($row_industry = mysqli_fetch_array($sql_industry)){
 
 ?>
-                <option value="<?php echo $row_industry['id'];?>" <?php if (in_array($row_industry['id'],$industry)){ echo "selected"; } ?>>
+                <option value="<?php echo $row_industry['industry'];?>" <?php if (in_array($row_industry['industry'],$industry)){ echo "selected"; } ?>>
                     <?php echo $row_industry['industry'];?></option>
               
        
@@ -399,7 +399,7 @@ $sql_countries = mysqli_query($connecDB,"SELECT * FROM countries ORDER BY id ASC
 while($row_countries = mysqli_fetch_array($sql_countries)){
 
 ?>
-                <option value="<?php echo $row_countries['id'];?>" <?php if (in_array($row_countries['id'],$countries)){ echo "selected"; } ?>>
+                <option value="<?php echo $row_countries['countries'];?>" <?php if (in_array($row_countries['countries'],$countries)){ echo "selected"; } ?>>
                     <?php echo $row_countries['countries'];?></option>
               
        

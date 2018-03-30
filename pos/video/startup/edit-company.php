@@ -35,9 +35,21 @@ $row = mysqli_fetch_array($result);
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-12">Your Role</label>
+                                                <label class="col-md-12">Your Title</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_position" name="fm_position" value="<?php echo $row['Position']; ?>" placeholder="e.g CEO" class="form-control form-control-line" tabindex="2"> </div>
+                                                   
+ <select id="fm_title" name="fm_title" class="form-control form-control-line">
+ <option value="">--Select Title--</option>
+<option value="Associate/Staff" <?php if($row['Title'] == 'Associate/Staff'){ echo "selected"; }?>>Associate/Staff</option>
+<option value="Manager/Supervisor" <?php if($row['Title'] == 'Manager/Supervisor'){ echo "selected"; }?>>Manager/Supervisor</option>
+<option value="VP/SVP/Dept Head" <?php if($row['Title'] == 'VP/SVP/Dept Head'){ echo "selected"; }?>>VP/SVP/Dept Head</option>
+<option value="C-Level Executive (CEO, CFO, etc.)" <?php if($row['Title'] == 'C-Level Executive (CEO, CFO, etc.)'){ echo "selected"; }?>>C-Level Executive (CEO, CFO, etc.)</option>
+<option value="Founder/Owner/Principal" <?php if($row['Title'] == 'Founder/Owner/Principal'){ echo "selected"; }?>>Founder/Owner/Principal</option>
+<option value="Other" <?php if($row['Title'] == 'Other'){ echo "selected"; }?>>Other</option>
+</select>
+
+
+                                                   </div>
                                             </div>
                                             
                                             <div class="form-group">

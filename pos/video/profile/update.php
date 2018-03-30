@@ -55,6 +55,9 @@ $sql2 = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID = '".$_SESS
 $row = mysqli_fetch_array($sql2);
 
 
+
+if($row['Type'] == 'Investor'){
+
 //Upload to algolia
 
 
@@ -75,12 +78,15 @@ if($row['ProfileImage'] == 'Facebook'){$profileimage = "https://graph.facebook.c
 if($row['ProfileImage'] == 'Google'){$profileimage = $row['linkedin_picture_link'];}
 
 
+
 $date_algolia = date('F j',strtotime($row['Date_Created']));  // January 30, 2015, for example.
 
 
 $city_state = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($city)))).', '.$state_final;
 
 $response = array();
+
+
 
 $response[] = array(
   'objectID'=> $_SESSION['entrepreneurSession'],
@@ -111,6 +117,8 @@ foreach ($chunks as $batch) {
   $index->addObjects($batch);
 }
 
+
+}
 
 
 

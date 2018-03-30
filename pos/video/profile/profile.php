@@ -46,6 +46,8 @@ $cloudinary_section = 'startups';
         <!-- Wrapper -->
         <!-- ============================================================== -->
         <div id="wrapper">
+
+         
           
 
         <?php include '../nav.php'; ?>
@@ -148,6 +150,9 @@ $cloudinary_section = 'startups';
 
                                  <p>&nbsp;</p>
 
+
+<!--Connect-->
+
         <?php 
 
     if($row_entrepreneur['Type'] == 'Startup'){$type = 'startup';}
@@ -157,26 +162,49 @@ $cloudinary_section = 'startups';
                 ?>                 
                                  
                 
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block" 
+    <div class="col-md-6 col-sm-6 text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
         <?php }else{ ?> style="display:none" <?php } ?> >
-                                   <a href="javascript: void(0);" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
+                                   <a href="javascript: void(0);" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-success waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Connect</a>
                                  </div> 
                
-    <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
-                                    <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
+    <div class="col-md-6 col-sm-6 text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block; margin-bottom:10px; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
+                                    <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
+
+
+<!--Bookmark-->
+
+
+ <?php 
+
+   
+
+    $sql_bookmark = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+                ?>                 
+                                 
+                
+    <div class="col-md-6 col-sm-6 text-center sa-bookmark" <?php if ($sql_bookmark->num_rows == 0){ ?> style="display:block" 
+        <?php }else{ ?> style="display:none" <?php } ?> >
+                                   <a href="#/" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light bookmark" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Bookmark</a>
+                                 </div> 
+               
+    <div class="col-md-6 col-sm-6 text-center sa-bookmarked" <?php if ($sql_bookmark->num_rows == 1){ ?> style="display:block; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
+                                    <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-check"></i></span>Bookmarked</a>
+                                  </div>
+                
+
+
+
+
                               
-                            <?php }//else{ ?>   
-                            
+                            <?php } ?> 
+
+
+
                               
-                                   <!--
-                                    <p>&nbsp;</p>
-                                 <div class="col-md-12 col-sm-12 text-center">
-                                    <a href="javascript: void(0);" id="sa-basic" class="btn btn-danger hidden-xs hidden-sm waves-effect waves-light">Connect +</a>
-                                 </div> -->
-                               
-                            <?php //} ?>    
+                             
+
 
                                 </div>
                             </div>

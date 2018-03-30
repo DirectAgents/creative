@@ -10,6 +10,11 @@ $stmt = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$_SESSI
 $rownav = mysqli_fetch_array($stmt);
 
 
+
+        
+   
+
+
  if($rownav['Type'] == ''){
 
       header('Location: '.BASE_PATH.'/choose/');
@@ -566,8 +571,13 @@ $row13 = mysqli_fetch_array($sql13);
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
                         <form method="POST" action="<?php echo BASE_PATH; ?>/?q=" id="search-input-form" role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                          
+                        
+                        <?php if(!isset($type_nav)){ ?>
                         <input type="text" class="algolia-autocomplete light form-control" name="search-input" id="search-input" placeholder="Search by Startup Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
+                        <?php }else{ ?>
+                         <input type="text" class="algolia-autocomplete light form-control" name="search-input" id="search-input" placeholder="Search by Investor Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
+                        <?php } ?>
+
                          </form>
 
                     </li>

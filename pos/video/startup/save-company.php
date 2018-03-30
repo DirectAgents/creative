@@ -74,7 +74,7 @@ if ($sql->num_rows == 0){
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO startups(userID, startupID, Name, Url, Position, Industry, City, State, ZipCode, About, Description, Logo, Video, Screenshot, Facebook, Twitter, AngelList, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['name']."', '".seoUrl($_POST['name'])."' , '".$_POST['position']."' ,
+$insert_sql = mysqli_query($connecDB,"INSERT INTO startups(userID, startupID, Name, Url, Title, Industry, City, State, ZipCode, About, Description, Logo, Video, Screenshot, Facebook, Twitter, AngelList, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['name']."', '".seoUrl($_POST['name'])."' , '".$_POST['title']."' ,
   '".$_POST['industry']."', '".$city."' , '".$state_final."', '".$row_zip['zip']."', '".$_POST['about']."', '".$_POST['description']."' , '".$logo."' ,
   '".$_POST['video']."', '".$screenshot."', '".$facebook."', '".$twitter."', '".$angellist."', '".$date."')");
 
@@ -100,7 +100,7 @@ mysqli_query($connecDB, $sql);
 $sql = "UPDATE startups SET 
 Name='".$_POST['name']."',
 Url='".seoUrl($_POST['name'])."',
-Position='".$_POST['position']."',
+Title='".$_POST['title']."',
 Industry='".$_POST['industry']."',
 About='".$_POST['about']."',
 Description='".$_POST['description']."',
@@ -174,7 +174,7 @@ $response[] = array(
 	'video'=> $_POST['video'],
 	'screenshot'=> $screenshot,
 	'fullname'=> $row_startup['Fullname'],
-	'position'=> $row_startup['Position'],
+	'position'=> $row_startup['Title'],
 	'likes'=> '0',
 	'date'=> $date_algolia
 	 );

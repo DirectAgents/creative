@@ -365,7 +365,7 @@ $( "#save-company" ).on( "submit", function(e) {
 
     var id = $("input[name='id']").val();
     var userid = $("input[name='userid']").val();
-    var fm_position = $("input[name='fm_position']").val();
+    var fm_title = $("select[name='fm_title']").val();
     var fm_about = $("textarea[name='fm_about']").val();
     var fm_description = $("input[name='fm_description']").val();
     var fm_name = $("input[name='fm_name']").val();
@@ -471,7 +471,7 @@ $( "#save-company" ).on( "submit", function(e) {
     $.ajax({
             url: url_link_startup+"save-company.php", 
             method: "POST",
-            data: { id: id, userid: userid, name : fm_name, position : fm_position, industry : fm_industry, video : fm_video, location : fm_location, about : fm_about, description : fm_description, logo : logo, screenshot : screenshot, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
+            data: { id: id, userid: userid, name : fm_name, title : fm_title, industry : fm_industry, video : fm_video, location : fm_location, about : fm_about, description : fm_description, logo : logo, screenshot : screenshot, facebook : fm_facebook, twitter : fm_twitter, angellist : fm_angellist },
             dataType: "html",
             success: function(response) {
                 //alert(id);  
@@ -914,6 +914,8 @@ $('#sa-connect-profile-cancel').click(function(){
              if(response == 'good'){ 
              
             parent.swal("Success!", "You have it bookmarked.", "success");  
+            $('.sa-bookmark').hide();
+            $('.sa-bookmarked').show();
 
               }else{
 

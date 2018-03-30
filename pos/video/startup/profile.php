@@ -26,6 +26,10 @@
  $result = mysqli_query($connecDB, $sql);  
  $row_entrepreneur = mysqli_fetch_array($result);
 
+
+ $cloudinary_section = 'startups';
+
+
 ?>
 
 
@@ -55,7 +59,7 @@
             <!-- End Top Navigation -->
             
 
-        <?php include '../left-sidebar.php'; ?>
+        <?php include '../left-sidebar-startup.php'; ?>
         
 
             <!-- ============================================================== -->
@@ -257,7 +261,7 @@
                         <div id="save-cancel">
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-company" tabindex="11" style="margin-right:10px;">1111Save</button>
+                                        <button class="fcbtn btn btn-info btn-outline btn-1d save-company" tabindex="11" style="margin-right:10px;">Save</button>
                                         <button class="fcbtn btn btn-danger btn-outline btn-1d cancel-company" tabindex="12">Cancel</button>
                                     </div>
                                 </div>

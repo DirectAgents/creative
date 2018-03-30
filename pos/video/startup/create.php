@@ -155,9 +155,21 @@ $cloudinary_section = 'startups';
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-12">Your Role</label>
+                                                <label class="col-md-12">Your Title</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_position" name="fm_position" tabindex="2" placeholder="e.g CEO" class="form-control form-control-line"> </div>
+                                                  
+
+                                                     <select id="fm_title" name="fm_title" class="form-control form-control-line">
+ <option value="">--Select Title--</option>
+<option value="Associate/Staff">Associate/Staff</option>
+<option value="Manager/Supervisor">Manager/Supervisor</option>
+<option value="VP/SVP/Dept Head">VP/SVP/Dept Head</option>
+<option value="C-Level Executive (CEO, CFO, etc.)">C-Level Executive (CEO, CFO, etc.)</option>
+<option value="Founder/Owner/Principal">Founder/Owner/Principal</option>
+<option value="Other">Other</option>
+</select>
+
+                                                </div>
                                             </div>
                                             
                                             <div class="form-group">

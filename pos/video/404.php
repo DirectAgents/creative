@@ -35,7 +35,7 @@
             <!-- End Top Navigation -->
             
 
-        <?php include 'left-sidebar.php'; ?>
+        <?php include 'left-sidebar-startup.php'; ?>
         
 
             <!-- ============================================================== -->

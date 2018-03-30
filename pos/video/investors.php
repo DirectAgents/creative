@@ -10,6 +10,8 @@ $cloudinary_section = 'investors';
 
 $left_sidebar_industry = 'investors';
 
+$type_nav = 'Investor';
+
 ?>
 
 <?php include 'header.php'; ?>
@@ -88,7 +90,8 @@ $left_sidebar_industry = 'investors';
                                 <small class="text-muted db">
                                 <br>
                                 <span class="m-r-10"><i class="icon-location-pin"></i> {{{_highlightResult.location.value}}}</span> 
-                                <span class="m-r-10"><i class="fa fa-heart-o"></i> <div class="likes"><div id="likes{{objectID}}">{{{_highlightResult.likes.value}}}</div></div></span>  
+                                <!--<span class="m-r-10"><i class="icon-tag"></i></span>-->
+                                
                                     </small>
                             </div>
                         </div>
