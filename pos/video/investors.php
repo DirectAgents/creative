@@ -87,7 +87,7 @@ $left_sidebar_industry = 'investors';
                                 <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/profile/{{url}}">{{{_highlightResult.fullname.value}}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
-                                <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.location.value}}}</span> 
+                                <span class="m-r-10"><i class="icon-location-pin"></i> {{{_highlightResult.location.value}}}</span> 
                                 <span class="m-r-10"><i class="fa fa-heart-o"></i> <div class="likes"><div id="likes{{objectID}}">{{{_highlightResult.likes.value}}}</div></div></span>  
                                     </small>
                             </div>

@@ -150,20 +150,20 @@ $cloudinary_section = 'startups';
 
         <?php 
 
-    if($row_entrepreneur['Type'] == 'Entrepreneur'){$type = 'entrepreneur';}
+    if($row_entrepreneur['Type'] == 'Startup'){$type = 'startup';}
     if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
                 ?>                 
                                  
                 
     <div class="col-md-12 col-sm-12 text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
-                                   <a href="javascript: void(0);" id="sa-connect" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
+                                   <a href="javascript: void(0);" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
                                  </div> 
                
     <div class="col-md-12 col-sm-12 text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
-                                    <a href="javascript: void(0);" id="sa-connect-cancel" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
+                                    <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
                               

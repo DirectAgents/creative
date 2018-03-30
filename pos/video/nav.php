@@ -108,7 +108,8 @@ while($row_connect_request = mysqli_fetch_array($sql)){
 
                                             <span class="profile-status online pull-right"></span> </div>
                                         <div class="mail-contnet">
-                                            <h5><?php echo $row_connect['Fullname']; ?></h5> <span class="mail-desc">Wants to connect with you!</span> <span class="time"><?php echo $row_count['Date']; ?>, <?php echo $row_count['Time']; ?></span> </div>
+                                            <h5><?php echo $row_connect['Fullname']; ?></h5> <span class="mail-desc">Wants to connect with you!</span> 
+                                            <span class="time-request-sent"><?php echo date('F j',strtotime($row_connect_request['Date'])); ?>, <?php echo $row_connect_request['Time']; ?></span> </div>
                                     </a>
 
 
