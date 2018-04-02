@@ -97,7 +97,8 @@ $cloudinary_section = 'startups';
                                             <ul id="preview_logo">
                                             <img src="<?php echo BASE_PATH; ?>/images/rocket.jpg" class="thumb-lg img-circle" alt="img">
                                             </ul>
-                                                            <div id="url_preview_logo"><input type="checkbox" style="display:none" name="company_logo[]"  checked/></div>
+                                        
+                                         <div id="url_preview_logo"><input type="checkbox" style="display:none" name="company_logo[]"  checked/></div>
                                            
 
                                               </a>
@@ -159,7 +160,7 @@ $cloudinary_section = 'startups';
                                                 <div class="col-md-12">
                                                   
 
-                                                     <select id="fm_title" name="fm_title" class="form-control form-control-line">
+                                                     <select id="fm_title" name="fm_title" tabindex="2" class="form-control form-control-line">
  <option value="">--Select Title--</option>
 <option value="Associate/Staff">Associate/Staff</option>
 <option value="Manager/Supervisor">Manager/Supervisor</option>

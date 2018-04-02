@@ -93,7 +93,7 @@ No Team Members added so far!
                                             </div>
                                             <div id="city-state">
                                                 
-                                                <h5 class="text-black"><?php echo $row_user['Position']; ?></h5>
+                                                <h5 class="text-black"><?php echo $row_user['Title']; ?></h5>
                                             </div>
 
 
@@ -249,7 +249,7 @@ No Team Members added so far!
                                             </div>
                                             <div id="city-state">
                                                 
-                                                <h5 class="text-black"><?php echo $row_team['Position']; ?></h5>
+                                                <h5 class="text-black"><?php echo $row_team['Title']; ?></h5>
                                             </div>
 
 

@@ -79,7 +79,7 @@ while($row_skills = mysqli_fetch_array($sql_skills)){
  </select>
 
 
-                                                </div>
+  </div>
 
  
 

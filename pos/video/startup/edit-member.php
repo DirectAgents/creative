@@ -15,6 +15,9 @@ $result = mysqli_query($connecDB, $sql);
 $row = mysqli_fetch_array($result);
 
 
+$skills = explode(', ', $row['Skills']);
+
+
  ?>
 
 
@@ -31,86 +34,51 @@ $row = mysqli_fetch_array($result);
                     <input type="text" id="fm_fullname" name="fm_fullname" placeholder="Jon Snow" value="<?php echo $row['Fullname']; ?>" class="form-control form-control-line"> </div>
             </div>
             <div class="form-group">
-                <label class="col-md-12">Position</label>
+                <label class="col-md-12">Title</label>
                 <div class="col-md-12">
-                    <input type="text" id="fm_role" name="fm_role" placeholder="eg. CEO" value="<?php echo $row['Position']; ?>" class="form-control form-control-line">
+                  
+
+                    <select id="fm_title" name="fm_title" tabindex="2" class="form-control form-control-line">
+ <option value="">--Select Title--</option>
+<option value="Associate/Staff" <?php if($row['Title'] == 'Associate/Staff'){echo "selected";}?>>Associate/Staff</option>
+<option value="Manager/Supervisor" <?php if($row['Title'] == 'Manager/Supervisor'){echo "selected";}?>>Manager/Supervisor</option>
+<option value="VP/SVP/Dept Head" <?php if($row['Title'] == 'VP/SVP/Dept Head'){echo "selected";}?>>VP/SVP/Dept Head</option>
+<option value="C-Level Executive (CEO, CFO, etc.)" <?php if($row['Title'] == 'C-Level Executive (CEO, CFO, etc.)'){echo "selected";}?>>C-Level Executive (CEO, CFO, etc.)</option>
+<option value="Founder/Owner/Principal" <?php if($row['Title'] == 'Founder/Owner/Principal'){echo "selected";}?>>Founder/Owner/Principal</option>
+<option value="Other" <?php if($row['Title'] == 'Other'){echo "selected";}?>>Other</option>
+</select>
+
+
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-12">Skills Set</label>
-                <div class="col-md-4">
-                    <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line">
+                <label class="col-md-12">Skills</label>
+                <div class="col-md-12" style="padding-left:0px;">
+                   
+<div class="col-md-9" style="padding-bottom:20px;">
+  <select data-placeholder="Select skills..." id="fm_skills" name="fm_skills" class="form-control form-control-line chosen-select" multiple>
+
+<?php 
+
+$sql_skills = mysqli_query($connecDB,"SELECT * FROM skills ORDER BY id ASC");  
+while($row_skills = mysqli_fetch_array($sql_skills)){
+
+?>
+                <option value="<?php echo $row_skills['skill'];?>" <?php if (in_array($row_skills['skill'],$skills)){ echo "selected"; } ?>>
+                    <?php echo $row_skills['skill'];?></option>
+              
+       
+<?php } ?>
+
+
+ </select>
+
                 </div>
-                <div class="col-md-8">
-                    <button class="btn btn-add" id="add-skills-team-member"><span class="glyphicon glyphicon-plus"></span> Add</button>
-                </div>
-                <div class="col-md-12" style="padding:15px 0 0 0;">
-                    <div id="responds">
-                        <?php
-                                                        //include db configuration file
-
-
-
-                                                        //MySQL query
-                                                        $Result = mysqli_query($connecDB,"SELECT * FROM tbl_team WHERE id ='".$_POST['id']."' ");
-
-
-                                                        //get all records from add_delete_record table
-                                                        $row2 = mysqli_fetch_array($Result);
-
-
-
-
-                                                        $ctop = $row2['Skills']; 
-                                                        $ctop = explode(',',$ctop); 
-
-
-
-                                                        if($row2['Skills'] != '' && $row2['Skills'] != 'NULL' ){
-
-
-
-                                                        foreach($ctop as $skill)  
-                                                        { 
-                                                            //Uncomment the last commented line if single quotes are showing up  
-                                                            //otherwise delete these 3 commented lines 
-
-
-                                                        //get skill string
-                                                        $ret = explode('(', $skill);
-                                                        $skill_string =  $ret[0];
-                                                            
-
-                                                        //MySQL query
-                                                        $sqlskill = mysqli_query($connecDB,"SELECT * FROM skills WHERE skill = '".$skill_string."' ");
-                                                        $row3 = mysqli_fetch_array($sqlskill);
-
-
-                                                        echo '<div id="item_'.$row3['id'].'">';
-                                                        echo '<div class="skillsdiv">';
-                                                        if(in_array($skill,$ctop)){
-                                                        echo '<input id="skillselectionteammember_'.$row3['id'].'" name="skillselectionteammember[]" type="checkbox"  value="'.$skill.'" style="display:none" checked/>';
-                                                        }
-                                                        echo '<div class="del_wrapper">';
-                                                        echo '<div class="the-skill">';
-                                                        echo $skill;
-                                                        echo '</div>';
-                                                        echo '<a href="#" class="del_button_teammmember_skills" id="del-'.$row3['id'].'">';
-                                                        echo '<img src="'.BASE_PATH.'/images/icon_del.gif" border="0" class="icon_del" />';
-                                                        echo '</a></div>';
-                                                        //echo '<input name="interestselection[]" type="checkbox"  value="'.$interest.'"/>';
-                                                        echo '</div>';
-                                                        echo '</div>';
-                                                        } 
-
-
-
-                                                        }
-
-                                                        ?>
-                    </div>
-                </div>
+              
+              
             </div>
+
+        </div>    
 
                                     <div class="form-group">
                                                 <div class="col-md-3">
@@ -135,7 +103,7 @@ $row = mysqli_fetch_array($result);
                                                 <div class="col-md-3">   
                                              <a href="javascript:void(0)">
                                                 <?php if($row['ProfileImage'] != '') { ?>
-                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['ProfileImage'];?>" class="thumb-lg img-circle" alt="img">  
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/<?php echo $row['ProfileImage'];?>" class="thumb-lg img-circle" alt="img">  
                                             <?php }else{ ?>
                                             <a href="javascript:void(0)"><img src="<?php echo BASE_PATH."/images/no-profile-picture.jpg";?>" class="thumb-lg img-circle" alt="img">
                                             <?php } ?>
@@ -155,91 +123,9 @@ $row = mysqli_fetch_array($result);
     </div>
 
 
-<script>
-
-$(document).ready(function() {
-
-//$("#preview").hide();
-
-var url_link = 'http://localhost/creative/pos/video/startup/';
-
-
-////////////////Skills//////////////////////
-
-$("#add-skills-team-member").click(function (e) {
-    //alert("adsf");
-       e.preventDefault();
-     if($("#fm_skills").val()==='')
-      {
-        //alert("Please enter a job position!");
-        return false;
-      }
-      var myData = 'skills='+ $("#fm_skills").val()+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
-      //alert(myData);
-      jQuery.ajax({
-      type: "POST", 
-      url: url_link+"skills-team-member.php", 
-      dataType:"text", 
-      data:myData,
-      success:function(response){
-        $("#responds").append(response);
-        $("#fm_skills").val('');
-        //$('#interestimportant').prop('checked', true); // checks it
-       
-      },
-      error:function (xhr, ajaxOptions, thrownError){
-        alert(thrownError);
-      }
-      });
-  });
-
-
-
-$("body").on("click", "#responds .del_button_teammmember_skills", function(e) {
-    //alert("ads");
-     e.preventDefault();
-     var clickedID = this.id.split('-'); 
-     //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
-     var DbNumberID = clickedID[1]; 
-     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
-     
-     //alert(DbNumberID);
-
-
-      jQuery.ajax({
-      type: "POST", 
-      url: url_link+"skills.php", 
-      dataType:"text", 
-      data:myData, 
-      success:function(response){
-        $("#responds").append(response);
-        $('#skillselectionteammember_'+DbNumberID).prop('checked', false); // Unchecks it
-        
-        $('#item_'+DbNumberID).fadeOut("slow");
-
-        
-        //alert(response);
-      
-      },
-      error:function (xhr, ajaxOptions, thrownError){
-        
-        alert(thrownError);
-      }
-      });
-  });
-
-
-
- $(function() {
-    $( "#fm_skills" ).autocomplete({
-      source: url_link+'search-skills.php'
-    });
-  });
-
-
-
-});
-
-  </script>
+<!--Multiple Selection-->
+    <script src="<?php echo BASE_PATH; ?>/js/chosen.jquery.js" type="text/javascript"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/prism.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/init.js" type="text/javascript" charset="utf-8"></script>
 
     <?php } ?>

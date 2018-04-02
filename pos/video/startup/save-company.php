@@ -36,7 +36,7 @@ $angellist = '';
 $sql = mysqli_query($connecDB,"SELECT * FROM startups WHERE id='".$_POST['id']."'");
 $row = mysqli_fetch_array($sql);
 
-if($_POST['logo'] == ''){$logo = $row['Logo'];}else{$logo = $_POST['logo'];}
+if($_POST['logo'] == '' || $_POST['logo'] == 'on' ){$logo = $row['Logo'];}else{$logo = $_POST['logo'];}
 if($_POST['screenshot'] == ''){$screenshot = $row['Screenshot'];}else{$screenshot = $_POST['screenshot'];}
 
 
@@ -53,6 +53,8 @@ $row_zip = mysqli_fetch_array($result);
 date_default_timezone_set('America/New_York');
 $date = date("Y-m-d");
 $time = date('h:i:s A');  
+
+
 
 
 function seoUrl($string) {
@@ -150,7 +152,7 @@ $date = $dateTimeSplit[0];
 echo date('M d, Y',strtotime($date));
 */ 
 
-$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
+
 
 
 $sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_users LEFT JOIN startups ON startups.userID=tbl_users.userID WHERE tbl_users.userID='".$_POST['userid']."'");
@@ -159,6 +161,12 @@ $row_startup = mysqli_fetch_array($sql_startup);
 
 //$startupID = rand(5, 1000000);
 
+
+//Upload to algolia
+
+if($row['Logo'] == '' || $row['Logo'] == 'on' ){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
+
+$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
 
 $response = array();
 
@@ -170,7 +178,7 @@ $response[] = array(
 	'industry'=> $_POST['industry'],
 	'description'=> $row_startup['Description'],
 	'location'=> $city.', '.$state_final, 
-	'logo'=> $logo,
+	'logo'=> $logo_algolia,
 	'video'=> $_POST['video'],
 	'screenshot'=> $screenshot,
 	'fullname'=> $row_startup['Fullname'],

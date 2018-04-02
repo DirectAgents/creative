@@ -10,9 +10,12 @@
 if($_POST){
 
 
-
+$skills = explode(', ', '');
 
  ?>
+
+
+
 
       
                                          <div id="team-tab-data">
@@ -22,30 +25,50 @@ if($_POST){
                                             <div class="form-group">
                                                 <label class="col-md-12">Full Name</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_fullname" name="fm_fullname" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
+                                                    <input type="text" id="fm_fullname" name="fm_fullname" tabindex="1" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label class="col-md-12">Position</label>
+                                                <label class="col-md-12">Title</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" id="fm_role" name="fm_role" placeholder="eg. CEO"  class="form-control form-control-line">
+<select id="fm_title" name="fm_title" tabindex="2" class="form-control form-control-line">
+ <option value="">--Select Title--</option>
+<option value="Associate/Staff">Associate/Staff</option>
+<option value="Manager/Supervisor">Manager/Supervisor</option>
+<option value="VP/SVP/Dept Head">VP/SVP/Dept Head</option>
+<option value="C-Level Executive (CEO, CFO, etc.)">C-Level Executive (CEO, CFO, etc.)</option>
+<option value="Founder/Owner/Principal">Founder/Owner/Principal</option>
+<option value="Other">Other</option>
+</select>
                                                 </div>
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label class="col-md-12">Skills Set</label>
-                                                <div class="col-md-4">
-                                                    <input type="text" id="fm_skills" name="fm_skills" placeholder="Enter Skill" class="form-control form-control-line">
-                                                </div>
+                                                <label class="col-md-12">Skills</label>
+                                               
+<div class="col-md-9" style="padding-bottom:20px;">
+  <select data-placeholder="Select skills..." id="fm_skills" name="fm_skills" class="form-control form-control-line chosen-select" multiple>
+
+<?php 
+
+$sql_skills = mysqli_query($connecDB,"SELECT * FROM skills ORDER BY id ASC");  
+while($row_skills = mysqli_fetch_array($sql_skills)){
+
+?>
+                <option value="<?php echo $row_skills['skill'];?>" <?php if (in_array($row_skills['skill'],$skills)){ echo "selected"; } ?>>
+                    <?php echo $row_skills['skill'];?></option>
+              
+       
+<?php } ?>
+
+
+ </select>
+
+
+  </div>
                                               
-                                                <div class="col-md-8">
-                                                    <button class="btn btn-add" id="add-skills-team-member"><span class="glyphicon glyphicon-plus"></span> Add</button>
-                                                </div>
-                                                <div class="col-md-12" style="padding:15px 0 0 0;">
-                                                    <div id="responds">
-                                                        
-                                                    </div>
-                                                </div>
+                                              
+                                               
                                             </div>
                                            <!--
                                             <div class="form-group">
@@ -85,90 +108,10 @@ if($_POST){
 
                                                               
 
-<script>
 
-$(document).ready(function() {
-
-$("#preview").hide();
-
-var url_link = 'http://localhost/creative/pos/video/startup/';
-
-
-////////////////Skills//////////////////////
-
-$("#add-skills-team-member").click(function (e) {
-    //alert("adsf");
-       e.preventDefault();
-     if($("#fm_skills").val()==='')
-      {
-        //alert("Please enter a job position!");
-        return false;
-      }
-      var myData = 'skills='+ encodeURIComponent($("#fm_skills").val())+'&skills_level='+ $("#fm_skills_level").val()+'&userid='+ $("#userid").val(); 
-      //alert(myData);
-      jQuery.ajax({
-      type: "POST", 
-      url: url_link+"skills-team-member.php", 
-      dataType:"text", 
-      data:myData,
-      success:function(response){
-        $("#responds").append(response);
-        $("#fm_skills").val('');
-        //$('#interestimportant').prop('checked', true); // checks it
-       
-      },
-      error:function (xhr, ajaxOptions, thrownError){
-        alert(thrownError);
-      }
-      });
-  });
-
-
-
-$("body").on("click", "#responds .del_button_teammmember_skills", function(e) {
-     e.preventDefault();
-     var clickedID = this.id.split('-'); 
-     //var DbNumberID =   $('input[name="interestselection[]"]:checked').map(function () {return this.value;}).get().join(",");
-     var DbNumberID = clickedID[1]; 
-     var myData = 'recordToDelete='+ DbNumberID +'&projectid='+ $("#projectid").val(); 
-     
-     //alert(DbNumberID);
-
-
-      jQuery.ajax({
-      type: "POST", 
-      url: url_link+"skills.php", 
-      dataType:"text", 
-      data:myData, 
-      success:function(response){
-        $("#responds").append(response);
-        $('#skillselectionteammember_'+DbNumberID).prop('checked', false); // Unchecks it
-        
-        $('#item_'+DbNumberID).fadeOut("slow");
-
-        
-        //alert(response);
-      
-      },
-      error:function (xhr, ajaxOptions, thrownError){
-        
-        alert(thrownError);
-      }
-      });
-  });
-
-
-
- $(function() {
-    $( "#fm_skills" ).autocomplete({
-      source: url_link+'search-skills.php'
-    });
-  });
-
-
-
-});
-
-  </script>
+<!--Multiple Selection-->
+    <script src="<?php echo BASE_PATH; ?>/js/chosen.jquery.js" type="text/javascript"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/prism.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/init.js" type="text/javascript" charset="utf-8"></script>
 
  <?php } ?>                                  

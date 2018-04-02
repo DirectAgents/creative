@@ -36,12 +36,12 @@ $sql = mysqli_query($connecDB,"SELECT * FROM tbl_team WHERE id='".$_POST['id']."
 $row = mysqli_fetch_array($sql);
 
 
-if(mysqli_num_rows($sql)<=0) {
+if ($sql->num_rows == 0) {
 
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_team(userID, startupID, Fullname, Position, About, ProfileImage, Skills, Facebook, Twitter, Linkedin) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['fullname']."',
-  '".$_POST['role']."', '".$_POST['about']."', '".$_POST['headshot']."' ,'".$_POST['skills']."', '".$facebook."', '".$twitter."', '".$linkedin."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_team(userID, startupID, Fullname, Title, About, ProfileImage, Skills, Facebook, Twitter, Linkedin) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['fullname']."',
+  '".$_POST['title']."', '".$_POST['about']."', '".$_POST['headshot']."' ,'".implode(', ',$_POST['skills'])."', '".$facebook."', '".$twitter."', '".$linkedin."')");
 
 
 }else{
@@ -50,9 +50,9 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_team(userID, startupID, Fu
 
 $sql = "UPDATE tbl_team SET 
 Fullname='".$_POST['fullname']."',
-Position='".$_POST['role']."',
+Title='".$_POST['title']."',
 About='".$_POST['about']."',
-Skills='".$_POST['skills']."',
+Skills='".implode(', ',$_POST['skills'])."',
 Facebook='".$facebook."',
 Twitter='".$twitter."',
 Linkedin='".$linkedin."',
