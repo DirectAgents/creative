@@ -935,6 +935,14 @@ $('#sa-connect-profile-cancel').click(function(){
 
 
 
+$( "#bookmarks-list-select" ).change(function() {
+
+window.location = $(this).val();
+
+}); 
+
+
+
 
   
 

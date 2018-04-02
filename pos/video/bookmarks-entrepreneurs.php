@@ -193,32 +193,39 @@ $cloudinary_section = 'startups';
             <!-- ============================================================== -->
 
 
+<div class="col-md-6 col-sm-6" style="padding-left:0px;">   
+     <h3>Bookmarks</h3>
+ </div>  
+   
+
+<div class="col-md-6 col-sm-6">
+ <div class="col-md-6 col-sm-6" style="float:right; margin-bottom:20px;">
+
+        <select id="bookmarks-list-select" name="bookmarks-list-select" class="form-control form-control-line">
+            <option value="<?php echo BASE_PATH; ?>/bookmarks/">Startups</option>
+            <option value="<?php echo BASE_PATH; ?>/bookmarks/entrepreneurs/" selected>Entrepreneurs</option>
+        </select>
+
+    </div>  
+
+</div>
 
  
 
     <?php 
                     
-    $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' ORDER BY id DESC");                    
+    $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND Type != 'Startup' ORDER BY id DESC");                    
                                         
                 if( ! mysqli_num_rows($sql_bookmarks) ) {
-                echo "<div class='no-connections text-center'>No Bookmarks!</div>"; 
+                echo '<div class="col-md-12 col-sm-12">';
+                echo "<div class='no-connections text-center'>You haven't bookmarked any entrepreneur yet!</div>"; 
+                echo '</div>';
                 }else{
 
 
     ?>
 
-     <h3>Bookmarks</h3>
-   
-
- <div class="col-md-3 col-sm-3" style="float:right; margin-bottom:20px;">
-
-        <select id="bookmarks-list-select" name="bookmarks-list-select" class="form-control form-control-line">
-            <option value="STARTUP">Startups</option>
-            <option value="INVESTOR" selected>Entrepreneurs</option>
-        </select>
-
-    </div>  
-
+    
 
 <div id="bookmarks-list-content">
     
@@ -229,10 +236,9 @@ $cloudinary_section = 'startups';
         <thead>
             <tr>
                 
-                <th>NAME111</th>
+                <th>NAME</th>
                 <th>TYPE</th>
                 <th>LOCATION</th>
-                <th>INDUSTRY</th>
                 <td>MANAGE</td>
             </tr>
         </thead>
@@ -295,35 +301,33 @@ $cloudinary_section = 'startups';
         </script>
         <?php 
 
-                                         $sql_startup = mysqli_query($connecDB,"SELECT * FROM startups WHERE userID ='".$row_bookmarks['requested_id']."'");
-                                         $row_startup= mysqli_fetch_array($sql_startup);
+                                         $sql_users = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_bookmarks['requested_id']."'");
+                                         $row_users= mysqli_fetch_array($sql_users);
 
 
                                         ?>
         <tr class="advance-table-row connections-tab-inside">
             
             <td>
-                <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>">
-                    <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30"></a>
-                     <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>">
-                    <?php echo $row_startup['Name']; ?>
+                <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_users['Name']; ?>">
+                    <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30"></a>
+                     <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_users['username']; ?>">
+                    <?php echo $row_users['Fullname']; ?>
                 </a>    
             </td>
 
 
             <td>
                 
-                    <?php echo $row_bookmarks['Type']; ?>
+                    <?php echo $row_users['Type']; ?>
                  
             </td>
             
             <td>
-                <?php  echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_startup['City'])))).', '.$row_startup['State'];
+                <?php  echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_users['City'])))).', '.$row_users['State'];
                  ?>
             </td>
-            <td>
-                <?php echo $row_startup['Industry']; ?>
-            </td>
+          
             <td>
                 <button type="button" id="bookmark-delete-<?php echo $row_bookmarks['requested_id']; ?>" data-requested-id="<?php echo $row_bookmarks['requested_id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
             </td>

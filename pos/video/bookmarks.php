@@ -196,28 +196,35 @@ $cloudinary_section = 'startups';
 
  
 
-    <?php 
+<div class="col-md-6 col-sm-6" style="padding-left:0px;">   
+     <h3>Bookmarks</h3>
+ </div>  
+
+<div class="col-md-6 col-sm-6">
+ <div class="col-md-6 col-sm-6" style="float:right; margin-bottom:20px;">
+
+        <select id="bookmarks-list-select" name="bookmarks-list-select" class="form-control form-control-line">
+            <option value="<?php echo BASE_PATH; ?>/bookmarks/">Startups</option>
+            <option value="<?php echo BASE_PATH; ?>/bookmarks/entrepreneurs/">Entrepreneurs</option>
+        </select>
+
+    </div>  
+
+</div>
+
+
+<?php 
                     
-    $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' ORDER BY id DESC");                    
+    $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND Type = 'Startup' ORDER BY id DESC");                    
                                         
                 if( ! mysqli_num_rows($sql_bookmarks) ) {
-                echo "<div class='no-connections text-center'>No Bookmarks!</div>"; 
+                echo '<div class="col-md-12 col-sm-12">';
+                echo "<div class='no-connections text-center'>You haven't bookmarked any entrepreneur yet!</div>"; 
+                echo '</div>';
                 }else{
 
 
     ?>
-
-     <h3>Bookmarks</h3>
-   
-
- <div class="col-md-3 col-sm-3" style="float:right; margin-bottom:20px;">
-
-        <select id="bookmarks-list-select" name="bookmarks-list-select" class="form-control form-control-line">
-            <option value="STARTUP">Startups</option>
-            <option value="INVESTOR">Entrepreneurs</option>
-        </select>
-
-    </div>  
 
 
 <div id="bookmarks-list-content">
