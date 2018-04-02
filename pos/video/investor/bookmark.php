@@ -16,7 +16,7 @@ $row = mysqli_fetch_array($sql);
 if(mysqli_num_rows($sql)<=0) {	
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_bookmarks(requester_id, requested_id) VALUES('".$_POST['requester_id']."','".$_POST['requested_id']."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_bookmarks(requester_id, requested_id, Type) VALUES('".$_POST['requester_id']."','".$_POST['requested_id']."', 'Investor')");
 
 echo "good";
 

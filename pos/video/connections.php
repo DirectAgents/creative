@@ -21,6 +21,8 @@ exit();
  $row_entrepreneur = mysqli_fetch_array($result);
 
 
+$cloudinary_section = 'startups';
+
 
 ?>
 

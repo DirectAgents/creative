@@ -20,6 +20,9 @@ exit();
  $result = mysqli_query($connecDB, $sql);  
  $row_entrepreneur = mysqli_fetch_array($result);
 
+
+$cloudinary_section = 'startups';
+
 ?>
 
 
@@ -189,10 +192,10 @@ exit();
             <!-- Bookmarks Tab Starts -->
             <!-- ============================================================== -->
 
-                                       
+
+
  
 
- <table class="table" cellspacing="14">
     <?php 
                     
     $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' ORDER BY id DESC");                    
@@ -205,20 +208,26 @@ exit();
     ?>
 
      <h3>Bookmarks</h3>
-     <p>&nbsp;</p> 
+   
+   
+
+<div id="bookmarks-list-content">
     
-    <div class="connections-header">
+
+<table id="demo-foo-addrow" class="table m-t-30 table-hover bookmarks-list" data-page-size="10">
+
+
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th>STARTUP</th>
+                
+                <th>NAME</th>
+                <th>TYPE</th>
                 <th>LOCATION</th>
                 <th>INDUSTRY</th>
-                <th>MANAGE</th>
+                <td>MANAGE</td>
             </tr>
         </thead>
-    </div>
+   
     <tbody>
         <?php   
 
@@ -283,18 +292,25 @@ exit();
 
                                         ?>
         <tr class="advance-table-row connections-tab-inside">
-            <td width="10"></td>
+            
             <td>
                 <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>">
                     <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30"></a>
-            </td>
-            <td>
-                <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>">
+                     <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>">
                     <?php echo $row_startup['Name']; ?>
-                </a>
+                </a>    
             </td>
+
+
             <td>
-                <?php echo $row_startup['City'].', '.$row_startup['State'] ?>
+                
+                    <?php echo $row_bookmarks['Type']; ?>
+                 
+            </td>
+            
+            <td>
+                <?php  echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_startup['City'])))).', '.$row_startup['State'];
+                 ?>
             </td>
             <td>
                 <?php echo $row_startup['Industry']; ?>
@@ -303,19 +319,20 @@ exit();
                 <button type="button" id="bookmark-delete-<?php echo $row_bookmarks['requested_id']; ?>" data-requested-id="<?php echo $row_bookmarks['requested_id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
             </td>
         </tr>
-        <tr>
-            <td colspan="7" class="sm-pd"></td>
-        </tr>
+       
         <?php } ?>
-        <?php } ?>
+       
         </tr>
     </tbody>
-   </table>  
-                 
+   </table> 
+
+
+
+</div>
 
                                           
 
-
+<?php } ?>
 
 
                                       
@@ -342,61 +359,6 @@ exit();
                 </div>
                 <!-- /.container-fluid -->
 
-<div class="modal fade text-center" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="container center-block">
-                <div class="signup-container center-block">
-                    <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
-                    <div class="signup-card center-block">
-                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
-                        <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
-                        <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                 <div class="login-buttons">
-                                    <a href="<?php echo htmlspecialchars($loginUrl); ?>">
-                                        <div class="fb-connect connect-background" data-track="home:facebook-connect">
-                                            <span class="fa fa-facebook"></span>
-                                            <span class="connect-text">Connect with Facebook</span>
-                                        </div>  
-                                    </a>
-                                </div>
-                             </div>   
-                                <div class="col-md-12">
-                                    <div class="login-buttons">
-                                    <a href="<?php echo $authUrl; ?>">
-                                       <div class="google-connect connect-background" id="google-connect-button" data-track="home:google-connect">
-                         <span class="fa fa-google-plus"></span>
-                         <a href="<?php echo $authUrl; ?>">
-                         <span class="google-connect-text connect-text">Connect with Google</span>
-                         </a>
-                    </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                              <div class="col-md-12">
-                                    <div class="login-buttons">
-                                    <a href="<?php echo $authUrl; ?>">
-                                      <div class="li-connect connect-background" data-track="home:facebook-connect">
-                         <span class="fa fa-linkedin"></span>
-                         <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x2ye1ktvzj7d&redirect_uri=<?php echo BASE_PATH; ?>/linkedin/&state=987654321&scope=r_basicprofile,r_emailaddress">
-                         <span class="connect-text">Connect with Linkedin</span>
-                         </a>
-                         
-                    </div>
-                                    </a>
-                                </div>
-                            </div>
-
-
-                            </div> 
-                        </div>
-                        <p class="signup-light text-center">We won't ever post anything on Facebook without your permission.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 

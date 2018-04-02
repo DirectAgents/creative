@@ -4432,7 +4432,7 @@ ul.common li a:hover {
     border: 1px solid #e4e7ea
 }
 
-.table>thead>tr>th {
+.table>thead>tr>th, .table>thead>tr>td {
     vertical-align: bottom;
     border-bottom: 1px solid #e4e7ea
 }

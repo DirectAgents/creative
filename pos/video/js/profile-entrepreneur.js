@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
 
+var url_link_original = 'http://localhost/creative/pos/video/';
+
 var url_link = 'http://localhost/creative/pos/video/profile/';
 
 var url_link_startup = 'http://localhost/creative/pos/video/startup/';
@@ -594,13 +596,13 @@ $( "#save-team-member" ).on( "submit", function(e) {
     var userid = $("input[name='userid']").val();
     var fm_about = $("textarea[name='fm_about']").val();
     var fm_fullname = $("input[name='fm_fullname']").val();
-    var fm_role = $("input[name='fm_role']").val();
+    var fm_title = $("select[name='fm_title']").val();
     var headshot = $('input[name="team_member_headshot[]"]:checked').map(function() { return this.value; }).get().join(",");
     var fm_facebook = $("input[name='fm_facebook_link']").val();
     var fm_twitter = $("input[name='fm_twitter_link']").val();
     var fm_linkedin = $("input[name='fm_linkedin_link']").val();
-    var skills = $('input[name="skillselectionteammember[]"]:checked').map(function() { return this.value; }).get().join(",");
-    //alert(fm_facebook);
+    var fm_skills = $("select[name='fm_skills']").val();
+    //alert("rrrr");
     
     if (fm_fullname == '') {
         $('input[name=fm_fullname]').css('border-bottom','1px solid red'); 
@@ -609,11 +611,11 @@ $( "#save-team-member" ).on( "submit", function(e) {
       $('input[name=fm_fullname]').css('border-bottom','1px solid green'); 
     }
 
-    if (fm_role == '') {
-        $('input[name=fm_role]').css('border-bottom','1px solid red'); 
+    if (fm_title == '') {
+        $('input[name=fm_title]').css('border-bottom','1px solid red'); 
         proceed = false;
     }else{
-      $('input[name=fm_role]').css('border-bottom','1px solid green'); 
+      $('input[name=fm_title]').css('border-bottom','1px solid green'); 
     }
 
      if(proceed) 
@@ -624,7 +626,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
     $.ajax({
             url: url_link_startup+"save-team-members.php", 
             method: "POST",
-            data: { id: id, userid: userid, fullname : fm_fullname, role : fm_role, skills : skills, about : fm_about, headshot : headshot, facebook : fm_facebook, twitter : fm_twitter, linkedin : fm_linkedin },
+            data: { id: id, userid: userid, fullname : fm_fullname, title : fm_title, skills : fm_skills, about : fm_about, headshot : headshot, facebook : fm_facebook, twitter : fm_twitter, linkedin : fm_linkedin },
             dataType: "html",
             success: function(response) {
                 //alert(data);  
@@ -930,6 +932,7 @@ $('#sa-connect-profile-cancel').click(function(){
                 }
              });                   
     });  
+
 
 
 

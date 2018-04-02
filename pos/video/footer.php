@@ -108,6 +108,16 @@
      <!--Style Switcher -->
     <script src="<?php echo BASE_PATH; ?>/js/jQuery.style.switcher.js"></script>    
 
+
+
+    <!-- Footable -->
+    <script src="<?php echo BASE_PATH; ?>/js/footable.all.min.js"></script>
+    <script src="<?php echo BASE_PATH; ?>/js/bootstrap-select.min.js" type="text/javascript"></script>
+    <!--FooTable init-->
+    <script src="<?php echo BASE_PATH; ?>/js/footable-init.js"></script>
+
+
+
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
 
@@ -128,7 +138,7 @@
     <script src="<?php echo BASE_PATH; ?>/js/profile-entrepreneur.js"></script>
     
     <!--Form Validation-->
-    <script type="text/javascript" src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="<?php echo BASE_PATH; ?>/js/jquery.mask.min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/js/validation.js"></script>
 
 

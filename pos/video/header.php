@@ -416,6 +416,9 @@ echo 'id: ' . $user['id'];
         <link href="<?php echo BASE_PATH; ?>/css/fullcalendar.css" rel="stylesheet" />
         <!--alerts CSS -->
         <link href="<?php echo BASE_PATH; ?>/css/sweetalert.css" rel="stylesheet" type="text/css">
+        <!-- Footable CSS -->
+        <link href="<?php echo BASE_PATH; ?>/css/footable.core.css" rel="stylesheet">
+        <link href="<?php echo BASE_PATH; ?>/css/bootstrap-select.min.css" rel="stylesheet" />
         <!-- animation CSS -->
         <link href="<?php echo BASE_PATH; ?>/css/animate.css" rel="stylesheet">
         <!-- Custom CSS -->
@@ -500,7 +503,7 @@ echo 'id: ' . $user['id'];
                         ids_and_ratios = {};
                         $.each(result, function(i, v) {
                             $("#preview_team").show();
-                            $('#preview_team').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" />')
+                            $('#preview_team').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 88, height: 88, crop: "fill" }] }) + '\" />')
                             $('#headshot_id').html(v["public_id"])
                             $('#url_preview_team').html('<input type="checkbox" style="display:none" name="team_member_headshot[]" value="' + v["public_id"] + '" checked/>')
                         });
@@ -516,7 +519,7 @@ echo 'id: ' . $user['id'];
                         $.each(result, function(i, v) {
                             $("#preview_logo").show();
                             $("#preview_edit_logo").hide();
-                            $('#preview_logo').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 200, crop: "fill" }] }) + '\" class="thumb-lg img-circle" />')
+                            $('#preview_logo').html('<li><img src=\"' + $.cloudinary.url(v["public_id"], { format: 'jpg', resource_type: v["resource_type"], transformation: [{ width: 88, height: 88, crop: "fill" }] }) + '\" class="thumb-lg img-circle" />')
                             $('#headshot_id').html(v["public_id"])
                             $('#url_preview_logo').html('<input type="checkbox" style="display:none" name="company_logo[]" value="' + v["public_id"] + '" checked/>')
                         });
