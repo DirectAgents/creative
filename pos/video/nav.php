@@ -40,6 +40,7 @@ $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
 
+
 $stmt_user = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$row_count['requester_id']."'");
 $row_connect = mysqli_fetch_array($stmt_user);
 
@@ -98,15 +99,15 @@ while($row_connect_request = mysqli_fetch_array($sql)){
                                         <div class="user-img"> 
                                             
 
-<?php if($rownav['ProfileImage'] == 'Google'){ ?>
+<?php if($row_connect['ProfileImage'] == 'Google'){ ?>
          <img src="<?php echo $row_connect['google_picture_link']; ?>" alt="user" class="img-circle">
 <?php } ?>
 
-<?php if($rownav['ProfileImage'] == 'Facebook'){ ?>
+<?php if($row_connect['ProfileImage'] == 'Facebook'){ ?>
          <img src="https://graph.facebook.com/<?php echo $row_connect['facebook_id']; ?>/picture" alt="user" class="img-circle">
 <?php } ?>
 
-<?php if($rownav['ProfileImage'] == 'Linkedin'){ ?>
+<?php if($row_connect['ProfileImage'] == 'Linkedin'){ ?>
          <img src="<?php echo $row_connect['linkedin_picture_link']; ?>" alt="user" class="img-circle">
 <?php } ?>
 

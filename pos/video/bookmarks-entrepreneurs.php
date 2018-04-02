@@ -214,7 +214,7 @@ $cloudinary_section = 'startups';
 
         <select id="bookmarks-list-select" name="bookmarks-list-select" class="form-control form-control-line">
             <option value="STARTUP">Startups</option>
-            <option value="INVESTOR">Entrepreneurs</option>
+            <option value="INVESTOR" selected>Entrepreneurs</option>
         </select>
 
     </div>  
@@ -229,7 +229,7 @@ $cloudinary_section = 'startups';
         <thead>
             <tr>
                 
-                <th>NAME</th>
+                <th>NAME111</th>
                 <th>TYPE</th>
                 <th>LOCATION</th>
                 <th>INDUSTRY</th>

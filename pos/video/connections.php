@@ -103,11 +103,11 @@ $cloudinary_section = 'startups';
                                                 <h4 class="text-white"><?php echo $row_entrepreneur['Fullname'];?></h4>
                                             </div>
                                             <div id="position">
-                                                <?php if($row_entrepreneur['Position'] != ''){ ?>
+                                                <?php if($row_entrepreneur['Title'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
                                                 //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
-                                                echo $row_entrepreneur['Position'];
+                                                echo $row_entrepreneur['Title'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
@@ -484,10 +484,10 @@ $('#sa-connect-delete-'+<?php echo $row_connections['requester_id']; ?>).click(f
                 </td>
                 <td><span class="label label-warning label-rouded"><?php echo $row_entrepreneur['Type']; ?></span></td>
                 <td>
-                    <?php echo $row_entrepreneur['Email']; ?>
+                    <?php if($row_connections['status'] == 'accepted') { echo $row_entrepreneur['Email']; }else{echo '-';}?>
                 </td>
                 <td>
-                    <?php if($row_entrepreneur['Phone'] != ''){ echo $row_entrepreneur['Phone']; }else{echo "-";} ?>
+                    <?php if($row_connections['status'] == 'accepted') { echo $row_entrepreneur['Phone']; }else{echo '-';}?>
                 </td>
                  <td>
                     <?php if($row_connections['status'] == 'pending') { ?>

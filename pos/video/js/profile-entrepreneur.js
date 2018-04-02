@@ -907,7 +907,7 @@ $('#sa-connect-profile-cancel').click(function(){
       var requester_id = $(".bookmark").attr("data-requester-id");
       //alert(requested_id);
       $.ajax({
-            url: url_link_startup+"bookmark.php",
+            url: url_link+"bookmark.php",
             method: "POST",
             data: {requested_id: requested_id, requester_id: requester_id},
             dataType: "html",

@@ -152,7 +152,7 @@ $response[] = array(
 	'video'=> $row_startup['Video'],
 	'screenshot'=> $row_startup['Screenshot'],
 	'fullname'=> $row_startup['Fullname'],
-	'position'=> $row_startup['Position'],
+	'title'=> $row_startup['Title'],
 	'likes'=> $row4['Likes'],
 	'date'=> $row_startup['Date_Posted']
 	 );

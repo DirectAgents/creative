@@ -162,12 +162,12 @@ $cloudinary_section = 'startups';
                 ?>                 
                                  
                 
-    <div class="col-md-6 col-sm-6 text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
+    <div class="col-md-<?php if($row_entrepreneur['Type'] == 'Startup'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] == 'Startup'){echo '12';}else{echo '6';} ?> text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
         <?php }else{ ?> style="display:none" <?php } ?> >
                                    <a href="javascript: void(0);" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-success waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Connect</a>
                                  </div> 
                
-    <div class="col-md-6 col-sm-6 text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block; margin-bottom:10px; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
+    <div class="col-md-<?php if($row_entrepreneur['Type'] == 'Startup'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] == 'Startup'){echo '12';}else{echo '6';} ?> text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block; margin-bottom:10px; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
                                     <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
@@ -184,12 +184,12 @@ $cloudinary_section = 'startups';
                 ?>                 
                                  
                 
-    <div class="col-md-6 col-sm-6 text-center sa-bookmark" <?php if ($sql_bookmark->num_rows == 0){ ?> style="display:block" 
+    <div class="col-md-6 col-sm-6 text-center sa-bookmark" <?php if ($sql_bookmark->num_rows == 0 && $row_entrepreneur['Type'] == 'Investor'){ ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
                                    <a href="#/" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light bookmark" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Bookmark</a>
                                  </div> 
                
-    <div class="col-md-6 col-sm-6 text-center sa-bookmarked" <?php if ($sql_bookmark->num_rows == 1){ ?> style="display:block; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
+    <div class="col-md-6 col-sm-6 text-center sa-bookmarked" <?php if ($sql_bookmark->num_rows == 1 && $row_entrepreneur['Type'] == 'Investor'){ ?> style="display:block; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
                                     <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-check"></i></span>Bookmarked</a>
                                   </div>
                 

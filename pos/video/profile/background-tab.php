@@ -100,6 +100,39 @@ while($row_skills = mysqli_fetch_array($sql_skills)){
 
    <!--Skills End--> 
 
+  
+
+
+
+<!--Social Starts-->
+
+ <div class="col-sm-12" style="padding-left: 0px;"> 
+        <div class="col-sm-3"><strong>Social</strong></div>
+        <br><br>
+    </div>
+
+    <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <div class="form-group" style="padding-left:0px;">
+                                                        <label class="col-md-3" style="padding-left:0px;">Facebook</label>
+                                                        <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group" style="padding-left:0px;">
+                                                        <label class="col-md-3" style="padding-left:0px;">Twitter</label>
+                                                        <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter'];?>" class="form-control form-control-line"> </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group" style="padding-left:0px;">
+                                                        <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
+                                                        <input type="text" id="fm_linkedin" name="fm_linkedin" value="<?php echo $row['Linkedin'];?>" class="form-control form-control-line"> </div>
+                                                </div>
+                                            </div>
+
+<!--Social Edns-->
+
+
+
 <!--Resume Starts--> 
 
  <div class="col-sm-12" style="padding-left: 0px;"> 
@@ -157,7 +190,7 @@ View Resume
     <?php }else{ ?>
 
 
-	 <div class="form-group">
+   <div class="form-group">
                                             <div class="col-sm-12">
                                                             <a href="#" class="cloudinary-button" id="upload_widget_multiple_resume">Upload Resume</a>
                                                            <br>
@@ -184,37 +217,7 @@ View Resume
   
   <?php } ?>  
 
-<!--Resume Ends-->     
-
-
-
-<!--Social Starts-->
-
- <div class="col-sm-12" style="padding-left: 0px;"> 
-        <div class="col-sm-3"><strong>Social</strong></div>
-        <?php if($row['Resume'] != ''){ ?><div class="col-sm-3"><a href="#/" id="edit-resume"><i class="ti-pencil"></i></a></div><?php } ?>
-        <br><br>
-    </div>
-
-    <div class="form-group">
-                                                <div class="col-md-4">
-                                                    <div class="form-group" style="padding-left:0px;">
-                                                        <label class="col-md-3" style="padding-left:0px;">Facebook</label>
-                                                        <input type="text" id="fm_facebook" name="fm_facebook" value="<?php echo $row['Facebook'];?>" class="form-control form-control-line"> </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group" style="padding-left:0px;">
-                                                        <label class="col-md-3" style="padding-left:0px;">Twitter</label>
-                                                        <input type="text" id="fm_twitter" name="fm_twitter" value="<?php echo $row['Twitter'];?>" class="form-control form-control-line"> </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group" style="padding-left:0px;">
-                                                        <label class="col-md-3" style="padding-left:0px;">Linkedin</label>
-                                                        <input type="text" id="fm_linkedin" name="fm_linkedin" value="<?php echo $row['Linkedin'];?>" class="form-control form-control-line"> </div>
-                                                </div>
-                                            </div>
-
-<!--Social Edns-->
+<!--Resume Ends-->   
 
 
 
@@ -275,7 +278,6 @@ echo '</div>';
 
 <!--Resume-->
  <div class="col-sm-12" style="padding-left: 0px;">  
- <br><br> 
      <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Resume</strong><br><br></div>
   </div> 
   <div class="col-sm-12"> 
