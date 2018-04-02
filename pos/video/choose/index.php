@@ -73,7 +73,7 @@ if(empty($row['Type'])){
       <div class="row">
         <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
-            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup"><img class="card-img-top" src="https://res.cloudinary.com/dgml9ji66/image/upload/v1522705318/people-coffee-tea-meeting_knvzzg.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup">I'm a Startup</a>
@@ -84,7 +84,7 @@ if(empty($row['Type'])){
         </div>
         <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
-            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Investor"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Investor"><img class="card-img-top" src="https://res.cloudinary.com/dgml9ji66/image/upload/v1522705840/pexels-photo-302842_rquks4.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
                 <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Investor">I'm an Accredited Investor</a>
