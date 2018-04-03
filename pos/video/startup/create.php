@@ -18,7 +18,7 @@
  $row_entrepreneur = mysqli_fetch_array($result);
 
 
- if ($result->num_rows == 1 && $row_entrepreneur['Type'] != 'Startup' ){
+ if ($result->num_rows == 1 && $row_entrepreneur['Type'] != 'StartupE' ){
   header("Location: ".BASE_PATH."");
   exit();
 }  
@@ -68,7 +68,7 @@ $cloudinary_section = 'startups';
             
 
          <?php 
-        if($row_entrepreneur['Type'] == 'Startup'){ include '../left-sidebar-startup.php';} 
+        if($row_entrepreneur['Type'] == 'StartupE'){ include '../left-sidebar-startup.php';} 
         if($row_entrepreneur['Type'] == 'Investor'){ include '../left-sidebar-investor.php';}
         ?>
         

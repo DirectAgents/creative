@@ -97,7 +97,7 @@ $row = mysqli_fetch_array($sql);
    <a href="<?php echo $row['Video']; ?>" class="fancybox-media_button bg-info"><i class="ti-eye"></i></a>  
 
 <?php if(isset($_SESSION['entrepreneurSession']) && $_GET['id'] != $_SESSION['entrepreneurSession'] ) { ?> 
- <a href="#" class="bg-danger bookmark" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-bookmark"></i></a>
+ <a href="#" class="bg-danger bookmark-startup" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-bookmark"></i></a>
 
  <a href="#" class="bg-danger like" data-industry="<?php echo $row['Industry']; ?>" data-requested-id="<?php echo $_GET['id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>"><i class="ti-heart"></i></a>
 

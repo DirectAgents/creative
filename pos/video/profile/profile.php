@@ -56,7 +56,7 @@ $cloudinary_section = 'startups';
             
 
         <?php 
-        if($row_entrepreneur['Type'] == 'Startup'){ include '../left-sidebar-startup.php';} 
+        if($row_entrepreneur['Type'] == 'StartupE'){ include '../left-sidebar-startup.php';} 
         if($row_entrepreneur['Type'] == 'Investor'){ include '../left-sidebar-investor.php';}
         ?>
         
@@ -70,8 +70,8 @@ $cloudinary_section = 'startups';
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                             <h4 class="page-title">Profile page</h4> 
                         </div>
-                        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                       <?php if($row_entrepreneur['Type'] == 'Entrepreneur' && $row_startup['Name'] == ''){ ?>
+                        <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
+                       <?php if($row_entrepreneur['Type'] == 'StartupE' && $row_startup['Name'] == ''){ ?>
                         <a href="<?php echo BASE_PATH; ?>/startup/create" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Add a Startup</a>
                         <?php } ?>
                        
@@ -155,19 +155,19 @@ $cloudinary_section = 'startups';
 
         <?php 
 
-    if($row_entrepreneur['Type'] == 'Startup'){$type = 'startup';}
+    if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
     if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
 
     $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
                 ?>                 
                                  
                 
-    <div class="col-md-<?php if($row_entrepreneur['Type'] == 'Startup'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] == 'Startup'){echo '12';}else{echo '6';} ?> text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
+    <div class="col-md-<?php if($row_entrepreneur['Type'] != 'Startup'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] != 'Startup'){echo '12';}else{echo '6';} ?> text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
         <?php }else{ ?> style="display:none" <?php } ?> >
                                    <a href="javascript: void(0);" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-success waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Connect</a>
                                  </div> 
                
-    <div class="col-md-<?php if($row_entrepreneur['Type'] == 'Startup'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] == 'Startup'){echo '12';}else{echo '6';} ?> text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block; margin-bottom:10px; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
+    <div class="col-md-<?php if($row_entrepreneur['Type'] != 'Startup'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] != 'Startup'){echo '12';}else{echo '6';} ?> text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block; margin-bottom:10px; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
                                     <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
@@ -178,26 +178,48 @@ $cloudinary_section = 'startups';
 
  <?php 
 
-   
+   //Bookmark Investor
 
-    $sql_bookmark = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+    $sql_bookmark = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND Type = 'Investor'");
                 ?>                 
                                  
                 
-    <div class="col-md-6 col-sm-6 text-center sa-bookmark" <?php if ($sql_bookmark->num_rows == 0 && $row_entrepreneur['Type'] == 'Investor'){ ?> style="display:block" 
+  <div class="col-md-<?php if($row_entrepreneur['Type'] == 'Investor'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] == 'Investor'){echo '12';}else{echo '6';} ?> text-center sa-bookmark-investor" <?php if ($sql_bookmark->num_rows == 0 && $row_entrepreneur['Type'] == 'Investor'){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
         <?php }else{ ?> style="display:none" <?php } ?> >
-                                   <a href="#/" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light bookmark" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Bookmark</a>
+                                   <a href="#/" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light bookmark-investor" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Bookmark</a>
                                  </div> 
                
-    <div class="col-md-6 col-sm-6 text-center sa-bookmarked" <?php if ($sql_bookmark->num_rows == 1 && $row_entrepreneur['Type'] == 'Investor'){ ?> style="display:block; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
+ 
+<div class="col-md-<?php if($row_entrepreneur['Type'] == 'Investor'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] == 'Investor'){echo '12';}else{echo '6';} ?> text-center sa-bookmarked-investor" <?php if ($sql_bookmark->num_rows == 1 && $row_entrepreneur['Type'] == 'Investor'){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
+        <?php }else{ ?> style="display:none" <?php } ?> >
+
                                     <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-check"></i></span>Bookmarked</a>
                                   </div>
                 
+                            
 
 
+ <?php 
+
+   //Bookmark Startup Employee
+
+    $sql_bookmark = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND Type = 'StartupE'");
+                ?>                 
+                
 
 
-                              
+ <div class="col-md-<?php if($row_entrepreneur['Type'] == 'StartupE'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] == 'StartupE'){echo '12';}else{echo '6';} ?> text-center sa-bookmark-startupe" <?php if ($sql_bookmark->num_rows == 0 && $row_entrepreneur['Type'] == 'StartupE'){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
+        <?php }else{ ?> style="display:none" <?php } ?> >
+
+                                   <a href="#/" id="sa-connect-profile" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light bookmark-startupe" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Bookmark</a>
+                                 </div> 
+               
+ <div class="col-md-<?php if($row_entrepreneur['Type'] == 'StartupE'){echo '12';}else{echo '6';} ?> col-sm-<?php if($row_entrepreneur['Type'] == 'StartupE'){echo '12';}else{echo '6';} ?> text-center sa-bookmarked-startupe" <?php if ($sql_bookmark->num_rows == 1 && $row_entrepreneur['Type'] == 'StartupE'){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
+        <?php }else{ ?> style="display:none" <?php } ?> >
+
+                                    <a href="javascript: void(0);" id="sa-connect-profile-cancel" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light" style="font-size:13px"><span class="btn-label"><i class="fa fa-check"></i></span>Bookmarked</a>
+                                  </div>
+                
                             <?php } ?> 
 
 

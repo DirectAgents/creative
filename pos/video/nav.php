@@ -32,7 +32,7 @@ $firstname = $words[0];
 
 ////////////////Notifications for Connect Requests///////////////////////////
 
-if($rownav['Type'] == 'Startup'){$table = 'tbl_connections_startup';}
+if($rownav['Type'] == 'StartupE'){$table = 'tbl_connections_startup';}
 if($rownav['Type'] == 'Investor'){$table = 'tbl_connections_investor';}
 
 $result_count = mysqli_query($connecDB,"SELECT requested_id, requester_id, Date, Time, COUNT(DISTINCT requested_id) AS count FROM ".$table." WHERE requested_id = '".$rownav['userID']."' GROUP BY requested_id");
@@ -609,7 +609,7 @@ $row13 = mysqli_fetch_array($sql13);
                             <?php } ?>
                             <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="fas fa-users"></i> Connections</a></li>
                             <li><a href="<?php echo BASE_PATH; ?>/bookmarks/">&nbsp;<i class="fas fa-bookmark"></i>&nbsp;&nbsp;Bookmarks</a></li>
-                             <?php if($row_startup['Name'] == '' && $rownav['Type'] == 'Startup'){ ?>
+                             <?php if($row_startup['Name'] == '' && $rownav['Type'] == 'StartupE'){ ?>
                              <li role="separator" class="divider"></li>
                              <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="fas fa-rocket"></i>&nbsp;&nbsp;Add a Startup</a></li>
                             <?php } ?>

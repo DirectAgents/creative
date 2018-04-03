@@ -10,9 +10,9 @@
 
 if(!isset($_SESSION['entrepreneurSession'])){
  
-header('Location: '.BASE_PATH.'');
+//header('Location: '.BASE_PATH.'');
 //echo "yo";
-exit();
+//exit();
 
 }
 
@@ -22,12 +22,12 @@ $sql = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$_SESSIO
 $row = mysqli_fetch_array($sql); 
 
 if(!empty($row['Type'])){
-  header('Location: '.BASE_PATH.'');
-  exit();
+  //header('Location: '.BASE_PATH.'');
+  //exit();
 }
 
 
-if(empty($row['Type'])){
+if(!empty($row['Type'])){
 
  
 
@@ -73,10 +73,10 @@ if(empty($row['Type'])){
       <div class="row">
         <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
-            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup"><img class="card-img-top" src="https://res.cloudinary.com/dgml9ji66/image/upload/v1522705318/people-coffee-tea-meeting_knvzzg.jpg" alt=""></a>
+            <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=StartupE"><img class="card-img-top" src="https://res.cloudinary.com/dgml9ji66/image/upload/v1522705318/people-coffee-tea-meeting_knvzzg.jpg" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=Startup">I'm a Startup</a>
+                <a href="<?php echo BASE_PATH; ?>/choose/c.php?type=StartupE">I'm a Startup</a>
               </h4>
               <p class="card-text">I have a startup or small business.</p>
             </div>
@@ -106,12 +106,12 @@ if(empty($row['Type'])){
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <!--<footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; 2018</p>
       </div>
       <!-- /.container -->
-    </footer>
+    <!--</footer>-->
 
 
 

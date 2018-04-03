@@ -57,7 +57,7 @@ $cloudinary_section = 'startups';
             
 
         <?php 
-        if($row_entrepreneur['Type'] == 'Startup'){ include 'left-sidebar-startup.php';} 
+        if($row_entrepreneur['Type'] == 'StartupE'){ include 'left-sidebar-startup.php';} 
         if($row_entrepreneur['Type'] == 'Investor'){ include 'left-sidebar-investor.php';}
         ?>
         
@@ -219,7 +219,7 @@ $cloudinary_section = 'startups';
                                         
                 if( ! mysqli_num_rows($sql_bookmarks) ) {
                 echo '<div class="col-md-12 col-sm-12">';
-                echo "<div class='no-connections text-center'>You haven't bookmarked any entrepreneur yet!</div>"; 
+                echo "<div class='no-connections text-center'>You haven't bookmarked any Startups yet!</div>"; 
                 echo '</div>';
                 }else{
 
@@ -236,8 +236,8 @@ $cloudinary_section = 'startups';
         <thead>
             <tr>
                 
-                <th>NAME</th>
-                <th>TYPE</th>
+                <th width="30%">NAME</th>
+                <th width="15%">TYPE</th>
                 <th>LOCATION</th>
                 <th>INDUSTRY</th>
                 <td>MANAGE</td>
@@ -311,7 +311,15 @@ $cloudinary_section = 'startups';
             
             <td>
                 <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>">
-                    <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30"></a>
+                
+                <?php if($row_startup['Logo'] != '' && $row_startup['Logo'] != 'on' ) { ?>
+                    <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30">
+                <?php }else{ ?> 
+                <img src="http://res.cloudinary.com/dgml9ji66/image/upload/v1522625555/rocket_z6vxuz.jpg" class="img-circle" width="30">
+                <?php } ?>
+
+
+                </a>
                      <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>">
                     <?php echo $row_startup['Name']; ?>
                 </a>    
@@ -319,8 +327,8 @@ $cloudinary_section = 'startups';
 
 
             <td>
-                
-                    <?php echo $row_bookmarks['Type']; ?>
+                <span class="label label-inverse"><?php echo $row_bookmarks['Type']; ?></span>
+                    
                  
             </td>
             

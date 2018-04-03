@@ -901,10 +901,44 @@ $('#sa-connect-profile-cancel').click(function(){
 
 
 
-  $('.bookmark').click(function(){
+  $('.bookmark-startup').click(function(){
 
-      var requested_id = $(".bookmark").attr("data-requested-id");
-      var requester_id = $(".bookmark").attr("data-requester-id");
+      var requested_id = $(".bookmark-startup").attr("data-requested-id");
+      var requester_id = $(".bookmark-startup").attr("data-requester-id");
+      //alert(requested_id);
+      $.ajax({
+            url: url_link_startup+"bookmark.php",
+            method: "POST",
+            data: {requested_id: requested_id, requester_id: requester_id},
+            dataType: "html",
+            success: function(response) {
+
+             if(response == 'good'){ 
+             
+            parent.swal("Success!", "You have it bookmarked.", "success");  
+            $('.sa-bookmark-startup').hide();
+            $('.sa-bookmarked-startup').show();
+
+              }else{
+
+        parent.swal({   
+            title: "You already have it bookmarked.",   
+            type: "warning",   
+            confirmButtonColor: "#DD6B55",   
+        });
+
+              }
+
+                }
+             });                   
+    }); 
+
+
+
+    $('.bookmark-startupe').click(function(){
+
+      var requested_id = $(".bookmark-startupe").attr("data-requested-id");
+      var requester_id = $(".bookmark-startupe").attr("data-requester-id");
       //alert(requested_id);
       $.ajax({
             url: url_link+"bookmark.php",
@@ -916,8 +950,42 @@ $('#sa-connect-profile-cancel').click(function(){
              if(response == 'good'){ 
              
             parent.swal("Success!", "You have it bookmarked.", "success");  
-            $('.sa-bookmark').hide();
-            $('.sa-bookmarked').show();
+            $('.sa-bookmark-startupe').hide();
+            $('.sa-bookmarked-startupe').show();
+
+              }else{
+
+        parent.swal({   
+            title: "You already have it bookmarked.",   
+            type: "warning",   
+            confirmButtonColor: "#DD6B55",   
+        });
+
+              }
+
+                }
+             });                   
+    });  
+
+
+
+    $('.bookmark-investor').click(function(){
+
+      var requested_id = $(".bookmark-investor").attr("data-requested-id");
+      var requester_id = $(".bookmark-investor").attr("data-requester-id");
+      //alert(requested_id);
+      $.ajax({
+            url: url_link_investor+"bookmark.php",
+            method: "POST",
+            data: {requested_id: requested_id, requester_id: requester_id},
+            dataType: "html",
+            success: function(response) {
+
+             if(response == 'good'){ 
+             
+            parent.swal("Success!", "You have it bookmarked.", "success");  
+            $('.sa-bookmark-investor').hide();
+            $('.sa-bookmarked-investor').show();
 
               }else{
 

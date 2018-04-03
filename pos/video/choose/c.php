@@ -354,7 +354,7 @@ $result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options =
 
 
 ////POST//////
-/*
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
@@ -362,7 +362,7 @@ if(isset($_SESSION['google_id'])){
 
  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (google_id, Email, Fullname, google_picture_link, google_token, ProfileImage, Type) 
       VALUES ('".$_SESSION['google_id']."', '".$_SESSION['email']."', '".$_SESSION['fullname']."', '".$_SESSION['google_picture_link']."', 
-      '".$_SESSION['access_token']."', 'Google' ,'Investor')");
+      '".$_SESSION['access_token']."', 'Google' ,'".$_GET['type']."')");
 
 
  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
@@ -376,7 +376,7 @@ if(isset($_SESSION['google_id'])){
 if(isset($_SESSION['facebook_id'])){
 
  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (facebook_id, Email, Type) 
-      VALUES ('".$_SESSION['facebook_id']."', '".$_SESSION['email']."', 'Investor')");
+      VALUES ('".$_SESSION['facebook_id']."', '".$_SESSION['email']."', '".$_GET['type']."')");
 
 
  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
@@ -392,7 +392,7 @@ if(isset($_SESSION['linkedin_id'])){
 
  $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (linkedin_id, Email, Fullname, linkedin_picture_link, ProfileImage, Type) 
       VALUES ('".$_SESSION['linkedin_id']."', '".$_SESSION['email']."' , '".$_SESSION['fullname']."', 
-      '".$_SESSION['linkedin_picture_link']."', 'Linkedin', 'Investor')");
+      '".$_SESSION['linkedin_picture_link']."', 'Linkedin', '".$_GET['type']."')");
 
  $sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE Email = '".$_SESSION['email']."'");
  $row2 = mysqli_fetch_array($sql);
@@ -400,10 +400,10 @@ if(isset($_SESSION['linkedin_id'])){
 
 
 
-}*/
+}
  //echo  $_SESSION['entrepreneurSession'];
  //echo  $_SESSION['usernameSession'];
- header("Location:http://localhost/creative/pos/video/");
+ header('Location: '.BASE_PATH.'');
  exit();
 
 

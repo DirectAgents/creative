@@ -9,7 +9,7 @@
 if($_POST){
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id='".$_POST['requester_id']."' AND requested_id='".$_POST['requested_id']."' ");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id='".$_POST['requester_id']."' AND requested_id='".$_POST['requested_id']."' AND Type = 'Investor' ");
 $row = mysqli_fetch_array($sql);
 
 

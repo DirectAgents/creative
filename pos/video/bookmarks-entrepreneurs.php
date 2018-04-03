@@ -57,7 +57,7 @@ $cloudinary_section = 'startups';
             
 
         <?php 
-        if($row_entrepreneur['Type'] == 'Startup'){ include 'left-sidebar-startup.php';} 
+        if($row_entrepreneur['Type'] == 'StartupE'){ include 'left-sidebar-startup.php';} 
         if($row_entrepreneur['Type'] == 'Investor'){ include 'left-sidebar-investor.php';}
         ?>
         
@@ -218,7 +218,7 @@ $cloudinary_section = 'startups';
                                         
                 if( ! mysqli_num_rows($sql_bookmarks) ) {
                 echo '<div class="col-md-12 col-sm-12">';
-                echo "<div class='no-connections text-center'>You haven't bookmarked any entrepreneur yet!</div>"; 
+                echo "<div class='no-connections text-center'>You haven't bookmarked any Entrepreneurs yet!</div>"; 
                 echo '</div>';
                 }else{
 
@@ -236,8 +236,8 @@ $cloudinary_section = 'startups';
         <thead>
             <tr>
                 
-                <th>NAME</th>
-                <th>TYPE</th>
+                <th width="30%">NAME</th>
+                <th width="30%">TYPE</th>
                 <th>LOCATION</th>
                 <td>MANAGE</td>
             </tr>
@@ -268,16 +268,17 @@ $cloudinary_section = 'startups';
                     closeOnConfirm: false
                 }, function() {
 
-                    var url_link = 'http://localhost/creative/pos/video/startup/';
+                    var url_link = 'http://localhost/creative/pos/video/profile/';
 
                     var requested_id = $("#bookmark-delete-" + <?php echo $row_bookmarks['requested_id']; ?>).attr("data-requested-id");
                     var requester_id = $("#bookmark-delete-" + <?php echo $row_bookmarks['requested_id']; ?>).attr("data-requester-id");
+                    var type = $("#bookmark-delete-" + <?php echo $row_bookmarks['requested_id']; ?>).attr("data-type");
                     //alert(requested_id);
 
                     $.ajax({
                         url: url_link + "bookmark-delete.php",
                         method: "GET",
-                        data: { requested_id: requested_id, requester_id: requester_id },
+                        data: { requested_id: requested_id, requester_id: requester_id, type: type },
                         dataType: "html",
                         success: function(response) {
 
@@ -309,18 +310,40 @@ $cloudinary_section = 'startups';
         <tr class="advance-table-row connections-tab-inside">
             
             <td>
-                <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_users['Name']; ?>">
-                    <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30"></a>
+                <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_users['username']; ?>">
+                  
+
+<?php if($row_users['ProfileImage'] == 'Google'){ ?>
+         <img src="<?php echo $row_users['google_picture_link']; ?>" class="img-circle" width="30" alt="img">
+<?php } ?>
+
+<?php if($row_users['ProfileImage'] == 'Facebook'){ ?>
+<img src="https://graph.facebook.com/<?php echo $row_users['facebook_id']; ?>/picture" class="img-circle" width="30" alt="img">
+<?php } ?>
+
+<?php if($row_users['ProfileImage'] == 'Linkedin'){ ?>
+        <img src="<?php echo $row_users['linkedin_picture_link']; ?>" class="img-circle" width="30" alt="img">
+       
+<?php } ?>
+</a>
+
+
                      <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_users['username']; ?>">
-                    <?php echo $row_users['Fullname']; ?>
+                    &nbsp;&nbsp;<?php echo $row_users['Fullname']; ?>
                 </a>    
             </td>
 
 
             <td>
-                
-                    <?php echo $row_users['Type']; ?>
-                 
+                <?php if($row_users['Type'] == 'Investor'){ ?>
+                <span class="label label-info"><?php echo $row_users['Type']; ?></span>
+                <?php } ?>
+
+                <?php if($row_users['Type'] == 'StartupE'){ ?>
+                 <span class="label label-danger">Startup Employee</span>
+                <?php } ?>
+
+                     
             </td>
             
             <td>
@@ -329,7 +352,7 @@ $cloudinary_section = 'startups';
             </td>
           
             <td>
-                <button type="button" id="bookmark-delete-<?php echo $row_bookmarks['requested_id']; ?>" data-requested-id="<?php echo $row_bookmarks['requested_id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
+                <button type="button" id="bookmark-delete-<?php echo $row_bookmarks['requested_id']; ?>" data-type="<?php echo $row_bookmarks['Type']; ?>" data-requested-id="<?php echo $row_bookmarks['requested_id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
             </td>
         </tr>
        

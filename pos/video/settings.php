@@ -53,7 +53,7 @@ $cloudinary_section = 'startups';
             
 
          <?php 
-        if($row_entrepreneur['Type'] == 'Startup'){ include 'left-sidebar-startup.php';} 
+        if($row_entrepreneur['Type'] == 'StartupE'){ include 'left-sidebar-startup.php';} 
         if($row_entrepreneur['Type'] == 'Investor'){ include 'left-sidebar-investor.php';}
         ?>
         
@@ -143,7 +143,7 @@ $cloudinary_section = 'startups';
 
         <?php 
 
-    if($row_entrepreneur['Type'] == 'Startup'){$type = 'startup';}
+    if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
     if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
     
 

@@ -9,7 +9,7 @@
 if($_GET){
 
 
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id='".$_GET['requester_id']."' AND requested_id='".$_GET['requested_id']."' ");
+$sql = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id='".$_GET['requester_id']."' AND requested_id='".$_GET['requested_id']."' AND Type = '".$_GET['type']."' ");
 $row = mysqli_fetch_array($sql);
 
 
@@ -22,7 +22,7 @@ echo "no good";
 }else{
 
 
-$sql=mysqli_query($connecDB,"DELETE FROM tbl_bookmarks WHERE requester_id='".$_GET['requester_id']."' AND requested_id='".$_GET['requested_id']."'");	
+$sql=mysqli_query($connecDB,"DELETE FROM tbl_bookmarks WHERE requester_id='".$_GET['requester_id']."' AND requested_id='".$_GET['requested_id']."' AND Type = '".$_GET['type']."'");	
 
 echo "good";
 

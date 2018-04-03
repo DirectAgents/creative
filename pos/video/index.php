@@ -95,7 +95,7 @@ $left_sidebar_industry = 'startups';
                                 <br>
                                 <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 
                                 <span class="m-r-10"><i class="fa fa-heart-o"></i> <div class="likes"><div id="likes{{objectID}}">{{{_highlightResult.likes.value}}}</div></div></span>  
-                                    <i class="fa fa-industry"></i> {{{_highlightResult.industry.value}}}</small>
+                                    <i class="fa fa-industry"></i> <a href="<?php echo BASE_PATH; ?>/?q={{{_highlightResult.industry.value}}}" style="color:#8d9ea7">{{{_highlightResult.industry.value}}}</a></small>
                             </div>
                         </div>
                     </div>
