@@ -1,88 +1,14 @@
 <?php
 
- session_start();
- require_once '../class.entrepreneur.php';
- require_once '../base_path.php';
- include_once("../config.php"); 
-
-
-if($_POST){
-
-	
-
-$sql = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$_POST['requester_id']."'");
-if(mysqli_num_rows($sql) > 0 ) {
-$row= mysqli_fetch_array($sql);
-
-
-date_default_timezone_set('America/New_York');
-$date = date("Y-m-d");
-$time = date('h:i:s A');  
-
-
-if($row['Type'] == 'StartupE'){
-
-
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$time."', '".$date."')");
-
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$time."', '".$date."')");
-
-}
-
-
-if($row['Type'] == 'Investor'){
-
-echo $row['Type'];
-
-
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$time."', '".$date."')");
-
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$time."', '".$date."')");
-
-}
-
-
-
-
-
-
-
-
-$sql_requested = "SELECT * FROM tbl_users WHERE userID ='".$_POST['requested_id']."'";  
-$result = mysqli_query($connecDB, $sql_requested);  
-$row_requested = mysqli_fetch_array($result);
-
-
-
-
-if($row['ProfileImage'] == 'Google'){ 
-    $image =  '<img src="'.$row['google_picture_link'].'" style="border-radius:50%; height:120px; width:120px">';
-} 
-
-if($row['ProfileImage'] == 'Facebook'){
-
-$image = '<img src="https://graph.facebook.com/'.$row['facebook_id'].'/picture?type=large" style="border-radius:50%; height:120px; width:120px">';
-}
-
-if($row['ProfileImage'] == 'Linkedin'){
-   $image =  '<img src="'.$row['linkedin_picture_link'].'" style="border-radius:50%; height:120px; width:120px" >';
-} 
-
-
-
 // using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
 // If you are using Composer (recommended)
 require '../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email($row['Fullname']. " wants to connect with you", "support@valifyit.com");
-$subject = $row['Fullname']. " wants to connect with you";
-$to = new SendGrid\Email('', $row_requested['Email']);
+$from = new SendGrid\Email("Welcome", "support@valifyit.com");
+$subject = "Welcome";
+$to = new SendGrid\Email('', $_SESSION['email']);
 $content = new SendGrid\Content("text/html", '
          
 <body style="margin: 0 !important; padding: 0 !important;">
@@ -299,12 +225,5 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->headers();
 //echo $response->body();
 
-
-            
-
-
-}
-
-}
 
 ?>

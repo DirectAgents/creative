@@ -146,8 +146,8 @@ $result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options =
 
 
 
-        header('Location: '.BASE_PATH.'');
-        exit();
+        //header('Location: '.BASE_PATH.'');
+        //exit();
 
        } 
 
@@ -244,10 +244,10 @@ $result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options =
 }
        
 
-        header('Location: '.BASE_PATH.'');
+        //header('Location: '.BASE_PATH.'');
         //echo "asdfsaf";
         //echo $_SESSION['email'];
-        exit();
+        //exit();
 
        } 
 
@@ -344,8 +344,8 @@ $result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options =
 
 
 
-        header('Location: '.BASE_PATH.'');
-        exit();
+        //header('Location: '.BASE_PATH.'');
+        //exit();
 
        } 
 
@@ -401,6 +401,11 @@ if(isset($_SESSION['linkedin_id'])){
 
 
 }
+
+
+include 'welcome-email.php';
+
+
  //echo  $_SESSION['entrepreneurSession'];
  //echo  $_SESSION['usernameSession'];
  header('Location: '.BASE_PATH.'');

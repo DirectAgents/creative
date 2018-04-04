@@ -10,7 +10,7 @@
                 <nav class="nav--main">
                     <ul>
 
-                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a href="<?php echo BASE_PATH; ?>/startups"/>For Startups</a></li>
+                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46"><a href="<?php echo BASE_PATH; ?>/for/startups"/>For Startups</a></li>
                         
                         
                         <?php if(isset($_SESSION['entrepreneurSession']) && $_SESSION['entrepreneurSession'] == $row_entrepreneur['userID']) { ?>

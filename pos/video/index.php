@@ -77,7 +77,7 @@ $left_sidebar_industry = 'startups';
 
                         <div class="white-box-index">
                             <div class="product-img">
-                                <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_340/v1/{{{_highlightResult.screenshot.value}}}"/>
+                                <img src="https://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_340/v1/{{{_highlightResult.screenshot.value}}}"/>
 
                                 <div class="pro-img-overlay">
    
@@ -89,7 +89,7 @@ $left_sidebar_industry = 'startups';
                             </div>
 
                             <div class="product-text">
-                                <span class="pro-price"><img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></span>
+                                <span class="pro-price"><img src="https://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></span>
                                 <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/{{{_highlightResult.name.value}}}">{{{_highlightResult.name.value}}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
