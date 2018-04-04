@@ -36,8 +36,7 @@ $angellist = '';
 $sql = mysqli_query($connecDB,"SELECT * FROM startups WHERE id='".$_POST['id']."'");
 $row = mysqli_fetch_array($sql);
 
-if($_POST['logo'] == '' || $_POST['logo'] == 'on' ){$logo = $row['Logo'];}else{$logo = $_POST['logo'];}
-if($_POST['screenshot'] == ''){$screenshot = $row['Screenshot'];}else{$screenshot = $_POST['screenshot'];}
+
 
 
 $arr = explode(",", $_POST['location'], 2);
@@ -73,7 +72,8 @@ function seoUrl($string) {
 if ($sql->num_rows == 0){
 
 
-
+if($_POST['logo'] == 'on' ){$logo = 'rocket_z6vxuz';}else{$logo = $_POST['logo'];}
+if($_POST['screenshot'] == 'on'){$screenshot = 'industries/placeholder-blue';}else{$screenshot = $_POST['screenshot'];}
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO startups(userID, startupID, Name, Url, Title, Industry, City, State, ZipCode, About, Description, Logo, Video, Screenshot, Facebook, Twitter, AngelList, Date_Posted) VALUES('".$_POST['userid']."', '".$_POST['userid']."' ,'".$_POST['name']."', '".seoUrl($_POST['name'])."' , '".$_POST['title']."' ,
@@ -106,7 +106,7 @@ $row_startup = mysqli_fetch_array($sql_startup);
 
 //Upload to algolia
 
-if($row_startup ['Logo'] == '' || $row_startup ['Logo'] == 'on' ){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
+if($_POST['logo'] == 'on' ){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
 
 $date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
 
@@ -151,6 +151,9 @@ foreach ($chunks as $batch) {
 
 }else{
 
+
+if($_POST['logo'] == 'on' ){$logo = $row['Logo'];}else{$logo = $_POST['logo'];}
+if($_POST['screenshot'] == 'on'){$screenshot = $row['Screenshot'];}else{$screenshot = $_POST['screenshot'];}
 
 
 $sql = "UPDATE startups SET 
@@ -240,9 +243,11 @@ mysqli_query($connecDB, $sql);
 
 //Upload to algolia
 
-if($row_startup ['Logo'] == '' || $row_startup ['Logo'] == 'on' ){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
+if($row_startup ['Logo'] == 'on'){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
 
-$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
+$date_algolia = date('F j',strtotime($row['Date_Posted']));  // January 30, 2015, for example.
+
+if(empty($row_likes['Likes'])){$likes = '0';}else{$likes = $row_likes['Likes'];}
 
 $response = array();
 
@@ -259,7 +264,7 @@ $response[] = array(
 	'screenshot'=> $screenshot,
 	'fullname'=> $row_startup['Fullname'],
 	'title'=> $row_startup['Title'],
-	'likes'=> $row_likes['Likes'],
+	'likes'=> $likes,
 	'date'=> $date_algolia
 	 );
 
@@ -292,9 +297,7 @@ echo $_POST['position'];
 echo '</h5>';
 echo '</div>';
 
-echo "<div id='startup-link'>";
-echo seoUrl($_POST['name']);
-echo "</div>";
+
 
 /*
 $dateTime = "2017-03-05";

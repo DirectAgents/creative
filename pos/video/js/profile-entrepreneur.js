@@ -381,7 +381,7 @@ $( "#save-company" ).on( "submit", function(e) {
     var fm_angellist = $("input[name='fm_angellist']").val();
     var fm_video = $("input[name='fm_video']").val();
     //var skills = $('input[name="skillselectionteammember[]"]:checked').map(function() { return this.value; }).get().join(",");
-    //alert(logo);
+    //alert(screenshot);
 
   /*
   if (screenshot == '' || screenshot == 'on') {
@@ -480,7 +480,8 @@ $( "#save-company" ).on( "submit", function(e) {
                 
                 var url_startup_link = $(response).filter('#startup-link').html();
 
-                window.location.href = url_link_startup+url_startup_link;
+
+                window.location.href = url_link_startup+fm_name;
 
                
                 //alert(skills_count);  

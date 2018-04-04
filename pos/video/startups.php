@@ -90,7 +90,7 @@ $left_sidebar_industry = 'startups';
 
                             <div class="product-text">
                                 <span class="pro-price"><img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></span>
-                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/{{url}}">{{{_highlightResult.name.value}}}</a></h3>
+                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/{{{_highlightResult.name.value}}}">{{{_highlightResult.name.value}}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
                                 <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 

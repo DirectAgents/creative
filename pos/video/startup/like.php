@@ -139,6 +139,10 @@ $row4 = mysqli_fetch_array($sql4);
 
 //if($row['Likes'] == 0){$likes = '0';}else{$likes = $row['Likes'];}
 
+$sql = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID='".$_POST['requested_id']."'");
+$row = mysqli_fetch_array($sql);
+
+$date_algolia = date('F j',strtotime($row['Date_Posted']));  // January 30, 2015, for example.
 
 $response = array();
 
@@ -154,7 +158,7 @@ $response[] = array(
 	'fullname'=> $row_startup['Fullname'],
 	'title'=> $row_startup['Title'],
 	'likes'=> $row4['Likes'],
-	'date'=> $row_startup['Date_Posted']
+	'date'=> $date_algolia
 	 );
 
 $fp = fopen('startups.json', 'w');
