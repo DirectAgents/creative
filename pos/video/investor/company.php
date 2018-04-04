@@ -556,7 +556,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 $sql_industry = mysqli_query($connecDB,"SELECT * FROM industry ORDER BY id ASC");  
 while($row_industry = mysqli_fetch_array($sql_industry)){
 
-if (in_array($row_industry['id'],$industry)){
+if (in_array($row_industry['industry'],$industry)){
 echo '<div class="skillsdiv_teammember">';
 echo $row_industry['industry'];
 echo '</div>';
@@ -581,7 +581,7 @@ echo '</div>';
 $sql_countries = mysqli_query($connecDB,"SELECT * FROM countries ORDER BY id ASC");  
 while($row_countries = mysqli_fetch_array($sql_countries)){
 
-if (in_array($row_countries['id'],$countries)){
+if (in_array($row_countries['countries'],$countries)){
 echo '<div class="skillsdiv_teammember">';
 echo $row_countries['countries'];
 echo '</div>';

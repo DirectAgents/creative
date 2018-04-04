@@ -248,7 +248,7 @@ View Resume
 
 
 <?php if($row['About'] != ''){ ?>  
-  <div class="col-sm-12"> 
+  <div class="col-sm-12" style="padding-left:0px"> 
      <div class="col-sm-12" style="padding-left: 0px;">   
      <div class="col-sm-3" style="padding-left: 0px;"><strong>About <?php echo $firstname; ?></strong><br><br></div>
   </div> 
@@ -261,15 +261,15 @@ View Resume
 <!--Skills Start-->
 <?php if($row['Skills'] != ''){ ?>  
   <div class="col-sm-12" style="padding-left: 0px;">   
-     <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Skills</strong><br><br></div>
+     <div class="col-sm-3" style="padding-left:0px"><strong><?php echo $firstname; ?>'s Skills</strong><br><br></div>
   </div> 
-  <div class="col-sm-12"> 
+  <div class="col-sm-12" style="padding-left:0px"> 
    <?php 
 
 $sql_skills = mysqli_query($connecDB,"SELECT * FROM skills ORDER BY id ASC");  
 while($row_skills = mysqli_fetch_array($sql_skills)){
 
-if (in_array($row_skills['id'],$skills)){
+if (in_array($row_skills['skill'],$skills)){
 echo '<div class="skillsdiv_teammember">';
 echo $row_skills['skill'];
 echo '</div>';
@@ -280,6 +280,7 @@ echo '</div>';
 
  ?>
   </div>
+<p>&nbsp;</p>  
 <?php } ?>  
 <!--Skills Ends-->  
 
@@ -287,9 +288,12 @@ echo '</div>';
 
 <!--Resume-->
  <div class="col-sm-12" style="padding-left: 0px;">  
-     <div class="col-sm-3"><strong><?php echo $firstname; ?>'s Resume</strong><br><br></div>
+     <div class="col-sm-3" style="padding-left:0px"><strong><?php echo $firstname; ?>'s Resume</strong><br><br></div>
   </div> 
-  <div class="col-sm-12"> 
+  <div class="col-sm-12" style="padding-left:0px"> 
+    <i class="far fa-file-pdf"></i>
+
+
     <a href="http://res.cloudinary.com/dgml9ji66/image/upload/v1519605264/<?php echo $row['Resume']; ?>.pdf" target="_blank">
 View Resume
 </a>
@@ -498,7 +502,7 @@ $('.save-resume').click(function() {
  
  var resume = $('input[name="resume[]"]:checked').map(function() { return this.value; }).get().join(",");
         //var skill_level_percentage = $('input[name=skill_level]').val();
-        //alert(resume);
+        //alert("asdf");
       if(resume != ''){
         $.ajax({
             url: url_link+"edit.php",
@@ -510,6 +514,10 @@ $('.save-resume').click(function() {
                 //var skills_count = $(response).filter('#theskills').text();
                 //$('#skills-count').html(skills_count);
                 //alert(skills_count);  
+         $(".save-resume").hide();
+
+         $('#saved').fadeIn("fast");
+         $('#saved').delay(2000).fadeOut("slow");       
 
          $(".edit-resume-box" ).addClass( "hidden" );
 			   $(".cancel-resume" ).addClass( "hidden" );

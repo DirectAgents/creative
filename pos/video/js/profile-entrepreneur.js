@@ -699,39 +699,7 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
- $( "#save-resume" ).on( "submit", function(e) {  
-  //alert("hello");
-    e.preventDefault();
-    var proceed = true;
 
-    var userid = $("input[name='userid']").val();
-    var resume = $('input[name="resume[]"]:checked').map(function() { return this.value; }).get().join(",");
-   
-
-     if(proceed) 
-        {   
-
-    
-
-    $.ajax({
-            url: url_link_startup+"save-resume.php", 
-            method: "POST",
-            data: { userid: userid, resume : resume},
-            dataType: "html",
-            success: function(response) {
-                
-                $(".save-resume").hide();
-
-                $('#saved').fadeIn("fast");
-                $('#saved').delay(2000).fadeOut("slow");
-                //alert(skills_count);  
-
-            }
-        });
-
-
-      }
-});
 
 
 

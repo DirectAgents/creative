@@ -82,7 +82,7 @@ $left_sidebar_industry = 'startups';
                                 <div class="pro-img-overlay">
    
  
-                                     <iframe id="iframe02" src="p.php?id={{{_highlightResult.startupID.value}}}" scrolling="no"></iframe>
+                                     <iframe id="iframe02" src="<?php echo BASE_PATH; ?>/p.php?id={{{_highlightResult.startupID.value}}}" scrolling="no"></iframe>
 
 
                                 </div>
