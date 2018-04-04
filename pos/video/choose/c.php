@@ -298,7 +298,7 @@ $response[] = array(
   'date'=> $date_algolia
    );
 
-$fp = fopen('investors.json', 'w');
+$fp = fopen('../investor/investors.json', 'w');
 fwrite($fp, json_encode($response));
 fclose($fp);
 
@@ -308,7 +308,7 @@ fclose($fp);
 $client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
 $index = $client->initIndex('investors');
 
-$records = json_decode(file_get_contents('investors.json'), true);
+$records = json_decode(file_get_contents('../investor/investors.json'), true);
 
 $chunks = array_chunk($records, 1000);
 

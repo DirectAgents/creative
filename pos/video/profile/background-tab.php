@@ -69,7 +69,7 @@ $sql_skills = mysqli_query($connecDB,"SELECT * FROM skills ORDER BY id ASC");
 while($row_skills = mysqli_fetch_array($sql_skills)){
 
 ?>
-                <option value="<?php echo $row_skills['id'];?>" <?php if (in_array($row_skills['id'],$skills)){ echo "selected"; } ?>>
+                <option value="<?php echo $row_skills['skill'];?>" <?php if (in_array($row_skills['skill'],$skills)){ echo "selected"; } ?>>
                     <?php echo $row_skills['skill'];?></option>
               
        
@@ -238,6 +238,15 @@ View Resume
  <!-- <div class="col-sm-12" style="padding-left: 0px;">   
      <div class="col-sm-3"><strong>About <?php echo $firstname; ?></strong><br><br></div>
   </div> -->
+
+<?php if($row['About'] == '' && $row['Skills'] == ''){ ?>  
+  <div class="col-sm-12" style="padding-left: 0px;"> 
+     <div class="col-sm-3" style="padding-left: 0px;">Nothing to see here!</div>
+  </div> 
+    
+<?php } ?>  
+
+
 <?php if($row['About'] != ''){ ?>  
   <div class="col-sm-12"> 
      <div class="col-sm-12" style="padding-left: 0px;">   

@@ -20,7 +20,7 @@ $date = date("Y-m-d");
 $time = date('h:i:s A');  
 
 
-if($row['Type'] == 'Startup'){
+if($row['Type'] == 'StartupE'){
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Time, Date) 

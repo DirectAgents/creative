@@ -218,7 +218,7 @@ $cloudinary_section = 'startups';
                                         
                 if( ! mysqli_num_rows($sql_bookmarks) ) {
                 echo '<div class="col-md-12 col-sm-12">';
-                echo "<div class='no-connections text-center'>You haven't bookmarked any Entrepreneurs yet!</div>"; 
+                echo "<div class='no-connections text-center'>You haven't bookmarked any Entrepreneur yet!</div>"; 
                 echo '</div>';
                 }else{
 

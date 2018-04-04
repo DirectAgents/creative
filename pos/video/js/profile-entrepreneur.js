@@ -773,10 +773,10 @@ $( "#save-team-member" ).on( "submit", function(e) {
         //swal("Login to connect!");
     //});
 
-    $('#sa-connect-profile').click(function(){
+    $('.sa-connect-profile').click(function(){
         //alert("asdfasfd");
         
-        var data_thumb = $("#sa-connect-profile").attr("data-thumb");
+        var data_thumb = $(".sa-connect-profile").attr("data-thumb");
         //alert(data_thumb);
 
         swal({   
@@ -791,8 +791,8 @@ $( "#save-team-member" ).on( "submit", function(e) {
         }, function(){   
 
 
-           var requested_id = $("#sa-connect-profile").attr("data-requested-id");
-           var requester_id = $("#sa-connect-profile").attr("data-requester-id");
+           var requested_id = $(".sa-connect-profile").attr("data-requested-id");
+           var requester_id = $(".sa-connect-profile").attr("data-requester-id");
            //alert(requested_id);
 
                         $.ajax({
@@ -820,10 +820,10 @@ $( "#save-team-member" ).on( "submit", function(e) {
 
 
 
-$('#sa-connect-profile-cancel').click(function(){
-        var data_thumb = $("#sa-connect-profile-cancel").attr("data-thumb");
+$('.sa-connect-profile-cancel').click(function(){
+        var data_thumb = $(".sa-connect-profile-cancel").attr("data-thumb");
         //alert(data_thumb);
-        var data_name = $("#sa-connect-profile-cancel").attr("data-name");
+        var data_name = $(".sa-connect-profile-cancel").attr("data-name");
 
         swal({   
             title: "Connect!",   
@@ -837,8 +837,8 @@ $('#sa-connect-profile-cancel').click(function(){
         }, function(){   
 
 
-           var requested_id = $("#sa-connect-profile-cancel").attr("data-requested-id");
-           var requester_id = $("#sa-connect-profile-cancel").attr("data-requester-id");
+           var requested_id = $(".sa-connect-profile-cancel").attr("data-requested-id");
+           var requester_id = $(".sa-connect-profile-cancel").attr("data-requester-id");
            //alert(requested_id);
 
                         $.ajax({

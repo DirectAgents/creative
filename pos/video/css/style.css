@@ -10109,6 +10109,18 @@ ul.select-row-icon li a:hover i.whn-hov {
     content: "\e617"
 }
 
+.ti-bookmark-large:before {
+    content: "\e617";
+    font-size:35px;
+    color:#fff;
+}
+
+.ti-bookmarked-large:before {
+    content: "\e617";
+    font-size:35px;
+    color:#53e69d;
+}
+
 .ti-bookmark-alt:before {
     content: "\e618"
 }
@@ -20426,3 +20438,5 @@ position:absolute; z-index:1; margin:80px 0 0 140px;}
 .show-data{float:left; margin-top:10px; padding-left:0px; color:#666;}
 
 span.time-request-sent{font-size:10px; color:#666;}
+
+a.bookmark-startupe, a.bookmark-investor, a.bookmarked-startupe, a.bookmarked-investor{position:absolute; top:-5px; right:0px;}

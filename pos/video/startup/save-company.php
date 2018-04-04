@@ -164,7 +164,7 @@ $row_startup = mysqli_fetch_array($sql_startup);
 
 //Upload to algolia
 
-if($row['Logo'] == '' || $row['Logo'] == 'on' ){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
+if($row_startup ['Logo'] == '' || $row_startup ['Logo'] == 'on' ){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
 
 $date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
 
@@ -182,7 +182,7 @@ $response[] = array(
 	'video'=> $_POST['video'],
 	'screenshot'=> $screenshot,
 	'fullname'=> $row_startup['Fullname'],
-	'position'=> $row_startup['Title'],
+	'title'=> $row_startup['Title'],
 	'likes'=> '0',
 	'date'=> $date_algolia
 	 );
