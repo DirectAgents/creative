@@ -486,7 +486,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 </div>
                                                 </div>
 
-                                            </div>  
+                                           
                                             
                                          <div class="form-group">   
 
@@ -502,7 +502,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
                                                 <div class="col-md-6">
                                                     <?php if($row['State'] != ''){ ?>
                                                      <div class="col-md-5" style="padding-left:0px;">
-                                                         <label class="col-md-3" style="padding-left:0px;"><strong>State</strong></label>
+                                                         <label class="col-md-12" style="padding-left:0px;"><strong>State</strong></label>
  <?php echo $row['State']; ?>
 
                                                 </div>

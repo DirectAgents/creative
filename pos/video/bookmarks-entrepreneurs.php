@@ -239,7 +239,7 @@ $cloudinary_section = 'startups';
                 <th width="30%">NAME</th>
                 <th width="30%">TYPE</th>
                 <th>LOCATION</th>
-                <td>MANAGE</td>
+                <td class="text-center">MANAGE</td>
             </tr>
         </thead>
    
@@ -351,7 +351,7 @@ $cloudinary_section = 'startups';
                  ?>
             </td>
           
-            <td>
+            <td class="text-center">
                 <button type="button" id="bookmark-delete-<?php echo $row_bookmarks['requested_id']; ?>" data-type="<?php echo $row_bookmarks['Type']; ?>" data-requested-id="<?php echo $row_bookmarks['requested_id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
             </td>
         </tr>
