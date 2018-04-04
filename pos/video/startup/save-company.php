@@ -188,12 +188,52 @@ mysqli_query($connecDB, $sql);
 
 
 
+
+
+
 $sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_users LEFT JOIN startups ON startups.userID=tbl_users.userID WHERE tbl_users.userID='".$_POST['userid']."'");
 $row_startup = mysqli_fetch_array($sql_startup);
 
 
-$sql_likes = mysqli_query($connecDB,"SELECT * FROM tbl_likes LEFT JOIN startups ON startups.userID=tbl_likes.requested_id WHERE tbl_likes.requested_id='".$_POST['userid']."'");
+
+
+
+
+//Update likes
+
+$sql_likes = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE requested_id='".$_POST['userid']."'");
 $row_likes = mysqli_fetch_array($sql_likes);
+
+$sql_top_rated = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Industry='".$row_likes['Industry']."'");
+$row_top_rated = mysqli_fetch_array($sql_top_rated);
+
+$sql_top_rated2 = mysqli_query($connecDB,"SELECT * FROM tbl_top_rated_startups WHERE Industry='".$_POST['industry']."'");
+$row_top_rated2 = mysqli_fetch_array($sql_top_rated2);
+
+// Delete likes from old Industry
+$sql = "UPDATE tbl_top_rated_startups SET 
+Likes='".$row_top_rated['Likes']."' - '".$row_likes['Likes'] ."' 
+
+WHERE Industry='".$row_likes['Industry']."'";
+
+mysqli_query($connecDB, $sql);
+
+//Add likes to new Industry
+$sql = "UPDATE tbl_top_rated_startups SET 
+Likes='".$row_top_rated2['Likes']."' + '".$row_likes['Likes'] ."' 
+
+WHERE Industry='".$_POST['industry']."'";
+
+mysqli_query($connecDB, $sql);
+
+
+$sql = "UPDATE tbl_likes SET 
+Industry='".$_POST['industry']."'
+
+WHERE requested_id='".$_POST['userid']."'";
+
+mysqli_query($connecDB, $sql);
+
 
 //$startupID = rand(5, 1000000);
 
