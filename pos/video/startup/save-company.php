@@ -95,64 +95,6 @@ mysqli_query($connecDB, $sql);
 
 
 
-}else{
-
-
-
-$sql = "UPDATE startups SET 
-Name='".$_POST['name']."',
-Url='".seoUrl($_POST['name'])."',
-Title='".$_POST['title']."',
-Industry='".$_POST['industry']."',
-About='".$_POST['about']."',
-Description='".$_POST['description']."',
-City='".$city."',
-State='".$state_final."',
-ZipCode='".$row_zip['zip']."',
-Facebook='".$facebook."',
-Twitter='".$twitter."',
-AngelList='".$angellist."',
-Logo='".$logo."',
-Video='".$_POST['video']."',
-Screenshot='".$screenshot."',
-Date_Posted='".$date."'
-
-
-WHERE id='".$_POST['id']."'";
-
-mysqli_query($connecDB, $sql);
-
-
-$sql = "UPDATE tbl_users SET 
-Position='".$_POST['position']."'
-
-WHERE userID='".$_POST['userid']."'";
-
-mysqli_query($connecDB, $sql);
-
-
-}
-
-
-echo '<div id="position">';
-echo '<h5 class="text-white">';
-//echo $city.', '.$state_final;
-echo $_POST['position'];
-echo '</h5>';
-echo '</div>';
-
-echo "<div id='startup-link'>";
-echo seoUrl($_POST['name']);
-echo "</div>";
-
-/*
-$dateTime = "2017-03-05";
-$dateTimeSplit = explode(" ",$dateTime);
-$date = $dateTimeSplit[0];
-echo date('M d, Y',strtotime($date));
-*/ 
-
-
 
 
 $sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_users LEFT JOIN startups ON startups.userID=tbl_users.userID WHERE tbl_users.userID='".$_POST['userid']."'");
@@ -204,6 +146,127 @@ $chunks = array_chunk($records, 1000);
 foreach ($chunks as $batch) {
   $index->addObjects($batch);
 }
+
+
+
+}else{
+
+
+
+$sql = "UPDATE startups SET 
+Name='".$_POST['name']."',
+Url='".seoUrl($_POST['name'])."',
+Title='".$_POST['title']."',
+Industry='".$_POST['industry']."',
+About='".$_POST['about']."',
+Description='".$_POST['description']."',
+City='".$city."',
+State='".$state_final."',
+ZipCode='".$row_zip['zip']."',
+Facebook='".$facebook."',
+Twitter='".$twitter."',
+AngelList='".$angellist."',
+Logo='".$logo."',
+Video='".$_POST['video']."',
+Screenshot='".$screenshot."',
+Date_Posted='".$date."'
+
+
+WHERE id='".$_POST['id']."'";
+
+mysqli_query($connecDB, $sql);
+
+
+$sql = "UPDATE tbl_users SET 
+Position='".$_POST['position']."'
+
+WHERE userID='".$_POST['userid']."'";
+
+mysqli_query($connecDB, $sql);
+
+
+
+
+
+$sql_startup = mysqli_query($connecDB,"SELECT * FROM tbl_users LEFT JOIN startups ON startups.userID=tbl_users.userID WHERE tbl_users.userID='".$_POST['userid']."'");
+$row_startup = mysqli_fetch_array($sql_startup);
+
+
+$sql_likes = mysqli_query($connecDB,"SELECT * FROM tbl_likes LEFT JOIN startups ON startups.userID=tbl_likes.requested_id WHERE tbl_likes.requested_id='".$_POST['userid']."'");
+$row_likes = mysqli_fetch_array($sql_likes);
+
+//$startupID = rand(5, 1000000);
+
+
+//Upload to algolia
+
+if($row_startup ['Logo'] == '' || $row_startup ['Logo'] == 'on' ){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
+
+$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
+
+$response = array();
+
+$response[] = array(
+	'objectID'=> $row_startup['userID'],
+	'startupID'=> $row_startup['userID'],
+	'name'=> $_POST['name'],
+	'url'=> seoUrl($_POST['name']), 
+	'industry'=> $_POST['industry'],
+	'description'=> $row_startup['Description'],
+	'location'=> $city.', '.$state_final, 
+	'logo'=> $logo_algolia,
+	'video'=> $_POST['video'],
+	'screenshot'=> $screenshot,
+	'fullname'=> $row_startup['Fullname'],
+	'title'=> $row_startup['Title'],
+	'likes'=> $row_likes['Likes'],
+	'date'=> $date_algolia
+	 );
+
+$fp = fopen('startups.json', 'w');
+fwrite($fp, json_encode($response));
+fclose($fp);
+
+//echo var_dump($response);
+
+//Upload to algolia
+$client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
+$index = $client->initIndex('startups');
+
+$records = json_decode(file_get_contents('startups.json'), true);
+
+$chunks = array_chunk($records, 1000);
+
+foreach ($chunks as $batch) {
+  $index->addObjects($batch);
+}
+
+
+}
+
+
+echo '<div id="position">';
+echo '<h5 class="text-white">';
+//echo $city.', '.$state_final;
+echo $_POST['position'];
+echo '</h5>';
+echo '</div>';
+
+echo "<div id='startup-link'>";
+echo seoUrl($_POST['name']);
+echo "</div>";
+
+/*
+$dateTime = "2017-03-05";
+$dateTimeSplit = explode(" ",$dateTime);
+$date = $dateTimeSplit[0];
+echo date('M d, Y',strtotime($date));
+*/ 
+
+
+
+
+
 
 
 

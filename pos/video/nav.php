@@ -734,28 +734,28 @@ $row4 = mysqli_fetch_array($sql4);
 }
 
 if(array_key_exists(1, $row) == 1){
-$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."' AND requested_id != '".$row4['startupID']."'");
 $row5 = mysqli_fetch_array($sql5);
 $sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
 $row6 = mysqli_fetch_array($sql6);
 }
 
 if(array_key_exists(2, $row) == 1){
-$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."' AND requested_id != '".$row6['startupID']."'");
 $row7 = mysqli_fetch_array($sql7);
 $sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row8 = mysqli_fetch_array($sql8);
 }
 
 if(array_key_exists(3, $row) == 1){
-$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."' AND requested_id != '".$row8['startupID']."'");
 $row9 = mysqli_fetch_array($sql9);
 $sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row10 = mysqli_fetch_array($sql10);
 }
 
 if(array_key_exists(4, $row) == 1){
-$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."' AND requested_id != '".$row10['startupID']."'");
 $row11 = mysqli_fetch_array($sql11);
 $sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row13 = mysqli_fetch_array($sql13);
@@ -825,35 +825,35 @@ $keys = array_keys($row);
 
 
 if(array_key_exists(0, $row) == 1){
-$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."'");
+$sql3 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[0]]."' ");
 $row3 = mysqli_fetch_array($sql3);
 $sql4 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row3['requested_id']."'");
 $row4 = mysqli_fetch_array($sql4);
 }
 
 if(array_key_exists(1, $row) == 1){
-$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."' AND requested_id != '".$row4['startupID']."'");
 $row5 = mysqli_fetch_array($sql5);
 $sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
 $row6 = mysqli_fetch_array($sql6);
 }
 
 if(array_key_exists(2, $row) == 1){
-$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."' AND requested_id != '".$row6['startupID']."'");
 $row7 = mysqli_fetch_array($sql7);
 $sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row8 = mysqli_fetch_array($sql8);
 }
 
 if(array_key_exists(3, $row) == 1){
-$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."' AND requested_id != '".$row8['startupID']."'");
 $row9 = mysqli_fetch_array($sql9);
 $sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row10 = mysqli_fetch_array($sql10);
 }
 
 if(array_key_exists(4, $row) == 1){
-$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."' AND requested_id != '".$row10['startupID']."'");
 $row11 = mysqli_fetch_array($sql11);
 $sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row13 = mysqli_fetch_array($sql13);
@@ -933,28 +933,28 @@ $row4 = mysqli_fetch_array($sql4);
 }
 
 if(array_key_exists(1, $row) == 1){
-$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."' AND requested_id != '".$row4['startupID']."'");
 $row5 = mysqli_fetch_array($sql5);
 $sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
 $row6 = mysqli_fetch_array($sql6);
 }
 
 if(array_key_exists(2, $row) == 1){
-$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."' AND requested_id != '".$row6['startupID']."'");
 $row7 = mysqli_fetch_array($sql7);
 $sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row8 = mysqli_fetch_array($sql8);
 }
 
 if(array_key_exists(3, $row) == 1){
-$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."' AND requested_id != '".$row8['startupID']."'");
 $row9 = mysqli_fetch_array($sql9);
 $sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row10 = mysqli_fetch_array($sql10);
 }
 
 if(array_key_exists(4, $row) == 1){
-$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."' AND requested_id != '".$row10['startupID']."'");
 $row11 = mysqli_fetch_array($sql11);
 $sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row13 = mysqli_fetch_array($sql13);
@@ -1031,28 +1031,28 @@ $row4 = mysqli_fetch_array($sql4);
 }
 
 if(array_key_exists(1, $row) == 1){
-$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."'");
+$sql5 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[1]]."' AND requested_id != '".$row4['startupID']."'");
 $row5 = mysqli_fetch_array($sql5);
 $sql6 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row5['requested_id']."'");
 $row6 = mysqli_fetch_array($sql6);
 }
 
 if(array_key_exists(2, $row) == 1){
-$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."'");
+$sql7 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[2]]."' AND requested_id != '".$row6['startupID']."'");
 $row7 = mysqli_fetch_array($sql7);
 $sql8 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row8 = mysqli_fetch_array($sql8);
 }
 
 if(array_key_exists(3, $row) == 1){
-$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."'");
+$sql9 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[3]]."' AND requested_id != '".$row8['startupID']."'");
 $row9 = mysqli_fetch_array($sql9);
 $sql10 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row10 = mysqli_fetch_array($sql10);
 }
 
 if(array_key_exists(4, $row) == 1){
-$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."'");
+$sql11 = mysqli_query($connecDB,"SELECT * FROM tbl_likes WHERE Industry = '".$row2['Industry']."' AND Likes = '".$row[$keys[4]]."' AND requested_id != '".$row10['startupID']."'");
 $row11 = mysqli_fetch_array($sql11);
 $sql12 = mysqli_query($connecDB,"SELECT * FROM startups WHERE startupID = '".$row7['requested_id']."'");
 $row13 = mysqli_fetch_array($sql13);
