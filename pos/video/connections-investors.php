@@ -196,7 +196,7 @@ $cloudinary_section = 'startups';
                                       
                                           
 
-   <table id="demo-foo-addrow" class="table m-t-30 table-hover bookmarks-list" data-page-size="10">
+                                          <table id="demo-foo-addrow" class="table m-t-30 table-hover bookmarks-list" data-page-size="10">
        
 
   
@@ -211,7 +211,7 @@ $cloudinary_section = 'startups';
 
         <select id="bookmarks-list-select" name="bookmarks-list-select" class="form-control form-control-line">
             <option value="<?php echo BASE_PATH; ?>/connections/">Startups</option>
-            <option value="<?php echo BASE_PATH; ?>/connections/investors/">Investors</option>
+            <option value="<?php echo BASE_PATH; ?>/connections/investors/" selected>Investors</option>
         </select>
 
     </div>  
@@ -225,7 +225,7 @@ $cloudinary_section = 'startups';
         if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
         if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
                     
-                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'Startup' ORDER BY id DESC");                    
+                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'Investor' ORDER BY id DESC");                    
                                         
                                         if( ! mysqli_num_rows($sql_connections) ) {
                                             echo "<div class='no-connections text-center'>No Connections so far!</div>"; 
@@ -241,9 +241,9 @@ $cloudinary_section = 'startups';
                     <th width="20%">NAME</th>
                     <th>TYPE</th>
                     <th>EMAIL</th>
-                    <th width="20%">PHONE</th>
+                    <th>PHONE</th>
                     <th width="5%">STATUS</th>
-                    <th width="15%">MANAGE</th>
+                    <th>MANAGE</th>
                 </tr>
             </thead>
         </div>

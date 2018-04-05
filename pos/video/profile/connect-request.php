@@ -23,25 +23,25 @@ $time = date('h:i:s A');
 if($row['Type'] == 'StartupE'){
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$time."', '".$date."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Type, Time, Date) 
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Startup' , '".$time."', '".$date."')");
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$time."', '".$date."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Type, Time, Date) 
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Startup' , '".$time."', '".$date."')");
 
 }
 
 
 if($row['Type'] == 'Investor'){
 
-echo $row['Type'];
+//echo $row['Type'];
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$time."', '".$date."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Type, Time, Date) 
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Investor' , '".$time."', '".$date."')");
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$time."', '".$date."')");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Type, Time, Date) 
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Investor' , '".$time."', '".$date."')");
 
 }
 

@@ -147,7 +147,7 @@ $cloudinary_section = 'startups';
 
         <?php 
 
-    if($row_entrepreneur['Type'] == 'Entrepreneur'){$type = 'entrepreneur';}
+    if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
     if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
 
     $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");

@@ -16,7 +16,26 @@ if($_GET || $_SESSION['entrepreneurSession'] == $_GET['userid']){
 <!---Connections Request-->
 
 
-<table class="table" cellspacing="14">
+<table id="demo-foo-addrow" class="table m-t-30 table-hover bookmarks-list" data-page-size="10">
+
+
+<div class="col-md-6 col-sm-6" style="padding-left:0px;">   
+     <h3>Connections</h3>
+ </div>  
+
+<div class="col-md-6 col-sm-6">
+ <div class="col-md-6 col-sm-6" style="float:right; margin-bottom:20px;">
+
+        <select id="bookmarks-list-select" name="bookmarks-list-select" class="form-control form-control-line">
+            <option value="<?php echo BASE_PATH; ?>/connections/">Startups</option>
+            <option value="<?php echo BASE_PATH; ?>/connections/investors/">Investors</option>
+        </select>
+
+    </div>  
+
+</div>
+
+
         <?php 
                     
                                         $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE my_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied'  ORDER BY id DESC");                    
@@ -30,13 +49,11 @@ if($_GET || $_SESSION['entrepreneurSession'] == $_GET['userid']){
         <div class="connections-header">
             <thead>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>NAME</th>
+                    <th width="20%">NAME</th>
                     <th>TYPE</th>
                     <th>EMAIL</th>
-                    <th>PHONE</th>
-                    <th>STATUS</th>
+                    <th width="20%">PHONE</th>
+                    <th width="5%">STATUS</th>
                     <th>MANAGE</th>
                 </tr>
             </thead>
@@ -116,7 +133,7 @@ $('#sa-connect-accept-'+<?php echo $row_connections['requester_id']; ?>).click(f
                                 $("#connections-tab-content").load(url_link+"connections-tab.php?userid="+requester_id);
 
                                 if (response != 'no good') {
-                                swal("Success!", "You are now connected.", "success");  
+                                swal("Success!", "You are both now connected.", "success");  
                                  }
 
                                 }
@@ -236,15 +253,16 @@ $('#sa-connect-deny-'+<?php echo $row_connections['requester_id']; ?>).click(fun
             <?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
             <?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){ $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture"; } ?>
             <?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
-            <tr class="advance-table-row connections-tab-inside text-center">
-                <td width="10"></td>
+            <tr class="advance-table-row connections-tab-inside">
+               
+               
                 <td>
-                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['Fullname']; ?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
-                </td>
-                <td>
+                     <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['Fullname']; ?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
                     <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['Fullname']; ?>"><?php echo $row_entrepreneur['Fullname']; ?></a>
                 </td>
-                <td><span class="label label-warning label-rouded"><?php echo $row_entrepreneur['Type']; ?></span></td>
+                <td><span class="label label-warning label-rouded">
+                    <?php if($row_entrepreneur['Type'] == 'StartupE'){ echo "Startup";}else{ echo "Investor";} ?>
+                    </span></td>
                 <td>
                     <?php if($row_entrepreneur['Email'] != ''){ echo $row_entrepreneur['Email']; }else{echo "-";} ?>
                 </td>
@@ -293,9 +311,7 @@ $('#sa-connect-deny-'+<?php echo $row_connections['requester_id']; ?>).click(fun
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td colspan="8" class="sm-pd"></td>
-            </tr>
+           
             <?php } ?>
             <?php } ?>
             </tr>

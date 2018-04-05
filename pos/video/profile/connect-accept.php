@@ -9,7 +9,7 @@
 if($_GET){
 
 
-$sql = "UPDATE tbl_connections_entrepreneur SET 
+$sql = "UPDATE tbl_connections_startup SET 
 status='accepted'
 
 WHERE requester_id = '".$_GET['requester_id']."' AND requested_id = '".$_GET['requested_id']."'";
