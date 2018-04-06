@@ -83,8 +83,8 @@ $row = mysqli_fetch_array($stmt);
                                 <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Food and Beverages"><i class="fas fa-utensils font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Food and Beverages</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Art and Design"><i class="fas fa-paint-brush font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Art and Design</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Health & Wellness"><i class="fab fa-gratipay font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Health and Wellness</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Human Resources"><i class="fas fa-male font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Human Resources</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Other"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Other</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Human Resources">&nbsp;<i class="fas fa-male font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Human Resources</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Other"><i data-icon="7" style="margin-left:2px;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Other</span></a> </li>
                                 <!--<li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Third Level </span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li> <a href="javascript:void(0)"><i class=" fa-fw">T</i><span class="hide-menu">Third Level Item</span></a> </li>

@@ -6,13 +6,15 @@
  require_once '../base_path.php';
  include_once("../config.php"); 
 
+ //echo $_SESSION['access_token'];
+
 
 
 if(!isset($_SESSION['entrepreneurSession'])){
  
-//header('Location: '.BASE_PATH.'');
+header('Location: '.BASE_PATH.'');
 //echo "yo";
-//exit();
+exit();
 
 }
 
@@ -22,12 +24,12 @@ $sql = mysqli_query($connecDB, "SELECT * FROM tbl_users WHERE userID='".$_SESSIO
 $row = mysqli_fetch_array($sql); 
 
 if(!empty($row['Type'])){
-  //header('Location: '.BASE_PATH.'');
-  //exit();
+  header('Location: '.BASE_PATH.'');
+  exit();
 }
 
 
-if(!empty($row['Type'])){
+if(empty($row['Type'])){
 
  
 

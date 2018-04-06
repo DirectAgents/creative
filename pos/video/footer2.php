@@ -238,12 +238,13 @@
 
 
         </footer>
-        <!--[if lt IE 7 ]>
-<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-<![endif]-->
-        <script type='text/javascript' defer src='//app-ab19.marketo.com/js/forms2/js/forms2.min.js?ver=4.9.1'></script>
-        <script type='text/javascript' defer src='https://www.fivestars.com/wp-content/themes/_fivestars/library/js/min/06_progressive.js?ver=v2.8'></script>
-        <script type='text/javascript' defer src='https://www.fivestars.com/wp-content/themes/_fivestars/library/js/min/scripts.js?ver=v2.8'></script>
+       
+       
+        <script type='text/javascript' defer src='<?php echo BASE_PATH; ?>/js/scripts.js?ver=v2.8'></script>
 
         <script src="<?php echo BASE_PATH; ?>/js/pyh_main_js-v=IYSNC0cAO_B-_TUsyGCiemgQo0mfVgmz1oShNb7ny1Q1.js"></script>
+
+
+
+
+

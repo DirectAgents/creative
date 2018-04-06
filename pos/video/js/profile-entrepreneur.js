@@ -481,7 +481,7 @@ $( "#save-company" ).on( "submit", function(e) {
                 var url_startup_link = $(response).filter('#startup-link').html();
 
 
-                window.location.href = url_link_startup+fm_name;
+                window.location.href = url_link_startup+url_startup_link;
 
                
                 //alert(skills_count);  

@@ -31,6 +31,19 @@ $row = mysqli_fetch_array($sql);
 }
 
 
+function seoUrl($string) {
+    //Lower case everything
+    $string = strtolower($string);
+    //Make alphanumeric (removes all other characters)
+    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+    //Clean up multiple dashes or whitespaces
+    $string = preg_replace("/[\s-]+/", " ", $string);
+    //Convert whitespaces and underscore to dash
+    $string = preg_replace("/[\s_]/", "-", $string);
+    return $string;
+}
+
+
 
 
 if(!isset($_SESSION['linkedin_id'])){
@@ -166,6 +179,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
         $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
         google_id = '".$user->id."',
+        username = '".seoUrl($fullname)."',
         Fullname = '".$fullname."',
         google_picture_link = '".$user->picture."',
         google_token = '".$_SESSION['access_token']."',
@@ -190,8 +204,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     
     
 
-    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (google_id, Fullname, Email, google_picture_link, ProfileImage, Date_Created) 
-      VALUES ('".$user->id."',  '".$fullname."', '".$user->email."', '".$user->picture."' , 'Google' , '".$date."')");
+    $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (google_id, username, Fullname, Email, google_picture_link, google_token, ProfileImage, Date_Created) 
+      VALUES ('".$user->id."', '".seoUrl($fullname)."' ,  '".$fullname."', '".$user->email."', '".$user->picture."' , '".$_SESSION['access_token']."' , 'Google' , '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;
@@ -203,6 +217,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
         $_SESSION['entrepreneurSession'] = $row['userID'];
         $_SESSION['google_id'] = $user->id;
+        $_SESSION['email'] = $user->email;
         //echo $_SESSION['startupSession'];
         //echo "asdfasfd";
         //header('Location: '.BASE_PATH.'/startup/profile/'.$_SESSION['entrepreneurSession'].'/');
@@ -296,11 +311,22 @@ echo 'id: ' . $user['id'];
   if ($sql->num_rows == 1) //if user already exist change greeting text to "Welcome Back"
     {
 
-    
-    
+
+    $fullname = $user['first_name'].' '.$user['last_name'];
+
+
+    $words = explode(" ", $fullname);
+    $firstname = $words[0];
+    $lastname = $words[1];
+
+
+    $username = $firstname.' '.$lastname;  
+
 
     $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
     facebook_id = '".$user['id']."', 
+    Fullname = '".$fullname."',
+    username = '".seoUrl($username)."',
     ProfileImage = 'Facebook'
 
     WHERE Email='".$user['email']."'");
@@ -331,7 +357,7 @@ echo 'id: ' . $user['id'];
   { 
 
 
-   date_default_timezone_set('America/New_York');
+    date_default_timezone_set('America/New_York');
     $date = date('Y-m-d'); 
 
     $gender = ucfirst($user['gender']);
@@ -344,11 +370,12 @@ echo 'id: ' . $user['id'];
     $firstname = $words[0];
     $lastname = $words[1];
 
-    $theusername = strtolower($firstname.'-'.$lastname);
 
+    $username = $firstname.' '.$lastName;
 
+    
     $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (username, facebook_id, Fullname, Email, Gender, ProfileImage, Date_Created) 
-      VALUES ('".$theusername."', '".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
+      VALUES ('".seoUrl($username)."', '".$user['id']."',  '".$fullname."', '".$user['email']."', '".$gender."' , 'Facebook', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;

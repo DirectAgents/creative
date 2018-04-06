@@ -3,16 +3,14 @@ $(document).ready(function() {
 //$("#thesuccess").css("display:", "block");
 
 
-$( "#contact-us-form" ).on( "submit", function(e) {
+$( "#booking-form" ).on( "submit", function(e) {
 
 e.preventDefault();
 
 
 var proceed = true;
 
-var phone = $("input[name='contact-firstname']").val();
 
-alert(phone);
 
 if (proceed){
             $.ajax({
@@ -22,7 +20,7 @@ if (proceed){
                 dataType: "html",
                 success: function(response) {
                     
-                $("#success-contact").html("Thank You! We'll be in touch soon.");
+                $("#success-contact").html("Thank You! We'll be in touch with you soon.");
 
                 $('#saved').fadeIn("fast");
                 $('#saved').delay(2000).fadeOut("slow");

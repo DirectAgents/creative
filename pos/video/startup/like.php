@@ -144,20 +144,24 @@ $row = mysqli_fetch_array($sql);
 
 $date_algolia = date('F j',strtotime($row['Date_Posted']));  // January 30, 2015, for example.
 
+if(empty($row4['Likes'])){$likes = '0';}else{$likes = $row4['Likes'];}
+
 $response = array();
 
 $response[] = array(
 	'objectID'=> $row_startup['userID'],
 	'startupID'=> $row_startup['userID'],
+	'url'=> $row_startup['Url'],
 	'name'=> $row_startup['Name'], 
 	'industry'=> $row_startup['Industry'],
+	'description'=> $row_startup['Description'],
 	'location'=> $row_startup['City'].', '.$row_startup['State'], 
 	'logo'=> $row_startup['Logo'],
 	'video'=> $row_startup['Video'],
 	'screenshot'=> $row_startup['Screenshot'],
 	'fullname'=> $row_startup['Fullname'],
 	'title'=> $row_startup['Title'],
-	'likes'=> $row4['Likes'],
+	'likes'=> $likes,
 	'date'=> $date_algolia
 	 );
 

@@ -1,5 +1,7 @@
 <?php
 
+require_once '../base_path.php';
+
 // using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
 // If you are using Composer (recommended)
@@ -8,7 +10,7 @@ require '../sendgrid-php/vendor/autoload.php';
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("Welcome", "support@valifyit.com");
 $subject = "Welcome";
-$to = new SendGrid\Email('', $_SESSION['email']);
+$to = new SendGrid\Email('', 'brendanimak@gmail.com');
 $content = new SendGrid\Content("text/html", '
          
 
@@ -71,14 +73,14 @@ $content = new SendGrid\Content("text/html", '
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                You\'re on your way!
+                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                You\'re on your way on your next funding!
                                                 </td>
                                             </tr>
                                             
                                              <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Let\'s confirm your email address.
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                Go ahead and add your company for Investors to see.
                                                 
                                                 </td>
                                             </tr>
@@ -106,9 +108,9 @@ $content = new SendGrid\Content("text/html", '
                                               <tr>
                                                 <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
                                                 
-                                                 <a href="'.BASE_PATH.'/account/verify.php?id='.$id.'&code='.$code.'">
-                                                <div style="padding: 20px; max-width:240px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
-                                                <img alt="Logo" src="https://misterpao.com/images/email/confirm-email-address.png" width="219" height="15" style="display: block; border="0">
+                                                 <a href="'.BASE_PATH.'/startup/create" style="text-decoration:none !important; text-decoration:none;">
+                                                <div style="padding: 10px; max-width:140px; border-radius: 25px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
+                                               Add a startup
                                                 </div>
                                                 </a>
                                                 

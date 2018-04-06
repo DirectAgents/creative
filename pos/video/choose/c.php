@@ -59,12 +59,7 @@ if(isset($_SESSION['google_id'])){
    			 {   
 
         $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
-        Type = '".$_GET['type']."',  
-        google_id = '".$_SESSION['google_id']."',
-        Fullname = '".$_SESSION['fullname']."',
-        google_picture_link = '".$_SESSION['google_picture_link']."',
-        google_token = '".$_SESSION['access_token']."',
-        ProfileImage = 'Google'
+        Type = '".$_GET['type']."'
     
         WHERE Email='".$_SESSION['email']."'");
 
@@ -142,12 +137,13 @@ $result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options =
 
 }
 
+if($_GET['type'] == 'StartupE') {  include 'welcome-email-startup.php'; }
+if($_GET['type'] == 'Investor') {  include 'welcome-email-investor.php'; }
+       
 
 
-
-
-        //header('Location: '.BASE_PATH.'');
-        //exit();
+        header('Location: '.BASE_PATH.'');
+        exit();
 
        } 
 
@@ -243,11 +239,13 @@ $result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options =
 
 }
        
+        if($_GET['type'] == 'StartupE') {  include 'welcome-email-startup.php'; }
+        if($_GET['type'] == 'Investor') {  include 'welcome-email-investor.php'; }
 
-        //header('Location: '.BASE_PATH.'');
+        header('Location: '.BASE_PATH.'');
         //echo "asdfsaf";
         //echo $_SESSION['email'];
-        //exit();
+        exit();
 
        } 
 
@@ -341,11 +339,12 @@ $result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options =
 }
 
 
+        if($_GET['type'] == 'StartupE') {  include 'welcome-email-startup.php'; }
+        if($_GET['type'] == 'Investor') {  include 'welcome-email-investor.php'; }
 
 
-
-        //header('Location: '.BASE_PATH.'');
-        //exit();
+        header('Location: '.BASE_PATH.'');
+        exit();
 
        } 
 
@@ -355,6 +354,7 @@ $result = \Cloudinary\Uploader::upload($row['linkedin_picture_link'], $options =
 
 ////POST//////
 
+/*
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
@@ -401,15 +401,16 @@ if(isset($_SESSION['linkedin_id'])){
 
 
 }
+*/
 
 
-include 'welcome-email.php';
+//include 'welcome-email.php';
 
 
  //echo  $_SESSION['entrepreneurSession'];
  //echo  $_SESSION['usernameSession'];
- header('Location: '.BASE_PATH.'');
- exit();
+ //header('Location: '.BASE_PATH.'');
+ //exit();
 
 
 

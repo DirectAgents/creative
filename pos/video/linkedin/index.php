@@ -9,6 +9,20 @@ require_once '../class.entrepreneur.php';
 include_once("../config.php");
 
 
+function seoUrl($string) {
+    //Lower case everything
+    $string = strtolower($string);
+    //Make alphanumeric (removes all other characters)
+    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+    //Clean up multiple dashes or whitespaces
+    $string = preg_replace("/[\s-]+/", " ", $string);
+    //Convert whitespaces and underscore to dash
+    $string = preg_replace("/[\s_]/", "-", $string);
+    return $string;
+}
+
+
+
 
 if(isset($_GET['code'])){
 
@@ -101,6 +115,7 @@ if ($sql->num_rows == 1){ //if user already exist change greeting text to "Welco
 
         $update_sql = mysqli_query($connecDB,"UPDATE tbl_users SET 
         linkedin_id = '".$user->id."',
+        username = '"seoUrl($fullname)"',
         Fullname = '".$fullname."',
         linkedin_picture_link = '".$user->pictureUrl."',
         ProfileImage = 'Linkedin'
@@ -126,11 +141,11 @@ if ($sql->num_rows == 1){ //if user already exist change greeting text to "Welco
     $date = date('Y-m-d'); 
         //echo 'Hi '.$user->name.', Thanks for Registering! [<a href="'.$redirect_uri.'?logout=1">Log Out</a>]';
     
-    $fullname = $user->firstName.' '.$user->lastName;
-    $theusername = strtolower($user->firstName.'-'.$user->lastName);
+    $username = $user->firstName.' '.$user->lastName;
+    
 
     $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_users (username, linkedin_id, Fullname, Email, linkedin_picture_link, ProfileImage, Date_Created) 
-      VALUES ('".$theusername."' ,'".$user->id."',  '".$fullname."', '".$user->emailAddress."', '".$user->pictureUrl."' , 'Linkedin', '".$date."')");
+      VALUES ('".seoUrl($username)."' ,'".$user->id."',  '".$fullname."', '".$user->emailAddress."', '".$user->pictureUrl."' , 'Linkedin', '".$date."')");
     //$statement->bind_param('issss', $user['id'],  $user['name'], $user['email']);
     //$statement->execute();
     //echo $mysqli->error;

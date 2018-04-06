@@ -298,6 +298,11 @@ echo '</h5>';
 echo '</div>';
 
 
+echo '<div id="startup-link">';
+echo seoUrl($_POST['name']);
+echo '</div>';
+
+
 
 /*
 $dateTime = "2017-03-05";

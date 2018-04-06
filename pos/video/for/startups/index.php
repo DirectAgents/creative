@@ -259,16 +259,13 @@
 
             <section class="section--calculator book-a-session">
                 <div class="wrapper">
-                    <form id="CustomerRegisterForm" method="post" data-gtm-event="leadGenSubmit" data-script-success-event="FireScriptsLeadGenSuccess" data-script-error-event="FireScriptsLeadGenError">
+                    <form id="booking-form" method="post" data-gtm-event="leadGenSubmit" data-script-success-event="FireScriptsLeadGenSuccess" data-script-error-event="FireScriptsLeadGenError">
                         <div class="book-a-session-form">
                             <div class="grid grid--section">
                                 <span class="space"></span>
                                 <h2 class="heading--internal u-mb4">Book a session for a video session!</h2>
 
                                 <span class="space"></span>
-
-
-
 
 
                                 <div class="grid__column u-size-1of2--md">
@@ -279,8 +276,8 @@
 
 
                                     <div class="book-a-session-form__input">
-                                        <label for="firstname">First Name</label>
-                                        <input id="firstname" name="firstname" type="text" required>
+                                        <label for="fullname">Fullname</label>
+                                        <input id="fullname" name="fullname" type="text" required>
                                     </div>
 
                                     <div class="book-a-session-form__input">
@@ -296,7 +293,7 @@
 
                                     <div class="book-a-session-form__input calculator__input--last">
                                         <label for="industry">What's your industry?</label>
-                                        <select id="industry" name="industry" class="js-calculator-input" required>
+                                        <select id="industry" name="industry" required>
                                             <option selected="" value="Technology">Technology</option>
                                             <option value="Mobile">Mobile</option>
                                             <option value="Finance">Finance</option>
@@ -320,15 +317,32 @@
                                         </select>
                                     </div>
 
-                                    <div class="book-a-session-form__input">
-                                        <label for="ticket">Last Name</label>
-                                        <input type="text" name="lastname" required>
+                                   <div class="book-a-session-form__input calculator__input--last">
+                                        <label for="plan">Chosse your interested plan</label>
+                                        <select id="plan" name="plan" required>
+                                            <option selected="" value="Bronze">Bronze</option>
+                                            <option value="Silver">Silver</option>
+                                            <option value="Gold">Gold</option>
+                                        </select>
                                     </div>
 
                                     <div class="book-a-session-form__input">
                                         <label for="ticket">Phone</label>
-                                        <input type="tel" data-mask="1-000-000-0000" required name="Phone" data-placement="bottom" />
+                                        <input type="tel" data-mask="1-000-000-0000" id="phone" name="phone" required data-placement="bottom" />
                                     </div>
+
+                                </div>
+
+                                 <span class="space"></span>
+                                  <span class="space"></span>
+
+                                <div class="grid__column u-size-1of1--md">
+                                  
+                                    <div class="book-a-session-form__input">
+                                        <label for="email">Any Questions?</label>
+                                        <textarea rows="4" cols="50" id="message" name="message"></textarea>
+                                    </div>
+
 
                                 </div>
 
@@ -337,8 +351,8 @@
 
                                     <button type="submit" id="submit" class="btn">Request Booking</button>
 
-
-                                    <div id="success"></div>
+                                    <p>&nbsp;</p>
+                                    <div id="success-contact"></div>
 
                                 </div>
 

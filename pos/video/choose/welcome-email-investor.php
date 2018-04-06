@@ -1,32 +1,20 @@
 <?php
 
-include_once("../../config.php"); 
-
-
-if($_POST) {
-
-date_default_timezone_set('America/New_York');
-$date = date("Y-m-d");
-$time = date('h:i:s A');  
- 
-
-
-
- $insert_sql = mysqli_query($connecDB,"INSERT INTO booking(Fullname, Email, Phone, StartupName, Industry, Plan, Message, Date, Time) VALUES('".$_POST['fullname']."', '".$_POST['email']."' ,'".$_POST['phone']."', '".$_POST['startup-name']."' , '".$_POST['industry']."' , '".$_POST['plan']."', '".htmlspecialchars($_POST['message'])."', '".$date."', '".$time."')");
-
-
+require_once '../base_path.php';
 
 // using SendGrid's PHP Library
 // https://github.com/sendgrid/sendgrid-php
 // If you are using Composer (recommended)
-require '../../sendgrid-php/vendor/autoload.php';
+require '../sendgrid-php/vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("Contact Form Valify", "support@valifyit.com");
-$subject = "Contact Form Valify";
-$to = new SendGrid\Email('', 'ald183s@gmail.com');
+$from = new SendGrid\Email("Welcome", "support@valifyit.com");
+$subject = "Welcome";
+$to = new SendGrid\Email('', 'brendanimak@gmail.com');
+//$to = new SendGrid\Email('', $_SESSION['email']);
 $content = new SendGrid\Content("text/html", '
          
+
 <body style="margin: 0 !important; padding: 0 !important;">
 
 
@@ -42,8 +30,8 @@ $content = new SendGrid\Content("text/html", '
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:50px; max-width: 600px;" class="wrapper">
                 <tr>
                     <td align="left" valign="top" style="padding:20px;" class="logo">
-                        <a href="http://litmus.com" target="_blank">
-                            <img alt="Logo" src="http://valifyit.com/images/email/email-logo-large.jpg" width="132" height="48" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <a href="https://misterpao.com/" target="_blank">
+                            <img alt="Logo" src="https://misterpao.com/images/email/email-logo-large.png" width="264" height="73" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -87,47 +75,16 @@ $content = new SendGrid\Content("text/html", '
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                  <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Startup Name: '.$_POST['startup-name'].'
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Fullname: '.$_POST['fullname'].'
-                                                </td>
-                                            </tr>
-                                            
-                                            <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Industry: '.$_POST['industry'].'
+                                                You\'re on your way on your next funding!
                                                 </td>
                                             </tr>
                                             
                                              <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Plan: '.$_POST['plan'].'
+                                                 <td align="left" style="padding: 0 0 5px 25px;font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
+                                                See the list of Startups.
+                                                
                                                 </td>
                                             </tr>
-
-                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Email: '.$_POST['email'].'
-                                                </td>
-                                            </tr>
-
-                                               <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Phone: '.$_POST['phone'].'
-                                                </td>
-                                            </tr>
-
-                                             <tr>
-                                                 <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                <br><br>Message:<br><br>'.nl2br(htmlspecialchars($_POST['message'])).'
-                                                </td>
-                                            </tr>
-                                            
-                                             
                                         </table>
                                     </div>
                                    
@@ -137,6 +94,37 @@ $content = new SendGrid\Content("text/html", '
 
 
 
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600;">
+                            <tbody><tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                    <td align="left" valign="top" width="115">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; max-width:600px; vertical-align:top; width:100%;">
+
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                              <tr>
+                                                <td valign="top" align="center" style="padding: 40px 0 0 0; text-decoration:none" class="mobile-hide">
+                                                
+                                                 <a href="'.BASE_PATH.'/startup/create" style="text-decoration:none !important; text-decoration:none;">
+                                                <div style="padding: 10px; max-width:140px; border-radius: 25px; text-decoration:none !important; text-decoration:none; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; background:#348eda; color: #ffffff; text-decoration: none !important;" class="padding">
+                                               Add a startup
+                                                </div>
+                                                </a>
+                                                
+                                                </td>
+                                              </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        
                         
                         
                         
@@ -185,7 +173,7 @@ $content = new SendGrid\Content("text/html", '
                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        <img alt="Logo" src="http://valifyit.com/images/email/email-logo-small.jpg" width="110" height="34" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                        <img alt="Logo" src="https://misterpao.com/images/email/email-logo-small.jpg" width="150" height="41" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
                            </td>
                      </tr>
 
@@ -195,15 +183,24 @@ $content = new SendGrid\Content("text/html", '
 
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 600px;" class="responsive-table">
+
+             <tr>
+                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                       &nbsp;
+                           </td>
+                     </tr>
+
+                <tr>
+                
                 <tr>
                     <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
-                        245 5th Ave Suite 201, New York, NY 10001
+                       245 5th Ave Suite 201, New York, NY 10001
                            </td>
                      </tr>
 
                       <tr>
                       <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">   
-                        <a href="http://valifyit.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="http://valifyit.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="http://valifyit.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a></td>
+                        <a href="https://misterpao.com/terms/" target="_blank" style="color: #666666; text-decoration: none;">Terms of Service</a> | <a href="https://misterpao.com/privacy/" target="_blank" style="color: #666666; text-decoration: none;">Privacy</a>  | <a href="https://misterpao.com/faq/" target="_blank" style="color: #666666; text-decoration: none;">FAQ</a></td>
                        
                         
  
@@ -238,14 +235,8 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->statusCode();
 //echo $response->headers();
 //echo $response->body();
-            
-echo '<div class="name-field col-md-6">'; 
-echo '<div style="background:#eee; font-size:18px; width:auto; text-align:center; padding:5px;">';
-echo "Thank you for reaching to us. We'll get back to you shortly";       
-echo '</div>';
-echo '</div>'; 
-     
-   
-}
+
 
 ?>
+         
+
