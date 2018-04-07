@@ -408,7 +408,7 @@ No Team Members added so far!
 <script>
 
 
-var url_link = 'http://localhost/creative/pos/video/startup/';
+var url_link = 'http://localhost/creative/pos/video/profile/';
 
 ////////Connect//////////
 

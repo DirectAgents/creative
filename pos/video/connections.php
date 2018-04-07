@@ -225,7 +225,7 @@ $cloudinary_section = 'startups';
         if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
         if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
 
-        echo $row_entrepreneur['Type'];
+        //echo $row_entrepreneur['Type'];
                     
                                         $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'StartupE' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'StartupE' ORDER BY id DESC");                    
                                         
@@ -491,26 +491,26 @@ $('#sa-connect-delete-'+<?php echo $row_connections['requester_id']; ?>).click(f
 <?php //echo $row_connections['requester_id']; ?>
 
 
-            <?php if($row_entrepreneur['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur['google_picture_link']; } ?>
-            <?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){ $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture"; } ?>
-            <?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
+            <?php if($row_entrepreneur2['ProfileImage'] == 'Google'){  $profileimage = $row_entrepreneur2['google_picture_link']; } ?>
+            <?php if($row_entrepreneur2['ProfileImage'] == 'Facebook'){ $profileimage = "https://graph.facebook.com/".$row_entrepreneur2['facebook_id']."/picture"; } ?>
+            <?php if($row_entrepreneur2['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur2['linkedin_picture_link'];  } ?>
             <tr class="advance-table-row connections-tab-inside">
                 
                 <td>
-                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['username'];?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
-                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['username'];?>"><?php echo $row_entrepreneur['Fullname']; ?></a>
+                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur2['username'];?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
+                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur2['username'];?>"><?php echo $row_entrepreneur2['Fullname']; ?></a>
                 </td>
               
                 <td><span class="label label-warning label-rouded">
                     
-                    <?php if($row_entrepreneur['Type'] == 'StartupE'){ echo "Startup";}else{ echo "Investor";} ?>
+                    <?php if($row_entrepreneur2['Type'] == 'StartupE'){ echo "Startup";}else{ echo "Investor";} ?>
 
                 </span></td>
                 <td>
-                    <?php if($row_connections['status'] == 'accepted') { echo $row_entrepreneur['Email']; }else{echo '-';}?>
+                    <?php if($row_connections['status'] == 'accepted') { echo $row_entrepreneur2['Email']; }else{echo '-';}?>
                 </td>
                 <td>
-                    <?php if($row_connections['status'] == 'accepted') { echo $row_entrepreneur['Phone']; }else{echo '-';}?>
+                    <?php if($row_connections['status'] == 'accepted') { echo $row_entrepreneur2['Phone']; }else{echo '-';}?>
                 </td>
                  <td>
                     <?php if($row_connections['status'] == 'pending') { ?>

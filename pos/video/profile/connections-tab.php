@@ -122,7 +122,7 @@ $('#sa-connect-accept-'+<?php echo $row_connections['requester_id']; ?>).click(f
                                 data: {requested_id: requested_id, requester_id: requester_id},
                                 dataType: "html",
                                 success: function(response) {
-                                    //alert(data);
+                                    //alert(response);
                                     //$('#deleted').fadeIn("fast");
                                     //$('#deleted').delay(2000).fadeOut("slow");
                                 //$("#existing-team-members").load(url_link+"existing-team-members.php?userid="+userid); 
@@ -133,7 +133,7 @@ $('#sa-connect-accept-'+<?php echo $row_connections['requester_id']; ?>).click(f
                                 $("#connections-tab-content").load(url_link+"connections-tab.php?userid="+requester_id);
 
                                 if (response != 'no good') {
-                                swal("Success!", "You are both now connected.", "success");  
+                                swal("Success!", "You are now both connected.", "success");  
                                  }
 
                                 }
@@ -241,6 +241,56 @@ $('#sa-connect-deny-'+<?php echo $row_connections['requester_id']; ?>).click(fun
 
 
 
+$('#sa-connect-delete-'+<?php echo $row_connections['requester_id']; ?>).click(function(){
+        
+        //var data_thumb = $("#sa-connect").attr("data-thumb");
+        //alert(data_thumb);
+
+        var requested_id = $("#sa-connect-deny-"+<?php echo $row_connections['requester_id']; ?>).attr("data-requested-id");
+        var requester_id = $("#sa-connect-deny-"+<?php echo $row_connections['requester_id']; ?>).attr("data-requester-id");
+        //alert(requested_id);
+
+        swal({   
+            title: "Delete Connection!",   
+            text: "Are you sure?",   
+            //type: "warning",
+            //imageUrl: data_thumb,   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, delete!",   
+            closeOnConfirm: false 
+        }, function(){   
+
+          
+            //alert(requested_id);
+
+                        $.ajax({
+                                url: url_link+"connect-delete.php",
+                                method: "GET",
+                                data: {requested_id: requested_id, requester_id: requester_id},
+                                dataType: "html",
+                                success: function(response) {
+                                   
+                                $("#connections-tab-content").load(url_link+"connections-tab.php?userid="+requester_id);
+
+                                if (response != 'no good') {
+                                swal("Success!", "You have deleted the connection.", "success"); 
+                                 }
+
+                               
+                                }
+                            });
+                      
+             
+        });
+    });
+
+
+
+
+
+
+
 });
 
 </script>
@@ -257,8 +307,8 @@ $('#sa-connect-deny-'+<?php echo $row_connections['requester_id']; ?>).click(fun
                
                
                 <td>
-                     <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['Fullname']; ?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
-                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['Fullname']; ?>"><?php echo $row_entrepreneur['Fullname']; ?></a>
+                     <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['username']; ?>"><img src="<?php echo $profileimage; ?>" class="img-circle" width="30"></a>
+                    <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_entrepreneur['username']; ?>"><?php echo $row_entrepreneur['Fullname']; ?></a>
                 </td>
                 <td><span class="label label-warning label-rouded">
                     <?php if($row_entrepreneur['Type'] == 'StartupE'){ echo "Startup";}else{ echo "Investor";} ?>
@@ -301,7 +351,7 @@ $('#sa-connect-deny-'+<?php echo $row_connections['requester_id']; ?>).click(fun
                         <?php }else{ ?> style="display:none"
                         <?php } ?>>
                         <!--<button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="icon-trash"></i></button>-->
-                       <button type="button" id="sa-connect-deny" data-requester-id="<?php echo $row_connections['requester_id']; ?>" data-requested-id="<?php echo $row_connections['requested_id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
+                      <button type="button" id="sa-connect-delete-<?php echo $row_connections['requester_id']; ?>" data-requester-id="<?php echo $row_connections['requester_id']; ?>" data-requested-id="<?php echo $row_connections['requested_id']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
                     </div>
                     
                     <div class="sa-connect-denied" <?php if($row_connections[ 'status']=='denied' ) { ?> style="display:block"

@@ -15,6 +15,16 @@ if(mysqli_num_rows($sql) > 0 ) {
 $row= mysqli_fetch_array($sql);
 
 
+
+$sql_requested = "SELECT * FROM tbl_users WHERE userID ='".$_POST['requested_id']."'";  
+$result = mysqli_query($connecDB, $sql_requested);  
+$row_requested = mysqli_fetch_array($result);
+
+
+//if($row_entrepreneur['Type'] == 'StartupE'){ $type = 'StartupE';} 
+//if($row_entrepreneur['Type'] == 'Investor'){ $type = 'Investor';}   
+
+
 date_default_timezone_set('America/New_York');
 $date = date("Y-m-d");
 $time = date('h:i:s A');  
@@ -23,11 +33,12 @@ $time = date('h:i:s A');
 if($row['Type'] == 'StartupE'){
 
 
+
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Type, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Startup' , '".$time."', '".$date."')");
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$row_requested['Type']."' , '".$time."', '".$date."')");
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Type, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Startup' , '".$time."', '".$date."')");
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$row['Type']."' , '".$time."', '".$date."')");
 
 }
 
@@ -38,10 +49,10 @@ if($row['Type'] == 'Investor'){
 
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Type, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Investor' , '".$time."', '".$date."')");
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$row['Type']."' , '".$time."', '".$date."')");
 
 $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Type, Time, Date) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Investor' , '".$time."', '".$date."')");
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$row_requested['Type']."' , '".$time."', '".$date."')");
 
 }
 
@@ -52,9 +63,7 @@ $insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id
 
 
 
-$sql_requested = "SELECT * FROM tbl_users WHERE userID ='".$_POST['requested_id']."'";  
-$result = mysqli_query($connecDB, $sql_requested);  
-$row_requested = mysqli_fetch_array($result);
+
 
 
 
@@ -146,7 +155,7 @@ $content = new SendGrid\Content("text/html", '
                                             <tr>
                                                  <td align="center" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
                                               
-                                              <a href="javascript:void(0)">
+                                              <a href="'.BASE_PATH.'/profile/'.$row['username'].'">
                                     
 								'.$image.'
 

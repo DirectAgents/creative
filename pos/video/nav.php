@@ -35,7 +35,7 @@ $firstname = $words[0];
 if($rownav['Type'] == 'StartupE'){$table = 'tbl_connections_startup';}
 if($rownav['Type'] == 'Investor'){$table = 'tbl_connections_investor';}
 
-$result_count = mysqli_query($connecDB,"SELECT requested_id, requester_id, Date, Time, COUNT(DISTINCT requested_id) AS count FROM ".$table." WHERE requested_id = '".$rownav['userID']."' GROUP BY requested_id");
+$result_count = mysqli_query($connecDB,"SELECT requested_id, requester_id, Date, Time, COUNT(DISTINCT requested_id) AS count FROM ".$table." WHERE requested_id = '".$rownav['userID']."' AND status = 'pending' GROUP BY requested_id");
 $row_count = mysqli_fetch_assoc($result_count);
 $count = $row_count['count'];
 
@@ -256,11 +256,19 @@ $row13 = mysqli_fetch_array($sql13);
                            <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Url'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <?php if(isset($row6['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Url'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row8['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Url'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row10['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Url'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row13['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row13['Url'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row13['Name'];} ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
 
@@ -357,11 +365,19 @@ $row13 = mysqli_fetch_array($sql13);
                             <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Url'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <?php if(isset($row6['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Url'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row8['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Url'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row10['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Url'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row13['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row13['Url'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row13['Name'];} ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
 
@@ -457,11 +473,19 @@ $row13 = mysqli_fetch_array($sql13);
                             <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Url'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <?php if(isset($row6['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Url'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row8['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Url'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row10['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Url'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row13['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row13['Url'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row13['Name'];} ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
 
@@ -557,11 +581,19 @@ $row13 = mysqli_fetch_array($sql13);
                             <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Url'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <?php if(isset($row6['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Url'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row8['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Url'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row10['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Url'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row13['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row13['Url'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row13['Name'];} ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
 
@@ -774,11 +806,19 @@ $row13 = mysqli_fetch_array($sql13);
                            <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Url'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <?php if(isset($row6['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Url'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row8['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Url'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row10['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Url'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row13['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row13['Url'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row13['Name'];} ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
 
@@ -875,11 +915,19 @@ $row13 = mysqli_fetch_array($sql13);
                             <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Url'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <?php if(isset($row6['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Url'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row8['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Url'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row10['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Url'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row13['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row13['Url'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row13['Name'];} ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
 
@@ -975,11 +1023,19 @@ $row13 = mysqli_fetch_array($sql13);
                             <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Url'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <?php if(isset($row6['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Url'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row8['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Url'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row10['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Url'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row13['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row13['Url'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row13['Name'];} ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
 
@@ -1075,11 +1131,19 @@ $row13 = mysqli_fetch_array($sql13);
                             <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header"><?php echo $row2['Industry']; ?></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Name'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Name'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Name'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
-                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Name'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row12['Name'];} ?></a></li>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row4['Url'];?>"><?php if(array_key_exists(0, $row) == 1){ echo $row4['Name'];} ?></a></li>
+                                    <?php if(isset($row6['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row6['Url'];?>"><?php if(array_key_exists(1, $row) == 1){ echo $row6['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row8['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row8['Url'];?>"><?php if(array_key_exists(2, $row) == 1){ echo $row8['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row10['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php  echo $row10['Url'];?>"><?php if(array_key_exists(3, $row) == 1){ echo $row10['Name'];} ?></a></li>
+                                    <?php } ?>
+                                    <?php if(isset($row13['Url'])){ ?>
+                                    <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row13['Url'];?>"><?php if(array_key_exists(4, $row) == 1){ echo $row13['Name'];} ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
 
