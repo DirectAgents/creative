@@ -486,7 +486,7 @@ echo 'id: ' . $user['id'];
                 $("#what-we-offer, #what-we-offer-footer").click(function() {
                   
                     $('html, body').animate({
-                        scrollTop: $(".what-we-offer").offset().top - 80
+                        scrollTop: $(".what-we-offer").offset().top - 100
                     }, 1000);
 
                     $(".hamburger").removeClass("is-active");

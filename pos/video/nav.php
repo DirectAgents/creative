@@ -93,9 +93,16 @@ $sql = mysqli_query($connecDB,"SELECT * FROM ".$table." WHERE requested_id = '".
 while($row_connect_request = mysqli_fetch_array($sql)){  
 
 ?>
+                <?php if($row_connect['Type'] == 'StartupE'){ ?>
 
+                            <a href="<?php echo BASE_PATH; ?>/connections/">
+                <?php } ?>
 
-                                    <a href="<?php echo BASE_PATH; ?>/connections/">
+                <?php if($row_connect['Type'] == 'Investor'){ ?>
+
+                            <a href="<?php echo BASE_PATH; ?>/connections/investors">
+                <?php } ?>
+
                                         <div class="user-img"> 
                                             
 

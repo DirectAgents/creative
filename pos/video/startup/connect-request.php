@@ -19,14 +19,14 @@ $date = date("Y-m-d");
 $time = date('h:i:s A');  
 
 
-if($row['Type'] == 'Startup'){
+if($row['Type'] == 'StartupE'){
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Date, Time) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$date."', '".$time."' )");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Type, Date, Time) 
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'StartupE'  ,'".$date."', '".$time."' )");
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Date, Time) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$date."', '".$time."' )");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Type, Date, Time) 
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'StartupE' , '".$date."', '".$time."' )");
 
 }
 
@@ -36,11 +36,11 @@ if($row['Type'] == 'Investor'){
 //echo $row['Type'];
 
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Date, Time) 
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$date."', '".$time."' )");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_startup(my_id, requester_id, requested_id, Type, Date, Time) 
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Investor' , '".$date."', '".$time."' )");
 
-$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Date, Time)
-	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', '".$date."', '".$time."' )");
+$insert_sql = mysqli_query($connecDB,"INSERT INTO tbl_connections_investor(my_id, requester_id, requested_id, Type, Date, Time)
+	VALUES('".$_POST['requester_id']."','".$_POST['requester_id']."','".$_POST['requested_id']."', 'Investor' ,'".$date."', '".$time."' )");
 
 }
 

@@ -224,8 +224,10 @@ $cloudinary_section = 'startups';
 
         if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
         if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
+
+        echo $row_entrepreneur['Type'];
                     
-                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'Startup' ORDER BY id DESC");                    
+                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'StartupE' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'StartupE' ORDER BY id DESC");                    
                                         
                                         if( ! mysqli_num_rows($sql_connections) ) {
                                             echo "<div class='no-connections text-center'>No Connections so far!</div>"; 
@@ -261,16 +263,16 @@ $cloudinary_section = 'startups';
             if($row_connections[ 'requester_id'] == $_SESSION['entrepreneurSession'] && $row_connections[ 'status']=='pending' ||
             $row_connections[ 'requester_id'] == $_SESSION['entrepreneurSession'] && $row_connections[ 'status']=='accepted' ) {
 
-                                         $sql_entrepreneur = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_connections['requested_id']."'");
-                                         $row_entrepreneur= mysqli_fetch_array($sql_entrepreneur);
+                                         $sql_entrepreneur2 = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_connections['requested_id']."'");
+                                         $row_entrepreneur2= mysqli_fetch_array($sql_entrepreneur2);
              }     
              
 
              if($row_connections[ 'requested_id'] == $_SESSION['entrepreneurSession'] && $row_connections[ 'status']=='pending' ||
              $row_connections[ 'requested_id'] == $_SESSION['entrepreneurSession'] && $row_connections[ 'status']=='accepted' ) {
 
-                                         $sql_entrepreneur = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_connections['requester_id']."'");
-                                         $row_entrepreneur= mysqli_fetch_array($sql_entrepreneur);
+                                         $sql_entrepreneur2 = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_connections['requester_id']."'");
+                                         $row_entrepreneur2= mysqli_fetch_array($sql_entrepreneur2);
              }                            
 
 

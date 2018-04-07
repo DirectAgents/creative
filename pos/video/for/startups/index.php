@@ -2151,8 +2151,12 @@ AAAAAABMi0ETAAAAAAAAAACmxaAJAAAAAAAAAADT8v8DVtpqlPK0mFIAAAAASUVORK5CYII=">
                         <img src="<?php echo BASE_PATH; ?>/images/money-bag.svg" alt="icon"/>
                     </figure>
 
+                    <span class="space"></span>
+                    <span class="space"></span>
+
                 </div>
 
+        
 
 
                 <div class="section__arrow what-we-offer">
