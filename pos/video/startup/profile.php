@@ -86,7 +86,7 @@
                                             <?php if($row_the_startup['Logo'] != '' && $row_the_startup['Logo'] != 'on') { ?>
                                           <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/<?php echo $row_the_startup['Logo'];?>" class="thumb-lg img-circle" alt="img">  
                                             <?php }else{ ?>
-                                                 <img src="http://res.cloudinary.com/dgml9ji66/image/upload/v1522625555/rocket_z6vxuz.jpg" class="thumb-lg img-circle" alt="img">
+                                                 <img src="http://res.cloudinary.com/dgml9ji66/image/upload/v1522625555/rocket_mee1lx.jpg" class="thumb-lg img-circle" alt="img">
                                            <?php } ?>
 
                                               </div>
@@ -102,7 +102,7 @@
                                                <div id="url_preview_logo"><input type="checkbox" style="display:none" value="<?php echo $row_the_startup['Logo'];?>" name="company_logo[]"  checked/></div>
                                             <?php }else{ ?>
                                             <ul id="preview_logo">
-                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/v1522625555/rocket_z6vxuz.jpg" class="thumb-lg img-circle" alt="img">
+                                            <img src="http://res.cloudinary.com/dgml9ji66/image/upload/v1522625555/rocket_mee1lx.jpg" class="thumb-lg img-circle" alt="img">
                                              </ul>
                                                <div id="url_preview_logo"><input type="checkbox" style="display:none" name="company_logo[]"  checked/></div>
                                             <?php } ?>

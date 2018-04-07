@@ -22,9 +22,9 @@
 
 
 
-                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57"> <a href="#/" id="what-we-offer-footer">What we offer!</a></li>
-                                <li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58"><a href="#/" id="pricing-footer">Pricing</a></li>
-                                <li id="menu-item-443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-443"><a href="#/" id="book-a-session-footer">Book a Session</a></li>
+                                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57"> <a href="#/" id="what-we-offer">What we offer!</a></li>
+                                <li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58"><a href="#/" id="packages">Packages</a></li>
+                                <li id="menu-item-443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-443"><a href="#/" id="book-a-session">Book a Session</a></li>
                                
                                
                             </ul>
@@ -32,12 +32,9 @@
 
                             <ul><li id="menu-item-445" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-445"><a href="https://www.fivestars.com/">For Investors</a></li>
                             <li id="menu-item-446" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-446"><a target="_blank" href="https://www.fivestars.com/accounts/login/">Sign In</a></li>
-                            <li id="menu-item-447" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-447"><a target="_blank" href="https://fivestars.app.link/H5xo4xAVWB">Find Locations</a></li>
-                            <li id="menu-item-623" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-623"><a href="https://www.fivestars.com/business/">Rewards &#038; Deals</a></li>
                             <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59"><a href="https://www.fivestars.com/about-us/">About Us</a></li>
-                            <li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60"><a href="https://www.fivestars.com/careers/">Careers</a></li>
                             <li id="menu-item-361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361"><a href="https://www.fivestars.com/legal/">Terms</a></li>
-                            <li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62"><a target="_blank" href="https://partners.fivestars.com">Partners</a></li>
+                           
                             </ul>                 
 
 

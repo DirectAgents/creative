@@ -486,15 +486,26 @@ echo 'id: ' . $user['id'];
                 $("#what-we-offer, #what-we-offer-footer").click(function() {
                   
                     $('html, body').animate({
-                        scrollTop: $(".what-we-offer").offset().top - 100
+                        scrollTop: $(".what-we-offer").offset().top - 80
                     }, 1000);
+
+                    $(".hamburger").removeClass("is-active");
+                    $(".nav--mobile").removeClass("is-active");
+                    $(".page-template").removeClass("u-prevent-scroll");
+                    $(".page-template").removeClass("has-nav");
+                    
 
                 });
                 
-                 $("#pricing, #pricing-footer").click(function() {
+                 $("#packages, #packages-footer").click(function() {
                     $('html, body').animate({
-                        scrollTop: $(".pricing").offset().top - 100
+                        scrollTop: $(".packages").offset().top - 100
                     }, 1000);
+
+                    $(".hamburger").removeClass("is-active");
+                    $(".nav--mobile").removeClass("is-active");
+                    $(".page-template").removeClass("u-prevent-scroll");
+                    $(".page-template").removeClass("has-nav");
 
                 });
 
@@ -502,6 +513,11 @@ echo 'id: ' . $user['id'];
                     $('html, body').animate({
                         scrollTop: $(".book-a-session").offset().top - 100
                     }, 1000);
+
+                    $(".hamburger").removeClass("is-active");
+                    $(".nav--mobile").removeClass("is-active");
+                    $(".page-template").removeClass("u-prevent-scroll");
+                    $(".page-template").removeClass("has-nav");
 
                 });
 

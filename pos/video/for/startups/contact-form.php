@@ -12,7 +12,7 @@ $time = date('h:i:s A');
 
 
 
- $insert_sql = mysqli_query($connecDB,"INSERT INTO booking(Fullname, Email, Phone, StartupName, Industry, Plan, Message, Date, Time) VALUES('".$_POST['fullname']."', '".$_POST['email']."' ,'".$_POST['phone']."', '".$_POST['startup-name']."' , '".$_POST['industry']."' , '".$_POST['plan']."', '".htmlspecialchars($_POST['message'])."', '".$date."', '".$time."')");
+ $insert_sql = mysqli_query($connecDB,"INSERT INTO booking(Fullname, Email, Phone, StartupName, Industry, Package, Message, Date, Time) VALUES('".$_POST['fullname']."', '".$_POST['email']."' ,'".$_POST['phone']."', '".$_POST['startup-name']."' , '".$_POST['industry']."' , '".$_POST['package']."', '".htmlspecialchars($_POST['message'])."', '".$date."', '".$time."')");
 
 
 
@@ -105,7 +105,7 @@ $content = new SendGrid\Content("text/html", '
                                             
                                              <tr>
                                                  <td align="left" style="padding: 0 0 5px 25px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding">
-                                                Plan: '.$_POST['plan'].'
+                                                Package: '.$_POST['package'].'
                                                 </td>
                                             </tr>
 

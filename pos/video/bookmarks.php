@@ -315,7 +315,7 @@ $cloudinary_section = 'startups';
                 <?php if($row_startup['Logo'] != '' && $row_startup['Logo'] != 'on' ) { ?>
                     <img src="https://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30">
                 <?php }else{ ?> 
-                <img src="https://res.cloudinary.com/dgml9ji66/image/upload/v1522625555/rocket_z6vxuz.jpg" class="img-circle" width="30">
+                <img src="https://res.cloudinary.com/dgml9ji66/image/upload/v1522625555/rocket_mee1lx.jpg" class="img-circle" width="30">
                 <?php } ?>
 
 

@@ -1484,6 +1484,24 @@ p.hero__text--cta a {
 }
 
 
+a.request-a-quote{
+    background-color: #00a8e2;
+    color: #fff;
+    border-radius: 25px;
+}
+
+a:hover.request-a-quote{
+    background-color: #00a8e2;
+    color: #fff;
+    border-radius: 25px;
+}
+
+.book-a-session button:hover {
+    background-color: #0882ac;
+	border: 1px solid #d1d1d1;
+    color: #fff;
+}
+
 .book-a-session button, #contact-us [type=submit] {
     background-color: #00a8e2;
 	border: 1px solid #d1d1d1;
@@ -2654,7 +2672,7 @@ img.mfp-img {
 	display: block
 }
 .header--clone .nav--main {
-	margin-top: 2px
+	margin-top: 10px
 }
 .header--clone .nav--main a:hover {
 	color: #00a8e2
@@ -2839,7 +2857,8 @@ img.mfp-img {
 }
 .logo--header {
 	width: 160px;
-	margin: 0
+	margin: 0;
+	padding-top:10px;
 }
 .footer__bottom {
 	padding: 0 0 80px

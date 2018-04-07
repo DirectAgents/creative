@@ -72,7 +72,7 @@ function seoUrl($string) {
 if ($sql->num_rows == 0){
 
 
-if($_POST['logo'] == 'on' ){$logo = 'rocket_z6vxuz';}else{$logo = $_POST['logo'];}
+if($_POST['logo'] == 'on' ){$logo = 'rocket_mee1lx';}else{$logo = $_POST['logo'];}
 if($_POST['screenshot'] == 'on'){$screenshot = 'industries/placeholder-blue';}else{$screenshot = $_POST['screenshot'];}
 
 
@@ -106,7 +106,7 @@ $row_startup = mysqli_fetch_array($sql_startup);
 
 //Upload to algolia
 
-if($_POST['logo'] == 'on' ){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
+if($_POST['logo'] == 'on' ){$logo_algolia = 'rocket_mee1lx';}else{$logo_algolia = $_POST['logo'];}
 
 $date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
 
@@ -243,7 +243,7 @@ mysqli_query($connecDB, $sql);
 
 //Upload to algolia
 
-if($row_startup ['Logo'] == 'on'){$logo_algolia = 'rocket_z6vxuz';}else{$logo_algolia = $_POST['logo'];}
+if($row_startup ['Logo'] == 'on'){$logo_algolia = 'rocket_mee1lx';}else{$logo_algolia = $_POST['logo'];}
 
 $date_algolia = date('F j',strtotime($row['Date_Posted']));  // January 30, 2015, for example.
 
