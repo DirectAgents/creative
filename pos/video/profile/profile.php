@@ -206,7 +206,7 @@ $cloudinary_section = 'startups';
 <?php if($row_entrepreneur['ProfileImage'] == 'Facebook'){  $profileimage = "https://graph.facebook.com/".$row_entrepreneur['facebook_id']."/picture?type=large"; } ?>
 <?php if($row_entrepreneur['ProfileImage'] == 'Linkedin'){  $profileimage = $row_entrepreneur['linkedin_picture_link'];  } ?>
 
-                                 <p>&nbsp;</p>
+                                
 
 
 <!--Connect-->
@@ -216,20 +216,30 @@ $cloudinary_section = 'startups';
     if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
     if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
+    //echo $type;
+
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND requester_id = '".$row_entrepreneur ['userID']."'");
+
+    $row_connect = mysqli_fetch_array($sql_connect);
+
+    //echo $row_entrepreneur ['userID'];
                 ?>                 
-                                 
-                
-    <div class="col-md-12 text-center sa-connect-btn" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block; padding-left: 0px; margin-bottom:10px;" 
-        <?php }else{ ?> style="display:none" <?php } ?> >
+        
+        <?php if ($row_connect['requester_id'] != $row_entrepreneur ['userID'] && $row_connect['requested_id'] != $row_entrepreneur ['userID'] ){ ?>
+                 <p>&nbsp;</p>
+    <div class="col-md-12 text-center sa-connect-btn">
                                    <a href="javascript: void(0);" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-success waves-effect waves-light sa-connect-profile" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Connect</a>
                                  </div> 
-               
-    <div class="col-md-12 text-center sa-connect-sent" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block; margin-bottom:10px; padding-left: 0px" <?php }else{ ?> style="display:none" <?php } ?>>
+
+           <?php } ?>   
+           
+         <?php if ($row_connect['requester_id'] == $_SESSION['entrepreneurSession'] ){ ?>                     
+                <p>&nbsp;</p>
+    <div class="col-md-12 text-center sa-connect-sent">
                                     <a href="javascript: void(0);" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light sa-connect-profile-cancel" style="font-size:13px"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
-
+        <?php } ?>
 
 
                 

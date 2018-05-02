@@ -142,25 +142,31 @@ No Team Members added so far!
 
 
                  <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending' ");
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' ");
+
+     $row_connect = mysqli_fetch_array($sql_connect);
+
+     //echo $row_connect['requester_id'];
+
+
                 ?>                 
                                  
-                
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connect" <?php if ($sql_connect->num_rows == 0){ ?> style="display:block" 
-        <?php }else{ ?> style="display:none" <?php } ?> >
+            <?php if ($row_connect['requester_id'] != $row_user['userID'] && $row_connect['requested_id'] != $row_user['userID'] ){ ?>    
+    
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connect">
                                   <a href="javascript: void(0);" id="sa-connect" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
                                  </div> 
 
+                                 <?php } ?>
 
-                     <?php 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' ");
-                ?>                 
-                                 
+
+        <?php if ($row_connect['requester_id'] == $_SESSION['entrepreneurSession'] ){ ?>                         
                 
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-cancel" <?php if ($sql_connect->num_rows == 1) {  ?> style="display:block" 
-        <?php }else{ ?> style="display:none" <?php } ?> >
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-cancel">
                                    <a href="javascript: void(0);" id="sa-connect-cancel" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                  </div> 
+
+                                 <?php } ?>
 
     
 
