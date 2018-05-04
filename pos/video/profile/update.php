@@ -75,7 +75,7 @@ function seoUrl($string) {
 
 if($row['ProfileImage'] == 'Google'){$profileimage = $row['google_picture_link'];}
 if($row['ProfileImage'] == 'Facebook'){$profileimage = "https://graph.facebook.com/".$row['facebook_id']."/picture?type=large";}
-if($row['ProfileImage'] == 'Google'){$profileimage = $row['linkedin_picture_link'];}
+if($row['ProfileImage'] == 'Linkedin'){$profileimage = $row['linkedin_picture_link'];}
 
 
 

@@ -16,6 +16,64 @@ $type_nav = 'Investor';
 
 <?php include 'header.php'; ?>
 
+
+<?php
+
+if(isset($_SESSION['entrepreneurSession'])) {
+
+$sql = "SELECT * FROM tbl_users WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
+$result = mysqli_query($connecDB, $sql);  
+$row = mysqli_fetch_array($result);
+
+
+if($row['Type'] == 'Investor'){
+
+date_default_timezone_set('America/New_York');
+$date = date("Y-m-d");
+$time = date('h:i:s A');  
+
+$date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
+
+
+//Upload to algolia
+$response = array();
+
+$response[] = array(
+  'objectID'=> $row['userID'],
+  'investorID'=> $row['userID'],
+  'url'=> seoUrl($fullname), 
+  'fullname'=> $fullname,
+  'profileimage'=> $user->picture,
+  'location'=> $row['City'].', '.$row['State'],
+  'likes'=> '0',
+  'date'=> $date_algolia
+   );
+
+$fp = fopen('choose/investors.json', 'w');
+fwrite($fp, json_encode($response));
+fclose($fp);
+
+//echo var_dump($response);
+
+
+$client = new \AlgoliaSearch\Client("F3O2TAOV5W", "a48a018178dec80cadba88cee14f169b");
+$index = $client->initIndex('investors');
+
+$records = json_decode(file_get_contents('choose/investors.json'), true);
+
+$chunks = array_chunk($records, 1000);
+
+foreach ($chunks as $batch) {
+  $index->addObjects($batch);
+}
+
+
+}
+
+}
+
+?>
+
 <!-- ============================================================== -->
 <!-- Topbar header -->
 <!-- ============================================================== -->
@@ -74,11 +132,11 @@ $type_nav = 'Investor';
    
     <div class="hit-content">
       
-     
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div id="profile-img">
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
 
                         <div class="white-box-index">
-                            <div class="product-img">
+                            <div class="profile-img">
                                 <a href="<?php echo BASE_PATH; ?>/profile/{{url}}"><img src="{{{_highlightResult.profileimage.value}}}"/></a>
 
                                 
@@ -99,7 +157,7 @@ $type_nav = 'Investor';
 
 
 
-
+        </div>
    </div> 
 </div>  
 

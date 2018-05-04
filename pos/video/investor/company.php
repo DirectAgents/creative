@@ -39,7 +39,9 @@ $countries = explode(', ', $row['Countries']);
 
   <div class="col-md-12" style="padding-left:10px; padding-bottom:20px;" id="preview_edit_logo">
                         
+                        <?php if($row['Logo'] != ''){ ?>
                         <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo']; ?>" class="thumb-lg img-circle" />
+                        <?php } ?>
 
                      </div>
 
@@ -203,6 +205,7 @@ $countries = explode(', ', $row['Countries']);
 <option value="VP/SVP/Dept Head" <?php if($row['Title'] == 'VP/SVP/Dept Head'){ echo "selected"; }?>>VP/SVP/Dept Head</option>
 <option value="C-Level Executive (CEO, CFO, etc.)" <?php if($row['Title'] == 'C-Level Executive (CEO, CFO, etc.)'){ echo "selected"; }?>>C-Level Executive (CEO, CFO, etc.)</option>
 <option value="Founder/Owner/Principal" <?php if($row['Title'] == 'Founder/Owner/Principal'){ echo "selected"; }?>>Founder/Owner/Principal</option>
+<option value="Co-Founder" <?php if($row['Title'] == 'Co-Founder'){ echo "selected"; }?>>Co-Founder</option>
 <option value="Other" <?php if($row['Title'] == 'Other'){ echo "selected"; }?>>Other</option>
 </select>
 
@@ -316,7 +319,7 @@ $countries = explode(', ', $row['Countries']);
   <div class="col-md-6" style="padding-bottom:20px;"> 
                                                     <label class="col-md-6" style="padding-left:0px;"><strong>Minimum Investment</strong></label>
  <select id="fm_minimum" name="fm_minimum" class="form-control form-control-line">
-<option value="1" <?php if($row['Minimum'] == '1'){ echo "selected"; } ?>>Below $10k</option>
+<option value="10000" <?php if($row['Minimum'] == '10000'){ echo "selected"; } ?>>Below $10k</option>
 <option value="10000" <?php if($row['Minimum'] == '10000'){ echo "selected"; } ?>>$10k</option>
 <option value="25000" <?php if($row['Minimum'] == '25000'){ echo "selected"; } ?>>$25k</option>
 <option value="50000" <?php if($row['Minimum'] == '50000'){ echo "selected"; } ?>>$50k</option>
@@ -338,7 +341,7 @@ $countries = explode(', ', $row['Countries']);
                                                  <div class="col-md-6">
                                                     <label class="col-md-6" style="padding-left:0px;"><strong>Maximum Investment</strong></label>
  <select id="fm_maximum" name="fm_maximum" class="form-control form-control-line">
-<option value="1" <?php if($row['Maximum'] == '1'){ echo "selected"; } ?>>Below $10k</option>
+<option value="10000" <?php if($row['Maximum'] == '10000'){ echo "selected"; } ?>>Below $10k</option>
 <option value="10000" <?php if($row['Maximum'] == '10000'){ echo "selected"; } ?>>$10k</option>
 <option value="25000" <?php if($row['Maximum'] == '25000'){ echo "selected"; } ?>>$25k</option>
 <option value="50000" <?php if($row['Maximum'] == '50000'){ echo "selected"; } ?>>$50k</option>

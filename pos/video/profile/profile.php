@@ -172,7 +172,7 @@ if(isset($_SESSION['entrepreneurSession'])){
 
 
 
-                                            <a href="javascript:void(0)">
+                                           
                                     
 <?php if($row_entrepreneur['ProfileImage'] == 'Google'){ ?>
          <img src="<?php echo $row_entrepreneur['google_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
@@ -187,7 +187,7 @@ if(isset($_SESSION['entrepreneurSession'])){
        
 <?php } ?>
 
-</a>
+
 
 
                                             <div id="fullname">
@@ -287,7 +287,7 @@ if(isset($_SESSION['entrepreneurSession'])){
 
      $row_connect2 = mysqli_fetch_array($sql_connect2);
 
-    //echo $row_connect2['requester_id'];
+    //echo $row_entrepreneur['userID'];
 
 
                 ?>   

@@ -7027,6 +7027,16 @@ ul.select-row-icon li a:hover i.whn-hov {
     vertical-align: middle
 }
 
+
+.profile-img img{
+    min-width: 200px;
+    max-width: 200px;
+    width:100%;
+}
+
+
+
+
 .product-img {
     text-align: center;
     position: relative

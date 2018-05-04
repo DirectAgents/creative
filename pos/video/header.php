@@ -194,6 +194,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         //header('Location: '.BASE_PATH.'');
         //exit();
         //'".json_decode($_SESSION['access_token'])->access_token."',
+
+
     }
   else //else greeting text "Thanks for registering"
   { 
