@@ -172,7 +172,7 @@ $cloudinary_section = 'startups';
 
         <?php 
 
-    if($row_entrepreneur['Type'] == 'Entrepreneur'){$type = 'entrepreneur';}
+    if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
     if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
 
     $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."'");
@@ -218,12 +218,10 @@ $cloudinary_section = 'startups';
             <!-- ============================================================== -->
 
 
-
- 
-
 <div class="col-md-6 col-sm-6" style="padding-left:0px;">   
      <h3>Bookmarks</h3>
  </div>  
+   
 
 <?php if($row_entrepreneur['Type'] == 'Investor') { ?>
 <div class="col-md-6 col-sm-6">
@@ -244,26 +242,28 @@ $cloudinary_section = 'startups';
 
         <select id="bookmarks-list-select" name="bookmarks-list-select" class="form-control form-control-line">
             <option value="<?php echo BASE_PATH; ?>/bookmarks/">Startups</option>
-            <option value="<?php echo BASE_PATH; ?>/bookmarks/investors/">Investors</option>
+            <option value="<?php echo BASE_PATH; ?>/bookmarks/investors/" selected>Investors</option>
         </select>
     </div>  
 </div>
 <?php } ?>
 
+ 
 
-<?php 
+    <?php 
                     
-    $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND Type = 'Startup' ORDER BY id DESC");                    
+    $sql_bookmarks = mysqli_query($connecDB,"SELECT * FROM tbl_bookmarks WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND Type != 'Startup' ORDER BY id DESC");                    
                                         
                 if( ! mysqli_num_rows($sql_bookmarks) ) {
                 echo '<div class="col-md-12 col-sm-12">';
-                echo "<div class='no-connections text-center'>You haven't bookmarked any Startups yet!</div>"; 
+                echo "<div class='no-connections text-center'>You haven't bookmarked any Investor yet!</div>"; 
                 echo '</div>';
                 }else{
 
 
     ?>
 
+    
 
 <div id="bookmarks-list-content">
     
@@ -275,9 +275,8 @@ $cloudinary_section = 'startups';
             <tr>
                 
                 <th width="30%">NAME</th>
-                <th width="15%">TYPE</th>
+                <th width="30%">TYPE</th>
                 <th>LOCATION</th>
-                <th>INDUSTRY</th>
                 <td class="text-center">MANAGE</td>
             </tr>
         </thead>
@@ -307,16 +306,17 @@ $cloudinary_section = 'startups';
                     closeOnConfirm: false
                 }, function() {
 
-                    var url_link = 'http://localhost/creative/pos/video/startup/';
+                    var url_link = 'http://localhost/creative/pos/video/profile/';
 
                     var requested_id = $("#bookmark-delete-" + <?php echo $row_bookmarks['requested_id']; ?>).attr("data-requested-id");
                     var requester_id = $("#bookmark-delete-" + <?php echo $row_bookmarks['requested_id']; ?>).attr("data-requester-id");
+                    var type = $("#bookmark-delete-" + <?php echo $row_bookmarks['requested_id']; ?>).attr("data-type");
                     //alert(requested_id);
 
                     $.ajax({
                         url: url_link + "bookmark-delete.php",
                         method: "GET",
-                        data: { requested_id: requested_id, requester_id: requester_id },
+                        data: { requested_id: requested_id, requester_id: requester_id, type: type },
                         dataType: "html",
                         success: function(response) {
 
@@ -340,45 +340,57 @@ $cloudinary_section = 'startups';
         </script>
         <?php 
 
-                                         $sql_startup = mysqli_query($connecDB,"SELECT * FROM startups WHERE userID ='".$row_bookmarks['requested_id']."'");
-                                         $row_startup= mysqli_fetch_array($sql_startup);
+                                         $sql_users = mysqli_query($connecDB,"SELECT * FROM tbl_users WHERE userID ='".$row_bookmarks['requested_id']."'");
+                                         $row_users= mysqli_fetch_array($sql_users);
 
 
                                         ?>
         <tr class="advance-table-row connections-tab-inside">
             
             <td>
-                <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Url']; ?>">
-                
-                <?php if($row_startup['Logo'] != '' && $row_startup['Logo'] != 'on' ) { ?>
-                    <img src="https://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/<?php echo $row_startup['Logo']; ?>" class="img-circle" width="30">
-                <?php }else{ ?> 
-                <img src="https://res.cloudinary.com/dgml9ji66/image/upload/v1522625555/rocket_mee1lx.jpg" class="img-circle" width="30">
-                <?php } ?>
+                <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_users['username']; ?>">
+                  
+
+<?php if($row_users['ProfileImage'] == 'Google'){ ?>
+         <img src="<?php echo $row_users['google_picture_link']; ?>" class="img-circle" width="30" alt="img">
+<?php } ?>
+
+<?php if($row_users['ProfileImage'] == 'Facebook'){ ?>
+<img src="https://graph.facebook.com/<?php echo $row_users['facebook_id']; ?>/picture" class="img-circle" width="30" alt="img">
+<?php } ?>
+
+<?php if($row_users['ProfileImage'] == 'Linkedin'){ ?>
+        <img src="<?php echo $row_users['linkedin_picture_link']; ?>" class="img-circle" width="30" alt="img">
+       
+<?php } ?>
+</a>
 
 
-                </a>
-                     <a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Url']; ?>">
-                    <?php echo $row_startup['Name']; ?>
+                     <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_users['username']; ?>">
+                    &nbsp;&nbsp;<?php echo $row_users['Fullname']; ?>
                 </a>    
             </td>
 
 
             <td>
-                <span class="label label-inverse"><?php echo $row_bookmarks['Type']; ?></span>
-                    
-                 
+                <?php if($row_users['Type'] == 'Investor'){ ?>
+                <span class="label label-info"><?php echo $row_users['Type']; ?></span>
+                <?php } ?>
+
+                <?php if($row_users['Type'] == 'StartupE'){ ?>
+                 <span class="label label-danger">Startup Employee</span>
+                <?php } ?>
+
+                     
             </td>
             
             <td>
-                <?php  echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_startup['City'])))).', '.$row_startup['State'];
+                <?php  echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_users['City'])))).', '.$row_users['State'];
                  ?>
             </td>
-            <td>
-                <?php echo $row_startup['Industry']; ?>
-            </td>
+          
             <td class="text-center">
-                <button type="button" id="bookmark-delete-<?php echo $row_bookmarks['requested_id']; ?>" data-requested-id="<?php echo $row_bookmarks['requested_id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
+                <button type="button" id="bookmark-delete-<?php echo $row_bookmarks['requested_id']; ?>" data-type="<?php echo $row_bookmarks['Type']; ?>" data-requested-id="<?php echo $row_bookmarks['requested_id']; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" class="btn btn-info btn-outline btn-circle btn-sm m-r-5"><i class="ti-trash"></i></button>
             </td>
         </tr>
        

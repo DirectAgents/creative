@@ -40,18 +40,18 @@ $row = mysqli_fetch_array($stmt);
                                 <span class="hide-menu"> <?php echo $rownav['Fullname']; ?><span class="fa arrow"></span></span>
                         </a>
                             <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
-                                <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $rownav['username']; ?>"><i class="fas fa-user"></i>&nbsp;&nbsp; <span class="hide-menu">My Profile</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/profile/<?php echo $rownav['username']; ?>"><i class="fas fa-user" style="margin-left:-1px"></i>&nbsp;&nbsp; <span class="hide-menu">My Profile</span></a></li>
                                 <?php if($row_startup['Name'] != ''){ ?>
-                                <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>"><i class="ti-crown"></i> <span class="hide-menu">My Startup</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/startup/<?php echo $row_startup['Name']; ?>"><i class="ti-crown" style="margin-left:-3px"></i> <span class="hide-menu">My Startup</span></a></li>
                                 <?php } ?>
-                                <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="fas fa-users"></i>&nbsp;&nbsp;<span class="hide-menu">Connections</span></a></li>
-                                <li><a href="<?php echo BASE_PATH; ?>/bookmarks/">&nbsp;<i class="fas fa-bookmark"></i> <span class="hide-menu">&nbsp;&nbsp;Bookmarks</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/connections/"><i class="fas fa-users" style="margin-left:-3px"></i>&nbsp;&nbsp;<span class="hide-menu">Connections</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/bookmarks/">&nbsp;<i class="fas fa-bookmark" style="margin-left:-4px"></i> <span class="hide-menu">&nbsp;&nbsp;Bookmarks</span></a></li>
 
                                 <?php if($row_startup['Name'] == '' && $rownav['Type'] == 'StartupE'){ ?>
-                                <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="fas fa-rocket"></i><span class="hide-menu">&nbsp;&nbsp;Add a Startup</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/startup/create"><i class="fas fa-rocket" style="margin-left:-2px"></i><span class="hide-menu">&nbsp;&nbsp;Add a Startup</span></a></li>
                                 <?php } ?>
-                                <li><a href="<?php echo BASE_PATH; ?>/settings/"><i class="fas fa-cog"></i><span class="hide-menu">&nbsp;&nbsp;Account Setting</span></a></li>
-                                <li><a href="<?php echo BASE_PATH; ?>/logout/"><i class="fa fa-power-off"></i> <span class="hide-menu">&nbsp;&nbsp;Logout</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/settings/"><i class="fas fa-cog" style="margin-left:-2px"></i><span class="hide-menu">&nbsp;&nbsp;Account Setting</span></a></li>
+                                <li><a href="<?php echo BASE_PATH; ?>/logout/"><i class="fa fa-power-off" style="margin-left:-1px"></i> <span class="hide-menu">&nbsp;&nbsp;Logout</span></a></li>
                             </ul>
                         </li>
 

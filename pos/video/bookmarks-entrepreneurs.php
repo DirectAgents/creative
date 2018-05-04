@@ -21,6 +21,24 @@ exit();
  $row_entrepreneur = mysqli_fetch_array($result);
 
 
+  if($row_entrepreneur['Type'] == 'Investor'){
+
+ $sql_company = "SELECT * FROM investor_company WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $result_company = mysqli_query($connecDB, $sql_company);  
+ $row_company = mysqli_fetch_array($result_company);
+
+ }
+
+
+if($row_entrepreneur['Type'] == 'StartupE'){
+
+ $sql_company = "SELECT * FROM startups WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $result_company = mysqli_query($connecDB, $sql_company);  
+ $row_company = mysqli_fetch_array($result_company);
+
+ }
+
+
 $cloudinary_section = 'startups';
 
 ?>
@@ -102,12 +120,20 @@ $cloudinary_section = 'startups';
                                             <div id="fullname">
                                                 <h4 class="text-white"><?php echo $row_entrepreneur['Fullname'];?></h4>
                                             </div>
+                                           <div id="thezipcode">
+                                                <?php if($row_entrepreneur['ZipCode'] != ''){ ?>
+                                                <h5 class="text-white">
+                                                    <?php 
+                                                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_entrepreneur['City'])))).', '.$row_entrepreneur['State'];
+                                                ?></h5>
+                                                <?php } ?>
+                                            </div>
                                             <div id="position">
                                                 <?php if($row_entrepreneur['Title'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
                                                 //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
-                                                echo $row_entrepreneur['Title'];
+                                                echo $row_entrepreneur['Title'].' @ '.$row_company['Name'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
