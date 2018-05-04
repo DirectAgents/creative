@@ -370,7 +370,7 @@ $countries = explode(', ', $row['Countries']);
 
   <div class="col-md-6" style="padding-bottom:20px;">
                     <label class="col-md-12" style="padding-left:0px;"><strong>What Industries do you Invest in?</strong></label>
-  <select data-placeholder="Choose a Country..." id="fm_industry" name="fm_industry" class="form-control form-control-line chosen-select" multiple>
+  <select data-placeholder="Choose your industry..." id="fm_industry" name="fm_industry" class="form-control form-control-line chosen-select" multiple>
 
 <?php 
 

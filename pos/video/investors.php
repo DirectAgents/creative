@@ -26,7 +26,13 @@ $result = mysqli_query($connecDB, $sql);
 $row = mysqli_fetch_array($result);
 
 
+
+
 if($row['Type'] == 'Investor'){
+
+
+$sql_industry = mysqli_query($connecDB,"SELECT * FROM investor_company WHERE userID='".$_SESSION['entrepreneurSession']."'");
+$row_industry = mysqli_fetch_array($sql_industry);
 
 date_default_timezone_set('America/New_York');
 $date = date("Y-m-d");
@@ -45,6 +51,7 @@ $response[] = array(
   'fullname'=> $fullname,
   'profileimage'=> $user->picture,
   'location'=> $row['City'].', '.$row['State'],
+  'industry'=> explode(',', $row_industry['Industry']),
   'likes'=> '0',
   'date'=> $date_algolia
    );
