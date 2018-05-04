@@ -8,6 +8,11 @@
 
 if($_GET || $_SESSION['entrepreneurSession'] == $_GET['userid']){ 
 
+
+ $sql = "SELECT * FROM tbl_users WHERE userID='".$_SESSION['entrepreneurSession']."'";  
+ $result = mysqli_query($connecDB, $sql);  
+ $row_entrepreneur = mysqli_fetch_array($result);   
+
 ?>
 
 
@@ -37,11 +42,14 @@ if($_GET || $_SESSION['entrepreneurSession'] == $_GET['userid']){
 
 
         <?php 
+
+        if($row_entrepreneur['Type'] == 'StartupE'){$type = 'startup';}
+        if($row_entrepreneur['Type'] == 'Investor'){$type = 'investor';}
                     
-                                        $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE my_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied'  ORDER BY id DESC");                    
+                                         $sql_connections = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'StartupE' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'denied' AND Type = 'StartupE' ORDER BY id DESC");                    
                                         
                                         if( ! mysqli_num_rows($sql_connections) ) {
-                                            echo "<div class='no-connections text-center'>No Connections!</div>"; 
+                                            echo "<div class='no-connections text-center'>No Connections so far!</div>"; 
                                         }else{
 
 
@@ -92,6 +100,14 @@ if($_GET || $_SESSION['entrepreneurSession'] == $_GET['userid']){
 <script>
 
 $(document).ready(function() {
+
+
+$( "#bookmarks-list-select" ).change(function() {
+    
+  window.location = $(this).val();
+
+});  
+
 
 var url_link = 'http://localhost/creative/pos/video/profile/';    
 

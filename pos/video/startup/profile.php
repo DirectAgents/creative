@@ -13,7 +13,6 @@
  $row_the_startup = mysqli_fetch_array($result);
 
 
-
  
  if($row_the_startup['Name'] == ''){
   header("Location: ".BASE_PATH."/404/");

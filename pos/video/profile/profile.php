@@ -15,6 +15,8 @@
  $result = mysqli_query($connecDB, $sql_startup);  
  $row_startup = mysqli_fetch_array($result);
 
+
+
  $sql_company = "SELECT * FROM investor_company WHERE userID ='".$row_entrepreneur ['userID']."'";  
  $result = mysqli_query($connecDB, $sql_company);  
  $row_company = mysqli_fetch_array($result);
@@ -69,11 +71,24 @@ $cloudinary_section = 'startups';
                     <div class="row bg-title">
                         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
                             <h4 class="page-title">Profile page</h4> 
+                        
                         </div>
                         <div class="col-lg-10 col-sm-8 col-md-8 col-xs-12">
-                       <?php if($row_entrepreneur['Type'] == 'StartupE' && $row_startup['Name'] == ''){ ?>
+
+<?php 
+
+if(isset($_SESSION['entrepreneurSession'])){
+ $sql2 = "SELECT * FROM tbl_users WHERE userID ='".$_SESSION['entrepreneurSession']."'";  
+ $result2 = mysqli_query($connecDB, $sql2);  
+ $row2 = mysqli_fetch_array($result2);
+
+
+?>     
+                       <?php if($row2['Type'] == 'StartupE' && $row_startup['Name'] == ''){ ?>
                         <a href="<?php echo BASE_PATH; ?>/startup/create" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Add a Startup</a>
                         <?php } ?>
+                 
+       <?php } ?>                 
                        
                     </div>
 
@@ -181,21 +196,21 @@ $cloudinary_section = 'startups';
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-purple">
                                             <div id="facebook">
-                                                <a href="<?php echo $row['Facebook'];?>"><i class="ti-facebook"></i></a>
+                                                <a href="<?php echo $row_entrepreneur['Facebook'];?>"><i class="ti-facebook"></i></a>
                                             </div>
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-blue">
                                             <div id="twitter">
-                                                <a href="<?php echo $row['Twitter'];?>"><i class="ti-twitter"></i></a>
+                                                <a href="<?php echo $row_entrepreneur['Twitter'];?>"><i class="ti-twitter"></i></a>
                                             </div>
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 text-center">
                                         <p class="text-danger">
                                             <div id="linkedin">
-                                                <a href="<?php echo $row['Linkedin'];?>"><i class="ti-linkedin"></i></a>
+                                                <a href="<?php echo $row_entrepreneur['Linkedin'];?>"><i class="ti-linkedin"></i></a>
                                             </div>
                                         </p>
                                     </div>
@@ -228,7 +243,7 @@ $cloudinary_section = 'startups';
         <?php if ($row_connect['requester_id'] != $row_entrepreneur ['userID'] && $row_connect['requested_id'] != $row_entrepreneur ['userID'] ){ ?>
                  <p>&nbsp;</p>
     <div class="col-md-12 text-center sa-connect-btn">
-                                   <a href="javascript: void(0);" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-success waves-effect waves-light sa-connect-profile" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Connect</a>
+                                   <a href="javascript: void(0);" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-name="<?php echo $thefirstname; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-success waves-effect waves-light sa-connect-profile" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Connect</a>
                                  </div> 
 
            <?php } ?>   
@@ -236,7 +251,7 @@ $cloudinary_section = 'startups';
          <?php if ($row_connect['requester_id'] == $_SESSION['entrepreneurSession'] ){ ?>                     
                 <p>&nbsp;</p>
     <div class="col-md-12 text-center sa-connect-sent">
-                                    <a href="javascript: void(0);" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $row_entrepreneur ['Fullname']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light sa-connect-profile-cancel" style="font-size:13px"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
+                                    <a href="javascript: void(0);" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $thefirstname; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light sa-connect-profile-cancel" style="font-size:13px"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                   </div>
                 
         <?php } ?>

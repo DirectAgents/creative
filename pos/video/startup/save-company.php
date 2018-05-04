@@ -87,7 +87,7 @@ echo "</div>";
 
 
 $sql = "UPDATE tbl_users SET 
-Position='".$_POST['position']."'
+Title='".$_POST['title']."'
 
 WHERE userID='".$_POST['userid']."'";
 
@@ -116,7 +116,7 @@ $response[] = array(
 	'objectID'=> $row_startup['userID'],
 	'startupID'=> $row_startup['userID'],
 	'name'=> $_POST['name'],
-	'url'=> seoUrl($_POST['name']), 
+	'url'=> BASE_PATH.'/startup/'.seoUrl($_POST['name']),
 	'industry'=> $_POST['industry'],
 	'description'=> $row_startup['Description'],
 	'location'=> $city.', '.$state_final, 
@@ -181,7 +181,7 @@ mysqli_query($connecDB, $sql);
 
 
 $sql = "UPDATE tbl_users SET 
-Position='".$_POST['position']."'
+Title='".$_POST['title']."'
 
 WHERE userID='".$_POST['userid']."'";
 
@@ -255,7 +255,7 @@ $response[] = array(
 	'objectID'=> $row_startup['userID'],
 	'startupID'=> $row_startup['userID'],
 	'name'=> $_POST['name'],
-	'url'=> seoUrl($_POST['name']), 
+	'url'=> BASE_PATH.'/startup/'.seoUrl($_POST['name']), 
 	'industry'=> $_POST['industry'],
 	'description'=> $row_startup['Description'],
 	'location'=> $city.', '.$state_final, 

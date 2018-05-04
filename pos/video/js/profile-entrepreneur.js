@@ -746,11 +746,12 @@ $( "#save-team-member" ).on( "submit", function(e) {
         //alert("asdfasfd");
         
         var data_thumb = $(".sa-connect-profile").attr("data-thumb");
+        var data_name = $(".sa-connect-profile").attr("data-name");
         //alert(data_thumb);
 
         swal({   
             title: "Connect!",   
-            text: "Send a request to connect!",   
+            text: "Send a request to connect with "+data_name+"!",   
             //type: "warning",
             imageUrl: data_thumb,   
             showCancelButton: true,   

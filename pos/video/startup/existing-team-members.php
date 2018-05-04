@@ -89,7 +89,7 @@ No Team Members added so far!
 <?php } ?>
                                             </a>
                                             <div id="fullname">
-                                                <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_user['username']; ?>"><h4 class="text-black"><?php echo $row_user['Fullname']; ?></h4></a>
+                                                <a href="<?php echo BASE_PATH; ?>/profile/<?php echo $row_user['username']; ?>"><h4 class="text-black"><?php echo $thefirstname; ?></h4></a>
                                             </div>
                                             <div id="city-state">
                                                 
@@ -150,23 +150,43 @@ No Team Members added so far!
 
 
                 ?>                 
-                                 
-            <?php if ($row_connect['requester_id'] != $row_user['userID'] && $row_connect['requested_id'] != $row_user['userID'] ){ ?>    
-    
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connect">
-                                  <a href="javascript: void(0);" id="sa-connect" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
-                                 </div> 
-
-                                 <?php } ?>
 
 
-        <?php if ($row_connect['requester_id'] == $_SESSION['entrepreneurSession'] ){ ?>                         
+
+       <?php if ($sql_connect->num_rows == 1){ ?>                         
                 
     <div class="col-md-12 col-sm-12 text-center sa-connect-btn-cancel">
                                    <a href="javascript: void(0);" id="sa-connect-cancel" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                  </div> 
 
-                                 <?php } ?>
+      <?php } ?>
+
+    
+          <?php 
+    $sql_connect2 = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'accepted' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'accepted' OR
+      
+      requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending'
+
+
+        ");
+
+     $row_connect2 = mysqli_fetch_array($sql_connect2);
+
+    //echo $row_connect2['requester_id'];
+
+
+                ?>   
+
+                                 
+      <?php if ($sql_connect2->num_rows == 0){ ?>    
+    
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connect">
+                                  <a href="javascript: void(0);" id="sa-connect" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
+                                 </div> 
+
+      <?php } ?>
+
+
 
     
 
@@ -175,10 +195,10 @@ No Team Members added so far!
     $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_startup WHERE requested_id ='".$row_user['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'accepted' OR requester_id ='".$row_user['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'accepted'");
                 ?>                 
                                 
-    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connected" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block" 
+   <!-- <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connected" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block" 
         <?php }else{ ?> style="display:none" <?php } ?> >
-                                   <a href="javascript: void(0);" id="sa-connect" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_user['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connected +</a>
-                                 </div> 
+                                   <a href="#" class="btn btn-danger waves-effect waves-light">Connected +</a>
+                                 </div> -->
  
 
     <?php 
