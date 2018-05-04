@@ -167,6 +167,7 @@ $cloudinary_section = 'startups';
 <option value="VP/SVP/Dept Head">VP/SVP/Dept Head</option>
 <option value="C-Level Executive (CEO, CFO, etc.)">C-Level Executive (CEO, CFO, etc.)</option>
 <option value="Founder/Owner/Principal">Founder/Owner/Principal</option>
+<option value="Co-Founder">Co-Founder</option>
 <option value="Other">Other</option>
 </select>
 
@@ -218,14 +219,14 @@ $cloudinary_section = 'startups';
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-12">Describe your startup in one sentence</label>
+                                                <label class="col-md-12">Describe your startup's product in one sentence</label>
                                                 <div class="col-md-12">
                                                     <input type="text" id="fm_description" tabindex="5" name="fm_description" placeholder="e.g The best restaurants in Europe delivered to your door" class="form-control form-control-line"> 
                                                 </div>
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label class="col-md-12">Describe your startup's product</label>
+                                                <label class="col-md-12">Describe your startup</label>
                                                 <div class="col-md-12">
                                                     <textarea id="fm_about" name="fm_about" tabindex="6" rows="5" class="form-control form-control-line"></textarea>
                                                     

@@ -45,6 +45,7 @@ $row = mysqli_fetch_array($result);
 <option value="VP/SVP/Dept Head" <?php if($row['Title'] == 'VP/SVP/Dept Head'){ echo "selected"; }?>>VP/SVP/Dept Head</option>
 <option value="C-Level Executive (CEO, CFO, etc.)" <?php if($row['Title'] == 'C-Level Executive (CEO, CFO, etc.)'){ echo "selected"; }?>>C-Level Executive (CEO, CFO, etc.)</option>
 <option value="Founder/Owner/Principal" <?php if($row['Title'] == 'Founder/Owner/Principal'){ echo "selected"; }?>>Founder/Owner/Principal</option>
+<option value="Co-Founder" <?php if($row['Title'] == 'Co-Founder'){ echo "selected"; }?>>Co-Founder</option>
 <option value="Other" <?php if($row['Title'] == 'Other'){ echo "selected"; }?>>Other</option>
 </select>
 
@@ -88,7 +89,7 @@ $row = mysqli_fetch_array($result);
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label class="col-md-12">Describe your startup in one sentence</label>
+                                                <label class="col-md-12">Describe your startup's product in one sentence</label>
                                                 <div class="col-md-12">
                                <input type="text" id="fm_description" name="fm_description" value="<?php echo $row['Description']; ?>" placeholder="e.g The best restaurants in Europe delivered to your door" class="form-control form-control-line" tabindex="5"> 
                                                     
@@ -97,7 +98,7 @@ $row = mysqli_fetch_array($result);
 
 
                                             <div class="form-group">
-                                                <label class="col-md-12">Describe your startup's product</label>
+                                                <label class="col-md-12">Describe your startup</label>
                                                 <div class="col-md-12">
                                                     <textarea id="fm_about" name="fm_about" rows="5" class="form-control form-control-line" tabindex="6"><?php echo $row['About']; ?></textarea>
                                                     

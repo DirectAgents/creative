@@ -16,10 +16,22 @@
  $row_startup = mysqli_fetch_array($result);
 
 
+  if($row_entrepreneur['Type'] == 'Investor'){
 
- $sql_company = "SELECT * FROM investor_company WHERE userID ='".$row_entrepreneur ['userID']."'";  
- $result = mysqli_query($connecDB, $sql_company);  
- $row_company = mysqli_fetch_array($result);
+ $sql_company = "SELECT * FROM investor_company WHERE userID='".$row_entrepreneur ['userID']."'";  
+ $result_company = mysqli_query($connecDB, $sql_company);  
+ $row_company = mysqli_fetch_array($result_company);
+
+ }
+
+
+if($row_entrepreneur['Type'] == 'StartupE'){
+
+ $sql_company = "SELECT * FROM startups WHERE userID='".$row_entrepreneur ['userID']."'";  
+ $result_company = mysqli_query($connecDB, $sql_company);  
+ $row_company = mysqli_fetch_array($result_company);
+
+ }
 
 
 $words = explode(" ", $row_entrepreneur['Fullname']);
@@ -70,7 +82,7 @@ $cloudinary_section = 'startups';
                 <div class="container-fluid">
                     <div class="row bg-title">
                         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Profile page</h4> 
+                            <h4 class="page-title"><?php echo $row_entrepreneur['Fullname'];?></h4> 
                         
                         </div>
                         <div class="col-lg-10 col-sm-8 col-md-8 col-xs-12">
@@ -181,11 +193,20 @@ if(isset($_SESSION['entrepreneurSession'])){
                                             <div id="fullname">
                                                 <h4 class="text-white"><?php echo $row_entrepreneur['Fullname'];?></h4>
                                             </div>
-                                            <div id="thezipcode">
+                                           <div id="thezipcode">
                                                 <?php if($row_entrepreneur['ZipCode'] != ''){ ?>
                                                 <h5 class="text-white">
                                                     <?php 
                                                 echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row_entrepreneur['City'])))).', '.$row_entrepreneur['State'];
+                                                ?></h5>
+                                                <?php } ?>
+                                            </div>
+                                            <div id="position">
+                                                <?php if($row_entrepreneur['Title'] != ''){ ?>
+                                                <h5 class="text-white">
+                                                    <?php 
+                                                //echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row['City'])))).', '.$row['State'];
+                                                echo $row_entrepreneur['Title'].' @ '.$row_company['Name'];
                                                 ?></h5>
                                                 <?php } ?>
                                             </div>
@@ -233,28 +254,65 @@ if(isset($_SESSION['entrepreneurSession'])){
 
     //echo $type;
 
-    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requested_id ='".$row_entrepreneur ['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' OR requested_id = '".$_SESSION['entrepreneurSession']."' AND requester_id = '".$row_entrepreneur ['userID']."'");
+       
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requested_id ='".$row_entrepreneur['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' OR requester_id ='".$row_entrepreneur['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'pending' ");
 
-    $row_connect = mysqli_fetch_array($sql_connect);
+     $row_connect = mysqli_fetch_array($sql_connect);
 
-    //echo $row_entrepreneur ['userID'];
+     //echo $row_connect['requester_id'];
+
+
                 ?>                 
-        
-        <?php if ($row_connect['requester_id'] != $row_entrepreneur ['userID'] && $row_connect['requested_id'] != $row_entrepreneur ['userID'] ){ ?>
-                 <p>&nbsp;</p>
-    <div class="col-md-12 text-center sa-connect-btn">
-                                   <a href="javascript: void(0);" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-name="<?php echo $thefirstname; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-success waves-effect waves-light sa-connect-profile" style="font-size:13px"><span class="btn-label"><i class="fa fa-plus"></i></span>Connect</a>
+
+
+
+       <?php if ($sql_connect->num_rows == 1){ ?>                         
+                
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-cancel">
+        <p>&nbsp;</p>
+                                   <a href="javascript: void(0);" id="sa-connect-cancel" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
                                  </div> 
 
-           <?php } ?>   
+      <?php } ?>
+
+
+
+            <?php 
+    $sql_connect2 = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requested_id ='".$row_entrepreneur['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'accepted' OR requester_id ='".$row_entrepreneur['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'accepted' OR
+      
+      requested_id ='".$row_entrepreneur['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending' OR requester_id ='".$row_entrepreneur['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status != 'pending'
+
+
+        ");
+
+     $row_connect2 = mysqli_fetch_array($sql_connect2);
+
+    //echo $row_connect2['requester_id'];
+
+
+                ?>   
+
+                                 
+      <?php if ($sql_connect2->num_rows == 0){ ?>    
+    
+    <div class="col-md-12 col-sm-12 text-center sa-connect-btn-connect">
+        <p>&nbsp;</p>
+                                  <a href="javascript: void(0);" id="sa-connect" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-danger waves-effect waves-light">Connect +</a>
+                                 </div> 
+
+      <?php } ?>
+
+
            
-         <?php if ($row_connect['requester_id'] == $_SESSION['entrepreneurSession'] ){ ?>                     
-                <p>&nbsp;</p>
-    <div class="col-md-12 text-center sa-connect-sent">
-                                    <a href="javascript: void(0);" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-name="<?php echo $thefirstname; ?>" data-requested-id="<?php echo $row_entrepreneur ['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light sa-connect-profile-cancel" style="font-size:13px"><span class="btn-label"><i class="fa fa-close"></i></span>Cancel Request</a>
+        <?php 
+    $sql_connect = mysqli_query($connecDB,"SELECT * FROM tbl_connections_".$type." WHERE requested_id ='".$row_entrepreneur['userID']."' AND requester_id = '".$_SESSION['entrepreneurSession']."' AND status = 'denied' OR requester_id ='".$row_entrepreneur['userID']."' AND requested_id = '".$_SESSION['entrepreneurSession']."' AND status = 'denied'");
+                ?>                                          
+               
+    <div class="col-md-12 col-sm-12 text-center sa-connect-pending" <?php if ($sql_connect->num_rows == 1){ ?> style="display:block" <?php }else{ ?> style="display:none" <?php } ?>>
+        <p>&nbsp;</p>
+                                    <a href="javascript: void(0);" id="sa-connect-cancel-d" data-name="<?php echo $thefirstname; ?>" data-requester-id="<?php echo $_SESSION['entrepreneurSession']; ?>" data-requested-id="<?php echo $row_entrepreneur['userID']; ?>" data-thumb="<?php echo $profileimage; ?>" class="btn btn-outline btn-default waves-effect waves-light"><span class="btn-label"><i class="fa fa-close"></i></span>Request Pending</a>
                                   </div>
                 
-        <?php } ?>
 
 
                 
