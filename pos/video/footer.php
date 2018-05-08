@@ -56,7 +56,7 @@
 
 
 
-<footer class="footer text-center">2018 &copy; Ample Admin brought to you by themedesigner.in  </footer>
+<footer class="footer text-center">2018 &copy; </footer>
 
            
        

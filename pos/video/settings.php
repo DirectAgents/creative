@@ -77,7 +77,7 @@ $cloudinary_section = 'startups';
                                 <div class="user-bg">
                                     <div class="overlay-box">
                                         <div class="user-content">
-                                            <a href="javascript:void(0)">
+                                            
                                     
 <?php if($row_entrepreneur['ProfileImage'] == 'Google'){ ?>
          <img src="<?php echo $row_entrepreneur['google_picture_link']; ?>" class="thumb-lg img-circle" alt="img">
@@ -92,7 +92,7 @@ $cloudinary_section = 'startups';
        
 <?php } ?>
 
-</a>
+
 
 
                                             <div id="fullname">
@@ -199,6 +199,7 @@ $cloudinary_section = 'startups';
                                                 <div class="col-md-12">
                                                     <input type="tel" id="fm_phone" name="fm_phone" placeholder="Phone Number" value="<?php echo $row['Phone'];?>" class="form-control form-control-line">
                                                 </div>
+                                                <div class="col-md-12" style="color:#666; font-size:11px;"><br>Note.: You phone number will only be shared with people you connect. </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-12">Location</label>

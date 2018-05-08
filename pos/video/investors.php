@@ -31,6 +31,7 @@ $row = mysqli_fetch_array($result);
 if($row['Type'] == 'Investor'){
 
 
+
 $sql_industry = mysqli_query($connecDB,"SELECT * FROM investor_company WHERE userID='".$_SESSION['entrepreneurSession']."'");
 $row_industry = mysqli_fetch_array($sql_industry);
 
@@ -44,6 +45,8 @@ $date_algolia = date('F j',strtotime($date));  // January 30, 2015, for example.
 //Upload to algolia
 $response = array();
 
+//Google
+if (isset($_SESSION['access_token'])){
 $response[] = array(
   'objectID'=> $row['userID'],
   'investorID'=> $row['userID'],
@@ -55,6 +58,30 @@ $response[] = array(
   'likes'=> '0',
   'date'=> $date_algolia
    );
+}
+
+//Facebook
+if(isset($_SESSION['fb_access_token_entrepreneur'])){
+
+  $response[] = array(
+  'objectID'=> $row['userID'],
+  'investorID'=> $row['userID'],
+  'url'=> seoUrl($fullname), 
+  'fullname'=> $fullname,
+  'profileimage'=> 'https://graph.facebook.com/'.$row['facebook_id'].'/picture?type=large',
+  'location'=> $row['City'].', '.$row['State'],
+  'industry'=> explode(',', $row_industry['Industry']),
+  'likes'=> '0',
+  'date'=> $date_algolia
+   );
+
+}  
+
+
+
+
+
+
 
 $fp = fopen('choose/investors.json', 'w');
 fwrite($fp, json_encode($response));
@@ -154,7 +181,9 @@ foreach ($chunks as $batch) {
                                 <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/profile/{{url}}">{{{_highlightResult.fullname.value}}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
+                                
                                 <span class="m-r-10"><i class="icon-location-pin"></i> {{{_highlightResult.location.value}}}</span> 
+                               
                                 <!--<span class="m-r-10"><i class="icon-tag"></i></span>-->
                                 
                                     </small>

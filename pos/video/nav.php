@@ -60,7 +60,7 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                         <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="images/admin-logo-dark.png" alt="home" class="light-logo" />
                      </b>
                         <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="images/admin-text-dark.png" alt="home" class="light-logo" />
+                        <!--This is dark logo text--><!--<img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><!--<img src="images/admin-text-dark.png" alt="home" class="light-logo" />-->
                      </span> </a>
                 </div>
                 <!-- /Logo -->

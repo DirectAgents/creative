@@ -454,20 +454,25 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
                                            
   <div class="form-group">
 
+<?php if($row['Logo'] != ''){ ?>
   <div class="col-md-12" style="padding-left:10px; padding-bottom:20px;" id="preview_edit_logo">
                         
                         <img src="http://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_250,w_265/v1/<?php echo $row['Logo']; ?>" class="thumb-lg img-circle" />
 
                      </div>
 
+     <?php } ?>                
+
                                               
                                                 <div class="col-md-6">
                                                       <label class="col-md-12" style="padding-left:0px;"><strong>Company</strong></label>
-                                                   <?php echo $row['Name']; ?>
+                                                   <?php if($row['Name'] != ''){echo $row['Name']; }else{ echo 'n/a';} ?>
+
                                                 </div>
                                                  <div class="col-md-6">
                                                     <label class="col-md-12" style="padding-left:0px;"><strong>Country</strong></label>
-                                                     <?php echo $row['Country']; ?>
+
+                                                     <?php if($row['Country'] != ''){echo $row['Country']; }else{ echo 'n/a';} ?>
 
                                                 </div>
                                             </div>
@@ -478,14 +483,16 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
                                               
                                                  <div class="col-md-6">
                                                     <label class="col-md-12" style="padding-left:0px;"><strong>Title</strong></label>
-<?php echo $row['Title']; ?>
+<?php if($row['Title'] != ''){echo $row['Title']; }else{ echo 'n/a';} ?>
 
                                                 </div>
 
 
                                                  <div class="col-md-6">
                                                     <label class="col-md-12" style="padding-left:0px;"><strong>City</strong></label>
- <?php echo $row['City']; ?> 
+
+                                                    <?php if($row['City'] != ''){echo $row['City']; }else{ echo 'n/a';} ?>
+
 </div>
                                                 </div>
 
@@ -496,7 +503,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
   <div class="col-md-6">
                                                     <label class="col-md-12" style="padding-left:0px;"><strong>Investor Type</strong></label>
-<?php echo $row['Type']; ?>
+<?php if($row['Type'] != ''){echo $row['Type']; }else{ echo 'n/a';} ?>
 
                                                 </div>
 
@@ -506,7 +513,8 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
                                                     <?php if($row['State'] != ''){ ?>
                                                      <div class="col-md-5" style="padding-left:0px;">
                                                          <label class="col-md-12" style="padding-left:0px;"><strong>State</strong></label>
- <?php echo $row['State']; ?>
+
+                                    <?php if($row['State'] != ''){echo $row['State']; }else{ echo 'n/a';} ?>
 
                                                 </div>
 
@@ -514,7 +522,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
                                                 <div class="col-md-5" style="padding-left:0px;">
                                                     <label class="col-md-12" style="padding-left:0px;"><strong>Postal Code</strong></label>
-                                          <?php echo $row['ZipCode']; ?>
+                                                    <?php if($row['ZipCode'] != ''){echo $row['ZipCode']; }else{ echo 'n/a';} ?>
                                                   </div>
 
                                                 </div>
@@ -530,7 +538,7 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
   <div class="col-md-6">
                                                     <label class="col-md-12" style="padding-left:0px;"><strong>Minimum Investment</strong></label>
- <?php echo $row['Minimum']; ?>
+  <?php if($row['Minimum'] != ''){echo $row['Minimum']; }else{ echo 'n/a';} ?>
 
                                                 </div>
 
@@ -538,7 +546,8 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
 
                                                  <div class="col-md-6">
                                                     <label class="col-md-12" style="padding-left:0px;"><strong>Maximum Investment</strong></label>
- <?php echo $row['Maximum']; ?>
+
+        <?php if($row['Maximum'] != ''){echo $row['Maximum']; }else{ echo 'n/a';} ?>
 
                                                 </div>
 
@@ -554,21 +563,33 @@ while($row_countries = mysqli_fetch_array($sql_countries)){
                         <label class="col-md-12" style="padding-left:0px;"><strong>Interested in Industries to Invest in?</strong></label>
 
 
+
 <?php 
+
+//if empty
+if (reset($industry) != '') {
 
 $sql_industry = mysqli_query($connecDB,"SELECT * FROM industry ORDER BY id ASC");  
 while($row_industry = mysqli_fetch_array($sql_industry)){
 
 if (in_array($row_industry['industry'],$industry)){
 echo '<div class="skillsdiv_teammember">';
-echo $row_industry['industry'];
+
+    echo $row_industry['industry'];
+
 echo '</div>';
 
 }
 
 }
 
- ?>
+}else{
+
+echo "n/a";
+
+}
+
+?> 
                
 
 
@@ -581,19 +602,30 @@ echo '</div>';
                     <label class="col-md-12" style="padding-left:0px;"><strong>Interested Countries to Invest in?</strong></label>
 <?php 
 
+//if empty
+if (reset($countries) != '') {
+
 $sql_countries = mysqli_query($connecDB,"SELECT * FROM countries ORDER BY id ASC");  
 while($row_countries = mysqli_fetch_array($sql_countries)){
 
 if (in_array($row_countries['countries'],$countries)){
 echo '<div class="skillsdiv_teammember">';
-echo $row_countries['countries'];
+
+    echo $row_countries['countries'];
+
 echo '</div>';
 
 }
 
 }
 
- ?>
+}else{
+
+echo "n/a";
+
+}
+
+?>
 
                                                 </div>
 
@@ -607,7 +639,8 @@ echo '</div>';
 
   <div class="col-md-12">
                 <label class="col-md-12" style="padding-left:0px;"><strong>Type(s) of companies like to fund:</strong></label>
- <?php echo $row['Fund_Description']; ?>
+
+ <?php if($row['Fund_Description'] != ''){echo $row['Fund_Description']; }else{ echo 'n/a';} ?>
 
     </div>
 

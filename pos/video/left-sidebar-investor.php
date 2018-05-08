@@ -77,6 +77,7 @@ $row = mysqli_fetch_array($stmt);
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Energy"><i class=" fa-fw">E</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Energy</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Engineering"><i class=" fa-fw">E</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Engineering</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Entertainment"><i class=" fa-fw">E</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Entertainment</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Fashion"><i class=" fa-fw">F</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Fashion</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Finance"><i class=" fa-fw">F</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Finance</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Food Service/Restaurant"><i class=" fa-fw">F</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Food Service/Restaurant</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Government"><i class=" fa-fw">G</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Government</span></a> </li>
