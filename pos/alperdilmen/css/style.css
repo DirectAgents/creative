@@ -21,4 +21,13 @@
 .html-skills {width: 90%; font-size:12px; background-color: #4CAF50;}
 .css-skills {width: 80%; font-size:12px; background-color: #2196F3;}
 .js-skills {width: 65%; font-size:12px;background-color: #f44336;}
-.php-skills {width: 60%; font-size:12px; background-color: #808080;}
+.php-skills {width: 90%; font-size:12px; background-color: #808080;}
+.reactjs-skills {width: 30%; font-size:12px; background-color: #808080;}
+.wordpress-skills {width: 80%; font-size:12px; background-color: #808080;}
+.drupal-skills {width: 70%; font-size:12px; background-color: #808080;}
+.magento-skills {width: 60%; font-size:12px; background-color: #808080;}
+.aws-skills {width: 60%; font-size:12px; background-color: #808080;}
+
+
+
+#success-contact{display:none; text-align:center; background:#267f03; color:#fff; padding:10px;}

@@ -62,6 +62,8 @@ $row = mysqli_fetch_array($stmt);
 
                         <li> <a href="javascript:void(0)" class="waves-effect"><i class="mdi mdi-checkbox-multiple-marked-outline fa-fw"></i> <span class="hide-menu">Industry<span class="fa arrow"></span></span></a>
                             <ul class="nav nav-second-level">
+                                <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Artificial-Intelligence"><i class=" fa-fw">A</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Artificial Intelligence</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Augmented-Reality"><i class=" fa-fw">A</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Augmented Reality</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Accounting"><i class=" fa-fw">A</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Accounting</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Advertising"><i class=" fa-fw">A</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Advertising</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/investors/?q=Agriculture"><i class=" fa-fw">A</i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Agriculture</span></a> </li>
@@ -123,8 +125,8 @@ $row = mysqli_fetch_array($stmt);
                             </ul>
                         </li>
                         <?php } ?>
-                         <li><a href="<?php echo BASE_PATH; ?>/for/startups/" class="waves-effect"><i class="mdi mdi-rocket fa-fw"></i> <span class="hide-menu">For Startups</span></a>
-                            <li><a href="<?php echo BASE_PATH; ?>/for/investors/" class="waves-effect"><i class="mdi mdi-emoticon-cool fa-fw"></i> <span class="hide-menu">For Investors</span></a>
+                         <!--><li><a href="<?php echo BASE_PATH; ?>/for/startups/" class="waves-effect"><i class="mdi mdi-rocket fa-fw"></i> <span class="hide-menu">For Startups</span></a>
+                            <li><a href="<?php echo BASE_PATH; ?>/for/investors/" class="waves-effect"><i class="mdi mdi-emoticon-cool fa-fw"></i> <span class="hide-menu">For Investors</span></a>-->
                         <!--<li class="devider"></li>
                         <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>-->
                     </ul>

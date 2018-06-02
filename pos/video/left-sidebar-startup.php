@@ -66,7 +66,8 @@ $row = mysqli_fetch_array($stmt);
                         <li> <a href="javascript:void(0)" class="waves-effect"><i class="mdi mdi-checkbox-multiple-marked-outline fa-fw"></i> <span class="hide-menu">Industry<span class="fa arrow"></span></span></a>
                             <ul class="nav nav-second-level">
                                 <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Technology"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Technology</span></a> </li>
-                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Augmented Reality"><i class="fas fa-eye"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Augmented Reality</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Artificial Intelligence">&nbsp;<i class="fas fa-code-branch"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Artificial Intelligence</span></a> </li>
+                                <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Augmented-Reality"><i class="fas fa-eye"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Augmented Reality</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Mobile"><i class="fas fa-mobile-alt font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Mobile</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Finance"><i class="fas fa-dollar-sign font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;&nbsp;Finance</span></a> </li>
                                 <li> <a href="<?php echo BASE_PATH; ?>/startups/?q=Ecommerce"><i class="fas far fa-shopping-bag font-awesome-icon"></i><span class="hide-menu">&nbsp;&nbsp;&nbsp;Ecommerce</span></a> </li>
@@ -96,8 +97,8 @@ $row = mysqli_fetch_array($stmt);
                             </ul>
                         </li>
                         <?php } ?>
-                         <li><a href="<?php echo BASE_PATH; ?>/for/startups/" class="waves-effect"><i class="mdi mdi-rocket fa-fw"></i> <span class="hide-menu">For Startups</span></a>
-                            <li><a href="<?php echo BASE_PATH; ?>/for/investors/" class="waves-effect"><i class="mdi mdi-emoticon-cool fa-fw"></i> <span class="hide-menu">For Investors</span></a>
+                         <!--<li><a href="<?php echo BASE_PATH; ?>/for/startups/" class="waves-effect"><i class="mdi mdi-rocket fa-fw"></i> <span class="hide-menu">For Startups</span></a>
+                            <li><a href="<?php echo BASE_PATH; ?>/for/investors/" class="waves-effect"><i class="mdi mdi-emoticon-cool fa-fw"></i> <span class="hide-menu">For Investors</span></a>-->
                         <!--<li class="devider"></li>
                         <li><a href="<?php echo BASE_PATH; ?>/logout.php?t=<?php echo $_SESSION['entrepreneurSession'];?>" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>-->
                     </ul>

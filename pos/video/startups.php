@@ -88,17 +88,19 @@ $left_sidebar_industry = 'startups';
                                 </div>
                             </div>
 
-                            <div class="product-text">
-                                <span class="pro-price"><img src="https://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></span>
-                                <h3 class="box-title m-b-0"><a href="<?php echo BASE_PATH; ?>/startup/{{{_highlightResult.url.value}}}">{{{_highlightResult.name.value}}}</a></h3>
+                           <div class="product-text">
+                                <span class="pro-price"> <a href="<?php echo BASE_PATH; ?>/startup/{{url}}"><img src="https://res.cloudinary.com/dgml9ji66/image/upload/c_fill,h_88,w_88/v1/{{{_highlightResult.logo.value}}}" class="thumb-md img-circle"/></a></span>
+                                <h3 class="box-title m-b-0">
+                                    <a href="<?php echo BASE_PATH; ?>/startup/{{url}}">{{name}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
-                                <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 
-                                <span class="m-r-10"><i class="fa fa-heart-o"></i> <div class="likes"><div id="likes{{objectID}}">{{{_highlightResult.likes.value}}}</div></div></span>  
-                                    <i class="fa fa-industry"></i> <a href="<?php echo BASE_PATH; ?>/startups/?q={{{_highlightResult.industry.value}}}" style="color:#8d9ea7">{{{_highlightResult.industry.value}}}</a></small>
+                                <span class="m-r-10"><i class="icon-location-pin"></i> {{{location}}}</span> 
+                                <span class="m-r-10"><i class="fa fa-heart-o"></i> <div class="likes"><div id="likes{{objectID}}">{{{likes}}}</div></div></span> <br><br>
+                                    <i class="fa fa-industry" style="margin-left:2px;"></i> <a href="<?php echo BASE_PATH; ?>/?q={{{_highlightResult.industry.value}}}" style="color:#8d9ea7">{{{industry}}}</a></small>
                             </div>
                         </div>
                     </div>
+
 
 
 

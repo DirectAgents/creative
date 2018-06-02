@@ -57,10 +57,10 @@ $_SESSION['google_picture_link'] = $rownav['google_picture_link'];
                     <!-- Logo -->
                     <a class="logo" href="<?php echo BASE_PATH; ?>">
                         <!-- Logo icon image, you can use font-icon also --><b>
-                        <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="images/admin-logo-dark.png" alt="home" class="light-logo" />
+                        <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/logo/logo-header.png" alt="home" class="dark-logo" /><!--This is light logo icon--><!--<img src="images/admin-logo-dark.png" alt="home" class="light-logo" />-->
                      </b>
                         <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><!--<img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><!--<img src="images/admin-text-dark.png" alt="home" class="light-logo" />-->
+                        <!--This is dark logo text--><!--<img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" />--><!--This is light logo text--><!--<img src="images/admin-text-dark.png" alt="home" class="light-logo" />-->
                      </span> </a>
                 </div>
                 <!-- /Logo -->
@@ -678,12 +678,12 @@ $row13 = mysqli_fetch_array($sql13);
                 <div class="top-left-part">
                     <!-- Logo -->
                     <a class="logo" href="<?php echo BASE_PATH; ?>">
-                        <!-- Logo icon image, you can use font-icon also --><b>
-                        <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="images/admin-logo-dark.png" alt="home" class="light-logo" />
-                     </b>
-                        <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="images/admin-text-dark.png" alt="home" class="light-logo" />
-                     </span> </a>
+                        <!-- Logo icon image, you can use font-icon also --><!--<b>-->
+                        <!--This is dark logo icon--><img src="<?php echo BASE_PATH; ?>/images/logo/logo-header.png" alt="home" class="dark-logo" /><!--This is light logo icon--><!--<img src="images/admin-logo-dark.png" alt="home" class="light-logo" />-->
+                     <!--</b>-->
+                        <!-- Logo text image you can use text also --><!--<span class="hidden-xs">-->
+                        <!--This is dark logo text--><!--<img src="<?php echo BASE_PATH; ?>/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><!--<img src="images/admin-text-dark.png" alt="home" class="light-logo" />-->
+                     <!--</span><--> </a>
                 </div>
                 <!-- /Logo -->
                 <!-- Search input and Toggle icon -->
@@ -1165,7 +1165,7 @@ $row13 = mysqli_fetch_array($sql13);
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
                           
 
-                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Startup Name or Industry" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
+                        <input type="text" class="algolia-autocomplete light form-control" id="search-input" placeholder="Search by Startup Name, Industry or Location" /><div class="algolia"><img src="<?php echo BASE_PATH; ?>/images/algolia.png"/><i class="fa fa-search"></i></div>
                          </form>
 
                     </li>

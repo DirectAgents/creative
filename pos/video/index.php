@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-require_once 'class.entrepreneur.php';
-require_once 'class.investor.php';
+
 require_once 'base_path.php';
 include_once("config.php"); 
 
@@ -94,9 +93,9 @@ $left_sidebar_industry = 'startups';
                                     <a href="<?php echo BASE_PATH; ?>/startup/{{url}}">{{name}}</a></h3>
                                 <small class="text-muted db">
                                 <br>
-                                <span class="m-r-10"><i class="icon-calender"></i> {{{_highlightResult.date.value}}}</span> 
-                                <span class="m-r-10"><i class="fa fa-heart-o"></i> <div class="likes"><div id="likes{{objectID}}">{{{_highlightResult.likes.value}}}</div></div></span>  
-                                    <i class="fa fa-industry"></i> <a href="<?php echo BASE_PATH; ?>/?q={{{_highlightResult.industry.value}}}" style="color:#8d9ea7">{{{_highlightResult.industry.value}}}</a></small>
+                                <span class="m-r-10"><i class="icon-location-pin"></i> {{{location}}}</span> 
+                                <span class="m-r-10"><i class="fa fa-heart-o"></i> <div class="likes"><div id="likes{{objectID}}">{{{likes}}}</div></div></span> <br><br>
+                                    <i class="fa fa-industry" style="margin-left:2px;"></i> <a href="<?php echo BASE_PATH; ?>/?q={{{_highlightResult.industry.value}}}" style="color:#8d9ea7">{{{industry}}}</a></small>
                             </div>
                         </div>
                     </div>

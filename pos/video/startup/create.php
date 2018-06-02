@@ -179,6 +179,7 @@ $cloudinary_section = 'startups';
                                                 <div class="col-md-12">
                                                     <select id="fm_industry" name="fm_industry" tabindex="3" class="form-control form-control-line">
                                                         <option value="Technology">Technology</option>
+                                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
                                                         <option value="Augmented Reality">Augmented Reality</option>
                                                         <option value="Mobile">Mobile</option>
                                                         <option value="Finance">Finance</option>

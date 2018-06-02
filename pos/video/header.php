@@ -1,5 +1,6 @@
 <?php
 
+/*
  if(isset($cloudinary_section)){
  require_once('algoliasearch-client-php-master/algoliasearch.php');
 
@@ -8,7 +9,7 @@
  //$index = $client->initIndex('startups');
  $index = $client->initIndex($cloudinary_section);
 }
-
+*/
 
 $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
@@ -428,7 +429,7 @@ echo 'id: ' . $user['id'];
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-        <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+        <title>TheFundry | Raise funding for your Company</title>
         <!-- Bootstrap Core CSS -->
         <link href="<?php echo BASE_PATH; ?>/bootstrap/bootstrap.min.css" rel="stylesheet">
         <link href="<?php echo BASE_PATH; ?>/bootstrap/bootstrap.css" rel="stylesheet">

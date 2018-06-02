@@ -1,0 +1,25 @@
+RewriteEngine on
+
+# Disable directory browsing 
+Options -Indexes
+
+#URL Rewriting
+
+RewriteRule ^profile/([A-Za-z0-9-]+)/?$ profile/index.php?username=$1    [NC,L]   
+RewriteRule ^investor/([A-Za-z0-9-]+)/?$ investor/index.php?username=$1    [NC,L]
+RewriteRule ^startup/create/?$ startup/create.php?name=$1    [NC,L]   
+RewriteRule ^startup/([A-Za-z0-9-]+)/?$ startup/profile.php?name=$1    [NC,L]   
+RewriteRule ^connections/?$ connections.php    [NC,L]    
+RewriteRule ^bookmarks/?$ bookmarks.php    [NC,L]
+RewriteRule ^bookmarks/entrepreneurs/?$ bookmarks-entrepreneurs.php    [NC,L] 
+RewriteRule ^bookmarks/investors/?$ bookmarks-investors.php    [NC,L] 
+RewriteRule ^connections/investors/?$ connections-investors.php    [NC,L]   
+RewriteRule ^settings/?$ settings.php    [NC,L]
+RewriteRule ^investors/?$ investors.php    [NC,L] 
+RewriteRule ^startups/?$ startups.php    [NC,L]   
+RewriteRule ^/for/startups/?$ index.php    [NC,L]
+RewriteRule ^/investors/?$ index.php    [NC,L]    
+RewriteRule ^signup/?$ signup.php    [NC,L]    
+RewriteRule ^logout/?$ logout.php    [NC,L]   
+RewriteRule ^about-us/?$ about-us.php    [NC,L]   
+RewriteRule ^404/?$ 404.php    [NC,L]    # Handle product requestfullname

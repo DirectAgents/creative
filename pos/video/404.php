@@ -6,6 +6,8 @@
  require_once 'base_path.php';
  include_once("config.php"); 
 
+ $cloudinary_section = 'startups';
+
 ?>
 
 
@@ -64,7 +66,7 @@
                 <p>&nbsp;</p>
                 <div class="error-actions">
                     <a href="<?php echo BASE_PATH; ?>" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        Take Me Home </a>&nbsp;&nbsp;&nbsp;<a href="mailto:contact@test.com" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                        Take Me Home </a>&nbsp;&nbsp;&nbsp;<a href="mailto:contact@thefundry.com" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
                 </div>
             </div>
         </div>

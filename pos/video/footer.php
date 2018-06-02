@@ -3,9 +3,9 @@
                 <div class="signup-container center-block">
                     <button type="button" data-dismiss="modal" class='exit-button'><img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/exit-icon.png" class="exit-icon center-block"></button>
                     <div class="signup-card center-block">
-                        <img src="https://d3tr6q264l867m.cloudfront.net/static/mainapp/assets/images/logo.svg" class="center-block signup-card-image">
+                        <img src="<?php echo BASE_PATH; ?>/images/logo/logo-header.png" class="center-block signup-card-image">
                         <!--<h2 class="signup-card-title bold text-center">Sign in as a Startup!</h2>-->
-                        <p class="signup-description text-center"><span class="bold">Collapsed</span> is a community that aims to provide value by providing insights on failed startups.</p>
+                        <p class="signup-description text-center"><span class="bold">Fundry</span> is a community that aims to provide value by connecting Startups with Investors for funding.</p>
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
@@ -56,7 +56,23 @@
 
 
 
-<footer class="footer text-center">2018 &copy; </footer>
+<footer class="footer text-center">
+
+
+<p class="pull-left">&copy; Fundry 2018</p>
+  <div class="pull-right">
+    <ul class="list-inline">
+      <li><a href="<?php echo BASE_PATH; ?>/about/">About</a></li>
+      <li><a href="<?php echo BASE_PATH; ?>/faq/">FAQ</a></li>
+      <li><a href="<?php echo BASE_PATH; ?>/terms/">Terms</a></li>
+      <li><a href="<?php echo BASE_PATH; ?>/privacy/">Privacy</a></li>
+      <li><a href="<?php echo BASE_PATH; ?>/contact/">Contact</a></li>
+    </ul>
+  </div>
+
+
+
+</footer>
 
            
        

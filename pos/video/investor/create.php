@@ -160,9 +160,11 @@ if ($result_startup->num_rows == 1){
                                                 <div class="col-md-12">
                                                     <select id="fm_industry" name="fm_industry" tabindex="3" class="form-control form-control-line">
                                                         <option value="Technology">Technology</option>
+                                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
                                                         <option value="Augmented Reality">Augmented Reality</option>
                                                         <option value="Mobile">Mobile</option>
                                                         <option value="Finance">Finance</option>
+                                                        <option value="Fashion">Fashion</option>
                                                         <option value="Ecommerce">Ecommerce</option>
                                                         <option value="B2B Services">B2B Services</option>
                                                         <option value="Consumer Products">Consumer Products</option>
@@ -179,8 +181,7 @@ if ($result_startup->num_rows == 1){
                                                         <option value="Health & Wellness">Health & Wellness</option>
                                                         <option value="Human Resources">Human Resources</option>
                                                         <option value="Other">Other</option>
-                                                        <option value="Ecommerce">Ecommerce</option>
-                                                        <option value="Ecommerce">Ecommerce</option>
+
 
                                                     </select>
                                                 </div>

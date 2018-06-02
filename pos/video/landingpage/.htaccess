@@ -1,0 +1,14 @@
+RewriteEngine on
+
+# Disable directory browsing 
+Options -Indexes
+
+#URL Rewriting
+
+ 
+RewriteRule ^about/?$ about.php    [NC,L]   
+RewriteRule ^faq/?$ faq.php    [NC,L]
+RewriteRule ^contact/?$ contact.php    [NC,L] 
+RewriteRule ^terms/?$ terms.php    [NC,L] 
+RewriteRule ^privacy/?$ privacy.php    [NC,L]   
+RewriteRule ^404/?$ 404.php    [NC,L]    # Handle product requestfullname
